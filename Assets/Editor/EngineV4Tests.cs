@@ -361,7 +361,9 @@ namespace FlipRace.Editor
         {
             // Shift contact by +/-0.1ms around the same obstacle impact. The
             // pre-impact pending state, not obstacle history, decides cancellation.
-            foreach (MotionMode mode in Enum.GetValues(typeof(MotionMode)))
+            // This historical V4 contract covers the original three modes.
+            // Later controls have their own trajectories in EngineControlTests.
+            foreach (MotionMode mode in new[] { MotionMode.Linear, MotionMode.Gravity, MotionMode.GravityAirFlip })
             foreach (bool ceiling in new[] { false, true })
             foreach (string placement in new[] { "before", "after" })
             foreach (double offset in new[] { -.022, 0, .022 })

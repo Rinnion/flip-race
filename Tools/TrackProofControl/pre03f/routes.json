@@ -1,0 +1,1652 @@
+[
+  {
+    "track": "control-comparison",
+    "mode": "GravityAirFlip",
+    "profile": "moderate",
+    "route": "safe",
+    "distanceInputs": [
+      850,
+      1740,
+      2420,
+      2740,
+      3130
+    ],
+    "actualInputs": [
+      {
+        "X": 850,
+        "Time": 3.863636363636302,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1740,
+        "Time": 7.909090909090678,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2420,
+        "Time": 10.999999999999815,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 12.454545454545357,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 14.227272727272739,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [],
+    "finish": 21,
+    "hits": 0,
+    "positives": 0,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.863636363636302,
+    "minimumInteriorGap": 1.454545454545542,
+    "maximumInteriorGap": 4.045454545454376,
+    "lastTapToFinish": 6.772727272727261,
+    "airInputs": 0,
+    "minimumAirRepeatGap": null
+  },
+  {
+    "track": "control-comparison",
+    "mode": "GravityAirFlip",
+    "profile": "moderate",
+    "route": "ideal",
+    "distanceInputs": [
+      803.545515,
+      917.945515,
+      1160,
+      1450,
+      1906.527781,
+      2740,
+      3130,
+      4227.78
+    ],
+    "actualInputs": [
+      {
+        "X": 803.545515,
+        "Time": 3.6524796136363107,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 917.945515,
+        "Time": 4.172479613636289,
+        "CenterY": 54.40000000000592,
+        "VerticalSpeed": -589.9999999999893,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.12121212114442,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1450,
+        "Time": 6.290909090908955,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1906.527781,
+        "Time": 8.366035368181596,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.85454545454532,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 13.627272727272702,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4227.78,
+        "Time": 18.61718181818256,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.81818181797892
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909089447931
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 18.94235511220791
+      }
+    ],
+    "finish": 20.1,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.6524796136363107,
+    "minimumInteriorGap": 0.5199999999999787,
+    "maximumInteriorGap": 4.9899090909098565,
+    "lastTapToFinish": 1.4828181818174428,
+    "airInputs": 1,
+    "minimumAirRepeatGap": 0.5199999999999787
+  },
+  {
+    "track": "control-comparison",
+    "mode": "GravityAirFlip",
+    "profile": "moderate",
+    "route": "trap",
+    "distanceInputs": [
+      803.545515,
+      917.945515,
+      1160,
+      1450,
+      1906.527781,
+      2740,
+      3018.5,
+      4227.78
+    ],
+    "actualInputs": [
+      {
+        "X": 803.545515,
+        "Time": 3.6524796136363107,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 917.945515,
+        "Time": 4.172479613636289,
+        "CenterY": 54.40000000000592,
+        "VerticalSpeed": -589.9999999999893,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.12121212114442,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1450,
+        "Time": 6.290909090908955,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1906.527781,
+        "Time": 8.366035368181596,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.85454545454532,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3018.5,
+        "Time": 13.12045454545449,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4227.78,
+        "Time": 18.917181818182605,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.81818181797892
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909089447931
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 19.242355112207957
+      }
+    ],
+    "finish": 20.4,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 1,
+    "emptyEffects": true,
+    "firstTap": 3.6524796136363107,
+    "minimumInteriorGap": 0.5199999999999787,
+    "maximumInteriorGap": 5.796727272728116,
+    "lastTapToFinish": 1.482818181817393,
+    "airInputs": 1,
+    "minimumAirRepeatGap": 0.5199999999999787
+  },
+  {
+    "track": "control-comparison",
+    "mode": "LinearAirFlip",
+    "profile": "base",
+    "route": "safe",
+    "distanceInputs": [
+      850,
+      1740,
+      2420,
+      2740,
+      3130
+    ],
+    "actualInputs": [
+      {
+        "X": 850,
+        "Time": 3.863636363636302,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1740,
+        "Time": 7.909090909090678,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2420,
+        "Time": 10.999999999999815,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 12.454545454545357,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 14.227272727272737,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [],
+    "finish": 21,
+    "hits": 0,
+    "positives": 0,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.863636363636302,
+    "minimumInteriorGap": 1.454545454545542,
+    "maximumInteriorGap": 4.045454545454376,
+    "lastTapToFinish": 6.772727272727263,
+    "airInputs": 0,
+    "minimumAirRepeatGap": null
+  },
+  {
+    "track": "control-comparison",
+    "mode": "LinearAirFlip",
+    "profile": "base",
+    "route": "ideal",
+    "distanceInputs": [
+      915.049057,
+      1007.449057,
+      1160,
+      1450,
+      1900.377358,
+      2740,
+      3130,
+      4230.301887
+    ],
+    "actualInputs": [
+      {
+        "X": 915.049057,
+        "Time": 4.1593138954544715,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1007.449057,
+        "Time": 4.5793138954544546,
+        "CenterY": 114.70000000000194,
+        "VerticalSpeed": -265,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.12121212181236,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1450,
+        "Time": 6.290909090908953,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1900.377358,
+        "Time": 8.338078899999777,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.854545454545313,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 13.627272727272693,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4230.301887,
+        "Time": 18.628644940909822,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.818181819982744
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909088679012
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 18.92413012037752
+      }
+    ],
+    "finish": 20.1,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 4.1593138954544715,
+    "minimumInteriorGap": 0.41999999999998305,
+    "maximumInteriorGap": 5.001372213637129,
+    "lastTapToFinish": 1.471355059090179,
+    "airInputs": 1,
+    "minimumAirRepeatGap": 0.41999999999998305
+  },
+  {
+    "track": "control-comparison",
+    "mode": "LinearAirFlip",
+    "profile": "base",
+    "route": "trap",
+    "distanceInputs": [
+      915.049057,
+      1007.449057,
+      1160,
+      1450,
+      1900.377358,
+      2740,
+      3014,
+      4230.301887
+    ],
+    "actualInputs": [
+      {
+        "X": 915.049057,
+        "Time": 4.1593138954544715,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1007.449057,
+        "Time": 4.5793138954544546,
+        "CenterY": 114.70000000000194,
+        "VerticalSpeed": -265,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.12121212181236,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1450,
+        "Time": 6.290909090908953,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1900.377358,
+        "Time": 8.338078899999777,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.854545454545313,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3014,
+        "Time": 13.099999999999932,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4230.301887,
+        "Time": 18.928644940909873,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.818181819982744
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909088679012
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 19.22413012037757
+      }
+    ],
+    "finish": 20.4,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 1,
+    "emptyEffects": true,
+    "firstTap": 4.1593138954544715,
+    "minimumInteriorGap": 0.41999999999998305,
+    "maximumInteriorGap": 5.828644940909941,
+    "lastTapToFinish": 1.4713550590901256,
+    "airInputs": 1,
+    "minimumAirRepeatGap": 0.41999999999998305
+  },
+  {
+    "track": "control-comparison",
+    "mode": "JumpGravityFlip",
+    "profile": "jump",
+    "route": "safe",
+    "distanceInputs": [
+      800,
+      855,
+      1740,
+      1795,
+      2420,
+      2475,
+      2740,
+      2795,
+      3130,
+      3185
+    ],
+    "actualInputs": [
+      {
+        "X": 800,
+        "Time": 3.6363636363635843,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 855,
+        "Time": 3.886363636363574,
+        "CenterY": 146.70312500000145,
+        "VerticalSpeed": -234.3750000000033,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1740,
+        "Time": 7.909090909090678,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1795,
+        "Time": 8.159090909090668,
+        "CenterY": 93.29687499999886,
+        "VerticalSpeed": 234.3750000000033,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2420,
+        "Time": 10.999999999999815,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2474.9999999999955,
+        "Time": 11.24999999999981,
+        "CenterY": 146.7031250000003,
+        "VerticalSpeed": -234.375,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 12.454545454545357,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2794.9999999999955,
+        "Time": 12.704545454545352,
+        "CenterY": 93.29687500000003,
+        "VerticalSpeed": 234.375,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 14.227272727272739,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3184.9999999999955,
+        "Time": 14.477272727272734,
+        "CenterY": 146.7031250000003,
+        "VerticalSpeed": -234.375,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [],
+    "finish": 21,
+    "hits": 0,
+    "positives": 0,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.6363636363635843,
+    "minimumInteriorGap": 0.24999999999998979,
+    "maximumInteriorGap": 4.022727272727105,
+    "lastTapToFinish": 6.522727272727266,
+    "airInputs": 5,
+    "minimumAirRepeatGap": 0.24999999999998979
+  },
+  {
+    "track": "control-comparison",
+    "mode": "JumpGravityFlip",
+    "profile": "jump",
+    "route": "ideal",
+    "distanceInputs": [
+      824.065859,
+      1160,
+      1240,
+      1802.351265,
+      2740,
+      2795,
+      3130,
+      3185,
+      4237.31
+    ],
+    "actualInputs": [
+      {
+        "X": 824.065859,
+        "Time": 3.745753904545398,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.121212121786168,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1240,
+        "Time": 5.363636364210408,
+        "CenterY": 100.49770431588551,
+        "VerticalSpeed": -239.39393939393722,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1802.351265,
+        "Time": 7.8925057499997955,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.854545454545315,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2794.9999999999955,
+        "Time": 12.10454545454531,
+        "CenterY": 93.29687500000003,
+        "VerticalSpeed": 234.375,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 13.627272727272697,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3184.9999999999955,
+        "Time": 13.877272727272691,
+        "CenterY": 146.7031250000003,
+        "VerticalSpeed": -234.375,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4237.31,
+        "Time": 18.660500000000745,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.818181819904166
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909090315898
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 18.914656468006463
+      }
+    ],
+    "finish": 20.1,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.745753904545398,
+    "minimumInteriorGap": 0.24242424242424043,
+    "maximumInteriorGap": 4.783227272728054,
+    "lastTapToFinish": 1.4394999999992564,
+    "airInputs": 3,
+    "minimumAirRepeatGap": 0.24242424242424043
+  },
+  {
+    "track": "control-comparison",
+    "mode": "JumpGravityFlip",
+    "profile": "jump",
+    "route": "trap",
+    "distanceInputs": [
+      824.065859,
+      1160,
+      1240,
+      1802.351265,
+      2740,
+      2795,
+      3026.5,
+      3081.5,
+      4237.31
+    ],
+    "actualInputs": [
+      {
+        "X": 824.065859,
+        "Time": 3.745753904545398,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.121212121786168,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1240,
+        "Time": 5.363636364210408,
+        "CenterY": 100.49770431588551,
+        "VerticalSpeed": -239.39393939393722,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1802.351265,
+        "Time": 7.8925057499997955,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.854545454545315,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2794.9999999999955,
+        "Time": 12.10454545454531,
+        "CenterY": 93.29687500000003,
+        "VerticalSpeed": 234.375,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3026.5,
+        "Time": 13.156818181818123,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3081.4999999999955,
+        "Time": 13.406818181818117,
+        "CenterY": 146.7031250000003,
+        "VerticalSpeed": -234.375,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4237.31,
+        "Time": 18.9605000000008,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.818181819904166
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909090315898
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 19.214656468006517
+      }
+    ],
+    "finish": 20.4,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 1,
+    "emptyEffects": true,
+    "firstTap": 3.745753904545398,
+    "minimumInteriorGap": 0.24242424242424043,
+    "maximumInteriorGap": 5.553681818182682,
+    "lastTapToFinish": 1.4394999999991995,
+    "airInputs": 3,
+    "minimumAirRepeatGap": 0.24242424242424043
+  },
+  {
+    "track": "control-comparison",
+    "mode": "GravityUnlimited",
+    "profile": "moderate",
+    "route": "safe",
+    "distanceInputs": [
+      850,
+      1740,
+      2420,
+      2740,
+      3130
+    ],
+    "actualInputs": [
+      {
+        "X": 850,
+        "Time": 3.863636363636302,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1740,
+        "Time": 7.909090909090678,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2420,
+        "Time": 10.999999999999815,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 12.454545454545357,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 14.227272727272739,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [],
+    "finish": 21,
+    "hits": 0,
+    "positives": 0,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.863636363636302,
+    "minimumInteriorGap": 1.454545454545542,
+    "maximumInteriorGap": 4.045454545454376,
+    "lastTapToFinish": 6.772727272727261,
+    "airInputs": 0,
+    "minimumAirRepeatGap": null
+  },
+  {
+    "track": "control-comparison",
+    "mode": "GravityUnlimited",
+    "profile": "moderate",
+    "route": "ideal",
+    "distanceInputs": [
+      803.545515,
+      917.945515,
+      1160,
+      1450,
+      1906.527781,
+      2740,
+      3130,
+      4227.78
+    ],
+    "actualInputs": [
+      {
+        "X": 803.545515,
+        "Time": 3.6524796136363107,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 917.945515,
+        "Time": 4.172479613636289,
+        "CenterY": 54.40000000000592,
+        "VerticalSpeed": -589.9999999999893,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.12121212114442,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1450,
+        "Time": 6.290909090908955,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1906.527781,
+        "Time": 8.366035368181596,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.85454545454532,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3130,
+        "Time": 13.627272727272702,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4227.78,
+        "Time": 18.61718181818256,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.81818181797892
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909089447931
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 18.94235511220791
+      }
+    ],
+    "finish": 20.1,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.6524796136363107,
+    "minimumInteriorGap": 0.5199999999999787,
+    "maximumInteriorGap": 4.9899090909098565,
+    "lastTapToFinish": 1.4828181818174428,
+    "airInputs": 1,
+    "minimumAirRepeatGap": 0.5199999999999787
+  },
+  {
+    "track": "control-comparison",
+    "mode": "GravityUnlimited",
+    "profile": "moderate",
+    "route": "trap",
+    "distanceInputs": [
+      803.545515,
+      917.945515,
+      1160,
+      1450,
+      1906.527781,
+      2740,
+      3018.5,
+      4227.78
+    ],
+    "actualInputs": [
+      {
+        "X": 803.545515,
+        "Time": 3.6524796136363107,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 917.945515,
+        "Time": 4.172479613636289,
+        "CenterY": 54.40000000000592,
+        "VerticalSpeed": -589.9999999999893,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1160,
+        "Time": 5.12121212114442,
+        "CenterY": 178,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Stone",
+        "SupportSide": 1,
+        "SupportObstacleId": "control-floor-pad"
+      },
+      {
+        "X": 1450,
+        "Time": 6.290909090908955,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1906.527781,
+        "Time": 8.366035368181596,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 2740,
+        "Time": 11.85454545454532,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 3018.5,
+        "Time": 13.12045454545449,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 4227.78,
+        "Time": 18.917181818182605,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [
+      {
+        "Id": "control-landing-floor",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 4.81818181797892
+      },
+      {
+        "Id": "control-landing-ceiling",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 8.790909089447931
+      },
+      {
+        "Id": "control-final-instant",
+        "Message": "\u041C\u0433\u043D\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u0440\u044B\u0432\u043E\u043A \u22120,3 \u0441\u0435\u043A",
+        "At": 19.242355112207957
+      }
+    ],
+    "finish": 20.4,
+    "hits": 0,
+    "positives": 3,
+    "negatives": 1,
+    "emptyEffects": true,
+    "firstTap": 3.6524796136363107,
+    "minimumInteriorGap": 0.5199999999999787,
+    "maximumInteriorGap": 5.796727272728116,
+    "lastTapToFinish": 1.482818181817393,
+    "airInputs": 1,
+    "minimumAirRepeatGap": 0.5199999999999787
+  },
+  {
+    "track": "control-passages",
+    "mode": "GravityUnlimited",
+    "profile": "moderate",
+    "route": "passages",
+    "distanceInputs": [
+      750.254574710043,
+      822.427287355021,
+      910,
+      1050.254574710043,
+      1122.427287355022,
+      1210,
+      1350.254574710043,
+      1422.427287355022,
+      1510,
+      1650.254574710043,
+      1722.427287355022,
+      1810
+    ],
+    "actualInputs": [
+      {
+        "X": 750.254574710043,
+        "Time": 3.410248066863789,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 822.427287355021,
+        "Time": 3.7383058516136756,
+        "CenterY": 149.2250000000034,
+        "VerticalSpeed": -398.05778474989336,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 910,
+        "Time": 4.136363636363564,
+        "CenterY": 70.00000000000725,
+        "VerticalSpeed": 0,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1050.254574710043,
+        "Time": 4.773884430500097,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1122.427287355022,
+        "Time": 5.101942215249987,
+        "CenterY": 90.77499999999777,
+        "VerticalSpeed": 398.0577847498975,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1210,
+        "Time": 5.499999999999871,
+        "CenterY": 169.9999999999954,
+        "VerticalSpeed": 0,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1350.254574710043,
+        "Time": 6.137520794136404,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1422.427287355022,
+        "Time": 6.465578578886294,
+        "CenterY": 149.22500000000176,
+        "VerticalSpeed": -398.0577847498975,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1510,
+        "Time": 6.863636363636179,
+        "CenterY": 70.00000000000381,
+        "VerticalSpeed": 0,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1650.254574710043,
+        "Time": 7.501157157772712,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1722.427287355022,
+        "Time": 7.8292149425226025,
+        "CenterY": 90.77499999999777,
+        "VerticalSpeed": 398.0577847498975,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "X": 1810,
+        "Time": 8.227272727272487,
+        "CenterY": 169.9999999999954,
+        "VerticalSpeed": 0,
+        "Airborne": true,
+        "AirFlipAvailable": true,
+        "Support": "None",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    ],
+    "actualRewards": [],
+    "finish": 13,
+    "hits": 0,
+    "positives": 0,
+    "negatives": 0,
+    "emptyEffects": true,
+    "firstTap": 3.410248066863789,
+    "minimumInteriorGap": 0.32805778474988667,
+    "maximumInteriorGap": 0.6375207941365337,
+    "lastTapToFinish": 4.772727272727513,
+    "airInputs": 8,
+    "minimumAirRepeatGap": 0.32805778474988667
+  }
+]

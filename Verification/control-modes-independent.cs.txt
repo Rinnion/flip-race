@@ -1,0 +1,105 @@
+using System;
+using FlipRace.Core;
+public static class ControlModesIndependent
+{
+ static int n,games;static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool value,string why){n++;if(!value)throw new Exception(why);}
+ static void N(double a,double b,string why,double tol=3e-7){C(Math.Abs(a-b)<=tol,why+": "+a.ToString("R")+" != "+b.ToString("R"));}
+ static double Away(int side){return side==1?-1:1;}
+ static double Y(int side){return side==1?226:14;}
+ static double Travel(double d,double v,double a){return 2*d/(v+Math.Sqrt(v*v+2*a*d));}
+ static GameState Start(MotionMode mode,Track t=null){var g=RaceSimulation.CreateTrial(t??new Track(4400,Array.Empty<Obstacle>()),mode,mode==MotionMode.GravityAirFlip?MotionProfiles.Moderate:null);C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"ready both");RaceSimulation.Advance(g,3);C(g.Phase=="racing","racing");games++;return g;}
+ static void Tap(GameState g){C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"both accepted edge");}
+ static void M(GameState g,double t,double step){while(t>1e-14&&g.Phase=="racing"){double d=Math.Min(step,t);RaceSimulation.Advance(g,d);t-=d;}}
+ static bool Linear(MotionMode m){return m==MotionMode.LinearAirFlip;}
+ static bool Jump(MotionMode m){return m==MotionMode.JumpGravityFlip;}
+ static double A(MotionMode m){return Jump(m)?662.5:1000;}
+ static double U(MotionMode m){return Jump(m)?400:70;}
+ static void Side(GameState g,int side,double step){if(side==1)return;Tap(g);if(Jump(g.Motion))Tap(g);M(g,Linear(g.Motion)?.8:Travel(212,U(g.Motion),A(g.Motion)),step);foreach(var p in g.Players)C(p.Support==SupportKind.Wall&&p.SupportSide==0,"real preparation to ceiling");}
+ static void Wall(GameState g,int side){foreach(var p in g.Players){N(RaceSimulation.GetPlayerCenterY(p),Y(side),"exact wall");N(p.VerticalSpeed,0,"wall vy");C(!p.Flipping&&p.Support==SupportKind.Wall&&p.SupportSide==side&&p.AirFlipAvailable,"stable wall and charge");}}
+ static void FreeGravity(){
+  foreach(var mode in new[]{MotionMode.GravityAirFlip,MotionMode.GravityUnlimited})foreach(int side in new[]{0,1})foreach(double step in Steps){
+   double sign=Away(side),a=1000,u=70,T=Travel(212,u,a);var g=Start(mode);Side(g,side,step);Tap(g);
+   foreach(var p in g.Players){N(p.VerticalSpeed,sign*u,"departure kick once");C(p.Gravity==sign&&p.Support==SupportKind.None,"flip away");}
+   M(g,.2,step);foreach(var p in g.Players){N(RaceSimulation.GetPlayerCenterY(p),Y(side)+sign*(u*.2+.5*a*.04),"moderate analytic y");N(p.VerticalSpeed,sign*(u+a*.2),"moderate analytic vy");}
+   M(g,T-.2,step);Wall(g,1-side);
+   var r=Start(mode);Side(r,side,step);Tap(r);M(r,.12,step);double q=u*.12+.5*a*.12*.12,v=u+a*.12;Tap(r);
+   foreach(var p in r.Players){N(p.VerticalSpeed,sign*v,"air gravity flip keeps momentum");N(p.FlipElapsed,.12,"air gravity flip keeps age");}
+   if(mode==MotionMode.GravityAirFlip)foreach(var p in r.Players)C(!RaceSimulation.Press(r,p.Id),"one repeat only");
+   M(r,(v+Math.Sqrt(v*v+2*a*q))/a,step);Wall(r,side);
+   // The old momentum reaches the wrong wall, with gravity pointing away.
+   var w=Start(mode);Side(w,side,step);Tap(w);M(w,.5,step);Tap(w);q=u*.5+.5*a*.25;v=u+a*.5;
+   M(w,(v-Math.Sqrt(v*v-2*a*(212-q)))/a,step);
+   foreach(var p in w.Players){N(RaceSimulation.GetPlayerCenterY(p),Y(1-side),"inertial wrong wall");N(p.VerticalSpeed,0,"wrong wall clips velocity");C(p.Flipping&&p.Support==SupportKind.None,"wrong wall has no support");if(mode==MotionMode.GravityAirFlip)C(!p.AirFlipAvailable,"wrong wall does not recharge");}
+   M(w,Math.Sqrt(424/a),step);Wall(w,side);
+  }
+ }
+ static void FreeLinear(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps){
+   double sign=Away(side);var g=Start(MotionMode.LinearAirFlip);Side(g,side,step);Tap(g);M(g,.123,step);
+   foreach(var p in g.Players){N(p.VerticalSpeed,sign*265,"linear speed constant");N(RaceSimulation.GetPlayerCenterY(p),Y(side)+sign*265*.123,"linear analytic position");}
+   Tap(g);foreach(var p in g.Players){N(p.VerticalSpeed,-sign*265,"reverse only sign");N(RaceSimulation.GetPlayerCenterY(p),Y(side)+sign*265*.123,"no positional snap");C(!RaceSimulation.Press(g,p.Id),"linear one repeat");}
+   M(g,.123,step);Wall(g,side);Tap(g);M(g,.8,step);Wall(g,1-side);
+  }
+ }
+ static void FreeJump(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps){
+   double sign=Away(side),a=662.5,u=400;var g=Start(MotionMode.JumpGravityFlip);Side(g,side,step);Tap(g);
+   foreach(var p in g.Players){N(p.VerticalSpeed,sign*u,"ordinary jump kicks away");C(p.Gravity==-sign,"ordinary jump gravity stays with support");}
+   M(g,u/a,step);foreach(var p in g.Players){N(RaceSimulation.GetPlayerCenterY(p),Y(side)+sign*u*u/(2*a),"jump apex height");N(p.VerticalSpeed,0,"jump apex velocity");}
+   M(g,u/a,step);Wall(g,side);
+   var r=Start(MotionMode.JumpGravityFlip);Side(r,side,step);Tap(r);M(r,.2,step);double q=u*.2-.5*a*.04,v=u-a*.2;Tap(r);
+   foreach(var p in r.Players){N(p.VerticalSpeed,sign*v,"jump repeat retains momentum");C(p.Gravity==sign,"jump repeat changes gravity only");C(!RaceSimulation.Press(r,p.Id),"jump one repeat");}
+   M(r,Travel(212-q,v,a),step);Wall(r,1-side);
+   var w=Start(MotionMode.JumpGravityFlip);Side(w,side,step);Tap(w);M(w,1.15,step);q=u*1.15-.5*a*1.15*1.15;v=u-a*1.15;Tap(w);
+   M(w,(-v-Math.Sqrt(v*v-2*a*q))/a,step);
+   foreach(var p in w.Players){N(RaceSimulation.GetPlayerCenterY(p),Y(side),"late jump reaches old wall inertially");N(p.VerticalSpeed,0,"late jump clips velocity");C(p.Flipping&&p.Support==SupportKind.None&&!p.AirFlipAvailable,"late wrong wall grants no support or charge");}
+   M(w,.8,step);Wall(w,1-side);
+  }
+ }
+ static void Unlimited(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps){
+   var g=Start(MotionMode.GravityUnlimited);Side(g,side,step);Tap(g);double y=Y(side),v=Away(side)*70,grav=Away(side);
+   for(int i=0;i<64;i++){
+    const double t=.003;y+=v*t+.5*grav*1000*t*t;v+=grav*1000*t;M(g,t,step);Tap(g);grav=-grav;
+    foreach(var p in g.Players){N(RaceSimulation.GetPlayerCenterY(p),y,"unlimited analytic position");N(p.VerticalSpeed,v,"unlimited no repeated impulses");C(p.Gravity==grav&&p.Flipping,"unlimited each edge reverses");}
+   }
+   Tap(g);Tap(g);foreach(var p in g.Players){C(p.Gravity==grav,"two zero-delay edges not throttled");N(p.VerticalSpeed,v,"two edges add no kick");}
+  }
+ }
+ static GameState ArriveStone(MotionMode mode,int side,double step){
+   var stone=new Obstacle{Id="stone",Kind=side==1?"floor":"ceiling",X=500,Width=200,Height=48};
+   var t=new Track(4400,new[]{stone}){RiskZones=new[]{new RiskZone{Id="pad",Kind="landing",ObstacleId="stone",X=550,LandingWidth=12}}};
+   var g=Start(mode,t);Side(g,1-side,step);double flight=Linear(mode)?164d/265:Travel(164,U(mode),A(mode));M(g,550d/220-flight-g.Elapsed,step);Tap(g);if(Jump(mode))Tap(g);M(g,flight,step);
+   return g;
+ }
+ static void StoneModes(){
+  foreach(var mode in new[]{MotionMode.GravityAirFlip,MotionMode.LinearAirFlip,MotionMode.JumpGravityFlip,MotionMode.GravityUnlimited})foreach(int side in new[]{0,1})foreach(double step in Steps){
+   var g=ArriveStone(mode,side,step);
+   foreach(var p in g.Players){N(p.Distance,550,"mode landing x");N(RaceSimulation.GetPlayerCenterY(p),Y(side)+Away(side)*48,"mode landing plane");C(p.Support==SupportKind.Stone&&p.SupportSide==side&&p.BoostsEarned==1&&p.Collisions==0,"mode legal landing");}
+   M(g,150d/330,step);foreach(var p in g.Players){N(p.Distance,700,"mode actual edge");C(p.Support==SupportKind.None&&p.Flipping,"mode walks off");N(p.VerticalSpeed,Linear(mode)?-Away(side)*265:0,"edge no surface departure kick");}
+   double fall=Linear(mode)?48d/265:Math.Sqrt(96/A(mode));M(g,fall,step);Wall(g,side);foreach(var p in g.Players)C(p.Collisions==0,"mode edge no phantom impact");
+   var depart=ArriveStone(mode,side,step);Tap(depart);double sign=Away(side),plane=Y(side)+sign*48,age=.05;
+   double q=Linear(mode)?265*age:U(mode)*age+(Jump(mode)?-1:1)*.5*A(mode)*age*age;
+   double v=Linear(mode)?265:U(mode)+(Jump(mode)?-1:1)*A(mode)*age;
+   M(depart,age,step);
+   foreach(var p in depart.Players){N(RaceSimulation.GetPlayerCenterY(p),plane+sign*q,"raised support departure analytic position");N(p.VerticalSpeed,sign*v,"raised support departure analytic velocity");C(p.Support==SupportKind.None&&p.Collisions==0,"raised departure no phantom hit");C(p.Gravity==(Jump(mode)?-sign:sign),"raised departure correct gravity");}
+   if(Jump(mode))Tap(depart);
+   double rest=Linear(mode)?(164-q)/265:Travel(164-q,v,A(mode));M(depart,rest,step);Wall(depart,1-side);
+   foreach(var p in depart.Players)C(p.Collisions==0&&p.BoostsEarned==1,"departure neither invalidates nor recollects pad");
+  }
+ }
+ static void IndependentPlayersAndRematch(){
+  foreach(var mode in new[]{MotionMode.GravityAirFlip,MotionMode.LinearAirFlip,MotionMode.JumpGravityFlip,MotionMode.GravityUnlimited})foreach(double step in Steps){
+   var g=Start(mode);C(RaceSimulation.Press(g,0),"upper alone acts");M(g,.1,step);
+   C(g.Players[0].Flipping&&!g.Players[1].Flipping,"split players remain independent");N(RaceSimulation.GetPlayerCenterY(g.Players[1]),226,"lower remains on floor");
+   while(g.Phase=="racing")RaceSimulation.Advance(g,step);N(g.Elapsed,20,"free actual finish remains horizontal baseline");C(Equals(g.Winner,"tie"),"different vertical paths exact tie");
+   C(RaceSimulation.SetCharacter(g,0,3)&&RaceSimulation.SetCharacter(g,1,2),"finished character choices");var profile=g.Profile;
+   C(RaceSimulation.Press(g,0),"one rematch ready");C(g.Phase=="finished"&&g.Players[0].Ready&&!g.Players[1].Ready,"rematch waits for lower");
+   C(RaceSimulation.Press(g,1),"second rematch ready");C(g.Phase=="countdown"&&g.Motion==mode&&ReferenceEquals(g.Profile,profile),"mode profile persist");N(g.Elapsed,0,"rematch clears elapsed");
+   foreach(var p in g.Players){N(p.Distance,0,"rematch distance");N(p.VerticalSpeed,0,"rematch vy");C(p.Support==SupportKind.Wall&&p.SupportSide==1&&p.SupportObstacleId==null&&!p.Flipping&&p.AirFlipAvailable,"rematch full supported charge reset");}
+   C(g.Players[0].CharacterIndex==3&&g.Players[1].CharacterIndex==2,"characters retained");
+  }
+ }
+ public static void Run(){n=games=0;FreeGravity();FreeLinear();FreeJump();Unlimited();StoneModes();IndependentPlayersAndRematch();Console.WriteLine("PASS "+n+" independent CONTROL02 assertions / "+games+" games: analytic four-mode trajectories, both walls, inertial contacts, repeated edges, stone landing/walkoff/departure, player isolation and rematch.");}
+}

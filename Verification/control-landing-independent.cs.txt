@@ -1,0 +1,122 @@
+using System;
+using FlipRace.Core;
+public static class ControlLandingIndependent
+{
+ static int n,games;const double A=662.5;
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool ok,string msg){n++;if(!ok)throw new Exception(msg);}
+ static void N(double a,double b,string msg,double tol=3e-7){C(Math.Abs(a-b)<=tol,msg+": "+a.ToString("R")+" != "+b.ToString("R"));}
+ static void M(GameState g,double t,double step){while(t>1e-14&&g.Phase=="racing"){double d=Math.Min(t,step);RaceSimulation.Advance(g,d);t-=d;}}
+ static double Plane(int side,double height){return side==1?226-height:14+height;}
+ static RiskZone Pad(string id,double x,double width=12){return new RiskZone{Id=id,Kind="landing",ObstacleId="stone",X=x,Y=999,Radius=999,LandingWidth=width};}
+ static Track TrackFor(int side,double height,double mark,double width=12,double stoneX=300,double stoneWidth=200,Obstacle extra=null){
+  var stone=new Obstacle{Id="stone",Kind=side==1?"floor":"ceiling",X=stoneX,Width=stoneWidth,Height=height};
+  return new Track(2200,extra==null?new[]{stone}:new[]{stone,extra}){RiskZones=new[]{Pad("pad",mark,width)}};
+ }
+ static GameState Start(Track t){
+  var g=RaceSimulation.CreateTrial(t,MotionMode.GravityAirFlip,MotionProfiles.Baseline);
+  C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"both ready");RaceSimulation.Advance(g,3);C(g.Phase=="racing","starts");games++;return g;
+ }
+ static void Tap(GameState g){C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"both action accepted");}
+ // Reach the approach using actual controls, never inject a landing/support.
+ static GameState Prepare(int side,double height,double planeX,double step,Track track=null){
+  var g=Start(track??TrackFor(side,height,planeX));double flight=Math.Sqrt(2*(212-height)/A);
+  if(side==1){Tap(g);M(g,.8,step);}
+  double depart=planeX/220-flight;C(depart>=g.Elapsed-1e-8,"fixture starts before approach");
+  M(g,depart-g.Elapsed,step);Tap(g);M(g,flight,step);return g;
+ }
+ static void Stable(GameState g,int side,double height,double x){
+  foreach(var p in g.Players){N(p.Distance,x,"landing x");N(RaceSimulation.GetPlayerCenterY(p),Plane(side,height),"physical stone plane");
+   C(p.Support==SupportKind.Stone&&p.SupportSide==side&&p.SupportObstacleId=="stone","explicit support identity");
+   C(!p.Flipping&&p.AirFlipAvailable,"stable landing recharges");N(p.VerticalSpeed,0,"contact cancels normal velocity");
+   C(p.Collisions==0&&!p.HitObstacleIds.Contains("stone"),"success not global obstacle immunity");C(p.BoostsEarned==1&&p.InstantBoostsEarned==1,"once immediate bonus");
+  }
+ }
+ static void Finish(GameState g,double step,double expected,int hits,int plus){
+  int guard=0;while(g.Phase=="racing"){RaceSimulation.Advance(g,step);if(++guard>100000)throw new Exception("finish stalled");}
+  N(g.Elapsed,expected,"physical finish");C(Equals(g.Winner,"tie"),"same input exact tie");
+  foreach(var p in g.Players){N(p.FinishTime.Value,expected,"canonical finish");N(p.Distance,2200,"actual endpoint");C(p.Collisions==hits&&p.BoostsEarned==plus,"final stats");}
+ }
+ static void BasicAndEdges(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps)foreach(double height in new[]{48d,92d}){
+   var g=Prepare(side,height,350,step);Stable(g,side,height,350);
+   M(g,.2,step);Stable(g,side,height,416);
+   double edge=(500-416)/330d;M(g,edge,step);
+   foreach(var p in g.Players){N(p.Distance,500,"support ends at actual center-X edge");C(p.Support==SupportKind.None&&p.Flipping,"edge leaves support");N(p.VerticalSpeed,0,"no automatic impulse");C(p.AirFlipAvailable,"walkoff retains already earned air charge");}
+   M(g,.1,step);foreach(var p in g.Players){N(RaceSimulation.GetPlayerCenterY(p),Plane(side,height)+(side==1?1:-1)*.5*A*.01,"analytic fall after edge");N(p.VerticalSpeed,(side==1?1:-1)*A*.1,"analytic vy after edge");C(p.Collisions==0,"no trailing slab phantom hit");}
+   Finish(g,step,9.7,0,1);
+  }
+  foreach(int side in new[]{0,1})foreach(double step in Steps)foreach(double offset in new[]{-6d,6d,-6.000001,6.000001}){
+   var g=Prepare(side,48,350,step,TrackFor(side,48,350+offset));
+   bool valid=Math.Abs(offset)<=6;
+   foreach(var p in g.Players){C((p.BoostsEarned==1)==valid,"narrow center interval");C(p.Collisions==(valid?0:1),"zone edge exact vs outside");C(p.Support==(valid?SupportKind.Stone:SupportKind.None),"support only valid exact edge");}
+  }
+ }
+ static void DepartAndReland(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps){
+   var g=Prepare(side,48,350,step);Tap(g);
+   foreach(var p in g.Players){C(p.Support==SupportKind.None&&p.SupportObstacleId==null,"departure clears support");C(p.Gravity==(side==1?-1:1)&&p.FlipTo==(side==1?0:1),"departure target correct");N(p.VerticalSpeed,0,"baseline departure no kick");}
+   M(g,.1,step);foreach(var p in g.Players){C(p.Collisions==0,"departure no zero-time hit");N(RaceSimulation.GetPlayerCenterY(p),Plane(side,48)+(side==1?-1:1)*.5*A*.01,"departure analytic y");}
+   Finish(g,step,9.7,0,1);
+   foreach(double tau in new[]{.005,.05}){
+    var r=Prepare(side,48,350,step);Tap(r);M(r,tau,step);Tap(r);double total=tau*(2+Math.Sqrt(2));M(r,total-tau,step);
+    bool inside=tau<.01;foreach(var p in r.Players){C(p.BoostsEarned==1,"repeat pad never repeats award");C(p.Collisions==(inside?0:1),"new landing outside mark still penalized");C((p.Support==SupportKind.Stone)==inside,"repeat support only inside mark");}
+   }
+   // Running across another uncollected marker is not a new landing.
+   var track=TrackFor(side,48,350,12,300,400);track.RiskZones=new[]{Pad("pad",350),Pad("second",450)};
+   var other=Prepare(side,48,350,step,track);M(other,100d/330,step);
+   foreach(var p in other.Players)C(!p.SuccessfulRiskIds.Contains("second"),"walk through marker no award");
+   Tap(other);M(other,.001,step);foreach(var p in other.Players)C(!p.SuccessfulRiskIds.Contains("second"),"outbound plane no award");
+  }
+ }
+ static void Tangent(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps){
+   double tau=Math.Sqrt(164/A),contact=500d/220,depart=contact-2*tau;
+   var g=Start(TrackFor(side,48,500,12,450,200));
+   if(side==1){Tap(g);M(g,.8,step);}M(g,depart-g.Elapsed,step);Tap(g);M(g,tau,step);Tap(g);M(g,tau,step);
+   foreach(var p in g.Players){N(p.Distance,500,"tangent x",2e-5);N(RaceSimulation.GetPlayerCenterY(p),Plane(side,48),"tangent plane");N(p.VerticalSpeed,0,"tangent velocity",2e-4);C(p.BoostsEarned==1&&p.Collisions==0,"tangent legal once");C(p.Support==SupportKind.None&&p.Flipping&&!p.AirFlipAvailable,"inertial touch no support or recharge");}
+   M(g,.1,step);foreach(var p in g.Players){C(p.Collisions==0&&p.BoostsEarned==1,"tangent leaves without time-zero loop");N(p.VerticalSpeed,(side==1?-1:1)*A*.1,"tangent departs only by gravity",2e-4);}
+  }
+ }
+ static void ForeignAndEarlierHit(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps){
+   var foreign=new Obstacle{Id="foreign",Kind=side==1?"floor":"ceiling",X=364,Width=64,Height=92};
+   var g=Prepare(side,48,350,step,TrackFor(side,48,350,12,300,200,foreign));
+   foreach(var p in g.Players){C(p.Collisions==1&&p.HitObstacleIds.Contains("foreign")&&!p.HitObstacleIds.Contains("stone"),"landing priority local only");C(p.BoostsEarned==1&&p.Support==SupportKind.Stone,"legal and foreign-hit resolve together");N(p.BoostRemaining,.6,"instant occurs at original timestamp");N(p.Recovering,.5,"foreign hit penalty remains");}
+   M(g,.2,step);foreach(var p in g.Players){N(p.Distance,350,"foreign recovery freezes x");N(p.BoostRemaining,.6,"foreign recovery freezes effect");C(!RaceSimulation.Press(g,p.Id),"recovery cannot depart");}
+   Finish(g,step,10.2,1,1);
+   // Cross the plane before reaching the stone; later side entry is not landing.
+   var sideHit=Prepare(side,48,350,step,TrackFor(side,48,450,12,400,200));M(sideHit,.5,step);
+   foreach(var p in sideHit.Players){C(p.Collisions==1&&p.BoostsEarned==0,"earlier real side hit not cancelled by nearby pad");C(p.Support!=SupportKind.Stone,"side hit is not support");}
+  }
+ }
+ static void EffectBeforePlane(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps)foreach(bool slow in new[]{false,true})foreach(double height in new[]{48d,120d}){
+   double flight=Math.Sqrt(2*(212-height)/A), k=slow?110:330;
+   double landingX=236+k*Math.Min(.6,flight)+220*Math.Max(0,flight-.6);
+   var track=TrackFor(side,height,landingX,12,270,350);
+   track.RiskZones=new[]{track.RiskZones[0],new RiskZone{Id="earlier",Kind=slow?"negative":"positive",FreeReward=true,X=250,Y=side==1?14:226,Radius=0}};
+   var g=Start(track);if(side==1){Tap(g);M(g,.8,step);}M(g,236d/220-g.Elapsed,step);
+   foreach(var p in g.Players){N(p.Distance,236,"pre-effect circle enters at exact analytic X");N(p.CurrentSpeed,k,"pre-effect starts before departure");}
+   Tap(g);M(g,flight,step);
+   foreach(var p in g.Players){N(p.Distance,landingX,"piecewise speed reaches plane at analytic X");N(RaceSimulation.GetPlayerCenterY(p),Plane(side,height),"plane despite speed boundary");
+    C(p.Support==SupportKind.Stone&&p.Collisions==0,"effect boundary retains landing support");C(p.BoostsEarned==(slow?1:2)&&p.SlowsEarned==(slow?1:0)&&p.InstantBoostsEarned==1,"independent landing reward");
+    if(flight>.6){N(p.BoostRemaining,.6,"previous effect expired before landing");C(p.CompletedBoosts==(slow?0:1)&&p.CompletedSlows==(slow?1:0),"expired effect fully credited");}
+    else if(slow){N(p.BoostRemaining,.6,"landing preempts current slow");C(p.PendingEffects.Count==1,"interrupted slow retained");N(p.PendingEffects.Peek().Elapsed,flight,"served slow retained");N(p.PendingEffects.Peek().Remaining,.6-flight,"remaining slow retained");}
+    else {N(p.BoostRemaining,1.2-flight,"landing extends current positive");C(p.ActiveEffect.PulseCount==2,"extension keeps both pulse credits");}
+   }
+   Finish(g,step,slow?10:9.4,0,slow?1:2);
+   foreach(var p in g.Players)C(p.ActiveEffect==null&&p.PendingEffects.Count==0&&p.CompletedBoosts==(slow?1:2)&&p.CompletedSlows==(slow?1:0),"all real effect time served once");
+  }
+ }
+ static void PlayerIndependence(){
+  foreach(int side in new[]{0,1})foreach(double step in Steps){
+   var g=Prepare(side,48,350,step);C(RaceSimulation.Press(g,0),"upper departs alone");M(g,.1,step);
+   C(g.Players[0].Support==SupportKind.None&&g.Players[1].Support==SupportKind.Stone,"support is per-player");
+   C(g.Players[0].Flipping&&!g.Players[1].Flipping,"input is per-player");
+   N(RaceSimulation.GetPlayerCenterY(g.Players[1]),Plane(side,48),"lower stays on stone");
+   Finish(g,step,9.7,0,1);
+  }
+ }
+ public static void Run(){n=games=0;BasicAndEdges();DepartAndReland();Tangent();ForeignAndEarlierHit();EffectBeforePlane();PlayerIndependence();Console.WriteLine("PASS "+n+" independent CONTROL01 assertions / "+games+" games: mirrored plane/marker bounds, support/edge/drop, departure/relift, tangent, foreign-hit priority, effect boundary/preemption/extension, player independence, once and actual finish.");}
+}

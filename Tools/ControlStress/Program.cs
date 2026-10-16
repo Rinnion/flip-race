@@ -1,0 +1,177 @@
+using System;
+using System.Globalization;
+using FlipRace.Core;
+
+// Independent two-player scheduler. No snapshots, injected history or state
+// assignments: every departure, collision and effect comes from Press/Advance.
+internal static class Program
+{
+    static int checks, games;
+    static readonly MotionMode[] Modes = { MotionMode.GravityAirFlip, MotionMode.LinearAirFlip,
+        MotionMode.JumpGravityFlip, MotionMode.GravityUnlimited };
+    static readonly double[] Steps = { 1d / 144, .317, 100 };
+    static readonly string[] HitIds = { "control-floor-pad", "control-ceiling-pad",
+        "control-quick-floor", "control-quick-ceiling", "control-quick-exit" };
+
+    static int Main()
+    {
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+        try
+        {
+            foreach (var mode in Modes)
+            {
+                GameState baseline = null;
+                foreach (double step in Steps)
+                    foreach (int cleanSlot in new[] { 0, 1 })
+                    {
+                        var game = Run(mode, step, cleanSlot);
+                        if (baseline == null) baseline = game;
+                        else Compare(baseline, 0, game, cleanSlot);
+                        Console.WriteLine(mode + " step=" + step.ToString("G17") + " clean=" + cleanSlot
+                            + " finish=" + game.Players[cleanSlot].FinishTime.Value.ToString("G17")
+                            + " grace=" + game.Elapsed.ToString("G17")
+                            + " loserX=" + game.Players[1 - cleanSlot].Distance.ToString("G17"));
+                    }
+            }
+            Console.WriteLine("CONTROL ASYMMETRIC STRESS PASS " + checks + " checks / " + games + " actual games.");
+            return 0;
+        }
+        catch (Exception error) { Console.Error.WriteLine(error); return 1; }
+    }
+
+    static GameState Run(MotionMode mode, double cap, int cleanSlot)
+    {
+        games++;
+        var profile = mode == MotionMode.JumpGravityFlip ? MotionProfiles.Jump
+            : mode == MotionMode.LinearAirFlip ? MotionProfiles.Baseline : MotionProfiles.Moderate;
+        var game = RaceSimulation.CreateTrial(TracksControl.Challenge(mode), mode, profile);
+        Check(RaceSimulation.Press(game, 0) && RaceSimulation.Press(game, 1), "ready actions");
+        RaceSimulation.Advance(game, RaceConfig.CountdownDuration);
+        var clean = game.Players[cleanSlot]; var hurt = game.Players[1 - cleanSlot];
+        double[] ideal = game.Track.RiskRoute;
+        // Stay on each obstructed wall until its real side hit and full recovery.
+        // The last transfer crosses the negative ring, then lands before stone 5.
+        double[] bad = { 986, 1926, 2586, 3110 - 220 * TransferTime(mode, 96) };
+        int goodIndex = 0, badIndex = 0, observedHits = 0, iterations = 0;
+        double? repeatAt = null;
+        bool largeTail = false;
+        while (game.Phase == "racing")
+        {
+            if (++iterations > 200000) throw new Exception("Scheduler stalled: " + mode + " t=" + game.Elapsed
+                + " good=" + goodIndex + " bad=" + badIndex + " x=" + hurt.Distance
+                + " recovery=" + hurt.Recovering + " hits=" + string.Join(",", hurt.HitObstacleIds));
+            if (hurt.Collisions > observedHits)
+            {
+                observedHits = hurt.Collisions;
+                Check(hurt.HitObstacleIds.Contains(HitIds[observedHits - 1]), "actual hit order");
+            }
+            if (goodIndex < ideal.Length && clean.Distance >= ideal[goodIndex] - 1e-8)
+            {
+                Check(RaceSimulation.Press(game, cleanSlot), "ideal input accepted " + goodIndex);
+                goodIndex++;
+            }
+            if (repeatAt.HasValue && game.Elapsed >= repeatAt.Value - 1e-10)
+            {
+                Check(RaceSimulation.Press(game, 1 - cleanSlot), "jump transfer repeat accepted");
+                repeatAt = null;
+            }
+            if (badIndex < bad.Length && hurt.Distance >= bad[badIndex] - 1e-8
+                && hurt.HitObstacleIds.Contains(HitIds[badIndex]) && hurt.Recovering == 0)
+            {
+                Check(hurt.Support == SupportKind.Wall, "bad transfer begins on real wall after recovery");
+                Check(RaceSimulation.Press(game, 1 - cleanSlot), "post-hit departure accepted");
+                badIndex++;
+                if (mode == MotionMode.JumpGravityFlip) repeatAt = game.Elapsed + .1;
+            }
+
+            double dt = cap;
+            if (goodIndex < ideal.Length) dt = Bound(dt, ideal[goodIndex] - clean.Distance);
+            if (badIndex < bad.Length)
+            {
+                if (hurt.Recovering > 0) dt = Math.Min(dt, hurt.Recovering);
+                else if (bad[badIndex] - hurt.Distance > 1e-8) dt = Bound(dt, bad[badIndex] - hurt.Distance);
+                // At the exact leading edge a minimum positive step lets the
+                // production sweep deliver contact; history is never injected.
+                else if (!hurt.HitObstacleIds.Contains(HitIds[badIndex])) dt = Math.Min(dt, 1e-8);
+            }
+            if (repeatAt.HasValue) dt = Math.Min(dt, Math.Max(1e-10, repeatAt.Value - game.Elapsed));
+            if (dt == 100 && goodIndex == ideal.Length && badIndex == bad.Length && !repeatAt.HasValue)
+                largeTail = true;
+            RaceSimulation.Advance(game, dt);
+        }
+        Check(goodIndex == ideal.Length && badIndex == bad.Length && !repeatAt.HasValue, "all scheduled actions delivered");
+        Check(clean.Collisions == 0 && clean.BoostsEarned == 2 && clean.FinishBoostsEarned == 1
+            && clean.SlowsEarned == 0, "clean independent landing and finish rewards");
+        Check(hurt.Collisions == 5 && hurt.BoostsEarned == 0 && hurt.SlowsEarned == 1, "five real penalties plus trap");
+        Check(hurt.HitObstacleIds.SetEquals(HitIds), "every authored stone actually hit");
+        Near(clean.FinishTime.Value, 21 - 2 * .3 - .1, "clean canonical finish");
+        Near(game.Elapsed, 21 - 2 * .3 - .1 + 3.5, "physical grace deadline");
+        Near(clean.Distance, 4620, "winner at finish plane");
+        // With the new .1 finish reward the same error route reaches the tape
+        // exactly at the winner's grace boundary: 21+2.5+.3 = 20.3+3.5.
+        Near(hurt.Distance, (23.8 - 2.5 - .3) * 220, "actual distance at grace");
+        Check(hurt.FinishTime.HasValue && Equals(game.Winner, cleanSlot), "deadline finish retained; proper winner"
+            + " elapsed=" + game.Elapsed.ToString("G17") + " winner=" + game.Winner
+            + " cleanFinish=" + clean.FinishTime + " loserX=" + hurt.Distance.ToString("G17")
+            + " deficit=" + (4620 - hurt.Distance).ToString("G17") + " loserFinish=" + hurt.FinishTime);
+        Near(hurt.FinishTime.Value, 23.8, "loser physically finishes exactly at grace");
+        Near(clean.FinishBoostElapsed, .1, "finish pulse actual duration");
+        Near(clean.FinishBoostDistanceGained, 22, "separate actual finish gain");
+        Check(!clean.FinishBoost && hurt.FinishBoostsEarned == 0, "finish reward is independent and inactive after tape");
+        Check(clean.CompletedBoosts == 2 && hurt.CompletedSlows == 1 && hurt.CompletedRecoveries == 5,
+            "all earned effects and penalties served");
+        Check(clean.ActiveEffect == null && hurt.ActiveEffect == null
+            && clean.PendingEffects.Count == 0 && hurt.PendingEffects.Count == 0, "no hidden queued tail");
+        Check(clean.Support == SupportKind.None && clean.Flipping && hurt.Support == SupportKind.Wall,
+            "winner crosses tape airborne; error route remains on floor");
+        if (cap == 100) Check(largeTail, "one uncut Advance(100) crosses finish and grace");
+        double stoppedAt = game.Elapsed, stoppedX = hurt.Distance;
+        RaceSimulation.Advance(game, 100);
+        Near(game.Elapsed, stoppedAt, "finished game clock frozen");
+        Near(hurt.Distance, stoppedX, "finished loser frozen");
+        return game;
+    }
+
+    static double TransferTime(MotionMode mode, double distance)
+    {
+        if (mode == MotionMode.LinearAirFlip) return distance / 265;
+        if (mode != MotionMode.JumpGravityFlip)
+            return 2 * distance / (70 + Math.Sqrt(70 * 70 + 2 * 1000 * distance));
+        const double first = .1, a = 662.5, impulse = 400;
+        double partial = impulse * first - .5 * a * first * first, velocity = impulse - a * first;
+        return first + 2 * (distance - partial) / (velocity + Math.Sqrt(velocity * velocity + 2 * a * (distance - partial)));
+    }
+    static double Bound(double dt, double distance)
+    { return Math.Min(dt, Math.Max(1e-10, distance / 330)); }
+
+    static void Compare(GameState a, int aClean, GameState b, int bClean)
+    {
+        Near(a.Elapsed, b.Elapsed, "frame/swap elapsed");
+        Near(a.WinnerAt.Value, b.WinnerAt.Value, "frame/swap winner timestamp");
+        for (int role = 0; role < 2; role++)
+        {
+            var p = a.Players[role == 0 ? aClean : 1 - aClean];
+            var q = b.Players[role == 0 ? bClean : 1 - bClean];
+            Near(p.Distance, q.Distance, "frame/swap X"); Near(p.Y, q.Y, "frame/swap Y");
+            Near(p.VerticalSpeed, q.VerticalSpeed, "frame/swap velocity");
+            Near(p.FlipElapsed, q.FlipElapsed, "frame/swap flight clock");
+            Near(p.Recovering, q.Recovering, "frame/swap recovery");
+            Check(p.Gravity == q.Gravity && p.AirFlipAvailable == q.AirFlipAvailable
+                && p.Support == q.Support && p.SupportSide == q.SupportSide
+                && p.SupportObstacleId == q.SupportObstacleId && p.Flipping == q.Flipping, "frame/swap motion state");
+            Check(p.CollectedRiskIds.SetEquals(q.CollectedRiskIds) && p.SuccessfulRiskIds.SetEquals(q.SuccessfulRiskIds)
+                && p.FailedRiskIds.SetEquals(q.FailedRiskIds) && p.HitObstacleIds.SetEquals(q.HitObstacleIds), "frame/swap event sets");
+            if (p.LastHit != null) Near(p.LastHit.At, q.LastHit.At, "frame/swap hit time");
+            if (p.LastInstant != null) Near(p.LastInstant.At, q.LastInstant.At, "frame/swap instant time");
+            if (p.LastSlow != null) Near(p.LastSlow.At, q.LastSlow.At, "frame/swap slow time");
+            if (p.LastFinishBoost != null) Near(p.LastFinishBoost.At, q.LastFinishBoost.At, "frame/swap finish contact time");
+            Check(p.FinishBoost == q.FinishBoost && p.FinishBoostsEarned == q.FinishBoostsEarned, "frame/swap finish flags");
+            Near(p.FinishBoostElapsed, q.FinishBoostElapsed, "frame/swap finish elapsed");
+            Near(p.FinishBoostDistanceGained, q.FinishBoostDistanceGained, "frame/swap finish ledger");
+        }
+    }
+    static void Check(bool condition, string label)
+    { checks++; if (!condition) throw new Exception(label); }
+    static void Near(double actual, double expected, string label)
+    { Check(Math.Abs(actual - expected) < 2e-7, label + ": " + actual.ToString("G17") + " != " + expected.ToString("G17")); }
+}

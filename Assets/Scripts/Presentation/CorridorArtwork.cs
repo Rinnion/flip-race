@@ -27,6 +27,8 @@ namespace FlipRace.Presentation
         // Explicit lane-local clipping avoids Unity GUIClip's interaction with
         // rotated/scaled matrices (the upper player's entire lane is rotated).
         Rect clipBounds;
+        readonly float[] jumpRotation = new float[2];
+        readonly float[] jumpRotationTime = { -1, -1 };
 
         public CorridorArtwork()
         {
@@ -95,7 +97,11 @@ namespace FlipRace.Presentation
             float radius = Mathf.Clamp((float)RaceConfig.PlayerRadius * sy, 7.5f, 25);
             bool recovering = player.Recovering > 0;
             bool running = game.Phase == "racing" && !player.FinishTime.HasValue && !recovering;
-            bool onCeiling = player.Y < .5;
+            bool onCeiling = player.Support != SupportKind.None ? player.SupportSide == 0 : player.Y < .5;
+            // Keep the minimum readable sprite size on phones, but place its
+            // feet on the actual stone face rather than sinking into the rail.
+            if (player.Support == SupportKind.Stone)
+                y += (onCeiling ? 1 : -1) * (radius - (float)RaceConfig.PlayerRadius * sy);
             // Travel is the gait clock: boost/slow changes cadence naturally and
             // a paused/frozen player cannot skate its feet against the ground.
             float motionTime=(float)(player.Distance/RaceConfig.Speed);
@@ -105,8 +111,20 @@ namespace FlipRace.Presentation
                 flight = Mathf.Clamp01((float)(Math.Abs(player.VerticalSpeed) / Math.Sqrt(
                     game.Profile.DepartureImpulse * game.Profile.DepartureImpulse
                     + 2 * game.Profile.GravityAcceleration * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius))));
+            if (game.Motion == MotionMode.LinearAirFlip) flight = Mathf.Clamp01((float)(1 - player.Y));
             float rotation = onCeiling ? 180 : 0;
             if (player.Flipping) rotation = (float)(1 - player.Y) * 180;
+            if (game.Motion == MotionMode.JumpGravityFlip)
+            {
+                float target = player.Gravity < 0 ? 180 : 0;
+                if (jumpRotationTime[playerIndex] < 0 || player.Support != SupportKind.None || game.Phase == "ready")
+                    jumpRotation[playerIndex] = target;
+                else jumpRotation[playerIndex] = Mathf.MoveTowardsAngle(jumpRotation[playerIndex], target,
+                    Mathf.Clamp(time - jumpRotationTime[playerIndex], 0, .1f) * 720);
+                jumpRotationTime[playerIndex] = time;
+                rotation = jumpRotation[playerIndex];
+            }
+            else jumpRotationTime[playerIndex] = -1;
             if (recovering) rotation += (float)player.RecoveryElapsed * 14 * Mathf.Rad2Deg;
             // Raise the body away from its current surface on each passing step.
             // Original .035r bob was <.3px on a phone and disappeared entirely.
@@ -170,16 +188,54 @@ namespace FlipRace.Presentation
                         Line(x - 4, center, x - 8, center + 4, Alpha(Hex(0xc4975c), .45f), 1.5f);
                     }
                 }
-                else Rock(x, width, (float)obstacle.Height * sy, obstacle.Kind == "ceiling" ? top : bottom, obstacle.Kind == "ceiling", hit);
+                else
+                {
+                    bool marked = false;
+                    foreach (var zone in game.Track.RiskZones)
+                        if (zone.IsLanding && zone.ObstacleId == obstacle.Id) { marked = true; break; }
+                    Rock(x, width, (float)obstacle.Height * sy, obstacle.Kind == "ceiling" ? top : bottom,
+                        obstacle.Kind == "ceiling", hit, marked);
+                }
             }
             foreach (var zone in game.Track.RiskZones)
             {
                 float ringX = WorldX(zone.X, player.Distance, anchor, sx);
+                if (zone.IsLanding)
+                {
+                    foreach (var stone in game.Track.Obstacles)
+                        if (stone.Id == zone.ObstacleId)
+                        {
+                            bool ceiling = stone.Kind == "ceiling";
+                            float face = ceiling ? top + (float)stone.Height * sy : bottom - (float)stone.Height * sy;
+                            LandingPad(ringX, face, (float)zone.LandingWidth * sx, ceiling,
+                                player.SuccessfulRiskIds.Contains(zone.Id), time);
+                            break;
+                        }
+                    continue;
+                }
                 if (ringX < -25 || ringX > w + 25 || player.SuccessfulRiskIds.Contains(zone.Id)
                     || player.NegativeRiskIds.Contains(zone.Id)) continue;
                 bool pending = player.CollectedRiskIds.Contains(zone.Id);
                 bool failed = player.FailedRiskIds.Contains(zone.Id);
                 float ringY = top + (float)zone.Y * sy;
+                if (zone.IsFinish)
+                {
+                    // The vertical rail is the exact center-contact window.
+                    // Separate chevrons make the small target visible on phones
+                    // without enlarging its physical pickup region.
+                    float half = (float)zone.FinishHeight * sy * .5f;
+                    Color finishInk = Hex(0x398d80);
+                    Line(ringX, ringY - half, ringX, ringY + half, finishInk, 2);
+                    Line(ringX - 3, ringY - half, ringX + 3, ringY - half, finishInk, 1.5f);
+                    Line(ringX - 3, ringY + half, ringX + 3, ringY + half, finishInk, 1.5f);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        float arrowX = ringX - 8 - i * 6;
+                        Line(arrowX - 4, ringY - 5, arrowX, ringY, Alpha(finishInk, .7f), 1.5f);
+                        Line(arrowX, ringY, arrowX - 4, ringY + 5, Alpha(finishInk, .7f), 1.5f);
+                    }
+                    continue;
+                }
                 float ringRadius = Mathf.Max(6.5f, (float)(zone.Radius + 4) * sy);
                 if (zone.IsInstant)
                 {
@@ -225,9 +281,9 @@ namespace FlipRace.Presentation
             }
             if (finishX < w + 40 && finishX > -50) Finish(finishX, top, bottom, sy);
 
-            if (player.BoostRemaining > 0)
+            if (player.BoostRemaining > 0 || player.FinishBoost)
             {
-                bool instant = player.LastInstant != null && game.Elapsed - player.LastInstant.At < RaceConfig.BoostDuration;
+                bool instant = player.FinishBoost || player.LastInstant != null && game.Elapsed - player.LastInstant.At < RaceConfig.BoostDuration;
                 Color trail = instant ? Hex(0x398d80) : Hex(0xd6ab5b);
                 Ellipse(anchor, y, radius * 2, radius * 1.8f, Alpha(instant ? Hex(0x9ddccb) : Hex(0xffd779), .27f));
                 for (int i = 0; i < 4; i++)
@@ -251,6 +307,9 @@ namespace FlipRace.Presentation
             }
 
             float shadowY = onCeiling ? top + 3 : bottom - 3;
+            if (player.Support == SupportKind.Stone)
+                shadowY = top + ((float)RaceSimulation.GetPlayerCenterY(player)
+                    + (onCeiling ? -1 : 1) * (float)RaceConfig.PlayerRadius) * sy;
             float shadowBreath=running&&!player.Flipping?1-Mathf.Abs(Mathf.Sin(stride))*.12f:1;
             Ellipse(anchor, shadowY, radius * 1.5f*shadowBreath, Mathf.Max(1.5f, radius * .18f), Alpha(Ink[playerIndex], player.Flipping ? .05f : .13f));
             if (running && !player.Flipping)
@@ -298,9 +357,10 @@ namespace FlipRace.Presentation
             float x = geometry.Anchor;
             float y = geometry.Top + (float)RaceSimulation.GetPlayerCenterY(player) * geometry.ScaleY;
             float radius = geometry.Radius;
-            if (player.LastInstant != null && game.Elapsed - player.LastInstant.At < .45)
+            HitInfo burstEvent = player.LastFinishBoost != null ? player.LastFinishBoost : player.LastInstant;
+            if (burstEvent != null && game.Elapsed - burstEvent.At < .45)
             {
-                float progress = (float)((game.Elapsed - player.LastInstant.At) / .45);
+                float progress = (float)((game.Elapsed - burstEvent.At) / .45);
                 float burst = radius * (1.5f + progress * 2.2f);
                 for (int i = 0; i < 8; i++)
                 {
@@ -386,7 +446,30 @@ namespace FlipRace.Presentation
             Fill(new Rect(0, h - 2, w, 2), Alpha(Ink[index], .35f));
         }
 
-        void Rock(float x, float width, float height, float surface, bool inverted, bool hit)
+        void LandingPad(float x, float face, float width, bool ceiling, bool claimed, float time)
+        {
+            float inside = ceiling ? -1 : 1;
+            Color edge = claimed ? Hex(0x72958a) : Hex(0x318a78);
+            // Width is exactly the center-X landing interval, with no circle or
+            // pickup halo extending it. The rail remains after the one-off reward.
+            if (!claimed)
+                Fill(new Rect(x - width / 2, ceiling ? face - 5 : face, width, 5),
+                    Alpha(Hex(0x9ddccb), .6f + Mathf.Sin(time * 4) * .15f));
+            Line(x - width / 2, face, x + width / 2, face, edge, 2.5f);
+            Line(x - width / 2, face, x - width / 2, face + inside * 5, edge, 1.5f);
+            Line(x + width / 2, face, x + width / 2, face + inside * 5, edge, 1.5f);
+            float cy = face + inside * 8;
+            if (claimed)
+                Ellipse(x, cy, 2, 1.5f, edge);
+            else
+            {
+                Line(x + 2, cy - 4, x - 2, cy, edge, 1.5f);
+                Line(x - 2, cy, x + 2, cy, edge, 1.5f);
+                Line(x + 2, cy, x - 2, cy + 4, edge, 1.5f);
+            }
+        }
+
+        void Rock(float x, float width, float height, float surface, bool inverted, bool hit, bool marked)
         {
             GUI.color = new Color(1, 1, 1, hit ? .26f : 1);
             // Texture's nominal rock bounds are [16,112], with padding for strokes.
@@ -394,6 +477,12 @@ namespace FlipRace.Presentation
                 width * 4 / 3, height * 4 / 3), inverted ? ceilingRock : floorRock,
                 inverted ? new Rect(0, 1, 1, -1) : new Rect(0, 0, 1, 1));
             GUI.color = Color.white;
+            if (marked)
+            {
+                float face = surface + (inverted ? height : -height);
+                Fill(new Rect(x, inverted ? face - 4 : face, width, 4), Alpha(Hex(0xa2b2a6), hit ? .26f : 1));
+                Line(x, face, x + width, face, Hex(0x7b9181), 1.5f);
+            }
             if (!hit)
             {
                 float direction = inverted ? 1 : -1;

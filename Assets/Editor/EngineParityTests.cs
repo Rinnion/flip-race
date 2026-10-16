@@ -22,7 +22,7 @@ namespace FlipRace.Editor
         public static void Run()
         {
             var report = RunAll() + "\n" + EngineV2Tests.RunAll() + "\n" + EngineV3Tests.RunAll() + "\n" + EngineV4Tests.RunAll()
-                + "\n" + EngineTuneTests.RunAll();
+                + "\n" + EngineTuneTests.RunAll() + "\n" + EngineControlTests.RunAll() + "\n" + EngineFinishTests.RunAll();
 #if UNITY_EDITOR
             var project = Directory.GetParent(UnityEngine.Application.dataPath).FullName;
             var fixture = Path.Combine(project, "Tools", "engine-parity-fixtures.tsv.gz");

@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-16T21:36:37.015Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4",
+  "fileCount": 5,
+  "totalBytes": 8658019,
+  "totalMiB": 8.257,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v4.data.unityweb",
+    "Build/WebGL-v4.framework.js.unityweb",
+    "Build/WebGL-v4.loader.js",
+    "Build/WebGL-v4.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v4.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v4.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v4.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v4.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v4.data.unityweb",
+      "bytes": 1433092,
+      "sha256": "e569ec8672066076d6d8606922a1ae1a1e7d57bce219ba3011b14eb31b15e8eb"
+    },
+    {
+      "path": "Build/WebGL-v4.framework.js.unityweb",
+      "bytes": 89459,
+      "sha256": "05a98bd1933ba2b242d4a062eaa6127a7806430e5c55cbab2449b3274ecf7e41"
+    },
+    {
+      "path": "Build/WebGL-v4.loader.js",
+      "bytes": 39788,
+      "sha256": "e45be5e732313330a35fa3ff87d24c17c1c10bd3814076c357886d1fae3051e9"
+    },
+    {
+      "path": "Build/WebGL-v4.wasm.unityweb",
+      "bytes": 7088129,
+      "sha256": "197a144ffbd424774897edc3ffd80851f5e891a9164e4c70c8ba86ebd6377036"
+    },
+    {
+      "path": "index.html",
+      "bytes": 7551,
+      "sha256": "ecd3134468edf8d46eb0bbc2f1743c527f1fe6612e48e5986a727f1337e20db1"
+    }
+  ],
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks.",
+  "archive": {
+    "path": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v4.2.1-trial-webgl.zip",
+    "bytes": 8530094,
+    "miB": 8.135,
+    "sha256": "eed4c07535dc8c63dddd6a62760b4e071f90ae5a1e038cc5686005ff4c08e3b4",
+    "entriesVerified": true,
+    "indexAtRoot": true
+  }
+}

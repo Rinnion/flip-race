@@ -1,0 +1,161 @@
+using System;
+using System.Collections.Generic;
+using FlipRace.Core;
+public static partial class ControlGeometryIndependent
+{
+ static int checks,games;
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool yes,string message){checks++;if(!yes)throw new Exception(message);}
+ static void N(double a,double b,string message,double tol=3e-7){C(Math.Abs(a-b)<=tol,message+": "+a.ToString("R")+" != "+b.ToString("R"));}
+ static MotionProfile Profile(MotionMode m){return m==MotionMode.JumpGravityFlip?MotionProfiles.Jump:m==MotionMode.LinearAirFlip?MotionProfiles.Baseline:MotionProfiles.Moderate;}
+ sealed class TapRecord {public int Player;public double Time,X;public bool Airborne;}
+ sealed class ContactRecord {public int Player;public string Id;public double Time;}
+ sealed class Result {public GameState Game;public readonly List<TapRecord> Taps=new List<TapRecord>();public readonly List<ContactRecord> Contacts=new List<ContactRecord>();public int[] AirInputs={0,0};}
+ static GameState Start(Track track,MotionMode mode,int upper=3,int lower=2){
+  var g=RaceSimulation.CreateTrial(track,mode,Profile(mode));C(RaceSimulation.SetCharacter(g,0,upper)&&RaceSimulation.SetCharacter(g,1,lower),"characters ready");
+  C(RaceSimulation.Press(g,0),"first ready");C(g.Phase=="ready","wait for both");C(RaceSimulation.Press(g,1),"second ready");RaceSimulation.Advance(g,3);C(g.Phase=="racing","racing");return g;
+ }
+ // The global upper speed bound prevents crossing a pending input even if an
+ // unknown bonus starts within this step. No clone or production event oracle.
+ static Result Route(Track track,MotionMode mode,double[][] routes,double step,int upper=3,int lower=2){
+  var r=new Result{Game=Start(track,mode,upper,lower)};var g=r.Game;int[] next={0,0};var seen=new HashSet<string>();int guard=0;
+  while(g.Phase=="racing"){
+   if(++guard>250000)throw new Exception("route stalled");double dt=step;
+   for(int i=0;i<2;i++){
+    var p=g.Players[i];if(next[i]>=routes[i].Length)continue;
+    double gap=routes[i][next[i]]-p.Distance;
+    if(gap<=1e-7){N(gap,0,"input conservative bound");if(p.Flipping)r.AirInputs[i]++;
+     r.Taps.Add(new TapRecord{Player=i,Time=g.Elapsed,X=p.Distance,Airborne=p.Flipping});
+     C(RaceSimulation.Press(g,i),"input accepted "+mode+" p"+i+" x"+routes[i][next[i]]);next[i]++;
+     if(next[i]>=routes[i].Length)continue;gap=routes[i][next[i]]-p.Distance;
+    }
+    dt=Math.Min(dt,gap/330d);
+   }
+   if(dt<=0)throw new Exception("nonpositive scheduler time");RaceSimulation.Advance(g,dt);
+   for(int i=0;i<2;i++){
+    var p=g.Players[i];var ev=p.LastInstant;if(ev==null)continue;
+    var zone=Array.Find(track.RiskZones,z=>z.Id==ev.Id);
+    if(zone!=null&&zone.IsLanding&&seen.Add(i+":"+ev.Id))r.Contacts.Add(new ContactRecord{Player=i,Id=ev.Id,Time=ev.At});
+   }
+  }
+  for(int i=0;i<2;i++){
+   var p=g.Players[i];C(next[i]==routes[i].Length,"all route inputs delivered");C(p.FinishTime.HasValue,"runner actually finishes");N(p.Distance,track.Length,"physical finish endpoint");
+   C(p.ActiveEffect==null&&p.PendingEffects.Count==0,"no effect tail truncated");C(p.CompletedBoosts==p.BoostsEarned&&p.CompletedSlows==p.SlowsEarned,"all pulses served exactly once");
+   C(p.CharacterIndex==(i==0?upper:lower),"hero unchanged");
+  }
+  games++;return r;
+ }
+ static void Outcome(Result r,int i,int plus,int minus,int instant,int hits,double actual){var p=r.Game.Players[i];N(p.FinishTime.Value,actual,"physical route finish");C(p.BoostsEarned==plus&&p.SlowsEarned==minus&&p.InstantBoostsEarned==instant&&p.Collisions==hits,"expected route stats");}
+ static void Tie(Result r){C(Equals(r.Game.Winner,"tie")&&r.Game.Players[0].FinishTime==r.Game.Players[1].FinishTime,"identical route exact tie");N(r.Game.Elapsed,r.Game.Players[0].FinishTime.Value,"actual overall clock");}
+ static void ReplayLanding(Track track,MotionMode mode,Result observed){
+  foreach(var contact in observed.Contacts){
+   var g=Start(track,mode);foreach(var tap in observed.Taps){if(tap.Time>=contact.Time-1e-10)break;double span=tap.Time-g.Elapsed;C(span>=-1e-8,"ordered replay");if(span>0)RaceSimulation.Advance(g,span);C(RaceSimulation.Press(g,tap.Player),"replayed actual action");}
+   if(g.Elapsed<contact.Time)RaceSimulation.Advance(g,contact.Time-g.Elapsed);RaceSimulation.Advance(g,1e-8);
+   var p=g.Players[contact.Player];var z=Array.Find(track.RiskZones,v=>v.Id==contact.Id);var stone=Array.Find(track.Obstacles,o=>o.Id==z.ObstacleId);
+   C(z!=null&&stone!=null,"landing linked actual obstacle");C(p.SuccessfulRiskIds.Contains(z.Id)&&p.LastInstant.Id==z.Id,"real landing reward at recorded timestamp");
+   double plane=stone.Kind=="floor"?226-stone.Height:14+stone.Height;N(RaceSimulation.GetPlayerCenterY(p),plane,"replayed actual landing plane",2e-5);
+   C(p.Distance>=Math.Max(stone.X,z.X-z.LandingWidth/2)-1e-5&&p.Distance<=Math.Min(stone.X+stone.Width,z.X+z.LandingWidth/2)+1e-5,"replayed center within narrow mark");
+   int side=stone.Kind=="floor"?1:0;
+   bool stable=mode==MotionMode.LinearAirFlip||side==(p.Gravity>0?1:0);
+   C(stable?p.Support==SupportKind.Stone&&p.SupportObstacleId==stone.Id&&p.AirFlipAvailable:p.Support==SupportKind.None,"actual contact support/charge matches gravity");
+   N(p.LastInstant.At,contact.Time,"timestamp remains exact");C(!p.HitObstacleIds.Contains(stone.Id),"legal pad is not recorded hit");
+  }
+ }
+}
+public static partial class ControlGeometryIndependent
+{
+ static void TimeFor(GameState g,double t){while(t>1e-12){double dt=Math.Min(t,1d/144);RaceSimulation.Advance(g,dt);t-=dt;}}
+ static void ToX(GameState g,double x){int guard=0;while(g.Players[0].Distance<x-1e-7){if(++guard>50000)throw new Exception("escape target stalled");RaceSimulation.Advance(g,Math.Min(1d/144,(x-g.Players[0].Distance)/330));}N(g.Players[0].Distance,x,"escape reaches real target");}
+ static GameState ErrorAt(Track track,MotionMode mode,double[] route,int input,double shift,double expectedAt,double expectedX){
+  var nominal=Route(track,mode,new[]{route,route},1d/144);var times=nominal.Taps.FindAll(t=>t.Player==0);double changedAt=times[input].Time+shift;
+  var g=Start(track,mode);int next=0,guard=0;
+  while(g.Players[0].Collisions==0){
+   if(++guard>50000||g.Phase!="racing")throw new Exception("expected error never occurred");double dt=1d/144;
+   if(next<route.Length){
+    bool changed=next==input;double left=changed?changedAt-g.Elapsed:route[next]-g.Players[0].Distance;
+    if(left<=(changed?1e-10:1e-7)){
+     C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"perturbed real input accepted");next++;
+     if(next<route.Length){changed=next==input;left=changed?changedAt-g.Elapsed:route[next]-g.Players[0].Distance;}
+    }
+    if(next<route.Length)dt=Math.Min(dt,changed?left:left/330);
+   }
+   if(dt<=0)throw new Exception("perturbation input was overtaken");RaceSimulation.Advance(g,dt);
+  }
+  foreach(var p in g.Players){C(p.Collisions==1&&p.Support==SupportKind.None&&!p.AirFlipAvailable,"error is actual spent-charge airborne state");N(p.LastHit.At,expectedAt,"independent error time",2e-5);N(p.Distance,expectedX,"independent error X",2e-5);}
+  TimeFor(g,g.Players[0].Recovering+.15);return g;
+ }
+ static void RecoveryWitnesses(){
+  var modes=new[]{MotionMode.GravityAirFlip,MotionMode.LinearAirFlip,MotionMode.JumpGravityFlip,MotionMode.JumpGravityFlip};
+  int[] inputs={0,0,3,5};double[] shifts={.08,-.16,.64,.64},at={4.953033558,4.978181820,8.807748542,12.753203088},xs={1089.667383,1095.2,1937.704679,2937.704679},target={2155,2155,2679,3339};
+  for(int k=0;k<4;k++){
+   var track=TracksControl.Challenge(modes[k]);var route=k==2?track.SafeRoute:track.RiskRoute;
+   var g=ErrorAt(track,modes[k],route,inputs[k],shifts[k],at[k],xs[k]);
+   if(k>=2){TimeFor(g,.8);C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"recovery escape tap actually available");if(k==2){TimeFor(g,.15);C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"jump escape second tap actually available");}}
+   ToX(g,target[k]);foreach(var p in g.Players)C(p.Collisions==1,"escape clears next expanded obstacle without a forced second hit");
+  }
+ }
+}
+public static partial class ControlGeometryIndependent
+{
+ static GameState AtTime(Track track,MotionMode mode,List<TapRecord> taps,double time){
+  var g=Start(track,mode);foreach(var tap in taps){if(tap.Time>time+1e-10)break;double gap=tap.Time-g.Elapsed;if(gap>0)RaceSimulation.Advance(g,gap);C(RaceSimulation.Press(g,tap.Player),"exact-time replay accepted");}
+  if(time>g.Elapsed)RaceSimulation.Advance(g,time-g.Elapsed);return g;
+ }
+ static void PassageGeometry(Track track,Result r){
+  foreach(var gate in track.Obstacles){
+   double enter=(gate.X-14)/220,leave=(gate.X+gate.Width+14)/220,low=gate.GapTop+14,high=gate.GapBottom-14;
+   var cuts=new List<double>{enter,leave};foreach(var tap in r.Taps)if(tap.Player==0&&tap.Time>enter&&tap.Time<leave)cuts.Add(tap.Time);cuts.Sort();
+   for(int j=0;j<cuts.Count;j++){
+    var g=AtTime(track,MotionMode.GravityUnlimited,r.Taps,cuts[j]);foreach(var p in g.Players){
+     double y=RaceSimulation.GetPlayerCenterY(p);C(y>low&&y<high,"gate endpoint strictly inside expanded opening");C(p.Collisions==0,"exact passage replay clean");
+     if(j+1<cuts.Count){double h=cuts[j+1]-cuts[j],a=p.Gravity*1000,turn=-p.VerticalSpeed/a;
+      if(turn>0&&turn<h){double extreme=y+p.VerticalSpeed*turn+.5*a*turn*turn;C(extreme>low&&extreme<high,"analytic interior extremum clears whole gate");}
+     }
+    }
+   }
+  }
+ }
+ static void Passages(){
+  var track=TracksControl.Unlimited();C(track.Length==2860&&track.Obstacles.Length==4&&track.SafeRoute.Length==12,"separate short four-passage course");C(track.RiskZones.Length==0,"passages isolate height control");
+  C(track.Obstacles[0].GapBottom-14<track.Obstacles[1].GapTop+14,"adjacent expanded openings have no constant safe height");
+  Result baseline=null;
+  foreach(double step in Steps){var r=Route(track,MotionMode.GravityUnlimited,new[]{track.RiskRoute,track.RiskRoute},step);Outcome(r,0,0,0,0,0,13);Outcome(r,1,0,0,0,0,13);Tie(r);C(r.AirInputs[0]==8&&r.AirInputs[1]==8,"eight air actions really needed by authored route");
+   var own=r.Taps.FindAll(t=>t.Player==0);for(int i=0;i<own.Count;i++)C(own[i].Airborne==(i%3!=0),"each group uses departure then two airborne reversals");
+   PassageGeometry(track,r);if(baseline==null)baseline=r;
+  }
+  // Independently perturb one complete input edge pair by actual elapsed time.
+  // No speed effects exist here, so unchanged distance triggers equal these
+  // unchanged later timestamps on every successful no-hit route.
+  for(int input=0;input<12;input++)foreach(double shift in new[]{-.045,.045}){
+   var taps=new List<TapRecord>();for(int k=0;k<baseline.Taps.Count;k++){var t=baseline.Taps[k];taps.Add(new TapRecord{Player=t.Player,Time=t.Time+(k/2==input?shift:0),X=t.X,Airborne=t.Airborne});}
+   taps.Sort((a,b)=>a.Time==b.Time?a.Player.CompareTo(b.Player):a.Time.CompareTo(b.Time));
+   var g=AtTime(track,MotionMode.GravityUnlimited,taps,13);C(g.Phase=="finished","timing-window physical finish");foreach(var p in g.Players){C(p.Collisions==0&&p.BoostsEarned==0&&p.SlowsEarned==0,"single input45ms clean");N(p.Distance,2860,"timing-window actual endpoint");N(p.FinishTime.Value,13,"timing-window actual time");}games++;
+  }
+ }
+}
+public static partial class ControlGeometryIndependent
+{
+ public static void Run(){checks=games=0;
+  foreach(var mode in new[]{MotionMode.GravityAirFlip,MotionMode.LinearAirFlip,MotionMode.JumpGravityFlip,MotionMode.GravityUnlimited}){
+   var track=TracksControl.Challenge(mode);C(track.Length==4620&&track.PositiveRingCount==3,"draft count");
+   var final=Array.Find(track.RiskZones,z=>z.Id=="control-final-instant");C(track.Length-(final.X+final.Radius+14)>330*.6,"last legal horizontal final contact leaves a full pulse");
+   var omitLast=new double[track.RiskRoute.Length-1];Array.Copy(track.RiskRoute,omitLast,omitLast.Length);var negative=TracksControl.NegativeRoute(mode);
+   foreach(double step in Steps){
+    var safe=Route(track,mode,new[]{track.SafeRoute,track.SafeRoute},step);Outcome(safe,0,0,0,0,0,21);Outcome(safe,1,0,0,0,0,21);Tie(safe);
+    if(mode!=MotionMode.JumpGravityFlip)C(safe.AirInputs[0]==0&&safe.AirInputs[1]==0,"safe requires no air repeats");
+    var ideal=Route(track,mode,new[]{track.RiskRoute,track.RiskRoute},step);Outcome(ideal,0,3,0,3,0,20.1);Outcome(ideal,1,3,0,3,0,20.1);Tie(ideal);
+    C(ideal.Contacts.Count==4,"both players and both real landing events observed");ReplayLanding(track,mode,ideal);
+    foreach(bool swap in new[]{false,true}){
+     var r=Route(track,mode,swap?new[]{track.SafeRoute,track.RiskRoute}:new[]{track.RiskRoute,track.SafeRoute},step);int winner=swap?1:0;
+     Outcome(r,winner,3,0,3,0,20.1);Outcome(r,1-winner,0,0,0,0,21);N(r.Game.Elapsed,21,"actual later arrival");C(Equals(r.Game.Winner,winner),"faster path actually wins");
+     var duel=Route(track,mode,swap?new[]{omitLast,track.RiskRoute}:new[]{track.RiskRoute,omitLast},step);
+     Outcome(duel,winner,3,0,3,0,20.1);Outcome(duel,1-winner,2,0,2,0,20.4);N(duel.Game.Elapsed,20.4,"last bonus changes physical finish");C(Equals(duel.Game.Winner,winner),"only final pickup determines winner");
+     var trap=Route(track,mode,swap?new[]{negative,track.RiskRoute}:new[]{track.RiskRoute,negative},step);
+     Outcome(trap,winner,3,0,3,0,20.1);Outcome(trap,1-winner,3,1,3,0,20.4);N(trap.Game.Elapsed,20.4,"negative changes physical finish");C(Equals(trap.Game.Winner,winner),"avoiding trap actually wins");
+    }
+   }
+  }
+  RecoveryWitnesses();Passages();
+  Console.WriteLine("PASS "+checks+" independent CONTROL03 assertions / "+games+" complete games +4 actual error/recovery witnesses; all4 safe21/ideal20.1/trap20.4, final-only duel20.1vs20.4, 6dt, mixed players, exact landing replays; unlimited13s/4passages/8air, analytic full-band clearance and each input+/-45ms.");
+ }
+}

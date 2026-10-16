@@ -1,0 +1,37 @@
+{
+  "version": "4.2.0-trial",
+  "stage": "CONTROL-03 before CONTROL-03F",
+  "createdUtc": "2026-10-16T21:18:25.6354856Z",
+  "sourceBuild": "Builds/WebGL-v4",
+  "snapshotBuild": "Builds/WebGL-v4.2.0-pre-finish",
+  "archive": null,
+  "fileCount": 5,
+  "bytes": 8653835.0,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 7551,
+      "sha256": "c0e178650981b523840c716019da34601f2bf13f32ced522f4a375c5413f19a6"
+    },
+    {
+      "path": "Build/WebGL-v4.data.unityweb",
+      "bytes": 1432827,
+      "sha256": "5b442f79bb16569d62be92ecb002c1d6ca8f32ef56f300cf16c035c3eeccd6a6"
+    },
+    {
+      "path": "Build/WebGL-v4.framework.js.unityweb",
+      "bytes": 89459,
+      "sha256": "fcbcecc25b7a77f6b96c78c11dc7283495af1d37ab8594a32e95453e7c5ce91d"
+    },
+    {
+      "path": "Build/WebGL-v4.loader.js",
+      "bytes": 39788,
+      "sha256": "d744b12a65aff524567e9b6999ebb9354b6b168dda1ea8ba7b28053020b18ab2"
+    },
+    {
+      "path": "Build/WebGL-v4.wasm.unityweb",
+      "bytes": 7084210,
+      "sha256": "59babe6c1d563368519c225a79a808cbef22971a2f69883c8d0474e53f6dcbea"
+    }
+  ]
+}

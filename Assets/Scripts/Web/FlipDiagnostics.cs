@@ -11,11 +11,13 @@ namespace FlipRace.Web
     {
         [Serializable] sealed class PlayerSnapshot
         {
-            public bool ready, flipping, airFlipAvailable;
+            public bool ready, flipping, airFlipAvailable, finishBoost;
             public double distance, y, recovering, finish;
-            public int collisions, character, rings, instantBoosts, slowRings, pendingRings, failedRings, queuedEffects;
+            public int collisions, character, rings, instantBoosts, finishBoosts, slowRings, pendingRings, failedRings, queuedEffects;
             public double boost, slow, speed, flipElapsed, verticalSpeed, centerY;
             public int gravity;
+            public string support, supportObstacle, lastInstant, lastFinishBoost;
+            public int supportSide;
         }
         [Serializable] sealed class Snapshot
         {
@@ -66,9 +68,13 @@ namespace FlipRace.Web
                 snapshot.players[i] = new PlayerSnapshot {ready=p.Ready, distance=p.Distance, y=p.Y,
                     recovering=p.Recovering, flipping=p.Flipping, collisions=p.Collisions, finish=p.FinishTime ?? -1,
                     character=p.CharacterIndex, rings=p.BoostsEarned, instantBoosts=p.InstantBoostsEarned, pendingRings=pending,
+                    finishBoost=p.FinishBoost, finishBoosts=p.FinishBoostsEarned,
                     failedRings=p.FailedRiskIds.Count, boost=p.BoostRemaining, slow=p.SlowRemaining,
                     speed=p.CurrentSpeed, slowRings=p.SlowsEarned, queuedEffects=p.PendingEffects.Count, flipElapsed=p.FlipElapsed,
                     verticalSpeed=p.VerticalSpeed, gravity=p.Gravity, airFlipAvailable=p.AirFlipAvailable,
+                    support=p.Support.ToString(), supportSide=p.SupportSide, supportObstacle=p.SupportObstacleId,
+                    lastInstant=p.LastInstant == null ? "" : p.LastInstant.Id,
+                    lastFinishBoost=p.LastFinishBoost == null ? "" : p.LastFinishBoost.Id,
                     centerY=FlipRace.Core.RaceSimulation.GetPlayerCenterY(p)};
             }
 #if UNITY_WEBGL && !UNITY_EDITOR

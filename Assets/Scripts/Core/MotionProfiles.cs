@@ -25,11 +25,17 @@ namespace FlipRace.Core
         public static readonly MotionProfile StrongGravity = new MotionProfile("gravity", "Сильнее тяга", 1000, 0);
         public static readonly MotionProfile Impulse = new MotionProfile("impulse", "Толчок", 662.5, 140);
         public static readonly MotionProfile Combined = new MotionProfile("combined", "Тяга + толчок", 1000, 140);
+        public static readonly MotionProfile Moderate = new MotionProfile("moderate", "Меньше толчок", 1000, 70);
+        // An ordinary jump has its own profile; its impulse is directed away
+        // from support while gravity initially remains toward that support.
+        public static readonly MotionProfile Jump = new MotionProfile("jump", "Прыжок", 662.5, 400);
         public static readonly MotionProfile[] All = { Baseline, StrongGravity, Impulse, Combined };
 
         public static MotionProfile Get(string id)
         {
             foreach (var profile in All) if (profile.Id == id) return profile;
+            if (id == Moderate.Id) return Moderate;
+            if (id == Jump.Id) return Jump;
             throw new ArgumentOutOfRangeException(nameof(id), "Unknown motion profile");
         }
     }

@@ -1,0 +1,76 @@
+using System;
+using FlipRace.Core;
+public static class ControlFinishIndependent
+{
+ static int checks,games;static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static readonly MotionMode[] Modes={MotionMode.GravityAirFlip,MotionMode.LinearAirFlip,MotionMode.JumpGravityFlip,MotionMode.GravityUnlimited};
+ static void C(bool b,string m){checks++;if(!b)throw new Exception(m);}
+ static void N(double a,double b,string m,double e=3e-7){C(Math.Abs(a-b)<=e,m+": "+a.ToString("R")+" != "+b.ToString("R"));}
+ static MotionProfile Profile(MotionMode m){return m==MotionMode.JumpGravityFlip?MotionProfiles.Jump:m==MotionMode.LinearAirFlip?MotionProfiles.Baseline:MotionProfiles.Moderate;}
+ static RiskZone Goal(double x,double y=226,double h=16,string id="finish"){return new RiskZone{Id=id,Kind="finish",X=x,Y=y,FinishHeight=h,Radius=999};}
+ static GameState Start(MotionMode m,Track track){var g=RaceSimulation.CreateTrial(track,m,Profile(m));C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"ready both");RaceSimulation.Advance(g,3);C(g.Phase=="racing","started");games++;return g;}
+ static void M(GameState g,double t,double step){while(t>1e-14&&g.Phase=="racing"){double d=Math.Min(t,step);RaceSimulation.Advance(g,d);t-=d;}}
+ static void Finish(GameState g,double step,double elapsed){int guard=0;while(g.Phase=="racing"){RaceSimulation.Advance(g,step);if(++guard>100000)throw new Exception("finish stalled");}N(g.Elapsed,elapsed,"physical finish elapsed");foreach(var p in g.Players){C(p.FinishTime.HasValue,"actual finish");N(p.Distance,g.Track.Length,"actual finish distance");C(!p.FinishBoost,"finish active flag cleared");}}
+ static void Boundaries(){
+  foreach(var mode in Modes)foreach(double step in Steps)foreach(double offset in new[]{0d,-8,8,-8.000001,8.000001,100}){
+   bool hit=Math.Abs(offset)<=8;var track=new Track(220,Array.Empty<Obstacle>()){RiskZones=new[]{Goal(176,226+offset)}};var g=Start(mode,track);
+   M(g,.8-1e-6,step);foreach(var p in g.Players)C(p.FinishBoostsEarned==0,"no radius-based early pickup");M(g,1e-6,step);
+   foreach(var p in g.Players){N(p.Distance,176,"pickup actual X plane");C(p.FinishBoostsEarned==(hit?1:0),"center-height inclusive endpoints and epsilon misses");C(p.BoostsEarned==0&&p.InstantBoostsEarned==0&&p.ActiveEffect==null&&p.PendingEffects.Count==0,"finish is separate from normal reward queue");N(p.CurrentSpeed,hit?440:220,"exact speed after plane");}
+   Finish(g,step,hit?.9:1);C(Equals(g.Winner,"tie")&&g.Players[0].FinishTime==g.Players[1].FinishTime,"same input exact tie");
+   foreach(var p in g.Players){N(p.FinishTime.Value,hit?.9:1,"canonical actual agreement");N(p.FinishBoostElapsed,hit?.1:0,"served finish duration");N(p.FinishBoostDistanceGained,hit?22:0,"served extra distance");}
+  }
+ }
+ static void PairsAndMotion(){
+  foreach(var mode in Modes)foreach(double step in Steps)foreach(int winner in new[]{0,1}){
+   var track=new Track(220,Array.Empty<Obstacle>()){RiskZones=new[]{Goal(176)}};var g=Start(mode,track);C(RaceSimulation.Press(g,1-winner),"only other player leaves floor");Finish(g,step,1);
+   N(g.Players[winner].FinishTime.Value,.9,"collector actual winner time");N(g.Players[1-winner].FinishTime.Value,1,"miss actual time");C(Equals(g.Winner,winner),"both player assignments win physically");
+   C(g.Players[winner].FinishBoostsEarned==1&&g.Players[1-winner].FinishBoostsEarned==0,"independent one-shot rewards");
+  }
+  foreach(var mode in Modes)foreach(double step in Steps){
+   double a=mode==MotionMode.LinearAirFlip?0:mode==MotionMode.JumpGravityFlip?662.5:-1000;
+   double v=mode==MotionMode.LinearAirFlip?-265:mode==MotionMode.JumpGravityFlip?-400:-70;
+   double contactY=226+v*.2+.5*a*.04;
+   var g=Start(mode,new Track(220,Array.Empty<Obstacle>()){RiskZones=new[]{Goal(176,contactY)}});M(g,.6,step);C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"real airborne approach");M(g,.2,step);
+   foreach(var p in g.Players){C(p.FinishBoostsEarned==1,"airborne plane pickup");N(p.VerticalSpeed,v+a*.2,"finish preserves transverse velocity");N(RaceSimulation.GetPlayerCenterY(p),contactY,"finish preserves transverse position");}
+   M(g,.05,step);foreach(var p in g.Players){N(p.Distance,198,"440 physical speed after contact");N(p.VerticalSpeed,v+a*.25,"normal vertical acceleration continues");N(RaceSimulation.GetPlayerCenterY(p),226+v*.25+.5*a*.25*.25,"normal vertical trajectory continues");}
+   Finish(g,step,.9);
+  }
+ }
+ static void LifetimeAndCollision(){
+  foreach(var mode in Modes)foreach(double step in Steps){
+   foreach(double x in new[]{0d,220,221}){
+    var g=Start(mode,new Track(220,Array.Empty<Obstacle>()){RiskZones=new[]{Goal(x)}});Finish(g,step,x==0?.5:1);
+    foreach(var p in g.Players)C(p.FinishBoostsEarned==(x==0?1:0),"t0 once and at/after finish rejected");
+   }
+   var repeated=Start(mode,new Track(220,Array.Empty<Obstacle>()){RiskZones=new[]{Goal(176),Goal(180,id:"again")}});Finish(repeated,step,.9);
+   foreach(var p in repeated.Players)C(p.FinishBoostsEarned==1&&!p.SuccessfulRiskIds.Contains("again"),"second plane cannot stack finish reward");
+   RaceSimulation.Advance(repeated,100);foreach(var p in repeated.Players)N(p.FinishBoostElapsed,.1,"finished state cannot accrue further reward");
+   C(RaceSimulation.Press(repeated,0)&&repeated.Phase=="finished","rematch waits both");C(RaceSimulation.Press(repeated,1)&&repeated.Phase=="countdown","second starts reset");
+   foreach(var p in repeated.Players)C(!p.FinishBoost&&p.FinishBoostsEarned==0&&p.FinishBoostElapsed==0&&p.FinishBoostDistanceGained==0&&p.LastFinishBoost==null,"all finish state reset");
+   var hit=Start(mode,new Track(220,new[]{new Obstacle{Id="hit",Kind="floor",X=190,Width=10,Height=48}}){RiskZones=new[]{Goal(176)}});M(hit,.8,step);
+   foreach(var p in hit.Players){C(p.Collisions==1&&p.FinishBoostsEarned==1,"simultaneous collision and free finish both survive");N(p.Recovering,.5,"full collision penalty");}
+   M(hit,.2,step);foreach(var p in hit.Players){N(p.Distance,176,"recovery freezes finish movement");N(p.FinishBoostElapsed,0,"recovery freezes finish clock");C(!RaceSimulation.Press(hit,p.Id),"recovery rejects tap");}
+   Finish(hit,step,1.4);foreach(var p in hit.Players)N(p.FinishTime.Value,1.4,"collision ledger actual finish");
+   // Miss the plane high, then cross its height later: no historical pickup.
+   var missed=Start(mode,new Track(440,Array.Empty<Obstacle>()){RiskZones=new[]{Goal(44,110)}});M(missed,.3,step);C(RaceSimulation.Press(missed,0)&&RaceSimulation.Press(missed,1),"later real flight");Finish(missed,step,2);
+   foreach(var p in missed.Players)C(p.FinishBoostsEarned==0,"passed plane never collects later by height alone");
+  }
+ }
+ static void DirtyEntry(){
+  foreach(var mode in Modes)foreach(double step in Steps)foreach(bool slow in new[]{false,true})foreach(bool queued in new[]{false,true})foreach(double before in new[]{.2,.55}){
+   double speed=slow?110:330,x=speed*before;var earlier=new RiskZone{Id="earlier",Kind=slow?"negative":"positive",FreeReward=true,X=0,Y=226,Radius=0};
+   var second=new RiskZone{Id="second",Kind=slow?"positive":"negative",FreeReward=true,X=0,Y=226,Radius=0};
+   var goal=Goal(x);var track=new Track(x+44,Array.Empty<Obstacle>()){RiskZones=queued?new[]{earlier,second,goal}:new[]{earlier,goal}};var g=Start(mode,track);
+   M(g,before,step);foreach(var p in g.Players){N(p.Distance,x,"dirty entry actual plane");C(p.FinishBoostsEarned==1&&p.ActiveEffect!=null,"ordinary effect preserved at pickup");N(p.ActiveEffect.Remaining,.6-before,"ordinary remaining intact");C(p.PendingEffects.Count==(queued?1:0),"ordinary queue intact");}
+   Finish(g,step,before+.1);double initialPart=Math.Min(.1,.6-before),nextSpeed=queued?(slow?330:110):220;
+   double extra=(440-speed)*initialPart+(440-nextSpeed)*(.1-initialPart);
+   foreach(var p in g.Players){N(p.FinishTime.Value,before+.1,"dirty canonical agrees with physical clock");N(p.FinishBoostElapsed,.1,"dirty finish full44 at440");N(p.FinishBoostDistanceGained,extra,"independent piecewise extra distance ledger");
+    C(p.FinishBoostsEarned==1&&p.BoostsEarned==(slow?(queued?1:0):1)&&p.SlowsEarned==(slow?1:(queued?1:0)),"finish never increments ordinary pulse counters");
+    if(before==.2){N(p.ActiveEffect.Remaining,.3,"unserved first effect remains after finish");C(p.PendingEffects.Count==(queued?1:0),"unserved queue never deleted");}
+    else if(queued){N(p.ActiveEffect.Remaining,.55,"second effect partly serves naturally");C(p.PendingEffects.Count==0,"FIFO advanced naturally");}
+    else C(p.ActiveEffect==null,"ordinary effect naturally completed");
+   }
+  }
+ }
+ public static void Run(){checks=games=0;Boundaries();PairsAndMotion();LifetimeAndCollision();DirtyEntry();Console.WriteLine("PASS "+checks+" independent CONTROL03F physics assertions / "+games+" games: exact plane/height, all4 modes and6dt, physical .1duel/tie, unchanged vertical motion, once/past/finish/reset, recovery and dirty-effect piecewise ledger.");}
+}

@@ -169,14 +169,20 @@ namespace FlipRace.Editor
             }
         }
 
-        static PlayerState CopyMotion(PlayerState p)
+        internal static PlayerState CopyMotion(PlayerState p)
         {
             var q = new PlayerState(p.Id) { Ready = p.Ready, CharacterIndex = p.CharacterIndex, Distance = p.Distance,
                 Y = p.Y, Flipping = p.Flipping, FlipFrom = p.FlipFrom, FlipTo = p.FlipTo, FlipElapsed = p.FlipElapsed,
                 VerticalSpeed = p.VerticalSpeed, Gravity = p.Gravity, AirFlipAvailable = p.AirFlipAvailable,
+                Support = p.Support, SupportSide = p.SupportSide, SupportObstacleId = p.SupportObstacleId,
+                EdgeClearObstacleId = p.EdgeClearObstacleId,
                 Recovering = p.Recovering, Collisions = p.Collisions, FinishTime = p.FinishTime, LastHit = p.LastHit,
                 ActiveEffect = CopyEffect(p.ActiveEffect), BoostsEarned = p.BoostsEarned, SlowsEarned = p.SlowsEarned,
                 InstantBoostsEarned = p.InstantBoostsEarned, LastSuccess = p.LastSuccess, LastInstant = p.LastInstant, LastSlow = p.LastSlow,
+                FinishBoost = p.FinishBoost, FinishBoostsEarned = p.FinishBoostsEarned,
+                FinishBoostElapsed = p.FinishBoostElapsed, FinishBoostDistanceGained = p.FinishBoostDistanceGained,
+                LastFinishBoost = p.LastFinishBoost == null ? null : new HitInfo
+                    { Id = p.LastFinishBoost.Id, Message = p.LastFinishBoost.Message, At = p.LastFinishBoost.At },
                 CompletedBoosts = p.CompletedBoosts, CompletedSlows = p.CompletedSlows,
                 CompletedRecoveries = p.CompletedRecoveries, RecoveryElapsed = p.RecoveryElapsed,
                 HitObstacleIds = new HashSet<string>(p.HitObstacleIds), CollectedRiskIds = new HashSet<string>(p.CollectedRiskIds),

@@ -1,0 +1,157 @@
+LANDING GravityAirFlip control-landing-floor actual=4.818181818 x=1060.000000 stable=true boostedRunToEdge=0.424242
+LANDING GravityAirFlip control-landing-ceiling actual=8.790909089 x=2000.000000 stable=true boostedRunToEdge=0.424242
+METRICS GravityAirFlip first=3.652480 lastToFinish=1.482818 finalContactToFinish=1.157645
+COMPARE GravityAirFlip safe21.0 ideal20.1 trap20.4; zero hits, all earned pulses served.
+LANDING LinearAirFlip control-landing-floor actual=4.818181820 x=1060.000000 stable=true boostedRunToEdge=0.424242
+LANDING LinearAirFlip control-landing-ceiling actual=8.790909089 x=2000.000000 stable=true boostedRunToEdge=0.424242
+METRICS LinearAirFlip first=4.159314 lastToFinish=1.471355 finalContactToFinish=1.175870
+COMPARE LinearAirFlip safe21.0 ideal20.1 trap20.4; zero hits, all earned pulses served.
+LANDING JumpGravityFlip control-landing-floor actual=4.818181820 x=1060.000000 stable=true boostedRunToEdge=0.424242
+LANDING JumpGravityFlip control-landing-ceiling actual=8.790909090 x=2000.000000 stable=true boostedRunToEdge=0.424242
+METRICS JumpGravityFlip first=3.745754 lastToFinish=1.439500 finalContactToFinish=1.185344
+COMPARE JumpGravityFlip safe21.0 ideal20.1 trap20.4; zero hits, all earned pulses served.
+LANDING GravityUnlimited control-landing-floor actual=4.818181818 x=1060.000000 stable=true boostedRunToEdge=0.424242
+LANDING GravityUnlimited control-landing-ceiling actual=8.790909089 x=2000.000000 stable=true boostedRunToEdge=0.424242
+METRICS GravityUnlimited first=3.652480 lastToFinish=1.482818 finalContactToFinish=1.157645
+COMPARE GravityUnlimited safe21.0 ideal20.1 trap20.4; zero hits, all earned pulses served.
+COMPARISON PASS 3314 checks.
+GravityAirFlip safe input0 x=850 actual windows -150/+150ms
+GravityAirFlip safe input1 x=1740 actual windows -150/+150ms
+GravityAirFlip safe input2 x=2420 actual windows -150/+150ms
+GravityAirFlip safe input3 x=2740 actual windows -150/+150ms
+GravityAirFlip safe input4 x=3130 actual windows -150/+150ms
+MIN GravityAirFlip safe -0.15/+0.15
+GravityAirFlip ideal input0 x=803.545515 actual windows -60/+70ms
+GravityAirFlip ideal input1 x=917.945515 actual windows -105/+150ms
+GravityAirFlip ideal input2 x=1160 actual windows -150/+150ms
+GravityAirFlip ideal input3 x=1450 actual windows -150/+150ms
+GravityAirFlip ideal input4 x=1906.527781 actual windows -115/+115ms
+GravityAirFlip ideal input5 x=2740 actual windows -150/+150ms
+GravityAirFlip ideal input6 x=3130 actual windows -150/+150ms
+GravityAirFlip ideal input7 x=4227.78 actual windows -115/+115ms
+MIN GravityAirFlip ideal -0.06/+0.07
+LinearAirFlip safe input0 x=850 actual windows -150/+150ms
+LinearAirFlip safe input1 x=1740 actual windows -150/+150ms
+LinearAirFlip safe input2 x=2420 actual windows -150/+150ms
+LinearAirFlip safe input3 x=2740 actual windows -150/+150ms
+LinearAirFlip safe input4 x=3130 actual windows -150/+150ms
+MIN LinearAirFlip safe -0.15/+0.15
+LinearAirFlip ideal input0 x=915.049057 actual windows -115/+115ms
+LinearAirFlip ideal input1 x=1007.449057 actual windows -55/+55ms
+LinearAirFlip ideal input2 x=1160 actual windows -150/+150ms
+LinearAirFlip ideal input3 x=1450 actual windows -150/+150ms
+LinearAirFlip ideal input4 x=1900.377358 actual windows -115/+115ms
+LinearAirFlip ideal input5 x=2740 actual windows -150/+150ms
+LinearAirFlip ideal input6 x=3130 actual windows -150/+150ms
+LinearAirFlip ideal input7 x=4230.301887 actual windows -135/+135ms
+MIN LinearAirFlip ideal -0.055/+0.055
+JumpGravityFlip safe input0 x=800 actual windows -150/+150ms
+JumpGravityFlip safe input1 x=855 actual windows -150/+150ms
+JumpGravityFlip safe input2 x=1740 actual windows -150/+150ms
+JumpGravityFlip safe input3 x=1795 actual windows -150/+150ms
+JumpGravityFlip safe input4 x=2420 actual windows -150/+150ms
+JumpGravityFlip safe input5 x=2475 actual windows -150/+150ms
+JumpGravityFlip safe input6 x=2740 actual windows -150/+150ms
+JumpGravityFlip safe input7 x=2795 actual windows -150/+150ms
+JumpGravityFlip safe input8 x=3130 actual windows -150/+150ms
+JumpGravityFlip safe input9 x=3185 actual windows -150/+150ms
+MIN JumpGravityFlip safe -0.15/+0.15
+JumpGravityFlip ideal input0 x=824.065859 actual windows -115/+115ms
+JumpGravityFlip ideal input1 x=1160 actual windows -150/+120ms
+JumpGravityFlip ideal input2 x=1240 actual windows -150/+150ms
+JumpGravityFlip ideal input3 x=1802.351265 actual windows -115/+115ms
+JumpGravityFlip ideal input4 x=2740 actual windows -150/+150ms
+JumpGravityFlip ideal input5 x=2795 actual windows -150/+150ms
+JumpGravityFlip ideal input6 x=3130 actual windows -150/+150ms
+JumpGravityFlip ideal input7 x=3185 actual windows -150/+150ms
+JumpGravityFlip ideal input8 x=4237.31 actual windows -150/+150ms
+MIN JumpGravityFlip ideal -0.115/+0.115
+GravityUnlimited safe input0 x=850 actual windows -150/+150ms
+GravityUnlimited safe input1 x=1740 actual windows -150/+150ms
+GravityUnlimited safe input2 x=2420 actual windows -150/+150ms
+GravityUnlimited safe input3 x=2740 actual windows -150/+150ms
+GravityUnlimited safe input4 x=3130 actual windows -150/+150ms
+MIN GravityUnlimited safe -0.15/+0.15
+GravityUnlimited ideal input0 x=803.545515 actual windows -60/+70ms
+GravityUnlimited ideal input1 x=917.945515 actual windows -105/+150ms
+GravityUnlimited ideal input2 x=1160 actual windows -150/+150ms
+GravityUnlimited ideal input3 x=1450 actual windows -150/+150ms
+GravityUnlimited ideal input4 x=1906.527781 actual windows -115/+115ms
+GravityUnlimited ideal input5 x=2740 actual windows -150/+150ms
+GravityUnlimited ideal input6 x=3130 actual windows -150/+150ms
+GravityUnlimited ideal input7 x=4227.78 actual windows -115/+115ms
+MIN GravityUnlimited ideal -0.06/+0.07
+RECOVERY GravityAirFlip safe input=0 shift=0.4 hit=control-floor-pad hitAt=4.481818182 x=986.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=1019.000
+RECOVERY GravityAirFlip safe input=0 shift=0.64 hit=control-floor-pad hitAt=4.481818182 x=986.000000 support=Wall charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY GravityAirFlip safe input=2 shift=0.64 hit=control-quick-floor hitAt=11.754545455 x=2586.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2619.000
+RECOVERY GravityAirFlip safe input=3 shift=0.64 hit=control-quick-ceiling hitAt=13.300000000 x=2926.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2959.000
+RECOVERY GravityAirFlip safe input=4 shift=0.4 hit=control-quick-exit hitAt=14.754545455 x=3246.000000 support=None charge=True escaped=True last obstacle, no later obstacle
+RECOVERY GravityAirFlip safe input=4 shift=0.64 hit=control-quick-exit hitAt=14.754545455 x=3246.000000 support=Wall charge=True escaped=True last obstacle, no later obstacle
+RECOVERY SAMPLES GravityAirFlip safe 7
+RECOVERY GravityAirFlip ideal input=0 shift=-0.64 hit=control-floor-pad hitAt=4.679454483 x=1029.479986 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY GravityAirFlip ideal input=0 shift=-0.4 hit=control-floor-pad hitAt=4.679454483 x=1029.479986 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY GravityAirFlip ideal input=0 shift=0.08 hit=control-floor-pad hitAt=4.953033558 x=1089.667383 support=None charge=False escaped=True stay after recovery + .15 reaction
+RECOVERY GravityAirFlip ideal input=0 shift=0.16 hit=control-floor-pad hitAt=5.121035300 x=1126.627766 support=None charge=False escaped=True stay after recovery + .15 reaction
+RECOVERY GravityAirFlip ideal input=5 shift=0.64 hit=control-quick-ceiling hitAt=12.700000000 x=2926.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2959.000
+RECOVERY GravityAirFlip ideal input=6 shift=0.4 hit=control-quick-exit hitAt=14.154545455 x=3246.000000 support=None charge=True escaped=True last obstacle, no later obstacle
+RECOVERY SAMPLES GravityAirFlip ideal 27
+RECOVERY LinearAirFlip safe input=0 shift=0.64 hit=control-floor-pad hitAt=4.481818182 x=986.000000 support=Wall charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY LinearAirFlip safe input=1 shift=0.64 hit=control-ceiling-pad hitAt=8.754545455 x=1926.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=1959.000
+RECOVERY LinearAirFlip safe input=2 shift=0.64 hit=control-quick-floor hitAt=11.754545455 x=2586.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2619.000
+RECOVERY LinearAirFlip safe input=3 shift=0.64 hit=control-quick-ceiling hitAt=13.300000000 x=2926.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2959.000
+RECOVERY LinearAirFlip safe input=4 shift=0.4 hit=control-quick-exit hitAt=14.754545455 x=3246.000000 support=None charge=True escaped=True last obstacle, no later obstacle
+RECOVERY LinearAirFlip safe input=4 shift=0.64 hit=control-quick-exit hitAt=14.754545455 x=3246.000000 support=Wall charge=True escaped=True last obstacle, no later obstacle
+RECOVERY SAMPLES LinearAirFlip safe 6
+RECOVERY LinearAirFlip ideal input=0 shift=-0.64 hit=control-floor-pad hitAt=5.198181820 x=1143.600000 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY LinearAirFlip ideal input=0 shift=-0.4 hit=control-floor-pad hitAt=5.198181820 x=1143.600000 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY LinearAirFlip ideal input=0 shift=-0.24 hit=control-floor-pad hitAt=5.058181820 x=1112.800000 support=None charge=False escaped=True stay after recovery + .15 reaction
+RECOVERY LinearAirFlip ideal input=0 shift=-0.16 hit=control-floor-pad hitAt=4.978181820 x=1095.200000 support=None charge=False escaped=True stay after recovery + .15 reaction
+RECOVERY LinearAirFlip ideal input=5 shift=0.64 hit=control-quick-ceiling hitAt=12.700000000 x=2926.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2959.000
+RECOVERY LinearAirFlip ideal input=6 shift=0.4 hit=control-quick-exit hitAt=14.154545455 x=3246.000000 support=None charge=True escaped=True last obstacle, no later obstacle
+RECOVERY SAMPLES LinearAirFlip ideal 27
+RECOVERY JumpGravityFlip safe input=0 shift=0.4 hit=control-floor-pad hitAt=5.108791552 x=1123.934141 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY JumpGravityFlip safe input=0 shift=0.64 hit=control-floor-pad hitAt=5.348791552 x=1176.734141 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY JumpGravityFlip safe input=2 shift=0.4 hit=control-quick-floor hitAt=11.454545455 x=2586.000000 support=Wall charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY JumpGravityFlip safe input=3 shift=0.64 hit=control-ceiling-pad hitAt=8.807748542 x=1937.704679 support=None charge=False escaped=True tap after reaction + 0.80 at x=2146.705; second +0.15 at x=2179.705
+RECOVERY JumpGravityFlip safe input=4 shift=0.4 hit=control-quick-ceiling hitAt=13.302633285 x=2926.579323 support=None charge=False escaped=True stay after recovery + .15 reaction
+RECOVERY JumpGravityFlip safe input=4 shift=0.64 hit=control-quick-floor hitAt=11.754545455 x=2586.000000 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY SAMPLES JumpGravityFlip safe 15
+RECOVERY JumpGravityFlip ideal input=0 shift=-0.64 hit=control-floor-pad hitAt=4.481818182 x=986.000000 support=Wall charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY JumpGravityFlip ideal input=0 shift=-0.4 hit=control-floor-pad hitAt=4.481818182 x=986.000000 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY JumpGravityFlip ideal input=4 shift=0.4 hit=control-quick-exit hitAt=14.154545455 x=3246.000000 support=None charge=False escaped=True last obstacle, no later obstacle
+RECOVERY JumpGravityFlip ideal input=4 shift=0.64 hit=control-quick-ceiling hitAt=12.700000000 x=2926.000000 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY JumpGravityFlip ideal input=5 shift=0.64 hit=control-quick-ceiling hitAt=12.753203088 x=2937.704679 support=None charge=False escaped=True tap after reaction + 0.80 at x=3146.705
+RECOVERY JumpGravityFlip ideal input=6 shift=-0.64 hit=control-quick-exit hitAt=14.454545455 x=3246.000000 support=None charge=False escaped=True last obstacle, no later obstacle
+RECOVERY SAMPLES JumpGravityFlip ideal 24
+RECOVERY GravityUnlimited safe input=0 shift=0.4 hit=control-floor-pad hitAt=4.481818182 x=986.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=1019.000
+RECOVERY GravityUnlimited safe input=0 shift=0.64 hit=control-floor-pad hitAt=4.481818182 x=986.000000 support=Wall charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY GravityUnlimited safe input=2 shift=0.64 hit=control-quick-floor hitAt=11.754545455 x=2586.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2619.000
+RECOVERY GravityUnlimited safe input=3 shift=0.64 hit=control-quick-ceiling hitAt=13.300000000 x=2926.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2959.000
+RECOVERY GravityUnlimited safe input=4 shift=0.4 hit=control-quick-exit hitAt=14.754545455 x=3246.000000 support=None charge=True escaped=True last obstacle, no later obstacle
+RECOVERY GravityUnlimited safe input=4 shift=0.64 hit=control-quick-exit hitAt=14.754545455 x=3246.000000 support=Wall charge=True escaped=True last obstacle, no later obstacle
+RECOVERY SAMPLES GravityUnlimited safe 7
+RECOVERY GravityUnlimited ideal input=0 shift=-0.64 hit=control-floor-pad hitAt=4.679454483 x=1029.479986 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY GravityUnlimited ideal input=0 shift=-0.4 hit=control-floor-pad hitAt=4.679454483 x=1029.479986 support=None charge=True escaped=True stay after recovery + .15 reaction
+RECOVERY GravityUnlimited ideal input=5 shift=0.64 hit=control-quick-ceiling hitAt=12.700000000 x=2926.000000 support=None charge=True escaped=True tap after reaction + 0.00 at x=2959.000
+RECOVERY GravityUnlimited ideal input=6 shift=0.4 hit=control-quick-exit hitAt=14.154545455 x=3246.000000 support=None charge=True escaped=True last obstacle, no later obstacle
+RECOVERY GravityUnlimited ideal input=6 shift=0.64 hit=control-quick-exit hitAt=14.154545455 x=3246.000000 support=Wall charge=True escaped=True last obstacle, no later obstacle
+RECOVERY SAMPLES GravityUnlimited ideal 25
+RECOVERY PASS 138 collision states / 13810 checks; finite sampled errors, not arbitrary histories.
+PASSAGE control-passage-upper centerYrange=64.049587..75.950413 legal=18..112
+PASSAGE control-passage-lower centerYrange=164.049587..175.950413 legal=128..222
+PASSAGE control-passage-high centerYrange=64.049587..75.950413 legal=18..112
+PASSAGE control-passage-low centerYrange=164.049587..175.950413 legal=128..222
+UNLIMITED input0 x=750.254574710 actual windows -45/+50ms
+UNLIMITED input1 x=822.427287355 actual windows -45/+45ms
+UNLIMITED input2 x=910.000000000 actual windows -100/+100ms
+UNLIMITED input3 x=1050.254574710 actual windows -45/+50ms
+UNLIMITED input4 x=1122.427287355 actual windows -45/+45ms
+UNLIMITED input5 x=1210.000000000 actual windows -100/+100ms
+UNLIMITED input6 x=1350.254574710 actual windows -45/+50ms
+UNLIMITED input7 x=1422.427287355 actual windows -45/+45ms
+UNLIMITED input8 x=1510.000000000 actual windows -100/+100ms
+UNLIMITED input9 x=1650.254574710 actual windows -45/+50ms
+UNLIMITED input10 x=1722.427287355 actual windows -45/+45ms
+UNLIMITED input11 x=1810.000000000 actual windows -100/+100ms
+UNLIMITED PASS: 13s,4 passages,8 air repeats, min repeat .328058s, windows -45/+45ms; finite per-input perturbations.
+CONTROL TRACKS PASS 17985 checks.
