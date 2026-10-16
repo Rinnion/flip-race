@@ -25,6 +25,7 @@ namespace FlipRace.Presentation
         bool suppressFrame, gameplayInputBlocked, compact;
         int inputBlockFrame, round = 1;
         string selectedTrackId;
+        string buildVersion;
         MotionMode selectedMotion = MotionMode.GravityAirFlip;
         bool Trial { get { return Game.Mode == "trial"; } }
         string pauseReason = "Оба катикаавра ждут на своих местах.";
@@ -44,6 +45,7 @@ namespace FlipRace.Presentation
         void Awake()
         {
             gameObject.name = "FlipRace";
+            buildVersion = "v" + Application.version;
             DontDestroyOnLoad(gameObject);
             Application.targetFrameRate = 60;
             Application.runInBackground = true;
@@ -104,7 +106,8 @@ namespace FlipRace.Presentation
             pauseRect = new Rect(fullscreenRect.x - tool, ty, tool, 25);
             soundRect = new Rect(pauseRect.x - (compact ? 31 : 91), ty, compact ? 31 : 91, 25);
             helpRect = new Rect(soundRect.x - 31, ty, 31, 25);
-            trackButton = new Rect(session.x + 12, session.y, helpRect.x - session.x - 20, sh);
+            float trackLeft = session.x + 12 + (compact ? 120 : 0);
+            trackButton = new Rect(trackLeft, session.y, helpRect.x - trackLeft - 8, sh);
             headerHelp = new Rect(shell.xMax - 206, sy - 78, 100, 32);
             practiceRect = compact ? new Rect(width / 2 - 130, footer.y + 1, 260, 27)
                 : new Rect(shell.xMax - 230, footer.y + 23, 230, 40);
@@ -304,7 +307,20 @@ namespace FlipRace.Presentation
             if (showTracks) DrawTracks();
             else if (showRules) DrawRules();
             else if (paused || Portrait) DrawPause();
+            DrawBuildVersion();
             GUI.matrix = Matrix4x4.identity;
+        }
+
+        void DrawBuildVersion()
+        {
+            if (compact || Portrait)
+            {
+                float x = Portrait ? 24 : session.x + 12, y = Portrait ? 18 : session.y + 3;
+                Text(new Rect(x, y, 35, 16), "флип!", 11, ink, true);
+                Text(new Rect(x + 40, y, 76, 16), buildVersion, 9, muted, false, TextAnchor.MiddleLeft);
+            }
+            else
+                Text(new Rect(shell.x + 188, shell.y - 53, 74, 16), buildVersion, 9, muted, false, TextAnchor.MiddleLeft);
         }
 
         void DrawHeader()
@@ -329,12 +345,12 @@ namespace FlipRace.Presentation
         }
         void DrawSession()
         {
-            float pad = compact ? 12 : 20;
+            float pad = compact ? 132 : 20;
             Ellipse(new Rect(session.x + pad, session.center.y - 2.5f, 5, 5), Hex(0x9ca986));
             string title = (Trial ? MotionName(Game.Motion) + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
                 + (Game.Track.NegativeEnabled ? "  ·  ◇−" : "")
                 + (Active ? "   /   " + round.ToString("00") : "   ↗");
-            Text(new Rect(session.x + pad + 14, session.y, soundRect.x - session.x - pad - 45, session.height), title,
+            Text(new Rect(session.x + pad + 14, session.y, helpRect.x - session.x - pad - 22, session.height), title,
                 compact ? 8 : 10, muted, false, TextAnchor.MiddleLeft);
             if (compact) Text(helpRect, "?", 17, muted, false, TextAnchor.MiddleCenter);
             DrawSoundIcon(soundRect.x + (compact ? 9 : 3), soundRect.center.y - 7);
