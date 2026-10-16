@@ -1,0 +1,5 @@
+System.Exception: hit -> .5s recovery -> untouched linked contact -> pending -> one reward; actual collected=False, pending=False, landingAward=False, failed=True, rewards=0
+   at FlipRace.Editor.EngineV4Tests.Check(Boolean value, String message) in F:\Home\Game\flip-race-unity\Assets\Editor\EngineV4Tests.cs:line 23
+   at FlipRace.Editor.EngineV4Tests.UntouchedLinkedRingAfterHit() in F:\Home\Game\flip-race-unity\Assets\Editor\EngineV4Tests.cs:line 343
+   at FlipRace.Editor.EngineV4Tests.RunPostHitRingRegression() in F:\Home\Game\flip-race-unity\Assets\Editor\EngineV4Tests.cs:line 27
+   at Program.Main(String[] args) in F:\Home\Game\flip-race-unity\Tools\ParityRunner\Program.cs:line 12

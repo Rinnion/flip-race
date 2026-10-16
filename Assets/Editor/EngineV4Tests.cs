@@ -12,7 +12,9 @@ namespace FlipRace.Editor
             Action[] tests = { GravityAccelerationAndSurfaces, ContinuousStoneContacts, ParabolicRingTangency,
                 FreeAndLinkedRewards, GravityFrameParity, PartialGravityFinish, GravityPauseAndRematch,
                 AirReversalAndLanding, OppositeSurfaceDoesNotRecharge, LateCorrectionAndRecovery,
-                ReenteredRingOnce, AirFrameParityAndPlayers, AirPauseAndRematch, LinkedGravityReturn };
+                ReenteredRingOnce, AirFrameParityAndPlayers, AirPauseAndRematch, LinkedGravityReturn,
+                UntouchedLinkedRingAfterHit, LinkedContactImpactOrder, PostHitPlayerIsolationAndReset,
+                ChallengePostHitRing };
             foreach (var test in tests)
                 try { test(); }
                 catch (Exception error) { throw new Exception("V4 FAIL " + test.Method.Name + ": " + error.Message, error); }
@@ -20,6 +22,12 @@ namespace FlipRace.Editor
                 + " assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.";
         }
         static void Check(bool value, string message) { assertions++; if (!value) throw new Exception(message); }
+        public static string RunPostHitRingRegression()
+        {
+            assertions = 0;
+            UntouchedLinkedRingAfterHit(Console.WriteLine);
+            return "PASS: V4 post-hit untouched linked ring / " + assertions + " assertions.";
+        }
         static void Near(double actual, double expected, string message, double tolerance = 1e-8)
         { Check(Math.Abs(actual - expected) < tolerance, message + ": " + actual + " vs " + expected); }
         static Track Open(double length = 2200) { return new Track(length, Array.Empty<Obstacle>()); }
@@ -306,6 +314,172 @@ namespace FlipRace.Editor
             Finish(air, 100);
             Check(air.Players[0].BoostsEarned == 1 && air.Players[0].Collisions == 0, "return to original surface can confirm maneuver");
             Near(air.Players[0].LastSuccess.At, .46 * (2 + Math.Sqrt(2)), "linked reward timestamp follows true inertial landing");
+        }
+
+        static void UntouchedLinkedRingAfterHit()
+        { UntouchedLinkedRingAfterHit(null); }
+
+        static void UntouchedLinkedRingAfterHit(Action<string> trace)
+        {
+            // Only real game actions: first hit the floor stone without jumping,
+            // recover fully, then depart at x=212 and cross the after-ring at x=300.
+            var game = Start(AfterStone(100, 64, 300, 173, 321));
+            RaceSimulation.Advance(game, 86d / 220);
+            var p = game.Players[0];
+            Check(p.Collisions == 1 && p.Recovering > 0 && p.CollectedRiskIds.Count == 0,
+                "first collision occurs before any ring contact");
+            Near(p.Recovering, .5, "full collision penalty starts");
+            RaceSimulation.Advance(game, .5);
+            Check(p.Recovering == 0 && p.CompletedRecoveries == 1, "full penalty ends before later collection");
+            RaceSimulation.Advance(game, 126d / 220);
+            Near(p.Distance, 212, "later departure position");
+            Tap(game);
+            RaceSimulation.Advance(game, .4);
+            Near(p.Distance, 300, "physical ring crossing x");
+            Near(RaceSimulation.GetPlayerCenterY(p), 173, "physical ring crossing y");
+            bool collectedAtContact = p.CollectedRiskIds.Contains("after");
+            bool pendingAtContact = collectedAtContact && p.BoostsEarned == 0;
+            if (trace != null) trace("After physical contact: collected=" + collectedAtContact + ", pending="
+                + pendingAtContact + ", failed=" + p.FailedRiskIds.Contains("after") + ", hitHistory=" + p.HitObstacleIds.Contains("stone"));
+            RaceSimulation.Advance(game, .1);
+            bool pendingAfterClear = p.Distance > 321 && p.Flipping && p.BoostsEarned == 0;
+            if (trace != null) trace("After clearance: x=" + p.Distance + ", airborne=" + p.Flipping + "; next step reaches landing/confirmation.");
+            RaceSimulation.Advance(game, .3);
+            bool awardedAtLanding = !p.Flipping && p.BoostsEarned == 1;
+            Finish(game, 100);
+            Check(collectedAtContact && pendingAtContact && pendingAfterClear && awardedAtLanding
+                && p.BoostsEarned == 1 && p.CompletedBoosts == 1 && !p.FailedRiskIds.Contains("after"),
+                "hit -> .5s recovery -> untouched linked contact -> pending -> one reward; actual collected="
+                + collectedAtContact + ", pending=" + pendingAtContact + ", landingAward=" + awardedAtLanding
+                + ", failed=" + p.FailedRiskIds.Contains("after") + ", rewards=" + p.BoostsEarned);
+            Near(p.FinishTime.Value, 10.2, "collision .5 and later full reward -.3 both affect physical finish");
+            Near(game.Elapsed, 10.2, "actual clock matches post-hit reward result");
+            Check(Equals(game.Winner, "tie"), "post-hit reward remains independent and exactly symmetric");
+        }
+
+        static void LinkedContactImpactOrder()
+        {
+            // Shift contact by +/-0.1ms around the same obstacle impact. The
+            // pre-impact pending state, not obstacle history, decides cancellation.
+            foreach (MotionMode mode in Enum.GetValues(typeof(MotionMode)))
+            foreach (bool ceiling in new[] { false, true })
+            foreach (string placement in new[] { "before", "after" })
+            foreach (double offset in new[] { -.022, 0, .022 })
+            foreach (double frame in new[] { 1d / 144, .317, 100d })
+            {
+                var track = new Track(2200, new[] { Stone(ceiling ? "ceiling" : "floor", 300, 64, 48) })
+                { RiskZones = new[] { new RiskZone { Id = "order", ObstacleId = "stone", Placement = placement,
+                    X = 306 + offset, Y = ceiling ? 14 : 226, Radius = 6, ClearX = 379 } } };
+                var game = Start(track, mode);
+                if (ceiling) Tap(game);
+                Finish(game, frame);
+                foreach (var p in game.Players)
+                {
+                    bool touchedFirst = offset < 0;
+                    Check(p.Collisions == 1 && p.CollectedRiskIds.Contains("order"), "ordered route has one hit and one ring contact");
+                    Check(p.FailedRiskIds.Contains("order") == touchedFirst, "only contact strictly preceding impact is cancelled");
+                    Check(p.BoostsEarned == (touchedFirst ? 0 : 1) && p.CompletedBoosts == p.BoostsEarned,
+                        "simultaneous or later untouched contact gives exactly one complete reward");
+                    Near(p.FinishTime.Value, touchedFirst ? 10.5 : 10.2, "contact order controls real finish");
+                    Check(p.ActiveEffect == null && p.PendingEffects.Count == 0, "ordered effects finish without zero-time stalling");
+                }
+                Check(Equals(game.Winner, "tie"), "contact order is symmetric across players");
+            }
+
+            // Stop exactly on a simultaneous hit/contact, then resume. Both
+            // untouched rings remain eligible and preserve authored FIFO order.
+            var simultaneous = new Track(2200, new[] { Stone("floor", 100, 64, 48) })
+            { RiskZones = new[] {
+                new RiskZone { Id = "first", ObstacleId = "stone", X = 106, Y = 226, Radius = 6, ClearX = 179 },
+                new RiskZone { Id = "second", ObstacleId = "stone", Placement = "after", X = 106, Y = 226, Radius = 6, ClearX = 179 }
+            } };
+            var exact = Start(simultaneous);
+            RaceSimulation.Advance(exact, 86d / 220);
+            var first = exact.Players[0];
+            Check(first.Collisions == 1 && first.CollectedRiskIds.Contains("first") && first.FailedRiskIds.Count == 0,
+                "same-time impact does not cancel a previously untouched contact at the step endpoint");
+            Near(first.Recovering, .5, "same-time ring leaves the full penalty intact");
+            RaceSimulation.Advance(exact, .5 + 93d / 220 + .001);
+            Check(first.ActiveEffect != null && first.ActiveEffect.RingId == "first"
+                && first.PendingEffects.Count == 1 && first.PendingEffects.Peek().RingId == "second",
+                "same-time post-hit confirmations preserve FIFO order");
+            Finish(exact, 100);
+            Check(first.BoostsEarned == 2 && first.CompletedBoosts == 2, "both untouched rings award once after the hit");
+            Near(exact.Elapsed, 9.9, "one collision plus two complete rewards");
+        }
+
+        static void PostHitPlayerIsolationAndReset()
+        {
+            var game = Start(AfterStone(100, 64, 300, 173, 321));
+            Check(RaceSimulation.Press(game, 1), "opponent departs early and avoids the stone");
+            RaceSimulation.Advance(game, 212d / 220 + .5);
+            var first = game.Players[0]; var second = game.Players[1];
+            Check(first.Collisions == 1 && second.Collisions == 0, "one player's collision history is independent");
+            Check(RaceSimulation.Press(game, 0), "hit player can depart after full recovery");
+            Finish(game, .317);
+            Check(first.BoostsEarned == 1 && first.SuccessfulRiskIds.Contains("after") && first.FailedRiskIds.Count == 0,
+                "hit player earns the later untouched ring");
+            Check(second.BoostsEarned == 0 && second.CollectedRiskIds.Count == 0 && second.FailedRiskIds.Count == 0,
+                "opponent's missed ring remains untouched");
+            Near(first.FinishTime.Value, 10.2, "hit player keeps both penalty and reward");
+            Near(second.FinishTime.Value, 10, "opponent's actual finish is independent");
+            Check(Equals(game.Winner, 1), "later ring does not erase the entire collision penalty");
+            Tap(game);
+            foreach (var p in game.Players)
+                Check(p.HitObstacleIds.Count == 0 && p.CollectedRiskIds.Count == 0 && p.FailedRiskIds.Count == 0
+                    && p.SuccessfulRiskIds.Count == 0 && p.BoostsEarned == 0 && p.ActiveEffect == null && p.PendingEffects.Count == 0,
+                    "rematch clears all contact-order and effect state");
+        }
+
+        static void MoveToTrial(GameState game, double target, double frame)
+        {
+            int guard = 0;
+            var p = game.Players[0];
+            while (p.Distance < target - 1e-8 && game.Phase == "racing")
+            {
+                if (++guard > 100000) throw new Exception("trial input target stalled");
+                // Bound with the maximum possible forward speed so a mid-step
+                // reward cannot overshoot the actual Press position.
+                double dt = p.Recovering > 0 ? p.Recovering : (target - p.Distance) / 330;
+                RaceSimulation.Advance(game, Math.Min(frame, dt));
+            }
+            Near(p.Distance, target, "distance-driven trial action", 1e-7);
+        }
+
+        static void ChallengePostHitRing()
+        {
+            double[] route = { 1000, 1057.2, 1393, 1670, 1990, 2430, 2513.6, 3000, 3083.6, 3600, 3960 };
+            foreach (double frame in new[] { 1d / 60, .317, 100d })
+            {
+                var game = Start(TracksV4.Challenge(), MotionMode.GravityAirFlip);
+                bool inspected = false;
+                foreach (double x in route)
+                {
+                    if (!inspected && x > 2680)
+                    {
+                        MoveToTrial(game, 2680, frame); var p = game.Players[0];
+                        Check(p.Collisions == 1 && p.LastHit.Id == "v4-return-ceiling" && p.CompletedRecoveries == 1,
+                            "authored challenge hits the linked stone and serves recovery before contact");
+                        Check(p.CollectedRiskIds.Contains("v4-linked-after") && !p.SuccessfulRiskIds.Contains("v4-linked-after")
+                            && !p.FailedRiskIds.Contains("v4-linked-after") && p.Flipping,
+                            "authored post-hit ring is collected and waits for the actual return");
+                        Near(p.LastHit.At, 2426d / 220 - .6, "browser route exact collision timestamp");
+                        inspected = true;
+                    }
+                    MoveToTrial(game, x, frame); Tap(game);
+                }
+                Finish(game, frame);
+                foreach (var p in game.Players)
+                {
+                    Check(p.BoostsEarned == 4 && p.CompletedBoosts == 4 && p.SlowsEarned == 0 && p.Collisions == 1,
+                        "authored recovery route gets all four rings, no trap and only the intended hit");
+                    Check(p.SuccessfulRiskIds.Contains("v4-linked-after") && p.FailedRiskIds.Count == 0
+                        && p.ActiveEffect == null && p.PendingEffects.Count == 0, "authored route serves every reward once");
+                    Near(p.FinishTime.Value, 19.3, "authored hit plus four rewards actual finish");
+                }
+                Near(game.Elapsed, 19.3, "authored actual race clock");
+                Check(Equals(game.Winner, "tie"), "authored recovery route exact symmetric tie");
+            }
         }
     }
 }

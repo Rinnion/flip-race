@@ -1,0 +1,153 @@
+using System;
+using FlipRace.Core;
+public static class V4Independent
+{
+ static int n;
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool ok,string m){n++;if(!ok)throw new Exception("Check "+n+" "+m);}
+ static void N(double a,double b,double e,string m){C(!double.IsNaN(a)&&Math.Abs(a-b)<=e,m+" expected="+b.ToString("R")+" actual="+a.ToString("R"));}
+ static GameState G(MotionMode mode=MotionMode.Gravity,Track track=null)
+ {var g=RaceSimulation.CreateTrial(track??new Track(220000,Array.Empty<Obstacle>()),mode);g.Phase="racing";return g;}
+ static void M(GameState g,double t,double step){int guard=0;while(t>0){double s=Math.Min(t,step);RaceSimulation.Advance(g,s);t-=s;if(++guard>100000)throw new Exception("Guard");}}
+ static double D(double t,double dx,double dy,double vx,double vy,double a,double r){return Math.Pow(dx+vx*t,2)+Math.Pow(dy+vy*t+a*t*t/2,2)-r*r;}
+ static double Cross(double lo,double hi,double dx,double dy,double vx,double vy,double a,double r)
+ {for(int i=0;i<100;i++){double m=(lo+hi)/2;if(D(m,dx,dy,vx,vy,a,r)>0)lo=m;else hi=m;}return(lo+hi)/2;}
+ static void G1()
+ {
+  foreach(double dt in Steps)foreach(int side in new[]{0,1})foreach(double t in new[]{.0001,.1,.2,.4,.79999,.8,.80001,2d})
+  {
+   var g=G();var p=g.Players[0];p.Y=side;p.Gravity=side==1?1:-1;C(RaceSimulation.Press(g,0),"first");
+   M(g,t,dt);double a=side==1?-662.5:662.5,s=Math.Min(t,.8);
+   N(RaceSimulation.GetPlayerCenterY(p),14+212*side+a*s*s/2,1e-8,"g1 y");
+   N(p.VerticalSpeed,t<.8?a*t:0,1e-8,"g1 vy");N(p.Distance,220*t,1e-8,"g1 x");
+   C(p.Flipping==(t<.8),"g1 landed");C(p.Y>=-1e-12&&p.Y<=1+1e-12,"g1 bounds");
+  }
+  var single=G();RaceSimulation.Press(single,0);M(single,.2,.2);double speed=single.Players[0].VerticalSpeed;
+  C(!RaceSimulation.Press(single,0),"B rejects second");N(single.Players[0].VerticalSpeed,speed,0,"B rejection inert");
+  double r1,r2;C(ContinuousMotion.QuadraticRoots(1,1e8,1,out r1,out r2)==2,"stable quadratic");
+  N(r1,-1e8,1e-7,"large root");N(r2,-1e-8,1e-20,"small root");
+  N(ContinuousMotion.FirstBandContact(1,-2,2,0,0,0,2),1,1e-12,"band tangent");
+  C(double.IsPositiveInfinity(ContinuousMotion.FirstBandContact(1,-2,2,0,0,1.1,2)),"past band");
+  N(ContinuousMotion.FirstCircleContact(-100,0,220,0,0,20,1),80d/220,1e-10,"a0 circle");
+  N(ContinuousMotion.FirstCircleContact(-100,0,220,0,1e-9,20,1),80d/220,1e-10,"tiny a");
+  N(ContinuousMotion.FirstCircleContact(-10,20,100,0,0,20,.2),.1,1e-10,"linear tangent");
+  N(ContinuousMotion.FirstCircleContact(0,.5,0,-2,2,.25,2),1-Math.Sqrt(.75),1e-10,"four roots first");
+  N(ContinuousMotion.FirstCircleContact(0,-.34,0,-.8,2,.25,1.4),.9,1e-10,"second contact interval");
+  foreach(double vx in new[]{110d,220,330})foreach(double a in new[]{-662.5,662.5})foreach(double tau in new[]{.01,.1,.3,.49})
+  {
+   double vat=a*tau,norm=Math.Sqrt(vx*vx+vat*vat),sg=Math.Sign(a),nx=sg*vat/norm,ny=-sg*vx/norm;
+   double dx=-vx*tau-20*nx,dy=-a*tau*tau/2-20*ny;
+   N(ContinuousMotion.FirstCircleContact(dx,dy,vx,0,a,20,tau+.05),tau,2e-8,"parabolic tangent");
+   N(ContinuousMotion.FirstCircleContact(dx,dy,vx,0,a,20,tau),tau,2e-8,"endpoint tangent");
+   C(double.IsPositiveInfinity(ContinuousMotion.FirstCircleContact(dx,dy,vx,0,a,20,tau-1e-5)),"outside horizon");
+   C(double.IsPositiveInfinity(ContinuousMotion.FirstCircleContact(dx-.0001*nx,dy-.0001*ny,vx,0,a,20,tau+.05)),"near miss");
+   dx+=.0001*nx;dy+=.0001*ny;
+   N(ContinuousMotion.FirstCircleContact(dx,dy,vx,0,a,20,tau+.05),Cross(0,tau,dx,dy,vx,0,a,20),1e-8,"near hit bracket oracle");
+  }
+  foreach(double dt in Steps)
+  {
+   var track=new Track(2200,Array.Empty<Obstacle>()){RiskZones=new[]{new RiskZone{Id="free",X=110,Y=143.1875,Radius=6,FreeReward=true}}};
+   var g=G(MotionMode.Gravity,track);RaceSimulation.Press(g,0);RaceSimulation.Press(g,1);
+   double contact=Cross(0,.5,-110,226-143.1875,220,0,-662.5,20);
+   M(g,contact-1e-6,dt);C(g.Players[0].BoostsEarned==0,"free not early");
+   M(g,2e-6,dt);C(g.Players[0].BoostsEarned==1,"free immediate");N(g.Players[0].LastSuccess.At,contact,1e-8,"contact time");
+   M(g,10,dt);foreach(var p in g.Players){N(p.FinishTime.Value,9.7,1e-12,"physical finish");C(p.CompletedBoosts==1&&p.ActiveEffect==null&&p.PendingEffects.Count==0,"full effect");}
+   C(g.Winner is string,"exact same tie");
+   foreach(bool free in new[]{false,true})
+   {
+    var t=new Track(2200,new[]{new Obstacle{Id="rock",X=0,Width=60,Height=48,Kind="floor"}}){
+     RiskZones=new[]{new RiskZone{Id="same",ObstacleId="rock",X=0,Y=226,Radius=6,ClearX=75,FreeReward=free}}};
+    var clash=G(MotionMode.Gravity,t);M(clash,.01,dt);var p=clash.Players[0];
+    C(p.Collisions==1,"clash hit");C(p.BoostsEarned==(free?1:0),"free independent risk cancelled");
+    if(free)N(p.ActiveEffect.Remaining,.6,0,"free frozen in recovery");else C(!p.FailedRiskIds.Contains("same")&&p.CollectedRiskIds.Contains("same"),"untouched simultaneous linked contact remains pending");
+   }
+   foreach(string signs in new[]{"++","--","+-","-+","++--+-"})
+   {
+    var zones=new RiskZone[signs.Length];for(int i=0;i<zones.Length;i++)zones[i]=new RiskZone{Id="f"+i,X=100+i*.1,Y=226,FreeReward=true,Kind=signs[i]=='-'?"negative":"positive"};
+    var q=G(MotionMode.Gravity,new Track(2200,Array.Empty<Obstacle>()){RiskZones=zones});M(q,100,dt);var p=q.Players[0];int net=0;foreach(char c in signs)net+=c=='-'?1:-1;
+    N(p.FinishTime.Value,10+net*.3,1e-12,"FIFO finish");C(p.ActiveEffect==null&&p.PendingEffects.Count==0,"FIFO empty");C(p.CompletedBoosts+p.CompletedSlows==signs.Length,"FIFO served");
+   }
+   var hit=G(MotionMode.Gravity,new Track(22000,new[]{new Obstacle{Id="rock",X=80,Width=64,Height=48,Kind="floor"}}));
+   RaceSimulation.Press(hit,0);M(hit,.31,dt);var h=hit.Players[0];
+   C(h.Collisions==1,"swept collision");N(h.LastHit.At,.3,1e-10,"swept time");N(h.Distance,66,1e-8,"stopped x");N(RaceSimulation.GetPlayerCenterY(h),196.1875,1e-8,"stopped y");N(h.VerticalSpeed,-198.75,1e-8,"frozen velocity");
+   double y=h.Y,v=h.VerticalSpeed,x=h.Distance;int gravity=h.Gravity;M(hit,.3,dt);
+   N(h.Y,y,0,"freeze y");N(h.VerticalSpeed,v,0,"freeze v");N(h.Distance,x,0,"freeze x");C(h.Gravity==gravity,"freeze gravity");
+   C(!RaceSimulation.Press(hit,0),"recovery input ignored");M(hit,.7,dt);N(h.Y,0,1e-9,"post recovery landing");C(!h.Flipping,"post recovery complete");
+  }
+ }
+ static void Air()
+ {
+  double threshold=Math.Sqrt(212/662.5);
+  foreach(double step in Steps)foreach(int side in new[]{0,1})foreach(double tau in new[]{.05,.2,.4,.55,threshold,.6,.75})
+  {
+   double sign=side==1?-1:1;
+   bool wall=662.5*tau*tau>212+1e-10;
+   double touch=wall?2*tau-Math.Sqrt(2*tau*tau-424/662.5):double.PositiveInfinity;
+   double arrival=wall?touch+.8:tau*(2+Math.Sqrt(2));
+   foreach(double time in new[]{tau+1e-7,Math.Min(2*tau,arrival-1e-5),Math.Max(tau+1e-4,.8),arrival-1e-5,arrival,arrival+.01})
+   {
+    var g=G(MotionMode.GravityAirFlip);var p=g.Players[0];p.Y=side;p.Gravity=side==1?1:-1;
+    C(RaceSimulation.Press(g,0),"air start");M(g,tau,step);double speed=p.VerticalSpeed,clock=p.FlipElapsed;int grav=p.Gravity;
+    C(p.AirFlipAvailable,"charge before repeat");C(RaceSimulation.Press(g,0),"repeat accepted");N(p.VerticalSpeed,speed,0,"momentum preserved");N(p.FlipElapsed,clock,0,"clock preserved");
+    C(p.Gravity==-grav&&!p.AirFlipAvailable,"gravity toggled charge spent");C(!RaceSimulation.Press(g,0),"third rejected");
+    M(g,time-tau,step);double expectedY,expectedV;
+    if(time>=arrival-1e-12){expectedY=14+212*side;expectedV=0;}
+    else if(wall&&time>=touch){double s=time-touch;expectedY=14+212*(1-side)-sign*662.5*s*s/2;expectedV=-sign*662.5*s;}
+    else {double s=time-tau;expectedY=14+212*side+sign*662.5*(tau*tau/2+tau*s-s*s/2);expectedV=sign*662.5*(tau-s);}
+    N(RaceSimulation.GetPlayerCenterY(p),expectedY,tau==threshold?1e-4:2e-7,"air analytic y");N(p.VerticalSpeed,expectedV,tau==threshold?1e-4:2e-7,"air analytic vy step="+step+" side="+side+" tau="+tau.ToString("R")+" time="+time.ToString("R")+" arrival="+arrival.ToString("R")+" wall="+wall);N(p.Distance,220*time,1e-7,"air x");
+    C(p.Flipping==(time<arrival-1e-12),"landing state");C(p.AirFlipAvailable==(time>=arrival-1e-12),"only proper landing recharge");
+    C(p.Y>=-1e-10&&p.Y<=1+1e-10,"air corridor bounds");
+   }
+   if(wall)
+   {
+    var g=G(MotionMode.GravityAirFlip);var p=g.Players[0];p.Y=side;p.Gravity=side==1?1:-1;RaceSimulation.Press(g,0);M(g,tau,step);RaceSimulation.Press(g,0);M(g,touch-tau,step);
+    N(p.Y,1-side,1e-8,"wrong surface");N(p.VerticalSpeed,0,1e-8,"wrong surface stops velocity");C(p.Flipping&&!p.AirFlipAvailable,"wrong surface no recharge");C(!RaceSimulation.Press(g,0),"wrong surface third still rejected");
+   }
+  }
+  foreach(double dt in Steps)
+  {
+   var g=G(MotionMode.GravityAirFlip);RaceSimulation.Press(g,0);M(g,.4,dt);RaceSimulation.Press(g,0);var p=g.Players[0];
+   g.Track.Obstacles=new[]{new Obstacle{Id="impact",Kind="floor",X=p.Distance,Width=64,Height=240}};
+   g.Track.RiskZones=new[]{new RiskZone{Id="instant",X=p.Distance,Y=RaceSimulation.GetPlayerCenterY(p),FreeReward=true}};
+   double vy=p.VerticalSpeed,y=p.Y,x=p.Distance;int gravity=p.Gravity;
+   M(g,.1,dt);C(p.Collisions==1&&p.BoostsEarned==1,"air impact and free reward");C(!p.AirFlipAvailable,"impact/ring no recharge");
+   N(p.VerticalSpeed,vy,0,"impact frozen vy");N(p.Y,y,0,"impact frozen y");N(p.Distance,x,0,"impact frozen x");C(p.Gravity==gravity,"impact frozen gravity");N(p.ActiveEffect.Remaining,.6,0,"impact effect frozen");
+   RaceSimulation.Advance(g,0);RaceSimulation.Advance(g,double.NaN);RaceSimulation.Advance(g,double.PositiveInfinity);N(p.Y,y,0,"invalid dt inert");C(!RaceSimulation.Press(g,0),"impact repeated input ignored");
+   g.Phase="finished";g.Players[0].CharacterIndex=3;g.Players[1].CharacterIndex=3;RaceSimulation.Press(g,0);C(g.Phase=="finished","rematch waits");RaceSimulation.Press(g,1);
+   C(g.Motion==MotionMode.GravityAirFlip&&g.Phase=="countdown","rematch mode kept");
+   foreach(var reset in g.Players){C(reset.AirFlipAvailable&&reset.VerticalSpeed==0&&reset.Gravity==1&&!reset.Flipping,"motion reset");C(reset.ActiveEffect==null&&reset.PendingEffects.Count==0&&reset.BoostsEarned==0,"effects reset");C(reset.CharacterIndex==3,"heroes kept");}
+  }
+ }
+static void AfterRing()
+ {
+  foreach(double dt in Steps)foreach(double tau in new[]{.2,.4,.6})
+  {
+   double ringY=tau==.2?212:tau==.4?126:70;
+   var rock=new Obstacle{Id="tail",X=100,Width=40,Height=10,Kind="floor"};
+   var ring=new RiskZone{Id="after",X=150,Y=ringY,Radius=6,ObstacleId="tail",Placement="after",ClearX=140};
+   var g=G(MotionMode.GravityAirFlip,new Track(2200,new[]{rock}){RiskZones=new[]{ring}});
+   RaceSimulation.Press(g,0); M(g,tau,dt); RaceSimulation.Press(g,0);
+   double checkpoint=tau==.2?.61:tau==.4?.7:1;
+   M(g,checkpoint-tau,dt);var p=g.Players[0];
+   C(p.CollectedRiskIds.Contains("after"),"after actually collected "+tau);
+   C(p.BoostsEarned==0&&p.Flipping,"after remains provisional "+tau);
+   if(tau==.6)C(!p.AirFlipAvailable&&p.Gravity==1,"wrong contact did not confirm or recharge");
+   if(tau==.2)
+   {
+    M(g,.15,dt);C(p.Collisions==1&&p.FailedRiskIds.Contains("after"),"later rear collision cancels after");
+    N(p.LastHit.At,2*tau+Math.Sqrt(2*tau*tau-20/662.5),1e-8,"after collision oracle");
+    C(p.BoostsEarned==0&&p.PendingEffects.Count==0,"cancel adds no reward");
+   }
+   else
+   {
+    double arrival=tau==.4?tau*(2+Math.Sqrt(2)):2*tau-Math.Sqrt(2*tau*tau-424/662.5)+.8;
+    M(g,arrival-checkpoint-1e-6,dt);C(p.BoostsEarned==0,"after no reward just before landing");
+    M(g,2e-6,dt);C(p.BoostsEarned==1&&p.AirFlipAvailable&&!p.Flipping,"after landing commits reward");
+    N(p.LastSuccess.At,arrival,1e-8,"after actual landing confirmation");
+   }
+   M(g,100,dt);N(p.FinishTime.Value,tau==.2?10.5:9.7,1e-12,"after physical finish");
+   C(p.ActiveEffect==null&&p.PendingEffects.Count==0,"after effects fully served");
+  }
+ }
+ public static string Run(){n=0;G1();int baseChecks=n;Air();int airChecks=n-baseChecks;AfterRing();return "PASS "+n+" checks: G1="+baseChecks+", G2="+airChecks+", after-ring="+(n-baseChecks-airChecks)+". Independent analytic trajectories, continuous roots, free/risk contact, FIFO/freeze/finish, one inertial repeat and recharge.";}
+}

@@ -7,6 +7,11 @@ public static class Program
     {
         try
         {
+            if (args.Length == 1 && args[0] == "--v4-post-hit-ring")
+            {
+                Console.WriteLine(EngineV4Tests.RunPostHitRingRegression());
+                return 0;
+            }
             Console.WriteLine(EngineParityTests.RunAll());
             Console.WriteLine(EngineV2Tests.RunAll());
             Console.WriteLine(EngineV3Tests.RunAll());

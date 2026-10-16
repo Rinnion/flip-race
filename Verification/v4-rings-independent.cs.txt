@@ -1,0 +1,65 @@
+using System;
+using FlipRace.Core;
+public static class V4RingsIndependent
+{
+ static int n,games;
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool b,string s){n++;if(!b)throw new Exception(s);}
+ static void N(double x,double y,string s){C(Math.Abs(x-y)<1e-8,s+" "+x+" != "+y);}
+ static GameState Start(Track track,MotionMode mode)
+ {var g=RaceSimulation.CreateTrial(track,mode);RaceSimulation.Press(g,0);RaceSimulation.Press(g,1);RaceSimulation.Advance(g,3);games++;return g;}
+ static void M(GameState g,double dt,double step){while(dt>1e-14){double s=Math.Min(dt,step);RaceSimulation.Advance(g,s);dt-=s;}}
+ static void Both(GameState g){C(RaceSimulation.Press(g,0),"press0");C(RaceSimulation.Press(g,1),"press1");}
+ static Obstacle Rock(){return new Obstacle{Id="rock",Kind="floor",X=300,Width=64,Height=48};}
+ static RiskZone Ring(string id,double x,double y,bool after=false)
+ {return new RiskZone{Id=id,ObstacleId="rock",X=x,Y=y,Radius=6,ClearX=379,Placement=after?"after":"before"};}
+ static void CheckFinish(GameState g,int id,int hits,int plus,int minus,double t)
+ {var p=g.Players[id];C(p.FinishTime.HasValue,"physical arrival");N(p.FinishTime.Value,t,"physical finish");C(p.Collisions==hits&&p.BoostsEarned==plus&&p.SlowsEarned==minus,"counts");C(p.CompletedBoosts==plus&&p.CompletedSlows==minus&&p.ActiveEffect==null&&p.PendingEffects.Count==0,"all FIFO served");}
+ static void Boundary()
+ {
+  foreach(MotionMode mode in Enum.GetValues(typeof(MotionMode)))foreach(bool after in new[]{false,true})foreach(double offset in new[]{-.0022,0,.0022})foreach(double step in Steps)
+  {
+   var g=Start(new Track(2200,new[]{Rock()}){RiskZones=new[]{Ring("linked",306+offset,226,after)}},mode);
+   C(RaceSimulation.Press(g,1),"opponent departs");M(g,286d/220,step);var p=g.Players[0];
+   C(p.Collisions==1,"one impact at endpoint");C(p.FailedRiskIds.Contains("linked")==(offset<0),"pre-event pending decides cancellation");
+   M(g,100,step);CheckFinish(g,0,1,offset<0?0:1,0,offset<0?10.5:10.2);CheckFinish(g,1,0,0,0,10);
+   C(Equals(g.Winner,1),"history independent winner");C(g.Players[1].CollectedRiskIds.Count==0&&g.Players[1].FailedRiskIds.Count==0,"other player's missed ring unchanged");
+  }
+ }
+ static void RearEdgeClearWindow()
+ {
+  foreach(MotionMode mode in Enum.GetValues(typeof(MotionMode)))foreach(double step in Steps)
+  {
+   // Actual surface departure, not injected player history/state.
+   double t=mode==MotionMode.Linear?164d/265:Math.Sqrt(328d/662.5);
+   double departure=378-220*t,u=(286-departure)/220;
+   double ringY=14+(mode==MotionMode.Linear?265*u:331.25*u*u);
+   var ring=Ring("rear",286,ringY);ring.ClearX=0; // actual obstacle bound supplies 378+1e-7
+   var g=Start(new Track(2200,new[]{Rock()}){RiskZones=new[]{ring}},mode);
+   Both(g);M(g,departure/220,step);C(!g.Players[0].Flipping&&g.Players[0].Y==0,"naturally landed ceiling");
+   Both(g);M(g,(340-departure)/220,step);var p=g.Players[0];
+   C(p.CollectedRiskIds.Contains("rear")&&p.BoostsEarned==0&&p.Collisions==0,"pending before rear-edge impact");
+   M(g,38d/220,step);C(p.Collisions==1&&p.FailedRiskIds.Contains("rear")&&p.BoostsEarned==0,"impact wins epsilon-close clear");
+   N(p.Distance,378,"rear horizontal boundary");N(RaceSimulation.GetPlayerCenterY(p),178,"rear vertical boundary");
+   M(g,100,step);CheckFinish(g,0,1,0,0,10.5);CheckFinish(g,1,1,0,0,10.5);C(Equals(g.Winner,"tie"),"rear-edge tie");
+  }
+ }
+ static void MixedFifo()
+ {
+  foreach(double step in Steps)for(int rotation=0;rotation<4;rotation++)
+  {
+   var zones=new[]{Ring("linked-before",306,226),Ring("free",306,226),Ring("negative",306,226),Ring("linked-after",306,226,true)};
+   zones[1].FreeReward=true;zones[2].Kind="negative";
+   var rotated=new RiskZone[4];for(int i=0;i<4;i++)rotated[i]=zones[(i+rotation)%4];
+   string first=null,second=null;foreach(var z in rotated)if(z.FreeReward||z.IsNegative){if(first==null)first=z.Id;else second=z.Id;}
+   var g=Start(new Track(2200,new[]{Rock()}){RiskZones=rotated},MotionMode.GravityAirFlip);
+   M(g,286d/220+.500001,step);var p=g.Players[0];
+   C(p.Collisions==1&&p.FailedRiskIds.Count==0,"overlapping untouched rings not cancelled");
+   C(p.ActiveEffect!=null&&p.ActiveEffect.RingId==first,"immediate effects retain authored order");
+   C(p.PendingEffects.Count==1&&p.PendingEffects.Peek().RingId==second,"second immediate effect queued");
+   C(p.BoostsEarned==1&&p.SlowsEarned==1,"linked effects not prematurely confirmed");
+   M(g,100,step);CheckFinish(g,0,1,3,1,9.9);CheckFinish(g,1,1,3,1,9.9);C(Equals(g.Winner,"tie"),"mixed exact tie");
+  }
+ }
+ public static string Run(){n=games=0;Boundary();RearEdgeClearWindow();MixedFifo();return "PASS "+n+" independent rings assertions / "+games+" games: contact ordering, actual rear-edge collision within clear tolerance, per-player independence, simultaneous free/negative/linked FIFO permutations.";}
+}

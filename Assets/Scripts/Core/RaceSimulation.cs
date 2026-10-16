@@ -664,8 +664,11 @@ namespace FlipRace.Core
                     player.HitObstacleIds.Add(collision.Obstacle.Id);
                     player.Collisions++;
                     player.Recovering = RaceConfig.RecoveryDuration;
+                    // Cancel only contacts that were already pending before this
+                    // impact. An untouched ring can still be earned after recovery.
                     foreach (var zone in track.RiskZones)
                         if (!zone.IsNegative && !zone.FreeReward && zone.ObstacleId == collision.Obstacle.Id
+                            && player.CollectedRiskIds.Contains(zone.Id)
                             && !player.SuccessfulRiskIds.Contains(zone.Id)) player.FailedRiskIds.Add(zone.Id);
                     player.LastHit = new HitInfo
                     {
@@ -686,8 +689,10 @@ namespace FlipRace.Core
                         player.LastSlow = new HitInfo { Id = risk.Zone.Id, Message = "Замедление +0,3 сек", At = elapsed + dt - remaining };
                     }
                     else if (!risk.Clear && !risk.Zone.FreeReward) player.CollectedRiskIds.Add(risk.Zone.Id);
-                    else if (risk.Zone.FreeReward || !player.HitObstacleIds.Contains(risk.Zone.ObstacleId))
+                    else
                     {
+                        // A historical hit only deduplicates obstacle penalties.
+                        // Pending cancellation above captures the relevant order.
                         player.CollectedRiskIds.Add(risk.Zone.Id);
                         player.SuccessfulRiskIds.Add(risk.Zone.Id);
                         player.BoostsEarned++;

@@ -176,7 +176,7 @@ namespace FlipRace.Presentation
                 if (ringX < -25 || ringX > w + 25 || player.SuccessfulRiskIds.Contains(zone.Id)
                     || player.NegativeRiskIds.Contains(zone.Id)) continue;
                 bool pending = player.CollectedRiskIds.Contains(zone.Id);
-                bool failed = player.FailedRiskIds.Contains(zone.Id) || (player.Distance > zone.X + zone.Radius + RaceConfig.PlayerRadius && !pending);
+                bool failed = player.FailedRiskIds.Contains(zone.Id);
                 float ringY = top + (float)zone.Y * sy;
                 float ringRadius = Mathf.Max(6.5f, (float)(zone.Radius + 4) * sy);
                 Color ringInk = failed ? Alpha(Hex(0xa2a68e), .35f)
