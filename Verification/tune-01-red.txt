@@ -1,0 +1,13 @@
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.
+PASS: V4-01/02 18 scenarios / 1770 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.
+System.Exception: TUNE FAIL DepartureProfiles: profile position after .1 seconds: 222,6875 vs 221
+ ---> System.Exception: profile position after .1 seconds: 222,6875 vs 221
+   at FlipRace.Editor.EngineTuneTests.Check(Boolean value, String message) in F:\Home\Game\flip-race-unity\Assets\Editor\EngineTuneTests.cs:line 18
+   at FlipRace.Editor.EngineTuneTests.Near(Double actual, Double expected, String message, Double tolerance) in F:\Home\Game\flip-race-unity\Assets\Editor\EngineTuneTests.cs:line 20
+   at FlipRace.Editor.EngineTuneTests.DepartureProfiles() in F:\Home\Game\flip-race-unity\Assets\Editor\EngineTuneTests.cs:line 43
+   at FlipRace.Editor.EngineTuneTests.RunAll() in F:\Home\Game\flip-race-unity\Assets\Editor\EngineTuneTests.cs:line 14
+   --- End of inner exception stack trace ---
+   at FlipRace.Editor.EngineTuneTests.RunAll() in F:\Home\Game\flip-race-unity\Assets\Editor\EngineTuneTests.cs:line 15
+   at Program.Main(String[] args) in F:\Home\Game\flip-race-unity\Tools\ParityRunner\Program.cs:line 19

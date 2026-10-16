@@ -102,7 +102,9 @@ namespace FlipRace.Presentation
             float stride=motionTime*25;
             float flight=Mathf.Clamp01((float)(player.FlipElapsed/RaceConfig.FlipDuration));
             if (game.Motion != MotionMode.Linear)
-                flight = Mathf.Clamp01((float)(Math.Abs(player.VerticalSpeed) / (RaceConfig.GravityAcceleration * RaceConfig.FlipDuration)));
+                flight = Mathf.Clamp01((float)(Math.Abs(player.VerticalSpeed) / Math.Sqrt(
+                    game.Profile.DepartureImpulse * game.Profile.DepartureImpulse
+                    + 2 * game.Profile.GravityAcceleration * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius))));
             float rotation = onCeiling ? 180 : 0;
             if (player.Flipping) rotation = (float)(1 - player.Y) * 180;
             if (recovering) rotation += (float)player.RecoveryElapsed * 14 * Mathf.Rad2Deg;
@@ -179,6 +181,22 @@ namespace FlipRace.Presentation
                 bool failed = player.FailedRiskIds.Contains(zone.Id);
                 float ringY = top + (float)zone.Y * sy;
                 float ringRadius = Mathf.Max(6.5f, (float)(zone.Radius + 4) * sy);
+                if (zone.IsInstant)
+                {
+                    Color instantInk = Hex(0x398d80);
+                    Ellipse(ringX, ringY, ringRadius + 5 + Mathf.Sin(time * 4) * 1.5f,
+                        ringRadius + 5, Alpha(Hex(0x9ddccb), .32f));
+                    for (int i = 0; i < 6; i++)
+                    {
+                        float a = i * Mathf.PI / 3, b = (i + 1) * Mathf.PI / 3;
+                        Line(ringX + Mathf.Cos(a) * ringRadius, ringY + Mathf.Sin(a) * ringRadius,
+                            ringX + Mathf.Cos(b) * ringRadius, ringY + Mathf.Sin(b) * ringRadius, instantInk, 1.8f);
+                    }
+                    Line(ringX + ringRadius * .2f, ringY - ringRadius * .58f, ringX - ringRadius * .3f, ringY + ringRadius * .06f, instantInk, 2);
+                    Line(ringX - ringRadius * .3f, ringY + ringRadius * .06f, ringX + ringRadius * .3f, ringY - ringRadius * .06f, instantInk, 2);
+                    Line(ringX + ringRadius * .3f, ringY - ringRadius * .06f, ringX - ringRadius * .2f, ringY + ringRadius * .58f, instantInk, 2);
+                    continue;
+                }
                 Color ringInk = failed ? Alpha(Hex(0xa2a68e), .35f)
                     : zone.IsNegative ? Hex(0x99587f) : pending ? Hex(0xd9b56f) : Hex(0xb58a35);
                 Ellipse(ringX, ringY, ringRadius + 5, ringRadius + 5,
@@ -209,13 +227,15 @@ namespace FlipRace.Presentation
 
             if (player.BoostRemaining > 0)
             {
-                Ellipse(anchor, y, radius * 2, radius * 1.8f, Alpha(Hex(0xffd779), .27f));
+                bool instant = player.LastInstant != null && game.Elapsed - player.LastInstant.At < RaceConfig.BoostDuration;
+                Color trail = instant ? Hex(0x398d80) : Hex(0xd6ab5b);
+                Ellipse(anchor, y, radius * 2, radius * 1.8f, Alpha(instant ? Hex(0x9ddccb) : Hex(0xffd779), .27f));
                 for (int i = 0; i < 4; i++)
                 {
                     float drift = (time * 105 + i * 19) % 72;
                     float lineY = y + (i - 1.5f) * radius * .58f;
                     Line(anchor - radius - drift, lineY, anchor - radius - drift - 17, lineY,
-                        Alpha(Hex(0xd6ab5b), (1 - drift / 72) * .65f), 1.5f);
+                        Alpha(trail, (1 - drift / 72) * .65f), 1.5f);
                 }
             }
             if (player.SlowRemaining > 0)
@@ -278,6 +298,18 @@ namespace FlipRace.Presentation
             float x = geometry.Anchor;
             float y = geometry.Top + (float)RaceSimulation.GetPlayerCenterY(player) * geometry.ScaleY;
             float radius = geometry.Radius;
+            if (player.LastInstant != null && game.Elapsed - player.LastInstant.At < .45)
+            {
+                float progress = (float)((game.Elapsed - player.LastInstant.At) / .45);
+                float burst = radius * (1.5f + progress * 2.2f);
+                for (int i = 0; i < 8; i++)
+                {
+                    float a = i * Mathf.PI / 4;
+                    Line(x + Mathf.Cos(a) * burst, y + Mathf.Sin(a) * burst,
+                        x + Mathf.Cos(a) * (burst + 5), y + Mathf.Sin(a) * (burst + 5),
+                        Alpha(Hex(0x398d80), 1 - progress), 2);
+                }
+            }
             if (player.Recovering > 0)
                 for (int i = 0; i < 3; i++)
                 {

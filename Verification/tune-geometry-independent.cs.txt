@@ -1,0 +1,71 @@
+using System;
+using System.Text;
+using FlipRace.Core;
+public static class TuneGeometryIndependent
+{
+ static int checks,games;static double minFinalTail=double.PositiveInfinity;
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool ok,string text){checks++;if(!ok)throw new Exception(text);}
+ static void N(double a,double b,string text,double tol=2e-7){C(Math.Abs(a-b)<=tol,text+": "+a.ToString("R")+" != "+b.ToString("R"));}
+ static string Geometry(Track t){
+  var b=new StringBuilder();b.Append(t.Length.ToString("R"));
+  foreach(var o in t.Obstacles)b.Append("|"+o.Id+","+o.Kind+","+o.X+","+o.Width+","+o.Height);
+  foreach(var z in t.RiskZones)b.Append("|"+z.Id+","+z.Kind+","+z.Placement+","+z.FreeReward+","+z.ObstacleId+","+z.X+","+z.Y+","+z.Radius+","+z.ClearX);
+  return b.ToString();
+ }
+ static GameState RunRoute(MotionProfile profile,double[][] route,double step,int upper=0,int lower=1){
+  var track=TracksTune.Challenge(profile);var game=RaceSimulation.CreateTrial(track,MotionMode.GravityAirFlip,profile);
+  RaceSimulation.SetCharacter(game,0,upper);RaceSimulation.SetCharacter(game,1,lower);
+  C(RaceSimulation.Press(game,0),"upper ready");C(game.Phase=="ready","wait both");C(RaceSimulation.Press(game,1),"lower ready");RaceSimulation.Advance(game,3);
+  int[] next={0,0},air={0,0};int guard=0;
+  while(game.Phase=="racing"){
+   if(++guard>50000)throw new Exception("stalled route");
+   double dt=step;
+   for(int i=0;i<2;i++){
+    var p=game.Players[i];if(next[i]>=route[i].Length)continue;
+    double left=route[i][next[i]]-p.Distance;
+    if(left<=1e-7){N(left,0,"conservative input bound");if(p.Flipping)air[i]++;C(RaceSimulation.Press(game,i),"input accepted "+profile.Id+" x"+route[i][next[i]]);next[i]++;if(next[i]>=route[i].Length)continue;left=route[i][next[i]]-p.Distance;}
+    // Independent of production event prediction: never move beyond the input
+    // even when an unknown new ring changes speed inside this step.
+    dt=Math.Min(dt,left/330d);
+   }
+   if(dt<=0)throw new Exception("nonpositive route clock");RaceSimulation.Advance(game,dt);
+  }
+  for(int i=0;i<2;i++){
+   var p=game.Players[i];C(next[i]==route[i].Length,"all inputs delivered");C(p.FinishTime.HasValue,"physical finish");N(p.Distance,track.Length,"actual endpoint");C(p.ActiveEffect==null&&p.PendingEffects.Count==0,"no effect truncated");C(p.CompletedBoosts==p.BoostsEarned&&p.CompletedSlows==p.SlowsEarned,"all earned effects completed");
+   C(p.CharacterIndex==(i==0?upper:lower),"hero unchanged");
+   if(route[i].Length==track.SafeRoute.Length)C(air[i]==0,"safe needs no air repeats");else C(air[i]==2,"ideal/negative uses two repeats");
+   if(p.LastInstant!=null){double tail=p.FinishTime.Value-p.LastInstant.At;minFinalTail=Math.Min(minFinalTail,tail);C(p.LastInstant.Id=="tune-instant-finish","last instant before finish");C(tail>=.6-1e-8,"last pulse fully served before real finish");}
+  }
+  games++;return game;
+ }
+ static void Outcome(GameState g,int i,int plus,int minus,int instant,double t){
+  var p=g.Players[i];N(p.FinishTime.Value,t,"route finish");C(p.Collisions==0,"clean path "+string.Join(",",p.HitObstacleIds));C(p.BoostsEarned==plus&&p.SlowsEarned==minus&&p.InstantBoostsEarned==instant,"all expected rewards");
+ }
+ static void Same(GameState g){C(Equals(g.Winner,"tie")&&g.Players[0].FinishTime.Value==g.Players[1].FinishTime.Value,"exact fair tie");N(g.Elapsed,g.Players[0].FinishTime.Value,"physical clock");}
+ public static string Run(){
+  checks=games=0;minFinalTail=double.PositiveInfinity;string geometry=Geometry(TracksTune.Challenge());
+  foreach(var profile in MotionProfiles.All){
+   var t=TracksTune.Challenge(profile);C(Geometry(t)==geometry,"profile geometry identical");
+   C(t.Length==4620&&t.PositiveRingCount==6&&t.RiskZones.Length==7,"prepared counts");int instant=0;foreach(var z in t.RiskZones)if(z.IsInstant)instant++;C(instant==3,"three instant rewards");
+   var safe=t.SafeRoute;var ideal=t.RiskRoute;var negative=TracksTune.NegativeRoute(profile);
+   foreach(double step in Steps){
+    var a=RunRoute(profile,new[]{safe,safe},step);Outcome(a,0,0,0,0,21);Outcome(a,1,0,0,0,21);Same(a);
+    var b=RunRoute(profile,new[]{ideal,ideal},step);Outcome(b,0,6,0,3,19.2);Outcome(b,1,6,0,3,19.2);Same(b);
+    foreach(bool swap in new[]{false,true}){
+     int winner=swap?1:0;
+     var c=RunRoute(profile,swap?new[]{safe,ideal}:new[]{ideal,safe},step,3,3);Outcome(c,winner,6,0,3,19.2);Outcome(c,1-winner,0,0,0,21);C(Equals(c.Winner,winner),"actual faster ideal wins");N(c.Elapsed,21,"physical last arrival");
+     var d=RunRoute(profile,swap?new[]{negative,ideal}:new[]{ideal,negative},step,2,3);Outcome(d,winner,6,0,3,19.2);Outcome(d,1-winner,5,1,3,19.8);C(Equals(d.Winner,winner),"trap loses actual time");C(d.Players[1-winner].NegativeRiskIds.Contains("tune-return-trap"),"intentional trap reached");N(d.Elapsed,19.8,"trap physical last arrival");
+    }
+   }
+   for(int upper=0;upper<4;upper++)for(int lower=0;lower<4;lower++){
+    var g=RunRoute(profile,new[]{ideal,ideal},.317,upper,lower);Outcome(g,0,6,0,3,19.2);Outcome(g,1,6,0,3,19.2);Same(g);
+   }
+   var finish=Array.Find(t.RiskZones,z=>z.Id=="tune-instant-finish");double latest=finish.X+finish.Radius+RaceConfig.PlayerRadius;
+   C(t.Length-latest>330*.6,"full final boost even at latest horizontal contact");
+   var stone=Array.Find(t.Obstacles,o=>o.Id=="tune-return-ceiling");var minus=Array.Find(t.RiskZones,z=>z.IsNegative);var after=Array.Find(t.RiskZones,z=>z.Id=="tune-linked-after");
+   double span=Math.Max(minus.X+minus.Radius+14,after.X+after.Radius+14)-(stone.X-14);C(span<1080,"whole trap group fits minimum ahead");C(after.ClearX>stone.X+stone.Width+14,"linked clear beyond real obstacle");
+  }
+  return "PASS "+checks+" independent TUNE geometry assertions / "+games+" complete games. 4 identical geometries, safe21.0/0, ideal19.2/6+(3instant), trap19.8/5+1-, 0hits; 6dt, both assignments, 16hero pairs/profile, full effect tails. Minimum final pickup-to-finish time="+minFinalTail.ToString("R");
+ }
+}

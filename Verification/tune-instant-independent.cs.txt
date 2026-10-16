@@ -1,0 +1,85 @@
+using System;
+using FlipRace.Core;
+public static class TuneInstantIndependent
+{
+ static int n,games;
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool value,string message){n++;if(!value)throw new Exception(message);}
+ static void N(double actual,double expected,string message,double tol=2e-7){C(!double.IsNaN(actual)&&Math.Abs(actual-expected)<=tol,message+": "+actual.ToString("R")+" != "+expected.ToString("R"));}
+ static RiskZone R(string id,string kind,double x,double y=226){return new RiskZone{Id=id,Kind=kind,X=x,Y=y,Radius=6,FreeReward=kind=="positive"};}
+ static GameState G(MotionProfile profile,double length,RiskZone[] rings,Obstacle[] rocks=null){
+  var g=RaceSimulation.CreateTrial(new Track(length,rocks??Array.Empty<Obstacle>()){RiskZones=rings},MotionMode.GravityAirFlip,profile);
+  C(RaceSimulation.Press(g,0)&&RaceSimulation.Press(g,1),"ready accepted");RaceSimulation.Advance(g,3);C(g.Phase=="racing","countdown ends");games++;return g;
+ }
+ static void M(GameState g,double time,double step){while(time>1e-14&&g.Phase=="racing"){double d=Math.Min(step,time);RaceSimulation.Advance(g,d);time-=d;}}
+ static void Finish(GameState g,double step,double expected,int plus,int minus,int instant,int hits=0,bool complete=true){
+  int guard=0;while(g.Phase=="racing"){RaceSimulation.Advance(g,step);if(++guard>100000)throw new Exception("stalled");}
+  N(g.Elapsed,expected,"physical finish");C((string)g.Winner=="tie","identical physical race tie");
+  foreach(var p in g.Players){C(p.FinishTime.HasValue,"finished");N(p.FinishTime.Value,expected,"canonical finish");
+   N(p.Distance,g.Track.Length,"actual endpoint");C(p.BoostsEarned==plus&&p.SlowsEarned==minus&&p.InstantBoostsEarned==instant,"awards once");
+   C(p.Collisions==hits,"hits");if(complete){C(p.CompletedBoosts==plus&&p.CompletedSlows==minus,"pulse completion credit");C(p.ActiveEffect==null&&p.PendingEffects.Count==0,"all effects exhausted");N(p.BoostElapsed+p.SlowElapsed,0,"no residual served credit");}
+  }
+ }
+ static RiskZone[] Preempt(){return new[]{R("slow","negative",0),R("instant","instant",42)};}
+ static void TinyAndBoundaries(){
+  foreach(var profile in MotionProfiles.All)foreach(double step in Steps){
+   var g=G(profile,55,Preempt());M(g,.2,step);foreach(var p in g.Players){N(p.CurrentSpeed,330,"instant priority");N(p.SlowElapsed,.2,"suspended served slow");C(p.PendingEffects.Count==1,"suspended slow queued");N(p.PendingEffects.Peek().Remaining,.4,"remaining slow");}
+   Finish(g,step,.3,1,1,1,complete:false);
+   foreach(var p in g.Players){N(p.BoostElapsed,.1,"partial served boost");N(p.SlowElapsed,.2,"partial suspended slow");C(p.CompletedBoosts==0&&p.CompletedSlows==0,"no unserved credit");}
+   foreach(double t in new[]{.6-1e-7,.6,.6+1e-7,1.2-1e-7,1.2,1.2+1e-7}){
+    double length=t<=1.2?330*t:396+220*(t-1.2);
+    var b=G(profile,length,new[]{R("first","instant",0),R("second","instant",86)});
+    Finish(b,step,t,2,0,2,complete:false);
+    foreach(var p in b.Players){int completed=t<.6?0:t<1.2?1:2;C(p.CompletedBoosts==completed,"boundary pulse count");N(.6*p.CompletedBoosts+p.BoostElapsed,Math.Min(t,1.2),"full served ledger");}
+   }
+  }
+ }
+ static void QueueAndExtensions(){
+  foreach(var profile in MotionProfiles.All)foreach(double step in Steps){
+   var a=G(profile,1100,new[]{R("ordinary","positive",0),R("slow","negative",40),R("instant","instant",86)});
+   M(a,.4,step);foreach(var p in a.Players){N(p.CurrentSpeed,330,"extension speed not multiplier");N(p.BoostRemaining,.8,"continuous extension");C(p.ActiveEffect.PulseCount==2&&p.PendingEffects.Count==1,"one uninterrupted interval plus waiting slow");}
+   M(a,.3,step);foreach(var p in a.Players){C(p.CompletedBoosts==1,"first segment credit");N(p.BoostElapsed,.1,"uncredited extension residue");}
+   Finish(a,step,4.7,2,1,1);
+   var b=G(profile,1100,new[]{R("slow","negative",0),R("ordinary","positive",40),R("slow2","negative",41),R("instant","instant",42)});
+   M(b,.3,step);foreach(var p in b.Players){var q=p.PendingEffects.ToArray();C(q.Length==3&&q[0].RingId=="slow"&&q[1].RingId=="ordinary"&&q[2].RingId=="slow2","preemption preserves prior FIFO");N(q[0].Elapsed,.2,"suspended elapsed preserved");}
+   M(b,.6,step);foreach(var p in b.Players){C(p.ActiveEffect.RingId=="slow","original slow resumes first");N(p.ActiveEffect.Remaining,.3,"resumed remaining");}
+   Finish(b,step,5,2,2,1);
+   var c=G(profile,1100,new[]{R("slow","negative",0),R("instant1","instant",42),R("instant2","instant",251)});
+   M(c,1,step);foreach(var p in c.Players){N(p.SlowElapsed,.3,"twice suspended accumulated slow");N(p.PendingEffects.Peek().Remaining,.3,"second suspension retains remaining");}
+   Finish(c,step,4.7,2,1,2);
+   var d=G(profile,330,new[]{R("slow","negative",0),R("instant1","instant",42),R("instant2","instant",251)});
+   Finish(d,step,1.2,2,1,2,complete:false);foreach(var p in d.Players){C(p.CompletedBoosts==1&&p.CompletedSlows==0,"partial repeated preemption completion");N(p.SlowElapsed,.3,"partial repeated slow");N(p.BoostElapsed,.3,"partial repeated boost");}
+   var e=G(profile,1100,new[]{R("a","instant",0),R("b","instant",86),R("c","instant",152)});
+   M(e,.5,step);foreach(var p in e.Players){N(p.CurrentSpeed,330,"three pickups retain 1.5x");N(p.BoostRemaining,1.3,"three intervals concatenate");C(p.ActiveEffect.PulseCount==3,"three earned pulses");}
+   Finish(e,step,4.1,3,0,3);
+  }
+ }
+ static void FreezeAndHit(){
+  foreach(var profile in MotionProfiles.All)foreach(double step in Steps){
+   var g=G(profile,500,new[]{R("slow","negative",0),R("instant","instant",72)},new[]{new Obstacle{Id="rock",Kind="floor",X=66,Width=64,Height=68}});
+   double hit=52d/110;M(g,hit,step);foreach(var p in g.Players){C(p.Collisions==1&&p.InstantBoostsEarned==1,"same-time collision and instant both occur");N(p.Recovering,.5,"real collision recovery");N(p.SlowElapsed,hit,"served slow at hit");N(p.CurrentSpeed,330,"instant retained through hit");}
+   M(g,.2,step);foreach(var p in g.Players){N(p.Distance,52,"recovery frozen distance");N(p.BoostRemaining,.6,"recovery freezes active");N(p.PendingEffects.Peek().Remaining,.6-hit,"recovery freezes suspended");}
+   g.Phase="paused";double elapsed=g.Elapsed;RaceSimulation.Advance(g,10);N(g.Elapsed,elapsed,"inactive phase freezes game");g.Phase="racing";
+   Finish(g,step,500d/220+.5,1,1,1,1);
+  }
+ }
+ static void VerticalAndIndependent(){
+  foreach(var profile in MotionProfiles.All)foreach(double step in Steps){
+   double a=profile.GravityAcceleration,u=profile.DepartureImpulse,t=.2;
+   var instant=G(profile,2200,new[]{R("midair","instant",220*t+20,226-u*t-.5*a*t*t)});
+   var plain=G(profile,2200,Array.Empty<RiskZone>());
+   C(RaceSimulation.Press(instant,0)&&RaceSimulation.Press(plain,0),"vertical departures");
+   M(instant,t,step);M(plain,t,step);
+   var p=instant.Players[0];var q=plain.Players[0];
+   C(p.InstantBoostsEarned==1,"real airborne circle contact");
+   N(p.Y,q.Y,"instant does not change y");N(p.VerticalSpeed,q.VerticalSpeed,"instant does not change vy");N(p.FlipElapsed,q.FlipElapsed,"instant does not restart flight");C(p.AirFlipAvailable==q.AirFlipAvailable,"instant not air charge");
+   C(RaceSimulation.Press(instant,0)&&RaceSimulation.Press(plain,0),"repeat during boost");
+   M(instant,.12,step);M(plain,.12,step);N(p.Y,q.Y,"repeat path same y");N(p.VerticalSpeed,q.VerticalSpeed,"repeat path same vy");C(p.Distance>q.Distance,"only horizontal speed changed");
+   var split=G(profile,1100,new[]{R("floor","instant",100)});C(RaceSimulation.Press(split,1),"one player avoids ring");M(split,10,step);
+   C(split.Players[0].InstantBoostsEarned==1&&split.Players[1].InstantBoostsEarned==0,"per-player contact independence");N(split.Players[0].FinishTime.Value,4.7,"boosted independent finish");N(split.Players[1].FinishTime.Value,5,"unboosted independent finish");C((int)split.Winner==0,"actual winner");
+   RaceSimulation.Press(split,0);C(split.Players[0].Ready&&!split.Players[1].Ready,"rematch waits both");RaceSimulation.Press(split,1);
+   C(split.Phase=="countdown"&&ReferenceEquals(split.Profile,profile),"rematch keeps profile");foreach(var v in split.Players){C(v.ActiveEffect==null&&v.PendingEffects.Count==0&&v.InstantBoostsEarned==0&&v.LastInstant==null,"rematch clears instant");N(v.SlowElapsed+v.BoostElapsed,0,"rematch ledger reset");}
+  }
+ }
+ public static void Run(){n=games=0;TinyAndBoundaries();QueueAndExtensions();FreezeAndHit();VerticalAndIndependent();Console.WriteLine("PASS "+n+" independent TUNE02 assertions / "+games+" actual games: partial suspended slow, pulse boundaries, preemption/FIFO, repeats, recovery, airborne continuity and player independence.");}
+}

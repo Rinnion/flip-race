@@ -13,13 +13,14 @@ namespace FlipRace.Web
         {
             public bool ready, flipping, airFlipAvailable;
             public double distance, y, recovering, finish;
-            public int collisions, character, rings, slowRings, pendingRings, failedRings, queuedEffects;
+            public int collisions, character, rings, instantBoosts, slowRings, pendingRings, failedRings, queuedEffects;
             public double boost, slow, speed, flipElapsed, verticalSpeed, centerY;
             public int gravity;
         }
         [Serializable] sealed class Snapshot
         {
-            public string mode, phase, winner, track, motion;
+            public string mode, phase, winner, track, motion, profile, version;
+            public double gravityAcceleration, departureImpulse;
             public bool paused, negativeEnabled;
             public double elapsed, countdown;
             public float fullscreenX, fullscreenY, fullscreenWidth, fullscreenHeight;
@@ -48,6 +49,8 @@ namespace FlipRace.Web
             var snapshot = new Snapshot {mode = state.Mode, phase = state.Phase,
                 track = state.Track.Id,
                 motion = state.Motion.ToString(),
+                profile = state.Profile.Id, version = Application.version,
+                gravityAcceleration = state.Profile.GravityAcceleration, departureImpulse = state.Profile.DepartureImpulse,
                 negativeEnabled = state.Track.NegativeEnabled,
                 winner = state.Winner == null ? "" : state.Winner.ToString(), paused = game.IsPaused,
                 elapsed = state.Elapsed, countdown = state.CountdownRemaining,
@@ -62,7 +65,7 @@ namespace FlipRace.Web
                     if (!p.SuccessfulRiskIds.Contains(id) && !p.FailedRiskIds.Contains(id) && !p.NegativeRiskIds.Contains(id)) pending++;
                 snapshot.players[i] = new PlayerSnapshot {ready=p.Ready, distance=p.Distance, y=p.Y,
                     recovering=p.Recovering, flipping=p.Flipping, collisions=p.Collisions, finish=p.FinishTime ?? -1,
-                    character=p.CharacterIndex, rings=p.BoostsEarned, pendingRings=pending,
+                    character=p.CharacterIndex, rings=p.BoostsEarned, instantBoosts=p.InstantBoostsEarned, pendingRings=pending,
                     failedRings=p.FailedRiskIds.Count, boost=p.BoostRemaining, slow=p.SlowRemaining,
                     speed=p.CurrentSpeed, slowRings=p.SlowsEarned, queuedEffects=p.PendingEffects.Count, flipElapsed=p.FlipElapsed,
                     verticalSpeed=p.VerticalSpeed, gravity=p.Gravity, airFlipAvailable=p.AirFlipAvailable,

@@ -68,6 +68,7 @@ namespace FlipRace.Core
         public string Id, ObstacleId;
         public string Kind = "positive", Placement = "before";
         public bool IsNegative { get { return Kind == "negative"; } }
+        public bool IsInstant { get { return Kind == "instant"; } }
         public bool AfterObstacle { get { return Placement == "after"; } }
         public bool FreeReward;
         // Ring center and radius use world units, just like obstacle geometry.
@@ -79,7 +80,9 @@ namespace FlipRace.Core
         public string RingId;
         public bool IsNegative;
         public double Remaining, Elapsed;
-        public double Duration { get { return IsNegative ? RaceConfig.SlowDuration : RaceConfig.BoostDuration; } }
+        public int PulseCount = 1, CompletedPulses;
+        public double PulseDuration { get { return IsNegative ? RaceConfig.SlowDuration : RaceConfig.BoostDuration; } }
+        public double Duration { get { return PulseCount * PulseDuration; } }
         public double Multiplier { get { return IsNegative ? RaceConfig.SlowMultiplier : RaceConfig.BoostMultiplier; } }
     }
 
@@ -110,17 +113,19 @@ namespace FlipRace.Core
         public HashSet<string> HitObstacleIds = new HashSet<string>();
         public HitInfo LastHit;
         public SpeedEffect ActiveEffect;
-        // Waiting effects exclude ActiveEffect. Every earned impulse is served
-        // completely in contact/confirmation order; opposite signs do not erase it.
+        // Ordinary rewards keep FIFO order. An instant bonus preempts a slow,
+        // retaining that same partially served slow at the front of this queue.
         public Queue<SpeedEffect> PendingEffects = new Queue<SpeedEffect>();
         public double BoostRemaining { get { return ActiveEffect != null && !ActiveEffect.IsNegative ? ActiveEffect.Remaining : 0; } }
         public double SlowRemaining { get { return ActiveEffect != null && ActiveEffect.IsNegative ? ActiveEffect.Remaining : 0; } }
         public int BoostsEarned;
+        public int InstantBoostsEarned;
         public int SlowsEarned;
         public HashSet<string> CollectedRiskIds = new HashSet<string>();
         public HashSet<string> SuccessfulRiskIds = new HashSet<string>();
         public HashSet<string> FailedRiskIds = new HashSet<string>();
         public HitInfo LastSuccess;
+        public HitInfo LastInstant;
         public HitInfo LastSlow;
         public HashSet<string> NegativeRiskIds = new HashSet<string>();
         public double CurrentSpeed { get { return RaceConfig.Speed * (ActiveEffect != null ? ActiveEffect.Multiplier : 1); } }
@@ -128,14 +133,28 @@ namespace FlipRace.Core
         // finishes. Awarded but unserved boost never changes FinishTime.
         public int CompletedBoosts;
         public int CompletedSlows;
-        public double BoostElapsed { get { return ActiveEffect != null && !ActiveEffect.IsNegative ? ActiveEffect.Elapsed : 0; } }
-        public double SlowElapsed { get { return ActiveEffect != null && ActiveEffect.IsNegative ? ActiveEffect.Elapsed : 0; } }
+        public double BoostElapsed { get { return ServedPartial(false); } }
+        public double SlowElapsed { get { return ServedPartial(true); } }
         public int CompletedRecoveries;
         public double RecoveryElapsed;
         public double BoostDistanceGained { get { return CompletedBoosts * RaceConfig.Speed * RaceConfig.BoostTimeGain
             + BoostElapsed * RaceConfig.Speed * (RaceConfig.BoostMultiplier - 1); } }
         public double SlowDistanceLost { get { return CompletedSlows * RaceConfig.Speed * RaceConfig.SlowTimeLoss
             + SlowElapsed * RaceConfig.Speed * (1 - RaceConfig.SlowMultiplier); } }
+
+        private double ServedPartial(bool negative)
+        {
+            // A suspended slow has already changed actual distance. Include its
+            // served part until completion replaces it with one whole credit.
+            double total = Uncredited(ActiveEffect, negative);
+            foreach (var effect in PendingEffects) total += Uncredited(effect, negative);
+            return total;
+        }
+        private static double Uncredited(SpeedEffect effect, bool negative)
+        {
+            return effect != null && effect.IsNegative == negative
+                ? Math.Max(0, effect.Elapsed - effect.CompletedPulses * effect.PulseDuration) : 0;
+        }
 
         public PlayerState(int id) { Id = id; CharacterIndex = id; }
     }
@@ -144,6 +163,7 @@ namespace FlipRace.Core
     {
         public string Mode;
         public MotionMode Motion = MotionMode.Linear;
+        public MotionProfile Profile = MotionProfiles.Baseline;
         public Track Track;
         public string Phase = "ready";
         public PlayerState[] Players = { new PlayerState(0), new PlayerState(1) };
@@ -306,11 +326,11 @@ namespace FlipRace.Core
             return new GameState { Mode = mode, Track = track };
         }
 
-        public static GameState CreateTrial(Track track, MotionMode motion)
+        public static GameState CreateTrial(Track track, MotionMode motion, MotionProfile profile = null)
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (!Enum.IsDefined(typeof(MotionMode), motion)) throw new ArgumentOutOfRangeException(nameof(motion));
-            var game = new GameState { Mode = "trial", Track = track, Motion = motion };
+            var game = new GameState { Mode = "trial", Track = track, Motion = motion, Profile = profile ?? MotionProfiles.Baseline };
             foreach (var player in game.Players) player.AirFlipAvailable = motion == MotionMode.GravityAirFlip;
             return game;
         }
@@ -361,7 +381,7 @@ namespace FlipRace.Core
             if (game.Motion != MotionMode.Linear)
             {
                 player.Gravity = player.Y == 1 ? -1 : 1;
-                player.VerticalSpeed = 0;
+                player.VerticalSpeed = player.Gravity * (game.Profile ?? MotionProfiles.Baseline).DepartureImpulse;
             }
             player.Flipping = true;
             player.FlipFrom = player.Y;
@@ -375,7 +395,7 @@ namespace FlipRace.Core
             return RaceConfig.PlayerRadius + player.Y * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius);
         }
 
-        private static void MovePlayer(PlayerState player, double dt, MotionMode motion)
+        private static void MovePlayer(PlayerState player, double dt, MotionMode motion, MotionProfile profile)
         {
             player.Distance += player.CurrentSpeed * dt;
             var effect = player.ActiveEffect;
@@ -383,17 +403,21 @@ namespace FlipRace.Core
             {
                 effect.Elapsed += dt;
                 effect.Remaining = Math.Max(0, effect.Remaining - dt);
+                int completed = effect.Remaining < Epsilon ? effect.PulseCount
+                    : Math.Min(effect.PulseCount, (int)Math.Floor((effect.Elapsed + Epsilon) / effect.PulseDuration));
+                int newlyCompleted = Math.Max(0, completed - effect.CompletedPulses);
+                if (effect.IsNegative) player.CompletedSlows += newlyCompleted;
+                else player.CompletedBoosts += newlyCompleted;
+                effect.CompletedPulses = completed;
                 if (effect.Remaining < Epsilon)
                 {
-                    if (effect.IsNegative) player.CompletedSlows++;
-                    else player.CompletedBoosts++;
                     player.ActiveEffect = player.PendingEffects.Count > 0 ? player.PendingEffects.Dequeue() : null;
                 }
             }
             if (!player.Flipping) return;
             if (motion != MotionMode.Linear)
             {
-                double acceleration = player.Gravity * RaceConfig.GravityAcceleration;
+                double acceleration = player.Gravity * profile.GravityAcceleration;
                 double y = GetPlayerCenterY(player) + player.VerticalSpeed * dt + .5 * acceleration * dt * dt;
                 player.Y = (y - RaceConfig.PlayerRadius) / (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius);
                 player.VerticalSpeed += acceleration * dt;
@@ -417,6 +441,24 @@ namespace FlipRace.Core
             var effect = new SpeedEffect { RingId = zone.Id, IsNegative = zone.IsNegative,
                 Remaining = zone.IsNegative ? RaceConfig.SlowDuration : RaceConfig.BoostDuration };
             if (player.ActiveEffect == null) player.ActiveEffect = effect;
+            else if (zone.IsInstant)
+            {
+                if (!player.ActiveEffect.IsNegative)
+                {
+                    // Extend this uninterrupted 1.5x interval. Retain elapsed
+                    // time and credit each full .6s pulse exactly once.
+                    player.ActiveEffect.PulseCount++;
+                    player.ActiveEffect.Remaining += RaceConfig.BoostDuration;
+                }
+                else
+                {
+                    int waiting = player.PendingEffects.Count;
+                    player.PendingEffects.Enqueue(player.ActiveEffect);
+                    for (int index = 0; index < waiting; index++)
+                        player.PendingEffects.Enqueue(player.PendingEffects.Dequeue());
+                    player.ActiveEffect = effect;
+                }
+            }
             else player.PendingEffects.Enqueue(effect);
         }
 
@@ -448,11 +490,11 @@ namespace FlipRace.Core
             public int Side;
         }
 
-        private static SurfaceContact NextSurface(PlayerState player, MotionMode motion)
+        private static SurfaceContact NextSurface(PlayerState player, MotionMode motion, MotionProfile profile)
         {
             if (motion == MotionMode.Linear || !player.Flipping) return null;
             double travel = RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius;
-            double position = player.Y * travel, acceleration = player.Gravity * RaceConfig.GravityAcceleration;
+            double position = player.Y * travel, acceleration = player.Gravity * profile.GravityAcceleration;
             SurfaceContact result = null;
             for (int side = 0; side < 2; side++)
             {
@@ -487,7 +529,7 @@ namespace FlipRace.Core
 
         // Swept rectangles find the exact first contact even when one frame crosses
         // an entire obstacle. Both halves of a gate share one obstacle ID.
-        private static Collision NextCollision(PlayerState player, Track track, double horizon, MotionMode motion)
+        private static Collision NextCollision(PlayerState player, Track track, double horizon, MotionMode motion, MotionProfile profile)
         {
             var radius = RaceConfig.PlayerRadius;
             var verticalTravel = RaceConfig.CorridorHeight - 2 * radius;
@@ -527,7 +569,7 @@ namespace FlipRace.Core
                     else
                     {
                         time = ContinuousMotion.FirstBandContact(player.Y * verticalTravel, player.Flipping ? player.VerticalSpeed : 0,
-                            player.Flipping ? player.Gravity * RaceConfig.GravityAcceleration : 0,
+                            player.Flipping ? player.Gravity * profile.GravityAcceleration : 0,
                             minimum * verticalTravel, maximum * verticalTravel, horizontalEnter, horizontalLeave);
                     }
                     if (!double.IsInfinity(time) && (collision == null || time < collision.Time))
@@ -560,7 +602,7 @@ namespace FlipRace.Core
 
         // Exact swept circle against the ring; no frame sampling or timing-only
         // shortcut. The player's physical radius is part of ring contact.
-        private static RiskEvent NextRiskEvent(PlayerState player, Track track, double horizon, MotionMode motion, SurfaceContact surface)
+        private static RiskEvent NextRiskEvent(PlayerState player, Track track, double horizon, MotionMode motion, SurfaceContact surface, MotionProfile profile)
         {
             RiskEvent result = null;
             foreach (var zone in track.RiskZones)
@@ -598,7 +640,7 @@ namespace FlipRace.Core
                     {
                         if (!RangeTimes(player.Distance, vx, zone.X - radius, zone.X + radius,
                             horizon, out double enter, out double leave)) continue;
-                        double acceleration = player.Flipping ? player.Gravity * RaceConfig.GravityAcceleration : 0;
+                        double acceleration = player.Flipping ? player.Gravity * profile.GravityAcceleration : 0;
                         vy = player.Flipping ? player.VerticalSpeed : 0;
                         double contact = ContinuousMotion.FirstCircleContact(dx + vx * enter,
                             dy + vy * enter + .5 * acceleration * enter * enter, vx, vy + acceleration * enter,
@@ -623,7 +665,7 @@ namespace FlipRace.Core
             return result;
         }
 
-        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, MotionMode motion)
+        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, MotionMode motion, MotionProfile profile)
         {
             if (player.FinishTime.HasValue) return;
             var remaining = dt;
@@ -644,19 +686,19 @@ namespace FlipRace.Core
                     remaining -= stopped;
                     continue;
                 }
-                var surface = NextSurface(player, motion);
+                var surface = NextSurface(player, motion, profile);
                 double flightHorizon = motion == MotionMode.Linear
                     ? (player.Flipping ? RaceConfig.FlipDuration - player.FlipElapsed : double.PositiveInfinity)
                     : (surface != null ? surface.Time : double.PositiveInfinity);
                 if (motion != MotionMode.Linear && player.Flipping && player.VerticalSpeed * player.Gravity < 0)
-                    flightHorizon = Math.Min(flightHorizon, -player.VerticalSpeed / (player.Gravity * RaceConfig.GravityAcceleration));
+                    flightHorizon = Math.Min(flightHorizon, -player.VerticalSpeed / (player.Gravity * profile.GravityAcceleration));
                 var horizon = Math.Min(remaining, Math.Min(Math.Max(0, track.Length - player.Distance) / player.CurrentSpeed,
                     Math.Min(flightHorizon,
                         player.ActiveEffect != null ? player.ActiveEffect.Remaining : double.PositiveInfinity)));
-                var collision = NextCollision(player, track, horizon, motion);
-                var risk = NextRiskEvent(player, track, horizon, motion, surface);
+                var collision = NextCollision(player, track, horizon, motion, profile);
+                var risk = NextRiskEvent(player, track, horizon, motion, surface, profile);
                 var moving = Math.Min(collision != null ? collision.Time : horizon, risk != null ? risk.Time : horizon);
-                MovePlayer(player, moving, motion);
+                MovePlayer(player, moving, motion, profile);
                 remaining -= moving;
                 bool collided = collision != null && collision.Time <= moving + Epsilon;
                 if (collided)
@@ -667,7 +709,7 @@ namespace FlipRace.Core
                     // Cancel only contacts that were already pending before this
                     // impact. An untouched ring can still be earned after recovery.
                     foreach (var zone in track.RiskZones)
-                        if (!zone.IsNegative && !zone.FreeReward && zone.ObstacleId == collision.Obstacle.Id
+                        if (!zone.IsNegative && !zone.IsInstant && !zone.FreeReward && zone.ObstacleId == collision.Obstacle.Id
                             && player.CollectedRiskIds.Contains(zone.Id)
                             && !player.SuccessfulRiskIds.Contains(zone.Id)) player.FailedRiskIds.Add(zone.Id);
                     player.LastHit = new HitInfo
@@ -688,7 +730,7 @@ namespace FlipRace.Core
                         EnqueueEffect(player, risk.Zone);
                         player.LastSlow = new HitInfo { Id = risk.Zone.Id, Message = "Замедление +0,3 сек", At = elapsed + dt - remaining };
                     }
-                    else if (!risk.Clear && !risk.Zone.FreeReward) player.CollectedRiskIds.Add(risk.Zone.Id);
+                    else if (!risk.Clear && !risk.Zone.FreeReward && !risk.Zone.IsInstant) player.CollectedRiskIds.Add(risk.Zone.Id);
                     else
                     {
                         // A historical hit only deduplicates obstacle penalties.
@@ -697,7 +739,13 @@ namespace FlipRace.Core
                         player.SuccessfulRiskIds.Add(risk.Zone.Id);
                         player.BoostsEarned++;
                         EnqueueEffect(player, risk.Zone);
-                        player.LastSuccess = new HitInfo { Id = risk.Zone.Id, Message = "Точно! Ускорение −0,3 сек", At = elapsed + dt - remaining };
+                        player.LastSuccess = new HitInfo { Id = risk.Zone.Id,
+                            Message = risk.Zone.IsInstant ? "Мгновенный рывок −0,3 сек" : "Точно! Ускорение −0,3 сек", At = elapsed + dt - remaining };
+                        if (risk.Zone.IsInstant)
+                        {
+                            player.InstantBoostsEarned++;
+                            player.LastInstant = player.LastSuccess;
+                        }
                     }
                 }
                 if (player.Distance >= track.Length - Epsilon && !collided)
@@ -776,7 +824,8 @@ namespace FlipRace.Core
                 var graceHorizon = game.WinnerAt.HasValue
                     ? game.WinnerAt.Value + RaceConfig.FinishGrace - game.Elapsed : double.PositiveInfinity;
                 var step = Math.Min(dt, Math.Min(finishHorizon, Math.Max(0, graceHorizon)));
-                foreach (var player in game.Players) AdvancePlayer(player, game.Track, step, game.Elapsed, game.Motion);
+                foreach (var player in game.Players) AdvancePlayer(player, game.Track, step, game.Elapsed, game.Motion,
+                    game.Profile ?? MotionProfiles.Baseline);
                 game.Elapsed += step;
                 dt -= step;
                 ResolveFinish(game);

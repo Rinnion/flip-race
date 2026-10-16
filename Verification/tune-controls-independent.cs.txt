@@ -1,0 +1,104 @@
+using System;
+using FlipRace.Core;
+public static class TuneControlsIndependent
+{
+ static int n;
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static void C(bool b,string m){n++;if(!b)throw new Exception(m);}
+ static void N(double x,double y,double tol,string m){C(!double.IsNaN(x)&&Math.Abs(x-y)<=tol,m+" "+x.ToString("R")+" != "+y.ToString("R"));}
+ static GameState G(MotionProfile profile,int side=1,Track track=null)
+ {var g=RaceSimulation.CreateTrial(track??new Track(220000,Array.Empty<Obstacle>()),MotionMode.GravityAirFlip,profile);g.Phase="racing";foreach(var p in g.Players){p.Y=side;p.Gravity=side==1?1:-1;}return g;}
+ static void M(GameState g,double time,double step){while(time>1e-14){double dt=Math.Min(time,step);RaceSimulation.Advance(g,dt);time-=dt;}}
+ static double Travel(double d,double a,double u){return 2*d/(u+Math.Sqrt(u*u+2*a*d));}
+ static void Flights()
+ {
+  foreach(var profile in MotionProfiles.All)foreach(int side in new[]{0,1})foreach(double step in Steps)
+  {
+   double a=profile.GravityAcceleration,u=profile.DepartureImpulse,T=Travel(212,a,u),sign=side==1?-1:1;
+   foreach(double t in new[]{.0001,.2,T*.5,T-1e-5,T,T+1e-5,2d})
+   {
+    var g=G(profile,side);var p=g.Players[0];C(RaceSimulation.Press(g,0),"depart");
+    N(p.VerticalSpeed,sign*u,0,"one surface impulse");M(g,t,step);
+    double f=Math.Min(t,T);
+    N(RaceSimulation.GetPlayerCenterY(p),14+212*side+sign*(u*f+.5*a*f*f),2e-7,"ordinary y");
+    N(p.VerticalSpeed,t<T?sign*(u+a*t):0,2e-7,"ordinary vy");
+    C(p.Flipping==(t<T),"ordinary landing");C(p.AirFlipAvailable,"ordinary charge");N(p.Distance,220*t,1e-7,"ordinary x");
+   }
+   double threshold=(-u+Math.Sqrt(.5*u*u+a*212))/a;
+   foreach(double tau in new[]{0,T*.1,T*.4,threshold,Math.Min(T-1e-4,threshold+.03),T*.95})
+   {
+    double q=u*tau+.5*a*tau*tau,v=u+a*tau,peak=q+v*v/(2*a);
+    bool wall=peak>212+1e-8;
+    double touch=wall?tau+(v-Math.Sqrt(v*v-2*a*(212-q)))/a:double.PositiveInfinity;
+    double arrival=wall?touch+Math.Sqrt(424/a):tau+(v+Math.Sqrt(v*v+2*a*q))/a;
+    double turn=tau+v/a;
+    foreach(double time in new[]{tau+.0001,Math.Max(tau+.0001,Math.Min(turn,arrival-1e-5)),Math.Max(tau+.0001,arrival-1e-5),arrival+.0001})
+    {
+     var g=G(profile,side);var p=g.Players[0];RaceSimulation.Press(g,0);M(g,tau,step);
+     double oldV=p.VerticalSpeed,oldClock=p.FlipElapsed;C(RaceSimulation.Press(g,0),"repeat accepted");
+     N(p.VerticalSpeed,oldV,0,"repeat keeps velocity");N(p.FlipElapsed,oldClock,0,"repeat keeps age");
+     C(!p.AirFlipAvailable&&!RaceSimulation.Press(g,0),"third rejected");
+     M(g,time-tau,step);double y,vy;
+     if(time>=arrival){y=14+212*side;vy=0;}
+     else if(wall&&time>=touch){double s=time-touch;y=14+212*(1-side)-sign*.5*a*s*s;vy=-sign*a*s;}
+     else{double s=time-tau;y=14+212*side+sign*(q+v*s-.5*a*s*s);vy=sign*(v-a*s);}
+     double tol=tau==threshold?2e-4:3e-7;
+     N(RaceSimulation.GetPlayerCenterY(p),y,tol,"return y profile="+profile.Id+" tau="+tau+" time="+time);
+     N(p.VerticalSpeed,vy,tol,"return vy profile="+profile.Id+" tau="+tau+" time="+time);
+     C(p.Flipping==(time<arrival),"return landing state");C(p.AirFlipAvailable==(time>=arrival),"return charge");
+     N(p.Distance,220*time,2e-7,"return x");C(p.Y>=-1e-9&&p.Y<=1+1e-9,"corridor bounds");
+    }
+    if(wall)
+    {
+     var g=G(profile,side);var p=g.Players[0];RaceSimulation.Press(g,0);M(g,tau,step);RaceSimulation.Press(g,0);M(g,touch-tau+.1,step);
+     N(RaceSimulation.GetPlayerCenterY(p),14+212*(1-side)-sign*.5*a*.01,3e-7,"wrong wall no new impulse");
+     N(p.VerticalSpeed,-sign*a*.1,3e-7,"wrong wall accelerate from rest");
+     C(!p.AirFlipAvailable&&p.Flipping,"wrong wall no recharge");
+    }
+   }
+  }
+ }
+ static void Contacts()
+ {
+  foreach(var profile in MotionProfiles.All)foreach(double step in Steps)
+  {
+   double a=profile.GravityAcceleration,u=profile.DepartureImpulse,tau=Travel(212,a,u)*.4;
+   double vy=-u-a*tau,norm=Math.Sqrt(220*220+vy*vy),nx=-vy/norm,ny=220/norm;
+   foreach(double offset in new[]{0d,.001})
+   {
+    double r=20+offset;
+    var zone=new RiskZone{Id="tangent",X=220*tau+r*nx,Y=226-u*tau-.5*a*tau*tau+r*ny,Radius=6,FreeReward=true};
+    var g=G(profile,1,new Track(2200,Array.Empty<Obstacle>()){RiskZones=new[]{zone}});
+    RaceSimulation.Press(g,0);RaceSimulation.Press(g,1);M(g,100,step);
+    foreach(var p in g.Players){C(p.BoostsEarned==(offset==0?1:0),"profile tangent/miss");N(p.FinishTime.Value,offset==0?9.7:10,1e-10,"ring physical finish");if(offset==0)N(p.LastSuccess.At,tau,1e-7,"profile tangent timestamp");}
+   }
+   double hit=Travel(144,a,u),x=220*hit;
+   var rock=new Obstacle{Id="ceiling",Kind="ceiling",X=x-20,Width=64,Height=68};
+   var collision=G(profile,1,new Track(22000,new[]{rock}));RaceSimulation.Press(collision,0);
+   M(collision,hit+.01,step);var p0=collision.Players[0];
+   C(p0.Collisions==1,"profile vertical contact");N(p0.LastHit.At,hit,1e-8,"profile hit time");
+   N(RaceSimulation.GetPlayerCenterY(p0),82,1e-7,"profile hit y");N(p0.VerticalSpeed,-u-a*hit,1e-7,"profile frozen velocity");
+   double frozenY=p0.Y,frozenV=p0.VerticalSpeed,age=p0.FlipElapsed;M(collision,.2,step);
+   N(p0.Y,frozenY,0,"recovery y");N(p0.VerticalSpeed,frozenV,0,"recovery v");N(p0.FlipElapsed,age,0,"recovery age");
+   C(!RaceSimulation.Press(collision,0),"recovery input rejected");
+   RaceSimulation.Advance(collision,0);RaceSimulation.Advance(collision,double.NaN);N(p0.VerticalSpeed,frozenV,0,"paused v");
+  }
+ }
+ static void DefaultsResetAndLinear()
+ {
+  foreach(var profile in MotionProfiles.All)
+  {
+   var g=RaceSimulation.CreateTrial(new Track(220,Array.Empty<Obstacle>()),MotionMode.GravityAirFlip,profile);
+   RaceSimulation.SetCharacter(g,0,3);RaceSimulation.SetCharacter(g,1,3);RaceSimulation.Press(g,0);RaceSimulation.Press(g,1);RaceSimulation.Advance(g,3);RaceSimulation.Advance(g,2);
+   C(g.Phase=="finished","profile reaches result");RaceSimulation.Press(g,0);C(g.Phase=="finished","rematch waits");RaceSimulation.Press(g,1);
+   C(ReferenceEquals(g.Profile,profile),"profile survives rematch");
+   foreach(var p in g.Players)C(p.Y==1&&p.VerticalSpeed==0&&p.Gravity==1&&p.AirFlipAvailable&&p.CharacterIndex==3,"full reset profile controls");
+   var linear=RaceSimulation.CreateTrial(new Track(2200,Array.Empty<Obstacle>()),MotionMode.Linear,profile);linear.Phase="racing";RaceSimulation.Press(linear,0);RaceSimulation.Advance(linear,.4);
+   N(RaceSimulation.GetPlayerCenterY(linear.Players[0]),120,1e-9,"linear ignores profile at midpoint");
+   C(!RaceSimulation.Press(linear,0),"linear repeat blocked");RaceSimulation.Advance(linear,.4);
+   C(!linear.Players[0].Flipping&&linear.Players[0].Y==0,"linear .8 unchanged");
+  }
+  C(ReferenceEquals(RaceSimulation.CreateTrial(TracksV4.Open(),MotionMode.GravityAirFlip).Profile,MotionProfiles.Baseline),"default baseline");
+ }
+ public static string Run(){n=0;Flights();Contacts();DefaultsResetAndLinear();return "PASS "+n+" independent TUNE01 assertions: 4 analytic profiles, 2 directions, 6 dt, impulse/repeat/wrong-surface, profile quartic/stone contacts, recovery and reset.";}
+}

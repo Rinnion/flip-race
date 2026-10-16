@@ -1,0 +1,4 @@
+At instant contact: elapsed=0,2, x=22, speed=110, active=slow, queue=1
+System.Exception: Instant pickup must immediately preempt slow: expected speed 330, actual 110
+   at InstantPreemptionProbe.Run() in F:\Home\Game\flip-race-unity\Tools\ParityRunner\InstantPreemptionProbe.cs:line 19
+   at Program.Main(String[] args) in F:\Home\Game\flip-race-unity\Tools\ParityRunner\Program.cs:line 12
