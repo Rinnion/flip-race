@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#e4ead7">
+  <title>Флип! — гонка катикаавров</title>
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f7f4e9;color:#364634;font-family:system-ui,sans-serif;overscroll-behavior:none}
+    #game{position:fixed;inset:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+    #unity-canvas{width:100%;height:100%;display:block;touch-action:none;outline:none}
+    #loading,#error{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:#f7f4e9;gap:12px;text-align:center;padding:30px}
+    #loading h1{font-size:clamp(30px,7vw,64px);margin:0;color:#597549;letter-spacing:-2px}#loading p{margin:0;max-width:470px;line-height:1.5}
+    progress{width:min(360px,75vw);height:10px;accent-color:#7c9c5b}#error{display:none;color:#842d38}
+    #fullscreen{position:absolute;padding:0;background:transparent;border:0;border-radius:0;color:#6e7861;font:19px/1 "Trebuchet MS","Segoe UI",sans-serif;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    #fullscreen:hover{filter:brightness(.96)}#fullscreen:focus-visible{outline:2px solid #7770b5;outline-offset:-2px}
+    #fullscreen[hidden]{display:none}#portrait{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px;background:#f7f4e9;gap:16px;font-size:20px;z-index:5}
+    #portrait strong{font-size:34px;color:#597549}#status{font-size:12px;opacity:.75}
+    @media(orientation:portrait) and (max-width:700px){#portrait{display:flex}}
+  </style>
+</head>
+<body>
+<main id="game">
+  <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="0" aria-label="Флип! Два игрока: A — верхняя половина, L — нижняя. Выберите героев и касайтесь своей половины экрана."></canvas>
+  <button id="fullscreen" type="button" title="На весь экран" aria-label="На весь экран" hidden>⛶</button>
+  <div id="loading"><h1>Флип!</h1><p>Гонка катикаавров · версия 3</p><progress id="progress" max="1" value="0"></progress><p id="status">Готовим героев и новые ритмы…</p></div>
+  <div id="error" role="alert"></div>
+  <div id="portrait"><strong>Поверните телефон</strong><span>Положите его горизонтально.<br>Сядьте напротив друг друга.</span><small>Забег на паузе до вашего продолжения.</small></div>
+</main>
+<script src="Build/{{{ LOADER_FILENAME }}}"></script>
+<script>
+  const canvas = document.getElementById('unity-canvas');
+  const full = document.getElementById('fullscreen');
+  const gameElement = document.getElementById('game');
+  const bootAt = performance.now();
+  let fullscreenAvailable = Boolean(document.fullscreenEnabled && document.documentElement.requestFullscreen);
+  window.flipDiagnostics = {loaded:false,errors:[]};
+  function positionFullscreenButton() {
+    try {
+      const state = JSON.parse(canvas.dataset.flipState);
+      const x = state.fullscreenX, y = state.fullscreenY;
+      const width = state.fullscreenWidth, height = state.fullscreenHeight;
+      const valid = [x,y,width,height].every(Number.isFinite) && x >= 0 && y >= 0
+        && width > 0 && height > 0 && x + width <= canvas.clientWidth + 1
+        && y + height <= canvas.clientHeight + 1;
+      full.hidden = !fullscreenAvailable || !window.flipDiagnostics.loaded || state.paused || !valid;
+      if (full.hidden) return;
+      // Snapshot coordinates are CSS pixels, so never multiply by canvas DPR.
+      // Account for the canvas origin inside the safe-area containing block.
+      const canvasBox = canvas.getBoundingClientRect();
+      const gameBox = gameElement.getBoundingClientRect();
+      full.style.left = (canvasBox.left - gameBox.left + x) + 'px';
+      full.style.top = (canvasBox.top - gameBox.top + y) + 'px';
+      full.style.width = width + 'px';
+      full.style.height = height + 'px';
+      full.style.fontSize = height <= 27 ? '17px' : '19px';
+    } catch (_) { full.hidden = true; /* No valid simulation snapshot yet. */ }
+  }
+  // The same snapshot places the browser control and hides it behind modals.
+  new MutationObserver(positionFullscreenButton).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
+  function showError(message) {
+    const error = document.getElementById('error');
+    error.textContent = 'Не удалось запустить игру. Обновите страницу в браузере с WebGL 2. ' + message;
+    error.style.display = 'flex';
+    document.getElementById('loading').style.display = 'none';
+    window.flipDiagnostics.errors.push(String(message));
+  }
+  function pause(reason) { if (window.unityInstance) window.unityInstance.SendMessage('FlipRace', 'BrowserPause', reason); }
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)pause('Вкладка скрыта');});
+  window.addEventListener('blur',()=>pause('Окно потеряло фокус'));
+  window.addEventListener('pagehide',()=>pause('Страница приостановлена'));
+  window.addEventListener('resize',()=>{positionFullscreenButton();if(innerWidth<=700&&innerHeight>innerWidth)pause('Поверните телефон горизонтально');});
+  document.addEventListener('fullscreenchange',positionFullscreenButton);
+  canvas.addEventListener('contextmenu',event=>event.preventDefault());
+  canvas.addEventListener('pointerdown',()=>canvas.focus());
+  full.addEventListener('click',async()=>{
+    try {
+      if(document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    } catch (_) { fullscreenAvailable=false;full.hidden=true; }
+    canvas.focus();
+  });
+  createUnityInstance(canvas, {
+    dataUrl: 'Build/{{{ DATA_FILENAME }}}',
+    frameworkUrl: 'Build/{{{ FRAMEWORK_FILENAME }}}',
+    codeUrl: 'Build/{{{ CODE_FILENAME }}}',
+    streamingAssetsUrl: 'StreamingAssets',
+    companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+    productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+    productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+    devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+    autoSyncPersistentDataPath: true,
+    showBanner: (message,type)=>{if(type==='error')showError(message);else console.warn(message);}
+  }, value=>{document.getElementById('progress').value=value;}).then(instance=>{
+    window.unityInstance=instance;
+    window.flipDiagnostics.loaded=true;
+    window.flipDiagnostics.loadMilliseconds=Math.round(performance.now()-bootAt);
+    document.getElementById('loading').style.display='none';
+    positionFullscreenButton();
+    canvas.focus();
+    if(innerWidth<=700&&innerHeight>innerWidth)pause('Поверните телефон горизонтально');
+  }).catch(showError);
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+Independent V3 checkpoint, 2026-10-15. Stage-one core/UI checkpoint recorded before browser acceptance; later G1 evidence is in V3-TASKS.md.
+PASS: 7528 assertions from Verification/v3-independent-probe.cs.
+Coverage: all signed FIFO sequences length1..5;30/60/144Hz,.317,2.5,100; simultaneous event order; partial effect/queue finish at segment boundaries plus/minus1e-6; physical elapsed versus canonical finish; recovery/pause queue freeze; slow preserves input; after-ring pending; six-action prototype; unchanged positive/obstacle geometry for negative toggle.
+Run from project root:
+Add-Type -Path @('Assets/Scripts/Core/RaceSimulation.cs','Assets/Scripts/Core/TracksV3.cs','Verification/v3-independent-probe.cs')
+[IndependentV3Probe]::Run()
+Core SHA-256: 0546253195902fa647205685cd2cacda8c8d2c82a98ac8ec03d5896931bda474
+TracksV3 SHA-256: 6ef6a99011ba8743c4203adbfa8efa4ef296d3e874ff720291b4d19156c02d0e
+
+PASS: 120 checks from Verification/v3-ui-review.ps1.
+Coverage: negative draft/cancel/commit; own/shared ready state; same-frame commit guard; rematch keeps exact Track/config/heroes and clears effects; practice-return preserves selected config; 1280x720,844x390,568x320 at DPR1/2.
+This extracts unchanged source methods. Unity Input/artwork/runtime APIs mocked; not browser or physical multi-touch evidence.
+Run: pwsh -NoProfile -File Verification/v3-ui-review.ps1
+UI SHA-256: 714946d725f8e7576448a8c41e468267d36b06a55d12e939c031530320a8bd37
+No blocking issues found in these reviewed checkpoints.
+

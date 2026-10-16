@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <!-- No package references: keep this verification runner entirely offline. -->
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/Scripts/Core/*.cs" />
+    <Compile Include="../../Assets/Editor/EngineParityTests.cs" />
+    <Compile Include="../../Assets/Editor/EngineV2Tests.cs" />
+    <Compile Include="../../Assets/Editor/EngineV3Tests.cs" />
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+</Project>

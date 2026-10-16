@@ -1,0 +1,88 @@
+{
+  "before": {
+    "mode": "race",
+    "phase": "racing",
+    "winner": "",
+    "track": "switch",
+    "paused": true,
+    "elapsed": 7.123000000000019,
+    "countdown": 0,
+    "fullscreenX": 792,
+    "fullscreenY": 2,
+    "fullscreenWidth": 31,
+    "fullscreenHeight": 25,
+    "players": [
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 1436,
+        "y": 1,
+        "recovering": 0.40427272727270686,
+        "finish": -1,
+        "collisions": 2,
+        "character": 2,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 1,
+        "boost": 0
+      },
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 1586.0900000000063,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 3,
+        "rings": 1,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0.4269999999999816
+      }
+    ]
+  },
+  "portrait": {
+    "mode": "race",
+    "phase": "racing",
+    "winner": "",
+    "track": "switch",
+    "paused": true,
+    "elapsed": 7.123000000000019,
+    "countdown": 0,
+    "fullscreenX": 319,
+    "fullscreenY": 129.5,
+    "fullscreenWidth": 34,
+    "fullscreenHeight": 25,
+    "players": [
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 1436,
+        "y": 1,
+        "recovering": 0.40427272727270686,
+        "finish": -1,
+        "collisions": 2,
+        "character": 2,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 1,
+        "boost": 0
+      },
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 1586.0900000000063,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 3,
+        "rings": 1,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0.4269999999999816
+      }
+    ]
+  }
+}

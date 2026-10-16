@@ -1,0 +1,487 @@
+{
+  "actions": [
+    {
+      "slot": 0,
+      "route": 0,
+      "target": 370,
+      "estimate": 371.1400000000013,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 364.3200000000013,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 0,
+      "target": 370,
+      "estimate": 412.0600000000013,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 364.3200000000013,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 1,
+      "target": 1070,
+      "estimate": 1070.7399999999977,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 1037.9599999999978,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 1,
+      "target": 1070,
+      "estimate": 1113.4199999999978,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 1037.9599999999978,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 2,
+      "target": 1520,
+      "estimate": 1520.6400000000008,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 1519.1000000000008,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 2,
+      "target": 1616,
+      "estimate": 1617.0000000000034,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 1615.2400000000034,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 3,
+      "target": 2170,
+      "estimate": 2170.7400000000007,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 2162.600000000001,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 1,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 3,
+      "target": 2170,
+      "estimate": 2170.9599999999996,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 2144.5599999999995,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 4,
+      "target": 2970,
+      "estimate": 2970.6600000000017,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 2932.8200000000015,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 1,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 4,
+      "target": 2970,
+      "estimate": 2971.099999999999,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 2962.739999999999,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 5,
+      "target": 3720,
+      "estimate": 3721.520000000011,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 3684.780000000011,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 5,
+      "target": 3816,
+      "estimate": 3828.2200000000103,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 3750.78000000001,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 1,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 6,
+      "target": 4370,
+      "estimate": 4370.080000000013,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 4346.100000000013,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 2,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 6,
+      "target": 4370,
+      "estimate": 4370.520000000002,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 4358.420000000002,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 7,
+      "target": 5270,
+      "estimate": 5270.760000000009,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 5260.420000000009,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 2,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 7,
+      "target": 5270,
+      "estimate": 5272.740000000011,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 5272.740000000011,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 8,
+      "target": 6416,
+      "estimate": 6417.6200000000235,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 6415.640000000024,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 2,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 8,
+      "target": 6320,
+      "estimate": 6326.320000000024,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 6283.640000000024,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 9,
+      "target": 6970,
+      "estimate": 6970.040000000023,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 6962.560000000023,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 3,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 9,
+      "target": 6970,
+      "estimate": 6970.70000000003,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 6957.28000000003,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 1,
+      "route": 10,
+      "target": 7420,
+      "estimate": 7421.480000000033,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 7395.960000000033,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 3,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    },
+    {
+      "slot": 0,
+      "route": 10,
+      "target": 7420,
+      "estimate": 7420.160000000033,
+      "state": {
+        "ready": false,
+        "flipping": false,
+        "distance": 7390.460000000033,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    }
+  ],
+  "result": {
+    "mode": "race",
+    "phase": "finished",
+    "winner": "1",
+    "track": "hold",
+    "paused": false,
+    "elapsed": 35.99999999999809,
+    "countdown": 0,
+    "fullscreenX": 792,
+    "fullscreenY": 2,
+    "fullscreenWidth": 31,
+    "fullscreenHeight": 25,
+    "players": [
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 7920,
+        "y": 0,
+        "recovering": 0,
+        "finish": 36,
+        "collisions": 0,
+        "character": 0,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      },
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 7920,
+        "y": 0,
+        "recovering": 0,
+        "finish": 35.1,
+        "collisions": 0,
+        "character": 1,
+        "rings": 3,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      }
+    ]
+  }
+}

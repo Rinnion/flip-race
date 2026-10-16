@@ -1,0 +1,9 @@
+Independent .NET 8 runner verification, 2026-10-15.
+Command: dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- Tools/engine-parity-fixtures.tsv.gz
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).
+
+V2 extension verification, 2026-10-15, after centering practice risk guide at obstacle X - 84.
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).

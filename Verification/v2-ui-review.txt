@@ -1,0 +1,9 @@
+Independent read-only UI review, 2026-10-15.
+Result: PASS 160 UI transition/geometry checks.
+Source: Assets/Scripts/Presentation/FlipRaceGame.cs
+SHA-256 at report creation: fbf5f6b1e9a6daf2006a668cd2bdd0de27a86f05ae15bedc77cfcf37adae0ae4
+Runner: in-memory C# compiled with PowerShell Add-Type.
+Unchanged methods extracted from the source: Measure, Pointer, ToggleMode, NewGame, SelectCharacter, OpenTracks, TrackChoiceRect, CharacterRect, Act, Resume, OpenRules, CloseRules, BlockGameplayInput.
+Real Core implementation used. Unity Input/artwork/runtime APIs mocked; no browser or physical multi-touch claim.
+Coverage: 4 heroes x 2 slots x 3 viewports (1280x720, 844x390, 568x320) x render/CSS ratios 1 and 2; transformed upper-lane hit tests; readiness geometry; simultaneous character choices; own ready reset/opponent ready preserved; same-hero countdown; both-ready rematch and cleared distance/boost/rewards/collisions/finish; character and track persistence; different-track reset; same-frame modal fallthrough blocked; practice returns selected race; track chooser blocked during countdown; portrait input blocked.
+No blocking issue found in reviewed current source.

@@ -1,0 +1,96 @@
+{
+  "actions": [
+    {
+      "actualFlipStart": 515.4599999999976
+    },
+    {
+      "boost": true,
+      "state": {
+        "mode": "practice",
+        "phase": "racing",
+        "winner": "",
+        "track": "risk-practice",
+        "paused": false,
+        "elapsed": 3.1869999999999834,
+        "countdown": 0,
+        "fullscreenX": 792,
+        "fullscreenY": 2,
+        "fullscreenWidth": 31,
+        "fullscreenHeight": 25,
+        "players": [
+          {
+            "ready": false,
+            "flipping": false,
+            "distance": 701.1399999999963,
+            "y": 0,
+            "recovering": 0,
+            "finish": -1,
+            "collisions": 0,
+            "character": 2,
+            "rings": 0,
+            "pendingRings": 0,
+            "failedRings": 0,
+            "boost": 0
+          },
+          {
+            "ready": false,
+            "flipping": false,
+            "distance": 712.2099999999945,
+            "y": 0,
+            "recovering": 0,
+            "finish": -1,
+            "collisions": 0,
+            "character": 2,
+            "rings": 1,
+            "pendingRings": 1,
+            "failedRings": 0,
+            "boost": 0.4993636363636529
+          }
+        ]
+      }
+    }
+  ],
+  "final": {
+    "mode": "practice",
+    "phase": "finished",
+    "winner": "1",
+    "track": "risk-practice",
+    "paused": false,
+    "elapsed": 10.909090909087343,
+    "countdown": 0,
+    "fullscreenX": 792,
+    "fullscreenY": 2,
+    "fullscreenWidth": 31,
+    "fullscreenHeight": 25,
+    "players": [
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 2400,
+        "y": 1,
+        "recovering": 0,
+        "finish": 10.909090909090908,
+        "collisions": 0,
+        "character": 2,
+        "rings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "boost": 0
+      },
+      {
+        "ready": false,
+        "flipping": false,
+        "distance": 2400,
+        "y": 1,
+        "recovering": 0,
+        "finish": 10.609090909090908,
+        "collisions": 0,
+        "character": 2,
+        "rings": 1,
+        "pendingRings": 1,
+        "failedRings": 0,
+        "boost": 0
+      }
+    ]
+  }
+}

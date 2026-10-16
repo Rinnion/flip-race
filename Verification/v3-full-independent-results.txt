@@ -1,0 +1,13 @@
+Independent full V3 audit, 2026-10-15.
+PASS 1972 assertions.
+Three tracks x safe/ideal/all-eight routes x dt 1/30,1/60,1/144,.317,2.5,100:
+physical safe36, ideal34.2, six-positive/two-negative34.8; zero hits; all effects completely served; exact symmetric ties; unchanged obstacles/positive geometry between negative configurations.
+NegativeRoute recovery stress: 143 samples (long42, short59, flow42), 105 after actually earned negative effects. Each can avoid the next stone after 150ms reaction, staying or one flip. Escape requires physically reaching beyond the next obstacle.
+Active effects at those sampled collisions: slow0, boost0, queued0. Geometry completed effects before those impacts; synthetic active-effect/queue recovery is covered separately, not inferred from these samples.
+Ideal 18 accepted actions each. First input1.781818s. Max interior gaps2.554545/3.090909/1.863636s; final tails2.681818/1.854545/2.536364s (long/short/flow).
+Core SHA-256: 0546253195902fa647205685cd2cacda8c8d2c82a98ac8ec03d5896931bda474
+TracksV3 SHA-256: 9dbb5e53cf74dd93a9bcbcbfdacbff9c469040f2e5f8b16a14c346d1ff4f8cb1
+Run from project root:
+Add-Type -Path @('Assets/Scripts/Core/RaceSimulation.cs','Assets/Scripts/Core/TracksV3.cs','Verification/v3-full-independent-probe.cs')
+[IndependentV3FullProbe]::Run()
+No blocking issues found. No physical device or browser claim.

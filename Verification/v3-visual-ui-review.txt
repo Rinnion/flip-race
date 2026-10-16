@@ -1,0 +1,66 @@
+Independent extracted-method UI review for visual revision 3.0.1, 2026-10-15.
+
+PASS 558 checks at CSS viewports 1280x720, 844x390 and 568x320,
+each with DPR 1 and 2. This includes the original 120 checks from
+Verification/v3-ui-review.ps1 plus 438 in-memory geometry/input assertions.
+No duplicate persistent test harness was added.
+
+Method:
+- Extract the actual Measure, Pointer, ToggleMode, NewGame, SelectCharacter,
+  OpenTracks, TrackChoiceRect, CharacterRect, Act, Resume, OpenRules,
+  CloseRules and BlockGameplayInput method bodies from FlipRaceGame.cs.
+- Compile those bodies and the actual Core/TracksV3 source in PowerShell 7
+  Add-Type, with small Unity Rect/Vector2/Screen/Time and audio/art stubs.
+- Verify modal, session, lane and footer rectangles stay inside the viewport.
+- Verify track choices, negative toggle, character cards and session controls
+  do not overlap; the resume target remains inside the pause cover.
+- Verify upper-lane mirrored coordinates select the intended character and
+  keep hit testing inside that player's lane.
+- Verify same-frame selections and readiness touches remain independent,
+  and simultaneous racing touches start both players' flips.
+- Verify pause, resume, rules close and track commit consume their own input,
+  preventing same-frame gameplay clickthrough.
+- Retain original draft/cancel/commit, readiness, rematch queue reset,
+  selected heroes, selected negative configuration and practice-return checks.
+
+Follow-up after the 558-check run:
+The only subsequent reviewed layout change moved compact character cards up
+another 5 CSS px when lane height is below 135 (offset 15 instead of 10).
+One targeted check re-extracted the final actual Measure/CharacterRect methods:
+PASS at 568x320: lane height 119, ready button bottom 105.5,
+ground top 106, clearance 0.5 CSS px. The earlier 4.5 px decorative-ground
+overlap is fixed. No remaining input-overlap finding.
+
+Final FlipRaceGame.cs SHA-256 (after this follow-up correction):
+07f35e15737755aa5cf6eba73c4a34660614e7287ecc22063e652aeb9cde396c
+
+Mechanics unchanged from the complete 3.0.0 report
+Verification/v3-full-independent-results.txt (exact SHA-256 equality):
+Core / Assets/Scripts/Core/RaceSimulation.cs:
+0546253195902fa647205685cd2cacda8c8d2c82a98ac8ec03d5896931bda474
+Tracks / Assets/Scripts/Core/TracksV3.cs:
+9dbb5e53cf74dd93a9bcbcbfdacbff9c469040f2e5f8b16a14c346d1ff4f8cb1
+No Core/Tracks edits or repeat engine suite were performed for this UI review.
+
+Read-only rendering/clock findings:
+- Old Round drew overlapping central rectangles and four full corner circles.
+  A fill with alpha 0.6 became 0.84 with two passes and 0.936 with three,
+  producing bands. The final single native rounded DrawTexture fill removes
+  those intersections; StrokeRound now adds a separate border instead of
+  placing translucent fill over a solid background-colored border rectangle.
+- animationTime advances during normal ready/racing/finished updates and
+  deliberately freezes on pause, rules and portrait mode. No stopped-clock
+  explanation for the formerly weak running animation was found.
+- The temporary 48-frame run / 8-frame blink phase mismatch was reported to
+  the artwork owner; artwork changes and their final browser rendering are
+  outside this extracted-method UI review.
+
+Reproduce the persistent baseline with:
+pwsh -NoProfile -File Verification/v3-ui-review.ps1
+Windows PowerShell 5 Add-Type uses an older C# compiler and cannot compile
+the existing nameof/out-var source; use PowerShell 7.
+
+Scope limits: these checks cover source geometry and input dispatch. They do
+not claim physical-device multi-touch, font rasterization, actual native GUI
+rounded-corner appearance, browser WebGL startup or absence of startup OOM.
+Unity was not launched by this review. Final browser checks are separate.

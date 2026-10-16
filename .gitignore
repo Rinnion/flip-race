@@ -1,0 +1,53 @@
+# Unity-generated caches, local settings and build output.
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Bb]uild/
+/[Bb]uilds/
+/[Dd]ist/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Unity regenerates these IDE projects in the project root.
+# Handwritten Tools/**/*.csproj files must remain versioned.
+/*.csproj
+/*.unityproj
+/*.sln
+/*.slnx
+/*.pidb
+/*.booproj
+/.vs/
+/.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build output from all standalone .NET verification tools.
+/Tools/**/bin/
+/Tools/**/obj/
+
+# Release binaries are generated; keep the small verification manifests.
+/Releases/*
+!/Releases/*.manifest.json
+
+# Local environment, crash dumps and editor/OS temporary files.
+.env
+.env.*
+!.env.example
+!.env.sample
+/sysinfo.txt
+/mono_crash.*
+/crash.dmp
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Keep Assets (including .meta), Packages, ProjectSettings, Tools sources,
+# compressed test fixtures and the curated Verification reports/assets.

@@ -1,0 +1,14 @@
+# Keep text diffs stable across Windows and other platforms.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Assets and compressed test fixtures must remain byte-for-byte intact.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ttf binary
+*.gz binary
+*.dll binary
+*.pdb binary

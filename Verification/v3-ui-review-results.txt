@@ -1,0 +1,7 @@
+Independent extracted-method UI review, 2026-10-15, repeated after full TracksV3.All with all three tracks.
+PASS 120 checks: negative draft/cancel/commit, own readiness, same-frame guard, same heroes, rematch queue reset, practice return, CSS DPR geometry.
+Viewports 1280x720, 844x390, 568x320; DPR 1 and 2.
+Actual source methods are compiled with Unity Input/geometry/drawing stubs; no physical multitouch claim.
+FlipRaceGame SHA-256: 714946d725f8e7576448a8c41e468267d36b06a55d12e939c031530320a8bd37
+TracksV3 SHA-256: 9dbb5e53cf74dd93a9bcbcbfdacbff9c469040f2e5f8b16a14c346d1ff4f8cb1
+Run: pwsh -NoProfile -File Verification/v3-ui-review.ps1

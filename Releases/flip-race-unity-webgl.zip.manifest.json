@@ -1,0 +1,57 @@
+﻿{
+    "checkedAt":  "2026-10-15T11:26:57.590Z",
+    "buildDirectory":  "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL",
+    "fileCount":  5,
+    "totalBytes":  8606163,
+    "totalMiB":  8.207,
+    "compression":  "unity-fallback",
+    "fallbackCodec":  "gzip",
+    "checkedReferences":  [
+                              "Build/WebGL.data.unityweb",
+                              "Build/WebGL.framework.js.unityweb",
+                              "Build/WebGL.loader.js",
+                              "Build/WebGL.wasm.unityweb"
+                          ],
+    "runtime":  {
+                    "dataUrl":  "Build/WebGL.data.unityweb",
+                    "frameworkUrl":  "Build/WebGL.framework.js.unityweb",
+                    "codeUrl":  "Build/WebGL.wasm.unityweb",
+                    "loaderUrl":  "Build/WebGL.loader.js"
+                },
+    "files":  [
+                  {
+                      "path":  "Build/WebGL.data.unityweb",
+                      "bytes":  1420180,
+                      "sha256":  "f9ff06aa9afe620570913fa8e14de7109695ddfd1810493613db1afeacfacfb0"
+                  },
+                  {
+                      "path":  "Build/WebGL.framework.js.unityweb",
+                      "bytes":  89255,
+                      "sha256":  "b304e540bfe24fbada5af7510de80f8ab0d37f0b4643d60cf9f7bccab2ec55e9"
+                  },
+                  {
+                      "path":  "Build/WebGL.loader.js",
+                      "bytes":  39788,
+                      "sha256":  "a83926a18946817b73e63e62937c93e90d7d7ec08c5acb9a59b6aea5845efa1a"
+                  },
+                  {
+                      "path":  "Build/WebGL.wasm.unityweb",
+                      "bytes":  7049733,
+                      "sha256":  "19d26aeaf02e91a72603b31299665bac2e6bd4220d8cecd8f03b49e525d954aa"
+                  },
+                  {
+                      "path":  "index.html",
+                      "bytes":  7207,
+                      "sha256":  "26e47a3217742de8df967628b1e9ac9a290429eaf09b9ae077722ef08d614900"
+                  }
+              ],
+    "note":  "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks.",
+    "archive":  {
+                    "path":  "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-unity-webgl.zip",
+                    "bytes":  8473161,
+                    "miB":  8.081,
+                    "sha256":  "06d2e9ac6f87174181bf2c1c6a4991ea3704b330599fe3f0637da219887b3f54",
+                    "entriesVerified":  true,
+                    "indexAtRoot":  true
+                }
+}
