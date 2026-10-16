@@ -14,6 +14,17 @@ namespace FlipRace.Editor
         [MenuItem("Flip Race/Build WebGL")]
         public static void WebGL()
         {
+            BuildWebGL(false);
+        }
+
+        [MenuItem("Flip Race/Build V4 Control Trial")]
+        public static void WebGLTrial()
+        {
+            BuildWebGL(true);
+        }
+
+        static void BuildWebGL(bool trial)
+        {
             Directory.CreateDirectory("Assets/Scenes");
             const string scenePath = "Assets/Scenes/FlipRace.unity";
             if (!File.Exists(scenePath))
@@ -28,7 +39,7 @@ namespace FlipRace.Editor
             EditorBuildSettings.scenes = new[] {new EditorBuildSettingsScene(scenePath, true)};
             PlayerSettings.companyName = "Katikaavry";
             PlayerSettings.productName = "Флип! — гонка катикаавров";
-            PlayerSettings.bundleVersion = "3.0.1";
+            PlayerSettings.bundleVersion = trial ? "4.0.0-trial" : "3.0.1";
             PlayerSettings.runInBackground = true;
             PlayerSettings.defaultWebScreenWidth = 960;
             PlayerSettings.defaultWebScreenHeight = 540;
@@ -50,11 +61,12 @@ namespace FlipRace.Editor
             QualitySettings.vSyncCount = 0;
             QualitySettings.antiAliasing = 0;
             AssetDatabase.SaveAssets();
-            var output = Environment.GetEnvironmentVariable("FLIP_BUILD_PATH") ?? "Builds/WebGL";
+            var output = Environment.GetEnvironmentVariable("FLIP_BUILD_PATH") ?? (trial ? "Builds/WebGL-v4" : "Builds/WebGL");
             Directory.CreateDirectory(output);
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
                 scenes = new[] {scenePath}, locationPathName = output,
-                target = BuildTarget.WebGL, options = BuildOptions.None
+                target = BuildTarget.WebGL, options = BuildOptions.None,
+                extraScriptingDefines = trial ? new[] { "FLIP_V4_TRIAL" } : Array.Empty<string>()
             });
             if (report.summary.result != BuildResult.Succeeded)
                 throw new Exception("WebGL build failed: " + report.summary.result);

@@ -10,6 +10,7 @@ public static class Program
             Console.WriteLine(EngineParityTests.RunAll());
             Console.WriteLine(EngineV2Tests.RunAll());
             Console.WriteLine(EngineV3Tests.RunAll());
+            Console.WriteLine(EngineV4Tests.RunAll());
             if (args.Length > 0) Console.WriteLine(EngineParityTests.CompareFixtures(args[0]));
             return 0;
         }

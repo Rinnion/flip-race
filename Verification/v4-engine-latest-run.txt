@@ -1,0 +1,5 @@
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.
+PASS: V4-01/02 14 scenarios / 310 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).

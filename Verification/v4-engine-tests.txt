@@ -1,0 +1,18 @@
+2026-10-16 — V4-01/02 checkpoint, before open-area browser gate.
+Command: dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- Tools/engine-parity-fixtures.tsv.gz
+Exit code: 0
+
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.
+PASS: V4-01/02 13 scenarios / 289 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).
+
+Sequential gate: V4-01 alone passed 7 scenarios / 151 assertions before
+GravityAirFlip's second-input branch was enabled and V4-02 tests were added.
+These are engine tests, not a browser or physical-device result.
+
+SHA-256 at this checkpoint:
+RaceSimulation.cs b99dd68238135c9341ada87a4dac8a319e02df77ad6cf395260482ce8c8d4420
+ContinuousMotion.cs 98d06ea07562b30f2979c3bfaebdb31723f1854ab62f953e76ad959a3ad85f36
+EngineV4Tests.cs 7a785a65d680a2ac2b7643aa8c7ad49893c06da7408c142f1de121071e4150cc

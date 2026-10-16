@@ -1,0 +1,33 @@
+{
+  "linear": {
+    "snapshots": 129,
+    "inputs": 12,
+    "finishes": [
+      10,
+      10
+    ],
+    "maxFlightAge": 0.8,
+    "firstFlightMaxErrorWorldUnits": 1.4210854715202004e-14
+  },
+  "gravity": {
+    "snapshots": 129,
+    "inputs": 12,
+    "finishes": [
+      10,
+      10
+    ],
+    "maxFlightAge": 0.8000000000000003,
+    "firstFlightMaxErrorWorldUnits": 5.684341886080802e-14
+  },
+  "air": {
+    "snapshots": 126,
+    "inputs": 12,
+    "finishes": [
+      10,
+      10
+    ],
+    "maxFlightAge": 1.6741675905406774,
+    "inertiaSamples": 6,
+    "returnSamples": 25
+  }
+}

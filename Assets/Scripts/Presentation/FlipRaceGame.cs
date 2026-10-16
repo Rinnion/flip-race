@@ -25,6 +25,8 @@ namespace FlipRace.Presentation
         bool suppressFrame, gameplayInputBlocked, compact;
         int inputBlockFrame, round = 1;
         string selectedTrackId;
+        MotionMode selectedMotion = MotionMode.GravityAirFlip;
+        bool Trial { get { return Game.Mode == "trial"; } }
         string pauseReason = "Оба катикаавра ждут на своих местах.";
         double lastFrame;
         float uiScale, width, height, animationTime, winnerReactionAt = -10;
@@ -48,7 +50,11 @@ namespace FlipRace.Presentation
             Input.multiTouchEnabled = true;
             Input.simulateMouseWithTouches = false;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
+#if FLIP_V4_TRIAL
+            Game = RaceSimulation.CreateTrial(TracksV4.Open(), selectedMotion);
+#else
             Game = RaceSimulation.CreateGame();
+#endif
             selectedTrackId = Game.Track.Id;
             Game.Players[0].CharacterIndex = 0;
             Game.Players[1].CharacterIndex = 1;
@@ -173,6 +179,13 @@ namespace FlipRace.Presentation
             if (showTracks)
             {
                 if (trackClose.Contains(p)) { CloseRules(); return; }
+                if (Trial)
+                {
+                    if (negativeChoiceRect.Contains(p)) { ToggleTrialSegment(); return; }
+                    for (int i = 0; i < 3; i++) if (TrackChoiceRect(i).Contains(p))
+                    { selectedMotion = (MotionMode)i; NewGame("trial"); return; }
+                    return;
+                }
                 if (negativeChoiceRect.Contains(p)) { trackNegativeChoice = !trackNegativeChoice; Beep(tapClip); return; }
                 for (int i = 0; i < TracksV3.All.Length; i++) if (TrackChoiceRect(i).Contains(p))
                 { selectedTrackId = TracksV3.All[i].Id; selectedNegative = trackNegativeChoice; NewGame("race"); return; }
@@ -207,12 +220,19 @@ namespace FlipRace.Presentation
         }
         void ToggleMode()
         {
+            if (Trial) { ToggleTrialSegment(); return; }
             NewGame(Game.Mode == "race" ? "practice" : "race");
+        }
+        void ToggleTrialSegment()
+        {
+            selectedTrackId = TracksV4.IsOpen(Game.Track.Id) ? TracksV4.ChallengeId : TracksV4.OpenId;
+            NewGame("trial");
         }
         void NewGame(string mode)
         {
             int first = Game.Players[0].CharacterIndex, second = Game.Players[1].CharacterIndex;
-            Game = RaceSimulation.CreateGame(mode, selectedTrackId, selectedNegative);
+            Game = mode == "trial" ? RaceSimulation.CreateTrial(TracksV4.Get(selectedTrackId), selectedMotion)
+                : RaceSimulation.CreateGame(mode, selectedTrackId, selectedNegative);
             Game.Players[0].CharacterIndex = first; Game.Players[1].CharacterIndex = second;
             round = 1; paused = false; showRules = false; showTracks = false; suppressFrame = true;
             lastFrame = Time.realtimeSinceStartupAsDouble;
@@ -228,6 +248,16 @@ namespace FlipRace.Presentation
             Beep(tapClip);
         }
         string PlayerName(int slot) { return CharacterRoster.Name(Game.Players[slot].CharacterIndex); }
+        static string MotionName(MotionMode mode)
+        {
+            return mode == MotionMode.Linear ? "Линейный" : mode == MotionMode.Gravity ? "Разгон" : "Разгон + повтор";
+        }
+        static string MotionHint(MotionMode mode)
+        {
+            return mode == MotionMode.Linear ? "Ровный перелёт · жди посадки"
+                : mode == MotionMode.Gravity ? "Ускорение к поверхности · жди посадки"
+                : "Второе касание: торможение и возврат";
+        }
         void OpenTracks() { wasPausedBeforeRules = paused; trackNegativeChoice = selectedNegative; showTracks = true; paused = true; }
         Rect TrackChoiceRect(int index) { return new Rect(trackPanel.x + 22, trackPanel.y + 49 + index * 37, trackPanel.width - 44, 34); }
         Rect CharacterRect(int hero, float w, float h)
@@ -301,7 +331,7 @@ namespace FlipRace.Presentation
         {
             float pad = compact ? 12 : 20;
             Ellipse(new Rect(session.x + pad, session.center.y - 2.5f, 5, 5), Hex(0x9ca986));
-            string title = (Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
+            string title = (Trial ? MotionName(Game.Motion) + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
                 + (Game.Track.NegativeEnabled ? "  ·  ◇−" : "")
                 + (Active ? "   /   " + round.ToString("00") : "   ↗");
             Text(new Rect(session.x + pad + 14, session.y, soundRect.x - session.x - pad - 45, session.height), title,
@@ -414,12 +444,19 @@ namespace FlipRace.Presentation
                 : p.BoostRemaining > 0 ? "Рывок · −0,3 сек"
                 : p.Flipping ? "В полёте" : "Готов к перевороту";
             if (p.PendingEffects.Count > 0 && p.Recovering <= 0) status += " · +" + p.PendingEffects.Count;
+            if (Trial && Game.Phase == "racing" && !p.FinishTime.HasValue && Game.Motion != MotionMode.Linear)
+            {
+                string gravity = p.Gravity < 0 ? "↑ тяга" : "↓ тяга";
+                string charge = Game.Motion == MotionMode.GravityAirFlip ? p.AirFlipAvailable ? " · повтор 1" : " · повтор 0" : "";
+                status = gravity + charge + (p.Recovering > 0 ? " · удар" : p.SlowRemaining > 0 ? " · +0,3 с"
+                    : p.BoostRemaining > 0 ? " · −0,3 с" : "");
+            }
             int ss = compact ? 8 : 10;
             float stw = TextWidth(status, ss) + (compact ? 12 : 16);
             Rect sr = new Rect(w - x - stw, y, stw, ph);
             Round(sr, 5, p.Recovering > 0 ? Hex(0xfff0db) : new Color(.98f, .984f, .945f, .79f));
             Text(sr, status, ss, p.Recovering > 0 ? Hex(0xa64d2d) : Hex(0x6a755a), false, TextAnchor.MiddleCenter);
-            if (Game.Phase == "racing" || Game.Phase == "finished")
+            if ((Game.Phase == "racing" || Game.Phase == "finished") && Game.Track.RiskZones.Length > 0)
                 Text(new Rect(w / 2 - 65, y, 130, ph), "+ " + p.BoostsEarned + " / " + Game.Track.PositiveRingCount
                     + (Game.Track.NegativeEnabled ? "    ◇− " + p.SlowsEarned : ""),
                     compact ? 7 : 8, Hex(0x8c7b4e), true, TextAnchor.MiddleCenter);
@@ -473,7 +510,7 @@ namespace FlipRace.Presentation
             Text(new Rect(0, first.y - (compact ? 35 : 49), w, 12), "ИГРОК 0" + (slot + 1),
                 compact ? 7 : 8, muted, false, TextAnchor.MiddleCenter);
             Text(new Rect(0, first.y - (compact ? 24 : 36), w, compact ? 23 : 30),
-                p.Ready ? "Всё, я готов!" : Game.Mode == "practice" ? "Поймай момент." : "Переверни гонку.",
+                p.Ready ? "Всё, я готов!" : Trial ? "Попробуй переворот." : Game.Mode == "practice" ? "Поймай момент." : "Переверни гонку.",
                 compact ? 21 : 28, ink, true, TextAnchor.MiddleCenter);
             for (int hero = 0; hero < 4; hero++)
             {
@@ -495,6 +532,7 @@ namespace FlipRace.Presentation
 
         void DrawTracks()
         {
+            if (Trial) { DrawTrialChoices(); return; }
             Fill(new Rect(0, 0, width, height), new Color(.16f, .2f, .14f, .44f));
             Round(new Rect(trackPanel.x, trackPanel.y + 5, trackPanel.width, trackPanel.height), 14, new Color(.1f, .14f, .08f, .12f));
             Round(trackPanel, 14, Hex(0xfbfbf1));
@@ -520,6 +558,29 @@ namespace FlipRace.Presentation
             Text(new Rect(trackPanel.x + 22, trackPanel.yMax - 25, trackPanel.width - 44, 16),
                 Math.Round(TracksV3.All[0].Length / RaceConfig.Speed) + " секунд · " + TracksV3.All[0].PositiveRingCount
                     + " полезных колец", 9, muted, false, TextAnchor.MiddleCenter);
+        }
+
+        void DrawTrialChoices()
+        {
+            Fill(new Rect(0, 0, width, height), new Color(.16f, .2f, .14f, .44f));
+            Round(new Rect(trackPanel.x, trackPanel.y + 5, trackPanel.width, trackPanel.height), 14, new Color(.1f, .14f, .08f, .12f));
+            Round(trackPanel, 14, Hex(0xfbfbf1));
+            Text(new Rect(trackPanel.x + 22, trackPanel.y + 17, trackPanel.width - 65, 24), "Сравни управление", 18, ink, true);
+            Text(trackClose, "×", 24, muted, false, TextAnchor.MiddleCenter);
+            for (int i = 0; i < 3; i++)
+            {
+                MotionMode mode = (MotionMode)i; Rect r = TrackChoiceRect(i);
+                bool selected = mode == Game.Motion;
+                if (selected) Round(r, 6, Hex(0xe9efdd));
+                Text(new Rect(r.x + 10, r.y + 2, r.width - 35, 16), (i + 1) + " · " + MotionName(mode), 10, selected ? ink : muted, selected);
+                Text(new Rect(r.x + 10, r.y + 18, r.width - 35, 14), MotionHint(mode), 8, muted);
+                Text(new Rect(r.xMax - 25, r.y, 20, r.height), selected ? "✓" : "↗", 12, muted, false, TextAnchor.MiddleCenter);
+            }
+            StrokeRound(negativeChoiceRect, 6, Hex(0xd8ddcb), Hex(0xf1f3e8));
+            Text(negativeChoiceRect, TracksV4.IsOpen(Game.Track.Id) ? "Дальше: кольца и развороты  ↗" : "Вернуться к свободному полёту  ↗",
+                10, ink, false, TextAnchor.MiddleCenter);
+            Text(new Rect(trackPanel.x + 22, trackPanel.yMax - 25, trackPanel.width - 44, 16),
+                "Выбор начинает новую попытку · герои сохраняются", 8, muted, false, TextAnchor.MiddleCenter);
         }
 
         void DrawNegativeSymbol(float x, float y, float radius, Color color)
@@ -554,14 +615,15 @@ namespace FlipRace.Presentation
         }
         void DrawFooter()
         {
-            string mode = Game.Mode == "practice" ? "Перейти к гонке  ↗" : Game.Phase == "finished" ? "Другой ритм / кольца  ↗" : "Сначала попробовать серию  ↗";
+            string mode = Trial ? TracksV4.IsOpen(Game.Track.Id) ? "Кольца и развороты  ↗" : "Свободный полёт  ↗"
+                : Game.Mode == "practice" ? "Перейти к гонке  ↗" : Game.Phase == "finished" ? "Другой ритм / кольца  ↗" : "Сначала попробовать серию  ↗";
             if (!compact)
             {
                 StrokeRound(practiceRect, 9, Hex(0xd5dbc7), Hex(0xe9eddf));
                 Ellipse(new Rect(footer.x + 2, footer.y + 23, 42, 42), Hex(0xe7eadc));
                 Text(new Rect(footer.x + 2, footer.y + 23, 42, 42), "↕", 24, Hex(0x879477), false, TextAnchor.MiddleCenter);
                 Text(new Rect(footer.x + 57, footer.y + 25, 340, 20), "Одно касание — переворот", 10, ink, true);
-                Text(new Rect(footer.x + 57, footer.y + 45, 340, 20), "Сядьте напротив. Каждому — своя половина.", 9, muted);
+                Text(new Rect(footer.x + 57, footer.y + 45, 340, 20), Trial ? MotionHint(Game.Motion) : "Сядьте напротив. Каждому — своя половина.", 9, muted);
                 if (shell.width > 1000)
                 {
                     Text(new Rect(footer.x + 470, footer.y + 33, 340, 20), "+кольцо: −0,3 с  ·  ◇−: +0,3 с  ·  удар: +0,5 с", 10, muted);
@@ -606,6 +668,12 @@ namespace FlipRace.Presentation
                 "Ромб −: +0,3 с, переворот работает. Ромбы можно отключить в меню трасс.",
                 "Удар: +0,5 с. Первый на финише побеждает. Готовность и реванш подтверждают оба."
             };
+            if (Trial) lines = new[] {
+                "Касание своей половины или A / L — переворот. Сравни три варианта в меню сверху.",
+                "«Разгон + повтор»: ещё одно касание меняет тягу. Инерция сохраняется — сначала торможение.",
+                "↑ / ↓ — тяга. Повтор 1 / 0 — запас в воздухе. Он вернётся при посадке по направлению тяги.",
+                "Круг +: −0,3 с. У камня нужен чистый манёвр. Ромб −: +0,3 с. Удар: +0,5 с."
+            };
             float start = r.y + 77, row = (r.height - 134) / 4;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -624,6 +692,8 @@ namespace FlipRace.Presentation
             if (Game.Phase != "racing" || p.FinishTime.HasValue) return "";
             if (p.LastHit != null && Game.Elapsed - p.LastHit.At < 1.7) return "Кувырок! Следующий камень можно обойти.";
             if (Game.Winner is int) return "Соперник на финише — беги до конца!";
+            if (Trial)
+                return TracksV4.IsOpen(Game.Track.Id) || Game.Elapsed < 3.5 ? MotionHint(Game.Motion) : "";
             if (Game.Mode != "practice")
                 return Game.Elapsed < 3.5 ? "Коснись своей половины — переворот." : "";
             if (p.LastSlow != null && Game.Elapsed - p.LastSlow.At < 1.1) return "Ромб замедляет. Переворот работает.";

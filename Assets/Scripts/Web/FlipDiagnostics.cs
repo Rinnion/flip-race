@@ -11,14 +11,15 @@ namespace FlipRace.Web
     {
         [Serializable] sealed class PlayerSnapshot
         {
-            public bool ready, flipping;
+            public bool ready, flipping, airFlipAvailable;
             public double distance, y, recovering, finish;
             public int collisions, character, rings, slowRings, pendingRings, failedRings, queuedEffects;
-            public double boost, slow, speed, flipElapsed;
+            public double boost, slow, speed, flipElapsed, verticalSpeed, centerY;
+            public int gravity;
         }
         [Serializable] sealed class Snapshot
         {
-            public string mode, phase, winner, track;
+            public string mode, phase, winner, track, motion;
             public bool paused, negativeEnabled;
             public double elapsed, countdown;
             public float fullscreenX, fullscreenY, fullscreenWidth, fullscreenHeight;
@@ -46,6 +47,7 @@ namespace FlipRace.Web
             Rect fullscreen = game.FullscreenRect;
             var snapshot = new Snapshot {mode = state.Mode, phase = state.Phase,
                 track = state.Track.Id,
+                motion = state.Motion.ToString(),
                 negativeEnabled = state.Track.NegativeEnabled,
                 winner = state.Winner == null ? "" : state.Winner.ToString(), paused = game.IsPaused,
                 elapsed = state.Elapsed, countdown = state.CountdownRemaining,
@@ -62,7 +64,9 @@ namespace FlipRace.Web
                     recovering=p.Recovering, flipping=p.Flipping, collisions=p.Collisions, finish=p.FinishTime ?? -1,
                     character=p.CharacterIndex, rings=p.BoostsEarned, pendingRings=pending,
                     failedRings=p.FailedRiskIds.Count, boost=p.BoostRemaining, slow=p.SlowRemaining,
-                    speed=p.CurrentSpeed, slowRings=p.SlowsEarned, queuedEffects=p.PendingEffects.Count, flipElapsed=p.FlipElapsed};
+                    speed=p.CurrentSpeed, slowRings=p.SlowsEarned, queuedEffects=p.PendingEffects.Count, flipElapsed=p.FlipElapsed,
+                    verticalSpeed=p.VerticalSpeed, gravity=p.Gravity, airFlipAvailable=p.AirFlipAvailable,
+                    centerY=FlipRace.Core.RaceSimulation.GetPlayerCenterY(p)};
             }
 #if UNITY_WEBGL && !UNITY_EDITOR
             FlipReport(JsonUtility.ToJson(snapshot));

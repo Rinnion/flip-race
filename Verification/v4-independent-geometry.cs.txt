@@ -1,0 +1,107 @@
+using System;
+using System.Collections.Generic;
+using FlipRace.Core;
+public static class V4GeometryIndependent
+{
+ static int checks,games;
+ static void C(bool ok,string msg){checks++;if(!ok)throw new Exception(msg);}
+ static void N(double a,double b,double tol,string msg){C(Math.Abs(a-b)<=tol,msg+": "+a+" vs "+b);}
+ static readonly double[] Steps={1d/30,1d/60,1d/144,.317,2.5,100};
+ static GameState Route(MotionMode mode,double[][] inputs,double step,int upper=0,int lower=1)
+ {
+  var game=RaceSimulation.CreateTrial(TracksV4.Challenge(),mode);
+  RaceSimulation.SetCharacter(game,0,upper);RaceSimulation.SetCharacter(game,1,lower);
+  C(RaceSimulation.Press(game,0),"ready upper");C(game.Phase=="ready","one ready waits");
+  C(RaceSimulation.Press(game,1),"ready lower");RaceSimulation.Advance(game,3);
+  int[] next={0,0},air={0,0};int guard=0;
+  while(game.Phase=="racing")
+  {
+   if(++guard>20000)throw new Exception("route stalled");
+   double dt=step;
+   for(int i=0;i<2;i++)
+   {
+    var p=game.Players[i];
+    if(next[i]>=inputs[i].Length)continue;
+    double left=inputs[i][next[i]]-p.Distance;
+    if(left<=1e-7)
+    {
+     N(left,0,2e-7,"input independent upper-speed bound");
+     if(p.Flipping)air[i]++;
+     C(RaceSimulation.Press(game,i),"route press at "+inputs[i][next[i]]+" mode="+mode);
+     next[i]++;if(next[i]>=inputs[i].Length)continue;
+     left=inputs[i][next[i]]-p.Distance;
+    }
+    // This scheduler does not predict collection or clone the simulation.
+    // No speed exceeds 330, so this bound cannot pass either player's input.
+    dt=Math.Min(dt,left/330d);
+   }
+   if(dt<=0)throw new Exception("nonpositive scheduler step");RaceSimulation.Advance(game,dt);
+  }
+  for(int i=0;i<2;i++)
+  {
+   var p=game.Players[i];C(next[i]==inputs[i].Length,"all controls delivered");
+   C(p.FinishTime.HasValue,"both physical finishes");
+   C(p.ActiveEffect==null&&p.PendingEffects.Count==0,"empty FIFO");
+   C(p.CompletedBoosts==p.BoostsEarned&&p.CompletedSlows==p.SlowsEarned,"all earned effects served");
+   C(p.CharacterIndex==(i==0?upper:lower),"heroes retained");
+   if(inputs[i].Length==7)C(air[i]==0,"safe route no air repeats");
+   if(inputs[i].Length==11)C(air[i]==2,"reward route two deliberate air repeats");
+  }
+  games++;return game;
+ }
+ static void Outcome(GameState game,int id,int plus,int minus,double finish)
+ {
+  var p=game.Players[id];C(p.Collisions==0,"clean path "+string.Join(",",p.HitObstacleIds));
+  C(p.BoostsEarned==plus&&p.SlowsEarned==minus,"ring totals");
+  N(p.FinishTime.Value,finish,1e-10,"actual finish");
+ }
+ static void StateFairness(GameState game)
+ {
+  var a=game.Players[0];var b=game.Players[1];
+  C(a.Collisions==b.Collisions&&a.BoostsEarned==b.BoostsEarned&&a.SlowsEarned==b.SlowsEarned,"same route scores");
+  C(a.FinishTime.Value==b.FinishTime.Value&&Equals(game.Winner,"tie"),"same route exact tie");
+ }
+ public static string Run()
+ {
+  checks=games=0;var track=TracksV4.Challenge();
+  C(track.Length==4400&&track.PositiveRingCount==4&&track.RiskZones.Length==5,"trial counts");
+  var safe=track.SafeRoute;var ideal=track.RiskRoute;var hasty=(double[])ideal.Clone();hasty[6]=2465;
+  var late=(double[])ideal.Clone();late[6]=2620;
+  foreach(double step in Steps)
+  {
+   foreach(MotionMode mode in Enum.GetValues(typeof(MotionMode)))
+   {
+    var g=Route(mode,new[]{safe,safe},step);Outcome(g,0,0,0,20);Outcome(g,1,0,0,20);StateFairness(g);
+   }
+   foreach(bool swap in new[]{false,true})
+   {
+    var mixed=Route(MotionMode.GravityAirFlip,swap?new[]{safe,ideal}:new[]{ideal,safe},step,3,3);
+    int winner=swap?1:0;Outcome(mixed,winner,4,0,18.8);Outcome(mixed,1-winner,0,0,20);
+    C(Equals(mixed.Winner,winner),"ideal wins actual unequal route");
+    foreach(bool delayed in new[]{false,true})
+    {
+     var other=delayed?late:hasty;
+     var g=Route(MotionMode.GravityAirFlip,swap?new[]{other,ideal}:new[]{ideal,other},step,2,3);
+     Outcome(g,winner,4,0,18.8);Outcome(g,1-winner,3,delayed?0:1,delayed?19.1:19.4);
+     C(Equals(g.Winner,winner),"correct choice wins");
+     C(g.Players[1-winner].NegativeRiskIds.Contains("v4-return-trap")==!delayed,"actual trap contacted");
+     C(!g.Players[1-winner].SuccessfulRiskIds.Contains("v4-linked-after"),"wrong return misses after reward");
+    }
+   }
+  }
+  for(int upper=0;upper<4;upper++)for(int lower=0;lower<4;lower++)
+  {
+   var g=Route(MotionMode.GravityAirFlip,new[]{ideal,ideal},.317,upper,lower);
+   Outcome(g,0,4,0,18.8);Outcome(g,1,4,0,18.8);StateFairness(g);
+  }
+  // The complete trap group fits in the minimum 1080-unit view before entry.
+  var stone=Array.Find(track.Obstacles,o=>o.Id=="v4-return-ceiling");
+  var minus=Array.Find(track.RiskZones,z=>z.Id=="v4-return-trap");
+  var plus=Array.Find(track.RiskZones,z=>z.Id=="v4-linked-after");
+  double earliest=stone.X-RaceConfig.PlayerRadius;
+  double latest=Math.Max(stone.X+stone.Width+RaceConfig.PlayerRadius,Math.Max(minus.X+20,plus.X+20));
+  C(latest-earliest<1080,"trap group fits min view");
+  C(plus.X-stone.X<1080&&minus.X>stone.X+stone.Width,"negative and reward after stone");
+  return "PASS "+checks+" assertions in "+games+" complete asymmetric/symmetric games. All 3 safe modes=20.0, ideal=18.8, hasty=19.4, late=19.1; 6 step sizes, both player assignments, 16 hero pairs, full FIFO. Trap span="+(latest-earliest)+" < min ahead1080.";
+ }
+}

@@ -101,6 +101,8 @@ namespace FlipRace.Presentation
             float motionTime=(float)(player.Distance/RaceConfig.Speed);
             float stride=motionTime*25;
             float flight=Mathf.Clamp01((float)(player.FlipElapsed/RaceConfig.FlipDuration));
+            if (game.Motion != MotionMode.Linear)
+                flight = Mathf.Clamp01((float)(Math.Abs(player.VerticalSpeed) / (RaceConfig.GravityAcceleration * RaceConfig.FlipDuration)));
             float rotation = onCeiling ? 180 : 0;
             if (player.Flipping) rotation = (float)(1 - player.Y) * 180;
             if (recovering) rotation += (float)player.RecoveryElapsed * 14 * Mathf.Rad2Deg;
@@ -247,6 +249,12 @@ namespace FlipRace.Presentation
                     float pastY=top+((float)RaceConfig.PlayerRadius+
                         Mathf.Lerp((float)player.FlipFrom,(float)player.FlipTo,past)*
                         ((float)RaceConfig.CorridorHeight-(float)RaceConfig.PlayerRadius*2))*sy;
+                    // Gravity trails show the current velocity tangent, including
+                    // braking/reversal; a linear FlipFrom/FlipTo trail points the
+                    // wrong way after an air flip.
+                    if (game.Motion != MotionMode.Linear)
+                        pastY = Mathf.Clamp(y - (float)player.VerticalSpeed * i * .025f * sy,
+                            top + (float)RaceConfig.PlayerRadius * sy, bottom - (float)RaceConfig.PlayerRadius * sy);
                     Ellipse(anchor-i*radius*.32f,pastY,radius*(.35f+i*.045f),radius*.40f,
                         Alpha(Ink[playerIndex],(5-i)*.045f));
                 }
