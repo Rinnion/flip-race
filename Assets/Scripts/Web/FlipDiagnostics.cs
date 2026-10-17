@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using FlipRace.Core;
 using FlipRace.Presentation;
 using UnityEngine;
 
@@ -11,21 +12,27 @@ namespace FlipRace.Web
     {
         [Serializable] sealed class PlayerSnapshot
         {
-            public bool ready, flipping, airFlipAvailable, finishBoost;
+            public bool ready, flipping, airFlipAvailable, finishBoost, hasFlightMeasurement, flightInterrupted;
             public double distance, y, recovering, finish;
             public int collisions, character, rings, instantBoosts, finishBoosts, slowRings, pendingRings, failedRings, queuedEffects;
             public double boost, slow, speed, flipElapsed, verticalSpeed, centerY;
             public int gravity;
             public string support, supportObstacle, lastInstant, lastFinishBoost;
             public int supportSide;
+            public double flightDuration, flightMaxDistance, flightEndedAt;
         }
         [Serializable] sealed class Snapshot
         {
             public string mode, phase, winner, track, motion, profile, version;
             public double gravityAcceleration, departureImpulse;
-            public bool paused, negativeEnabled;
+            public string firstAction, motionLaw;
+            public int airRepeatLimit;
+            public double flipImpulse, jumpImpulse, linearSpeed, linearJumpHeight;
+            public bool paused, negativeEnabled, customFlight, settingsVisible;
             public double elapsed, countdown;
             public float fullscreenX, fullscreenY, fullscreenWidth, fullscreenHeight;
+            public float settingsCopyX, settingsCopyY, settingsCopyWidth, settingsCopyHeight;
+            public string settingsCopyText;
             public PlayerSnapshot[] players;
         }
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -45,19 +52,29 @@ namespace FlipRace.Web
             if (game == null) game = FindFirstObjectByType<FlipRaceGame>();
             if (game == null || game.Game == null) return;
             var state = game.Game;
+            var flight = state.Flight ?? FlightPresets.FromLegacy(state.Motion, state.Profile);
             // This public rectangle is already measured in CSS pixels relative
             // to the canvas origin. The HTML bridge must not scale it by DPR.
             Rect fullscreen = game.FullscreenRect;
+            Rect settingsCopy = game.FlightCopyRect;
             var snapshot = new Snapshot {mode = state.Mode, phase = state.Phase,
                 track = state.Track.Id,
                 motion = state.Motion.ToString(),
                 profile = state.Profile.Id, version = Application.version,
-                gravityAcceleration = state.Profile.GravityAcceleration, departureImpulse = state.Profile.DepartureImpulse,
+                gravityAcceleration = flight.GravityAcceleration,
+                departureImpulse = flight.FirstAction == FirstAction.Jump ? flight.JumpImpulse : flight.FlipImpulse,
+                firstAction = flight.FirstAction.ToString(), motionLaw = flight.Law.ToString(), airRepeatLimit = (int)flight.AirRepeats,
+                flipImpulse = flight.FlipImpulse, jumpImpulse = flight.JumpImpulse,
+                linearSpeed = flight.LinearSpeed, linearJumpHeight = flight.LinearJumpHeight,
                 negativeEnabled = state.Track.NegativeEnabled,
                 winner = state.Winner == null ? "" : state.Winner.ToString(), paused = game.IsPaused,
                 elapsed = state.Elapsed, countdown = state.CountdownRemaining,
                 fullscreenX = fullscreen.x, fullscreenY = fullscreen.y,
                 fullscreenWidth = fullscreen.width, fullscreenHeight = fullscreen.height,
+                customFlight = game.IsCustomFlight, settingsVisible = game.FlightSettingsVisible,
+                settingsCopyX = settingsCopy.x, settingsCopyY = settingsCopy.y,
+                settingsCopyWidth = settingsCopy.width, settingsCopyHeight = settingsCopy.height,
+                settingsCopyText = game.FlightSettingsVisible ? game.FlightCopyText : "",
                 players = new PlayerSnapshot[2]};
             for (int i = 0; i < 2; i++)
             {
@@ -75,6 +92,10 @@ namespace FlipRace.Web
                     support=p.Support.ToString(), supportSide=p.SupportSide, supportObstacle=p.SupportObstacleId,
                     lastInstant=p.LastInstant == null ? "" : p.LastInstant.Id,
                     lastFinishBoost=p.LastFinishBoost == null ? "" : p.LastFinishBoost.Id,
+                    hasFlightMeasurement=p.LastFlight != null, flightInterrupted=p.LastFlight != null && p.LastFlight.Interrupted,
+                    flightDuration=p.LastFlight == null ? 0 : p.LastFlight.Duration,
+                    flightMaxDistance=p.LastFlight == null ? 0 : p.LastFlight.MaxDistance,
+                    flightEndedAt=p.LastFlight == null ? 0 : p.LastFlight.EndedAt,
                     centerY=FlipRace.Core.RaceSimulation.GetPlayerCenterY(p)};
             }
 #if UNITY_WEBGL && !UNITY_EDITOR

@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-17T07:38:25.5094371Z",
+  "sourceCommit": "6924f17113f32c4e5512b724947001b9adabbba2",
+  "version": "4.2.1-trial",
+  "archive": "Releases/flip-race-v4.2.1-trial-webgl.zip",
+  "archiveBytes": 8530094,
+  "archiveSha256": "eed4c07535dc8c63dddd6a62760b4e071f90ae5a1e038cc5686005ff4c08e3b4",
+  "manifestSha256": "218ba91d11de013c5abc184d2f11e30db75e7e4f1a4b445d973fea4297c95c42",
+  "webDirectory": "Builds/WebGL-v4.2.1",
+  "fileCount": 5,
+  "totalBytes": 8658019.0,
+  "indexAtRoot": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v4.data.unityweb",
+      "bytes": 1433092,
+      "sha256": "e569ec8672066076d6d8606922a1ae1a1e7d57bce219ba3011b14eb31b15e8eb",
+      "webAndArchiveMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.framework.js.unityweb",
+      "bytes": 89459,
+      "sha256": "05a98bd1933ba2b242d4a062eaa6127a7806430e5c55cbab2449b3274ecf7e41",
+      "webAndArchiveMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.loader.js",
+      "bytes": 39788,
+      "sha256": "e45be5e732313330a35fa3ff87d24c17c1c10bd3814076c357886d1fae3051e9",
+      "webAndArchiveMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.wasm.unityweb",
+      "bytes": 7088129,
+      "sha256": "197a144ffbd424774897edc3ffd80851f5e891a9164e4c70c8ba86ebd6377036",
+      "webAndArchiveMatch": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 7551,
+      "sha256": "ecd3134468edf8d46eb0bbc2f1743c527f1fe6612e48e5986a727f1337e20db1",
+      "webAndArchiveMatch": true
+    }
+  ],
+  "note": "Read-only baseline verification. Existing ZIP, manifest and extracted Web were not modified. Future4.3.0 is not validated by this record."
+}

@@ -176,6 +176,11 @@ namespace FlipRace.Editor
                 VerticalSpeed = p.VerticalSpeed, Gravity = p.Gravity, AirFlipAvailable = p.AirFlipAvailable,
                 Support = p.Support, SupportSide = p.SupportSide, SupportObstacleId = p.SupportObstacleId,
                 EdgeClearObstacleId = p.EdgeClearObstacleId,
+                LinearJumpActive = p.LinearJumpActive, LinearJumpReturning = p.LinearJumpReturning,
+                LinearJumpOriginSide = p.LinearJumpOriginSide, LinearJumpOriginY = p.LinearJumpOriginY,
+                FlightActive = p.FlightActive, FlightOriginY = p.FlightOriginY, FlightDuration = p.FlightDuration,
+                FlightMaxDistance = p.FlightMaxDistance, FlightOriginSide = p.FlightOriginSide,
+                FlightOriginObstacleId = p.FlightOriginObstacleId, LastFlight = p.LastFlight,
                 Recovering = p.Recovering, Collisions = p.Collisions, FinishTime = p.FinishTime, LastHit = p.LastHit,
                 ActiveEffect = CopyEffect(p.ActiveEffect), BoostsEarned = p.BoostsEarned, SlowsEarned = p.SlowsEarned,
                 InstantBoostsEarned = p.InstantBoostsEarned, LastSuccess = p.LastSuccess, LastInstant = p.LastInstant, LastSlow = p.LastSlow,
@@ -205,7 +210,7 @@ namespace FlipRace.Editor
                 RaceSimulation.Advance(game, 0);
                 Check(p.VerticalSpeed == vy && p.Y == y && p.FlipElapsed == age && !p.AirFlipAvailable,
                     "pause freezes profile momentum and spent charge");
-                var clone = new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Track = game.Track,
+                var clone = new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Flight = game.Flight, Track = game.Track,
                     Phase = game.Phase, Elapsed = game.Elapsed, Players = new[] { CopyMotion(game.Players[0]), CopyMotion(game.Players[1]) } };
                 RaceSimulation.Advance(game, .05); RaceSimulation.Advance(clone, .05);
                 Check(ReferenceEquals(clone.Profile, game.Profile) && clone.Players[0].Y == p.Y
@@ -408,7 +413,7 @@ namespace FlipRace.Editor
             Check(game.Elapsed == elapsed && p.Distance == distance && p.BoostElapsed == served && p.SlowElapsed == slow
                 && p.BoostRemaining == remaining && p.PendingEffects.Peek().Remaining == waiting,
                 "pause freezes active extension and suspended partial credit");
-            var clone = new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Track = game.Track,
+            var clone = new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Flight = game.Flight, Track = game.Track,
                 Phase = game.Phase, Elapsed = game.Elapsed, CountdownRemaining = game.CountdownRemaining,
                 Winner = game.Winner, WinnerAt = game.WinnerAt, Players = new[] { CopyMotion(game.Players[0]), CopyMotion(game.Players[1]) } };
             Finish(game, 100); Finish(clone, 1d / 144);

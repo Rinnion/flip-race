@@ -125,6 +125,14 @@ namespace FlipRace.Core
         // A legal walk-off clears the old face's expanded trailing slab. This
         // is local contact continuity, never an entry in HitObstacleIds.
         public string EdgeClearObstacleId;
+        public bool LinearJumpActive, LinearJumpReturning;
+        public int LinearJumpOriginSide;
+        public double LinearJumpOriginY;
+        public bool FlightActive;
+        public double FlightOriginY, FlightDuration, FlightMaxDistance;
+        public int FlightOriginSide;
+        public string FlightOriginObstacleId;
+        public FlightMeasurement LastFlight;
         public double Recovering;
         public int Collisions;
         public double? FinishTime;
@@ -187,6 +195,7 @@ namespace FlipRace.Core
         public string Mode;
         public MotionMode Motion = MotionMode.Linear;
         public MotionProfile Profile = MotionProfiles.Baseline;
+        public FlightSettings Flight;
         public Track Track;
         public string Phase = "ready";
         public PlayerState[] Players = { new PlayerState(0), new PlayerState(1) };
@@ -346,7 +355,7 @@ namespace FlipRace.Core
             else if (trackId != null && !trackId.StartsWith("v3-", StringComparison.Ordinal)) track = Tracks.Get(trackId);
             else if (mode == "practice") track = TracksV3.StageOne(negativeEnabled);
             else track = TracksV3.Get(trackId ?? TracksV3.All[0].Id, negativeEnabled);
-            return new GameState { Mode = mode, Track = track };
+            return new GameState { Mode = mode, Track = track, Flight = FlightPresets.FromLegacy(MotionMode.Linear) };
         }
 
         public static GameState CreateTrial(Track track, MotionMode motion, MotionProfile profile = null)
@@ -356,20 +365,34 @@ namespace FlipRace.Core
             var game = new GameState { Mode = "trial", Track = track, Motion = motion,
                 Profile = profile ?? (motion == MotionMode.JumpGravityFlip ? MotionProfiles.Jump
                     : motion == MotionMode.GravityUnlimited ? MotionProfiles.Moderate : MotionProfiles.Baseline) };
-            foreach (var player in game.Players) player.AirFlipAvailable = SupportsAirFlip(motion);
+            game.Flight = FlightPresets.FromLegacy(motion, game.Profile);
+            foreach (var player in game.Players) player.AirFlipAvailable = SupportsAirFlip(game.Flight);
             return game;
         }
 
-        private static bool SupportsAirFlip(MotionMode motion)
+        public static GameState CreateTrial(Track track, FlightSettings flight)
         {
-            return motion == MotionMode.GravityAirFlip || motion == MotionMode.LinearAirFlip
-                || motion == MotionMode.JumpGravityFlip || motion == MotionMode.GravityUnlimited;
+            if (track == null) throw new ArgumentNullException(nameof(track));
+            if (flight == null) throw new ArgumentNullException(nameof(flight));
+            MotionMode mode = flight.LegacyLinear ? MotionMode.Linear : flight.Law == MotionLaw.Linear ? MotionMode.LinearAirFlip
+                : flight.FirstAction == FirstAction.Jump ? MotionMode.JumpGravityFlip
+                : flight.AirRepeats == AirRepeatLimit.Unlimited ? MotionMode.GravityUnlimited
+                : flight.AirRepeats == AirRepeatLimit.None ? MotionMode.Gravity : MotionMode.GravityAirFlip;
+            var game = new GameState { Mode = "trial", Track = track, Motion = mode, Flight = flight,
+                Profile = new MotionProfile("custom", "Свои настройки", flight.GravityAcceleration,
+                    flight.FirstAction == FirstAction.Jump ? flight.JumpImpulse : flight.FlipImpulse) };
+            foreach (var player in game.Players) player.AirFlipAvailable = SupportsAirFlip(flight);
+            return game;
         }
 
-        private static double Acceleration(PlayerState player, MotionMode motion, MotionProfile profile)
+        private static FlightSettings Settings(GameState game)
         {
-            return motion == MotionMode.LinearAirFlip ? 0 : player.Gravity * profile.GravityAcceleration;
+            if (game.Flight == null) game.Flight = FlightPresets.FromLegacy(game.Motion, game.Profile);
+            return game.Flight;
         }
+        private static bool SupportsAirFlip(FlightSettings flight) { return flight.AirRepeats != AirRepeatLimit.None; }
+        private static double Acceleration(PlayerState player, FlightSettings flight)
+        { return flight.Law == MotionLaw.Linear ? 0 : player.Gravity * flight.GravityAcceleration; }
 
         public static bool SetCharacter(GameState game, int playerIndex, int characterIndex)
         {
@@ -384,6 +407,7 @@ namespace FlipRace.Core
         public static bool Press(GameState game, int index)
         {
             if (index < 0 || index >= game.Players.Length) return false;
+            var flight = Settings(game);
             var player = game.Players[index];
             if (game.Phase == "ready" || game.Phase == "finished")
             {
@@ -391,9 +415,9 @@ namespace FlipRace.Core
                 if (game.Players[0].Ready && game.Players[1].Ready)
                 {
                     game.Players = new[] { new PlayerState(0) { Ready = true, CharacterIndex = game.Players[0].CharacterIndex,
-                            AirFlipAvailable = SupportsAirFlip(game.Motion) },
+                            AirFlipAvailable = SupportsAirFlip(flight) },
                         new PlayerState(1) { Ready = true, CharacterIndex = game.Players[1].CharacterIndex,
-                            AirFlipAvailable = SupportsAirFlip(game.Motion) } };
+                            AirFlipAvailable = SupportsAirFlip(flight) } };
                     game.Phase = "countdown";
                     game.Elapsed = 0;
                     game.CountdownRemaining = RaceConfig.CountdownDuration;
@@ -406,28 +430,43 @@ namespace FlipRace.Core
                 return false;
             if (player.Flipping)
             {
-                if (!SupportsAirFlip(game.Motion) || !player.AirFlipAvailable) return false;
-                player.Gravity = -player.Gravity;
-                if (game.Motion == MotionMode.LinearAirFlip) player.VerticalSpeed = -player.VerticalSpeed;
+                if (!SupportsAirFlip(flight) || !player.AirFlipAvailable) return false;
+                if (player.LinearJumpActive)
+                {
+                    player.LinearJumpActive = false;
+                    player.Gravity = player.LinearJumpOriginSide == 1 ? -1 : 1;
+                    player.VerticalSpeed = player.Gravity * flight.LinearSpeed;
+                }
+                else
+                {
+                    player.Gravity = -player.Gravity;
+                    if (flight.Law == MotionLaw.Linear) player.VerticalSpeed = -player.VerticalSpeed;
+                }
                 player.FlipTo = player.Gravity > 0 ? 1 : 0;
-                player.AirFlipAvailable = game.Motion == MotionMode.GravityUnlimited;
+                player.AirFlipAvailable = flight.AirRepeats == AirRepeatLimit.Unlimited;
                 // The same flight continues with its incoming velocity. Neither
                 // its clock nor its momentum is reset by this one air reversal.
                 return true;
             }
-            if (game.Motion != MotionMode.Linear)
+            BeginFlight(player);
+            if (!flight.LegacyLinear)
             {
                 int side = player.Support == SupportKind.Stone ? player.SupportSide : player.Y == 1 ? 1 : 0;
                 int away = side == 1 ? -1 : 1;
-                player.Gravity = game.Motion == MotionMode.JumpGravityFlip ? -away : away;
-                player.VerticalSpeed = away * (game.Motion == MotionMode.LinearAirFlip ? RaceConfig.LinearVerticalSpeed
-                    : (game.Profile ?? MotionProfiles.Baseline).DepartureImpulse);
+                bool jump = flight.FirstAction == FirstAction.Jump;
+                player.Gravity = jump ? -away : away;
+                player.VerticalSpeed = away * (flight.Law == MotionLaw.Linear ? flight.LinearSpeed
+                    : jump ? flight.JumpImpulse : flight.FlipImpulse);
+                player.LinearJumpActive = jump && flight.Law == MotionLaw.Linear;
+                player.LinearJumpReturning = false;
+                player.LinearJumpOriginSide = side;
+                player.LinearJumpOriginY = GetPlayerCenterY(player);
             }
             player.Support = SupportKind.None;
             player.SupportObstacleId = null;
             player.Flipping = true;
             player.FlipFrom = player.Y;
-            player.FlipTo = game.Motion != MotionMode.Linear ? (player.Gravity > 0 ? 1 : 0) : player.Y == 1 ? 0 : 1;
+            player.FlipTo = !flight.LegacyLinear ? (player.Gravity > 0 ? 1 : 0) : player.Y == 1 ? 0 : 1;
             player.FlipElapsed = 0;
             return true;
         }
@@ -437,8 +476,49 @@ namespace FlipRace.Core
             return RaceConfig.PlayerRadius + player.Y * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius);
         }
 
-        private static void MovePlayer(PlayerState player, double dt, MotionMode motion, MotionProfile profile)
+        private static void BeginFlight(PlayerState player)
         {
+            player.FlightActive = true;
+            player.FlightOriginY = GetPlayerCenterY(player);
+            player.FlightOriginSide = player.SupportSide;
+            player.FlightOriginObstacleId = player.SupportObstacleId;
+            player.FlightDuration = 0;
+            player.FlightMaxDistance = 0;
+        }
+        private static void EndFlight(PlayerState player, bool interrupted, double at)
+        {
+            if (!player.FlightActive) return;
+            player.LastFlight = new FlightMeasurement(player.FlightDuration, player.FlightMaxDistance, interrupted,
+                at, player.FlightOriginSide, player.FlightOriginObstacleId);
+            player.FlightActive = false;
+        }
+        private static void MeasureFlight(PlayerState player, double dt, FlightSettings flight)
+        {
+            if (!player.FlightActive || !player.Flipping) return;
+            double y = GetPlayerCenterY(player);
+            double vy = flight.LegacyLinear ? (player.FlipTo - player.FlipFrom)
+                * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius) / RaceConfig.FlipDuration : player.VerticalSpeed;
+            double a = flight.LegacyLinear ? 0 : Acceleration(player, flight);
+            player.FlightDuration += dt;
+            player.FlightMaxDistance = Math.Max(player.FlightMaxDistance, Math.Abs(y - player.FlightOriginY));
+            player.FlightMaxDistance = Math.Max(player.FlightMaxDistance, Math.Abs(y + vy * dt + .5 * a * dt * dt - player.FlightOriginY));
+            if (a != 0)
+            {
+                double vertex = -vy / a;
+                if (vertex > 0 && vertex < dt) player.FlightMaxDistance = Math.Max(player.FlightMaxDistance,
+                    Math.Abs(y + vy * vertex + .5 * a * vertex * vertex - player.FlightOriginY));
+            }
+        }
+        private static double JumpApexTime(PlayerState player, FlightSettings flight)
+        {
+            if (!player.LinearJumpActive || player.LinearJumpReturning || !player.Flipping) return double.PositiveInfinity;
+            double away = player.LinearJumpOriginSide == 1 ? -1 : 1;
+            return Math.Max(0, (player.LinearJumpOriginY + away * flight.LinearJumpHeight - GetPlayerCenterY(player)) / player.VerticalSpeed);
+        }
+
+        private static void MovePlayer(PlayerState player, double dt, FlightSettings flight)
+        {
+            MeasureFlight(player, dt, flight);
             player.Distance += player.CurrentSpeed * dt;
             var effect = player.ActiveEffect;
             if (player.FinishBoost)
@@ -466,9 +546,9 @@ namespace FlipRace.Core
                 }
             }
             if (!player.Flipping) return;
-            if (motion != MotionMode.Linear)
+            if (!flight.LegacyLinear)
             {
-                double acceleration = Acceleration(player, motion, profile);
+                double acceleration = Acceleration(player, flight);
                 double y = GetPlayerCenterY(player) + player.VerticalSpeed * dt + .5 * acceleration * dt * dt;
                 player.Y = (y - RaceConfig.PlayerRadius) / (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius);
                 player.VerticalSpeed += acceleration * dt;
@@ -552,11 +632,11 @@ namespace FlipRace.Core
                 : obstacle.Height + RaceConfig.PlayerRadius;
         }
 
-        private static SurfaceContact NextLanding(PlayerState player, Track track, double horizon, MotionMode motion, MotionProfile profile)
+        private static SurfaceContact NextLanding(PlayerState player, Track track, double horizon, FlightSettings flight)
         {
-            if (!player.Flipping || motion == MotionMode.Linear) return null;
+            if (!player.Flipping || flight.LegacyLinear) return null;
             double y = GetPlayerCenterY(player), vy = player.VerticalSpeed;
-            double acceleration = Acceleration(player, motion, profile);
+            double acceleration = Acceleration(player, flight);
             SurfaceContact result = null;
             foreach (var zone in track.RiskZones)
             {
@@ -598,11 +678,11 @@ namespace FlipRace.Core
             return result;
         }
 
-        private static SurfaceContact NextSurface(PlayerState player, MotionMode motion, MotionProfile profile)
+        private static SurfaceContact NextSurface(PlayerState player, FlightSettings flight)
         {
-            if (motion == MotionMode.Linear || !player.Flipping) return null;
+            if (flight.LegacyLinear || !player.Flipping) return null;
             double travel = RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius;
-            double position = player.Y * travel, acceleration = Acceleration(player, motion, profile);
+            double position = player.Y * travel, acceleration = Acceleration(player, flight);
             SurfaceContact result = null;
             for (int side = 0; side < 2; side++)
             {
@@ -622,7 +702,7 @@ namespace FlipRace.Core
             return result;
         }
 
-        private static void TouchSurface(PlayerState player, SurfaceContact surface, MotionMode motion)
+        private static void TouchSurface(PlayerState player, SurfaceContact surface, FlightSettings flight)
         {
             player.Y = surface.Obstacle == null ? surface.Side
                 : (StonePlane(surface.Obstacle) - RaceConfig.PlayerRadius) / (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius);
@@ -630,10 +710,20 @@ namespace FlipRace.Core
             player.Support = SupportKind.None;
             player.SupportObstacleId = null;
             player.SupportSide = surface.Side;
-            if (motion == MotionMode.LinearAirFlip || surface.Side == (player.Gravity > 0 ? 1 : 0))
+            if (player.LinearJumpActive && surface.Obstacle == null && surface.Side != player.LinearJumpOriginSide)
             {
+                // A wall reached before the planned apex reflects the ordinary
+                // linear jump. It is not support and never restores a repeat.
+                player.LinearJumpReturning = true;
+                player.VerticalSpeed = (player.LinearJumpOriginSide == 1 ? 1 : -1) * flight.LinearSpeed;
+                return;
+            }
+            if (flight.Law == MotionLaw.Linear || surface.Side == (player.Gravity > 0 ? 1 : 0))
+            {
+                if (flight.Law == MotionLaw.Linear) player.Gravity = surface.Side == 1 ? 1 : -1;
                 player.Flipping = false;
-                player.AirFlipAvailable = SupportsAirFlip(motion);
+                player.LinearJumpActive = false;
+                player.AirFlipAvailable = SupportsAirFlip(flight);
                 player.Support = surface.Obstacle == null ? SupportKind.Wall : SupportKind.Stone;
                 player.SupportObstacleId = surface.Obstacle == null ? null : surface.Obstacle.Id;
             }
@@ -643,7 +733,7 @@ namespace FlipRace.Core
 
         // Swept rectangles find the exact first contact even when one frame crosses
         // an entire obstacle. Both halves of a gate share one obstacle ID.
-        private static Collision NextCollision(PlayerState player, Track track, double horizon, MotionMode motion, MotionProfile profile,
+        private static Collision NextCollision(PlayerState player, Track track, double horizon, FlightSettings flight,
             SurfaceContact landing)
         {
             var radius = RaceConfig.PlayerRadius;
@@ -677,7 +767,7 @@ namespace FlipRace.Core
                         maximum = double.PositiveInfinity;
                     }
                     double time;
-                    if (motion == MotionMode.Linear)
+                    if (flight.LegacyLinear)
                     {
                         if (!RangeTimes(player.Y, yVelocity, minimum, maximum, horizon, out var verticalEnter, out var verticalLeave)) continue;
                         time = Math.Max(horizontalEnter, verticalEnter);
@@ -686,13 +776,13 @@ namespace FlipRace.Core
                     else
                     {
                         time = ContinuousMotion.FirstBandContact(player.Y * verticalTravel, player.Flipping ? player.VerticalSpeed : 0,
-                            player.Flipping ? Acceleration(player, motion, profile) : 0,
+                            player.Flipping ? Acceleration(player, flight) : 0,
                             minimum * verticalTravel, maximum * verticalTravel, horizontalEnter, horizontalLeave);
                         if (time <= Epsilon && player.Flipping && obstacle.Kind != "gate"
                             && Math.Abs(GetPlayerCenterY(player) - StonePlane(obstacle)) < 1e-8)
                         {
                             int sign = obstacle.Kind == "floor" ? 1 : -1;
-                            double acceleration = Acceleration(player, motion, profile);
+                            double acceleration = Acceleration(player, flight);
                             bool separating = sign * player.VerticalSpeed < 0
                                 || (player.VerticalSpeed == 0 && sign * acceleration < 0);
                             bool marked = false;
@@ -745,7 +835,7 @@ namespace FlipRace.Core
 
         // Exact swept circle against the ring; no frame sampling or timing-only
         // shortcut. The player's physical radius is part of ring contact.
-        private static RiskEvent NextRiskEvent(PlayerState player, Track track, double horizon, MotionMode motion, SurfaceContact surface, MotionProfile profile)
+        private static RiskEvent NextRiskEvent(PlayerState player, Track track, double horizon, FlightSettings flight, SurfaceContact surface)
         {
             RiskEvent result = null;
             foreach (var zone in track.RiskZones)
@@ -761,10 +851,10 @@ namespace FlipRace.Core
                         || player.Distance > zone.X + Epsilon || zone.FinishHeight < 0) continue;
                     time = Math.Max(0, (zone.X - player.Distance) / player.CurrentSpeed);
                     if (time > horizon + Epsilon) continue;
-                    double vy = !player.Flipping ? 0 : motion == MotionMode.Linear
+                    double vy = !player.Flipping ? 0 : flight.LegacyLinear
                         ? (player.FlipTo - player.FlipFrom) * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius)
                             / RaceConfig.FlipDuration : player.VerticalSpeed;
-                    double acceleration = player.Flipping && motion != MotionMode.Linear ? Acceleration(player, motion, profile) : 0;
+                    double acceleration = player.Flipping && !flight.LegacyLinear ? Acceleration(player, flight) : 0;
                     double y = GetPlayerCenterY(player) + vy * time + .5 * acceleration * time * time;
                     if (y < zone.Y - zone.FinishHeight / 2 - Epsilon
                         || y > zone.Y + zone.FinishHeight / 2 + Epsilon) continue;
@@ -780,7 +870,7 @@ namespace FlipRace.Core
                     // the stone: a later touch of its trailing edge cancels it.
                     if (zone.AfterObstacle && player.Flipping)
                     {
-                        if (motion == MotionMode.Linear) time = Math.Max(time, RaceConfig.FlipDuration - player.FlipElapsed);
+                        if (flight.LegacyLinear) time = Math.Max(time, RaceConfig.FlipDuration - player.FlipElapsed);
                         else if (surface != null && surface.Side == (player.Gravity > 0 ? 1 : 0)) time = Math.Max(time, surface.Time);
                         else continue;
                     }
@@ -794,11 +884,11 @@ namespace FlipRace.Core
                         * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius) / RaceConfig.FlipDuration : 0;
                     double radius = zone.Radius + RaceConfig.PlayerRadius;
                     double c = dx * dx + dy * dy - radius * radius;
-                    if (motion != MotionMode.Linear)
+                    if (!flight.LegacyLinear)
                     {
                         if (!RangeTimes(player.Distance, vx, zone.X - radius, zone.X + radius,
                             horizon, out double enter, out double leave)) continue;
-                        double acceleration = player.Flipping ? Acceleration(player, motion, profile) : 0;
+                        double acceleration = player.Flipping ? Acceleration(player, flight) : 0;
                         vy = player.Flipping ? player.VerticalSpeed : 0;
                         double contact = ContinuousMotion.FirstCircleContact(dx + vx * enter,
                             dy + vy * enter + .5 * acceleration * enter * enter, vx, vy + acceleration * enter,
@@ -823,7 +913,7 @@ namespace FlipRace.Core
             return result;
         }
 
-        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, MotionMode motion, MotionProfile profile)
+        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, FlightSettings flight)
         {
             if (player.FinishTime.HasValue) return;
             var remaining = dt;
@@ -844,13 +934,15 @@ namespace FlipRace.Core
                     remaining -= stopped;
                     continue;
                 }
-                var surface = NextSurface(player, motion, profile);
-                double flightHorizon = motion == MotionMode.Linear
+                var surface = NextSurface(player, flight);
+                double flightHorizon = flight.LegacyLinear
                     ? (player.Flipping ? RaceConfig.FlipDuration - player.FlipElapsed : double.PositiveInfinity)
                     : (surface != null ? surface.Time : double.PositiveInfinity);
-                double acceleration = Acceleration(player, motion, profile);
-                if (motion != MotionMode.Linear && player.Flipping && player.VerticalSpeed * acceleration < 0)
+                double acceleration = Acceleration(player, flight);
+                if (!flight.LegacyLinear && player.Flipping && player.VerticalSpeed * acceleration < 0)
                     flightHorizon = Math.Min(flightHorizon, -player.VerticalSpeed / acceleration);
+                double apexTime = JumpApexTime(player, flight);
+                flightHorizon = Math.Min(flightHorizon, apexTime);
                 var horizon = Math.Min(remaining, Math.Min(Math.Max(0, track.Length - player.Distance) / player.CurrentSpeed,
                     Math.Min(flightHorizon,
                         player.ActiveEffect != null ? player.ActiveEffect.Remaining : double.PositiveInfinity)));
@@ -861,16 +953,17 @@ namespace FlipRace.Core
                 double edgeTime = edge == null ? double.PositiveInfinity
                     : Math.Max(0, (edge.X + edge.Width - player.Distance) / player.CurrentSpeed);
                 horizon = Math.Min(horizon, edgeTime);
-                var landing = NextLanding(player, track, horizon, motion, profile);
+                var landing = NextLanding(player, track, horizon, flight);
                 if (landing != null) horizon = Math.Min(horizon, landing.Time);
-                var collision = NextCollision(player, track, horizon, motion, profile, landing);
-                var risk = NextRiskEvent(player, track, horizon, motion, landing ?? surface, profile);
+                var collision = NextCollision(player, track, horizon, flight, landing);
+                var risk = NextRiskEvent(player, track, horizon, flight, landing ?? surface);
                 var moving = Math.Min(collision != null ? collision.Time : horizon, risk != null ? risk.Time : horizon);
-                MovePlayer(player, moving, motion, profile);
+                MovePlayer(player, moving, flight);
                 remaining -= moving;
                 bool collided = collision != null && collision.Time <= moving + Epsilon;
                 if (collided)
                 {
+                    EndFlight(player, true, elapsed + dt - remaining);
                     player.HitObstacleIds.Add(collision.Obstacle.Id);
                     player.Collisions++;
                     player.Recovering = RaceConfig.RecoveryDuration;
@@ -889,19 +982,28 @@ namespace FlipRace.Core
                 }
                 if (landing != null && landing.Time <= moving + Epsilon)
                 {
-                    TouchSurface(player, landing, motion);
+                    TouchSurface(player, landing, flight);
                     if (!player.SuccessfulRiskIds.Contains(landing.Zone.Id))
                         AwardPositive(player, landing.Zone, elapsed + dt - remaining);
                 }
-                else if (!collided && surface != null && surface.Time <= moving + Epsilon) TouchSurface(player, surface, motion);
+                else if (!collided && surface != null && surface.Time <= moving + Epsilon) TouchSurface(player, surface, flight);
+                if (!player.Flipping) EndFlight(player, false, elapsed + dt - remaining);
+                if (!collided && player.LinearJumpActive && !player.LinearJumpReturning && player.Flipping
+                    && apexTime <= moving + Epsilon)
+                {
+                    player.LinearJumpReturning = true;
+                    player.VerticalSpeed = -player.VerticalSpeed;
+                }
                 if (!collided && edge != null && edgeTime <= moving + Epsilon)
                 {
+                    BeginFlight(player);
                     player.Support = SupportKind.None;
                     player.SupportObstacleId = null;
                     player.EdgeClearObstacleId = edge.Id;
                     player.Flipping = true;
-                    player.VerticalSpeed = motion == MotionMode.LinearAirFlip
-                        ? (player.SupportSide == 1 ? 1 : -1) * RaceConfig.LinearVerticalSpeed : 0;
+                    player.LinearJumpActive = false;
+                    player.VerticalSpeed = flight.Law == MotionLaw.Linear
+                        ? (player.SupportSide == 1 ? 1 : -1) * flight.LinearSpeed : 0;
                     player.FlipFrom = player.Y;
                     player.FlipTo = player.Gravity > 0 ? 1 : 0;
                     player.FlipElapsed = 0;
@@ -947,6 +1049,7 @@ namespace FlipRace.Core
                         - player.BoostElapsed * (RaceConfig.BoostMultiplier - 1)
                         - player.FinishBoostDistanceGained / RaceConfig.Speed;
                     player.FinishBoost = false;
+                    player.FlightActive = false;
                     return;
                 }
             }
@@ -1009,6 +1112,7 @@ namespace FlipRace.Core
                 }
             }
             if (game.Phase != "racing" || dt <= 0) return;
+            var flight = Settings(game);
             double maximumSpeed = game.Track.RiskZones.Length > 0 ? RaceConfig.Speed * RaceConfig.BoostMultiplier : RaceConfig.Speed;
             foreach (var zone in game.Track.RiskZones)
                 if (zone.IsFinish) { maximumSpeed = RaceConfig.FinishBoostSpeed; break; }
@@ -1024,8 +1128,7 @@ namespace FlipRace.Core
                 var graceHorizon = game.WinnerAt.HasValue
                     ? game.WinnerAt.Value + RaceConfig.FinishGrace - game.Elapsed : double.PositiveInfinity;
                 var step = Math.Min(dt, Math.Min(finishHorizon, Math.Max(0, graceHorizon)));
-                foreach (var player in game.Players) AdvancePlayer(player, game.Track, step, game.Elapsed, game.Motion,
-                    game.Profile ?? MotionProfiles.Baseline);
+                foreach (var player in game.Players) AdvancePlayer(player, game.Track, step, game.Elapsed, flight);
                 game.Elapsed += step;
                 dt -= step;
                 ResolveFinish(game);

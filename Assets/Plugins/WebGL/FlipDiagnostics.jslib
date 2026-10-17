@@ -8,6 +8,10 @@ mergeInto(LibraryManager.library, {
   },
   FlipReport: function(pointer) {
     var json = UTF8ToString(pointer);
-    if (Module.canvas) Module.canvas.dataset.flipState = json;
+    if (Module.canvas) {
+      Module.canvas.dataset.flipState = json;
+      // Publication time lets local input QA account for the diagnostic cadence.
+      Module.canvas.dataset.flipReportedAt = String(performance.timeOrigin + performance.now());
+    }
   }
 });

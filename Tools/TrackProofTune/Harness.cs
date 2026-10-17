@@ -44,6 +44,15 @@ internal static partial class Program
         var q=new PlayerState(p.Id){CharacterIndex=p.CharacterIndex,Ready=p.Ready,Distance=p.Distance,Y=p.Y,
             Flipping=p.Flipping,FlipFrom=p.FlipFrom,FlipTo=p.FlipTo,FlipElapsed=p.FlipElapsed,
             VerticalSpeed=p.VerticalSpeed,Gravity=p.Gravity,AirFlipAvailable=p.AirFlipAvailable,
+            Support=p.Support,SupportSide=p.SupportSide,SupportObstacleId=p.SupportObstacleId,EdgeClearObstacleId=p.EdgeClearObstacleId,
+            LinearJumpActive=p.LinearJumpActive,LinearJumpReturning=p.LinearJumpReturning,
+            LinearJumpOriginSide=p.LinearJumpOriginSide,LinearJumpOriginY=p.LinearJumpOriginY,
+            FlightActive=p.FlightActive,FlightOriginY=p.FlightOriginY,FlightDuration=p.FlightDuration,
+            FlightMaxDistance=p.FlightMaxDistance,FlightOriginSide=p.FlightOriginSide,
+            FlightOriginObstacleId=p.FlightOriginObstacleId,LastFlight=p.LastFlight,
+            FinishBoost=p.FinishBoost,FinishBoostsEarned=p.FinishBoostsEarned,
+            FinishBoostElapsed=p.FinishBoostElapsed,FinishBoostDistanceGained=p.FinishBoostDistanceGained,
+            LastFinishBoost=p.LastFinishBoost==null?null:new HitInfo{Id=p.LastFinishBoost.Id,Message=p.LastFinishBoost.Message,At=p.LastFinishBoost.At},
             Recovering=p.Recovering,Collisions=p.Collisions,FinishTime=p.FinishTime,LastHit=p.LastHit,
             ActiveEffect=CopyEffect(p.ActiveEffect),BoostsEarned=p.BoostsEarned,SlowsEarned=p.SlowsEarned,
             InstantBoostsEarned=p.InstantBoostsEarned,LastInstant=p.LastInstant,
@@ -58,7 +67,7 @@ internal static partial class Program
         return q;
     }
     static GameState Clone(GameState g)
-    {return new GameState{Mode=g.Mode,Motion=g.Motion,Profile=g.Profile,Track=g.Track,Phase=g.Phase,Elapsed=g.Elapsed,
+    {return new GameState{Mode=g.Mode,Motion=g.Motion,Profile=g.Profile,Flight=g.Flight,Track=g.Track,Phase=g.Phase,Elapsed=g.Elapsed,
         CountdownRemaining=g.CountdownRemaining,Winner=g.Winner,WinnerAt=g.WinnerAt,
         Players=new[]{CopyPlayer(g.Players[0]),CopyPlayer(g.Players[1])}};}
     static void Step(GameState game,double dt)

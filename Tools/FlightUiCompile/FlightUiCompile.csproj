@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NuGetAudit>false</NuGetAudit>
+    <DefineConstants>UNITY_WEBGL;FLIP_V4_TRIAL</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/Scripts/Core/*.cs" />
+    <Compile Include="../../Assets/Scripts/Presentation/*.cs" />
+    <Compile Include="../../Assets/Scripts/Web/*.cs" />
+    <Reference Include="F:/Program Files/Unity/Hub/Editor/6000.0.64f1/Editor/Data/Managed/UnityEngine/UnityEngine*.dll" />
+  </ItemGroup>
+</Project>

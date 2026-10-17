@@ -15,6 +15,9 @@
     #fullscreen{position:absolute;padding:0;background:transparent;border:0;border-radius:0;color:#6e7861;font:19px/1 "Trebuchet MS","Segoe UI",sans-serif;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
     #fullscreen:hover{filter:brightness(.96)}#fullscreen:focus-visible{outline:2px solid #7770b5;outline-offset:-2px}
     #fullscreen[hidden]{display:none}#portrait{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px;background:#f7f4e9;gap:16px;font-size:20px;z-index:5}
+    #copy-settings{position:absolute;padding:0;border:1px solid #d8ddcb;border-radius:6px;background:#f1f3e8;color:#353b31;font:10px system-ui,sans-serif;cursor:pointer;touch-action:manipulation}
+    #copy-settings[hidden]{display:none}#copy-settings:focus-visible{outline:2px solid #7770b5;outline-offset:1px}
+    #copy-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
     #portrait strong{font-size:34px;color:#597549}#status{font-size:12px;opacity:.75}
     #portrait .build-version{position:absolute;top:18px;left:24px;font-size:11px;color:#353b31;font-weight:600}#portrait .build-version small{margin-left:8px;font-size:9px;color:#79806d;font-weight:400}
     @media(orientation:portrait) and (max-width:700px){#portrait{display:flex}}
@@ -24,6 +27,8 @@
 <main id="game">
   <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="0" aria-label="Флип! Два игрока: A — верхняя половина, L — нижняя. Выберите героев и касайтесь своей половины экрана."></canvas>
   <button id="fullscreen" type="button" title="На весь экран" aria-label="На весь экран" hidden>⛶</button>
+  <button id="copy-settings" type="button" title="Скопировать параметры полёта" hidden>Копировать</button>
+  <span id="copy-status" role="status" aria-live="polite"></span>
   <div id="loading"><h1>Флип!</h1><p>Гонка катикаавров · {{{ PRODUCT_VERSION }}}</p><progress id="progress" max="1" value="0"></progress><p id="status">Готовим героев и трассу…</p></div>
   <div id="error" role="alert"></div>
   <div id="portrait"><div class="build-version">флип! <small>v{{{ PRODUCT_VERSION }}}</small></div><strong>Поверните телефон</strong><span>Положите его горизонтально.<br>Сядьте напротив друг друга.</span><small>Забег на паузе до вашего продолжения.</small></div>
@@ -32,6 +37,8 @@
 <script>
   const canvas = document.getElementById('unity-canvas');
   const full = document.getElementById('fullscreen');
+  const copySettings = document.getElementById('copy-settings');
+  const copyStatus = document.getElementById('copy-status');
   const gameElement = document.getElementById('game');
   const bootAt = performance.now();
   let fullscreenAvailable = Boolean(document.fullscreenEnabled && document.documentElement.requestFullscreen);
@@ -57,8 +64,52 @@
       full.style.fontSize = height <= 27 ? '17px' : '19px';
     } catch (_) { full.hidden = true; /* No valid simulation snapshot yet. */ }
   }
+  function positionCopyButton() {
+    try {
+      const state = JSON.parse(canvas.dataset.flipState);
+      const x = state.settingsCopyX, y = state.settingsCopyY;
+      const width = state.settingsCopyWidth, height = state.settingsCopyHeight;
+      const valid = [x,y,width,height].every(Number.isFinite) && x >= 0 && y >= 0
+        && width > 0 && height > 0 && x + width <= canvas.clientWidth + 1
+        && y + height <= canvas.clientHeight + 1;
+      copySettings.hidden = !window.flipDiagnostics.loaded || !state.settingsVisible || !valid
+        || (innerWidth <= 700 && innerHeight > innerWidth);
+      if (copySettings.hidden) return;
+      const canvasBox = canvas.getBoundingClientRect(), gameBox = gameElement.getBoundingClientRect();
+      Object.assign(copySettings.style, {left:(canvasBox.left-gameBox.left+x)+'px', top:(canvasBox.top-gameBox.top+y)+'px',
+        width:width+'px', height:height+'px'});
+    } catch (_) { copySettings.hidden = true; }
+  }
   // The same snapshot places the browser control and hides it behind modals.
   new MutationObserver(positionFullscreenButton).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
+  new MutationObserver(positionCopyButton).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
+  function fallbackCopy(text) {
+    const field = document.createElement('textarea');
+    field.value = text; field.readOnly = true;
+    Object.assign(field.style,{position:'fixed',left:'0',top:'0',opacity:'0',fontSize:'16px'});
+    document.body.appendChild(field); field.select(); field.setSelectionRange(0,field.value.length);
+    try { return document.execCommand('copy'); } finally { field.remove(); }
+  }
+  let copyFeedbackTimer;
+  copySettings.addEventListener('pointerdown',event=>event.stopPropagation());
+  copySettings.addEventListener('click',async event=>{
+    event.stopPropagation();
+    let success = false;
+    try {
+      const state = JSON.parse(canvas.dataset.flipState);
+      if (!state.settingsVisible || !state.settingsCopyText) return;
+      // A real browser button preserves clipboard user activation in WebGL/iframes.
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try { await navigator.clipboard.writeText(state.settingsCopyText); success = true; }
+        catch (_) { success = fallbackCopy(state.settingsCopyText); }
+      } else success = fallbackCopy(state.settingsCopyText);
+    } catch (_) { success = false; }
+    copySettings.textContent = success ? 'Скопировано ✓' : 'Не скопировано';
+    copyStatus.textContent = success ? 'Параметры полёта скопированы' : 'Браузер не разрешил копирование';
+    clearTimeout(copyFeedbackTimer);
+    copyFeedbackTimer = setTimeout(()=>{copySettings.textContent='Копировать';},2000);
+    canvas.focus();
+  });
   function showError(message) {
     const error = document.getElementById('error');
     error.textContent = 'Не удалось запустить игру. Обновите страницу в браузере с WebGL 2. ' + message;
@@ -70,7 +121,7 @@
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pause('Вкладка скрыта');});
   window.addEventListener('blur',()=>pause('Окно потеряло фокус'));
   window.addEventListener('pagehide',()=>pause('Страница приостановлена'));
-  window.addEventListener('resize',()=>{positionFullscreenButton();if(innerWidth<=700&&innerHeight>innerWidth)pause('Поверните телефон горизонтально');});
+  window.addEventListener('resize',()=>{positionFullscreenButton();positionCopyButton();if(innerWidth<=700&&innerHeight>innerWidth)pause('Поверните телефон горизонтально');});
   document.addEventListener('fullscreenchange',positionFullscreenButton);
   canvas.addEventListener('contextmenu',event=>event.preventDefault());
   canvas.addEventListener('pointerdown',()=>canvas.focus());

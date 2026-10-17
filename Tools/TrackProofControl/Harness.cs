@@ -38,7 +38,8 @@ internal static partial class Program
     {
         if (source == null) return null;
         Type type = source.GetType();
-        if (type.IsValueType || source is string || source is Track || source is MotionProfile) return source;
+        if (type.IsValueType || source is string || source is Track || source is MotionProfile
+            || source is FlightSettings || source is FlightMeasurement) return source;
         if (source is HashSet<string>) return new HashSet<string>((HashSet<string>)source);
         if (source is Queue<SpeedEffect>)
         {

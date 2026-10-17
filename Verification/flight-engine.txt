@@ -1,0 +1,88 @@
+FLIGHT-02 final runtime verification, 2026-10-17
+
+FULL PARITY RUNNER
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.
+PASS: V4-01/02 18 scenarios / 1770 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.
+PASS: TUNE-01/02 13 scenarios / 1009 assertions; four profiles, instant boost, preserved effects and actual finishes.
+PASS: CONTROL 19 scenarios / 2165 assertions.
+PASS: CONTROL-03F 10 scenarios / 1598 assertions.
+PASS: FLIGHT 12 scenarios / 1592 assertions.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).
+
+TRACK PROOF TUNE
+Open profile=base full-flight=0.800000000 low-repeat=0.347497794 high-repeat=0.451412876 PASS
+Open profile=gravity full-flight=0.651152824 low-repeat=0.282842712 high-repeat=0.367423461 PASS
+Open profile=impulse full-flight=0.616118948 low-repeat=0.166942312 high-repeat=0.264180892 PASS
+Open profile=combined full-flight=0.526033032 low-repeat=0.159666481 high-repeat=0.240525952 PASS
+base safe finish=21 positives=0 instant=0 negative=0 hits= collected=
+base ideal finish=19.2 positives=6 instant=3 negative=0 hits= collected=tune-instant-low,tune-free-return,tune-linked-before,tune-linked-after,tune-instant-high,tune-instant-finish
+gravity safe finish=21 positives=0 instant=0 negative=0 hits= collected=
+gravity ideal finish=19.2 positives=6 instant=3 negative=0 hits= collected=tune-instant-low,tune-free-return,tune-linked-before,tune-linked-after,tune-instant-high,tune-instant-finish
+impulse safe finish=21 positives=0 instant=0 negative=0 hits= collected=
+impulse ideal finish=19.2 positives=6 instant=3 negative=0 hits= collected=tune-instant-low,tune-free-return,tune-linked-before,tune-linked-after,tune-instant-high,tune-instant-finish
+combined safe finish=21 positives=0 instant=0 negative=0 hits= collected=
+combined ideal finish=19.2 positives=6 instant=3 negative=0 hits= collected=tune-instant-low,tune-free-return,tune-linked-before,tune-linked-after,tune-instant-high,tune-instant-finish
+Repeat intervals base: 0.407727, 0.475758
+Repeat intervals gravity: 0.331364, 0.387424
+Repeat intervals impulse: 0.222727, 0.287576
+Repeat intervals combined: 0.206364, 0.260000
+Trap base finish=19.8 plus=5 minus=1 hits=
+Trap gravity finish=19.8 plus=5 minus=1 hits=
+Trap impulse finish=19.8 plus=5 minus=1 hits=
+Trap combined finish=19.8 plus=5 minus=1 hits=
+Both authored air returns are purposeful in all profiles PASS.
+Metrics base first=4.660000 maxInterior=2.120000 lastToFinish=1.647273 finalContactToFinish=1.166041231
+Metrics gravity first=4.811818 maxInterior=2.092727 lastToFinish=1.547273 finalContactToFinish=1.158186791
+Metrics impulse first=4.818182 maxInterior=2.282727 lastToFinish=1.475909 finalContactToFinish=1.162889502
+Metrics combined first=4.922727 maxInterior=2.204091 lastToFinish=1.429091 finalContactToFinish=1.156146644
+Final bonus: real .3s win; synthetic slow + queued reward + extended instant tail fully served PASS.
+Window scan base safe early=0.040 (input 1) late=0.105 (input 0) seconds,5ms grid
+Window scan base ideal early=0.050 (input 7) late=0.040 (input 2) seconds,5ms grid
+Window scan gravity safe early=0.120 (input -1) late=0.120 (input -1) seconds,5ms grid
+Window scan gravity ideal early=0.040 (input 7) late=0.045 (input 7) seconds,5ms grid
+Window scan impulse safe early=0.085 (input 1) late=0.120 (input -1) seconds,5ms grid
+Window scan impulse ideal early=0.050 (input 7) late=0.050 (input 7) seconds,5ms grid
+Window scan combined safe early=0.090 (input 1) late=0.120 (input -1) seconds,5ms grid
+Window scan combined ideal early=0.040 (input 7) late=0.045 (input 7) seconds,5ms grid
+Recovery profile=base
+Recovery GravityAirFlip route=safe: 75 collision states,150ms reaction,actual available controls PASS
+Recovery GravityAirFlip route=ideal: 95 collision states,150ms reaction,actual available controls PASS
+Recovery profile=gravity
+Recovery GravityAirFlip route=safe: 69 collision states,150ms reaction,actual available controls PASS
+Recovery GravityAirFlip route=ideal: 80 collision states,150ms reaction,actual available controls PASS
+Recovery profile=impulse
+Recovery GravityAirFlip route=safe: 61 collision states,150ms reaction,actual available controls PASS
+Recovery GravityAirFlip route=ideal: 73 collision states,150ms reaction,actual available controls PASS
+Recovery profile=combined
+Recovery GravityAirFlip route=safe: 63 collision states,150ms reaction,actual available controls PASS
+Recovery GravityAirFlip route=ideal: 77 collision states,150ms reaction,actual available controls PASS
+PASS 47929 TUNE harness checks
+
+CONTROL STRESS
+GravityAirFlip step=0.0069444444444444441 clean=0 finish=20.300000000000001 grace=23.799999999995602 loserX=4620
+GravityAirFlip step=0.0069444444444444441 clean=1 finish=20.300000000000001 grace=23.799999999995602 loserX=4620
+GravityAirFlip step=0.317 clean=0 finish=20.299999999999997 grace=23.799999999995833 loserX=4620
+GravityAirFlip step=0.317 clean=1 finish=20.299999999999997 grace=23.799999999995833 loserX=4620
+GravityAirFlip step=100 clean=0 finish=20.299999999999997 grace=23.799999999996796 loserX=4620
+GravityAirFlip step=100 clean=1 finish=20.299999999999997 grace=23.799999999996796 loserX=4620
+LinearAirFlip step=0.0069444444444444441 clean=0 finish=20.300000000000001 grace=23.799999999996228 loserX=4620
+LinearAirFlip step=0.0069444444444444441 clean=1 finish=20.300000000000001 grace=23.799999999996228 loserX=4620
+LinearAirFlip step=0.317 clean=0 finish=20.299999999999997 grace=23.799999999995862 loserX=4620
+LinearAirFlip step=0.317 clean=1 finish=20.299999999999997 grace=23.799999999995862 loserX=4620
+LinearAirFlip step=100 clean=0 finish=20.299999999999997 grace=23.799999999996821 loserX=4620
+LinearAirFlip step=100 clean=1 finish=20.299999999999997 grace=23.799999999996821 loserX=4620
+JumpGravityFlip step=0.0069444444444444441 clean=0 finish=20.300000000000001 grace=23.799999999995293 loserX=4620
+JumpGravityFlip step=0.0069444444444444441 clean=1 finish=20.300000000000001 grace=23.799999999995293 loserX=4620
+JumpGravityFlip step=0.317 clean=0 finish=20.299999999999997 grace=23.79999999999653 loserX=4620
+JumpGravityFlip step=0.317 clean=1 finish=20.299999999999997 grace=23.79999999999653 loserX=4620
+JumpGravityFlip step=100 clean=0 finish=20.299999999999997 grace=23.799999999996786 loserX=4620
+JumpGravityFlip step=100 clean=1 finish=20.299999999999997 grace=23.799999999996786 loserX=4620
+GravityUnlimited step=0.0069444444444444441 clean=0 finish=20.300000000000001 grace=23.799999999995602 loserX=4620
+GravityUnlimited step=0.0069444444444444441 clean=1 finish=20.300000000000001 grace=23.799999999995602 loserX=4620
+GravityUnlimited step=0.317 clean=0 finish=20.299999999999997 grace=23.799999999995833 loserX=4620
+GravityUnlimited step=0.317 clean=1 finish=20.299999999999997 grace=23.799999999995833 loserX=4620
+GravityUnlimited step=100 clean=0 finish=20.299999999999997 grace=23.799999999996796 loserX=4620
+GravityUnlimited step=100 clean=1 finish=20.299999999999997 grace=23.799999999996796 loserX=4620
+CONTROL ASYMMETRIC STRESS PASS 1518 checks / 24 actual games.

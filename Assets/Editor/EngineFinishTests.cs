@@ -198,7 +198,7 @@ namespace FlipRace.Editor
             double x = p.Distance, gain = p.FinishBoostDistanceGained, elapsed = game.Elapsed;
             RaceSimulation.Advance(game, 0); RaceSimulation.Advance(game, double.NaN);
             Check(p.Distance == x && p.FinishBoostDistanceGained == gain && game.Elapsed == elapsed, "pause does not consume finish movement");
-            var clone = new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Track = game.Track,
+            var clone = new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Flight = game.Flight, Track = game.Track,
                 Phase = game.Phase, Elapsed = game.Elapsed, Players = new[] { EngineTuneTests.CopyMotion(p), EngineTuneTests.CopyMotion(game.Players[1]) } };
             Check(!ReferenceEquals(clone.Players[0].LastFinishBoost, p.LastFinishBoost), "snapshot owns separate event record");
             AdvanceFor(game, 100, 100); AdvanceFor(clone, 100, 1d / 144);

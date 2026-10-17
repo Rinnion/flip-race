@@ -1,4 +1,21 @@
-# Проверка «Флип!»: проба 4.2.1 и история
+# Проверка «Флип!»: настройка полёта 4.3.0 и история
+
+## FLIGHT / 4.3.0-trial — проверенная поставка
+
+Независимые первое действие, закон движения и 0/1/∞ повторов реализованы вместе с отдельными числовыми настройками и измерением полёта. Четыре готовых варианта сохранены; custom-набор хранится отдельно. [Задачи](FLIGHT-TASKS.md), [инструкция подбора](FLIGHT-PLAYTEST.md), [план до реализации](FLIGHT-AUDIT-PLAN.md).
+
+| Проверка 4.3.0 | Подтверждённое состояние |
+|---|---|
+| Engine FLIGHT | **PASS**, 12 сценариев / 1592 утверждения; [отчёт и воспроизведение](FLIGHT-ENGINE.md) |
+| Независимая физика | **PASS**, 68 928 утверждений / 1864 игры; аналитические ожидания, 12 сочетаний, обе стороны, 6 dt, повторы, опоры и измерения; [scope/SHA/repro](FLIGHT-PHYSICS-AUDIT.md) |
+| Локальный codec/выбор | **PASS**, 558 утверждений / 109 физических round-trip; [вывод](flight-settings-check.txt). Это не проверка browser reload или clipboard |
+| Старые suites / JS | **PASS**, 963 / 3554 / 865 / 1770 / 1009 / 2165 / 1598; JS 40 228 снимков / 1 448 208 полей, погрешность <1e-8 |
+| Геометрия / асимметрия | **PASS**, Control 20 451, Tune 47 929, ControlStress 1518 /24 игры; сохранены прежние маршруты готовых настроек |
+| UI и Web | Финальная `Logs/flight-release-build.log` **PASS**, 5 файлов /8 673 088 байт. После UI-fix Interrupted видим на custom-участке; повтор custom ideal обоих20,3 /0 hits и clean measurement. [Браузерный отчёт](FLIGHT-BROWSER.md) |
+| Финальный ZIP / извлечённые файлы | **PASS**, 8 542 742 байта /8,147 MiB; root index, 4 относительных ресурса, WASM и пять SHA; [manifest](../Releases/flip-race-v4.3.0-trial-webgl.zip.manifest.json), [snapshot proof](flight-package-verification.json). Снимок `Builds/WebGL-v4.3.0-final` |
+| Браузер финального ZIP | **PASS**, версия4.3.0/ready, меню568×320 с четырьмя preset+custom, видимая версия, консоль без warnings/errors. [Экран](flight-final-packaged-presets-568.png), label `final-packaged-load` в [trace](flight-browser-traces.json.gz). Это отдельная загрузка/меню, не дополнительный заезд |
+
+Финальные SHA Core `f1c3dad26087616af055ea18c7b5307455fef32e77a29b9b86282210aa8f734d`, FlightSettings `1e577574d0af5c7f9d7b8cc62bf464343f9586e9f99dd55c2d3aae84b52f18d4`, Store `8827ab3dcf2eb5b37d3d460055a79e413e30c5d99b685572be122367e0f70d73` повторно совпали при подготовке документов. Сохранённые Web/ZIP 4.2.1 [повторно сверены](flight-baseline-verification.json) без перезаписи. Прежние браузерные скриншоты и заезды ниже относятся к своим версиям, а не к 4.3.0. Физический телефон, мультитач и itch.io iframe этим этапом ещё не проверены.
 
 ## CONTROL / 4.2.1-trial — проверенная поставка
 
@@ -16,7 +33,7 @@
 | ZIP и извлечённая Web-копия | **PASS**, 8 530 094 байта / 8,135 MiB, index/ресурсы/WASM/пять SHA проверены |
 | Реальный браузер из ZIP | **PASS**, отдельный Moderate ideal обоих20,3 / 2 landing +1 finish / 0 hits; 1 заезд / 8 действий / 309 снимков |
 
-Финальные исходники: Core `b4d0fcb6…`, TracksControl `588be383…`. [Архив](../Releases/flip-race-v4.2.1-trial-webgl.zip), [manifest](../Releases/flip-race-v4.2.1-trial-webgl.zip.manifest.json), SHA-256 `eed4c07535dc8c63dddd6a62760b4e071f90ae5a1e038cc5686005ff4c08e3b4`. Снимок `Builds/WebGL-v4.2.1` извлечён из этого ZIP с проверкой пяти SHA. [Рабочая версия4184](http://127.0.0.1:4184/?v=4.2.1-trial), [извлечённая поставка4192](http://127.0.0.1:4192/), [браузерный отчёт и свидетельства](CONTROL-BROWSER.md). Console warnings/errors пусты; счётчики diagnostics не являются FPS. Физический телефон, мультитач и itch.io iframe не проверены, публикации не было.
+Финальные исходники 4.2.1: Core `b4d0fcb6…`, TracksControl `588be383…`. [Архив](../Releases/flip-race-v4.2.1-trial-webgl.zip), [manifest](../Releases/flip-race-v4.2.1-trial-webgl.zip.manifest.json), SHA-256 `eed4c07535dc8c63dddd6a62760b4e071f90ae5a1e038cc5686005ff4c08e3b4`. Снимок `Builds/WebGL-v4.2.1` извлечён из этого ZIP с проверкой пяти SHA. [Сохранённая поставка4192](http://127.0.0.1:4192/), [браузерный отчёт и свидетельства](CONTROL-BROWSER.md). Console warnings/errors пусты; счётчики diagnostics не являются FPS. Физический телефон, мультитач и itch.io iframe не проверены, публикации не было.
 
 Ниже сохранены подтверждённые результаты **4.2.0 до 03F**. Её Web-снимок — `Builds/WebGL-v4.2.0-pre-finish`, пять файлов/8 653 835 байт, [manifest](control-pre-finish-build-manifest.json); ZIP не создавался. [Четыре ранних browser-заезда](control-pre-finish-browser-trace.json.gz) Moderate safe21/ideal20,1 и Linear safe21/ideal20,1 относятся только к ней.
 
@@ -39,7 +56,7 @@
 
 G2 [trace](control-free-browser-trace.json.gz) содержит 4 заезда, 33 действия и 571 различимый снимок diagnostics. Частота публикации состояния не является измеренным FPS. Свободные скриншоты `control-free-*`, `control-normal-jump.png`, `control-jump-flip.png` относятся к G2; итоговые игровые участки 4.2.1 подтверждены отдельным [CONTROL-BROWSER](CONTROL-BROWSER.md).
 
-Сохранённая [4.1.0:4188](http://127.0.0.1:4188/) извлечена в `Builds/WebGL-v4.1.0` с проверкой пяти SHA, её ZIP и manifest не изменялись. Рабочий 4184 теперь обслуживает новую 4.2.1; версия указана рядом с названием. Итоговый ZIP 4.2.0 не создавался, публикации нет. Результаты прежних версий ниже остаются историей.
+Сохранённая [4.1.0:4188](http://127.0.0.1:4188/) извлечена в `Builds/WebGL-v4.1.0` с проверкой пяти SHA, её ZIP и manifest не изменялись. Рабочий 4184 теперь используется этапом 4.3.0, сохранённая 4.2.1 — на 4192; версия указана рядом с названием. Итоговый ZIP 4.2.0 не создавался, публикации нет. Результаты прежних версий ниже остаются историей.
 
 ## Сохранённая проба 4.1.0-trial — 16 октября 2026
 

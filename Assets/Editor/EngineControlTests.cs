@@ -244,7 +244,7 @@ namespace FlipRace.Editor
         }
         static GameState Copy(GameState game)
         {
-            return new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Track = game.Track,
+            return new GameState { Mode = game.Mode, Motion = game.Motion, Profile = game.Profile, Flight = game.Flight, Track = game.Track,
                 Phase = game.Phase, Elapsed = game.Elapsed, CountdownRemaining = game.CountdownRemaining,
                 Winner = game.Winner, WinnerAt = game.WinnerAt,
                 Players = new[] { EngineTuneTests.CopyMotion(game.Players[0]), EngineTuneTests.CopyMotion(game.Players[1]) } };

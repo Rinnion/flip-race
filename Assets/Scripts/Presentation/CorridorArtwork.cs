@@ -107,14 +107,14 @@ namespace FlipRace.Presentation
             float motionTime=(float)(player.Distance/RaceConfig.Speed);
             float stride=motionTime*25;
             float flight=Mathf.Clamp01((float)(player.FlipElapsed/RaceConfig.FlipDuration));
-            if (game.Motion != MotionMode.Linear)
+            if (game.Flight != null && game.Flight.Law == MotionLaw.Gravity)
                 flight = Mathf.Clamp01((float)(Math.Abs(player.VerticalSpeed) / Math.Sqrt(
-                    game.Profile.DepartureImpulse * game.Profile.DepartureImpulse
-                    + 2 * game.Profile.GravityAcceleration * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius))));
-            if (game.Motion == MotionMode.LinearAirFlip) flight = Mathf.Clamp01((float)(1 - player.Y));
+                    (game.Flight.FirstAction == FirstAction.Jump ? game.Flight.JumpImpulse * game.Flight.JumpImpulse : game.Flight.FlipImpulse * game.Flight.FlipImpulse)
+                    + 2 * game.Flight.GravityAcceleration * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius))));
+            if (game.Flight != null && game.Flight.Law == MotionLaw.Linear) flight = Mathf.Clamp01((float)(1 - player.Y));
             float rotation = onCeiling ? 180 : 0;
             if (player.Flipping) rotation = (float)(1 - player.Y) * 180;
-            if (game.Motion == MotionMode.JumpGravityFlip)
+            if (game.Flight != null && game.Flight.FirstAction == FirstAction.Jump)
             {
                 float target = player.Gravity < 0 ? 180 : 0;
                 if (jumpRotationTime[playerIndex] < 0 || player.Support != SupportKind.None || game.Phase == "ready")
