@@ -41,6 +41,10 @@ namespace FlipRace.Presentation
     public static class FlightSettingsStore
     {
         public const string Key = "flip-race-custom-flight-v1";
+        public const string ActiveChoiceKey = "flip-race-flight-choice-v2";
+        public const int ChosenPresetIndex = 10;
+        public static int ValidActiveChoice(int saved)
+        { return saved >= -1 && saved <= ChosenPresetIndex ? saved : ChosenPresetIndex; }
         static readonly CultureInfo Invariant = CultureInfo.InvariantCulture;
         public static FlightSettings Preset(int index)
         {
@@ -54,13 +58,14 @@ namespace FlipRace.Presentation
                     return FlightPresets.FromLegacy(MotionMode.GravityAirFlip, MotionProfiles.All[index - 4]);
                 case 8: return FlightPresets.FromLegacy(MotionMode.Linear);
                 case 9: return FlightPresets.FromLegacy(MotionMode.Gravity);
+                case ChosenPresetIndex: return FlightPresets.Chosen;
                 default: throw new ArgumentOutOfRangeException(nameof(index));
             }
         }
         public static string PresetName(int index)
         {
             string[] names = { "Меньше толчок", "Линейный", "Прыжок → флип", "Много флипов",
-                "База", "Сильнее тяга", "Толчок", "Тяга + толчок", "Линейный без повтора", "Разгон без повтора" };
+                "База", "Сильнее тяга", "Толчок", "Тяга + толчок", "Линейный без повтора", "Разгон без повтора", "Профиль трасс" };
             return names[index];
         }
         // Store physical values, not ordinal meanings that a future scale could change.
@@ -80,7 +85,7 @@ namespace FlipRace.Presentation
             {
                 string[] v = text.Split('|'); if (v.Length != 10 || v[0] != "1") return false;
                 int first = int.Parse(v[1], Invariant), law = int.Parse(v[2], Invariant), repeats = int.Parse(v[3], Invariant);
-                int reset = int.Parse(v[9], Invariant); if (reset < 0 || reset > 9) return false;
+                int reset = int.Parse(v[9], Invariant); if (reset < 0 || reset > ChosenPresetIndex) return false;
                 var s = new FlightSettings((FirstAction)first, (MotionLaw)law, (AirRepeatLimit)repeats,
                     double.Parse(v[4], Invariant), double.Parse(v[5], Invariant), double.Parse(v[6], Invariant),
                     double.Parse(v[7], Invariant), double.Parse(v[8], Invariant));

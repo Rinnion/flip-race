@@ -1,0 +1,2939 @@
+[
+  {
+    "label": "full-long-safe",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 35.99999999999629,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 14,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 36,
+          "finishBoost": false,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 33.865603773584915,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867924,
+          "flipElapsed": 1.0566037735849056,
+          "flipping": false,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 0,
+          "lastFinishBoost": "",
+          "lastInstant": "",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 0,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 0,
+          "y": 0
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 14,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 36,
+          "finishBoost": false,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 33.865603773584915,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867924,
+          "flipElapsed": 1.0566037735849056,
+          "flipping": false,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 0,
+          "lastFinishBoost": "",
+          "lastInstant": "",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 0,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 0,
+          "y": 0
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 0,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 0,
+      "settingsCopyX": 0,
+      "settingsCopyY": 0,
+      "settingsVisible": false,
+      "track": "full-long",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 215.77358490566036,
+        "observedDistance": 205.70000000000056,
+        "age": 53.89990234375,
+        "elapsed": 0.9350000000000024
+      },
+      {
+        "target": 565.7735849056604,
+        "observedDistance": 563.200000000002,
+        "age": 14.10009765625,
+        "elapsed": 2.5600000000000094
+      },
+      {
+        "target": 965.7735849056604,
+        "observedDistance": 961.8400000000008,
+        "age": 38,
+        "elapsed": 4.372000000000007
+      },
+      {
+        "target": 1220,
+        "observedDistance": 1209.5600000000022,
+        "age": 49.800048828125,
+        "elapsed": 5.498000000000012
+      },
+      {
+        "target": 1275,
+        "observedDistance": 1278.2000000000016,
+        "age": 12.800048828125,
+        "elapsed": 5.810000000000009
+      },
+      {
+        "target": 2550,
+        "observedDistance": 2543.2000000000025,
+        "age": 49.60009765625,
+        "elapsed": 11.56000000000001
+      },
+      {
+        "target": 2605,
+        "observedDistance": 2598.2000000000016,
+        "age": 43.39990234375,
+        "elapsed": 11.81000000000001
+      },
+      {
+        "target": 3250,
+        "observedDistance": 3244.560000000002,
+        "age": 43.39990234375,
+        "elapsed": 14.748000000000012
+      },
+      {
+        "target": 3305,
+        "observedDistance": 3299.560000000002,
+        "age": 40.7001953125,
+        "elapsed": 14.998000000000012
+      },
+      {
+        "target": 3515.7735849056603,
+        "observedDistance": 3505.7000000000016,
+        "age": 55,
+        "elapsed": 15.93500000000001
+      },
+      {
+        "target": 3915.7735849056603,
+        "observedDistance": 3918.2000000000007,
+        "age": 17.10009765625,
+        "elapsed": 17.81000000000001
+      },
+      {
+        "target": 4300,
+        "observedDistance": 4289.560000000001,
+        "age": 57.60009765625,
+        "elapsed": 19.49800000000001
+      },
+      {
+        "target": 4355,
+        "observedDistance": 4358.200000000001,
+        "age": 16,
+        "elapsed": 19.81000000000001
+      },
+      {
+        "target": 5080,
+        "observedDistance": 5073.2,
+        "age": 47.800048828125,
+        "elapsed": 23.06000000000001
+      },
+      {
+        "target": 5135,
+        "observedDistance": 5128.419999999999,
+        "age": 40.7001953125,
+        "elapsed": 23.311000000000007
+      },
+      {
+        "target": 5700,
+        "observedDistance": 5692.06,
+        "age": 51.39990234375,
+        "elapsed": 25.87300000000001
+      },
+      {
+        "target": 5755,
+        "observedDistance": 5747.28,
+        "age": 58.39990234375,
+        "elapsed": 26.12400000000001
+      },
+      {
+        "target": 6660,
+        "observedDistance": 6654.56,
+        "age": 45.5,
+        "elapsed": 30.24800000000001
+      },
+      {
+        "target": 6715,
+        "observedDistance": 6709.339999999999,
+        "age": 46.10009765625,
+        "elapsed": 30.497000000000007
+      },
+      {
+        "target": 6915.773584905661,
+        "observedDistance": 6915.7,
+        "age": 22,
+        "elapsed": 31.43500000000001
+      },
+      {
+        "target": 7215.773584905661,
+        "observedDistance": 7217.98,
+        "age": 4.60009765625,
+        "elapsed": 32.80900000000001
+      }
+    ]
+  },
+  {
+    "label": "full-long-full",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 33.2,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 79.67870000000033,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.199999999999996,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.0566037735849054,
+          "flightEndedAt": 31.13760377358491,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867926,
+          "flipElapsed": 0.24400000000000183,
+          "flipping": true,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-long-finish",
+          "lastInstant": "full-long-13-free-mid",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 188.34999999999877,
+          "y": 0.30980518867924683
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 79.67870000000033,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.199999999999996,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.0566037735849054,
+          "flightEndedAt": 31.13760377358491,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867926,
+          "flipElapsed": 0.24400000000000183,
+          "flipping": true,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-long-finish",
+          "lastInstant": "full-long-13-free-mid",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 188.34999999999877,
+          "y": 0.30980518867924683
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 0,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 0,
+      "settingsCopyX": 0,
+      "settingsCopyY": 0,
+      "settingsVisible": false,
+      "track": "full-long",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 215.77358490566036,
+        "observedDistance": 210.54000000000173,
+        "age": 39.39990234375,
+        "elapsed": 0.9570000000000078
+      },
+      {
+        "target": 485.1811187353192,
+        "observedDistance": 485.3200000000007,
+        "age": 6.7001953125,
+        "elapsed": 2.206000000000003
+      },
+      {
+        "target": 965.7735849056604,
+        "observedDistance": 964.0400000000016,
+        "age": 13.39990234375,
+        "elapsed": 4.082000000000008
+      },
+      {
+        "target": 1300,
+        "observedDistance": 1293.820000000001,
+        "age": 45.800048828125,
+        "elapsed": 5.581000000000003
+      },
+      {
+        "target": 1355,
+        "observedDistance": 1349.0400000000022,
+        "age": 40.2001953125,
+        "elapsed": 5.832000000000008
+      },
+      {
+        "target": 1920,
+        "observedDistance": 1923.680000000002,
+        "age": 10.5,
+        "elapsed": 8.144000000000005
+      },
+      {
+        "target": 2550,
+        "observedDistance": 2539.4600000000014,
+        "age": 62.7001953125,
+        "elapsed": 10.643
+      },
+      {
+        "target": 2605,
+        "observedDistance": 2594.6800000000017,
+        "age": 52.39990234375,
+        "elapsed": 10.894000000000004
+      },
+      {
+        "target": 3000,
+        "observedDistance": 2993.3200000000015,
+        "age": 36.300048828125,
+        "elapsed": 12.706000000000005
+      },
+      {
+        "target": 3080,
+        "observedDistance": 3076.4202162201063,
+        "age": 39.60009765625,
+        "elapsed": 13.018
+      },
+      {
+        "target": 3515.7735849056603,
+        "observedDistance": 3510.320000000003,
+        "age": 33.89990234375,
+        "elapsed": 14.456000000000005
+      },
+      {
+        "target": 3835.181118735319,
+        "observedDistance": 3826.680000000003,
+        "age": 40,
+        "elapsed": 15.894000000000004
+      },
+      {
+        "target": 4300,
+        "observedDistance": 4291.5400000000045,
+        "age": 47.5,
+        "elapsed": 17.707000000000008
+      },
+      {
+        "target": 4355,
+        "observedDistance": 4346.5400000000045,
+        "age": 41.10009765625,
+        "elapsed": 17.957000000000008
+      },
+      {
+        "target": 4798.884190641017,
+        "observedDistance": 4800.180000000004,
+        "age": 10,
+        "elapsed": 20.019000000000005
+      },
+      {
+        "target": 4853.884190641017,
+        "observedDistance": 4855.180000000004,
+        "age": 14,
+        "elapsed": 20.269000000000005
+      },
+      {
+        "target": 4966,
+        "observedDistance": 4955.872095320513,
+        "age": 34.10009765625,
+        "elapsed": 20.644000000000005
+      },
+      {
+        "target": 5700,
+        "observedDistance": 5691.180000000005,
+        "age": 44.89990234375,
+        "elapsed": 23.769000000000005
+      },
+      {
+        "target": 5755,
+        "observedDistance": 5759.820000000004,
+        "age": 5.800048828125,
+        "elapsed": 24.081000000000003
+      },
+      {
+        "target": 5980,
+        "observedDistance": 5980.040000000005,
+        "age": 26.39990234375,
+        "elapsed": 25.082000000000008
+      },
+      {
+        "target": 6500,
+        "observedDistance": 6499.680000000003,
+        "age": 18.300048828125,
+        "elapsed": 27.144000000000005
+      },
+      {
+        "target": 6555,
+        "observedDistance": 6554.680000000003,
+        "age": 15.89990234375,
+        "elapsed": 27.394000000000005
+      },
+      {
+        "target": 6915.773584905661,
+        "observedDistance": 6909.320000000001,
+        "age": 58,
+        "elapsed": 28.706000000000003
+      },
+      {
+        "target": 7215.773584905661,
+        "observedDistance": 7211.82,
+        "age": 20.2001953125,
+        "elapsed": 30.081000000000003
+      },
+      {
+        "target": 7842.159093452443,
+        "observedDistance": 7844.32,
+        "age": 21.2001953125,
+        "elapsed": 32.956
+      }
+    ]
+  },
+  {
+    "label": "full-short-safe",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 35.99999999999563,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 14,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 36,
+          "finishBoost": false,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849054,
+          "flightEndedAt": 34.398603773584874,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.4528301886792,
+          "flipElapsed": 1.0566037735849054,
+          "flipping": false,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 0,
+          "lastFinishBoost": "",
+          "lastInstant": "",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 0,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 0,
+          "y": 0
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 14,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 36,
+          "finishBoost": false,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849054,
+          "flightEndedAt": 34.398603773584874,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.4528301886792,
+          "flipElapsed": 1.0566037735849054,
+          "flipping": false,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 0,
+          "lastFinishBoost": "",
+          "lastInstant": "",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 0,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 0,
+          "y": 0
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "track": "full-short",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 215.77358490566036,
+        "observedDistance": 219.55999999999477,
+        "age": 5.800048828125,
+        "elapsed": 0.9979999999999762
+      },
+      {
+        "target": 500,
+        "observedDistance": 494.5599999999948,
+        "age": 46.800048828125,
+        "elapsed": 2.247999999999976
+      },
+      {
+        "target": 555,
+        "observedDistance": 549.5599999999947,
+        "age": 38.60009765625,
+        "elapsed": 2.497999999999976
+      },
+      {
+        "target": 795.7735849056604,
+        "observedDistance": 797.0599999999947,
+        "age": 13.300048828125,
+        "elapsed": 3.622999999999976
+      },
+      {
+        "target": 1365.7735849056603,
+        "observedDistance": 1360.919999999992,
+        "age": 37.300048828125,
+        "elapsed": 6.185999999999964
+      },
+      {
+        "target": 2075.7735849056603,
+        "observedDistance": 2075.9199999999923,
+        "age": 20.2001953125,
+        "elapsed": 9.435999999999964
+      },
+      {
+        "target": 2500,
+        "observedDistance": 2502.0599999999986,
+        "age": 15.60009765625,
+        "elapsed": 11.372999999999976
+      },
+      {
+        "target": 2555,
+        "observedDistance": 2557.0599999999995,
+        "age": 17.5,
+        "elapsed": 11.622999999999976
+      },
+      {
+        "target": 3400,
+        "observedDistance": 3395.92000000001,
+        "age": 45.89990234375,
+        "elapsed": 15.435999999999964
+      },
+      {
+        "target": 3455,
+        "observedDistance": 3450.920000000011,
+        "age": 45.89990234375,
+        "elapsed": 15.685999999999964
+      },
+      {
+        "target": 4130,
+        "observedDistance": 4124.560000000019,
+        "age": 52.2001953125,
+        "elapsed": 18.747999999999976
+      },
+      {
+        "target": 4185,
+        "observedDistance": 4179.56000000002,
+        "age": 27.10009765625,
+        "elapsed": 18.997999999999976
+      },
+      {
+        "target": 4415.773584905661,
+        "observedDistance": 4413.200000000031,
+        "age": 32.7001953125,
+        "elapsed": 20.059999999999988
+      },
+      {
+        "target": 4915.773584905661,
+        "observedDistance": 4908.4200000000465,
+        "age": 40.2001953125,
+        "elapsed": 22.310999999999993
+      },
+      {
+        "target": 5600,
+        "observedDistance": 5595.9200000000665,
+        "age": 45,
+        "elapsed": 25.435999999999993
+      },
+      {
+        "target": 5655,
+        "observedDistance": 5650.920000000068,
+        "age": 41.7001953125,
+        "elapsed": 25.685999999999993
+      },
+      {
+        "target": 6510,
+        "observedDistance": 6503.200000000094,
+        "age": 41.800048828125,
+        "elapsed": 29.559999999999988
+      },
+      {
+        "target": 6565,
+        "observedDistance": 6558.4200000000965,
+        "age": 56.39990234375,
+        "elapsed": 29.810999999999993
+      },
+      {
+        "target": 6800,
+        "observedDistance": 6792.0600000000995,
+        "age": 45.60009765625,
+        "elapsed": 30.872999999999976
+      },
+      {
+        "target": 6855,
+        "observedDistance": 6847.060000000101,
+        "age": 40.39990234375,
+        "elapsed": 31.122999999999976
+      },
+      {
+        "target": 7335.773584905661,
+        "observedDistance": 7328.20000000012,
+        "age": 38.300048828125,
+        "elapsed": 33.30999999999999
+      }
+    ]
+  },
+  {
+    "label": "full-short-full",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 33.199999999999505,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 99.36267499995076,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.199999999999996,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 31.71960377358492,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.4528301886792,
+          "flipElapsed": 0.3819999999994929,
+          "flipping": true,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-short-finish",
+          "lastInstant": "full-short-13-free-mid",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 96.9250000003359,
+          "y": 0.40265412735825834
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 99.36267499995076,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.199999999999996,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 31.71960377358492,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.4528301886792,
+          "flipElapsed": 0.3819999999994929,
+          "flipping": true,
+          "gravity": -1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-short-finish",
+          "lastInstant": "full-short-13-free-mid",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 0,
+          "verticalSpeed": 96.9250000003359,
+          "y": 0.40265412735825834
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "track": "full-short",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 215.77358490566036,
+        "observedDistance": 207.46000000000265,
+        "age": 49.300048828125,
+        "elapsed": 0.943000000000012
+      },
+      {
+        "target": 500,
+        "observedDistance": 496.5400000000011,
+        "age": 28.7001953125,
+        "elapsed": 2.257000000000005
+      },
+      {
+        "target": 555,
+        "observedDistance": 551.32,
+        "age": 37.5,
+        "elapsed": 2.506
+      },
+      {
+        "target": 795.7735849056604,
+        "observedDistance": 784.9600000000027,
+        "age": 54.39990234375,
+        "elapsed": 3.568000000000012
+      },
+      {
+        "target": 1285.1811187353192,
+        "observedDistance": 1279.9600000000016,
+        "age": 31.300048828125,
+        "elapsed": 5.818000000000012
+      },
+      {
+        "target": 1720,
+        "observedDistance": 1717.3199999999983,
+        "age": 26.2001953125,
+        "elapsed": 7.506
+      },
+      {
+        "target": 2075.7735849056603,
+        "observedDistance": 2071.960000000001,
+        "age": 24.60009765625,
+        "elapsed": 8.818000000000012
+      },
+      {
+        "target": 2580,
+        "observedDistance": 2580.8200000000033,
+        "age": 9.800048828125,
+        "elapsed": 11.131
+      },
+      {
+        "target": 2635,
+        "observedDistance": 2635.8200000000043,
+        "age": 9.60009765625,
+        "elapsed": 11.381
+      },
+      {
+        "target": 3150,
+        "observedDistance": 3141.8200000000043,
+        "age": 40.7001953125,
+        "elapsed": 13.381
+      },
+      {
+        "target": 3230,
+        "observedDistance": 3236.068590064631,
+        "age": 8.7001953125,
+        "elapsed": 13.694000000000017
+      },
+      {
+        "target": 3848.8841906410175,
+        "observedDistance": 3851.320000000007,
+        "age": 13,
+        "elapsed": 16.006
+      },
+      {
+        "target": 3903.8841906410175,
+        "observedDistance": 3906.320000000007,
+        "age": 5.89990234375,
+        "elapsed": 16.256
+      },
+      {
+        "target": 4016,
+        "observedDistance": 4007.012095320515,
+        "age": 35.2001953125,
+        "elapsed": 16.631
+      },
+      {
+        "target": 4415.773584905661,
+        "observedDistance": 4412.320000000015,
+        "age": 48.60009765625,
+        "elapsed": 18.256
+      },
+      {
+        "target": 4835.18111873532,
+        "observedDistance": 4824.820000000028,
+        "age": 51.5,
+        "elapsed": 20.131
+      },
+      {
+        "target": 5600,
+        "observedDistance": 5592.18000000005,
+        "age": 38.800048828125,
+        "elapsed": 23.319000000000017
+      },
+      {
+        "target": 5655,
+        "observedDistance": 5647.180000000051,
+        "age": 55.60009765625,
+        "elapsed": 23.569000000000017
+      },
+      {
+        "target": 5880,
+        "observedDistance": 5880.820000000054,
+        "age": 9.300048828125,
+        "elapsed": 24.631
+      },
+      {
+        "target": 6350,
+        "observedDistance": 6345.4600000000655,
+        "age": 43.800048828125,
+        "elapsed": 26.443000000000012
+      },
+      {
+        "target": 6405,
+        "observedDistance": 6400.460000000067,
+        "age": 34.2001953125,
+        "elapsed": 26.693000000000012
+      },
+      {
+        "target": 6800,
+        "observedDistance": 6796.460000000076,
+        "age": 37.7001953125,
+        "elapsed": 28.193000000000012
+      },
+      {
+        "target": 6855,
+        "observedDistance": 6851.680000000079,
+        "age": 25,
+        "elapsed": 28.444000000000017
+      },
+      {
+        "target": 7335.773584905661,
+        "observedDistance": 7333.040000000093,
+        "age": 28.5,
+        "elapsed": 30.632000000000005
+      },
+      {
+        "target": 7808.803940728322,
+        "observedDistance": 7800.320000000106,
+        "age": 53.60009765625,
+        "elapsed": 32.756
+      }
+    ]
+  },
+  {
+    "label": "full-flow-safe",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 35.99999999999589,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 226,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 36,
+          "finishBoost": false,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 33.39860377358497,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.4528301886792,
+          "flipElapsed": 1.0566037735849056,
+          "flipping": false,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 0,
+          "lastFinishBoost": "",
+          "lastInstant": "",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 0,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": 0,
+          "y": 1
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 226,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 36,
+          "finishBoost": false,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 33.39860377358497,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.4528301886792,
+          "flipElapsed": 1.0566037735849056,
+          "flipping": false,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 0,
+          "lastFinishBoost": "",
+          "lastInstant": "",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 0,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": 0,
+          "y": 1
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "track": "full-flow",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 193.77358490566036,
+        "observedDistance": 192.0599999999979,
+        "age": 20.89990234375,
+        "elapsed": 0.8729999999999905
+      },
+      {
+        "target": 760,
+        "observedDistance": 755.7000000000005,
+        "age": 31.2001953125,
+        "elapsed": 3.4350000000000023
+      },
+      {
+        "target": 815,
+        "observedDistance": 810.7000000000005,
+        "age": 39.39990234375,
+        "elapsed": 3.6850000000000023
+      },
+      {
+        "target": 1065.7735849056603,
+        "observedDistance": 1058.2000000000005,
+        "age": 52.5,
+        "elapsed": 4.810000000000002
+      },
+      {
+        "target": 1443.7735849056603,
+        "observedDistance": 1443.200000000001,
+        "age": 20.39990234375,
+        "elapsed": 6.560000000000002
+      },
+      {
+        "target": 1720,
+        "observedDistance": 1718.200000000001,
+        "age": 39.39990234375,
+        "elapsed": 7.810000000000002
+      },
+      {
+        "target": 1775,
+        "observedDistance": 1773.420000000002,
+        "age": 12.800048828125,
+        "elapsed": 8.061000000000007
+      },
+      {
+        "target": 2793.7735849056603,
+        "observedDistance": 2790.700000000018,
+        "age": 39.2001953125,
+        "elapsed": 12.685000000000002
+      },
+      {
+        "target": 3550,
+        "observedDistance": 3547.0600000000295,
+        "age": 43.89990234375,
+        "elapsed": 16.12299999999999
+      },
+      {
+        "target": 3605,
+        "observedDistance": 3601.8400000000292,
+        "age": 16.300048828125,
+        "elapsed": 16.371999999999986
+      },
+      {
+        "target": 4180,
+        "observedDistance": 4179.56000000004,
+        "age": 9.5,
+        "elapsed": 18.99799999999999
+      },
+      {
+        "target": 4235,
+        "observedDistance": 4234.560000000041,
+        "age": 12.39990234375,
+        "elapsed": 19.24799999999999
+      },
+      {
+        "target": 4415.773584905661,
+        "observedDistance": 4413.20000000005,
+        "age": 12.2001953125,
+        "elapsed": 20.06
+      },
+      {
+        "target": 4915.773584905661,
+        "observedDistance": 4908.420000000069,
+        "age": 47.89990234375,
+        "elapsed": 22.311000000000064
+      },
+      {
+        "target": 5500,
+        "observedDistance": 5499.560000000078,
+        "age": 21.89990234375,
+        "elapsed": 24.998000000000076
+      },
+      {
+        "target": 5555,
+        "observedDistance": 5554.560000000078,
+        "age": 16.89990234375,
+        "elapsed": 25.248000000000076
+      },
+      {
+        "target": 6293.773584905661,
+        "observedDistance": 6297.060000000085,
+        "age": 10.5,
+        "elapsed": 28.623000000000076
+      },
+      {
+        "target": 6600,
+        "observedDistance": 6599.340000000081,
+        "age": 18.2001953125,
+        "elapsed": 29.997000000000043
+      },
+      {
+        "target": 6655,
+        "observedDistance": 6654.340000000083,
+        "age": 24.2001953125,
+        "elapsed": 30.247000000000043
+      },
+      {
+        "target": 7115.773584905661,
+        "observedDistance": 7108.200000000083,
+        "age": 41.39990234375,
+        "elapsed": 32.31000000000003
+      }
+    ]
+  },
+  {
+    "label": "full-flow-full",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 34.49999999999967,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 162.0432812500721,
+          "character": 0,
+          "collisions": 2,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 34.50000000000001,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.056603773584906,
+          "flightEndedAt": 32.0086037735849,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867936,
+          "flipElapsed": 0.23499999999962917,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 6,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-9-large-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 8,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": -194.31250000024573,
+          "y": 0.6983173643871327
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 162.0432812500721,
+          "character": 1,
+          "collisions": 2,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 34.50000000000001,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.056603773584906,
+          "flightEndedAt": 32.0086037735849,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867936,
+          "flipElapsed": 0.23499999999962917,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 6,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-9-large-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 8,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": -194.31250000024573,
+          "y": 0.6983173643871327
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "track": "full-flow",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 193.77358490566036,
+        "observedDistance": 195.8000000000095,
+        "age": 5.7001953125,
+        "elapsed": 0.8900000000000432
+      },
+      {
+        "target": 600,
+        "observedDistance": 594.4399999999996,
+        "age": 56,
+        "elapsed": 2.701999999999998
+      },
+      {
+        "target": 655,
+        "observedDistance": 649.4399999999996,
+        "age": 35.60009765625,
+        "elapsed": 2.951999999999998
+      },
+      {
+        "target": 985.1811187353192,
+        "observedDistance": 990.4399999999996,
+        "age": 3,
+        "elapsed": 4.201999999999998
+      },
+      {
+        "target": 1443.7735849056603,
+        "observedDistance": 1441.4399999999996,
+        "age": 21.39990234375,
+        "elapsed": 5.951999999999998
+      },
+      {
+        "target": 1800,
+        "observedDistance": 1798.9399999999996,
+        "age": 11.5,
+        "elapsed": 7.576999999999998
+      },
+      {
+        "target": 1855,
+        "observedDistance": 1853.9399999999996,
+        "age": 30.5,
+        "elapsed": 7.826999999999998
+      },
+      {
+        "target": 2470,
+        "observedDistance": 2469.9399999999996,
+        "age": 11.2001953125,
+        "elapsed": 10.326999999999998
+      },
+      {
+        "target": 2793.7735849056603,
+        "observedDistance": 2783.4399999999996,
+        "age": 62.7001953125,
+        "elapsed": 11.451999999999998
+      },
+      {
+        "target": 3300,
+        "observedDistance": 3292.3000000000125,
+        "age": 48.800048828125,
+        "elapsed": 13.765000000000043
+      },
+      {
+        "target": 3380,
+        "observedDistance": 3374.9099778749032,
+        "age": 22.10009765625,
+        "elapsed": 14.076999999999998
+      },
+      {
+        "target": 3898.8841906410175,
+        "observedDistance": 3891.5800000000054,
+        "age": 55.800048828125,
+        "elapsed": 15.88900000000001
+      },
+      {
+        "target": 3953.8841906410175,
+        "observedDistance": 3946.5800000000063,
+        "age": 46.60009765625,
+        "elapsed": 16.13900000000001
+      },
+      {
+        "target": 4066,
+        "observedDistance": 4063.771544040126,
+        "age": 35.800048828125,
+        "elapsed": 16.576000000000022
+      },
+      {
+        "target": 4415.773584905661,
+        "observedDistance": 4986,
+        "age": 11.39990234375,
+        "elapsed": 21.265000000000043
+      },
+      {
+        "target": 4835.18111873532,
+        "observedDistance": 4986,
+        "age": 50.39990234375,
+        "elapsed": 21.265000000000043
+      },
+      {
+        "target": 5500,
+        "observedDistance": 5497.580000000029,
+        "age": 11.89990234375,
+        "elapsed": 23.88900000000001
+      },
+      {
+        "target": 5555,
+        "observedDistance": 5552.580000000031,
+        "age": 34.89990234375,
+        "elapsed": 24.13900000000001
+      },
+      {
+        "target": 5780,
+        "observedDistance": 5772.580000000035,
+        "age": 55.60009765625,
+        "elapsed": 25.13900000000001
+      },
+      {
+        "target": 6293.773584905661,
+        "observedDistance": 6292.440000000044,
+        "age": 12.5,
+        "elapsed": 27.202
+      },
+      {
+        "target": 6600,
+        "observedDistance": 6594.940000000049,
+        "age": 48.2001953125,
+        "elapsed": 28.577
+      },
+      {
+        "target": 6655,
+        "observedDistance": 6649.94000000005,
+        "age": 42.89990234375,
+        "elapsed": 28.827
+      },
+      {
+        "target": 7115.773584905661,
+        "observedDistance": 7117.440000000057,
+        "age": 2.39990234375,
+        "elapsed": 30.952
+      },
+      {
+        "target": 7842.159093452443,
+        "observedDistance": 7832.440000000071,
+        "age": 62.10009765625,
+        "elapsed": 34.202
+      }
+    ]
+  },
+  {
+    "label": "full-flow-full-repeat",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 33.199999999999655,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 158.10880000005466,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.199999999999996,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.056603773584906,
+          "flightEndedAt": 30.68760377358488,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867929,
+          "flipElapsed": 0.2559999999996969,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": -180.4000000002008,
+          "y": 0.6797584905662956
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 158.10880000005466,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.199999999999996,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.056603773584906,
+          "flightEndedAt": 30.68760377358488,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867929,
+          "flipElapsed": 0.2559999999996969,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": -180.4000000002008,
+          "y": 0.6797584905662956
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "track": "full-flow",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 193.77358490566036,
+        "observedDistance": 194.0400000000011,
+        "age": 20.300048828125,
+        "elapsed": 0.882000000000005
+      },
+      {
+        "target": 600,
+        "observedDistance": 592.6799999999912,
+        "age": 44.89990234375,
+        "elapsed": 2.69399999999996
+      },
+      {
+        "target": 655,
+        "observedDistance": 647.8999999999985,
+        "age": 36.7001953125,
+        "elapsed": 2.944999999999993
+      },
+      {
+        "target": 985.1811187353192,
+        "observedDistance": 974.8199999999938,
+        "age": 49.60009765625,
+        "elapsed": 4.130999999999972
+      },
+      {
+        "target": 1443.7735849056603,
+        "observedDistance": 1439.679999999991,
+        "age": 43.7001953125,
+        "elapsed": 5.94399999999996
+      },
+      {
+        "target": 1800,
+        "observedDistance": 1797.179999999991,
+        "age": 30.2001953125,
+        "elapsed": 7.56899999999996
+      },
+      {
+        "target": 1855,
+        "observedDistance": 1852.3999999999985,
+        "age": 18.5,
+        "elapsed": 7.819999999999993
+      },
+      {
+        "target": 2470,
+        "observedDistance": 2468.179999999991,
+        "age": 35,
+        "elapsed": 10.31899999999996
+      },
+      {
+        "target": 2793.7735849056603,
+        "observedDistance": 2795.5400000000004,
+        "age": 3.10009765625,
+        "elapsed": 11.507000000000003
+      },
+      {
+        "target": 3300,
+        "observedDistance": 3290.540000000002,
+        "age": 53.60009765625,
+        "elapsed": 13.757000000000003
+      },
+      {
+        "target": 3380,
+        "observedDistance": 3372.2188331064194,
+        "age": 26.2001953125,
+        "elapsed": 14.06899999999996
+      },
+      {
+        "target": 3898.8841906410175,
+        "observedDistance": 3889.819999999996,
+        "age": 45.800048828125,
+        "elapsed": 15.880999999999972
+      },
+      {
+        "target": 3953.8841906410175,
+        "observedDistance": 3958.679999999995,
+        "age": 5.89990234375,
+        "elapsed": 16.19399999999996
+      },
+      {
+        "target": 4066,
+        "observedDistance": 4059.7705929275576,
+        "age": 39.89990234375,
+        "elapsed": 16.56899999999996
+      },
+      {
+        "target": 4415.773584905661,
+        "observedDistance": 4409.68,
+        "age": 51.89990234375,
+        "elapsed": 17.94399999999996
+      },
+      {
+        "target": 4835.18111873532,
+        "observedDistance": 4835.8200000000115,
+        "age": 3,
+        "elapsed": 19.880999999999972
+      },
+      {
+        "target": 5500,
+        "observedDistance": 5493.180000000024,
+        "age": 52.60009765625,
+        "elapsed": 22.56899999999996
+      },
+      {
+        "target": 5555,
+        "observedDistance": 5548.180000000024,
+        "age": 58.60009765625,
+        "elapsed": 22.81899999999996
+      },
+      {
+        "target": 5780,
+        "observedDistance": 5782.040000000039,
+        "age": 17.300048828125,
+        "elapsed": 23.882000000000005
+      },
+      {
+        "target": 6293.773584905661,
+        "observedDistance": 6287.820000000041,
+        "age": 35.800048828125,
+        "elapsed": 25.880999999999972
+      },
+      {
+        "target": 6600,
+        "observedDistance": 6590.540000000055,
+        "age": 58.39990234375,
+        "elapsed": 27.257000000000005
+      },
+      {
+        "target": 6655,
+        "observedDistance": 6659.400000000052,
+        "age": 3.5,
+        "elapsed": 27.569999999999993
+      },
+      {
+        "target": 7115.773584905661,
+        "observedDistance": 7112.820000000058,
+        "age": 14.800048828125,
+        "elapsed": 29.630999999999972
+      },
+      {
+        "target": 7842.159093452443,
+        "observedDistance": 7841.680000000066,
+        "age": 18.39990234375,
+        "elapsed": 32.94399999999996
+      }
+    ]
+  },
+  {
+    "label": "full-flow-finish-only-duel",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 33.2999999999968,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 158.47092500007784,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.199999999999996,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 30.720603773584894,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867924,
+          "flipElapsed": 0.25399999999957157,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": -181.7250000002839,
+          "y": 0.6814666273588578
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 226,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.3,
+          "finishBoost": false,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849056,
+          "flightEndedAt": 30.720603773584894,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867924,
+          "flipElapsed": 1.0566037735849056,
+          "flipping": false,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": 0,
+          "y": 1
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "track": "full-flow",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "0"
+    },
+    "actions": [
+      {
+        "target": 193.77358490566036,
+        "both": true,
+        "observedDistance": 194.2600000000084,
+        "age": 22.5
+      },
+      {
+        "target": 600,
+        "both": true,
+        "observedDistance": 592.8999999999985,
+        "age": 57.89990234375
+      },
+      {
+        "target": 655,
+        "both": true,
+        "observedDistance": 647.8999999999985,
+        "age": 37.60009765625
+      },
+      {
+        "target": 985.1811187353192,
+        "both": true,
+        "observedDistance": 988.8999999999984,
+        "age": 7.300048828125
+      },
+      {
+        "target": 1443.7735849056603,
+        "both": true,
+        "observedDistance": 1440.1200000000058,
+        "age": 45.300048828125
+      },
+      {
+        "target": 1800,
+        "both": true,
+        "observedDistance": 1797.3999999999985,
+        "age": 24.300048828125
+      },
+      {
+        "target": 1855,
+        "both": true,
+        "observedDistance": 1852.3999999999985,
+        "age": 31.2001953125
+      },
+      {
+        "target": 2470,
+        "both": true,
+        "observedDistance": 2468.1800000000057,
+        "age": 27.60009765625
+      },
+      {
+        "target": 2793.7735849056603,
+        "both": true,
+        "observedDistance": 2781.6800000000067,
+        "age": 61.60009765625
+      },
+      {
+        "target": 3300,
+        "both": true,
+        "observedDistance": 3290.540000000008,
+        "age": 45
+      },
+      {
+        "target": 3380,
+        "both": true,
+        "observedDistance": 3372.5610475542644,
+        "age": 36.60009765625
+      },
+      {
+        "target": 3898.8841906410175,
+        "both": true,
+        "observedDistance": 3890.260000000016,
+        "age": 54
+      },
+      {
+        "target": 3953.8841906410175,
+        "both": true,
+        "observedDistance": 3958.900000000007,
+        "age": 2.89990234375
+      },
+      {
+        "target": 4066,
+        "both": true,
+        "observedDistance": 4059.56081228984,
+        "age": 33.800048828125
+      },
+      {
+        "target": 4415.773584905661,
+        "both": true,
+        "observedDistance": 4409.900000000012,
+        "age": 45.300048828125
+      },
+      {
+        "target": 4835.18111873532,
+        "both": true,
+        "observedDistance": 4836.0400000000245,
+        "age": 4.7001953125
+      },
+      {
+        "target": 5500,
+        "both": true,
+        "observedDistance": 5493.180000000037,
+        "age": 50.5
+      },
+      {
+        "target": 5555,
+        "both": true,
+        "observedDistance": 5548.400000000032,
+        "age": 54.300048828125
+      },
+      {
+        "target": 5780,
+        "both": true,
+        "observedDistance": 5782.040000000039,
+        "age": 17.7001953125
+      },
+      {
+        "target": 6293.773584905661,
+        "both": true,
+        "observedDistance": 6288.260000000057,
+        "age": 37.2001953125
+      },
+      {
+        "target": 6600,
+        "both": true,
+        "observedDistance": 6590.760000000064,
+        "age": 59.10009765625
+      },
+      {
+        "target": 6655,
+        "both": true,
+        "observedDistance": 6645.760000000064,
+        "age": 50
+      },
+      {
+        "target": 7115.773584905661,
+        "both": true,
+        "observedDistance": 7113.260000000077,
+        "age": 27.89990234375
+      },
+      {
+        "target": 7842.159093452443,
+        "both": false,
+        "observedDistance": 7842.120000000094,
+        "age": 12
+      }
+    ]
+  },
+  {
+    "label": "unpacked-full-flow-negative",
+    "final": {
+      "airRepeatLimit": -1,
+      "characterRects": [
+        [
+          [
+            421,
+            80.5,
+            122,
+            48
+          ],
+          [
+            289,
+            80.5,
+            122,
+            48
+          ],
+          [
+            157,
+            80.5,
+            122,
+            48
+          ],
+          [
+            25,
+            80.5,
+            122,
+            48
+          ]
+        ],
+        [
+          [
+            25,
+            216.5,
+            122,
+            48
+          ],
+          [
+            157,
+            216.5,
+            122,
+            48
+          ],
+          [
+            289,
+            216.5,
+            122,
+            48
+          ],
+          [
+            421,
+            216.5,
+            122,
+            48
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 33.50000000000002,
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 158.65298124999617,
+          "character": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.5,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.0566037735849063,
+          "flightEndedAt": 32.7726037735849,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867934,
+          "flipElapsed": 0.25300000000002065,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 1,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": -182.38749999998635,
+          "y": 0.6823253832546989
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 158.65298124999617,
+          "character": 1,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.5,
+          "finishBoost": false,
+          "finishBoosts": 1,
+          "flightDuration": 1.0566037735849063,
+          "flightEndedAt": 32.7726037735849,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867934,
+          "flipElapsed": 0.25300000000002065,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 1,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": -182.38749999998635,
+          "y": 0.6823253832546989
+        }
+      ],
+      "profile": "custom",
+      "readyRects": [
+        [
+          189,
+          40.5,
+          190,
+          32
+        ],
+        [
+          189,
+          272.5,
+          190,
+          32
+        ]
+      ],
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "track": "full-flow",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.4.0-trial",
+      "winner": "tie"
+    },
+    "actions": [
+      {
+        "target": 193.77358490566036,
+        "observedDistance": 185.23999999999972,
+        "age": 41.5,
+        "elapsed": 0.8419999999999987
+      },
+      {
+        "target": 600,
+        "observedDistance": 604.3399999999996,
+        "age": 21,
+        "elapsed": 2.747
+      },
+      {
+        "target": 655,
+        "observedDistance": 645.6999999999992,
+        "age": 49.699951171875,
+        "elapsed": 2.9349999999999987
+      },
+      {
+        "target": 985.1811187353192,
+        "observedDistance": 986.6999999999988,
+        "age": 8.300048828125,
+        "elapsed": 4.184999999999999
+      },
+      {
+        "target": 1443.7735849056603,
+        "observedDistance": 1437.6999999999978,
+        "age": 48.39990234375,
+        "elapsed": 5.934999999999999
+      },
+      {
+        "target": 1800,
+        "observedDistance": 1795.199999999998,
+        "age": 39.199951171875,
+        "elapsed": 7.559999999999999
+      },
+      {
+        "target": 1855,
+        "observedDistance": 1850.1999999999975,
+        "age": 47.5,
+        "elapsed": 7.809999999999999
+      },
+      {
+        "target": 2470,
+        "observedDistance": 2466.1999999999975,
+        "age": 21.10009765625,
+        "elapsed": 10.31
+      },
+      {
+        "target": 2793.7735849056603,
+        "observedDistance": 2793.3399999999983,
+        "age": 21.10009765625,
+        "elapsed": 11.497
+      },
+      {
+        "target": 3300,
+        "observedDistance": 3288.559999999998,
+        "age": 59.5,
+        "elapsed": 13.748
+      },
+      {
+        "target": 3380,
+        "observedDistance": 3369.5118012545263,
+        "age": 34.5,
+        "elapsed": 14.061
+      },
+      {
+        "target": 3898.8841906410175,
+        "observedDistance": 3888.059999999998,
+        "age": 50.300048828125,
+        "elapsed": 15.873
+      },
+      {
+        "target": 3953.8841906410175,
+        "observedDistance": 3942.8399999999983,
+        "age": 56.89990234375,
+        "elapsed": 16.122000000000003
+      },
+      {
+        "target": 4066,
+        "observedDistance": 4071.126532008918,
+        "age": 13,
+        "elapsed": 16.590999999999998
+      },
+      {
+        "target": 4415.773584905661,
+        "observedDistance": 4414.519999999996,
+        "age": 19.10009765625,
+        "elapsed": 17.965999999999998
+      },
+      {
+        "target": 4835.18111873532,
+        "observedDistance": 4827.019999999995,
+        "age": 40.60009765625,
+        "elapsed": 19.841
+      },
+      {
+        "target": 5500,
+        "observedDistance": 5498.239999999996,
+        "age": 15.39990234375,
+        "elapsed": 22.592
+      },
+      {
+        "target": 5555,
+        "observedDistance": 5553.019999999995,
+        "age": 15.800048828125,
+        "elapsed": 22.841
+      },
+      {
+        "target": 5780,
+        "observedDistance": 5773.019999999995,
+        "age": 42.89990234375,
+        "elapsed": 23.841
+      },
+      {
+        "target": 6293.773584905661,
+        "observedDistance": 6292.659999999996,
+        "age": 12.699951171875,
+        "elapsed": 25.903
+      },
+      {
+        "target": 6600,
+        "observedDistance": 6595.379999999996,
+        "age": 30.89990234375,
+        "elapsed": 27.279
+      },
+      {
+        "target": 6655,
+        "observedDistance": 6650.379999999996,
+        "age": 39.199951171875,
+        "elapsed": 27.529
+      },
+      {
+        "target": 7115.773584905661,
+        "observedDistance": 7117.659999999996,
+        "age": 6.800048828125,
+        "elapsed": 29.653
+      },
+      {
+        "target": 7570,
+        "observedDistance": 7571.519999999995,
+        "age": 7.300048828125,
+        "elapsed": 31.716
+      },
+      {
+        "target": 7842.159093452443,
+        "observedDistance": 7835.519999999994,
+        "age": 46.5,
+        "elapsed": 33.215999999999994
+      }
+    ]
+  }
+]

@@ -1,5 +1,7 @@
 using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Text;
 using FlipRace.Core;
 using FlipRace.Presentation;
 using UnityEngine;
@@ -28,7 +30,7 @@ namespace FlipRace.Web
             public string firstAction, motionLaw;
             public int airRepeatLimit;
             public double flipImpulse, jumpImpulse, linearSpeed, linearJumpHeight;
-            public bool paused, negativeEnabled, customFlight, settingsVisible;
+            public bool paused, negativeEnabled, customFlight, settingsVisible, characterSelectionVisible;
             public double elapsed, countdown;
             public float fullscreenX, fullscreenY, fullscreenWidth, fullscreenHeight;
             public float settingsCopyX, settingsCopyY, settingsCopyWidth, settingsCopyHeight;
@@ -72,6 +74,7 @@ namespace FlipRace.Web
                 fullscreenX = fullscreen.x, fullscreenY = fullscreen.y,
                 fullscreenWidth = fullscreen.width, fullscreenHeight = fullscreen.height,
                 customFlight = game.IsCustomFlight, settingsVisible = game.FlightSettingsVisible,
+                characterSelectionVisible = game.CharacterSelectionVisible,
                 settingsCopyX = settingsCopy.x, settingsCopyY = settingsCopy.y,
                 settingsCopyWidth = settingsCopy.width, settingsCopyHeight = settingsCopy.height,
                 settingsCopyText = game.FlightSettingsVisible ? game.FlightCopyText : "",
@@ -99,8 +102,38 @@ namespace FlipRace.Web
                     centerY=FlipRace.Core.RaceSimulation.GetPlayerCenterY(p)};
             }
 #if UNITY_WEBGL && !UNITY_EDITOR
-            FlipReport(JsonUtility.ToJson(snapshot));
+            FlipReport(WithLayout(JsonUtility.ToJson(snapshot)));
 #endif
+        }
+        // Unity's serializer does not support jagged arrays. Append only these
+        // numeric, read-only rectangles as ordinary JSON arrays for browser QA.
+        string WithLayout(string json)
+        {
+            var output = new StringBuilder(json.Length + 500);
+            output.Append(json, 0, json.Length - 1).Append(",\"characterRects\":[");
+            for (int player = 0; player < 2; player++)
+            {
+                if (player > 0) output.Append(',');
+                output.Append('[');
+                for (int hero = 0; hero < 4; hero++)
+                {
+                    if (hero > 0) output.Append(',');
+                    AppendRect(output, game.CharacterScreenRect(player, hero));
+                }
+                output.Append(']');
+            }
+            output.Append("],\"readyRects\":[");
+            AppendRect(output, game.ReadyScreenRect(0)); output.Append(',');
+            AppendRect(output, game.ReadyScreenRect(1));
+            output.Append("],\"trackMenuRect\":"); AppendRect(output, game.TrackMenuButtonRect);
+            return output.Append('}').ToString();
+        }
+        static void AppendRect(StringBuilder output, Rect rect)
+        {
+            output.Append('[').Append(rect.x.ToString("R", CultureInfo.InvariantCulture)).Append(',')
+                .Append(rect.y.ToString("R", CultureInfo.InvariantCulture)).Append(',')
+                .Append(rect.width.ToString("R", CultureInfo.InvariantCulture)).Append(',')
+                .Append(rect.height.ToString("R", CultureInfo.InvariantCulture)).Append(']');
         }
     }
 }

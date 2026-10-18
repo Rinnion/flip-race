@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-18T17:44:07.578Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.4.0-review",
+  "fileCount": 5,
+  "totalBytes": 8680125,
+  "totalMiB": 8.278,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v4.4.0-review.data.unityweb",
+    "Build/WebGL-v4.4.0-review.framework.js.unityweb",
+    "Build/WebGL-v4.4.0-review.loader.js",
+    "Build/WebGL-v4.4.0-review.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v4.4.0-review.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v4.4.0-review.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v4.4.0-review.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v4.4.0-review.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v4.4.0-review.data.unityweb",
+      "bytes": 1437806,
+      "sha256": "30b086593336f856be47beff3956acdc62a4a831cf9e483743c73b7779ca6fe9"
+    },
+    {
+      "path": "Build/WebGL-v4.4.0-review.framework.js.unityweb",
+      "bytes": 89549,
+      "sha256": "42d8f2b61c31090ccd33168b60c1661e1fe11cfa5870abab32af9e49fc335793"
+    },
+    {
+      "path": "Build/WebGL-v4.4.0-review.loader.js",
+      "bytes": 39788,
+      "sha256": "1167df911552c7784f88d982f68226ce92bc586ed07716b6abf5a882df026935"
+    },
+    {
+      "path": "Build/WebGL-v4.4.0-review.wasm.unityweb",
+      "bytes": 7101944,
+      "sha256": "6cc86092b24e2e94f665d1208628e3479ed7b1887dcbaf79038838ec8b56df21"
+    },
+    {
+      "path": "index.html",
+      "bytes": 11038,
+      "sha256": "5c42ba1d5a940689eaa86b0fd1170265628242f3789f5fe45db549f1a35f2c38"
+    }
+  ],
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks.",
+  "archive": {
+    "path": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v4.4.0-trial-review-webgl.zip",
+    "bytes": 8549837,
+    "miB": 8.154,
+    "sha256": "130ce3cd23c843fcaa36e710bf236fcf76c245ad1e9305be62a7a835663c9cae",
+    "entriesVerified": true,
+    "indexAtRoot": true
+  }
+}

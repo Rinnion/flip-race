@@ -1,0 +1,73 @@
+{
+  "scope": "4.4.0-trial review checkpoint; late after-ring contract unresolved; not final release",
+  "checkedAtUtc": "2026-10-18T17:44:08.1776024Z",
+  "build": "Builds/WebGL-v4.4.0-review",
+  "snapshot": "Builds/WebGL-v4.4.0-review-unpacked",
+  "archive": "Releases/flip-race-v4.4.0-trial-review-webgl.zip",
+  "archiveBytes": 8549837,
+  "archiveSha256": "130ce3cd23c843fcaa36e710bf236fcf76c245ad1e9305be62a7a835663c9cae",
+  "fileCount": 5,
+  "totalBytes": 8680125,
+  "indexAtRoot": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v4.4.0-review.data.unityweb",
+      "bytes": 1437806,
+      "sha256": "30b086593336f856be47beff3956acdc62a4a831cf9e483743c73b7779ca6fe9",
+      "verified": true
+    },
+    {
+      "path": "Build/WebGL-v4.4.0-review.framework.js.unityweb",
+      "bytes": 89549,
+      "sha256": "42d8f2b61c31090ccd33168b60c1661e1fe11cfa5870abab32af9e49fc335793",
+      "verified": true
+    },
+    {
+      "path": "Build/WebGL-v4.4.0-review.loader.js",
+      "bytes": 39788,
+      "sha256": "1167df911552c7784f88d982f68226ce92bc586ed07716b6abf5a882df026935",
+      "verified": true
+    },
+    {
+      "path": "Build/WebGL-v4.4.0-review.wasm.unityweb",
+      "bytes": 7101944,
+      "sha256": "6cc86092b24e2e94f665d1208628e3479ed7b1887dcbaf79038838ec8b56df21",
+      "verified": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11038,
+      "sha256": "5c42ba1d5a940689eaa86b0fd1170265628242f3789f5fe45db549f1a35f2c38",
+      "verified": true
+    }
+  ],
+  "geometrySha256": "D3B0285856E2D7A45284435A5AD5784850F6713DA1643B961CBBD9D1CDEF7A8D",
+  "packagedBrowser": {
+    "status": "PASS",
+    "urlDuringCheck": "http://127.0.0.1:4198/",
+    "temporaryServer": true,
+    "version": "4.4.0-trial",
+    "freshLoad": "Chosen profile/full-long; three-track menu",
+    "routeLabel": "unpacked-full-flow-negative",
+    "players": [
+      {
+        "finish": 33.5,
+        "ordinaryPositive": 9,
+        "finishBoost": 1,
+        "negative": 1,
+        "collisions": 0
+      },
+      {
+        "finish": 33.5,
+        "ordinaryPositive": 9,
+        "finishBoost": 1,
+        "negative": 1,
+        "collisions": 0
+      }
+    ],
+    "errors": [],
+    "evidence": "Verification/tracks-browser-runs.json",
+    "screenshot": "Verification/tracks-unpacked-negative-result.png",
+    "releaseDecision": "late after-ring contract remains unresolved"
+  }
+}

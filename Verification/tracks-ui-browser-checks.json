@@ -1,0 +1,2442 @@
+{
+  "build": "Builds/WebGL-v4.4.0-candidate",
+  "version": "4.4.0-trial",
+  "note": "Initial prototype polling assertions read stale frames; final verifyTrackCards suites waited for the intended published state and passed all 112 card checks. Candidate contains the earlier two-track geometry; final three-track runs are separate.",
+  "checks": [
+    {
+      "label": "568x320 card size 0/0",
+      "pass": true,
+      "detail": [
+        421,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card click 0/0/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/0/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/0/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/0/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/0/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card size 0/1",
+      "pass": true,
+      "detail": [
+        289,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card click 0/1/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/1/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/1/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/1/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card click 0/1/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card size 0/2",
+      "pass": true,
+      "detail": [
+        157,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card click 0/2/0.5,0.5",
+      "pass": false,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "Automation observation lag",
+      "pass": true,
+      "detail": "First card 0/2 assertion read a pre-click frame; subsequent screenshot and DOM confirmed hero2. Future checks wait for publication after click wall time."
+    },
+    {
+      "label": "568x320-repeat card size 0/0",
+      "pass": true,
+      "detail": [
+        421,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320-repeat card click 0/0/0.5,0.5",
+      "pass": false,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320-settled card size 0/0",
+      "pass": true,
+      "detail": [
+        421,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320-settled card click 0/0/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320-settled card click 0/0/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320-settled card click 0/0/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320-settled card click 0/0/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320-settled card click 0/0/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320-settled card size 0/1",
+      "pass": true,
+      "detail": [
+        289,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320-settled card click 0/1/0.5,0.5",
+      "pass": false,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 0/0",
+      "pass": true,
+      "detail": [
+        421,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 0/0/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/0/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/0/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/0/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/0/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 0/1",
+      "pass": true,
+      "detail": [
+        289,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 0/1/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/1/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/1/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/1/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/1/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 0/2",
+      "pass": true,
+      "detail": [
+        157,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 0/2/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/2/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/2/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/2/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/2/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 0/3",
+      "pass": true,
+      "detail": [
+        25,
+        80.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 0/3/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/3/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/3/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/3/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 0/3/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 gap 0/0",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 gap 0/1",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 gap 0/2",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 margin 0",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 1/0",
+      "pass": true,
+      "detail": [
+        25,
+        216.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 1/0/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/0/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/0/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/0/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/0/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 1/1",
+      "pass": true,
+      "detail": [
+        157,
+        216.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 1/1/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/1/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/1/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/1/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/1/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 1/2",
+      "pass": true,
+      "detail": [
+        289,
+        216.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 1/2/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/2/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/2/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/2/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/2/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 size 1/3",
+      "pass": true,
+      "detail": [
+        421,
+        216.5,
+        122,
+        48
+      ]
+    },
+    {
+      "label": "568x320 card 1/3/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/3/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/3/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/3/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 card 1/3/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 gap 1/0",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 gap 1/1",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 gap 1/2",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "568x320 margin 1",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 0/0",
+      "pass": true,
+      "detail": [
+        609,
+        97.75,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 0/0/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/0/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/0/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/0/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/0/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 0,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 0/1",
+      "pass": true,
+      "detail": [
+        427,
+        97.75,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 0/1/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/1/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/1/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/1/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/1/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 1,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 0/2",
+      "pass": true,
+      "detail": [
+        245,
+        97.75,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 0/2/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/2/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/2/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/2/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/2/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 2,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 0/3",
+      "pass": true,
+      "detail": [
+        63,
+        97.75,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 0/3/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/3/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/3/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/3/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 0/3/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 gap 0/0",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 gap 0/1",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 gap 0/2",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 margin 0",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 1/0",
+      "pass": true,
+      "detail": [
+        63,
+        261.25,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 1/0/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/0/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/0/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/0/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/0/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 0,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 1/1",
+      "pass": true,
+      "detail": [
+        245,
+        261.25,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 1/1/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/1/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/1/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/1/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/1/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 1,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 1/2",
+      "pass": true,
+      "detail": [
+        427,
+        261.25,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 1/2/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/2/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/2/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/2/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/2/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 2,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 size 1/3",
+      "pass": true,
+      "detail": [
+        609,
+        261.25,
+        172,
+        56
+      ]
+    },
+    {
+      "label": "844x390 card 1/3/0.5,0.5",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/3/0.005,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/3/0.995,0.005",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/3/0.005,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 card 1/3/0.995,0.995",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 gap 1/0",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 gap 1/1",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 gap 1/2",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "844x390 margin 1",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "Same hero reselect clears own ready",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "ready": false
+        },
+        {
+          "character": 3,
+          "ready": false
+        }
+      ]
+    },
+    {
+      "label": "Track switch preserves custom physics",
+      "pass": true,
+      "detail": {
+        "airRepeatLimit": -1,
+        "characterRects": [
+          [
+            [
+              609,
+              97.75,
+              172,
+              56
+            ],
+            [
+              427,
+              97.75,
+              172,
+              56
+            ],
+            [
+              245,
+              97.75,
+              172,
+              56
+            ],
+            [
+              63,
+              97.75,
+              172,
+              56
+            ]
+          ],
+          [
+            [
+              63,
+              261.25,
+              172,
+              56
+            ],
+            [
+              245,
+              261.25,
+              172,
+              56
+            ],
+            [
+              427,
+              261.25,
+              172,
+              56
+            ],
+            [
+              609,
+              261.25,
+              172,
+              56
+            ]
+          ]
+        ],
+        "characterSelectionVisible": true,
+        "countdown": 3,
+        "customFlight": true,
+        "departureImpulse": 400,
+        "elapsed": 0,
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 792,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 400,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "phase": "ready",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 3,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 3,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "readyRects": [
+          [
+            327,
+            57.75,
+            190,
+            32
+          ],
+          [
+            327,
+            325.25,
+            190,
+            32
+          ]
+        ],
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 128,
+        "settingsCopyY": 305,
+        "settingsVisible": false,
+        "track": "full-short",
+        "trackMenuRect": [
+          141,
+          1,
+          550,
+          27
+        ],
+        "version": "4.4.0-trial",
+        "winner": ""
+      }
+    },
+    {
+      "label": "Custom selection survives reload; first track starts",
+      "pass": true,
+      "detail": {
+        "airRepeatLimit": -1,
+        "characterRects": [
+          [
+            [
+              609,
+              97.75,
+              172,
+              56
+            ],
+            [
+              427,
+              97.75,
+              172,
+              56
+            ],
+            [
+              245,
+              97.75,
+              172,
+              56
+            ],
+            [
+              63,
+              97.75,
+              172,
+              56
+            ]
+          ],
+          [
+            [
+              63,
+              261.25,
+              172,
+              56
+            ],
+            [
+              245,
+              261.25,
+              172,
+              56
+            ],
+            [
+              427,
+              261.25,
+              172,
+              56
+            ],
+            [
+              609,
+              261.25,
+              172,
+              56
+            ]
+          ]
+        ],
+        "characterSelectionVisible": true,
+        "countdown": 3,
+        "customFlight": true,
+        "departureImpulse": 400,
+        "elapsed": 0,
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 792,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 400,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "phase": "ready",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 0,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 1,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "readyRects": [
+          [
+            327,
+            57.75,
+            190,
+            32
+          ],
+          [
+            327,
+            325.25,
+            190,
+            32
+          ]
+        ],
+        "settingsCopyHeight": 0,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 0,
+        "settingsCopyX": 0,
+        "settingsCopyY": 0,
+        "settingsVisible": false,
+        "track": "full-long",
+        "trackMenuRect": [
+          141,
+          1,
+          550,
+          27
+        ],
+        "version": "4.4.0-trial",
+        "winner": ""
+      }
+    },
+    {
+      "label": "Chosen reset exact",
+      "pass": true,
+      "detail": {
+        "airRepeatLimit": -1,
+        "characterRects": [
+          [
+            [
+              609,
+              97.75,
+              172,
+              56
+            ],
+            [
+              427,
+              97.75,
+              172,
+              56
+            ],
+            [
+              245,
+              97.75,
+              172,
+              56
+            ],
+            [
+              63,
+              97.75,
+              172,
+              56
+            ]
+          ],
+          [
+            [
+              63,
+              261.25,
+              172,
+              56
+            ],
+            [
+              245,
+              261.25,
+              172,
+              56
+            ],
+            [
+              427,
+              261.25,
+              172,
+              56
+            ],
+            [
+              609,
+              261.25,
+              172,
+              56
+            ]
+          ]
+        ],
+        "characterSelectionVisible": true,
+        "countdown": 3,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 0,
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 792,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "phase": "ready",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 0,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 1,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "readyRects": [
+          [
+            327,
+            57.75,
+            190,
+            32
+          ],
+          [
+            327,
+            325.25,
+            190,
+            32
+          ]
+        ],
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 128,
+        "settingsCopyY": 305,
+        "settingsVisible": false,
+        "track": "full-long",
+        "trackMenuRect": [
+          141,
+          1,
+          550,
+          27
+        ],
+        "version": "4.4.0-trial",
+        "winner": ""
+      }
+    },
+    {
+      "label": "Custom remains separate after chosen preset",
+      "pass": true,
+      "detail": "Флип! — свои настройки\nПервый тап: обычный прыжок\nДвижение: разгон\nВоздушные повторы: ∞\nТяга: уровень 0, 662,5 ед/с²\nТолчок переворота: уровень 0, 0 ед/с\nСила прыжка: уровень 4, 400 ед/с\nЛинейный перелёт: 0,8 с через 212 ед; скорость 265 ед/с\nВысота линейного прыжка: 112 ед\nНеактивные параметры сохранены, но не влияют на выбранное движение.\nНабор: 1|1|1|-1|662.5|0|400|265|112|10"
+    },
+    {
+      "label": "Ready gap does not confirm second player",
+      "pass": true,
+      "detail": [
+        true,
+        false
+      ]
+    },
+    {
+      "label": "Portrait keeps race paused",
+      "pass": true,
+      "detail": 0.4759999999999991
+    },
+    {
+      "label": "Rematch resets progress and preserves characters/profile",
+      "pass": true,
+      "detail": [
+        {
+          "character": 3,
+          "distance": 0,
+          "collisions": 0
+        },
+        {
+          "character": 3,
+          "distance": 0,
+          "collisions": 0
+        }
+      ]
+    }
+  ],
+  "fullscreen": {
+    "enteredSelector": "HTML",
+    "exitedSelector": null,
+    "normalViewport": [
+      1280,
+      720
+    ]
+  }
+}

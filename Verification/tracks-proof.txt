@@ -1,0 +1,21 @@
+GEOMETRY D3B02858 / 2026-10-18
+
+--verify
+full-long safe36/full33.2/negative33.5, 6dt, safe local ±60ms PASS
+full-short safe36/full33.2/negative33.5, 6dt, safe local ±60ms PASS
+full-flow safe36/full33.2/negative33.5, 6dt, safe local ±60ms PASS
+FULL TRACKS PASS 14158 checks.
+
+--windows
+WINDOWS full-long all positive, local min ±30ms, grid5ms
+WINDOWS full-short all positive, local min ±45ms, grid5ms
+WINDOWS full-flow all positive, local min ±30ms, grid5ms
+
+--recovery
+RECOVERY full-long safe states=34 PASS
+RECOVERY full-long full states=36 PASS
+RECOVERY full-short safe states=32 PASS
+RECOVERY full-short full states=40 PASS
+RECOVERY full-flow safe states=24 PASS
+RECOVERY full-flow full states=29 PASS
+RECOVERY TOTAL 195 states; sampled real errors, no injected state.

@@ -11,6 +11,29 @@ namespace FlipRace.Presentation
         public GameState Game { get; private set; }
         public bool IsPaused { get { return paused; } }
         public Rect FullscreenRect { get { return fullscreenRect; } }
+        public Rect TrackMenuButtonRect { get { return trackButton; } }
+        public bool CharacterSelectionVisible
+        { get { return Game != null && Game.Phase == "ready" && !paused && !showRules && !showTracks && !Portrait; } }
+        // CSS pixels from the canvas top-left, matching the rendered 180-degree upper lane.
+        public Rect CharacterScreenRect(int playerIndex, int heroIndex)
+        {
+            if (playerIndex < 0 || playerIndex > 1 || heroIndex < 0 || heroIndex > 3) throw new ArgumentOutOfRangeException();
+            Rect lane = lanes[playerIndex];
+            return LaneScreenRect(playerIndex, CharacterRect(heroIndex, lane.width, lane.height));
+        }
+        public Rect ReadyScreenRect(int playerIndex)
+        {
+            if (playerIndex < 0 || playerIndex > 1) throw new ArgumentOutOfRangeException();
+            Rect lane = lanes[playerIndex];
+            return LaneScreenRect(playerIndex, ReadyButtonRect(lane.width, lane.height));
+        }
+        Rect LaneScreenRect(int playerIndex, Rect local)
+        {
+            Rect lane = lanes[playerIndex];
+            return playerIndex == 0
+                ? new Rect(lane.xMax - local.xMax, lane.yMax - local.yMax, local.width, local.height)
+                : new Rect(lane.x + local.x, lane.y + local.y, local.width, local.height);
+        }
         readonly Color[] accents = { Hex(0x7e6baf), Hex(0xb56839) };
         readonly Color[] pales = { Hex(0xd9d2f2), Hex(0xffc397) };
         readonly Color ink = Hex(0x353b31), paper = Hex(0xf5f3ea), muted = Hex(0x79806d);
@@ -55,8 +78,8 @@ namespace FlipRace.Presentation
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             InitializeFlightMenu();
 #if FLIP_V4_TRIAL
-            Game = RaceSimulation.CreateTrial(TracksControl.Open(), flightSelection.Settings);
-            legacyControls = !activeCustomFlight && activeFlightPreset >= 4;
+            Game = RaceSimulation.CreateTrial(InitialFlightTrack(), flightSelection.Settings);
+            legacyControls = !activeCustomFlight && activeFlightPreset >= 4 && activeFlightPreset <= 9;
 #else
             Game = RaceSimulation.CreateGame();
 #endif
@@ -205,9 +228,14 @@ namespace FlipRace.Presentation
             {
                 Vector2 local = new Vector2(p.x - lanes[slot].x, p.y - lanes[slot].y);
                 if (slot == 0) local = new Vector2(lanes[slot].width - local.x, lanes[slot].height - local.y);
-                if (Game.Phase == "ready") for (int hero = 0; hero < 4; hero++)
-                    if (CharacterRect(hero, lanes[slot].width, lanes[slot].height).Contains(local))
-                    { SelectCharacter(slot, hero); return; }
+                if (Game.Phase == "ready")
+                {
+                    for (int hero = 0; hero < 4; hero++)
+                        if (CharacterRect(hero, lanes[slot].width, lanes[slot].height).Contains(local))
+                        { SelectCharacter(slot, hero); return; }
+                    if (ReadyButtonRect(lanes[slot].width, lanes[slot].height).Contains(local)) Act(slot);
+                    return; // A gap or margin is not a readiness action.
+                }
                 Act(slot); return;
             }
         }
@@ -248,8 +276,19 @@ namespace FlipRace.Presentation
         Rect TrackChoiceRect(int index) { return new Rect(trackPanel.x + 22, trackPanel.y + 49 + index * 37, trackPanel.width - 44, 34); }
         Rect CharacterRect(int hero, float w, float h)
         {
-            float cw = compact ? 62 : 74, gap = compact ? 6 : 8, total = cw * 4 + gap * 3;
-            return new Rect((w - total) / 2 + hero * (cw + gap), h * .5f - (compact && h < 135 ? 15 : 3), cw, compact ? 30 : 34);
+            float gap = compact ? 10 : 12;
+            float cw = Mathf.Min((w - (compact ? 32 : 64) - gap * 3) / 4, compact ? 172 : 176);
+            float ch = compact ? Mathf.Clamp(Mathf.Round(h * .36f), 44, 56) : 64;
+            float block = ch + 8 + (compact ? 32 : 38);
+            float y = Mathf.Max(compact ? 32 : 50, (h - block) / 2 + 6);
+            float total = cw * 4 + gap * 3;
+            return new Rect((w - total) / 2 + hero * (cw + gap), y, cw, ch);
+        }
+        Rect ReadyButtonRect(float w, float h)
+        {
+            Rect first = CharacterRect(0, w, h);
+            float rw = compact ? 190 : 220;
+            return new Rect((w - rw) / 2, first.yMax + 8, rw, compact ? 32 : 38);
         }
         void Act(int index)
         {
@@ -539,28 +578,23 @@ namespace FlipRace.Presentation
         void DrawCharacterSelection(int slot, float w, float h)
         {
             PlayerState p = Game.Players[slot];
-            Rect first = CharacterRect(0, w, h);
-            Text(new Rect(0, first.y - (compact ? 35 : 49), w, 12), "ИГРОК 0" + (slot + 1),
-                compact ? 7 : 8, muted, false, TextAnchor.MiddleCenter);
-            Text(new Rect(0, first.y - (compact ? 24 : 36), w, compact ? 23 : 30),
-                p.Ready ? "Всё, я готов!" : Trial ? "Попробуй переворот." : Game.Mode == "practice" ? "Поймай момент." : "Переверни гонку.",
-                compact ? 21 : 28, ink, true, TextAnchor.MiddleCenter);
             for (int hero = 0; hero < 4; hero++)
             {
                 Rect card = CharacterRect(hero, w, h);
                 bool chosen = p.CharacterIndex == hero;
-                if (chosen) StrokeRound(card, 6, new Color(accents[slot].r, accents[slot].g, accents[slot].b, .45f),
-                    new Color(pales[slot].r, pales[slot].g, pales[slot].b, .32f));
-                float size = compact ? 25 : 29;
+                StrokeRound(card, 8, chosen ? accents[slot] : Hex(0xd9dece),
+                    chosen ? new Color(pales[slot].r, pales[slot].g, pales[slot].b, .62f) : Hex(0xf5f6ec));
+                float size = card.height - 2;
                 GUI.color = Color.white;
-                GUI.DrawTexture(new Rect(card.x + 2, card.center.y - size / 2, size, size), MascotArtwork.Create(hero, slot));
-                Text(new Rect(card.x + size + 2, card.y, card.width - size - 3, card.height),
-                    CharacterRoster.Name(hero), compact ? 8 : 9, chosen ? accents[slot] : muted, chosen, TextAnchor.MiddleCenter);
+                GUI.DrawTexture(new Rect(card.x + 3, card.center.y - size / 2, size, size), MascotArtwork.Create(hero, slot));
+                Text(new Rect(card.x + size + 4, card.y, card.width - size - 12, card.height),
+                    CharacterRoster.Name(hero), compact ? 10 : 12, chosen ? accents[slot] : ink, chosen, TextAnchor.MiddleCenter);
+                if (chosen) Text(new Rect(card.xMax - 16, card.y + 2, 13, 13), "✓", 10, accents[slot], true, TextAnchor.MiddleCenter);
             }
-            string action = p.Ready ? "✓ Ждём второго" : "Нажми, когда готов  ↗";
-            Rect ready = new Rect(w / 2 - (compact ? 70 : 82), first.yMax + (compact ? 5 : 8), compact ? 140 : 164, compact ? 26 : 32);
+            string action = p.Ready ? "✓ Готов · ждём второго" : "Готов →";
+            Rect ready = ReadyButtonRect(w, h);
             Round(ready, 7, p.Ready ? Hex(0xdbe7ca) : pales[slot]);
-            Text(ready, action, compact ? 9 : 11, p.Ready ? Hex(0x536547) : accents[slot], true, TextAnchor.MiddleCenter);
+            Text(ready, action, compact ? 11 : 12, p.Ready ? Hex(0x536547) : accents[slot], true, TextAnchor.MiddleCenter);
         }
 
         void DrawTracks()

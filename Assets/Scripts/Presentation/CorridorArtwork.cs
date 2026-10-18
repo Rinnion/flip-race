@@ -10,7 +10,7 @@ namespace FlipRace.Presentation
     /// player zero's world X; the caller's outer 180-degree rotation compensates it.
     /// No gameplay state is changed here.
     /// </summary>
-    public sealed class CorridorArtwork
+    public sealed partial class CorridorArtwork
     {
         public struct Geometry
         {
@@ -23,7 +23,7 @@ namespace FlipRace.Presentation
         static readonly Color[] Ink = { Hex(0x7860a6), Hex(0xcf7962) };
         static readonly Color[] Pale = { Hex(0xe9e0f4), Hex(0xf8e0d5) };
         static readonly Color[] Confetti = { Hex(0xb6c993), Hex(0xe8ba71), Hex(0xbba5d8), Hex(0xe2a18d), Hex(0x91b9bf) };
-        readonly Texture2D circle, star, leaf, floorRock, ceilingRock;
+        readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab;
         // Explicit lane-local clipping avoids Unity GUIClip's interaction with
         // rotated/scaled matrices (the upper player's entire lane is rotated).
         Rect clipBounds;
@@ -51,6 +51,8 @@ namespace FlipRace.Presentation
             leaf = sprout.Finish("Corridor leaf");
             floorRock = MakeRock(false);
             ceilingRock = MakeRock(true);
+            floorSlab = MakeLargeRock(false);
+            ceilingSlab = MakeLargeRock(true);
         }
 
         static Texture2D MakeCircle()
@@ -194,7 +196,7 @@ namespace FlipRace.Presentation
                     foreach (var zone in game.Track.RiskZones)
                         if (zone.IsLanding && zone.ObstacleId == obstacle.Id) { marked = true; break; }
                     Rock(x, width, (float)obstacle.Height * sy, obstacle.Kind == "ceiling" ? top : bottom,
-                        obstacle.Kind == "ceiling", hit, marked);
+                        obstacle.Kind == "ceiling", hit, marked, obstacle.Width >= 160);
                 }
             }
             foreach (var zone in game.Track.RiskZones)
@@ -469,13 +471,22 @@ namespace FlipRace.Presentation
             }
         }
 
-        void Rock(float x, float width, float height, float surface, bool inverted, bool hit, bool marked)
+        void Rock(float x, float width, float height, float surface, bool inverted, bool hit, bool marked, bool large)
         {
             GUI.color = new Color(1, 1, 1, hit ? .26f : 1);
-            // Texture's nominal rock bounds are [16,112], with padding for strokes.
-            Texture(new Rect(x - width / 6, inverted ? surface - height / 6 : surface - height * 7 / 6,
-                width * 4 / 3, height * 4 / 3), inverted ? ceilingRock : floorRock,
-                inverted ? new Rect(0, 1, 1, -1) : new Rect(0, 0, 1, 1));
+            Rect uv = inverted ? new Rect(0, 1, 1, -1) : new Rect(0, 0, 1, 1);
+            if (large)
+            {
+                // The separate 216×108 slab has physical bounds [8,208]×[8,100].
+                // Padding is symmetric, so the mirrored face stays on the same plane.
+                float sx = width / 200, sy = height / 92;
+                Texture(new Rect(x - 8 * sx, (inverted ? surface : surface - height) - 8 * sy,
+                    216 * sx, 108 * sy), inverted ? ceilingSlab : floorSlab, uv);
+            }
+            else
+                // Standard texture's nominal bounds are [16,112].
+                Texture(new Rect(x - width / 6, inverted ? surface - height / 6 : surface - height * 7 / 6,
+                    width * 4 / 3, height * 4 / 3), inverted ? ceilingRock : floorRock, uv);
             GUI.color = Color.white;
             if (marked)
             {
@@ -662,7 +673,7 @@ namespace FlipRace.Presentation
             return true;
         }
 
-        static Texture2D MakeRock(bool ceiling)
+        static Texture2D MakeRock(bool ceiling, bool readable = false)
         {
             var p = new Painter(128, 128);
             float[] points = { 16, 112, 16, 42.88f, 32.32f, 16, 86.08f, 16, 112, 37.12f, 112, 112 };
@@ -677,7 +688,7 @@ namespace FlipRace.Presentation
             p.Line(83, 25, 71, 56, Alpha(Hex(0x7e9182), .36f), 2.6f);
             p.Line(71, 56, 85, 74, Alpha(Hex(0x7e9182), .36f), 2.6f);
             p.Polygon(Hex(0xb3c38f), 19, 104, 109, 104, 110, 116, 18, 116);
-            return p.Finish(ceiling ? "Ceiling rock" : "Floor rock");
+            return p.Finish(ceiling ? "Ceiling rock" : "Floor rock", readable);
         }
 
         sealed class Painter
@@ -740,10 +751,10 @@ namespace FlipRace.Presentation
                         if (inside) Put(x, y, color);
                     }
             }
-            public Texture2D Finish(string name)
+            public Texture2D Finish(string name, bool readable = false)
             {
                 var texture = new Texture2D(width, height, TextureFormat.RGBA32, false) { name = name, wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Bilinear };
-                texture.SetPixels(pixels); texture.Apply(false, true); return texture;
+                texture.SetPixels(pixels); texture.Apply(false, !readable); return texture;
             }
         }
     }

@@ -20,7 +20,7 @@ static class Program
     {
         try
         {
-            RoundTrips(); CorruptData(); SelectionIsolation(); CopyAndCulture();
+            RoundTrips(); CorruptData(); SelectionIsolation(); ChosenAndActiveChoice(); CopyAndCulture();
             Console.WriteLine("PASS: FLIGHT settings " + assertions + " assertions / " + roundTrips + " physical round trips.");
             return 0;
         }
@@ -46,7 +46,7 @@ static class Program
             Check(restored.ResetPreset == level % 4, "reset source survives");
             roundTrips++;
         }
-        for (int preset = 0; preset < 10; preset++)
+        for (int preset = 0; preset <= FlightSettingsStore.ChosenPresetIndex; preset++)
         {
             var physical = FlightSettingsStore.Preset(preset);
             var d = FlightDraft.From(physical, preset);
@@ -65,7 +65,7 @@ static class Program
             "1|0|1|1|666.6|70|400|265|112|0", "1|0|1|1|1000|-70|400|265|112|0",
             "1|1|1|1|1000|70|0|265|112|0", "1|0|0|1|1000|70|400|0|112|0",
             "1|0|0|1|1000|70|400|266|112|0", "1|0|0|1|1000|70|400|265|999|0",
-            "1|0|1|1|1000|70|400|265|112|10", "1|0|1|1|1000|70|400|265|112|-1",
+            "1|0|1|1|1000|70|400|265|112|11", "1|0|1|1|1000|70|400|265|112|-1",
             "1|0|1|1|1000|70|400|265|112|0|extra", new string('x', 513)
         };
         foreach (string text in invalid)
@@ -83,7 +83,7 @@ static class Program
         var selection = new FlightSelection(custom);
         custom.Flip = 0;
         Check(FlightSettingsStore.Encode(selection.Custom) == encoded, "selection owns its custom copy");
-        for (int preset = 0; preset < 10; preset++)
+        for (int preset = 0; preset <= FlightSettingsStore.ChosenPresetIndex; preset++)
         {
             selection.SelectPreset(preset);
             Check(!selection.IsCustom && selection.PresetIndex == preset, "preset highlighted independently");
@@ -112,6 +112,30 @@ static class Program
             "immutable preset never changed by manual edit");
         selection.ResetCustom();
         Same(selection.Settings, FlightPresets.Jump, "reset reloads exact source values");
+    }
+    static void ChosenAndActiveChoice()
+    {
+        Check(FlightSettingsStore.Key == "flip-race-custom-flight-v1", "existing custom storage key retained");
+        Check(FlightSettingsStore.ActiveChoiceKey == "flip-race-flight-choice-v2", "new-version active choice has separate key");
+        Check(FlightSettingsStore.ChosenPresetIndex == 10, "chosen appends without shifting old indexes");
+        Same(FlightSettingsStore.Preset(10), new FlightSettings(FirstAction.Jump, MotionLaw.Gravity,
+            AirRepeatLimit.Unlimited, 662.5, 0, 350, 265, 112), "chosen exact values including inactive flip");
+        for (int index = -1; index <= 10; index++)
+            Check(FlightSettingsStore.ValidActiveChoice(index) == index, "custom and all old/new choices restore unchanged");
+        foreach (int invalid in new[] { int.MinValue, -2, 11, int.MaxValue })
+            Check(FlightSettingsStore.ValidActiveChoice(invalid) == 10, "invalid active choice falls back to chosen");
+        var custom = FlightDraft.From(new FlightSettings(FirstAction.Flip, MotionLaw.Gravity,
+            AirRepeatLimit.One, 1250, 280, 450, 265, 96), 4);
+        string saved = FlightSettingsStore.Encode(custom);
+        Check(FlightSettingsStore.TryDecode(saved, out var restored), "old custom decodes independently of new choice");
+        var selection = new FlightSelection(restored);
+        selection.SelectPreset(FlightSettingsStore.ChosenPresetIndex);
+        Check(FlightSettingsStore.Encode(selection.Custom) == saved, "first new-version chosen preserves old custom");
+        selection.SelectCustom(); Same(selection.Settings, custom.Settings(), "old custom restores exact values after chosen");
+        selection.SelectPreset(10); selection.Edit(d => d.Jump = 4);
+        Check(selection.IsCustom && selection.Custom.ResetPreset == 10, "editing chosen creates separate custom with source");
+        Check(FlightPresets.Chosen.JumpImpulse == 350 && FlightPresets.Chosen.FlipImpulse == 0, "chosen stays immutable after edit");
+        selection.ResetCustom(); Same(selection.Settings, FlightPresets.Chosen, "reset chosen custom restores exact values");
     }
     static void CopyAndCulture()
     {

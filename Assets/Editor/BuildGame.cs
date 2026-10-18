@@ -39,7 +39,7 @@ namespace FlipRace.Editor
             EditorBuildSettings.scenes = new[] {new EditorBuildSettingsScene(scenePath, true)};
             PlayerSettings.companyName = "Katikaavry";
             PlayerSettings.productName = "Флип! — гонка катикаавров";
-            PlayerSettings.bundleVersion = trial ? (Environment.GetEnvironmentVariable("FLIP_BUILD_VERSION") ?? "4.3.0-trial") : "3.0.1";
+            PlayerSettings.bundleVersion = trial ? (Environment.GetEnvironmentVariable("FLIP_BUILD_VERSION") ?? "4.4.0-trial") : "3.0.1";
             PlayerSettings.runInBackground = true;
             PlayerSettings.defaultWebScreenWidth = 960;
             PlayerSettings.defaultWebScreenHeight = 540;
@@ -61,6 +61,7 @@ namespace FlipRace.Editor
             QualitySettings.vSyncCount = 0;
             QualitySettings.antiAliasing = 0;
             AssetDatabase.SaveAssets();
+            if (Environment.GetEnvironmentVariable("FLIP_EXPORT_ARTWORK") == "1") RockArtworkExport.Export();
             var output = Environment.GetEnvironmentVariable("FLIP_BUILD_PATH") ?? (trial ? "Builds/WebGL-v4" : "Builds/WebGL");
             Directory.CreateDirectory(output);
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions {

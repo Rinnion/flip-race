@@ -1,0 +1,656 @@
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using FlipRace.Core;
+
+public static partial class TracksIndependentAudit
+{
+    static int checks, games;
+    static string context;
+    static readonly double[] Steps = { 1d / 30, 1d / 60, 1d / 144, .317, 2.5, 100 };
+    const double U = 350, G = 662.5, Radius = 14, Span = 212;
+    static readonly double Apex = U / G, Height = U * U / (2 * G), Cycle = 2 * U / G;
+    public static void Main() { Run(); }
+    static void C(bool value, string message)
+    { checks++; if (!value) throw new Exception(context + ": " + message); }
+    static void N(double actual, double expected, string message, double tolerance = 4e-7)
+    { C(!double.IsNaN(actual) && Math.Abs(actual - expected) <= tolerance,
+        message + " actual=" + actual.ToString("R") + " expected=" + expected.ToString("R")); }
+    static double Sign(int side) { return side == 1 ? -1 : 1; }
+    static double Wall(int side) { return side == 1 ? 226 : 14; }
+    static GameState Start(Track track)
+    {
+        var g = RaceSimulation.CreateTrial(track, FlightPresets.Chosen);
+        C(RaceSimulation.Press(g, 0) && RaceSimulation.Press(g, 1), "both ready accepted");
+        RaceSimulation.Advance(g, 3); C(g.Phase == "racing", "countdown completed"); games++; return g;
+    }
+    static void M(GameState g, double seconds, double step)
+    {
+        C(seconds >= -1e-9, "nonnegative elapsed request"); int guard = 0;
+        while (seconds > 1e-13 && g.Phase == "racing")
+        { double dt = Math.Min(seconds, step); RaceSimulation.Advance(g, dt); seconds -= dt;
+          if (++guard > 100000) throw new Exception("advance guard"); }
+    }
+    static void Tap(GameState g)
+    { C(RaceSimulation.Press(g, 0) && RaceSimulation.Press(g, 1), "both actual Press accepted"); }
+    static GameState Prepare(int side, double step, Track track)
+    {
+        var g = Start(track);
+        if (side == 0)
+        {
+            // Reach the ceiling with the chosen profile itself: normal jump,
+            // then a real air repeat at its analytic apex. No state injection.
+            Tap(g); M(g, Apex, step); Tap(g);
+            M(g, Math.Sqrt(2 * (Span - Height) / G) + 1e-9, step);
+        }
+        foreach (var p in g.Players)
+            C(p.Support == SupportKind.Wall && p.SupportSide == side && !p.Flipping, "real initial wall support");
+        return g;
+    }
+    static void MoveTo(GameState g, double x, double step)
+    {
+        int guard = 0;
+        while (x - g.Players[0].Distance > 1e-9 && g.Phase == "racing")
+        {
+            var p = g.Players[0];
+            // A public speed upper bound avoids predicting any production
+            // contact event. Even an unseen instant/finish cannot overshoot x.
+            double dt = Math.Min((x - p.Distance) / 440, step);
+            M(g, dt, step);
+            if (++guard > 10000) throw new Exception("distance guard");
+        }
+        foreach (var p in g.Players) N(p.Distance, x, "actual distance target", 2e-6);
+    }
+    static void ChosenProfile()
+    {
+        context = "Chosen immutable fields";
+        var f = FlightPresets.Chosen;
+        C(f.FirstAction == FirstAction.Jump && f.Law == MotionLaw.Gravity
+            && f.AirRepeats == AirRepeatLimit.Unlimited, "chosen actions/law/repeats");
+        N(f.GravityAcceleration, G, "chosen gravity"); N(f.JumpImpulse, U, "chosen jump"); N(f.FlipImpulse, 0, "inactive flip impulse");
+        N(FlightPresets.Jump.JumpImpulse, 400, "old Jump preset retained");
+        C(FlightPresets.Jump.AirRepeats == AirRepeatLimit.One && FlightPresets.Unlimited.FirstAction == FirstAction.Flip,
+            "old presets retain semantics");
+        foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+        {
+            context = "chosen free side=" + side + " dt=" + step;
+            var g = Prepare(side, step, new Track(22000, Array.Empty<Obstacle>())); double began = g.Elapsed;
+            Tap(g); foreach (var p in g.Players) N(p.VerticalSpeed, Sign(side) * U, "initial impulse");
+            M(g, Apex, step);
+            foreach (var p in g.Players)
+            { N(RaceSimulation.GetPlayerCenterY(p), Wall(side) + Sign(side) * Height, "analytic apex"); N(p.VerticalSpeed, 0, "apex velocity"); }
+            M(g, Cycle - Apex + 1e-9, step);
+            foreach (var p in g.Players)
+            {
+                C(p.Support == SupportKind.Wall && p.SupportSide == side && !p.Flipping, "normal jump returns");
+                C(p.LastFlight != null && !p.LastFlight.Interrupted, "completed clean measurement");
+                N(p.LastFlight.Duration, Cycle, "analytic duration"); N(p.LastFlight.MaxDistance, Height, "analytic height");
+                N(p.LastFlight.EndedAt, began + Cycle, "measurement time");
+            }
+            Tap(g); M(g, .125, step);
+            double v = g.Players[0].VerticalSpeed, y = RaceSimulation.GetPlayerCenterY(g.Players[0]), elapsed = g.Elapsed;
+            int initialGravity = g.Players[0].Gravity;
+            for (int i = 0; i < 32; i++)
+            {
+                Tap(g); foreach (var p in g.Players)
+                { N(p.VerticalSpeed, v, "repeat retains velocity"); N(RaceSimulation.GetPlayerCenterY(p), y, "repeat retains position");
+                  C(p.Gravity == (((i & 1) == 0) ? -initialGravity : initialGravity), "repeat toggles gravity"); }
+            }
+            N(g.Elapsed, elapsed, "input edges do not advance time");
+            M(g, Cycle - .125 + 1e-9, step);
+            foreach (var p in g.Players) { C(p.Collisions == 0 && p.SupportSide == side, "even repeat cycle returns clean"); N(p.LastFlight.Duration, Cycle, "repeat remains same measured flight"); }
+        }
+    }
+    static Track RockFixture(int side, double width, double height, double speed, double launch)
+    {
+        var t = new Track(6000, new[] { new Obstacle { Id = "test-rock", X = 1500, Width = width,
+            Height = height, Kind = side == 1 ? "floor" : "ceiling" } });
+        if (speed == 330)
+        {
+            // Three real, co-located instant contacts cover the entire test
+            // flight at 330. This is a synthetic fixture, not authored geometry.
+            t.RiskZones = new RiskZone[3];
+            for (int i = 0; i < 3; i++) t.RiskZones[i] = new RiskZone {
+                Id = "setup-instant-" + i, Kind = "instant", X = launch - 1 + 20, Y = Wall(side), Radius = 6 };
+        }
+        return t;
+    }
+    static void SingleJumpRocks()
+    {
+        context = "rock analytic clearance intervals";
+        double low = 2 * Math.Sqrt(U * U - 2 * G * 48) / G;
+        double high = 2 * Math.Sqrt(U * U - 2 * G * 92) / G;
+        C(Height > 92, "high rock impossibility is width/time, not apex height alone");
+        foreach (double speed in new[] { 220d, 330d })
+        {
+            C(low * speed > 64 + 2 * Radius, "low stone has complete horizontal clearance window");
+            C(high * speed < 64 + 2 * Radius && high * speed < 200 + 2 * Radius, "high stone cannot fit for any phase at constant speed");
+            foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+            foreach (int size in new[] { 0, 1, 2 })
+            {
+                double width = size == 2 ? 200 : 64, height = size == 0 ? 48 : 92;
+                context = "one jump rock=" + width + "x" + height + " speed=" + speed + " side=" + side + " dt=" + step;
+                double launch = 1500 + width / 2 - speed * Apex;
+                var g = Prepare(side, step, RockFixture(side, width, height, speed, launch));
+                if (speed == 330) { MoveTo(g, launch - 1, step); M(g, 1e-9, step); }
+                MoveTo(g, launch, step);
+                foreach (var p in g.Players) { N(p.CurrentSpeed, speed, "real reward sets requested speed"); C(p.Collisions == 0, "clean approach"); }
+                Tap(g); M(g, Cycle + 1e-9, step);
+                foreach (var p in g.Players)
+                {
+                    if (size == 0)
+                    { C(p.Collisions == 0 && p.Support == SupportKind.Wall && p.SupportSide == side, "small stone cleared with one ordinary jump");
+                      N(p.LastFlight.Duration, Cycle, "small jump time unaffected by horizontal boost"); }
+                    else C(p.Collisions == 1 && p.LastHit.Id == "test-rock", "high stone actually collides on one jump");
+                }
+            }
+        }
+    }
+    public static void Run()
+    {
+        ChosenProfile(); SingleJumpRocks(); StageOneRoutes(); NarrowEdges(); MarkerEdgesAndReuse(); LocalSafeWindow();
+        Console.WriteLine("PASS TRACKS-01 independent: " + checks + " assertions / " + games + " games.");
+        Console.WriteLine("Scope: chosen profile, single-jump rocks, authored narrow landing/edges and independent chain. Full tracks not yet covered.");
+    }
+}
+
+public static partial class TracksIndependentAudit
+{
+    static Track Section(int side)
+    {
+        var t = TracksFull.Practice();
+        if (side == 1) return t;
+        foreach (var o in t.Obstacles) o.Kind = o.Kind == "floor" ? "ceiling" : "floor";
+        foreach (var z in t.RiskZones) z.Y = 240 - z.Y;
+        return t;
+    }
+    static void Route(GameState g, double[] inputs, double step)
+    {
+        foreach (double x in inputs) { MoveTo(g, x, step); Tap(g); }
+        M(g, 100, step);
+        C(g.Phase == "finished", "route reaches actual finish");
+    }
+    static void Finished(GameState g, double expected, int rewards, string[] ids)
+    {
+        foreach (var p in g.Players)
+        {
+            C(p.FinishTime.HasValue, "actual finish recorded"); N(p.FinishTime.Value, expected, "physical finish time");
+            C(p.Collisions == 0 && p.SlowsEarned == 0, "no collision or negative");
+            C(p.BoostsEarned == rewards && p.InstantBoostsEarned == rewards, "exact independent earned rewards");
+            C(p.CompletedBoosts == rewards && p.ActiveEffect == null && p.PendingEffects.Count == 0, "full real effect time and empty FIFO");
+            C(p.SuccessfulRiskIds.Count == ids.Length, "no other reward");
+            foreach (string id in ids) C(p.SuccessfulRiskIds.Contains(id), "expected individual reward " + id);
+            N(p.Distance, g.Track.Length, "actual distance at finish");
+        }
+        C(g.Winner is string, "both players have matching exact route result");
+    }
+    static void StageOneRoutes()
+    {
+        context = "stage metadata";
+        var t = TracksFull.Practice();
+        C(t.Obstacles.Length == 1 && t.Obstacles[0].Width == 64 && t.Obstacles[0].Height == 48, "real narrow stone geometry");
+        var pad = t.RiskZones[0]; N(pad.X, t.Obstacles[0].X + 32, "centered narrow marker");
+        C(pad.IsLanding && pad.LandingWidth >= 24 && pad.LandingWidth <= 32, "narrow marker interval");
+        C(pad.X - pad.LandingWidth / 2 >= t.Obstacles[0].X && pad.X + pad.LandingWidth / 2 <= t.Obstacles[0].X + 64,
+            "entire marker is inside actual stone");
+        double start = t.RiskRoute[0];
+        foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+        foreach (int route in new[] { 0, 1, 2, 3 })
+        {
+            context = "section side=" + side + " dt=" + step + " route=" + route;
+            var track = Section(side); var g = Prepare(side, step, track);
+            if (route == 0) { Route(g, track.SafeRoute, step); Finished(g, 10, 0, Array.Empty<string>()); }
+            else if (route == 1) { Route(g, track.RiskRoute, step); Finished(g, 9.1, 3, new[] { "practice-pad", "practice-chain-1", "practice-chain-2" }); }
+            else if (route == 2) { Route(g, new[] { start, 1100d }, step); Finished(g, 9.4, 2, new[] { "practice-pad", "practice-chain-1" }); }
+            else { Route(g, new[] { start, 1170d, 1225d }, step); Finished(g, 9.4, 2, new[] { "practice-pad", "practice-chain-2" }); }
+        }
+    }
+    static GameState Land(int side, double step)
+    {
+        var t = Section(side); var g = Prepare(side, step, t);
+        MoveTo(g, t.RiskRoute[0], step); Tap(g); MoveTo(g, 732, step); M(g, 1e-9, step);
+        foreach (var p in g.Players)
+        {
+            C(p.Support == SupportKind.Stone && p.SupportObstacleId == "practice-pad-stone" && p.SupportSide == side,
+                "real authored landing"); C(p.Collisions == 0 && p.BoostsEarned == 1, "landing is legal and rewards once");
+            N(p.VerticalSpeed, 0, "supported velocity"); N(p.CurrentSpeed, 330, "landing instant speed");
+        }
+        return g;
+    }
+    static void NarrowEdges()
+    {
+        foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+        foreach (double delta in new[] { -1e-4, 1e-4 })
+        {
+            context = "narrow edge side=" + side + " dt=" + step + " offset=" + delta;
+            var g = Land(side, step); double landedAt = g.Elapsed;
+            MoveTo(g, 764 + delta, step);
+            double v = g.Players[0].VerticalSpeed; int gravity = g.Players[0].Gravity;
+            if (delta < 0)
+            {
+                foreach (var p in g.Players) C(p.Support == SupportKind.Stone, "still on stone just before edge");
+                Tap(g); foreach (var p in g.Players) N(p.VerticalSpeed, Sign(side) * U, "before edge starts normal jump");
+            }
+            else
+            {
+                foreach (var p in g.Players)
+                {
+                    C(p.Support == SupportKind.None && p.Flipping && p.FlightOriginObstacleId == "practice-pad-stone", "real walk-off flight");
+                    N(p.VerticalSpeed, -Sign(side) * G * delta / 330, "walk-off adds no jump impulse", 2e-6);
+                    C(p.Collisions == 0 && p.BoostsEarned == 1, "walk-off has no phantom impact or repeated award");
+                }
+                N(g.Elapsed - landedAt, (32 + delta) / 330, "short supported time", 2e-8);
+                Tap(g); foreach (var p in g.Players) { N(p.VerticalSpeed, v, "after edge is inertial air repeat"); C(p.Gravity == -gravity, "after edge changes gravity only"); }
+            }
+            M(g, .02, step); foreach (var p in g.Players) C(p.Collisions == 0, "no zero-time reimpact departing old face");
+        }
+        // The authored full route itself stays idle through the edge. Check
+        // that a whole 150 ms reaction delay after its landing is harmless.
+        foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+        {
+            context = "natural narrow exit side=" + side + " dt=" + step;
+            var g = Land(side, step); M(g, .15, step);
+            foreach (var p in g.Players)
+                C(p.Collisions == 0 && p.Support == SupportKind.None && p.Flipping, "natural exit needs no sub-100ms response");
+            Route(g, new[] { 1100d, 1180d }, step);
+            Finished(g, 9.1, 3, new[] { "practice-pad", "practice-chain-1", "practice-chain-2" });
+        }
+    }
+    static void MarkerEdgesAndReuse()
+    {
+        double landingTime = (U + Math.Sqrt(U * U - 2 * G * 48)) / G;
+        foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+        foreach (double target in new[] { 716 - 1e-4, 716, 716 + 1e-4, 748 - 1e-4, 748, 748 + 1e-4 })
+        {
+            context = "marker endpoint side=" + side + " dt=" + step + " x=" + target;
+            var g = Prepare(side, step, Section(side));
+            MoveTo(g, target - 220 * landingTime, step); Tap(g); M(g, landingTime + 2e-9, step);
+            bool legal = target >= 716 && target <= 748;
+            foreach (var p in g.Players)
+            {
+                C(p.Collisions == (legal ? 0 : 1), "real face contact obeys marker center interval");
+                C(p.BoostsEarned == (legal ? 1 : 0), "only legal marker contact awards");
+                C(legal ? p.Support == SupportKind.Stone : p.Support == SupportKind.None, "support agrees with true contact");
+            }
+        }
+        foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+        {
+            context = "early side impact side=" + side + " dt=" + step;
+            var g = Prepare(side, step, Section(side)); MoveTo(g, 680, step); Tap(g); M(g, .04, step);
+            foreach (var p in g.Players)
+            { C(p.Collisions == 1 && p.LastHit.Id == "practice-pad-stone", "marked stone still has blocking side");
+              C(p.BoostsEarned == 0 && p.Support == SupportKind.None && p.LastFlight.Interrupted, "early side hit is not landing"); }
+
+            context = "synthetic wide revisit side=" + side + " dt=" + step;
+            // Revisit the same marked face after a real jump. Width700/window400
+            // deliberately isolate the once-only contract: u350 cannot complete
+            // such a return before leaving an authored width64 platform.
+            var t = new Track(6000, new[] { new Obstacle { Id = "wide-revisit", X = 700, Width = 700,
+                Height = 48, Kind = side == 1 ? "floor" : "ceiling" } });
+            t.RiskZones = new[] { new RiskZone { Id = "wide-pad", Kind = "landing", ObstacleId = "wide-revisit",
+                X = 900, LandingWidth = 400, Y = side == 1 ? 192 : 48 } };
+            g = Prepare(side, step, t); MoveTo(g, 732 - 220 * landingTime, step); Tap(g); M(g, landingTime + 2e-9, step);
+            foreach (var p in g.Players) C(p.Support == SupportKind.Stone && p.BoostsEarned == 1, "first real landing awards once");
+            Tap(g); M(g, Cycle + 2e-9, step);
+            foreach (var p in g.Players)
+            { C(p.Support == SupportKind.Stone && p.SupportObstacleId == "wide-revisit" && p.Collisions == 0, "collected face remains legal");
+              C(p.BoostsEarned == 1 && p.CompletedBoosts == 1 && p.ActiveEffect == null && p.PendingEffects.Count == 0, "revisit neither duplicates nor restarts pulse");
+              N(p.LastFlight.Duration, Cycle, "real stone-origin normal jump duration"); }
+        }
+    }
+    static void LocalSafeWindow()
+    {
+        foreach (int side in new[] { 0, 1 }) foreach (double step in Steps)
+        foreach (double delta in new[] { -.06, .06 })
+        {
+            context = "safe individual clock shift side=" + side + " dt=" + step + " seconds=" + delta;
+            var t = Section(side); var g = Prepare(side, step, t);
+            // No effects precede this action: x/220 is its absolute race time.
+            double actionTime = t.SafeRoute[0] / 220 + delta;
+            M(g, actionTime - g.Elapsed, step); Tap(g); M(g, 100, step);
+            Finished(g, 10, 0, Array.Empty<string>());
+        }
+    }
+}
+
+public static partial class TracksIndependentAudit
+{
+    public static void RunFullProof()
+    {
+        int windowCases = 0;
+        foreach (var t in TracksFull.All)
+        {
+            context = t.Id + " authored metadata";
+            C(t.Length == 7920 && t.PositiveRingCount == 10, "length and total positive budget");
+            int landing = 0, negative = 0, finish = 0, instant = 0, before = 0, after = 0;
+            var ids = new System.Collections.Generic.HashSet<string>();
+            foreach (var o in t.Obstacles)
+            { C(ids.Add(o.Id), "unique obstacle ID"); C(o.X + o.Width < 7876, "no obstacle in finish tail"); }
+            foreach (var z in t.RiskZones)
+            {
+                C(ids.Add(z.Id), "unique reward ID");
+                if (z.IsNegative) negative++;
+                else if (z.IsFinish) { finish++; N(z.X, 7876, "finish plane"); }
+                else if (z.IsLanding)
+                {
+                    landing++; var o = Array.Find(t.Obstacles, item => item.Id == z.ObstacleId);
+                    C(o != null && z.X - z.LandingWidth / 2 >= o.X && z.X + z.LandingWidth / 2 <= o.X + o.Width,
+                        "landing interval lies within physical face");
+                }
+                else if (z.IsInstant) instant++;
+                else if (z.AfterObstacle) after++;
+                else before++;
+                if (!z.IsFinish) C(z.X + z.Radius < 7876, "no ordinary contact in final 44 units");
+                if (!z.IsLanding && !z.IsFinish && (z.IsInstant || z.IsNegative))
+                    C(z.Y - Radius - z.Radius > 14 && z.Y + Radius + z.Radius < 226,
+                        "air-only circle cannot collect from either stable wall");
+            }
+            C(landing == 3 && negative == 2 && finish == 1 && instant == 4 && before == 1 && after == 1,
+                "exact nine ordinary/2 negative/finish composition");
+            foreach (double step in Steps) foreach (int mode in new[] { 0, 1, 2 })
+            {
+                context = t.Id + " route=" + mode + " dt=" + step;
+                var g = Start(t);
+                Route(g, mode == 0 ? t.SafeRoute : mode == 1 ? t.RiskRoute : TracksFull.NegativeRoute(t.Id), step);
+                foreach (var p in g.Players)
+                {
+                    C(p.FinishTime.HasValue, "physical finish exists");
+                    N(p.FinishTime.Value, mode == 0 ? 36 : mode == 1 ? 33.2 : 33.5, "real complete track finish");
+                    C(p.Collisions == 0 && p.BoostsEarned == (mode == 0 ? 0 : 9)
+                        && p.FinishBoostsEarned == (mode == 0 ? 0 : 1) && p.SlowsEarned == (mode == 2 ? 1 : 0), "full route budget");
+                    C(p.ActiveEffect == null && p.PendingEffects.Count == 0 && p.CompletedBoosts == p.BoostsEarned
+                        && p.CompletedSlows == p.SlowsEarned, "all awarded ordinary effects fully served");
+                    N(p.Distance, 7920, "actual full distance");
+                }
+            }
+            var times = InputTimes(t, t.SafeRoute);
+            for (int changed = 0; changed < times.Length; changed++) foreach (double shift in new[] { -.06, .06 })
+            {
+                context = t.Id + " safe clock window input=" + changed + " shift=" + shift;
+                var g = Start(t);
+                for (int i = 0; i < t.SafeRoute.Length; i++)
+                {
+                    if (i == changed) M(g, times[i] + shift - g.Elapsed, .013);
+                    else MoveTo(g, t.SafeRoute[i], .013);
+                    Tap(g);
+                }
+                M(g, 100, .013);
+                foreach (var p in g.Players)
+                {
+                    C(p.FinishTime.HasValue && p.Collisions == 0 && p.BoostsEarned == 0 && p.SlowsEarned == 0
+                        && p.FinishBoostsEarned == 0, "individual safe shift remains safe and reward-free");
+                    N(p.FinishTime.Value, 36, "safe shift real finish");
+                }
+                windowCases++;
+            }
+            foreach (int winner in new[] { 0, 1 }) foreach (double step in Steps)
+            {
+                context = t.Id + " finish-only duel winner=" + winner + " dt=" + step;
+                var g = Start(t);
+                for (int i = 0; i < t.RiskRoute.Length; i++)
+                {
+                    MoveTo(g, t.RiskRoute[i], step);
+                    if (i + 1 == t.RiskRoute.Length) C(RaceSimulation.Press(g, winner), "only winner takes final target jump");
+                    else Tap(g);
+                }
+                M(g, 100, step);
+                C(g.Winner is int && (int)g.Winner == winner, "actual winner correct");
+                foreach (var p in g.Players)
+                {
+                    C(p.Collisions == 0 && p.BoostsEarned == 9 && p.SlowsEarned == 0, "identical clean prior collection");
+                    N(p.FinishTime.Value, p.Id == winner ? 33.2 : 33.3, "finish-only physical difference");
+                }
+            }
+            Console.WriteLine("PASS " + t.Id + " six dt safe36/full33.2/trap33.5; both finish-only winner assignments33.2/33.3; safe individual ±60ms");
+        }
+        Console.WriteLine("PASS full routes independent: " + checks + " assertions / " + games + " games / " + windowCases + " safe local window cases. Arbitrary pending reward tail is a separate contract check.");
+    }
+    public static void RunFullChains()
+    {
+        int cases = 0;
+        foreach (var t in TracksFull.All) foreach (double step in Steps) foreach (int branch in new[] { 1, 2 })
+        {
+            RiskZone first = null, second = null;
+            foreach (var zone in t.RiskZones)
+            {
+                if (zone.Id.Contains("-chain-") && zone.Id.EndsWith("-1")) first = zone;
+                if (zone.Id.Contains("-chain-") && zone.Id.EndsWith("-2")) second = zone;
+            }
+            C(first != null && second != null, "authored chain has two distinct rewards");
+            double beginning = second.X - 200;
+            context = t.Id + " chain only=" + branch + " dt=" + step;
+            var g = Start(t);
+            foreach (double x in t.RiskRoute) if (x < beginning - 1e-8) { MoveTo(g, x, step); Tap(g); }
+            foreach (var p in g.Players) C(p.Collisions == 0, "actual full prefix reaches chain clean");
+            if (branch == 1) { MoveTo(g, beginning, step); Tap(g); }
+            else { MoveTo(g, beginning + 70, step); Tap(g); MoveTo(g, beginning + 125, step); Tap(g); }
+            MoveTo(g, second.X + 23, step);
+            foreach (var p in g.Players)
+            {
+                C(p.Collisions == 0, "independent branch clears both circular contact bands without hit");
+                C(p.SuccessfulRiskIds.Contains(branch == 1 ? first.Id : second.Id), "selected individual chain reward earned");
+                C(!p.CollectedRiskIds.Contains(branch == 1 ? second.Id : first.Id), "other chain reward actually untouched");
+            }
+            cases++;
+        }
+        Console.WriteLine("PASS full chain independent: " + cases + " actual branches, first-only/second-only, all3tracks/sixdt; stops after both contact bands, not a full rerouted finish claim.");
+    }
+    public static void RunLongProof()
+    {
+        foreach (double step in Steps) foreach (int mode in new[] { 0, 1, 2 })
+        {
+            context = "Long independent route=" + mode + " dt=" + step;
+            var t = TracksFull.Get(TracksFull.LongId); var g = Start(t);
+            Route(g, mode == 0 ? t.SafeRoute : mode == 1 ? t.RiskRoute : TracksFull.NegativeRoute(t.Id), step);
+            foreach (var p in g.Players)
+            {
+                N(p.FinishTime.Value, mode == 0 ? 36 : mode == 1 ? 33.2 : 33.5, "real complete track finish");
+                C(p.Collisions == 0 && p.BoostsEarned == (mode == 0 ? 0 : 9)
+                    && p.FinishBoostsEarned == (mode == 0 ? 0 : 1) && p.SlowsEarned == (mode == 2 ? 1 : 0), "full route budget");
+                C(p.ActiveEffect == null && p.PendingEffects.Count == 0, "no effect tail");
+                N(p.Distance, 7920, "actual full distance");
+            }
+        }
+        Console.WriteLine("PASS preliminary Long replay: " + checks + " assertions / " + games + " games; full branch bounds/recovery still separate.");
+    }
+    static string StateLine(PlayerState p)
+    {
+        return "x=" + p.Distance.ToString("R") + " y=" + RaceSimulation.GetPlayerCenterY(p).ToString("R")
+            + " vy=" + p.VerticalSpeed.ToString("R") + " gravity=" + p.Gravity + " earned=" + p.BoostsEarned
+            + " collected=" + p.CollectedRiskIds.Count + " pending=" + (p.CollectedRiskIds.Count - p.SuccessfulRiskIds.Count)
+            + " boost=" + p.BoostRemaining.ToString("R") + " hits=" + p.Collisions;
+    }
+    public static void RunAfterPendingProbe() { AfterPendingProbe(false); }
+    public static void RunAfterPendingTargetProbe() { AfterPendingProbe(true); }
+    static void AfterPendingProbe(bool hitTarget)
+    {
+        const double step = 1d / 144;
+        context = "actual Long delayed after confirmation";
+        var t = TracksFull.Get(TracksFull.LongId); var g = Start(t);
+        string afterId = null;
+        double hop = 0;
+        foreach (var z in t.RiskZones) if (!z.IsInstant && !z.IsNegative && z.AfterObstacle)
+        { afterId = z.Id; hop = z.X - 20; }
+        foreach (double x in t.RiskRoute) if (x <= hop + 1e-8) { MoveTo(g, x, step); Tap(g); }
+        M(g, .55, step);
+        Console.WriteLine("After collection " + StateLine(g.Players[0]) + " afterId=" + afterId);
+        C(g.Players[0].CollectedRiskIds.Contains(afterId) && !g.Players[0].SuccessfulRiskIds.Contains(afterId), "after reward actually pending");
+        // Real unlimited taps stabilize a narrow band near the natural apex.
+        // No position/velocity/reward fields are changed by this controller.
+        int guard = 0, hoverPresses = 0;
+        double hoverEnd = hitTarget ? 7600 : 7740;
+        while (g.Players[0].Distance < hoverEnd - 1e-8 && g.Phase == "racing")
+        {
+            var p = g.Players[0];
+            if ((p.Gravity > 0 && p.VerticalSpeed >= 50 - 1e-8)
+                || (p.Gravity < 0 && p.VerticalSpeed <= -50 + 1e-8)) { Tap(g); hoverPresses++; }
+            p = g.Players[0];
+            double targetVelocity = p.Gravity > 0 ? 50 : -50;
+            double untilTurn = (targetVelocity - p.VerticalSpeed) / (p.Gravity * G);
+            double untilX = (hoverEnd - p.Distance) / 440;
+            double dt = Math.Min(step, Math.Min(untilTurn, untilX));
+            if (dt <= 1e-12) dt = 1e-10;
+            M(g, dt, step);
+            if (++guard > 100000) throw new Exception("hover guard");
+        }
+        Console.WriteLine("Late pending " + StateLine(g.Players[0]) + " presses=" + hoverPresses);
+        C(g.Players[0].Collisions == 0 && !g.Players[0].SuccessfulRiskIds.Contains(afterId), "pending carried by attainable clean airborne path");
+        if (g.Players[0].Gravity != (hitTarget ? -1 : 1)) Tap(g);
+        // Reach a real wall; the old after reward confirms only now.
+        while (g.Players[0].Support == SupportKind.None && g.Phase == "racing") M(g, .001, step);
+        Console.WriteLine("Late landing " + StateLine(g.Players[0]));
+        if (hitTarget)
+        {
+            double timeToTarget = (U - Math.Sqrt(U * U - 2 * G * 46)) / G;
+            MoveTo(g, 7876 - 330 * timeToTarget, step); Tap(g);
+        }
+        MoveTo(g, 7876, step);
+        Console.WriteLine("At finish plane " + StateLine(g.Players[0]));
+        M(g, .000001, step);
+        Console.WriteLine("Finish target awarded=" + g.Players[0].FinishBoostsEarned + " boost=" + g.Players[0].BoostRemaining.ToString("R"));
+    }
+}
+
+public static partial class TracksIndependentAudit
+{
+    static GameState CopyGame(GameState source)
+    {
+        var copy = new GameState();
+        foreach (var field in typeof(GameState).GetFields(BindingFlags.Instance | BindingFlags.Public))
+            field.SetValue(copy, field.GetValue(source));
+        copy.Players = new PlayerState[source.Players.Length];
+        for (int i = 0; i < copy.Players.Length; i++)
+        {
+            var p = source.Players[i]; var q = new PlayerState(p.Id);
+            foreach (var field in typeof(PlayerState).GetFields(BindingFlags.Instance | BindingFlags.Public))
+            {
+                object value = field.GetValue(p);
+                if (value is HashSet<string>) value = new HashSet<string>((HashSet<string>)value);
+                else if (value is SpeedEffect) value = CopyEffect((SpeedEffect)value);
+                else if (value is Queue<SpeedEffect>)
+                {
+                    var queue = new Queue<SpeedEffect>();
+                    foreach (var effect in (Queue<SpeedEffect>)value) queue.Enqueue(CopyEffect(effect));
+                    value = queue;
+                }
+                field.SetValue(q, value);
+            }
+            copy.Players[i] = q;
+        }
+        return copy;
+    }
+    static SpeedEffect CopyEffect(SpeedEffect source)
+    {
+        if (source == null) return null;
+        var copy = new SpeedEffect();
+        foreach (var field in typeof(SpeedEffect).GetFields(BindingFlags.Instance | BindingFlags.Public))
+            field.SetValue(copy, field.GetValue(source));
+        return copy;
+    }
+    static double[] InputTimes(Track track, double[] route)
+    {
+        var g = Start(track); var times = new double[route.Length];
+        for (int i = 0; i < route.Length; i++)
+        { MoveTo(g, route[i], .01); times[i] = g.Elapsed; Tap(g); }
+        return times;
+    }
+    static bool AdvanceUntilHit(GameState g, double targetTime)
+    {
+        while (g.Phase == "racing" && g.Elapsed < targetTime - 1e-12)
+        {
+            RaceSimulation.Advance(g, Math.Min(.005, targetTime - g.Elapsed));
+            if (g.Players[0].Collisions > 0) return true;
+        }
+        return g.Players[0].Collisions > 0;
+    }
+    static GameState ShiftToFirstHit(Track track, double[] route, double[] times, int changed, double shift)
+    {
+        var g = Start(track);
+        for (int i = 0; i < route.Length && g.Phase == "racing"; i++)
+        {
+            if (i == changed)
+            {
+                double when = times[i] + shift;
+                if (when < g.Elapsed - 1e-10) return null;
+                if (AdvanceUntilHit(g, when)) return g;
+            }
+            else
+            {
+                while (g.Phase == "racing" && route[i] - g.Players[0].Distance > 1e-8)
+                {
+                    double dt = Math.Min(.005, (route[i] - g.Players[0].Distance) / 440);
+                    RaceSimulation.Advance(g, dt);
+                    if (g.Players[0].Collisions > 0) return g;
+                }
+                if (route[i] < g.Players[0].Distance - 1e-6) continue;
+            }
+            if (g.Phase == "racing") Tap(g);
+        }
+        return AdvanceUntilHit(g, 100) ? g : null;
+    }
+    static bool TryClear(GameState original, double target, int hits)
+    {
+        var g = CopyGame(original);
+        while (g.Phase == "racing" && g.Players[0].Distance < target - 1e-8)
+        {
+            RaceSimulation.Advance(g, Math.Min(.02, (target - g.Players[0].Distance) / 440));
+            if (g.Players[0].Collisions != hits) return false;
+        }
+        return g.Players[0].Collisions == hits && g.Players[0].Distance >= target - 1e-8;
+    }
+    static bool RecoveryEscape(GameState collision, out string witness)
+    {
+        witness = ""; var g = CopyGame(collision); var p = g.Players[0]; int hits = p.Collisions;
+        int hitIndex = Array.FindIndex(g.Track.Obstacles, o => o.Id == p.LastHit.Id);
+        C(hitIndex >= 0, "actual hit has an authored obstacle");
+        if (hitIndex + 1 == g.Track.Obstacles.Length) { witness = "last obstacle; no next obstacle"; return true; }
+        var next = g.Track.Obstacles[hitIndex + 1]; double target = next.X + next.Width + Radius + 1;
+        M(g, p.Recovering + .15, .01);
+        if (p.Collisions != hits) return false;
+        if (TryClear(g, target, hits)) { witness = "stay reaches " + target; return true; }
+        for (int tick = 0; tick <= 40; tick++)
+        {
+            double delay = tick * .05; var one = CopyGame(g); M(one, delay, .02);
+            if (one.Phase != "racing" || one.Players[0].Collisions != hits) continue;
+            if (!RaceSimulation.Press(one, 0) || !RaceSimulation.Press(one, 1)) continue;
+            if (TryClear(one, target, hits)) { witness = "tap +" + delay + " reaches " + target; return true; }
+            for (int secondTick = 3; secondTick <= 36; secondTick++)
+            {
+                double second = secondTick * .05; var two = CopyGame(one); M(two, second, .02);
+                if (two.Phase != "racing" || two.Players[0].Collisions != hits) continue;
+                if (!RaceSimulation.Press(two, 0) || !RaceSimulation.Press(two, 1)) continue;
+                if (!TryClear(two, target, hits)) continue;
+                witness = "taps +" + delay + ", then +" + second + " reach " + target; return true;
+            }
+        }
+        return false;
+    }
+    public static void RunFullRecovery()
+    {
+        int samples = 0, failures = 0;
+        foreach (var track in TracksFull.All) foreach (bool full in new[] { false, true })
+        {
+            var route = full ? track.RiskRoute : track.SafeRoute;
+            var times = InputTimes(track, route); int local = 0;
+            for (int index = 0; index < route.Length; index++)
+            foreach (double shift in new[] { -.5, -.25, -.1, .1, .25, .5 })
+            {
+                context = track.Id + (full ? " full" : " safe") + " input=" + index + " shift=" + shift;
+                var hit = ShiftToFirstHit(track, route, times, index, shift);
+                if (hit == null) continue;
+                samples++; local++; string witness;
+                bool escaped = RecoveryEscape(hit, out witness);
+                if (!escaped)
+                {
+                    failures++;
+                    Console.WriteLine("NO_ESCAPE " + context + " at=" + hit.Players[0].LastHit.At + " hit=" + hit.Players[0].LastHit.Id
+                        + " " + StateLine(hit.Players[0]));
+                }
+                else if (local <= 2) Console.WriteLine("RECOVERY " + context + " " + witness);
+            }
+            Console.WriteLine("RECOVERY SAMPLES " + track.Id + (full ? " full " : " safe ") + local);
+        }
+        C(failures == 0, "sampled recovery has " + failures + " cases without found escape");
+        Console.WriteLine("PASS independent full recovery: " + samples + " actual collision states; remaining recovery +150ms, then up to two real taps; explicit next trailing reach.");
+    }
+}

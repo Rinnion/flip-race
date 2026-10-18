@@ -44,6 +44,7 @@ namespace FlipRace.Core
 
     public static class FlightPresets
     {
+        public static readonly FlightSettings Chosen = new FlightSettings(FirstAction.Jump, MotionLaw.Gravity, AirRepeatLimit.Unlimited, 662.5, 0, 350);
         public static readonly FlightSettings Moderate = new FlightSettings(FirstAction.Flip, MotionLaw.Gravity, AirRepeatLimit.One);
         public static readonly FlightSettings Linear = new FlightSettings(FirstAction.Flip, MotionLaw.Linear, AirRepeatLimit.One, 662.5, 0);
         public static readonly FlightSettings Jump = new FlightSettings(FirstAction.Jump, MotionLaw.Gravity, AirRepeatLimit.One, 662.5);

@@ -1,0 +1,25 @@
+PASS full-long six dt safe36/full33.2/trap33.5; both finish-only winner assignments33.2/33.3; safe individual ±60ms
+PASS full-short six dt safe36/full33.2/trap33.5; both finish-only winner assignments33.2/33.3; safe individual ±60ms
+PASS full-flow six dt safe36/full33.2/trap33.5; both finish-only winner assignments33.2/33.3; safe individual ±60ms
+PASS full routes independent: 590293 assertions / 217 games / 124 safe local window cases. Arbitrary pending reward tail is a separate contract check.
+RECOVERY full-long safe input=0 shift=-0.5 tap +0 reaches 729
+RECOVERY full-long safe input=0 shift=-0.25 tap +0 reaches 729
+RECOVERY SAMPLES full-long safe 42
+RECOVERY full-long full input=0 shift=-0.5 tap +0 reaches 729
+RECOVERY full-long full input=0 shift=-0.25 tap +0 reaches 729
+RECOVERY SAMPLES full-long full 47
+RECOVERY full-short safe input=0 shift=-0.5 tap +0 reaches 779
+RECOVERY full-short safe input=0 shift=-0.25 tap +0 reaches 779
+RECOVERY SAMPLES full-short safe 40
+RECOVERY full-short full input=0 shift=-0.5 tap +0 reaches 779
+RECOVERY full-short full input=0 shift=-0.25 tap +0 reaches 779
+RECOVERY SAMPLES full-short full 48
+RECOVERY full-flow safe input=0 shift=-0.5 stay reaches 1229
+RECOVERY full-flow safe input=0 shift=0.5 stay reaches 1229
+RECOVERY SAMPLES full-flow safe 42
+RECOVERY full-flow full input=0 shift=-0.5 stay reaches 1229
+RECOVERY full-flow full input=0 shift=0.5 stay reaches 1229
+RECOVERY SAMPLES full-flow full 44
+PASS independent full recovery: 263 actual collision states; remaining recovery +150ms, then up to two real taps; explicit next trailing reach.
+PASS full chain independent: 36 actual branches, first-only/second-only, all3tracks/sixdt; stops after both contact bands, not a full rerouted finish claim.
+TracksFull SHA256: D3B0285856E2D7A45284435A5AD5784850F6713DA1643B961CBBD9D1CDEF7A8D
