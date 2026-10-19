@@ -1,0 +1,695 @@
+{
+  "catalogue": [
+    {
+      "Id": "full-long",
+      "Name": "\u0414\u043B\u0438\u043D\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438",
+      "Focus": "\u0422\u0440\u0438 \u0434\u043B\u0438\u043D\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438: \u043F\u043E\u0441\u0430\u0434\u043A\u0438, \u0432\u043E\u0437\u0434\u0443\u0448\u043D\u0430\u044F \u0446\u0435\u043F\u043E\u0447\u043A\u0430 \u0438 \u0432\u043E\u0437\u0432\u0440\u0430\u0442"
+    },
+    {
+      "Id": "full-short",
+      "Name": "\u0411\u044B\u0441\u0442\u0440\u044B\u0435 \u0441\u0432\u044F\u0437\u043A\u0438",
+      "Focus": "\u041A\u043E\u0440\u043E\u0442\u043A\u0438\u0435 \u043F\u0430\u0440\u044B, \u0432\u043E\u0437\u0432\u0440\u0430\u0442\u044B \u0438 \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043B\u043E\u0449\u0430\u0434\u043A\u0430 \u043C\u0435\u0436\u0434\u0443 \u0441\u0435\u0440\u0438\u044F\u043C\u0438"
+    },
+    {
+      "Id": "full-flow",
+      "Name": "\u0412\u044B\u0441\u043E\u0442\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A",
+      "Focus": "\u041F\u0440\u043E\u0445\u043E\u0434\u044B \u043F\u043E \u0432\u044B\u0441\u043E\u0442\u0435, \u043A\u043E\u043B\u044C\u0446\u0430 \u0432 \u0432\u043E\u0437\u0434\u0443\u0445\u0435 \u0438 \u043F\u043E\u0441\u0430\u0434\u043A\u0438 \u043D\u0430 \u043E\u0431\u0435\u0438\u0445 \u0441\u0442\u043E\u0440\u043E\u043D\u0430\u0445"
+    },
+    {
+      "Id": "rhythm-cascade",
+      "Name": "\u041A\u0430\u0441\u043A\u0430\u0434",
+      "Focus": "\u0427\u0435\u0442\u044B\u0440\u0435 \u0441\u0432\u044F\u0437\u043A\u0438 \u0441 \u043A\u043E\u0440\u043E\u0442\u043A\u0438\u043C\u0438 \u043F\u0435\u0440\u0435\u0434\u044B\u0448\u043A\u0430\u043C\u0438"
+    },
+    {
+      "Id": "rhythm-dense",
+      "Name": "\u041F\u043B\u043E\u0442\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A",
+      "Focus": "\u041D\u0435\u043F\u0440\u0435\u0440\u044B\u0432\u043D\u043E\u0435 \u0447\u0435\u0440\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u0435 \u043F\u0440\u043E\u0445\u043E\u0434\u043E\u0432 \u0438 \u043D\u0430\u0433\u0440\u0430\u0434"
+    },
+    {
+      "Id": "rhythm-waves",
+      "Name": "\u0412\u043E\u043B\u043D\u044B",
+      "Focus": "\u041A\u043E\u0440\u043E\u0442\u043A\u0430\u044F \u0441\u0432\u044F\u0437\u043A\u0430, \u0434\u043B\u0438\u043D\u043D\u0430\u044F \u0441\u0435\u0440\u0438\u044F \u0438 \u0444\u0438\u043D\u0430\u043B\u044C\u043D\u0430\u044F \u0432\u043E\u043B\u043D\u0430"
+    }
+  ],
+  "layouts": [
+    {
+      "viewport": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "page": "full",
+      "panel": {
+        "x": 12,
+        "y": 28,
+        "width": 544,
+        "height": 280
+      },
+      "apply": {
+        "x": 379,
+        "y": 268,
+        "width": 161,
+        "height": 28
+      },
+      "cards": [
+        {
+          "id": "full-long",
+          "rect": {
+            "x": 28,
+            "y": 105,
+            "width": 248,
+            "height": 44
+          }
+        },
+        {
+          "id": "full-short",
+          "rect": {
+            "x": 292,
+            "y": 105,
+            "width": 248,
+            "height": 44
+          }
+        },
+        {
+          "id": "full-flow",
+          "rect": {
+            "x": 28,
+            "y": 154,
+            "width": 248,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-cascade",
+          "rect": {
+            "x": 292,
+            "y": 154,
+            "width": 248,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-dense",
+          "rect": {
+            "x": 28,
+            "y": 203,
+            "width": 248,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-waves",
+          "rect": {
+            "x": 292,
+            "y": 203,
+            "width": 248,
+            "height": 44
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "page": "old",
+      "panel": {
+        "x": 12,
+        "y": 28,
+        "width": 544,
+        "height": 280
+      },
+      "apply": {
+        "x": 379,
+        "y": 268,
+        "width": 161,
+        "height": 28
+      },
+      "cards": [
+        {
+          "id": "v4-open",
+          "rect": {
+            "x": 28,
+            "y": 113,
+            "width": 248,
+            "height": 34
+          }
+        },
+        {
+          "id": "control-comparison",
+          "rect": {
+            "x": 292,
+            "y": 113,
+            "width": 248,
+            "height": 34
+          }
+        },
+        {
+          "id": "control-passages",
+          "rect": {
+            "x": 28,
+            "y": 150,
+            "width": 248,
+            "height": 34
+          }
+        },
+        {
+          "id": "v4-tune",
+          "rect": {
+            "x": 292,
+            "y": 150,
+            "width": 248,
+            "height": 34
+          }
+        },
+        {
+          "id": "v4-challenge",
+          "rect": {
+            "x": 28,
+            "y": 187,
+            "width": 248,
+            "height": 34
+          }
+        },
+        {
+          "id": "full-practice",
+          "rect": {
+            "x": 292,
+            "y": 187,
+            "width": 248,
+            "height": 34
+          }
+        },
+        {
+          "id": "rhythm-practice",
+          "rect": {
+            "x": 28,
+            "y": 224,
+            "width": 248,
+            "height": 34
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "page": "full",
+      "panel": {
+        "x": 112,
+        "y": 45,
+        "width": 620,
+        "height": 300
+      },
+      "apply": {
+        "x": 555,
+        "y": 305,
+        "width": 161,
+        "height": 28
+      },
+      "cards": [
+        {
+          "id": "full-long",
+          "rect": {
+            "x": 128,
+            "y": 122,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "full-short",
+          "rect": {
+            "x": 430,
+            "y": 122,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "full-flow",
+          "rect": {
+            "x": 128,
+            "y": 171,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-cascade",
+          "rect": {
+            "x": 430,
+            "y": 171,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-dense",
+          "rect": {
+            "x": 128,
+            "y": 220,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-waves",
+          "rect": {
+            "x": 430,
+            "y": 220,
+            "width": 286,
+            "height": 44
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "page": "old",
+      "panel": {
+        "x": 112,
+        "y": 45,
+        "width": 620,
+        "height": 300
+      },
+      "apply": {
+        "x": 555,
+        "y": 305,
+        "width": 161,
+        "height": 28
+      },
+      "cards": [
+        {
+          "id": "v4-open",
+          "rect": {
+            "x": 128,
+            "y": 130,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "control-comparison",
+          "rect": {
+            "x": 430,
+            "y": 130,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "control-passages",
+          "rect": {
+            "x": 128,
+            "y": 167,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "v4-tune",
+          "rect": {
+            "x": 430,
+            "y": 167,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "v4-challenge",
+          "rect": {
+            "x": 128,
+            "y": 204,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "full-practice",
+          "rect": {
+            "x": 430,
+            "y": 204,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "rhythm-practice",
+          "rect": {
+            "x": 128,
+            "y": 241,
+            "width": 286,
+            "height": 34
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "page": "full",
+      "panel": {
+        "x": 330,
+        "y": 210,
+        "width": 620,
+        "height": 300
+      },
+      "apply": {
+        "x": 773,
+        "y": 470,
+        "width": 161,
+        "height": 28
+      },
+      "cards": [
+        {
+          "id": "full-long",
+          "rect": {
+            "x": 346,
+            "y": 287,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "full-short",
+          "rect": {
+            "x": 648,
+            "y": 287,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "full-flow",
+          "rect": {
+            "x": 346,
+            "y": 336,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-cascade",
+          "rect": {
+            "x": 648,
+            "y": 336,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-dense",
+          "rect": {
+            "x": 346,
+            "y": 385,
+            "width": 286,
+            "height": 44
+          }
+        },
+        {
+          "id": "rhythm-waves",
+          "rect": {
+            "x": 648,
+            "y": 385,
+            "width": 286,
+            "height": 44
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "page": "old",
+      "panel": {
+        "x": 330,
+        "y": 210,
+        "width": 620,
+        "height": 300
+      },
+      "apply": {
+        "x": 773,
+        "y": 470,
+        "width": 161,
+        "height": 28
+      },
+      "cards": [
+        {
+          "id": "v4-open",
+          "rect": {
+            "x": 346,
+            "y": 295,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "control-comparison",
+          "rect": {
+            "x": 648,
+            "y": 295,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "control-passages",
+          "rect": {
+            "x": 346,
+            "y": 332,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "v4-tune",
+          "rect": {
+            "x": 648,
+            "y": 332,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "v4-challenge",
+          "rect": {
+            "x": 346,
+            "y": 369,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "full-practice",
+          "rect": {
+            "x": 648,
+            "y": 369,
+            "width": 286,
+            "height": 34
+          }
+        },
+        {
+          "id": "rhythm-practice",
+          "rect": {
+            "x": 346,
+            "y": 406,
+            "width": 286,
+            "height": 34
+          }
+        }
+      ]
+    }
+  ],
+  "bands": [
+    {
+      "id": "rhythm-practice-gate-0",
+      "part": 0,
+      "fromFloor": true,
+      "X": 300,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-0",
+      "part": 1,
+      "fromFloor": true,
+      "X": 412,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-1",
+      "part": 0,
+      "fromFloor": false,
+      "X": 1012,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-1",
+      "part": 1,
+      "fromFloor": false,
+      "X": 900,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-2",
+      "part": 0,
+      "fromFloor": true,
+      "X": 1500,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-2",
+      "part": 1,
+      "fromFloor": true,
+      "X": 1612,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-3",
+      "part": 0,
+      "fromFloor": false,
+      "X": 1972,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-3",
+      "part": 1,
+      "fromFloor": false,
+      "X": 1860,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-4",
+      "part": 0,
+      "fromFloor": true,
+      "X": 2230,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-4",
+      "part": 1,
+      "fromFloor": true,
+      "X": 2342,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-5",
+      "part": 0,
+      "fromFloor": false,
+      "X": 2702,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-5",
+      "part": 1,
+      "fromFloor": false,
+      "X": 2590,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-6",
+      "part": 0,
+      "fromFloor": true,
+      "X": 2960,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-6",
+      "part": 1,
+      "fromFloor": true,
+      "X": 3072,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-7",
+      "part": 0,
+      "fromFloor": false,
+      "X": 3432,
+      "Y": 0,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-gate-7",
+      "part": 1,
+      "fromFloor": false,
+      "X": 3320,
+      "Y": 130,
+      "Width": 16,
+      "Height": 110
+    },
+    {
+      "id": "rhythm-practice-straight",
+      "part": 0,
+      "fromFloor": false,
+      "X": 3800,
+      "Y": 0,
+      "Width": 8,
+      "Height": 12
+    },
+    {
+      "id": "rhythm-practice-straight",
+      "part": 1,
+      "fromFloor": false,
+      "X": 3800,
+      "Y": 228,
+      "Width": 8,
+      "Height": 12
+    },
+    {
+      "id": "rhythm-practice-low",
+      "part": 0,
+      "fromFloor": false,
+      "X": 4380,
+      "Y": 0,
+      "Width": 16,
+      "Height": 114
+    },
+    {
+      "id": "rhythm-practice-low",
+      "part": 1,
+      "fromFloor": false,
+      "X": 4300,
+      "Y": 224,
+      "Width": 16,
+      "Height": 16
+    }
+  ]
+}

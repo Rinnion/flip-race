@@ -1,0 +1,13 @@
+{
+  "status": "interrupted; no final verdict",
+  "scope": "courses-recovery",
+  "source": "rhythm-final-routes.json",
+  "sourceSha256": "A784607B5CDD690551E0BDD6DC97E76668B167821E500141C14F01C3BA4C487A",
+  "processId": 63080,
+  "processName": "pwsh",
+  "executable": "C:\\Users\\tretjakov\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+  "started": "2026-10-19T23:17:49.3905066+03:00",
+  "cpuSeconds": 455.796875,
+  "plannedPerturbationCandidates": 7740,
+  "reason": "Slow .002-second complete-prefix scheduler. Retain identical perturbation set; replay with .025-second prefix, which is below the .5-second collision freeze. No physics or sample-set change."
+}

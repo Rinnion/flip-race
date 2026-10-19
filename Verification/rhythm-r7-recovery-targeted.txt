@@ -1,0 +1,11 @@
+rhythm-r7-recovery-mapped78: 20 actual prefixes passed
+rhythm-r7-recovery-mapped78: 40 actual prefixes passed
+rhythm-r7-recovery-mapped78: 60 actual prefixes passed
+PASS rhythm-r7-recovery-mapped78: 19217 checks / 78 actual prefixes (72bare-air/6before-air; 33 mirrored); five first-delay samples x six dt; no state injection, no geometry override.
+PASS R7 new before full input10+0.4: actual runtime, firstextra0/5/10/15/20ms x6dt
+PASS R7 new before full input10+0.64: actual runtime, firstextra0/5/10/15/20ms x6dt
+PASS R7 new before full input10+0.8: actual runtime, firstextra0/5/10/15/20ms x6dt
+PASS R7 new before trap input10+0.4: actual runtime, firstextra0/5/10/15/20ms x6dt
+PASS R7 new before trap input10+0.64: actual runtime, firstextra0/5/10/15/20ms x6dt
+PASS R7 new before trap input10+0.8: actual runtime, firstextra0/5/10/15/20ms x6dt
+PASS R7 new recovery: 1566 checks /6 actual prefixes; total targeted checks 20783; no state injection or geometry override.

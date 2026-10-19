@@ -1,0 +1,31 @@
+Independent RHYTHM scope=family-recovery
+Captured UTC=2026-10-19T19:49:20.7721054Z
+98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\ContinuousMotion.cs
+8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E F:\Home\Game\flip-race-unity\Assets\Scripts\Core\FlightSettings.cs
+719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\MotionProfiles.cs
+BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B F:\Home\Game\flip-race-unity\Assets\Scripts\Core\ObstacleGeometry.cs
+AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\RaceSimulation.cs
+588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksControl.cs
+901255021DD6069E43734E80D16B88E5DC82824CB973239A451D8999317FA576 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksFull.cs
+8C77E83043D3A7CC3496B0206FD8D46DCFC9B0CD670F5527906F9C9890EF0E1C F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksRhythm.cs
+86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksTune.cs
+9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksV3.cs
+DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksV4.cs
+C23944C844DDD3ACF257D0BE476C1FBFF9FCF6C2546FED749C99489547EE4875 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\CompactCandidate.cs
+B7ABF23640B56D790374ACA9D2750225504243917EF4FC113340ED29C8A7B87E F:\Home\Game\flip-race-unity\Tools\RhythmAudit\FamilyStage.cs
+3014F35117FC6B265B56F85872EC9E631A4031CD4A209A52EC62F1A11B1D0D43 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\GateParts.cs
+CFE629A4E2AF6B6EC158AFAEEC0641B0F00EA0BC3FC14975EBCEEC6FDD463E21 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Geometry.cs
+EF2BE2C8458000970C71E79655F1053CF241BB55D8C6FE89B5704AE51DE2F3C4 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Program.cs
+62DB0B5EBA474F86B6250BEBF6C8BFBBAF4D19D50CBF778499382755D4A19C25 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Recovery.cs
+8F305843A7E24469F4E37787C038C1E1145C760DF32227640BC0AB8E44FA9473 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\RecoveryRed.cs
+7DEE3AAD59B0470265438E5135CD7278E29FC406A31C12664F2EC404D90F54AD F:\Home\Game\flip-race-unity\Tools\RhythmAudit\SpeedFixtures.cs
+Fast recovery input=0 shift=-0.64 natural wall then independent next-gate oracle reaches 1043
+Fast recovery input=0 shift=-0.4 natural wall then independent next-gate oracle reaches 1043
+Fast recovery input=0 shift=-0.16 natural wall then independent next-gate oracle reaches 1043
+Fast actual first-collision samples=60
+Main recovery input=0 shift=-0.64 natural wall then independent next-gate oracle reaches 1043
+Main recovery input=0 shift=0.64 settling tap +0, correction +0.18, actual wall, then next-gate oracle reaches 1043
+Main recovery input=1 shift=0.4 settling tap +0, actual wall, then next-gate oracle reaches 1043
+Main actual first-collision samples=38
+PASS RH sampled recovery: 98 actual collision states; remaining penalty +150ms, stay/one or two taps/settling one or two taps plus true wall then next-gate oracle, explicit next unionRight+R+1 reach. Finite bounded sample only.
+Source hashes unchanged during execution.

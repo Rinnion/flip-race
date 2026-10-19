@@ -1,0 +1,1880 @@
+{
+  "cases": [
+    {
+      "Name": "authored",
+      "Step": 0.03333333333333333,
+      "FirstX": 5029,
+      "SecondTime": 0.17272727272727273,
+      "ThirdTime": 0.3,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909108,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5066.999999999998,
+          "Time": 21.23181818181836,
+          "CenterY": 175.42820247933895,
+          "VerticalSpeed": -235.56818181818238,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5094.999999999996,
+          "Time": 21.359090909091083,
+          "CenterY": 140.08109504132418,
+          "VerticalSpeed": -319.88636363636044,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-6-10",
+      "Step": 0.03333333333333333,
+      "FirstX": 5029,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909108,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.249999999998,
+          "Time": 21.246590909091086,
+          "CenterY": 172.02050781249991,
+          "VerticalSpeed": -225.78125000000006,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.749999999995,
+          "Time": 21.371590909091083,
+          "CenterY": 138.62207031250216,
+          "VerticalSpeed": -308.59374999999534,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-actual-first",
+      "Step": 0.03333333333333333,
+      "FirstX": 5029.2,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000017,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.449999999998,
+          "Time": 21.247500000000176,
+          "CenterY": 172.02050781249991,
+          "VerticalSpeed": -225.78125000000006,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.949999999995,
+          "Time": 21.372500000000173,
+          "CenterY": 138.62207031250216,
+          "VerticalSpeed": -308.59374999999534,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "observed-estimate",
+      "Step": 0.03333333333333333,
+      "FirstX": 5029.2,
+      "SecondTime": 0.15500000000000166,
+      "ThirdTime": 0.3120000000000015,
+      "Good": false,
+      "Accepted": true,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8,
+      "HitIds": [
+        "rhythm-dense-m13-pad-stone"
+      ],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000017,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5063.299999999999,
+          "Time": 21.215000000000177,
+          "CenterY": 179.7082812499997,
+          "VerticalSpeed": -247.31249999999932,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.8399999999965,
+          "Time": 21.372000000000178,
+          "CenterY": 132.7152375000023,
+          "VerticalSpeed": -351.3249999999946,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "authored",
+      "Step": 0.016666666666666666,
+      "FirstX": 5029,
+      "SecondTime": 0.17272727272727273,
+      "ThirdTime": 0.3,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909104,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5067.000000000003,
+          "Time": 21.2318181818183,
+          "CenterY": 175.42820247933898,
+          "VerticalSpeed": -235.56818181818218,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5095.000000000007,
+          "Time": 21.359090909091034,
+          "CenterY": 140.08109504131852,
+          "VerticalSpeed": -319.88636363637215,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-6-10",
+      "Step": 0.016666666666666666,
+      "FirstX": 5029,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909104,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.250000000004,
+          "Time": 21.24659090909103,
+          "CenterY": 172.02050781249994,
+          "VerticalSpeed": -225.78124999999986,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.750000000008,
+          "Time": 21.371590909091033,
+          "CenterY": 138.6220703124967,
+          "VerticalSpeed": -308.593750000007,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-actual-first",
+      "Step": 0.016666666666666666,
+      "FirstX": 5029.2,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000013,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.4500000000035,
+          "Time": 21.24750000000012,
+          "CenterY": 172.02050781249994,
+          "VerticalSpeed": -225.78124999999986,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.950000000008,
+          "Time": 21.372500000000123,
+          "CenterY": 138.6220703124967,
+          "VerticalSpeed": -308.593750000007,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "observed-estimate",
+      "Step": 0.016666666666666666,
+      "FirstX": 5029.2,
+      "SecondTime": 0.15500000000000166,
+      "ThirdTime": 0.3120000000000015,
+      "Good": false,
+      "Accepted": true,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8,
+      "HitIds": [
+        "rhythm-dense-m13-pad-stone"
+      ],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000013,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5063.300000000003,
+          "Time": 21.215000000000124,
+          "CenterY": 179.7082812499997,
+          "VerticalSpeed": -247.3124999999991,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.840000000007,
+          "Time": 21.372000000000124,
+          "CenterY": 132.7152374999973,
+          "VerticalSpeed": -351.325000000004,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "authored",
+      "Step": 0.006944444444444444,
+      "FirstX": 5029,
+      "SecondTime": 0.17272727272727273,
+      "ThirdTime": 0.3,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.2,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909025,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5066.99999999999,
+          "Time": 21.231818181817484,
+          "CenterY": 175.42820247933884,
+          "VerticalSpeed": -235.56818181818207,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5094.999999999992,
+          "Time": 21.359090909090224,
+          "CenterY": 140.08109504130942,
+          "VerticalSpeed": -319.8863636363909,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-6-10",
+      "Step": 0.006944444444444444,
+      "FirstX": 5029,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.2,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909025,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.249999999989,
+          "Time": 21.24659090909021,
+          "CenterY": 172.0205078124998,
+          "VerticalSpeed": -225.78124999999972,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.749999999982,
+          "Time": 21.37159090909018,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59374999999994,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-actual-first",
+      "Step": 0.006944444444444444,
+      "FirstX": 5029.2,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.2,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.05999999999934,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.449999999989,
+          "Time": 21.2474999999993,
+          "CenterY": 172.0205078124998,
+          "VerticalSpeed": -225.78124999999972,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.949999999982,
+          "Time": 21.37249999999927,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59374999999994,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "observed-estimate",
+      "Step": 0.006944444444444444,
+      "FirstX": 5029.2,
+      "SecondTime": 0.15500000000000166,
+      "ThirdTime": 0.3120000000000015,
+      "Good": false,
+      "Accepted": true,
+      "Finish": 34.00000000000001,
+      "Hits": 1,
+      "Earned": 8,
+      "HitIds": [
+        "rhythm-dense-m13-pad-stone"
+      ],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.05999999999934,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5063.299999999991,
+          "Time": 21.214999999999307,
+          "CenterY": 179.70828124999954,
+          "VerticalSpeed": -247.312499999999,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.83999999999,
+          "Time": 21.371999999999307,
+          "CenterY": 132.7152374999874,
+          "VerticalSpeed": -351.3250000000228,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "authored",
+      "Step": 0.317,
+      "FirstX": 5029,
+      "SecondTime": 0.17272727272727273,
+      "ThirdTime": 0.3,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.059090909090934,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5067,
+          "Time": 21.231818181818205,
+          "CenterY": 175.42820247933903,
+          "VerticalSpeed": -235.56818181818232,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5095,
+          "Time": 21.359090909090934,
+          "CenterY": 140.081095041322,
+          "VerticalSpeed": -319.8863636363651,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-6-10",
+      "Step": 0.317,
+      "FirstX": 5029,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.059090909090934,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.25,
+          "Time": 21.246590909090934,
+          "CenterY": 172.0205078125,
+          "VerticalSpeed": -225.78125,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.75,
+          "Time": 21.371590909090934,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59375,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-actual-first",
+      "Step": 0.317,
+      "FirstX": 5029.2,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.060000000000024,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.45,
+          "Time": 21.247500000000024,
+          "CenterY": 172.0205078125,
+          "VerticalSpeed": -225.78125,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.95,
+          "Time": 21.372500000000024,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59375,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "observed-estimate",
+      "Step": 0.317,
+      "FirstX": 5029.2,
+      "SecondTime": 0.15500000000000166,
+      "ThirdTime": 0.3120000000000015,
+      "Good": false,
+      "Accepted": true,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8,
+      "HitIds": [
+        "rhythm-dense-m13-pad-stone"
+      ],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.060000000000024,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5063.3,
+          "Time": 21.215000000000025,
+          "CenterY": 179.70828124999971,
+          "VerticalSpeed": -247.31249999999926,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.84,
+          "Time": 21.372000000000025,
+          "CenterY": 132.71523749999977,
+          "VerticalSpeed": -351.32499999999925,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "authored",
+      "Step": 2.5,
+      "FirstX": 5029,
+      "SecondTime": 0.17272727272727273,
+      "ThirdTime": 0.3,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909092,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5067,
+          "Time": 21.23181818181819,
+          "CenterY": 175.42820247933903,
+          "VerticalSpeed": -235.56818181818232,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5095,
+          "Time": 21.35909090909092,
+          "CenterY": 140.081095041322,
+          "VerticalSpeed": -319.8863636363651,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-6-10",
+      "Step": 2.5,
+      "FirstX": 5029,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909092,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.25,
+          "Time": 21.24659090909092,
+          "CenterY": 172.0205078125,
+          "VerticalSpeed": -225.78125,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.75,
+          "Time": 21.37159090909092,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59375,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-actual-first",
+      "Step": 2.5,
+      "FirstX": 5029.2,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000001,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.45,
+          "Time": 21.24750000000001,
+          "CenterY": 172.0205078125,
+          "VerticalSpeed": -225.78125,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.95,
+          "Time": 21.37250000000001,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59375,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "observed-estimate",
+      "Step": 2.5,
+      "FirstX": 5029.2,
+      "SecondTime": 0.15500000000000166,
+      "ThirdTime": 0.3120000000000015,
+      "Good": false,
+      "Accepted": true,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8,
+      "HitIds": [
+        "rhythm-dense-m13-pad-stone"
+      ],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000001,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5063.3,
+          "Time": 21.21500000000001,
+          "CenterY": 179.70828124999971,
+          "VerticalSpeed": -247.31249999999926,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.84,
+          "Time": 21.37200000000001,
+          "CenterY": 132.71523749999977,
+          "VerticalSpeed": -351.32499999999925,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "authored",
+      "Step": 100,
+      "FirstX": 5029,
+      "SecondTime": 0.17272727272727273,
+      "ThirdTime": 0.3,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909092,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5067,
+          "Time": 21.23181818181819,
+          "CenterY": 175.42820247933903,
+          "VerticalSpeed": -235.56818181818232,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5095,
+          "Time": 21.35909090909092,
+          "CenterY": 140.081095041322,
+          "VerticalSpeed": -319.8863636363651,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-6-10",
+      "Step": 100,
+      "FirstX": 5029,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029,
+          "Time": 21.05909090909092,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.25,
+          "Time": 21.24659090909092,
+          "CenterY": 172.0205078125,
+          "VerticalSpeed": -225.78125,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.75,
+          "Time": 21.37159090909092,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59375,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "32hz-actual-first",
+      "Step": 100,
+      "FirstX": 5029.2,
+      "SecondTime": 0.1875,
+      "ThirdTime": 0.3125,
+      "Good": true,
+      "Accepted": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9,
+      "HitIds": [],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m13-pad",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000001,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5070.45,
+          "Time": 21.24750000000001,
+          "CenterY": 172.0205078125,
+          "VerticalSpeed": -225.78125,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.95,
+          "Time": 21.37250000000001,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59375,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    },
+    {
+      "Name": "observed-estimate",
+      "Step": 100,
+      "FirstX": 5029.2,
+      "SecondTime": 0.15500000000000166,
+      "ThirdTime": 0.3120000000000015,
+      "Good": false,
+      "Accepted": true,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8,
+      "HitIds": [
+        "rhythm-dense-m13-pad-stone"
+      ],
+      "SuccessIds": [
+        "rhythm-dense-m1-free",
+        "rhythm-dense-m3-pad",
+        "rhythm-dense-m6-before",
+        "rhythm-dense-m8-free-high",
+        "rhythm-dense-m11-chain-1",
+        "rhythm-dense-m11-chain-2",
+        "rhythm-dense-m15-pad",
+        "rhythm-dense-m17-after-ring",
+        "rhythm-dense-finish"
+      ],
+      "Inputs": [
+        {
+          "X": 5029.2,
+          "Time": 21.06000000000001,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5063.3,
+          "Time": 21.21500000000001,
+          "CenterY": 179.70828124999971,
+          "VerticalSpeed": -247.31249999999926,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5097.84,
+          "Time": 21.37200000000001,
+          "CenterY": 132.71523749999977,
+          "VerticalSpeed": -351.32499999999925,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ]
+    }
+  ],
+  "grid": [
+    {
+      "secondFrames": 4,
+      "thirdFrames": 8,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 4,
+      "thirdFrames": 9,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 4,
+      "thirdFrames": 10,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 4,
+      "thirdFrames": 11,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 4,
+      "thirdFrames": 12,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 4,
+      "thirdFrames": 13,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 5,
+      "thirdFrames": 8,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 5,
+      "thirdFrames": 9,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 5,
+      "thirdFrames": 10,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 5,
+      "thirdFrames": 11,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 5,
+      "thirdFrames": 12,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 5,
+      "thirdFrames": 13,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 6,
+      "thirdFrames": 8,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 6,
+      "thirdFrames": 9,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 6,
+      "thirdFrames": 10,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 6,
+      "thirdFrames": 11,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 6,
+      "thirdFrames": 12,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 6,
+      "thirdFrames": 13,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 7,
+      "thirdFrames": 8,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 7,
+      "thirdFrames": 9,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 7,
+      "thirdFrames": 10,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 7,
+      "thirdFrames": 11,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 7,
+      "thirdFrames": 12,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 7,
+      "thirdFrames": 13,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 8,
+      "thirdFrames": 8,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 8,
+      "thirdFrames": 9,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 8,
+      "thirdFrames": 10,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 8,
+      "thirdFrames": 11,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "secondFrames": 8,
+      "thirdFrames": 12,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "secondFrames": 8,
+      "thirdFrames": 13,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    }
+  ],
+  "joint": [
+    {
+      "second": 0.1875,
+      "third": 0.3125,
+      "delta": 0.005,
+      "good": true,
+      "failed": 0,
+      "total": 27
+    },
+    {
+      "second": 0.1875,
+      "third": 0.3125,
+      "delta": 0.01,
+      "good": true,
+      "failed": 0,
+      "total": 27
+    },
+    {
+      "second": 0.1875,
+      "third": 0.3125,
+      "delta": 0.015,
+      "good": false,
+      "failed": 4,
+      "total": 27
+    },
+    {
+      "second": 0.1875,
+      "third": 0.34375,
+      "delta": 0.005,
+      "good": false,
+      "failed": 9,
+      "total": 27
+    },
+    {
+      "second": 0.21875,
+      "third": 0.34375,
+      "delta": 0.005,
+      "good": true,
+      "failed": 0,
+      "total": 27
+    },
+    {
+      "second": 0.21875,
+      "third": 0.34375,
+      "delta": 0.01,
+      "good": false,
+      "failed": 2,
+      "total": 27
+    },
+    {
+      "second": 0.2,
+      "third": 0.33,
+      "delta": 0.005,
+      "good": true,
+      "failed": 0,
+      "total": 27
+    },
+    {
+      "second": 0.2,
+      "third": 0.33,
+      "delta": 0.01,
+      "good": true,
+      "failed": 0,
+      "total": 27
+    },
+    {
+      "second": 0.2,
+      "third": 0.33,
+      "delta": 0.015,
+      "good": false,
+      "failed": 5,
+      "total": 27
+    }
+  ],
+  "framePeriods": [
+    {
+      "thirdFrame": 10,
+      "period": 0.029,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 10,
+      "period": 0.03,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 10,
+      "period": 0.031,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 10,
+      "period": 0.03125,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 10,
+      "period": 0.032,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 10,
+      "period": 0.033,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 10,
+      "period": 0.034,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 11,
+      "period": 0.029,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 11,
+      "period": 0.03,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 11,
+      "period": 0.031,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 11,
+      "period": 0.03125,
+      "Good": true,
+      "Finish": 33.199999999999996,
+      "Hits": 0,
+      "Earned": 9
+    },
+    {
+      "thirdFrame": 11,
+      "period": 0.032,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "thirdFrame": 11,
+      "period": 0.033,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    },
+    {
+      "thirdFrame": 11,
+      "period": 0.034,
+      "Good": false,
+      "Finish": 34,
+      "Hits": 1,
+      "Earned": 8
+    }
+  ]
+}

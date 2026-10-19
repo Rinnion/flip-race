@@ -758,6 +758,20 @@ namespace FlipRace.Presentation
             }
             if (Game.Winner is int) return "Соперник на финише — беги до конца!";
             if (Controls && p.Support == SupportKind.Stone) return "Точная посадка! С камня можно прыгнуть снова.";
+            foreach (var obstacle in Game.Track.Obstacles)
+            {
+                if (p.HitObstacleIds.Contains(obstacle.Id)
+                    || ObstacleGeometry.Right(obstacle) + RaceConfig.PlayerRadius <= p.Distance
+                    || ObstacleGeometry.Left(obstacle) - p.Distance >= 650) continue;
+                if (CorridorArtwork.TryLowThreshold(obstacle, out bool floorThreshold))
+                    return floorThreshold ? "Низкий порог: перелёт или возврат на пол."
+                        : "Верхний порог: перелёт или возврат к потолку.";
+                if (CorridorArtwork.TryOffsetEntry(obstacle, out bool fromFloor))
+                    return p.Distance > ObstacleGeometry.Left(obstacle) + obstacle.Width
+                        ? "Дальняя часть впереди — закончи перелёт."
+                        : fromFloor ? "Вход с пола к потолку: между двумя частями."
+                            : "Вход с потолка к полу: между двумя частями.";
+            }
             if (Controls && !TracksV4.IsOpen(Game.Track.Id))
                 foreach (var zone in Game.Track.RiskZones)
                 {
@@ -784,7 +798,7 @@ namespace FlipRace.Presentation
                 for (int i = 0; i < Game.Track.Obstacles.Length; i++)
                 {
                     Obstacle o = Game.Track.Obstacles[i];
-                    if (o.X + o.Width + RaceConfig.PlayerRadius <= p.Distance || p.HitObstacleIds.Contains(o.Id)) continue;
+                    if (ObstacleGeometry.Right(o) + RaceConfig.PlayerRadius <= p.Distance || p.HitObstacleIds.Contains(o.Id)) continue;
                     if (o.Kind == "gate") return "Ворота: нажми у метки, чтобы оказаться в центре окна.";
                     bool safe = p.Y == (o.Kind == "floor" ? 0 : 1);
                     if (safe && i + 1 < Game.Track.Obstacles.Length && Game.Track.Obstacles[i + 1].Kind == o.Kind)
@@ -796,7 +810,7 @@ namespace FlipRace.Presentation
             }
             if (Game.Elapsed < 3.5) return "Нажми в любом месте своей половины. Обойди первый камень!";
             foreach (Obstacle o in Game.Track.Obstacles)
-                if (o.Kind == "gate" && o.X - p.Distance > 0 && o.X - p.Distance < 470)
+                if (o.Kind == "gate" && ObstacleGeometry.Left(o) - p.Distance > 0 && ObstacleGeometry.Left(o) - p.Distance < 470)
                     return "Ворота: окажись в середине окна во время перелёта.";
             return "";
         }

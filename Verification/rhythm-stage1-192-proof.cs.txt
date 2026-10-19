@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Text.Json;
+using FlipRace.Core;
+
+internal static partial class Program
+{
+    static readonly double[] Steps = { 1d/30, 1d/60, 1d/144, .317, 2.5, 100 };
+    static readonly FlightSettings[] Profiles = { FlightPresets.Chosen, FlightPresets.FastFlip };
+    static string ProfileId(FlightSettings f) { return f == FlightPresets.FastFlip ? "fast-flip" : "chosen"; }
+    static GameState Begin(Track track, FlightSettings flight)
+    {
+        var game = RaceSimulation.CreateTrial(track, flight);
+        Check(RaceSimulation.Press(game, 0) && RaceSimulation.Press(game, 1), "both ready");
+        RaceSimulation.Advance(game, 3);
+        return game;
+    }
+    static RouteResult Run(Track track, FlightSettings flight, double[] route, double step = .01, int omit = -1)
+    {
+        var r = new RouteResult { Game = Begin(track, flight) };
+        for (int i = 0; i < route.Length; i++) {
+            if (i == omit) continue;
+            MoveTo(r.Game, route[i], step);
+            if (omit < 0) Tap(r.Game, r, flight == FlightPresets.FastFlip);
+            else { RaceSimulation.Press(r.Game, 0); RaceSimulation.Press(r.Game, 1); }
+        }
+        Finish(r.Game, step);
+        return r;
+    }
+    static RouteResult Shift(Track track, FlightSettings flight, double[] route, RouteResult baseline, int changed, double seconds)
+    {
+        var r = new RouteResult { Game = Begin(track, flight) };
+        for (int i = 0; i < route.Length; i++) {
+            if (i == changed) AdvanceTime(r.Game, baseline.Inputs[i].Time + seconds - r.Game.Elapsed);
+            else MoveTo(r.Game, route[i], .01);
+            Tap(r.Game, r, flight == FlightPresets.FastFlip);
+        }
+        Finish(r.Game, .317);
+        return r;
+    }
+    static void Clean(RouteResult r)
+    {
+        foreach (var p in r.Game.Players) {
+            Check(p.Collisions == 0, "clean route: " + string.Join(",", p.HitObstacleIds));
+            Check(p.BoostsEarned == 0 && p.SlowsEarned == 0, "no unplanned rewards");
+            Near(p.FinishTime.Value, r.Game.Track.Length / 220, "exact safe finish");
+        }
+    }
+    static void Stage()
+    {
+        var track = TracksRhythm.Practice(); var rows = new List<object>();
+        foreach (var f in Profiles) {
+            var route = TracksRhythm.PracticeRoute(f);
+            foreach (double step in Steps) Clean(Run(track, f, route, step));
+            var baseline = Run(track, f, route);
+            for (int i = 0; i < route.Length; i++) foreach (double shift in new[] { -.06, .06 })
+                Clean(Shift(track, f, route, baseline, i, shift));
+            for (int i = 0; i < route.Length; i++)
+                Check(Run(track, f, route, .01, i).Game.Players[0].Collisions > 0, "each stage action matters: " + i);
+            rows.Add(new { id = track.Id, profile = ProfileId(f), route, inputs = baseline.Inputs,
+                obstacles = track.Obstacles, finish = baseline.Game.Players[0].FinishTime });
+            Console.WriteLine(ProfileId(f) + ": " + route.Length + " useful accepted inputs; six dt, individual +/-60ms and each-action removal PASS");
+        }
+        File.WriteAllText("Verification/rhythm-stage-routes.json", JsonSerializer.Serialize(rows, new JsonSerializerOptions { WriteIndented = true, IncludeFields = true }));
+        Console.WriteLine("RHYTHM-01 STAGE PASS " + checks + " checks");
+    }
+    static void Main(string[] args)
+    {
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture; captureCollision = false;
+        Stage();
+    }
+}

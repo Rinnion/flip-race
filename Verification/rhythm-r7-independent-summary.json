@@ -1,0 +1,130 @@
+{
+  "scope": "R7 independent CPU gate; not browser/package/human playtest",
+  "capturedUtc": "2026-10-19T21:04:04.5093216Z",
+  "sourceSnapshot": {
+    "full": "8B62C3256FBCD3F53A8BFC90D552640C73AC43A0FC3A04251B785F5DAD2088C4",
+    "negatives": "75AC8DD76890190D5CD1BD2186D62A31015FFBA31B196A3AFC6A932A347BB3E2",
+    "core": "AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24"
+  },
+  "main": {
+    "assertions": 78917,
+    "games": 1788
+  },
+  "mixed": {
+    "assertions": 9577,
+    "games": 108
+  },
+  "bypass": {
+    "assertions": 433,
+    "games": 216
+  },
+  "tail": {
+    "margins": [
+      83,
+      79,
+      63
+    ],
+    "subsetsPerTrack": 2048,
+    "upperEnds": [
+      7793,
+      7797,
+      7813
+    ]
+  },
+  "recovery": {
+    "remainingStatesDoNotClaimFixedInputWindow": 233,
+    "fixedFirstPlus20ms": 3611,
+    "noFound": 0,
+    "perRoute": [
+      {
+        "count": 192,
+        "key": "rhythm-cascade, Fast, full"
+      },
+      {
+        "count": 180,
+        "key": "rhythm-cascade, Fast, safe"
+      },
+      {
+        "count": 192,
+        "key": "rhythm-cascade, Fast, trap"
+      },
+      {
+        "count": 234,
+        "key": "rhythm-cascade, Main, full"
+      },
+      {
+        "count": 226,
+        "key": "rhythm-cascade, Main, safe"
+      },
+      {
+        "count": 242,
+        "key": "rhythm-cascade, Main, trap"
+      },
+      {
+        "count": 200,
+        "key": "rhythm-dense, Fast, full"
+      },
+      {
+        "count": 188,
+        "key": "rhythm-dense, Fast, safe"
+      },
+      {
+        "count": 201,
+        "key": "rhythm-dense, Fast, trap"
+      },
+      {
+        "count": 242,
+        "key": "rhythm-dense, Main, full"
+      },
+      {
+        "count": 233,
+        "key": "rhythm-dense, Main, safe"
+      },
+      {
+        "count": 250,
+        "key": "rhythm-dense, Main, trap"
+      },
+      {
+        "count": 193,
+        "key": "rhythm-waves, Fast, full"
+      },
+      {
+        "count": 180,
+        "key": "rhythm-waves, Fast, safe"
+      },
+      {
+        "count": 193,
+        "key": "rhythm-waves, Fast, trap"
+      },
+      {
+        "count": 233,
+        "key": "rhythm-waves, Main, full"
+      },
+      {
+        "count": 224,
+        "key": "rhythm-waves, Main, safe"
+      },
+      {
+        "count": 241,
+        "key": "rhythm-waves, Main, trap"
+      }
+    ],
+    "actualFirstHitStates": 3844,
+    "perturbations": 7632,
+    "games": 7650,
+    "assertions": 52238
+  },
+  "r6Equality": {
+    "rhythm-dense": true,
+    "rhythm-waves": true
+  },
+  "artifactSha256": {
+    "rhythm-r7-routes.json": "E385F64CCDB816385B210A0D9FAA3BD283FFD74262E1A017A38D9217EEBADDFB",
+    "rhythm-r7-independent.txt": "286627E88FD7362BF018B6A496F19054AA75C5FE3B0B10C6A34064077E41398C",
+    "rhythm-r7-duels-independent.txt": "BDC015EE12E031809A8F9818F82CFEB270D2800EBB93AA9B5B814E53CF89668B",
+    "rhythm-r7-bypass-independent.txt": "B7DFA783F7B672FDA931D34A4BF001C6062E17E8E176729BA617E4D6D5188647",
+    "rhythm-r7-recovery-independent.txt": "59CF9356C4A1558775D024DE3EEF985311E014C4663C2DA4210B2E289CB19342",
+    "rhythm-r7-recovery-20261019-205957.jsonl": "4A020A0FB749CE2196DACEF5B4F4BDA91E2192CD1C3AD8E594B0FF0E8DD06089",
+    "rhythm-r6-recovery-20261019-204609.jsonl": "D847DC003336FCE01E1457B4345CEDA62413463305410FC24B307653446DDCE9"
+  }
+}

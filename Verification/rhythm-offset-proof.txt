@@ -1,0 +1,156 @@
+{
+  "representation": "one production offset obstacle",
+  "checks": 74321,
+  "runs": 24042,
+  "rows": [
+    {
+      "kind": "held",
+      "profile": "Flip",
+      "speed": 110,
+      "x": 1074.978199355338,
+      "airDelay": 0,
+      "low": 1005.9825260336246,
+      "high": 1143.9738726770513,
+      "windowMs": 1254.4667876675155
+    },
+    {
+      "kind": "held",
+      "profile": "Flip",
+      "speed": 220,
+      "x": 1045.9563987106758,
+      "airDelay": 0,
+      "low": 981.9650520672492,
+      "high": 1109.9477453541026,
+      "windowMs": 581.7395149402428
+    },
+    {
+      "kind": "held",
+      "profile": "Flip",
+      "speed": 330,
+      "x": 1016.9345980660138,
+      "airDelay": 0,
+      "low": 957.9475781008737,
+      "high": 1075.921618031154,
+      "windowMs": 357.4970906978189
+    },
+    {
+      "kind": "held",
+      "profile": "Jump",
+      "speed": 110,
+      "x": 1063.5469755307313,
+      "airDelay": 0.2,
+      "low": 1000.9713443152863,
+      "high": 1126.1954945147804,
+      "windowMs": 1138.4013654499468
+    },
+    {
+      "kind": "held",
+      "profile": "Jump",
+      "speed": 220,
+      "x": 1023.0939510614623,
+      "airDelay": 0.2,
+      "low": 971.9426886305724,
+      "high": 1074.3909890295608,
+      "windowMs": 465.6740927226746
+    },
+    {
+      "kind": "held",
+      "profile": "Jump",
+      "speed": 330,
+      "x": 982.6409265921936,
+      "airDelay": 0.2,
+      "low": 942.9140329458587,
+      "high": 1022.5864835443414,
+      "windowMs": 241.43166848025052
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Flip",
+      "effect": "boost-end",
+      "x": 1008,
+      "time": 4.418181818724624,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 900.0000000000002,
+      "nominalEffectEndX": 1098.0000000000002
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Flip",
+      "effect": "slow-end",
+      "x": 1024,
+      "time": 4.718181817992662,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 1009.9999999999998,
+      "nominalEffectEndX": 1075.9999999999998
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Flip",
+      "effect": "boost-start",
+      "x": 1022,
+      "time": 4.6454545453729414,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 1080.1489108214248,
+      "nominalEffectEndX": 1278.1489108214248
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Flip",
+      "effect": "slow-start",
+      "x": 1022,
+      "time": 4.6454545453729414,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 1080.1489108214248,
+      "nominalEffectEndX": 1146.1489108214248
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Jump",
+      "effect": "boost-end",
+      "x": 988,
+      "time": 4.357575758026841,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 900,
+      "nominalEffectEndX": 1098
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Jump",
+      "effect": "slow-end",
+      "x": 1008,
+      "time": 4.5818181817513945,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 1010.3434755289433,
+      "nominalEffectEndX": 1076.3434755289431
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Jump",
+      "effect": "boost-start",
+      "x": 1002,
+      "time": 4.554545454485017,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 1081.0041757576425,
+      "nominalEffectEndX": 1279.0041757576425
+    },
+    {
+      "kind": "real-effect",
+      "profile": "Jump",
+      "effect": "slow-start",
+      "x": 1002,
+      "time": 4.554545454485017,
+      "individualWindowAtLeastMs": 150,
+      "jointTestedMs": 60,
+      "nominalEventX": 1081.0041757576425,
+      "nominalEffectEndX": 1147.0041757576425
+    }
+  ]
+}
+PASS offset candidate: 74321 checks / 24042 actual runs. Held fixtures isolate speeds; transition fixtures collect real .6s effects.

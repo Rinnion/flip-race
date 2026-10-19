@@ -1,0 +1,127 @@
+[
+  {
+    "count": 2,
+    "support": "None",
+    "nextKind": "gate",
+    "gap": 115.119,
+    "normalizedY": 38.73466888786884,
+    "normalizedVY": -498.1230407475412,
+    "pairs": [
+      "rhythm-dense-m6-stone -> rhythm-dense-m6-exit-gate"
+    ]
+  },
+  {
+    "count": 57,
+    "support": "Wall",
+    "nextKind": "gate",
+    "gap": 125,
+    "normalizedY": 14,
+    "normalizedVY": 0,
+    "pairs": [
+      "rhythm-cascade-m2-gate -> rhythm-cascade-m3-gate",
+      "rhythm-cascade-m4-exit-gate -> rhythm-cascade-m5-gate",
+      "rhythm-cascade-m11-gate -> rhythm-cascade-m12-gate",
+      "rhythm-cascade-m16-gate -> rhythm-cascade-m17-gate",
+      "rhythm-cascade-m17-gate -> rhythm-cascade-m18-gate",
+      "rhythm-waves-m7-gate -> rhythm-waves-m8-gate",
+      "rhythm-waves-m10-gate -> rhythm-waves-m11-gate",
+      "rhythm-waves-m11-gate -> rhythm-waves-m12-gate",
+      "rhythm-waves-m17-gate -> rhythm-waves-m18-gate"
+    ]
+  },
+  {
+    "count": 72,
+    "support": "None",
+    "nextKind": "gate",
+    "gap": 125,
+    "normalizedY": 93.03754515690376,
+    "normalizedVY": -133.3238638320311,
+    "pairs": [
+      "rhythm-cascade-m2-gate -> rhythm-cascade-m3-gate",
+      "rhythm-cascade-m11-gate -> rhythm-cascade-m12-gate",
+      "rhythm-cascade-m16-gate -> rhythm-cascade-m17-gate",
+      "rhythm-cascade-m17-gate -> rhythm-cascade-m18-gate",
+      "rhythm-waves-m7-gate -> rhythm-waves-m8-gate",
+      "rhythm-waves-m10-gate -> rhythm-waves-m11-gate",
+      "rhythm-waves-m11-gate -> rhythm-waves-m12-gate",
+      "rhythm-waves-m17-gate -> rhythm-waves-m18-gate"
+    ]
+  },
+  {
+    "count": 3,
+    "support": "None",
+    "nextKind": "gate",
+    "gap": 125,
+    "normalizedY": 83.45055267223,
+    "normalizedVY": -174.57954550661853,
+    "pairs": [
+      "rhythm-cascade-m4-exit-gate -> rhythm-cascade-m5-gate"
+    ]
+  },
+  {
+    "count": 42,
+    "support": "Wall",
+    "nextKind": "gate",
+    "gap": 135,
+    "normalizedY": 14,
+    "normalizedVY": 0,
+    "pairs": [
+      "rhythm-dense-m0-gate -> rhythm-dense-m1-gate",
+      "rhythm-dense-m4-gate -> rhythm-dense-m5-gate",
+      "rhythm-dense-m6-exit-gate -> rhythm-dense-m7-gate",
+      "rhythm-dense-m7-gate -> rhythm-dense-m8-gate",
+      "rhythm-dense-m9-gate -> rhythm-dense-m10-gate",
+      "rhythm-dense-m18-gate -> rhythm-dense-m19-gate",
+      "rhythm-dense-m19-gate -> rhythm-dense-m20-gate"
+    ]
+  },
+  {
+    "count": 3,
+    "support": "None",
+    "nextKind": "gate",
+    "gap": 135,
+    "normalizedY": 83.45055267223,
+    "normalizedVY": -174.57954550661853,
+    "pairs": [
+      "rhythm-dense-m6-exit-gate -> rhythm-dense-m7-gate"
+    ]
+  },
+  {
+    "count": 4,
+    "support": "None",
+    "nextKind": "gate",
+    "gap": 145,
+    "normalizedY": 18.973096221043516,
+    "normalizedVY": -186.14733764098716,
+    "pairs": [
+      "rhythm-cascade-m14-gate -> rhythm-cascade-m15-chain-gate-1",
+      "rhythm-waves-m15-gate -> rhythm-waves-m16-chain-gate-1"
+    ]
+  },
+  {
+    "count": 18,
+    "support": "None",
+    "nextKind": "gate",
+    "gap": 158.5,
+    "normalizedY": 90.40110962107585,
+    "normalizedVY": -145.83734004731667,
+    "pairs": [
+      "rhythm-cascade-m15-chain-gate-1 -> rhythm-cascade-m15-chain-gate-2",
+      "rhythm-dense-m11-chain-gate-1 -> rhythm-dense-m11-chain-gate-2",
+      "rhythm-waves-m16-chain-gate-1 -> rhythm-waves-m16-chain-gate-2"
+    ]
+  },
+  {
+    "count": 6,
+    "support": "None",
+    "nextKind": "gate",
+    "gap": 158.5,
+    "normalizedY": 92.9512545224286,
+    "normalizedVY": -139.49032739835084,
+    "pairs": [
+      "rhythm-cascade-m15-chain-gate-1 -> rhythm-cascade-m15-chain-gate-2",
+      "rhythm-dense-m11-chain-gate-1 -> rhythm-dense-m11-chain-gate-2",
+      "rhythm-waves-m16-chain-gate-1 -> rhythm-waves-m16-chain-gate-2"
+    ]
+  }
+]

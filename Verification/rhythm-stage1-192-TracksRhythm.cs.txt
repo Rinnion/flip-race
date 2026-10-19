@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+
+namespace FlipRace.Core
+{
+    // The short course is kept separate from the six full races so the new
+    // passage can be tried without changing any of the existing geometry.
+    public static class TracksRhythm
+    {
+        public const string PracticeId = "rhythm-practice";
+        public const double GateWidth = 16, GateOffset = 192;
+        public const double MainAirDelay = .2;
+        public static readonly Track[] All = Array.Empty<Track>();
+        public static bool IsFull(string id) { foreach (var t in All) if (t.Id == id) return true; return false; }
+        public static Track Get(string id) { foreach (var t in All) if (t.Id == id) return t; return Practice(); }
+
+        public static Obstacle Passage(string id, double x, bool fromFloor)
+        {
+            return new Obstacle { Id = id, Kind = "gate", X = x, Width = GateWidth,
+                GapTop = 140, GapBottom = 100,
+                TopOffsetX = fromFloor ? 0 : GateOffset,
+                BottomOffsetX = fromFloor ? GateOffset : 0 };
+        }
+
+        public static Track Practice()
+        {
+            double[] positions = { 300, 900, 1500, 1800, 2130, 2410, 2780, 3100 };
+            var obstacles = new Obstacle[positions.Length];
+            for (int i = 0; i < positions.Length; i++)
+                obstacles[i] = Passage("rhythm-practice-gate-" + i, positions[i], i % 2 == 0);
+            return new Track(3500, obstacles, new[] {
+                new Cue(150, "С пола — вверх"), new Cue(730, "С потолка — вниз"),
+                new Cue(1320, "Шесть переходов подряд") }) {
+                Id = PracticeId, Name = "Проба смещённых ворот",
+                Focus = "Два направления входа, затем шесть переходов с настоящими посадками",
+                SafeRoute = PracticeRoute(FlightPresets.Chosen),
+                RiskRoute = PracticeRoute(FlightPresets.Chosen)
+            };
+        }
+
+        // Authoring witness only. The playable course never reads these arrays.
+        public static double[] PracticeRoute(FlightSettings flight)
+        {
+            bool fast = flight.FirstAction == FirstAction.Flip;
+            double t72 = fast ? FastTime(72) : MainTime(72);
+            double t140 = fast ? FastTime(140) : MainTime(140);
+            double relative = (GateWidth + 14 - 220 * t72 + GateOffset - 14 - 220 * t140) / 2;
+            var route = new List<double>();
+            foreach (double x in new double[] { 300, 900, 1500, 1800, 2130, 2410, 2780, 3100 }) {
+                route.Add(x + relative);
+                if (!fast) route.Add(x + relative + 220 * MainAirDelay);
+            }
+            return route.ToArray();
+        }
+        static double FastTime(double displacement)
+        { return (Math.Sqrt(35 * 35 + 5400 * displacement) - 35) / 2700; }
+        static double MainTime(double displacement)
+        {
+            double d = 350 * MainAirDelay - .5 * 662.5 * MainAirDelay * MainAirDelay;
+            double v = 350 - 662.5 * MainAirDelay;
+            if (displacement <= d) return (350 - Math.Sqrt(350 * 350 - 1325 * displacement)) / 662.5;
+            return MainAirDelay + (Math.Sqrt(v * v + 1325 * (displacement - d)) - v) / 662.5;
+        }
+    }
+
+    public static class RaceTracks
+    {
+        public static readonly Track[] All = Combined();
+        static Track[] Combined()
+        {
+            var result = new Track[TracksFull.All.Length + TracksRhythm.All.Length];
+            Array.Copy(TracksFull.All, result, TracksFull.All.Length);
+            Array.Copy(TracksRhythm.All, 0, result, TracksFull.All.Length, TracksRhythm.All.Length);
+            return result;
+        }
+        public static bool IsFull(string id) { return TracksFull.IsFull(id) || TracksRhythm.IsFull(id); }
+        public static Track Get(string id)
+        { return TracksRhythm.IsFull(id) || id == TracksRhythm.PracticeId ? TracksRhythm.Get(id) : TracksFull.Get(id); }
+    }
+}

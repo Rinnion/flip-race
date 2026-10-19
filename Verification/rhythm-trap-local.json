@@ -1,0 +1,39 @@
+{
+  "shape": {
+    "firstX": 1000,
+    "offset": 112,
+    "top": 110,
+    "bottom": 130,
+    "width": 16
+  },
+  "trap": {
+    "X": 1080,
+    "Y": 200,
+    "Radius": 8
+  },
+  "endX": 1190,
+  "rows": [
+    {
+      "profile": "fast-flip",
+      "normal": [
+        1005
+      ],
+      "trap": [
+        1044
+      ],
+      "eachInputWindowSeconds": 0.075
+    },
+    {
+      "profile": "chosen",
+      "normal": [
+        970.5,
+        1021.5
+      ],
+      "trap": [
+        1050,
+        1066
+      ],
+      "eachInputWindowSeconds": 0.07
+    }
+  ]
+}

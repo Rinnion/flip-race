@@ -1,0 +1,7 @@
+PASS before+20 full input10+0.4: real walls, repeat90/100ms, firstextra0/5/10/15/20ms x6dt
+PASS before+20 full input10+0.64: real walls, repeat90/100ms, firstextra0/5/10/15/20ms x6dt
+PASS before+20 full input10+0.8: real walls, repeat90/100ms, firstextra0/5/10/15/20ms x6dt
+PASS before+20 trap input10+0.4: real walls, repeat90/100ms, firstextra0/5/10/15/20ms x6dt
+PASS before+20 trap input10+0.64: real walls, repeat90/100ms, firstextra0/5/10/15/20ms x6dt
+PASS before+20 trap input10+0.8: real walls, repeat90/100ms, firstextra0/5/10/15/20ms x6dt
+PASS six actual R6 before-error prefixes: 1566 checks; tool-only +20 next boundary, Core/runtime unchanged.

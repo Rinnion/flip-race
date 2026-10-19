@@ -1,0 +1,10 @@
+full-long/chosen safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-long/fast-flip safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-short/chosen safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-short/fast-flip safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-flow/chosen safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-flow/fast-flip safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-long all2048 subset bound: effects end byX7688; margin188
+full-short all2048 subset bound: effects end byX7728; margin148
+full-flow all2048 subset bound: effects end byX7688; margin188
+MODES-04 FULL PASS 48596 checks

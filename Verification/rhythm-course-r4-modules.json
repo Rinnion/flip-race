@@ -1,0 +1,829 @@
+[
+  {
+    "kind": "gate",
+    "entryEffects": "empty",
+    "length": 270,
+    "endX": 270,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 0,
+    "endSide": 0,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "gate",
+        "X": 80,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          85
+        ],
+        "windowsSeconds": [
+          0.145
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          85
+        ],
+        "windowsSeconds": [
+          0.145
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          50.5,
+          101.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          50.5,
+          101.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "free",
+    "entryEffects": "empty",
+    "length": 350,
+    "endX": 350,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 334,
+    "endSide": 0,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "gate",
+        "X": 80,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "free",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 114,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          98
+        ],
+        "windowsSeconds": [
+          0.09
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          64
+        ],
+        "windowsSeconds": [
+          0.06
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          77.5,
+          114.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.115
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          38.5,
+          91
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.125
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "free-high",
+    "entryEffects": "empty",
+    "length": 355,
+    "endX": 355,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 350,
+    "endSide": 0,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "gate",
+        "X": 80,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "free-high",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 130,
+        "Y": 70,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          99
+        ],
+        "windowsSeconds": [
+          0.08
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          66.5
+        ],
+        "windowsSeconds": [
+          0.06
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          56.5,
+          113.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.125
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          51,
+          74
+        ],
+        "windowsSeconds": [
+          0.1,
+          0.05
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "before",
+    "entryEffects": "empty",
+    "length": 520,
+    "endX": 520,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 457,
+    "endSide": 1,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "stone",
+        "X": 180,
+        "Width": 64,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      },
+      {
+        "Id": "exit-gate",
+        "X": 330,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 112,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "before",
+        "ObstacleId": "stone",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 80,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 259,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          78,
+          335
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.145
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          22,
+          305.5
+        ],
+        "windowsSeconds": [
+          0.1,
+          0.095
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          58,
+          111,
+          286.8,
+          353.8
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          22.5,
+          45.5,
+          258.8,
+          334.8
+        ],
+        "windowsSeconds": [
+          0.1,
+          0.1,
+          0.15,
+          0.115
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "after",
+    "entryEffects": "empty",
+    "length": 580,
+    "endX": 580,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 560,
+    "endSide": 1,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "after-stone",
+        "X": 160,
+        "Width": 64,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": true,
+        "Id": "after-ring",
+        "ObstacleId": "after-stone",
+        "Kind": "positive",
+        "Placement": "after",
+        "FreeReward": false,
+        "X": 340,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 239,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          45.5,
+          340
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.06
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          45.5,
+          281.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.1
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          45.5,
+          91,
+          326.5,
+          391
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          44.5,
+          86.5,
+          228,
+          334.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15,
+          0.15,
+          0.135
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "chain",
+    "entryEffects": "empty",
+    "length": 690,
+    "endX": 690,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 674,
+    "endSide": 1,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "chain-gate-1",
+        "X": 100,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      },
+      {
+        "Id": "chain-gate-2",
+        "X": 420,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 112,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-1",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 134,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-2",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 454,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          118,
+          438
+        ],
+        "windowsSeconds": [
+          0.09,
+          0.09
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          84,
+          404
+        ],
+        "windowsSeconds": [
+          0.06,
+          0.06
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          97.5,
+          134.5,
+          417.5,
+          454.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.115,
+          0.15,
+          0.115
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          42.5,
+          116,
+          359,
+          436.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.09,
+          0.15,
+          0.085
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "pad",
+    "entryEffects": "empty",
+    "length": 460,
+    "endX": 460,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 446,
+    "endSide": 1,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "pad-stone",
+        "X": 200,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "pad",
+        "ObstacleId": "pad-stone",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 232,
+        "Y": 192,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      }
+    ],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          73.5,
+          275
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          42.5,
+          158.5
+        ],
+        "windowsSeconds": [
+          0.14,
+          0.07
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          116
+        ],
+        "windowsSeconds": [
+          0.15
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          35.18111873531922
+        ],
+        "windowsSeconds": [
+          0.07
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "large",
+    "entryEffects": "empty",
+    "length": 580,
+    "endX": 580,
+    "entrySpeed": 220,
+    "latestAllWorkEndX": 524,
+    "endSide": 1,
+    "entrySide": 1,
+    "obstacles": [
+      {
+        "Id": "pad-stone",
+        "X": 200,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "pad",
+        "ObstacleId": "pad-stone",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 300,
+        "Y": 148,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 52,
+        "FinishHeight": 16
+      }
+    ],
+    "routes": [
+      {
+        "profile": "fast-flip",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          65.5,
+          422
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15
+        ]
+      },
+      {
+        "profile": "fast-flip",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          65.5,
+          237.5
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.115
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": false,
+        "emptyEffects": true,
+        "inputs": [
+          65,
+          126,
+          333,
+          431
+        ],
+        "windowsSeconds": [
+          0.15,
+          0.15,
+          0.15,
+          0.075
+        ]
+      },
+      {
+        "profile": "chosen",
+        "full": true,
+        "emptyEffects": true,
+        "inputs": [
+          26,
+          64,
+          92
+        ],
+        "windowsSeconds": [
+          0.075,
+          0.025,
+          0.025
+        ]
+      }
+    ]
+  }
+]

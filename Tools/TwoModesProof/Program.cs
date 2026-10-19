@@ -43,7 +43,7 @@ internal static partial class Program
         else if(args.Length>0&&args[0]=="--core")Console.WriteLine(FlipRace.Editor.EngineModesTests.RunAll());
         else if(args.Length>0&&args[0]=="--hover")HoverRegression();
         else if(args.Length>0&&args[0]=="--windows")Windows();
-        else if(args.Length>0&&args[0]=="--routes")ExportAll();
+        else if(args.Length>0&&args[0]=="--routes")ExportAll(args.Length>1?args[1]:"Verification/modes-routes.json");
         else if(args.Length>0&&args[0]=="--routes-stage")ExportStage();
         else StageProof();
     }

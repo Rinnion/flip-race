@@ -1,0 +1,56 @@
+authored dt=0.03333333333333333 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5066.999999999998,5094.999999999996
+32hz-6-10 dt=0.03333333333333333 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5070.249999999998,5097.749999999995
+32hz-actual-first dt=0.03333333333333333 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029.2,5070.449999999998,5097.949999999995
+observed-estimate dt=0.03333333333333333 good=False finish=34 hit=1 earned=8 ids=rhythm-dense-m13-pad-stone X=5029.2,5063.299999999999,5097.8399999999965
+authored dt=0.016666666666666666 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5067.000000000003,5095.000000000007
+32hz-6-10 dt=0.016666666666666666 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5070.250000000004,5097.750000000008
+32hz-actual-first dt=0.016666666666666666 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029.2,5070.4500000000035,5097.950000000008
+observed-estimate dt=0.016666666666666666 good=False finish=34 hit=1 earned=8 ids=rhythm-dense-m13-pad-stone X=5029.2,5063.300000000003,5097.840000000007
+authored dt=0.006944444444444444 good=True finish=33.2 hit=0 earned=9 ids= X=5029,5066.99999999999,5094.999999999992
+32hz-6-10 dt=0.006944444444444444 good=True finish=33.2 hit=0 earned=9 ids= X=5029,5070.249999999989,5097.749999999982
+32hz-actual-first dt=0.006944444444444444 good=True finish=33.2 hit=0 earned=9 ids= X=5029.2,5070.449999999989,5097.949999999982
+observed-estimate dt=0.006944444444444444 good=False finish=34.00000000000001 hit=1 earned=8 ids=rhythm-dense-m13-pad-stone X=5029.2,5063.299999999991,5097.83999999999
+authored dt=0.317 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5067,5095
+32hz-6-10 dt=0.317 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5070.25,5097.75
+32hz-actual-first dt=0.317 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029.2,5070.45,5097.95
+observed-estimate dt=0.317 good=False finish=34 hit=1 earned=8 ids=rhythm-dense-m13-pad-stone X=5029.2,5063.3,5097.84
+authored dt=2.5 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5067,5095
+32hz-6-10 dt=2.5 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5070.25,5097.75
+32hz-actual-first dt=2.5 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029.2,5070.45,5097.95
+observed-estimate dt=2.5 good=False finish=34 hit=1 earned=8 ids=rhythm-dense-m13-pad-stone X=5029.2,5063.3,5097.84
+authored dt=100 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5067,5095
+32hz-6-10 dt=100 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029,5070.25,5097.75
+32hz-actual-first dt=100 good=True finish=33.199999999999996 hit=0 earned=9 ids= X=5029.2,5070.45,5097.95
+observed-estimate dt=100 good=False finish=34 hit=1 earned=8 ids=rhythm-dense-m13-pad-stone X=5029.2,5063.3,5097.84
+32Hz PASS 4/8 frames = 0.125/0.25s
+32Hz PASS 4/11 frames = 0.125/0.34375s
+32Hz PASS 4/12 frames = 0.125/0.375s
+32Hz PASS 4/13 frames = 0.125/0.40625s
+32Hz PASS 5/9 frames = 0.15625/0.28125s
+32Hz PASS 5/12 frames = 0.15625/0.375s
+32Hz PASS 5/13 frames = 0.15625/0.40625s
+32Hz PASS 6/10 frames = 0.1875/0.3125s
+32Hz PASS 6/11 frames = 0.1875/0.34375s
+32Hz PASS 7/11 frames = 0.21875/0.34375s
+32Hz PASS 7/12 frames = 0.21875/0.375s
+32Hz PASS 8/12 frames = 0.25/0.375s
+32Hz PASS 8/13 frames = 0.25/0.40625s
+JOINT 0.1875/0.3125: simultaneous 3-input cube ±10ms PASS (grid corners+centers)
+JOINT 0.1875/0.34375: simultaneous 3-input cube ±0ms PASS (grid corners+centers)
+JOINT 0.21875/0.34375: simultaneous 3-input cube ±5ms PASS (grid corners+centers)
+JOINT 0.2/0.33: simultaneous 3-input cube ±10ms PASS (grid corners+centers)
+PERIOD 0.029s, frames6/10: True
+PERIOD 0.03s, frames6/10: True
+PERIOD 0.031s, frames6/10: True
+PERIOD 0.03125s, frames6/10: True
+PERIOD 0.032s, frames6/10: True
+PERIOD 0.033s, frames6/10: True
+PERIOD 0.034s, frames6/10: True
+PERIOD 0.029s, frames6/11: True
+PERIOD 0.03s, frames6/11: True
+PERIOD 0.031s, frames6/11: True
+PERIOD 0.03125s, frames6/11: True
+PERIOD 0.032s, frames6/11: False
+PERIOD 0.033s, frames6/11: False
+PERIOD 0.034s, frames6/11: False
+Completed Dense browser timing probe: 30511 assertions / 311 actual games.

@@ -1,0 +1,90 @@
+{
+  "shape": {
+    "width": 16,
+    "lowerHeight": 16,
+    "upperHeight": 114,
+    "upperOffset": 80
+  },
+  "checks": 14280,
+  "runs": 13806,
+  "rows": [
+    {
+      "kind": "accessible",
+      "speed": 110,
+      "fastOppositeLaunch": 1012.4585324080438,
+      "fastFullWindowMs": 417.6426566301963,
+      "mainJumpLaunch": 949.8867924528302,
+      "verifiedMs": 60
+    },
+    {
+      "kind": "expert-fast-return",
+      "speed": 110,
+      "launchX": 970,
+      "airDelay": 0.2,
+      "eachInputWindowAtLeastMs": 40,
+      "endsOnOriginalWall": true
+    },
+    {
+      "kind": "optional-main-correction",
+      "speed": 110,
+      "launchX": 894,
+      "airTimes": [
+        0.2,
+        0.3
+      ],
+      "individualTestedMs": 30
+    },
+    {
+      "kind": "accessible",
+      "speed": 220,
+      "fastOppositeLaunch": 976.9170648160873,
+      "fastFullWindowMs": 254.0062929938317,
+      "mainJumpLaunch": 891.7735849056604,
+      "verifiedMs": 60
+    },
+    {
+      "kind": "expert-fast-return",
+      "speed": 220,
+      "launchX": 950,
+      "airDelay": 0.15,
+      "eachInputWindowAtLeastMs": 40,
+      "endsOnOriginalWall": true
+    },
+    {
+      "kind": "optional-main-correction",
+      "speed": 220,
+      "launchX": 758,
+      "airTimes": [
+        0.2,
+        0.3
+      ],
+      "individualTestedMs": 30
+    },
+    {
+      "kind": "accessible",
+      "speed": 330,
+      "fastOppositeLaunch": 941.375597224131,
+      "fastFullWindowMs": 199.46083844837713,
+      "mainJumpLaunch": 833.6603773584906,
+      "verifiedMs": 60
+    },
+    {
+      "kind": "expert-fast-return",
+      "speed": 330,
+      "launchX": 936,
+      "airDelay": 0.13,
+      "eachInputWindowAtLeastMs": 40,
+      "endsOnOriginalWall": true
+    },
+    {
+      "kind": "optional-main-correction",
+      "speed": 330,
+      "launchX": 650,
+      "airTimes": [
+        0.2,
+        0.3
+      ],
+      "individualTestedMs": 30
+    }
+  ]
+}

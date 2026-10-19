@@ -1,0 +1,170 @@
+[
+  {
+    "track": "rhythm-cascade",
+    "profile": "Main",
+    "route": "safe",
+    "changedInput": 3,
+    "shiftSeconds": 0.64,
+    "targetX": 1403,
+    "classification": "Wall/125/14/0",
+    "found": true,
+    "offsetsSeconds": [
+      0.1,
+      0.25,
+      0.7000000000000001,
+      0.875
+    ],
+    "minSpacing": 0.15,
+    "individualSymmetricWindows": [
+      0.06,
+      0.02,
+      0.015,
+      0.005
+    ]
+  },
+  {
+    "track": "rhythm-cascade",
+    "profile": "Main",
+    "route": "safe",
+    "changedInput": 4,
+    "shiftSeconds": 0.4,
+    "targetX": 1403,
+    "classification": "None/125/93.04/-133.32",
+    "found": false
+  },
+  {
+    "track": "rhythm-cascade",
+    "profile": "Main",
+    "route": "safe",
+    "changedInput": 10,
+    "shiftSeconds": 0.4,
+    "targetX": 2543,
+    "classification": "None/125/83.45/-174.58",
+    "found": true,
+    "offsetsSeconds": [
+      0.275,
+      0.325,
+      0.775,
+      0.8250000000000001
+    ],
+    "minSpacing": 0.05,
+    "individualSymmetricWindows": [
+      0.01,
+      0.01,
+      0.02,
+      0.02
+    ]
+  },
+  {
+    "track": "rhythm-cascade",
+    "profile": "Main",
+    "route": "full",
+    "changedInput": 30,
+    "shiftSeconds": 0.24,
+    "targetX": 6558,
+    "classification": "None/145/18.97/-186.15",
+    "found": true,
+    "offsetsSeconds": [
+      0.05,
+      0.2,
+      0.65,
+      0.8
+    ],
+    "minSpacing": 0.15,
+    "individualSymmetricWindows": [
+      0.02,
+      0.02,
+      0.02,
+      0.06
+    ]
+  },
+  {
+    "track": "rhythm-cascade",
+    "profile": "Main",
+    "route": "full",
+    "changedInput": 34,
+    "shiftSeconds": 0.4,
+    "targetX": 6878,
+    "classification": "None/158.5/90.4/-145.84",
+    "found": false
+  },
+  {
+    "track": "rhythm-cascade",
+    "profile": "Main",
+    "route": "full",
+    "changedInput": 35,
+    "shiftSeconds": -0.8,
+    "targetX": 6878,
+    "classification": "None/158.5/92.95/-139.49",
+    "found": false
+  },
+  {
+    "track": "rhythm-dense",
+    "profile": "Main",
+    "route": "safe",
+    "changedInput": 0,
+    "shiftSeconds": 0.64,
+    "targetX": 553,
+    "classification": "Wall/135/14/0",
+    "found": true,
+    "offsetsSeconds": [
+      0,
+      0.15000000000000002,
+      0.6000000000000001,
+      0.75
+    ],
+    "minSpacing": 0.15,
+    "individualSymmetricWindows": [
+      0,
+      0.02,
+      0.02,
+      0.06
+    ]
+  },
+  {
+    "track": "rhythm-dense",
+    "profile": "Main",
+    "route": "safe",
+    "changedInput": 14,
+    "shiftSeconds": 0.4,
+    "targetX": 2823,
+    "classification": "None/135/83.45/-174.58",
+    "found": true,
+    "offsetsSeconds": [
+      0.275,
+      0.325,
+      0.775,
+      0.9
+    ],
+    "minSpacing": 0.05,
+    "individualSymmetricWindows": [
+      0.01,
+      0.02,
+      0.02,
+      0.015
+    ]
+  },
+  {
+    "track": "rhythm-dense",
+    "profile": "Main",
+    "route": "full",
+    "changedInput": 11,
+    "shiftSeconds": -0.8,
+    "targetX": 2543,
+    "classification": "None/115.12/38.73/-498.12",
+    "found": true,
+    "offsetsSeconds": [
+      0.07500000000000001,
+      0.225,
+      0.675,
+      0.8250000000000001
+    ],
+    "minSpacing": 0.15,
+    "individualSymmetricWindows": [
+      0.025,
+      0.02,
+      0.01,
+      0
+    ]
+  }
+]

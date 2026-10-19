@@ -1,0 +1,590 @@
+[
+  {
+    "kind": "after",
+    "profile": "fast-flip",
+    "full": false,
+    "route": [
+      45.5,
+      217
+    ],
+    "times": [
+      0.20681818181818182,
+      0.9863636363636364
+    ],
+    "windows": [
+      0.15000000000000005,
+      0.15000000000000005
+    ],
+    "empty": true,
+    "time": 2.727272727272728,
+    "length": 600,
+    "obstacles": [
+      {
+        "Id": "after-stone",
+        "X": 160,
+        "Width": 64,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": true,
+        "Id": "after-ring",
+        "ObstacleId": "after-stone",
+        "Kind": "positive",
+        "Placement": "after",
+        "FreeReward": false,
+        "X": 340,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 239,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "kind": "after",
+    "profile": "fast-flip",
+    "full": true,
+    "route": [
+      45.5,
+      281.5
+    ],
+    "times": [
+      0.20681818181818182,
+      1.2795454545454545
+    ],
+    "windows": [
+      0.15000000000000005,
+      0.10000000000000002
+    ],
+    "empty": true,
+    "time": 2.4272727272727272,
+    "length": 600,
+    "obstacles": [
+      {
+        "Id": "after-stone",
+        "X": 160,
+        "Width": 64,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": true,
+        "Id": "after-ring",
+        "ObstacleId": "after-stone",
+        "Kind": "positive",
+        "Placement": "after",
+        "FreeReward": false,
+        "X": 340,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 239,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "kind": "after",
+    "profile": "chosen",
+    "full": false,
+    "route": [
+      45.5,
+      91,
+      326.5,
+      391
+    ],
+    "times": [
+      0.20681818181818182,
+      0.4136363636363637,
+      1.4840909090909091,
+      1.7772727272727273
+    ],
+    "windows": [
+      0.15000000000000005,
+      0.15000000000000005,
+      0.15000000000000005,
+      0.15000000000000005
+    ],
+    "empty": true,
+    "time": 2.7272727272727275,
+    "length": 600,
+    "obstacles": [
+      {
+        "Id": "after-stone",
+        "X": 160,
+        "Width": 64,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": true,
+        "Id": "after-ring",
+        "ObstacleId": "after-stone",
+        "Kind": "positive",
+        "Placement": "after",
+        "FreeReward": false,
+        "X": 340,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 239,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "kind": "after",
+    "profile": "chosen",
+    "full": true,
+    "route": [
+      44.5,
+      86.5,
+      228,
+      334.5
+    ],
+    "times": [
+      0.20227272727272727,
+      0.3931818181818182,
+      1.0363636363636364,
+      1.5060398507517783
+    ],
+    "windows": [
+      0.15000000000000005,
+      0.15000000000000005,
+      0.15000000000000005,
+      0.15000000000000005
+    ],
+    "empty": true,
+    "time": 2.4272727272727277,
+    "length": 600,
+    "obstacles": [
+      {
+        "Id": "after-stone",
+        "X": 160,
+        "Width": 64,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": true,
+        "Id": "after-ring",
+        "ObstacleId": "after-stone",
+        "Kind": "positive",
+        "Placement": "after",
+        "FreeReward": false,
+        "X": 340,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 239,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "kind": "chain",
+    "profile": "fast-flip",
+    "full": false,
+    "route": [
+      118,
+      438
+    ],
+    "times": [
+      0.5363636363636364,
+      1.9909090909090905
+    ],
+    "windows": [
+      0.09000000000000001,
+      0.09000000000000001
+    ],
+    "empty": true,
+    "time": 3.181818181818182,
+    "length": 700,
+    "obstacles": [
+      {
+        "Id": "chain-gate-1",
+        "X": 100,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      },
+      {
+        "Id": "chain-gate-2",
+        "X": 420,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 112,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-1",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 134,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-2",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 454,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "kind": "chain",
+    "profile": "fast-flip",
+    "full": true,
+    "route": [
+      84,
+      404
+    ],
+    "times": [
+      0.38181818181818183,
+      1.5363636363636362
+    ],
+    "windows": [
+      0.05999999999999999,
+      0.05999999999999999
+    ],
+    "empty": true,
+    "time": 2.581818181818182,
+    "length": 700,
+    "obstacles": [
+      {
+        "Id": "chain-gate-1",
+        "X": 100,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      },
+      {
+        "Id": "chain-gate-2",
+        "X": 420,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 112,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-1",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 134,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-2",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 454,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "kind": "chain",
+    "profile": "chosen",
+    "full": false,
+    "route": [
+      97.5,
+      134.5,
+      417.5,
+      454.5
+    ],
+    "times": [
+      0.44318181818181823,
+      0.6113636363636364,
+      1.8977272727272727,
+      2.065909090909091
+    ],
+    "windows": [
+      0.15000000000000005,
+      0.11500000000000003,
+      0.15000000000000005,
+      0.11500000000000003
+    ],
+    "empty": true,
+    "time": 3.1818181818181825,
+    "length": 700,
+    "obstacles": [
+      {
+        "Id": "chain-gate-1",
+        "X": 100,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      },
+      {
+        "Id": "chain-gate-2",
+        "X": 420,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 112,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-1",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 134,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-2",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 454,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "kind": "chain",
+    "profile": "chosen",
+    "full": true,
+    "route": [
+      42.5,
+      116,
+      359,
+      436.5
+    ],
+    "times": [
+      0.19318181818181818,
+      0.5272727272727273,
+      1.3318181818181818,
+      1.684090909090909
+    ],
+    "windows": [
+      0.15000000000000005,
+      0.09000000000000001,
+      0.15000000000000005,
+      0.085
+    ],
+    "empty": true,
+    "time": 2.5818181818181825,
+    "length": 700,
+    "obstacles": [
+      {
+        "Id": "chain-gate-1",
+        "X": 100,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 112,
+        "Kind": "gate"
+      },
+      {
+        "Id": "chain-gate-2",
+        "X": 420,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 110,
+        "GapBottom": 130,
+        "TopOffsetX": 112,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-1",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 134,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "chain-2",
+        "ObstacleId": null,
+        "Kind": "instant",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 454,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  }
+]

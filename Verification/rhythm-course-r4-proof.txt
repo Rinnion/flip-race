@@ -1,0 +1,367 @@
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(27,31): warning CS0649: Полю "Program.Module.endX" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию 0. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(27,23): warning CS0649: Полю "Program.Module.length" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию 0. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(22,25): warning CS0649: Полю "Program.ModuleRoute.inputs" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(20,23): warning CS0649: Полю "Program.ModuleRoute.profile" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(22,33): warning CS0649: Полю "Program.ModuleRoute.windowsSeconds" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(29,27): warning CS0649: Полю "Program.Module.obstacles" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(27,37): warning CS0649: Полю "Program.Module.entrySpeed" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию 0. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(31,30): warning CS0649: Полю "Program.Module.routes" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(26,23): warning CS0649: Полю "Program.Module.kind" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(26,29): warning CS0649: Полю "Program.Module.entryEffects" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(28,34): warning CS0649: Полю "Program.Module.entrySide" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию 0. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(21,35): warning CS0649: Полю "Program.ModuleRoute.emptyEffects" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию false. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(30,27): warning CS0649: Полю "Program.Module.zones" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\Program.cs(27,49): warning CS0649: Полю "Program.Module.latestAllWorkEndX" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию 0. [F:\Home\Game\flip-race-unity\Tools\RhythmCourseCompose\RhythmCourseCompose.csproj]
+rhythm-cascade chosen safe taps=44 finish=36
+{
+  "firstTap": 1.3659090909090916,
+  "lastTapToFinish": 1.2431818181807728,
+  "maxInputGap": 2.2431818181818333,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 7,
+      "firstTime": 1.3659090909090916,
+      "lastTime": 6.202272727272721,
+      "nextGroupGap": 2.2431818181818333,
+      "maximumInteriorGap": 1.7931818181818038
+    },
+    {
+      "group": 2,
+      "inputs": 9,
+      "firstTime": 8.445454545454554,
+      "lastTime": 14.324999999999903,
+      "nextGroupGap": 1.931818181818148,
+      "maximumInteriorGap": 1.793181818181779
+    },
+    {
+      "group": 3,
+      "inputs": 12,
+      "firstTime": 16.25681818181805,
+      "lastTime": 23.165909090909405,
+      "nextGroupGap": 1.8818181818183497,
+      "maximumInteriorGap": 1.3272727272727636
+    },
+    {
+      "group": 4,
+      "inputs": 16,
+      "firstTime": 25.047727272727755,
+      "lastTime": 34.75681818181923,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.3000000000001108
+    }
+  ]
+}
+rhythm-cascade chosen full taps=44 finish=33.199999999999996
+{
+  "firstTap": 1.3659090909090916,
+  "lastTapToFinish": 0.15489654330463765,
+  "maxInputGap": 2.1477272727274404,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 7,
+      "firstTime": 1.3659090909090916,
+      "lastTime": 5.795454545454544,
+      "nextGroupGap": 1.8886363636363699,
+      "maximumInteriorGap": 1.8605403693849007
+    },
+    {
+      "group": 2,
+      "inputs": 9,
+      "firstTime": 7.684090909090914,
+      "lastTime": 13.124999999999938,
+      "nextGroupGap": 1.906818181818137,
+      "maximumInteriorGap": 1.8605403693848839
+    },
+    {
+      "group": 3,
+      "inputs": 11,
+      "firstTime": 15.031818181818075,
+      "lastTime": 21.36590909090934,
+      "nextGroupGap": 1.8772727272728957,
+      "maximumInteriorGap": 2.1477272727274404
+    },
+    {
+      "group": 4,
+      "inputs": 16,
+      "firstTime": 23.243181818182236,
+      "lastTime": 32.056818181819274,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.0818181818182495
+    }
+  ]
+}
+rhythm-cascade fast-flip safe taps=25 finish=36
+{
+  "firstTap": 1.5227272727272743,
+  "lastTapToFinish": 1.3181818181807188,
+  "maxInputGap": 2.409090909090927,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 5,
+      "firstTime": 1.5227272727272743,
+      "lastTime": 6.127272727272721,
+      "nextGroupGap": 2.409090909090927,
+      "maximumInteriorGap": 1.2863636363636441
+    },
+    {
+      "group": 2,
+      "inputs": 6,
+      "firstTime": 8.536363636363648,
+      "lastTime": 14.2499999999999,
+      "nextGroupGap": 2.199999999999971,
+      "maximumInteriorGap": 1.2272727272726982
+    },
+    {
+      "group": 3,
+      "inputs": 6,
+      "firstTime": 16.44999999999987,
+      "lastTime": 23.09090909090942,
+      "nextGroupGap": 1.9568181818183596,
+      "maximumInteriorGap": 1.6204545454546917
+    },
+    {
+      "group": 4,
+      "inputs": 8,
+      "firstTime": 25.04772727272778,
+      "lastTime": 34.68181818181928,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.531818181818295
+    }
+  ]
+}
+rhythm-cascade fast-flip full taps=26 finish=33.199999999999996
+{
+  "firstTap": 1.5227272727272743,
+  "lastTapToFinish": 0.20024647617547942,
+  "maxInputGap": 2.052272727272678,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 5,
+      "firstTime": 1.5227272727272743,
+      "lastTime": 5.672727272727272,
+      "nextGroupGap": 2.009090909090916,
+      "maximumInteriorGap": 1.4568181818181762
+    },
+    {
+      "group": 2,
+      "inputs": 6,
+      "firstTime": 7.681818181818188,
+      "lastTime": 13.049999999999937,
+      "nextGroupGap": 2.052272727272678,
+      "maximumInteriorGap": 1.4568181818181607
+    },
+    {
+      "group": 3,
+      "inputs": 6,
+      "firstTime": 15.102272727272615,
+      "lastTime": 21.290909090909345,
+      "nextGroupGap": 1.9568181818183596,
+      "maximumInteriorGap": 1.6431818181819366
+    },
+    {
+      "group": 4,
+      "inputs": 8,
+      "firstTime": 23.247727272727705,
+      "lastTime": 31.98181818181932,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.4431818181819231
+    }
+  ]
+}
+rhythm-dense chosen safe taps=50 finish=36
+{
+  "firstTap": 0.45681818181818185,
+  "lastTapToFinish": 1.197727272726226,
+  "maxInputGap": 1.7931818181819779,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 50,
+      "firstTime": 0.45681818181818185,
+      "lastTime": 34.802272727273774,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.7931818181819779
+    }
+  ]
+}
+rhythm-dense chosen full taps=50 finish=33.199999999999996
+{
+  "firstTap": 0.45681818181818185,
+  "lastTapToFinish": 0.15489654330464475,
+  "maxInputGap": 2.1477272727274332,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 49,
+      "firstTime": 0.45681818181818185,
+      "lastTime": 32.102272727273814,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 2.1477272727274332
+    }
+  ]
+}
+rhythm-dense fast-flip safe taps=28 finish=36
+{
+  "firstTap": 0.6136363636363638,
+  "lastTapToFinish": 1.272727272726172,
+  "maxInputGap": 1.6204545454546917,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 28,
+      "firstTime": 0.6136363636363638,
+      "lastTime": 34.72727272727383,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.6204545454546917
+    }
+  ]
+}
+rhythm-dense fast-flip full taps=29 finish=33.199999999999996
+{
+  "firstTap": 0.6136363636363638,
+  "lastTapToFinish": 0.20024647617548652,
+  "maxInputGap": 1.6431818181819366,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 28,
+      "firstTime": 0.6136363636363638,
+      "lastTime": 32.02727272727386,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.6431818181819366
+    }
+  ]
+}
+rhythm-waves chosen safe taps=44 finish=36
+{
+  "firstTap": 1.2613636363636365,
+  "lastTapToFinish": 1.4704545454534994,
+  "maxInputGap": 2.359090909091119,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 7,
+      "firstTime": 1.2613636363636365,
+      "lastTime": 6.279545454545449,
+      "nextGroupGap": 2.3590909090909253,
+      "maximumInteriorGap": 1.7931818181818233
+    },
+    {
+      "group": 2,
+      "inputs": 21,
+      "firstTime": 8.638636363636374,
+      "lastTime": 22.484090909091165,
+      "nextGroupGap": 2.359090909091119,
+      "maximumInteriorGap": 1.7931818181819352
+    },
+    {
+      "group": 3,
+      "inputs": 16,
+      "firstTime": 24.843181818182284,
+      "lastTime": 34.5295454545465,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.3000000000000043
+    }
+  ]
+}
+rhythm-waves chosen full taps=44 finish=33.199999999999996
+{
+  "firstTap": 1.0840909090909085,
+  "lastTapToFinish": 0.15489654330463765,
+  "maxInputGap": 2.359090909091119,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 7,
+      "firstTime": 1.0840909090909085,
+      "lastTime": 5.679545454545441,
+      "nextGroupGap": 2.3590909090909262,
+      "maximumInteriorGap": 1.8605403693849079
+    },
+    {
+      "group": 2,
+      "inputs": 20,
+      "firstTime": 8.038636363636368,
+      "lastTime": 20.6840909090911,
+      "nextGroupGap": 2.359090909091119,
+      "maximumInteriorGap": 2.147727272727236
+    },
+    {
+      "group": 3,
+      "inputs": 16,
+      "firstTime": 23.04318181818222,
+      "lastTime": 31.829545454546533,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.0818181818182495
+    }
+  ]
+}
+rhythm-waves fast-flip safe taps=25 finish=36
+{
+  "firstTap": 1.3545454545454552,
+  "lastTapToFinish": 1.5454545454534454,
+  "maxInputGap": 2.5909090909093244,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 5,
+      "firstTime": 1.3545454545454552,
+      "lastTime": 6.204545454545448,
+      "nextGroupGap": 2.5909090909091095,
+      "maximumInteriorGap": 1.5318181818181802
+    },
+    {
+      "group": 2,
+      "inputs": 12,
+      "firstTime": 8.795454545454557,
+      "lastTime": 22.409090909091177,
+      "nextGroupGap": 2.5909090909093244,
+      "maximumInteriorGap": 1.620454545454507
+    },
+    {
+      "group": 3,
+      "inputs": 8,
+      "firstTime": 25.0000000000005,
+      "lastTime": 34.454545454546555,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.531818181818192
+    }
+  ]
+}
+rhythm-waves fast-flip full taps=26 finish=33.199999999999996
+{
+  "firstTap": 1.1999999999999997,
+  "lastTapToFinish": 0.2002464761754723,
+  "maxInputGap": 2.5909090909093244,
+  "groups": [
+    {
+      "group": 1,
+      "inputs": 5,
+      "firstTime": 1.1999999999999997,
+      "lastTime": 5.6045454545454385,
+      "nextGroupGap": 2.5909090909091086,
+      "maximumInteriorGap": 1.4568181818181811
+    },
+    {
+      "group": 2,
+      "inputs": 12,
+      "firstTime": 8.195454545454547,
+      "lastTime": 20.6090909090911,
+      "nextGroupGap": 2.5909090909093244,
+      "maximumInteriorGap": 1.6431818181817928
+    },
+    {
+      "group": 3,
+      "inputs": 8,
+      "firstTime": 23.200000000000426,
+      "lastTime": 31.754545454546573,
+      "nextGroupGap": null,
+      "maximumInteriorGap": 1.4431818181819231
+    }
+  ]
+}
+COURSE DRAFT PASS 475093 checks / 942 complete games; windows=True; no negative routes yet

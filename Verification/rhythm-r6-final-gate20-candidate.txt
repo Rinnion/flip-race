@@ -1,0 +1,32 @@
+SHIFT20 rhythm-cascade/Flip/safe: six dt, last inputs 60ms, finish unchanged, real wall+empty by 7815 PASS
+SHIFT20 rhythm-cascade/Flip/full: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7815 PASS
+SHIFT20 rhythm-cascade/Flip/negative: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7815 PASS
+SHIFT20 rhythm-cascade/Jump/safe: six dt, last inputs 60ms, finish unchanged, real wall+empty by 7815 PASS
+SHIFT20 rhythm-cascade/Jump/full: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7815 PASS
+SHIFT20 rhythm-cascade/Jump/negative: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7815 PASS
+SHIFT20 rhythm-dense/Flip/safe: six dt, last inputs 60ms, finish unchanged, real wall+empty by 7825 PASS
+SHIFT20 rhythm-dense/Flip/full: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7825 PASS
+SHIFT20 rhythm-dense/Flip/negative: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7825 PASS
+SHIFT20 rhythm-dense/Jump/safe: six dt, last inputs 60ms, finish unchanged, real wall+empty by 7825 PASS
+SHIFT20 rhythm-dense/Jump/full: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7825 PASS
+SHIFT20 rhythm-dense/Jump/negative: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7825 PASS
+SHIFT20 rhythm-waves/Flip/safe: six dt, last inputs 60ms, finish unchanged, real wall+empty by 7835 PASS
+SHIFT20 rhythm-waves/Flip/full: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7835 PASS
+SHIFT20 rhythm-waves/Flip/negative: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7835 PASS
+SHIFT20 rhythm-waves/Jump/safe: six dt, last inputs 60ms, finish unchanged, real wall+empty by 7835 PASS
+SHIFT20 rhythm-waves/Jump/full: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7835 PASS
+SHIFT20 rhythm-waves/Jump/negative: six dt, last inputs 25ms, finish unchanged, real wall+empty by 7835 PASS
+STATE input=40 shift=0.8 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=14 vy=0 gravity=-1 support=Wall
+ESCAPE target=7808 offsets=[0,0.3,0.7400000000000003] minSpacing=0.3 atX=[7506.000000000038,7572.0000000000355,7668.800000000036] inputY=[14,89.18749999999956,219.86750000000876] endY=14 hits=1 slows=1
+FIRST_INPUT_LATE_MARGIN seconds=0.029999999999972715; measured against fixed remaining witness; comfort is not inferred from existence.
+STATE input=41 shift=0.4 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=93.0375451962807 vy=-133.323863636363 gravity=-1 support=None
+ESCAPE target=7808 offsets=[0.02,0.5600000000000002,1.600000000000001] minSpacing=0.5400000000000001 atX=[7510.400000000039,7629.200000000034,7858.000000000032] inputY=[90.23856792355299,107.68118155991569,14] endY=14 hits=1 slows=0
+FIRST_INPUT_LATE_MARGIN seconds=0.0016012947880517457; measured against fixed remaining witness; comfort is not inferred from existence.
+STATE input=41 shift=0.64 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=93.0375451962807 vy=-133.323863636363 gravity=-1 support=None
+ESCAPE target=7808 offsets=[0.02,0.5600000000000002,1.600000000000001] minSpacing=0.5400000000000001 atX=[7510.400000000039,7629.200000000034,7858.000000000032] inputY=[90.23856792355299,107.68118155991569,14] endY=14 hits=1 slows=0
+FIRST_INPUT_LATE_MARGIN seconds=0.0016012947880517457; measured against fixed remaining witness; comfort is not inferred from existence.
+STATE input=41 shift=0.8 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=93.0375451962807 vy=-133.323863636363 gravity=-1 support=None
+ESCAPE target=7808 offsets=[0.02,0.5600000000000002,1.600000000000001] minSpacing=0.5400000000000001 atX=[7510.400000000039,7629.200000000034,7858.000000000032] inputY=[90.23856792355299,107.68118155991569,14] endY=14 hits=1 slows=0
+FIRST_INPUT_LATE_MARGIN seconds=0.0016012947880517457; measured against fixed remaining witness; comfort is not inferred from existence.
+PASS targeted R5 recovery offset=20: 100407 checks; 4 actual modified prefixes, 3 accepted recovery inputs, entire next union cleared; no state injection.
+PASS tool-only final-gate+20: 100407 assertions / 205 actual course games; runtime unchanged.

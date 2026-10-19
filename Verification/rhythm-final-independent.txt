@@ -1,0 +1,748 @@
+Independent RHYTHM scope=courses-final
+Captured UTC=2026-10-19T20:26:09.5822303Z
+98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\ContinuousMotion.cs
+8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E F:\Home\Game\flip-race-unity\Assets\Scripts\Core\FlightSettings.cs
+719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\MotionProfiles.cs
+BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B F:\Home\Game\flip-race-unity\Assets\Scripts\Core\ObstacleGeometry.cs
+AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\RaceSimulation.cs
+588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksControl.cs
+901255021DD6069E43734E80D16B88E5DC82824CB973239A451D8999317FA576 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksFull.cs
+8C77E83043D3A7CC3496B0206FD8D46DCFC9B0CD670F5527906F9C9890EF0E1C F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksRhythm.cs
+ACBBBC9ABF4F5646B9130A96FBF6186C325D8248FCFBB23F49F3CCB8C869E14C F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksRhythmFull.cs
+4623F6339193B3B098AB37EA81995EB3A1935D591FFFBC0F1E1D94E5A45E97F1 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksRhythmNegatives.cs
+86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksTune.cs
+9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksV3.cs
+DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksV4.cs
+57F037B24329814B2D63EE13E197B3A1ED8B8FEA9964DE2D0136128B03D462B2 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\BeforeCandidate.cs
+8A58C72C527490C66EAA342B8107BD77DB1A935BC1E5C24EFB10EDC13A06764C F:\Home\Game\flip-race-unity\Tools\RhythmAudit\BeforeRecoveryRed.cs
+C23944C844DDD3ACF257D0BE476C1FBFF9FCF6C2546FED749C99489547EE4875 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\CompactCandidate.cs
+120478DCF276036F99BF2AA7AC22C565FFE67D2FA75ACFB124331C6699E9A87C F:\Home\Game\flip-race-unity\Tools\RhythmAudit\CourseDuel.cs
+B59DA864F5AD946B10F21965FF7DB615C6F2D89473AD895D4CCB50C0C55ED7D0 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\CourseRecovery.cs
+B7ABF23640B56D790374ACA9D2750225504243917EF4FC113340ED29C8A7B87E F:\Home\Game\flip-race-unity\Tools\RhythmAudit\FamilyStage.cs
+3916FED2077B15697EF75110EEEA68A373DDB08BD9872435039F449C013DFEC5 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\FullCourses.cs
+3014F35117FC6B265B56F85872EC9E631A4031CD4A209A52EC62F1A11B1D0D43 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\GateParts.cs
+CFE629A4E2AF6B6EC158AFAEEC0641B0F00EA0BC3FC14975EBCEEC6FDD463E21 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Geometry.cs
+55CF27D44F9E1C2A1A1FD4D314F08AAB16FCAE799698085109442E3E2335CC75 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Modules.cs
+13152CDD0931E92388E56521C50B53BB06FEFDFFA33415C549E2BF4E713885EF F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Program.cs
+6BBC30260964D4F36F824FD1DB6CA70D5078A518F66AC0CC763D338468551F9F F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Recovery.cs
+8F305843A7E24469F4E37787C038C1E1145C760DF32227640BC0AB8E44FA9473 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\RecoveryRed.cs
+287B7993E691301FB89A406F2F05D556D9D20FF4C8F42BD04B495C817BAB96DC F:\Home\Game\flip-race-unity\Tools\RhythmAudit\RestoredFlow.cs
+7DEE3AAD59B0470265438E5135CD7278E29FC406A31C12664F2EC404D90F54AD F:\Home\Game\flip-race-unity\Tools\RhythmAudit\SpeedFixtures.cs
+A784607B5CDD690551E0BDD6DC97E76668B167821E500141C14F01C3BA4C487A F:\Home\Game\flip-race-unity\Verification\rhythm-final-routes.json
+FINAL GEOMETRY CPU SNAPSHOT rhythm-final-routes.json; browser and human comfort are separate gates.
+BUDGET rhythm-cascade negative=2 subsets=2048 conservativeEnd=7793 margin=83 worstMask=1024
+CLOCK rhythm-cascade Fast safe accepted=25 ignored=0 first=1.204545463030921 minInterval=0.9159090947698463 maxInterval=2.4090909176929483 tail=1.3181818164658452
+GROUP group-1 X=180..1530 actualClock=0.8181818259899591..6.954545457476852 accepted=5
+GROUP group-2 X=1730..3320 actualClock=7.863636370089854..15.090909098378585 accepted=6
+GROUP group-3 X=3520..5265 actualClock=16.000000006453508..23.931818189287686 accepted=6
+GROUP group-4 X=5465..7815 actualClock=24.840909097362605..35.522727280196754 accepted=8
+ACTION 0 X=265.0000018668026 t=1.204545463030921 support=Wall side=1 air=False charge=True
+ACTION 1 X=523.5000005480499 t=2.379545457036591 support=Wall side=0 air=False charge=True
+ACTION 2 X=725.0000013974161 t=3.2954545518064373 support=Wall side=1 air=False charge=True
+ACTION 3 X=995.0000003766866 t=4.522727274439484 support=Wall side=0 air=False charge=True
+ACTION 4 X=1278.0000001829712 t=5.809090909922597 support=Wall side=1 air=False charge=True
+ACTION 5 X=1808.0000020754187 t=8.218181827615545 support=Wall side=0 air=False charge=True
+ACTION 6 X=2135.00000196366 t=9.704545463471192 support=Wall side=1 air=False charge=True
+ACTION 7 X=2405.0000003766863 t=10.931818183530405 support=Wall side=0 air=False charge=True
+ACTION 8 X=2663.5000005480497 t=12.10681818430933 support=Wall side=1 air=False charge=True
+ACTION 9 X=2865.000001397416 t=13.022727279079179 support=Wall side=0 air=False charge=True
+ACTION 10 X=3135.0000003766863 t=14.250000001712225 support=Wall side=1 air=False charge=True
+ACTION 11 X=3619.00000144957 t=16.450000006588976 support=Wall side=0 air=False charge=True
+ACTION 12 X=3960.000001859352 t=18.000000008451625 support=Wall side=1 air=False charge=True
+ACTION 13 X=4210.50000066726 t=19.13863636666938 support=Wall side=0 air=False charge=True
+ACTION 14 X=4567.000001743869 t=20.75909091701761 support=Wall side=1 air=False charge=True
+ACTION 15 X=4810.000000779019 t=21.863636367177367 support=Wall side=0 air=False charge=True
+ACTION 16 X=5080.000000376687 t=23.090909092621327 support=Wall side=1 air=False charge=True
+ACTION 17 X=5510.500001687989 t=25.047727280399965 support=Wall side=0 air=False charge=True
+ACTION 18 X=5805.000000011609 t=26.386363636416412 support=Wall side=1 air=False charge=True
+ACTION 19 X=6130.000001978562 t=27.863636372629834 support=Wall side=0 air=False charge=True
+ACTION 20 X=6432.9999999424745 t=29.240909090647623 support=Wall side=1 air=False charge=True
+ACTION 21 X=6753.000002015815 t=30.695454554617346 support=Wall side=0 air=False charge=True
+ACTION 22 X=7090.000001889155 t=32.227272735859806 support=Wall side=1 air=False charge=True
+ACTION 23 X=7360.000000376687 t=33.45454545625768 support=Wall side=0 air=False charge=True
+ACTION 24 X=7630.000000376687 t=34.6818181835304 support=Wall side=1 air=False charge=True
+CLOCK rhythm-cascade Fast full accepted=26 ignored=0 first=1.204545463030921 minInterval=0.5272727269679329 maxInterval=2.0522727256383195 tail=0.20024646672820268
+GROUP group-1 X=180..1530 actualClock=0.8181818259899591..6.35454545925601 accepted=5
+GROUP group-2 X=1730..3320 actualClock=7.263636370089859..13.890909098378588 accepted=6
+GROUP group-3 X=3520..5265 actualClock=14.80000000645351..22.131818189287667 accepted=6
+GROUP group-4 X=5465..7815 actualClock=23.040909097362587..32.82272728019674 accepted=8
+ACTION 0 X=265.0000018668026 t=1.204545463030921 support=Wall side=1 air=False charge=True
+ACTION 1 X=492.5000010099858 t=2.2386363682272084 support=Wall side=0 air=False charge=True
+ACTION 2 X=608.5000009429307 t=2.7659090951951413 support=Wall side=1 air=False charge=True
+ACTION 3 X=995.000000795862 t=4.2227272763448305 support=Wall side=0 air=False charge=True
+ACTION 4 X=1244.0000006896107 t=5.354545457680054 support=Wall side=1 air=False charge=True
+ACTION 5 X=1752.0000017773957 t=7.363636371715441 support=Wall side=0 air=False charge=True
+ACTION 6 X=2116.000002248861 t=8.825757582572317 support=Wall side=1 air=False charge=True
+ACTION 7 X=2405.000000798886 t=10.031818185449483 support=Wall side=0 air=False charge=True
+ACTION 8 X=2632.5000010099857 t=11.06590909549994 support=Wall side=1 air=False charge=True
+ACTION 9 X=2748.5000009429305 t=11.59318182246788 support=Wall side=0 air=False charge=True
+ACTION 10 X=3135.0000007958615 t=13.050000003617573 support=Wall side=1 air=False charge=True
+ACTION 11 X=3586.500000436291 t=15.102272729255892 support=Wall side=0 air=False charge=True
+ACTION 12 X=3960.0000009775686 t=16.500000004443518 support=Wall side=1 air=False charge=True
+ACTION 13 X=4210.50000066726 t=17.638636366669378 support=Wall side=0 air=False charge=True
+ACTION 14 X=4382.500001837001 t=18.42045455380456 support=Wall side=1 air=False charge=True
+ACTION 15 X=4809.999999998354 t=20.06363636362889 support=Wall side=0 air=False charge=True
+ACTION 16 X=5080.000000376687 t=21.29090909262131 support=Wall side=1 air=False charge=True
+ACTION 17 X=5510.500001687989 t=23.247727280399946 support=Wall side=0 air=False charge=True
+ACTION 18 X=5746.500000883327 t=24.320454549469662 support=Wall side=1 air=False charge=True
+ACTION 19 X=6130.000000652359 t=25.763636366601627 support=Wall side=0 air=False charge=True
+ACTION 20 X=6399.000000391588 t=26.986363638143573 support=Wall side=1 air=False charge=True
+ACTION 21 X=6719.000001958202 t=28.140909099809992 support=Wall side=0 air=False charge=True
+ACTION 22 X=7090.000000838623 t=29.527272731084636 support=Wall side=1 air=False charge=True
+ACTION 23 X=7360.000000376687 t=30.754545456257652 support=Wall side=0 air=False charge=True
+ACTION 24 X=7630.000000376687 t=31.981818183530383 support=Wall side=1 air=False charge=True
+ACTION 25 X=7853.945777319797 t=32.9997535332718 support=Wall side=0 air=False charge=True
+CLOCK rhythm-cascade Fast trap accepted=26 ignored=0 first=1.204545463030921 minInterval=0.5272727269679329 maxInterval=2.0522727256383195 tail=0.20024646672820268
+GROUP group-1 X=180..1530 actualClock=0.8181818259899591..6.35454545925601 accepted=5
+GROUP group-2 X=1730..3320 actualClock=7.263636370089859..13.890909098378588 accepted=6
+GROUP group-3 X=3520..5265 actualClock=14.80000000645351..22.131818189287667 accepted=6
+GROUP group-4 X=5465..7815 actualClock=23.040909097362587..33.12272727882514 accepted=8
+ACTION 0 X=265.0000018668026 t=1.204545463030921 support=Wall side=1 air=False charge=True
+ACTION 1 X=492.5000010099858 t=2.2386363682272084 support=Wall side=0 air=False charge=True
+ACTION 2 X=608.5000009429307 t=2.7659090951951413 support=Wall side=1 air=False charge=True
+ACTION 3 X=995.000000795862 t=4.2227272763448305 support=Wall side=0 air=False charge=True
+ACTION 4 X=1244.0000006896107 t=5.354545457680054 support=Wall side=1 air=False charge=True
+ACTION 5 X=1752.0000017773957 t=7.363636371715441 support=Wall side=0 air=False charge=True
+ACTION 6 X=2116.000002248861 t=8.825757582572317 support=Wall side=1 air=False charge=True
+ACTION 7 X=2405.000000798886 t=10.031818185449483 support=Wall side=0 air=False charge=True
+ACTION 8 X=2632.5000010099857 t=11.06590909549994 support=Wall side=1 air=False charge=True
+ACTION 9 X=2748.5000009429305 t=11.59318182246788 support=Wall side=0 air=False charge=True
+ACTION 10 X=3135.0000007958615 t=13.050000003617573 support=Wall side=1 air=False charge=True
+ACTION 11 X=3586.500000436291 t=15.102272729255892 support=Wall side=0 air=False charge=True
+ACTION 12 X=3960.0000009775686 t=16.500000004443518 support=Wall side=1 air=False charge=True
+ACTION 13 X=4210.50000066726 t=17.638636366669378 support=Wall side=0 air=False charge=True
+ACTION 14 X=4382.500001837001 t=18.42045455380456 support=Wall side=1 air=False charge=True
+ACTION 15 X=4809.999999998354 t=20.06363636362889 support=Wall side=0 air=False charge=True
+ACTION 16 X=5080.000000376687 t=21.29090909262131 support=Wall side=1 air=False charge=True
+ACTION 17 X=5510.500001687989 t=23.247727280399946 support=Wall side=0 air=False charge=True
+ACTION 18 X=5746.500000883327 t=24.320454549469662 support=Wall side=1 air=False charge=True
+ACTION 19 X=6130.000000652359 t=25.763636366601627 support=Wall side=0 air=False charge=True
+ACTION 20 X=6399.000000391588 t=26.986363638143573 support=Wall side=1 air=False charge=True
+ACTION 21 X=6719.000001958202 t=28.140909099809992 support=Wall side=0 air=False charge=True
+ACTION 22 X=7090.000000838623 t=29.527272731084636 support=Wall side=1 air=False charge=True
+ACTION 23 X=7360.000000376687 t=30.754545456257652 support=Wall side=0 air=False charge=True
+ACTION 24 X=7669.000002097771 t=32.159090918626205 support=Wall side=1 air=False charge=True
+ACTION 25 X=7853.945777319797 t=33.29975353327178 support=Wall side=0 air=False charge=True
+CLOCK rhythm-cascade Main safe accepted=44 ignored=0 first=1.0477272790452983 minInterval=0.16818181481960703 maxInterval=2.2545454581785975 tail=1.2431818119954912
+GROUP group-1 X=180..1530 actualClock=0.8181818259899591..6.954545458594435 accepted=7
+GROUP group-2 X=1730..3320 actualClock=7.863636370089849..15.090909099496189 accepted=9
+GROUP group-3 X=3520..5265 actualClock=16.000000006453515..23.931818190405263 accepted=12
+GROUP group-4 X=5465..7815 actualClock=24.840909097362584..35.522727281314346 accepted=16
+ACTION 0 X=230.50000138996558 t=1.0477272790452983 support=Wall side=1 air=False charge=True
+ACTION 1 X=281.5000013601632 t=1.279545460728015 support=None side=1 air=True charge=True
+ACTION 2 X=566.0000001606197 t=2.5727272734573616 support=Wall side=0 air=False charge=True
+ACTION 3 X=960.500001460746 t=4.365909097548845 support=Wall side=0 air=False charge=True
+ACTION 4 X=1011.5000013601633 t=4.597727278909832 support=None side=0 air=True charge=True
+ACTION 5 X=1257.5000007343142 t=5.715909094246883 support=Wall side=1 air=False charge=True
+ACTION 6 X=1294.499999994628 t=5.88409090906649 support=None side=1 air=True charge=True
+ACTION 7 X=1790.500000793919 t=8.138636367245088 support=Wall side=0 air=False charge=True
+ACTION 8 X=1841.0000013899653 t=8.36818182449985 support=None side=0 air=True charge=True
+ACTION 9 X=2086.800000737295 t=9.485454548805901 support=Wall side=1 air=False charge=True
+ACTION 10 X=2153.800000406489 t=9.790000001847694 support=None side=1 air=True charge=True
+ACTION 11 X=2370.500001170918 t=10.77500000532238 support=Wall side=0 air=False charge=True
+ACTION 12 X=2421.500001360163 t=11.006818188000775 support=None side=0 air=True charge=True
+ACTION 13 X=2706.0000001606195 t=12.30000000073012 support=Wall side=1 air=False charge=True
+ACTION 14 X=3100.500001460746 t=14.093181824821604 support=Wall side=1 air=False charge=True
+ACTION 15 X=3151.500001360163 t=14.325000006182593 support=None side=1 air=True charge=True
+ACTION 16 X=3576.5000010323374 t=16.256818186510657 support=Wall side=0 air=False charge=True
+ACTION 17 X=3633.500001002535 t=16.515909095466093 support=None side=0 air=True charge=True
+ACTION 18 X=3925.500000048861 t=17.843181818403938 support=Wall side=1 air=False charge=True
+ACTION 19 X=3976.500001360163 t=18.075000006182588 support=None side=1 air=True charge=True
+ACTION 20 X=4210.00000092058 t=19.13636364054811 support=Wall side=0 air=False charge=True
+ACTION 21 X=4271.000000764117 t=19.413636367109646 support=None side=0 air=True charge=True
+ACTION 22 X=4478.00000131546 t=20.354545460524843 support=Wall side=1 air=False charge=True
+ACTION 23 X=4576.000001479373 t=20.800000006724442 support=None side=1 air=True charge=True
+ACTION 24 X=4775.500001427219 t=21.70681818830556 support=Wall side=0 air=False charge=True
+ACTION 25 X=4826.500001360164 t=21.93863636981894 support=None side=0 air=True charge=True
+ACTION 26 X=5045.5000011366465 t=22.934090914257496 support=Wall side=1 air=False charge=True
+ACTION 27 X=5096.500001360164 t=23.16590909709167 support=None side=1 air=True charge=True
+ACTION 28 X=5510.500001687989 t=25.047727280399943 support=Wall side=0 air=False charge=True
+ACTION 29 X=5556.000001687989 t=25.254545462218125 support=None side=0 air=True charge=True
+ACTION 30 X=5791.500000890777 t=26.325000004048974 support=Wall side=1 air=False charge=True
+ACTION 31 X=5856.000000555501 t=26.618181820706813 support=None side=1 air=True charge=True
+ACTION 32 X=6095.500000831173 t=27.706818185596234 support=Wall side=0 air=False charge=True
+ACTION 33 X=6146.500001360164 t=27.938636369818912 support=None side=0 air=True charge=True
+ACTION 34 X=6412.500000436292 t=29.1477272747104 support=Wall side=1 air=False charge=True
+ACTION 35 X=6449.4999999946285 t=29.31590909088467 support=None side=1 air=True charge=True
+ACTION 36 X=6732.500000182972 t=30.602272728104406 support=Wall side=0 air=False charge=True
+ACTION 37 X=6769.4999999946285 t=30.770454545430123 support=None side=0 air=True charge=True
+ACTION 38 X=7055.500000138269 t=32.07045454608304 support=Wall side=1 air=False charge=True
+ACTION 39 X=7106.500001360164 t=32.3022727334553 support=None side=1 air=True charge=True
+ACTION 40 X=7325.5000011366465 t=33.29772727789385 support=Wall side=0 air=False charge=True
+ACTION 41 X=7376.500001360164 t=33.52954546072803 support=None side=0 air=True charge=True
+ACTION 42 X=7595.5000011366465 t=34.52500000516658 support=Wall side=1 air=False charge=True
+ACTION 43 X=7646.500001360164 t=34.756818188000764 support=None side=1 air=True charge=True
+CLOCK rhythm-cascade Main full accepted=44 ignored=0 first=1.0477272790452983 minInterval=0.10454545427452455 maxInterval=2.147727276535033 tail=0.15489653656037206
+GROUP group-1 X=180..1530 actualClock=0.8181818259899591..6.35454546032258 accepted=7
+GROUP group-2 X=1730..3320 actualClock=7.26363637008986..13.890909099496168 accepted=9
+GROUP group-3 X=3520..5265 actualClock=14.800000006453496..22.131818190405248 accepted=11
+GROUP group-4 X=5465..7815 actualClock=23.04090909736257..32.82272728131432 accepted=16
+ACTION 0 X=230.50000138996558 t=1.0477272790452983 support=Wall side=1 air=False charge=True
+ACTION 1 X=281.5000013601632 t=1.279545460728015 support=None side=1 air=True charge=True
+ACTION 2 X=485.181120100234 t=2.2053687277283376 support=Wall side=0 air=False charge=True
+ACTION 3 X=960.5000006425316 t=4.065909093829689 support=Wall side=0 air=False charge=True
+ACTION 4 X=1011.5000013601632 t=4.297727278909832 support=None side=0 air=True charge=True
+ACTION 5 X=1218.5000013154595 t=5.238636369615723 support=Wall side=1 air=False charge=True
+ACTION 6 X=1271.000001270756 t=5.477272733048889 support=None side=1 air=True charge=True
+ACTION 7 X=1752.500001717791 t=7.365909098717236 support=Wall side=0 air=False charge=True
+ACTION 8 X=1775.5000016581864 t=7.470454552991761 support=None side=0 air=True charge=True
+ACTION 9 X=2061.8000023703057 t=8.661515158697906 support=Wall side=1 air=False charge=True
+ACTION 10 X=2142.300002100457 t=8.90545455181958 support=None side=1 air=True charge=True
+ACTION 11 X=2370.5000014436096 t=9.875000006561876 support=Wall side=0 air=False charge=True
+ACTION 12 X=2421.500001360163 t=10.106818188000757 support=None side=0 air=True charge=True
+ACTION 13 X=2625.181120100234 t=11.032641455001079 support=Wall side=1 air=False charge=True
+ACTION 14 X=3100.5000006425316 t=12.89318182110243 support=Wall side=1 air=False charge=True
+ACTION 15 X=3151.500001360163 t=13.125000006182574 support=None side=1 air=True charge=True
+ACTION 16 X=3571.000001360163 t=15.03181818800075 support=Wall side=0 air=False charge=True
+ACTION 17 X=3594.000001658186 t=15.136363643900854 support=None side=0 air=True charge=True
+ACTION 18 X=3925.500001819877 t=16.343181826454003 support=Wall side=1 air=False charge=True
+ACTION 19 X=3976.500001360163 t=16.57500000618258 support=None side=1 air=True charge=True
+ACTION 20 X=4171.000001501725 t=17.45909091591695 support=Wall side=0 air=False charge=True
+ACTION 21 X=4208.999999935024 t=17.631818181522842 support=None side=0 air=True charge=True
+ACTION 22 X=4237.000001062141 t=17.75909091391881 support=None side=0 air=True charge=True
+ACTION 23 X=4775.500001899845 t=19.906818190453844 support=Wall side=0 air=False charge=True
+ACTION 24 X=4826.500001360164 t=20.138636369818926 support=None side=0 air=True charge=True
+ACTION 25 X=5045.5000011366465 t=21.13409091425748 support=Wall side=1 air=False charge=True
+ACTION 26 X=5096.500001360164 t=21.365909097091656 support=None side=1 air=True charge=True
+ACTION 27 X=5509.500001747594 t=23.2431818261254 support=Wall side=0 air=False charge=True
+ACTION 28 X=5551.500001896606 t=23.434090917711817 support=None side=0 air=True charge=True
+ACTION 29 X=5693.000000182972 t=24.077272728104393 support=Wall side=1 air=False charge=True
+ACTION 30 X=5799.500002053661 t=24.546948947945015 support=None side=1 air=True charge=True
+ACTION 31 X=6095.5000018617 t=25.60681819028043 support=Wall side=0 air=False charge=True
+ACTION 32 X=6146.500001360164 t=25.838636369818904 support=None side=0 air=True charge=True
+ACTION 33 X=6357.500001255856 t=26.797727278435683 support=Wall side=1 air=False charge=True
+ACTION 34 X=6431.000000019059 t=27.131818181904794 support=None side=1 air=True charge=True
+ACTION 35 X=6674.000001676924 t=27.93636364398599 support=Wall side=0 air=False charge=True
+ACTION 36 X=6751.500002090321 t=28.288636373137813 support=None side=0 air=True charge=True
+ACTION 37 X=7055.500001837001 t=29.370454553804535 support=Wall side=1 air=False charge=True
+ACTION 38 X=7106.500001360164 t=29.60227273345527 support=None side=1 air=True charge=True
+ACTION 39 X=7325.5000011366465 t=30.597727277893824 support=Wall side=0 air=False charge=True
+ACTION 40 X=7376.500001360164 t=30.829545460728 support=None side=0 air=True charge=True
+ACTION 41 X=7595.5000011366465 t=31.825000005166554 support=Wall side=1 air=False charge=True
+ACTION 42 X=7646.500001360164 t=32.05681818800074 support=None side=1 air=True charge=True
+ACTION 43 X=7863.922761956719 t=33.04510346343958 support=Wall side=0 air=False charge=True
+CLOCK rhythm-cascade Main trap accepted=44 ignored=0 first=1.0477272790452983 minInterval=0.10454545427452455 maxInterval=2.147727276535033 tail=0.15489653656037206
+GROUP group-1 X=180..1530 actualClock=0.8181818259899591..6.35454546032258 accepted=7
+GROUP group-2 X=1730..3320 actualClock=7.26363637008986..13.890909099496168 accepted=9
+GROUP group-3 X=3520..5265 actualClock=14.800000006453496..22.131818190405248 accepted=11
+GROUP group-4 X=5465..7815 actualClock=23.04090909736257..33.12272727309451 accepted=16
+ACTION 0 X=230.50000138996558 t=1.0477272790452983 support=Wall side=1 air=False charge=True
+ACTION 1 X=281.5000013601632 t=1.279545460728015 support=None side=1 air=True charge=True
+ACTION 2 X=485.181120100234 t=2.2053687277283376 support=Wall side=0 air=False charge=True
+ACTION 3 X=960.5000006425316 t=4.065909093829689 support=Wall side=0 air=False charge=True
+ACTION 4 X=1011.5000013601632 t=4.297727278909832 support=None side=0 air=True charge=True
+ACTION 5 X=1218.5000013154595 t=5.238636369615723 support=Wall side=1 air=False charge=True
+ACTION 6 X=1271.000001270756 t=5.477272733048889 support=None side=1 air=True charge=True
+ACTION 7 X=1752.500001717791 t=7.365909098717236 support=Wall side=0 air=False charge=True
+ACTION 8 X=1775.5000016581864 t=7.470454552991761 support=None side=0 air=True charge=True
+ACTION 9 X=2061.8000023703057 t=8.661515158697906 support=Wall side=1 air=False charge=True
+ACTION 10 X=2142.300002100457 t=8.90545455181958 support=None side=1 air=True charge=True
+ACTION 11 X=2370.5000014436096 t=9.875000006561876 support=Wall side=0 air=False charge=True
+ACTION 12 X=2421.500001360163 t=10.106818188000757 support=None side=0 air=True charge=True
+ACTION 13 X=2625.181120100234 t=11.032641455001079 support=Wall side=1 air=False charge=True
+ACTION 14 X=3100.5000006425316 t=12.89318182110243 support=Wall side=1 air=False charge=True
+ACTION 15 X=3151.500001360163 t=13.125000006182574 support=None side=1 air=True charge=True
+ACTION 16 X=3571.000001360163 t=15.03181818800075 support=Wall side=0 air=False charge=True
+ACTION 17 X=3594.000001658186 t=15.136363643900854 support=None side=0 air=True charge=True
+ACTION 18 X=3925.500001819877 t=16.343181826454003 support=Wall side=1 air=False charge=True
+ACTION 19 X=3976.500001360163 t=16.57500000618258 support=None side=1 air=True charge=True
+ACTION 20 X=4171.000001501725 t=17.45909091591695 support=Wall side=0 air=False charge=True
+ACTION 21 X=4208.999999935024 t=17.631818181522842 support=None side=0 air=True charge=True
+ACTION 22 X=4237.000001062141 t=17.75909091391881 support=None side=0 air=True charge=True
+ACTION 23 X=4775.500001899845 t=19.906818190453844 support=Wall side=0 air=False charge=True
+ACTION 24 X=4826.500001360164 t=20.138636369818926 support=None side=0 air=True charge=True
+ACTION 25 X=5045.5000011366465 t=21.13409091425748 support=Wall side=1 air=False charge=True
+ACTION 26 X=5096.500001360164 t=21.365909097091656 support=None side=1 air=True charge=True
+ACTION 27 X=5509.500001747594 t=23.2431818261254 support=Wall side=0 air=False charge=True
+ACTION 28 X=5551.500001896606 t=23.434090917711817 support=None side=0 air=True charge=True
+ACTION 29 X=5693.000000182972 t=24.077272728104393 support=Wall side=1 air=False charge=True
+ACTION 30 X=5799.500002053661 t=24.546948947945015 support=None side=1 air=True charge=True
+ACTION 31 X=6095.5000018617 t=25.60681819028043 support=Wall side=0 air=False charge=True
+ACTION 32 X=6146.500001360164 t=25.838636369818904 support=None side=0 air=True charge=True
+ACTION 33 X=6357.500001255856 t=26.797727278435683 support=Wall side=1 air=False charge=True
+ACTION 34 X=6431.000000019059 t=27.131818181904794 support=None side=1 air=True charge=True
+ACTION 35 X=6674.000001676924 t=27.93636364398599 support=Wall side=0 air=False charge=True
+ACTION 36 X=6751.500002090321 t=28.288636373137813 support=None side=0 air=True charge=True
+ACTION 37 X=7055.500001837001 t=29.370454553804535 support=Wall side=1 air=False charge=True
+ACTION 38 X=7106.500001360164 t=29.60227273345527 support=None side=1 air=True charge=True
+ACTION 39 X=7325.5000011366465 t=30.597727277893824 support=Wall side=0 air=False charge=True
+ACTION 40 X=7376.500001360164 t=30.829545460728 support=None side=0 air=True charge=True
+ACTION 41 X=7671.000000011609 t=32.16818181823456 support=Wall side=1 air=False charge=True
+ACTION 42 X=7695.000000785912 t=32.327353827478255 support=None side=1 air=True charge=True
+ACTION 43 X=7863.922761956719 t=33.34510346343962 support=Wall side=0 air=False charge=True
+BUDGET rhythm-dense negative=2 subsets=2048 conservativeEnd=7803 margin=73 worstMask=1024
+CLOCK rhythm-dense Fast safe accepted=27 ignored=0 first=0.6136363721218304 minInterval=0.9159090954471658 maxInterval=1.6204545510255421 tail=1.2727272716886162
+GROUP group-1 X=50..7825 actualClock=0.22727273372621706..35.568181825651294 accepted=27
+ACTION 0 X=135.00000186680268 t=0.6136363721218304 support=Wall side=1 air=False charge=True
+ACTION 1 X=428.00000003395974 t=1.9454545456089087 support=Wall side=0 air=False charge=True
+ACTION 2 X=775.0000018146486 t=3.522727280975676 support=Wall side=1 air=False charge=True
+ACTION 3 X=1043.500000399038 t=4.743181819995627 support=Wall side=0 air=False charge=True
+ACTION 4 X=1245.0000013974159 t=5.659090915442798 support=Wall side=1 air=False charge=True
+ACTION 5 X=1525.0000002276747 t=6.931818182853064 support=Wall side=0 air=False charge=True
+ACTION 6 X=1805.0000002276747 t=8.204545455580337 support=Wall side=1 air=False charge=True
+ACTION 7 X=2078.000000331983 t=9.44545454696356 support=Wall side=0 air=False charge=True
+ACTION 8 X=2405.00000196366 t=10.931818190743913 support=Wall side=1 air=False charge=True
+ACTION 9 X=2685.0000002276747 t=12.20454545558034 support=Wall side=0 air=False charge=True
+ACTION 10 X=2979.0000000190585 t=13.540909090995726 support=Wall side=1 air=False charge=True
+ACTION 11 X=3330.000001784846 t=15.13636364447658 support=Wall side=0 air=False charge=True
+ACTION 12 X=3610.0000002276747 t=16.409090910125794 support=Wall side=1 air=False charge=True
+ACTION 13 X=3923.000002067968 t=17.831818191218037 support=Wall side=0 air=False charge=True
+ACTION 14 X=4243.000002015815 t=19.286363645526432 support=Wall side=1 air=False charge=True
+ACTION 15 X=4590.000001814649 t=20.863636371884766 support=Wall side=0 air=False charge=True
+ACTION 16 X=4850.500000518248 t=22.047727275082945 support=Wall side=1 air=False charge=True
+ACTION 17 X=5207.000001743869 t=23.668181826108487 support=Wall side=0 air=False charge=True
+ACTION 18 X=5460.000000630007 t=24.818181821045485 support=Wall side=1 air=False charge=True
+ACTION 19 X=5728.500000399039 t=26.03863636545019 support=Wall side=0 air=False charge=True
+ACTION 20 X=5930.000001397417 t=26.954545460897357 support=Wall side=1 air=False charge=True
+ACTION 21 X=6210.000000227676 t=28.227272728307614 support=Wall side=0 air=False charge=True
+ACTION 22 X=6450.5000008162715 t=29.32045454916487 support=Wall side=1 air=False charge=True
+ACTION 23 X=6745.000000011609 t=30.659090909143675 support=Wall side=0 air=False charge=True
+ACTION 24 X=7080.000001904056 t=32.18181819047298 support=Wall side=1 air=False charge=True
+ACTION 25 X=7360.000000227676 t=33.45454545558034 support=Wall side=0 air=False charge=True
+ACTION 26 X=7640.000000227676 t=34.72727272830761 support=Wall side=1 air=False charge=True
+CLOCK rhythm-dense Fast full accepted=28 ignored=0 first=0.6136363721218304 minInterval=0.5272727276452471 maxInterval=1.6886363549402112 tail=0.2002464718611705
+GROUP group-1 X=50..7825 actualClock=0.22727273372621706..32.86818182565131 accepted=27
+ACTION 0 X=135.00000186680268 t=0.6136363721218304 support=Wall side=1 air=False charge=True
+ACTION 1 X=394.0000005405992 t=1.7909090933663603 support=Wall side=0 air=False charge=True
+ACTION 2 X=775.0000006896109 t=3.2227272758618675 support=Wall side=1 air=False charge=True
+ACTION 3 X=1012.5000008609743 t=4.302272731186246 support=Wall side=0 air=False charge=True
+ACTION 4 X=1128.5000009429305 t=4.8295454588315 support=Wall side=1 air=False charge=True
+ACTION 5 X=1525.0000005723443 t=6.331818184419747 support=Wall side=0 air=False charge=True
+ACTION 6 X=1805.0000002276747 t=7.604545455580341 support=Wall side=1 air=False charge=True
+ACTION 7 X=2022.0000011664479 t=8.590909096211133 support=Wall side=0 air=False charge=True
+ACTION 8 X=2386.000002248861 t=10.053030309845038 support=Wall side=1 air=False charge=True
+ACTION 9 X=2685.0000006498744 t=11.304545457499431 support=Wall side=0 air=False charge=True
+ACTION 10 X=2946.500000503346 t=12.49318182046976 support=Wall side=1 air=False charge=True
+ACTION 11 X=3330.000000754051 t=13.936363639791137 support=Wall side=0 air=False charge=True
+ACTION 12 X=3610.0000002276747 t=15.2090909101258 support=Wall side=1 air=False charge=True
+ACTION 13 X=3889.000000242576 t=16.477272728375347 support=Wall side=0 air=False charge=True
+ACTION 14 X=4209.000001958202 t=17.631818190719112 support=Wall side=1 air=False charge=True
+ACTION 15 X=4590.000000689612 t=19.063636366770982 support=Wall side=0 air=False charge=True
+ACTION 16 X=4850.500000518248 t=20.247727275082966 support=Wall side=1 air=False charge=True
+ACTION 17 X=5022.500001837001 t=21.029545462895474 support=Wall side=0 air=False charge=True
+ACTION 18 X=5459.999999923848 t=22.718181817835685 support=Wall side=1 air=False charge=True
+ACTION 19 X=5697.500000860975 t=23.79772727664081 support=Wall side=0 air=False charge=True
+ACTION 20 X=5813.500000942931 t=24.325000004286057 support=Wall side=1 air=False charge=True
+ACTION 21 X=6210.000000572345 t=25.827272729874316 support=Wall side=0 air=False charge=True
+ACTION 22 X=6450.5000008162715 t=26.9204545491649 support=Wall side=1 air=False charge=True
+ACTION 23 X=6686.500000883327 t=27.993181822196966 support=Wall side=0 air=False charge=True
+ACTION 24 X=7080.000000503347 t=29.481818184106146 support=Wall side=1 air=False charge=True
+ACTION 25 X=7360.000000227676 t=30.75454545558036 support=Wall side=0 air=False charge=True
+ACTION 26 X=7640.000000227676 t=32.02727272830763 support=Wall side=1 air=False charge=True
+ACTION 27 X=7853.945776190541 t=32.99975352813883 support=Wall side=0 air=False charge=True
+CLOCK rhythm-dense Fast trap accepted=28 ignored=0 first=0.6136363721218304 minInterval=0.5272727276452471 maxInterval=1.6886363549402112 tail=0.2002464718611705
+GROUP group-1 X=50..7825 actualClock=0.22727273372621706..33.16818182427972 accepted=27
+ACTION 0 X=135.00000186680268 t=0.6136363721218304 support=Wall side=1 air=False charge=True
+ACTION 1 X=394.0000005405992 t=1.7909090933663603 support=Wall side=0 air=False charge=True
+ACTION 2 X=775.0000006896109 t=3.2227272758618675 support=Wall side=1 air=False charge=True
+ACTION 3 X=1012.5000008609743 t=4.302272731186246 support=Wall side=0 air=False charge=True
+ACTION 4 X=1128.5000009429305 t=4.8295454588315 support=Wall side=1 air=False charge=True
+ACTION 5 X=1525.0000005723443 t=6.331818184419747 support=Wall side=0 air=False charge=True
+ACTION 6 X=1805.0000002276747 t=7.604545455580341 support=Wall side=1 air=False charge=True
+ACTION 7 X=2022.0000011664479 t=8.590909096211133 support=Wall side=0 air=False charge=True
+ACTION 8 X=2386.000002248861 t=10.053030309845038 support=Wall side=1 air=False charge=True
+ACTION 9 X=2685.0000006498744 t=11.304545457499431 support=Wall side=0 air=False charge=True
+ACTION 10 X=2946.500000503346 t=12.49318182046976 support=Wall side=1 air=False charge=True
+ACTION 11 X=3330.000000754051 t=13.936363639791137 support=Wall side=0 air=False charge=True
+ACTION 12 X=3610.0000002276747 t=15.2090909101258 support=Wall side=1 air=False charge=True
+ACTION 13 X=3889.000000242576 t=16.477272728375347 support=Wall side=0 air=False charge=True
+ACTION 14 X=4209.000001958202 t=17.631818190719112 support=Wall side=1 air=False charge=True
+ACTION 15 X=4590.000000689612 t=19.063636366770982 support=Wall side=0 air=False charge=True
+ACTION 16 X=4850.500000518248 t=20.247727275082966 support=Wall side=1 air=False charge=True
+ACTION 17 X=5022.500001837001 t=21.029545462895474 support=Wall side=0 air=False charge=True
+ACTION 18 X=5459.999999923848 t=22.718181817835685 support=Wall side=1 air=False charge=True
+ACTION 19 X=5697.500000860975 t=23.79772727664081 support=Wall side=0 air=False charge=True
+ACTION 20 X=5813.500000942931 t=24.325000004286057 support=Wall side=1 air=False charge=True
+ACTION 21 X=6210.000000572345 t=25.827272729874316 support=Wall side=0 air=False charge=True
+ACTION 22 X=6450.5000008162715 t=26.9204545491649 support=Wall side=1 air=False charge=True
+ACTION 23 X=6686.500000883327 t=27.993181822196966 support=Wall side=0 air=False charge=True
+ACTION 24 X=7080.000000503347 t=29.481818184106146 support=Wall side=1 air=False charge=True
+ACTION 25 X=7360.000000227676 t=30.75454545558036 support=Wall side=0 air=False charge=True
+ACTION 26 X=7679.000002023266 t=32.20454546374213 support=Wall side=1 air=False charge=True
+ACTION 27 X=7853.945776190541 t=33.29975352813883 support=Wall side=0 air=False charge=True
+CLOCK rhythm-dense Main safe accepted=48 ignored=0 first=0.4568181881362068 minInterval=0.16818181549693367 maxInterval=1.8386363698846964 tail=1.1977272665409444
+GROUP group-1 X=50..7825 actualClock=0.22727273372621706..35.56818182676881 accepted=48
+ACTION 0 X=100.50000138996552 t=0.4568181881362068 support=Wall side=1 air=False charge=True
+ACTION 1 X=151.50000136016322 t=0.6886363698189236 support=None side=1 air=True charge=True
+ACTION 2 X=407.5000005853027 t=1.852272729933194 support=Wall side=0 air=False charge=True
+ACTION 3 X=444.4999999946281 t=2.0204545454301277 support=None side=0 air=True charge=True
+ACTION 4 X=740.4999999946282 t=3.365909090884672 support=Wall side=1 air=False charge=True
+ACTION 5 X=791.5000013601632 t=3.5977272789098307 support=None side=1 air=True charge=True
+ACTION 6 X=1086.0000000116079 t=4.936363636416395 support=Wall side=0 air=False charge=True
+ACTION 7 X=1490.50000138624 t=6.775000006301088 support=Wall side=0 air=False charge=True
+ACTION 8 X=1541.500001360163 t=7.006818188000738 support=None side=0 air=True charge=True
+ACTION 9 X=1770.500000987634 t=8.047727277216513 support=Wall side=1 air=False charge=True
+ACTION 10 X=1821.500001360163 t=8.279545460728011 support=None side=1 air=True charge=True
+ACTION 11 X=2060.5000008386223 t=9.365909094721006 support=Wall side=0 air=False charge=True
+ACTION 12 X=2111.0000013899653 t=9.595454551772566 support=None side=0 air=True charge=True
+ACTION 13 X=2356.800000737295 t=10.712727276078617 support=Wall side=1 air=False charge=True
+ACTION 14 X=2423.800000406489 t=11.01727272912041 support=None side=1 air=True charge=True
+ACTION 15 X=2650.5000010219064 t=12.047727277372319 support=Wall side=0 air=False charge=True
+ACTION 16 X=2701.500001360163 t=12.27954546072804 support=None side=0 air=True charge=True
+ACTION 17 X=2936.500000898227 t=13.347727276810154 support=Wall side=1 air=False charge=True
+ACTION 18 X=2993.500001002535 t=13.606818186375195 support=None side=1 air=True charge=True
+ACTION 19 X=3295.4999999499246 t=14.979545454317874 support=Wall side=0 air=False charge=True
+ACTION 20 X=3346.500001360163 t=15.21136364254623 support=None side=0 air=True charge=True
+ACTION 21 X=3575.500000987634 t=16.252272731761998 support=Wall side=1 air=False charge=True
+ACTION 22 X=3626.500001360163 t=16.484090915273498 support=None side=1 air=True charge=True
+ACTION 23 X=3902.5000002872794 t=17.738636364942206 support=Wall side=0 air=False charge=True
+ACTION 24 X=3939.499999994628 t=17.906818181793792 support=None side=0 air=True charge=True
+ACTION 25 X=4222.500000182972 t=19.193181819013535 support=Wall side=1 air=False charge=True
+ACTION 26 X=4259.4999999946285 t=19.361363636339252 support=None side=1 air=True charge=True
+ACTION 27 X=4555.4999999946285 t=20.70681818179379 support=Wall side=0 air=False charge=True
+ACTION 28 X=4606.500001360164 t=20.938636369818948 support=None side=0 air=True charge=True
+ACTION 29 X=4850.000000771568 t=22.04545454896169 support=Wall side=1 air=False charge=True
+ACTION 30 X=4911.000000764117 t=22.32272727620054 support=None side=1 air=True charge=True
+ACTION 31 X=5118.00000131546 t=23.263636369615735 support=Wall side=0 air=False charge=True
+ACTION 32 X=5216.000001479373 t=23.709090915815334 support=None side=0 air=True charge=True
+ACTION 33 X=5425.5000012782075 t=24.661363642173665 support=Wall side=1 air=False charge=True
+ACTION 34 X=5476.500001360164 t=24.89318182436437 support=None side=1 air=True charge=True
+ACTION 35 X=5771.000000011609 t=26.231818181870924 support=Wall side=0 air=False charge=True
+ACTION 36 X=6175.500001386241 t=28.07045455175562 support=Wall side=0 air=False charge=True
+ACTION 37 X=6226.500001360164 t=28.302272733455265 support=None side=0 air=True charge=True
+ACTION 38 X=6450.500001062141 t=29.320454550282435 support=Wall side=1 air=False charge=True
+ACTION 39 X=6496.000001687989 t=29.527272734945385 support=None side=1 air=True charge=True
+ACTION 40 X=6731.500000890777 t=30.597727276776233 support=Wall side=0 air=False charge=True
+ACTION 41 X=6796.000000555501 t=30.89090909343407 support=None side=0 air=True charge=True
+ACTION 42 X=7045.500000682161 t=32.02500000310071 support=Wall side=1 air=False charge=True
+ACTION 43 X=7096.500001360164 t=32.25681818800071 support=None side=1 air=True charge=True
+ACTION 44 X=7325.500000987635 t=33.29772727721647 support=Wall side=0 air=False charge=True
+ACTION 45 X=7376.500001360164 t=33.52954546072797 support=None side=0 air=True charge=True
+ACTION 46 X=7605.500000987635 t=34.570454549943726 support=Wall side=1 air=False charge=True
+ACTION 47 X=7656.500001360164 t=34.802272733455226 support=None side=1 air=True charge=True
+CLOCK rhythm-dense Main full accepted=48 ignored=0 first=0.4568181881362068 minInterval=0.10454545569690588 maxInterval=2.19318182148157 tail=0.1548965338510584
+GROUP group-1 X=50..7825 actualClock=0.22727273372621706..32.86818182676884 accepted=47
+ACTION 0 X=100.50000138996552 t=0.4568181881362068 support=Wall side=1 air=False charge=True
+ACTION 1 X=151.50000136016322 t=0.6886363698189236 support=None side=1 air=True charge=True
+ACTION 2 X=368.500001166448 t=1.6750000053020364 support=Wall side=0 air=False charge=True
+ACTION 3 X=421.0000012707562 t=1.9136363694125285 support=None side=0 air=True charge=True
+ACTION 4 X=740.5000016060324 t=3.0659090982092385 support=Wall side=1 air=False charge=True
+ACTION 5 X=791.5000013601633 t=3.297727278909831 support=None side=1 air=True charge=True
+ACTION 6 X=1005.1811199512224 t=4.26900509068737 support=Wall side=0 air=False charge=True
+ACTION 7 X=1490.500000419014 t=6.175000001904603 support=Wall side=0 air=False charge=True
+ACTION 8 X=1541.500001360163 t=6.406818188000737 support=None side=0 air=True charge=True
+ACTION 9 X=1770.500000987634 t=7.447727277216513 support=Wall side=1 air=False charge=True
+ACTION 10 X=1821.500001360163 t=7.67954546072801 support=None side=1 air=True charge=True
+ACTION 11 X=2022.5000014048665 t=8.593181824567575 support=Wall side=0 air=False charge=True
+ACTION 12 X=2045.5000016581864 t=8.69772728026448 support=None side=0 air=True charge=True
+ACTION 13 X=2331.8000023703057 t=9.888787885970626 support=Wall side=1 air=False charge=True
+ACTION 14 X=2412.300002100457 t=10.132727279092299 support=None side=1 air=True charge=True
+ACTION 15 X=2650.500001294598 t=11.14772727861181 support=Wall side=0 air=False charge=True
+ACTION 16 X=2701.500001360163 t=11.379545460728016 support=None side=0 air=True charge=True
+ACTION 17 X=2931.0000009801834 t=12.422727277182654 support=Wall side=1 air=False charge=True
+ACTION 18 X=2954.000001658186 t=12.527272734809939 support=None side=1 air=True charge=True
+ACTION 19 X=3295.5000015963597 t=13.779545461801638 support=Wall side=0 air=False charge=True
+ACTION 20 X=3346.500001360163 t=14.011363642546204 support=None side=0 air=True charge=True
+ACTION 21 X=3575.500000987634 t=15.05227273176198 support=Wall side=1 air=False charge=True
+ACTION 22 X=3626.500001360163 t=15.284090915273477 support=None side=1 air=True charge=True
+ACTION 23 X=3847.5000011068432 t=16.288636368667486 support=Wall side=0 air=False charge=True
+ACTION 24 X=3921.0000000190585 t=16.62272727281392 support=None side=0 air=True charge=True
+ACTION 25 X=4164.000001676924 t=17.42727273489513 support=Wall side=1 air=False charge=True
+ACTION 26 X=4241.500002090321 t=17.77954546404695 support=None side=1 air=True charge=True
+ACTION 27 X=4555.500001687989 t=18.906818189490895 support=Wall side=0 air=False charge=True
+ACTION 28 X=4606.500001360164 t=19.13863636981896 support=None side=0 air=True charge=True
+ACTION 29 X=4811.000001352713 t=20.068181824330544 support=Wall side=1 air=False charge=True
+ACTION 30 X=4848.999999935024 t=20.24090909061376 support=None side=1 air=True charge=True
+ACTION 31 X=4877.000001062141 t=20.368181823009728 support=None side=1 air=True charge=True
+ACTION 32 X=5425.500001788087 t=22.561363644491298 support=Wall side=1 air=False charge=True
+ACTION 33 X=5476.500001360164 t=22.793181824364368 support=None side=1 air=True charge=True
+ACTION 34 X=5690.181119951223 t=23.7644596361419 support=Wall side=0 air=False charge=True
+ACTION 35 X=6175.500000419015 t=25.67045454735913 support=Wall side=0 air=False charge=True
+ACTION 36 X=6226.500001360164 t=25.90227273345527 support=None side=0 air=True charge=True
+ACTION 37 X=6449.500001077042 t=26.915909095804714 support=Wall side=1 air=False charge=True
+ACTION 38 X=6491.500001896606 t=27.1068181904391 support=None side=1 air=True charge=True
+ACTION 39 X=6633.000000182972 t=27.750000000831676 support=Wall side=0 air=False charge=True
+ACTION 40 X=6739.500002053661 t=28.219676220672298 support=None side=0 air=True charge=True
+ACTION 41 X=7045.500001712689 t=29.325000007784933 support=Wall side=1 air=False charge=True
+ACTION 42 X=7096.500001360164 t=29.556818188000733 support=None side=1 air=True charge=True
+ACTION 43 X=7325.500000987635 t=30.5977272772165 support=Wall side=0 air=False charge=True
+ACTION 44 X=7376.500001360164 t=30.829545460727996 support=None side=0 air=True charge=True
+ACTION 45 X=7605.500000987635 t=31.870454549943762 support=Wall side=1 air=False charge=True
+ACTION 46 X=7656.500001360164 t=32.10227273345526 support=None side=1 air=True charge=True
+ACTION 47 X=7863.922762552766 t=33.04510346614888 support=Wall side=0 air=False charge=True
+CLOCK rhythm-dense Main trap accepted=48 ignored=0 first=0.4568181881362068 minInterval=0.10454545569690588 maxInterval=2.19318182148157 tail=0.1548965338510584
+GROUP group-1 X=50..7825 actualClock=0.22727273372621706..33.16818181854906 accepted=47
+ACTION 0 X=100.50000138996552 t=0.4568181881362068 support=Wall side=1 air=False charge=True
+ACTION 1 X=151.50000136016322 t=0.6886363698189236 support=None side=1 air=True charge=True
+ACTION 2 X=368.500001166448 t=1.6750000053020364 support=Wall side=0 air=False charge=True
+ACTION 3 X=421.0000012707562 t=1.9136363694125285 support=None side=0 air=True charge=True
+ACTION 4 X=740.5000016060324 t=3.0659090982092385 support=Wall side=1 air=False charge=True
+ACTION 5 X=791.5000013601633 t=3.297727278909831 support=None side=1 air=True charge=True
+ACTION 6 X=1005.1811199512224 t=4.26900509068737 support=Wall side=0 air=False charge=True
+ACTION 7 X=1490.500000419014 t=6.175000001904603 support=Wall side=0 air=False charge=True
+ACTION 8 X=1541.500001360163 t=6.406818188000737 support=None side=0 air=True charge=True
+ACTION 9 X=1770.500000987634 t=7.447727277216513 support=Wall side=1 air=False charge=True
+ACTION 10 X=1821.500001360163 t=7.67954546072801 support=None side=1 air=True charge=True
+ACTION 11 X=2022.5000014048665 t=8.593181824567575 support=Wall side=0 air=False charge=True
+ACTION 12 X=2045.5000016581864 t=8.69772728026448 support=None side=0 air=True charge=True
+ACTION 13 X=2331.8000023703057 t=9.888787885970626 support=Wall side=1 air=False charge=True
+ACTION 14 X=2412.300002100457 t=10.132727279092299 support=None side=1 air=True charge=True
+ACTION 15 X=2650.500001294598 t=11.14772727861181 support=Wall side=0 air=False charge=True
+ACTION 16 X=2701.500001360163 t=11.379545460728016 support=None side=0 air=True charge=True
+ACTION 17 X=2931.0000009801834 t=12.422727277182654 support=Wall side=1 air=False charge=True
+ACTION 18 X=2954.000001658186 t=12.527272734809939 support=None side=1 air=True charge=True
+ACTION 19 X=3295.5000015963597 t=13.779545461801638 support=Wall side=0 air=False charge=True
+ACTION 20 X=3346.500001360163 t=14.011363642546204 support=None side=0 air=True charge=True
+ACTION 21 X=3575.500000987634 t=15.05227273176198 support=Wall side=1 air=False charge=True
+ACTION 22 X=3626.500001360163 t=15.284090915273477 support=None side=1 air=True charge=True
+ACTION 23 X=3847.5000011068432 t=16.288636368667486 support=Wall side=0 air=False charge=True
+ACTION 24 X=3921.0000000190585 t=16.62272727281392 support=None side=0 air=True charge=True
+ACTION 25 X=4164.000001676924 t=17.42727273489513 support=Wall side=1 air=False charge=True
+ACTION 26 X=4241.500002090321 t=17.77954546404695 support=None side=1 air=True charge=True
+ACTION 27 X=4555.500001687989 t=18.906818189490895 support=Wall side=0 air=False charge=True
+ACTION 28 X=4606.500001360164 t=19.13863636981896 support=None side=0 air=True charge=True
+ACTION 29 X=4811.000001352713 t=20.068181824330544 support=Wall side=1 air=False charge=True
+ACTION 30 X=4848.999999935024 t=20.24090909061376 support=None side=1 air=True charge=True
+ACTION 31 X=4877.000001062141 t=20.368181823009728 support=None side=1 air=True charge=True
+ACTION 32 X=5425.500001788087 t=22.561363644491298 support=Wall side=1 air=False charge=True
+ACTION 33 X=5476.500001360164 t=22.793181824364368 support=None side=1 air=True charge=True
+ACTION 34 X=5690.181119951223 t=23.7644596361419 support=Wall side=0 air=False charge=True
+ACTION 35 X=6175.500000419015 t=25.67045454735913 support=Wall side=0 air=False charge=True
+ACTION 36 X=6226.500001360164 t=25.90227273345527 support=None side=0 air=True charge=True
+ACTION 37 X=6449.500001077042 t=26.915909095804714 support=Wall side=1 air=False charge=True
+ACTION 38 X=6491.500001896606 t=27.1068181904391 support=None side=1 air=True charge=True
+ACTION 39 X=6633.000000182972 t=27.750000000831676 support=Wall side=0 air=False charge=True
+ACTION 40 X=6739.500002053661 t=28.219676220672298 support=None side=0 air=True charge=True
+ACTION 41 X=7045.500001712689 t=29.325000007784933 support=Wall side=1 air=False charge=True
+ACTION 42 X=7096.500001360164 t=29.556818188000733 support=None side=1 air=True charge=True
+ACTION 43 X=7325.500000987635 t=30.5977272772165 support=Wall side=0 air=False charge=True
+ACTION 44 X=7376.500001360164 t=30.829545460727996 support=None side=0 air=True charge=True
+ACTION 45 X=7680.999999931299 t=32.213636363324085 support=Wall side=1 air=False charge=True
+ACTION 46 X=7705.000000785912 t=32.372808373043604 support=None side=1 air=True charge=True
+ACTION 47 X=7863.922762552766 t=33.34510346614895 support=Wall side=0 air=False charge=True
+BUDGET rhythm-waves negative=2 subsets=2048 conservativeEnd=7813 margin=63 worstMask=1024
+CLOCK rhythm-waves Fast safe accepted=25 ignored=0 first=1.3545454612698742 minInterval=0.915909088419923 maxInterval=2.590909097682351 tail=1.2272727255567446
+GROUP group-1 X=200..1550 actualClock=0.9090909155443989..7.0454545529240225 accepted=5
+GROUP group-2 X=1850..5185 actualClock=8.409090908931026..23.5681818256513 accepted=12
+GROUP group-3 X=5485..7835 actualClock=24.931818181658297..35.61363637110583 accepted=8
+ACTION 0 X=298.00000147937243 t=1.3545454612698742 support=Wall side=1 air=False charge=True
+ACTION 1 X=635.0000018891544 t=2.886363644950701 support=Wall side=0 air=False charge=True
+ACTION 2 X=893.5000005480499 t=4.061363638854771 support=Wall side=1 air=False charge=True
+ACTION 3 X=1095.0000013974159 t=4.977272733624618 support=Wall side=0 air=False charge=True
+ACTION 4 X=1365.0000003766863 t=6.204545456257664 support=Wall side=1 air=False charge=True
+ACTION 5 X=1935.0000018668024 t=8.795454553940015 support=Wall side=0 air=False charge=True
+ACTION 6 X=2198.0000004809945 t=9.990909093095436 support=Wall side=1 air=False charge=True
+ACTION 7 X=2525.00000196366 t=11.47727273619846 support=Wall side=0 air=False charge=True
+ACTION 8 X=2775.500000667259 t=12.615909093942088 support=Wall side=1 air=False charge=True
+ACTION 9 X=3132.000001743868 t=14.236363644290316 support=Wall side=0 air=False charge=True
+ACTION 10 X=3375.0000007790177 t=15.340909094450083 support=Wall side=1 air=False charge=True
+ACTION 11 X=3659.00000016807 t=16.63181818258214 support=Wall side=0 air=False charge=True
+ACTION 12 X=3988.5000019450335 t=18.12954546338652 support=Wall side=1 air=False charge=True
+ACTION 13 X=4190.000001397417 t=19.045454551806444 support=Wall side=0 air=False charge=True
+ACTION 14 X=4460.000000376687 t=20.272727274439482 support=Wall side=1 air=False charge=True
+ACTION 15 X=4730.000000376687 t=21.500000001712213 support=Wall side=0 air=False charge=True
+ACTION 16 X=5000.000000376687 t=22.727272728984943 support=Wall side=1 air=False charge=True
+ACTION 17 X=5570.000001866803 t=25.318181826667274 support=Wall side=0 air=False charge=True
+ACTION 18 X=5800.500000965283 t=26.365909095296733 support=Wall side=1 air=False charge=True
+ACTION 19 X=6095.000000011609 t=27.70454545459821 support=Wall side=0 air=False charge=True
+ACTION 20 X=6420.000001978562 t=29.181818190811633 support=Wall side=1 air=False charge=True
+ACTION 21 X=6722.9999999424745 t=30.559090908829422 support=Wall side=0 air=False charge=True
+ACTION 22 X=7043.000002015815 t=32.01363637279914 support=Wall side=1 air=False charge=True
+ACTION 23 X=7380.000001889155 t=33.545454554041605 support=Wall side=0 air=False charge=True
+ACTION 24 X=7650.000000376687 t=34.772727274439475 support=Wall side=1 air=False charge=True
+CLOCK rhythm-waves Fast full accepted=26 ignored=0 first=1.200000002660467 minInterval=0.5272727227973313 maxInterval=2.5909090976823315 tail=0.20024647644256532
+GROUP group-1 X=200..1550 actualClock=0.9090909155443989..6.445454552924025 accepted=5
+GROUP group-2 X=1850..5185 actualClock=7.809090908931027..21.768181825651315 accepted=12
+GROUP group-3 X=5485..7835 actualClock=23.13181818165831..32.913636371105824 accepted=8
+ACTION 0 X=264.0000005853028 t=1.200000002660467 support=Wall side=1 air=False charge=True
+ACTION 1 X=635.0000008386226 t=2.586363640175558 support=Wall side=0 air=False charge=True
+ACTION 2 X=862.5000010099859 t=3.6204545500453915 support=Wall side=1 air=False charge=True
+ACTION 3 X=978.5000009429307 t=4.147727277013324 support=Wall side=0 air=False charge=True
+ACTION 4 X=1365.0000007958618 t=5.604545458163011 support=Wall side=1 air=False charge=True
+ACTION 5 X=1935.0000018668024 t=8.195454553940015 support=Wall side=0 air=False charge=True
+ACTION 6 X=2142.0000013154595 t=9.136363642343001 support=Wall side=1 air=False charge=True
+ACTION 7 X=2506.000002248861 t=10.598484855299583 support=Wall side=0 air=False charge=True
+ACTION 8 X=2775.5000010894587 t=11.715909095861178 support=Wall side=1 air=False charge=True
+ACTION 9 X=2947.500001837 t=12.49772728107728 support=Wall side=0 air=False charge=True
+ACTION 10 X=3374.9999999983534 t=14.140909090901614 support=Wall side=1 air=False charge=True
+ACTION 11 X=3626.500000652358 t=15.28409091205618 support=Wall side=0 air=False charge=True
+ACTION 12 X=3957.5000019275176 t=16.488636372397814 support=Wall side=1 air=False charge=True
+ACTION 13 X=4073.5000009429305 t=17.015909095195145 support=Wall side=0 air=False charge=True
+ACTION 14 X=4460.000000795862 t=18.47272727634484 support=Wall side=1 air=False charge=True
+ACTION 15 X=4730.000000376687 t=19.700000001712226 support=Wall side=0 air=False charge=True
+ACTION 16 X=5000.000000376687 t=20.927272728984956 support=Wall side=1 air=False charge=True
+ACTION 17 X=5570.000001866803 t=23.518181826667288 support=Wall side=0 air=False charge=True
+ACTION 18 X=5800.500000965283 t=24.565909095296746 support=Wall side=1 air=False charge=True
+ACTION 19 X=6036.500000883327 t=25.63863636765149 support=Wall side=0 air=False charge=True
+ACTION 20 X=6420.000000652359 t=27.081818184783454 support=Wall side=1 air=False charge=True
+ACTION 21 X=6689.000000391588 t=28.3045454563254 support=Wall side=0 air=False charge=True
+ACTION 22 X=7009.000001958202 t=29.45909091799182 support=Wall side=1 air=False charge=True
+ACTION 23 X=7380.000000838623 t=30.845454549266464 support=Wall side=0 air=False charge=True
+ACTION 24 X=7650.000000376687 t=32.07272727443947 support=Wall side=1 air=False charge=True
+ACTION 25 X=7853.945775182634 t=32.9997535235574 support=Wall side=0 air=False charge=True
+CLOCK rhythm-waves Fast trap accepted=26 ignored=0 first=1.200000002660467 minInterval=0.5272727227973313 maxInterval=2.5909090976823315 tail=0.20024647644256532
+GROUP group-1 X=200..1550 actualClock=0.9090909155443989..6.445454552924025 accepted=5
+GROUP group-2 X=1850..5185 actualClock=7.809090908931027..21.768181825651315 accepted=12
+GROUP group-3 X=5485..7835 actualClock=23.13181818165831..33.213636369734246 accepted=8
+ACTION 0 X=264.0000005853028 t=1.200000002660467 support=Wall side=1 air=False charge=True
+ACTION 1 X=635.0000008386226 t=2.586363640175558 support=Wall side=0 air=False charge=True
+ACTION 2 X=862.5000010099859 t=3.6204545500453915 support=Wall side=1 air=False charge=True
+ACTION 3 X=978.5000009429307 t=4.147727277013324 support=Wall side=0 air=False charge=True
+ACTION 4 X=1365.0000007958618 t=5.604545458163011 support=Wall side=1 air=False charge=True
+ACTION 5 X=1935.0000018668024 t=8.195454553940015 support=Wall side=0 air=False charge=True
+ACTION 6 X=2142.0000013154595 t=9.136363642343001 support=Wall side=1 air=False charge=True
+ACTION 7 X=2506.000002248861 t=10.598484855299583 support=Wall side=0 air=False charge=True
+ACTION 8 X=2775.5000010894587 t=11.715909095861178 support=Wall side=1 air=False charge=True
+ACTION 9 X=2947.500001837 t=12.49772728107728 support=Wall side=0 air=False charge=True
+ACTION 10 X=3374.9999999983534 t=14.140909090901614 support=Wall side=1 air=False charge=True
+ACTION 11 X=3626.500000652358 t=15.28409091205618 support=Wall side=0 air=False charge=True
+ACTION 12 X=3957.5000019275176 t=16.488636372397814 support=Wall side=1 air=False charge=True
+ACTION 13 X=4073.5000009429305 t=17.015909095195145 support=Wall side=0 air=False charge=True
+ACTION 14 X=4460.000000795862 t=18.47272727634484 support=Wall side=1 air=False charge=True
+ACTION 15 X=4730.000000376687 t=19.700000001712226 support=Wall side=0 air=False charge=True
+ACTION 16 X=5000.000000376687 t=20.927272728984956 support=Wall side=1 air=False charge=True
+ACTION 17 X=5570.000001866803 t=23.518181826667288 support=Wall side=0 air=False charge=True
+ACTION 18 X=5800.500000965283 t=24.565909095296746 support=Wall side=1 air=False charge=True
+ACTION 19 X=6036.500000883327 t=25.63863636765149 support=Wall side=0 air=False charge=True
+ACTION 20 X=6420.000000652359 t=27.081818184783454 support=Wall side=1 air=False charge=True
+ACTION 21 X=6689.000000391588 t=28.3045454563254 support=Wall side=0 air=False charge=True
+ACTION 22 X=7009.000001958202 t=29.45909091799182 support=Wall side=1 air=False charge=True
+ACTION 23 X=7380.000000838623 t=30.845454549266464 support=Wall side=0 air=False charge=True
+ACTION 24 X=7689.000002097771 t=32.25000000953531 support=Wall side=1 air=False charge=True
+ACTION 25 X=7853.945775182634 t=33.29975352355742 support=Wall side=0 air=False charge=True
+CLOCK rhythm-waves Main safe accepted=44 ignored=0 first=1.26136364586509 minInterval=0.16818180865594634 maxInterval=2.359090909226378 tail=1.1522727210863835
+GROUP group-1 X=200..1550 actualClock=0.9090909155443989..7.045454554041608 accepted=7
+GROUP group-2 X=1850..5185 actualClock=8.409090908931026..23.568181826768917 accepted=21
+GROUP group-3 X=5485..7835 actualClock=24.93181818165833..35.61363637222347 accepted=16
+ACTION 0 X=277.50000209032004 t=1.26136364586509 support=Wall side=1 air=False charge=True
+ACTION 1 X=314.49999999462824 t=1.4295454545210364 support=None side=1 air=True charge=True
+ACTION 2 X=600.500000138268 t=2.729545455173944 support=Wall side=0 air=False charge=True
+ACTION 3 X=651.5000013601632 t=2.9613636425461967 support=None side=0 air=True charge=True
+ACTION 4 X=936.0000001606197 t=4.254545455275544 support=Wall side=1 air=False charge=True
+ACTION 5 X=1330.5000014607458 t=6.047727279367025 support=Wall side=1 air=False charge=True
+ACTION 6 X=1381.500001360163 t=6.279545460728013 support=None side=1 air=True charge=True
+ACTION 7 X=1900.5000013899653 t=8.63863636995439 support=Wall side=0 air=False charge=True
+ACTION 8 X=1951.500001360163 t=8.87045455163711 support=None side=0 air=True charge=True
+ACTION 9 X=2180.500000987634 t=9.911363640852885 support=Wall side=1 air=False charge=True
+ACTION 10 X=2231.0000013899653 t=10.140909097227123 support=None side=1 air=True charge=True
+ACTION 11 X=2476.800000737295 t=11.258181821533174 support=Wall side=0 air=False charge=True
+ACTION 12 X=2543.800000406489 t=11.562727274574968 support=None side=0 air=True charge=True
+ACTION 13 X=2775.000000954851 t=12.613636367976621 support=Wall side=1 air=False charge=True
+ACTION 14 X=2836.0000007641165 t=12.890909094382378 support=None side=1 air=True charge=True
+ACTION 15 X=3043.0000013154595 t=13.831818187797577 support=Wall side=0 air=False charge=True
+ACTION 16 X=3141.0000014793723 t=14.27727273399718 support=None side=0 air=True charge=True
+ACTION 17 X=3340.500001427218 t=15.184090915578299 support=Wall side=1 air=False charge=True
+ACTION 18 X=3391.500001360163 t=15.415909097091683 support=None side=1 air=True charge=True
+ACTION 19 X=3616.5000010472386 t=16.438636368396573 support=Wall side=0 air=False charge=True
+ACTION 20 X=3673.500001002535 t=16.697727277284276 support=None side=0 air=True charge=True
+ACTION 21 X=4031.0000017364173 t=18.322727280620104 support=Wall side=1 air=False charge=True
+ACTION 22 X=4425.500001460747 t=20.115909097548876 support=Wall side=1 air=False charge=True
+ACTION 23 X=4476.500001360164 t=20.347727278909865 support=None side=1 air=True charge=True
+ACTION 24 X=4695.5000011366465 t=21.34318182334842 support=Wall side=0 air=False charge=True
+ACTION 25 X=4746.500001360164 t=21.575000006182595 support=None side=0 air=True charge=True
+ACTION 26 X=4965.5000011366465 t=22.57045455062115 support=Wall side=1 air=False charge=True
+ACTION 27 X=5016.500001360164 t=22.802272733455325 support=None side=1 air=True charge=True
+ACTION 28 X=5535.500001389966 t=25.161363642681692 support=Wall side=0 air=False charge=True
+ACTION 29 X=5586.500001360164 t=25.393181824364405 support=None side=0 air=True charge=True
+ACTION 30 X=5800.500001211152 t=26.365909096414352 support=Wall side=1 air=False charge=True
+ACTION 31 X=5846.000001687989 t=26.572727280399985 support=None side=1 air=True charge=True
+ACTION 32 X=6081.500000890777 t=27.643181822230833 support=Wall side=0 air=False charge=True
+ACTION 33 X=6146.000000555501 t=27.936363638888672 support=None side=0 air=True charge=True
+ACTION 34 X=6385.500000831173 t=29.025000003778093 support=Wall side=1 air=False charge=True
+ACTION 35 X=6436.500001360164 t=29.25681818800077 support=None side=1 air=True charge=True
+ACTION 36 X=6702.500000436292 t=30.46590909289226 support=Wall side=0 air=False charge=True
+ACTION 37 X=6739.4999999946285 t=30.63409090906653 support=None side=0 air=True charge=True
+ACTION 38 X=7022.500000182972 t=31.920454546286265 support=Wall side=1 air=False charge=True
+ACTION 39 X=7059.4999999946285 t=32.08863636361198 support=None side=1 air=True charge=True
+ACTION 40 X=7345.500000138269 t=33.3886363642649 support=Wall side=0 air=False charge=True
+ACTION 41 X=7396.500001360164 t=33.62045455163715 support=None side=0 air=True charge=True
+ACTION 42 X=7615.5000011366465 t=34.615909096075704 support=Wall side=1 air=False charge=True
+ACTION 43 X=7666.500001360164 t=34.847727278909886 support=None side=1 air=True charge=True
+CLOCK rhythm-waves Main full accepted=44 ignored=0 first=1.0840909086600958 minInterval=0.10454545501958279 maxInterval=2.359090909226376 tail=0.15489653897780897
+GROUP group-1 X=200..1550 actualClock=0.9090909155443989..6.445454554041606 accepted=7
+GROUP group-2 X=1850..5185 actualClock=7.809090908931022..21.768181826768885 accepted=20
+GROUP group-3 X=5485..7835 actualClock=23.131818181658296..32.91363637222342 accepted=16
+ACTION 0 X=238.49999990522127 t=1.0840909086600958 support=Wall side=1 air=False charge=True
+ACTION 1 X=291.0000012707561 t=1.3227272785034359 support=None side=1 air=True charge=True
+ACTION 2 X=600.500001755044 t=2.429545462522927 support=Wall side=0 air=False charge=True
+ACTION 3 X=651.5000013601633 t=2.6613636425461955 support=None side=0 air=True charge=True
+ACTION 4 X=855.181120100234 t=3.5871869095465154 support=Wall side=1 air=False charge=True
+ACTION 5 X=1330.5000006425314 t=5.447727275647868 support=Wall side=1 air=False charge=True
+ACTION 6 X=1381.500001360163 t=5.679545460728011 support=None side=1 air=True charge=True
+ACTION 7 X=1900.5000013899653 t=8.038636369954387 support=Wall side=0 air=False charge=True
+ACTION 8 X=1951.500001360163 t=8.270454551637107 support=None side=0 air=True charge=True
+ACTION 9 X=2142.500001553878 t=9.138636370699448 support=Wall side=1 air=False charge=True
+ACTION 10 X=2165.500001658186 t=9.24318182571903 support=None side=1 air=True charge=True
+ACTION 11 X=2451.8000023703057 t=10.434242431425176 support=Wall side=0 air=False charge=True
+ACTION 12 X=2532.300002100457 t=10.678181824546849 support=None side=0 air=True charge=True
+ACTION 13 X=2736.000001808688 t=11.536363644584956 support=Wall side=1 air=False charge=True
+ACTION 14 X=2773.9999999350234 t=11.709090908795574 support=None side=1 air=True charge=True
+ACTION 15 X=2802.0000010621397 t=11.836363641191552 support=None side=1 air=True charge=True
+ACTION 16 X=3340.500001899845 t=13.984090917726576 support=Wall side=1 air=False charge=True
+ACTION 17 X=3391.500001360163 t=14.215909097091659 support=None side=1 air=True charge=True
+ACTION 18 X=3611.000001129195 t=15.213636368769077 support=Wall side=0 air=False charge=True
+ACTION 19 X=3634.000001658186 t=15.318181825719034 support=None side=0 air=True charge=True
+ACTION 20 X=3950.1811186975997 t=16.455368721352734 support=Wall side=1 air=False charge=True
+ACTION 21 X=4425.5000006425325 t=18.315909093829692 support=Wall side=1 air=False charge=True
+ACTION 22 X=4476.500001360164 t=18.547727278909832 support=None side=1 air=True charge=True
+ACTION 23 X=4695.5000011366465 t=19.543181823348387 support=Wall side=0 air=False charge=True
+ACTION 24 X=4746.500001360164 t=19.775000006182562 support=None side=0 air=True charge=True
+ACTION 25 X=4965.5000011366465 t=20.770454550621118 support=Wall side=1 air=False charge=True
+ACTION 26 X=5016.500001360164 t=21.002272733455293 support=None side=1 air=True charge=True
+ACTION 27 X=5535.500001389966 t=23.36136364268166 support=Wall side=0 air=False charge=True
+ACTION 28 X=5586.500001360164 t=23.593181824364372 support=None side=0 air=True charge=True
+ACTION 29 X=5799.500001226053 t=24.561363641936587 support=Wall side=1 air=False charge=True
+ACTION 30 X=5841.500001896606 t=24.752272735893648 support=None side=1 air=True charge=True
+ACTION 31 X=5983.000000182972 t=25.395454546286224 support=Wall side=0 air=False charge=True
+ACTION 32 X=6089.500002053661 t=25.865130766126846 support=None side=0 air=True charge=True
+ACTION 33 X=6385.5000018617 t=26.92500000846226 support=Wall side=1 air=False charge=True
+ACTION 34 X=6436.500001360164 t=27.156818188000734 support=None side=1 air=True charge=True
+ACTION 35 X=6647.500001255856 t=28.115909096617514 support=Wall side=0 air=False charge=True
+ACTION 36 X=6721.000000019059 t=28.450000000086625 support=None side=0 air=True charge=True
+ACTION 37 X=6964.000001676924 t=29.254545462167822 support=Wall side=1 air=False charge=True
+ACTION 38 X=7041.500002090321 t=29.606818191319643 support=None side=1 air=True charge=True
+ACTION 39 X=7345.500001837001 t=30.688636371986366 support=Wall side=0 air=False charge=True
+ACTION 40 X=7396.500001360164 t=30.9204545516371 support=None side=0 air=True charge=True
+ACTION 41 X=7615.5000011366465 t=31.915909096075655 support=Wall side=1 air=False charge=True
+ACTION 42 X=7666.500001360164 t=32.14772727890984 support=None side=1 air=True charge=True
+ACTION 43 X=7863.922761424881 t=33.04510346102218 support=Wall side=0 air=False charge=True
+CLOCK rhythm-waves Main trap accepted=44 ignored=0 first=1.0840909086600958 minInterval=0.10454545501958279 maxInterval=2.359090909226376 tail=0.15489653897780897
+GROUP group-1 X=200..1550 actualClock=0.9090909155443989..6.445454554041606 accepted=7
+GROUP group-2 X=1850..5185 actualClock=7.809090908931022..21.768181826768885 accepted=20
+GROUP group-3 X=5485..7835 actualClock=23.131818181658296..33.21363636400361 accepted=16
+ACTION 0 X=238.49999990522127 t=1.0840909086600958 support=Wall side=1 air=False charge=True
+ACTION 1 X=291.0000012707561 t=1.3227272785034359 support=None side=1 air=True charge=True
+ACTION 2 X=600.500001755044 t=2.429545462522927 support=Wall side=0 air=False charge=True
+ACTION 3 X=651.5000013601633 t=2.6613636425461955 support=None side=0 air=True charge=True
+ACTION 4 X=855.181120100234 t=3.5871869095465154 support=Wall side=1 air=False charge=True
+ACTION 5 X=1330.5000006425314 t=5.447727275647868 support=Wall side=1 air=False charge=True
+ACTION 6 X=1381.500001360163 t=5.679545460728011 support=None side=1 air=True charge=True
+ACTION 7 X=1900.5000013899653 t=8.038636369954387 support=Wall side=0 air=False charge=True
+ACTION 8 X=1951.500001360163 t=8.270454551637107 support=None side=0 air=True charge=True
+ACTION 9 X=2142.500001553878 t=9.138636370699448 support=Wall side=1 air=False charge=True
+ACTION 10 X=2165.500001658186 t=9.24318182571903 support=None side=1 air=True charge=True
+ACTION 11 X=2451.8000023703057 t=10.434242431425176 support=Wall side=0 air=False charge=True
+ACTION 12 X=2532.300002100457 t=10.678181824546849 support=None side=0 air=True charge=True
+ACTION 13 X=2736.000001808688 t=11.536363644584956 support=Wall side=1 air=False charge=True
+ACTION 14 X=2773.9999999350234 t=11.709090908795574 support=None side=1 air=True charge=True
+ACTION 15 X=2802.0000010621397 t=11.836363641191552 support=None side=1 air=True charge=True
+ACTION 16 X=3340.500001899845 t=13.984090917726576 support=Wall side=1 air=False charge=True
+ACTION 17 X=3391.500001360163 t=14.215909097091659 support=None side=1 air=True charge=True
+ACTION 18 X=3611.000001129195 t=15.213636368769077 support=Wall side=0 air=False charge=True
+ACTION 19 X=3634.000001658186 t=15.318181825719034 support=None side=0 air=True charge=True
+ACTION 20 X=3950.1811186975997 t=16.455368721352734 support=Wall side=1 air=False charge=True
+ACTION 21 X=4425.5000006425325 t=18.315909093829692 support=Wall side=1 air=False charge=True
+ACTION 22 X=4476.500001360164 t=18.547727278909832 support=None side=1 air=True charge=True
+ACTION 23 X=4695.5000011366465 t=19.543181823348387 support=Wall side=0 air=False charge=True
+ACTION 24 X=4746.500001360164 t=19.775000006182562 support=None side=0 air=True charge=True
+ACTION 25 X=4965.5000011366465 t=20.770454550621118 support=Wall side=1 air=False charge=True
+ACTION 26 X=5016.500001360164 t=21.002272733455293 support=None side=1 air=True charge=True
+ACTION 27 X=5535.500001389966 t=23.36136364268166 support=Wall side=0 air=False charge=True
+ACTION 28 X=5586.500001360164 t=23.593181824364372 support=None side=0 air=True charge=True
+ACTION 29 X=5799.500001226053 t=24.561363641936587 support=Wall side=1 air=False charge=True
+ACTION 30 X=5841.500001896606 t=24.752272735893648 support=None side=1 air=True charge=True
+ACTION 31 X=5983.000000182972 t=25.395454546286224 support=Wall side=0 air=False charge=True
+ACTION 32 X=6089.500002053661 t=25.865130766126846 support=None side=0 air=True charge=True
+ACTION 33 X=6385.5000018617 t=26.92500000846226 support=Wall side=1 air=False charge=True
+ACTION 34 X=6436.500001360164 t=27.156818188000734 support=None side=1 air=True charge=True
+ACTION 35 X=6647.500001255856 t=28.115909096617514 support=Wall side=0 air=False charge=True
+ACTION 36 X=6721.000000019059 t=28.450000000086625 support=None side=0 air=True charge=True
+ACTION 37 X=6964.000001676924 t=29.254545462167822 support=Wall side=1 air=False charge=True
+ACTION 38 X=7041.500002090321 t=29.606818191319643 support=None side=1 air=True charge=True
+ACTION 39 X=7345.500001837001 t=30.688636371986366 support=Wall side=0 air=False charge=True
+ACTION 40 X=7396.500001360164 t=30.9204545516371 support=None side=0 air=True charge=True
+ACTION 41 X=7691.000000011609 t=32.25909090914366 support=Wall side=1 air=False charge=True
+ACTION 42 X=7715.000000785912 t=32.418262918387356 support=None side=1 air=True charge=True
+ACTION 43 X=7863.922761424881 t=33.3451034610222 support=Wall side=0 air=False charge=True
+PASS independent final courses: 80970 assertions / 1812 games; actual goals and windows passed; clean shortening findings=0. Not a global minimality proof or release verdict.
+Source hashes unchanged during execution.

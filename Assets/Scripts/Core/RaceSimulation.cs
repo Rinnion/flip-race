@@ -34,6 +34,9 @@ namespace FlipRace.Core
     {
         public string Id;
         public double X, Width, Height, GapTop, GapBottom;
+        // Gate halves retain their vertical bands and share one logical ID.
+        // Each horizontal offset is relative to X; zero preserves straight gates.
+        public double TopOffsetX, BottomOffsetX;
         public string Kind;
     }
 
@@ -745,18 +748,17 @@ namespace FlipRace.Core
                 if (player.HitObstacleIds.Contains(obstacle.Id)) continue;
                 if ((player.Support == SupportKind.Stone && player.SupportObstacleId == obstacle.Id)
                     || (player.EdgeClearObstacleId == obstacle.Id && player.Distance >= obstacle.X + obstacle.Width - Epsilon)) continue;
-                if (!RangeTimes(player.Distance, player.CurrentSpeed, obstacle.X - radius,
-                    obstacle.X + obstacle.Width + radius, horizon, out var horizontalEnter, out var horizontalLeave)) continue;
+                if (!RangeTimes(player.Distance, player.CurrentSpeed, ObstacleGeometry.Left(obstacle) - radius,
+                    ObstacleGeometry.Right(obstacle) + radius, horizon, out _, out _)) continue;
                 var bandCount = obstacle.Kind == "gate" ? 2 : 1;
                 for (var band = 0; band < bandCount; band++)
                 {
+                    if (!ObstacleGeometry.TryGetBand(obstacle, band, out var solid)) continue;
+                    if (!RangeTimes(player.Distance, player.CurrentSpeed, solid.Left - radius,
+                        solid.Right + radius, horizon, out var horizontalEnter, out var horizontalLeave)) continue;
                     double minimum, maximum;
                     if (obstacle.Kind == "gate")
                     {
-                        // A gap reaching a corridor wall has no solid half
-                        // there. A zero-height half must not hit a wall runner.
-                        if ((band == 0 && obstacle.GapTop <= 0)
-                            || (band == 1 && obstacle.GapBottom >= RaceConfig.CorridorHeight)) continue;
                         minimum = band == 0 ? double.NegativeInfinity : (obstacle.GapBottom - 2 * radius) / verticalTravel;
                         maximum = band == 0 ? obstacle.GapTop / verticalTravel : double.PositiveInfinity;
                     }
@@ -868,7 +870,7 @@ namespace FlipRace.Core
                     double clearX = zone.ClearX;
                     foreach (var obstacle in track.Obstacles)
                         if (obstacle.Id == zone.ObstacleId)
-                            clearX = Math.Max(clearX, obstacle.X + obstacle.Width + RaceConfig.PlayerRadius + 1e-7);
+                            clearX = Math.Max(clearX, ObstacleGeometry.Right(obstacle) + RaceConfig.PlayerRadius + 1e-7);
                     time = Math.Max(0, (clearX - player.Distance) / player.CurrentSpeed);
                     // Once the whole body has passed the linked stone, no
                     // later vertical return can touch it. Landing is not

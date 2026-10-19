@@ -7,6 +7,11 @@ public static class Program
     {
         try
         {
+            if (args.Length == 1 && args[0] == "--offset-gates")
+            {
+                Console.WriteLine(EngineOffsetGateTests.RunAll());
+                return 0;
+            }
             if (args.Length == 1 && args[0] == "--modes")
             {
                 Console.WriteLine(EngineModesTests.RunAll());
@@ -46,6 +51,7 @@ public static class Program
             Console.WriteLine(EngineFinishTests.RunAll());
             Console.WriteLine(EngineFlightTests.RunAll());
             Console.WriteLine(EngineModesTests.RunAll());
+            Console.WriteLine(EngineOffsetGateTests.RunAll());
             if (args.Length > 0) Console.WriteLine(EngineParityTests.CompareFixtures(args[0]));
             return 0;
         }

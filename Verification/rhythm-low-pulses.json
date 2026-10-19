@@ -1,0 +1,38 @@
+{
+  "checks": 148,
+  "runs": 428,
+  "rows": [
+    {
+      "profile": "Flip",
+      "negative": false,
+      "launchX": 952,
+      "individualGateWindowMs": 60,
+      "eventX": 788,
+      "endX": 986
+    },
+    {
+      "profile": "Flip",
+      "negative": true,
+      "launchX": 982,
+      "individualGateWindowMs": 60,
+      "eventX": 934.0000000000001,
+      "endX": 1000.0000000000001
+    },
+    {
+      "profile": "Jump",
+      "negative": false,
+      "launchX": 804,
+      "individualGateWindowMs": 60,
+      "eventX": 788.0000000000001,
+      "endX": 986.0000000000001
+    },
+    {
+      "profile": "Jump",
+      "negative": true,
+      "launchX": 882,
+      "individualGateWindowMs": 60,
+      "eventX": 937.3632726375535,
+      "endX": 1003.3632726375535
+    }
+  ]
+}

@@ -23,7 +23,7 @@ namespace FlipRace.Presentation
         static readonly Color[] Ink = { Hex(0x7860a6), Hex(0xcf7962) };
         static readonly Color[] Pale = { Hex(0xe9e0f4), Hex(0xf8e0d5) };
         static readonly Color[] Confetti = { Hex(0xb6c993), Hex(0xe8ba71), Hex(0xbba5d8), Hex(0xe2a18d), Hex(0x91b9bf) };
-        readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab;
+        readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab, finishPointer;
         // Explicit lane-local clipping avoids Unity GUIClip's interaction with
         // rotated/scaled matrices (the upper player's entire lane is rotated).
         Rect clipBounds;
@@ -53,6 +53,10 @@ namespace FlipRace.Presentation
             ceilingRock = MakeRock(true);
             floorSlab = MakeLargeRock(false);
             ceilingSlab = MakeLargeRock(true);
+            var pointer = new Painter(64, 48);
+            pointer.Polygon(Hex(0x235f58), 0, 0, 64, 24, 0, 48);
+            pointer.Polygon(Hex(0x71d9bf), 6, 7, 51, 24, 6, 41);
+            finishPointer = pointer.Finish("Exact finish target pointer");
         }
 
         static Texture2D MakeCircle()
@@ -145,10 +149,12 @@ namespace FlipRace.Presentation
             if (game.Mode == "practice" && game.Phase == "racing" && !player.FinishTime.HasValue)
                 foreach (var obstacle in game.Track.Obstacles)
                     if (obstacle.Kind == "gate" && !player.HitObstacleIds.Contains(obstacle.Id)
-                        && obstacle.X + obstacle.Width > player.Distance && obstacle.X - player.Distance < ahead * .75)
+                        && !TryOffsetEntry(obstacle, out _)
+                        && ObstacleGeometry.Right(obstacle) > player.Distance
+                        && ObstacleGeometry.Left(obstacle) - player.Distance < ahead * .75)
                     {
                         practiceGate = obstacle;
-                        flipMarker = obstacle.X + obstacle.Width / 2 - RaceConfig.Speed * RaceConfig.FlipDuration / 2;
+                        flipMarker = ObstacleGeometry.Left(obstacle) + obstacle.Width / 2 - RaceConfig.Speed * RaceConfig.FlipDuration / 2;
                         break;
                     }
             bool atMarker = practiceGate != null && Math.Abs(player.Distance - flipMarker) <= 15 && !player.Flipping && !recovering;
@@ -174,20 +180,34 @@ namespace FlipRace.Presentation
 
             foreach (var obstacle in game.Track.Obstacles)
             {
-                float x = WorldX(obstacle.X, player.Distance, anchor, sx);
+                float x = WorldX(ObstacleGeometry.Left(obstacle), player.Distance, anchor, sx);
+                float right = WorldX(ObstacleGeometry.Right(obstacle), player.Distance, anchor, sx);
                 float width = (float)obstacle.Width * sx;
-                if (x + width < -35 || x > w + 35) continue;
+                if (right < -35 || x > w + 35) continue;
                 bool hit = player.HitObstacleIds.Contains(obstacle.Id);
                 if (obstacle.Kind == "gate")
                 {
-                    GateHalf(x, width, top, (float)obstacle.GapTop * sy, true, hit, time);
-                    GateHalf(x, width, top + (float)obstacle.GapBottom * sy,
-                        ((float)RaceConfig.CorridorHeight - (float)obstacle.GapBottom) * sy, false, hit, time);
+                    for (int part = 0; part < 2; part++)
+                        if (ObstacleGeometry.TryGetBand(obstacle, part, out var band))
+                            GateHalf(WorldX(band.X, player.Distance, anchor, sx), (float)band.Width * sx,
+                                top + (float)band.Y * sy, (float)band.Height * sy, part == 0, hit, time);
                     if (!hit)
                     {
-                        float center = top + (float)(obstacle.GapTop + obstacle.GapBottom) * sy / 2;
-                        Line(x - 8, center - 4, x - 4, center, Alpha(Hex(0xc4975c), .45f), 1.5f);
-                        Line(x - 4, center, x - 8, center + 4, Alpha(Hex(0xc4975c), .45f), 1.5f);
+                        if (TryLowThreshold(obstacle, out _))
+                        {
+                            // The low family has two valid, different entries:
+                            // opposite-wall flip or same-wall short return.
+                            // Its physical threshold stays visible without a
+                            // direction arrow falsely prescribing one of them.
+                        }
+                        else if (TryOffsetEntry(obstacle, out bool fromFloor))
+                            GateEntryArrow(x - 10, fromFloor ? bottom - 9 : top + 9, fromFloor);
+                        else
+                        {
+                            float center = top + (float)(obstacle.GapTop + obstacle.GapBottom) * sy / 2;
+                            Line(x - 8, center - 4, x - 4, center, Alpha(Hex(0xc4975c), .45f), 1.5f);
+                            Line(x - 4, center, x - 8, center + 4, Alpha(Hex(0xc4975c), .45f), 1.5f);
+                        }
                     }
                 }
                 else
@@ -222,20 +242,17 @@ namespace FlipRace.Presentation
                 float ringY = top + (float)zone.Y * sy;
                 if (zone.IsFinish)
                 {
-                    // The vertical rail is the exact center-contact window.
-                    // Separate chevrons make the small target visible on phones
-                    // without enlarging its physical pickup region.
+                    // Pointer tip is exactly (zone.X, zone.Y). Its filled body
+                    // lies before the target in world travel direction, while
+                    // the two ticks retain the actual centre-height interval.
+                    // Drawn before the mascot, so it never covers the runner.
                     float half = (float)zone.FinishHeight * sy * .5f;
-                    Color finishInk = Hex(0x398d80);
+                    Color finishInk = Hex(0x235f58);
+                    GUI.color = Color.white;
+                    Texture(new Rect(ringX - 22, ringY - 8, 22, 16), finishPointer, new Rect(0, 0, 1, 1));
                     Line(ringX, ringY - half, ringX, ringY + half, finishInk, 2);
                     Line(ringX - 3, ringY - half, ringX + 3, ringY - half, finishInk, 1.5f);
                     Line(ringX - 3, ringY + half, ringX + 3, ringY + half, finishInk, 1.5f);
-                    for (int i = 0; i < 2; i++)
-                    {
-                        float arrowX = ringX - 8 - i * 6;
-                        Line(arrowX - 4, ringY - 5, arrowX, ringY, Alpha(finishInk, .7f), 1.5f);
-                        Line(arrowX, ringY, arrowX - 4, ringY + 5, Alpha(finishInk, .7f), 1.5f);
-                    }
                     continue;
                 }
                 float ringRadius = Mathf.Max(6.5f, (float)(zone.Radius + 4) * sy);
@@ -500,6 +517,36 @@ namespace FlipRace.Presentation
                 Ellipse(x + width * .18f, surface + direction * (height + 1), 2.5f, 1.8f, Hex(0xb6c88b));
                 Ellipse(x + width * .3f, surface + direction * (height + 1.7f), 3, 2.3f, Hex(0xb6c88b));
             }
+        }
+
+        // Authored offset passages use the first half to identify the intended
+        // entry surface. This is a direction cue, not a drawn trajectory/collider.
+        public static bool TryOffsetEntry(Obstacle obstacle, out bool fromFloor)
+        {
+            fromFloor = false;
+            if (obstacle.Kind != "gate" || !ObstacleGeometry.TryGetBand(obstacle, 0, out var upper)
+                || !ObstacleGeometry.TryGetBand(obstacle, 1, out var lower)
+                || Math.Abs(upper.Left - lower.Left) < 1e-7) return false;
+            fromFloor = upper.Left < lower.Left;
+            return true;
+        }
+        public static bool TryLowThreshold(Obstacle obstacle, out bool floor)
+        {
+            floor = false;
+            if (obstacle.Kind != "gate" || !ObstacleGeometry.TryGetBand(obstacle, 0, out var upper)
+                || !ObstacleGeometry.TryGetBand(obstacle, 1, out var lower)) return false;
+            if (lower.Height <= 24 && upper.Height > lower.Height * 2 && lower.Left < upper.Left) {
+                floor = true; return true;
+            }
+            return upper.Height <= 24 && lower.Height > upper.Height * 2 && upper.Left < lower.Left;
+        }
+        void GateEntryArrow(float x, float y, bool fromFloor)
+        {
+            float direction = fromFloor ? -1 : 1, tip = y + direction * 10;
+            Color color = Alpha(Hex(0x6f8c69), .85f);
+            Line(x, y, x, tip, color, 1.6f);
+            Line(x, tip, x - 3, tip - direction * 3, color, 1.6f);
+            Line(x, tip, x + 3, tip - direction * 3, color, 1.6f);
         }
 
         void GateHalf(float x, float width, float y, float height, bool fromCeiling, bool hit, float time)

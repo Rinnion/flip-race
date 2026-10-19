@@ -1,0 +1,11 @@
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.
+PASS: V4-01/02 18 scenarios / 1770 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.
+PASS: TUNE-01/02 13 scenarios / 1009 assertions; four profiles, instant boost, preserved effects and actual finishes.
+PASS: CONTROL 19 scenarios / 2166 assertions.
+PASS: CONTROL-03F 10 scenarios / 1598 assertions.
+PASS: FLIGHT 12 scenarios / 1592 assertions.
+PASS: MODES 4 scenarios / 1190 assertions; open edges, real corners, geometric linked confirmation and Fast single air repeat.
+PASS: RHYTHM offset gates 4 scenarios / 2960 assertions; real mirrors, signed offsets, corners, one logical penalty and linked union clearance.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).

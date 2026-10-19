@@ -1,0 +1,56 @@
+Independent RHYTHM scope=recovery-pitch
+Captured UTC=2026-10-19T19:39:52.4357238Z
+98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\ContinuousMotion.cs
+8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E F:\Home\Game\flip-race-unity\Assets\Scripts\Core\FlightSettings.cs
+719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\MotionProfiles.cs
+BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B F:\Home\Game\flip-race-unity\Assets\Scripts\Core\ObstacleGeometry.cs
+AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\RaceSimulation.cs
+588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksControl.cs
+8B4524372B5F27DD94CA7D072857493CB6B627BA812426E1B4194DC4382A09C1 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksFull.cs
+84565BBC2DDB13C7F3FE39D453DB83CA9D9C429F649DA14A69883E5D6F21FD21 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksRhythm.cs
+86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksTune.cs
+9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1 F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksV3.cs
+DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB F:\Home\Game\flip-race-unity\Assets\Scripts\Core\TracksV4.cs
+CFE629A4E2AF6B6EC158AFAEEC0641B0F00EA0BC3FC14975EBCEEC6FDD463E21 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Geometry.cs
+72A397B4ACAD2D1200888271F2F0CB9150AA83F606C0D2956276C55C18B5DC6B F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Program.cs
+E8328345A9A4C3E5ECA392793F61C9EC3A8452BF8D6B866D3722279EB4B6EE70 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\Recovery.cs
+8F305843A7E24469F4E37787C038C1E1145C760DF32227640BC0AB8E44FA9473 F:\Home\Game\flip-race-unity\Tools\RhythmAudit\RecoveryRed.cs
+7DEE3AAD59B0470265438E5135CD7278E29FC406A31C12664F2EC404D90F54AD F:\Home\Game\flip-race-unity\Tools\RhythmAudit\SpeedFixtures.cs
+Fast gate=3 pitch=280 found=False
+Fast gate=3 pitch=290 found=False
+Fast gate=3 pitch=300 found=True settling tap +0, actual wall, then next-gate oracle reaches 2323
+Fast gate=4 pitch=280 found=False
+Fast gate=4 pitch=290 found=False
+Fast gate=4 pitch=300 found=True settling tap +0, actual wall, then next-gate oracle reaches 2653
+Main gate=3 pitch=280 found=False
+Main gate=3 pitch=290 found=False
+Main gate=3 pitch=300 found=False
+Main gate=3 pitch=310 found=False
+Main gate=3 pitch=320 found=False
+Main gate=3 pitch=330 found=False
+Main gate=3 pitch=340 found=False
+Main gate=3 pitch=350 found=False
+Main gate=3 pitch=360 found=False
+Main gate=3 pitch=370 found=False
+Main gate=3 pitch=380 found=False
+Main gate=3 pitch=390 found=False
+Main gate=3 pitch=400 found=False
+Main gate=3 pitch=410 found=False
+Main gate=3 pitch=420 found=True settling tap +0.16, actual wall, then next-gate oracle reaches 2443
+Main gate=4 pitch=280 found=False
+Main gate=4 pitch=290 found=False
+Main gate=4 pitch=300 found=False
+Main gate=4 pitch=310 found=False
+Main gate=4 pitch=320 found=False
+Main gate=4 pitch=330 found=False
+Main gate=4 pitch=340 found=False
+Main gate=4 pitch=350 found=False
+Main gate=4 pitch=360 found=False
+Main gate=4 pitch=370 found=False
+Main gate=4 pitch=380 found=False
+Main gate=4 pitch=390 found=False
+Main gate=4 pitch=400 found=False
+Main gate=4 pitch=410 found=False
+Main gate=4 pitch=420 found=True settling tap +0.16, actual wall, then next-gate oracle reaches 2773
+PASS historical pitch witnesses. First found on a 10-world-unit grid with a finite legal-control search; not a globally minimal sufficient pitch. Only actual Press/Advance, no player/effect injection. Nominal oracle Main repeat .18s; recovery may use a settling tap, true wall support and a later two-tap passage.
+Source hashes unchanged during execution.

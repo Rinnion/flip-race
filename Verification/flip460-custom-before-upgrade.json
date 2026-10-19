@@ -1,0 +1,187 @@
+{
+  "height": 320,
+  "s": {
+    "airRepeatLimit": 1,
+    "characterRects": [
+      [
+        [
+          421,
+          80.5,
+          122,
+          48
+        ],
+        [
+          289,
+          80.5,
+          122,
+          48
+        ],
+        [
+          157,
+          80.5,
+          122,
+          48
+        ],
+        [
+          25,
+          80.5,
+          122,
+          48
+        ]
+      ],
+      [
+        [
+          25,
+          216.5,
+          122,
+          48
+        ],
+        [
+          157,
+          216.5,
+          122,
+          48
+        ],
+        [
+          289,
+          216.5,
+          122,
+          48
+        ],
+        [
+          421,
+          216.5,
+          122,
+          48
+        ]
+      ]
+    ],
+    "characterSelectionVisible": false,
+    "countdown": 3,
+    "customFlight": false,
+    "departureImpulse": 35,
+    "elapsed": 0,
+    "firstAction": "Flip",
+    "flipImpulse": 35,
+    "fullscreenHeight": 25,
+    "fullscreenWidth": 31,
+    "fullscreenX": 516,
+    "fullscreenY": 2,
+    "gravityAcceleration": 2700,
+    "jumpImpulse": 300,
+    "linearJumpHeight": 112,
+    "linearSpeed": 530,
+    "mode": "trial",
+    "motion": "GravityAirFlip",
+    "motionLaw": "Gravity",
+    "negativeEnabled": true,
+    "paused": true,
+    "phase": "ready",
+    "players": [
+      {
+        "airFlipAvailable": true,
+        "boost": 0,
+        "centerY": 226,
+        "character": 0,
+        "collisions": 0,
+        "distance": 0,
+        "failedRings": 0,
+        "finish": -1,
+        "finishBoost": false,
+        "finishBoosts": 0,
+        "flightDuration": 0,
+        "flightEndedAt": 0,
+        "flightInterrupted": false,
+        "flightMaxDistance": 0,
+        "flipElapsed": 0,
+        "flipping": false,
+        "gravity": 1,
+        "hasFlightMeasurement": false,
+        "instantBoosts": 0,
+        "lastFinishBoost": "",
+        "lastInstant": "",
+        "pendingRings": 0,
+        "queuedEffects": 0,
+        "ready": false,
+        "recovering": 0,
+        "rings": 0,
+        "slow": 0,
+        "slowRings": 0,
+        "speed": 220,
+        "support": "Wall",
+        "supportObstacle": "",
+        "supportSide": 1,
+        "verticalSpeed": 0,
+        "y": 1
+      },
+      {
+        "airFlipAvailable": true,
+        "boost": 0,
+        "centerY": 226,
+        "character": 1,
+        "collisions": 0,
+        "distance": 0,
+        "failedRings": 0,
+        "finish": -1,
+        "finishBoost": false,
+        "finishBoosts": 0,
+        "flightDuration": 0,
+        "flightEndedAt": 0,
+        "flightInterrupted": false,
+        "flightMaxDistance": 0,
+        "flipElapsed": 0,
+        "flipping": false,
+        "gravity": 1,
+        "hasFlightMeasurement": false,
+        "instantBoosts": 0,
+        "lastFinishBoost": "",
+        "lastInstant": "",
+        "pendingRings": 0,
+        "queuedEffects": 0,
+        "ready": false,
+        "recovering": 0,
+        "rings": 0,
+        "slow": 0,
+        "slowRings": 0,
+        "speed": 220,
+        "support": "Wall",
+        "supportObstacle": "",
+        "supportSide": 1,
+        "verticalSpeed": 0,
+        "y": 1
+      }
+    ],
+    "profile": "custom",
+    "readyRects": [
+      [
+        189,
+        40.5,
+        190,
+        32
+      ],
+      [
+        189,
+        272.5,
+        190,
+        32
+      ]
+    ],
+    "settingsCopyHeight": 28,
+    "settingsCopyText": "Флип! — свои настройки\nПервый тап: обычный прыжок\nДвижение: разгон\nВоздушные повторы: ∞\nТяга: уровень 2, 1000 ед/с²\nТолчок переворота: уровень 4, 210 ед/с\nСила прыжка: уровень 2, 300 ед/с\nЛинейный перелёт: 0,8 с через 212 ед; скорость 265 ед/с\nВысота линейного прыжка: 112 ед\nНеактивные параметры сохранены, но не влияют на выбранное движение.\nНабор: 1|1|1|-1|1000|210|300|265|112|10",
+    "settingsCopyWidth": 103,
+    "settingsCopyX": 28,
+    "settingsCopyY": 268,
+    "settingsVisible": true,
+    "track": "full-long",
+    "trackMenuRect": [
+      141,
+      1,
+      274,
+      27
+    ],
+    "version": "4.5.1-trial",
+    "winner": ""
+  },
+  "t": 1792441450096.9,
+  "width": 568
+}

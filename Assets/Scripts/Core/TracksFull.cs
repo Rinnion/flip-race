@@ -16,11 +16,13 @@ namespace FlipRace.Core
         { return flight != null && flight.FirstAction == FirstAction.Flip && flight.Law == MotionLaw.Gravity
             && flight.AirRepeats == AirRepeatLimit.One && flight.GravityAcceleration == 2700 && flight.FlipImpulse == 35; }
         static double FastTime(double distance) { return (Math.Sqrt(35*35+5400*distance)-35)/2700; }
+        static double FastLowPassage(double x) { return x+48-110*(FastTime(196)+FastTime(114)); }
         public static double[] SafeRoute(string id, FlightSettings flight)
         {
             if(Fast(flight) && id==LongId)return new[]{150d,2600};
             if(Fast(flight) && id==ShortId)return new[]{150d,730,3700,7270};
-            if(Fast(flight) && id==FlowId)return new[]{1400d,1915,2904-110*(FastTime(12)+FastTime(200)),6705,7120};
+            if(Fast(flight) && id==FlowId)return new[]{100d,FastLowPassage(300),FastLowPassage(1550),1915,
+                2904-110*(FastTime(12)+FastTime(200)),6250,FastLowPassage(6400),6705,7120};
             if(Fast(flight) && !IsFull(id)) return new[]{304-110*(FastTime(12)+FastTime(200)),2600.0};
             return Get(id).SafeRoute;
         }
@@ -32,9 +34,10 @@ namespace FlipRace.Core
             if(Fast(flight) && id==ShortId)return new[]{150d,730,1482-220*FastTime(164),1740,2400,2680-220*FastTime(106),
                 3150,3292,3650,3950-220*FastTime(120),4016,5032-220*FastTime(164),5600,5870,
                 6450-220*FastTime(106),7270,7720,FastFinish()};
-            if(Fast(flight) && id==FlowId)return new[]{700-220*FastTime(106),850,1182-220*FastTime(164),1900-220*FastTime(106),
+            if(Fast(flight) && id==FlowId)return new[]{100d,FastLowPassage(300),700-220*FastTime(106),850,1182-220*FastTime(164),
+                1400,FastLowPassage(1550),1900-220*FastTime(106),
                 2280,2500-220*FastTime(186),2904-110*(FastTime(12)+FastTime(200)),3060,3318,3450,3670,
-                4000-220*FastTime(120),4420,5032-220*FastTime(164),5550,5775,6150,6705,7120,7700,FastFinish()};
+                4000-220*FastTime(120),4420,5032-220*FastTime(164),5550,5775,FastLowPassage(6400),6705,7120,7700,FastFinish()};
             if(Fast(flight) && !IsFull(id)) return new[]{304-110*(FastTime(12)+FastTime(200)),
                 732-220*FastTime(164),1118.0,1242.0,2100-220*FastTime(106),2720.0,2880.0};
             return Get(id).RiskRoute;
@@ -78,11 +81,11 @@ namespace FlipRace.Core
         static Track BuildFlow()
         {
             var b=new Builder(FlowId,"Высотный поток","Проходы по высоте, кольца в воздухе и посадки на обеих сторонах");
-            b.Passage(300,"floor",114,240);b.MiddleRing(600,"floor");b.Landing(1150,"ceiling");
-            b.Passage(1550,"ceiling",0,126);b.Before(2000,"ceiling");b.LowRing(2500,"floor");
+            b.LowPassage(300,"floor");b.MiddleRing(600,"floor");b.Landing(1150,"ceiling");
+            b.LowPassage(1550,"ceiling");b.Before(2000,"ceiling");b.LowRing(2500,"floor");
             b.Passage(2900,"floor",12,228,8);b.Chain(3300,"floor");b.Large(3900,"floor");
             b.Low(4500,"floor");b.Landing(5000,"floor");b.After(5700,"floor");
-            b.Passage(6400,"ceiling",0,126);b.High(6800,"ceiling");b.Low(7200,"floor");
+            b.LowPassage(6400,"ceiling");b.High(6800,"ceiling");b.Low(7200,"floor");
             b.Zones.Add(new RiskZone{Id="flow-hasty-trap",Kind="negative",X=2550,Y=120,Radius=8});
             b.Zones.Add(new RiskZone{Id="flow-habit-trap",Kind="negative",X=7600,Y=200,Radius=8});
             return b.Finish(208,"floor");
@@ -129,6 +132,14 @@ namespace FlipRace.Core
             {Obstacles.Add(Stone(Id("high"),side,x,64,92));Both(x-200,x-145);}
             public void Passage(double x,string side,double top,double bottom,double width=20)
             { Obstacles.Add(new Obstacle{Id=Id("passage"),Kind="gate",X=x,Width=width,GapTop=top,GapBottom=bottom});Both(x+width/2-220*350/662.5); }
+            public void LowPassage(double x,string side)
+            {
+                bool floor=side=="floor";
+                Obstacles.Add(new Obstacle{Id=Id("passage"),Kind="gate",X=x,Width=16,
+                    GapTop=floor?114:16,GapBottom=floor?224:126,TopOffsetX=floor?80:0,BottomOffsetX=floor?0:80});
+                // The original Main jump remains safely centered; only Fast needs new wall-to-wall witnesses.
+                Both(x+10-220*350/662.5);
+            }
             public void Landing(double x,string side)
             {
                 string stone=Id("standard-pad");Obstacles.Add(Stone(stone,side,x,64,48));

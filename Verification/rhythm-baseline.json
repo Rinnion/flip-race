@@ -1,0 +1,63 @@
+{
+  "scope": "RHYTHM-00 read-only preservation of the completed 4.5.1 baseline",
+  "checkedAtUtc": "2026-10-19T19:23:05.984196+00:00",
+  "sourceHead": "2be43324d81de37951b18d4b1920f2eeef3deb91",
+  "version": "4.5.1-trial",
+  "fastPresetAtHead": "Flip / Gravity / One / 2700 / 35 / 300 / 530 / 112",
+  "archive": "Releases/flip-race-v4.5.1-trial-webgl.zip",
+  "archiveBytes": 8549929,
+  "archiveSha256": "fc34351086b4fb77ddfd01d945d50e5d28834b23e4f84905d01bc9918ef36ecd",
+  "manifest": "Releases/flip-race-v4.5.1-trial-webgl.zip.manifest.json",
+  "manifestSha256": "79b09af9f6b7c42d50206d0c67da38261bab636ef9ad9fb4260341545179c743",
+  "web": "Builds/WebGL-v4.5.1-final",
+  "unpacked": "Builds/WebGL-v4.5.1-unpacked",
+  "fileCount": 5,
+  "totalBytes": 8681736,
+  "indexAtRoot": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v4.5.1-final.data.unityweb",
+      "bytes": 1438388,
+      "sha256": "8f14cac7495abbfdccaea69a64f1d5c8a5b1807ab98baa9fcac4c48f6c63aecc",
+      "archiveEntryMatches": true,
+      "preservedWebMatches": true,
+      "preservedUnpackedMatches": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.framework.js.unityweb",
+      "bytes": 89548,
+      "sha256": "b82492eefdf7fc48c0c39aaf94a44d6c682b740c647f505c7c6b7c5d57c91acd",
+      "archiveEntryMatches": true,
+      "preservedWebMatches": true,
+      "preservedUnpackedMatches": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.loader.js",
+      "bytes": 39788,
+      "sha256": "21e28cc4db0602da27755e3dda8bed2e9577630746add2d65390b748497590a6",
+      "archiveEntryMatches": true,
+      "preservedWebMatches": true,
+      "preservedUnpackedMatches": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.wasm.unityweb",
+      "bytes": 7102978,
+      "sha256": "7e42fc492703e874c88a65748ac3bd1b571588805d67bb448409f89def922247",
+      "archiveEntryMatches": true,
+      "preservedWebMatches": true,
+      "preservedUnpackedMatches": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11034,
+      "sha256": "fcfcf816576f8a197eb8d94029c3e49a47d07a73f05263da86ee1858ab6199da",
+      "archiveEntryMatches": true,
+      "preservedWebMatches": true,
+      "preservedUnpackedMatches": true
+    }
+  ],
+  "modifiedBaselineFiles": false,
+  "newRuntimeTestsRun": false,
+  "existingBrowserEvidence": "Verification/FLIP451-BROWSER.md",
+  "newRhythmGeometryStatus": "not verified; RHYTHM-01 pending"
+}

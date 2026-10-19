@@ -43,7 +43,7 @@ internal static partial class Program
         double x=z.IsLanding?z.X+z.LandingWidth/2:z.X+z.Radius+14;
         foreach(var o in track.Obstacles)if(o.Id==z.ObstacleId){
             if(z.IsLanding)x=Math.Min(x,o.X+o.Width);
-            else x=Math.Max(x,Math.Max(z.ClearX,o.X+o.Width+14+1e-7));
+            else x=Math.Max(x,Math.Max(z.ClearX,ObstacleGeometry.Right(o)+14+1e-7));
         }
         return x;
     }
@@ -84,10 +84,10 @@ internal static partial class Program
         }
         File.WriteAllText("Verification/modes-windows.json",JsonSerializer.Serialize(rows,new JsonSerializerOptions{WriteIndented=true}));
     }
-    static void ExportAll()
+    static void ExportAll(string path="Verification/modes-routes.json")
     {
         var rows=new List<object>();foreach(var f in Profiles){rows.Add(RouteExport(TracksFull.Practice(),f));foreach(var t in TracksFull.All)rows.Add(RouteExport(t,f));}
-        File.WriteAllText("Verification/modes-routes.json",JsonSerializer.Serialize(rows,new JsonSerializerOptions{WriteIndented=true,IncludeFields=true}));
-        Console.WriteLine("Exported Verification/modes-routes.json (both profiles, three races and practice).");
+        File.WriteAllText(path,JsonSerializer.Serialize(rows,new JsonSerializerOptions{WriteIndented=true,IncludeFields=true}));
+        Console.WriteLine("Exported "+path+" (both profiles, three races and practice).");
     }
 }

@@ -1,0 +1,158 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.Json;
+using FlipRace.Core;
+
+internal static partial class Program
+{
+    static readonly JsonSerializerOptions Json = new JsonSerializerOptions { IncludeFields = true, WriteIndented = true };
+    static readonly double[] Steps = { 1d/30, 1d/60, 1d/144, .317, 2.5, 100 };
+    static readonly FlightSettings[] Profiles = { FlightPresets.Chosen, FlightPresets.FastFlip };
+    static string Revision = "r1";
+    static bool WindowProof;
+    static string ProfileId(FlightSettings f) { return f == FlightPresets.FastFlip ? "fast-flip" : "chosen"; }
+    public sealed class ModuleRoute
+    {
+        public string profile;
+        public bool full = false, emptyEffects;
+        public double[] inputs, windowsSeconds;
+    }
+    public sealed class Module
+    {
+        public string kind, entryEffects;
+        public double length, endX, entrySpeed, latestAllWorkEndX;
+        public int endSide = -1, entrySide;
+        public Obstacle[] obstacles;
+        public RiskZone[] zones;
+        public ModuleRoute[] routes;
+    }
+    public sealed class Placement
+    {
+        public string Id, Kind;
+        public int Group, EntrySide, EndSide;
+        public double X, EndX, EffectBoundX;
+        public bool Mirrored;
+        public Module Module;
+    }
+    public sealed class PlannedInput
+    {
+        public double X, Tolerance;
+        public int Module, Group;
+        public bool Finish;
+    }
+    public sealed class Course
+    {
+        public string Id, Name;
+        public Track Track;
+        public List<Placement> Modules = new List<Placement>();
+        public Dictionary<string,List<PlannedInput>> Routes = new Dictionary<string,List<PlannedInput>>();
+    }
+    static string RouteKey(FlightSettings f, bool full) { return ProfileId(f) + (full ? "/full" : "/safe"); }
+    static string Focus(string id) { return id=="rhythm-cascade"?"Четыре связки с короткими передышками"
+        :id=="rhythm-dense"?"Непрерывное чередование проходов и наград":"Короткая связка, длинная серия и финальная волна"; }
+    static T ScalarCopy<T>(T source) where T:new()
+    {
+        var result = new T();
+        foreach(var field in typeof(T).GetFields(BindingFlags.Instance|BindingFlags.Public)) field.SetValue(result,field.GetValue(source));
+        return result;
+    }
+    static Obstacle Place(Obstacle source, Placement p)
+    {
+        var o = ScalarCopy(source); o.Id=p.Id+"-"+o.Id; o.X+=p.X;
+        if(p.Mirrored) {
+            if(o.Kind=="gate") { o.GapTop=240-source.GapBottom; o.GapBottom=240-source.GapTop;
+                o.TopOffsetX=source.BottomOffsetX; o.BottomOffsetX=source.TopOffsetX; }
+            else if(o.Kind=="floor")o.Kind="ceiling"; else if(o.Kind=="ceiling")o.Kind="floor";
+        }
+        return o;
+    }
+    static RiskZone Place(RiskZone source, Placement p)
+    {
+        var z=ScalarCopy(source); z.Id=p.Id+"-"+z.Id; if(z.ObstacleId!=null)z.ObstacleId=p.Id+"-"+z.ObstacleId;
+        z.X+=p.X; if(z.ClearX!=0)z.ClearX+=p.X; if(z.SafeFlipX!=0)z.SafeFlipX+=p.X; if(z.RiskFlipX!=0)z.RiskFlipX+=p.X;
+        if(p.Mirrored)z.Y=240-source.Y;
+        return z;
+    }
+    static Course Compose(Dictionary<string,Module> library,string id,string name,string[][] groups,double start,double[] rests,double intraGap=0,bool gateGapsOnly=false)
+    {
+        var c=new Course{Id=id,Name=name};var obstacles=new List<Obstacle>();var zones=new List<RiskZone>();var cues=new List<Cue>();
+        foreach(var f in Profiles)foreach(bool full in new[]{false,true})c.Routes[RouteKey(f,full)]=new List<PlannedInput>();
+        double x=start;int side=1;
+        for(int group=0;group<groups.Length;group++) {
+            cues.Add(new Cue(Math.Max(0,x-60),groups.Length==1?"Плотный поток":"Связка "+(group+1)));
+            for(int j=0;j<groups[group].Length;j++) {
+                var module=library[groups[group][j]];int index=c.Modules.Count;
+                Check(module.entrySide==1 && module.entrySpeed==220 && module.entryEffects=="empty","module contract");
+                var p=new Placement{Id=id+"-m"+index,Kind=module.kind,Group=group,EntrySide=side,
+                    Mirrored=side==0,X=x,EndX=x+module.endX,EffectBoundX=x+module.latestAllWorkEndX,Module=module};
+                p.EndSide=p.Mirrored?1-module.endSide:module.endSide;c.Modules.Add(p);
+                obstacles.AddRange(module.obstacles.Select(o=>Place(o,p)));zones.AddRange(module.zones.Select(z=>Place(z,p)));
+                foreach(var f in Profiles)foreach(bool full in new[]{false,true}) {
+                    var route=module.routes.Single(r=>r.profile==ProfileId(f)&&r.full==full);
+                    Check(route.emptyEffects,"verified empty module output");
+                    for(int k=0;k<route.inputs.Length;k++)c.Routes[RouteKey(f,full)].Add(new PlannedInput{
+                        X=x+route.inputs[k],Tolerance=route.windowsSeconds[k],Module=index,Group=group});
+                }
+                x=p.EndX;side=p.EndSide;
+                if(j+1<groups[group].Length&&(!gateGapsOnly||module.kind=="gate"))x+=intraGap;
+            }
+            if(group+1<groups.Length)x+=rests[group];
+        }
+        double finishY=side==1?208:32;
+        zones.Add(new RiskZone{Id=id+"-finish",Kind="finish",X=7876,Y=finishY,FinishHeight=16});
+        foreach(var f in Profiles) {
+            double time10=RiseTime(f,10),time26=RiseTime(f,26);
+            double finishX=7876-110*(time10+time26);
+            Check(x<finishX,"all modules exit before the finish input: "+id);
+            c.Routes[RouteKey(f,true)].Add(new PlannedInput{X=finishX,Tolerance=.025,Module=c.Modules.Count,Group=groups.Length,Finish=true});
+        }
+        c.Track=new Track(7920,obstacles.ToArray(),cues.ToArray()){Id=id,Name=name,Focus=Focus(id),RiskZones=zones.ToArray(),NegativeEnabled=false,
+            SafeRoute=c.Routes[RouteKey(FlightPresets.Chosen,false)].Select(i=>i.X).ToArray(),
+            RiskRoute=c.Routes[RouteKey(FlightPresets.Chosen,true)].Select(i=>i.X).ToArray()};
+        return c;
+    }
+    static double RiseTime(FlightSettings f,double d)
+    {return f.FirstAction==FirstAction.Flip?(Math.Sqrt(35*35+5400*d)-35)/2700:(350-Math.Sqrt(350*350-1325*d))/662.5;}
+    static Course[] Courses(Dictionary<string,Module> library)
+    {
+        return new[]{
+            Compose(library,"rhythm-cascade","Каскад",new[]{
+                new[]{"gate","pad","gate","free"},
+                new[]{"before","gate","pad","gate"},
+                new[]{"free-high","gate","large","gate","gate"},
+                new[]{"after","gate","chain","gate","gate","gate"}},180,new[]{200d,200d,200d}),
+            Compose(library,"rhythm-dense","Плотный поток",new[]{new[]{
+                "gate","free","gate","pad","gate","gate","before","gate","free-high","gate","gate",
+                "chain","gate","large","gate","pad","gate","after","gate","gate","gate"}},50,
+                Array.Empty<double>(),10),
+            Compose(library,"rhythm-waves","Волны",new[]{
+                new[]{"free","gate","pad","gate"},
+                new[]{"gate","before","large","gate","free-high","pad","gate","gate","gate"},
+                new[]{"gate","after","gate","chain","gate","gate"}},200,new[]{300d,300d})};
+    }
+    static void Main(string[] args)
+    {
+        CultureInfo.CurrentCulture=CultureInfo.InvariantCulture;captureCollision=false;
+        try {
+            Revision=args.FirstOrDefault(a=>a.StartsWith("--revision=",StringComparison.Ordinal))?.Substring(11) ?? "r5";
+            Check(Revision.All(c=>char.IsLetterOrDigit(c)||c=='-'),"simple report revision name");
+            WindowProof=args.Contains("--windows");
+            var modules=JsonSerializer.Deserialize<Module[]>(File.ReadAllText("Verification/rhythm-modules-before400.json"),Json);
+            var trimmed=JsonSerializer.Deserialize<Module[]>(File.ReadAllText("Verification/rhythm-modules-large580.json"),Json).Single(m=>m.kind=="large");
+            modules[Array.FindIndex(modules,m=>m.kind=="large")]=trimmed;
+            // Route-only timing change: the safe Fast return happens later,
+            // still missing the after-ring, so the next action remains nearby.
+            var afterSafe=modules.Single(m=>m.kind=="after").routes.Single(r=>r.profile=="fast-flip"&&!r.full);
+            afterSafe.inputs[1]=340;afterSafe.windowsSeconds[1]=.06;
+            var courses=Courses(modules.ToDictionary(m=>m.kind));
+            if(args.Contains("--runtime-only")){RuntimeMatches(courses);return;}
+            File.WriteAllText("Verification/rhythm-course-"+Revision+"-modules.json",JsonSerializer.Serialize(modules,Json));
+            if(args.Contains("--reduce"))Reduction(courses);
+            else { VerifyAndExport(courses); Emit(courses); }
+        }catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}
+    }
+}

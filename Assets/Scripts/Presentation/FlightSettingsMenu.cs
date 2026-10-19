@@ -10,7 +10,7 @@ namespace FlipRace.Presentation
         int flightPage, activeFlightPreset;
         bool activeCustomFlight;
         string pendingFlightTrack;
-        Rect flightPanel, flightBack, flightApply, flightCustom, flightEdit, flightReset, flightDone, flightCopy, flightChosen, flightFastFlip, flightOldTracks;
+        Rect flightPanel, flightBack, flightApply, flightCustom, flightEdit, flightReset, flightDone, flightCopy, flightChosen, flightFastFlip, flightOldTracks, flightTracks;
 
         public bool FlightSettingsVisible { get { return showTracks && Trial && flightPage == 1 && !Portrait; } }
         public Rect FlightCopyRect { get { return flightCopy; } }
@@ -35,7 +35,7 @@ namespace FlipRace.Presentation
             if (changed) PlayerPrefs.Save();
         }
         static Track InitialFlightTrack()
-        { return TracksFull.All.Length > 0 ? TracksFull.All[0] : TracksFull.Practice(); }
+        { return RaceTracks.All.Length > 0 ? RaceTracks.All[0] : TracksFull.Practice(); }
         void SaveCustomFlight()
         { PlayerPrefs.SetString(FlightSettingsStore.Key, FlightSettingsStore.Encode(flightSelection.Custom)); PlayerPrefs.Save(); }
         void BeginFlightMenu()
@@ -60,21 +60,22 @@ namespace FlipRace.Presentation
             flightCustom = new Rect(flightPanel.x + 16, flightPanel.y + 172, col, 36);
             flightEdit = new Rect(flightPanel.x + 32 + col, flightPanel.y + 106, col, 24);
             flightOldTracks = new Rect(flightPanel.xMax - 126, flightPanel.y + 131, 110, 20);
+            flightTracks = new Rect(flightPanel.x + 32 + col, flightPanel.y + 154, col, 64);
         }
         Rect FullTrackRect(int i)
         {
             float col = (flightPanel.width - 48) / 2;
-            return new Rect(flightPanel.x + 32 + col, flightPanel.y + 154 + i * 28, col, 24);
+            return new Rect(flightPanel.x + 16 + i % 2 * (col + 16), flightPanel.y + 77 + i / 2 * 49, col, 44);
         }
         Rect OldTrackRect(int i)
         {
             float col = (flightPanel.width - 48) / 2;
-            return new Rect(flightPanel.x + 16 + i % 2 * (col + 16), flightPanel.y + 94 + i / 2 * 38, col, 31);
+            return new Rect(flightPanel.x + 16 + i % 2 * (col + 16), flightPanel.y + 85 + i / 2 * 37, col, 34);
         }
         static readonly string[] OldTrackIds = { TracksV4.OpenId, TracksControl.ChallengeId, TracksControl.UnlimitedId,
-            TracksTune.ChallengeId, TracksV4.ChallengeId, TracksFull.PracticeId };
+            TracksTune.ChallengeId, TracksV4.ChallengeId, TracksFull.PracticeId, TracksRhythm.PracticeId };
         static readonly string[] OldTrackNames = { "Свободный полёт", "Точные посадки", "Проходы по высоте",
-            "Кольца и ускорители", "Прежний участок", "Проба посадки и цепочки" };
+            "Кольца и ускорители", "Прежний участок", "Проба посадки и цепочки", "Проба ворот" };
         Rect FlightFieldRect(int column, int row)
         {
             float col = (flightPanel.width - 48) / 2, rh = (flightPanel.height - 98) / 4;
@@ -103,6 +104,12 @@ namespace FlipRace.Presentation
                 HandleFlightFields(p); return;
             }
             if (flightApply.Contains(p)) { if (CanApplyFlight) ApplyFlightChoice(); return; }
+            if (flightPage == 4)
+            {
+                for (int i = 0; i < RaceTracks.All.Length; i++) if (FullTrackRect(i).Contains(p))
+                { pendingFlightTrack = RaceTracks.All[i].Id; return; }
+                return;
+            }
             if (flightPage == 3)
             {
                 for (int i = 0; i < OldTrackIds.Length; i++) if (OldTrackRect(i).Contains(p))
@@ -118,10 +125,9 @@ namespace FlipRace.Presentation
                 if (flightFastFlip.Contains(p)) { flightSelection.SelectPreset(FlightSettingsStore.FastFlipPresetIndex); return; }
                 if (flightCustom.Contains(p)) { flightSelection.SelectCustom(); flightPage = 1; BlockGameplayInput(); return; }
                 if (flightOldTracks.Contains(p)) { flightPage = 3; BlockGameplayInput(); return; }
+                if (flightTracks.Contains(p)) { flightPage = 4; BlockGameplayInput(); return; }
                 if (flightEdit.Contains(p))
                 { flightSelection.Edit(d => { }); SaveCustomFlight(); flightPage = 1; BlockGameplayInput(); return; }
-                for (int i = 0; i < TracksFull.All.Length; i++) if (FullTrackRect(i).Contains(p))
-                { pendingFlightTrack = TracksFull.All[i].Id; return; }
                 return;
             }
         }
@@ -129,7 +135,8 @@ namespace FlipRace.Presentation
         {
             if (Active || !showTracks) return;
             var settings = flightSelection.Settings;
-            Track track = TracksFull.IsFull(pendingFlightTrack) || pendingFlightTrack == TracksFull.PracticeId ? TracksFull.Get(pendingFlightTrack)
+            Track track = RaceTracks.IsFull(pendingFlightTrack) || pendingFlightTrack == TracksFull.PracticeId
+                || pendingFlightTrack == TracksRhythm.PracticeId ? RaceTracks.Get(pendingFlightTrack)
                 : pendingFlightTrack == TracksControl.ChallengeId ? TracksControl.Challenge(MotionMode.GravityAirFlip)
                 : pendingFlightTrack == TracksControl.UnlimitedId ? TracksControl.Unlimited()
                 : pendingFlightTrack == TracksTune.ChallengeId ? TracksTune.Challenge(MotionProfiles.Baseline)
@@ -181,9 +188,11 @@ namespace FlipRace.Presentation
             Round(flightPanel, 12, Hex(0xfbfbf1));
             Text(flightBack, flightPage == 0 ? "×" : "‹", 23, muted, false, TextAnchor.MiddleCenter);
             Text(new Rect(flightPanel.x + 49, flightPanel.y + 10, flightPanel.width - 65, 23),
-                flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки" : "Управление и трасса", 17, ink, true);
+                flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки"
+                    : flightPage == 4 ? "Трассы" : "Управление и трасса", 17, ink, true);
             if (flightPage == 1) { DrawFlightEditor(); return; }
             if (flightPage == 3) { DrawOldFlightTracks(); return; }
+            if (flightPage == 4) { DrawFullFlightTracks(); return; }
             float col = (flightPanel.width - 48) / 2, right = flightPanel.x + 32 + col;
             Text(new Rect(flightPanel.x + 16, flightPanel.y + 43, col, 14), "ГОТОВЫЕ НАСТРОЙКИ", 8, muted);
             FlightButton(flightChosen, "Основной — прыжок и полёт", flightSelection.PresetIndex == FlightSettingsStore.ChosenPresetIndex, true, 10);
@@ -194,10 +203,23 @@ namespace FlipRace.Presentation
             label.wordWrap = true;
             Text(new Rect(right, flightPanel.y + 63, col, 39), FlightSettingsStore.Summary(flightSelection.Settings), 10, muted);
             label.wordWrap = false;
-            Text(new Rect(right, flightPanel.y + 134, col - 112, 14), "ТРИ ТРАССЫ", 8, muted);
+            Text(new Rect(right, flightPanel.y + 134, col - 112, 14), "ТРАССЫ", 8, muted);
             FlightButton(flightOldTracks, "Прежние участки ›", false, true, 8);
-            for (int i = 0; i < TracksFull.All.Length; i++)
-                FlightButton(FullTrackRect(i), TracksFull.All[i].Name, pendingFlightTrack == TracksFull.All[i].Id, true, 10);
+            StrokeRound(flightTracks, 6, Hex(0xa5b98a), Hex(0xe5edd9));
+            Text(new Rect(flightTracks.x + 8, flightTracks.y + 10, flightTracks.width - 16, 20),
+                PendingFlightTrackName(), 11, ink, true, TextAnchor.MiddleCenter);
+            Text(new Rect(flightTracks.x + 8, flightTracks.y + 34, flightTracks.width - 16, 20),
+                "Выбрать трассу  ›", 10, muted, false, TextAnchor.MiddleCenter);
+            DrawFlightApplyFooter();
+        }
+        void DrawFullFlightTracks()
+        {
+            label.wordWrap = true;
+            Text(new Rect(flightPanel.x + 16, flightPanel.y + 43, flightPanel.width - 32, 28),
+                FlightSettingsStore.Summary(flightSelection.Settings), 10, muted);
+            label.wordWrap = false;
+            for (int i = 0; i < RaceTracks.All.Length; i++)
+                FlightButton(FullTrackRect(i), RaceTracks.All[i].Name, pendingFlightTrack == RaceTracks.All[i].Id, true, 11);
             DrawFlightApplyFooter();
         }
         void DrawOldFlightTracks()
@@ -209,14 +231,12 @@ namespace FlipRace.Presentation
             for (int i = 0; i < OldTrackIds.Length; i++)
                 FlightButton(OldTrackRect(i), OldTrackNames[i], pendingFlightTrack == OldTrackIds[i],
                     OldTrackIds[i] != TracksControl.UnlimitedId || flightSelection.Settings.AirRepeats == AirRepeatLimit.Unlimited, 10);
-            Text(new Rect(flightPanel.x + 16, flightPanel.y + 211, flightPanel.width - 32, 16),
-                "Выбор участка сохраняет управление. Новый набор сначала пробуй свободно.", 9, muted);
             DrawFlightApplyFooter();
         }
         void DrawFlightApplyFooter()
         {
             string note = !CanApplyFlight ? "Проходы требуют повторов ∞"
-                : TracksFull.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : "36 сек · управление сохраняется"
+                : RaceTracks.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : "36 сек · управление сохраняется"
                 : "Участок: " + PendingFlightTrackName();
             Text(new Rect(flightPanel.x + 16, flightPanel.yMax - 39, flightPanel.width - 205, 27), note,
                 9, !CanApplyFlight ? Hex(0x9a6844) : muted, false, TextAnchor.MiddleLeft);
@@ -225,7 +245,7 @@ namespace FlipRace.Presentation
         string PendingFlightTrackName()
         {
             for (int i = 0; i < OldTrackIds.Length; i++) if (OldTrackIds[i] == pendingFlightTrack) return OldTrackNames[i];
-            foreach (var track in TracksFull.All) if (track.Id == pendingFlightTrack) return track.Name;
+            foreach (var track in RaceTracks.All) if (track.Id == pendingFlightTrack) return track.Name;
             return "—";
         }
         void DrawField(Rect r, string title, string[] options, int selected, bool enabled, string disabled = "")

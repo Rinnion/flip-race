@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="310" viewBox="0 0 800 310">
+<rect width="800" height="310" fill="#fbfbf1"/>
+<g font-family="Arial,sans-serif" fill="#353b31">
+<text x="24" y="30" font-size="18">R01: actual physical bands / 192-unit offset</text>
+<text x="24" y="53" font-size="12">Unexpanded rectangles from ObstacleGeometry; no connecting collider or trajectory.</text>
+<text x="45" y="81" font-size="14">Floor → ceiling</text>
+<rect x="35" y="96" width="300" height="156.0" fill="#f3f1e6" stroke="#a5af92"/>
+<rect x="45.0" y="96.0" width="20.0" height="91.0" fill="#d9a05b" stroke="#ad7a47"/>
+<text x="43.0" y="272.0" font-size="11">X+0</text>
+<rect x="285.0" y="161.0" width="20.0" height="91.0" fill="#d9a05b" stroke="#ad7a47"/>
+<text x="283.0" y="272.0" font-size="11">X+192</text>
+<text x="45" y="292" font-size="11">Upper Y0–140 · lower Y100–240 · each width16</text>
+<text x="435" y="81" font-size="14">Ceiling → floor</text>
+<rect x="425" y="96" width="300" height="156.0" fill="#f3f1e6" stroke="#a5af92"/>
+<rect x="675.0" y="96.0" width="20.0" height="91.0" fill="#d9a05b" stroke="#ad7a47"/>
+<text x="673.0" y="272.0" font-size="11">X+192</text>
+<rect x="435.0" y="161.0" width="20.0" height="91.0" fill="#d9a05b" stroke="#ad7a47"/>
+<text x="433.0" y="272.0" font-size="11">X+0</text>
+<text x="435" y="292" font-size="11">Upper Y0–140 · lower Y100–240 · each width16</text>
+</g></svg>

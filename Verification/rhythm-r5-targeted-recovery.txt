@@ -1,0 +1,13 @@
+STATE input=40 shift=0.8 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=14 vy=0 gravity=-1 support=Wall
+ESCAPE target=7788 offsets=[0.02,0.23999999999999996,0.6600000000000003] minSpacing=0.21999999999999997 atX=[7510.400000000039,7558.800000000037,7651.200000000036] inputY=[14,74.96749999999977,219.18500000000776] endY=14 hits=1 slows=1
+FIRST_INPUT_LATE_MARGIN seconds=0.029999999999972715; measured against fixed remaining witness; comfort is not inferred from existence.
+STATE input=41 shift=0.4 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=93.0375451962807 vy=-133.323863636363 gravity=-1 support=None
+ESCAPE target=7788 offsets=[0,0.866,1.0499999999999945] minSpacing=0.1839999999999945 atX=[7506.000000000038,7696.52000000003,7721.570296483545] inputY=[93.0375451962807,226,172.81479999998913] endY=14 hits=1 slows=1
+FIRST_INPUT_LATE_MARGIN seconds=1.7471171850047537E-06; measured against fixed remaining witness; comfort is not inferred from existence.
+STATE input=41 shift=0.64 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=93.0375451962807 vy=-133.323863636363 gravity=-1 support=None
+ESCAPE target=7788 offsets=[0,0.866,1.0499999999999945] minSpacing=0.1839999999999945 atX=[7506.000000000038,7696.52000000003,7721.570296483545] inputY=[93.0375451962807,226,172.81479999998913] endY=14 hits=1 slows=1
+FIRST_INPUT_LATE_MARGIN seconds=1.7471171850047537E-06; measured against fixed remaining witness; comfort is not inferred from existence.
+STATE input=41 shift=0.8 hit=rhythm-waves-m17-gate hitX=7473 reactionX=7506.000000000038 y=93.0375451962807 vy=-133.323863636363 gravity=-1 support=None
+ESCAPE target=7788 offsets=[0,0.866,1.0499999999999945] minSpacing=0.1839999999999945 atX=[7506.000000000038,7696.52000000003,7721.570296483545] inputY=[93.0375451962807,226,172.81479999998913] endY=14 hits=1 slows=1
+FIRST_INPUT_LATE_MARGIN seconds=1.7471171850047537E-06; measured against fixed remaining witness; comfort is not inferred from existence.
+PASS targeted R5 recovery: 224786 checks; 4 actual modified prefixes, 3 accepted recovery inputs, entire next union cleared; no state injection.

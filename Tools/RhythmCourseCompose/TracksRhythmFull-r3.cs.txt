@@ -1,0 +1,208 @@
+using System;
+
+namespace FlipRace.Core
+{
+    // Authored from verified module geometry. Route arrays are proof fixtures;
+    // gameplay never reads them as controls. Catalogue activation is separate.
+    public static partial class TracksRhythm
+    {
+        public const string CascadeId = "rhythm-cascade";
+        public const string DenseId = "rhythm-dense";
+        public const string WavesId = "rhythm-waves";
+        public struct RhythmGroup { public int Number; public double StartX, EndX; public string Cue; }
+        static bool IsFastWitness(FlightSettings flight)
+        { return flight != null && flight.FirstAction == FirstAction.Flip && flight.Law == MotionLaw.Gravity
+            && flight.AirRepeats == AirRepeatLimit.One && flight.GravityAcceleration == 2700 && flight.FlipImpulse == 35; }
+        public static Track Draft(string id)
+        {
+            if (id == CascadeId) return BuildCascade();
+            if (id == DenseId) return BuildDense();
+            if (id == WavesId) return BuildWaves();
+            throw new ArgumentException("Unknown rhythm draft: " + id);
+        }
+        public static double[] SafeRoute(string id, FlightSettings flight)
+        {
+            if (id == CascadeId) return IsFastWitness(flight)
+                ? new double[] { 335, 593.5, 795, 1065, 1348, 1878, 2135, 2405, 2663.5, 2865, 3135, 3619, 3960, 4210.5, 4567, 4830, 5100, 5530.5, 5825, 6150, 6453, 6773, 7110, 7380, 7650 }
+                : new double[] { 300.5, 351.5, 636, 1030.5, 1081.5, 1327.5, 1364.5, 1858, 1911, 2086.8, 2153.8, 2370.5, 2421.5, 2706, 3100.5, 3151.5, 3576.5, 3633.5, 3925.5, 3976.5, 4210, 4271, 4478, 4576, 4795.5, 4846.5, 5065.5, 5116.5, 5530.5, 5576, 5811.5, 5876, 6115.5, 6166.5, 6432.5, 6469.5, 6752.5, 6789.5, 7075.5, 7126.5, 7345.5, 7396.5, 7615.5, 7666.5 };
+            if (id == DenseId) return IsFastWitness(flight)
+                ? new double[] { 135, 418, 755, 1013.5, 1215, 1485, 1755, 2018, 2275, 2545, 2829, 3170, 3440, 3743, 4063, 4400, 4650.5, 5007, 5270, 5528.5, 5730, 6000, 6230.5, 6525, 6850, 7120, 7390, 7660 }
+                : new double[] { 100.5, 151.5, 397.5, 434.5, 720.5, 771.5, 1056, 1450.5, 1501.5, 1720.5, 1771.5, 1998, 2051, 2226.8, 2293.8, 2510.5, 2561.5, 2786.5, 2843.5, 3135.5, 3186.5, 3405.5, 3456.5, 3722.5, 3759.5, 4042.5, 4079.5, 4365.5, 4416.5, 4650, 4711, 4918, 5016, 5235.5, 5286.5, 5571, 5965.5, 6016.5, 6230.5, 6276, 6511.5, 6576, 6815.5, 6866.5, 7085.5, 7136.5, 7355.5, 7406.5, 7625.5, 7676.5 };
+            if (id == WavesId) return IsFastWitness(flight)
+                ? new double[] { 298, 635, 893.5, 1095, 1365, 1935, 2198, 2455, 2705.5, 3062, 3325, 3609, 3938.5, 4140, 4410, 4680, 4950, 5520, 5750.5, 6045, 6370, 6673, 6993, 7330, 7600 }
+                : new double[] { 277.5, 314.5, 600.5, 651.5, 936, 1330.5, 1381.5, 1900.5, 1951.5, 2178, 2231, 2406.8, 2473.8, 2705, 2766, 2973, 3071, 3290.5, 3341.5, 3566.5, 3623.5, 3981, 4375.5, 4426.5, 4645.5, 4696.5, 4915.5, 4966.5, 5485.5, 5536.5, 5750.5, 5796, 6031.5, 6096, 6335.5, 6386.5, 6652.5, 6689.5, 6972.5, 7009.5, 7295.5, 7346.5, 7565.5, 7616.5 };
+            throw new ArgumentException("Unknown rhythm route: " + id);
+        }
+        public static double[] FullRoute(string id, FlightSettings flight)
+        {
+            if (id == CascadeId) return IsFastWitness(flight)
+                ? new double[] { 335, 562.5, 678.5, 1065, 1314, 1822, 2105.5, 2405, 2632.5, 2748.5, 3135, 3586.5, 3960, 4210.5, 4382.5, 4830, 5100, 5530.5, 5766.5, 6150, 6419, 6739, 7110, 7380, 7650, 7853.945775241146 }
+                : new double[] { 300.5, 351.5, 555.1811187353192, 1030.5, 1081.5, 1288.5, 1341, 1822.5, 1845.5, 2058.8, 2134.8, 2370.5, 2421.5, 2625.181118735319, 3100.5, 3151.5, 3571, 3594, 3925.5, 3976.5, 4171, 4209, 4237, 4795.5, 4846.5, 5065.5, 5116.5, 5529.5, 5571.5, 5713, 5819.5, 6115.5, 6166.5, 6377.5, 6451, 6694, 6771.5, 7075.5, 7126.5, 7345.5, 7396.5, 7615.5, 7666.5, 7863.922760472742 };
+            if (id == DenseId) return IsFastWitness(flight)
+                ? new double[] { 135, 384, 755, 982.5, 1098.5, 1485, 1755, 1962, 2245.5, 2545, 2796.5, 3170, 3440, 3709, 4029, 4400, 4650.5, 4822.5, 5270, 5497.5, 5613.5, 6000, 6230.5, 6466.5, 6850, 7120, 7390, 7660, 7853.945775241146 }
+                : new double[] { 100.5, 151.5, 358.5, 411, 720.5, 771.5, 975.1811187353192, 1450.5, 1501.5, 1720.5, 1771.5, 1962.5, 1985.5, 2198.8, 2274.8, 2510.5, 2561.5, 2781, 2804, 3135.5, 3186.5, 3405.5, 3456.5, 3667.5, 3741, 3984, 4061.5, 4365.5, 4416.5, 4611, 4649, 4677, 5235.5, 5286.5, 5490.18111873532, 5965.5, 6016.5, 6229.5, 6271.5, 6413, 6519.5, 6815.5, 6866.5, 7085.5, 7136.5, 7355.5, 7406.5, 7625.5, 7676.5, 7863.922760472742 };
+            if (id == WavesId) return IsFastWitness(flight)
+                ? new double[] { 264, 635, 862.5, 978.5, 1365, 1935, 2142, 2425.5, 2705.5, 2877.5, 3325, 3576.5, 3907.5, 4023.5, 4410, 4680, 4950, 5520, 5750.5, 5986.5, 6370, 6639, 6959, 7330, 7600, 7853.945775241146 }
+                : new double[] { 238.5, 291, 600.5, 651.5, 855.1811187353192, 1330.5, 1381.5, 1900.5, 1951.5, 2142.5, 2165.5, 2378.8, 2454.8, 2666, 2704, 2732, 3290.5, 3341.5, 3561, 3584, 3900.181118735319, 4375.5, 4426.5, 4645.5, 4696.5, 4915.5, 4966.5, 5485.5, 5536.5, 5749.5, 5791.5, 5933, 6039.5, 6335.5, 6386.5, 6597.5, 6671, 6914, 6991.5, 7295.5, 7346.5, 7565.5, 7616.5, 7863.922760472742 };
+            throw new ArgumentException("Unknown rhythm route: " + id);
+        }
+        public static RhythmGroup[] Groups(string id)
+        {
+            if (id == CascadeId) return new[] {
+                new RhythmGroup { Number = 1, StartX = 250, EndX = 1600, Cue = "Связка 1" },
+                new RhythmGroup { Number = 2, StartX = 1800, EndX = 3320, Cue = "Связка 2" },
+                new RhythmGroup { Number = 3, StartX = 3520, EndX = 5285, Cue = "Связка 3" },
+                new RhythmGroup { Number = 4, StartX = 5485, EndX = 7835, Cue = "Связка 4" },
+            };
+            if (id == DenseId) return new[] {
+                new RhythmGroup { Number = 1, StartX = 50, EndX = 7845, Cue = "Плотный поток" },
+            };
+            if (id == WavesId) return new[] {
+                new RhythmGroup { Number = 1, StartX = 200, EndX = 1550, Cue = "Связка 1" },
+                new RhythmGroup { Number = 2, StartX = 1850, EndX = 5135, Cue = "Связка 2" },
+                new RhythmGroup { Number = 3, StartX = 5435, EndX = 7785, Cue = "Связка 3" },
+            };
+            throw new ArgumentException("Unknown rhythm groups: " + id);
+        }
+        static Track BuildCascade()
+        {
+            return new Track(7920, new[] {
+                new Obstacle { Id = "rhythm-cascade-m0-gate", Kind = "gate", X = 330, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m1-pad-stone", Kind = "ceiling", X = 720, Width = 64, Height = 48, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m2-gate", Kind = "gate", X = 1060, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m3-gate", Kind = "gate", X = 1330, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m4-stone", Kind = "ceiling", X = 1980, Width = 64, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m4-exit-gate", Kind = "gate", X = 2130, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m5-gate", Kind = "gate", X = 2400, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m6-pad-stone", Kind = "floor", X = 2790, Width = 64, Height = 48, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m7-gate", Kind = "gate", X = 3130, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m8-gate", Kind = "gate", X = 3600, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m9-gate", Kind = "gate", X = 3955, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m10-pad-stone", Kind = "ceiling", X = 4345, Width = 200, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m11-gate", Kind = "gate", X = 4825, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m12-gate", Kind = "gate", X = 5095, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m13-after-stone", Kind = "ceiling", X = 5645, Width = 64, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m14-gate", Kind = "gate", X = 6145, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m15-chain-gate-1", Kind = "gate", X = 6435, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m15-chain-gate-2", Kind = "gate", X = 6755, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m16-gate", Kind = "gate", X = 7105, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-cascade-m17-gate", Kind = "gate", X = 7375, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-cascade-m18-gate", Kind = "gate", X = 7645, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+            }, new[] {
+                new Cue(190, "Связка 1"),
+                new Cue(1740, "Связка 2"),
+                new Cue(3460, "Связка 3"),
+                new Cue(5425, "Связка 4"),
+            }) {
+                Id = CascadeId, Name = "Каскад", Focus = "Четыре связки с короткими передышками", NegativeEnabled = false,
+                SafeRoute = SafeRoute(CascadeId, FlightPresets.Chosen),
+                RiskRoute = FullRoute(CascadeId, FlightPresets.Chosen),
+                RiskZones = new[] {
+                    new RiskZone { Id = "rhythm-cascade-m1-pad", ObstacleId = "rhythm-cascade-m1-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 752, Y = 48, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 32, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m3-free", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 1364, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m4-before", ObstacleId = "rhythm-cascade-m4-stone", Kind = "positive", Placement = "before", FreeReward = false, X = 1880, Y = 120, Radius = 8, ClearX = 2059, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m6-pad", ObstacleId = "rhythm-cascade-m6-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 2822, Y = 192, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 32, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m8-free-high", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 3650, Y = 170, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m10-pad", ObstacleId = "rhythm-cascade-m10-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 4445, Y = 92, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 52, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m13-after-ring", ObstacleId = "rhythm-cascade-m13-after-stone", Kind = "positive", Placement = "after", FreeReward = false, X = 5825, Y = 120, Radius = 8, ClearX = 5724, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m15-chain-1", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 6469, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-m15-chain-2", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 6789, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-finish", ObstacleId = null, Kind = "finish", Placement = "before", FreeReward = false, X = 7876, Y = 32, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                }
+            };
+        }
+        static Track BuildDense()
+        {
+            return new Track(7920, new[] {
+                new Obstacle { Id = "rhythm-dense-m0-gate", Kind = "gate", X = 130, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m1-gate", Kind = "gate", X = 400, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m2-gate", Kind = "gate", X = 750, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m3-pad-stone", Kind = "ceiling", X = 1140, Width = 64, Height = 48, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m4-gate", Kind = "gate", X = 1480, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m5-gate", Kind = "gate", X = 1750, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m6-stone", Kind = "ceiling", X = 2120, Width = 64, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m6-exit-gate", Kind = "gate", X = 2270, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m7-gate", Kind = "gate", X = 2540, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m8-gate", Kind = "gate", X = 2810, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m9-gate", Kind = "gate", X = 3165, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m10-gate", Kind = "gate", X = 3435, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m11-chain-gate-1", Kind = "gate", X = 3725, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m11-chain-gate-2", Kind = "gate", X = 4045, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m12-gate", Kind = "gate", X = 4395, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m13-pad-stone", Kind = "floor", X = 4785, Width = 200, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m14-gate", Kind = "gate", X = 5265, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m15-pad-stone", Kind = "ceiling", X = 5655, Width = 64, Height = 48, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m16-gate", Kind = "gate", X = 5995, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m17-after-stone", Kind = "floor", X = 6345, Width = 64, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m18-gate", Kind = "gate", X = 6845, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m19-gate", Kind = "gate", X = 7115, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-dense-m20-gate", Kind = "gate", X = 7385, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-dense-m21-gate", Kind = "gate", X = 7655, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+            }, new[] {
+                new Cue(0, "Плотный поток"),
+            }) {
+                Id = DenseId, Name = "Плотный поток", Focus = "Непрерывное чередование проходов и наград", NegativeEnabled = false,
+                SafeRoute = SafeRoute(DenseId, FlightPresets.Chosen),
+                RiskRoute = FullRoute(DenseId, FlightPresets.Chosen),
+                RiskZones = new[] {
+                    new RiskZone { Id = "rhythm-dense-m1-free", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 434, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m3-pad", ObstacleId = "rhythm-dense-m3-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 1172, Y = 48, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 32, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m6-before", ObstacleId = "rhythm-dense-m6-stone", Kind = "positive", Placement = "before", FreeReward = false, X = 2020, Y = 120, Radius = 8, ClearX = 2199, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m8-free-high", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 2860, Y = 70, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m11-chain-1", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 3759, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m11-chain-2", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 4079, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m13-pad", ObstacleId = "rhythm-dense-m13-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 4885, Y = 148, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 52, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m15-pad", ObstacleId = "rhythm-dense-m15-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 5687, Y = 48, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 32, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-m17-after-ring", ObstacleId = "rhythm-dense-m17-after-stone", Kind = "positive", Placement = "after", FreeReward = false, X = 6525, Y = 120, Radius = 8, ClearX = 6424, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-dense-finish", ObstacleId = null, Kind = "finish", Placement = "before", FreeReward = false, X = 7876, Y = 208, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                }
+            };
+        }
+        static Track BuildWaves()
+        {
+            return new Track(7920, new[] {
+                new Obstacle { Id = "rhythm-waves-m0-gate", Kind = "gate", X = 280, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-waves-m1-gate", Kind = "gate", X = 630, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m2-pad-stone", Kind = "floor", X = 1020, Width = 64, Height = 48, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m3-gate", Kind = "gate", X = 1360, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-waves-m4-gate", Kind = "gate", X = 1930, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m5-stone", Kind = "floor", X = 2300, Width = 64, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m5-exit-gate", Kind = "gate", X = 2450, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m6-pad-stone", Kind = "floor", X = 2840, Width = 200, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m7-gate", Kind = "gate", X = 3320, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-waves-m8-gate", Kind = "gate", X = 3590, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m9-pad-stone", Kind = "floor", X = 4065, Width = 64, Height = 48, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m10-gate", Kind = "gate", X = 4405, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-waves-m11-gate", Kind = "gate", X = 4675, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m12-gate", Kind = "gate", X = 4945, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-waves-m13-gate", Kind = "gate", X = 5515, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m14-after-stone", Kind = "floor", X = 5865, Width = 64, Height = 92, GapTop = 0, GapBottom = 0, TopOffsetX = 0, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m15-gate", Kind = "gate", X = 6365, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-waves-m16-chain-gate-1", Kind = "gate", X = 6655, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m16-chain-gate-2", Kind = "gate", X = 6975, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+                new Obstacle { Id = "rhythm-waves-m17-gate", Kind = "gate", X = 7325, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 112, BottomOffsetX = 0 },
+                new Obstacle { Id = "rhythm-waves-m18-gate", Kind = "gate", X = 7595, Width = 16, Height = 0, GapTop = 110, GapBottom = 130, TopOffsetX = 0, BottomOffsetX = 112 },
+            }, new[] {
+                new Cue(140, "Связка 1"),
+                new Cue(1790, "Связка 2"),
+                new Cue(5375, "Связка 3"),
+            }) {
+                Id = WavesId, Name = "Волны", Focus = "Короткая связка, длинная серия и финальная волна", NegativeEnabled = false,
+                SafeRoute = SafeRoute(WavesId, FlightPresets.Chosen),
+                RiskRoute = FullRoute(WavesId, FlightPresets.Chosen),
+                RiskZones = new[] {
+                    new RiskZone { Id = "rhythm-waves-m0-free", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 314, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m2-pad", ObstacleId = "rhythm-waves-m2-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 1052, Y = 192, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 32, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m5-before", ObstacleId = "rhythm-waves-m5-stone", Kind = "positive", Placement = "before", FreeReward = false, X = 2200, Y = 120, Radius = 8, ClearX = 2379, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m6-pad", ObstacleId = "rhythm-waves-m6-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 2940, Y = 148, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 52, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m8-free-high", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 3640, Y = 170, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m9-pad", ObstacleId = "rhythm-waves-m9-pad-stone", Kind = "landing", Placement = "before", FreeReward = false, X = 4097, Y = 192, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 32, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m14-after-ring", ObstacleId = "rhythm-waves-m14-after-stone", Kind = "positive", Placement = "after", FreeReward = false, X = 6045, Y = 120, Radius = 8, ClearX = 5944, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m16-chain-1", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 6689, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-m16-chain-2", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 7009, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-waves-finish", ObstacleId = null, Kind = "finish", Placement = "before", FreeReward = false, X = 7876, Y = 32, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                }
+            };
+        }
+    }
+}

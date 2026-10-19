@@ -1,0 +1,531 @@
+{
+  "checks": 2535,
+  "runs": 1018529,
+  "rows": [
+    {
+      "offset": 192,
+      "top": 140,
+      "bottom": 100,
+      "profile": "Flip",
+      "speed": 110,
+      "launchX": 1074.978199355338,
+      "fixedDelayWindowMs": 1254.4667876675155,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 242.5261273229487,
+      "minFoundPitch": 244,
+      "rescueTaps": [
+        0,
+        0.26
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 192,
+      "top": 140,
+      "bottom": 100,
+      "profile": "Flip",
+      "speed": 220,
+      "launchX": 1045.9563987106758,
+      "fixedDelayWindowMs": 581.7395149402428,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 293.0522546458974,
+      "minFoundPitch": 294,
+      "rescueTaps": [
+        0,
+        0.28
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 192,
+      "top": 140,
+      "bottom": 100,
+      "profile": "Flip",
+      "speed": 330,
+      "launchX": 1016.9345980660138,
+      "fixedDelayWindowMs": 357.4970906978189,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 343.5783819688461,
+      "minFoundPitch": 344,
+      "rescueTaps": [
+        0,
+        0.3
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 192,
+      "top": 140,
+      "bottom": 100,
+      "profile": "Jump",
+      "speed": 110,
+      "launchX": 1063.5469755307313,
+      "fixedDelayWindowMs": 1138.4013654499468,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 260.3045054852196,
+      "minFoundPitch": 250,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.32
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 192,
+      "top": 140,
+      "bottom": 100,
+      "profile": "Jump",
+      "speed": 220,
+      "launchX": 1023.0939510614623,
+      "fixedDelayWindowMs": 465.6740927226746,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 328.6090109704391,
+      "minFoundPitch": 308,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.32
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 192,
+      "top": 140,
+      "bottom": 100,
+      "profile": "Jump",
+      "speed": 330,
+      "launchX": 982.6409265921936,
+      "fixedDelayWindowMs": 241.43166848025052,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 396.9135164556586,
+      "minFoundPitch": 432,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.16
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 160,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Flip",
+      "speed": 110,
+      "launchX": 1058.6370509925475,
+      "fixedDelayWindowMs": 1017.4950347685364,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 207.90072209518314,
+      "minFoundPitch": 208,
+      "rescueTaps": [
+        0,
+        0.27
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 160,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Flip",
+      "speed": 220,
+      "launchX": 1029.2741019850948,
+      "fixedDelayWindowMs": 490.2223074958081,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 255.80144419036625,
+      "minFoundPitch": 256,
+      "rescueTaps": [
+        0,
+        0.27
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 160,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Flip",
+      "speed": 330,
+      "launchX": 999.9111529776424,
+      "fixedDelayWindowMs": 314.4647317382326,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 303.70216628554937,
+      "minFoundPitch": 304,
+      "rescueTaps": [
+        0,
+        0.28
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 160,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Jump",
+      "speed": 110,
+      "launchX": 1046.5977284687317,
+      "fixedDelayWindowMs": 970.8020251281399,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 222.50816014922069,
+      "minFoundPitch": 214,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.26
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 160,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Jump",
+      "speed": 220,
+      "launchX": 1005.1954569374633,
+      "fixedDelayWindowMs": 443.52929785541266,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 285.01632029844137,
+      "minFoundPitch": 278,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.44
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 160,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Jump",
+      "speed": 330,
+      "launchX": 963.7931854061949,
+      "fixedDelayWindowMs": 267.77172209783726,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 347.52448044766203,
+      "minFoundPitch": 388,
+      "rescueTaps": [
+        0,
+        0.22,
+        0.3
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 176,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Flip",
+      "speed": 110,
+      "launchX": 1066.6370509925475,
+      "fixedDelayWindowMs": 1162.9495802230817,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 223.90072209518314,
+      "minFoundPitch": 224,
+      "rescueTaps": [
+        0,
+        0.27
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 176,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Flip",
+      "speed": 220,
+      "launchX": 1037.2741019850948,
+      "fixedDelayWindowMs": 562.9495802230808,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 271.8014441903663,
+      "minFoundPitch": 272,
+      "rescueTaps": [
+        0,
+        0.27
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 176,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Flip",
+      "speed": 330,
+      "launchX": 1007.9111529776424,
+      "fixedDelayWindowMs": 362.94958022308117,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 319.70216628554937,
+      "minFoundPitch": 320,
+      "rescueTaps": [
+        0,
+        0.27
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 176,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Jump",
+      "speed": 110,
+      "launchX": 1054.5977284687317,
+      "fixedDelayWindowMs": 1116.2565705826855,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 238.50816014922069,
+      "minFoundPitch": 230,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.26
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 176,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Jump",
+      "speed": 220,
+      "launchX": 1013.1954569374633,
+      "fixedDelayWindowMs": 516.2565705826854,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 301.01632029844137,
+      "minFoundPitch": 282,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.4
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 176,
+      "top": 120,
+      "bottom": 120,
+      "profile": "Jump",
+      "speed": 330,
+      "launchX": 971.7931854061949,
+      "fixedDelayWindowMs": 316.25657058268575,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 363.52448044766203,
+      "minFoundPitch": 392,
+      "rescueTaps": [
+        0,
+        0.2,
+        0.28
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 96,
+      "top": 108,
+      "bottom": 132,
+      "profile": "Flip",
+      "speed": 110,
+      "launchX": 1026.571056688468,
+      "fixedDelayWindowMs": 467.44567643500494,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 142.21943110760682,
+      "minFoundPitch": 144,
+      "rescueTaps": [
+        0,
+        0.24
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 96,
+      "top": 108,
+      "bottom": 132,
+      "profile": "Flip",
+      "speed": 220,
+      "launchX": 997.1421133769359,
+      "fixedDelayWindowMs": 231.0820400713691,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 188.43886221521365,
+      "minFoundPitch": 190,
+      "rescueTaps": [
+        0,
+        0.29
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 96,
+      "top": 108,
+      "bottom": 132,
+      "profile": "Flip",
+      "speed": 330,
+      "launchX": 967.7131700654038,
+      "fixedDelayWindowMs": 152.29416128348976,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 234.65829332282044,
+      "minFoundPitch": 244,
+      "rescueTaps": [
+        0,
+        0.21
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 96,
+      "top": 108,
+      "bottom": 132,
+      "profile": "Jump",
+      "speed": 110,
+      "launchX": 1014.4108504666026,
+      "fixedDelayWindowMs": 460.80406196555157,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 154.744926125292,
+      "minFoundPitch": 146,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.32
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 96,
+      "top": 108,
+      "bottom": 132,
+      "profile": "Jump",
+      "speed": 220,
+      "launchX": 972.8217009332052,
+      "fixedDelayWindowMs": 224.4404256019157,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 213.48985225058402,
+      "minFoundPitch": 238,
+      "rescueTaps": [
+        0,
+        0.28,
+        0.36
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 96,
+      "top": 108,
+      "bottom": 132,
+      "profile": "Jump",
+      "speed": 330,
+      "launchX": 931.2325513998078,
+      "fixedDelayWindowMs": 145.65254681403675,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 272.2347783758761,
+      "minFoundPitch": 336,
+      "rescueTaps": [
+        0,
+        0.36,
+        0.44
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 112,
+      "top": 110,
+      "bottom": 130,
+      "profile": "Flip",
+      "speed": 110,
+      "launchX": 1034.5751606781457,
+      "fixedDelayWindowMs": 607.6172204057746,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 158.5058921995366,
+      "minFoundPitch": 160,
+      "rescueTaps": [
+        0,
+        0.24
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 112,
+      "top": 110,
+      "bottom": 130,
+      "profile": "Flip",
+      "speed": 220,
+      "launchX": 1005.1503213562917,
+      "fixedDelayWindowMs": 298.52631131486606,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 205.01178439907318,
+      "minFoundPitch": 206,
+      "rescueTaps": [
+        0,
+        0.25
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 112,
+      "top": 110,
+      "bottom": 130,
+      "profile": "Flip",
+      "speed": 330,
+      "launchX": 975.7254820344374,
+      "fixedDelayWindowMs": 195.49600828456283,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 251.51767659860974,
+      "minFoundPitch": 260,
+      "rescueTaps": [
+        0,
+        0.22
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 112,
+      "top": 110,
+      "bottom": 130,
+      "profile": "Jump",
+      "speed": 110,
+      "launchX": 1022.4224386570656,
+      "fixedDelayWindowMs": 594.3304346713189,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 171.389387436012,
+      "minFoundPitch": 164,
+      "rescueTaps": [
+        0,
+        0.08,
+        0.22
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 112,
+      "top": 110,
+      "bottom": 130,
+      "profile": "Jump",
+      "speed": 220,
+      "launchX": 980.8448773141309,
+      "fixedDelayWindowMs": 285.23952558040986,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 230.77877487202394,
+      "minFoundPitch": 248,
+      "rescueTaps": [
+        0,
+        0.22,
+        0.3
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    },
+    {
+      "offset": 112,
+      "top": 110,
+      "bottom": 130,
+      "profile": "Jump",
+      "speed": 330,
+      "launchX": 939.2673159711965,
+      "fixedDelayWindowMs": 182.20922255010686,
+      "normalJointJitterMs": 60,
+      "firstPartNecessaryPitchAtNominalDelay": 290.1681623080359,
+      "minFoundPitch": 348,
+      "rescueTaps": [
+        0,
+        0.34,
+        0.42
+      ],
+      "recoveryScope": "real late wall hit, .5s recovery \u002B .15s reaction, then full next gate; held speed; finite 2-unit pitch/80ms-min-spacing catalogue"
+    }
+  ]
+}
