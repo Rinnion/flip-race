@@ -21,11 +21,70 @@ namespace FlipRace.Editor
         { while(duration>1e-12&&g.Phase=="racing"){double dt=Math.Min(duration,frame);RaceSimulation.Advance(g,dt);duration-=dt;} }
         public static string RunAll()
         {
-            assertions=0;OpenGateEdges();NonemptyGateCorner();LinkedWholeBodyBoundary();
-            return "PASS: MODES 3 scenarios / "+assertions+" assertions; open edges, real corners and geometric linked confirmation.";
+            assertions=0;OpenGateEdges();NonemptyGateCorner();LinkedWholeBodyBoundary();FastSingleAirRepeat();
+            return "PASS: MODES 4 scenarios / "+assertions+" assertions; open edges, real corners, geometric linked confirmation and Fast single air repeat.";
         }
         public static string RunOpenGateRegression()
         { assertions=0;OpenGateEdges();return "PASS: MODES open gate / "+assertions+" assertions."; }
+        static GameState FastSupport(Track track,int side,double frame)
+        {
+            var g=Start(track,FlightPresets.FastFlip);
+            if(side==0){Tap(g);Advance(g,(Math.Sqrt(35*35+2*2700*212)-35)/2700+1e-8,frame);}
+            foreach(var p in g.Players)Check(p.Support==SupportKind.Wall&&p.SupportSide==side,"real initial Fast wall");
+            return g;
+        }
+        static void FastSingleAirRepeat()
+        {
+            Check(FlightPresets.FastFlip.AirRepeats==AirRepeatLimit.One,"Fast preset has exactly one repeat");
+            Check(FlightPresets.Chosen.AirRepeats==AirRepeatLimit.Unlimited,"Chosen remains unlimited");
+            foreach(int side in new[]{0,1})foreach(double frame in Steps){
+                var g=FastSupport(new Track(22000,Array.Empty<Obstacle>()),side,frame);
+                Tap(g);Advance(g,.3,frame);
+                var p=g.Players[0];var other=g.Players[1];double vy=p.VerticalSpeed,y=p.Y;
+                double otherV=other.VerticalSpeed,otherY=other.Y;int gravity=p.Gravity,otherGravity=other.Gravity;
+                Check(RaceSimulation.Press(g,0),"first Fast air repeat accepted");
+                Near(p.VerticalSpeed,vy,"repeat retains inertia");Near(p.Y,y,"repeat retains position");
+                Check(p.Gravity==-gravity&&!p.AirFlipAvailable,"repeat changes acceleration and consumes own charge");
+                Check(!RaceSimulation.Press(g,0),"second Fast air repeat rejected");
+                Near(p.VerticalSpeed,vy,"rejected repeat retains inertia");Check(p.Gravity==-gravity,"rejected repeat retains acceleration");
+                Near(other.VerticalSpeed,otherV,"other velocity unaffected");Near(other.Y,otherY,"other position unaffected");
+                Check(other.Gravity==otherGravity&&other.AirFlipAvailable,"other player keeps independent repeat");
+                // This late reversal still touches the opposite wall by inertia. That is not a landing.
+                double wrongWall=(845-Math.Sqrt(845*845-2*2700*80))/2700;
+                Advance(g,wrongWall+1e-8,frame);
+                Check(p.Support==SupportKind.None&&p.Flipping&&!p.AirFlipAvailable,"wrong-wall touch does not recharge");
+                Check(!RaceSimulation.Press(g,0),"wrong-wall contact cannot supply another repeat");
+                Advance(g,.5,frame);
+                Check(p.Support==SupportKind.Wall&&p.SupportSide==side&&p.AirFlipAvailable,"true wall landing restores one repeat");
+                Check(p.Collisions==0&&other.Collisions==0,"repeat route has no artificial impact");
+                Check(RaceSimulation.Press(g,0),"new departure from true wall");Advance(g,.02,frame);
+                Check(RaceSimulation.Press(g,0)&&!RaceSimulation.Press(g,0),"wall-recharged repeat is still exactly one");
+
+                var track=new Track(22000,new[]{new Obstacle{Id="pad-stone",Kind=side==1?"floor":"ceiling",X=600,Width=64,Height=48}})
+                {RiskZones=new[]{new RiskZone{Id="pad",Kind="landing",ObstacleId="pad-stone",X=632,Y=side==1?192:48,LandingWidth=32}}};
+                g=FastSupport(track,side,frame);
+                double arrival=.15+(440+Math.Sqrt(440*440-2*2700*(48-35.625)))/2700;
+                double launchX=632-220*arrival;
+                Advance(g,(launchX-g.Players[0].Distance)/220,frame);Tap(g);Advance(g,.15,frame);Tap(g);
+                foreach(var player in g.Players)Check(!player.AirFlipAvailable,"pad approach consumes one real airborne repeat");
+                Advance(g,arrival-.15+1e-8,frame);
+                foreach(var player in g.Players){
+                    Check(player.Support==SupportKind.Stone&&player.SupportObstacleId=="pad-stone"&&player.SupportSide==side,"real mirrored pad landing");
+                    Check(player.AirFlipAvailable&&player.BoostsEarned==1&&player.Collisions==0,"legal pad restores charge and awards once");
+                }
+                Tap(g);Advance(g,.02,frame);Tap(g);
+                foreach(var player in g.Players)Check(!RaceSimulation.Press(g,player.Id),"pad-recharged repeat is exactly one");
+            }
+            foreach(double frame in Steps){
+                var none=new FlightSettings(FirstAction.Flip,MotionLaw.Gravity,AirRepeatLimit.None,2700,35,300,530,112);
+                var g=Start(new Track(22000,Array.Empty<Obstacle>()),none);Tap(g);Advance(g,.1,frame);
+                foreach(var p in g.Players)Check(!RaceSimulation.Press(g,p.Id),"manual None still rejects airborne input");
+                g=Start(new Track(22000,Array.Empty<Obstacle>()),FlightPresets.Chosen);Tap(g);Advance(g,.1,frame);
+                double vy=g.Players[0].VerticalSpeed;
+                for(int i=0;i<8;i++){Tap(g);Near(g.Players[0].VerticalSpeed,vy,"Chosen unlimited repeats preserve velocity");}
+                foreach(var p in g.Players)Check(p.AirFlipAvailable,"Chosen charge remains unlimited");
+            }
+        }
         static void OpenGateEdges()
         {
             foreach(var flight in new[]{FlightPresets.Chosen,FlightPresets.FastFlip})

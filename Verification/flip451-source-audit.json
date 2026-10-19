@@ -1,0 +1,32 @@
+{
+  "scope": "Narrow source audit: FastFlip repeat None to One; no gameplay execution claimed",
+  "checkedAtUtc": "2026-10-19T19:01:11.6076369Z",
+  "baselineHead": "4dbab9433b9dd1403e3415ca5b47d1d5d3ba1a8d",
+  "expectedChanges": [
+    {
+      "file": "Assets/Scripts/Core/FlightSettings.cs",
+      "onlyExpectedReplacement": true,
+      "sha256": "8499b6dc0d17a86a9ce02ce3f56fa4bd78d4f66ca1cb61e85b052c6be5c9fb5e"
+    },
+    {
+      "file": "Assets/Scripts/Core/TracksFull.cs",
+      "onlyExpectedReplacement": true,
+      "sha256": "8b4524372b5f27dd94ca7d072857493cb6b627ba812426e1b4194dc4382a09c1"
+    }
+  ],
+  "unchanged": [
+    {
+      "file": "Assets/Scripts/Core/RaceSimulation.cs",
+      "unchangedAgainstHead": true,
+      "sha256": "cfa0a419c9ce9fc7c0f2a7f075cacc8e7cd3c9655d12412037aa2e5d4bc7838b"
+    },
+    {
+      "file": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "unchangedAgainstHead": true,
+      "sha256": "55da2f7807b75dd94360cc40018f7e2c4531a841e62ac429767619a40a2982be"
+    }
+  ],
+  "geometryAndRouteCoordinatesUnchanged": true,
+  "manualZero": "TryDecode reads stored repeat field unchanged; Preset(11) obtains One, custom None remains None. Actual Press behavior is the unchanged SupportsAirFlip/charge path.",
+  "releaseVerification": "See FLIP451-RELEASE.md and FLIP451-BROWSER.md; this JSON asserts only the recorded source delta."
+}

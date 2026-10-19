@@ -29,10 +29,9 @@ public static partial class TwoModesIndependentAudit
             double expectedY=Wall(side)+Away(side)*(35*duration/2+.5*2700*duration*duration/4);
             foreach(var p in game.Players)
             { Near(p.VerticalSpeed,expectedV,"analytic midflight velocity");Near(RaceSimulation.GetPlayerCenterY(p),expectedY,"analytic midflight height"); }
-            for(int repeat=0;repeat<16;repeat++)foreach(var p in game.Players)
-            { Check(!RaceSimulation.Press(game,p.Id),"all air inputs rejected");Near(p.VerticalSpeed,expectedV,"rejected input preserves velocity"); }
+            foreach(var p in game.Players)Check(p.AirFlipAvailable,"unspent Fast air repeat available during analytic flight");
             Advance(game,duration/2-1e-6,step);
-            foreach(var p in game.Players)Check(!RaceSimulation.Press(game,p.Id),"input just before landing rejected");
+            foreach(var p in game.Players)Check(p.Flipping&&p.AirFlipAvailable,"repeat remains available just before landing");
             Advance(game,1e-6+1e-9,step);
             foreach(var p in game.Players)
             {
@@ -42,7 +41,31 @@ public static partial class TwoModesIndependentAudit
                 Near(p.LastFlight.EndedAt,began+duration,"analytic contact timestamp");
             }
             Tap(game);Advance(game,duration+1e-9,step);
-            foreach(var p in game.Players)Check(p.SupportSide==side&&!p.Flipping&&p.Collisions==0,"new tap allowed only after true support");
+            foreach(var p in game.Players)Check(p.SupportSide==side&&!p.Flipping&&p.Collisions==0,"next ground departure reaches true support");
+
+            context="fast single air repeat side="+side+" dt="+step;
+            game=Prepare(new Track(22000,Array.Empty<Obstacle>()),ExpectedFast,side,step);
+            Tap(game);Advance(game,.1,step);
+            foreach(var p in game.Players){
+                double velocity=p.VerticalSpeed,position=p.Y;int gravity=p.Gravity;
+                Check(RaceSimulation.Press(game,p.Id),"one real air repeat accepted");
+                Near(p.VerticalSpeed,velocity,"accepted repeat keeps velocity");Near(p.Y,position,"accepted repeat keeps position");
+                Check(p.Gravity==-gravity&&!p.AirFlipAvailable,"repeat reverses acceleration and consumes charge");
+                for(int repeat=0;repeat<16;repeat++){
+                    Check(!RaceSimulation.Press(game,p.Id),"additional air inputs rejected");
+                    Near(p.VerticalSpeed,velocity,"rejected repeat keeps velocity");
+                }
+            }
+            Advance(game,1,step);
+            foreach(var p in game.Players)Check(p.Support==SupportKind.Wall&&p.SupportSide==side&&p.AirFlipAvailable,"true return landing restores repeat");
+
+            context="manual none side="+side+" dt="+step;
+            var none=new FlightSettings(FirstAction.Flip,MotionLaw.Gravity,AirRepeatLimit.None,2700,35,300,530,112);
+            game=Prepare(new Track(22000,Array.Empty<Obstacle>()),none,side,step);
+            Tap(game);Advance(game,duration/2,step);
+            foreach(var p in game.Players)Check(!RaceSimulation.Press(game,p.Id),"manual None still rejects first air input");
+            Advance(game,duration/2+1e-9,step);
+            foreach(var p in game.Players)Check(p.Support==SupportKind.Wall&&p.SupportSide==1-side&&!p.Flipping,"manual None unaltered trajectory");
 
             context="main jump side="+side+" dt="+step;
             game=Prepare(new Track(22000,Array.Empty<Obstacle>()),ExpectedMain,side,step);
@@ -55,7 +78,7 @@ public static partial class TwoModesIndependentAudit
             { Check(p.SupportSide==side&&!p.Flipping,"main returns after even unlimited repeats");Near(p.LastFlight.Duration,700/662.5,"one continuous measured jump"); }
 
             context="inactive fast parameters side="+side+" dt="+step;
-            var hidden=new FlightSettings(FirstAction.Flip,MotionLaw.Gravity,AirRepeatLimit.None,2700,35,950,1020,54);
+            var hidden=new FlightSettings(FirstAction.Flip,MotionLaw.Gravity,AirRepeatLimit.One,2700,35,950,1020,54);
             var a=Prepare(new Track(22000,Array.Empty<Obstacle>()),ExpectedFast,side,step);
             var b=Prepare(new Track(22000,Array.Empty<Obstacle>()),hidden,side,step);
             Tap(a);Tap(b);Advance(a,.217,step);Advance(b,.217,step);

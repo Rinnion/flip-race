@@ -12,7 +12,7 @@ public static partial class TwoModesIndependentAudit
         {
             if(i==shiftIndex)Advance(game,baseline[i]+shift-game.Elapsed,step);else MoveTo(game,route[i],step);
             times[i]=game.Elapsed;
-            if(flight.AirRepeats==AirRepeatLimit.None)foreach(var p in game.Players)Check(p.Support!=SupportKind.None&&!p.Flipping,"Fast input uses real support input="+i);
+            if(IsFastProfile(flight))foreach(var p in game.Players)Check(p.Support!=SupportKind.None&&!p.Flipping,"Fast input uses real support input="+i);
             Tap(game);
         }
         Advance(game,100,step);

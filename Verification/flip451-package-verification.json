@@ -1,0 +1,107 @@
+{
+  "scope": "Independent static verification of final 4.5.1 archive; browser verification separate",
+  "checkedAtUtc": "2026-10-19T19:07:00.398257+00:00",
+  "build": "Builds/WebGL-v4.5.1-final",
+  "snapshot": "Builds/WebGL-v4.5.1-unpacked",
+  "snapshotCreatedNew": true,
+  "archive": "Releases/flip-race-v4.5.1-trial-webgl.zip",
+  "archiveBytes": 8549929,
+  "archiveMiB": 8.154,
+  "archiveSha256": "fc34351086b4fb77ddfd01d945d50e5d28834b23e4f84905d01bc9918ef36ecd",
+  "fileCount": 5,
+  "totalBytes": 8681736,
+  "totalMiB": 8.28,
+  "indexAtRoot": true,
+  "entryPathsValidatedBeforeExtraction": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v4.5.1-final.data.unityweb",
+      "bytes": 1438388,
+      "sha256": "8f14cac7495abbfdccaea69a64f1d5c8a5b1807ab98baa9fcac4c48f6c63aecc",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.framework.js.unityweb",
+      "bytes": 89548,
+      "sha256": "b82492eefdf7fc48c0c39aaf94a44d6c682b740c647f505c7c6b7c5d57c91acd",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.loader.js",
+      "bytes": 39788,
+      "sha256": "21e28cc4db0602da27755e3dda8bed2e9577630746add2d65390b748497590a6",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.wasm.unityweb",
+      "bytes": 7102978,
+      "sha256": "7e42fc492703e874c88a65748ac3bd1b571588805d67bb448409f89def922247",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11034,
+      "sha256": "fcfcf816576f8a197eb8d94029c3e49a47d07a73f05263da86ee1858ab6199da",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    }
+  ],
+  "relativeRuntimeReferences": [
+    "Build/WebGL-v4.5.1-final.data.unityweb",
+    "Build/WebGL-v4.5.1-final.framework.js.unityweb",
+    "Build/WebGL-v4.5.1-final.loader.js",
+    "Build/WebGL-v4.5.1-final.wasm.unityweb"
+  ],
+  "wasmHeaderAfterGzip": "0061736d01000000",
+  "compression": "gzip with Unity decompression fallback",
+  "compressedResources": [
+    {
+      "path": "Build/WebGL-v4.5.1-final.data.unityweb",
+      "gzipMagic": true,
+      "decompressedBytes": 4867324,
+      "decodedFirst8Bytes": "556e697479576562"
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.framework.js.unityweb",
+      "gzipMagic": true,
+      "decompressedBytes": 431687,
+      "decodedFirst8Bytes": "0a76617220756e69"
+    },
+    {
+      "path": "Build/WebGL-v4.5.1-final.wasm.unityweb",
+      "gzipMagic": true,
+      "decompressedBytes": 24194410,
+      "decodedFirst8Bytes": "0061736d01000000"
+    }
+  ],
+  "htmlVersion": "4.5.1-trial",
+  "preservedBaseline": {
+    "archive": "Releases/flip-race-v4.5.0-trial-webgl.zip",
+    "sha256": "a200ad9852502a8cafdf3171814c6dfef30499b9c83d73a5ea5a8643590eb8e4",
+    "unchanged": true
+  },
+  "browser": {
+    "status": "PASS",
+    "scope": "Actual unpacked ZIP load and Fast/Short safe route; does not claim a successful full final bonus in the browser.",
+    "testUrl": "http://127.0.0.1:4198/",
+    "temporaryQaAddress": true,
+    "artifact": "Builds/WebGL-v4.5.1-unpacked",
+    "version": "4.5.1-trial",
+    "viewport": "568x320",
+    "track": "full-short",
+    "profile": "FastFlip / One",
+    "kind": "safe",
+    "bothPlayersFinish": 36.0,
+    "inputs": 4,
+    "pauses": 0,
+    "ordinaryRewards": 0,
+    "collisions": 0,
+    "trace": "Verification/flip451-browser.json",
+    "mainFinalConsoleErrors": 0,
+    "physicalPhoneMultitouchAndIframeTested": false
+  }
+}

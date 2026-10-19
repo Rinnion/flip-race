@@ -15,7 +15,7 @@ public static partial class TwoModesIndependentAudit
             else MoveTo(game,route[i],step);
             times[i]=game.Elapsed;
             foreach(var p in game.Players)
-                if(flight.AirRepeats==AirRepeatLimit.None)Check(p.Support!=SupportKind.None&&!p.Flipping,"Fast stage input requires real support i="+i);
+                if(IsFastProfile(flight))Check(p.Support!=SupportKind.None&&!p.Flipping,"Fast stage input requires real support i="+i);
             Tap(game);
         }
         Advance(game,100,step);
@@ -57,8 +57,16 @@ public static partial class TwoModesIndependentAudit
                 foreach(var p in game.Players)Check(p.Support==SupportKind.Stone,"support to trailing edge");
                 MoveTo(game,764.0001,step);Advance(game,.15,step);
                 foreach(var p in game.Players)Check(p.Support==SupportKind.None&&p.Collisions==0,"natural fall still safe after150ms reaction");
-                if(flight.AirRepeats==AirRepeatLimit.None)
-                    foreach(var p in game.Players)Check(!RaceSimulation.Press(game,p.Id),"no hidden air repeat after narrow walkoff");
+                if(IsFastProfile(flight)){
+                    // Preserve the untouched natural-walkoff witness; exercise the optional new repeat on a deep snapshot.
+                    var branch=CopyGame(game);
+                    foreach(var p in branch.Players){
+                        double velocity=p.VerticalSpeed;
+                        Check(RaceSimulation.Press(branch,p.Id),"one real air repeat available after narrow walkoff");
+                        Near(p.VerticalSpeed,velocity,"walkoff repeat preserves falling velocity");
+                        Check(!RaceSimulation.Press(branch,p.Id),"second walkoff air repeat rejected");
+                    }
+                }
                 MoveTo(game,1000,step);
                 foreach(var p in game.Players)Check(p.Support==SupportKind.Wall&&p.SupportSide==1&&p.Collisions==0,"safe true wall landing without timed rescue input");
             }
@@ -73,7 +81,7 @@ public static partial class TwoModesIndependentAudit
                 foreach(double x in taps)
                 {
                     MoveTo(game,x,step);
-                    if(flight.AirRepeats==AirRepeatLimit.None)foreach(var p in game.Players)Check(p.Support!=SupportKind.None,"independent-chain Fast tap only from actual support");
+                    if(IsFastProfile(flight))foreach(var p in game.Players)Check(p.Support!=SupportKind.None,"independent-chain Fast tap only from actual support");
                     Tap(game);
                 }
                 MoveTo(game,1500,step);

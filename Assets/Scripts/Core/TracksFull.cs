@@ -14,7 +14,7 @@ namespace FlipRace.Core
         public static Track Practice(FlightSettings flight) { return Practice(); }
         static bool Fast(FlightSettings flight)
         { return flight != null && flight.FirstAction == FirstAction.Flip && flight.Law == MotionLaw.Gravity
-            && flight.AirRepeats == AirRepeatLimit.None && flight.GravityAcceleration == 2700 && flight.FlipImpulse == 35; }
+            && flight.AirRepeats == AirRepeatLimit.One && flight.GravityAcceleration == 2700 && flight.FlipImpulse == 35; }
         static double FastTime(double distance) { return (Math.Sqrt(35*35+5400*distance)-35)/2700; }
         public static double[] SafeRoute(string id, FlightSettings flight)
         {

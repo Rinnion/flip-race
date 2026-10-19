@@ -18,6 +18,8 @@ public static partial class TwoModesIndependentAudit
     static double Wall(int side) { return side == 1 ? 226 : 14; }
     static double Away(int side) { return side == 1 ? -1 : 1; }
     static double FlipTime(double distance) { return (Math.Sqrt(35*35+2*2700*distance)-35)/2700; }
+    static bool IsFastProfile(FlightSettings flight)
+    { return flight.FirstAction==FirstAction.Flip&&flight.Law==MotionLaw.Gravity&&flight.GravityAcceleration==2700&&flight.FlipImpulse==35; }
     static GameState Start(Track track, FlightSettings flight)
     {
         var game=RaceSimulation.CreateTrial(track,flight);
@@ -70,7 +72,7 @@ public static partial class TwoModesIndependentAudit
         checks=0;games=0;
         CultureInfo.CurrentCulture=CultureInfo.InvariantCulture;
         context="production presets";
-        Check(ExpectedFast.FirstAction==FirstAction.Flip&&ExpectedFast.Law==MotionLaw.Gravity&&ExpectedFast.AirRepeats==AirRepeatLimit.None,"FastFlip action/law/repeats");
+        Check(ExpectedFast.FirstAction==FirstAction.Flip&&ExpectedFast.Law==MotionLaw.Gravity&&ExpectedFast.AirRepeats==AirRepeatLimit.One,"FastFlip action/law/repeats");
         Near(ExpectedFast.GravityAcceleration,2700,"FastFlip gravity",0);Near(ExpectedFast.FlipImpulse,35,"FastFlip impulse",0);
         Near(ExpectedFast.JumpImpulse,300,"FastFlip inactive jump",0);Near(ExpectedFast.LinearSpeed,530,"FastFlip inactive speed",0);Near(ExpectedFast.LinearJumpHeight,112,"FastFlip inactive height",0);
         Check(ExpectedMain.FirstAction==FirstAction.Jump&&ExpectedMain.Law==MotionLaw.Gravity&&ExpectedMain.AirRepeats==AirRepeatLimit.Unlimited,"Chosen action/law/repeats");

@@ -20,7 +20,7 @@ static class Program
     {
         try
         {
-            RoundTrips(); CorruptData(); SelectionIsolation(); ChosenAndActiveChoice(); LegacyMigration(); CopyAndCulture();
+            RoundTrips(); CorruptData(); SelectionIsolation(); ChosenAndActiveChoice(); LegacyMigration(); CopyAndCulture(); FastFlip451();
             Console.WriteLine("PASS: FLIGHT settings " + assertions + " assertions / " + roundTrips + " physical round trips.");
             return 0;
         }
@@ -124,7 +124,7 @@ static class Program
         Same(FlightSettingsStore.Preset(10), new FlightSettings(FirstAction.Jump, MotionLaw.Gravity,
             AirRepeatLimit.Unlimited, 662.5, 0, 350, 265, 112), "chosen exact values including inactive flip");
         Same(FlightSettingsStore.Preset(11), new FlightSettings(FirstAction.Flip, MotionLaw.Gravity,
-            AirRepeatLimit.None, 2700, 35, 300, 530, 112), "fast alternative exact active and hidden values");
+            AirRepeatLimit.One, 2700, 35, 300, 530, 112), "fast alternative exact active and hidden values");
         foreach(int index in new[]{-1,10,11})
             Check(FlightSettingsStore.ValidActiveChoice(index) == index, "custom/main/fast choice restores unchanged");
         foreach (int invalid in new[] { int.MinValue, -2, 12, int.MaxValue })
@@ -178,12 +178,67 @@ static class Program
             roundTrips++;
         }
         const string userSet="1|0|1|0|2700|35|300|530|112|10";
-        Check(FlightSettingsStore.TryDecode(userSet,out var supplied),"user's exact fast payload decodes");
-        Same(supplied.Settings(),FlightPresets.FastFlip,"user payload equals fast physics");
+        Check(FlightSettingsStore.TryDecode(userSet,out var supplied),"user's original zero-repeat payload decodes");
+        Same(supplied.Settings(),new FlightSettings(FirstAction.Flip,MotionLaw.Gravity,AirRepeatLimit.None,
+            2700,35,300,530,112),"original custom zero-repeat physics is not migrated to the new preset");
         Check(supplied.ResetPreset==10,"user payload reset10 is metadata, not mode ID or repeats");
         var own=FlightDraft.From(FlightPresets.FastFlip,11);
         Check(FlightSettingsStore.TryDecode(FlightSettingsStore.Encode(own),out var fast)&&fast.ResetPreset==11,
             "new fast reset source survives round trip");
+    }
+    static void FastFlip451()
+    {
+        const string newPayload="1|0|1|1|2700|35|300|530|112|10";
+        const string oldPayload="1|0|1|0|2700|35|300|530|112|10";
+        var oldPhysics=new FlightSettings(FirstAction.Flip,MotionLaw.Gravity,AirRepeatLimit.None,2700,35,300,530,112);
+        Check(FlightSettingsStore.TryDecode(newPayload,out var upgraded),"4.5.1 one-repeat payload decodes");
+        Same(upgraded.Settings(),FlightPresets.FastFlip,"new user payload equals the one-repeat preset including hidden fields");
+        Check(upgraded.ResetPreset==10&&FlightSettingsStore.Encode(upgraded)==newPayload,
+            "new payload keeps reset10 metadata and exact serialization");
+        Check(FlightSettingsStore.Summary(upgraded.Settings()).Contains("повтор 1"),"menu summary displays one repeat");
+        Check(FlightSettingsStore.CopyText(upgraded).Contains("Воздушные повторы: 1"),"copy text displays one repeat");
+        roundTrips++;
+
+        foreach(int source in new[]{10,11})
+        {
+            string saved=source==10?oldPayload:oldPayload.Substring(0,oldPayload.LastIndexOf('|')+1)+"11";
+            Check(FlightSettingsStore.TryDecode(saved,out var remembered),"saved zero-repeat custom decodes for either reset source");
+            Same(remembered.Settings(),oldPhysics,"saved custom keeps repeat zero and all exact values");
+            Check(FlightSettingsStore.Encode(remembered)==saved,"no implicit custom rewrite on decode");
+            var directReset=new FlightSelection(remembered);directReset.SelectCustom();directReset.ResetCustom();
+            Same(directReset.Settings,source==11?FlightPresets.FastFlip:FlightPresets.Chosen,
+                "explicit reset of a loaded custom follows its unchanged source metadata");
+            var selection=new FlightSelection(remembered);
+            selection.SelectPreset(FlightSettingsStore.ValidActiveChoice(11));
+            Same(selection.Settings,FlightPresets.FastFlip,"active11 resolves the updated one-repeat preset");
+            Check(FlightSettingsStore.Encode(selection.Custom)==saved,"active11 preserves separately remembered custom0");
+            selection.SelectCustom();Same(selection.Settings,oldPhysics,"return to remembered custom restores zero repeats");
+            Check(FlightSettingsStore.Summary(selection.Settings).Contains("повтор 0"),"custom summary honestly displays zero");
+            Check(FlightSettingsStore.CopyText(selection.Custom).Contains("Воздушные повторы: 0"),"custom copy retains zero");
+
+            // Recreate the Awake boundary from a serialized custom and active choice.
+            Check(FlightSettingsStore.TryDecode(FlightSettingsStore.Encode(selection.Custom),out var reloaded),"custom reload decodes");
+            var restored=new FlightSelection(reloaded);restored.SelectPreset(FlightSettingsStore.ValidActiveChoice(11));
+            Same(restored.Settings,FlightPresets.FastFlip,"reload active11 loads one repeat");
+            Check(FlightSettingsStore.Encode(restored.Custom)==saved,"reload never rewrites the old custom0");
+            restored.SelectCustom();Same(restored.Settings,oldPhysics,"reload then custom restores zero repeats");
+            var unchangedCustom=restored.Custom;
+            restored.SelectPreset(11);restored.Edit(d=>{});
+            Same(restored.Settings,FlightPresets.FastFlip,"explicit Edit from Fast copies one repeat");
+            Check(restored.IsCustom&&restored.Custom.ResetPreset==11,"edited Fast draft remembers source11");
+            Check(FlightSettingsStore.Encode(unchangedCustom)==saved&&FlightSettingsStore.Encode(remembered)==saved,
+                "editing a new Fast draft does not mutate the prior custom object or serialized record");
+            restored.Edit(d=>d.Repeats=AirRepeatLimit.None);
+            Check(restored.Settings.AirRepeats==AirRepeatLimit.None,"manual zero repeat remains available");
+            restored.ResetCustom();Same(restored.Settings,FlightPresets.FastFlip,"explicit Reset to Fast now restores one repeat");
+            Check(FlightSettingsStore.Encode(unchangedCustom)==saved,"reset uses a new draft without mutating the prior custom");
+            Check(FlightSettingsStore.Encode(remembered)==saved,"original saved custom0 remains unchanged throughout");
+            roundTrips++;
+        }
+        Check(FlightSettingsStore.TryDecode(oldPayload,out var original),"old reset10 custom can be restored again");
+        var own=new FlightSelection(original);own.SelectCustom();own.ResetCustom();
+        Same(own.Settings,FlightPresets.Chosen,"explicit reset of old source10 still targets main, not Fast");
+        Check(FlightPresets.FastFlip.AirRepeats==AirRepeatLimit.One,"no custom operation mutates the preset");
     }
     static void CopyAndCulture()
     {
