@@ -1,0 +1,66 @@
+{
+  "captured": "2026-10-19",
+  "status": "Independent Core and two-profile geometry PASS; browser and package separate",
+  "sources": [
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "CFA0A419C9CE9FC7C0F2A7F075CACC8E7CD3C9655D12412037AA2E5D4BC7838B"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "D45405A1F1C5530FB41E3208C23A563E5C663C3226668E447706C73C2B03DF95"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "717C0BE9560498FFABFEF56185A235B4F76EE92D9B4373173EF3AFAFA67E1861"
+    },
+    {
+      "path": "Verification/MODES-INDEPENDENT.cs.txt",
+      "sha256": "BE5B8BE064C9A774A34B7C465447E5A353287E6EEB07FD9C5447D0503BE1C1AF"
+    },
+    {
+      "path": "Tools/TwoModesAudit/AfterSemantics.cs",
+      "sha256": "0507712C639879F64E6B611F485A6A69D0D754B24976A8A6DD2C7BD42F6DB3E0"
+    },
+    {
+      "path": "Tools/TwoModesAudit/Analytics.cs",
+      "sha256": "5B2AC305B291694EECA70ABB2FB714BC13DC9DCCFF0904DF245F44791411E530"
+    },
+    {
+      "path": "Tools/TwoModesAudit/Full.cs",
+      "sha256": "743193B00136999E40C1D0B44A1FCF822D7AA2D65F66A748ED0F020302118D9E"
+    },
+    {
+      "path": "Tools/TwoModesAudit/LateTail.cs",
+      "sha256": "2AB9431AF0D35744F124EDDCB8D977B7E136CB1BDCD49EFF78B4A93A55E78F52"
+    },
+    {
+      "path": "Tools/TwoModesAudit/OpenGates.cs",
+      "sha256": "1BE2202D6B48DA4E05A6D504C9A5C733477058EF7122C6F9275BEB5D37BBD701"
+    },
+    {
+      "path": "Tools/TwoModesAudit/Program.cs",
+      "sha256": "1250CE72195BAA7E39EA58B014A372B6F5ABB5F2DB5F99CC1030961E03FD9890"
+    },
+    {
+      "path": "Tools/TwoModesAudit/Recovery.cs",
+      "sha256": "3F6AE983331C021AD00D3DBB7CBA096343539F46E337053813E76CD97DC51E33"
+    },
+    {
+      "path": "Tools/TwoModesAudit/ReviewTracksFixture.cs",
+      "sha256": "33C0FEA9C8D425DDDE54B6942BC154A04BFD95B9213542476CC4F0C4C713838E"
+    },
+    {
+      "path": "Tools/TwoModesAudit/Stage.cs",
+      "sha256": "114E657769F285384E3F4D15819B2164F826C9B189B16862F0E58F9F64401A3B"
+    },
+    {
+      "path": "Tools/TwoModesAudit/TailBound.cs",
+      "sha256": "7DAFD4046F16FBD815834DC06DC592169F340F8381785E33C58C1AB37ED668E7"
+    },
+    {
+      "path": "Tools/TwoModesAudit/Windows.cs",
+      "sha256": "B2ECFDFE52767F129D7FF268E87890236394F6EC7C66150BC491ACA318E9C4C8"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+Scope: windows
+Assets/Scripts/Core/ContinuousMotion.cs: 98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36
+Assets/Scripts/Core/FlightSettings.cs: D45405A1F1C5530FB41E3208C23A563E5C663C3226668E447706C73C2B03DF95
+Assets/Scripts/Core/MotionProfiles.cs: 719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417
+Assets/Scripts/Core/RaceSimulation.cs: CFA0A419C9CE9FC7C0F2A7F075CACC8E7CD3C9655D12412037AA2E5D4BC7838B
+Assets/Scripts/Core/TracksControl.cs: 588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4
+Assets/Scripts/Core/TracksFull.cs: 717C0BE9560498FFABFEF56185A235B4F76EE92D9B4373173EF3AFAFA67E1861
+Assets/Scripts/Core/TracksTune.cs: 86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628
+Assets/Scripts/Core/TracksV3.cs: 9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1
+Assets/Scripts/Core/TracksV4.cs: DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB
+Tools/TwoModesAudit/AfterSemantics.cs: 0507712C639879F64E6B611F485A6A69D0D754B24976A8A6DD2C7BD42F6DB3E0
+Tools/TwoModesAudit/Analytics.cs: 5B2AC305B291694EECA70ABB2FB714BC13DC9DCCFF0904DF245F44791411E530
+Tools/TwoModesAudit/Full.cs: 743193B00136999E40C1D0B44A1FCF822D7AA2D65F66A748ED0F020302118D9E
+Tools/TwoModesAudit/LateTail.cs: 2AB9431AF0D35744F124EDDCB8D977B7E136CB1BDCD49EFF78B4A93A55E78F52
+Tools/TwoModesAudit/OpenGates.cs: 1BE2202D6B48DA4E05A6D504C9A5C733477058EF7122C6F9275BEB5D37BBD701
+Tools/TwoModesAudit/Program.cs: 1250CE72195BAA7E39EA58B014A372B6F5ABB5F2DB5F99CC1030961E03FD9890
+Tools/TwoModesAudit/Recovery.cs: 3F6AE983331C021AD00D3DBB7CBA096343539F46E337053813E76CD97DC51E33
+Tools/TwoModesAudit/ReviewTracksFixture.cs: 33C0FEA9C8D425DDDE54B6942BC154A04BFD95B9213542476CC4F0C4C713838E
+Tools/TwoModesAudit/Stage.cs: 114E657769F285384E3F4D15819B2164F826C9B189B16862F0E58F9F64401A3B
+Tools/TwoModesAudit/TailBound.cs: 7DAFD4046F16FBD815834DC06DC592169F340F8381785E33C58C1AB37ED668E7
+Tools/TwoModesAudit/Windows.cs: B2ECFDFE52767F129D7FF268E87890236394F6EC7C66150BC491ACA318E9C4C8
+WINDOW full-long Jump input=0 X=215.77358490566036 actualTime=0.9807890222772143 early=0.155 late=0.155
+WINDOW full-long Jump input=1 X=485.1811187353192 actualTime=2.20536872141531 early=0.07 late=0.07
+WINDOW full-long Jump input=2 X=965.7735849056604 actualTime=4.089879931255579 early=0.155 late=0.155
+WINDOW full-long Jump input=3 X=1300 actualTime=5.609090908628655 early=0.3 late=0.25
+WINDOW full-long Jump input=4 X=1355 actualTime=5.859090908435255 early=0.105 late=0.3
+WINDOW full-long Jump input=5 X=1920 actualTime=8.127272726933137 early=0.07 late=0.17500000000000002
+WINDOW full-long Jump input=6 X=2550 actualTime=10.6909090909825 early=0.3 late=0.25
+WINDOW full-long Jump input=7 X=2605 actualTime=10.940909090253427 early=0.245 late=0.3
+WINDOW full-long Jump input=8 X=3000 actualTime=12.736363636084256 early=0.04 late=0.225
+WINDOW full-long Jump input=9 X=3080 actualTime=13.028817719023714 early=0.055 late=0.09
+WINDOW full-long Jump input=10 X=3515.7735849056603 actualTime=14.480789021504085 early=0.155 late=0.155
+WINDOW full-long Jump input=11 X=3835.181118735319 actualTime=15.932641448030868 early=0.07 late=0.07
+WINDOW full-long Jump input=12 X=4300 actualTime=17.745454544723977 early=0.3 late=0.25
+WINDOW full-long Jump input=13 X=4355 actualTime=17.995454544798626 early=0.25 late=0.3
+WINDOW full-long Jump input=14 X=4798.884190641017 actualTime=20.013109957182177 early=0.3 late=0.25
+WINDOW full-long Jump input=15 X=4853.884190641017 actualTime=20.263109956803355 early=0.15 late=0.12
+WINDOW full-long Jump input=16 X=4966 actualTime=20.672727272118603 early=0.2 late=0.1
+WINDOW full-long Jump input=17 X=5700 actualTime=23.809090908735968 early=0.3 late=0.25
+WINDOW full-long Jump input=18 X=5755 actualTime=24.05909090843494 early=0.245 late=0.3
+WINDOW full-long Jump input=19 X=5980 actualTime=25.081818181764312 early=0.115 late=0.13
+WINDOW full-long Jump input=20 X=6500 actualTime=27.14545454552747 early=0.3 late=0.25
+WINDOW full-long Jump input=21 X=6555 actualTime=27.395454544798408 early=0.105 late=0.3
+WINDOW full-long Jump input=22 X=6915.773584905661 actualTime=28.735334476234968 early=0.155 late=0.155
+WINDOW full-long Jump input=23 X=7215.773584905661 actualTime=30.098970840350763 early=0.155 late=0.155
+WINDOW full-long Jump input=24 X=7863.922760472742 actualTime=33.04510345666466 early=0.025 late=0.025 final
+ORDINARY WINDOW MIN full-long Jump early=0.04 late=0.07
+WINDOW full-short Jump input=0 X=215.77358490566036 actualTime=0.9807890222772143 early=0.155 late=0.155
+WINDOW full-short Jump input=1 X=500 actualTime=2.2727272720068474 early=0.23500000000000001 late=0.25
+WINDOW full-short Jump input=2 X=555 actualTime=2.5227272720716005 early=0.25 late=0.3
+WINDOW full-short Jump input=3 X=795.7735849056604 actualTime=3.6171526583398235 early=0.155 late=0.155
+WINDOW full-short Jump input=4 X=1285.1811187353192 actualTime=5.841732357778937 early=0.07 late=0.07
+WINDOW full-short Jump input=5 X=1720 actualTime=7.5181818180156 early=0.07 late=0.17500000000000002
+WINDOW full-short Jump input=6 X=2075.7735849056603 actualTime=8.835334476461389 early=0.155 late=0.155
+WINDOW full-short Jump input=7 X=2580 actualTime=11.127272726552247 early=0.3 late=0.25
+WINDOW full-short Jump input=8 X=2635 actualTime=11.377272726617 early=0.105 late=0.3
+WINDOW full-short Jump input=9 X=3150 actualTime=13.418181817616471 early=0.07 late=0.17500000000000002
+WINDOW full-short Jump input=10 X=3230 actualTime=13.676454131211626 early=0.05 late=0.105
+WINDOW full-short Jump input=11 X=3848.8841906410175 actualTime=15.994928138737516 early=0.3 late=0.25
+WINDOW full-short Jump input=12 X=3903.8841906410175 actualTime=16.244928138621773 early=0.15 late=0.12
+WINDOW full-short Jump input=13 X=4016 actualTime=16.654545453924673 early=0.2 late=0.1
+WINDOW full-short Jump input=14 X=4415.773584905661 actualTime=18.27169811265947 early=0.155 late=0.155
+WINDOW full-short Jump input=15 X=4835.18111873532 actualTime=20.178095993992095 early=0.07 late=0.07
+WINDOW full-short Jump input=16 X=5600 actualTime=23.35454545437912 early=0.3 late=0.25
+WINDOW full-short Jump input=17 X=5655 actualTime=23.604545453889653 early=0.245 late=0.3
+WINDOW full-short Jump input=18 X=5880 actualTime=24.627272727219026 early=0.115 late=0.13
+WINDOW full-short Jump input=19 X=6350 actualTime=26.46363636344697 early=0.3 late=0.25
+WINDOW full-short Jump input=20 X=6405 actualTime=26.713636362980367 early=0.105 late=0.3
+WINDOW full-short Jump input=21 X=6800 actualTime=28.209090908976556 early=0.3 late=0.25
+WINDOW full-short Jump input=22 X=6855 actualTime=28.4590909084347 early=0.245 late=0.3
+WINDOW full-short Jump input=23 X=7335.773584905661 actualTime=30.644425385536852 early=0.155 late=0.155
+WINDOW full-short Jump input=24 X=7863.922760472742 actualTime=33.04510345628854 early=0.025 late=0.025 final
+ORDINARY WINDOW MIN full-short Jump early=0.05 late=0.07
+WINDOW full-flow Jump input=0 X=193.77358490566036 actualTime=0.880789021780509 early=0.3 late=0.3
+WINDOW full-flow Jump input=1 X=600 actualTime=2.72727272670509 early=0.3 late=0.25
+WINDOW full-flow Jump input=2 X=655 actualTime=2.977272726617052 early=0.105 late=0.3
+WINDOW full-flow Jump input=3 X=985.1811187353192 actualTime=4.178095993663232 early=0.07 late=0.07
+WINDOW full-flow Jump input=4 X=1443.7735849056603 actualTime=5.96260720348613 early=0.3 late=0.3
+WINDOW full-flow Jump input=5 X=1800 actualTime=7.581818181887042 early=0.3 late=0.25
+WINDOW full-flow Jump input=6 X=1855 actualTime=7.8318181811625145 early=0.105 late=0.3
+WINDOW full-flow Jump input=7 X=2470 actualTime=10.327272727158991 early=0.07 late=0.085
+WINDOW full-flow Jump input=8 X=2787.7735849056603 actualTime=11.471698112719864 early=0.085 late=0.3
+WINDOW full-flow Jump input=9 X=3300 actualTime=13.799999999944264 early=0.04 late=0.225
+WINDOW full-flow Jump input=10 X=3380 actualTime=14.092454082663698 early=0.055 late=0.09
+WINDOW full-flow Jump input=11 X=3898.8841906410175 actualTime=15.922200866322244 early=0.3 late=0.25
+WINDOW full-flow Jump input=12 X=3953.8841906410175 actualTime=16.172200865894652 early=0.15 late=0.12
+WINDOW full-flow Jump input=13 X=4066 actualTime=16.58181818121219 early=0.2 late=0.1
+WINDOW full-flow Jump input=14 X=4415.773584905661 actualTime=17.971698112315668 early=0.115 late=0.155
+WINDOW full-flow Jump input=15 X=4835.18111873532 actualTime=19.878095993992208 early=0.07 late=0.07
+WINDOW full-flow Jump input=16 X=5500 actualTime=22.59999999938222 early=0.3 late=0.25
+WINDOW full-flow Jump input=17 X=5555 actualTime=22.84999999934429 early=0.245 late=0.3
+WINDOW full-flow Jump input=18 X=5780 actualTime=23.872727272673664 early=0.115 late=0.13
+WINDOW full-flow Jump input=19 X=6293.773584905661 actualTime=25.908061748769317 early=0.3 late=0.3
+WINDOW full-flow Jump input=20 X=6600 actualTime=27.299999999808477 early=0.3 late=0.25
+WINDOW full-flow Jump input=21 X=6655 actualTime=27.54999999934416 early=0.245 late=0.3
+WINDOW full-flow Jump input=22 X=7115.773584905661 actualTime=29.644425385612468 early=0.155 late=0.155
+WINDOW full-flow Jump input=23 X=7863.922760472742 actualTime=33.04510345628894 early=0.025 late=0.025 final
+ORDINARY WINDOW MIN full-flow Jump early=0.04 late=0.07
+WINDOW full-long Flip input=0 X=150 actualTime=0.6818181818614637 early=0.3 late=0.3
+WINDOW full-long Flip input=1 X=608.1196111528561 actualTime=2.7641800501549327 early=0.07 late=0.07
+WINDOW full-long Flip input=2 X=900 actualTime=3.7909090903784626 early=0.3 late=0.3
+WINDOW full-long Flip input=3 X=1150 actualTime=4.927272726918107 early=0.3 late=0.3
+WINDOW full-long Flip input=4 X=1341.1393785965915 actualTime=5.796088083693156 early=0.1 late=0.1
+WINDOW full-long Flip input=5 X=1700 actualTime=7.2439393941271595 early=0.3 late=0.275
+WINDOW full-long Flip input=6 X=1871.1415250661305 actualTime=7.905188750290717 early=0.1 late=0.1
+WINDOW full-long Flip input=7 X=2550 actualTime=10.69090909001547 early=0.3 late=0.3
+WINDOW full-long Flip input=8 X=3018 actualTime=12.81818181808307 early=0.11 late=0.045
+WINDOW full-long Flip input=9 X=3142 actualTime=13.236086291470237 early=0.03 late=0.085
+WINDOW full-long Flip input=10 X=3958.119611152856 actualTime=16.491452777499987 early=0.07 late=0.07
+WINDOW full-long Flip input=11 X=4350 actualTime=17.97272727264793 early=0.3 late=0.3
+WINDOW full-long Flip input=12 X=4837.198555809634 actualTime=20.187266162203308 early=0.115 late=0.115
+WINDOW full-long Flip input=13 X=4966 actualTime=20.672727272162657 early=0.2 late=0.1
+WINDOW full-long Flip input=14 X=5970 actualTime=25.036363636234523 early=0.1 late=0.13
+WINDOW full-long Flip input=15 X=6541.139378596592 actualTime=27.332451720538245 early=0.1 late=0.1
+WINDOW full-long Flip input=16 X=7700 actualTime=32.29999999990095 early=0.3 late=0.3
+WINDOW full-long Flip input=17 X=7853.945775241146 actualTime=32.999753523362116 early=0.025 late=0.025 final
+ORDINARY WINDOW MIN full-long Flip early=0.03 late=0.045
+WINDOW full-short Flip input=0 X=150 actualTime=0.6818181818614637 early=0.3 late=0.3
+WINDOW full-short Flip input=1 X=730 actualTime=3.3181818178271745 early=0.065 late=0.3
+WINDOW full-short Flip input=2 X=1408.1196111528561 actualTime=6.400543686518555 early=0.07 late=0.07
+WINDOW full-short Flip input=3 X=1740 actualTime=7.609090908384205 early=0.035 late=0.04
+WINDOW full-short Flip input=4 X=2400 actualTime=10.309090908600743 early=0.3 late=0.3
+WINDOW full-short Flip input=5 X=2621.1393785965915 actualTime=11.314269902266501 early=0.1 late=0.1
+WINDOW full-short Flip input=6 X=3150 actualTime=13.418181817556517 early=0.1 late=0.09
+WINDOW full-short Flip input=7 X=3292 actualTime=13.872199415935489 early=0.07 late=0.09
+WINDOW full-short Flip input=8 X=3650 actualTime=15.090909090672293 early=0.3 late=0.3
+WINDOW full-short Flip input=9 X=3887.198555809634 actualTime=16.169084344548562 early=0.115 late=0.115
+WINDOW full-short Flip input=10 X=4016 actualTime=16.654545454156686 early=0.2 late=0.1
+WINDOW full-short Flip input=11 X=4958.119611152856 actualTime=20.73690732288224 early=0.07 late=0.07
+WINDOW full-short Flip input=12 X=5600 actualTime=23.35454545393939 early=0.3 late=0.3
+WINDOW full-short Flip input=13 X=5870 actualTime=24.581818181388176 early=0.1 late=0.13
+WINDOW full-short Flip input=14 X=6391.139378596592 actualTime=26.65063353849441 early=0.1 late=0.1
+WINDOW full-short Flip input=15 X=7270 actualTime=30.345454544708623 early=0.3 late=0.3
+WINDOW full-short Flip input=16 X=7720 actualTime=32.39090909062932 early=0.3 late=0.225
+WINDOW full-short Flip input=17 X=7853.945775241146 actualTime=32.999753523437555 early=0.025 late=0.025 final
+ORDINARY WINDOW MIN full-short Flip early=0.035 late=0.04
+WINDOW full-flow Flip input=0 X=641.1393785965917 actualTime=2.914269902341821 early=0.1 late=0.1
+WINDOW full-flow Flip input=1 X=850 actualTime=3.626595990295219 early=0.3 late=0.3
+WINDOW full-flow Flip input=2 X=1108.1196111528561 actualTime=4.736907322861769 early=0.07 late=0.07
+WINDOW full-flow Flip input=3 X=1841.1393785965915 actualTime=7.768815356937043 early=0.1 late=0.1
+WINDOW full-flow Flip input=4 X=2280 actualTime=9.463636362890988 early=0.3 late=0.255
+WINDOW full-flow Flip input=5 X=2421.1415250661307 actualTime=10.105188750155316 early=0.1 late=0.1
+WINDOW full-flow Flip input=6 X=2854.0203592975777 actualTime=11.772819814103524 early=0.06 late=0.06
+WINDOW full-flow Flip input=7 X=3060 actualTime=12.709090908581866 early=0.3 late=0.3
+WINDOW full-flow Flip input=8 X=3318 actualTime=13.881818181268 early=0.11 late=0.085
+WINDOW full-flow Flip input=9 X=3450 actualTime=14.32396507961022 early=0.055 late=0.06
+WINDOW full-flow Flip input=10 X=3670 actualTime=14.990631745970934 early=0.28 late=0.3
+WINDOW full-flow Flip input=11 X=3937.198555809634 actualTime=16.096357071848583 early=0.115 late=0.115
+WINDOW full-flow Flip input=12 X=4420 actualTime=17.9909090904062 early=0.3 late=0.12
+WINDOW full-flow Flip input=13 X=4958.119611152856 actualTime=20.436907323409148 early=0.07 late=0.07
+WINDOW full-flow Flip input=14 X=5550 actualTime=22.82727272726882 early=0.3 late=0.3
+WINDOW full-flow Flip input=15 X=5775 actualTime=23.849999999946377 early=0.125 late=0.105
+WINDOW full-flow Flip input=16 X=6150 actualTime=25.254545454506662 early=0.3 late=0.3
+WINDOW full-flow Flip input=17 X=6705 actualTime=27.77727272721899 early=0.3 late=0.115
+WINDOW full-flow Flip input=18 X=7120 actualTime=29.663636363281654 early=0.3 late=0.12
+WINDOW full-flow Flip input=19 X=7700 actualTime=32.29999999964538 early=0.3 late=0.3
+WINDOW full-flow Flip input=20 X=7853.945775241146 actualTime=32.9997535233627 early=0.025 late=0.025 final
+ORDINARY WINDOW MIN full-flow Flip early=0.055 late=0.06
+PASS measured full-input windows: 9465 shifted full-route simulations; 5ms grid, one input at a time, stop at first failed sample, cap300ms per side. Final target reported separately.

@@ -1,0 +1,15 @@
+MODES-03 STAGE PASS 2158 checks; both profiles/6dt, safe ±60ms, narrow walkoff and independent chain.
+full-long/chosen safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-long/fast-flip safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-short/chosen safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-short/fast-flip safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-flow/chosen safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-flow/fast-flip safe36/full33.2/trap33.5;6dt;safe±60ms/full±25ms PASS
+full-long all2048 subset bound: effects end byX7688; margin188
+full-short all2048 subset bound: effects end byX7728; margin148
+full-flow all2048 subset bound: effects end byX7688; margin188
+MODES-04 FULL PASS 48596 checks
+Historical immutable D3 hover GREEN: 41 real air taps, dt0.006944444444444444, 9 ordinary fully served, finish33.2 / 0hits.
+Historical immutable D3 hover GREEN: 41 real air taps, dt0.317, 9 ordinary fully served, finish33.2 / 0hits.
+Historical immutable D3 hover GREEN: 41 real air taps, dt100, 9 ordinary fully served, finish33.2 / 0hits.
+MODES hover regression PASS 3144 checks

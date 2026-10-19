@@ -39,7 +39,7 @@ namespace FlipRace.Editor
             EditorBuildSettings.scenes = new[] {new EditorBuildSettingsScene(scenePath, true)};
             PlayerSettings.companyName = "Katikaavry";
             PlayerSettings.productName = "Флип! — гонка катикаавров";
-            PlayerSettings.bundleVersion = trial ? (Environment.GetEnvironmentVariable("FLIP_BUILD_VERSION") ?? "4.4.0-trial") : "3.0.1";
+            PlayerSettings.bundleVersion = trial ? (Environment.GetEnvironmentVariable("FLIP_BUILD_VERSION") ?? "4.5.0-trial") : "3.0.1";
             PlayerSettings.runInBackground = true;
             PlayerSettings.defaultWebScreenWidth = 960;
             PlayerSettings.defaultWebScreenHeight = 540;

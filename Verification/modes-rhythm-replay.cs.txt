@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Text.Json;
+using FlipRace.Core;
+class Program {
+ static void Main() {
+  CultureInfo.CurrentCulture=CultureInfo.InvariantCulture;
+  var rows=new List<object>();
+  foreach(var flight in new[]{FlightPresets.Chosen,FlightPresets.FastFlip}) foreach(var t in TracksFull.All) foreach(bool risk in new[]{false,true}) {
+   var g=RaceSimulation.CreateTrial(t,flight);
+   RaceSimulation.Press(g,0);RaceSimulation.Press(g,1);RaceSimulation.Advance(g,RaceConfig.CountdownDuration);
+   var route=risk?TracksFull.FullRoute(t.Id,flight):TracksFull.SafeRoute(t.Id,flight); double prev=0;var inputs=new List<object>();
+   Console.WriteLine(t.Id+" "+(flight==FlightPresets.Chosen?"CHOSEN":"FAST")+" "+(risk?"FULL":"SAFE"));
+   for(int i=0;i<route.Length;i++) {
+    while(route[i]-g.Players[0].Distance>1e-7) {
+     double dt=Math.Min(1.0/240,(route[i]-g.Players[0].Distance)/440);
+     RaceSimulation.Advance(g,dt);
+    }
+    var p=g.Players[0];Console.WriteLine($"{i+1,2}: X={p.Distance:F6} T={g.Elapsed:F6} gap={g.Elapsed-prev:F6} Y={RaceSimulation.GetPlayerCenterY(p):F3} support={p.Support}");
+    inputs.Add(new{index=i+1,x=p.Distance,time=g.Elapsed,gap=g.Elapsed-prev,y=RaceSimulation.GetPlayerCenterY(p),support=p.Support.ToString()});
+    if(!RaceSimulation.Press(g,0)||!RaceSimulation.Press(g,1))throw new Exception("rejected");prev=g.Elapsed;
+   }
+   while(g.Phase!="finished")RaceSimulation.Advance(g,1.0/240);
+   var end=g.Players[0];if(end.Collisions!=0||end.BoostsEarned!=(risk?9:0)||end.FinishBoostsEarned!=(risk?1:0)||end.SlowsEarned!=0)throw new Exception("outcome");
+   Console.WriteLine($"FINISH {end.FinishTime:F6} tail={end.FinishTime-prev:F6} hits={end.Collisions}");
+   rows.Add(new{track=t.Id,profile=flight==FlightPresets.Chosen?"chosen":"fast-flip",route=risk?"full":"safe",inputs,finish=end.FinishTime,tail=end.FinishTime-prev});
+  }
+  File.WriteAllText("F:/Home/Game/flip-race-unity/Verification/modes-rhythm-independent.json",JsonSerializer.Serialize(rows,new JsonSerializerOptions{WriteIndented=true}));
+ }
+}

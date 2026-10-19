@@ -1,0 +1,135 @@
+{
+  "scope": "Independent static verification of final 4.5.0-trial archive; browser verification separate",
+  "checkedAtUtc": "2026-10-19T15:39:48.8219304Z",
+  "build": "Builds/WebGL-v4.5.0-final",
+  "snapshot": "Builds/WebGL-v4.5.0-unpacked",
+  "snapshotCreatedNew": true,
+  "archive": "Releases/flip-race-v4.5.0-trial-webgl.zip",
+  "archiveBytes": 8549700,
+  "archiveMiB": 8.154,
+  "archiveSha256": "a200ad9852502a8cafdf3171814c6dfef30499b9c83d73a5ea5a8643590eb8e4",
+  "fileCount": 5,
+  "totalBytes": 8680367,
+  "totalMiB": 8.278,
+  "indexAtRoot": true,
+  "entryPathsValidatedBeforeExtraction": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v4.5.0-final.data.unityweb",
+      "bytes": 1438385,
+      "sha256": "f0f6e1f8fcaad5991802b39205996d8c8e1a1f380aa4c4428ee0378ed2ba4ecd",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.0-final.framework.js.unityweb",
+      "bytes": 89548,
+      "sha256": "3a877d7575f2b91dee3f93f731741697a9e6c5e4096b48ddf716e6b8a3d025ea",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.0-final.loader.js",
+      "bytes": 39788,
+      "sha256": "7e2cfd2058c161d0a5a196d0c090c299a2b58e9f443d562608f085ae0ac717d7",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "Build/WebGL-v4.5.0-final.wasm.unityweb",
+      "bytes": 7101612,
+      "sha256": "6314decca23328a976257950a2d28423249159a7872683d25079e14e3be0571a",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11034,
+      "sha256": "a9d5870e7c76826802d6f019122475c0da56b232a7663d316c5305782c6dfc2f",
+      "archiveEntryMatchesManifest": true,
+      "unpackedMatchesWeb": true
+    }
+  ],
+  "relativeRuntimeReferences": [
+    "Build/WebGL-v4.5.0-final.data.unityweb",
+    "Build/WebGL-v4.5.0-final.framework.js.unityweb",
+    "Build/WebGL-v4.5.0-final.loader.js",
+    "Build/WebGL-v4.5.0-final.wasm.unityweb"
+  ],
+  "wasmHeaderAfterGzip": "0061736d01000000",
+  "compression": "gzip with Unity decompression fallback",
+  "compressedResources": [
+    {
+      "path": "Build/WebGL-v4.5.0-final.data.unityweb",
+      "gzipMagic": true,
+      "decompressedBytes": 4867324,
+      "decodedFirst8Bytes": "556e697479576562"
+    },
+    {
+      "path": "Build/WebGL-v4.5.0-final.framework.js.unityweb",
+      "gzipMagic": true,
+      "decompressedBytes": 431687,
+      "decodedFirst8Bytes": "0a76617220756e69"
+    },
+    {
+      "path": "Build/WebGL-v4.5.0-final.wasm.unityweb",
+      "gzipMagic": true,
+      "decompressedBytes": 24194380,
+      "decodedFirst8Bytes": "0061736d01000000"
+    }
+  ],
+  "htmlVersion": "4.5.0-trial",
+  "historicalArchives": [
+    {
+      "path": "Releases/flip-race-v4.4.0-trial-review-webgl.zip",
+      "bytes": 8549837,
+      "sha256": "130ce3cd23c843fcaa36e710bf236fcf76c245ad1e9305be62a7a835663c9cae",
+      "matchesPreservedBaseline": true
+    },
+    {
+      "path": "Releases/flip-race-v4.3.0-trial-webgl.zip",
+      "bytes": 8542742,
+      "sha256": "f48ba88622f28f80adf92871b54670bdf8c1e36053a0460750dde9b94b032c9a",
+      "matchesPreservedBaseline": true
+    }
+  ],
+  "browser": {
+    "status": "PASS",
+    "date": "2026-10-19",
+    "artifact": "Builds/WebGL-v4.5.0-unpacked",
+    "testUrl": "http://127.0.0.1:4198/",
+    "serverStoppedAfterVerification": true,
+    "version": "4.5.0-trial",
+    "viewport": "568x320",
+    "runs": [
+      {
+        "record": 20,
+        "profile": "Chosen",
+        "track": "full-long",
+        "kind": "negative",
+        "bothPlayersFinish": 33.5,
+        "ordinaryRewards": 9,
+        "finishBoosts": 1,
+        "negativeRewards": 1,
+        "collisions": 0
+      },
+      {
+        "record": 21,
+        "profile": "FastFlip",
+        "track": "full-flow",
+        "kind": "negative",
+        "bothPlayersFinish": 33.5,
+        "ordinaryRewards": 9,
+        "finishBoosts": 1,
+        "negativeRewards": 1,
+        "collisions": 0
+      }
+    ],
+    "effectsAndQueueEmptyAtFinish": true,
+    "trace": "Verification/modes-browser-runs.json",
+    "screenshot": "Verification/modes-unpacked-result.png",
+    "console": "Verification/modes-browser-console.json",
+    "warningsAndErrors": [],
+    "scope": "Actual desktop Chromium IAB loading and two full runs from the extracted archive; physical phone, multitouch and itch.io iframe not tested."
+  }
+}

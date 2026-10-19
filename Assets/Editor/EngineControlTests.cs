@@ -210,16 +210,20 @@ namespace FlipRace.Editor
         }
         static void LandingFinishesLinkedManeuver()
         {
-            var track = StoneTrack();
+            // The linked reward now accelerates the approach before this
+            // landing. Keep the real landing inside a wide marked interval.
+            var track = StoneTrack(false, 375, 100);
             track.Obstacles = new[] { new Obstacle { Id = "earlier", Kind = "ceiling", X = 20, Width = 64, Height = 1 }, track.Obstacles[0] };
             double contactAge = Math.Sqrt(328 / 662.5) - 30d / 220;
             track.RiskZones = new[] { track.RiskZones[0], new RiskZone { Id = "after", Kind = "positive", Placement = "after",
                 ObstacleId = "earlier", ClearX = 99, X = 320, Y = 14 + .5 * 662.5 * contactAge * contactAge } };
             var game = Arrive(false, 350, .317, track); var p = game.Players[0];
             Check(p.BoostsEarned == 2 && p.InstantBoostsEarned == 1 && p.SuccessfulRiskIds.Contains("after")
-                && p.PendingEffects.Count == 1 && p.PendingEffects.Peek().RingId == "after",
-                "stable stone landing completes an earlier after-ring maneuver at the actual landing timestamp");
-            Near(p.LastSuccess.At, 350d / 220, "linked reward shares the stone landing timestamp");
+                && p.PendingEffects.Count == 0 && p.ActiveEffect.PulseCount == 2,
+                "MODES: stone landing extends an already geometrically confirmed linked reward");
+            Check(p.ActiveEffect.RingId == "after" && p.ActiveEffect.Elapsed > 0,
+                "linked effect is already partly served when landing extends it");
+            Near(p.LastInstant.At, 350d / 220, "vertical landing keeps its actual timestamp under earlier boost");
         }
         static void ProfileEdgeFlip()
         {

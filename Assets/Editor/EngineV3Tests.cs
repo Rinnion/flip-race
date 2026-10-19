@@ -130,9 +130,9 @@ namespace FlipRace.Editor
         static void AfterRingConfirmation()
         {
             var good = ReturnAt(750); MoveTo(good, 900);
-            Check(good.Players[0].CollectedRiskIds.Contains("after") && good.Players[0].BoostsEarned == 0
-                && good.Players[0].Flipping, "after ring remains pending past clear until landing");
-            MoveTo(good, 930); Check(good.Players[0].BoostsEarned == 1 && !good.Players[0].Flipping, "safe completed return confirms");
+            Check(good.Players[0].CollectedRiskIds.Contains("after") && good.Players[0].BoostsEarned == 1
+                && good.Players[0].Flipping, "MODES: whole-body clearance confirms after ring while airborne");
+            MoveTo(good, 930); Check(good.Players[0].BoostsEarned == 1, "continued return cannot award the same ring again");
             Finish(good, .317); Near(good.Players[0].FinishTime.Value, 9.7, "after reward full real credit");
             var early = ReturnAt(720); MoveTo(early, 801);
             Check(early.Players[0].CollectedRiskIds.Contains("after") && early.Players[0].BoostsEarned == 0, "early return contacts ring before trailing-edge hit");

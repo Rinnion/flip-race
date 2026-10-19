@@ -7,6 +7,11 @@ public static class Program
     {
         try
         {
+            if (args.Length == 1 && args[0] == "--modes")
+            {
+                Console.WriteLine(EngineModesTests.RunAll());
+                return 0;
+            }
             if (args.Length == 1 && args[0] == "--flight")
             {
                 Console.WriteLine(EngineFlightTests.RunAll());
@@ -40,6 +45,7 @@ public static class Program
             Console.WriteLine(EngineControlTests.RunAll());
             Console.WriteLine(EngineFinishTests.RunAll());
             Console.WriteLine(EngineFlightTests.RunAll());
+            Console.WriteLine(EngineModesTests.RunAll());
             if (args.Length > 0) Console.WriteLine(EngineParityTests.CompareFixtures(args[0]));
             return 0;
         }

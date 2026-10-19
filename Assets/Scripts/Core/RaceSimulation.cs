@@ -753,6 +753,10 @@ namespace FlipRace.Core
                     double minimum, maximum;
                     if (obstacle.Kind == "gate")
                     {
+                        // A gap reaching a corridor wall has no solid half
+                        // there. A zero-height half must not hit a wall runner.
+                        if ((band == 0 && obstacle.GapTop <= 0)
+                            || (band == 1 && obstacle.GapBottom >= RaceConfig.CorridorHeight)) continue;
                         minimum = band == 0 ? double.NegativeInfinity : (obstacle.GapBottom - 2 * radius) / verticalTravel;
                         maximum = band == 0 ? obstacle.GapTop / verticalTravel : double.PositiveInfinity;
                     }
@@ -866,14 +870,10 @@ namespace FlipRace.Core
                         if (obstacle.Id == zone.ObstacleId)
                             clearX = Math.Max(clearX, obstacle.X + obstacle.Width + RaceConfig.PlayerRadius + 1e-7);
                     time = Math.Max(0, (clearX - player.Distance) / player.CurrentSpeed);
-                    // An after-ring is still provisional while returning toward
-                    // the stone: a later touch of its trailing edge cancels it.
-                    if (zone.AfterObstacle && player.Flipping)
-                    {
-                        if (flight.LegacyLinear) time = Math.Max(time, RaceConfig.FlipDuration - player.FlipElapsed);
-                        else if (surface != null && surface.Side == (player.Gravity > 0 ? 1 : 0)) time = Math.Max(time, surface.Time);
-                        else continue;
-                    }
+                    // Once the whole body has passed the linked stone, no
+                    // later vertical return can touch it. Landing is not
+                    // required; collision-first ordering still cancels a
+                    // collected reward before this geometric boundary.
                     if (time > horizon + Epsilon) continue;
                 }
                 else

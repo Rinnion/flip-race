@@ -1,0 +1,214 @@
+{
+  "state": {
+    "airRepeatLimit": -1,
+    "characterRects": [
+      [
+        [
+          609,
+          97.75,
+          172,
+          56
+        ],
+        [
+          427,
+          97.75,
+          172,
+          56
+        ],
+        [
+          245,
+          97.75,
+          172,
+          56
+        ],
+        [
+          63,
+          97.75,
+          172,
+          56
+        ]
+      ],
+      [
+        [
+          63,
+          261.25,
+          172,
+          56
+        ],
+        [
+          245,
+          261.25,
+          172,
+          56
+        ],
+        [
+          427,
+          261.25,
+          172,
+          56
+        ],
+        [
+          609,
+          261.25,
+          172,
+          56
+        ]
+      ]
+    ],
+    "characterSelectionVisible": false,
+    "countdown": 0,
+    "customFlight": false,
+    "departureImpulse": 350,
+    "elapsed": 11.001,
+    "firstAction": "Jump",
+    "flipImpulse": 0,
+    "fullscreenHeight": 25,
+    "fullscreenWidth": 31,
+    "fullscreenX": 792,
+    "fullscreenY": 2,
+    "gravityAcceleration": 662.5,
+    "jumpImpulse": 350,
+    "linearJumpHeight": 112,
+    "linearSpeed": 265,
+    "mode": "trial",
+    "motion": "JumpGravityFlip",
+    "motionLaw": "Gravity",
+    "negativeEnabled": true,
+    "paused": false,
+    "phase": "racing",
+    "players": [
+      {
+        "airFlipAvailable": true,
+        "boost": 0,
+        "centerY": 226,
+        "character": 0,
+        "collisions": 3,
+        "distance": 2090.219999999994,
+        "failedRings": 0,
+        "finish": -1,
+        "finishBoost": false,
+        "finishBoosts": 0,
+        "flightDuration": 1.056603773584906,
+        "flightEndedAt": 2.1096037735849067,
+        "flightInterrupted": false,
+        "flightMaxDistance": 92.45283018867931,
+        "flipElapsed": 1.056603773584906,
+        "flipping": false,
+        "gravity": 1,
+        "hasFlightMeasurement": true,
+        "instantBoosts": 0,
+        "lastFinishBoost": "",
+        "lastInstant": "",
+        "pendingRings": 0,
+        "queuedEffects": 0,
+        "ready": false,
+        "recovering": 0,
+        "rings": 0,
+        "slow": 0,
+        "slowRings": 0,
+        "speed": 220,
+        "support": "Wall",
+        "supportObstacle": "",
+        "supportSide": 1,
+        "verticalSpeed": 0,
+        "y": 1
+      },
+      {
+        "airFlipAvailable": true,
+        "boost": 0,
+        "centerY": 226,
+        "character": 1,
+        "collisions": 3,
+        "distance": 2090.219999999994,
+        "failedRings": 0,
+        "finish": -1,
+        "finishBoost": false,
+        "finishBoosts": 0,
+        "flightDuration": 1.056603773584906,
+        "flightEndedAt": 2.1096037735849067,
+        "flightInterrupted": false,
+        "flightMaxDistance": 92.45283018867931,
+        "flipElapsed": 1.056603773584906,
+        "flipping": false,
+        "gravity": 1,
+        "hasFlightMeasurement": true,
+        "instantBoosts": 0,
+        "lastFinishBoost": "",
+        "lastInstant": "",
+        "pendingRings": 0,
+        "queuedEffects": 0,
+        "ready": false,
+        "recovering": 0,
+        "rings": 0,
+        "slow": 0,
+        "slowRings": 0,
+        "speed": 220,
+        "support": "Wall",
+        "supportObstacle": "",
+        "supportSide": 1,
+        "verticalSpeed": 0,
+        "y": 1
+      }
+    ],
+    "profile": "custom",
+    "readyRects": [
+      [
+        327,
+        57.75,
+        190,
+        32
+      ],
+      [
+        327,
+        325.25,
+        190,
+        32
+      ]
+    ],
+    "settingsCopyHeight": 0,
+    "settingsCopyText": "",
+    "settingsCopyWidth": 0,
+    "settingsCopyX": 0,
+    "settingsCopyY": 0,
+    "settingsVisible": false,
+    "track": "full-long",
+    "trackMenuRect": [
+      141,
+      1,
+      550,
+      27
+    ],
+    "version": "4.5.0-trial",
+    "winner": ""
+  },
+  "stats": {
+    "countdown": {
+      "count": 93,
+      "maxMs": 33.20000000000073,
+      "over100": 0,
+      "over50": 0,
+      "sumMs": 3034.2999999999993
+    },
+    "loading": {
+      "count": 79,
+      "maxMs": 131.90000000000003,
+      "over100": 1,
+      "over50": 1,
+      "sumMs": 2647.7000000476837
+    },
+    "racing": {
+      "count": 333,
+      "maxMs": 33.10000000000218,
+      "over100": 0,
+      "over50": 0,
+      "sumMs": 10903.3
+    },
+    "ready": {
+      "count": 286,
+      "maxMs": 33.20000000000073,
+      "over100": 0,
+      "over50": 0,
+      "sumMs": 9345.6
+    }
+  }
+}

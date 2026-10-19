@@ -1,0 +1,66 @@
+[
+  {
+    "Run": "before-passive",
+    "Kind": "changed",
+    "Count": 8,
+    "PaintMinMs": 488,
+    "PaintMedianMs": 520,
+    "PaintMaxMs": 616
+  },
+  {
+    "Run": "before-passive",
+    "Kind": "repeat",
+    "Count": 8,
+    "PaintMinMs": 80,
+    "PaintMedianMs": 112,
+    "PaintMaxMs": 120
+  },
+  {
+    "Run": "before-passive844",
+    "Kind": "changed",
+    "Count": 8,
+    "PaintMinMs": 480,
+    "PaintMedianMs": 512,
+    "PaintMaxMs": 520
+  },
+  {
+    "Run": "before-passive844",
+    "Kind": "repeat",
+    "Count": 8,
+    "PaintMinMs": 88,
+    "PaintMedianMs": 88,
+    "PaintMaxMs": 88
+  },
+  {
+    "Run": "after-passive568",
+    "Kind": "changed",
+    "Count": 8,
+    "PaintMinMs": 80,
+    "PaintMedianMs": 80,
+    "PaintMaxMs": 80
+  },
+  {
+    "Run": "after-passive568",
+    "Kind": "repeat",
+    "Count": 8,
+    "PaintMinMs": 80,
+    "PaintMedianMs": 80,
+    "PaintMaxMs": 88
+  },
+  {
+    "Run": "after-passive844",
+    "Kind": "changed",
+    "Count": 8,
+    "PaintMinMs": 112,
+    "PaintMedianMs": 112,
+    "PaintMaxMs": 112
+  },
+  {
+    "Run": "after-passive844",
+    "Kind": "repeat",
+    "Count": 7,
+    "PaintMinMs": 104,
+    "PaintMedianMs": 112,
+    "PaintMaxMs": 112
+  }
+]

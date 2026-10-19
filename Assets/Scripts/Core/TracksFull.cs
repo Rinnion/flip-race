@@ -9,6 +9,45 @@ namespace FlipRace.Core
         public static readonly Track[] All = { BuildLong(), BuildShort(), BuildFlow() };
         public static bool IsFull(string id) { return id == LongId || id == ShortId || id == FlowId; }
         public static Track Get(string id) { foreach (var track in All) if (track.Id == id) return track; return Practice(); }
+        // Both named controls and custom settings use exactly the same geometry.
+        public static Track Get(string id, FlightSettings flight) { return Get(id); }
+        public static Track Practice(FlightSettings flight) { return Practice(); }
+        static bool Fast(FlightSettings flight)
+        { return flight != null && flight.FirstAction == FirstAction.Flip && flight.Law == MotionLaw.Gravity
+            && flight.AirRepeats == AirRepeatLimit.None && flight.GravityAcceleration == 2700 && flight.FlipImpulse == 35; }
+        static double FastTime(double distance) { return (Math.Sqrt(35*35+5400*distance)-35)/2700; }
+        public static double[] SafeRoute(string id, FlightSettings flight)
+        {
+            if(Fast(flight) && id==LongId)return new[]{150d,2600};
+            if(Fast(flight) && id==ShortId)return new[]{150d,730,3700,7270};
+            if(Fast(flight) && id==FlowId)return new[]{1400d,1915,2904-110*(FastTime(12)+FastTime(200)),6705,7120};
+            if(Fast(flight) && !IsFull(id)) return new[]{304-110*(FastTime(12)+FastTime(200)),2600.0};
+            return Get(id).SafeRoute;
+        }
+        public static double[] FullRoute(string id, FlightSettings flight)
+        {
+            if(Fast(flight) && id==LongId)return new[]{150d,682-220*FastTime(164),900,1150,1400-220*FastTime(106),
+                1700,1950-220*FastTime(186),2550,3018,3142,4032-220*FastTime(164),4350,
+                4900-220*FastTime(120),4966,5970,6600-220*FastTime(106),7700,FastFinish()};
+            if(Fast(flight) && id==ShortId)return new[]{150d,730,1482-220*FastTime(164),1740,2400,2680-220*FastTime(106),
+                3150,3292,3650,3950-220*FastTime(120),4016,5032-220*FastTime(164),5600,5870,
+                6450-220*FastTime(106),7270,7720,FastFinish()};
+            if(Fast(flight) && id==FlowId)return new[]{700-220*FastTime(106),850,1182-220*FastTime(164),1900-220*FastTime(106),
+                2280,2500-220*FastTime(186),2904-110*(FastTime(12)+FastTime(200)),3060,3318,3450,3670,
+                4000-220*FastTime(120),4420,5032-220*FastTime(164),5550,5775,6150,6705,7120,7700,FastFinish()};
+            if(Fast(flight) && !IsFull(id)) return new[]{304-110*(FastTime(12)+FastTime(200)),
+                732-220*FastTime(164),1118.0,1242.0,2100-220*FastTime(106),2720.0,2880.0};
+            return Get(id).RiskRoute;
+        }
+        public static double[] NegativeRoute(string id, FlightSettings flight) {
+            if(!Fast(flight)||!IsFull(id))return NegativeRoute(id);
+            var route=new List<double>(FullRoute(id,flight));route.RemoveRange(route.Count-2,2);
+            double trap=id==ShortId?7640:7600;
+            route.Add(trap-220*FastTime(186));
+            route.Add(FastFinish());
+            return route.ToArray();
+        }
+        static double FastFinish(){return 7876-110*(FastTime(10)+FastTime(26));}
         public static double[] NegativeRoute(string id)
         { var route=new List<double>(Get(id).RiskRoute); if(IsFull(id))route.Add(id==ShortId?7610:7570);route.Sort();return route.ToArray(); }
         static Track BuildLong()
@@ -21,7 +60,7 @@ namespace FlipRace.Core
             b.After(5900,"ceiling");b.MiddleRing(6500,"floor");b.Low(7000,"ceiling");b.Low(7300,"ceiling");
             b.Zones.Add(new RiskZone{Id="long-hasty-trap",Kind="negative",X=2000,Y=120,Radius=8});
             b.Zones.Add(new RiskZone{Id="long-habit-trap",Kind="negative",X=7600,Y=40,Radius=8});
-            return b.Finish(60,"ceiling");
+            return b.Finish(32,"ceiling");
         }
         static Track BuildShort()
         {
@@ -32,32 +71,39 @@ namespace FlipRace.Core
             b.Large(3850,"floor");b.Low(4500,"floor");b.Landing(5000,"floor");
             b.After(5800,"floor");b.MiddleRing(6350,"ceiling");b.High(7000,"floor");
             b.Low(7420,"ceiling");
-            b.Zones.Add(new RiskZone{Id="short-hasty-trap",Kind="negative",X=1800,Y=120,Radius=8});
+            b.Zones.Add(new RiskZone{Id="short-hasty-trap",Kind="negative",X=1790,Y=120,Radius=8});
             b.Zones.Add(new RiskZone{Id="short-habit-trap",Kind="negative",X=7640,Y=40,Radius=8});
-            return b.Finish(90,"ceiling");
+            return b.Finish(32,"ceiling");
         }
         static Track BuildFlow()
         {
             var b=new Builder(FlowId,"Высотный поток","Проходы по высоте, кольца в воздухе и посадки на обеих сторонах");
-            b.Passage(300,"floor",114,236);b.MiddleRing(600,"floor");b.Landing(1150,"ceiling");
-            b.Passage(1550,"ceiling",4,126);b.Before(2000,"ceiling");b.LowRing(2500,"floor");
-            b.Passage(2900,"floor",60,180);b.Chain(3300,"floor");b.Large(3900,"floor");
+            b.Passage(300,"floor",114,240);b.MiddleRing(600,"floor");b.Landing(1150,"ceiling");
+            b.Passage(1550,"ceiling",0,126);b.Before(2000,"ceiling");b.LowRing(2500,"floor");
+            b.Passage(2900,"floor",12,228,8);b.Chain(3300,"floor");b.Large(3900,"floor");
             b.Low(4500,"floor");b.Landing(5000,"floor");b.After(5700,"floor");
-            b.Passage(6400,"ceiling",4,126);b.High(6800,"ceiling");b.Low(7200,"floor");
+            b.Passage(6400,"ceiling",0,126);b.High(6800,"ceiling");b.Low(7200,"floor");
             b.Zones.Add(new RiskZone{Id="flow-hasty-trap",Kind="negative",X=2550,Y=120,Radius=8});
             b.Zones.Add(new RiskZone{Id="flow-habit-trap",Kind="negative",X=7600,Y=200,Radius=8});
-            return b.Finish(180,"floor");
+            return b.Finish(208,"floor");
         }
         public static Track Practice()
         {
             double landingTime = (350 + Math.Sqrt(350 * 350 - 2 * 662.5 * 48)) / 662.5;
-            return new Track(2200, new[] { Stone("practice-pad-stone", "floor", 700, 64, 48) })
+            return new Track(3300, new[] {
+                new Obstacle{Id="practice-passage",Kind="gate",X=300,Width=8,GapTop=12,GapBottom=228},
+                Stone("practice-pad-stone", "floor", 700, 64, 48),
+                Stone("practice-before-stone","floor",2200,64,92),
+                Stone("practice-after-stone","ceiling",2800,64,92) })
             {
-                Id = PracticeId, Name = "Метка и цепочка", Focus = "Узкая посадка, естественный сход и два воздушных ускорителя",
-                SafeRoute = new[] { 616.0 }, RiskRoute = new[] { 732 - 220 * landingTime, 1100.0, 1180.0 },
+                Id = PracticeId, Name = "Два управления", Focus = "Проход, узкая посадка, цепочка и два связанных кольца",
+                SafeRoute = new[] {304-220*350/662.5,616.0,1920,1975,2600,2655},
+                RiskRoute = new[] {304-220*350/662.5,732-220*landingTime,1100.0,1180,1700,1755,2000,2055,2600,2655,2880},
                 RiskZones = new[] {
                     Pad("practice-pad", "practice-pad-stone", 732, 192, 32),
-                    Instant("practice-chain-1", 1155, 180), Instant("practice-chain-2", 1300, 60) }
+                    Instant("practice-chain-1", 1155, 180), Instant("practice-chain-2", 1300, 60),
+                    new RiskZone{Id="practice-before",ObstacleId="practice-before-stone",X=2100,Y=120,Radius=8,ClearX=2279},
+                    new RiskZone{Id="practice-after",ObstacleId="practice-after-stone",Placement="after",X=2900,Y=200,Radius=8,ClearX=2923} }
             };
         }
         static Obstacle Stone(string id, string side, double x, double w, double h)
@@ -81,8 +127,8 @@ namespace FlipRace.Core
             {Obstacles.Add(Stone(Id("low"),side,x,64,48));Both(x+32-220*350/662.5);}
             public void High(double x,string side)
             {Obstacles.Add(Stone(Id("high"),side,x,64,92));Both(x-200,x-145);}
-            public void Passage(double x,string side,double top,double bottom)
-            { Obstacles.Add(new Obstacle{Id=Id("passage"),Kind="gate",X=x,Width=20,GapTop=top,GapBottom=bottom});Both(x+10-220*350/662.5); }
+            public void Passage(double x,string side,double top,double bottom,double width=20)
+            { Obstacles.Add(new Obstacle{Id=Id("passage"),Kind="gate",X=x,Width=width,GapTop=top,GapBottom=bottom});Both(x+width/2-220*350/662.5); }
             public void Landing(double x,string side)
             {
                 string stone=Id("standard-pad");Obstacles.Add(Stone(stone,side,x,64,48));
@@ -127,7 +173,10 @@ namespace FlipRace.Core
             {
                 Zones.Add(new RiskZone{Id=id+"-finish",Kind="finish",X=7876,Y=y,FinishHeight=16});
                 double displacement=side=="floor"?226-y:y-14;
-                full.Add(7876-220*(350-Math.Sqrt(350*350-2*662.5*displacement))/662.5);
+                // Center the input in time across the 16-unit vertical window.
+                double first=(350-Math.Sqrt(350*350-2*662.5*(displacement-8)))/662.5;
+                double last=(350-Math.Sqrt(350*350-2*662.5*(displacement+8)))/662.5;
+                full.Add(7876-110*(first+last));
                 safe.Sort();full.Sort();Zones.Sort((a,b)=>a.X.CompareTo(b.X));Obstacles.Sort((a,b)=>a.X.CompareTo(b.X));
                 return new Track(7920,Obstacles.ToArray()){Id=id,Name=name,Focus=focus,NegativeEnabled=true,RiskZones=Zones.ToArray(),SafeRoute=safe.ToArray(),RiskRoute=full.ToArray()};
             }

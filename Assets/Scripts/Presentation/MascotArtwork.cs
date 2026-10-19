@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FlipRace.Presentation
 {
     /// <summary>
-    /// Original Canvas mascot paths, with pre-baked animated textures.
+    /// Original Canvas mascot paths, with cached animated textures.
     /// UnitBounds uses radius units and GUI coordinates (positive Y downward).
     /// Draw UnitBounds * radius around the runner center; the caller owns rotation
     /// and the upper lane's horizontal reflection. No per-frame rasterization.
@@ -15,7 +15,8 @@ namespace FlipRace.Presentation
         public static readonly Rect UnitBounds = new Rect(-1.5f,-1.75f,3f,3f);
         const int TextureSize=128, Samples=2, RunningFrames=96, StrideFrames=16, AirFrames=12, DetailFrames=8;
         const float TwoPi=Mathf.PI*2, StrideRate=25, RunLoopSeconds=TwoPi*6/StrideRate;
-        // Only the two selected variants own full animations. Menu previews are tiny.
+        // Only the two selected variants own animation caches. A selection prepares
+        // the requested pose, not all 192 poses synchronously before the next paint.
         static readonly FrameSet[] frames=new FrameSet[2];
         static readonly int[] activeCharacters={-1,-1};
         static readonly Texture2D[,] previews=new Texture2D[CharacterRoster.Count,2];
@@ -27,6 +28,8 @@ namespace FlipRace.Presentation
 
         sealed class FrameSet
         {
+            public int Character, Player;
+            public Painter Body, Open, Shut, Dizzy, Pleased, Happy;
             public readonly Texture2D[] Run=new Texture2D[RunningFrames];
             public readonly Texture2D[] RunBlink=new Texture2D[StrideFrames];
             public readonly Texture2D[] RunSuccess=new Texture2D[StrideFrames];
@@ -74,7 +77,7 @@ namespace FlipRace.Presentation
         }
 
         /// <summary>
-        /// Allocation-free lookup after WarmUp/the first GetFrame for this selection.
+        /// A pose is rasterized on first use, then retrieved without allocation.
         /// Create builds only one menu preview and does not prewarm an animation.
         /// Pass a visual clock that stops during pause. Feet move at ~4 Hz,
         /// scarf follows each stride, leaf sways at ~0.65 Hz, eyes blink separately.
@@ -99,27 +102,27 @@ namespace FlipRace.Presentation
             if(float.IsNaN(motionTime)||float.IsInfinity(motionTime))motionTime=0;
             bool blink=Mathf.Sin(visualTime*1.71f+character*.71f+playerIndex*.29f)>.992f;
             int detail=LoopIndex(visualTime*4/TwoPi,DetailFrames);
-            if(recovering)return set.Recover[detail];
+            if(recovering)return Pose(set,set.Recover,detail);
             if(airborne)
             {
                 int flight=Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp01(flipProgress)*(AirFrames-1)),0,AirFrames-1);
-                return blink?set.AirBlink[flight]:set.Air[flight];
+                return blink?Pose(set,set.AirBlink,flight):Pose(set,set.Air,flight);
             }
-            if(reaction==MascotReaction.Win)return set.Win[LoopIndex(reactionAge*1.6f,DetailFrames)];
-            if(!running)return blink?set.IdleBlink[detail]:set.Idle[detail];
+            if(reaction==MascotReaction.Win)return Pose(set,set.Win,LoopIndex(reactionAge*1.6f,DetailFrames));
+            if(!running)return blink?Pose(set,set.IdleBlink,detail):Pose(set,set.Idle,detail);
             int stride=LoopIndex(motionTime*StrideRate/TwoPi,StrideFrames);
-            if(reaction==MascotReaction.Success)return set.RunSuccess[stride];
-            return blink?set.RunBlink[stride]:set.Run[LoopIndex(motionTime/RunLoopSeconds,RunningFrames)];
+            if(reaction==MascotReaction.Success)return Pose(set,set.RunSuccess,stride);
+            return blink?Pose(set,set.RunBlink,stride):Pose(set,set.Run,LoopIndex(motionTime/RunLoopSeconds,RunningFrames));
         }
         public static Texture2D GetReactionFrame(int characterIndex,int playerIndex,float time,MascotReaction reaction)
         {
             FrameSet set=Ensure(characterIndex,playerIndex);
             if(float.IsNaN(time)||float.IsInfinity(time))time=0;
             int detail=LoopIndex(time*1.6f,DetailFrames);
-            if(reaction==MascotReaction.Success)return set.Success[detail];
-            if(reaction==MascotReaction.Hit)return set.Recover[detail];
-            if(reaction==MascotReaction.Win)return set.Win[detail];
-            return set.Idle[detail];
+            if(reaction==MascotReaction.Success)return Pose(set,set.Success,detail);
+            if(reaction==MascotReaction.Hit)return Pose(set,set.Recover,detail);
+            if(reaction==MascotReaction.Win)return Pose(set,set.Win,detail);
+            return Pose(set,set.Idle,detail);
         }
 
         static int LoopIndex(float cycles,int count)
@@ -127,45 +130,60 @@ namespace FlipRace.Presentation
 
         static FrameSet Bake(int character,int player)
         {
-            FrameSet set=new FrameSet();
+            var set=new FrameSet { Character=character, Player=player,
+                Body=new Painter(), Open=new Painter(), Shut=new Painter(), Dizzy=new Painter(),
+                Pleased=new Painter(), Happy=new Painter() };
+            DrawBody(set.Body,character,player);
+            DrawEyes(set.Open,character,false,false); DrawEyes(set.Shut,character,true,false);
+            DrawEyes(set.Dizzy,character,false,true);
+            DrawEyes(set.Pleased,character,false,false,MascotReaction.Success);
+            DrawEyes(set.Happy,character,false,false,MascotReaction.Win);
+            return set;
+        }
+
+        static Texture2D Pose(FrameSet set,Texture2D[] group,int i)
+        {
+            if(group[i]!=null)return group[i];
+            int character=set.Character,player=set.Player;
             Color32 scarf=Scarf(player);
-            Painter body=new Painter();DrawBody(body,character,player);
-            Painter open=new Painter();DrawEyes(open,character,false,false);
-            Painter shut=new Painter();DrawEyes(shut,character,true,false);
-            Painter dizzy=new Painter();DrawEyes(dizzy,character,false,true);
-            Painter pleased=new Painter();DrawEyes(pleased,character,false,false,MascotReaction.Success);
-            Painter happy=new Painter();DrawEyes(happy,character,false,false,MascotReaction.Win);
-            for(int i=0;i<RunningFrames;i++)
+            Painter body=set.Body;
+            if(group==set.Run)
             {
                 float cycle=(float)i/RunningFrames;
                 // Six strides per leaf cycle preserves the JS frequency ratio.
                 float step=Mathf.Sin(cycle*TwoPi*6);
                 float leaf=Mathf.Sin(cycle*TwoPi)*.24f;
-                set.Run[i]=MakeFrame(body,open,scarf,step,leaf,false,"run-"+character+"-"+player+"-"+i,0,character,
+                group[i]=MakeFrame(body,set.Open,scarf,step,leaf,false,"run-"+character+"-"+player+"-"+i,0,character,
                     MascotReaction.None,cycle*TwoPi*6);
             }
-            for(int i=0;i<StrideFrames;i++)
+            else if(group==set.RunBlink||group==set.RunSuccess)
             {
                 float phase=(float)i/StrideFrames*TwoPi,wave=Mathf.Sin(phase);
-                set.RunBlink[i]=MakeFrame(body,shut,scarf,wave,0,false,"run-blink-"+player+"-"+i,0,character,MascotReaction.None,phase);
-                set.RunSuccess[i]=MakeFrame(body,pleased,scarf,wave,.18f,false,"run-success-"+player+"-"+i,0,character,MascotReaction.Success,phase);
+                bool success=group==set.RunSuccess;
+                group[i]=MakeFrame(body,success?set.Pleased:set.Shut,scarf,wave,success?.18f:0,false,
+                    (success?"run-success-":"run-blink-")+player+"-"+i,0,character,
+                    success?MascotReaction.Success:MascotReaction.None,phase);
             }
-            for(int i=0;i<AirFrames;i++)
+            else if(group==set.Air||group==set.AirBlink)
             {
                 float flight=(float)i/(AirFrames-1),wave=Mathf.Sin(flight*TwoPi);
-                set.Air[i]=MakeFrame(body,open,scarf,0,wave*.24f,true,"air-"+player+"-"+i,wave*.10f,character,MascotReaction.None,float.NaN,flight);
-                set.AirBlink[i]=MakeFrame(body,shut,scarf,0,wave*.24f,true,"air-blink-"+player+"-"+i,wave*.10f,character,MascotReaction.None,float.NaN,flight);
+                bool blink=group==set.AirBlink;
+                group[i]=MakeFrame(body,blink?set.Shut:set.Open,scarf,0,wave*.24f,true,
+                    (blink?"air-blink-":"air-")+player+"-"+i,wave*.10f,character,MascotReaction.None,float.NaN,flight);
             }
-            for(int i=0;i<DetailFrames;i++)
+            else
             {
                 float wave=Mathf.Sin((float)i/DetailFrames*TwoPi),leaf=wave*.18f;
-                set.Idle[i]=MakeFrame(body,open,scarf,0,leaf,false,"idle-"+player+"-"+i,wave*.026f,character);
-                set.IdleBlink[i]=MakeFrame(body,shut,scarf,0,leaf,false,"idle-blink-"+player+"-"+i,wave*.026f,character);
-                set.Recover[i]=MakeFrame(body,dizzy,scarf,wave,leaf,true,"recover-"+player+"-"+i,wave*.09f,character,MascotReaction.Hit);
-                set.Success[i]=MakeFrame(body,pleased,scarf,wave,leaf,false,"success-"+player+"-"+i,wave*.08f,character,MascotReaction.Success);
-                set.Win[i]=MakeFrame(body,happy,scarf,wave,leaf,false,"win-"+player+"-"+i,wave*.12f,character,MascotReaction.Win);
+                if(group==set.Idle||group==set.IdleBlink)
+                    group[i]=MakeFrame(body,group==set.Idle?set.Open:set.Shut,scarf,0,leaf,false,"idle-"+player+"-"+i,wave*.026f,character);
+                else if(group==set.Recover)
+                    group[i]=MakeFrame(body,set.Dizzy,scarf,wave,leaf,true,"recover-"+player+"-"+i,wave*.09f,character,MascotReaction.Hit);
+                else if(group==set.Success)
+                    group[i]=MakeFrame(body,set.Pleased,scarf,wave,leaf,false,"success-"+player+"-"+i,wave*.08f,character,MascotReaction.Success);
+                else
+                    group[i]=MakeFrame(body,set.Happy,scarf,wave,leaf,false,"win-"+player+"-"+i,wave*.12f,character,MascotReaction.Win);
             }
-            return set;
+            return group[i];
         }
 
         static Texture2D MakeFrame(Painter body,Painter eyes,Color32 scarf,float step,float leafAngle,

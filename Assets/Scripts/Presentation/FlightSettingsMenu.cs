@@ -10,7 +10,7 @@ namespace FlipRace.Presentation
         int flightPage, activeFlightPreset;
         bool activeCustomFlight;
         string pendingFlightTrack;
-        Rect flightPanel, flightBack, flightApply, flightCustom, flightLegacy, flightEdit, flightReset, flightDone, flightCopy, flightChosen, flightOldTracks;
+        Rect flightPanel, flightBack, flightApply, flightCustom, flightEdit, flightReset, flightDone, flightCopy, flightChosen, flightFastFlip, flightOldTracks;
 
         public bool FlightSettingsVisible { get { return showTracks && Trial && flightPage == 1 && !Portrait; } }
         public Rect FlightCopyRect { get { return flightCopy; } }
@@ -20,11 +20,19 @@ namespace FlipRace.Presentation
         void InitializeFlightMenu()
         {
             FlightDraft custom;
-            FlightSettingsStore.TryDecode(PlayerPrefs.GetString(FlightSettingsStore.Key, ""), out custom);
+            string storedCustom = PlayerPrefs.GetString(FlightSettingsStore.Key, "");
+            bool validCustom = FlightSettingsStore.TryDecode(storedCustom, out custom);
             flightSelection = new FlightSelection(custom);
-            int saved = FlightSettingsStore.ValidActiveChoice(PlayerPrefs.GetInt(FlightSettingsStore.ActiveChoiceKey, FlightSettingsStore.ChosenPresetIndex));
+            int storedChoice = PlayerPrefs.GetInt(FlightSettingsStore.ActiveChoiceKey, FlightSettingsStore.ChosenPresetIndex);
+            int saved = FlightSettingsStore.ValidActiveChoice(storedChoice);
             activeCustomFlight = saved == -1; activeFlightPreset = saved;
             if (activeCustomFlight) flightSelection.SelectCustom(); else flightSelection.SelectPreset(activeFlightPreset);
+            // Retire only preset references; never replace a valid custom's physical values.
+            bool changed = false;
+            if (storedChoice != saved) { PlayerPrefs.SetInt(FlightSettingsStore.ActiveChoiceKey, saved); changed = true; }
+            if (validCustom && storedCustom != FlightSettingsStore.Encode(custom))
+            { PlayerPrefs.SetString(FlightSettingsStore.Key, FlightSettingsStore.Encode(custom)); changed = true; }
+            if (changed) PlayerPrefs.Save();
         }
         static Track InitialFlightTrack()
         { return TracksFull.All.Length > 0 ? TracksFull.All[0] : TracksFull.Practice(); }
@@ -47,22 +55,11 @@ namespace FlipRace.Presentation
             flightReset = new Rect(flightCopy.xMax + 8, flightCopy.y, 150, 28);
             flightDone = new Rect(flightPanel.xMax - 126, flightCopy.y, 110, 28);
             float col = (flightPanel.width - 48) / 2;
-            flightChosen = new Rect(flightPanel.x + 16, flightPanel.y + 60, col, 28);
-            flightCustom = new Rect(flightPanel.x + 16, flightPanel.y + 172, col, 28);
-            flightLegacy = new Rect(flightCustom.x, flightPanel.y + 208, col, 24);
+            flightChosen = new Rect(flightPanel.x + 16, flightPanel.y + 60, col, 42);
+            flightFastFlip = new Rect(flightPanel.x + 16, flightPanel.y + 111, col, 42);
+            flightCustom = new Rect(flightPanel.x + 16, flightPanel.y + 172, col, 36);
             flightEdit = new Rect(flightPanel.x + 32 + col, flightPanel.y + 106, col, 24);
             flightOldTracks = new Rect(flightPanel.xMax - 126, flightPanel.y + 131, 110, 20);
-        }
-        Rect FlightPresetRect(int i)
-        {
-            float col = (flightPanel.width - 48) / 2, cell = (col - 8) / 2;
-            float start = flightPage == 2 ? 60 : 96, h = flightPage == 2 ? 34 : 30;
-            return new Rect(flightPanel.x + 16 + (i % 2) * (cell + 8), flightPanel.y + start + (i / 2) * (h + 8), cell, h);
-        }
-        Rect FlightSegmentRect(int i)
-        {
-            float col = (flightPanel.width - 48) / 2, x = flightPanel.x + 32 + col;
-            return new Rect(x, flightPanel.y + 121 + i * 30, col, 26);
         }
         Rect FullTrackRect(int i)
         {
@@ -115,13 +112,11 @@ namespace FlipRace.Presentation
                 }
                 return;
             }
-            for (int i = 0; i < (flightPage == 2 ? 6 : 4); i++)
-                if (FlightPresetRect(i).Contains(p)) { flightSelection.SelectPreset(i + (flightPage == 2 ? 4 : 0)); return; }
             if (flightPage == 0)
             {
                 if (flightChosen.Contains(p)) { flightSelection.SelectPreset(FlightSettingsStore.ChosenPresetIndex); return; }
+                if (flightFastFlip.Contains(p)) { flightSelection.SelectPreset(FlightSettingsStore.FastFlipPresetIndex); return; }
                 if (flightCustom.Contains(p)) { flightSelection.SelectCustom(); flightPage = 1; BlockGameplayInput(); return; }
-                if (flightLegacy.Contains(p)) { flightPage = 2; BlockGameplayInput(); return; }
                 if (flightOldTracks.Contains(p)) { flightPage = 3; BlockGameplayInput(); return; }
                 if (flightEdit.Contains(p))
                 { flightSelection.Edit(d => { }); SaveCustomFlight(); flightPage = 1; BlockGameplayInput(); return; }
@@ -129,8 +124,6 @@ namespace FlipRace.Presentation
                 { pendingFlightTrack = TracksFull.All[i].Id; return; }
                 return;
             }
-            for (int i = 0; i < 3; i++) if (FlightSegmentRect(i).Contains(p))
-            { pendingFlightTrack = i == 0 ? TracksV4.OpenId : i == 1 ? TracksTune.ChallengeId : TracksV4.ChallengeId; return; }
         }
         void ApplyFlightChoice()
         {
@@ -145,7 +138,7 @@ namespace FlipRace.Presentation
             Game = RaceSimulation.CreateTrial(track, settings);
             Game.Players[0].CharacterIndex = first; Game.Players[1].CharacterIndex = second;
             activeCustomFlight = flightSelection.IsCustom; activeFlightPreset = flightSelection.PresetIndex;
-            legacyControls = !activeCustomFlight && activeFlightPreset >= 4 && activeFlightPreset <= 9;
+            legacyControls = false;
             PlayerPrefs.SetInt(FlightSettingsStore.ActiveChoiceKey, activeCustomFlight ? -1 : activeFlightPreset); PlayerPrefs.Save();
             selectedTrackId = track.Id;
             round = 1; paused = showRules = showTracks = false; suppressFrame = true;
@@ -188,44 +181,23 @@ namespace FlipRace.Presentation
             Round(flightPanel, 12, Hex(0xfbfbf1));
             Text(flightBack, flightPage == 0 ? "×" : "‹", 23, muted, false, TextAnchor.MiddleCenter);
             Text(new Rect(flightPanel.x + 49, flightPanel.y + 10, flightPanel.width - 65, 23),
-                flightPage == 1 ? "Свои настройки" : flightPage == 2 ? "Прежние настройки"
-                    : flightPage == 3 ? "Прежние участки" : "Управление и трасса", 17, ink, true);
+                flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки" : "Управление и трасса", 17, ink, true);
             if (flightPage == 1) { DrawFlightEditor(); return; }
             if (flightPage == 3) { DrawOldFlightTracks(); return; }
             float col = (flightPanel.width - 48) / 2, right = flightPanel.x + 32 + col;
             Text(new Rect(flightPanel.x + 16, flightPanel.y + 43, col, 14), "ГОТОВЫЕ НАСТРОЙКИ", 8, muted);
-            if (flightPage == 0)
-                FlightButton(flightChosen, "Профиль трасс · 350 / 662,5 / ∞", flightSelection.PresetIndex == FlightSettingsStore.ChosenPresetIndex, true, 9);
-            for (int i = 0; i < (flightPage == 2 ? 6 : 4); i++)
-            {
-                int index = i + (flightPage == 2 ? 4 : 0);
-                FlightButton(FlightPresetRect(i), FlightSettingsStore.PresetName(index), flightSelection.PresetIndex == index,
-                    true, index >= 8 ? 8 : 9);
-            }
-            if (flightPage == 0)
-            {
-                FlightButton(flightCustom, "Свои настройки  ›", flightSelection.IsCustom);
-                FlightButton(flightLegacy, "Прежние 6 вариантов  ›", false, true, 9);
-                FlightButton(flightEdit, flightSelection.PresetIndex == 8 ? "Взять значения в свои  ›" : "Изменить выбранное  ›", false, true, 9);
-            }
+            FlightButton(flightChosen, "Основной — прыжок и полёт", flightSelection.PresetIndex == FlightSettingsStore.ChosenPresetIndex, true, 10);
+            FlightButton(flightFastFlip, "Быстрый переворот", flightSelection.PresetIndex == FlightSettingsStore.FastFlipPresetIndex, true, 10);
+            FlightButton(flightCustom, "Свои настройки  ›", flightSelection.IsCustom);
+            FlightButton(flightEdit, "Изменить выбранное  ›", false, true, 9);
             Text(new Rect(right, flightPanel.y + 43, col, 15), flightSelection.IsCustom ? "Свой набор" : FlightSettingsStore.PresetName(flightSelection.PresetIndex), 11, ink, true);
             label.wordWrap = true;
             Text(new Rect(right, flightPanel.y + 63, col, 39), FlightSettingsStore.Summary(flightSelection.Settings), 10, muted);
             label.wordWrap = false;
-            if (flightPage == 0)
-            {
-                Text(new Rect(right, flightPanel.y + 134, col - 112, 14), "ТРИ ТРАССЫ", 8, muted);
-                FlightButton(flightOldTracks, "Прежние участки ›", false, true, 8);
-                for (int i = 0; i < TracksFull.All.Length; i++)
-                    FlightButton(FullTrackRect(i), TracksFull.All[i].Name, pendingFlightTrack == TracksFull.All[i].Id, true, 10);
-            }
-            else
-            {
-                Text(new Rect(right, flightPanel.y + 105, col, 14), "ПРЕЖНИЕ УЧАСТКИ", 8, muted);
-                string[] ids = { TracksV4.OpenId, TracksTune.ChallengeId, TracksV4.ChallengeId };
-                string[] names = { "Свободный полёт", "Кольца и ускорители", "Прежний участок" };
-                for (int i = 0; i < 3; i++) FlightButton(FlightSegmentRect(i), names[i], pendingFlightTrack == ids[i], true, 9);
-            }
+            Text(new Rect(right, flightPanel.y + 134, col - 112, 14), "ТРИ ТРАССЫ", 8, muted);
+            FlightButton(flightOldTracks, "Прежние участки ›", false, true, 8);
+            for (int i = 0; i < TracksFull.All.Length; i++)
+                FlightButton(FullTrackRect(i), TracksFull.All[i].Name, pendingFlightTrack == TracksFull.All[i].Id, true, 10);
             DrawFlightApplyFooter();
         }
         void DrawOldFlightTracks()
@@ -244,7 +216,7 @@ namespace FlipRace.Presentation
         void DrawFlightApplyFooter()
         {
             string note = !CanApplyFlight ? "Проходы требуют повторов ∞"
-                : TracksFull.IsFull(pendingFlightTrack) ? "36 сек · для профиля 350 / 662,5 / ∞"
+                : TracksFull.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : "36 сек · управление сохраняется"
                 : "Участок: " + PendingFlightTrackName();
             Text(new Rect(flightPanel.x + 16, flightPanel.yMax - 39, flightPanel.width - 205, 27), note,
                 9, !CanApplyFlight ? Hex(0x9a6844) : muted, false, TextAnchor.MiddleLeft);
@@ -284,11 +256,10 @@ namespace FlipRace.Presentation
                 new[] { "1,2", "1,0", "0,9", "0,8", "0,7", "0,6", "0,5", "0,4" }, d.Speed, !gravity, "Линейная скорость не влияет на разгон");
             Rect note = FlightFieldRect(1, 3);
             label.wordWrap = true;
-            Text(note, d.ResetPreset == 8 ? "Взяты значения старого линейного. Свой перелёт считает фактическую дистанцию."
-                : "0 — база, не отсутствие тяги. Неактивные значения запоминаются. Меняй один параметр за раз.", 9, muted);
+            Text(note, "0 — база, не отсутствие тяги. Неактивные значения запоминаются. Меняй один параметр за раз.", 9, muted);
             label.wordWrap = false;
             FlightButton(flightCopy, "Копировать", false, true, 10);
-            FlightButton(flightReset, d.ResetPreset == 8 ? "Взять значения" : "Сброс: " + FlightSettingsStore.PresetName(d.ResetPreset), false, true, 8);
+            FlightButton(flightReset, "Сброс: " + FlightSettingsStore.PresetName(d.ResetPreset), false, true, 8);
             FlightButton(flightDone, "Готово →", true);
         }
         string FlightActionHint()

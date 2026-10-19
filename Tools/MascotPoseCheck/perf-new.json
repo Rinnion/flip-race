@@ -1,0 +1,4462 @@
+{
+  "Implementation": "current lazy",
+  "Scope": "Desktop .NET CPU rasterizer with Unity shims; excludes GPU/native upload, browser input and paint, and physical phone",
+  "Runtime": ".NET 10.0.0",
+  "StartupMilliseconds": 42.3104,
+  "StartupTextures": 10,
+  "StartupAllocatedBytes": 8784144,
+  "Selection": {
+    "Count": 24,
+    "Min": 0.0294,
+    "Median": 2.5349500000000003,
+    "Max": 4.2871,
+    "Textures": 23,
+    "AllocatedBytes": 38321928
+  },
+  "RepeatSelection": {
+    "Count": 24,
+    "Min": 0.0002,
+    "Median": 0.0007,
+    "Max": 0.0197,
+    "Textures": 0,
+    "AllocatedBytes": 2216
+  },
+  "FirstRunningPose": {
+    "Count": 192,
+    "Min": 1.6384,
+    "Median": 1.85725,
+    "Max": 3.3472,
+    "Textures": 192,
+    "AllocatedBytes": 13693496
+  },
+  "RepeatRunningPose": {
+    "Count": 192,
+    "Min": 0.0001,
+    "Median": 0.0003,
+    "Max": 0.0318,
+    "Textures": 0,
+    "AllocatedBytes": 17608
+  },
+  "Samples": [
+    {
+      "Kind": "startup-selected",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 16.1694,
+      "Textures": 1,
+      "AllocatedBytes": 2255072
+    },
+    {
+      "Kind": "startup-selected",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 4.2894,
+      "Textures": 1,
+      "AllocatedBytes": 1664328
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 3.2285,
+      "Textures": 1,
+      "AllocatedBytes": 608824
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 2.5814,
+      "Textures": 1,
+      "AllocatedBytes": 608224
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 2.7924,
+      "Textures": 1,
+      "AllocatedBytes": 611920
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 2.4888,
+      "Textures": 1,
+      "AllocatedBytes": 604616
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 2.3863,
+      "Textures": 1,
+      "AllocatedBytes": 608224
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 2.2398,
+      "Textures": 1,
+      "AllocatedBytes": 607624
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 2.643,
+      "Textures": 1,
+      "AllocatedBytes": 611320
+    },
+    {
+      "Kind": "startup-preview",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 3.4914,
+      "Textures": 1,
+      "AllocatedBytes": 603992
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0294,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0197,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 1.8212,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0318,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 1.8782,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 1.8385,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 1.8258,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 1.7752,
+      "Textures": 1,
+      "AllocatedBytes": 71624
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 2.0545,
+      "Textures": 1,
+      "AllocatedBytes": 71624
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 2.0234,
+      "Textures": 1,
+      "AllocatedBytes": 71624
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 1.9832,
+      "Textures": 1,
+      "AllocatedBytes": 71624
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 0.0014,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 3.8212,
+      "Textures": 1,
+      "AllocatedBytes": 1664904
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 1.7897,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 1.7519,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 1.7495,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 1.812,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 1.7852,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 1.7941,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 1.7492,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 1.8416,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 4.247,
+      "Textures": 1,
+      "AllocatedBytes": 1668600
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 1.9323,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 2.1537,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 2.1017,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 2.0936,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 2.1304,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 0.0013,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 1.9704,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 1.8986,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 1.8718,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 2.5631,
+      "Textures": 1,
+      "AllocatedBytes": 1660672
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 1.8083,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 1.8912,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 1.8079,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 2.2513,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 0.0012,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 1.9341,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 2.061,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 1.9387,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 1.9612,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 2.8929,
+      "Textures": 1,
+      "AllocatedBytes": 1664304
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 2.3759,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0012,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 2.1657,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 1.8148,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 1.8111,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 1.777,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 1.8671,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 1.7539,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 1.7878,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 3.1565,
+      "Textures": 1,
+      "AllocatedBytes": 1669664
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 1.7972,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 1.8827,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 1.7214,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 1.7259,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 1.7243,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 1.7774,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 2.1689,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 0.001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 2.0833,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 0.0014,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 3.1002,
+      "Textures": 1,
+      "AllocatedBytes": 1668000
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 1.9798,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 2.0862,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 2.0029,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 1.9245,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 1.8695,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 2.0251,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 0.0009,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 1.9017,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 1.9641,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 2.6878,
+      "Textures": 1,
+      "AllocatedBytes": 1660072
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 1.7964,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 1.7995,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 1.9875,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 0.0013,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 2.3421,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 0.0013,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 2.0446,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 1.9807,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 1.8646,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 1.9632,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 0,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 2.7101,
+      "Textures": 1,
+      "AllocatedBytes": 1670448
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 1.7369,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 1.7312,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 1.9366,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 1.8031,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 1.7968,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 1.8697,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 1.7746,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 1.7382,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 2.3095,
+      "Textures": 1,
+      "AllocatedBytes": 1664904
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 2.0634,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 2.0428,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 1.9887,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 0.001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 1.8093,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 1.7688,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 2.0486,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 2.0107,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 1.7461,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 2.7592,
+      "Textures": 1,
+      "AllocatedBytes": 1668600
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 1.8575,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 1.8938,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 1.8877,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 1.8534,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 1.8505,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 1.8785,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 1.9463,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 2.174,
+      "Textures": 1,
+      "AllocatedBytes": 72144
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 0.0016,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 3.039,
+      "Textures": 1,
+      "AllocatedBytes": 1666104
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 2.0034,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 1.9332,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 1.8909,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 1.8509,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 1.8224,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 1.9399,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 0.001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 1.8531,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 1.8393,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 2.3665,
+      "Textures": 1,
+      "AllocatedBytes": 1664304
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 1.7515,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 1.758,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 1.7748,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 1.8593,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 1.9217,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 2.1118,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 2.0481,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 0.0006,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 1.8943,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 2.5068,
+      "Textures": 1,
+      "AllocatedBytes": 1664304
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0012,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 1.9053,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 1.8583,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 2.0632,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 0.0013,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 1.9629,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 0.0011,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 3.1642,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 1.8701,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 0.0006,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 1.9232,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 0.0035,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 1.7731,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 4.2871,
+      "Textures": 1,
+      "AllocatedBytes": 1675096
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0018,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 1.9922,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0044,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 2.1345,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 0.0053,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 2.1147,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 0.0006,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 2.0079,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 2.6329,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 1.828,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 1.7867,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 2.0831,
+      "Textures": 1,
+      "AllocatedBytes": 72200
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 0.0045,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 3.5385,
+      "Textures": 1,
+      "AllocatedBytes": 1660072
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0046,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 3.3472,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0006,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 1.7816,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 1.7205,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 1.6974,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 1.841,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 1.7191,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 1.957,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 2.0239,
+      "Textures": 1,
+      "AllocatedBytes": 69952
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 1,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 2.4991,
+      "Textures": 1,
+      "AllocatedBytes": 1664904
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 1.7624,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 1.7471,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 1.7204,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 1.725,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 0.0009,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 1.6967,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 104
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 2.7224,
+      "Textures": 1,
+      "AllocatedBytes": 71600
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 1.6557,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 1.6438,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 2.1652,
+      "Textures": 1,
+      "AllocatedBytes": 1670296
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 1.7609,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 2.7751,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 1.6422,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 1.6415,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 1.8255,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 1.8229,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 1.9255,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 1.75,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 2.251,
+      "Textures": 1,
+      "AllocatedBytes": 1668560
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 1.7176,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 1.8922,
+      "Textures": 1,
+      "AllocatedBytes": 72104
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 1.9364,
+      "Textures": 1,
+      "AllocatedBytes": 72104
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 2.0649,
+      "Textures": 1,
+      "AllocatedBytes": 72104
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 2.0239,
+      "Textures": 1,
+      "AllocatedBytes": 72104
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 0.0013,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 1.8473,
+      "Textures": 1,
+      "AllocatedBytes": 72104
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 1.8529,
+      "Textures": 1,
+      "AllocatedBytes": 72104
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 1.841,
+      "Textures": 1,
+      "AllocatedBytes": 72104
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 2.3082,
+      "Textures": 1,
+      "AllocatedBytes": 1660632
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 1.8211,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 1.857,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 2.0266,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 2.3011,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 0.0028,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 2.3154,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 0.0009,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 2.418,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 0.0006,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 2.1747,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 0.001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 1.8653,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 0,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 2.3433,
+      "Textures": 1,
+      "AllocatedBytes": 1669696
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 1.7296,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 0,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 1.6809,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 1,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 1.6952,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 2,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 1.7112,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 3,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 1.6877,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 4,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 1.7521,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 5,
+      "Milliseconds": 0.0045,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 1.7733,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 6,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 1.6871,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 0,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 2.0432,
+      "Textures": 1,
+      "AllocatedBytes": 1664264
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 1.747,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 0,
+      "Milliseconds": 0.0016,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 2.2425,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 1,
+      "Milliseconds": 0.0105,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 2.1281,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 2,
+      "Milliseconds": 0.0004,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 2.0303,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 3,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 2.0572,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 4,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 2.1147,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 5,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 1.6749,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 6,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 1.6384,
+      "Textures": 1,
+      "AllocatedBytes": 71560
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 1,
+      "Pose": 7,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 2.1701,
+      "Textures": 1,
+      "AllocatedBytes": 1667960
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0006,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 1.7254,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 0,
+      "Milliseconds": 0.0007,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 1.7587,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 1,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 1.8509,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 2,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 1.8656,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 3,
+      "Milliseconds": 0.0008,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 1.7154,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 4,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 1.7007,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 5,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 1.7002,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 6,
+      "Milliseconds": 0.0001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 1.7341,
+      "Textures": 1,
+      "AllocatedBytes": 72160
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 2,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 2.4733,
+      "Textures": 1,
+      "AllocatedBytes": 1665464
+    },
+    {
+      "Kind": "repeat-selection",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0011,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 1.9143,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 0,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 1.7779,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 1,
+      "Milliseconds": 0.0005,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 1.8216,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 2,
+      "Milliseconds": 0.001,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 1.7845,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 3,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 1.7521,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 4,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 1.6827,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 5,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 1.6823,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 6,
+      "Milliseconds": 0.0003,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    },
+    {
+      "Kind": "first-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 1.6687,
+      "Textures": 1,
+      "AllocatedBytes": 69912
+    },
+    {
+      "Kind": "repeat-running-pose",
+      "Round": 2,
+      "Player": 1,
+      "Hero": 3,
+      "Pose": 7,
+      "Milliseconds": 0.0002,
+      "Textures": 0,
+      "AllocatedBytes": 64
+    }
+  ]
+}

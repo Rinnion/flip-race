@@ -23,7 +23,7 @@ namespace FlipRace.Presentation
             return new FlightSettings(First, Law, Repeats, Gravities[Gravity], FlipImpulses[Flip],
                 JumpImpulses[Jump], 212 / Durations[Speed], Heights[Height]);
         }
-        public static FlightDraft From(FlightSettings settings, int resetPreset = 0)
+        public static FlightDraft From(FlightSettings settings, int resetPreset = FlightSettingsStore.ChosenPresetIndex)
         {
             int speed = -1;
             for (int i = 0; i < Durations.Length; i++) if (Math.Abs(212 / Durations[i] - settings.LinearSpeed) < 1e-8) speed = i;
@@ -42,31 +42,29 @@ namespace FlipRace.Presentation
     {
         public const string Key = "flip-race-custom-flight-v1";
         public const string ActiveChoiceKey = "flip-race-flight-choice-v2";
-        public const int ChosenPresetIndex = 10;
+        public const int ChosenPresetIndex = 10, FastFlipPresetIndex = 11;
         public static int ValidActiveChoice(int saved)
-        { return saved >= -1 && saved <= ChosenPresetIndex ? saved : ChosenPresetIndex; }
+        { return saved == -1 || saved == ChosenPresetIndex || saved == FastFlipPresetIndex ? saved : ChosenPresetIndex; }
+        public static int ValidResetPreset(int saved)
+        { return saved == FastFlipPresetIndex ? FastFlipPresetIndex : ChosenPresetIndex; }
         static readonly CultureInfo Invariant = CultureInfo.InvariantCulture;
         public static FlightSettings Preset(int index)
         {
             switch (index)
             {
-                case 0: return FlightPresets.Moderate;
-                case 1: return FlightPresets.Linear;
-                case 2: return FlightPresets.Jump;
-                case 3: return FlightPresets.Unlimited;
-                case 4: case 5: case 6: case 7:
-                    return FlightPresets.FromLegacy(MotionMode.GravityAirFlip, MotionProfiles.All[index - 4]);
-                case 8: return FlightPresets.FromLegacy(MotionMode.Linear);
-                case 9: return FlightPresets.FromLegacy(MotionMode.Gravity);
                 case ChosenPresetIndex: return FlightPresets.Chosen;
+                case FastFlipPresetIndex: return FlightPresets.FastFlip;
                 default: throw new ArgumentOutOfRangeException(nameof(index));
             }
         }
         public static string PresetName(int index)
         {
-            string[] names = { "Меньше толчок", "Линейный", "Прыжок → флип", "Много флипов",
-                "База", "Сильнее тяга", "Толчок", "Тяга + толчок", "Линейный без повтора", "Разгон без повтора", "Профиль трасс" };
-            return names[index];
+            switch(index)
+            {
+                case ChosenPresetIndex: return "Прыжок и полёт";
+                case FastFlipPresetIndex: return "Быстрый переворот";
+                default: throw new ArgumentOutOfRangeException(nameof(index));
+            }
         }
         // Store physical values, not ordinal meanings that a future scale could change.
         public static string Encode(FlightDraft draft)
@@ -79,17 +77,17 @@ namespace FlipRace.Presentation
         }
         public static bool TryDecode(string text, out FlightDraft draft)
         {
-            draft = FlightDraft.From(FlightPresets.Moderate);
+            draft = FlightDraft.From(FlightPresets.Chosen);
             if (string.IsNullOrEmpty(text) || text.Length > 512) return false;
             try
             {
                 string[] v = text.Split('|'); if (v.Length != 10 || v[0] != "1") return false;
                 int first = int.Parse(v[1], Invariant), law = int.Parse(v[2], Invariant), repeats = int.Parse(v[3], Invariant);
-                int reset = int.Parse(v[9], Invariant); if (reset < 0 || reset > ChosenPresetIndex) return false;
+                int reset = int.Parse(v[9], Invariant); if (reset < 0 || reset > FastFlipPresetIndex) return false;
                 var s = new FlightSettings((FirstAction)first, (MotionLaw)law, (AirRepeatLimit)repeats,
                     double.Parse(v[4], Invariant), double.Parse(v[5], Invariant), double.Parse(v[6], Invariant),
                     double.Parse(v[7], Invariant), double.Parse(v[8], Invariant));
-                draft = FlightDraft.From(s, reset); return true;
+                draft = FlightDraft.From(s, ValidResetPreset(reset)); return true;
             }
             catch (Exception e) when (e is ArgumentException || e is FormatException || e is OverflowException)
             { return false; }
@@ -127,7 +125,8 @@ namespace FlipRace.Presentation
         public int PresetIndex { get; private set; }
         public bool IsCustom { get { return PresetIndex < 0; } }
         public FlightSettings Settings { get { return IsCustom ? Custom.Settings() : FlightSettingsStore.Preset(PresetIndex); } }
-        public FlightSelection(FlightDraft custom) { Custom = custom.Copy(); PresetIndex = 0; }
+        public FlightSelection(FlightDraft custom)
+        { Custom = custom.Copy(); Custom.ResetPreset = FlightSettingsStore.ValidResetPreset(Custom.ResetPreset); PresetIndex = FlightSettingsStore.ChosenPresetIndex; }
         public void SelectPreset(int index) { FlightSettingsStore.Preset(index); PresetIndex = index; }
         public void SelectCustom() { PresetIndex = -1; }
         public void Edit(Action<FlightDraft> edit)

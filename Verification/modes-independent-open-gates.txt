@@ -1,0 +1,13 @@
+RaceSimulation.cs: CFA0A419C9CE9FC7C0F2A7F075CACC8E7CD3C9655D12412037AA2E5D4BC7838B
+FlightSettings.cs: D45405A1F1C5530FB41E3208C23A563E5C663C3226668E447706C73C2B03DF95
+TracksFull.cs: 717C0BE9560498FFABFEF56185A235B4F76EE92D9B4373173EF3AFAFA67E1861
+Fast T212=0.38352798957670875 T164=0.3358199493051994 T120=0.28546110995621027; candidate window=0.0631570761000165
+PASS independent production-profile analytics: 1983 assertions / 48 games. Menu and new geometry are not certified by this scope.
+PASS after semantics independent: 5950 assertions / 192 games; both expected profiles, sides, six dt.
+After old collection segment x=6139.999999982308 y=133.7031249999995 vy=14.375000000001231 earned=8 boost=0.2454545455082076 hits=0 finishBoosts=0 confirmed=True
+Late hover x=7599.999999990972 y=136.59971931970426 vy=-30.909090918225356 earned=9 boost=0 hits=0 finishBoosts=0 realAirTaps=41
+Late wall x=7724.079999991115 y=14 vy=0 earned=9 boost=0 hits=0 finishBoosts=0
+Finish target x=7876.000439800962 y=60.00024788441634 vy=248.09206265648285 earned=9 boost=0 hits=0 finishBoosts=1
+PASS historical late-tail regression: 1625 assertions / 1 games; no time limit, no erased effects, no flight-state injection.
+PASS independent open gates: 2194 assertions / 168 games; both walls/profiles/six dt, zero vs tiny bands, real apex tangent and rear-corner contact.
+PASS independent stage: 2466 assertions / 90 games; six dt, individual safe±60ms real clock, narrow natural walkoff and independent chain subsets.

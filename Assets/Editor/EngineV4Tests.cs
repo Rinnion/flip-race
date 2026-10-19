@@ -294,8 +294,8 @@ namespace FlipRace.Editor
         {
             var good = Start(AfterStone(100, 300, 420, 170, 441)); Tap(good);
             RaceSimulation.Advance(good, 280d / 220); Tap(good); RaceSimulation.Advance(good, (445d - 280) / 220);
-            Check(good.Players[0].CollectedRiskIds.Count == 1 && good.Players[0].BoostsEarned == 0 && good.Players[0].Flipping,
-                "linked after reward waits for actual gravity landing past ClearX");
+            Check(good.Players[0].CollectedRiskIds.Count == 1 && good.Players[0].BoostsEarned == 1 && good.Players[0].Flipping,
+                "MODES: linked after reward confirms at geometric clearance before gravity landing");
             Finish(good, 100);
             Check(good.Players[0].BoostsEarned == 1 && good.Players[0].Collisions == 0, "completed clean gravity return confirms reward");
             Near(good.Elapsed, 9.7, "gravity after reward real finish");
@@ -309,11 +309,11 @@ namespace FlipRace.Editor
 
             var air = ReverseAt(.46, AfterStone(200, 100, 330, 180, 315));
             RaceSimulation.Advance(air, 1.5 - .46);
-            Check(air.Players[0].CollectedRiskIds.Count == 1 && air.Players[0].BoostsEarned == 0
-                && air.Players[0].Flipping && air.Players[0].FlipElapsed > .8, "air-return linked ring stays pending beyond old flight timer");
+            Check(air.Players[0].CollectedRiskIds.Count == 1 && air.Players[0].BoostsEarned == 1
+                && air.Players[0].Flipping && air.Players[0].FlipElapsed > .8, "MODES: clearance confirms during long inertial return");
             Finish(air, 100);
             Check(air.Players[0].BoostsEarned == 1 && air.Players[0].Collisions == 0, "return to original surface can confirm maneuver");
-            Near(air.Players[0].LastSuccess.At, .46 * (2 + Math.Sqrt(2)), "linked reward timestamp follows true inertial landing");
+            Check(air.Players[0].LastSuccess.At < .46 * (2 + Math.Sqrt(2)), "geometric confirmation precedes true inertial landing");
         }
 
         static void UntouchedLinkedRingAfterHit()
@@ -342,12 +342,12 @@ namespace FlipRace.Editor
             if (trace != null) trace("After physical contact: collected=" + collectedAtContact + ", pending="
                 + pendingAtContact + ", failed=" + p.FailedRiskIds.Contains("after") + ", hitHistory=" + p.HitObstacleIds.Contains("stone"));
             RaceSimulation.Advance(game, .1);
-            bool pendingAfterClear = p.Distance > 321 && p.Flipping && p.BoostsEarned == 0;
-            if (trace != null) trace("After clearance: x=" + p.Distance + ", airborne=" + p.Flipping + "; next step reaches landing/confirmation.");
+            bool awardedAfterClear = p.Distance > 321 && p.Flipping && p.BoostsEarned == 1;
+            if (trace != null) trace("After clearance: x=" + p.Distance + ", airborne=" + p.Flipping + "; reward confirmed without landing.");
             RaceSimulation.Advance(game, .3);
             bool awardedAtLanding = !p.Flipping && p.BoostsEarned == 1;
             Finish(game, 100);
-            Check(collectedAtContact && pendingAtContact && pendingAfterClear && awardedAtLanding
+            Check(collectedAtContact && pendingAtContact && awardedAfterClear && awardedAtLanding
                 && p.BoostsEarned == 1 && p.CompletedBoosts == 1 && !p.FailedRiskIds.Contains("after"),
                 "hit -> .5s recovery -> untouched linked contact -> pending -> one reward; actual collected="
                 + collectedAtContact + ", pending=" + pendingAtContact + ", landingAward=" + awardedAtLanding

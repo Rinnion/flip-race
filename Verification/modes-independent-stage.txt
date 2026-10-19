@@ -1,0 +1,16 @@
+RaceSimulation.cs: 26967C875F45D68373EB0FDE855C7560C47AFF38F773740105319ECBC3F7B290
+FlightSettings.cs: D45405A1F1C5530FB41E3208C23A563E5C663C3226668E447706C73C2B03DF95
+TracksFull.cs: 3B6265C3C7C8A23F45E127171756FD4CBB443AFC854FCACF18AEC065CB3E707C
+Fast T212=0.38352798957670875 T164=0.3358199493051994 T120=0.28546110995621027; candidate window=0.0631570761000165
+PASS independent production-profile analytics: 1983 assertions / 48 games. Menu and new geometry are not certified by this scope.
+PASS after semantics independent: 5950 assertions / 192 games; both expected profiles, sides, six dt.
+After old collection segment x=6139.999999982308 y=133.7031249999995 vy=14.375000000001231 earned=8 boost=0.2454545455082076 hits=0 finishBoosts=0 confirmed=True
+Late hover x=7599.999999990972 y=136.59971931970426 vy=-30.909090918225356 earned=9 boost=0 hits=0 finishBoosts=0 realAirTaps=41
+Late wall x=7724.079999991115 y=14 vy=0 earned=9 boost=0 hits=0 finishBoosts=0
+Finish target x=7876.000439800962 y=60.00024788441634 vy=248.09206265648285 earned=9 boost=0 hits=0 finishBoosts=1
+PASS historical late-tail regression: 1625 assertions / 1 games; no time limit, no erased effects, no flight-state injection.
+PASS independent stage: 2466 assertions / 90 games; six dt, individual safe±60ms real clock, narrow natural walkoff and independent chain subsets.
+CONDITIONAL geometric-release bound only: valid after independent after-clear semantics passes; not a current-runtime PASS.
+full-long subsets=2048 latest=7622.000001 conservativeCompleteX=7820.000001 weightedCompleteX=7688.000001 finish=7876 conservativeMargin=55.99999899999966
+full-short subsets=2048 latest=7662.000001 conservativeCompleteX=7860.000001 weightedCompleteX=7728.000001 finish=7876 conservativeMargin=15.999998999999661
+full-flow subsets=2048 latest=7622.000001 conservativeCompleteX=7820.000001 weightedCompleteX=7688.000001 finish=7876 conservativeMargin=55.99999899999966

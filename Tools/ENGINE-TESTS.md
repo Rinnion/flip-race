@@ -101,3 +101,11 @@ dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- Tools/engine-pari
 `dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- --flight` выполняет `EngineFlightTests`: 12 сценариев / 1592 утверждения. Независимо сочетаются первое действие Flip/Jump, закон Linear/Gravity и повторы 0/1/∞. Проверяются крайние параметры, аналитическое измерение полёта, раннее касание противоположной стены, реальные каменные опоры и сход, прерывание ударом, пауза, снимки и реванш. Новые custom-копии четырёх пресетов воспроизводят прежние безопасные/идеальные маршруты 21.0/20.3 с.
 
 Этот набор включён в полный ParityRunner и `EngineParityTests.Run`; старые сценарии и JS differential сохраняются. API, финальные SHA, команды геометрических runner и полный результат приведены в [FLIGHT-ENGINE.md](../Verification/FLIGHT-ENGINE.md).
+
+## Два управления — MODES, 19 октября 2026
+
+Исторические разделы выше описывают прежнее ожидание посадки у after-кольца. По новому согласованному правилу ожидание снято: both before/after подтверждаются по `max(ClearX, stone.Right + PlayerRadius + 1e-7)`. Отмена реально ожидающей награды при связанном ударе и collision-first порядок сохранены. Отсутствующая половина открытых до стены ворот больше не создаёт collider; непустые полосы и углы сохраняют столкновения.
+
+`dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- --modes` — 3 сценария / 612 утверждений. Новый набор подключён к полному runner и Unity `EngineParityTests.Run`. Полный результат, явно изменённые исторические ожидания и rollback RED: [MODES-CORE.md](../Verification/MODES-CORE.md). JS fixtures не менялись:40228 снимков/1448208 полей PASS.
+
+Общие три трассы и короткая проба для точных Chosen/FastFlip проверяются `Tools/TwoModesProof`; команды и scope в его README. Полные маршруты36/33.2/33.5с, реальные окна, универсальная граница очереди и exports обоих профилей: [MODES-GEOMETRY.md](../Verification/MODES-GEOMETRY.md). Старые отчёты4.4 и исходное RED-свидетельство сохранены отдельно.
