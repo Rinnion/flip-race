@@ -35,14 +35,14 @@ namespace FlipRace.Presentation
             if (changed) PlayerPrefs.Save();
         }
         static Track InitialFlightTrack()
-        { return RaceTracks.All.Length > 0 ? RaceTracks.All[0] : TracksFull.Practice(); }
+        { return RaceTracks.Get(0); }
         void SaveCustomFlight()
         { PlayerPrefs.SetString(FlightSettingsStore.Key, FlightSettingsStore.Encode(flightSelection.Custom)); PlayerPrefs.Save(); }
         void BeginFlightMenu()
         {
             if (flightSelection == null) InitializeFlightMenu();
             if (activeCustomFlight) flightSelection.SelectCustom(); else flightSelection.SelectPreset(activeFlightPreset);
-            pendingFlightTrack = Game.Track.Id; flightPage = 0;
+            pendingFlightTrack = RaceTracks.NormalizeId(Game.Track.Id); flightPage = 0;
         }
         void MeasureFlightMenu()
         {
@@ -107,7 +107,7 @@ namespace FlipRace.Presentation
             if (flightPage == 4)
             {
                 for (int i = 0; i < RaceTracks.All.Length; i++) if (FullTrackRect(i).Contains(p))
-                { pendingFlightTrack = RaceTracks.All[i].Id; return; }
+                { pendingFlightTrack = RaceTracks.Get(i).Id; return; }
                 return;
             }
             if (flightPage == 3)
@@ -134,22 +134,26 @@ namespace FlipRace.Presentation
         void ApplyFlightChoice()
         {
             if (Active || !showTracks) return;
-            var settings = flightSelection.Settings;
-            Track track = RaceTracks.IsFull(pendingFlightTrack) || pendingFlightTrack == TracksFull.PracticeId
-                || pendingFlightTrack == TracksRhythm.PracticeId ? RaceTracks.Get(pendingFlightTrack)
-                : pendingFlightTrack == TracksControl.ChallengeId ? TracksControl.Challenge(MotionMode.GravityAirFlip)
-                : pendingFlightTrack == TracksControl.UnlimitedId ? TracksControl.Unlimited()
-                : pendingFlightTrack == TracksTune.ChallengeId ? TracksTune.Challenge(MotionProfiles.Baseline)
-                : TracksV4.Get(pendingFlightTrack);
-            int first = Game.Players[0].CharacterIndex, second = Game.Players[1].CharacterIndex;
-            Game = RaceSimulation.CreateTrial(track, settings);
-            Game.Players[0].CharacterIndex = first; Game.Players[1].CharacterIndex = second;
+            Game = CreateSelectedFlight(Game, pendingFlightTrack, flightSelection.Settings);
+            pendingFlightTrack = Game.Track.Id;
             activeCustomFlight = flightSelection.IsCustom; activeFlightPreset = flightSelection.PresetIndex;
             legacyControls = false;
             PlayerPrefs.SetInt(FlightSettingsStore.ActiveChoiceKey, activeCustomFlight ? -1 : activeFlightPreset); PlayerPrefs.Save();
-            selectedTrackId = track.Id;
+            selectedTrackId = Game.Track.Id;
             round = 1; paused = showRules = showTracks = false; suppressFrame = true;
             lastFrame = Time.realtimeSinceStartupAsDouble; BlockGameplayInput();
+        }
+        static GameState CreateSelectedFlight(GameState previous, string id, FlightSettings settings)
+        {
+            id = RaceTracks.NormalizeId(id);
+            Track track = RaceTracks.IsFull(id) || id == TracksFull.PracticeId || id == TracksRhythm.PracticeId ? RaceTracks.Get(id)
+                : id == TracksControl.ChallengeId ? TracksControl.Challenge(MotionMode.GravityAirFlip)
+                : id == TracksControl.UnlimitedId ? TracksControl.Unlimited()
+                : id == TracksTune.ChallengeId ? TracksTune.Challenge(MotionProfiles.Baseline) : TracksV4.Get(id);
+            var next = RaceSimulation.CreateTrial(track, settings);
+            next.Players[0].CharacterIndex = previous.Players[0].CharacterIndex;
+            next.Players[1].CharacterIndex = previous.Players[1].CharacterIndex;
+            return next;
         }
         void HandleFlightFields(Vector2 p)
         {

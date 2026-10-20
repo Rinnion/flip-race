@@ -1,0 +1,130 @@
+{
+  "catalogue": [
+    {
+      "Id": "full-long",
+      "Name": "\u0414\u043B\u0438\u043D\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438"
+    },
+    {
+      "Id": "full-short",
+      "Name": "\u0411\u044B\u0441\u0442\u0440\u044B\u0435 \u0441\u0432\u044F\u0437\u043A\u0438"
+    },
+    {
+      "Id": "full-flow",
+      "Name": "\u0412\u044B\u0441\u043E\u0442\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A"
+    },
+    {
+      "Id": "rhythm-cascade",
+      "Name": "\u041A\u0430\u0441\u043A\u0430\u0434"
+    }
+  ],
+  "layouts": [
+    {
+      "viewport": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "cards": [
+        {
+          "id": "full-long",
+          "x": 28,
+          "y": 105,
+          "width": 248,
+          "height": 44
+        },
+        {
+          "id": "full-short",
+          "x": 292,
+          "y": 105,
+          "width": 248,
+          "height": 44
+        },
+        {
+          "id": "full-flow",
+          "x": 28,
+          "y": 154,
+          "width": 248,
+          "height": 44
+        },
+        {
+          "id": "rhythm-cascade",
+          "x": 292,
+          "y": 154,
+          "width": 248,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "cards": [
+        {
+          "id": "full-long",
+          "x": 128,
+          "y": 122,
+          "width": 286,
+          "height": 44
+        },
+        {
+          "id": "full-short",
+          "x": 430,
+          "y": 122,
+          "width": 286,
+          "height": 44
+        },
+        {
+          "id": "full-flow",
+          "x": 128,
+          "y": 171,
+          "width": 286,
+          "height": 44
+        },
+        {
+          "id": "rhythm-cascade",
+          "x": 430,
+          "y": 171,
+          "width": 286,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "cards": [
+        {
+          "id": "full-long",
+          "x": 346,
+          "y": 287,
+          "width": 286,
+          "height": 44
+        },
+        {
+          "id": "full-short",
+          "x": 648,
+          "y": 287,
+          "width": 286,
+          "height": 44
+        },
+        {
+          "id": "full-flow",
+          "x": 346,
+          "y": 336,
+          "width": 286,
+          "height": 44
+        },
+        {
+          "id": "rhythm-cascade",
+          "x": 648,
+          "y": 336,
+          "width": 286,
+          "height": 44
+        }
+      ]
+    }
+  ]
+}

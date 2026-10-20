@@ -249,7 +249,7 @@ namespace FlipRace.Presentation
                     float half = (float)zone.FinishHeight * sy * .5f;
                     Color finishInk = Hex(0x235f58);
                     GUI.color = Color.white;
-                    Texture(new Rect(ringX - 22, ringY - 8, 22, 16), finishPointer, new Rect(0, 0, 1, 1));
+                    Texture(new Rect(ringX - 11, ringY - 8, 11, 16), finishPointer, new Rect(0, 0, 1, 1));
                     Line(ringX, ringY - half, ringX, ringY + half, finishInk, 2);
                     Line(ringX - 3, ringY - half, ringX + 3, ringY - half, finishInk, 1.5f);
                     Line(ringX - 3, ringY + half, ringX + 3, ringY + half, finishInk, 1.5f);

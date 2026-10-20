@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FlipRace.Core
 {
-    // The short course is kept separate from the six full races so the new
+    // The short course is kept separate from the full races so the new
     // passage can be tried without changing any of the existing geometry.
     public static partial class TracksRhythm
     {
@@ -11,9 +11,9 @@ namespace FlipRace.Core
         public const double GateWidth = 16, GateOffset = 112;
         public const double MainAirDelay = .2;
         public const double StraightX = 3800, LowX = 4300;
-        public static readonly Track[] All = { Draft(CascadeId), Draft(DenseId), Draft(WavesId) };
+        public static readonly Track[] All = { Draft(CascadeId) };
         public static bool IsFull(string id) { foreach (var t in All) if (t.Id == id) return true; return false; }
-        public static Track Get(string id) { foreach (var t in All) if (t.Id == id) return t; return Practice(); }
+        public static Track Get(string id) { id = RaceTracks.NormalizeId(id); foreach (var t in All) if (t.Id == id) return t; return Practice(); }
 
         public static Obstacle Passage(string id, double x, bool fromFloor)
         {
@@ -106,7 +106,16 @@ namespace FlipRace.Core
             return result;
         }
         public static bool IsFull(string id) { return TracksFull.IsFull(id) || TracksRhythm.IsFull(id); }
+        // Old selections may survive in an open game or an external caller.
+        // Keep their fallback explicit; never reinterpret a retired index as a practice course.
+        public static string NormalizeId(string id)
+        { return id == TracksRhythm.DenseId || id == TracksRhythm.WavesId ? TracksRhythm.CascadeId : id; }
+        public static Track Get(int index)
+        { return index >= 0 && index < All.Length ? All[index] : Get(TracksRhythm.CascadeId); }
         public static Track Get(string id)
-        { return TracksRhythm.IsFull(id) || id == TracksRhythm.PracticeId ? TracksRhythm.Get(id) : TracksFull.Get(id); }
+        {
+            id = NormalizeId(id);
+            return TracksRhythm.IsFull(id) || id == TracksRhythm.PracticeId ? TracksRhythm.Get(id) : TracksFull.Get(id);
+        }
     }
 }

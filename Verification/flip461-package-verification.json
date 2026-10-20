@@ -1,0 +1,61 @@
+{
+  "version": "4.6.1-trial",
+  "checkedUtc": "2026-10-20T19:44:49.226054Z",
+  "buildLog": "Logs/flip461-build.log",
+  "buildExitCode": 0,
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.6.1-final",
+  "webBytes": 8691507,
+  "archive": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v4.6.1-trial-webgl.zip",
+  "archiveBytes": 8559223,
+  "archiveSha256": "63aad2ff4f42d1a753e1237ec608fb173eb4deb183e53a5f7634a3f0f8fa7d85",
+  "entryCount": 5,
+  "indexAtRoot": true,
+  "relativeReferencesChecked": 4,
+  "wasmHeaderChecked": true,
+  "compression": "unity-fallback",
+  "unpacked": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.6.1-unpacked",
+  "files": [
+    {
+      "path": "Build/WebGL-v4.6.1-final.data.unityweb",
+      "bytes": 1443888,
+      "sha256": "8b9af87c1e4dd3a6e0fa2db25c4ab75657cabd590af712e0dcc1e3590baacecc",
+      "sourceArchiveUnpackedMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.6.1-final.framework.js.unityweb",
+      "bytes": 89563,
+      "sha256": "4f50373542e08486f2844695f21ffd425d839c8b61838db789cd76e92d212680",
+      "sourceArchiveUnpackedMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.6.1-final.loader.js",
+      "bytes": 39788,
+      "sha256": "aaf370d2744dea2fff7b8336a91980eaaac22f76aad4994ecd8caed374bb4ec4",
+      "sourceArchiveUnpackedMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.6.1-final.wasm.unityweb",
+      "bytes": 7107234,
+      "sha256": "74eaa1fd2c428f18a5c5121913fb6412bd04e2b04c46018486620e04aa4ccb00",
+      "sourceArchiveUnpackedMatch": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11034,
+      "sha256": "b2bafb10ee40432574585304d32a5553af16925d875bcd6f17212cff54ad35e7",
+      "sourceArchiveUnpackedMatch": true
+    }
+  ],
+  "preserved460Sha256": "9bf519f587b842aa298c0cdb72302070bfadd2ba9fa9c873d87a84df47bc60cf",
+  "browserStatus": "PASS: unpacked 4.6.1 ready and four-course menu loaded; captured archive console empty; no full archive race in this version",
+  "browserEvidence": {
+    "source": "Verification/flip461-browser.json",
+    "snapshots": [
+      "archiveReady",
+      "archiveMenu"
+    ],
+    "origin": "http://127.0.0.1:4200/",
+    "archiveConsoleEntries": 0,
+    "fullArchiveRaceRun": false
+  }
+}

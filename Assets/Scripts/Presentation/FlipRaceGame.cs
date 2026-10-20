@@ -294,6 +294,11 @@ namespace FlipRace.Presentation
         {
             if (paused || showRules || Portrait || gameplayInputBlocked) return;
             string phase = Game.Phase;
+            if (Trial && (phase == "ready" || phase == "finished") && RaceTracks.NormalizeId(Game.Track.Id) != Game.Track.Id)
+            {
+                Game.Track = RaceTracks.Get(Game.Track.Id);
+                selectedTrackId = Game.Track.Id;
+            }
             if (RaceSimulation.Press(Game, index)) Beep(tapClip);
             if (phase == "finished" && Game.Phase == "countdown") round++;
             if ((phase == "ready" || phase == "finished") && Game.Phase == "countdown") suppressFrame = true;
