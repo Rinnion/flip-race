@@ -18,12 +18,14 @@ namespace FlipRace.Presentation
         public Rect CharacterScreenRect(int playerIndex, int heroIndex)
         {
             if (playerIndex < 0 || playerIndex > 1 || heroIndex < 0 || heroIndex > 3) throw new ArgumentOutOfRangeException();
+            if (SharedEnabled) return SharedScreenRect(playerIndex, SharedCharacterRect(playerIndex, heroIndex));
             Rect lane = lanes[playerIndex];
             return LaneScreenRect(playerIndex, CharacterRect(heroIndex, lane.width, lane.height));
         }
         public Rect ReadyScreenRect(int playerIndex)
         {
             if (playerIndex < 0 || playerIndex > 1) throw new ArgumentOutOfRangeException();
+            if (SharedEnabled) return SharedScreenRect(playerIndex, SharedReadyRect(playerIndex));
             Rect lane = lanes[playerIndex];
             return LaneScreenRect(playerIndex, ReadyButtonRect(lane.width, lane.height));
         }
@@ -86,6 +88,12 @@ namespace FlipRace.Presentation
             selectedTrackId = Game.Track.Id;
             Game.Players[0].CharacterIndex = 0;
             Game.Players[1].CharacterIndex = 1;
+#if FLIP_SCREEN_STAGE
+            Game = RaceSimulation.CreateTrial(TracksMixed.Get(), flightSelection.Settings);
+            selectedTrackId = Game.Track.Id;
+            Game.Players[0].CharacterIndex = Game.Players[1].CharacterIndex = 0;
+            sharedField = true;
+#endif
             font = Resources.Load<Font>("Inter-Regular");
             if (font == null) font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             semibold = Resources.Load<Font>("Inter-SemiBold");
@@ -224,6 +232,7 @@ namespace FlipRace.Presentation
             if ((compact ? helpRect : headerHelp).Contains(p)) { OpenRules(); return; }
             if (soundRect.Contains(p)) { ToggleSound(); return; }
             if (trackButton.Contains(p) && !Active) { OpenTracks(); return; }
+            if (SharedEnabled) { SharedPointer(p); return; }
             for (int slot = 0; slot < 2; slot++) if (lanes[slot].Contains(p))
             {
                 Vector2 local = new Vector2(p.x - lanes[slot].x, p.y - lanes[slot].y);
@@ -330,7 +339,9 @@ namespace FlipRace.Presentation
             Round(shell, compact ? 11 : 18, Hex(0xd8ddcb));
             Round(new Rect(shell.x + 1, shell.y + 1, shell.width - 2, shell.height - 2), compact ? 10 : 17, Hex(0xfbfbf3));
             DrawSession();
-            DrawLane(0); DrawLane(1); DrawDivider(); DrawFooter();
+            if (SharedEnabled) DrawSharedField();
+            else { DrawLane(0); DrawLane(1); DrawDivider(); }
+            DrawFooter();
             if (Portrait) DrawPause();
             else if (showTracks) DrawTracks();
             else if (showRules) DrawRules();
@@ -555,11 +566,18 @@ namespace FlipRace.Presentation
             bool ready = p.Ready;
             string action = results ? (ready ? "✓ Ждём соперника" : Game.Mode == "practice" ? "Ещё попытка? Нажми ↗" : "Реванш? Нажми ↗")
                 : ready ? "✓ Готов к старту" : "Нажми, когда готов   ↗";
+            bool narrowResult = SharedEnabled && sharedAdjacent && results && w < 400;
+            float extra = narrowResult ? 27 : 0;
             float top = center - (compact ? (Trial && results ? 116 : 95) : (Trial && results ? 154 : 136)) / 2f;
+            top -= extra / 2;
             Text(new Rect(0, top, w, 12), eyebrow, compact ? 7 : 8, muted, false, TextAnchor.MiddleCenter);
+            int titleSize = compact ? 24 : Mathf.RoundToInt(Mathf.Clamp(width * .026f, 24, 34));
+            if (narrowResult) while (titleSize > 18 && TextWidth(title, titleSize, true) > w - 16) titleSize--;
             Text(new Rect(0, top + (compact ? 13 : 18), w, compact ? 29 : 43), title,
-                compact ? 24 : Mathf.RoundToInt(Mathf.Clamp(width * .026f, 24, 34)), ink, true, TextAnchor.MiddleCenter);
-            Text(new Rect(0, top + (compact ? 44 : 65), w, compact ? 14 : 17), subtitle, compact ? 9 : 11, muted, false, TextAnchor.MiddleCenter);
+                titleSize, ink, true, TextAnchor.MiddleCenter);
+            label.wordWrap = narrowResult;
+            Text(new Rect(narrowResult ? 6 : 0, top + (compact ? 44 : 65), w - (narrowResult ? 12 : 0), (compact ? 14 : 17) + (narrowResult ? 14 : 0)), subtitle, compact ? 9 : 11, muted, false, TextAnchor.MiddleCenter);
+            label.wordWrap = false;
             if (Trial && results)
             {
                 string detail = FlightSettingsStore.Summary(Game.Flight);
@@ -568,13 +586,15 @@ namespace FlipRace.Presentation
                         + (Game.Track.NegativeEnabled ? " · −" + p.SlowsEarned : "")
                         + " · ошибок " + p.Collisions + (p.FinishBoostsEarned > 0 ? " · рывок −0,1 с" : "");
                 int detailSize = compact ? 8 : 9;
-                while (detailSize > 7 && TextWidth(detail, detailSize) > w - 12) detailSize--;
-                Text(new Rect(6, top + (compact ? 61 : 86), w - 12, compact ? 13 : 17), detail, detailSize, muted, false, TextAnchor.MiddleCenter);
+                if (!narrowResult) while (detailSize > 7 && TextWidth(detail, detailSize) > w - 12) detailSize--;
+                label.wordWrap = narrowResult;
+                Text(new Rect(6, top + (compact ? 61 : 86) + (narrowResult ? 14 : 0), w - 12, (compact ? 13 : 17) + (narrowResult ? 13 : 0)), detail, detailSize, muted, false, TextAnchor.MiddleCenter);
+                label.wordWrap = false;
             }
             if (crossedFinish && !results) return;
             int size = compact ? 9 : 11;
             float bw = TextWidth(action, size, true) + (compact ? 26 : 36), bh = compact ? 28 : 38;
-            Rect br = new Rect((w - bw) / 2, top + (compact ? (Trial && results ? 79 : 65) : (Trial && results ? 112 : 94)), bw, bh);
+            Rect br = new Rect((w - bw) / 2, top + (compact ? (Trial && results ? 79 : 65) : (Trial && results ? 112 : 94)) + extra, bw, bh);
             Round(new Rect(br.x, br.y + 3, br.width, br.height), compact ? 6 : 9, new Color(.3f, .35f, .24f, .08f));
             Round(br, compact ? 6 : 9, ready ? Hex(0xdbe7ca) : pales[index]);
             Text(br, action, size, ready ? Hex(0x536547) : accents[index], true, TextAnchor.MiddleCenter);

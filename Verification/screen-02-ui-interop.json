@@ -1,0 +1,896 @@
+{
+  "status": "PASS",
+  "checks": 2972,
+  "cases": 24,
+  "updates": 4867,
+  "pointers": 962,
+  "applies": 72,
+  "equivalenceRuns": 15,
+  "layouts": [
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": false,
+      "full": false,
+      "choice": 10,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 106.25,
+        "width": 550,
+        "height": 132.5
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 144.5
+      },
+      "control1": {
+        "x": 9,
+        "y": 172.5,
+        "width": 550,
+        "height": 144.5
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": false,
+      "full": false,
+      "choice": 11,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 106.25,
+        "width": 550,
+        "height": 132.5
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 144.5
+      },
+      "control1": {
+        "x": 9,
+        "y": 172.5,
+        "width": 550,
+        "height": 144.5
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": false,
+      "full": false,
+      "choice": -1,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 106.25,
+        "width": 550,
+        "height": 132.5
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 144.5
+      },
+      "control1": {
+        "x": 9,
+        "y": 172.5,
+        "width": 550,
+        "height": 144.5
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": false,
+      "full": true,
+      "choice": 10,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 144.5
+      },
+      "control1": {
+        "x": 9,
+        "y": 172.5,
+        "width": 550,
+        "height": 144.5
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": false,
+      "full": true,
+      "choice": 11,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 144.5
+      },
+      "control1": {
+        "x": 9,
+        "y": 172.5,
+        "width": 550,
+        "height": 144.5
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": false,
+      "full": true,
+      "choice": -1,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 144.5
+      },
+      "control1": {
+        "x": 9,
+        "y": 172.5,
+        "width": 550,
+        "height": 144.5
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": true,
+      "full": false,
+      "choice": 10,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 106.25,
+        "width": 550,
+        "height": 132.5
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      },
+      "control1": {
+        "x": 284,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": true,
+      "full": false,
+      "choice": 11,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 106.25,
+        "width": 550,
+        "height": 132.5
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      },
+      "control1": {
+        "x": 284,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": true,
+      "full": false,
+      "choice": -1,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 106.25,
+        "width": 550,
+        "height": 132.5
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      },
+      "control1": {
+        "x": 284,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": true,
+      "full": true,
+      "choice": 10,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      },
+      "control1": {
+        "x": 284,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": true,
+      "full": true,
+      "choice": 11,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      },
+      "control1": {
+        "x": 284,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "adjacent": true,
+      "full": true,
+      "choice": -1,
+      "arena": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "field": {
+        "x": 9,
+        "y": 28,
+        "width": 550,
+        "height": 289
+      },
+      "control0": {
+        "x": 9,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      },
+      "control1": {
+        "x": 284,
+        "y": 28,
+        "width": 275,
+        "height": 289
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": false,
+      "full": false,
+      "choice": 10,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 289.8,
+        "width": 1190,
+        "height": 201.6
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 217.6
+      },
+      "control1": {
+        "x": 45,
+        "y": 390.6,
+        "width": 1190,
+        "height": 217.6
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": false,
+      "full": false,
+      "choice": 11,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 289.8,
+        "width": 1190,
+        "height": 201.6
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 217.6
+      },
+      "control1": {
+        "x": 45,
+        "y": 390.6,
+        "width": 1190,
+        "height": 217.6
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": false,
+      "full": false,
+      "choice": -1,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 289.8,
+        "width": 1190,
+        "height": 201.6
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 217.6
+      },
+      "control1": {
+        "x": 45,
+        "y": 390.6,
+        "width": 1190,
+        "height": 217.6
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": false,
+      "full": true,
+      "choice": 10,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 217.6
+      },
+      "control1": {
+        "x": 45,
+        "y": 390.6,
+        "width": 1190,
+        "height": 217.6
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": false,
+      "full": true,
+      "choice": 11,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 217.6
+      },
+      "control1": {
+        "x": 45,
+        "y": 390.6,
+        "width": 1190,
+        "height": 217.6
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": false,
+      "full": true,
+      "choice": -1,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 217.6
+      },
+      "control1": {
+        "x": 45,
+        "y": 390.6,
+        "width": 1190,
+        "height": 217.6
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": true,
+      "full": false,
+      "choice": 10,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 289.8,
+        "width": 1190,
+        "height": 201.6
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      },
+      "control1": {
+        "x": 640,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": true,
+      "full": false,
+      "choice": 11,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 289.8,
+        "width": 1190,
+        "height": 201.6
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      },
+      "control1": {
+        "x": 640,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": true,
+      "full": false,
+      "choice": -1,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 289.8,
+        "width": 1190,
+        "height": 201.6
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      },
+      "control1": {
+        "x": 640,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": true,
+      "full": true,
+      "choice": 10,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      },
+      "control1": {
+        "x": 640,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": true,
+      "full": true,
+      "choice": 11,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      },
+      "control1": {
+        "x": 640,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "adjacent": true,
+      "full": true,
+      "choice": -1,
+      "arena": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "field": {
+        "x": 45,
+        "y": 173,
+        "width": 1190,
+        "height": 435.2
+      },
+      "control0": {
+        "x": 45,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      },
+      "control1": {
+        "x": 640,
+        "y": 173,
+        "width": 595,
+        "height": 435.2
+      }
+    }
+  ],
+  "environment": "Production control logic retained; only Screen/DPR, Input, Time, PlayerPrefs, mascot texture acquisition use explicit managed shims. No native rendering/device/storage claim.",
+  "covered": "Measure, Update touch-phase/key routing, Pointer, menu/open/cancel/apply, profiles/custom/track/hero retention, 2 seatings x 2 heights x 2 viewports, margins, rematch; old nontrial split remains.",
+  "sourceCopies": [
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "912ED0F2B93CF24FF59663999759E1032816738386BA7592642973872B9F3E6E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "B3A536B9E4718F544EB0014B9E416061914F38DB572E8BDC7C675F9BAF28404F"
+    }
+  ],
+  "sourceSnapshot": [
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "901255021DD6069E43734E80D16B88E5DC82824CB973239A451D8999317FA576"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "01C67639E567F2325D668678786AE5EAFDB5352C8204D8CC876EF288645210E0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "8B62C3256FBCD3F53A8BFC90D552640C73AC43A0FC3A04251B785F5DAD2088C4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "75AC8DD76890190D5CD1BD2186D62A31015FFBA31B196A3AFC6A932A347BB3E2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "070E92E3B03A4C7AB9D980CFEEC05229FF086CE2EA85094F49D2FA99926523DB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "B7D6D670EFA09B979B3C421818F3A9CD4176083616B258159B286B3B9F0F4184"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "B3A536B9E4718F544EB0014B9E416061914F38DB572E8BDC7C675F9BAF28404F"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "912ED0F2B93CF24FF59663999759E1032816738386BA7592642973872B9F3E6E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "4EAA74E9449E75749CDCD2DE1B4D5F0B1B479EDFF4F3727BBFF2643D12F3998E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "CB901EA34F6245E5C47627392F506700D7D8B7B85E45379953B96FBC10A2C955"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "D0C735D9C9B5D481117C79B41B9414E4D9FBCE49225B4537D3C0341F4D90D51E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "30B099264DD90BCF92CFA6835BE2C7D817B7C222A9EEC5602F0C563D9D6607A0"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "CD893B9A26C7E5A04C86FA1FCD67A3292A89D58CAEA60F64771D594E9002B5E3"
+    }
+  ],
+  "checkedAt": "2026-10-21T13:34:20.1994491Z",
+  "harnessHashes": [
+    {
+      "path": "Tools/SharedScreenCheck/UiInterop/Run.ps1",
+      "sha256": "0E433890766FFA3455190FB9966AF17328FF8D9A08CB744B1674121D8BE81C22"
+    },
+    {
+      "path": "Tools/SharedScreenCheck/UiInterop/Program.cs",
+      "sha256": "05E807197CE37B15BA154CFB59A3D670137B5C4C102EDB3F27182EDB758DB114"
+    },
+    {
+      "path": "Tools/SharedScreenCheck/UiInterop/Environment.cs",
+      "sha256": "2F6626C969598534CEF4A14C942947EC4568C959AF4E58EE80B0D12A469B5FB2"
+    },
+    {
+      "path": "Tools/SharedScreenCheck/UiInterop/UiInterop.csproj",
+      "sha256": "ACE775B3AC270311B3FC670229EEC1E7CFFBFFBF37ECFA2E5FE74C970E006D61"
+    },
+    {
+      "path": "Tools/SharedScreenCheck/Audit.cs",
+      "sha256": "B70B6D231E8B36B7DC1E2436F0786BB69D17566CBF8533AC2D53DCF255AB3404"
+    }
+  ]
+}

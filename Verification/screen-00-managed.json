@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "checks": 331,
+  "geometryCalls": 56,
+  "hookCalls": 20,
+  "scope": "Actual production SharedPlayerGeometry and stage Pointer/rectangle hooks, using managed Unity value types. Synthetic layout fixture, not Measure/OnGUI/Update/native rendering or SCREEN02 menu acceptance.",
+  "checkedAt": "2026-10-21T13:20:30.6598058Z",
+  "sourceHashes": [
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "30B099264DD90BCF92CFA6835BE2C7D817B7C222A9EEC5602F0C563D9D6607A0"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "CB901EA34F6245E5C47627392F506700D7D8B7B85E45379953B96FBC10A2C955"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "062A6DAF8FF65950341ADD3B622B63C405F442931B5450EBCC47904EC359BF77"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "087E21EC61F195A2CD4F5BCD211364B73AB36ECD27912876976030802A7CAF29"
+    },
+    {
+      "path": "Tools/SharedScreenCheck/Audit.cs",
+      "sha256": "B70B6D231E8B36B7DC1E2436F0786BB69D17566CBF8533AC2D53DCF255AB3404"
+    },
+    {
+      "path": "Tools/SharedScreenCheck/Run.ps1",
+      "sha256": "FB5E848D7AD170ACEFAB50D0F247D1D104C8D098AF3257EBEC6DF058C7C5B08A"
+    },
+    {
+      "path": "Tools/SharedScreenCheck/Managed/Program.cs",
+      "sha256": "7BC53B0EEC68C80AF6068B8C71A7F1B433E6442389638678A590B421A68D4C9E"
+    }
+  ],
+  "cameraParameters": {
+    "anchor": 0.25,
+    "leaderCap": 0.47
+  }
+}

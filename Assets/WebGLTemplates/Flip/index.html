@@ -31,7 +31,7 @@
   <span id="copy-status" role="status" aria-live="polite"></span>
   <div id="loading"><h1>Флип!</h1><p>Гонка катикаавров · {{{ PRODUCT_VERSION }}}</p><progress id="progress" max="1" value="0"></progress><p id="status">Готовим героев и трассу…</p></div>
   <div id="error" role="alert"></div>
-  <div id="portrait"><div class="build-version">флип! <small>v{{{ PRODUCT_VERSION }}}</small></div><strong>Поверните телефон</strong><span>Положите его горизонтально.<br>Сядьте напротив друг друга.</span><small>Забег на паузе до вашего продолжения.</small></div>
+  <div id="portrait"><div class="build-version">флип! <small>v{{{ PRODUCT_VERSION }}}</small></div><strong>Поверните телефон</strong><span>Положите его горизонтально.<br>Посадка и вид выбираются перед стартом.</span><small>Забег на паузе до вашего продолжения.</small></div>
 </main>
 <script src="Build/{{{ LOADER_FILENAME }}}"></script>
 <script>
@@ -83,6 +83,16 @@
   // The same snapshot places the browser control and hides it behind modals.
   new MutationObserver(positionFullscreenButton).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
   new MutationObserver(positionCopyButton).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
+  function describeControls() {
+    try {
+      const state = JSON.parse(canvas.dataset.flipState);
+      const regions = state.fieldView === 'shared' && state.seating === 'adjacent'
+        ? 'A — левая половина, L — правая.' : 'A — верхняя половина, L — нижняя.';
+      const description = 'Флип! Два игрока: ' + regions + ' Выберите героев и касайтесь своей половины экрана.';
+      if (canvas.getAttribute('aria-label') !== description) canvas.setAttribute('aria-label',description);
+    } catch (_) { /* No valid snapshot yet. */ }
+  }
+  new MutationObserver(describeControls).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
   function fallbackCopy(text) {
     const field = document.createElement('textarea');
     field.value = text; field.readOnly = true;

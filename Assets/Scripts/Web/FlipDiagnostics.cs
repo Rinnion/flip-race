@@ -26,9 +26,11 @@ namespace FlipRace.Web
         [Serializable] sealed class Snapshot
         {
             public string mode, phase, winner, track, motion, profile, version;
+            public string fieldView, seating, fieldHeight;
             public double gravityAcceleration, departureImpulse;
             public string firstAction, motionLaw;
             public int airRepeatLimit;
+            public int menuPage;
             public double flipImpulse, jumpImpulse, linearSpeed, linearJumpHeight;
             public bool paused, negativeEnabled, customFlight, settingsVisible, characterSelectionVisible;
             public double elapsed, countdown;
@@ -63,6 +65,8 @@ namespace FlipRace.Web
                 track = state.Track.Id,
                 motion = state.Motion.ToString(),
                 profile = state.Profile.Id, version = Application.version,
+                fieldView = game.FieldViewName, seating = game.SeatingName, fieldHeight = game.FieldHeightName,
+                menuPage = game.FlightMenuPage,
                 gravityAcceleration = flight.GravityAcceleration,
                 departureImpulse = flight.FirstAction == FirstAction.Jump ? flight.JumpImpulse : flight.FlipImpulse,
                 firstAction = flight.FirstAction.ToString(), motionLaw = flight.Law.ToString(), airRepeatLimit = (int)flight.AirRepeats,
@@ -126,6 +130,33 @@ namespace FlipRace.Web
             AppendRect(output, game.ReadyScreenRect(0)); output.Append(',');
             AppendRect(output, game.ReadyScreenRect(1));
             output.Append("],\"trackMenuRect\":"); AppendRect(output, game.TrackMenuButtonRect);
+            output.Append(",\"viewMenuRect\":"); AppendRect(output, game.ViewMenuButtonRect);
+            output.Append(",\"viewOptionRects\":[");
+            for (int row = 0; row < 3; row++)
+            {
+                if (row > 0) output.Append(','); output.Append('[');
+                AppendRect(output, game.ViewOptionRect(row, 0)); output.Append(','); AppendRect(output, game.ViewOptionRect(row, 1)); output.Append(']');
+            }
+            output.Append(']');
+            output.Append(",\"sharedFieldRect\":"); AppendRect(output, game.SharedFieldRect);
+            output.Append(",\"controlAreas\":[");
+            AppendRect(output, game.ControlAreaRect(0)); output.Append(','); AppendRect(output, game.ControlAreaRect(1));
+            output.Append(']');
+            if (game.SharedEnabled)
+            {
+                Rect field = game.SharedFieldRect;
+                var view = SharedFieldView.Create(field.width, field.height, game.Game);
+                output.Append(",\"cameraLeft\":").Append(view.CameraLeft.ToString("R", CultureInfo.InvariantCulture));
+                output.Append(",\"scaleX\":").Append(view.ScaleX.ToString("R", CultureInfo.InvariantCulture));
+                output.Append(",\"projectedPlayers\":[");
+                for (int player = 0; player < 2; player++)
+                {
+                    if (player > 0) output.Append(',');
+                    output.Append('[').Append((field.x + view.PlayerX(player)).ToString("R", CultureInfo.InvariantCulture))
+                        .Append(',').Append((field.y + view.PlayerY(player)).ToString("R", CultureInfo.InvariantCulture)).Append(']');
+                }
+                output.Append(']');
+            }
             return output.Append('}').ToString();
         }
         static void AppendRect(StringBuilder output, Rect rect)

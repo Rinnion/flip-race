@@ -367,12 +367,17 @@ namespace FlipRace.Presentation
 
         public void DrawForeground(float w, float h, GameState game, int playerIndex, float time, Geometry geometry)
         {
+            DrawPersonalForeground(w,h,game,playerIndex,time,geometry,playerIndex==0,true);
+        }
+
+        void DrawPersonalForeground(float w,float h,GameState game,int playerIndex,float time,Geometry geometry,bool mirror,bool confetti)
+        {
             if (w <= 0 || h <= 0 || game == null) return;
             PlayerState player = game.Players[playerIndex];
             Matrix4x4 previous = GUI.matrix;
             Color previousColor = GUI.color;
             clipBounds = new Rect(0, 0, w, h);
-            if (playerIndex == 0) GUI.matrix = previous * Matrix4x4.TRS(new Vector3(w, 0, 0), Quaternion.identity, new Vector3(-1, 1, 1));
+            if (mirror) GUI.matrix = previous * Matrix4x4.TRS(new Vector3(w, 0, 0), Quaternion.identity, new Vector3(-1, 1, 1));
             float x = geometry.Anchor;
             float y = geometry.Top + (float)RaceSimulation.GetPlayerCenterY(player) * geometry.ScaleY;
             float radius = geometry.Radius;
@@ -408,7 +413,7 @@ namespace FlipRace.Presentation
                         x + Mathf.Cos(b) * radius * 1.9f, y + Mathf.Sin(b) * radius * 1.9f, Alpha(Ink[playerIndex], .5f), 1.35f);
                 }
             }
-            if (player.FinishTime.HasValue)
+            if (confetti && player.FinishTime.HasValue)
                 for (int i = 0; i < 30; i++)
                 {
                     float cx = ((i * 113 + playerIndex * 37 + Mathf.Sin(time + i) * 15) % w + w) % w;

@@ -29,7 +29,10 @@ namespace FlipRace.Editor
             BuildWebGL(true, true);
         }
 
-        static void BuildWebGL(bool trial, bool mixedStage = false)
+        [MenuItem("Flip Race/Build Shared Screen Stage")]
+        public static void WebGLSharedStage() { BuildWebGL(true, false, true); }
+
+        static void BuildWebGL(bool trial, bool mixedStage = false, bool sharedStage = false)
         {
             Directory.CreateDirectory("Assets/Scenes");
             const string scenePath = "Assets/Scenes/FlipRace.unity";
@@ -46,7 +49,7 @@ namespace FlipRace.Editor
             PlayerSettings.companyName = "Katikaavry";
             PlayerSettings.productName = "Флип! — гонка катикаавров";
             PlayerSettings.bundleVersion = trial ? (Environment.GetEnvironmentVariable("FLIP_BUILD_VERSION")
-                ?? (mixedStage ? "4.7.0-stage1" : "4.7.0-trial")) : "3.0.1";
+                ?? (sharedStage ? "4.8.0-stage1" : mixedStage ? "4.7.0-stage1" : "4.8.0-trial")) : "3.0.1";
             PlayerSettings.runInBackground = true;
             PlayerSettings.defaultWebScreenWidth = 960;
             PlayerSettings.defaultWebScreenHeight = 540;
@@ -70,12 +73,13 @@ namespace FlipRace.Editor
             AssetDatabase.SaveAssets();
             if (Environment.GetEnvironmentVariable("FLIP_EXPORT_ARTWORK") == "1") RockArtworkExport.Export();
             var output = Environment.GetEnvironmentVariable("FLIP_BUILD_PATH")
-                ?? (mixedStage ? "Builds/WebGL-mixed-stage" : trial ? "Builds/WebGL-v4" : "Builds/WebGL");
+                ?? (sharedStage ? "Builds/WebGL-shared-stage" : mixedStage ? "Builds/WebGL-mixed-stage" : trial ? "Builds/WebGL-v4" : "Builds/WebGL");
             Directory.CreateDirectory(output);
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
                 scenes = new[] {scenePath}, locationPathName = output,
                 target = BuildTarget.WebGL, options = BuildOptions.None,
-                extraScriptingDefines = mixedStage ? new[] { "FLIP_V4_TRIAL", "FLIP_MIX_STAGE" }
+                extraScriptingDefines = sharedStage ? new[] { "FLIP_V4_TRIAL", "FLIP_SCREEN_STAGE" }
+                    : mixedStage ? new[] { "FLIP_V4_TRIAL", "FLIP_MIX_STAGE" }
                     : trial ? new[] { "FLIP_V4_TRIAL" } : Array.Empty<string>()
             });
             if (report.summary.result != BuildResult.Succeeded)

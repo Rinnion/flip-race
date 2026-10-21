@@ -1,0 +1,101 @@
+{
+  "checkedAt": "2026-10-21T13:11:05.1805622Z",
+  "baselineVersion": "4.7.0-trial",
+  "baselineHead": "fc67c902b779aa70b300d14a31b61222c4d78119",
+  "scope": "Read-only saved baseline verification; no extraction or overwriting",
+  "webBytes": 8696085,
+  "fileCount": 5,
+  "archive": {
+    "path": "Releases/flip-race-v4.7.0-trial-webgl.zip",
+    "bytes": 8565446,
+    "sha256": "d38c199eb6e93b8d0177f1f40c34d61319191f880ed181eae877c05f6784147f"
+  },
+  "manifestSha256": "FA5BA4EF7C407F4FA790331832C97271845A2B9C8CB15D7B54E616507D59B389",
+  "files": [
+    {
+      "path": "Build/WebGL-v4.7.0-final.data.unityweb",
+      "bytes": 1445255,
+      "sha256": "f1d09838b3c14d6c2fd1031dc147826f2a722133f202cd31021c5fd9c41210c8",
+      "sourceZipSnapshotManifestMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.7.0-final.framework.js.unityweb",
+      "bytes": 89563,
+      "sha256": "996eb3c06de0b3996bfe31996dde48e6d51fe276d8f64650614f7bd4dad0cb20",
+      "sourceZipSnapshotManifestMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.7.0-final.loader.js",
+      "bytes": 39788,
+      "sha256": "99b96aaa486d678d76f5df2303f8ac8f6311f041ac43f4fb826134bafc943d1f",
+      "sourceZipSnapshotManifestMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.7.0-final.wasm.unityweb",
+      "bytes": 7110445,
+      "sha256": "1986217afdc6024da513d73418d964c0dfff309c455f3cd1080f9f0cd9d2ac31",
+      "sourceZipSnapshotManifestMatch": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11034,
+      "sha256": "79596ec05cc270903bc8a5b2ea7796a278d68d797f9693b1d1dc9fcfe5a40e51",
+      "sourceZipSnapshotManifestMatch": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24"
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "901255021DD6069E43734E80D16B88E5DC82824CB973239A451D8999317FA576"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "8B62C3256FBCD3F53A8BFC90D552640C73AC43A0FC3A04251B785F5DAD2088C4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "75AC8DD76890190D5CD1BD2186D62A31015FFBA31B196A3AFC6A932A347BB3E2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "01C67639E567F2325D668678786AE5EAFDB5352C8204D8CC876EF288645210E0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "5B084615A30EA97B23ACF3A3CDB2FC87E4686ABE37ACE0CE83154A3DEA13263A"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "B7D6D670EFA09B979B3C421818F3A9CD4176083616B258159B286B3B9F0F4184"
+    }
+  ],
+  "notes": [
+    "Core and five-course sources must remain unchanged for SCREEN.",
+    "Presentation is concurrently being extended; source hashes are the observed initial checkpoint, not a claim of unmodified UI.",
+    "No SCREEN browser acceptance is implied."
+  ]
+}

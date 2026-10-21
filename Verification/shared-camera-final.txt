@@ -1,0 +1,64 @@
+chosen full/safe finish=33,19999999999999,36 hits=0,0 finalX=7920,7920
+ counterfactual19/45 W1190 gap=615,545 leader=0,3556 minX=29,09 off=0:;1:
+ production25/47 W1190 gap=615,545 leader=0,4156 minX=100,49 off=0:;1:
+ counterfactual19/45 W826 gap=615,545 leader=0,4139 minX=-28,03 off=0:;1:26,0637..33,6260 return
+ production25/47 W826 gap=615,545 leader=0,4700 minX=18,29 off=0:;1:
+ counterfactual19/45 W550 gap=615,545 leader=0,4105 minX=-16,76 off=0:;1:28,9471..33,5887 return
+ production25/47 W550 gap=615,545 leader=0,4700 minX=15,99 off=0:;1:
+chosen safe/full finish=36,33,19999999999999 hits=0,0 finalX=7920,7920
+ counterfactual19/45 W1190 gap=615,545 leader=0,3556 minX=29,09 off=0:;1:
+ production25/47 W1190 gap=615,545 leader=0,4156 minX=100,49 off=0:;1:
+ counterfactual19/45 W826 gap=615,545 leader=0,4139 minX=-28,03 off=0:26,0637..33,6260 return;1:
+ production25/47 W826 gap=615,545 leader=0,4700 minX=18,29 off=0:;1:
+ counterfactual19/45 W550 gap=615,545 leader=0,4105 minX=-16,76 off=0:28,9471..33,5887 return;1:
+ production25/47 W550 gap=615,545 leader=0,4700 minX=15,99 off=0:;1:
+chosen full/no-action finish=33,19999999999999, hits=0,8 finalX=7920,7194,000000000712
+ counterfactual19/45 W1190 gap=1495,977 leader=0,4500 minX=-422,07 off=0:;1:18,0839..36,7000 still out
+ production25/47 W1190 gap=1495,977 leader=0,4700 minX=-398,27 off=0:;1:19,2863..36,0283 return
+ counterfactual19/45 W826 gap=1495,977 leader=0,4500 minX=-527,35 off=0:;1:10,7285..36,7000 still out
+ production25/47 W826 gap=1495,977 leader=0,4700 minX=-510,83 off=0:;1:15,3090..36,7000 still out
+ counterfactual19/45 W550 gap=1495,977 leader=0,4500 minX=-341,89 off=0:;1:11,3320..36,7000 still out
+ production25/47 W550 gap=1495,977 leader=0,4700 minX=-330,89 off=0:;1:15,3551..36,7000 still out
+chosen miss first small then full/safe finish=33,99999999999999,36 hits=1,0 finalX=7920,7920
+ counterfactual19/45 W1190 gap=439,500 leader=0,3082 minX=85,44 off=0:;1:
+ production25/47 W1190 gap=439,500 leader=0,3682 minX=156,84 off=0:;1:
+ counterfactual19/45 W826 gap=439,500 leader=0,3499 minX=24,87 off=0:;1:
+ production25/47 W826 gap=439,500 leader=0,4099 minX=74,43 off=0:;1:
+ counterfactual19/45 W550 gap=439,500 leader=0,3474 minX=17,92 off=0:;1:
+ production25/47 W550 gap=439,500 leader=0,4074 minX=50,92 off=0:;1:
+fast full/safe finish=33,19999999999999,36 hits=0,0 finalX=7920,7920
+ counterfactual19/45 W1190 gap=615,650 leader=0,3556 minX=29,06 off=0:;1:
+ production25/47 W1190 gap=615,650 leader=0,4156 minX=100,46 off=0:;1:
+ counterfactual19/45 W826 gap=615,650 leader=0,4140 minX=-28,06 off=0:;1:26,0964..33,6260 return
+ production25/47 W826 gap=615,650 leader=0,4700 minX=18,23 off=0:;1:
+ counterfactual19/45 W550 gap=615,650 leader=0,4105 minX=-16,78 off=0:;1:28,9784..33,5887 return
+ production25/47 W550 gap=615,650 leader=0,4700 minX=15,95 off=0:;1:
+fast safe/full finish=36,33,19999999999999 hits=0,0 finalX=7920,7920
+ counterfactual19/45 W1190 gap=615,650 leader=0,3556 minX=29,06 off=0:;1:
+ production25/47 W1190 gap=615,650 leader=0,4156 minX=100,46 off=0:;1:
+ counterfactual19/45 W826 gap=615,650 leader=0,4140 minX=-28,06 off=0:26,0964..33,6260 return;1:
+ production25/47 W826 gap=615,650 leader=0,4700 minX=18,23 off=0:;1:
+ counterfactual19/45 W550 gap=615,650 leader=0,4105 minX=-16,78 off=0:28,9784..33,5887 return;1:
+ production25/47 W550 gap=615,650 leader=0,4700 minX=15,95 off=0:;1:
+fast full/no-action finish=33,19999999999999, hits=0,8 finalX=7920,7194,00000000071
+ counterfactual19/45 W1190 gap=1495,946 leader=0,4500 minX=-422,05 off=0:;1:18,0839..36,7000 still out
+ production25/47 W1190 gap=1495,946 leader=0,4700 minX=-398,25 off=0:;1:19,3141..36,0283 return
+ counterfactual19/45 W826 gap=1495,946 leader=0,4500 minX=-527,34 off=0:;1:10,7285..36,7000 still out
+ production25/47 W826 gap=1495,946 leader=0,4700 minX=-510,82 off=0:;1:15,3090..36,7000 still out
+ counterfactual19/45 W550 gap=1495,946 leader=0,4500 minX=-341,87 off=0:;1:11,3505..36,7000 still out
+ production25/47 W550 gap=1495,946 leader=0,4700 minX=-330,87 off=0:;1:15,3551..36,7000 still out
+fast miss first small then full/safe finish=33,99999999999999,36 hits=1,0 finalX=7920,7920
+ counterfactual19/45 W1190 gap=439,946 leader=0,3083 minX=85,30 off=0:;1:
+ production25/47 W1190 gap=439,946 leader=0,3683 minX=156,70 off=0:;1:
+ counterfactual19/45 W826 gap=439,946 leader=0,3500 minX=24,74 off=0:;1:
+ production25/47 W826 gap=439,946 leader=0,4100 minX=74,30 off=0:;1:
+ counterfactual19/45 W550 gap=439,946 leader=0,3476 minX=17,83 off=0:;1:
+ production25/47 W550 gap=439,946 leader=0,4076 minX=50,83 off=0:;1:
+fast safe delayed setup6080→6500 finish=36,36 hits=0,0 finalX=7920,7920
+ counterfactual19/45 W1190 gap=0,000 leader=0,1900 minX=226,10 off=0:;1:
+ production25/47 W1190 gap=0,000 leader=0,2500 minX=297,50 off=0:;1:
+ counterfactual19/45 W826 gap=0,000 leader=0,1900 minX=156,94 off=0:;1:
+ production25/47 W826 gap=0,000 leader=0,2500 minX=206,50 off=0:;1:
+ counterfactual19/45 W550 gap=0,000 leader=0,1900 minX=104,50 off=0:;1:
+ production25/47 W550 gap=0,000 leader=0,2500 minX=137,50 off=0:;1:
+PASS SharedCameraCheck 522633 checks / 9 actual games; centre crossings interpolated between <=5 ms samples.

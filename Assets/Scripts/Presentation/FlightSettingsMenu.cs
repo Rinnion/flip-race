@@ -9,13 +9,17 @@ namespace FlipRace.Presentation
         FlightSelection flightSelection;
         int flightPage, activeFlightPreset;
         bool activeCustomFlight;
+        bool pendingSharedField, pendingSharedAdjacent, pendingSharedFullHeight;
         string pendingFlightTrack;
         Rect flightPanel, flightBack, flightApply, flightCustom, flightEdit, flightReset, flightDone, flightCopy, flightChosen, flightFastFlip, flightOldTracks, flightTracks;
+        Rect flightView;
 
         public bool FlightSettingsVisible { get { return showTracks && Trial && flightPage == 1 && !Portrait; } }
         public Rect FlightCopyRect { get { return flightCopy; } }
         public string FlightCopyText { get { return flightSelection == null ? "" : FlightSettingsStore.CopyText(flightSelection.Custom); } }
         public bool IsCustomFlight { get { return activeCustomFlight; } }
+        public int FlightMenuPage { get { return showTracks && Trial ? flightPage : -1; } }
+        public Rect ViewMenuButtonRect { get { MeasureFlightMenu(); return flightView; } }
 
         void InitializeFlightMenu()
         {
@@ -43,6 +47,7 @@ namespace FlipRace.Presentation
             if (flightSelection == null) InitializeFlightMenu();
             if (activeCustomFlight) flightSelection.SelectCustom(); else flightSelection.SelectPreset(activeFlightPreset);
             pendingFlightTrack = RaceTracks.NormalizeId(Game.Track.Id); flightPage = 0;
+            pendingSharedField = sharedField; pendingSharedAdjacent = sharedAdjacent; pendingSharedFullHeight = sharedFullHeight;
         }
         void MeasureFlightMenu()
         {
@@ -61,6 +66,7 @@ namespace FlipRace.Presentation
             flightEdit = new Rect(flightPanel.x + 32 + col, flightPanel.y + 106, col, 24);
             flightOldTracks = new Rect(flightPanel.xMax - 126, flightPanel.y + 131, 110, 20);
             flightTracks = new Rect(flightPanel.x + 32 + col, flightPanel.y + 154, col, 64);
+            flightView = new Rect(flightPanel.x + 16, flightPanel.y + 214, col, 24);
         }
         Rect FullTrackRect(int i)
         {
@@ -83,6 +89,10 @@ namespace FlipRace.Presentation
         }
         Rect FlightCell(Rect field, int index, int count)
         { float cell = (field.width - (count - 1) * 3) / count; return new Rect(field.x + index * (cell + 3), field.y + 14, cell, field.height - 15); }
+        Rect ViewFieldRect(int row)
+        { return new Rect(flightPanel.x + 16, flightPanel.y + 49 + row * 55, flightPanel.width - 32, 49); }
+        public Rect ViewOptionRect(int row, int option)
+        { MeasureFlightMenu(); return FlightCell(ViewFieldRect(row), option, 2); }
         bool CanApplyFlight { get { return pendingFlightTrack != TracksControl.UnlimitedId || flightSelection.Settings.AirRepeats == AirRepeatLimit.Unlimited; } }
 
         void FlightPointer(Vector2 p)
@@ -104,6 +114,16 @@ namespace FlipRace.Presentation
                 HandleFlightFields(p); return;
             }
             if (flightApply.Contains(p)) { if (CanApplyFlight) ApplyFlightChoice(); return; }
+            if (flightPage == 5)
+            {
+                for (int option = 0; option < 2; option++)
+                {
+                    if (ViewOptionRect(0, option).Contains(p)) { pendingSharedField = option == 1; return; }
+                    if (pendingSharedField && ViewOptionRect(1, option).Contains(p)) { pendingSharedAdjacent = option == 1; return; }
+                    if (pendingSharedField && ViewOptionRect(2, option).Contains(p)) { pendingSharedFullHeight = option == 1; return; }
+                }
+                return;
+            }
             if (flightPage == 4)
             {
                 for (int i = 0; i < RaceTracks.All.Length; i++) if (FullTrackRect(i).Contains(p))
@@ -126,6 +146,7 @@ namespace FlipRace.Presentation
                 if (flightCustom.Contains(p)) { flightSelection.SelectCustom(); flightPage = 1; BlockGameplayInput(); return; }
                 if (flightOldTracks.Contains(p)) { flightPage = 3; BlockGameplayInput(); return; }
                 if (flightTracks.Contains(p)) { flightPage = 4; BlockGameplayInput(); return; }
+                if (flightView.Contains(p)) { flightPage = 5; BlockGameplayInput(); return; }
                 if (flightEdit.Contains(p))
                 { flightSelection.Edit(d => { }); SaveCustomFlight(); flightPage = 1; BlockGameplayInput(); return; }
                 return;
@@ -135,6 +156,7 @@ namespace FlipRace.Presentation
         {
             if (Active || !showTracks) return;
             Game = CreateSelectedFlight(Game, pendingFlightTrack, flightSelection.Settings);
+            sharedField = pendingSharedField; sharedAdjacent = pendingSharedAdjacent; sharedFullHeight = pendingSharedFullHeight;
             pendingFlightTrack = Game.Track.Id;
             activeCustomFlight = flightSelection.IsCustom; activeFlightPreset = flightSelection.PresetIndex;
             legacyControls = false;
@@ -193,15 +215,17 @@ namespace FlipRace.Presentation
             Text(flightBack, flightPage == 0 ? "×" : "‹", 23, muted, false, TextAnchor.MiddleCenter);
             Text(new Rect(flightPanel.x + 49, flightPanel.y + 10, flightPanel.width - 65, 23),
                 flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки"
-                    : flightPage == 4 ? "Трассы" : "Управление и трасса", 17, ink, true);
+                    : flightPage == 4 ? "Трассы" : flightPage == 5 ? "Вид и посадка" : "Управление и трасса", 17, ink, true);
             if (flightPage == 1) { DrawFlightEditor(); return; }
             if (flightPage == 3) { DrawOldFlightTracks(); return; }
             if (flightPage == 4) { DrawFullFlightTracks(); return; }
+            if (flightPage == 5) { DrawViewChoices(); return; }
             float col = (flightPanel.width - 48) / 2, right = flightPanel.x + 32 + col;
             Text(new Rect(flightPanel.x + 16, flightPanel.y + 43, col, 14), "ГОТОВЫЕ НАСТРОЙКИ", 8, muted);
             FlightButton(flightChosen, "Основной — прыжок и полёт", flightSelection.PresetIndex == FlightSettingsStore.ChosenPresetIndex, true, 10);
             FlightButton(flightFastFlip, "Быстрый переворот", flightSelection.PresetIndex == FlightSettingsStore.FastFlipPresetIndex, true, 10);
             FlightButton(flightCustom, "Свои настройки  ›", flightSelection.IsCustom);
+            FlightButton(flightView, (pendingSharedField ? "Общее поле" : "Два поля") + " · вид и посадка  ›", false, true, 9);
             FlightButton(flightEdit, "Изменить выбранное  ›", false, true, 9);
             Text(new Rect(right, flightPanel.y + 43, col, 15), flightSelection.IsCustom ? "Свой набор" : FlightSettingsStore.PresetName(flightSelection.PresetIndex), 11, ink, true);
             label.wordWrap = true;
@@ -214,6 +238,17 @@ namespace FlipRace.Presentation
                 PendingFlightTrackName(), 11, ink, true, TextAnchor.MiddleCenter);
             Text(new Rect(flightTracks.x + 8, flightTracks.y + 34, flightTracks.width - 16, 20),
                 "Выбрать трассу  ›", 10, muted, false, TextAnchor.MiddleCenter);
+            DrawFlightApplyFooter();
+        }
+        void DrawViewChoices()
+        {
+            DrawField(ViewFieldRect(0), "ВИД", new[] { "Два поля", "Общее поле" }, pendingSharedField ? 1 : 0, true);
+            DrawField(ViewFieldRect(1), "ПОСАДКА", new[] { "Напротив · верх / низ", "Рядом · лево / право" }, pendingSharedAdjacent ? 1 : 0,
+                pendingSharedField, "В двух полях — напротив, верх / низ");
+            DrawField(ViewFieldRect(2), "ВЫСОТА ОБЩЕГО ПОЛЯ", new[] { "Половина", "Весь экран" }, pendingSharedFullHeight ? 1 : 0,
+                pendingSharedField, "Высота выбирается для общего поля");
+            Text(new Rect(flightPanel.x + 16, flightPanel.y + 215, flightPanel.width - 32, 19),
+                "Круг — первый · ромб — второй. Метка у бонуса: ещё не подобрал.", 9, muted);
             DrawFlightApplyFooter();
         }
         void DrawFullFlightTracks()
