@@ -1,0 +1,13 @@
+PULSE boost-before-low/Jump/False accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,220,220,220,220
+PULSE boost-before-large/Jump/False accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,220,220,330,330
+PULSE slow-before-large/Jump/False accepted=True hit=0 plus=1 minus=1 ids= speeds=220,220,220,220,110,110
+PULSE boost-before-low/Flip/False accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,330,330,220
+PULSE boost-before-large/Flip/False accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,220,220,330
+PULSE slow-before-large/Flip/False accepted=True hit=0 plus=0 minus=1 ids= speeds=220,220,220,220,110
+PULSE boost-before-low/Jump/True accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,220,220,220,220,220,220
+PULSE boost-before-large/Jump/True accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,220,220,220,220,330,330
+PULSE slow-before-large/Jump/True accepted=True hit=0 plus=1 minus=1 ids= speeds=220,220,220,220,220,220,110,110
+PULSE boost-before-low/Flip/True accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,220,330,330,220
+PULSE boost-before-large/Flip/True accepted=True hit=0 plus=1 minus=0 ids= speeds=220,220,220,220,220,330
+PULSE slow-before-large/Flip/True accepted=True hit=0 plus=0 minus=1 ids= speeds=220,220,220,220,220,110
+PASS real pulses: 3165 / 84 games.

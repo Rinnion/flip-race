@@ -100,21 +100,43 @@ namespace FlipRace.Core
         public static readonly Track[] All = Combined();
         static Track[] Combined()
         {
-            var result = new Track[TracksFull.All.Length + TracksRhythm.All.Length];
+#if FLIP_MIX_STAGE
+            return TracksMixedStage.All;
+#else
+            var result = new Track[TracksFull.All.Length + TracksRhythm.All.Length + 1];
             Array.Copy(TracksFull.All, result, TracksFull.All.Length);
             Array.Copy(TracksRhythm.All, 0, result, TracksFull.All.Length, TracksRhythm.All.Length);
+            result[result.Length - 1] = TracksMixed.Get();
             return result;
+#endif
         }
-        public static bool IsFull(string id) { return TracksFull.IsFull(id) || TracksRhythm.IsFull(id); }
+        public static bool IsFull(string id)
+        {
+#if FLIP_MIX_STAGE
+            foreach (var track in TracksMixedStage.All) if (track.Id == id) return true;
+#endif
+            return TracksFull.IsFull(id) || TracksRhythm.IsFull(id) || id == TracksMixed.Id;
+        }
         // Old selections may survive in an open game or an external caller.
-        // Keep their fallback explicit; never reinterpret a retired index as a practice course.
+        // Legacy index 4/5 must not become a newly appended UI course.
         public static string NormalizeId(string id)
         { return id == TracksRhythm.DenseId || id == TracksRhythm.WavesId ? TracksRhythm.CascadeId : id; }
         public static Track Get(int index)
+        {
+            return Get(index == 0 ? TracksFull.LongId : index == 1 ? TracksFull.ShortId
+                : index == 2 ? TracksFull.FlowId : TracksRhythm.CascadeId);
+        }
+        // Only current menu positions use the active catalogue, including the
+        // isolated FLIP_MIX_STAGE catalogue during its separate verification.
+        public static Track GetAt(int index)
         { return index >= 0 && index < All.Length ? All[index] : Get(TracksRhythm.CascadeId); }
         public static Track Get(string id)
         {
             id = NormalizeId(id);
+#if FLIP_MIX_STAGE
+            foreach (var track in TracksMixedStage.All) if (track.Id == id) return track;
+#endif
+            if (id == TracksMixed.Id) return TracksMixed.Get();
             return TracksRhythm.IsFull(id) || id == TracksRhythm.PracticeId ? TracksRhythm.Get(id) : TracksFull.Get(id);
         }
     }

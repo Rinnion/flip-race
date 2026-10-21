@@ -1,0 +1,825 @@
+{
+  "scope": "isolated straight48/228 width8; service-held speeds separately from real ring transitions; no Assets change",
+  "gateX": 800,
+  "top": 48,
+  "bottom": 228,
+  "width": 8,
+  "checks": 3270,
+  "runs": 176,
+  "rows": [
+    {
+      "mirror": false,
+      "profile": "chosen",
+      "speed": 110,
+      "inputs": [
+        745.8867924528302
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 745.8867924528302,
+          "Time": 6.780789022298456,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 9.999999999999998,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": false,
+      "profile": "chosen",
+      "speed": 220,
+      "inputs": [
+        687.7735849056604
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 687.7735849056604,
+          "Time": 3.1262435677530016,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 5,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": false,
+      "profile": "chosen",
+      "speed": 330,
+      "inputs": [
+        629.6603773584906
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 629.6603773584906,
+          "Time": 1.9080617495711836,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 3.3333333333333335,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": false,
+      "profile": "fast-flip",
+      "speed": 110,
+      "inputs": [
+        762.9740740740741,
+        782.7740740740741
+      ],
+      "individualWindow": 0.025,
+      "samples": [
+        {
+          "X": 762.9740740740741,
+          "Time": 6.936127946127947,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 782.7740740740741,
+          "Time": 7.116127946127946,
+          "CenterY": 175.9600000000002,
+          "VerticalSpeed": -520.9999999999989,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 10,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": false,
+      "profile": "fast-flip",
+      "speed": 220,
+      "inputs": [
+        752.3,
+        788.6
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 752.3,
+          "Time": 3.4195454545454544,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 788.6,
+          "Time": 3.584545454545455,
+          "CenterY": 183.47124999999986,
+          "VerticalSpeed": -480.50000000000085,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 5,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": false,
+      "profile": "fast-flip",
+      "speed": 330,
+      "inputs": [
+        729.75,
+        780.9
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 729.75,
+          "Time": 2.2113636363636364,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 780.9,
+          "Time": 2.3663636363636362,
+          "CenterY": 188.14125,
+          "VerticalSpeed": -453.49999999999983,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 3.333333333333333,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": true,
+      "profile": "chosen",
+      "speed": 110,
+      "inputs": [
+        745.8867924528302
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 745.8867924528302,
+          "Time": 6.780789022298456,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 9.999999999999998,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": true,
+      "profile": "chosen",
+      "speed": 220,
+      "inputs": [
+        687.7735849056604
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 687.7735849056604,
+          "Time": 3.1262435677530016,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 5,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": true,
+      "profile": "chosen",
+      "speed": 330,
+      "inputs": [
+        629.6603773584906
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 629.6603773584906,
+          "Time": 1.9080617495711836,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 3.3333333333333335,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": true,
+      "profile": "fast-flip",
+      "speed": 110,
+      "inputs": [
+        762.9740740740741,
+        782.7740740740741
+      ],
+      "individualWindow": 0.025,
+      "samples": [
+        {
+          "X": 762.9740740740741,
+          "Time": 6.936127946127946,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 782.7740740740741,
+          "Time": 7.116127946127945,
+          "CenterY": 64.03999999999978,
+          "VerticalSpeed": 520.9999999999989,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 9.999999999999998,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": true,
+      "profile": "fast-flip",
+      "speed": 220,
+      "inputs": [
+        752.3,
+        788.6
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 752.3,
+          "Time": 3.419545454545454,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 788.6,
+          "Time": 3.5845454545454545,
+          "CenterY": 56.52875000000015,
+          "VerticalSpeed": 480.50000000000085,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 5,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    },
+    {
+      "mirror": true,
+      "profile": "fast-flip",
+      "speed": 330,
+      "inputs": [
+        729.75,
+        780.9
+      ],
+      "individualWindow": 0.06,
+      "samples": [
+        {
+          "X": 729.75,
+          "Time": 2.2113636363636364,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 780.9,
+          "Time": 2.3663636363636362,
+          "CenterY": 51.85874999999997,
+          "VerticalSpeed": 453.49999999999983,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "cleared": {
+        "X": 1100,
+        "Time": 3.333333333333333,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      }
+    }
+  ],
+  "pulses": [
+    {
+      "mirror": false,
+      "profile": "chosen",
+      "kind": "instant",
+      "pulseX": 634,
+      "pulseY": 226,
+      "inputs": [
+        629.6603773584906
+      ],
+      "samples": [
+        {
+          "X": 629.6603773584905,
+          "Time": 2.8353344768439106,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 330,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 4.7,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      "finish": 6.972727272727273
+    },
+    {
+      "mirror": false,
+      "profile": "chosen",
+      "kind": "negative",
+      "pulseX": 760,
+      "pulseY": 226,
+      "inputs": [
+        745.8867924528302
+      ],
+      "samples": [
+        {
+          "X": 745.8867924528302,
+          "Time": 3.4262435677530014,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 110,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 5.299999999999999,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      "finish": 7.572727272727272
+    },
+    {
+      "mirror": false,
+      "profile": "fast-flip",
+      "kind": "instant",
+      "pulseX": 634,
+      "pulseY": 226,
+      "inputs": [
+        729.75,
+        780.9
+      ],
+      "samples": [
+        {
+          "X": 729.75,
+          "Time": 3.1386363636363637,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 780.9,
+          "Time": 3.2936363636363635,
+          "CenterY": 188.14125,
+          "VerticalSpeed": -453.49999999999983,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 330,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 4.7,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      "finish": 6.972727272727273
+    },
+    {
+      "mirror": false,
+      "profile": "fast-flip",
+      "kind": "negative",
+      "pulseX": 760,
+      "pulseY": 226,
+      "inputs": [
+        762.9740740740741,
+        782.7740740740741
+      ],
+      "samples": [
+        {
+          "X": 762.9740740740741,
+          "Time": 3.5815824915824925,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 782.7740740740741,
+          "Time": 3.7615824915824922,
+          "CenterY": 175.9600000000002,
+          "VerticalSpeed": -520.9999999999989,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 110,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 5.3,
+        "CenterY": 226,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      "finish": 7.572727272727272
+    },
+    {
+      "mirror": true,
+      "profile": "chosen",
+      "kind": "instant",
+      "pulseX": 634,
+      "pulseY": 14,
+      "inputs": [
+        629.6603773584906
+      ],
+      "samples": [
+        {
+          "X": 629.6603773584905,
+          "Time": 2.8353344768439106,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 330,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 4.7,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      "finish": 6.972727272727273
+    },
+    {
+      "mirror": true,
+      "profile": "chosen",
+      "kind": "negative",
+      "pulseX": 760,
+      "pulseY": 14,
+      "inputs": [
+        745.8867924528302
+      ],
+      "samples": [
+        {
+          "X": 745.8867924528302,
+          "Time": 3.426243567753001,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 110,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 5.299999999999999,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      "finish": 7.572727272727272
+    },
+    {
+      "mirror": true,
+      "profile": "fast-flip",
+      "kind": "instant",
+      "pulseX": 634,
+      "pulseY": 14,
+      "inputs": [
+        729.75,
+        780.9
+      ],
+      "samples": [
+        {
+          "X": 729.75,
+          "Time": 3.1386363636363637,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 780.9,
+          "Time": 3.2936363636363635,
+          "CenterY": 51.85874999999997,
+          "VerticalSpeed": 453.49999999999983,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 330,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 4.7,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      "finish": 6.972727272727273
+    },
+    {
+      "mirror": true,
+      "profile": "fast-flip",
+      "kind": "negative",
+      "pulseX": 760,
+      "pulseY": 14,
+      "inputs": [
+        762.9740740740741,
+        782.7740740740741
+      ],
+      "samples": [
+        {
+          "X": 762.9740740740741,
+          "Time": 3.5815824915824925,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 782.7740740740741,
+          "Time": 3.7615824915824922,
+          "CenterY": 64.03999999999978,
+          "VerticalSpeed": 520.9999999999989,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "speedAfterInputs": 110,
+      "speedAtRear": 220,
+      "cleared": {
+        "X": 1100,
+        "Time": 5.3,
+        "CenterY": 14,
+        "VerticalSpeed": 0,
+        "Airborne": false,
+        "AirFlipAvailable": true,
+        "Support": 1,
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      "finish": 7.572727272727272
+    }
+  ]
+}

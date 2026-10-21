@@ -1,0 +1,1194 @@
+[
+  {
+    "id": "mixed-stage",
+    "name": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u0440\u0430\u043D\u044C\u0448\u0435",
+    "profile": "chosen",
+    "preset": 10,
+    "settings": {
+      "FirstAction": 1,
+      "Law": 1,
+      "AirRepeats": -1,
+      "GravityAcceleration": 662.5,
+      "FlipImpulse": 0,
+      "JumpImpulse": 350,
+      "LinearSpeed": 265,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      515.7735849056604,
+      1160,
+      1204,
+      1800,
+      1844,
+      2091.7735849056603
+    ],
+    "full": [
+      435.1811187353192,
+      1116.8139808283297,
+      1160.8139808283297,
+      1800,
+      1844,
+      2091.7735849056603
+    ],
+    "quickreturn": [
+      515.7735849056604,
+      1160,
+      1204,
+      1800,
+      1844,
+      1958,
+      2002,
+      2024
+    ],
+    "times": {
+      "safe": [
+        2.34442538593482,
+        5.272727272727273,
+        5.4727272727272736,
+        8.181818181818183,
+        8.381818181818183,
+        9.508061749571185
+      ],
+      "full": [
+        1.9780959942514509,
+        4.776427185583318,
+        4.976427185583318,
+        7.581818181818184,
+        7.781818181818184,
+        8.908061749571186
+      ],
+      "quickreturn": [
+        2.34442538593482,
+        5.272727272727273,
+        5.4727272727272736,
+        8.181818181818183,
+        8.381818181818183,
+        8.9,
+        9.1,
+        9.2
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 1300,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 2200,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 114,
+        "GapBottom": 224,
+        "TopOffsetX": 80,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 192,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 1200,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 1515,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "id": "mixed-stage",
+    "name": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u0440\u0430\u043D\u044C\u0448\u0435",
+    "profile": "fast-flip",
+    "preset": 11,
+    "settings": {
+      "FirstAction": 0,
+      "Law": 1,
+      "AirRepeats": 1,
+      "GravityAcceleration": 2700,
+      "FlipImpulse": 35,
+      "JumpImpulse": 300,
+      "LinearSpeed": 530,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      530,
+      596,
+      1190,
+      2176.917064816087
+    ],
+    "full": [
+      430,
+      558.1196111528561,
+      1141.1393785965915,
+      2176.917064816087
+    ],
+    "quickreturn": [
+      530,
+      596,
+      1190,
+      1900,
+      2150,
+      2183
+    ],
+    "times": {
+      "safe": [
+        2.4090909090909087,
+        2.7090909090909085,
+        5.409090909090909,
+        9.895077567345853
+      ],
+      "full": [
+        1.9545454545454544,
+        2.536907323422073,
+        4.886997175439053,
+        9.295077567345855
+      ],
+      "quickreturn": [
+        2.4090909090909087,
+        2.7090909090909085,
+        5.409090909090909,
+        8.636363636363637,
+        9.772727272727275,
+        9.922727272727276
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 1300,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 2200,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 114,
+        "GapBottom": 224,
+        "TopOffsetX": 80,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 192,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 1200,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 1515,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "id": "mixed-stage-reordered",
+    "name": "\u041D\u0438\u0437\u043A\u0438\u0439 \u0440\u0430\u043D\u044C\u0448\u0435",
+    "profile": "chosen",
+    "preset": 10,
+    "settings": {
+      "FirstAction": 1,
+      "Law": 1,
+      "AirRepeats": -1,
+      "GravityAcceleration": 662.5,
+      "FlipImpulse": 0,
+      "JumpImpulse": 350,
+      "LinearSpeed": 265,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      515.7735849056604,
+      1191.7735849056603,
+      2060,
+      2104
+    ],
+    "full": [
+      435.1811187353192,
+      1191.7735849056603,
+      2016.8139808283297,
+      2060.8139808283295
+    ],
+    "quickreturn": [
+      515.7735849056604,
+      1058,
+      1102,
+      1124,
+      2060,
+      2104
+    ],
+    "times": {
+      "safe": [
+        2.34442538593482,
+        5.417152658662093,
+        9.363636363636365,
+        9.563636363636364
+      ],
+      "full": [
+        1.9780959942514509,
+        5.117152658662093,
+        8.86733627649241,
+        9.067336276492409
+      ],
+      "quickreturn": [
+        2.34442538593482,
+        4.8090909090909095,
+        5.00909090909091,
+        5.109090909090909,
+        9.363636363636365,
+        9.563636363636364
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 1300,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 114,
+        "GapBottom": 224,
+        "TopOffsetX": 80,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 2200,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 192,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 2100,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 2415,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "id": "mixed-stage-reordered",
+    "name": "\u041D\u0438\u0437\u043A\u0438\u0439 \u0440\u0430\u043D\u044C\u0448\u0435",
+    "profile": "fast-flip",
+    "preset": 11,
+    "settings": {
+      "FirstAction": 0,
+      "Law": 1,
+      "AirRepeats": 1,
+      "GravityAcceleration": 2700,
+      "FlipImpulse": 35,
+      "JumpImpulse": 300,
+      "LinearSpeed": 530,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      530,
+      596,
+      1000,
+      1276.9170648160873,
+      2090
+    ],
+    "full": [
+      430,
+      558.1196111528561,
+      1000,
+      1276.9170648160873,
+      2041.1393785965915
+    ],
+    "quickreturn": [
+      530,
+      596,
+      1250,
+      1283,
+      2090
+    ],
+    "times": {
+      "safe": [
+        2.4090909090909087,
+        2.7090909090909085,
+        4.545454545454546,
+        5.804168476436761,
+        9.500000000000002
+      ],
+      "full": [
+        1.9545454545454544,
+        2.536907323422073,
+        4.245454545454546,
+        5.504168476436761,
+        8.977906266348144
+      ],
+      "quickreturn": [
+        2.4090909090909087,
+        2.7090909090909085,
+        5.6818181818181825,
+        5.831818181818183,
+        9.500000000000002
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 1300,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 114,
+        "GapBottom": 224,
+        "TopOffsetX": 80,
+        "BottomOffsetX": 0,
+        "Kind": "gate"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 2200,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "floor"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 192,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 2100,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 2415,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "id": "mixed-stage-mirrored",
+    "name": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u0440\u0430\u043D\u044C\u0448\u0435 \u00B7 \u0437\u0435\u0440\u043A\u0430\u043B\u043E",
+    "profile": "chosen",
+    "preset": 10,
+    "settings": {
+      "FirstAction": 1,
+      "Law": 1,
+      "AirRepeats": -1,
+      "GravityAcceleration": 662.5,
+      "FlipImpulse": 0,
+      "JumpImpulse": 350,
+      "LinearSpeed": 265,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      0,
+      44,
+      515.7735849056604,
+      1160,
+      1204,
+      1800,
+      1844,
+      2091.7735849056603
+    ],
+    "full": [
+      0,
+      44,
+      435.1811187353192,
+      1116.8139808283297,
+      1160.8139808283297,
+      1800,
+      1844,
+      2091.7735849056603
+    ],
+    "quickreturn": [
+      0,
+      44,
+      515.7735849056604,
+      1160,
+      1204,
+      1800,
+      1844,
+      1958,
+      2002,
+      2024
+    ],
+    "times": {
+      "safe": [
+        0,
+        0.2,
+        2.34442538593482,
+        5.272727272727273,
+        5.4727272727272736,
+        8.181818181818183,
+        8.381818181818183,
+        9.508061749571185
+      ],
+      "full": [
+        0,
+        0.2,
+        1.9780959942514509,
+        4.776427185583318,
+        4.976427185583318,
+        7.581818181818184,
+        7.781818181818184,
+        8.908061749571186
+      ],
+      "quickreturn": [
+        0,
+        0.2,
+        2.34442538593482,
+        5.272727272727273,
+        5.4727272727272736,
+        8.181818181818183,
+        8.381818181818183,
+        8.9,
+        9.1,
+        9.2
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 1300,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 2200,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 16,
+        "GapBottom": 126,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 80,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 48,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 1200,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 1515,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "id": "mixed-stage-mirrored",
+    "name": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u0440\u0430\u043D\u044C\u0448\u0435 \u00B7 \u0437\u0435\u0440\u043A\u0430\u043B\u043E",
+    "profile": "fast-flip",
+    "preset": 11,
+    "settings": {
+      "FirstAction": 0,
+      "Law": 1,
+      "AirRepeats": 1,
+      "GravityAcceleration": 2700,
+      "FlipImpulse": 35,
+      "JumpImpulse": 300,
+      "LinearSpeed": 530,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      0,
+      530,
+      596,
+      1190,
+      2176.917064816087
+    ],
+    "full": [
+      0,
+      430,
+      558.1196111528561,
+      1141.1393785965915,
+      2176.917064816087
+    ],
+    "quickreturn": [
+      0,
+      530,
+      596,
+      1190,
+      1900,
+      2150,
+      2183
+    ],
+    "times": {
+      "safe": [
+        0,
+        2.4090909090909087,
+        2.7090909090909085,
+        5.409090909090909,
+        9.895077567345853
+      ],
+      "full": [
+        0,
+        1.9545454545454544,
+        2.536907323422073,
+        4.886997175439053,
+        9.295077567345855
+      ],
+      "quickreturn": [
+        0,
+        2.4090909090909087,
+        2.7090909090909085,
+        5.409090909090909,
+        8.636363636363637,
+        9.772727272727275,
+        9.922727272727276
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 1300,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 2200,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 16,
+        "GapBottom": 126,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 80,
+        "Kind": "gate"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 48,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 1200,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 1515,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "id": "mixed-stage-reordered-mirrored",
+    "name": "\u041D\u0438\u0437\u043A\u0438\u0439 \u0440\u0430\u043D\u044C\u0448\u0435 \u00B7 \u0437\u0435\u0440\u043A\u0430\u043B\u043E",
+    "profile": "chosen",
+    "preset": 10,
+    "settings": {
+      "FirstAction": 1,
+      "Law": 1,
+      "AirRepeats": -1,
+      "GravityAcceleration": 662.5,
+      "FlipImpulse": 0,
+      "JumpImpulse": 350,
+      "LinearSpeed": 265,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      0,
+      44,
+      515.7735849056604,
+      1191.7735849056603,
+      2060,
+      2104
+    ],
+    "full": [
+      0,
+      44,
+      435.1811187353192,
+      1191.7735849056603,
+      2016.8139808283297,
+      2060.8139808283295
+    ],
+    "quickreturn": [
+      0,
+      44,
+      515.7735849056604,
+      1058,
+      1102,
+      1124,
+      2060,
+      2104
+    ],
+    "times": {
+      "safe": [
+        0,
+        0.2,
+        2.34442538593482,
+        5.417152658662093,
+        9.363636363636365,
+        9.563636363636364
+      ],
+      "full": [
+        0,
+        0.2,
+        1.9780959942514509,
+        5.117152658662093,
+        8.86733627649241,
+        9.067336276492409
+      ],
+      "quickreturn": [
+        0,
+        0.2,
+        2.34442538593482,
+        4.8090909090909095,
+        5.00909090909091,
+        5.109090909090909,
+        9.363636363636365,
+        9.563636363636364
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 1300,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 16,
+        "GapBottom": 126,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 80,
+        "Kind": "gate"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 2200,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 48,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 2100,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 2415,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  },
+  {
+    "id": "mixed-stage-reordered-mirrored",
+    "name": "\u041D\u0438\u0437\u043A\u0438\u0439 \u0440\u0430\u043D\u044C\u0448\u0435 \u00B7 \u0437\u0435\u0440\u043A\u0430\u043B\u043E",
+    "profile": "fast-flip",
+    "preset": 11,
+    "settings": {
+      "FirstAction": 0,
+      "Law": 1,
+      "AirRepeats": 1,
+      "GravityAcceleration": 2700,
+      "FlipImpulse": 35,
+      "JumpImpulse": 300,
+      "LinearSpeed": 530,
+      "LinearJumpHeight": 112
+    },
+    "length": 2700,
+    "safe": [
+      0,
+      530,
+      596,
+      1000,
+      1276.9170648160873,
+      2090
+    ],
+    "full": [
+      0,
+      430,
+      558.1196111528561,
+      1000,
+      1276.9170648160873,
+      2041.1393785965915
+    ],
+    "quickreturn": [
+      0,
+      530,
+      596,
+      1250,
+      1283,
+      2090
+    ],
+    "times": {
+      "safe": [
+        0,
+        2.4090909090909087,
+        2.7090909090909085,
+        4.545454545454546,
+        5.804168476436761,
+        9.500000000000002
+      ],
+      "full": [
+        0,
+        1.9545454545454544,
+        2.536907323422073,
+        4.245454545454546,
+        5.504168476436761,
+        8.977906266348144
+      ],
+      "quickreturn": [
+        0,
+        2.4090909090909087,
+        2.7090909090909085,
+        5.6818181818181825,
+        5.831818181818183,
+        9.500000000000002
+      ]
+    },
+    "finish": {
+      "safe": 12.272727272727273,
+      "full": 11.672727272727274,
+      "quickreturn": 12.272727272727273
+    },
+    "obstacles": [
+      {
+        "Id": "mixed-small",
+        "X": 600,
+        "Width": 64,
+        "Height": 48,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      },
+      {
+        "Id": "mixed-low",
+        "X": 1300,
+        "Width": 16,
+        "Height": 0,
+        "GapTop": 16,
+        "GapBottom": 126,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 80,
+        "Kind": "gate"
+      },
+      {
+        "Id": "mixed-large",
+        "X": 2200,
+        "Width": 200,
+        "Height": 92,
+        "GapTop": 0,
+        "GapBottom": 0,
+        "TopOffsetX": 0,
+        "BottomOffsetX": 0,
+        "Kind": "ceiling"
+      }
+    ],
+    "zones": [
+      {
+        "IsNegative": false,
+        "IsInstant": true,
+        "IsLanding": true,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-small-pad",
+        "ObstacleId": "mixed-small",
+        "Kind": "landing",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 632,
+        "Y": 48,
+        "Radius": 6,
+        "ClearX": 0,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 32,
+        "FinishHeight": 16
+      },
+      {
+        "IsNegative": false,
+        "IsInstant": false,
+        "IsLanding": false,
+        "IsFinish": false,
+        "AfterObstacle": false,
+        "Id": "mixed-large-before",
+        "ObstacleId": "mixed-large",
+        "Kind": "positive",
+        "Placement": "before",
+        "FreeReward": false,
+        "X": 2100,
+        "Y": 120,
+        "Radius": 8,
+        "ClearX": 2415,
+        "SafeFlipX": 0,
+        "RiskFlipX": 0,
+        "LandingWidth": 0,
+        "FinishHeight": 16
+      }
+    ]
+  }
+]

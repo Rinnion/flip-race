@@ -35,7 +35,7 @@ namespace FlipRace.Presentation
             if (changed) PlayerPrefs.Save();
         }
         static Track InitialFlightTrack()
-        { return RaceTracks.Get(0); }
+        { return RaceTracks.GetAt(0); }
         void SaveCustomFlight()
         { PlayerPrefs.SetString(FlightSettingsStore.Key, FlightSettingsStore.Encode(flightSelection.Custom)); PlayerPrefs.Save(); }
         void BeginFlightMenu()
@@ -107,7 +107,7 @@ namespace FlipRace.Presentation
             if (flightPage == 4)
             {
                 for (int i = 0; i < RaceTracks.All.Length; i++) if (FullTrackRect(i).Contains(p))
-                { pendingFlightTrack = RaceTracks.Get(i).Id; return; }
+                { pendingFlightTrack = RaceTracks.GetAt(i).Id; return; }
                 return;
             }
             if (flightPage == 3)

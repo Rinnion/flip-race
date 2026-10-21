@@ -1,0 +1,77 @@
+{
+  "scope": "MIX-00 read-only preservation; no new gameplay/browser/build executed",
+  "checkedUtc": "2026-10-21T08:40:12.7796784Z",
+  "baselineVersion": "4.6.1-trial",
+  "head": "debf83b3731e5ce24e86ce2477aa13b20d722e62",
+  "headReadFrom": ".git/HEAD and refs/heads/main, without a Git command",
+  "archive": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v4.6.1-trial-webgl.zip",
+  "archiveBytes": 8559223,
+  "archiveSha256": "63aad2ff4f42d1a753e1237ec608fb173eb4deb183e53a5f7634a3f0f8fa7d85",
+  "manifestSha256": "cf559634891fee38988dc2f4000c324744305c2057e42cbe6c2b6db6bbde7526",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.6.1-final",
+  "webBytes": 8691507,
+  "fileCount": 5,
+  "unpackedDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.6.1-unpacked",
+  "indexAtRoot": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v4.6.1-final.data.unityweb",
+      "bytes": 1443888,
+      "sha256": "8b9af87c1e4dd3a6e0fa2db25c4ab75657cabd590af712e0dcc1e3590baacecc",
+      "sourceArchiveUnpackedManifestMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.6.1-final.framework.js.unityweb",
+      "bytes": 89563,
+      "sha256": "4f50373542e08486f2844695f21ffd425d839c8b61838db789cd76e92d212680",
+      "sourceArchiveUnpackedManifestMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.6.1-final.loader.js",
+      "bytes": 39788,
+      "sha256": "aaf370d2744dea2fff7b8336a91980eaaac22f76aad4994ecd8caed374bb4ec4",
+      "sourceArchiveUnpackedManifestMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.6.1-final.wasm.unityweb",
+      "bytes": 7107234,
+      "sha256": "74eaa1fd2c428f18a5c5121913fb6412bd04e2b04c46018486620e04aa4ccb00",
+      "sourceArchiveUnpackedManifestMatch": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11034,
+      "sha256": "b2bafb10ee40432574585304d32a5553af16925d875bcd6f17212cff54ad35e7",
+      "sourceArchiveUnpackedManifestMatch": true
+    }
+  ],
+  "presets": {
+    "main": "Jump / Gravity / Unlimited / g662.5 / FlipImpulse0 / JumpImpulse350",
+    "fast": "Flip / Gravity / One / g2700 / FlipImpulse35 / stored JumpImpulse300 / LinearSpeed530 / LinearJumpHeight112"
+  },
+  "finishPointer": {
+    "width": 11,
+    "height": 16,
+    "tip": "zone.X / zone.Y",
+    "tailOnlyShortened": true,
+    "physicalContact": "track.Length-44, unchanged height window, 0.1 second clean gain"
+  },
+  "preservation": "No baseline files copied, overwritten, rebuilt or extracted; existing source build, ZIP and unpacked snapshot independently hashed",
+  "observedWorktreeSha256": {
+    "Assets/Scripts/Core/RaceSimulation.cs": "aa91b96919ae318607d8bff180ae7a54879fa54c2c6072003f5b245a57e10c24",
+    "Assets/Scripts/Core/ContinuousMotion.cs": "98d06ea07562b30f2979c3bfaebdb31723f1854ab62f953e76ad959a3ad85f36",
+    "Assets/Scripts/Core/ObstacleGeometry.cs": "bb1a5f4f79981ccdf3dabc4e9db0511c3f9d9247b9e712acc3fabb717653b92b",
+    "Assets/Scripts/Core/FlightSettings.cs": "8499b6dc0d17a86a9ce02ce3f56fa4bd78d4f66ca1cb61e85b052c6be5c9fb5e",
+    "Assets/Scripts/Core/TracksFull.cs": "901255021dd6069e43734e80d16b88e5dc82824cb973239a451d8999317fa576",
+    "Assets/Scripts/Core/TracksRhythm.cs": "b2a3f4323ca70d2b67b81c7b28c861b4500f9142332e259c406787c0f9260485",
+    "Assets/Scripts/Core/TracksRhythmFull.cs": "8b62c3256fbcd3f53a8bfc90d552640c73ac43a0fc3a04251b785f5dad2088c4",
+    "Assets/Scripts/Core/TracksRhythmNegatives.cs": "75ac8dd76890190d5cd1bd2186d62a31015ffba31b196a3afc6a932a347bb3e2",
+    "Assets/Scripts/Presentation/CorridorArtwork.cs": "07891ad429e5d58b5a37bed4cf358b9dddac159c214617424ba3ffa38b3185e6",
+    "Assets/Scripts/Presentation/FlightSettingsStore.cs": "55da2f7807b75dd94360cc40018f7e2c4531a841e62ac429767619a40a2982be",
+    "Assets/Scripts/Presentation/FlightSettingsMenu.cs": "e2c2b5f43d93b8ebe6255f928a051afea1572b66892bcf9fd7e5ef2a3a5d8e4a",
+    "Assets/Scripts/Presentation/FlipRaceGame.cs": "752dd3bc69b8af6b90a92eacfa277de32605afc91e533d1d6bccab4ba09011bd"
+  },
+  "concurrentPreparation": "Root added FLIP_MIX_STAGE-only catalogue hooks during read-only capture. TracksRhythm.cs worktree SHA is not the 4.6.1 baseline SHA; baseline release report records D1B7AF6109E4443394EE508F54F718A288FEDD6A358408FF43C946ACB5D443B8. Existing physics, complete geometry, presets and pointer hashes above still match the released records.",
+  "baselineCatalogueSha256": "d1b7af6109e4443394ee508f54f718a288fedd6a358408ff43c946acb5d443b8",
+  "baselineCatalogueHashSource": "Verification/POST-PLAYTEST-461-CATALOG.md and Verification/FLIP461-REVIEW.md"
+}

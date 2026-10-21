@@ -1,0 +1,3799 @@
+{
+  "scope": "held horizontal-speed isolation; real vertical inputs/support; not actual earned effects or timing accounting",
+  "checks": 12987,
+  "runs": 444,
+  "rows": [
+    {
+      "id": "mixed-stage",
+      "profile": "chosen",
+      "speed": 110,
+      "inputs": [
+        523,
+        545,
+        750,
+        772,
+        1228.5,
+        1250.5,
+        1650,
+        1672,
+        2149.8867924528304
+      ],
+      "samples": [
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 545,
+          "Time": 4.954545454545455,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 750,
+          "Time": 6.818181818181819,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 772,
+          "Time": 7.018181818181819,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1228.5,
+          "Time": 11.168181818181827,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1250.5,
+          "Time": 11.368181818181826,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1650,
+          "Time": 15.000000000000018,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1672,
+          "Time": 15.200000000000017,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2149.8867924528304,
+          "Time": 19.54442538593485,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 12.727272727272737,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 19.872727272727303,
+            "CenterY": 146.79716981132086,
+            "VerticalSpeed": -132.50000000000048,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 22.00000000000004,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage",
+      "profile": "chosen",
+      "speed": 220,
+      "inputs": [
+        515.7735849056604,
+        1157,
+        1201,
+        1650,
+        1694,
+        2091.7735849056603
+      ],
+      "samples": [
+        {
+          "X": 515.7735849056604,
+          "Time": 2.34442538593482,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1157,
+          "Time": 5.25909090909091,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1201,
+          "Time": 5.45909090909091,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1650,
+          "Time": 7.500000000000002,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1694,
+          "Time": 7.700000000000002,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2091.7735849056603,
+          "Time": 9.508061749571185,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272726,
+            "CenterY": 133.54716981132077,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909091,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 6.363636363636365,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 9.93636363636364,
+            "CenterY": 136.85966981132069,
+            "VerticalSpeed": -66.24999999999912,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 11.000000000000004,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage",
+      "profile": "chosen",
+      "speed": 330,
+      "inputs": [
+        457.66037735849056,
+        1085.5,
+        1151.5,
+        1650,
+        1716,
+        2033.6603773584907
+      ],
+      "samples": [
+        {
+          "X": 457.66037735849056,
+          "Time": 1.3868496283590623,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1085.5,
+          "Time": 3.28939393939394,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1151.5,
+          "Time": 3.48939393939394,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1650,
+          "Time": 5.000000000000002,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1716,
+          "Time": 5.200000000000002,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2033.6603773584907,
+          "Time": 6.162607204116641,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.915151515151515,
+            "CenterY": 133.54716981132077,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 4.242424242424243,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 6.624242424242427,
+            "CenterY": 135.019392033543,
+            "VerticalSpeed": -44.166666666667155,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 7.333333333333336,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage",
+      "profile": "fast-flip",
+      "speed": 110,
+      "inputs": [
+        523,
+        663.0598055764281,
+        1228.5,
+        2212.4585324080435
+      ],
+      "samples": [
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 663.0598055764281,
+          "Time": 6.0278164143311646,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1228.5,
+          "Time": 11.168181818181827,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2212.4585324080435,
+          "Time": 20.1132593855277,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 12.727272727272739,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 19.872727272727307,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 22.00000000000004,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage",
+      "profile": "fast-flip",
+      "speed": 220,
+      "inputs": [
+        446,
+        626.1196111528561,
+        1157,
+        2176.917064816087
+      ],
+      "samples": [
+        {
+          "X": 446,
+          "Time": 2.0272727272727273,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 626.1196111528561,
+          "Time": 2.845998232512983,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1157,
+          "Time": 5.259090909090911,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2176.917064816087,
+          "Time": 9.895077567345854,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272735,
+            "CenterY": 15.900012555049315,
+            "VerticalSpeed": 107.16840857858394,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909092,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 6.363636363636365,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 9.936363636363641,
+            "CenterY": 17.74614073379339,
+            "VerticalSpeed": 146.47238634802224,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 11.000000000000005,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage",
+      "profile": "fast-flip",
+      "speed": 330,
+      "inputs": [
+        369,
+        589.1794167292842,
+        1085.5,
+        2141.375597224131
+      ],
+      "samples": [
+        {
+          "X": 369,
+          "Time": 1.1181818181818184,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 589.1794167292842,
+          "Time": 1.785392171906922,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1085.5,
+          "Time": 3.28939393939394,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2141.375597224131,
+          "Time": 6.489016961285251,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.9151515151515153,
+            "CenterY": 41.27218467857284,
+            "VerticalSpeed": 385.3502267604021,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 4.242424242424245,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 6.624242424242429,
+            "CenterY": 43.418891076678676,
+            "VerticalSpeed": 400.10874998438214,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 7.333333333333338,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered",
+      "profile": "chosen",
+      "speed": 110,
+      "inputs": [
+        523,
+        545,
+        750,
+        772,
+        1249.8867924528302,
+        2128.5,
+        2150.5
+      ],
+      "samples": [
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 545,
+          "Time": 4.954545454545455,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 750,
+          "Time": 6.818181818181819,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 772,
+          "Time": 7.018181818181819,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1249.8867924528302,
+          "Time": 11.362607204116648,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2128.5,
+          "Time": 19.350000000000037,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2150.5,
+          "Time": 19.550000000000036,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 11.690909090909102,
+            "CenterY": 146.7971698113206,
+            "VerticalSpeed": -132.49999999999912,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 13.818181818181836,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 20.90909090909095,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered",
+      "profile": "chosen",
+      "speed": 220,
+      "inputs": [
+        515.7735849056604,
+        1191.7735849056603,
+        2057,
+        2101
+      ],
+      "samples": [
+        {
+          "X": 515.7735849056604,
+          "Time": 2.34442538593482,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1191.7735849056603,
+          "Time": 5.417152658662093,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2057,
+          "Time": 9.350000000000001,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2101,
+          "Time": 9.55,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272726,
+            "CenterY": 133.54716981132077,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909091,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 5.845454545454546,
+            "CenterY": 136.8596698113207,
+            "VerticalSpeed": -66.24999999999982,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 6.90909090909091,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 10.454545454545455,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered",
+      "profile": "chosen",
+      "speed": 330,
+      "inputs": [
+        457.66037735849056,
+        1133.6603773584907,
+        1985.5,
+        2051.5
+      ],
+      "samples": [
+        {
+          "X": 457.66037735849056,
+          "Time": 1.3868496283590623,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1133.6603773584907,
+          "Time": 3.4353344768439116,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1985.5,
+          "Time": 6.01666666666667,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2051.5,
+          "Time": 6.21666666666667,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.915151515151515,
+            "CenterY": 133.54716981132077,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 3.896969696969698,
+            "CenterY": 135.01939203354297,
+            "VerticalSpeed": -44.1666666666667,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 4.606060606060607,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 6.969696969696974,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered",
+      "profile": "fast-flip",
+      "speed": 110,
+      "inputs": [
+        523,
+        663.0598055764281,
+        1212,
+        1312.4585324080435,
+        2128.5
+      ],
+      "samples": [
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 663.0598055764281,
+          "Time": 6.0278164143311646,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1212,
+          "Time": 11.018181818181825,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1312.4585324080435,
+          "Time": 11.931441203709495,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2128.5,
+          "Time": 19.350000000000033,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 11.690909090909098,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 13.81818181818183,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 20.909090909090946,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered",
+      "profile": "fast-flip",
+      "speed": 220,
+      "inputs": [
+        446,
+        626.1196111528561,
+        1124,
+        1276.9170648160873,
+        2057
+      ],
+      "samples": [
+        {
+          "X": 446,
+          "Time": 2.0272727272727273,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 626.1196111528561,
+          "Time": 2.845998232512983,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1124,
+          "Time": 5.10909090909091,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1276.9170648160873,
+          "Time": 5.804168476436762,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2057,
+          "Time": 9.350000000000001,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272735,
+            "CenterY": 15.900012555049315,
+            "VerticalSpeed": 107.16840857858394,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909092,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 5.845454545454547,
+            "CenterY": 17.746140733793236,
+            "VerticalSpeed": 146.47238634801946,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 6.909090909090911,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 10.454545454545457,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered",
+      "profile": "fast-flip",
+      "speed": 330,
+      "inputs": [
+        369,
+        589.1794167292842,
+        1036,
+        1241.375597224131,
+        1985.5
+      ],
+      "samples": [
+        {
+          "X": 369,
+          "Time": 1.1181818181818184,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 589.1794167292842,
+          "Time": 1.785392171906922,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1036,
+          "Time": 3.1393939393939396,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1241.375597224131,
+          "Time": 3.761744234012519,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1985.5,
+          "Time": 6.016666666666669,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.9151515151515153,
+            "CenterY": 41.27218467857284,
+            "VerticalSpeed": 385.3502267604021,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 3.8969696969696974,
+            "CenterY": 43.418891076678676,
+            "VerticalSpeed": 400.10874998438214,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 4.606060606060606,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 6.9696969696969715,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-mirrored",
+      "profile": "chosen",
+      "speed": 110,
+      "inputs": [
+        0,
+        22,
+        523,
+        545,
+        750,
+        772,
+        1228.5,
+        1250.5,
+        1650,
+        1672,
+        2149.8867924528304
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 22,
+          "Time": 0.2,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 545,
+          "Time": 4.954545454545455,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 750,
+          "Time": 6.818181818181819,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 772,
+          "Time": 7.018181818181819,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1228.5,
+          "Time": 11.168181818181827,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1250.5,
+          "Time": 11.368181818181826,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1650,
+          "Time": 15.000000000000018,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1672,
+          "Time": 15.200000000000017,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2149.8867924528304,
+          "Time": 19.54442538593485,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 12.727272727272737,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 19.872727272727303,
+            "CenterY": 93.20283018867916,
+            "VerticalSpeed": 132.50000000000048,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 22.00000000000004,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-mirrored",
+      "profile": "chosen",
+      "speed": 220,
+      "inputs": [
+        0,
+        44,
+        515.7735849056604,
+        1157,
+        1201,
+        1650,
+        1694,
+        2091.7735849056603
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 44,
+          "Time": 0.2,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 515.7735849056604,
+          "Time": 2.34442538593482,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1157,
+          "Time": 5.25909090909091,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1201,
+          "Time": 5.45909090909091,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1650,
+          "Time": 7.500000000000002,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1694,
+          "Time": 7.700000000000002,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2091.7735849056603,
+          "Time": 9.508061749571185,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272726,
+            "CenterY": 106.45283018867924,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909091,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 6.363636363636365,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 9.93636363636364,
+            "CenterY": 103.14033018867934,
+            "VerticalSpeed": 66.24999999999912,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 11.000000000000004,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-mirrored",
+      "profile": "chosen",
+      "speed": 330,
+      "inputs": [
+        0,
+        66,
+        457.66037735849056,
+        1085.5,
+        1151.5,
+        1650,
+        1716,
+        2033.6603773584907
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 66,
+          "Time": 0.2,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 457.66037735849056,
+          "Time": 1.3868496283590623,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1085.5,
+          "Time": 3.28939393939394,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1151.5,
+          "Time": 3.48939393939394,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1650,
+          "Time": 5.000000000000002,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1716,
+          "Time": 5.200000000000002,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2033.6603773584907,
+          "Time": 6.162607204116641,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.915151515151515,
+            "CenterY": 106.45283018867926,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 4.242424242424243,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 6.624242424242427,
+            "CenterY": 104.980607966457,
+            "VerticalSpeed": 44.166666666667155,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 7.333333333333336,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-mirrored",
+      "profile": "fast-flip",
+      "speed": 110,
+      "inputs": [
+        0,
+        523,
+        663.0598055764281,
+        1228.5,
+        2212.4585324080435
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 663.0598055764281,
+          "Time": 6.0278164143311646,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1228.5,
+          "Time": 11.168181818181827,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2212.4585324080435,
+          "Time": 20.1132593855277,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 12.727272727272739,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 19.872727272727307,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 22.00000000000004,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-mirrored",
+      "profile": "fast-flip",
+      "speed": 220,
+      "inputs": [
+        0,
+        446,
+        626.1196111528561,
+        1157,
+        2176.917064816087
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 446,
+          "Time": 2.0272727272727273,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 626.1196111528561,
+          "Time": 2.845998232512983,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1157,
+          "Time": 5.259090909090911,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2176.917064816087,
+          "Time": 9.895077567345854,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272735,
+            "CenterY": 224.0999874449507,
+            "VerticalSpeed": -107.16840857858394,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909092,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 6.363636363636365,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 9.936363636363641,
+            "CenterY": 222.25385926620663,
+            "VerticalSpeed": -146.47238634802224,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 11.000000000000005,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-mirrored",
+      "profile": "fast-flip",
+      "speed": 330,
+      "inputs": [
+        0,
+        369,
+        589.1794167292842,
+        1085.5,
+        2141.375597224131
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 369,
+          "Time": 1.1181818181818184,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 589.1794167292842,
+          "Time": 1.785392171906922,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1085.5,
+          "Time": 3.28939393939394,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2141.375597224131,
+          "Time": 6.489016961285251,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.9151515151515153,
+            "CenterY": 198.7278153214272,
+            "VerticalSpeed": -385.3502267604021,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 1400,
+            "Time": 4.242424242424245,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 2186,
+            "Time": 6.624242424242429,
+            "CenterY": 196.58110892332132,
+            "VerticalSpeed": -400.10874998438214,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 2420,
+            "Time": 7.333333333333338,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered-mirrored",
+      "profile": "chosen",
+      "speed": 110,
+      "inputs": [
+        0,
+        22,
+        523,
+        545,
+        750,
+        772,
+        1249.8867924528302,
+        2128.5,
+        2150.5
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 22,
+          "Time": 0.2,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 545,
+          "Time": 4.954545454545455,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 750,
+          "Time": 6.818181818181819,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 772,
+          "Time": 7.018181818181819,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1249.8867924528302,
+          "Time": 11.362607204116648,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2128.5,
+          "Time": 19.350000000000037,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2150.5,
+          "Time": 19.550000000000036,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 11.690909090909102,
+            "CenterY": 93.20283018867944,
+            "VerticalSpeed": 132.49999999999912,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 13.818181818181836,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 20.90909090909095,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered-mirrored",
+      "profile": "chosen",
+      "speed": 220,
+      "inputs": [
+        0,
+        44,
+        515.7735849056604,
+        1191.7735849056603,
+        2057,
+        2101
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 44,
+          "Time": 0.2,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 515.7735849056604,
+          "Time": 2.34442538593482,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1191.7735849056603,
+          "Time": 5.417152658662093,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2057,
+          "Time": 9.350000000000001,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2101,
+          "Time": 9.55,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272726,
+            "CenterY": 106.45283018867924,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909091,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 5.845454545454546,
+            "CenterY": 103.14033018867927,
+            "VerticalSpeed": 66.24999999999982,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 6.90909090909091,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 10.454545454545455,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered-mirrored",
+      "profile": "chosen",
+      "speed": 330,
+      "inputs": [
+        0,
+        66,
+        457.66037735849056,
+        1133.6603773584907,
+        1985.5,
+        2051.5
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 66,
+          "Time": 0.2,
+          "CenterY": 169.25,
+          "VerticalSpeed": -217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 457.66037735849056,
+          "Time": 1.3868496283590623,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1133.6603773584907,
+          "Time": 3.4353344768439116,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1985.5,
+          "Time": 6.01666666666667,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2051.5,
+          "Time": 6.21666666666667,
+          "CenterY": 70.75,
+          "VerticalSpeed": 217.5,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.915151515151515,
+            "CenterY": 106.45283018867926,
+            "VerticalSpeed": 0,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 3.896969696969698,
+            "CenterY": 104.98060796645703,
+            "VerticalSpeed": 44.1666666666667,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 4.606060606060607,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 6.969696969696974,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered-mirrored",
+      "profile": "fast-flip",
+      "speed": 110,
+      "inputs": [
+        0,
+        523,
+        663.0598055764281,
+        1212,
+        1312.4585324080435,
+        2128.5
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 523,
+          "Time": 4.754545454545455,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 663.0598055764281,
+          "Time": 6.0278164143311646,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1212,
+          "Time": 11.018181818181825,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1312.4585324080435,
+          "Time": 11.931441203709495,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2128.5,
+          "Time": 19.350000000000033,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 5.745454545454546,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 8.181818181818183,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 11.690909090909098,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 13.81818181818183,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 20.909090909090946,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 110
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered-mirrored",
+      "profile": "fast-flip",
+      "speed": 220,
+      "inputs": [
+        0,
+        446,
+        626.1196111528561,
+        1124,
+        1276.9170648160873,
+        2057
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 446,
+          "Time": 2.0272727272727273,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 626.1196111528561,
+          "Time": 2.845998232512983,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1124,
+          "Time": 5.10909090909091,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1276.9170648160873,
+          "Time": 5.804168476436762,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 2057,
+          "Time": 9.350000000000001,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 2.8727272727272735,
+            "CenterY": 224.0999874449507,
+            "VerticalSpeed": -107.16840857858394,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 4.090909090909092,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 5.845454545454547,
+            "CenterY": 222.25385926620677,
+            "VerticalSpeed": -146.47238634801946,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 6.909090909090911,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 10.454545454545457,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 220
+        }
+      ]
+    },
+    {
+      "id": "mixed-stage-reordered-mirrored",
+      "profile": "fast-flip",
+      "speed": 330,
+      "inputs": [
+        0,
+        369,
+        589.1794167292842,
+        1036,
+        1241.375597224131,
+        1985.5
+      ],
+      "samples": [
+        {
+          "X": 0,
+          "Time": 0,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 369,
+          "Time": 1.1181818181818184,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 589.1794167292842,
+          "Time": 1.785392171906922,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1036,
+          "Time": 3.1393939393939396,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1241.375597224131,
+          "Time": 3.761744234012519,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 1985.5,
+          "Time": 6.016666666666669,
+          "CenterY": 14,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 0,
+          "SupportObstacleId": null
+        }
+      ],
+      "marks": [
+        {
+          "Name": "small-pad-plane",
+          "State": {
+            "X": 632,
+            "Time": 1.9151515151515153,
+            "CenterY": 198.7278153214272,
+            "VerticalSpeed": -385.3502267604021,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "small-return",
+          "State": {
+            "X": 900,
+            "Time": 2.7272727272727275,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-first-front",
+          "State": {
+            "X": 1286,
+            "Time": 3.8969696969696974,
+            "CenterY": 196.58110892332132,
+            "VerticalSpeed": -400.10874998438214,
+            "Airborne": true,
+            "AirFlipAvailable": true,
+            "Support": 0,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "low-return",
+          "State": {
+            "X": 1520,
+            "Time": 4.606060606060606,
+            "CenterY": 14,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 0,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        },
+        {
+          "Name": "large-opposite",
+          "State": {
+            "X": 2300,
+            "Time": 6.9696969696969715,
+            "CenterY": 226,
+            "VerticalSpeed": 0,
+            "Airborne": false,
+            "AirFlipAvailable": true,
+            "Support": 1,
+            "SupportSide": 1,
+            "SupportObstacleId": null
+          },
+          "Speed": 330
+        }
+      ]
+    }
+  ]
+}

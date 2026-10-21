@@ -1,0 +1,17 @@
+PASS 1110 checks / 16 actual first-hit witnesses selected from 82 bounded candidates. Real remaining recovery + .15 s, actual wall/adaptive next maneuver, both players clear entire next union. No state injection; not exhaustive recovery.
+mixed-stage/Jump input=0 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=226 next=mixed-large fullClear=1515
+mixed-stage/Jump input=0 shift=-0.4 hit=mixed-large hitX=1286 remainingPenalty=0.4977272727272841 reactionX=1319 reactionY=104.374354338839 next=mixed-low fullClear=2311
+mixed-stage/Flip input=0 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=226 next=mixed-large fullClear=1515
+mixed-stage/Flip input=2 shift=0.4 hit=mixed-large hitX=1286 remainingPenalty=0.4863636363636519 reactionX=1319 reactionY=172.5898760330495 next=mixed-low fullClear=2311
+mixed-stage-reordered/Jump input=0 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=226 next=mixed-low fullClear=1411
+mixed-stage-reordered/Jump input=1 shift=0.4 hit=mixed-low hitX=1286 remainingPenalty=0.47830188679246766 reactionX=1319 reactionY=174.12529481131733 next=mixed-large fullClear=2415
+mixed-stage-reordered/Flip input=0 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=226 next=mixed-low fullClear=1411
+mixed-stage-reordered/Flip input=3 shift=0.4 hit=mixed-low hitX=1366 remainingPenalty=0.4799224326541693 reactionX=1399 reactionY=51.823581331201495 next=mixed-large fullClear=2415
+mixed-stage-mirrored/Jump input=2 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=14 next=mixed-large fullClear=1515
+mixed-stage-mirrored/Jump input=2 shift=-0.4 hit=mixed-large hitX=1286 remainingPenalty=0.497727272727282 reactionX=1319 reactionY=135.62564566116026 next=mixed-low fullClear=2311
+mixed-stage-mirrored/Flip input=1 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=14 next=mixed-large fullClear=1515
+mixed-stage-mirrored/Flip input=3 shift=0.4 hit=mixed-large hitX=1286 remainingPenalty=0.4863636363636519 reactionX=1319 reactionY=67.41012396695051 next=mixed-low fullClear=2311
+mixed-stage-reordered-mirrored/Jump input=2 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=14 next=mixed-low fullClear=1411
+mixed-stage-reordered-mirrored/Jump input=3 shift=0.4 hit=mixed-low hitX=1286 remainingPenalty=0.47830188679246766 reactionX=1319 reactionY=65.87470518868268 next=mixed-large fullClear=2415
+mixed-stage-reordered-mirrored/Flip input=1 shift=0.4 hit=mixed-small hitX=586 remainingPenalty=0.48863636363636365 reactionX=619 reactionY=14 next=mixed-low fullClear=1411
+mixed-stage-reordered-mirrored/Flip input=4 shift=0.4 hit=mixed-low hitX=1366 remainingPenalty=0.4799224326541693 reactionX=1399 reactionY=188.17641866879848 next=mixed-large fullClear=2415

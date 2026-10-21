@@ -1,0 +1,3115 @@
+{
+  "Status": "PASS",
+  "Scope": "Frozen author route replay using an independent two-player X scheduler; no route discovery, injection, large recovery search or global tail theorem.",
+  "Checks": 409646,
+  "Games": [
+    {
+      "Profile": "main",
+      "Step": 0.03333333333333333,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999972,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989903939,
+          "TailTime": 35.79999995410989
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999972,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989903939,
+          "TailTime": 35.79999995410989
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.03333333333333333,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000107,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413752
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000107,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413752
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.03333333333333333,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000001035,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413749
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000001035,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413749
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.03333333333333333,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997286,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989903939,
+          "TailTime": 35.79999995410998
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000116,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413761
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.03333333333333333,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000116,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413761
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997286,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989903939,
+          "TailTime": 35.79999995410998
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.03333333333333333,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000001154,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413761
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000001006,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413746
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.03333333333333333,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000001006,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413746
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000001154,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413761
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.016666666666666666,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999419,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899171535,
+          "TailTime": 35.799999954166985
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999419,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899171535,
+          "TailTime": 35.799999954166985
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.016666666666666666,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999866,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.0999999542228
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999866,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.0999999542228
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.016666666666666666,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.79999999999868,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.699999954222825
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.79999999999868,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.699999954222825
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.016666666666666666,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999943,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899171535,
+          "TailTime": 35.7999999541671
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999865,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.09999995422278
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.016666666666666666,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999865,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.09999995422278
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999943,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899171535,
+          "TailTime": 35.7999999541671
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.016666666666666666,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.199999999998795,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.09999995422294
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.7999999999988,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.699999954222946
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.016666666666666666,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.7999999999988,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.699999954222946
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.199999999998795,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929311,
+          "TailTime": 33.09999995422294
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.006944444444444444,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999996994,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989905376,
+          "TailTime": 35.79999995411525
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999996994,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989905376,
+          "TailTime": 35.79999995411525
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.006944444444444444,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999891,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.099999954150114
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999891,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.099999954150114
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.006944444444444444,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.79999999999886,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.699999954150066
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.79999999999886,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.699999954150066
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.006944444444444444,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999701,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989905376,
+          "TailTime": 35.799999954115265
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999891,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.09999995415011
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.006944444444444444,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999891,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.09999995415011
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999701,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989905376,
+          "TailTime": 35.799999954115265
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.006944444444444444,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999902,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.09999995415023
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.799999999998995,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.6999999541502
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.006944444444444444,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.799999999998995,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.6999999541502
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999902,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989913259,
+          "TailTime": 33.09999995415023
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.317,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999722,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989930146,
+          "TailTime": 35.79999995422806
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999722,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989930146,
+          "TailTime": 35.79999995422806
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.317,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000000045,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413649
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000000045,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413649
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.317,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000005,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.699999954136494
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000005,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.699999954136494
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.317,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997186,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989930146,
+          "TailTime": 35.79999995422803
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000007,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136514
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.317,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000007,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136514
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997186,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989930146,
+          "TailTime": 35.79999995422803
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.317,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000000124,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413657
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000015,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.6999999541366
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 0.317,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000015,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.6999999541366
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000000124,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.09999995413657
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 2.5,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999718,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424474
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999718,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424474
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 2.5,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000002,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000002,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 2.5,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000001,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413646
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000001,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413646
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 2.5,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999971,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424466
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 2.5,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999971,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424466
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 2.5,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000012,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136564
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000011,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413656
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 2.5,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000011,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413656
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000012,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136564
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 100.0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997186,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424475
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997186,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424475
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 100.0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000002,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000002,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 100.0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000001,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413646
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000001,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413646
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 100.0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999971,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424466
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 100.0,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136464
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999971,
+          "Distance": 7920.0,
+          "Accepted": 16,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989933824,
+          "TailTime": 35.79999995424466
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 100.0,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000012,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136564
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000011,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413656
+        }
+      ]
+    },
+    {
+      "Profile": "main",
+      "Step": 100.0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000011,
+          "Distance": 7920.0,
+          "Accepted": 31,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.69999995413656
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000012,
+          "Distance": 7920.0,
+          "Accepted": 30,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899100185,
+          "TailTime": 33.099999954136564
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.03333333333333333,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997236,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937294,
+          "TailTime": 35.79999995426155
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997236,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937294,
+          "TailTime": 35.79999995426155
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.03333333333333333,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000001054,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.09999995429633
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000001054,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.09999995429633
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.03333333333333333,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000001,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.699999954296274
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000001,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.699999954296274
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.03333333333333333,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999972,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937294,
+          "TailTime": 35.799999954261516
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000001054,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929098,
+          "TailTime": 33.09999995422424
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.03333333333333333,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000001054,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929098,
+          "TailTime": 33.09999995422424
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999972,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937294,
+          "TailTime": 35.799999954261516
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.03333333333333333,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000118,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.09999995429646
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000111,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.69999995429639
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.03333333333333333,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000111,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.69999995429639
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000118,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899449585,
+          "TailTime": 33.09999995429646
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.016666666666666666,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999424,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929226,
+          "TailTime": 35.79999995422191
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999424,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929226,
+          "TailTime": 35.79999995422191
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.016666666666666666,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999864,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.09999995429207
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999864,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.09999995429207
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.016666666666666666,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.799999999998654,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.69999995429209
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.799999999998654,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.69999995429209
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.016666666666666666,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999425,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929226,
+          "TailTime": 35.799999954221924
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.199999999998695,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989912833,
+          "TailTime": 33.09999995414794
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.016666666666666666,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.199999999998695,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989912833,
+          "TailTime": 33.09999995414794
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999425,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989929226,
+          "TailTime": 35.799999954221924
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.016666666666666666,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.199999999998745,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.09999995429218
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.79999999999874,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.699999954292174
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.016666666666666666,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.79999999999874,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.699999954292174
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.199999999998745,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989944555,
+          "TailTime": 33.09999995429218
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.006944444444444444,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997016,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989940408,
+          "TailTime": 35.799999954274504
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997016,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989940408,
+          "TailTime": 35.799999954274504
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.006944444444444444,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999889,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.09999995424728
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999889,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.09999995424728
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.006944444444444444,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.79999999999885,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.69999995424725
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.79999999999885,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.69999995424725
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.006944444444444444,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999996916,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989940408,
+          "TailTime": 35.799999954274405
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.199999999998866,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989906308,
+          "TailTime": 33.09999995411847
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.006944444444444444,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.199999999998866,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989906308,
+          "TailTime": 33.09999995411847
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999996916,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989940408,
+          "TailTime": 35.799999954274405
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.006944444444444444,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999898,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.09999995424737
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.79999999999883,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.699999954247225
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.006944444444444444,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.800000000000004,
+          "ObservedFinishAt": 33.79999999999883,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.699999954247225
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.2,
+          "ObservedFinishAt": 33.19999999999898,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993464,
+          "TailTime": 33.09999995424737
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.317,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999714,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993977,
+          "TailTime": 35.79999995427173
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999714,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993977,
+          "TailTime": 35.79999995427173
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.317,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000000124,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.099999954172134
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.200000000000124,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.099999954172134
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.317,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.8000000000001,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417211
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.8000000000001,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417211
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.317,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997165,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993977,
+          "TailTime": 35.79999995427176
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000009,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937231,
+          "TailTime": 33.09999995426023
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.317,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000009,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937231,
+          "TailTime": 33.09999995426023
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997165,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.99998993977,
+          "TailTime": 35.79999995427176
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.317,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000004,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417205
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000007,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417208
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 0.317,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000007,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417208
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000004,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417205
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 2.5,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999708,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412406
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.99999999999708,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412406
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 2.5,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 2.5,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000000054,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.699999954172064
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000000054,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.699999954172064
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 2.5,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997065,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412405
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999998,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937231,
+          "TailTime": 33.09999995426012
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 2.5,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999998,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937231,
+          "TailTime": 33.09999995426012
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997065,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412405
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 2.5,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000006,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417207
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 2.5,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000006,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417207
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 100.0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999971,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412408
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.9999999999971,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412408
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 100.0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 100.0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000000054,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.699999954172064
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.800000000000054,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.699999954172064
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 100.0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997065,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412405
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999998,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937231,
+          "TailTime": 33.09999995426012
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 100.0,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.19999999999998,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989937231,
+          "TailTime": 33.09999995426012
+        },
+        {
+          "Slot": 1,
+          "Route": "safe",
+          "Finish": 36.0,
+          "ObservedFinishAt": 35.999999999997065,
+          "Distance": 7920.0,
+          "Accepted": 15,
+          "Ordinary": 0,
+          "Instant": 0,
+          "FinishBonus": 0,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.9999899072955,
+          "TailTime": 35.79999995412405
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 100.0,
+      "Winner": 0,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        },
+        {
+          "Slot": 1,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000006,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417207
+        }
+      ]
+    },
+    {
+      "Profile": "fast",
+      "Step": 100.0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Slot": 0,
+          "Route": "trap",
+          "Finish": 33.8,
+          "ObservedFinishAt": 33.80000000000006,
+          "Distance": 7920.0,
+          "Accepted": 26,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 2,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.69999995417207
+        },
+        {
+          "Slot": 1,
+          "Route": "full",
+          "Finish": 33.199999999999996,
+          "ObservedFinishAt": 33.20000000000001,
+          "Distance": 7920.0,
+          "Accepted": 24,
+          "Ordinary": 9,
+          "Instant": 7,
+          "FinishBonus": 1,
+          "Negative": 0,
+          "Hits": 0,
+          "TailX": 7875.999989917842,
+          "TailTime": 33.09999995417202
+        }
+      ]
+    }
+  ]
+}

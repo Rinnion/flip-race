@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-21",
+  "status": "PASS narrow MIX-01 CPU gate",
+  "sources": [
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Tools/MixedAudit/Adapter.cs",
+      "sha256": "925A596F737520F854F7BD5A161846A2F19E0DB364EBDFC7A8ADC30B89D171E9"
+    },
+    {
+      "path": "Tools/MixedAudit/StageAudit.cs",
+      "sha256": "0119BDDB3CA04957E5CD2B3145C6FDA5B027DE027F4EBBD55A1097245E19E2E0"
+    },
+    {
+      "path": "Tools/MixedAudit/Fixtures.cs",
+      "sha256": "C164EC615F90614A6037D31CDEB1D9B6C26883BD54869275E9EAE3DF412E1B22"
+    },
+    {
+      "path": "Tools/MixedAudit/Recovery.cs",
+      "sha256": "330FB0316533F9BA639215EB5A11C1A70540C4DD5C2DFF4006192EFC43192E84"
+    },
+    {
+      "path": "Tools/MixedAudit/Run.ps1",
+      "sha256": "868F235F77E93AB5B3EDF6CCBADBFD0BB5C25710B8641D28867F7BD0F1C11823"
+    }
+  ],
+  "scopes": [
+    {
+      "name": "stage",
+      "checks": 10673,
+      "games": 456,
+      "output": "mixed-audit-stage.txt"
+    },
+    {
+      "name": "real-pulses-small",
+      "checks": 744,
+      "games": 48,
+      "output": "mixed-audit-pulses.txt"
+    },
+    {
+      "name": "held-small",
+      "checks": 1032,
+      "games": 72,
+      "output": "mixed-audit-held.txt",
+      "injection": "Only long ActiveEffect; no vertical/support/charge injection"
+    },
+    {
+      "name": "recovery",
+      "checks": 1110,
+      "witnesses": 16,
+      "candidates": 82,
+      "output": "mixed-audit-recovery.txt"
+    },
+    {
+      "name": "joint-diagnostic",
+      "checks": 109,
+      "games": 18,
+      "mirroredHitCases": 2,
+      "status": "Full Cartesian +/-60ms not guaranteed",
+      "output": "mixed-audit-joint.txt"
+    }
+  ],
+  "fullCourseStatus": "Not yet audited",
+  "browserReport": "MIX-STAGE-BROWSER.md",
+  "limits": [
+    "Individual timing windows do not imply joint box",
+    "Held service alternative at110 differs from baseline Fast One",
+    "Recovery sample finite, not exhaustive",
+    "No physical phone/multitouch/iframe or human comfort claim"
+  ],
+  "postStagePreparation": {
+    "note": "After stage capture, Run.ps1 gained full-prepare/full dispatch only. Stage implementations and frozen production remain unchanged. FullAudit is preparation, not a full-course PASS.",
+    "runnerSha256": "275E9BBE383438F5C9B692C6D501BBD7AA1BE6ADFB349EBC321B2C1A35185DD2",
+    "fullAuditSha256": "3E5FA8E4AE0283DA0FA9C65C76E22F1D21697584DC948DFA7A0F876CBAB3CFC0"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "scope": "Conservative bound over all ordinary-effect subsets, including unreachable subsets; not a route replay or human playtest.",
+  "track": "mixed-tricks",
+  "sourceHash": "01C67639E567F2325D668678786AE5EAFDB5352C8204D8CC876EF288645210E0",
+  "coreHash": "AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24",
+  "geometryHash": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+  "checks": 2093,
+  "subsetCount": 2048,
+  "finishX": 7876,
+  "worstEnd": 7120,
+  "worstMask": 1024,
+  "clearMargin": 756,
+  "releases": [
+    {
+      "Id": "mixed-tricks-standard-pad",
+      "Kind": "landing",
+      "LatestContact": 648,
+      "LatestRelease": 648,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-low-reward",
+      "Kind": "instant",
+      "LatestContact": 1372,
+      "LatestRelease": 1372,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-before",
+      "Kind": "positive",
+      "LatestContact": 1972,
+      "LatestRelease": 2265,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-high-reward",
+      "Kind": "instant",
+      "LatestContact": 2722,
+      "LatestRelease": 2722,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-negative-middle",
+      "Kind": "negative",
+      "LatestContact": 3842,
+      "LatestRelease": 3842,
+      "Work": 66
+    },
+    {
+      "Id": "mixed-tricks-chain-center",
+      "Kind": "instant",
+      "LatestContact": 4422,
+      "LatestRelease": 4422,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-chain-low",
+      "Kind": "instant",
+      "LatestContact": 4592,
+      "LatestRelease": 4592,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-wide-pad",
+      "Kind": "landing",
+      "LatestContact": 5326,
+      "LatestRelease": 5326,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-after",
+      "Kind": "positive",
+      "LatestContact": 6102,
+      "LatestRelease": 6102,
+      "Work": 198
+    },
+    {
+      "Id": "mixed-tricks-negative-final",
+      "Kind": "negative",
+      "LatestContact": 6522,
+      "LatestRelease": 6522,
+      "Work": 66
+    },
+    {
+      "Id": "mixed-tricks-ceiling-low-reward",
+      "Kind": "instant",
+      "LatestContact": 6922,
+      "LatestRelease": 6922,
+      "Work": 198
+    }
+  ],
+  "reasoning": "In distance coordinates each served .6s positive pulse consumes 198 units, each negative 66. Instant preemption preserves unfinished work; impacts freeze both X and effect service. Delaying each once-only release to its latest contact/clearance bound can only postpone the final workload completion. Failed linked rewards and skipped rings remove work. Sorting these upper release bounds and serving all selected work conservatively bounds every actual collection order; no queue is cleared at the finish."
+}

@@ -1,0 +1,95 @@
+{
+  "scope": "focused actual full r2 replay; Main large-pad repeat6th/10th frame after actual5026 launch; no claim about entire-route raster or jointbox",
+  "checks": 203,
+  "runs": 3,
+  "rows": [
+    {
+      "frame": 0.03125,
+      "offsetSeconds": [
+        0,
+        0.1875,
+        0.3125
+      ],
+      "samples": [
+        {
+          "X": 5026,
+          "Time": 21.045454545454547,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5067.25,
+          "Time": 21.232954545454547,
+          "CenterY": 172.0205078125,
+          "VerticalSpeed": -225.78125,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5094.75,
+          "Time": 21.357954545454547,
+          "CenterY": 138.6220703125,
+          "VerticalSpeed": -308.59375,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "finish": 33.199999999999996
+    },
+    {
+      "frame": 0.03333333333333333,
+      "offsetSeconds": [
+        0,
+        0.2,
+        0.3333333333333333
+      ],
+      "samples": [
+        {
+          "X": 5026,
+          "Time": 21.045454545454724,
+          "CenterY": 226,
+          "VerticalSpeed": 0,
+          "Airborne": false,
+          "AirFlipAvailable": true,
+          "Support": 1,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5069.999999999967,
+          "Time": 21.24545454545459,
+          "CenterY": 169.25000000003098,
+          "VerticalSpeed": -217.50000000009467,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        },
+        {
+          "X": 5099.3333333332985,
+          "Time": 21.378787878787918,
+          "CenterY": 134.3611111111318,
+          "VerticalSpeed": -305.83333333342296,
+          "Airborne": true,
+          "AirFlipAvailable": true,
+          "Support": 0,
+          "SupportSide": 1,
+          "SupportObstacleId": null
+        }
+      ],
+      "finish": 33.199999999999996
+    }
+  ]
+}

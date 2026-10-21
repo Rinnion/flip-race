@@ -1,0 +1,2494 @@
+[
+  {
+    "profile": "chosen",
+    "variant": "safe",
+    "track": {
+      "PositiveRingCount": 10,
+      "Id": "mixed-tricks",
+      "Name": "\u041F\u043E\u043B\u043E\u0441\u0430 \u0443\u043B\u043E\u0432\u043E\u043A",
+      "Focus": "\u041C\u0430\u043B\u044B\u0435 \u043F\u0440\u044B\u0436\u043A\u0438, \u0440\u0430\u0437\u043D\u044B\u0435 \u043E\u043A\u043D\u0430, \u043F\u0440\u0438\u043C\u0430\u043D\u043A\u0438 \u0438 \u0442\u043E\u0447\u043D\u044B\u0435 \u043F\u043E\u0441\u0430\u0434\u043A\u0438",
+      "Length": 7920,
+      "Obstacles": [
+        {
+          "Id": "mixed-tricks-small-pad",
+          "X": 600,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-second",
+          "X": 1050,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-large-before",
+          "X": 2050,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-straight",
+          "X": 3000,
+          "Width": 8,
+          "Height": 0,
+          "GapTop": 12,
+          "GapBottom": 228,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-floor",
+          "X": 3550,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 114,
+          "GapBottom": 224,
+          "TopOffsetX": 80,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-middle-offset",
+          "X": 4050,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 112,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-large-pad",
+          "X": 5200,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-after-stone",
+          "X": 5900,
+          "Width": 64,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-ceiling",
+          "X": 6800,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "ceiling"
+        },
+        {
+          "Id": "mixed-tricks-final-offset",
+          "X": 7260,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 112,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-ceiling",
+          "X": 7700,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 16,
+          "GapBottom": 126,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 80,
+          "Kind": "gate"
+        }
+      ],
+      "Cues": [
+        {
+          "X": 350,
+          "Text": "\u041C\u0430\u043B\u044B\u0435 \u043A\u0430\u043C\u043D\u0438: \u0432\u0435\u0440\u043D\u0438\u0441\u044C \u043D\u0430 \u0441\u0432\u043E\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 1600,
+          "Text": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u043A\u0430\u043C\u0435\u043D\u044C: \u0432\u044B\u0431\u0435\u0440\u0438 \u0434\u0440\u0443\u0433\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 2600,
+          "Text": "\u041F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E \u0438 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u043E\u0440\u043E\u0433"
+        },
+        {
+          "X": 3900,
+          "Text": "\u041F\u0440\u0438\u043C\u0430\u043D\u043A\u0430 \u0438 \u0434\u0432\u0435 \u0432\u044B\u0441\u043E\u0442\u044B"
+        },
+        {
+          "X": 4900,
+          "Text": "\u0422\u043E\u0447\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 \u0438 \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u0438\u0435"
+        },
+        {
+          "X": 6500,
+          "Text": "\u0417\u043D\u0430\u043A\u043E\u043C\u044B\u0435 \u043F\u0440\u0438\u0451\u043C\u044B \u0432\u043C\u0435\u0441\u0442\u0435"
+        }
+      ],
+      "RiskZones": [
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-standard-pad",
+          "ObstacleId": "mixed-tricks-small-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 632,
+          "Y": 192,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 32,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1350,
+          "Y": 200,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-before",
+          "ObstacleId": "mixed-tricks-large-before",
+          "Kind": "positive",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1950,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 2265,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-high-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 2700,
+          "Y": 60,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-center",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4400,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-low",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4570,
+          "Y": 180,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-wide-pad",
+          "ObstacleId": "mixed-tricks-large-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 5300,
+          "Y": 148,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 52,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": true,
+          "Id": "mixed-tricks-after",
+          "ObstacleId": "mixed-tricks-after-stone",
+          "Kind": "positive",
+          "Placement": "after",
+          "FreeReward": false,
+          "X": 6080,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 5979,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-ceiling-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 6900,
+          "Y": 40,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": true,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-finish",
+          "ObstacleId": null,
+          "Kind": "finish",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 7876,
+          "Y": 32,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        }
+      ],
+      "SafeRoute": [],
+      "RiskRoute": [],
+      "NegativeEnabled": true
+    },
+    "inputs": [
+      {
+        "X": 515.7735849056604,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 965.7735849056604,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 1910,
+        "Decision": "2: \u0443\u0439\u0442\u0438 \u043E\u0442 \u0431\u043E\u043B\u044C\u0448\u043E\u0433\u043E / before"
+      },
+      {
+        "X": 1954.000000000001,
+        "Decision": "2: \u0443\u0439\u0442\u0438 \u043E\u0442 \u0431\u043E\u043B\u044C\u0448\u043E\u0433\u043E / before"
+      },
+      {
+        "X": 2560,
+        "Decision": "3: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u0440\u044F\u043C\u043E\u043C\u0443 \u043E\u043A\u043D\u0443 / \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 2604.000000000001,
+        "Decision": "3: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u0440\u044F\u043C\u043E\u043C\u0443 \u043E\u043A\u043D\u0443 / \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 2887.7735849056603,
+        "Decision": "3: \u043F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E"
+      },
+      {
+        "X": 3441.7735849056603,
+        "Decision": "3: \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      },
+      {
+        "X": 4030.844877314131,
+        "Decision": "4: \u0446\u0435\u043D\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u043C\u0435\u0449\u0451\u043D\u043D\u044B\u0439 \u0432\u0445\u043E\u0434"
+      },
+      {
+        "X": 4074.8448773141317,
+        "Decision": "4: \u0446\u0435\u043D\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u043C\u0435\u0449\u0451\u043D\u043D\u044B\u0439 \u0432\u0445\u043E\u0434"
+      },
+      {
+        "X": 4800,
+        "Decision": "5: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u043E\u0441\u0430\u0434\u043E\u0447\u043D\u043E\u0439 \u043F\u043B\u043E\u0449\u0430\u0434\u043A\u0435"
+      },
+      {
+        "X": 4843.999999999996,
+        "Decision": "5: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u043E\u0441\u0430\u0434\u043E\u0447\u043D\u043E\u0439 \u043F\u043B\u043E\u0449\u0430\u0434\u043A\u0435"
+      },
+      {
+        "X": 5065,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5126,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5333,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5431,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5765,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 5809,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6160,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6204,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6400,
+        "Decision": "6: \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043D\u0430 \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+      },
+      {
+        "X": 6443.999999999996,
+        "Decision": "6: \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043D\u0430 \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+      },
+      {
+        "X": 6715.773584905661,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u043C\u0430\u043B\u044B\u0439 / \u043D\u0438\u0437\u043A\u0438\u0439 \u0431\u043E\u043D\u0443\u0441"
+      },
+      {
+        "X": 7240.844877314131,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u043C\u0435\u043D\u0430 \u0441\u0442\u043E\u0440\u043E\u043D\u044B"
+      },
+      {
+        "X": 7284.844877314127,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u043C\u0435\u043D\u0430 \u0441\u0442\u043E\u0440\u043E\u043D\u044B"
+      },
+      {
+        "X": 7420,
+        "Decision": "6: \u043F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u0432\u0435\u0440\u0445\u043D\u0435\u043C\u0443 \u043D\u0438\u0437\u043A\u043E\u043C\u0443 \u043E\u043A\u043D\u0443"
+      },
+      {
+        "X": 7463.999999999996,
+        "Decision": "6: \u043F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u0432\u0435\u0440\u0445\u043D\u0435\u043C\u0443 \u043D\u0438\u0437\u043A\u043E\u043C\u0443 \u043E\u043A\u043D\u0443"
+      },
+      {
+        "X": 7591.773584905661,
+        "Decision": "6: \u0432\u0435\u0440\u0445\u043D\u0438\u0439 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      }
+    ],
+    "marks": [
+      {
+        "name": "first-small",
+        "x": 900,
+        "time": 4.0909090909090855,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "second-small",
+        "x": 1250,
+        "time": 5.681818181818171,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "episode1",
+        "x": 1700,
+        "time": 7.72727272727271,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "large-opposite",
+        "x": 2300,
+        "time": 10.454545454545459,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-entry",
+        "x": 2850,
+        "time": 12.954545454545482,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-exit",
+        "x": 3260,
+        "time": 14.818181818181872,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "low-exit",
+        "x": 3800,
+        "time": 17.27272727272736,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "offset-exit",
+        "x": 4230,
+        "time": 19.227272727272826,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "chain-exit",
+        "x": 4770,
+        "time": 21.681818181818315,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-entry",
+        "x": 5000,
+        "time": 22.727272727272883,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-exit",
+        "x": 5580,
+        "time": 25.363636363636555,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "after-exit",
+        "x": 6330,
+        "time": 28.77272727272751,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "final-small",
+        "x": 7150,
+        "time": 32.50000000000027,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "final-low",
+        "x": 7825,
+        "time": 35.56818181818203,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      }
+    ],
+    "finish": 36
+  },
+  {
+    "profile": "chosen",
+    "variant": "full",
+    "track": {
+      "PositiveRingCount": 10,
+      "Id": "mixed-tricks",
+      "Name": "\u041F\u043E\u043B\u043E\u0441\u0430 \u0443\u043B\u043E\u0432\u043E\u043A",
+      "Focus": "\u041C\u0430\u043B\u044B\u0435 \u043F\u0440\u044B\u0436\u043A\u0438, \u0440\u0430\u0437\u043D\u044B\u0435 \u043E\u043A\u043D\u0430, \u043F\u0440\u0438\u043C\u0430\u043D\u043A\u0438 \u0438 \u0442\u043E\u0447\u043D\u044B\u0435 \u043F\u043E\u0441\u0430\u0434\u043A\u0438",
+      "Length": 7920,
+      "Obstacles": [
+        {
+          "Id": "mixed-tricks-small-pad",
+          "X": 600,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-second",
+          "X": 1050,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-large-before",
+          "X": 2050,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-straight",
+          "X": 3000,
+          "Width": 8,
+          "Height": 0,
+          "GapTop": 12,
+          "GapBottom": 228,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-floor",
+          "X": 3550,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 114,
+          "GapBottom": 224,
+          "TopOffsetX": 80,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-middle-offset",
+          "X": 4050,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 112,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-large-pad",
+          "X": 5200,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-after-stone",
+          "X": 5900,
+          "Width": 64,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-ceiling",
+          "X": 6800,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "ceiling"
+        },
+        {
+          "Id": "mixed-tricks-final-offset",
+          "X": 7260,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 112,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-ceiling",
+          "X": 7700,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 16,
+          "GapBottom": 126,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 80,
+          "Kind": "gate"
+        }
+      ],
+      "Cues": [
+        {
+          "X": 350,
+          "Text": "\u041C\u0430\u043B\u044B\u0435 \u043A\u0430\u043C\u043D\u0438: \u0432\u0435\u0440\u043D\u0438\u0441\u044C \u043D\u0430 \u0441\u0432\u043E\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 1600,
+          "Text": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u043A\u0430\u043C\u0435\u043D\u044C: \u0432\u044B\u0431\u0435\u0440\u0438 \u0434\u0440\u0443\u0433\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 2600,
+          "Text": "\u041F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E \u0438 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u043E\u0440\u043E\u0433"
+        },
+        {
+          "X": 3900,
+          "Text": "\u041F\u0440\u0438\u043C\u0430\u043D\u043A\u0430 \u0438 \u0434\u0432\u0435 \u0432\u044B\u0441\u043E\u0442\u044B"
+        },
+        {
+          "X": 4900,
+          "Text": "\u0422\u043E\u0447\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 \u0438 \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u0438\u0435"
+        },
+        {
+          "X": 6500,
+          "Text": "\u0417\u043D\u0430\u043A\u043E\u043C\u044B\u0435 \u043F\u0440\u0438\u0451\u043C\u044B \u0432\u043C\u0435\u0441\u0442\u0435"
+        }
+      ],
+      "RiskZones": [
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-standard-pad",
+          "ObstacleId": "mixed-tricks-small-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 632,
+          "Y": 192,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 32,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1350,
+          "Y": 200,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-before",
+          "ObstacleId": "mixed-tricks-large-before",
+          "Kind": "positive",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1950,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 2265,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-high-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 2700,
+          "Y": 60,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-center",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4400,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-low",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4570,
+          "Y": 180,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-wide-pad",
+          "ObstacleId": "mixed-tricks-large-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 5300,
+          "Y": 148,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 52,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": true,
+          "Id": "mixed-tricks-after",
+          "ObstacleId": "mixed-tricks-after-stone",
+          "Kind": "positive",
+          "Placement": "after",
+          "FreeReward": false,
+          "X": 6080,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 5979,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-ceiling-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 6900,
+          "Y": 40,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": true,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-finish",
+          "ObstacleId": null,
+          "Kind": "finish",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 7876,
+          "Y": 32,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        }
+      ],
+      "SafeRoute": [],
+      "RiskRoute": [],
+      "NegativeEnabled": true
+    },
+    "inputs": [
+      {
+        "X": 435.1811187353192,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 965.7735849056604,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 1320,
+        "Decision": "1: \u043D\u0435\u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u0430\u044F \u043D\u0438\u0437\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 1866.8139808283297,
+        "Decision": "2: \u0443\u0439\u0442\u0438 \u043E\u0442 \u0431\u043E\u043B\u044C\u0448\u043E\u0433\u043E / before"
+      },
+      {
+        "X": 1910.8139808283306,
+        "Decision": "2: \u0443\u0439\u0442\u0438 \u043E\u0442 \u0431\u043E\u043B\u044C\u0448\u043E\u0433\u043E / before"
+      },
+      {
+        "X": 2666.1590934524424,
+        "Decision": "3: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u0440\u044F\u043C\u043E\u043C\u0443 \u043E\u043A\u043D\u0443 / \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 2722.20159047915,
+        "Decision": "3: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u0440\u044F\u043C\u043E\u043C\u0443 \u043E\u043A\u043D\u0443 / \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 2887.7735849056603,
+        "Decision": "3: \u043F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E"
+      },
+      {
+        "X": 3441.7735849056603,
+        "Decision": "3: \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      },
+      {
+        "X": 4030.844877314131,
+        "Decision": "4: \u0446\u0435\u043D\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u043C\u0435\u0449\u0451\u043D\u043D\u044B\u0439 \u0432\u0445\u043E\u0434"
+      },
+      {
+        "X": 4074.8448773141317,
+        "Decision": "4: \u0446\u0435\u043D\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u043C\u0435\u0449\u0451\u043D\u043D\u044B\u0439 \u0432\u0445\u043E\u0434"
+      },
+      {
+        "X": 4316.8139808283295,
+        "Decision": "4: \u0446\u0435\u043F\u043E\u0447\u043A\u0430, \u0446\u0435\u043D\u0442\u0440"
+      },
+      {
+        "X": 4360.813980828326,
+        "Decision": "4: \u0446\u0435\u043F\u043E\u0447\u043A\u0430, \u0446\u0435\u043D\u0442\u0440"
+      },
+      {
+        "X": 4519.238640178664,
+        "Decision": "4: \u0446\u0435\u043F\u043E\u0447\u043A\u0430, \u0434\u0440\u0443\u0433\u0430\u044F \u0432\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434 \u0443\u0441\u043A\u043E\u0440\u0435\u043D\u0438\u0435\u043C"
+      },
+      {
+        "X": 5026,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5064,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5092,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5765,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 5809,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6004,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6055,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6400,
+        "Decision": "6: \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043D\u0430 \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+      },
+      {
+        "X": 6443.999999999996,
+        "Decision": "6: \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043D\u0430 \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+      },
+      {
+        "X": 6685,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u043C\u0430\u043B\u044B\u0439 / \u043D\u0438\u0437\u043A\u0438\u0439 \u0431\u043E\u043D\u0443\u0441"
+      },
+      {
+        "X": 7240.844877314131,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u043C\u0435\u043D\u0430 \u0441\u0442\u043E\u0440\u043E\u043D\u044B"
+      },
+      {
+        "X": 7284.844877314127,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u043C\u0435\u043D\u0430 \u0441\u0442\u043E\u0440\u043E\u043D\u044B"
+      },
+      {
+        "X": 7420,
+        "Decision": "6: \u043F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u0432\u0435\u0440\u0445\u043D\u0435\u043C\u0443 \u043D\u0438\u0437\u043A\u043E\u043C\u0443 \u043E\u043A\u043D\u0443"
+      },
+      {
+        "X": 7463.999999999996,
+        "Decision": "6: \u043F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u0432\u0435\u0440\u0445\u043D\u0435\u043C\u0443 \u043D\u0438\u0437\u043A\u043E\u043C\u0443 \u043E\u043A\u043D\u0443"
+      },
+      {
+        "X": 7591.773584905661,
+        "Decision": "6: \u0432\u0435\u0440\u0445\u043D\u0438\u0439 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      },
+      {
+        "X": 7863.922760472742,
+        "Decision": "6: \u0442\u043E\u0447\u043D\u044B\u0439 \u0444\u0438\u043D\u0438\u0448"
+      }
+    ],
+    "marks": [
+      {
+        "name": "first-small",
+        "x": 900,
+        "time": 3.7909090909090857,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 1,
+        "Collisions": 0
+      },
+      {
+        "name": "second-small",
+        "x": 1250,
+        "time": 5.381818181818171,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 1,
+        "Collisions": 0
+      },
+      {
+        "name": "episode1",
+        "x": 1700,
+        "time": 7.127272727272711,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 2,
+        "Collisions": 0
+      },
+      {
+        "name": "large-opposite",
+        "x": 2300,
+        "time": 9.801515151515149,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 330,
+        "BoostsEarned": 3,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-entry",
+        "x": 2850,
+        "time": 11.80617287787733,
+        "Support": 0,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 330,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-exit",
+        "x": 3260,
+        "time": 13.61818181818186,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "low-exit",
+        "x": 3800,
+        "time": 16.072727272727345,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "offset-exit",
+        "x": 4230,
+        "time": 18.027272727272813,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "chain-exit",
+        "x": 4770,
+        "time": 19.902190866717,
+        "Support": 0,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 330,
+        "BoostsEarned": 6,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-entry",
+        "x": 5000,
+        "time": 20.92727272727286,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 6,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-exit",
+        "x": 5580,
+        "time": 23.263636363636532,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 7,
+        "Collisions": 0
+      },
+      {
+        "name": "after-exit",
+        "x": 6330,
+        "time": 26.37272727272748,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 8,
+        "Collisions": 0
+      },
+      {
+        "name": "final-small",
+        "x": 7150,
+        "time": 29.800000000000264,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 9,
+        "Collisions": 0
+      },
+      {
+        "name": "final-low",
+        "x": 7825,
+        "time": 32.86818181818208,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 9,
+        "Collisions": 0
+      }
+    ],
+    "finish": 33.199999999999996
+  },
+  {
+    "profile": "fast-flip",
+    "variant": "safe",
+    "track": {
+      "PositiveRingCount": 10,
+      "Id": "mixed-tricks",
+      "Name": "\u041F\u043E\u043B\u043E\u0441\u0430 \u0443\u043B\u043E\u0432\u043E\u043A",
+      "Focus": "\u041C\u0430\u043B\u044B\u0435 \u043F\u0440\u044B\u0436\u043A\u0438, \u0440\u0430\u0437\u043D\u044B\u0435 \u043E\u043A\u043D\u0430, \u043F\u0440\u0438\u043C\u0430\u043D\u043A\u0438 \u0438 \u0442\u043E\u0447\u043D\u044B\u0435 \u043F\u043E\u0441\u0430\u0434\u043A\u0438",
+      "Length": 7920,
+      "Obstacles": [
+        {
+          "Id": "mixed-tricks-small-pad",
+          "X": 600,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-second",
+          "X": 1050,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-large-before",
+          "X": 2050,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-straight",
+          "X": 3000,
+          "Width": 8,
+          "Height": 0,
+          "GapTop": 12,
+          "GapBottom": 228,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-floor",
+          "X": 3550,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 114,
+          "GapBottom": 224,
+          "TopOffsetX": 80,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-middle-offset",
+          "X": 4050,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 112,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-large-pad",
+          "X": 5200,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-after-stone",
+          "X": 5900,
+          "Width": 64,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-ceiling",
+          "X": 6800,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "ceiling"
+        },
+        {
+          "Id": "mixed-tricks-final-offset",
+          "X": 7260,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 112,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-ceiling",
+          "X": 7700,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 16,
+          "GapBottom": 126,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 80,
+          "Kind": "gate"
+        }
+      ],
+      "Cues": [
+        {
+          "X": 350,
+          "Text": "\u041C\u0430\u043B\u044B\u0435 \u043A\u0430\u043C\u043D\u0438: \u0432\u0435\u0440\u043D\u0438\u0441\u044C \u043D\u0430 \u0441\u0432\u043E\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 1600,
+          "Text": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u043A\u0430\u043C\u0435\u043D\u044C: \u0432\u044B\u0431\u0435\u0440\u0438 \u0434\u0440\u0443\u0433\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 2600,
+          "Text": "\u041F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E \u0438 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u043E\u0440\u043E\u0433"
+        },
+        {
+          "X": 3900,
+          "Text": "\u041F\u0440\u0438\u043C\u0430\u043D\u043A\u0430 \u0438 \u0434\u0432\u0435 \u0432\u044B\u0441\u043E\u0442\u044B"
+        },
+        {
+          "X": 4900,
+          "Text": "\u0422\u043E\u0447\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 \u0438 \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u0438\u0435"
+        },
+        {
+          "X": 6500,
+          "Text": "\u0417\u043D\u0430\u043A\u043E\u043C\u044B\u0435 \u043F\u0440\u0438\u0451\u043C\u044B \u0432\u043C\u0435\u0441\u0442\u0435"
+        }
+      ],
+      "RiskZones": [
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-standard-pad",
+          "ObstacleId": "mixed-tricks-small-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 632,
+          "Y": 192,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 32,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1350,
+          "Y": 200,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-before",
+          "ObstacleId": "mixed-tricks-large-before",
+          "Kind": "positive",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1950,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 2265,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-high-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 2700,
+          "Y": 60,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-center",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4400,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-low",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4570,
+          "Y": 180,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-wide-pad",
+          "ObstacleId": "mixed-tricks-large-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 5300,
+          "Y": 148,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 52,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": true,
+          "Id": "mixed-tricks-after",
+          "ObstacleId": "mixed-tricks-after-stone",
+          "Kind": "positive",
+          "Placement": "after",
+          "FreeReward": false,
+          "X": 6080,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 5979,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-ceiling-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 6900,
+          "Y": 40,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": true,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-finish",
+          "ObstacleId": null,
+          "Kind": "finish",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 7876,
+          "Y": 32,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        }
+      ],
+      "SafeRoute": [],
+      "RiskRoute": [],
+      "NegativeEnabled": true
+    },
+    "inputs": [
+      {
+        "X": 530,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 596,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 980,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 1046,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 1940,
+        "Decision": "2: \u0443\u0439\u0442\u0438 \u043E\u0442 \u0431\u043E\u043B\u044C\u0448\u043E\u0433\u043E / before"
+      },
+      {
+        "X": 2560,
+        "Decision": "3: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u0440\u044F\u043C\u043E\u043C\u0443 \u043E\u043A\u043D\u0443 / \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 2954.0203592975777,
+        "Decision": "3: \u043F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E"
+      },
+      {
+        "X": 3526.917064816087,
+        "Decision": "3: \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      },
+      {
+        "X": 4055.150321356292,
+        "Decision": "4: \u0446\u0435\u043D\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u043C\u0435\u0449\u0451\u043D\u043D\u044B\u0439 \u0432\u0445\u043E\u0434"
+      },
+      {
+        "X": 4800,
+        "Decision": "5: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u043E\u0441\u0430\u0434\u043E\u0447\u043D\u043E\u0439 \u043F\u043B\u043E\u0449\u0430\u0434\u043A\u0435"
+      },
+      {
+        "X": 5065.5,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5422,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5785.5,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6080,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 7030,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u043C\u0430\u043B\u044B\u0439 / \u043D\u0438\u0437\u043A\u0438\u0439 \u0431\u043E\u043D\u0443\u0441"
+      },
+      {
+        "X": 7265.150321356292,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u043C\u0435\u043D\u0430 \u0441\u0442\u043E\u0440\u043E\u043D\u044B"
+      },
+      {
+        "X": 7676.917064816087,
+        "Decision": "6: \u0432\u0435\u0440\u0445\u043D\u0438\u0439 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      }
+    ],
+    "marks": [
+      {
+        "name": "first-small",
+        "x": 900,
+        "time": 4.0909090909090855,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "second-small",
+        "x": 1250,
+        "time": 5.681818181818171,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "episode1",
+        "x": 1700,
+        "time": 7.72727272727271,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "large-opposite",
+        "x": 2300,
+        "time": 10.454545454545471,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-entry",
+        "x": 2850,
+        "time": 12.954545454545505,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-exit",
+        "x": 3260,
+        "time": 14.818181818181895,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "low-exit",
+        "x": 3800,
+        "time": 17.272727272727384,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "offset-exit",
+        "x": 4230,
+        "time": 19.227272727272865,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "chain-exit",
+        "x": 4770,
+        "time": 21.681818181818354,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-entry",
+        "x": 5000,
+        "time": 22.72727272727291,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-exit",
+        "x": 5580,
+        "time": 25.363636363636584,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "after-exit",
+        "x": 6330,
+        "time": 28.77272727272754,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "final-small",
+        "x": 7150,
+        "time": 32.500000000000284,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      },
+      {
+        "name": "final-low",
+        "x": 7825,
+        "time": 35.568181818181934,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 0,
+        "Collisions": 0
+      }
+    ],
+    "finish": 36
+  },
+  {
+    "profile": "fast-flip",
+    "variant": "full",
+    "track": {
+      "PositiveRingCount": 10,
+      "Id": "mixed-tricks",
+      "Name": "\u041F\u043E\u043B\u043E\u0441\u0430 \u0443\u043B\u043E\u0432\u043E\u043A",
+      "Focus": "\u041C\u0430\u043B\u044B\u0435 \u043F\u0440\u044B\u0436\u043A\u0438, \u0440\u0430\u0437\u043D\u044B\u0435 \u043E\u043A\u043D\u0430, \u043F\u0440\u0438\u043C\u0430\u043D\u043A\u0438 \u0438 \u0442\u043E\u0447\u043D\u044B\u0435 \u043F\u043E\u0441\u0430\u0434\u043A\u0438",
+      "Length": 7920,
+      "Obstacles": [
+        {
+          "Id": "mixed-tricks-small-pad",
+          "X": 600,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-second",
+          "X": 1050,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-large-before",
+          "X": 2050,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-straight",
+          "X": 3000,
+          "Width": 8,
+          "Height": 0,
+          "GapTop": 12,
+          "GapBottom": 228,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-floor",
+          "X": 3550,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 114,
+          "GapBottom": 224,
+          "TopOffsetX": 80,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-middle-offset",
+          "X": 4050,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 112,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-large-pad",
+          "X": 5200,
+          "Width": 200,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-after-stone",
+          "X": 5900,
+          "Width": 64,
+          "Height": 92,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "floor"
+        },
+        {
+          "Id": "mixed-tricks-small-ceiling",
+          "X": 6800,
+          "Width": 64,
+          "Height": 48,
+          "GapTop": 0,
+          "GapBottom": 0,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 0,
+          "Kind": "ceiling"
+        },
+        {
+          "Id": "mixed-tricks-final-offset",
+          "X": 7260,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 110,
+          "GapBottom": 130,
+          "TopOffsetX": 112,
+          "BottomOffsetX": 0,
+          "Kind": "gate"
+        },
+        {
+          "Id": "mixed-tricks-low-ceiling",
+          "X": 7700,
+          "Width": 16,
+          "Height": 0,
+          "GapTop": 16,
+          "GapBottom": 126,
+          "TopOffsetX": 0,
+          "BottomOffsetX": 80,
+          "Kind": "gate"
+        }
+      ],
+      "Cues": [
+        {
+          "X": 350,
+          "Text": "\u041C\u0430\u043B\u044B\u0435 \u043A\u0430\u043C\u043D\u0438: \u0432\u0435\u0440\u043D\u0438\u0441\u044C \u043D\u0430 \u0441\u0432\u043E\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 1600,
+          "Text": "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u043A\u0430\u043C\u0435\u043D\u044C: \u0432\u044B\u0431\u0435\u0440\u0438 \u0434\u0440\u0443\u0433\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+        },
+        {
+          "X": 2600,
+          "Text": "\u041F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E \u0438 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u043E\u0440\u043E\u0433"
+        },
+        {
+          "X": 3900,
+          "Text": "\u041F\u0440\u0438\u043C\u0430\u043D\u043A\u0430 \u0438 \u0434\u0432\u0435 \u0432\u044B\u0441\u043E\u0442\u044B"
+        },
+        {
+          "X": 4900,
+          "Text": "\u0422\u043E\u0447\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 \u0438 \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u0438\u0435"
+        },
+        {
+          "X": 6500,
+          "Text": "\u0417\u043D\u0430\u043A\u043E\u043C\u044B\u0435 \u043F\u0440\u0438\u0451\u043C\u044B \u0432\u043C\u0435\u0441\u0442\u0435"
+        }
+      ],
+      "RiskZones": [
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-standard-pad",
+          "ObstacleId": "mixed-tricks-small-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 632,
+          "Y": 192,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 32,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1350,
+          "Y": 200,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-before",
+          "ObstacleId": "mixed-tricks-large-before",
+          "Kind": "positive",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 1950,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 2265,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-high-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 2700,
+          "Y": 60,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-center",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4400,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-chain-low",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 4570,
+          "Y": 180,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": true,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-wide-pad",
+          "ObstacleId": "mixed-tricks-large-pad",
+          "Kind": "landing",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 5300,
+          "Y": 148,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 52,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": true,
+          "Id": "mixed-tricks-after",
+          "ObstacleId": "mixed-tricks-after-stone",
+          "Kind": "positive",
+          "Placement": "after",
+          "FreeReward": false,
+          "X": 6080,
+          "Y": 120,
+          "Radius": 8,
+          "ClearX": 5979,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": true,
+          "IsLanding": false,
+          "IsFinish": false,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-ceiling-low-reward",
+          "ObstacleId": null,
+          "Kind": "instant",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 6900,
+          "Y": 40,
+          "Radius": 8,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        },
+        {
+          "IsNegative": false,
+          "IsInstant": false,
+          "IsLanding": false,
+          "IsFinish": true,
+          "AfterObstacle": false,
+          "Id": "mixed-tricks-finish",
+          "ObstacleId": null,
+          "Kind": "finish",
+          "Placement": "before",
+          "FreeReward": false,
+          "X": 7876,
+          "Y": 32,
+          "Radius": 6,
+          "ClearX": 0,
+          "SafeFlipX": 0,
+          "RiskFlipX": 0,
+          "LandingWidth": 0,
+          "FinishHeight": 16
+        }
+      ],
+      "SafeRoute": [],
+      "RiskRoute": [],
+      "NegativeEnabled": true
+    },
+    "inputs": [
+      {
+        "X": 430,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 558.1196111528561,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 980,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 1046,
+        "Decision": "1: \u043C\u0430\u043B\u044B\u0439 \u2014 \u0441\u0432\u043E\u044F \u0441\u0442\u043E\u0440\u043E\u043D\u0430 / \u0442\u043E\u0447\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+      },
+      {
+        "X": 1320,
+        "Decision": "1: \u043D\u0435\u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u0430\u044F \u043D\u0438\u0437\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 1480,
+        "Decision": "1: \u043D\u0435\u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u0430\u044F \u043D\u0438\u0437\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 1891.1393785965915,
+        "Decision": "2: \u0443\u0439\u0442\u0438 \u043E\u0442 \u0431\u043E\u043B\u044C\u0448\u043E\u0433\u043E / before"
+      },
+      {
+        "X": 2662.141678133602,
+        "Decision": "3: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u0440\u044F\u043C\u043E\u043C\u0443 \u043E\u043A\u043D\u0443 / \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
+      },
+      {
+        "X": 2954.0203592975777,
+        "Decision": "3: \u043F\u0440\u044F\u043C\u043E\u0435 \u043E\u043A\u043D\u043E"
+      },
+      {
+        "X": 3526.917064816087,
+        "Decision": "3: \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      },
+      {
+        "X": 4055.150321356292,
+        "Decision": "4: \u0446\u0435\u043D\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u043C\u0435\u0449\u0451\u043D\u043D\u044B\u0439 \u0432\u0445\u043E\u0434"
+      },
+      {
+        "X": 4341.139378596592,
+        "Decision": "4: \u0446\u0435\u043F\u043E\u0447\u043A\u0430, \u0446\u0435\u043D\u0442\u0440"
+      },
+      {
+        "X": 4513.2125172004025,
+        "Decision": "4: \u0446\u0435\u043F\u043E\u0447\u043A\u0430, \u0434\u0440\u0443\u0433\u0430\u044F \u0432\u044B\u0441\u043E\u0442\u0430 \u043F\u043E\u0434 \u0443\u0441\u043A\u043E\u0440\u0435\u043D\u0438\u0435\u043C"
+      },
+      {
+        "X": 4800,
+        "Decision": "5: \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u043F\u043E\u0441\u0430\u0434\u043E\u0447\u043D\u043E\u0439 \u043F\u043B\u043E\u0449\u0430\u0434\u043A\u0435"
+      },
+      {
+        "X": 5065.5,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5237.5,
+        "Decision": "5: \u043A\u0440\u0443\u043F\u043D\u0430\u044F \u043F\u043E\u0441\u0430\u0434\u043A\u0430 / \u043E\u0431\u0445\u043E\u0434"
+      },
+      {
+        "X": 5785.5,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6030.5,
+        "Decision": "5: \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u0437\u0432\u0440\u0430\u0442 \u0437\u0430 after"
+      },
+      {
+        "X": 6400,
+        "Decision": "6: \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043D\u0430 \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443"
+      },
+      {
+        "X": 6730,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u043C\u0430\u043B\u044B\u0439 / \u043D\u0438\u0437\u043A\u0438\u0439 \u0431\u043E\u043D\u0443\u0441"
+      },
+      {
+        "X": 6796,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u043C\u0430\u043B\u044B\u0439 / \u043D\u0438\u0437\u043A\u0438\u0439 \u0431\u043E\u043D\u0443\u0441"
+      },
+      {
+        "X": 7265.150321356292,
+        "Decision": "6: \u0437\u0435\u0440\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u043C\u0435\u043D\u0430 \u0441\u0442\u043E\u0440\u043E\u043D\u044B"
+      },
+      {
+        "X": 7676.917064816087,
+        "Decision": "6: \u0432\u0435\u0440\u0445\u043D\u0438\u0439 \u043D\u0438\u0437\u043A\u0438\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      },
+      {
+        "X": 7853.945775241146,
+        "Decision": "6: \u0442\u043E\u0447\u043D\u044B\u0439 \u0444\u0438\u043D\u0438\u0448"
+      }
+    ],
+    "marks": [
+      {
+        "name": "first-small",
+        "x": 900,
+        "time": 3.790909090909086,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 1,
+        "Collisions": 0
+      },
+      {
+        "name": "second-small",
+        "x": 1250,
+        "time": 5.381818181818172,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 1,
+        "Collisions": 0
+      },
+      {
+        "name": "episode1",
+        "x": 1700,
+        "time": 7.127272727272711,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 2,
+        "Collisions": 0
+      },
+      {
+        "name": "large-opposite",
+        "x": 2300,
+        "time": 9.801515151515158,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 330,
+        "BoostsEarned": 3,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-entry",
+        "x": 2850,
+        "time": 11.812342769820395,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 330,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "straight-exit",
+        "x": 3260,
+        "time": 13.618181818181876,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "low-exit",
+        "x": 3800,
+        "time": 16.072727272727363,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "offset-exit",
+        "x": 4230,
+        "time": 18.027272727272845,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 4,
+        "Collisions": 0
+      },
+      {
+        "name": "chain-exit",
+        "x": 4770,
+        "time": 19.911444475207915,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 330,
+        "BoostsEarned": 6,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-entry",
+        "x": 5000,
+        "time": 20.927272727272882,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 6,
+        "Collisions": 0
+      },
+      {
+        "name": "pad-exit",
+        "x": 5580,
+        "time": 23.26363636363655,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 7,
+        "Collisions": 0
+      },
+      {
+        "name": "after-exit",
+        "x": 6330,
+        "time": 26.372727272727502,
+        "Support": 1,
+        "SupportSide": 1,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 8,
+        "Collisions": 0
+      },
+      {
+        "name": "final-small",
+        "x": 7150,
+        "time": 29.800000000000274,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 9,
+        "Collisions": 0
+      },
+      {
+        "name": "final-low",
+        "x": 7825,
+        "time": 32.86818181818208,
+        "Support": 1,
+        "SupportSide": 0,
+        "AirFlipAvailable": true,
+        "CurrentSpeed": 220,
+        "BoostsEarned": 9,
+        "Collisions": 0
+      }
+    ],
+    "finish": 33.199999999999996
+  }
+]

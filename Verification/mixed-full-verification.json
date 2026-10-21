@@ -1,0 +1,111 @@
+{
+  "status": "PASS CPU/full replay/catalogue; build/browser/package pending",
+  "date": "2026-10-21",
+  "sources": [
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "01C67639E567F2325D668678786AE5EAFDB5352C8204D8CC876EF288645210E0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "5B084615A30EA97B23ACF3A3CDB2FC87E4686ABE37ACE0CE83154A3DEA13263A"
+    },
+    {
+      "path": "Tools/MixedAudit/FullAudit.cs",
+      "sha256": "BDF3784B5316568E61E12BA583960C197BA7DF2D16C48F8168D0995E88CDBB3B"
+    },
+    {
+      "path": "Tools/MixedAudit/Run.ps1",
+      "sha256": "275E9BBE383438F5C9B692C6D501BBD7AA1BE6ADFB349EBC321B2C1A35185DD2"
+    },
+    {
+      "path": "Tools/MixedCatalogCheck/Program.cs",
+      "sha256": "0AB2A55CCFEF4A10096D2C380BE26E76BAE071D0DACB79DF06342179F1ED666B"
+    },
+    {
+      "path": "Tools/MixedCatalogCheck/MixedCatalogCheck.csproj",
+      "sha256": "DFE6084C67068DE531AE568C93605DB1DD65B669EB15207BE19C80CDE3DB48A8"
+    }
+  ],
+  "commentOnlyEquivalence": {
+    "testedSha256": "4658023AE889FFAAD2AE8CEB85A842A5214B3FCA8A7950D9731C6F43D8905BBE",
+    "finalSha256": "01C67639E567F2325D668678786AE5EAFDB5352C8204D8CC876EF288645210E0",
+    "reverseSingleCommentSha256": "4658023AE889FFAAD2AE8CEB85A842A5214B3FCA8A7950D9731C6F43D8905BBE",
+    "exactMatch": true
+  },
+  "preservedSource": [
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "AA91B96919AE318607D8BFF180AE7A54879FA54C2C6072003F5B245A57E10C24",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "901255021DD6069E43734E80D16B88E5DC82824CB973239A451D8999317FA576",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "8B62C3256FBCD3F53A8BFC90D552640C73AC43A0FC3A04251B785F5DAD2088C4",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "75AC8DD76890190D5CD1BD2186D62A31015FFBA31B196A3AFC6A932A347BB3E2",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "07891AD429E5D58B5A37BED4CF358B9DDDAC159C214617424BA3FFA38B3185E6",
+      "baselineMatch": true
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE",
+      "baselineMatch": true
+    }
+  ],
+  "baseline461Archive": {
+    "path": "Releases/flip-race-v4.6.1-trial-webgl.zip",
+    "sha256": "63AAD2FF4F42D1A753E1237EC608FB173EB4DEB183E53A5F7634A3F0F8FA7D85",
+    "unchanged": true
+  },
+  "fullReplay": {
+    "checks": 409646,
+    "games": 84,
+    "playerFinishes": 168,
+    "output": "mixed-full-independent.json",
+    "independentRouteDiscovery": false
+  },
+  "catalogue": {
+    "checks": 2870,
+    "output": "mixed-catalog-check.txt",
+    "layout": "mixed-catalog-layout.json",
+    "stageBranchChecks": 12,
+    "stageBranchOutput": "mixed-catalog-stage-branch.txt"
+  },
+  "scopeLimits": [
+    "Author routes replayed by independent two-player scheduler",
+    "No universal theorem inferred from route checkpoint; root2048 subset bound separate",
+    "No browser, physical phone, multitouch or iframe acceptance from these tools"
+  ]
+}
