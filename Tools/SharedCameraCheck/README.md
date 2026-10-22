@@ -6,16 +6,14 @@ Run from the Unity project directory:
 dotnet run --project Tools/SharedCameraCheck/SharedCameraCheck.csproj -c Release
 ```
 
-The default output is `Verification/shared-camera-final.json`. An optional first argument supplies a different output path. The tool compiles production Core and the pure production `SharedFieldView`; it does not load Unity or draw a frame. The earlier `shared-camera-check.json/.txt` capture is preserved as the original 19/45 checkpoint.
+The default output is `Verification/camera481-check.json`; an optional first argument selects another path. Preserve the historical `shared-camera-final.json/.txt` and earlier 19/45 checkpoint.
 
-There are three deliberately separate kinds of evidence:
+The production camera uses `anchor = clamp(width * .19, 62, 195)`, the unchanged legacy horizontal scale, and `cameraLeft = min(distance0, distance1) - anchor / scaleX`. There is no start/finish clamp, midpoint, cap or zoom. The lagger stays at the anchor; the leader may exit right.
 
-1. Actual games use production `Press` / `Advance`, independent distance-triggered actions for both players, and the unchanged mixed course. Snapshot bisection locates an action but never injects a predicted state. The routes cover full/safe in both player assignments, a real missed small-stone action followed by an overtake, and full/no-action with eight actual collisions and the normal finish grace.
-2. Camera-only boundary fixtures set positions solely to check projection algebra, identity, finish bounds, and equal horizontal projection at heights 132.5 and 289. They are not gameplay witnesses.
-3. The visibility calculation is a conservative geometric estimate at 330 world/s, using the complete physical obstacle union and 20 px right margin. It does not claim that an unchanged distance-input array is physically valid under an artificial permanently active boost. The final 25/47 projection calls the production helper. The original 19/45 is an explicitly named counterfactual using the old formula and the same states; neither changes simulation state.
+Synthetic projection fixtures are labelled and separate from gameplay witnesses. They cover equality, either lagger, start/finish boundaries (including out-of-track projection-only positions), continuous overtake, actual right-edge threshold and return, both heights, fixed scale and complete Core state fingerprints.
 
-Offscreen means the centre is left of the field, matching `IsPlayerVisible`. Entry/exit times are interpolated between samples no more than 5 ms apart. Counters include repeated observations, not hundreds of thousands of independent gameplay cases. The exact maximum clean finish gap is 616 world; a finite sample can report slightly less.
+Actual games use production Press/Advance and authored independent distance inputs on the unchanged mixed course. They cover both player assignments for full/safe and full/no-action, real eight-hit large gaps, one-hit overtakes, personal finishes and normal finish grace. Snapshot bisection locates inputs without injecting predicted state. Every100 samples, complete serialized Core fingerprints (including track, settings, effects and personal sets) are compared before and after projection.
 
-The old safe Fast input 6080 is an early setup for the ceiling stone at 6800. A separate actual game delays that action to 6500 and still finishes 36 s with zero hits/rewards. This optional tool witness demonstrates that 6080 is not a mandatory deadline; it does not edit the published route or geometry.
+Offscreen means the leader centre is right of the field, matching production IsPlayerVisible. Crossings are interpolated between samples no more than 5 ms apart. Large-gap fixtures assert actual exit/return and a finished offscreen leader while the lagger still races. Clean full/safe runs remain visible at the sampled widths. Actual 1190-wide no-action runs need not exit: the narrower 826/550 fields provide the real exit witnesses.
 
-See `Verification/SCREEN-00-CAMERA.md` for the measured limitations. Successful scripted return from offscreen is not a claim that a human can see or control the hidden obstacle sequence.
+Counters include repeated observations. The tool does not draw Unity pixels, deliver native input, or establish human playability. JSON Inputs contain timestamped native replay schedules; times start at racing elapsed0, after the normal countdown. Choose `miss first small then full/safe` for an overtake, `full/no-action` or `no-action/full` for a large gap.

@@ -9,7 +9,7 @@ namespace FlipRace.Presentation
     public readonly struct SharedFieldView
     {
         public readonly double Width, Height, Top, Bottom, ScaleX, ScaleY;
-        public readonly double CameraLeft, AnchorX, LeaderCapX, Gap;
+        public readonly double CameraLeft, AnchorX, Gap;
         readonly double x0, x1, y0, y1;
 
         SharedFieldView(double width, double height, GameState game)
@@ -18,18 +18,14 @@ namespace FlipRace.Presentation
             Top=Clamp(height*.095,13,25); Bottom=height-Top;
             ScaleY=(Bottom-Top)/RaceConfig.CorridorHeight;
             // Exactly the old lane's horizontal scale; height never changes it.
-            double oldAnchor=Clamp(width*.19,62,195);
-            ScaleX=(width-oldAnchor-20)/Math.Max(1080,width*1.28);
-            // 19% hid a clean slower route for 4–7 seconds on phones. Keep
-            // the original scale and move the pair anchor/cap to 25%/47%.
-            AnchorX=width*.25; LeaderCapX=width*.47;
+            AnchorX=Clamp(width*.19,62,195);
+            ScaleX=(width-AnchorX-20)/Math.Max(1080,width*1.28);
             x0=game.Players[0].Distance; x1=game.Players[1].Distance;
             y0=RaceSimulation.GetPlayerCenterY(game.Players[0]);
             y1=RaceSimulation.GetPlayerCenterY(game.Players[1]);
-            double c0=Clamp(x0,0,game.Track.Length), c1=Clamp(x1,0,game.Track.Length);
-            double midpoint=(c0+c1)*.5, leader=Math.Max(c0,c1);
-            CameraLeft=Math.Min(game.Track.Length-AnchorX/ScaleX,
-                Math.Max(midpoint-AnchorX/ScaleX,leader-LeaderCapX/ScaleX));
+            // Follow the lagger at the legacy lane anchor, including start and
+            // finish. The leader's true projection may leave the right edge.
+            CameraLeft=Math.Min(x0,x1)-AnchorX/ScaleX;
             Gap=Math.Abs(x0-x1);
         }
 

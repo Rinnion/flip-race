@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-22T17:31:52.1333181Z",
+  "version": "4.8.1-trial",
+  "buildRevision": "camera481-final",
+  "status": "PASS independent static package / fresh extraction verification",
+  "browserStatus": "Separate parent-owned browser check; this script does not start a server or browser.",
+  "buildLog": "Logs/camera481-final-build.log",
+  "sourceDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.8.1-final",
+  "archive": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v4.8.1-trial-webgl.zip",
+  "archiveBytes": 8582832,
+  "archiveSha256": "a459e94345dbadeb112a6eac4a1041fba2829e7760127379c1893be90d19f2ef",
+  "manifest": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v4.8.1-trial-webgl.zip.manifest.json",
+  "manifestSha256": "af5f11c9da033d401cfa4e1aeb7e2de98482ced15283e84a6e543622c7951fbc",
+  "unpackedDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.8.1-unpacked",
+  "targetDidNotExistBeforeExtraction": true,
+  "entryPathsValidatedWithinWorkspace": true,
+  "entryReparseLinksRejected": true,
+  "fileCount": 5,
+  "webBytes": 8713676,
+  "indexAtRoot": true,
+  "runtimeVersionChecked": "4.8.1-trial",
+  "checkedRelativeReferences": [
+    "Build/WebGL-v4.8.1-final.data.unityweb",
+    "Build/WebGL-v4.8.1-final.framework.js.unityweb",
+    "Build/WebGL-v4.8.1-final.loader.js",
+    "Build/WebGL-v4.8.1-final.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v4.8.1-final.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v4.8.1-final.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v4.8.1-final.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v4.8.1-final.loader.js"
+  },
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "wasmHeaderAfterDecompressionVerified": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v4.8.1-final.data.unityweb",
+      "bytes": 1447893,
+      "sourceSha256": "a6529499859df07b794dc72a39a2bfb5e1bb0d8ddea78605bf50aed1a8d2a7c2",
+      "archiveSha256": "a6529499859df07b794dc72a39a2bfb5e1bb0d8ddea78605bf50aed1a8d2a7c2",
+      "manifestSha256": "a6529499859df07b794dc72a39a2bfb5e1bb0d8ddea78605bf50aed1a8d2a7c2",
+      "unpackedSha256": "a6529499859df07b794dc72a39a2bfb5e1bb0d8ddea78605bf50aed1a8d2a7c2",
+      "allFourMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.8.1-final.framework.js.unityweb",
+      "bytes": 89622,
+      "sourceSha256": "401803326c3d1956dfec80ad4698be327a4c81b4c315acadb163ab7a9877e554",
+      "archiveSha256": "401803326c3d1956dfec80ad4698be327a4c81b4c315acadb163ab7a9877e554",
+      "manifestSha256": "401803326c3d1956dfec80ad4698be327a4c81b4c315acadb163ab7a9877e554",
+      "unpackedSha256": "401803326c3d1956dfec80ad4698be327a4c81b4c315acadb163ab7a9877e554",
+      "allFourMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.8.1-final.loader.js",
+      "bytes": 39788,
+      "sourceSha256": "9672be5d39e632c92791d38a467a946d6f1aac8fb800d1f76ec3262b55050303",
+      "archiveSha256": "9672be5d39e632c92791d38a467a946d6f1aac8fb800d1f76ec3262b55050303",
+      "manifestSha256": "9672be5d39e632c92791d38a467a946d6f1aac8fb800d1f76ec3262b55050303",
+      "unpackedSha256": "9672be5d39e632c92791d38a467a946d6f1aac8fb800d1f76ec3262b55050303",
+      "allFourMatch": true
+    },
+    {
+      "path": "Build/WebGL-v4.8.1-final.wasm.unityweb",
+      "bytes": 7124560,
+      "sourceSha256": "2f8d2f308952a7dd9866f03cd6ffaee1fa7edb15e0036a88a6d7092eeb8ef822",
+      "archiveSha256": "2f8d2f308952a7dd9866f03cd6ffaee1fa7edb15e0036a88a6d7092eeb8ef822",
+      "manifestSha256": "2f8d2f308952a7dd9866f03cd6ffaee1fa7edb15e0036a88a6d7092eeb8ef822",
+      "unpackedSha256": "2f8d2f308952a7dd9866f03cd6ffaee1fa7edb15e0036a88a6d7092eeb8ef822",
+      "allFourMatch": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11813,
+      "sourceSha256": "8aa2997f761777886ef41e12ab9e6509a11e8ea3e6a58a6e4c255700eaf533d1",
+      "archiveSha256": "8aa2997f761777886ef41e12ab9e6509a11e8ea3e6a58a6e4c255700eaf533d1",
+      "manifestSha256": "8aa2997f761777886ef41e12ab9e6509a11e8ea3e6a58a6e4c255700eaf533d1",
+      "unpackedSha256": "8aa2997f761777886ef41e12ab9e6509a11e8ea3e6a58a6e4c255700eaf533d1",
+      "allFourMatch": true
+    }
+  ],
+  "baseline480": {
+    "sha256": "c467e454a994f889c579be6ced0ba1c22ca9d524fd71a4138e7a0c37ba696843",
+    "unchanged": true
+  },
+  "reproduction": "pwsh -File Verification/camera481-package-check.ps1 -BuildRevision camera481-final -UnpackedDirectory Builds/WebGL-v4.8.1-unpacked (requires a new unpacked target)",
+  "noPublicUpload": true
+}

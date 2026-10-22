@@ -82,16 +82,17 @@ namespace FlipRace.Presentation
             GUI.matrix = canvas;
             if (Game.Phase == "racing")
                 for (int slot = 0; slot < 2; slot++)
-                    if (!shared.View.IsPlayerVisible(slot) && !Game.Players[slot].FinishTime.HasValue)
+                    if (!shared.View.IsPlayerVisible(slot))
                     {
-                        // This pointer belongs to the common world, so its left
-                        // direction is not inverted with the upper player's UI.
-                        Rect edge = new Rect(field.x + 4,
+                        // World direction stays the same for both seatings.
+                        // A finished leader remains indicated while the lagger races.
+                        bool right = shared.View.PlayerX(slot) > field.width;
+                        Rect edge = new Rect(right ? field.xMax - 130 : field.x + 4,
                             Mathf.Clamp(field.y + (float)shared.View.PlayerY(slot) - 11, field.y + 4, field.yMax - 26), 126, 22);
                         Round(edge, 5, new Color(.98f, .98f, .94f, .94f));
                         artwork.DrawPersonalBadge(edge.x + 21, edge.center.y, slot, 4);
-                        Text(new Rect(edge.x + 4, edge.y, 13, edge.height), "←", 12, accents[slot], true);
-                        Text(new Rect(edge.x + 31, edge.y, 91, edge.height), Number(shared.View.Gap, 0) + " ед позади", 9, accents[slot], true, TextAnchor.MiddleLeft);
+                        Text(new Rect(edge.x + 4, edge.y, 13, edge.height), right ? "→" : "←", 12, accents[slot], true);
+                        Text(new Rect(edge.x + 31, edge.y, 91, edge.height), Number(shared.View.Gap, 0) + (right ? " ед впереди" : " ед позади"), 9, accents[slot], true, TextAnchor.MiddleLeft);
                     }
             // Personal UI uses control regions, never the cropped world bounds.
             for (int slot = 0; slot < 2; slot++)

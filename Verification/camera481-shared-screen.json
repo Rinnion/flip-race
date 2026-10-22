@@ -1,0 +1,569 @@
+{
+  "status": "PASS",
+  "checks": 5970,
+  "games": 48,
+  "projections": 1008,
+  "cameraCases": 72,
+  "maximumSteps": [
+    0.03333333333333333,
+    0.016666666666666666,
+    0.006944444444444444,
+    0.317,
+    2.5,
+    100.0
+  ],
+  "gameplayStateInjection": false,
+  "scope": "Actual Core transitions plus production pure SharedFieldView; not Unity renderer, UI input, browser or human acceptance.",
+  "evidence": [
+    {
+      "name": "simultaneous-instant",
+      "elapsed": 9.69999999999691,
+      "phase": "finished",
+      "winner": "tie",
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 9.7,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [
+            "personal-ring"
+          ],
+          "failed": [],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 9.7,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [
+            "personal-ring"
+          ],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    },
+    {
+      "name": "simultaneous-negative",
+      "elapsed": 10.299999999996908,
+      "phase": "finished",
+      "winner": "tie",
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 1,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.3,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [],
+          "negative": [
+            "personal-ring"
+          ]
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 1,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.3,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [],
+          "negative": [
+            "personal-ring"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "first-positive-only",
+      "elapsed": 1.91,
+      "phase": "racing",
+      "winner": null,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 310.19999999999936,
+          "y": 226.0,
+          "Collisions": 1,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [],
+          "success": [],
+          "failed": [],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 421.2999999999988,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [
+            "personal-ring"
+          ],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    },
+    {
+      "name": "sequential-positive-finish",
+      "elapsed": 10.199999999997763,
+      "phase": "finished",
+      "winner": 1,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.2,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [
+            "personal-ring"
+          ],
+          "failed": [],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 9.7,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [
+            "personal-ring"
+          ],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    },
+    {
+      "name": "first-negative-only",
+      "elapsed": 1.91,
+      "phase": "racing",
+      "winner": null,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 310.19999999999936,
+          "y": 226.0,
+          "Collisions": 1,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [],
+          "success": [],
+          "failed": [],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 419.0999999999994,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 1,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [],
+          "negative": [
+            "personal-ring"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sequential-negative-finish",
+      "elapsed": 10.799999999997754,
+      "phase": "finished",
+      "winner": 1,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 1,
+          "BoostsEarned": 0,
+          "SlowsEarned": 1,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.8,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [],
+          "negative": [
+            "personal-ring"
+          ]
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 1,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.3,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [],
+          "negative": [
+            "personal-ring"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pending-and-failed",
+      "elapsed": 1.31,
+      "phase": "racing",
+      "winner": null,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 286.0,
+          "y": 226.0,
+          "Collisions": 1,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [
+            "personal-ring"
+          ],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 288.1999999999999,
+          "y": 138.26183124999994,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "None",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    },
+    {
+      "name": "linked-success-versus-failure",
+      "elapsed": 10.499999999997128,
+      "phase": "finished",
+      "winner": 1,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 1,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.5,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [],
+          "failed": [
+            "personal-ring"
+          ],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 9.7,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-ring"
+          ],
+          "success": [
+            "personal-ring"
+          ],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    },
+    {
+      "name": "two-personal-hits-one-shared-gate",
+      "elapsed": 10.49999999999997,
+      "phase": "finished",
+      "winner": "tie",
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 14.0,
+          "Collisions": 1,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.5,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [],
+          "success": [],
+          "failed": [],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 2200.0,
+          "y": 226.0,
+          "Collisions": 1,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": 10.5,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [],
+          "success": [],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    },
+    {
+      "name": "consumed-pad-still-supports",
+      "elapsed": 2.290909090909091,
+      "phase": "racing",
+      "winner": null,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 569.9999999999994,
+          "y": 178.0,
+          "Collisions": 0,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "Stone",
+          "SupportObstacleId": "physical-stone",
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-pad"
+          ],
+          "success": [
+            "personal-pad"
+          ],
+          "failed": [],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 569.9999999999994,
+          "y": 178.0,
+          "Collisions": 0,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "Stone",
+          "SupportObstacleId": "physical-stone",
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-pad"
+          ],
+          "success": [
+            "personal-pad"
+          ],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    },
+    {
+      "name": "one-finished-other-still-racing",
+      "elapsed": 3.90001,
+      "phase": "racing",
+      "winner": 1,
+      "players": [
+        {
+          "Id": 0,
+          "CharacterIndex": 3,
+          "Distance": 858.0022000000022,
+          "y": 135.82021563229833,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "FinishTime": null,
+          "support": "None",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [],
+          "success": [],
+          "failed": [],
+          "negative": []
+        },
+        {
+          "Id": 1,
+          "CharacterIndex": 3,
+          "Distance": 880.0,
+          "y": 226.0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "FinishTime": 3.9,
+          "support": "Wall",
+          "SupportObstacleId": null,
+          "AirFlipAvailable": true,
+          "collected": [
+            "personal-finish"
+          ],
+          "success": [
+            "personal-finish"
+          ],
+          "failed": [],
+          "negative": []
+        }
+      ]
+    }
+  ]
+}

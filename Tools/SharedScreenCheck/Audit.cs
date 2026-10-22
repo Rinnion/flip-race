@@ -226,7 +226,7 @@ namespace FlipRace.SharedScreenCheck
             {
                 var g=RaceSimulation.CreateTrial(Track(7920,Array.Empty<Obstacle>()),FlightPresets.Chosen);
                 var initial=SharedFieldView.Create(width,height,g);double sx=initial.ScaleX;
-                Near(initial.PlayerX(0),width*.25,"Equal-distance anchor");
+                Near(initial.PlayerX(0),Math.Max(62,Math.Min(195,width*.19)),"Legacy equal-distance anchor");
                 Near(initial.PlayerX(0),initial.PlayerX(1),"Overlapping players keep exact physical X");
                 Near(initial.PlayerY(0),initial.PlayerY(1),"Overlapping players keep exact physical Y");
                 foreach(double gapPx in new[]{0d,.2*width,.44*width,.47*width,.48*width,.8*width})
@@ -237,15 +237,16 @@ namespace FlipRace.SharedScreenCheck
                     Near(view.ScaleX,sx,"Camera never scales with gap");
                     Near(view.Gap,gapPx/sx,"Indicator uses actual world gap");
                     Near(view.PlayerX(leader)-view.PlayerX(1-leader),gapPx,"No fake clamped follower position");
-                    Check(view.PlayerX(leader)<=.47*width+1e-8,"Leader cap immediate");
-                    if(gapPx>.47*width+1e-8)Check(!view.IsPlayerVisible(1-leader),"Follower leaves view when physical gap exceeds capped leader position");
+                    Near(view.PlayerX(1-leader),view.AnchorX,"Lagger remains at legacy anchor");
+                    Check(view.IsPlayerVisible(1-leader),"Follower remains visible at every gap");
+                    Check(view.IsPlayerVisible(leader)==(view.AnchorX+gapPx<=width),"Only leader can leave right");
                     if(gapPx==0)Check(view.IsPlayerVisible(0)&&view.IsPlayerVisible(1),"Returning pair visible");
                     Check(before==Fingerprint(g),"Synthetic projection is also read-only");
                 }
                 g.Players[0].Distance=g.Players[1].Distance=7920;
                 var finish=SharedFieldView.Create(width,height,g);
                 g.Players[0].Distance=g.Players[1].Distance=8000;
-                Near(SharedFieldView.Create(width,height,g).CameraLeft,finish.CameraLeft,"Camera cannot chase beyond physical finish");
+                Near(SharedFieldView.Create(width,height,g).CameraLeft,finish.CameraLeft+80,"Projection has no artificial finish clamp");
             }
         }
         public static string Fingerprint(object value)
