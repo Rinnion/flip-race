@@ -1,0 +1,12 @@
+Jump default clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=
+Jump coin1 clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=prep-coin1
+Jump coin2 clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=prep-coin2
+Jump both clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=prep-coin1,prep-coin2
+Jump trap1 clean=True hits= ordinary=9 slows=prep-trap1 pad=1 finish=33.35 coins=
+Jump trap2 clean=True hits= ordinary=9 slows=prep-trap2 pad=1 finish=33.35 coins=
+Flip default clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=
+Flip coin1 clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=prep-coin1
+Flip coin2 clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=prep-coin2
+Flip both clean=True hits= ordinary=9 slows= pad=1 finish=33.05 coins=prep-coin1,prep-coin2
+Flip trap1 clean=True hits= ordinary=9 slows=prep-trap1 pad=1 finish=33.35 coins=
+Flip trap2 clean=True hits= ordinary=9 slows=prep-trap2 pad=1 finish=33.35 coins=

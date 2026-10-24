@@ -1,4 +1,5 @@
 using UnityEngine;
+using FlipRace.Core;
 
 namespace FlipRace.Presentation
 {
@@ -7,12 +8,12 @@ namespace FlipRace.Presentation
     /// <summary>Presentation only: every hero uses the same Core collision geometry and rules.</summary>
     public static class CharacterRoster
     {
-        public const int Count = 4;
-        static readonly string[] Names = { "Листик", "Капелька", "Травник", "Цветок" };
-        static readonly string[] Success = { "Поймал ветер!", "Вот это всплеск!", "Точная тропа!", "Солнечный разгон!" };
-        static readonly string[] Hit = { "Ой, листопад!", "Кап-кап… ещё раз!", "Корешок под лапой!", "Лепестки помялись!" };
-        static readonly string[] Slow = { "Ветер навстречу!", "Вязкая капля!", "Тропа тянет назад!", "Тяжёлый лепесток!" };
-        static readonly string[] Win = { "Ветер на моей стороне!", "Приплыл первым!", "Тропа пройдена!", "Расцветаю на финише!" };
+        public const int Count = RaceConfig.CharacterCount;
+        static readonly string[] Names = { "Листик", "Капелька", "Травник", "Цветок", "Джек", "Тыква" };
+        static readonly string[] Success = { "Поймал ветер!", "Вот это всплеск!", "Точная тропа!", "Солнечный разгон!", "Шляпу по ветру!", "Тыквенный рывок!" };
+        static readonly string[] Hit = { "Ой, листопад!", "Кап-кап… ещё раз!", "Корешок под лапой!", "Лепестки помялись!", "Шляпа набекрень!", "Тыква кувырком!" };
+        static readonly string[] Slow = { "Ветер навстречу!", "Вязкая капля!", "Тропа тянет назад!", "Тяжёлый лепесток!", "Ветер держит шляпу!", "Вязкая тропинка!" };
+        static readonly string[] Win = { "Ветер на моей стороне!", "Приплыл первым!", "Тропа пройдена!", "Расцветаю на финише!", "Шляпа на финише!", "Светимся от победы!" };
 
         public static int Normalize(int index) { return index < 0 || index >= Count ? 0 : index; }
         public static string Name(int characterIndex) { return Names[Normalize(characterIndex)]; }

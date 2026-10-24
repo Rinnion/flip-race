@@ -9,14 +9,14 @@ namespace FlipRace.Presentation
         // Session presentation choices: never included in FlightSettings or Core.
         bool sharedField = false, sharedAdjacent = false, sharedFullHeight = false;
         public bool SharedEnabled { get { return sharedField && Trial; } }
-        public string FieldViewName { get { return SharedEnabled ? "shared" : "split"; } }
+        public string FieldViewName { get { return SharedEnabled ? "shared" : SplitGhostEnabled ? "split-ghost" : "split"; } }
         public string SeatingName { get { return SharedEnabled && sharedAdjacent ? "adjacent" : "opposite"; } }
-        public string FieldHeightName { get { return SharedEnabled && sharedFullHeight ? "full" : "half"; } }
+        public string FieldHeightName { get { return "half"; } }
         public Rect SharedFieldRect
         {
-            get { return new Rect(arena.x, arena.center.y - (sharedFullHeight ? arena.height : lanes[0].height) / 2,
-                arena.width, sharedFullHeight ? arena.height : lanes[0].height); }
+            get { return new Rect(arena.x, arena.center.y - lanes[0].height / 2, arena.width, lanes[0].height); }
         }
+        void MigrateRetiredSharedHeight() { if (sharedFullHeight) sharedFullHeight = false; if (pendingSharedFullHeight) pendingSharedFullHeight = false; }
         public Rect ControlAreaRect(int slot)
         {
             if (!SharedEnabled) return lanes[slot];
@@ -31,33 +31,21 @@ namespace FlipRace.Presentation
                 : new Rect(r.x + local.x, r.y + local.y, local.width, local.height);
         }
         Rect SharedCharacterRect(int slot, int hero)
-        {
-            Rect r = ControlAreaRect(slot);
-            if (!sharedAdjacent) return CharacterRect(hero, r.width, r.height);
-            float cw = Mathf.Min((r.width - 36) / 2, 176), ch = compact ? 44 : 64;
-            float x = (r.width - cw * 2 - 8) / 2, y = Mathf.Max(36, (r.height - (ch * 2 + 60)) / 2);
-            return new Rect(x + hero % 2 * (cw + 8), y + hero / 2 * (ch + 8), cw, ch);
-        }
+        { Rect r = ControlAreaRect(slot); return CharacterRect(hero, r.width, r.height); }
         Rect SharedReadyRect(int slot)
-        {
-            Rect r = ControlAreaRect(slot);
-            if (!sharedAdjacent) return ReadyButtonRect(r.width, r.height);
-            Rect last = SharedCharacterRect(slot, 3);
-            float rw = Mathf.Min(r.width - 32, compact ? 190 : 220);
-            return new Rect((r.width - rw) / 2, last.yMax + 8, rw, compact ? 32 : 38);
-        }
+        { Rect r = ControlAreaRect(slot); return ReadyButtonRect(r.width, r.height); }
         void SharedPointer(Vector2 point)
         {
             if (!arena.Contains(point)) return;
             int slot = sharedAdjacent ? (point.x < arena.center.x ? 0 : 1) : (point.y < arena.center.y ? 0 : 1);
             if (Game.Phase == "ready")
             {
-                for (int hero = 0; hero < 4; hero++)
+                for (int hero = 0; hero < CharacterRoster.Count; hero++)
                     if (CharacterScreenRect(slot, hero).Contains(point)) { SelectCharacter(slot, hero); return; }
                 if (ReadyScreenRect(slot).Contains(point)) Act(slot);
                 return;
             }
-            Act(slot);
+            LocalRacePress(slot, point);
         }
         void DrawSharedField()
         {
@@ -106,7 +94,7 @@ namespace FlipRace.Presentation
                     if (Game.Phase == "ready") DrawSharedSelection(slot, region.width, region.height);
                     else DrawOverlay(slot, region.width, region.height);
                 }
-                DrawSharedStatus(slot, region.width, region.height, shared.View.IsPlayerVisible(slot), shared.View.Gap);
+                if (Game.Phase != "ready") DrawSharedStatus(slot, region.width, region.height, shared.View.IsPlayerVisible(slot), shared.View.Gap);
             }
             GUI.matrix = canvas;
             if (sharedAdjacent) Fill(new Rect(arena.center.x - .5f, arena.y, 1, 12), Hex(0xb7beaa));
@@ -141,12 +129,12 @@ namespace FlipRace.Presentation
         void DrawSharedSelection(int slot, float w, float h)
         {
             GUI.color = Color.white; GUI.DrawTexture(new Rect(0, 0, w, h), veil);
-            for (int hero = 0; hero < 4; hero++)
+            for (int hero = 0; hero < CharacterRoster.Count; hero++)
             {
                 Rect card = SharedCharacterRect(slot, hero); bool chosen = Game.Players[slot].CharacterIndex == hero;
                 StrokeRound(card, 7, chosen ? accents[slot] : Hex(0xd9dece), chosen ? pales[slot] : Hex(0xf5f6ec));
-                float s = card.height - 4;
-                GUI.color = Color.white; GUI.DrawTexture(new Rect(card.x + 2, card.y + 2, s, s), MascotArtwork.Create(hero, slot));
+                float s = Mathf.Min(card.height - 4, card.width * .35f);
+                GUI.color = Color.white; GUI.DrawTexture(new Rect(card.x + 2, card.center.y - s / 2, s, s), MascotArtwork.Create(hero, slot));
                 Text(new Rect(card.x + s + 3, card.y, card.width - s - 6, card.height), CharacterRoster.Name(hero), compact ? 9 : 11, ink, chosen, TextAnchor.MiddleCenter);
             }
             Rect ready = SharedReadyRect(slot);
@@ -156,8 +144,8 @@ namespace FlipRace.Presentation
         void DrawSharedStatus(int slot, float w, float h, bool visible, double gap)
         {
             var p = Game.Players[slot];
-            float statusHeight = compact || sharedFullHeight ? 22 : 27;
-            float inset = sharedFullHeight ? 2 : 4;
+            float statusHeight = compact ? 22 : 27;
+            float inset = 4;
             float statusY = !sharedAdjacent && Game.Phase == "racing" ? h - statusHeight - inset : inset;
             Rect status = new Rect(8, statusY, Mathf.Min(w - 16, 250), statusHeight);
             Round(status, 6, new Color(.98f, .98f, .94f, .94f));
@@ -167,6 +155,7 @@ namespace FlipRace.Presentation
                 : !visible && Game.Phase == "racing" ? name + " · вне поля · " + Number(gap, 0) + " ед"
                 : Game.Phase == "ready" ? name + (sharedAdjacent ? (slot == 0 ? " · слева" : " · справа") : (slot == 0 ? " · сверху" : " · снизу"))
                 : name + " · +" + Rewards(p) + " · −" + p.SlowsEarned + " · ударов " + p.Collisions;
+            text += CoinScore(p);
             Text(new Rect(29, status.y, status.width - 25, status.height), text, compact ? 8 : 10, accents[slot], true, TextAnchor.MiddleLeft);
         }
     }

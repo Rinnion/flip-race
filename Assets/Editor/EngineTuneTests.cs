@@ -182,6 +182,8 @@ namespace FlipRace.Editor
                 FlightMaxDistance = p.FlightMaxDistance, FlightOriginSide = p.FlightOriginSide,
                 FlightOriginObstacleId = p.FlightOriginObstacleId, LastFlight = p.LastFlight,
                 Recovering = p.Recovering, Collisions = p.Collisions, FinishTime = p.FinishTime, LastHit = p.LastHit,
+                CoinsEarned = p.CoinsEarned, LastCoin = p.LastCoin == null ? null : new HitInfo
+                    { Id = p.LastCoin.Id, Message = p.LastCoin.Message, At = p.LastCoin.At },
                 ActiveEffect = CopyEffect(p.ActiveEffect), BoostsEarned = p.BoostsEarned, SlowsEarned = p.SlowsEarned,
                 InstantBoostsEarned = p.InstantBoostsEarned, LastSuccess = p.LastSuccess, LastInstant = p.LastInstant, LastSlow = p.LastSlow,
                 FinishBoost = p.FinishBoost, FinishBoostsEarned = p.FinishBoostsEarned,

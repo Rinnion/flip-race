@@ -1,0 +1,45 @@
+chosen full/safe finish=33,05,35,75 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=649,000 leader=0,5130 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=649,000 leader=0,6622 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=649,000 leader=0,6549 minX=104,50 off=0:;1:
+chosen safe/full finish=35,75,33,05 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=649,000 leader=0,5130 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=649,000 leader=0,6622 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=649,000 leader=0,6549 minX=104,50 off=0:;1:
+chosen full/no-action finish=33,05, hits=0,8 finalX=7920,7161,000000000723
+ production481-lagger W1190 gap=1529,000 leader=0,9863 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1529,000 leader=1,3025 minX=156,94 off=0:22,8125..34,9396 return;1:
+ production481-lagger W550 gap=1529,000 leader=1,2853 minX=104,50 off=0:25,5954..34,8602 return;1:
+chosen no-action/full finish=,33,05 hits=8,0 finalX=7161,000000000723,7920
+ production481-lagger W1190 gap=1529,000 leader=0,9863 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1529,000 leader=1,3025 minX=156,94 off=0:;1:22,8125..34,9396 return
+ production481-lagger W550 gap=1529,000 leader=1,2853 minX=104,50 off=0:;1:25,5954..34,8602 return
+chosen miss first small then full/safe finish=33,85,35,75 hits=1,0 finalX=7920,7920
+ production481-lagger W1190 gap=473,000 leader=0,4183 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=473,000 leader=0,5341 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=473,000 leader=0,5288 minX=104,50 off=0:;1:
+fast full/safe finish=33,05,35,75 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=649,000 leader=0,5130 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=649,000 leader=0,6622 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=649,000 leader=0,6549 minX=104,50 off=0:;1:
+fast safe/full finish=35,75,33,05 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=649,000 leader=0,5130 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=649,000 leader=0,6622 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=649,000 leader=0,6549 minX=104,50 off=0:;1:
+fast full/no-action finish=33,05, hits=0,8 finalX=7920,7161,000000000718
+ production481-lagger W1190 gap=1529,000 leader=0,9863 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1529,000 leader=1,3025 minX=156,94 off=0:22,8130..34,9396 return;1:
+ production481-lagger W550 gap=1529,000 leader=1,2853 minX=104,50 off=0:25,6281..34,8602 return;1:
+fast no-action/full finish=,33,05 hits=8,0 finalX=7161,000000000718,7920
+ production481-lagger W1190 gap=1529,000 leader=0,9863 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1529,000 leader=1,3025 minX=156,94 off=0:;1:22,8130..34,9396 return
+ production481-lagger W550 gap=1529,000 leader=1,2853 minX=104,50 off=0:;1:25,6281..34,8602 return
+fast miss first small then full/safe finish=33,85,35,75 hits=1,0 finalX=7920,7920
+ production481-lagger W1190 gap=473,000 leader=0,4183 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=473,000 leader=0,5341 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=473,000 leader=0,5288 minX=104,50 off=0:;1:
+fast safe delayed setup6080→6500 finish=35,75,35,75 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=0,000 leader=0,1639 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=0,000 leader=0,1900 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=0,000 leader=0,1900 minX=104,50 off=0:;1:
+PASS SharedCameraCheck 638586 checks / 11 actual games; centre crossings interpolated between <=5 ms samples.

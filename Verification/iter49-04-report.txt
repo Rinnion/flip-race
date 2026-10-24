@@ -1,0 +1,33 @@
+ITER49-04 independent UI review / F04-F05
+Model / effort: gpt-6.1-sol / high. Production was read only throughout.
+
+PASS Tools/Iter49Ui/Run.ps1: 2,766 assertions; 27 total layout/menu cases; 70 explicitly labelled synthetic projection/pose fixtures; 12 real Update equivalence runs. SourceSnapshot in iter49-04-ui.json proves all Core/Presentation/Web sources stayed unchanged during the accepted run. Later F06 changes require another run and do not retroactively change this checkpoint.
+
+ACTUAL CONTROLLER COVERAGE
+The original six-character tests remain (621 base checks, nine layouts and actual pointer selections).
+F04 adds 18 menu cases: 568x320 and1280x720 x Main/Fast/custom x split/ghost/shared. Actual Measure, Pointer, OpenTracks, back/cancel and Apply retain the selected track, both new heroes, exact custom physics, saved custom payload and active preset/custom choice.
+Unapplied options leave live Core state unchanged; closing/reopening drops the cancelled draft. Split/ghost disable seating edits while retaining the remembered shared seating. Shared seatings are both exercised.
+All three view options and two seating options are measured above the footer. The removed Full row and extra options return empty rectangles. Six character targets and readiness remain inside each local control region after view changes.
+Legacy full-height live/pending flags are explicitly injected only as preference fixtures, then passed through actual Measure, initialization and Apply. Both flags migrate to false, the field is centered at exactly one old lane height and all other metadata is retained. No nonexistent persisted Full key is invented.
+Legacy nontrial games remain normal split even with presentation preferences set.
+
+PROJECTION / POSE COVERAGE
+42 synthetic projection-only fixtures cover three lane sizes, both observers and signed gaps -5000,-300,-1,0,1,300,5000. They assert the independent own-camera anchor+real-gap formula, exactly one upper local X reflection, raw physical Y once, outer lane screen rotation and genuinely unclamped offscreen points.
+28 synthetic pose-only fixtures cover Main/Fast, both observers, floor/ceiling/stone on either side/air/recovery/finished. Opponent geometry preserves real gait clock, radius, flip/gravity/recovery rotation and the same support/bob centre as the ordinary sprite. Equal physical positions have no overlap displacement. Full Core fingerprints are unchanged by projection and pose reads.
+The unchanged shared camera is independently checked with the lagger at its old anchor and a finished leader far beyond the right edge, preserving real separation and scale rather than midpoint/fit-to-pair behavior.
+Synthetic positions are expressly not presented as reachable gameplay witnesses.
+
+ACTUAL GAMEPLAY CONSERVATION
+12 runs use real readiness and actual FlipRaceGame.Update keyboard events: Main/Fast/custom x split, split-ghost, shared-opposite, shared-adjacent. A real stone, two actual coins, slow, instant reward and full finish pad are placed before readiness; no gameplay positions or timers are injected.
+Ten observed times include departure, collisions/collectibles/effects and both real finishes. At each, pure projections and opponent pose reads preserve the entire serialized Core state; fingerprints match exactly across all four views, including selected identical hero, score/availability, effect queues, collision ledger, finish and winner.
+
+STATIC PRODUCTION REVIEW
+SplitGhostPresentation uses alpha0.30, a true observer projection and the opponent's real pose/reaction. DrawLane invokes the ghost before drawing the own hero. If the rotated sprite rectangle does not fit, it draws a gap arrow and returns rather than clamping a body. These source reads agree with the spec; actual layer/alpha/readability and phone composition remain native browser acceptance.
+SharedFieldView camera source remains unchanged. No production defect was found by this independent gate.
+
+FILES / LIMITS
+Only Tools/Iter49Ui/Program.cs was changed for this test extension; README/evidence are new. Project, Run.ps1, Environment and all production files remained owned by Progatik and were not changed here.
+The runner retains real controller bodies; only existing explicit Screen/DPR/Input/Time/Prefs and selection texture boundaries use managed shims. It does not establish native pixels, browser latency, device safe-area behavior or live-phone usability.
+First compilation exposed one test-only CreateTrial call missing its explicit FlightSettings argument; corrected to Chosen before the accepted run. No production change resulted.
+Evidence: Verification/iter49-04-ui.json. Exact source snapshots are inside that JSON; tool/evidence hashes in iter49-04-hashes.json.
+F04/F05 gate is ready. F06 was not implemented or tested by this checkpoint.

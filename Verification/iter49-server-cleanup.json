@@ -1,0 +1,28 @@
+{
+  "closed": [
+    {
+      "port": 4209,
+      "pid": 112796,
+      "commandLine": "\"D:\\Program Files\\nodejs\\node.exe\" Tools/serve.mjs Builds/WebGL-iter49-02",
+      "status": "stopped after final acceptance"
+    },
+    {
+      "port": 4210,
+      "pid": 124636,
+      "commandLine": "\"D:\\Program Files\\nodejs\\node.exe\" Tools/serve.mjs Builds/WebGL-v4.9.0-final",
+      "status": "stopped after final acceptance"
+    },
+    {
+      "port": 4211,
+      "pid": 100464,
+      "commandLine": "\"D:\\Program Files\\nodejs\\node.exe\" Tools/serve.mjs Builds/WebGL-v4.9.0-unpacked",
+      "status": "stopped after final acceptance"
+    }
+  ],
+  "kept": {
+    "pid": 124620,
+    "port": 4184,
+    "folder": "Builds/WebGL-v4.9.0-final"
+  },
+  "buildsAndArchives": "preserved"
+}

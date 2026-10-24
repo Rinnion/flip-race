@@ -1,0 +1,34 @@
+ITER49-02 procedural art handoff
+Model / effort: gpt-6.1-sol / high.
+Owned production file: Assets/Scripts/Presentation/MascotArtwork.cs only.
+Roster/Core/UI/diagnostics changes belong to Progatik and were not edited here.
+
+DELIVERED
+4 = Jack: ivory face/body, muted honey hair, separate dusty wine strand, tall bent terracotta hat with wide brim/feather, amber eyes with leaf pupils, freckles, pale collar and leaf pendant.
+5 = Pumpkin: true apricot viewer-left / muted slate viewer-right split through face and body (including feet), pointed ears, small pumpkin head ornament with curled sage stem, brown and blue eyes with white star highlights, pale circled cheek star, pale collar and pumpkin pendant.
+Two existing player scarves/stitch patterns remain distinct. All head details, accessories, feet and bodies are drawn procedurally, using the existing lazy body/eye/pose caches. The hat/stem/pendant respond to pose wave and reactions; body squash/bounce, stride, air tuck, hit, success, win and blinks remain active. No static PNG is used in gameplay.
+The two pastel reference PNGs and their README were inspected. These are trial procedural adaptations; no claim of new artist approval is made.
+
+VERIFICATION
+PASS Tools/Iter49Heroes, final: 7,083 assertions; 1,536 original hero poses pixel-identical; 768 new hero poses; 12 previews; all ten cache groups animate and are reused. Existing four branches and eight original previews remain pixel-identical.
+All new frames have nonzero alpha inside the original UnitBounds[-1.5,-1.75,3,3] with an empty outer pixel border, in both player slots. Contact sheets show normal and 180-degree source orientations; final native gravity/lane reflection is still the existing caller's responsibility.
+Explicit identity assertions prevent the earlier intermediate fallback to the old white mascot: Pumpkin body and head must both have an apricot/slate split and its head ornament must be apricot. Jack must retain ivory body and a tall terracotta hat.
+PASS dotnet build Tools/FlightUiCompile/FlightUiCompile.csproj -v minimal: 0 warnings / 0 errors.
+PASS git diff --check -- Assets/Scripts/Presentation/MascotArtwork.cs.
+Desktop shim maximum cold selection in the final run: 17.724 ms. This excludes WebGL, Unity native upload/painting and physical phone; it is not a browser latency claim.
+
+VISUAL QA AND LIMITS
+Personally viewed final sheets for Jack slot1 and Pumpkin slot0; all seven sample poses keep the defining ornaments and visible face details. Progatik reported independent final-sheet acceptance and root confirmation of Pumpkin identity. These reports do not replace the in-progress real WebGL/568x320 acceptance.
+Sheet columns: idle, run, air, recover, success, win, blink; bottom row is the entire source rotated180 degrees. All four hero/slot sheets and individual transparent PNG samples are retained.
+Production art was frozen before the parent stage02 build. No change was made after freeze.
+No remaining art blocker; native game size/readability remains parent acceptance.
+
+ARTIFACTS
+Verification/iter49-02-art.json: every pose hash and production/shim source identity.
+Verification/iter49-02-art.txt: final stdout.
+Verification/iter49-02-art-sheet-4-0.png and -4-1.png: Jack.
+Verification/iter49-02-art-sheet-5-0.png and -5-1.png: Pumpkin.
+Verification/iter49-02-art-hashes.json: final code, reference and evidence SHA256.
+Tools/Iter49Heroes/README.md: reproduction and scope.
+No historical tools/reports overwritten. STATUS remains owned by Progatik; no commit created.
+Final MascotArtwork SHA256: 5B8AD9240F2E65ABDD70374EE9C3E573A7062FFB6E0B6B35184F92A5DED6F461

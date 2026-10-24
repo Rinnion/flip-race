@@ -17,7 +17,7 @@ namespace FlipRace.Presentation
         // CSS pixels from the canvas top-left, matching the rendered 180-degree upper lane.
         public Rect CharacterScreenRect(int playerIndex, int heroIndex)
         {
-            if (playerIndex < 0 || playerIndex > 1 || heroIndex < 0 || heroIndex > 3) throw new ArgumentOutOfRangeException();
+            if (playerIndex < 0 || playerIndex > 1 || heroIndex < 0 || heroIndex >= CharacterRoster.Count) throw new ArgumentOutOfRangeException();
             if (SharedEnabled) return SharedScreenRect(playerIndex, SharedCharacterRect(playerIndex, heroIndex));
             Rect lane = lanes[playerIndex];
             return LaneScreenRect(playerIndex, CharacterRect(heroIndex, lane.width, lane.height));
@@ -103,7 +103,7 @@ namespace FlipRace.Presentation
             artwork = new CorridorArtwork();
             MascotArtwork.GetFrame(0, 0, 0, false, false, false);
             MascotArtwork.GetFrame(1, 1, 0, false, false, false);
-            for (int slot = 0; slot < 2; slot++) for (int hero = 0; hero < 4; hero++) MascotArtwork.Create(hero, slot);
+            for (int slot = 0; slot < 2; slot++) for (int hero = 0; hero < CharacterRoster.Count; hero++) MascotArtwork.Create(hero, slot);
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
             if (FindFirstObjectByType<AudioListener>() == null) gameObject.AddComponent<AudioListener>();
@@ -116,6 +116,7 @@ namespace FlipRace.Presentation
 
         void Measure()
         {
+            MigrateRetiredSharedHeight();
             uiScale = Mathf.Max(1, FlipRace.Web.FlipDiagnostics.FlipPixelRatio());
             width = Screen.width / uiScale; height = Screen.height / uiScale;
             compact = width > height && height <= 600;
@@ -155,6 +156,12 @@ namespace FlipRace.Presentation
             racePracticeChoiceRect = new Rect(trackPanel.x + 22, trackPanel.y + 205, trackPanel.width - 44, 30);
         }
 
+        Rect SafeUiArea()
+        {
+            Rect safe=Screen.safeArea;
+            if(safe.width<=0||safe.height<=0)return new Rect(0,0,width,height);
+            return new Rect(safe.x/uiScale,(Screen.height-safe.yMax)/uiScale,safe.width/uiScale,safe.height/uiScale);
+        }
         bool Active { get { return Game.Phase == "racing" || Game.Phase == "countdown"; } }
         bool Portrait { get { return height > width && width <= 700; } }
 
@@ -239,13 +246,13 @@ namespace FlipRace.Presentation
                 if (slot == 0) local = new Vector2(lanes[slot].width - local.x, lanes[slot].height - local.y);
                 if (Game.Phase == "ready")
                 {
-                    for (int hero = 0; hero < 4; hero++)
+                    for (int hero = 0; hero < CharacterRoster.Count; hero++)
                         if (CharacterRect(hero, lanes[slot].width, lanes[slot].height).Contains(local))
                         { SelectCharacter(slot, hero); return; }
                     if (ReadyButtonRect(lanes[slot].width, lanes[slot].height).Contains(local)) Act(slot);
                     return; // A gap or margin is not a readiness action.
                 }
-                Act(slot); return;
+                LocalRacePress(slot, p); return;
             }
         }
         void ToggleSound()
@@ -285,19 +292,19 @@ namespace FlipRace.Presentation
         Rect TrackChoiceRect(int index) { return new Rect(trackPanel.x + 22, trackPanel.y + 49 + index * 37, trackPanel.width - 44, 34); }
         Rect CharacterRect(int hero, float w, float h)
         {
-            float gap = compact ? 10 : 12;
-            float cw = Mathf.Min((w - (compact ? 32 : 64) - gap * 3) / 4, compact ? 172 : 176);
-            float ch = compact ? Mathf.Clamp(Mathf.Round(h * .36f), 44, 56) : 64;
-            float block = ch + 8 + (compact ? 32 : 38);
-            float y = Mathf.Max(compact ? 32 : 50, (h - block) / 2 + 6);
-            float total = cw * 4 + gap * 3;
-            return new Rect((w - total) / 2 + hero * (cw + gap), y, cw, ch);
+            // Six fast targets fit the132px lane at568x320. Readiness owns its
+            // fixed bottom strip; names and previews are painted inside cards.
+            float gap = 4, ch = compact ? 44 : 56;
+            float cw = Mathf.Min((w - 16 - gap * 2) / 3, 176);
+            float listBottom = ReadyButtonRect(w, h).y - 4;
+            float y = Mathf.Max(4, (listBottom - (ch * 2 + gap)) / 2);
+            float total = cw * 3 + gap * 2;
+            return new Rect((w - total) / 2 + hero % 3 * (cw + gap), y + hero / 3 * (ch + gap), cw, ch);
         }
         Rect ReadyButtonRect(float w, float h)
         {
-            Rect first = CharacterRect(0, w, h);
-            float rw = compact ? 190 : 220;
-            return new Rect((w - rw) / 2, first.yMax + 8, rw, compact ? 32 : 38);
+            float rw = Mathf.Min(w - 16, compact ? 190 : 220), rh = compact ? 32 : 38;
+            return new Rect((w - rw) / 2, h - rh, rw, rh);
         }
         void Act(int index)
         {
@@ -341,6 +348,7 @@ namespace FlipRace.Presentation
             DrawSession();
             if (SharedEnabled) DrawSharedField();
             else { DrawLane(0); DrawLane(1); DrawDivider(); }
+            DrawPaws();
             DrawFooter();
             if (Portrait) DrawPause();
             else if (showTracks) DrawTracks();
@@ -429,6 +437,7 @@ namespace FlipRace.Presentation
                 : Matrix4x4.Translate(new Vector3(r.x, r.y, 0)));
             PlayerState p = Game.Players[index];
             CorridorArtwork.Geometry g = artwork.Draw(w, h, Game, index, animationTime);
+            if (SplitGhostEnabled && Game.Phase == "racing") DrawOpponentGhost(index, w, h, g);
             Matrix4x4 lane = GUI.matrix;
             GUI.matrix = lane * Matrix4x4.TRS(new Vector3(g.X, g.Y, 0), Quaternion.Euler(0, 0, g.Rotation),
                 new Vector3(g.MirrorX ? -1 : 1, 1, 1));
@@ -460,7 +469,8 @@ namespace FlipRace.Presentation
                 if (recentInstant) foreach (var zone in Game.Track.RiskZones)
                     if (zone.Id == p.LastInstant.Id && zone.IsLanding) { landed = true; break; }
                 bool recentFinish = p.LastFinishBoost != null && Game.Elapsed - p.LastFinishBoost.At < 1.1;
-                string reaction = recentFinish ? "Финишный рывок! −0,1 с"
+                bool recentCoin = p.LastCoin != null && Game.Elapsed - p.LastCoin.At < .8;
+                string reaction = recentCoin ? "Монетка +1" : recentFinish ? "Рывок ×2"
                     : recentInstant ? (landed ? "Точная посадка! ×1,5" : "Молния! Скорость ×1,5") : recentSlow ? CharacterRoster.SlowText(p.CharacterIndex) + "  +0,3 с"
                     : p.LastSuccess != null && Game.Elapsed - p.LastSuccess.At < 1.15
                     ? CharacterRoster.SuccessText(p.CharacterIndex) + "  −0,3 с"
@@ -475,8 +485,8 @@ namespace FlipRace.Presentation
                 }
             }
             if (Game.Phase != "racing" || p.FinishTime.HasValue) DrawOverlay(index, w, h);
-            DrawLaneHeading(index, w, h);
-            string hint = Hint(p);
+            if (Game.Phase != "ready") DrawLaneHeading(index, w, h);
+            string hint = Game.Phase == "ready" ? "" : Hint(p);
             if (hint.Length > 0)
             {
                 int size = compact ? 9 : 10;
@@ -532,7 +542,7 @@ namespace FlipRace.Presentation
             Text(sr, status, ss, p.Recovering > 0 ? Hex(0xa64d2d) : Hex(0x6a755a), false, TextAnchor.MiddleCenter);
             if ((Game.Phase == "racing" || Game.Phase == "finished") && Game.Track.RiskZones.Length > 0)
                 Text(new Rect(w / 2 - 65, y, 130, ph), "+ " + Rewards(p) + " / " + Game.Track.PositiveRingCount
-                    + (Game.Track.NegativeEnabled ? "    ◇− " + p.SlowsEarned : ""),
+                    + (Game.Track.NegativeEnabled ? "    ◇− " + p.SlowsEarned : "") + CoinScore(p),
                     compact ? 7 : 8, Hex(0x8c7b4e), true, TextAnchor.MiddleCenter);
         }
         void DrawOverlay(int index, float w, float h)
@@ -560,9 +570,10 @@ namespace FlipRace.Presentation
             string subtitle = results ? finishTime + " · +" + Rewards(p) + "/" + Game.Track.PositiveRingCount
                 + (Game.Track.NegativeEnabled ? " · −" + p.SlowsEarned : "") + " · ошибок: " + p.Collisions : crossedFinish ? finishTime + " · ждём соперника"
                 : p.Ready ? "Ждём второго игрока — и начинаем." : Game.Mode == "practice" ? "Короткая трасса с подсказками для двоих." : "Коснись своей половины — и ты на потолке.";
-            if (results && p.FinishBoostsEarned > 0) subtitle += " · рывок −0,1 с";
+            if (results && p.FinishBoostsEarned > 0) subtitle += " · Рывок ×2";
             if (results && Trial && activeCustomFlight)
                 subtitle = finishTime + " · " + LastFlightText(p);
+            if (results) subtitle += CoinScore(p);
             bool ready = p.Ready;
             string action = results ? (ready ? "✓ Ждём соперника" : Game.Mode == "practice" ? "Ещё попытка? Нажми ↗" : "Реванш? Нажми ↗")
                 : ready ? "✓ Готов к старту" : "Нажми, когда готов   ↗";
@@ -584,7 +595,7 @@ namespace FlipRace.Presentation
                 if (activeCustomFlight && !TracksV4.IsOpen(Game.Track.Id))
                     detail += " · +" + Rewards(p) + "/" + Game.Track.PositiveRingCount
                         + (Game.Track.NegativeEnabled ? " · −" + p.SlowsEarned : "")
-                        + " · ошибок " + p.Collisions + (p.FinishBoostsEarned > 0 ? " · рывок −0,1 с" : "");
+                        + " · ошибок " + p.Collisions + (p.FinishBoostsEarned > 0 ? " · Рывок ×2" : "");
                 int detailSize = compact ? 8 : 9;
                 if (!narrowResult) while (detailSize > 7 && TextWidth(detail, detailSize) > w - 12) detailSize--;
                 label.wordWrap = narrowResult;
@@ -600,16 +611,22 @@ namespace FlipRace.Presentation
             Text(br, action, size, ready ? Hex(0x536547) : accents[index], true, TextAnchor.MiddleCenter);
         }
 
+        string CoinScore(PlayerState p)
+        {
+            int total = 0;
+            foreach (var zone in Game.Track.RiskZones) if (zone.IsCoin) total++;
+            return total == 0 ? "" : " · монеты " + p.CoinsEarned + "/" + total;
+        }
         void DrawCharacterSelection(int slot, float w, float h)
         {
             PlayerState p = Game.Players[slot];
-            for (int hero = 0; hero < 4; hero++)
+            for (int hero = 0; hero < CharacterRoster.Count; hero++)
             {
                 Rect card = CharacterRect(hero, w, h);
                 bool chosen = p.CharacterIndex == hero;
                 StrokeRound(card, 8, chosen ? accents[slot] : Hex(0xd9dece),
                     chosen ? new Color(pales[slot].r, pales[slot].g, pales[slot].b, .62f) : Hex(0xf5f6ec));
-                float size = card.height - 2;
+                float size = Mathf.Min(card.height - 4, card.width * .35f);
                 GUI.color = Color.white;
                 GUI.DrawTexture(new Rect(card.x + 3, card.center.y - size / 2, size, size), MascotArtwork.Create(hero, slot));
                 Text(new Rect(card.x + size + 4, card.y, card.width - size - 12, card.height),
@@ -701,7 +718,7 @@ namespace FlipRace.Presentation
                 {
                     Text(new Rect(footer.x + 470, footer.y + 33, 340, 20), Controls && Game.Track.Id == TracksControl.UnlimitedId
                         ? "Меняй высоту перед каждым проходом"
-                        : Controls ? "Посадка — ×1,5  ·  Метка у ленты — −0,1 с"
+                        : Controls ? "Посадка — ×1,5  ·  Площадка — рывок ×2"
                         : Trial ? "Молния — сразу  ·  Ромб − — замедление"
                         : "+кольцо: −0,3 с  ·  ◇−: +0,3 с  ·  удар: +0,5 с", 10, muted);
                 }
@@ -803,7 +820,7 @@ namespace FlipRace.Presentation
                     if (zone.IsLanding && zone.X - p.Distance > 0 && zone.X - p.Distance < 350)
                         return "Приземлись точно в метку на грани камня.";
                     if (zone.IsFinish && zone.X - p.Distance > 0 && zone.X - p.Distance < 650)
-                        return "Точная метка у ленты: рывок на 0,1 с.";
+                        return "Площадка у ленты: пролети через неё для рывка ×2.";
                 }
             if (Trial)
                 return TracksV4.IsOpen(Game.Track.Id) || Game.Elapsed < 3.5 ? TrialMotionHint() : "";

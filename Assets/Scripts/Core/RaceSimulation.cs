@@ -11,6 +11,7 @@ namespace FlipRace.Core
 
     public static class RaceConfig
     {
+        public const int CharacterCount = 6;
         public const double Speed = 220;
         public const double FlipDuration = .8;
         public const double RecoveryDuration = .5;
@@ -27,7 +28,8 @@ namespace FlipRace.Core
         public const double GravityAcceleration = 662.5;
         public const double LinearVerticalSpeed = 265;
         public const double FinishBoostSpeed = 440;
-        public const double FinishBoostDistance = 44;
+        public const double FinishBoostDuration = .25;
+        public const double FinishBoostDistance = FinishBoostSpeed * FinishBoostDuration;
     }
 
     public sealed class Obstacle
@@ -59,7 +61,7 @@ namespace FlipRace.Core
         public bool NegativeEnabled;
         public int PositiveRingCount
         {
-            get { int count = 0; foreach (var zone in RiskZones) if (!zone.IsNegative) count++; return count; }
+            get { int count = 0; foreach (var zone in RiskZones) if (!zone.IsNegative && !zone.IsCoin) count++; return count; }
         }
 
         public Track(double length, Obstacle[] obstacles, Cue[] cues = null)
@@ -78,6 +80,7 @@ namespace FlipRace.Core
         public bool IsInstant { get { return Kind == "instant" || IsLanding; } }
         public bool IsLanding { get { return Kind == "landing"; } }
         public bool IsFinish { get { return Kind == "finish"; } }
+        public bool IsCoin { get { return Kind == "coin"; } }
         public bool AfterObstacle { get { return Placement == "after"; } }
         public bool FreeReward;
         // Ring center and radius use world units, just like obstacle geometry.
@@ -85,9 +88,9 @@ namespace FlipRace.Core
         // Landing uses a narrow center-X interval on the linked stone's actual
         // corridor-facing plane. Y and Radius do not define its contact shape.
         public double LandingWidth;
-        // Finish contact is a center-X plane and a full center-Y span. Radius
-        // does not expand this target, unlike ordinary circular rings.
-        public double FinishHeight = 16;
+        // Visible horizontal finish rectangle, centered at X/Y in world units.
+        // Contact is the swept circular body against exactly this rectangle.
+        public double FinishWidth = 32, FinishHeight = 8;
     }
 
     public sealed class SpeedEffect
@@ -150,6 +153,8 @@ namespace FlipRace.Core
         public int BoostsEarned;
         public int InstantBoostsEarned;
         public int SlowsEarned;
+        public int CoinsEarned;
+        public HitInfo LastCoin;
         public HashSet<string> CollectedRiskIds = new HashSet<string>();
         public HashSet<string> SuccessfulRiskIds = new HashSet<string>();
         public HashSet<string> FailedRiskIds = new HashSet<string>();
@@ -400,7 +405,7 @@ namespace FlipRace.Core
         public static bool SetCharacter(GameState game, int playerIndex, int characterIndex)
         {
             if ((game.Phase != "ready" && game.Phase != "finished") || playerIndex < 0 || playerIndex > 1
-                || characterIndex < 0 || characterIndex > 3) return false;
+                || characterIndex < 0 || characterIndex >= RaceConfig.CharacterCount) return false;
             game.Players[playerIndex].CharacterIndex = characterIndex;
             game.Players[playerIndex].Ready = false;
             return true;
@@ -527,13 +532,13 @@ namespace FlipRace.Core
             if (player.FinishBoost)
             {
                 player.FinishBoostElapsed += dt;
-                // Keep ordinary pulses/queues intact. Authored tracks guarantee
-                // clean entry; this differential ledger also reconciles actual
-                // arrival if a synthetic track still has an ordinary effect.
-                player.FinishBoostDistanceGained += (RaceConfig.FinishBoostSpeed
-                    - RaceConfig.Speed * (effect != null ? effect.Multiplier : 1)) * dt;
+                // Suspend ordinary effect service while the fixed 2x pulse runs.
+                // Its extra motion is credited only as it actually happens.
+                player.FinishBoostDistanceGained += (RaceConfig.FinishBoostSpeed - RaceConfig.Speed) * dt;
+                if (player.FinishBoostElapsed >= RaceConfig.FinishBoostDuration - Epsilon)
+                    player.FinishBoost = false;
             }
-            if (effect != null)
+            else if (effect != null)
             {
                 effect.Elapsed += dt;
                 effect.Remaining = Math.Max(0, effect.Remaining - dt);
@@ -832,6 +837,37 @@ namespace FlipRace.Core
             return obstacle.Kind == "floor" ? "Камень внизу — пора наверх" : "Камень вверху — пора вниз";
         }
 
+        // Minkowski sum of the visible rectangle and the circular body:
+        // two face bands plus four circular corners. This avoids the invisible
+        // square corner extensions of a plain expanded AABB.
+        private static double FirstFinishContact(PlayerState player, RiskZone zone, double horizon, FlightSettings flight)
+        {
+            double radius = RaceConfig.PlayerRadius;
+            double left = zone.X - zone.FinishWidth / 2, right = zone.X + zone.FinishWidth / 2;
+            double top = zone.Y - zone.FinishHeight / 2, bottom = zone.Y + zone.FinishHeight / 2;
+            double x = player.Distance, y = GetPlayerCenterY(player), vx = player.CurrentSpeed;
+            double vy = !player.Flipping ? 0 : flight.LegacyLinear
+                ? (player.FlipTo - player.FlipFrom) * (RaceConfig.CorridorHeight - 2 * radius) / RaceConfig.FlipDuration
+                : player.VerticalSpeed;
+            double acceleration = player.Flipping && !flight.LegacyLinear ? Acceleration(player, flight) : 0;
+            double first = double.PositiveInfinity;
+            if (!RangeTimes(x, vx, left - radius, right + radius, horizon, out double enter, out double leave))
+                return first;
+            first = ContinuousMotion.FirstBandContact(y, vy, acceleration, top, bottom, enter, leave);
+            if (RangeTimes(x, vx, left, right, horizon, out double innerEnter, out double innerLeave))
+                first = Math.Min(first, ContinuousMotion.FirstBandContact(y, vy, acceleration,
+                    top - radius, bottom + radius, innerEnter, innerLeave));
+            foreach (double cornerX in new[] { left, right })
+                foreach (double cornerY in new[] { top, bottom })
+                {
+                    double contact = ContinuousMotion.FirstCircleContact(x + vx * enter - cornerX,
+                        y + vy * enter + .5 * acceleration * enter * enter - cornerY,
+                        vx, vy + acceleration * enter, acceleration, radius, Math.Max(0, leave - enter));
+                    if (!double.IsInfinity(contact)) first = Math.Min(first, enter + contact);
+                }
+            return first;
+        }
+
         private sealed class RiskEvent
         {
             public double Time;
@@ -854,16 +890,9 @@ namespace FlipRace.Core
                 if (zone.IsFinish)
                 {
                     if (player.FinishBoostsEarned != 0 || zone.X < 0 || zone.X >= track.Length
-                        || player.Distance > zone.X + Epsilon || zone.FinishHeight < 0) continue;
-                    time = Math.Max(0, (zone.X - player.Distance) / player.CurrentSpeed);
-                    if (time > horizon + Epsilon) continue;
-                    double vy = !player.Flipping ? 0 : flight.LegacyLinear
-                        ? (player.FlipTo - player.FlipFrom) * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius)
-                            / RaceConfig.FlipDuration : player.VerticalSpeed;
-                    double acceleration = player.Flipping && !flight.LegacyLinear ? Acceleration(player, flight) : 0;
-                    double y = GetPlayerCenterY(player) + vy * time + .5 * acceleration * time * time;
-                    if (y < zone.Y - zone.FinishHeight / 2 - Epsilon
-                        || y > zone.Y + zone.FinishHeight / 2 + Epsilon) continue;
+                        || zone.FinishWidth <= 0 || zone.FinishHeight < 0) continue;
+                    time = FirstFinishContact(player, zone, horizon, flight);
+                    if (double.IsInfinity(time)) continue;
                 }
                 else if (collected)
                 {
@@ -947,7 +976,8 @@ namespace FlipRace.Core
                 flightHorizon = Math.Min(flightHorizon, apexTime);
                 var horizon = Math.Min(remaining, Math.Min(Math.Max(0, track.Length - player.Distance) / player.CurrentSpeed,
                     Math.Min(flightHorizon,
-                        player.ActiveEffect != null ? player.ActiveEffect.Remaining : double.PositiveInfinity)));
+                        player.FinishBoost ? Math.Max(0, RaceConfig.FinishBoostDuration - player.FinishBoostElapsed)
+                            : player.ActiveEffect != null ? player.ActiveEffect.Remaining : double.PositiveInfinity)));
                 Obstacle edge = null;
                 if (player.Support == SupportKind.Stone)
                     foreach (var obstacle in track.Obstacles)
@@ -972,7 +1002,7 @@ namespace FlipRace.Core
                     // Cancel only contacts that were already pending before this
                     // impact. An untouched ring can still be earned after recovery.
                     foreach (var zone in track.RiskZones)
-                        if (!zone.IsNegative && !zone.IsInstant && !zone.IsFinish && !zone.FreeReward && zone.ObstacleId == collision.Obstacle.Id
+                        if (!zone.IsNegative && !zone.IsInstant && !zone.IsFinish && !zone.IsCoin && !zone.FreeReward && zone.ObstacleId == collision.Obstacle.Id
                             && player.CollectedRiskIds.Contains(zone.Id)
                             && !player.SuccessfulRiskIds.Contains(zone.Id)) player.FailedRiskIds.Add(zone.Id);
                     player.LastHit = new HitInfo
@@ -1012,13 +1042,14 @@ namespace FlipRace.Core
                 }
                 if (risk != null && risk.Time <= moving + Epsilon && !player.FailedRiskIds.Contains(risk.Zone.Id))
                 {
-                    if (risk.Zone.IsFinish)
+                    if (risk.Zone.IsCoin) AwardCoin(player, risk.Zone, elapsed + dt - remaining);
+                    else if (risk.Zone.IsFinish)
                     {
                         player.CollectedRiskIds.Add(risk.Zone.Id);
                         player.SuccessfulRiskIds.Add(risk.Zone.Id);
                         player.FinishBoost = true;
                         player.FinishBoostsEarned++;
-                        player.LastFinishBoost = new HitInfo { Id = risk.Zone.Id, Message = "Финишный рывок −0,1 сек",
+                        player.LastFinishBoost = new HitInfo { Id = risk.Zone.Id, Message = "Рывок ×2",
                             At = elapsed + dt - remaining };
                     }
                     else if (risk.Zone.IsNegative)
@@ -1057,6 +1088,17 @@ namespace FlipRace.Core
             }
         }
 
+        // A coin is an immediate personal contact, never a speed-effect queue
+        // entry or a provisional obstacle-linked positive ring. Race restart
+        // constructs fresh PlayerState objects, resetting the score and IDs.
+        private static void AwardCoin(PlayerState player, RiskZone zone, double at)
+        {
+            player.CollectedRiskIds.Add(zone.Id);
+            player.SuccessfulRiskIds.Add(zone.Id);
+            if (player.CoinsEarned >= 2) return;
+            player.CoinsEarned++;
+            player.LastCoin = new HitInfo { Id = zone.Id, Message = "Монетка +1", At = at };
+        }
         private static void AwardPositive(PlayerState player, RiskZone zone, double at)
         {
             player.CollectedRiskIds.Add(zone.Id);

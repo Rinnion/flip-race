@@ -1,0 +1,49 @@
+ITER49-01 — five active horizontal finish pads
+Model/effort: gpt-6.1-sol / high. Parent integration and native delivery remain separate.
+
+IMPLEMENTED
+Four active tracks now match accepted Mixed: X=7780, width=28, height=8.
+Y remains 32 for Long, Short and Cascade, 208 for Flow; Mixed remains X7780/Y32.
+Length remains 7920. Latest conservative circular-body contact X=7808 leaves 112 units (required 110).
+Only pad coordinates/dimensions and authored route witnesses changed in production.
+All stones, both fields of every gate half, ordinary rewards, negatives and lengths match the pre-edit hash capture in iter49-01-before.json.
+Inactive Dense/Waves drafts and their author witnesses were deliberately left unchanged.
+
+AUTHOR WITNESS DECISIONS
+Full routes no longer press at the removed X7876 vertical plane.
+Main safe routes for the three full-series tracks add X7700 to skip the pad; their per-input +/-60 ms window still passes.
+Fast full-series negative routes remove only the preceding final setup and use the new pad coordinate when preparing the return.
+Cascade negative indexing now addresses its last gate actions without an obsolete final-plane input.
+Cascade and Mixed existing safe routes remain clean and naturally collect the pad: 35.75 seconds, zero ordinary rewards.
+All full-series safe routes remain clean at 36.00 seconds with no pad.
+
+REAL TAKE / SKIP
+All five tracks and both named profiles: take 33.05 s, skip 33.30 s, zero collisions and zero slows, all nine ordinary rewards retained.
+Each take physically serves 0.25 moving seconds and 55 extra world units. Same-input runs with the pad removed independently confirm 0.25 s.
+All input X/time/Y/support/repeat state and contact coordinates are in iter49-01-finish.json.
+Full-series take = production FullRoute; skip adds X7730, except Fast Short X7750.
+Cascade take = production FullRoute; Main skip adds X7670, Fast skip adds X7710.
+Mixed uses the accepted stage00 witness: omit the old input beyond X7800; Main skip shifts the final remaining action by +10, Fast skip adds X7730.
+Ordinary negative witness inventory at step 0.317: three series and Cascade finish 33.35 s (nine positives, one slow, full pad), Mixed 33.65 s (nine positives, two slows, full pad), both profiles, all clean.
+
+CHECKS
+PASS Iter49Finish --all: 19,513 checks, 60 actual take/skip/same-input comparisons (five courses x two profiles x six step sizes). Both players receive actual Press/Advance input; no player-state injection.
+PASS ParityRunner --finish: independent new horizontal-finish suite, eight scenarios / 1,765 assertions.
+PASS TrackProofFull --verify: 14,908 checks, safe/full/negative across six step sizes, Main safe local +/-60 ms.
+PASS RhythmProof --verify: 23,095 checks, four practice routes, 98 real recovery states and 24 isolated slow-straight games. Fresh exports saved as iter49-01-rhythm-routes.json and iter49-01-rhythm-recovery.json; the two historical stage2 artifacts restored exactly from HEAD.
+PASS git diff --check.
+
+INTENTIONAL REGRESSION EXPECTATION CHANGES
+EngineFinishTests replaces obsolete point-at-vertical-plane / partial 0.1 s / ordinary-clocks-running assumptions with swept circular body against horizontal rectangle, fixed x2 for 0.25 moving seconds, suspended ordinary clocks and resumed FIFO identity.
+Independent tests retain individual take/skip and ties across five motion modes, exact face/corner/tangent and outside-tangent misses, whole-pad sweep, once-only and personal collection, real partial late-pulse credit, invalid zone centers at/after tape, instant priority while suspended, collision freeze and simultaneous impact, zero/NaN advance pause, copied event state, rematch and exact grace-bound arrival.
+Double precision tangent X at world coordinate 2000 is checked within 1e-6 world unit; radial equation within 1e-6 squared unit, time within 2e-8 s. A 1e-11 s positive clock guard compensates accumulated rounding only; the exact tangent is retained and gap 14.00001 must miss.
+TrackProofFull full finish changes 33.20 -> 33.05 s and negative 33.50 -> 33.35 s. Safe remains 36.00 s using the explicit new skip witness. Ledger inspection uses length minus 110 instead of the removed X7876 target coordinate.
+The cross-engine fixture baseline was not regenerated. This is an intentional Unity version change.
+
+LIMITS / HANDOFF
+This evidence establishes Core behavior, not native rendering or mobile usability. All five native pad visuals and fresh WebGL/ZIP remain the parent's delivery checks.
+No remaining stage01 blocker. Shared dirty changes from stage00 were preserved. No commit created. STATUS is owned by Progatik and was not edited here.
+Changed production: TracksFull.cs, TracksRhythmFull.cs, TracksRhythmNegatives.cs.
+Changed independent regressions: Assets/Editor/EngineFinishTests.cs, Tools/TrackProofFull/FullProof.cs.
+Changed tool: Tools/Iter49Finish/Program.cs and Probe.cs. New evidence uses Verification/iter49-01-*.
+Final exact SHA256 manifest: iter49-01-hashes.json. The main replay JSON includes its own source hashes and immutable pre-edit capture hash.

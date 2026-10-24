@@ -36,8 +36,8 @@ namespace FlipRace.Core
         public static double[] FullRoute(string id, FlightSettings flight)
         {
             if (id == CascadeId) return IsFastWitness(flight)
-                ? new double[] { 265, 492.5, 608.5, 995, 1274, 1718, 2102, 2411, 2638.5, 2754.5, 3141, 3528.5, 3902, 4152.5, 4324.5, 4752, 5052, 5420.5, 5656.5, 6040, 6309, 6659, 7030, 7330, 7630, 7853.945775241146 }
-                : new double[] { 230.5, 281.5, 485.1811187353192, 960.5, 1011.5, 1248.5, 1301, 1718.5, 1741.5, 2047.8, 2128.3, 2376.5, 2427.5, 2631.181118735319, 3106.5, 3157.5, 3513, 3536, 3867.5, 3918.5, 4113, 4151, 4179, 4717.5, 4768.5, 5017.5, 5068.5, 5419.5, 5461.5, 5603, 5709.5, 6005.5, 6056.5, 6267.5, 6341, 6614, 6691.5, 6995.5, 7046.5, 7295.5, 7346.5, 7595.5, 7646.5, 7863.922760472742 };
+                ? new double[] { 265, 492.5, 608.5, 995, 1274, 1718, 2102, 2411, 2638.5, 2754.5, 3141, 3528.5, 3902, 4152.5, 4324.5, 4752, 5052, 5420.5, 5656.5, 6040, 6309, 6659, 7030, 7330, 7630 }
+                : new double[] { 230.5, 281.5, 485.1811187353192, 960.5, 1011.5, 1248.5, 1301, 1718.5, 1741.5, 2047.8, 2128.3, 2376.5, 2427.5, 2631.181118735319, 3106.5, 3157.5, 3513, 3536, 3867.5, 3918.5, 4113, 4151, 4179, 4717.5, 4768.5, 5017.5, 5068.5, 5419.5, 5461.5, 5603, 5709.5, 6005.5, 6056.5, 6267.5, 6341, 6614, 6691.5, 6995.5, 7046.5, 7295.5, 7346.5, 7595.5, 7646.5 };
             if (id == DenseId) return IsFastWitness(flight)
                 ? new double[] { 135, 408, 803, 1054.5, 1170.5, 1567, 1861, 2092, 2476, 2789, 3064.5, 3462, 3756, 4049, 4399, 4794, 5068.5, 5240.5, 5678, 5929.5, 6045.5, 6442, 6696.5, 6932.5, 7340, 7634, 7853.945775241146 }
                 : new double[] { 100.5, 151.5, 382.5, 435, 768.5, 819.5, 1047.1811187353192, 1532.5, 1583.5, 1826.5, 1877.5, 2092.5, 2115.5, 2421.8, 2502.3, 2754.5, 2805.5, 3049, 3072, 3427.5, 3478.5, 3721.5, 3772.5, 4007.5, 4081, 4354, 4431.5, 4759.5, 4810.5, 5029, 5067, 5095, 5643.5, 5694.5, 5922.18111873532, 6407.5, 6458.5, 6695.5, 6737.5, 6879, 6985.5, 7305.5, 7356.5, 7599.5, 7650.5, 7863.922760472742 };
@@ -107,7 +107,7 @@ namespace FlipRace.Core
                     new RiskZone { Id = "rhythm-cascade-m13-after-ring", ObstacleId = "rhythm-cascade-m13-after-stone", Kind = "positive", Placement = "after", FreeReward = false, X = 5715, Y = 120, Radius = 8, ClearX = 5614, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
                     new RiskZone { Id = "rhythm-cascade-m15-chain-1", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 6359, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
                     new RiskZone { Id = "rhythm-cascade-m15-chain-2", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 6709, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
-                    new RiskZone { Id = "rhythm-cascade-finish", ObstacleId = null, Kind = "finish", Placement = "before", FreeReward = false, X = 7876, Y = 32, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
+                    new RiskZone { Id = "rhythm-cascade-finish", ObstacleId = null, Kind = "finish", Placement = "before", FreeReward = false, X = 7780, Y = 32, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishWidth = 28, FinishHeight = 8 },
                 }
             };
         }

@@ -208,7 +208,7 @@ namespace FlipRace.Presentation
                 float lift=striding?Mathf.Max(0,-step*side):0;
                 float footY=airborne?.72f-tuck*.16f:.85f-lift*.18f;
                 float footX=offset+(airborne?side*(.10f+tuck*.09f):step*side*.24f);
-                Color32 foot=Hex(character==3?0xaaa3b4:0xeee5d0);
+                Color32 foot=Hex(character==5?(i==0?0xefbf88:0x898591):character==4?0xf5ecdc:character==3?0xaaa3b4:0xeee5d0);
                 p.Stroke(new Curve().M(offset*.8f,.58f).Q(footX-side*.09f,.72f,footX,footY),outline,.16f);
                 p.Stroke(new Curve().M(offset*.8f,.58f).Q(footX-side*.09f,.72f,footX,footY),foot,.09f);
                 p.Ellipse(footX,footY,.24f-lift*.025f,.14f+lift*.025f,foot,outline,.075f);
@@ -224,6 +224,8 @@ namespace FlipRace.Presentation
 
         static void DrawBody(Painter p,int character,int player)
         {
+            if(character==4){DrawJackBody(p,player);return;}
+            if(character==5){DrawPumpkinBody(p,player);return;}
             Color32 outline=Outline(character);
             Color32 fur=Hex(character==3?0x98929f:character==2?0xf3f0dc:0xfff9e9);
             p.Ellipse(0,.39f,.56f,.47f,Hex(character==3?0x96909e:character==2?0xb98766:0xfff8e6),outline);
@@ -285,6 +287,7 @@ namespace FlipRace.Presentation
 
         static void DrawEyes(Painter p,int character,bool blink,bool recovering,MascotReaction reaction=MascotReaction.None)
         {
+            if(character>=4){DrawAutumnEyes(p,character,blink,recovering,reaction);return;}
             Color32 outline=Outline(character),eye=Hex(character==0?0x86a250:character==1?0x82a9ac:character==3?0xa184be:0x737e49);
             for(int i=0;i<2;i++)
             {
@@ -310,6 +313,8 @@ namespace FlipRace.Presentation
 
         static void DrawSprout(Painter p,float angle,int character,MascotReaction reaction)
         {
+            if(character==4){DrawJackHat(p,angle,reaction);return;}
+            if(character==5){DrawPumpkinHat(p,angle,reaction);return;}
             if(character==3)
             {
                 float flowerAngle=angle+(reaction==MascotReaction.Win?.35f:0);
@@ -336,6 +341,7 @@ namespace FlipRace.Presentation
 
         static void DrawAccessories(Painter p,int character,float wave,MascotReaction reaction)
         {
+            if(character>=4){DrawAutumnPendant(p,character,wave,reaction);return;}
             bool cheerful=reaction==MascotReaction.Success||reaction==MascotReaction.Win;
             if(character==2)
             {
@@ -358,7 +364,179 @@ namespace FlipRace.Presentation
                 p.Ellipse(-.69f,.23f-wave*.12f,.14f,.17f,Hex(character==3?0xaaa3b4:0xfff9e9),Outline(character));
         }
 
-        static Color32 Outline(int character) {return Hex(character==3?0x65596f:character==2?0x7d7967:0x746d58);}
+        // Autumn heroes use the same mutable pose construction and lazy caches
+        // as the original four. Only their drawing branches differ; no PNG is
+        // substituted for motion, blinking, reactions or an airborne frame.
+        static void DrawJackBody(Painter p,int player)
+        {
+            Color32 ink=Outline(4),ivory=Hex(0xfff8e9),honey=Hex(0xe3bd7d);
+            p.Shape(new Curve().M(-.45f,.30f).Q(-.60f,.61f,-.47f,.86f)
+                .Q(0,.96f,.49f,.86f).Q(.60f,.58f,.46f,.30f).Close(),ivory,ink,.065f);
+            p.Shape(new Curve().M(.31f,.37f).Q(.53f,.55f,.40f,.82f)
+                .Q(.16f,.88f,.05f,.83f).Q(.36f,.67f,.31f,.37f).Close(),Hex(0xf0e5d5));
+            // Honey ear/hair silhouette, including the small unruly side locks.
+            p.Shape(new Curve().M(-.85f,-.34f).L(-.98f,-1.08f).Q(-.62f,-1.04f,-.33f,-.77f)
+                .Q(.18f,-.94f,.67f,-.77f).L(.84f,-1.00f).L(.91f,-.38f)
+                .L(1.01f,.15f).L(.86f,.08f).L(.87f,.27f).L(.70f,.16f)
+                .L(.61f,.34f).L(.43f,.17f).L(-.48f,.22f).L(-.64f,.38f)
+                .L(-.72f,.19f).L(-.89f,.32f).L(-.90f,.13f).L(-1.02f,.20f).Close(),honey,ink,.065f);
+            p.Shape(new Curve().M(-.78f,-.38f).Q(-.73f,-.69f,-.38f,-.71f)
+                .Q(.03f,-.89f,.57f,-.62f).Q(.92f,-.49f,.91f,-.10f)
+                .C(.93f,.42f,-.88f,.45f,-.88f,-.08f).Close(),ivory,ink,.055f);
+            p.Shape(new Curve().M(-.87f,-.63f).L(-.91f,-.94f).L(-.56f,-.72f).Close(),Hex(0xf2d59f));
+            p.Shape(new Curve().M(-.64f,-.72f).Q(-.30f,-1.01f,.13f,-.76f)
+                .Q(.12f,-.55f,-.13f,-.52f).Q(-.45f,-.50f,-.64f,-.72f).Close(),honey);
+            p.Stroke(new Curve().M(-.36f,-.77f).Q(-.17f,-.61f,-.11f,-.65f),Hex(0xf4d69f),.055f);
+            // The wine strand is separate from the eye, not a face marking.
+            p.Shape(new Curve().M(-.64f,-.86f).Q(-.37f,-.65f,-.62f,-.40f)
+                .Q(-.85f,-.09f,-.72f,.30f).Q(-1.01f,.08f,-.85f,-.28f)
+                .Q(-.56f,-.63f,-.64f,-.86f).Close(),Hex(0xa77277),Hex(0x93696c),.045f);
+            p.Stroke(new Curve().M(-.65f,-.65f).Q(-.90f,-.12f,-.79f,.14f),Hex(0xc08c8c),.04f);
+            for(int side=0;side<2;side++)for(int n=0;n<5;n++){
+                float x=(side==0?-.48f:.51f)+(n%3-1)*.075f;
+                p.Ellipse(x,.06f+(n/3)*.065f,.018f,.018f,Hex(0xe0b49b));
+            }
+            DrawAutumnMouth(p,Hex(0x887160));DrawAutumnCollar(p,player,ink);
+        }
+
+        static Curve PumpkinHead()
+        {
+            return new Curve().M(0,-.76f).L(-.34f,-.76f).L(-.96f,-1.13f)
+                .Q(-.98f,-.68f,-.88f,-.36f).C(-1.06f,.12f,-.76f,.35f,0,.35f)
+                .C(.76f,.35f,1.06f,.12f,.88f,-.36f).Q(.98f,-.68f,.96f,-1.13f)
+                .L(.34f,-.76f).Close();
+        }
+        static void DrawPumpkinBody(Painter p,int player)
+        {
+            Color32 ink=Outline(5),apricot=Hex(0xefbf88),slate=Hex(0x898591);
+            p.Shape(new Curve().M(0,.29f).L(-.43f,.29f).Q(-.60f,.59f,-.47f,.86f)
+                .Q(-.19f,.93f,0,.91f).Close(),apricot);
+            p.Shape(new Curve().M(0,.29f).L(.43f,.29f).Q(.60f,.59f,.47f,.86f)
+                .Q(.19f,.93f,0,.91f).Close(),slate);
+            p.Stroke(new Curve().M(-.43f,.29f).Q(-.60f,.59f,-.47f,.86f)
+                .Q(0,.96f,.47f,.86f).Q(.60f,.59f,.43f,.29f),ink,.065f);
+            p.Shape(new Curve().M(0,-.76f).L(-.34f,-.76f).L(-.96f,-1.13f)
+                .Q(-.98f,-.68f,-.88f,-.36f).C(-1.06f,.12f,-.76f,.35f,0,.35f).Close(),apricot);
+            p.Shape(new Curve().M(0,-.76f).L(.34f,-.76f).L(.96f,-1.13f)
+                .Q(.98f,-.68f,.88f,-.36f).C(1.06f,.12f,.76f,.35f,0,.35f).Close(),slate);
+            p.Stroke(PumpkinHead(),ink,.065f);
+            p.Shape(new Curve().M(-.85f,-.94f).L(-.78f,-.53f).L(-.49f,-.74f).Close(),Hex(0xf8d59e));
+            p.Shape(new Curve().M(.85f,-.94f).L(.78f,-.53f).L(.49f,-.74f).Close(),Hex(0xaaa0ac));
+            p.Stroke(new Curve().M(-.38f,.48f).Q(-.44f,.63f,-.36f,.78f),Hex(0xf9d9a9),.055f);
+            p.Ellipse(.66f,.13f,.10f,.10f,slate,Hex(0xefe8d9),.025f);
+            p.Stroke(Star(.66f,.13f,.067f,.029f),Hex(0xefe8d9),.022f);
+            DrawAutumnMouth(p,Hex(0x807368));DrawAutumnCollar(p,player,ink);
+        }
+        static void DrawAutumnMouth(Painter p,Color32 ink)
+        {
+            p.Shape(new Curve().M(-.07f,.025f).L(.09f,.025f).L(.015f,.11f).Close(),ink);
+            p.Stroke(new Curve().M(.015f,.13f).Q(-.08f,.24f,.20f,.19f),ink,.04f);
+        }
+        static void DrawAutumnCollar(Painter p,int player,Color32 ink)
+        {
+            p.Shape(new Curve().M(-.48f,.28f).Q(0,.38f,.49f,.28f).L(.54f,.43f)
+                .Q(0,.54f,-.53f,.43f).Close(),Hex(0xf9f0df),ink,.045f);
+            p.Stroke(new Curve().M(-.38f,.35f).Q(0,.42f,.40f,.35f),Hex(0xfffbef),.045f);
+            Color32 stitch=Scarf(player);
+            if(player==0)p.Stroke(new Curve().M(.36f,.36f).L(.37f,.44f),stitch,.05f);
+            else {p.Ellipse(.31f,.41f,.025f,.025f,stitch);p.Ellipse(.41f,.40f,.025f,.025f,stitch);}
+        }
+        static void DrawAutumnEyes(Painter p,int character,bool blink,bool recovering,MascotReaction reaction)
+        {
+            Color32 ink=Outline(character);
+            for(int i=0;i<2;i++){
+                float x=i==0?-.40f:.43f;
+                if(recovering){
+                    p.Stroke(new Curve().M(x-.12f,-.39f).L(x+.12f,-.15f),ink,.065f);
+                    p.Stroke(new Curve().M(x+.12f,-.39f).L(x-.12f,-.15f),ink,.065f);
+                }
+                else if(reaction==MascotReaction.Win){
+                    p.Stroke(new Curve().M(x-.16f,-.20f).Q(x,-.49f,x+.16f,-.20f),ink,.055f);
+                }
+                else if(blink||(reaction==MascotReaction.Success&&i==0)){
+                    p.Stroke(new Curve().M(x-.19f,-.23f).Q(x,-.19f,x+.19f,-.23f),ink,.055f);
+                }
+                else {
+                    p.Ellipse(x,-.28f,.235f,character==4?.175f:.205f,Hex(0xfffbef),ink,.055f);
+                    Color32 iris=Hex(character==4?0xd5ac6b:i==0?0x998b7c:0xa2c6d4);
+                    p.Ellipse(x+.025f,-.27f,character==4?.10f:.105f,.15f,iris);
+                    if(character==4){
+                        p.Shape(new Curve().M(x+.01f,-.39f).Q(x-.07f,-.24f,x+.07f,-.15f)
+                            .Q(x+.11f,-.29f,x+.01f,-.39f).Close(),Hex(0x989854));
+                        p.Stroke(new Curve().M(x+.01f,-.34f).L(x+.055f,-.21f),Hex(0xc4bb73),.018f);
+                        p.Ellipse(x-.01f,-.35f,.026f,.035f,Hex(0xfff6d5));
+                    }else{
+                        p.Ellipse(x+.04f,-.23f,.047f,.095f,Hex(i==0?0x7c7168:0x81a9bc));
+                        p.Shape(Star(x+.003f,-.355f,.056f,.022f),Hex(0xfffdf4));
+                        p.Ellipse(x+.075f,-.19f,.021f,.022f,Hex(0xfffdf4));
+                    }
+                }
+            }
+        }
+        static Curve Star(float x,float y,float radius,float inner)
+        {
+            var star=new Curve();
+            for(int i=0;i<10;i++){
+                float a=-Mathf.PI*.5f+i*Mathf.PI/5,r=i%2==0?radius:inner;
+                if(i==0)star.M(x+Mathf.Cos(a)*r,y+Mathf.Sin(a)*r);else star.L(x+Mathf.Cos(a)*r,y+Mathf.Sin(a)*r);
+            }
+            return star.Close();
+        }
+        static void DrawJackHat(Painter p,float wave,MascotReaction reaction)
+        {
+            Color32 ink=Outline(4);float dy=(reaction==MascotReaction.Hit?.06f:0)+wave*.018f;
+            var crown=new Curve().M(-.20f,-.79f).Q(.30f,-.99f,.33f,-1.57f)
+                .Q(.75f,-1.39f,.88f,-.84f).L(.81f,-.65f).Close();
+            crown.Transform(0,dy,wave*.045f);p.Shape(crown,Hex(0xbd947c),ink,.055f);
+            var light=new Curve().M(.41f,-1.42f).Q(.68f,-1.17f,.74f,-.91f);
+            light.Transform(0,dy,wave*.045f);p.Stroke(light,Hex(0xd7b293),.045f);
+            var brim=new Curve().M(-.40f,-.79f).C(-.19f,-1.02f,.61f,-.82f,1.03f,-.49f)
+                .Q(1.12f,-.34f,.82f,-.41f).Q(.08f,-.49f,-.40f,-.79f).Close();
+            brim.Transform(0,dy,wave*.045f);p.Shape(brim,Hex(0xb98e78),ink,.055f);
+            var band=new Curve().M(.02f,-.85f).Q(.45f,-.72f,.82f,-.63f);
+            band.Transform(0,dy,wave*.045f);p.Stroke(band,Hex(0xa16f75),.075f);
+            var feather=new Curve().M(.03f,-.79f).Q(-.25f,-.93f,-.19f,-1.17f)
+                .Q(.01f,-1.11f,.08f,-.91f).Q(.02f,-1.16f,.16f,-1.24f)
+                .Q(.26f,-.94f,.03f,-.79f).Close();
+            feather.Transform(0,dy,wave*.075f);p.Shape(feather,Hex(0xa9777c),Hex(0x916b70),.035f);
+            var vein=new Curve().M(.02f,-.78f).L(.11f,-1.14f);vein.Transform(0,dy,wave*.075f);
+            p.Stroke(vein,Hex(0xc2908e),.025f);
+        }
+        static void DrawPumpkinHat(Painter p,float wave,MascotReaction reaction)
+        {
+            float dy=wave*.035f+(reaction==MascotReaction.Hit?.06f:0);
+            DrawSmallPumpkin(p,.035f,-1.12f+dy,.37f,.255f,true);
+        }
+        static void DrawSmallPumpkin(Painter p,float x,float y,float rx,float ry,bool stem)
+        {
+            Color32 ink=Hex(0xa38a72);
+            p.Ellipse(x,y,rx,ry,Hex(0xefbf88),ink,.045f);
+            p.Stroke(new Curve().M(x-rx*.42f,y-ry*.88f).Q(x-rx*.74f,y,x-rx*.39f,y+ry*.88f),Hex(0xd5a575),.027f);
+            p.Stroke(new Curve().M(x,y-ry*.92f).Q(x-rx*.17f,y,x,y+ry*.94f),Hex(0xd5a575),.027f);
+            p.Stroke(new Curve().M(x+rx*.43f,y-ry*.87f).Q(x+rx*.73f,y,x+rx*.4f,y+ry*.87f),Hex(0xd5a575),.027f);
+            p.Stroke(new Curve().M(x-rx*.46f,y-ry*.58f).Q(x-rx*.13f,y-ry*.82f,x+rx*.15f,y-ry*.63f),Hex(0xffdcab),.032f);
+            for(int i=0;i<2;i++){
+                float ex=x+(i==0?-.40f:.40f)*rx;
+                p.Shape(new Curve().M(ex,y-ry*.33f).L(ex-rx*.17f,y+ry*.02f).L(ex+rx*.17f,y+ry*.02f).Close(),Hex(0x927e6a));
+            }
+            if(stem){
+                p.Stroke(new Curve().M(x+.02f,y-ry).Q(x+.035f,y-ry-.19f,x+.16f,y-ry-.15f),Hex(0x84946c),.075f);
+                p.Stroke(new Curve().M(x+.02f,y-ry-.015f).Q(x+.06f,y-ry-.16f,x+.15f,y-ry-.15f),Hex(0xb3c094),.033f);
+            }else{
+                p.Stroke(new Curve().M(x-rx*.42f,y+ry*.30f).Q(x,y+ry*.72f,x+rx*.42f,y+ry*.30f),Hex(0x927e6a),.025f);
+            }
+        }
+        static void DrawAutumnPendant(Painter p,int character,float wave,MascotReaction reaction)
+        {
+            float x=wave*.055f,y=.60f+(reaction==MascotReaction.Win?-.025f:0);
+            p.Stroke(new Curve().M(0,.47f).Q(x-.025f,.54f,x,y-.025f),Hex(0x9d9578),.025f);
+            if(character==4){
+                p.Shape(new Curve().M(x,y-.01f).Q(x+.16f,y+.12f,x-.025f,y+.25f)
+                    .Q(x-.10f,y+.13f,x,y-.01f).Close(),Hex(0xc2b779),Hex(0x9c926a),.025f);
+                p.Stroke(new Curve().M(x,y+.03f).L(x-.014f,y+.19f),Hex(0xe2d6a0),.02f);
+            }else DrawSmallPumpkin(p,x,y+.06f,.13f,.115f,false);
+        }
+        static Color32 Outline(int character) {return Hex(character==4?0x8b7767:character==5?0x7d7378:character==3?0x65596f:character==2?0x7d7967:0x746d58);}
         static Color32 Scarf(int player) {return Hex(player==0?0xb7a1de:0xf1ab81);}
 
         static Curve RoundedRect(float x,float y,float w,float h,float r)

@@ -1,5 +1,8 @@
-# Проверка «Флип!»: узкая правка 4.5.1-trial и история
+# Проверка «Флип!»: ITER49 / 4.9.0-trial и история
 
+Текущая полная поставка: **[ITER49-RELEASE](ITER49-RELEASE.md)** —6 требований F01…F06, Core/маршруты/UI, native PC/568×320, фактический WebGL и свежий распакованный ZIP. [STATUS](ITER49-STATUS.md) содержит владельцев и итоговую приёмку; [4184](http://127.0.0.1:4184/) отдаёт4.9.0-trial.
+
+Шесть фич реализованы и независимо приняты Каталитиком. Итоговые свидетельства: [source43hashes](iter49-final-source-hashes.json), [finish19518](iter49-final-finish.json), [content26571/282игры](iter49-final-content.json), [UI5286](iter49-final-ui.json), [все Core suites](iter49-final-core.txt), [Web](iter49-final-web-manifest.json), [ZIP](iter49-package-verification.json). Нативные кадры и ограничения проверки — в отчёте. Старые версии и их отчёты ниже сохранены как история.
 ## FLIP451 / 4.5.1-trial — целевая поставка проверена
 
 У готового FastFlip меняется только число воздушных повторов 0 → 1. Числовые параметры, геометрия/route arrays, Core алгоритм и custom decoder сохранены; ручной 0 остаётся 0. [Отдельный отчёт и gates](FLIP451-RELEASE.md), [source audit](flip451-source-audit.json).

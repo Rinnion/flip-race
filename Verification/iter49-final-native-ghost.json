@@ -1,0 +1,327 @@
+{
+  "inputs": [
+    {
+      "target": 515,
+      "x": 515.6799999999862,
+      "y": 226
+    },
+    {
+      "target": 965,
+      "x": 955.6799999999862,
+      "y": 226
+    },
+    {
+      "target": 1910,
+      "x": 1904.099999999994,
+      "y": 226
+    },
+    {
+      "target": 1954,
+      "x": 1945.4599999999912,
+      "y": 179.46130000001253
+    }
+  ],
+  "edge": {
+    "airRepeatLimit": -1,
+    "characterRects": [
+      [
+        [
+          375.6667,
+          112.5,
+          175.333328,
+          44
+        ],
+        [
+          196.333344,
+          112.5,
+          175.333328,
+          44
+        ],
+        [
+          17,
+          112.5,
+          175.333328,
+          44
+        ],
+        [
+          375.6667,
+          64.5,
+          175.333328,
+          44
+        ],
+        [
+          196.333344,
+          64.5,
+          175.333328,
+          44
+        ],
+        [
+          17,
+          64.5,
+          175.333328,
+          44
+        ]
+      ],
+      [
+        [
+          17,
+          188.5,
+          175.333328,
+          44
+        ],
+        [
+          196.333328,
+          188.5,
+          175.333328,
+          44
+        ],
+        [
+          375.666656,
+          188.5,
+          175.333328,
+          44
+        ],
+        [
+          17,
+          236.5,
+          175.333328,
+          44
+        ],
+        [
+          196.333328,
+          236.5,
+          175.333328,
+          44
+        ],
+        [
+          375.666656,
+          236.5,
+          175.333328,
+          44
+        ]
+      ]
+    ],
+    "characterSelectionVisible": false,
+    "controlAreas": [
+      [
+        9,
+        28,
+        550,
+        132.5
+      ],
+      [
+        9,
+        184.5,
+        550,
+        132.5
+      ]
+    ],
+    "countdown": 0,
+    "customFlight": false,
+    "departureImpulse": 350,
+    "elapsed": 19.46799999999996,
+    "fieldHeight": "half",
+    "fieldView": "split-ghost",
+    "firstAction": "Jump",
+    "flipImpulse": 0,
+    "fullscreenHeight": 25,
+    "fullscreenWidth": 31,
+    "fullscreenX": 516,
+    "fullscreenY": 2,
+    "ghostPoints": [
+      [
+        -5.892151,
+        47.2125
+      ],
+      [
+        232.892151,
+        203.7125
+      ]
+    ],
+    "gravityAcceleration": 662.5,
+    "jumpImpulse": 350,
+    "linearJumpHeight": 112,
+    "linearSpeed": 265,
+    "menuPage": -1,
+    "mode": "trial",
+    "motion": "JumpGravityFlip",
+    "motionLaw": "Gravity",
+    "negativeEnabled": true,
+    "paused": false,
+    "pawRects": [
+      [
+        17,
+        36,
+        56,
+        56
+      ],
+      [
+        495,
+        253,
+        56,
+        56
+      ]
+    ],
+    "pawsVisible": true,
+    "phase": "racing",
+    "players": [
+      {
+        "airFlipAvailable": true,
+        "boost": 0,
+        "centerY": 14,
+        "character": 4,
+        "coins": 0,
+        "collisions": 3,
+        "distance": 4036,
+        "failedRings": 0,
+        "finish": -1,
+        "finishBoost": false,
+        "finishBoostDistanceGained": 0,
+        "finishBoostElapsed": 0,
+        "finishBoosts": 0,
+        "flightDuration": 0.617443437792582,
+        "flightEndedAt": 9.304443437792594,
+        "flightInterrupted": false,
+        "flightMaxDistance": 212,
+        "flipElapsed": 0.617443437792582,
+        "flipping": false,
+        "gravity": -1,
+        "hasFlightMeasurement": true,
+        "instantBoosts": 0,
+        "lastFinishBoost": "",
+        "lastInstant": "",
+        "pendingRings": 0,
+        "queuedEffects": 0,
+        "ready": false,
+        "recovering": 0.37745454545458457,
+        "rings": 0,
+        "slow": 0,
+        "slowRings": 0,
+        "speed": 220,
+        "support": "Wall",
+        "supportObstacle": "",
+        "supportSide": 0,
+        "verticalSpeed": 0,
+        "y": 0
+      },
+      {
+        "airFlipAvailable": true,
+        "boost": 0,
+        "centerY": 226,
+        "character": 5,
+        "coins": 0,
+        "collisions": 5,
+        "distance": 3732.9599999999914,
+        "failedRings": 0,
+        "finish": -1,
+        "finishBoost": false,
+        "finishBoostDistanceGained": 0,
+        "finishBoostElapsed": 0,
+        "finishBoosts": 0,
+        "flightDuration": 0,
+        "flightEndedAt": 0,
+        "flightInterrupted": false,
+        "flightMaxDistance": 0,
+        "flipElapsed": 0,
+        "flipping": false,
+        "gravity": 1,
+        "hasFlightMeasurement": false,
+        "instantBoosts": 0,
+        "lastFinishBoost": "",
+        "lastInstant": "",
+        "pendingRings": 0,
+        "queuedEffects": 0,
+        "ready": false,
+        "recovering": 0,
+        "rings": 0,
+        "slow": 0,
+        "slowRings": 0,
+        "speed": 220,
+        "support": "Wall",
+        "supportObstacle": "",
+        "supportSide": 1,
+        "verticalSpeed": 0,
+        "y": 1
+      }
+    ],
+    "profile": "custom",
+    "readyRects": [
+      [
+        189,
+        28,
+        190,
+        32
+      ],
+      [
+        189,
+        285,
+        190,
+        32
+      ]
+    ],
+    "seating": "opposite",
+    "settingsCopyHeight": 28,
+    "settingsCopyText": "",
+    "settingsCopyWidth": 103,
+    "settingsCopyX": 28,
+    "settingsCopyY": 268,
+    "settingsVisible": false,
+    "sharedFieldRect": [
+      9,
+      106.25,
+      550,
+      132.5
+    ],
+    "track": "mixed-tricks",
+    "trackMenuRect": [
+      141,
+      1,
+      274,
+      27
+    ],
+    "version": "4.9.0-trial",
+    "viewMenuRect": [
+      28,
+      242,
+      248,
+      24
+    ],
+    "viewOptionRects": [
+      [
+        [
+          28,
+          91,
+          168.666672,
+          34
+        ],
+        [
+          199.666672,
+          91,
+          168.666672,
+          34
+        ],
+        [
+          371.333344,
+          91,
+          168.666672,
+          34
+        ]
+      ],
+      [
+        [
+          28,
+          146,
+          254.5,
+          34
+        ],
+        [
+          285.5,
+          146,
+          254.5,
+          34
+        ]
+      ]
+    ],
+    "winner": ""
+  }
+}

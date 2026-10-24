@@ -1,0 +1,3464 @@
+{
+  "status": "PASS",
+  "checks": 5286,
+  "cases": 27,
+  "pointers": 568,
+  "projectionFixtures": 70,
+  "equivalenceRuns": 12,
+  "applies": 36,
+  "updates": 7954,
+  "pawCases": 32,
+  "pawEquivalenceRuns": 8,
+  "Evidence": [
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 0,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        550,
+        132.5
+      ],
+      "Ready": [
+        189,
+        28,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          375.6667,
+          112.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          112.5,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          112.5,
+          175.33333,
+          44
+        ],
+        [
+          375.6667,
+          64.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          64.5,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          64.5,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 0,
+      "Slot": 1,
+      "Area": [
+        9,
+        184.5,
+        550,
+        132.5
+      ],
+      "Ready": [
+        189,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          188.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          188.5,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          188.5,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          236.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          236.5,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          236.5,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 1,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        550,
+        144.5
+      ],
+      "Ready": [
+        189,
+        28,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          375.6667,
+          120.25,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          120.25,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          120.25,
+          175.33333,
+          44
+        ],
+        [
+          375.6667,
+          72.25,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          72.25,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          72.25,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 1,
+      "Slot": 1,
+      "Area": [
+        9,
+        172.5,
+        550,
+        144.5
+      ],
+      "Ready": [
+        189,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          180.75,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          180.75,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          180.75,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          228.75,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          228.75,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          228.75,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 2,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        275,
+        289
+      ],
+      "Ready": [
+        51.5,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          104.666664,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          192.33333,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          17,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          104.666664,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          192.33333,
+          156.5,
+          83.666664,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 2,
+      "Slot": 1,
+      "Area": [
+        284,
+        28,
+        275,
+        289
+      ],
+      "Ready": [
+        326.5,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          292,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          379.66666,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          467.3333,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          292,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          379.66666,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          467.3333,
+          156.5,
+          83.666664,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 0,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        826,
+        167.5
+      ],
+      "Ready": [
+        327,
+        28,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          514,
+          131.75,
+          176,
+          44
+        ],
+        [
+          334,
+          131.75,
+          176,
+          44
+        ],
+        [
+          154,
+          131.75,
+          176,
+          44
+        ],
+        [
+          514,
+          83.75,
+          176,
+          44
+        ],
+        [
+          334,
+          83.75,
+          176,
+          44
+        ],
+        [
+          154,
+          83.75,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 0,
+      "Slot": 1,
+      "Area": [
+        9,
+        219.5,
+        826,
+        167.5
+      ],
+      "Ready": [
+        327,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          154,
+          239.25,
+          176,
+          44
+        ],
+        [
+          334,
+          239.25,
+          176,
+          44
+        ],
+        [
+          514,
+          239.25,
+          176,
+          44
+        ],
+        [
+          154,
+          287.25,
+          176,
+          44
+        ],
+        [
+          334,
+          287.25,
+          176,
+          44
+        ],
+        [
+          514,
+          287.25,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 1,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        826,
+        179.5
+      ],
+      "Ready": [
+        327,
+        28,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          514,
+          137.75,
+          176,
+          44
+        ],
+        [
+          334,
+          137.75,
+          176,
+          44
+        ],
+        [
+          154,
+          137.75,
+          176,
+          44
+        ],
+        [
+          514,
+          89.75,
+          176,
+          44
+        ],
+        [
+          334,
+          89.75,
+          176,
+          44
+        ],
+        [
+          154,
+          89.75,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 1,
+      "Slot": 1,
+      "Area": [
+        9,
+        207.5,
+        826,
+        179.5
+      ],
+      "Ready": [
+        327,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          154,
+          233.25,
+          176,
+          44
+        ],
+        [
+          334,
+          233.25,
+          176,
+          44
+        ],
+        [
+          514,
+          233.25,
+          176,
+          44
+        ],
+        [
+          154,
+          281.25,
+          176,
+          44
+        ],
+        [
+          334,
+          281.25,
+          176,
+          44
+        ],
+        [
+          514,
+          281.25,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 2,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        413,
+        359
+      ],
+      "Ready": [
+        120.5,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          150.66667,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          284.33334,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          17,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          150.66667,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          284.33334,
+          191.5,
+          129.66667,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 2,
+      "Slot": 1,
+      "Area": [
+        422,
+        28,
+        413,
+        359
+      ],
+      "Ready": [
+        533.5,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          430,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          563.6667,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          697.3334,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          430,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          563.6667,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          697.3334,
+          191.5,
+          129.66667,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 0,
+      "Slot": 0,
+      "Area": [
+        45,
+        173,
+        1190,
+        201.6
+      ],
+      "Ready": [
+        530,
+        173,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          732,
+          296.8,
+          176,
+          56
+        ],
+        [
+          552,
+          296.8,
+          176,
+          56
+        ],
+        [
+          372,
+          296.8,
+          176,
+          56
+        ],
+        [
+          732,
+          236.8,
+          176,
+          56
+        ],
+        [
+          552,
+          236.8,
+          176,
+          56
+        ],
+        [
+          372,
+          236.8,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 0,
+      "Slot": 1,
+      "Area": [
+        45,
+        406.6,
+        1190,
+        201.6
+      ],
+      "Ready": [
+        530,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          372,
+          428.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          428.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          428.40002,
+          176,
+          56
+        ],
+        [
+          372,
+          488.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          488.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          488.40002,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 1,
+      "Slot": 0,
+      "Area": [
+        45,
+        173,
+        1190,
+        217.6
+      ],
+      "Ready": [
+        530,
+        173,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          732,
+          304.8,
+          176,
+          56
+        ],
+        [
+          552,
+          304.8,
+          176,
+          56
+        ],
+        [
+          372,
+          304.8,
+          176,
+          56
+        ],
+        [
+          732,
+          244.8,
+          176,
+          56
+        ],
+        [
+          552,
+          244.8,
+          176,
+          56
+        ],
+        [
+          372,
+          244.8,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 1,
+      "Slot": 1,
+      "Area": [
+        45,
+        390.6,
+        1190,
+        217.6
+      ],
+      "Ready": [
+        530,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          372,
+          420.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          420.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          420.40002,
+          176,
+          56
+        ],
+        [
+          372,
+          480.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          480.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          480.40002,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 2,
+      "Slot": 0,
+      "Area": [
+        45,
+        173,
+        595,
+        435.2
+      ],
+      "Ready": [
+        232.5,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          74.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          254.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          434.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          74.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          254.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          434.5,
+          371.6,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 2,
+      "Slot": 1,
+      "Area": [
+        640,
+        173,
+        595,
+        435.2
+      ],
+      "Ready": [
+        827.5,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          669.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          849.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          1029.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          669.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          849.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          1029.5,
+          371.6,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 10,
+      "View": "split",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 10,
+      "View": "split-ghost",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 10,
+      "View": "shared",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 11,
+      "View": "split",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 11,
+      "View": "split-ghost",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 11,
+      "View": "shared",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": -1,
+      "View": "split",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": -1,
+      "View": "split-ghost",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": -1,
+      "View": "shared",
+      "Field": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 10,
+      "View": "split",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 10,
+      "View": "split-ghost",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 10,
+      "View": "shared",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 11,
+      "View": "split",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 11,
+      "View": "split-ghost",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 11,
+      "View": "shared",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": -1,
+      "View": "split",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": -1,
+      "View": "split-ghost",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": -1,
+      "View": "shared",
+      "Field": [
+        45,
+        289.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 1,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 2,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 3,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 1,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 2,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 3,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 1,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 2,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 3,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          36,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          220,
+          246,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          220,
+          246,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          220,
+          246,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          220,
+          246,
+          56,
+          56
+        ],
+        [
+          488,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          53,
+          181,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          576,
+          544.2,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          576,
+          544.2,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          576,
+          544.2,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          576,
+          544.2,
+          56,
+          56
+        ],
+        [
+          1171,
+          544.2,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 1,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 2,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 3,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 1,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 2,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 3,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    }
+  ],
+  "scope": "Production Measure/Pointer/Core retained. Native Screen/Input/Time/PlayerPrefs and selection texture acquisition use existing explicit managed shims; native pixels and device timing are separate.",
+  "sourceCopies": [
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "3579F822BFE0A18094179A3257ED992C12E37D1A6D2EB6C0B88457EBF51A1B22"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "E2565AE508A5D988167C8B6AC10AD829AB3C770235FFD549DAC98D45BE90CD79"
+    }
+  ],
+  "sourceSnapshot": [
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "E0F300FB9838DCFE1044F7CCEF81D03D0371DA1F20B0826336A963B12B88ED86"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "3BE7E4973C83A5374485F3F180ECDA5DFE1D38FE1379B998F3CF6A8224C0BD5F"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "E1D3400B3ADA0A00E53B4F168162AC71E2E574DF8379A3974F9BCD0D28357465"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "D08D167CD9B69176823C1F24622792321B82E32F66E4CA1952F89A23D0F2DA7E"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "E63C91BCCFEA7DF000BA719BF807684A8CE9804A052FB51D7F9D2F5DF36877C2"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "4F5560F76BA1194A9CB5C37A9D8BCAB6B9836AAB4A9636AB958B7ACFDAC2B829"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "E2565AE508A5D988167C8B6AC10AD829AB3C770235FFD549DAC98D45BE90CD79"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "3579F822BFE0A18094179A3257ED992C12E37D1A6D2EB6C0B88457EBF51A1B22"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "5B8AD9240F2E65ABDD70374EE9C3E573A7062FFB6E0B6B35184F92A5DED6F461"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PawControls.cs",
+      "sha256": "33F7A1573EB5C1EF48F2BA623E81CB574D54C021FF6B5A6A66AB333766E3C717"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "02CFC886FFBE309ADA05EC4879CC8436ECE7F5FCE29C44EBD34F52DD33C5A666"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "C70AF941DA6345291A30EA711BFD36A502D757196BE3EF36D9DA3FC78EB6C0E1"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "840D0D4BAE230ADB2FC63010526876948892A7C2F53920D77E5C89B31460D371"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostPresentation.cs",
+      "sha256": "76B011017305110A7131A38501DD176BEB95C339424CD91BEC6C969D7A50DBF4"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostView.cs",
+      "sha256": "B0A60C80434B86C7A6C7B809F5C3182663C92F829A33AF9B30F458ED395B560E"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "D0B053DDCE27DB583F0CDE8ADDB8E8CD3A9D37887DA867EDD5BC9C309B803171"
+    }
+  ],
+  "checkedAt": "2026-10-24T20:39:50.0731709Z"
+}

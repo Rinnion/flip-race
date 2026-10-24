@@ -30,27 +30,27 @@ namespace FlipRace.Core
         {
             if(Fast(flight) && id==LongId)return new[]{150d,682-220*FastTime(164),900,1150,1400-220*FastTime(106),
                 1700,1950-220*FastTime(186),2550,3018,3142,4032-220*FastTime(164),4350,
-                4900-220*FastTime(120),4966,5970,6600-220*FastTime(106),7700,FastFinish()};
+                4900-220*FastTime(120),4966,5970,6600-220*FastTime(106),7700};
             if(Fast(flight) && id==ShortId)return new[]{150d,730,1482-220*FastTime(164),1740,2400,2680-220*FastTime(106),
                 3150,3292,3650,3950-220*FastTime(120),4016,5032-220*FastTime(164),5600,5870,
-                6450-220*FastTime(106),7270,7720,FastFinish()};
+                6450-220*FastTime(106),7270,7720};
             if(Fast(flight) && id==FlowId)return new[]{100d,FastLowPassage(300),700-220*FastTime(106),850,1182-220*FastTime(164),
                 1400,FastLowPassage(1550),1900-220*FastTime(106),
                 2280,2500-220*FastTime(186),2904-110*(FastTime(12)+FastTime(200)),3060,3318,3450,3670,
-                4000-220*FastTime(120),4420,5032-220*FastTime(164),5550,5775,FastLowPassage(6400),6705,7120,7700,FastFinish()};
+                4000-220*FastTime(120),4420,5032-220*FastTime(164),5550,5775,FastLowPassage(6400),6705,7120,7700};
             if(Fast(flight) && !IsFull(id)) return new[]{304-110*(FastTime(12)+FastTime(200)),
                 732-220*FastTime(164),1118.0,1242.0,2100-220*FastTime(106),2720.0,2880.0};
             return Get(id).RiskRoute;
         }
         public static double[] NegativeRoute(string id, FlightSettings flight) {
             if(!Fast(flight)||!IsFull(id))return NegativeRoute(id);
-            var route=new List<double>(FullRoute(id,flight));route.RemoveRange(route.Count-2,2);
+            var route=new List<double>(FullRoute(id,flight));route.RemoveAt(route.Count-1);
             double trap=id==ShortId?7640:7600;
             route.Add(trap-220*FastTime(186));
             route.Add(FastFinish());
             return route.ToArray();
         }
-        static double FastFinish(){return 7876-110*(FastTime(10)+FastTime(26));}
+        static double FastFinish(){return 7780-110*(FastTime(10)+FastTime(26));}
         public static double[] NegativeRoute(string id)
         { var route=new List<double>(Get(id).RiskRoute); if(IsFull(id))route.Add(id==ShortId?7610:7570);route.Sort();return route.ToArray(); }
         static Track BuildLong()
@@ -182,12 +182,10 @@ namespace FlipRace.Core
             }
             public Track Finish(double y,string side)
             {
-                Zones.Add(new RiskZone{Id=id+"-finish",Kind="finish",X=7876,Y=y,FinishHeight=16});
-                double displacement=side=="floor"?226-y:y-14;
-                // Center the input in time across the 16-unit vertical window.
-                double first=(350-Math.Sqrt(350*350-2*662.5*(displacement-8)))/662.5;
-                double last=(350-Math.Sqrt(350*350-2*662.5*(displacement+8)))/662.5;
-                full.Add(7876-110*(first+last));
+                Zones.Add(new RiskZone{Id=id+"-finish",Kind="finish",X=7780,Y=y,FinishWidth=28,FinishHeight=8});
+                // The final ordinary route reaches the horizontal pad; the old
+                // last-moment vertical-plane preparation is deliberately removed.
+                safe.Add(7700); // Explicit Main skip; retains the full +/-60ms local window.
                 safe.Sort();full.Sort();Zones.Sort((a,b)=>a.X.CompareTo(b.X));Obstacles.Sort((a,b)=>a.X.CompareTo(b.X));
                 return new Track(7920,Obstacles.ToArray()){Id=id,Name=name,Focus=focus,NegativeEnabled=true,RiskZones=Zones.ToArray(),SafeRoute=safe.ToArray(),RiskRoute=full.ToArray()};
             }

@@ -23,7 +23,7 @@ namespace FlipRace.Presentation
         static readonly Color[] Ink = { Hex(0x7860a6), Hex(0xcf7962) };
         static readonly Color[] Pale = { Hex(0xe9e0f4), Hex(0xf8e0d5) };
         static readonly Color[] Confetti = { Hex(0xb6c993), Hex(0xe8ba71), Hex(0xbba5d8), Hex(0xe2a18d), Hex(0x91b9bf) };
-        readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab, finishPointer;
+        readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab, coinArtwork;
         // Explicit lane-local clipping avoids Unity GUIClip's interaction with
         // rotated/scaled matrices (the upper player's entire lane is rotated).
         Rect clipBounds;
@@ -33,6 +33,7 @@ namespace FlipRace.Presentation
         public CorridorArtwork()
         {
             circle = MakeCircle();
+            coinArtwork = Resources.Load<Texture2D>("Collectibles/coin-round");
             var sparkle = new Painter(128, 128, true);
             var points = new float[16];
             for (int i = 0; i < 8; i++)
@@ -53,12 +54,36 @@ namespace FlipRace.Presentation
             ceilingRock = MakeRock(true);
             floorSlab = MakeLargeRock(false);
             ceilingSlab = MakeLargeRock(true);
-            var pointer = new Painter(64, 48);
-            pointer.Polygon(Hex(0x235f58), 0, 0, 64, 24, 0, 48);
-            pointer.Polygon(Hex(0x71d9bf), 6, 7, 51, 24, 6, 41);
-            finishPointer = pointer.Finish("Exact finish target pointer");
         }
 
+        // The tinted rectangle is the actual world trigger. Chevrons are the
+        // original two small linear arrows from 2be4332, not a filled pointer.
+        void DrawFinishPad(float ringX, float ringY, float width, float height)
+        {
+            Color finishInk = Hex(0x398d80);
+            Rect zone = new Rect(ringX - width / 2, ringY - height / 2, width, height);
+            Fill(zone, Alpha(Hex(0x9ddccb), .38f));
+            Line(zone.x, zone.y, zone.xMax, zone.y, finishInk, 1.25f);
+            Line(zone.x, zone.yMax, zone.xMax, zone.yMax, finishInk, 1.25f);
+            Line(zone.x, zone.y, zone.x, zone.yMax, finishInk, 1);
+            Line(zone.xMax, zone.y, zone.xMax, zone.yMax, finishInk, 1);
+            for (int i = 0; i < 2; i++)
+            {
+                float arrowX = ringX - 8 - i * 6;
+                Line(arrowX - 4, ringY - 5, arrowX, ringY, Alpha(finishInk, .7f), 1.5f);
+                Line(arrowX, ringY, arrowX - 4, ringY + 5, Alpha(finishInk, .7f), 1.5f);
+            }
+        }
+        void DrawCoin(float x, float y, float radius, float time)
+        {
+            // The authored Tanya coin remains readable at the minimum phone size.
+            // Animation affects only its halo, never the actual contact centre.
+            float r = Mathf.Max(9, radius * 1.35f);
+            Ellipse(x, y, r + 2 + Mathf.Sin(time * 3) * .7f, r + 2, Alpha(Hex(0xf4d68a), .2f));
+            GUI.color = Color.white;
+            if (coinArtwork != null) Texture(new Rect(x-r, y-r, r*2, r*2), coinArtwork, new Rect(0,0,1,1));
+            else { Ellipse(x,y,r*.85f,r*.85f,Hex(0xeacb73)); Star(x,y,r*.45f,Hex(0xb58a35),0); }
+        }
         static Texture2D MakeCircle()
         {
             const int size = 256;
@@ -242,20 +267,11 @@ namespace FlipRace.Presentation
                 float ringY = top + (float)zone.Y * sy;
                 if (zone.IsFinish)
                 {
-                    // Pointer tip is exactly (zone.X, zone.Y). Its filled body
-                    // lies before the target in world travel direction, while
-                    // the two ticks retain the actual centre-height interval.
-                    // Drawn before the mascot, so it never covers the runner.
-                    float half = (float)zone.FinishHeight * sy * .5f;
-                    Color finishInk = Hex(0x235f58);
-                    GUI.color = Color.white;
-                    Texture(new Rect(ringX - 11, ringY - 8, 11, 16), finishPointer, new Rect(0, 0, 1, 1));
-                    Line(ringX, ringY - half, ringX, ringY + half, finishInk, 2);
-                    Line(ringX - 3, ringY - half, ringX + 3, ringY - half, finishInk, 1.5f);
-                    Line(ringX - 3, ringY + half, ringX + 3, ringY + half, finishInk, 1.5f);
+                    DrawFinishPad(ringX, ringY, (float)zone.FinishWidth * sx, (float)zone.FinishHeight * sy);
                     continue;
                 }
                 float ringRadius = Mathf.Max(6.5f, (float)(zone.Radius + 4) * sy);
+                if (zone.IsCoin) { DrawCoin(ringX, ringY, ringRadius, time); continue; }
                 if (zone.IsInstant)
                 {
                     Color instantInk = Hex(0x398d80);

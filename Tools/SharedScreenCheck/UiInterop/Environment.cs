@@ -16,7 +16,7 @@ namespace FlipRace.SharedScreenCheck.Interop
         public static void Clear(){Strings.Clear();Ints.Clear();}
     }
     public static class Clock { public static double realtimeSinceStartupAsDouble;public static int frameCount; }
-    public static class Display { public static int width,height,sleepTimeout; public static float PixelRatio=1; }
+    public static class Display { public static int width,height,sleepTimeout; public static float PixelRatio=1; public static Rect? SafeAreaOverride; public static Rect safeArea { get { return SafeAreaOverride ?? new Rect(0,0,width,height); } } }
     public static class Devices
     {
         public static bool multiTouchEnabled,simulateMouseWithTouches;

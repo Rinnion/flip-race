@@ -1,0 +1,95 @@
+{
+  "Status": "PASS",
+  "Checks": 5286,
+  "CoreContinuityFiles": 15,
+  "CoreContinuity": [
+    {
+      "Path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "GateSha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/FlightSettings.cs",
+      "GateSha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "GateSha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "GateSha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "GateSha256": "0ADAED14B326B66704BD60180E647EE6BEFA243DD40B6BC2D509A4B3F1A9DC20",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksControl.cs",
+      "GateSha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksFull.cs",
+      "GateSha256": "3BE7E4973C83A5374485F3F180ECDA5DFE1D38FE1379B998F3CF6A8224C0BD5F",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksMixed.cs",
+      "GateSha256": "E1D3400B3ADA0A00E53B4F168162AC71E2E574DF8379A3974F9BCD0D28357465",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "GateSha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "GateSha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "GateSha256": "D08D167CD9B69176823C1F24622792321B82E32F66E4CA1952F89A23D0F2DA7E",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "GateSha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksTune.cs",
+      "GateSha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksV3.cs",
+      "GateSha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    },
+    {
+      "Path": "Assets/Scripts/Core/TracksV4.cs",
+      "GateSha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB",
+      "MatchedAcceptedStage03ImmediatelyAfterRun": true
+    }
+  ],
+  "CoordinatorFinalStatus": "PASS",
+  "CoordinatorFinalChecks": 5286,
+  "PostGateChange": "Owner confirmed RaceSimulation EOF whitespace cleanup only; final rerun is separate evidence.",
+  "Files": {
+    "Tools/Iter49Ui/Program.cs": "0FE46ACAD0F57B96B861DE09335E22DC9572CF44B71508AE22874C3CD886B25B",
+    "Tools/Iter49Ui/README.md": "9567D269731479E90193EAD16FF352CD6061AEB9EFA13D2CA18EB6E821757242",
+    "Tools/Iter49Ui/Run.ps1": "3BD22B016BC8A67F89DD063E6EB49B0C1D0D3C5AC5A99723929D54FF9E1E9E14",
+    "Tools/Iter49Ui/Iter49Ui.csproj": "25EF0BF9406DE50F8AA490FBE61D9B94C88A08121775B76E8F402282DCAAA973",
+    "Tools/SharedScreenCheck/UiInterop/Environment.cs": "9B1E05AA9CECBBE0A6EAB890604331A496EB1E989C497D44B1A4C463DBC45052",
+    "Verification/iter49-05-ui.json": "5FFF98CBCE31F823BE5506E215895B2E465400A7A78559B88FED71A8D4D5B60B",
+    "Verification/iter49-05-report.txt": "F4480F90229070C6DD9E59389B591CDA00D59F84E6C2447D1E591B0F093473FD",
+    "Verification/iter49-final-ui.json": "FDB6A2EACA9ADCA46E3AC027A0A931F8CF0A9B750929A1BEFCA82E1D6F18D072"
+  }
+}

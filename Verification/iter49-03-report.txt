@@ -1,0 +1,60 @@
+ITER49-03 Core/content handoff, 24 October 2026
+Model / effort: gpt-6.1-sol / high. Stage03 accepted by Progatik after independent Content and five-course finish reruns.
+
+PRODUCTION CONTRACT
+RiskZone.IsCoin is Kind==coin. PlayerState.CoinsEarned and LastCoin are the agreed API.
+Coin contact uses the existing exact continuous circle/body solver. AwardCoin immediately marks only that player's CollectedRiskIds and SuccessfulRiskIds, increments score up to 2 and records LastCoin. It never calls EnqueueEffect/AwardPositive or modifies speed, motion, reward clocks, collision handling or finish/winner math.
+PositiveRingCount excludes coins. Coins cannot become provisional obstacle-linked failed rings. Fresh PlayerState construction on rematch clears score, event and availability.
+No change to CharacterCount, SetCharacter or finish behavior was introduced by this stage; pre-existing stage00/01/02 changes were preserved.
+
+EXACT CONTENT, ONLY MIXED
+mixed-tricks-coin-first: X3250, Y150, Radius8.
+mixed-tricks-coin-second: X5500, Y100, Radius8.
+mixed-tricks-negative-first-choice: X3300, Y180, Radius8.
+mixed-tricks-negative-second-choice: X5720, Y180, Radius8.
+Two coins and two new ordinary negative zones are added; both old negative zones remain, total four.
+Each placement is inside its approved free interval 3008..3550 or 5400..5900. No placement approaches the finish-pad entry.
+All original stones, both gate halves, course length 7920, nine ordinary rewards and padX7780/Y32/28x8 match immutable stage01 geometry/zone evidence.
+
+AUTHORED ROUTES
+FullRoute is the clean zero-coin / zero-slow path, finishing 33.05 s with all nine ordinary rewards and full pad.
+Removed the obsolete final X7853.945775241146 / X7863.922760472742 input from the Mixed Fast/Main FullRoute arrays; it prepared the already removed X7876 vertical plane. Existing negative arrays still preserve their known intended branches.
+CoinRoute(flight,mask0..3) selects either, neither or both coins:
+- First coin: Main adds X3180. Fast adds X3150 and X3185, landing back before its existing X3300 transfer.
+- Second coin: Main adds X5400, removes X5765 and X5809. Fast adds X5415, removes X5785.5. This optional post-platform turn reaches the upper coin and settles on the ceiling before the unchanged floor stone at5900; subsequent original actions remain.
+All four coin subsets are clean, all four traps avoided, score equals selected bit count, nine ordinary rewards and full pad retained, actual finish 33.05 s.
+ContentTrapRoute(flight,mask0..3) witnesses optional new slow contacts:
+- First trap: Main adds X3250 and replaces low-gate launchX3441.7735849056603 withX3485. Fast replaces X3300 withX3260.
+- Second trap: Main adds X5680 and removes X5809 (existing X5765 is then its air turn). Fast replaces X5785.5 withX5680.
+Each and both new traps can be taken without collisions, without coins, while retaining nine ordinary rewards and full pad. Actual finishes 33.35 s for one slow,33.65 s for both. Existing NegativeRoute mask0..3 remains clean and avoids both new traps.
+These exact coordinates and arrays are implementation witnesses; technical route success does not establish enjoyment or physical-phone usability.
+
+FINAL CHECKS
+PASS Iter49Content: 26,571 checks /282 actual games.144 Mixed routes +48 exact-timestamp no-coin counterfactuals +90 isolated games, including12 true rematches. Both profiles and steps1/30,1/60,1/144,.317,2.5,100.
+PASS Progatik independent Iter49Content rerun:26,571 /282.
+PASS Progatik independent Iter49Finish --all:19,518 checks, all five take/skip routes still full 0.25 s / 55 units, take33.05/skip33.30, minimum conservative runway112.
+PASS ParityRunner: finish1,765; control2,166; modes1,190; offset-gates2,960; flight1,772 assertions.
+PASS TrackProofFull:14,908 checks; safe36/full33.05/negative33.35 across six steps and +/-60 ms individual safe timing.
+PASS FlightSettingsCheck:736 assertions /114 physical round trips.
+git diff --check reports one formatting warning: RaceSimulation.cs has a new blank line at EOF. Stage03 did not alter the original EOF tail; Core freeze is retained and Progatik owns final whitespace cleanup. No other owned-source whitespace warning was reported.
+Parity initially targeted the wrong DLL directorynet10.0; the successful build reported net8.0. No tests ran in that launch attempt. Its diagnostic is retained separately; final regression log is the actual correct net8.0 run.
+
+PERSONAL/PHYSICS EVIDENCE
+Real full Mixed pickup by both players demonstrates simultaneous independent ownership. An isolated delayed second collector gets the same coin after the first already holds its successful ID; pure personal availability remains distinct for split/shared renderers.
+Unequal coin scores preserve exact physical ties; score cannot determine winner. The actual third coin contact is deduplicated with score capped2 and no fabricated extra earned event.
+Same exact timestamped controls with coins removed preserve X/Y/momentum/support/repeats, ordinary rewards/collisions, physical finish and winner.
+Isolated swept face/tangent/outside-contact cases, once-only lingering contact during real impact/recovery, zero-advance pause, rematch reset and result freeze pass. Active ordinary effect and queued effect retain their exact object identity/FIFO; ordinary clocks continue naturally through coin contact. Coin during a finish pulse preserves fixed440 speed and the full moving-time ledger.
+
+BASELINES AND OWNERSHIP
+Immutable Verification/iter49-01-before.json was not changed. The updated finish verifier excludes exactly the four new IDs when comparing original zones, and removes only the additive computed IsCoin property from the old JSON schema. It does not ignore arbitrary new zones or alter original fields. Original obstacle hashes need no adapter.
+Changed owned production: Assets/Scripts/Core/RaceSimulation.cs (only coin model/count/contact), TracksMixed.cs (four additions and author witnesses).
+Changed owned tests: Tools/Iter49Content, Tools/Iter49Finish/Probe.cs.
+Source/code is frozen. Parent owns renderer/resource/HUD/diagnostics, accepted static integration and plans final native Web verification.
+Outside-scope observation: Editor EngineTuneTests.CopyMotion manually copies PlayerState and needs the new score/event fields if used with coins; Progatik explicitly owns that small final cleanup. This helper is not used by Content proof; its reflection snapshots already retain every new field.
+STATUS and parent UI files were not edited. No commit created. No remaining Core/content blocker; real Web visuals and live-phone readability remain delivery acceptance.
+
+ARTIFACTS
+Verification/iter49-03-content.json contains all actual route inputs and source hashes; .txt is final stdout.
+Verification/iter49-03-regression.txt, -full.txt and -settings.txt contain checks.
+Verification/iter49-03-prep-trace.txt and -prep-candidates.txt are clearly pre-production exploration, not final coin evidence.
+Verification/iter49-03-hashes.json contains final owned sources, evidence and immutable baseline hashes.

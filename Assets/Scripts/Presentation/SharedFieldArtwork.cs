@@ -54,6 +54,24 @@ namespace FlipRace.Presentation
             GUI.matrix=previous;GUI.color=previousColor;return result;
         }
 
+        public Geometry OpponentGeometry(float w,float h,GameState game,int observer,float time,Geometry own)
+        {
+            int other=1-observer;var p=game.Players[other];
+            var projection=SplitGhostView.Create(w,h,game,observer);
+            var result=SharedPlayerGeometry(SharedFieldView.Create(w,h,game),game,other,time);
+            result.X=(float)projection.X;result.Y=(float)projection.Y;
+            // Match the ordinary sprite's actual support and gait adjustments.
+            // There is no collision/overlap-specific displacement.
+            bool ceiling=p.Support!=SupportKind.None?p.SupportSide==0:p.Y<.5;
+            if(p.Support==SupportKind.Stone)
+                result.Y+=(ceiling?1:-1)*(result.Radius-(float)RaceConfig.PlayerRadius*own.ScaleY);
+            if(result.Running&&!p.Flipping)
+                result.Y+=-Mathf.Abs(Mathf.Sin(result.MotionTime*25))*result.Radius*.075f*(ceiling?-1:1);
+            result.MirrorX=observer==0;
+            if(result.MirrorX)result.Rotation=-result.Rotation;
+            result.Top=own.Top;result.Bottom=own.Bottom;result.ScaleX=own.ScaleX;result.ScaleY=own.ScaleY;result.Anchor=own.Anchor;
+            return result;
+        }
         Geometry SharedPlayerGeometry(SharedFieldView view,GameState game,int index,float time)
         {
             var p=game.Players[index];
@@ -98,11 +116,10 @@ namespace FlipRace.Presentation
                     badgeY=y+(ceiling?12:-12);break;
                 }
             }else if(zone.IsFinish) {
-                float half=(float)zone.FinishHeight*sy*.5f;Color ink=Hex(0x235f58);
-                GUI.color=Color.white;Texture(new Rect(x-11,y-8,11,16),finishPointer,new Rect(0,0,1,1));
-                Line(x,y-half,x,y+half,ink,2);
-                Line(x-3,y-half,x+3,y-half,ink,1.5f);Line(x-3,y+half,x+3,y+half,ink,1.5f);
-                badgeY=y-12;
+                DrawFinishPad(x,y,(float)(zone.FinishWidth*view.ScaleX),(float)zone.FinishHeight*sy);
+                badgeY=y-(float)zone.FinishHeight*sy/2-8;
+            }else if(zone.IsCoin) {
+                DrawCoin(x,y,radius,time);
             }else if(zone.IsInstant) {
                 Color ink=Hex(0x398d80);
                 Ellipse(x,y,radius+5+Mathf.Sin(time*4)*1.5f,radius+5,Alpha(Hex(0x9ddccb),.32f));

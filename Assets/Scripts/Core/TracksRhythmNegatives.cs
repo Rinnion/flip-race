@@ -31,9 +31,9 @@ namespace FlipRace.Core
             else throw new ArgumentException("Unknown rhythm negative route: " + id);
             var route = FullRoute(id, flight);
             bool fast = IsFastWitness(flight);
-            // The ordinary last-gate action(s) precede the independent finish
-            // preparation. Preserve that finish input and all earlier actions.
-            int first = route.Length - (fast ? 2 : 3);
+            // Cascade no longer has the obsolete final vertical-plane input.
+            // Retired drafts still retain their separate finish preparation.
+            int first = route.Length - (id == CascadeId ? (fast ? 1 : 2) : (fast ? 2 : 3));
             route[first] = firstX + (fast ? 44 : 46);
             if (!fast) route[first + 1] = firstX + 70;
             return route;

@@ -16,8 +16,8 @@ namespace FlipRace.Web
         {
             public bool ready, flipping, airFlipAvailable, finishBoost, hasFlightMeasurement, flightInterrupted;
             public double distance, y, recovering, finish;
-            public int collisions, character, rings, instantBoosts, finishBoosts, slowRings, pendingRings, failedRings, queuedEffects;
-            public double boost, slow, speed, flipElapsed, verticalSpeed, centerY;
+            public int coins, collisions, character, rings, instantBoosts, finishBoosts, slowRings, pendingRings, failedRings, queuedEffects;
+            public double boost, slow, speed, flipElapsed, verticalSpeed, centerY, finishBoostElapsed, finishBoostDistanceGained;
             public int gravity;
             public string support, supportObstacle, lastInstant, lastFinishBoost;
             public int supportSide;
@@ -32,7 +32,7 @@ namespace FlipRace.Web
             public int airRepeatLimit;
             public int menuPage;
             public double flipImpulse, jumpImpulse, linearSpeed, linearJumpHeight;
-            public bool paused, negativeEnabled, customFlight, settingsVisible, characterSelectionVisible;
+            public bool pawsVisible, paused, negativeEnabled, customFlight, settingsVisible, characterSelectionVisible;
             public double elapsed, countdown;
             public float fullscreenX, fullscreenY, fullscreenWidth, fullscreenHeight;
             public float settingsCopyX, settingsCopyY, settingsCopyWidth, settingsCopyHeight;
@@ -66,7 +66,7 @@ namespace FlipRace.Web
                 motion = state.Motion.ToString(),
                 profile = state.Profile.Id, version = Application.version,
                 fieldView = game.FieldViewName, seating = game.SeatingName, fieldHeight = game.FieldHeightName,
-                menuPage = game.FlightMenuPage,
+                menuPage = game.FlightMenuPage, pawsVisible = game.PawsVisible,
                 gravityAcceleration = flight.GravityAcceleration,
                 departureImpulse = flight.FirstAction == FirstAction.Jump ? flight.JumpImpulse : flight.FlipImpulse,
                 firstAction = flight.FirstAction.ToString(), motionLaw = flight.Law.ToString(), airRepeatLimit = (int)flight.AirRepeats,
@@ -91,9 +91,10 @@ namespace FlipRace.Web
                     if (!p.SuccessfulRiskIds.Contains(id) && !p.FailedRiskIds.Contains(id) && !p.NegativeRiskIds.Contains(id)) pending++;
                 snapshot.players[i] = new PlayerSnapshot {ready=p.Ready, distance=p.Distance, y=p.Y,
                     recovering=p.Recovering, flipping=p.Flipping, collisions=p.Collisions, finish=p.FinishTime ?? -1,
-                    character=p.CharacterIndex, rings=p.BoostsEarned, instantBoosts=p.InstantBoostsEarned, pendingRings=pending,
+                    character=p.CharacterIndex, coins=p.CoinsEarned, rings=p.BoostsEarned, instantBoosts=p.InstantBoostsEarned, pendingRings=pending,
                     finishBoost=p.FinishBoost, finishBoosts=p.FinishBoostsEarned,
                     failedRings=p.FailedRiskIds.Count, boost=p.BoostRemaining, slow=p.SlowRemaining,
+                    finishBoostElapsed=p.FinishBoostElapsed, finishBoostDistanceGained=p.FinishBoostDistanceGained,
                     speed=p.CurrentSpeed, slowRings=p.SlowsEarned, queuedEffects=p.PendingEffects.Count, flipElapsed=p.FlipElapsed,
                     verticalSpeed=p.VerticalSpeed, gravity=p.Gravity, airFlipAvailable=p.AirFlipAvailable,
                     support=p.Support.ToString(), supportSide=p.SupportSide, supportObstacle=p.SupportObstacleId,
@@ -119,7 +120,7 @@ namespace FlipRace.Web
             {
                 if (player > 0) output.Append(',');
                 output.Append('[');
-                for (int hero = 0; hero < 4; hero++)
+                for (int hero = 0; hero < CharacterRoster.Count; hero++)
                 {
                     if (hero > 0) output.Append(',');
                     AppendRect(output, game.CharacterScreenRect(player, hero));
@@ -129,19 +130,33 @@ namespace FlipRace.Web
             output.Append("],\"readyRects\":[");
             AppendRect(output, game.ReadyScreenRect(0)); output.Append(',');
             AppendRect(output, game.ReadyScreenRect(1));
+            output.Append("],\"pawRects\":[");
+            AppendRect(output, game.PawScreenRect(0)); output.Append(','); AppendRect(output, game.PawScreenRect(1));
             output.Append("],\"trackMenuRect\":"); AppendRect(output, game.TrackMenuButtonRect);
             output.Append(",\"viewMenuRect\":"); AppendRect(output, game.ViewMenuButtonRect);
             output.Append(",\"viewOptionRects\":[");
-            for (int row = 0; row < 3; row++)
+            for (int row = 0; row < 2; row++)
             {
                 if (row > 0) output.Append(','); output.Append('[');
-                AppendRect(output, game.ViewOptionRect(row, 0)); output.Append(','); AppendRect(output, game.ViewOptionRect(row, 1)); output.Append(']');
+                AppendRect(output, game.ViewOptionRect(row, 0)); output.Append(','); AppendRect(output, game.ViewOptionRect(row, 1)); if (row == 0) { output.Append(','); AppendRect(output, game.ViewOptionRect(row, 2)); } output.Append(']');
             }
             output.Append(']');
             output.Append(",\"sharedFieldRect\":"); AppendRect(output, game.SharedFieldRect);
             output.Append(",\"controlAreas\":[");
             AppendRect(output, game.ControlAreaRect(0)); output.Append(','); AppendRect(output, game.ControlAreaRect(1));
             output.Append(']');
+            if (game.SplitGhostEnabled)
+            {
+                output.Append(",\"ghostPoints\":[");
+                for (int observer = 0; observer < 2; observer++)
+                {
+                    if (observer > 0) output.Append(',');
+                    Vector2 point = game.GhostScreenPoint(observer);
+                    output.Append('[').Append(point.x.ToString("R", CultureInfo.InvariantCulture)).Append(',')
+                        .Append(point.y.ToString("R", CultureInfo.InvariantCulture)).Append(']');
+                }
+                output.Append(']');
+            }
             if (game.SharedEnabled)
             {
                 Rect field = game.SharedFieldRect;

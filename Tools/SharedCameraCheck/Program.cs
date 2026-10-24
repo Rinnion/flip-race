@@ -187,7 +187,7 @@ internal static partial class Program
             var comeback=Run(flight,name,new[]{missed,safe},"miss first small then full/safe",false);
             Check(comeback.Hits[0]==1&&comeback.Hits[1]==0,"Exactly one real collision");
             Check(comeback.LeaderChanges==1,"Real leader change after one hit and later rewards");
-            Near(comeback.Finish[0].Value,34.0,"Lost one reward plus one collision finish");runs.Add(comeback);
+            Near(comeback.Finish[0].Value,36 - 8 * RaceConfig.BoostTimeGain - RaceConfig.FinishBoostDuration + RaceConfig.RecoveryDuration,"Eight rewards/full ITER49 pad plus one collision finish");runs.Add(comeback);
             if(name=="fast") {
                 var deferred=(double[])safe.Clone();deferred[11]=6500;
                 runs.Add(Run(flight,name,new[]{deferred,deferred},"safe delayed setup6080→6500",true));

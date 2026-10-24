@@ -299,7 +299,21 @@ namespace FlipRace.Editor
                     var game = Route(track, p, safe ? track.SafeRoute : track.RiskRoute, frame);
                     var copy = Route(track, Copy(p), safe ? track.SafeRoute : track.RiskRoute, frame);
                     var old = Route(track, p, safe ? track.SafeRoute : track.RiskRoute, frame, modes[i]);
-                    Near(game.Elapsed, safe ? 21 : 20.3, "exact4.2.1 safe/ideal finish");
+                    // The retired4.2.1 trial keeps its authored geometry, but
+                    // ITER49 globally replaces the finish trigger/timer. Its
+                    // late pad may serve a partial pulse. Verify real motion
+                    // conservation against the same input with no finish pad,
+                    // rather than retain the obsolete automatic0.1s discount.
+                    var ordinary = new System.Collections.Generic.List<RiskZone>();
+                    foreach (var zone in track.RiskZones) if (!zone.IsFinish) ordinary.Add(zone);
+                    var withoutPad = new Track(track.Length, track.Obstacles, track.Cues) { RiskZones = ordinary.ToArray() };
+                    var counterfactual = Route(withoutPad, p, safe ? track.SafeRoute : track.RiskRoute, frame);
+                    Near(counterfactual.Elapsed, safe ? 21 : 20.4, "unchanged training geometry/ordinary rewards without finish");
+                    var runner = game.Players[0];
+                    Near(game.Elapsed, counterfactual.Elapsed - runner.FinishBoostElapsed, "arrival equals actual served x2 moving duration");
+                    Near(runner.FinishBoostDistanceGained, RaceConfig.Speed * runner.FinishBoostElapsed, "real extra travel agrees with served pulse");
+                    Check(safe ? runner.FinishBoostElapsed == 0 : runner.FinishBoostElapsed > 0 && runner.FinishBoostElapsed < .25,
+                        "legacy late trial honestly credits only its served partial pulse");
                     Check(game.Players[0].Collisions == 0 && game.Players[0].BoostsEarned == (safe ? 0 : 2)
                         && game.Players[0].FinishBoostsEarned == (safe ? 0 : 1), "preset retains support and finish semantics");
                     Check(game.Players[0].FinishTime == copy.Players[0].FinishTime && Equals(copy.Winner, "tie"),
