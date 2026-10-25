@@ -1,0 +1,7 @@
+System.Exception: FIX492 compact40/desktop8 horizontal inset: 20 != 52
+   at Program.Check(Boolean ok, String why) in F:\Home\Game\flip-race-unity\Tools\Iter49Ui\Program.cs:line 17
+   at Program.NearUI(Double a, Double b, String why, Double tolerance) in F:\Home\Game\flip-race-unity\Tools\Iter49Ui\Program.cs:line 83
+   at Program.PawBounds(FlipRaceGame ui, Int32 w, Int32 h, Int32 kind) in F:\Home\Game\flip-race-unity\Tools\Iter49Ui\Program.cs:line 271
+   at Program.Stage05Paws() in F:\Home\Game\flip-race-unity\Tools\Iter49Ui\Program.cs:line 278
+   at Program.Stage05() in F:\Home\Game\flip-race-unity\Tools\Iter49Ui\Program.cs:line 341
+   at Program.Main() in F:\Home\Game\flip-race-unity\Tools\Iter49Ui\Program.cs:line 344

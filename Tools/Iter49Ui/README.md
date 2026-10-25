@@ -1,5 +1,6 @@
 # ITER49 UI interop checks
 
+FIX492 current runner:22854assertions,128pawcases and864fresh visible-rectangle corner/edge/center streams through actualUpdate. Adds800x360/960x432, DPR2.5/3 (including2400x1080framebuffer), asymmetricsafearea, compacthorizontalinset40 and unchanged8desktop/Y/56size. Every edge checks ownpawfeedback as well as action/opponentisolation. See Verification/fix492-ui.json. The5286checkpoint described below is historical FIX491/ITER49 evidence and remains preserved.
 Run from the Unity project root:
 
     ./Tools/Iter49Ui/Run.ps1

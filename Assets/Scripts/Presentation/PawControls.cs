@@ -11,7 +11,9 @@ namespace FlipRace.Presentation
             if(slot<0||slot>1)throw new ArgumentOutOfRangeException(nameof(slot));
             Rect area=ControlAreaRect(slot),safe=SafeUiArea();
             bool rotated=SharedEnabled?SharedRotated(slot):slot==0;
-            float left=Mathf.Max(area.xMin,safe.xMin)+8,right=Mathf.Min(area.xMax,safe.xMax)-8;
+            // Keep compact touch targets away from the physical side gesture zones.
+            float horizontalInset=compact?40:8;
+            float left=Mathf.Max(area.xMin,safe.xMin)+horizontalInset,right=Mathf.Min(area.xMax,safe.xMax)-horizontalInset;
             float top=Mathf.Max(area.yMin,safe.yMin)+8,bottom=Mathf.Min(area.yMax,safe.yMax)-8;
             return new Rect(rotated?left:right-56,rotated?top:bottom-56,56,56);
         }

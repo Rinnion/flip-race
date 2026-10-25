@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-25T07:12:48.616Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v4.9.2-final",
+  "fileCount": 5,
+  "totalBytes": 9020831,
+  "totalMiB": 8.603,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v4.9.2-final.data.unityweb",
+    "Build/WebGL-v4.9.2-final.framework.js.unityweb",
+    "Build/WebGL-v4.9.2-final.loader.js",
+    "Build/WebGL-v4.9.2-final.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v4.9.2-final.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v4.9.2-final.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v4.9.2-final.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v4.9.2-final.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v4.9.2-final.data.unityweb",
+      "bytes": 1744136,
+      "sha256": "95853d0713f2197154280dd0f5f46026aec447fed05cd9094d95b176b5882664"
+    },
+    {
+      "path": "Build/WebGL-v4.9.2-final.framework.js.unityweb",
+      "bytes": 89701,
+      "sha256": "6539390d13c2dfe1046d54267fb8924bf40bc2c11ca904fe34c91bbb86258099"
+    },
+    {
+      "path": "Build/WebGL-v4.9.2-final.loader.js",
+      "bytes": 39788,
+      "sha256": "6826751701082a8eccaf31379ba2f00a4bc7dcf818ee41fd7673294dba5ba5c9"
+    },
+    {
+      "path": "Build/WebGL-v4.9.2-final.wasm.unityweb",
+      "bytes": 7135393,
+      "sha256": "c698232af0a72fb27dce66d6e2f0bf2b6a28206ae3a7c79dd8a376c5e0da938e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 11813,
+      "sha256": "9603335bf6700c9d21514e2ef155818f61793ffbcc6659ba9ea6a91f26841394"
+    }
+  ],
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks.",
+  "archive": {
+    "path": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v4.9.2-trial-webgl.zip",
+    "bytes": 8888496,
+    "miB": 8.477,
+    "sha256": "9385b21ffe7ad91a3b0117736e9e6fee2cc707ddb1ac5296982a7711d0946466",
+    "entriesVerified": true,
+    "indexAtRoot": true
+  }
+}

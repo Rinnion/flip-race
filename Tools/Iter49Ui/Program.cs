@@ -232,13 +232,13 @@ static class Program
     static Touch TouchAt(int id,Vector2 p,TouchPhase phase)
     {return new Touch{fingerId=id,position=new Vector2(p.x*Display.PixelRatio,Display.height-p.y*Display.PixelRatio),phase=phase};}
     static Track PawTrack()=>new Track(2200,new[]{new Obstacle{Id="paw-stone",Kind="floor",X=600,Width=64,Height=48}}){Id=TracksMixed.Id,RiskZones=new[]{new RiskZone{Id="paw-coin-one",Kind="coin",X=200,Y=226,Radius=8},new RiskZone{Id="paw-coin-two",Kind="coin",X=500,Y=226,Radius=8},new RiskZone{Id="paw-slow",Kind="negative",X=800,Y=226,Radius=8},new RiskZone{Id="paw-instant",Kind="instant",X=1100,Y=226,Radius=8},new RiskZone{Id="paw-finish",Kind="finish",X=1950,Y=226,FinishWidth=28,FinishHeight=8}}};
-    static FlipRaceGame PawUi(int w,int h,int choice,int kind,int dpr)
+    static FlipRaceGame PawUi(int w,int h,int choice,int kind,float dpr)
     {
         var ui=UiChoice(w,h,choice);var selection=(FlightSelection)Field(ui,"flightSelection");var game=RaceSimulation.CreateTrial(PawTrack(),selection.Settings);
         Check(RaceSimulation.SetCharacter(game,0,4)&&RaceSimulation.SetCharacter(game,1,5),"real hero setup before paw witness");typeof(FlipRaceGame).GetProperty("Game").SetValue(ui,game);
         Set(ui,"sharedField",kind>=2);Set(ui,"splitGhost",kind==1);Set(ui,"sharedAdjacent",kind==3);Set(ui,"animationTime",10f);
         var ready0=ui.ReadyScreenRect(0);var ready1=ui.ReadyScreenRect(1);
-        Display.width=w*dpr;Display.height=h*dpr;Display.PixelRatio=dpr;
+        Display.width=Mathf.RoundToInt(w*dpr);Display.height=Mathf.RoundToInt(h*dpr);Display.PixelRatio=dpr;
         // Native safeArea is bottom-left device pixels; CSS safe insets are
         // left12/right16/top14/bottom10, deliberately asymmetric.
         Display.SafeAreaOverride=new Rect(12*dpr,10*dpr,(w-28)*dpr,(h-24)*dpr);Call(ui,"Measure");
@@ -268,13 +268,13 @@ static class Program
         Check(!first.Overlaps(second),"two paw targets never overlap");
         for(int slot=0;slot<2;slot++){
             Rect area=ui.ControlAreaRect(slot),r=ui.PawScreenRect(slot);NearUI(r.width,56,"56 CSS pixel paw width");NearUI(r.height,56,"56 CSS pixel paw height");Check(Inside(r,area)&&Inside(r,safe),"entire paw lies inside own control region and physical safe area");
-            bool upper=slot==0&&kind!=3;NearUI(upper?r.xMin:r.xMax,upper?Math.Max(area.xMin,safe.xMin)+8:Math.Min(area.xMax,safe.xMax)-8,"player-relative right corner with8px safe inset");
+            bool upper=slot==0&&kind!=3;float inset=w>h&&h<=600?40:8;NearUI(upper?r.xMin:r.xMax,upper?Math.Max(area.xMin,safe.xMin)+inset:Math.Min(area.xMax,safe.xMax)-inset,"FIX492 compact40/desktop8 horizontal inset");
             NearUI(upper?r.yMin:r.yMax,upper?Math.Max(area.yMin,safe.yMin)+8:Math.Min(area.yMax,safe.yMax)-8,"physical top-left for opposite upper, bottom-right otherwise");
         }
     }
     static void Stage05Paws()
     {
-        foreach(var size in new[]{(w:568,h:320),(w:1280,h:720)})foreach(int kind in new[]{0,1,2,3})foreach(int dpr in new[]{1,2})foreach(int choice in new[]{10,11}){
+        foreach(var size in new[]{(w:568,h:320),(w:800,h:360),(w:960,h:432),(w:1280,h:720)})foreach(int kind in new[]{0,1,2,3})foreach(float dpr in new[]{1f,2f,2.5f,3f})foreach(int choice in new[]{10,11}){
             pawCases++;var ui=PawUi(size.w,size.h,choice,kind,dpr);PawBounds(ui,size.w,size.h,kind);
             // Actual menu keys are blocked; no hypothetical GUI paw button is
             // inserted, and no gameplay position/timer is assigned by the test.
@@ -301,9 +301,23 @@ static class Program
             Call(ui,"Resume");Devices.Touches=new[]{TouchAt(3,p0,TouchPhase.Stationary),TouchAt(4,p1,TouchPhase.Stationary)};Tick(ui);Check(Fingerprint(ui.Game)==frozen,"held resume touch never leaks an action");Devices.Clear();Tick(ui);Check(Fingerprint(ui.Game)==frozen&&!(bool)Field(ui,"gameplayInputBlocked"),"release safely clears block without stray action");
             // Real orientation measurement pauses a running game. Restoring
             // landscape and releasing preserves the same Core state.
-            Display.width=320*dpr;Display.height=568*dpr;Tick(ui);Check(!ui.PawsVisible&&ui.IsPaused&&Fingerprint(ui.Game)==frozen,"phone portrait hides paws and pauses without gameplay input");Display.width=size.w*dpr;Display.height=size.h*dpr;Tick(ui);Call(ui,"Resume");Devices.Clear();Tick(ui);Check(Fingerprint(ui.Game)==frozen,"orientation return does not invent an action");
+            Display.width=Mathf.RoundToInt(320*dpr);Display.height=Mathf.RoundToInt(568*dpr);Tick(ui);Check(!ui.PawsVisible&&ui.IsPaused&&Fingerprint(ui.Game)==frozen,"phone portrait hides paws and pauses without gameplay input");Display.width=Mathf.RoundToInt(size.w*dpr);Display.height=Mathf.RoundToInt(size.h*dpr);Tick(ui);Call(ui,"Resume");Devices.Clear();Tick(ui);Check(Fingerprint(ui.Game)==frozen,"orientation return does not invent an action");
         }
         Display.SafeAreaOverride=null;
+    }
+    static void Fix492PawEdges()
+    {
+        foreach(var size in new[]{(w:800,h:360),(w:960,h:432)})foreach(int kind in new[]{0,1,2,3})foreach(float dpr in new[]{1f,2.5f,3f})foreach(int choice in new[]{10,11})foreach(int slot in new[]{0,1})foreach(var point in new[]{(x:.5f,y:.5f),(x:55.5f,y:.5f),(x:.5f,y:55.5f),(x:55.5f,y:55.5f),(x:.5f,y:28f),(x:55.5f,y:28f),(x:28f,y:.5f),(x:28f,y:55.5f),(x:28f,y:28f)})
+        {
+            var ui=PawUi(size.w,size.h,choice,kind,dpr);ReadyThroughUpdate(ui);Rect r=ui.PawScreenRect(slot);float visual=(float)Field(ui,"animationTime");
+            Vector2 p=new Vector2(r.x+point.x,r.y+point.y);
+            Devices.Touches=new[]{TouchAt(41,p,TouchPhase.Began)};Tick(ui);Devices.Clear();
+            FirstActionState(ui,slot,"FIX492 visible-paw interior edge gives one action");Check(!ui.Game.Players[1-slot].Flipping,"FIX492 near-border click cannot act for opponent");
+            NearUI((float)Field(ui,slot==0?"firstPawAt":"secondPawAt"),visual,"FIX492 actual drawn rect and feedback hitrect agree at edges");
+            Check((float)Field(ui,slot==0?"secondPawAt":"firstPawAt")==-10,"FIX492 opponent never flashes");
+        }
+        Display.SafeAreaOverride=null;
+        Evidence.Add(new{Kind="fix492-visible-paw-edge-streams",Sizes=new[]{"800x360","960x432"},Dpr=new[]{1f,2.5f,3f},Views=4,Profiles=2,Players=2,InteriorPoints=9,Physical2400x1080=new[]{"800x360@3","960x432@2.5"}});
     }
     static void Stage05Equivalence()
     {
@@ -324,7 +338,7 @@ static class Program
         }
         Display.SafeAreaOverride=null;
     }
-    static void Stage05(){Stage05Paws();Stage05Equivalence();}
+    static void Stage05(){Stage05Paws();Fix492PawEdges();Stage05Equivalence();}
     static int Main()
     {
         try{Heroes();Stage04();Stage05();Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,cases,pointers,projectionFixtures,equivalenceRuns,applies,updates,pawCases,pawEquivalenceRuns,Evidence,scope="Production Measure/Pointer/Core retained. Native Screen/Input/Time/PlayerPrefs and selection texture acquisition use existing explicit managed shims; native pixels and device timing are separate."},new JsonSerializerOptions{IncludeFields=true,WriteIndented=true}));return 0;}

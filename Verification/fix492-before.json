@@ -1,0 +1,74 @@
+{
+  "revision": "ef2d7302d616ff7648c802e408e999fd2b292419",
+  "source": "01a171e0-8667-7401-ae79-fd5a9164790a",
+  "preservedOtherChange": {
+    "sha256": "3071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5",
+    "path": "Verification/FIX491-RELEASE.md"
+  },
+  "core": [
+    {
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs"
+    },
+    {
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285",
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs"
+    },
+    {
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+      "path": "Assets/Scripts/Core/FlightSettings.cs"
+    },
+    {
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417",
+      "path": "Assets/Scripts/Core/MotionProfiles.cs"
+    },
+    {
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs"
+    },
+    {
+      "sha256": "3D33D28829BF9E7372886506DF8086D8CEC29474DB963AB7114D4CC3E2B16B6F",
+      "path": "Assets/Scripts/Core/RaceSimulation.cs"
+    },
+    {
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+      "path": "Assets/Scripts/Core/TracksControl.cs"
+    },
+    {
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79",
+      "path": "Assets/Scripts/Core/TracksFull.cs"
+    },
+    {
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156",
+      "path": "Assets/Scripts/Core/TracksMixed.cs"
+    },
+    {
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs"
+    },
+    {
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7",
+      "path": "Assets/Scripts/Core/TracksRhythm.cs"
+    },
+    {
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6",
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs"
+    },
+    {
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs"
+    },
+    {
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+      "path": "Assets/Scripts/Core/TracksTune.cs"
+    },
+    {
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+      "path": "Assets/Scripts/Core/TracksV3.cs"
+    },
+    {
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB",
+      "path": "Assets/Scripts/Core/TracksV4.cs"
+    }
+  ]
+}
