@@ -36,7 +36,7 @@ namespace FlipRace.Core
                     new RiskZone{Id=Id+"-coin-second",Kind="coin",X=5500,Y=100,Radius=8},
                     new RiskZone{Id=Id+"-negative-first-choice",Kind="negative",X=3300,Y=180,Radius=8},
                     new RiskZone{Id=Id+"-negative-second-choice",Kind="negative",X=5720,Y=180,Radius=8},
-                    new RiskZone{Id=Id+"-finish",Kind="finish",X=7780,Y=32,FinishWidth=28,FinishHeight=8}
+                    new RiskZone{Id=Id+"-finish",Kind="finish",X=7712,Y=80,FinishWidth=24,FinishHeight=20}
                 }
             };
         }

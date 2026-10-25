@@ -718,7 +718,7 @@ namespace FlipRace.Presentation
                 {
                     Text(new Rect(footer.x + 470, footer.y + 33, 340, 20), Controls && Game.Track.Id == TracksControl.UnlimitedId
                         ? "Меняй высоту перед каждым проходом"
-                        : Controls ? "Посадка — ×1,5  ·  Площадка — рывок ×2"
+                        : Controls ? "Посадка — ×1,5  ·  Две стрелки — рывок ×2"
                         : Trial ? "Молния — сразу  ·  Ромб − — замедление"
                         : "+кольцо: −0,3 с  ·  ◇−: +0,3 с  ·  удар: +0,5 с", 10, muted);
                 }
@@ -820,7 +820,7 @@ namespace FlipRace.Presentation
                     if (zone.IsLanding && zone.X - p.Distance > 0 && zone.X - p.Distance < 350)
                         return "Приземлись точно в метку на грани камня.";
                     if (zone.IsFinish && zone.X - p.Distance > 0 && zone.X - p.Distance < 650)
-                        return "Площадка у ленты: пролети через неё для рывка ×2.";
+                        return "Стрелки у ленты: пролети через них для рывка ×2.";
                 }
             if (Trial)
                 return TracksV4.IsOpen(Game.Track.Id) || Game.Elapsed < 3.5 ? TrialMotionHint() : "";

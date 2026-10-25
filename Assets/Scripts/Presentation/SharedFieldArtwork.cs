@@ -116,8 +116,8 @@ namespace FlipRace.Presentation
                     badgeY=y+(ceiling?12:-12);break;
                 }
             }else if(zone.IsFinish) {
-                DrawFinishPad(x,y,(float)(zone.FinishWidth*view.ScaleX),(float)zone.FinishHeight*sy);
-                badgeY=y-(float)zone.FinishHeight*sy/2-8;
+                DrawFinishTarget(x,y,(float)view.ScaleX,sy);
+                badgeY=y-(float)(FinishTargetGeometry.HalfHeight+FinishTargetGeometry.StrokeWidth/2)*sy-8;
             }else if(zone.IsCoin) {
                 DrawCoin(x,y,radius,time);
             }else if(zone.IsInstant) {

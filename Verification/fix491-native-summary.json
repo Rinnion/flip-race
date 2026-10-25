@@ -1,0 +1,257 @@
+[
+  {
+    "label": "pc-mixed-main",
+    "url": "http://127.0.0.1:4212/",
+    "width": 1280,
+    "height": 720,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 1,
+        "rings": 8,
+        "slows": 0,
+        "finish": 33.85,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 55.00000000000001
+      },
+      {
+        "collisions": 1,
+        "rings": 8,
+        "slows": 0,
+        "finish": 34.1,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      }
+    ],
+    "pictures": [
+      "fix491-native-pc-mixed-main-arrows.png",
+      "fix491-native-pc-mixed-main-pulse.png",
+      "fix491-native-pc-mixed-main-result.png"
+    ]
+  },
+  {
+    "label": "pc-mixed-fast",
+    "url": "http://127.0.0.1:4212/",
+    "width": 1280,
+    "height": 720,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "rings": 8,
+        "slows": 0,
+        "finish": 33.35,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 55
+      },
+      {
+        "collisions": 3,
+        "rings": 8,
+        "slows": 0,
+        "finish": 34.85,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 55
+      }
+    ],
+    "pictures": [
+      "fix491-native-pc-mixed-fast-arrows.png",
+      "fix491-native-pc-mixed-fast-pulse.png",
+      "fix491-native-pc-mixed-fast-result.png"
+    ]
+  },
+  {
+    "label": "phone-mixed-main-full",
+    "url": "http://127.0.0.1:4212/",
+    "width": 568,
+    "height": 320,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.05,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 54.99999999999999
+      },
+      {
+        "collisions": 0,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.3,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      }
+    ],
+    "pictures": [
+      "fix491-native-phone-mixed-main-full-arrows.png",
+      "fix491-native-phone-mixed-main-full-pulse.png",
+      "fix491-native-phone-mixed-main-full-result.png"
+    ]
+  },
+  {
+    "label": "phone-mixed-fast",
+    "url": "http://127.0.0.1:4212/",
+    "width": 568,
+    "height": 320,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.05,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 55.00000000000001
+      },
+      {
+        "collisions": 0,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.3,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      }
+    ],
+    "pictures": [
+      "fix491-native-phone-mixed-fast-arrows.png",
+      "fix491-native-phone-mixed-fast-pulse.png",
+      "fix491-native-phone-mixed-fast-result.png"
+    ]
+  },
+  {
+    "label": "pc-long-main",
+    "url": "http://127.0.0.1:4212/",
+    "width": 568,
+    "height": 320,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.05,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 55
+      },
+      {
+        "collisions": 0,
+        "rings": 8,
+        "slows": 0,
+        "finish": 33.6,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      }
+    ],
+    "pictures": [
+      "fix491-native-pc-long-main-arrows.png",
+      "fix491-native-pc-long-main-pulse.png",
+      "fix491-native-pc-long-main-result.png"
+    ]
+  },
+  {
+    "label": "pc-short-fast",
+    "url": "http://127.0.0.1:4212/",
+    "width": 568,
+    "height": 320,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "rings": 8,
+        "slows": 1,
+        "finish": 33.65,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 55
+      },
+      {
+        "collisions": 0,
+        "rings": 8,
+        "slows": 0,
+        "finish": 33.6,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      }
+    ],
+    "pictures": [
+      "fix491-native-pc-short-fast-arrows.png",
+      "fix491-native-pc-short-fast-pulse.png",
+      "fix491-native-pc-short-fast-result.png"
+    ]
+  },
+  {
+    "label": "pc-flow-main",
+    "url": "http://127.0.0.1:4212/",
+    "width": 568,
+    "height": 320,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.05,
+        "finishBoosts": 1,
+        "served": 0.25,
+        "gained": 55
+      },
+      {
+        "collisions": 0,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.3,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      }
+    ],
+    "pictures": [
+      "fix491-native-pc-flow-main-arrows.png",
+      "fix491-native-pc-flow-main-pulse.png",
+      "fix491-native-pc-flow-main-result.png"
+    ]
+  },
+  {
+    "label": "pc-cascade-fast",
+    "url": "http://127.0.0.1:4212/",
+    "width": 568,
+    "height": 320,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 1,
+        "rings": 9,
+        "slows": 0,
+        "finish": 33.8,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      },
+      {
+        "collisions": 1,
+        "rings": 8,
+        "slows": 0,
+        "finish": 34.1,
+        "finishBoosts": 0,
+        "served": 0,
+        "gained": 0
+      }
+    ],
+    "pictures": [
+      "fix491-native-pc-cascade-fast-arrows.png",
+      "fix491-native-pc-cascade-fast-result.png"
+    ]
+  }
+]

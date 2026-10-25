@@ -1,0 +1,323 @@
+{
+  "stage": "FIX491 RED before production changes",
+  "failures": 16,
+  "evidence": [
+    {
+      "kind": "whole-race-no-actions",
+      "track": "full-long",
+      "profile": "Jump",
+      "finishBoosts": 0,
+      "collisions": 4,
+      "finish": 38
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-long",
+      "profile": "Jump",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-long",
+      "profile": "Jump",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 0,
+      "finish": 36
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "full-short",
+      "profile": "Jump",
+      "finishBoosts": 0,
+      "collisions": 7,
+      "finish": 39.5
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-short",
+      "profile": "Jump",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-short",
+      "profile": "Jump",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 0,
+      "finish": 36
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "full-flow",
+      "profile": "Jump",
+      "finishBoosts": 1,
+      "collisions": 9,
+      "finish": 40.25
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-flow",
+      "profile": "Jump",
+      "side": 0,
+      "finishBoosts": 0,
+      "collisions": 0,
+      "finish": 36
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-flow",
+      "profile": "Jump",
+      "side": 1,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "finishBoosts": 0,
+      "collisions": 17,
+      "finish": 44.5
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 1,
+      "finish": 36.5
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "finishBoosts": 0,
+      "collisions": 10,
+      "finish": 41
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 1,
+      "finish": 36.5
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "full-long",
+      "profile": "Flip",
+      "finishBoosts": 0,
+      "collisions": 4,
+      "finish": 38
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-long",
+      "profile": "Flip",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-long",
+      "profile": "Flip",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 0,
+      "finish": 36
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "full-short",
+      "profile": "Flip",
+      "finishBoosts": 0,
+      "collisions": 7,
+      "finish": 39.5
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-short",
+      "profile": "Flip",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-short",
+      "profile": "Flip",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 0,
+      "finish": 36
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "full-flow",
+      "profile": "Flip",
+      "finishBoosts": 1,
+      "collisions": 9,
+      "finish": 40.25
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-flow",
+      "profile": "Flip",
+      "side": 0,
+      "finishBoosts": 0,
+      "collisions": 0,
+      "finish": 36
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "full-flow",
+      "profile": "Flip",
+      "side": 1,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "finishBoosts": 0,
+      "collisions": 17,
+      "finish": 44.5
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 1,
+      "finish": 36.5
+    },
+    {
+      "kind": "whole-race-no-actions",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "finishBoosts": 0,
+      "collisions": 10,
+      "finish": 41
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "side": 0,
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "supported-final-run-in-no-actions",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "side": 1,
+      "finishBoosts": 0,
+      "collisions": 1,
+      "finish": 36.5
+    },
+    {
+      "kind": "mixed-normal-final-obstacle-no-target-action",
+      "profile": "Jump",
+      "route": "safe",
+      "lastInput": {
+        "distance": 7591.773584905661,
+        "centerY": 14,
+        "support": "None",
+        "Flipping": true
+      },
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "mixed-normal-final-obstacle-no-target-action",
+      "profile": "Jump",
+      "route": "full",
+      "lastInput": {
+        "distance": 7591.773584905661,
+        "centerY": 14,
+        "support": "None",
+        "Flipping": true
+      },
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 33.05
+    },
+    {
+      "kind": "mixed-normal-final-obstacle-no-target-action",
+      "profile": "Flip",
+      "route": "safe",
+      "lastInput": {
+        "distance": 7676.917064816087,
+        "centerY": 226,
+        "support": "None",
+        "Flipping": true
+      },
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 35.75
+    },
+    {
+      "kind": "mixed-normal-final-obstacle-no-target-action",
+      "profile": "Flip",
+      "route": "full",
+      "lastInput": {
+        "distance": 7676.917064816087,
+        "centerY": 226,
+        "support": "None",
+        "Flipping": true
+      },
+      "finishBoosts": 1,
+      "collisions": 0,
+      "finish": 33.05
+    }
+  ]
+}
+FAIL automatic finish collection reproduced: 16 cases

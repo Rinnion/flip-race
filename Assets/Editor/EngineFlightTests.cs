@@ -264,7 +264,7 @@ namespace FlipRace.Editor
             Tap(game); Check(ReferenceEquals(game.Flight, settings) && game.Players[0].LastFlight == null
                 && !game.Players[0].FlightActive && !game.Players[0].LinearJumpActive, "rematch keeps settings and resets measurements/cycles");
         }
-        static GameState Route(Track track, FlightSettings settings, double[] route, double frame, MotionMode? legacy = null)
+        static GameState Route(Track track, FlightSettings settings, double[] route, double frame, MotionMode? legacy = null, System.Collections.Generic.List<double> inputTimes = null)
         {
             GameState game;
             if (legacy.HasValue)
@@ -279,12 +279,41 @@ namespace FlipRace.Editor
             while (game.Phase == "racing")
             {
                 if (++guard > 100000) throw new Exception("route stalled");
-                if (next < route.Length && game.Players[0].Distance >= route[next] - 1e-8) { Tap(game); next++; }
+                if (next < route.Length && game.Players[0].Distance >= route[next] - 1e-8)
+                { inputTimes?.Add(game.Elapsed); Tap(game); next++; }
                 double dt = frame;
                 if (next < route.Length) dt = Math.Min(dt, Math.Max(1e-10, (route[next] - game.Players[0].Distance) / 440));
                 RaceSimulation.Advance(game, dt);
             }
             return game;
+        }
+        static GameState TimedRoute(Track track,FlightSettings settings,System.Collections.Generic.List<double> inputTimes,
+            double frame,double until=double.PositiveInfinity)
+        {
+            var game=Start(settings,track);
+            foreach(double time in inputTimes){
+                if(time>until)break;
+                Check(time>=game.Elapsed-2e-7,"recorded action times are monotonic");
+                AdvanceFor(game,Math.Max(0,time-game.Elapsed),frame);
+                Check(game.Phase=="racing","same timed input occurs before physical tape");
+                Tap(game);
+            }
+            AdvanceFor(game,double.IsInfinity(until)?100:Math.Max(0,until-game.Elapsed),frame);
+            return game;
+        }
+        // Independent literal specification, rather than the production contact
+        // or rendering helper, verifies the observed legacy trajectory contact.
+        static double SpecifiedStrokeDistanceSquared(double x,double y)
+        {
+            double[,] strokes={{-10.5,-8.5,-2.1,0},{-2.1,0,-10.5,8.5},{2.1,-8.5,10.5,0},{10.5,0,2.1,8.5}};
+            double nearest=double.PositiveInfinity;
+            for(int i=0;i<4;i++){
+                double dx=strokes[i,2]-strokes[i,0],dy=strokes[i,3]-strokes[i,1];
+                double t=Math.Max(0,Math.Min(1,((x-strokes[i,0])*dx+(y-strokes[i,1])*dy)/(dx*dx+dy*dy)));
+                double ex=x-strokes[i,0]-t*dx,ey=y-strokes[i,1]-t*dy;
+                nearest=Math.Min(nearest,ex*ex+ey*ey);
+            }
+            return nearest;
         }
         static void ExactPresetRoutes()
         {
@@ -296,26 +325,37 @@ namespace FlipRace.Editor
                 var track = TracksControl.Challenge(modes[i]); var p = presets[i];
                 foreach (bool safe in new[] { true, false })
                 {
-                    var game = Route(track, p, safe ? track.SafeRoute : track.RiskRoute, frame);
+                    var inputTimes=new System.Collections.Generic.List<double>();
+                    var game = Route(track, p, safe ? track.SafeRoute : track.RiskRoute, frame,inputTimes:inputTimes);
                     var copy = Route(track, Copy(p), safe ? track.SafeRoute : track.RiskRoute, frame);
                     var old = Route(track, p, safe ? track.SafeRoute : track.RiskRoute, frame, modes[i]);
-                    // The retired4.2.1 trial keeps its authored geometry, but
-                    // ITER49 globally replaces the finish trigger/timer. Its
-                    // late pad may serve a partial pulse. Verify real motion
-                    // conservation against the same input with no finish pad,
-                    // rather than retain the obsolete automatic0.1s discount.
-                    var ordinary = new System.Collections.Generic.List<RiskZone>();
-                    foreach (var zone in track.RiskZones) if (!zone.IsFinish) ordinary.Add(zone);
+                    // The retired training inputs stay fixed. Replay exactly their
+                    // actual input times without a goal to isolate physical travel,
+                    // rather than assuming the old rectangle's partial pulse.
+                    var ordinary = new System.Collections.Generic.List<RiskZone>();RiskZone goal=null;
+                    foreach (var zone in track.RiskZones)if(!zone.IsFinish)ordinary.Add(zone);else goal=zone;
+                    Check(goal!=null,"retired training target exists");
                     var withoutPad = new Track(track.Length, track.Obstacles, track.Cues) { RiskZones = ordinary.ToArray() };
-                    var counterfactual = Route(withoutPad, p, safe ? track.SafeRoute : track.RiskRoute, frame);
+                    var counterfactual = TimedRoute(withoutPad,p,inputTimes,frame);
                     Near(counterfactual.Elapsed, safe ? 21 : 20.4, "unchanged training geometry/ordinary rewards without finish");
                     var runner = game.Players[0];
-                    Near(game.Elapsed, counterfactual.Elapsed - runner.FinishBoostElapsed, "arrival equals actual served x2 moving duration");
-                    Near(runner.FinishBoostDistanceGained, RaceConfig.Speed * runner.FinishBoostElapsed, "real extra travel agrees with served pulse");
-                    Check(safe ? runner.FinishBoostElapsed == 0 : runner.FinishBoostElapsed > 0 && runner.FinishBoostElapsed < .25,
-                        "legacy late trial honestly credits only its served partial pulse");
-                    Check(game.Players[0].Collisions == 0 && game.Players[0].BoostsEarned == (safe ? 0 : 2)
-                        && game.Players[0].FinishBoostsEarned == (safe ? 0 : 1), "preset retains support and finish semantics");
+                    Near(game.Elapsed,counterfactual.Elapsed-runner.FinishBoostDistanceGained/RaceConfig.Speed,"arrival conserves actual extra distance with identical timed inputs");
+                    Near(runner.FinishBoostDistanceGained,RaceConfig.Speed*runner.FinishBoostElapsed,"real extra travel agrees with served pulse");
+                    Check(runner.FinishBoostElapsed>=0&&runner.FinishBoostElapsed<=.25+2e-7&&!runner.FinishBoost,"physical tape retains only served finish movement");
+                    Check(runner.Collisions==0&&runner.BoostsEarned==(safe?0:2)
+                        &&runner.FinishBoostsEarned==(safe?0:1),"fixed legacy routes retain observed ordinary rewards and stroke take/miss");
+                    if(safe){
+                        double beforeGoal=(goal.X-26)/220;
+                        Check(inputTimes[inputTimes.Count-1]<beforeGoal,"safe training has no later aiming action");
+                        var probe=TimedRoute(withoutPad,p,inputTimes,frame,beforeGoal).Players[0];
+                        Check(probe.Support==SupportKind.Wall&&!probe.Flipping,"safe training is settled on a wall before entire target window");
+                        Check(Math.Abs(RaceSimulation.GetPlayerCenterY(probe)-goal.Y)>24,"independent vertical bounds prove settled wall misses all strokes");
+                        Near(runner.FinishBoostElapsed,0,"proven miss serves no pulse");
+                    }else{
+                        var contact=TimedRoute(withoutPad,p,inputTimes,frame,runner.LastFinishBoost.At).Players[0];
+                        Near(SpecifiedStrokeDistanceSquared(contact.Distance-goal.X,RaceSimulation.GetPlayerCenterY(contact)-goal.Y),240.25,
+                            "independent literal stroke geometry validates first body contact",2e-5);
+                    }
                     Check(game.Players[0].FinishTime == copy.Players[0].FinishTime && Equals(copy.Winner, "tie"),
                         "customized exact copy of preset has identical physics");
                     Near(game.Players[0].Y, copy.Players[0].Y, "preset copy actual finish trajectory");

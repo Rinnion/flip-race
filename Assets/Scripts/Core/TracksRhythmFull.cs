@@ -107,7 +107,7 @@ namespace FlipRace.Core
                     new RiskZone { Id = "rhythm-cascade-m13-after-ring", ObstacleId = "rhythm-cascade-m13-after-stone", Kind = "positive", Placement = "after", FreeReward = false, X = 5715, Y = 120, Radius = 8, ClearX = 5614, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
                     new RiskZone { Id = "rhythm-cascade-m15-chain-1", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 6359, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
                     new RiskZone { Id = "rhythm-cascade-m15-chain-2", ObstacleId = null, Kind = "instant", Placement = "before", FreeReward = false, X = 6709, Y = 120, Radius = 8, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishHeight = 16 },
-                    new RiskZone { Id = "rhythm-cascade-finish", ObstacleId = null, Kind = "finish", Placement = "before", FreeReward = false, X = 7780, Y = 32, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishWidth = 28, FinishHeight = 8 },
+                    new RiskZone { Id = "rhythm-cascade-finish", ObstacleId = null, Kind = "finish", Placement = "before", FreeReward = false, X = 7780, Y = 64, Radius = 6, ClearX = 0, SafeFlipX = 0, RiskFlipX = 0, LandingWidth = 0, FinishWidth = 24, FinishHeight = 20 },
                 }
             };
         }

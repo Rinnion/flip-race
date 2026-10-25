@@ -63,7 +63,7 @@ namespace FlipRace.Core
             b.After(5900,"ceiling");b.MiddleRing(6500,"floor");b.Low(7000,"ceiling");b.Low(7300,"ceiling");
             b.Zones.Add(new RiskZone{Id="long-hasty-trap",Kind="negative",X=2000,Y=120,Radius=8});
             b.Zones.Add(new RiskZone{Id="long-habit-trap",Kind="negative",X=7600,Y=40,Radius=8});
-            return b.Finish(32,"ceiling");
+            return b.Finish(64,"ceiling");
         }
         static Track BuildShort()
         {
@@ -76,7 +76,7 @@ namespace FlipRace.Core
             b.Low(7420,"ceiling");
             b.Zones.Add(new RiskZone{Id="short-hasty-trap",Kind="negative",X=1790,Y=120,Radius=8});
             b.Zones.Add(new RiskZone{Id="short-habit-trap",Kind="negative",X=7640,Y=40,Radius=8});
-            return b.Finish(32,"ceiling");
+            return b.Finish(64,"ceiling");
         }
         static Track BuildFlow()
         {
@@ -88,7 +88,7 @@ namespace FlipRace.Core
             b.LowPassage(6400,"ceiling");b.High(6800,"ceiling");b.Low(7200,"floor");
             b.Zones.Add(new RiskZone{Id="flow-hasty-trap",Kind="negative",X=2550,Y=120,Radius=8});
             b.Zones.Add(new RiskZone{Id="flow-habit-trap",Kind="negative",X=7600,Y=200,Radius=8});
-            return b.Finish(208,"floor");
+            return b.Finish(176,"floor");
         }
         public static Track Practice()
         {
@@ -182,8 +182,8 @@ namespace FlipRace.Core
             }
             public Track Finish(double y,string side)
             {
-                Zones.Add(new RiskZone{Id=id+"-finish",Kind="finish",X=7780,Y=y,FinishWidth=28,FinishHeight=8});
-                // The final ordinary route reaches the horizontal pad; the old
+                Zones.Add(new RiskZone{Id=id+"-finish",Kind="finish",X=7780,Y=y,FinishWidth=24,FinishHeight=20});
+                // Ordinary routes no longer collect by resting against a wall; the old
                 // last-moment vertical-plane preparation is deliberately removed.
                 safe.Add(7700); // Explicit Main skip; retains the full +/-60ms local window.
                 safe.Sort();full.Sort();Zones.Sort((a,b)=>a.X.CompareTo(b.X));Obstacles.Sort((a,b)=>a.X.CompareTo(b.X));

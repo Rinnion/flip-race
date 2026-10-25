@@ -1,0 +1,5277 @@
+{
+  "label": "pc-flow-main",
+  "url": "http://127.0.0.1:4212/",
+  "route": "Actual full author inputs; recorded per-player events",
+  "indices": [
+    24,
+    23
+  ],
+  "frameCount": 614,
+  "inputs": [
+    {
+      "player": 0,
+      "target": 193.77358490566036,
+      "observed": 185.900000000006,
+      "elapsed": 0.8450000000000273
+    },
+    {
+      "player": 1,
+      "target": 193.77358490566036,
+      "observed": 185.900000000006,
+      "elapsed": 0.8450000000000273
+    },
+    {
+      "player": 0,
+      "target": 600,
+      "observed": 584.3200000000138,
+      "elapsed": 2.6560000000000628
+    },
+    {
+      "player": 1,
+      "target": 600,
+      "observed": 584.3200000000138,
+      "elapsed": 2.6560000000000628
+    },
+    {
+      "player": 0,
+      "target": 654.9999999999994,
+      "observed": 639.3200000000138,
+      "elapsed": 2.9060000000000628
+    },
+    {
+      "player": 1,
+      "target": 654.9999999999994,
+      "observed": 639.3200000000138,
+      "elapsed": 2.9060000000000628
+    },
+    {
+      "player": 0,
+      "target": 985.1811187353192,
+      "observed": 980.3200000000138,
+      "elapsed": 4.156000000000063
+    },
+    {
+      "player": 1,
+      "target": 985.1811187353192,
+      "observed": 980.3200000000138,
+      "elapsed": 4.156000000000063
+    },
+    {
+      "player": 0,
+      "target": 1443.7735849056603,
+      "observed": 1445.1800000000112,
+      "elapsed": 5.969000000000051
+    },
+    {
+      "player": 1,
+      "target": 1443.7735849056603,
+      "observed": 1445.1800000000112,
+      "elapsed": 5.969000000000051
+    },
+    {
+      "player": 0,
+      "target": 1800,
+      "observed": 1788.8200000000138,
+      "elapsed": 7.531000000000063
+    },
+    {
+      "player": 1,
+      "target": 1800,
+      "observed": 1788.8200000000138,
+      "elapsed": 7.531000000000063
+    },
+    {
+      "player": 0,
+      "target": 1855,
+      "observed": 1857.6800000000112,
+      "elapsed": 7.844000000000051
+    },
+    {
+      "player": 1,
+      "target": 1855,
+      "observed": 1857.6800000000112,
+      "elapsed": 7.844000000000051
+    },
+    {
+      "player": 0,
+      "target": 2470,
+      "observed": 2459.8200000000124,
+      "elapsed": 10.281000000000065
+    },
+    {
+      "player": 1,
+      "target": 2470,
+      "observed": 2459.8200000000124,
+      "elapsed": 10.281000000000065
+    },
+    {
+      "player": 0,
+      "target": 2787.7735849056603,
+      "observed": 2773.540000000007,
+      "elapsed": 11.40700000000004
+    },
+    {
+      "player": 1,
+      "target": 2787.7735849056603,
+      "observed": 2773.540000000006,
+      "elapsed": 11.40700000000004
+    },
+    {
+      "player": 0,
+      "target": 3300,
+      "observed": 3296.040000000007,
+      "elapsed": 13.78200000000004
+    },
+    {
+      "player": 1,
+      "target": 3300,
+      "observed": 3296.040000000006,
+      "elapsed": 13.78200000000004
+    },
+    {
+      "player": 0,
+      "target": 3380,
+      "observed": 3379.379235714877,
+      "elapsed": 14.094000000000053
+    },
+    {
+      "player": 1,
+      "target": 3380,
+      "observed": 3379.379235714876,
+      "elapsed": 14.094000000000053
+    },
+    {
+      "player": 0,
+      "target": 3898.8841906410175,
+      "observed": 3895.540000000006,
+      "elapsed": 15.90700000000004
+    },
+    {
+      "player": 1,
+      "target": 3898.8841906410175,
+      "observed": 3895.5400000000054,
+      "elapsed": 15.90700000000004
+    },
+    {
+      "player": 0,
+      "target": 3953.8841906410153,
+      "observed": 3950.540000000006,
+      "elapsed": 16.15700000000004
+    },
+    {
+      "player": 1,
+      "target": 3953.8841906410153,
+      "observed": 3950.5400000000054,
+      "elapsed": 16.15700000000004
+    },
+    {
+      "player": 0,
+      "target": 4066,
+      "observed": 4068.3920953205215,
+      "elapsed": 16.59400000000005
+    },
+    {
+      "player": 1,
+      "target": 4066,
+      "observed": 4068.3920953205206,
+      "elapsed": 16.59400000000005
+    },
+    {
+      "player": 0,
+      "target": 4415.773584905661,
+      "observed": 4401.320000000011,
+      "elapsed": 17.906000000000063
+    },
+    {
+      "player": 1,
+      "target": 4415.773584905661,
+      "observed": 4401.320000000009,
+      "elapsed": 17.906000000000063
+    },
+    {
+      "player": 0,
+      "target": 4835.18111873532,
+      "observed": 4827.680000000009,
+      "elapsed": 19.84400000000005
+    },
+    {
+      "player": 1,
+      "target": 4835.18111873532,
+      "observed": 4827.680000000008,
+      "elapsed": 19.84400000000005
+    },
+    {
+      "player": 0,
+      "target": 5500,
+      "observed": 5484.820000000018,
+      "elapsed": 22.531000000000063
+    },
+    {
+      "player": 1,
+      "target": 5500,
+      "observed": 5484.820000000016,
+      "elapsed": 22.531000000000063
+    },
+    {
+      "player": 0,
+      "target": 5555,
+      "observed": 5539.820000000018,
+      "elapsed": 22.781000000000063
+    },
+    {
+      "player": 1,
+      "target": 5555,
+      "observed": 5539.820000000016,
+      "elapsed": 22.781000000000063
+    },
+    {
+      "player": 0,
+      "target": 5780,
+      "observed": 5773.680000000015,
+      "elapsed": 23.84400000000005
+    },
+    {
+      "player": 1,
+      "target": 5780,
+      "observed": 5773.680000000013,
+      "elapsed": 23.84400000000005
+    },
+    {
+      "player": 0,
+      "target": 6293.773584905661,
+      "observed": 6279.6800000000185,
+      "elapsed": 25.84400000000005
+    },
+    {
+      "player": 1,
+      "target": 6293.773584905661,
+      "observed": 6279.6800000000185,
+      "elapsed": 25.84400000000005
+    },
+    {
+      "player": 0,
+      "target": 6600,
+      "observed": 6595.820000000025,
+      "elapsed": 27.281000000000063
+    },
+    {
+      "player": 1,
+      "target": 6600,
+      "observed": 6595.820000000025,
+      "elapsed": 27.281000000000063
+    },
+    {
+      "player": 0,
+      "target": 6655,
+      "observed": 6651.040000000021,
+      "elapsed": 27.53200000000004
+    },
+    {
+      "player": 1,
+      "target": 6655,
+      "observed": 6651.040000000021,
+      "elapsed": 27.53200000000004
+    },
+    {
+      "player": 0,
+      "target": 7115.773584905661,
+      "observed": 7118.320000000025,
+      "elapsed": 29.656000000000063
+    },
+    {
+      "player": 1,
+      "target": 7115.773584905661,
+      "observed": 7118.320000000025,
+      "elapsed": 29.656000000000063
+    },
+    {
+      "player": 0,
+      "target": 7736,
+      "observed": 7723.540000000019,
+      "elapsed": 32.40700000000004
+    }
+  ],
+  "events": [
+    {
+      "height": 320,
+      "now": 1792909173769,
+      "reportedAt": 1792909173713,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": -265.24089306698,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 2.842999999999961,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 0,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": false,
+        "phase": "countdown",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": true,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 0,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": true,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.5,
+            219.5375
+          ],
+          [
+            113.5,
+            219.5375
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909176645,
+      "reportedAt": 1792909176587.7002,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": -258.4208930669662,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 0.031000000000062755,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 6.820000000013806,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 6.820000000013806,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0,
+            "flightEndedAt": 0,
+            "flightInterrupted": false,
+            "flightMaxDistance": 0,
+            "flipElapsed": 0,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": false,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.5,
+            219.5375
+          ],
+          [
+            113.5,
+            219.5375
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909179703,
+      "reportedAt": 1792909179650.3,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 415.4391069330312,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 3.094000000000051,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5965589765161714,
+            "centerY": 128.15036249999488,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 681.0585125832323,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.0566037735849056,
+            "flightEndedAt": 1.9316037735849056,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867929,
+            "flipElapsed": 0.4060000000000627,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 1,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-2-free-mid",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 1,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -246.6499999999584,
+            "y": 0.5384451061320513
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 131.08236249999754,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 680.6800000000112,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.0566037735849056,
+            "flightEndedAt": 1.9316037735849056,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867929,
+            "flipElapsed": 0.3740000000000237,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 0,
+            "lastFinishBoost": "",
+            "lastInstant": "",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 0,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -267.84999999998433,
+            "y": 0.5522752948113092
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.64912694829682,
+            176.1167233593727
+          ],
+          [
+            113.5,
+            177.4177983593739
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909179764,
+      "reportedAt": 1792909179713.3,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 436.1364501864965,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 3.157000000000039,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5335589765161832,
+            "centerY": 111.29668125000092,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 701.8485125832284,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.0566037735849056,
+            "flightEndedAt": 1.9316037735849056,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867929,
+            "flipElapsed": 0.469000000000051,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 1,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-2-free-mid",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 1,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -288.3874999999506,
+            "y": 0.4589466096698157
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5378423340593831,
+            "centerY": 112.89308125000218,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 701.3773432534765,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.0566037735849056,
+            "flightEndedAt": 1.9316037735849056,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867929,
+            "flipElapsed": 0.4370000000000118,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 1,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-2-free-mid",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 1,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -309.5874999999765,
+            "y": 0.4664767983490669
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.68563199056427,
+            168.6379023046879
+          ],
+          [
+            113.5,
+            169.34630480468846
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909181670,
+      "reportedAt": 1792909181650.3,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 922.7996663006952,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 5.094000000000051,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5876312784757829,
+            "centerY": 62,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 1188.040559367675,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.894631278475822,
+            "flightEndedAt": 5.081631278475834,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867929,
+            "flipElapsed": 0.894631278475822,
+            "flipping": false,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 2,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-3-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 2,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Stone",
+            "supportObstacle": "full-flow-3-standard-pad",
+            "supportSide": 0,
+            "verticalSpeed": 0,
+            "y": 0.22641509433962265
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5876312784757829,
+            "centerY": 62,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 1188.040559367675,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.894631278475822,
+            "flightEndedAt": 5.081631278475834,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867929,
+            "flipElapsed": 0.894631278475822,
+            "flipping": false,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 2,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-3-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 2,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Stone",
+            "supportObstacle": "full-flow-3-standard-pad",
+            "supportSide": 0,
+            "verticalSpeed": 0,
+            "y": 0.22641509433962265
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.5,
+            146.7625
+          ],
+          [
+            113.5,
+            146.7625
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909185512,
+      "reportedAt": 1792909185462.5,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 1832.2391069330408,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 8.906000000000063,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5439999999999372,
+            "centerY": 226,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 2097.4800000000205,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.728833756685608,
+            "flightEndedAt": 8.32283375668566,
+            "flightInterrupted": false,
+            "flightMaxDistance": 212,
+            "flipElapsed": 0.728833756685608,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 2,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-3-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 3,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5439999999999372,
+            "centerY": 226,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 2097.4800000000205,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.728833756685608,
+            "flightEndedAt": 8.32283375668566,
+            "flightInterrupted": false,
+            "flightMaxDistance": 212,
+            "flipElapsed": 0.728833756685608,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 2,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-3-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 3,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.49999999999994,
+            219.5375
+          ],
+          [
+            113.49999999999994,
+            219.5375
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909187018,
+      "reportedAt": 1792909186962.9,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 2224.579618835815,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 10.406000000000065,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.563018780826338,
+            "centerY": 196.0269249999853,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 2491.387934109115,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.728833756685608,
+            "flightEndedAt": 8.32283375668566,
+            "flightInterrupted": false,
+            "flightMaxDistance": 212,
+            "flipElapsed": 0.09400000000005092,
+            "flipping": true,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 3,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-6-free-low",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 4,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -287.72499999996626,
+            "y": 0.8586175707546477
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5772680736110694,
+            "centerY": 205.88258124998904,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 2489.820511902795,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.728833756685608,
+            "flightEndedAt": 8.32283375668566,
+            "flightInterrupted": false,
+            "flightMaxDistance": 212,
+            "flipElapsed": 0.06100000000003547,
+            "flipping": true,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 3,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-6-free-low",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 4,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -309.5874999999765,
+            "y": 0.9051065153301368
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            114.117535322953,
+            206.2369479687435
+          ],
+          [
+            113.49999999999994,
+            210.61039542968263
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909190548,
+      "reportedAt": 1792909190524.9,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 3072.5583426479043,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 13.968000000000076,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.592370584410267,
+            "centerY": 187.69329999999368,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 3337.799235714885,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.056603773584906,
+            "flightEndedAt": 12.525603773584956,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867934,
+            "flipElapsed": 0.12400000000002365,
+            "flipping": true,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 4,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-8-chain-1",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 5,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -267.84999999998433,
+            "y": 0.8193080188678946
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5923705844102688,
+            "centerY": 187.69329999999368,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 3337.799235714884,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.056603773584906,
+            "flightEndedAt": 12.525603773584956,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867934,
+            "flipElapsed": 0.12400000000002365,
+            "flipping": true,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 4,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-8-chain-1",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 5,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -267.84999999998433,
+            "y": 0.8193080188678947
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.5000000000003,
+            202.5389018749972
+          ],
+          [
+            113.49999999999994,
+            202.5389018749972
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909191092,
+      "reportedAt": 1792909191087.9,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 3258.3483426478997,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 14.531000000000065,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.6293705844102787,
+            "centerY": 32.68588124996748,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 3523.5892357148805,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.056603773584906,
+            "flightEndedAt": 12.525603773584956,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867934,
+            "flipElapsed": 0.6870000000000118,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 5,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-8-chain-2",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 6,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -432.8125000000753,
+            "y": 0.08814094929229943
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.6293705844102805,
+            "centerY": 32.68588124996748,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 3523.5892357148796,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.056603773584906,
+            "flightEndedAt": 12.525603773584956,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867934,
+            "flipElapsed": 0.6870000000000118,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 5,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-8-chain-2",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 6,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -432.8125000000753,
+            "y": 0.08814094929229943
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.5000000000003,
+            133.75435980467307
+          ],
+          [
+            113.49999999999994,
+            133.75435980467307
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909192985,
+      "reportedAt": 1792909192963,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 3741.441202253537,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 16.40700000000004,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5896173152680753,
+            "centerY": 134,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 4006.6820953205174,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.4596173152681026,
+            "flightEndedAt": 16.396617315268113,
+            "flightInterrupted": false,
+            "flightMaxDistance": 120,
+            "flipElapsed": 0.4596173152681026,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 6,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-9-large-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 7,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Stone",
+            "supportObstacle": "full-flow-9-large-pad",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 0.5660377358490566
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5896173152680753,
+            "centerY": 134,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 4006.682095320517,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.4596173152681026,
+            "flightEndedAt": 16.396617315268113,
+            "flightInterrupted": false,
+            "flightMaxDistance": 120,
+            "flipElapsed": 0.4596173152681026,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 6,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-9-large-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 7,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Stone",
+            "supportObstacle": "full-flow-9-large-pad",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 0.5660377358490566
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.50000000000011,
+            178.7125
+          ],
+          [
+            113.49999999999994,
+            178.7125
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909197457,
+      "reportedAt": 1792909197400.6,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 4787.099666300692,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 20.84400000000005,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5576312784758106,
+            "centerY": 178,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 5052.340559367673,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.8946312784758225,
+            "flightEndedAt": 20.801631278475863,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867936,
+            "flipElapsed": 0.8946312784758225,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 8,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Stone",
+            "supportObstacle": "full-flow-11-standard-pad",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 0.7735849056603774
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5576312784758106,
+            "centerY": 178,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 5052.340559367672,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.8946312784758225,
+            "flightEndedAt": 20.801631278475863,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867936,
+            "flipElapsed": 0.8946312784758225,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 8,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "Stone",
+            "supportObstacle": "full-flow-11-standard-pad",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 0.7735849056603774
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.50000000000068,
+            198.2375
+          ],
+          [
+            113.49999999999994,
+            198.2375
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909200705,
+      "reportedAt": 1792909200650.5,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 5566.279106933041,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 24.09400000000005,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5741818181817486,
+            "centerY": 74.76291875001044,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 5831.520000000023,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.6898909820081311,
+            "flightEndedAt": 23.28389098200818,
+            "flightInterrupted": false,
+            "flightMaxDistance": 212,
+            "flipElapsed": 0.21900000000005093,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 0,
+            "verticalSpeed": 204.91249999996623,
+            "y": 0.28661754127363415
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0.5741818181817568,
+            "centerY": 74.76291875001043,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 5831.52000000002,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 0.6898909820081311,
+            "flightEndedAt": 23.28389098200818,
+            "flightInterrupted": false,
+            "flightMaxDistance": 212,
+            "flipElapsed": 0.21900000000005093,
+            "flipping": true,
+            "gravity": -1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 330,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 0,
+            "verticalSpeed": 204.91249999996623,
+            "y": 0.2866175412736341
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.50000000000102,
+            152.42604519531713
+          ],
+          [
+            113.49999999999994,
+            152.42604519531713
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909209177,
+      "reportedAt": 1792909209149.9,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 7499.439106933044,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 32.59400000000005,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 187.42578125000003,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 7770.958201445561,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": true,
+            "finishBoostDistanceGained": 6.278201445538628,
+            "finishBoostElapsed": 0.028537279297902857,
+            "finishBoosts": 1,
+            "flightDuration": 1.056603773584906,
+            "flightEndedAt": 30.71260377358497,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867924,
+            "flipElapsed": 0.125,
+            "flipping": true,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "full-flow-finish",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 440,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": -267.1875,
+            "y": 0.8180461379716982
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 7764.680000000024,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.0566037735849063,
+            "flightEndedAt": 30.745603773584985,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867931,
+            "flipElapsed": 1.0566037735849063,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            115.97349510655178,
+            202.42019042968752
+          ],
+          [
+            113.49999999999994,
+            219.5375
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": ""
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909209716,
+      "reportedAt": 1792909209713.4,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 7623.299106933043,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 33.15700000000006,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": true,
+        "phase": "racing",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 134.46708124984983,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 7920,
+            "failedRings": 0,
+            "finish": 33.05,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 55,
+            "finishBoostElapsed": 0.25,
+            "finishBoosts": 1,
+            "flightDuration": 1.056603773584906,
+            "flightEndedAt": 30.71260377358497,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867924,
+            "flipElapsed": 0.5809999999956993,
+            "flipping": true,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "full-flow-finish",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 34.912499997150746,
+            "y": 0.5682409492917445
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 7888.540000000023,
+            "failedRings": 0,
+            "finish": -1,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.0566037735849063,
+            "flightEndedAt": 30.745603773584985,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867931,
+            "flipElapsed": 1.0566037735849063,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            125.8946574073984,
+            178.91976730462088
+          ],
+          [
+            113.49999999999994,
+            219.5375
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": "0"
+      },
+      "width": 568
+    },
+    {
+      "height": 320,
+      "now": 1792909209954,
+      "reportedAt": 1792909209900.4,
+      "state": {
+        "airRepeatLimit": -1,
+        "cameraLeft": 7654.75910693302,
+        "characterRects": [
+          [
+            [
+              375.6667,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              120.25,
+              175.333328,
+              44
+            ],
+            [
+              375.6667,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              196.333344,
+              72.25,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              72.25,
+              175.333328,
+              44
+            ]
+          ],
+          [
+            [
+              17,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              180.75,
+              175.333328,
+              44
+            ],
+            [
+              17,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              196.333328,
+              228.75,
+              175.333328,
+              44
+            ],
+            [
+              375.666656,
+              228.75,
+              175.333328,
+              44
+            ]
+          ]
+        ],
+        "characterSelectionVisible": false,
+        "controlAreas": [
+          [
+            9,
+            28,
+            550,
+            144.5
+          ],
+          [
+            9,
+            172.5,
+            550,
+            144.5
+          ]
+        ],
+        "countdown": 0,
+        "customFlight": false,
+        "departureImpulse": 350,
+        "elapsed": 33.29999999999578,
+        "fieldHeight": "half",
+        "fieldView": "shared",
+        "firstAction": "Jump",
+        "flipImpulse": 0,
+        "fullscreenHeight": 25,
+        "fullscreenWidth": 31,
+        "fullscreenX": 516,
+        "fullscreenY": 2,
+        "gravityAcceleration": 662.5,
+        "jumpImpulse": 350,
+        "linearJumpHeight": 112,
+        "linearSpeed": 265,
+        "menuPage": -1,
+        "mode": "trial",
+        "motion": "JumpGravityFlip",
+        "motionLaw": "Gravity",
+        "negativeEnabled": true,
+        "paused": false,
+        "pawRects": [
+          [
+            17,
+            36,
+            56,
+            56
+          ],
+          [
+            495,
+            253,
+            56,
+            56
+          ]
+        ],
+        "pawsVisible": false,
+        "phase": "finished",
+        "players": [
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 134.46708124984983,
+            "character": 0,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 7920,
+            "failedRings": 0,
+            "finish": 33.05,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 55,
+            "finishBoostElapsed": 0.25,
+            "finishBoosts": 1,
+            "flightDuration": 1.056603773584906,
+            "flightEndedAt": 30.71260377358497,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867924,
+            "flipElapsed": 0.5809999999956993,
+            "flipping": true,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "full-flow-finish",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "None",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 34.912499997150746,
+            "y": 0.5682409492917445
+          },
+          {
+            "airFlipAvailable": true,
+            "boost": 0,
+            "centerY": 226,
+            "character": 1,
+            "coins": 0,
+            "collisions": 0,
+            "distance": 7920,
+            "failedRings": 0,
+            "finish": 33.3,
+            "finishBoost": false,
+            "finishBoostDistanceGained": 0,
+            "finishBoostElapsed": 0,
+            "finishBoosts": 0,
+            "flightDuration": 1.0566037735849063,
+            "flightEndedAt": 30.745603773584985,
+            "flightInterrupted": false,
+            "flightMaxDistance": 92.45283018867931,
+            "flipElapsed": 1.0566037735849063,
+            "flipping": false,
+            "gravity": 1,
+            "hasFlightMeasurement": true,
+            "instantBoosts": 7,
+            "lastFinishBoost": "",
+            "lastInstant": "full-flow-11-standard-pad-landing",
+            "pendingRings": 0,
+            "queuedEffects": 0,
+            "ready": false,
+            "recovering": 0,
+            "rings": 9,
+            "slow": 0,
+            "slowRings": 0,
+            "speed": 220,
+            "support": "Wall",
+            "supportObstacle": "",
+            "supportSide": 1,
+            "verticalSpeed": 0,
+            "y": 1
+          }
+        ],
+        "profile": "custom",
+        "projectedPlayers": [
+          [
+            113.49999999999994,
+            178.91976730462088
+          ],
+          [
+            113.49999999999994,
+            219.5375
+          ]
+        ],
+        "readyRects": [
+          [
+            189,
+            28,
+            190,
+            32
+          ],
+          [
+            189,
+            285,
+            190,
+            32
+          ]
+        ],
+        "scaleX": 0.3939814814814815,
+        "seating": "opposite",
+        "settingsCopyHeight": 28,
+        "settingsCopyText": "",
+        "settingsCopyWidth": 103,
+        "settingsCopyX": 28,
+        "settingsCopyY": 268,
+        "settingsVisible": false,
+        "sharedFieldRect": [
+          9,
+          106.25,
+          550,
+          132.5
+        ],
+        "track": "full-flow",
+        "trackMenuRect": [
+          141,
+          1,
+          274,
+          27
+        ],
+        "version": "4.9.1-trial",
+        "viewMenuRect": [
+          28,
+          242,
+          248,
+          24
+        ],
+        "viewOptionRects": [
+          [
+            [
+              28,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              199.666672,
+              91,
+              168.666672,
+              34
+            ],
+            [
+              371.333344,
+              91,
+              168.666672,
+              34
+            ]
+          ],
+          [
+            [
+              28,
+              146,
+              254.5,
+              34
+            ],
+            [
+              285.5,
+              146,
+              254.5,
+              34
+            ]
+          ]
+        ],
+        "winner": "0"
+      },
+      "width": 568
+    }
+  ],
+  "last": {
+    "height": 320,
+    "now": 1792909209954,
+    "reportedAt": 1792909209900.4,
+    "state": {
+      "airRepeatLimit": -1,
+      "cameraLeft": 7654.75910693302,
+      "characterRects": [
+        [
+          [
+            375.6667,
+            120.25,
+            175.333328,
+            44
+          ],
+          [
+            196.333344,
+            120.25,
+            175.333328,
+            44
+          ],
+          [
+            17,
+            120.25,
+            175.333328,
+            44
+          ],
+          [
+            375.6667,
+            72.25,
+            175.333328,
+            44
+          ],
+          [
+            196.333344,
+            72.25,
+            175.333328,
+            44
+          ],
+          [
+            17,
+            72.25,
+            175.333328,
+            44
+          ]
+        ],
+        [
+          [
+            17,
+            180.75,
+            175.333328,
+            44
+          ],
+          [
+            196.333328,
+            180.75,
+            175.333328,
+            44
+          ],
+          [
+            375.666656,
+            180.75,
+            175.333328,
+            44
+          ],
+          [
+            17,
+            228.75,
+            175.333328,
+            44
+          ],
+          [
+            196.333328,
+            228.75,
+            175.333328,
+            44
+          ],
+          [
+            375.666656,
+            228.75,
+            175.333328,
+            44
+          ]
+        ]
+      ],
+      "characterSelectionVisible": false,
+      "controlAreas": [
+        [
+          9,
+          28,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "countdown": 0,
+      "customFlight": false,
+      "departureImpulse": 350,
+      "elapsed": 33.29999999999578,
+      "fieldHeight": "half",
+      "fieldView": "shared",
+      "firstAction": "Jump",
+      "flipImpulse": 0,
+      "fullscreenHeight": 25,
+      "fullscreenWidth": 31,
+      "fullscreenX": 516,
+      "fullscreenY": 2,
+      "gravityAcceleration": 662.5,
+      "jumpImpulse": 350,
+      "linearJumpHeight": 112,
+      "linearSpeed": 265,
+      "menuPage": -1,
+      "mode": "trial",
+      "motion": "JumpGravityFlip",
+      "motionLaw": "Gravity",
+      "negativeEnabled": true,
+      "paused": false,
+      "pawRects": [
+        [
+          17,
+          36,
+          56,
+          56
+        ],
+        [
+          495,
+          253,
+          56,
+          56
+        ]
+      ],
+      "pawsVisible": false,
+      "phase": "finished",
+      "players": [
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 134.46708124984983,
+          "character": 0,
+          "coins": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.05,
+          "finishBoost": false,
+          "finishBoostDistanceGained": 55,
+          "finishBoostElapsed": 0.25,
+          "finishBoosts": 1,
+          "flightDuration": 1.056603773584906,
+          "flightEndedAt": 30.71260377358497,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867924,
+          "flipElapsed": 0.5809999999956993,
+          "flipping": true,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "full-flow-finish",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "None",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": 34.912499997150746,
+          "y": 0.5682409492917445
+        },
+        {
+          "airFlipAvailable": true,
+          "boost": 0,
+          "centerY": 226,
+          "character": 1,
+          "coins": 0,
+          "collisions": 0,
+          "distance": 7920,
+          "failedRings": 0,
+          "finish": 33.3,
+          "finishBoost": false,
+          "finishBoostDistanceGained": 0,
+          "finishBoostElapsed": 0,
+          "finishBoosts": 0,
+          "flightDuration": 1.0566037735849063,
+          "flightEndedAt": 30.745603773584985,
+          "flightInterrupted": false,
+          "flightMaxDistance": 92.45283018867931,
+          "flipElapsed": 1.0566037735849063,
+          "flipping": false,
+          "gravity": 1,
+          "hasFlightMeasurement": true,
+          "instantBoosts": 7,
+          "lastFinishBoost": "",
+          "lastInstant": "full-flow-11-standard-pad-landing",
+          "pendingRings": 0,
+          "queuedEffects": 0,
+          "ready": false,
+          "recovering": 0,
+          "rings": 9,
+          "slow": 0,
+          "slowRings": 0,
+          "speed": 220,
+          "support": "Wall",
+          "supportObstacle": "",
+          "supportSide": 1,
+          "verticalSpeed": 0,
+          "y": 1
+        }
+      ],
+      "profile": "custom",
+      "projectedPlayers": [
+        [
+          113.49999999999994,
+          178.91976730462088
+        ],
+        [
+          113.49999999999994,
+          219.5375
+        ]
+      ],
+      "readyRects": [
+        [
+          189,
+          28,
+          190,
+          32
+        ],
+        [
+          189,
+          285,
+          190,
+          32
+        ]
+      ],
+      "scaleX": 0.3939814814814815,
+      "seating": "opposite",
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "settingsCopyWidth": 103,
+      "settingsCopyX": 28,
+      "settingsCopyY": 268,
+      "settingsVisible": false,
+      "sharedFieldRect": [
+        9,
+        106.25,
+        550,
+        132.5
+      ],
+      "track": "full-flow",
+      "trackMenuRect": [
+        141,
+        1,
+        274,
+        27
+      ],
+      "version": "4.9.1-trial",
+      "viewMenuRect": [
+        28,
+        242,
+        248,
+        24
+      ],
+      "viewOptionRects": [
+        [
+          [
+            28,
+            91,
+            168.666672,
+            34
+          ],
+          [
+            199.666672,
+            91,
+            168.666672,
+            34
+          ],
+          [
+            371.333344,
+            91,
+            168.666672,
+            34
+          ]
+        ],
+        [
+          [
+            28,
+            146,
+            254.5,
+            34
+          ],
+          [
+            285.5,
+            146,
+            254.5,
+            34
+          ]
+        ]
+      ],
+      "winner": "0"
+    },
+    "width": 568
+  },
+  "pictures": [
+    "fix491-native-pc-flow-main-arrows.png",
+    "fix491-native-pc-flow-main-pulse.png",
+    "fix491-native-pc-flow-main-result.png"
+  ]
+}

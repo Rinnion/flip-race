@@ -47,7 +47,10 @@ internal static partial class Program
             var z=track.RiskZones.Single(z=>z.Id==c.Item1);Near(z.X,c.Item2,"chosen X");Near(z.Y,c.Item3,"chosen Y");Near(z.Radius,8,"visible circle radius");Check(z.IsCoin==c.Item4&&z.IsNegative!=c.Item4,"exact additive type");
             Check((z.X>=3008&&z.X<=3550)||(z.X>=5400&&z.X<=5900),"only approved free intervals");
         }
-        var pad=track.RiskZones.Single(z=>z.IsFinish);Near(pad.X,7780,"finish position untouched");Near(pad.FinishWidth,28,"finish width untouched");Near(pad.FinishHeight,8,"finish height untouched");
+        Check(track.RiskZones.Count(z=>z.IsFinish)==1,"one independent finish target");
+        Near(FinishTargetGeometry.HalfWidth+FinishTargetGeometry.StrokeWidth/2,12,"compact stroke outer half-width");
+        Near(FinishTargetGeometry.HalfHeight+FinishTargetGeometry.StrokeWidth/2,10,"compact stroke outer half-height");
+        Check(FinishTargetGeometry.SegmentCount==4,"two chevrons, four visible strokes");
         foreach(var other in RaceTracks.All.Where(t=>t.Id!=TracksMixed.Id))Check(!other.RiskZones.Any(z=>z.IsCoin||Additions.Contains(z.Id)),"other four tracks receive no new content");
     }
     static void FullStats(RouteResult r,int coins,int slows,string why)
@@ -56,8 +59,8 @@ internal static partial class Program
             Check(p.Collisions==0,why+" clean collision count: "+string.Join(",",p.HitObstacleIds));
             Check(p.BoostsEarned==9&&p.SlowsEarned==slows&&p.CompletedBoosts==9&&p.CompletedSlows==slows,why+" unchanged full ordinary pulse ledger");
             Check(p.CoinsEarned==coins,why+" exact personal coin count");
-            Check(p.FinishBoostsEarned==1&&!p.FinishBoost,why+" one completed finish pulse");Near(p.FinishBoostElapsed,.25,why+" full moving pulse");Near(p.FinishBoostDistanceGained,55,why+" full physical extra distance");
-            Near(p.FinishTime.Value,33.05+.3*slows,why+" actual physical arrival");
+            Check(p.FinishBoostsEarned==0&&!p.FinishBoost&&p.LastFinishBoost==null,why+" ordinary content route does not aim at finish");Near(p.FinishBoostElapsed,0,why+" no served finish pulse");Near(p.FinishBoostDistanceGained,0,why+" no finish travel credit");
+            Near(p.FinishTime.Value,33.30+.3*slows,why+" actual physical arrival");
         }
         Check(Equals(r.Game.Winner,"tie"),why+" symmetric real tie");
     }
@@ -134,7 +137,7 @@ internal static partial class Program
             var stone=new Obstacle{Id="stone",Kind="floor",X=230,Width=20,Height=48};var collision=Begin(new Track(1000,new[]{stone}){RiskZones=new[]{Coin("at-impact",238),Coin("after",500)}},FlightPresets.Chosen);
             MoveTo(collision,216,step);var hit=collision.Players[0];Check(hit.Collisions==1&&hit.CoinsEarned==1&&hit.Recovering>0,"simultaneous real impact and personal coin contact");
             AdvanceTime(collision,.49,step);Check(hit.CoinsEarned==1,"lingering frozen contact never re-awards");Finish(collision,step);Check(hit.CoinsEarned==2,"next personal coin still available after recovery");Near(hit.FinishTime.Value,1000d/220+.5,"coin grants neither immunity nor speed");
-            var pulse=new RiskZone{Id="finish",Kind="finish",X=200,Y=226,FinishWidth=28,FinishHeight=8};var during=Begin(Empty(pulse,Coin("during-pulse",230)),FlightPresets.Chosen);
+            var pulse=new RiskZone{Id="finish",Kind="finish",X=172+10.5+Math.Sqrt(168),Y=226};var during=Begin(Empty(pulse,Coin("during-pulse",230)),FlightPresets.Chosen);
             MoveTo(during,250,step);var d=during.Players[0];Check(d.CoinsEarned==1&&d.FinishBoost&&d.CurrentSpeed==440,"coin leaves active finish speed unchanged");Near(d.FinishBoostElapsed,78d/440,"coin preserves finish moving clock");
             double frozen=d.Distance;RaceSimulation.Advance(during,0);Check(d.Distance==frozen&&d.CoinsEarned==1,"zero-advance pause preserves coin state");Finish(during,step);Near(d.FinishTime.Value,1000d/220-.25,"coin cannot modify finish time ledger");
         }
@@ -145,9 +148,9 @@ internal static partial class Program
         try{
             var paths=Directory.GetFiles("Assets/Scripts/Core","*.cs").Concat(Directory.GetFiles("Tools/Iter49Content","*.cs")).Append("Tools/TrackProofControl/Harness.cs").ToArray();var hashes=paths.ToDictionary(p=>p,Hash);
             Geometry();Routes();PersonalAndReset();ContactsAndQueues();Check(hashes.All(p=>Hash(p.Key)==p.Value),"recorded sources unchanged during proof");
-            File.WriteAllText("Verification/iter49-03-content.json",JsonSerializer.Serialize(new{Status="PASS",Checks=checks,Games=games,Steps,SourceHashes=hashes,Stage01BaselineHash=Hash("Verification/iter49-01-before.json"),
+            File.WriteAllText("Verification/fix491-content.json",JsonSerializer.Serialize(new{Status="PASS",Checks=checks,Games=games,Steps,SourceHashes=hashes,Stage01BaselineHash=Hash("Verification/iter49-01-before.json"),
                 Scope="Actual production IsCoin/CoinsEarned/LastCoin, public Press/Advance; all coin subsets and new/old negative subsets on both profiles/six steps; identical timed-input no-coin counterfactuals; personal late and simultaneous collections, cap/reset/sweep/FIFO/recovery/finish interactions. No state injection or passive prep probes in final proof.",Evidence},Json));
-            Console.WriteLine("PASS ITER49-03 CONTENT: "+checks+" checks / "+games+" actual games; 2 coins + 2 additional negatives; both profiles/six steps/all coin and trap subsets; 9 ordinary rewards/full finish; same timed inputs without coins; personal once/cap/reset/queue/impact/tangent.");
+            Console.WriteLine("PASS FIX491 CONTENT: "+checks+" checks / "+games+" actual games; 2 coins + 2 additional negatives; both profiles/six steps/all coin and trap subsets; 9 ordinary rewards/ordinary routes skip finish; same timed inputs without coins; personal once/cap/reset/queue/impact/tangent.");
         }catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}
     }
 }

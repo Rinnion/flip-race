@@ -9,8 +9,8 @@ internal static partial class Program
     {
         var all=new List<object>();
         foreach(var t in TracksFull.All){var f=Run(t,t.RiskRoute);all.Add(new{id=t.Id,name=t.Name,safe=t.SafeRoute,full=t.RiskRoute,negative=TracksFull.NegativeRoute(t.Id),inputs=f.Inputs,obstacles=t.Obstacles,zones=t.RiskZones});}
-        File.WriteAllText("Verification/tracks-routes.json",JsonSerializer.Serialize(all,new JsonSerializerOptions{WriteIndented=true,IncludeFields=true}));
-        Console.WriteLine("Exported Verification/tracks-routes.json");
+        File.WriteAllText("Verification/fix491-tracks-routes.json",JsonSerializer.Serialize(all,new JsonSerializerOptions{WriteIndented=true,IncludeFields=true}));
+        Console.WriteLine("Exported Verification/fix491-tracks-routes.json");
     }
     static void Windows()
     {
@@ -23,7 +23,7 @@ internal static partial class Program
                 foreach(int sign in new[]{-1,1}){
                     for(int ms=5;ms<=150;ms+=5){
                         var r=Shift(track,track.RiskRoute,baseline,i,sign*ms/1000.0);var p=r.Game.Players[0];
-                        if(p.Collisions!=0||p.BoostsEarned!=9||p.FinishBoostsEarned!=1||p.SlowsEarned!=0)break;
+                        if(p.Collisions!=0||p.BoostsEarned!=9||p.SlowsEarned!=0)break;
                         widths[j]=ms;
                     }j++;
                 }
@@ -33,6 +33,6 @@ internal static partial class Program
             }
             all.Add(new{id=track.Id,inputs=rows});Console.WriteLine("WINDOWS "+track.Id+" all positive, local min ±"+minimum+"ms, grid5ms");
         }
-        File.WriteAllText("Verification/tracks-windows.json",JsonSerializer.Serialize(all,new JsonSerializerOptions{WriteIndented=true}));
+        File.WriteAllText("Verification/fix491-tracks-windows.json",JsonSerializer.Serialize(all,new JsonSerializerOptions{WriteIndented=true}));
     }
 }

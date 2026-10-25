@@ -23,7 +23,7 @@ namespace FlipRace.Presentation
         static readonly Color[] Ink = { Hex(0x7860a6), Hex(0xcf7962) };
         static readonly Color[] Pale = { Hex(0xe9e0f4), Hex(0xf8e0d5) };
         static readonly Color[] Confetti = { Hex(0xb6c993), Hex(0xe8ba71), Hex(0xbba5d8), Hex(0xe2a18d), Hex(0x91b9bf) };
-        readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab, coinArtwork;
+        readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab, coinArtwork, finishTargetArtwork;
         // Explicit lane-local clipping avoids Unity GUIClip's interaction with
         // rotated/scaled matrices (the upper player's entire lane is rotated).
         Rect clipBounds;
@@ -33,6 +33,7 @@ namespace FlipRace.Presentation
         public CorridorArtwork()
         {
             circle = MakeCircle();
+            finishTargetArtwork = MakeFinishTarget();
             coinArtwork = Resources.Load<Texture2D>("Collectibles/coin-round");
             var sparkle = new Painter(128, 128, true);
             var points = new float[16];
@@ -56,23 +57,38 @@ namespace FlipRace.Presentation
             ceilingSlab = MakeLargeRock(true);
         }
 
-        // The tinted rectangle is the actual world trigger. Chevrons are the
-        // original two small linear arrows from 2be4332, not a filled pointer.
-        void DrawFinishPad(float ringX, float ringY, float width, float height)
+        // The texture samples the SAME world-space strokes as the contact solver.
+        // Its transparent margin is not a collider. Max raster sampling error is
+        // half a texture subpixel (< .05 world units per axis).
+        const float FinishTextureHalfWidth = (float)(FinishTargetGeometry.HalfWidth + FinishTargetGeometry.StrokeWidth / 2 + .25);
+        const float FinishTextureHalfHeight = (float)(FinishTargetGeometry.HalfHeight + FinishTargetGeometry.StrokeWidth / 2 + .25);
+        static Texture2D MakeFinishTarget()
         {
-            Color finishInk = Hex(0x398d80);
-            Rect zone = new Rect(ringX - width / 2, ringY - height / 2, width, height);
-            Fill(zone, Alpha(Hex(0x9ddccb), .38f));
-            Line(zone.x, zone.y, zone.xMax, zone.y, finishInk, 1.25f);
-            Line(zone.x, zone.yMax, zone.xMax, zone.yMax, finishInk, 1.25f);
-            Line(zone.x, zone.y, zone.x, zone.yMax, finishInk, 1);
-            Line(zone.xMax, zone.y, zone.xMax, zone.yMax, finishInk, 1);
-            for (int i = 0; i < 2; i++)
+            const int size = 128, samples = 2;
+            var pixels = new Color[size * size];
+            Color ink = Hex(0x398d80);
+            double radiusSquared = FinishTargetGeometry.StrokeWidth * FinishTargetGeometry.StrokeWidth / 4;
+            for (int y = 0; y < size; y++) for (int x = 0; x < size; x++)
             {
-                float arrowX = ringX - 8 - i * 6;
-                Line(arrowX - 4, ringY - 5, arrowX, ringY, Alpha(finishInk, .7f), 1.5f);
-                Line(arrowX, ringY, arrowX - 4, ringY + 5, Alpha(finishInk, .7f), 1.5f);
+                int covered = 0;
+                for (int sy = 0; sy < samples; sy++) for (int sx = 0; sx < samples; sx++)
+                {
+                    double wx = ((x + (sx + .5) / samples) / size * 2 - 1) * FinishTextureHalfWidth;
+                    double wy = (1 - (y + (sy + .5) / samples) / size * 2) * FinishTextureHalfHeight;
+                    if (FinishTargetGeometry.DistanceSquaredToStrokes(wx, wy) <= radiusSquared) covered++;
+                }
+                pixels[y * size + x] = new Color(ink.r, ink.g, ink.b, covered / (float)(samples * samples));
             }
+            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false) {
+                name = "Finish two chevrons", wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Bilinear };
+            texture.SetPixels(pixels); texture.Apply(false, true); return texture;
+        }
+        void DrawFinishTarget(float x, float y, float scaleX, float scaleY)
+        {
+            GUI.color = Color.white;
+            Texture(new Rect(x - FinishTextureHalfWidth * scaleX, y - FinishTextureHalfHeight * scaleY,
+                FinishTextureHalfWidth * 2 * scaleX, FinishTextureHalfHeight * 2 * scaleY),
+                finishTargetArtwork, new Rect(0, 0, 1, 1));
         }
         void DrawCoin(float x, float y, float radius, float time)
         {
@@ -267,7 +283,7 @@ namespace FlipRace.Presentation
                 float ringY = top + (float)zone.Y * sy;
                 if (zone.IsFinish)
                 {
-                    DrawFinishPad(ringX, ringY, (float)zone.FinishWidth * sx, (float)zone.FinishHeight * sy);
+                    DrawFinishTarget(ringX, ringY, sx, sy);
                     continue;
                 }
                 float ringRadius = Mathf.Max(6.5f, (float)(zone.Radius + 4) * sy);

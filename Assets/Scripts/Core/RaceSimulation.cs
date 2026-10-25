@@ -88,8 +88,8 @@ namespace FlipRace.Core
         // Landing uses a narrow center-X interval on the linked stone's actual
         // corridor-facing plane. Y and Radius do not define its contact shape.
         public double LandingWidth;
-        // Visible horizontal finish rectangle, centered at X/Y in world units.
-        // Contact is the swept circular body against exactly this rectangle.
+        // Legacy serialized dimensions retained for old fixtures/data only.
+        // Finish rendering/contact use FinishTargetGeometry at X/Y instead.
         public double FinishWidth = 32, FinishHeight = 8;
     }
 
@@ -837,35 +837,17 @@ namespace FlipRace.Core
             return obstacle.Kind == "floor" ? "Камень внизу — пора наверх" : "Камень вверху — пора вниз";
         }
 
-        // Minkowski sum of the visible rectangle and the circular body:
-        // two face bands plus four circular corners. This avoids the invisible
-        // square corner extensions of a plain expanded AABB.
+        // A circular body contacts only the four visible chevron strokes.
         private static double FirstFinishContact(PlayerState player, RiskZone zone, double horizon, FlightSettings flight)
         {
             double radius = RaceConfig.PlayerRadius;
-            double left = zone.X - zone.FinishWidth / 2, right = zone.X + zone.FinishWidth / 2;
-            double top = zone.Y - zone.FinishHeight / 2, bottom = zone.Y + zone.FinishHeight / 2;
             double x = player.Distance, y = GetPlayerCenterY(player), vx = player.CurrentSpeed;
             double vy = !player.Flipping ? 0 : flight.LegacyLinear
                 ? (player.FlipTo - player.FlipFrom) * (RaceConfig.CorridorHeight - 2 * radius) / RaceConfig.FlipDuration
                 : player.VerticalSpeed;
             double acceleration = player.Flipping && !flight.LegacyLinear ? Acceleration(player, flight) : 0;
-            double first = double.PositiveInfinity;
-            if (!RangeTimes(x, vx, left - radius, right + radius, horizon, out double enter, out double leave))
-                return first;
-            first = ContinuousMotion.FirstBandContact(y, vy, acceleration, top, bottom, enter, leave);
-            if (RangeTimes(x, vx, left, right, horizon, out double innerEnter, out double innerLeave))
-                first = Math.Min(first, ContinuousMotion.FirstBandContact(y, vy, acceleration,
-                    top - radius, bottom + radius, innerEnter, innerLeave));
-            foreach (double cornerX in new[] { left, right })
-                foreach (double cornerY in new[] { top, bottom })
-                {
-                    double contact = ContinuousMotion.FirstCircleContact(x + vx * enter - cornerX,
-                        y + vy * enter + .5 * acceleration * enter * enter - cornerY,
-                        vx, vy + acceleration * enter, acceleration, radius, Math.Max(0, leave - enter));
-                    if (!double.IsInfinity(contact)) first = Math.Min(first, enter + contact);
-                }
-            return first;
+            return FinishTargetGeometry.FirstContact(x - zone.X, y - zone.Y, vx, vy,
+                acceleration, radius, horizon);
         }
 
         private sealed class RiskEvent
@@ -889,8 +871,7 @@ namespace FlipRace.Core
                 double time;
                 if (zone.IsFinish)
                 {
-                    if (player.FinishBoostsEarned != 0 || zone.X < 0 || zone.X >= track.Length
-                        || zone.FinishWidth <= 0 || zone.FinishHeight < 0) continue;
+                    if (player.FinishBoostsEarned != 0 || zone.X < 0 || zone.X >= track.Length) continue;
                     time = FirstFinishContact(player, zone, horizon, flight);
                     if (double.IsInfinity(time)) continue;
                 }
