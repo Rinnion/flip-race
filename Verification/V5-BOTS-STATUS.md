@@ -48,3 +48,6 @@ Reproduce: dotnet run --project Tools/BotPrototype/RuntimeCheck.csproj; Tools/Bo
 Следующее: root commit explicit owned paths, затем Каталитик независимыйUI/browser/ZIP/HTTP review наfreeze; исправитьконкретныедефектыеслинайдены, послеacceptanceостановитьсвои4222/4223. Не выдавать dispatch или собственныйPASS за независимуюприёмку. Продуктовых/техническихблокеровсейчаснет.
 
 Документация BOT/affectedfeatures/каталог/контракт закоммичена в flip-race99a2b93. Каталитик начал independentbrowser наfresh4223 и владеетviewport; root не выполняет browserUI до завершения. Nativeevidence Verification/bots-native.json/screenshots копирована из собственногоtemp, финальныйHTTP4184/4222/4223 PASS. ZIP/template/source заморожены.
+
+
+Implementation/source/evidence commit Unity4c7941e8d944f8e533ce0d754ede23d44a1a66d6; docs99a2b93. Послеcommit рабочеедеревоUnity содержиттолькочужойVerification/FIX491-RELEASE.md; hashсохранён. Gitdiff--cached--checkPASS. TemplateSHA256=DCAF2DD7ADA0DAFA43866848203CFD70A6C552718FBF6F767DD4097F4A103F4E. Каталитик independentreview active, rootостаётсяответственнымзазакрытиеприёмки/своихtemporaryservers.
