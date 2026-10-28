@@ -40,4 +40,3 @@ $report | Add-Member -NotePropertyName sourceCopies -NotePropertyValue $metadata
 $report | Add-Member -NotePropertyName sourceSnapshot -NotePropertyValue $sourceSnapshot
 $report | Add-Member -NotePropertyName checkedAt -NotePropertyValue ([DateTime]::UtcNow.ToString('o'))
 $report | ConvertTo-Json -Depth 12
-

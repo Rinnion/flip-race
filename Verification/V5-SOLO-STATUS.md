@@ -2,13 +2,13 @@
 
 Собственная приёмка Прогатика завершена 28 октября 2026. Независимая приёмка Каталитика: source, основной браузер и финальный текст/ZIP прошли; проверка окончательного HTTP4184/перезагрузки ещё ожидается. Production заморожен. Блокеров реализации нет.
 
-Источник: прямые сообщения пользователя в Каталитике `01a13ea2-10f9-7821-b785-5c3a7e30b079`, turns `01a18278-c0f5-7443-9b7a-3da7fdbd3558` (один человек, та же полная трасса, без сохранений) и `01a18304-5248-7142-b086-bfbde85cee46` (следующий этап после положительной пробы constant). Прогатик сверил их через read_thread. [Контракт](../../flip-race/docs/flip-race-v5-solo-delivery-2026-10-28.md). База `3a23526` / 5.0.1-trial, UI501 сохранён.
+Источник: прямые сообщения пользователя в Каталитике `01a13ea2-10f9-7821-b785-5c3a7e30b079`, turns `01a18278-c0f5-7443-9b7a-3da7fdbd3558` (один человек, та же полная трасса, без сохранений) и `01a18304-5248-7142-b086-bfbde85cee46` (следующий этап после положительной пробы constant). Прогатик сверил их через read_thread. [Контракт](../../flip-race/docs/flip-race-v5-solo-delivery-2026-10-28.md). База `3a23526` / 5.0.1-trial, UI501 сохранён. Реализация и доказательства сохранены Unity-коммитом `5cdb752`, статьи — docs-коммитом `1efd7d2`.
 
 | ID | Статус | Доказательство |
 | --- | --- | --- |
 | SOLO-00 | verified | Ровно один участник, самостоятельный вход «Один», безопасные переходы; Core и фактический UI. |
 | SOLO-01 | verified | Те же пять полных трасс и физика; 84 сценария SOLO/PARTY, 59 482 полных личных снимка, оба профиля и камеры. |
-| SOLO-02 | verified | Constant L/36, окно1520×240/C0−288,8, выход только слева; Lagger без выбывания. Core границы/36+/приоритет финиша; native обе камеры/пауза/resize. |
+| SOLO-02 | verified | Constant L/36, окно 1520×240/C0−288,8, выход только слева; Lagger без выбывания. Core границы/36+/приоритет финиша; native обе камеры/пауза/resize. |
 | SOLO-03 | verified | Один старт, немедленные finish/elimination, полный сброс временного состояния. Native elimination1036 и finish39,50с; retry сразу countdown. |
 | SOLO-04 | verified | Один нормальный выбор/результат/личная метка, BR56×56, A, нейтральная пауза. Native568/800/960/1280, managed safe area/DPR и вся лапка. |
 | SOLO-05 | verified | Нет новых записей прогресса/результата. Managed prefs snapshot/reload и native reload с нулевыми дистанцией/наградами; существующие настройки сохраняются. |
@@ -20,7 +20,7 @@
 
 Прогатик — единственный production owner и интегратор, Sol/high. Специалист solo_core Sol/high: минимальное расширение Core и Tools/SoloCheck; solo_ui Sol/medium: новый Tools/SoloUi и целевые UI-отчёты. Ограниченное readonly размещение — Astra/high; независимое source review — Sol/high. Дополнительных игровых решений нет. Source review исправил четыре строки справки и боковые маски; Каталитик запросил нейтральную SOLO-паузу. Последняя правка затронула только тексты паузы/portrait, без Core/ввода/геометрии.
 
-Core: `CreateSolo(...)`, `IsSolo`, `UsesSharedRaceCamera`; компания по-прежнему2–4, legacy2. Один и компания используют общую физику, камеру и терминальные события. Новая SoloPresentation, безопасные переходы настроек/выбора героя, one-player shared projection/artwork, диагностика/aria. Нового арта нет; [арт-направление](../../flip-race/docs/flip-race-art-direction.md) сохранено. Данные трасс/Resources diff отсутствует; эталоны не регенерировались.
+Core: `CreateSolo(...)`, `IsSolo`, `UsesSharedRaceCamera`; компания по-прежнему 2–4, legacy 2. Один и компания используют общую физику, камеру и терминальные события. Новая SoloPresentation, безопасные переходы настроек/выбора героя, one-player shared projection/artwork, диагностика/aria. Нового арта нет; [арт-направление](../../flip-race/docs/flip-race-art-direction.md) сохранено. Данные трасс/Resources diff отсутствует; эталоны не регенерировались.
 
 Core SHA256 `57ae382f08bf73a0bdc1a9726248dd08d022bdd6f2ae7d5982c52cd8304604f2`. Конечные33-файловые production snapshots во всех трёх UI-отчётах повторно сверены после текстовой правки и сборки.
 
@@ -38,12 +38,12 @@ Core SHA256 `57ae382f08bf73a0bdc1a9726248dd08d022bdd6f2ae7d5982c52cd8304604f2`. 
 
 [Играть4184](http://127.0.0.1:4184/) · [ZIP5.1.0](../Releases/flip-race-v5.1.0-trial-webgl.zip) · [manifest](../Releases/flip-race-v5.1.0-trial-webgl.zip.manifest.json).
 
-Финальная текстовая сборка: `Builds/WebGL-v5.1.0-final-text`, Unity6000.0.64f1 regular WebGLTrial, `Logs/solo-text-build.log`, exit0,5 файлов/9 048 270байт. [Маркеры журнала](solo-build.txt). Предварительный `Builds/WebGL-v5.1.0-final` не является финальной поставкой.
+Финальная текстовая сборка: `Builds/WebGL-v5.1.0-final-text`, Unity6000.0.64f1 regular WebGLTrial, `Logs/solo-text-build.log`, exit 0, 5 файлов / 9 048 270 байт. [Маркеры журнала](solo-build.txt). Предварительный `Builds/WebGL-v5.1.0-final` не является финальной поставкой.
 
-ZIP8 917 868байт, SHA256 `ea75c7103c2c1600073e927b58d0dfb14c9a35970ec00875b8b9af7c7e6cef9e`. [Независимая упаковка](solo-package-verification.json): source/manifest/ZIP/fresh extraction хеши всех5 файлов совпали, root index/relative refs/gzip/WASM/path safety проверены. Финальная свежая распаковка `Builds/WebGL-v5.1.0-unpacked-text-final`; прежняя распаковка5.1 не финальная.
+ZIP 8 917 868 байт, SHA256 `ea75c7103c2c1600073e927b58d0dfb14c9a35970ec00875b8b9af7c7e6cef9e`. [Независимая упаковка](solo-package-verification.json): source/manifest/ZIP/fresh extraction хеши всех 5 файлов совпали, root index/relative refs/gzip/WASM/path safety проверены. Финальная свежая распаковка `Builds/WebGL-v5.1.0-unpacked-text-final`; прежняя распаковка5.1 не финальная.
 
-[HTTP4184](solo-stable-http.json): все5 файлов совпадают с финальным manifest. [Сервер](solo-stable-server.json): PID103804, каталог `Builds/WebGL-v5.1.0-final-text`. Вкладка с готовым SOLO оставлена, override viewport сброшен, свои промежуточные вкладки закрыты. Для независимой приёмки пока оставлены4220 (тот же final-text) и4221 (финальная распаковка); PID/каталоги в solo-candidate-server.json/solo-unpacked-server.json. После завершения приёмки их можно остановить;4184 оставить.
+[HTTP4184](solo-stable-http.json): все 5 файлов совпадают с финальным manifest. [Сервер](solo-stable-server.json): PID103804, каталог `Builds/WebGL-v5.1.0-final-text`. Вкладка с готовым SOLO оставлена, override viewport сброшен, свои промежуточные вкладки закрыты. Для независимой приёмки пока оставлены4220 (тот же final-text) и4221 (финальная распаковка); PID/каталоги в solo-candidate-server.json/solo-unpacked-server.json. После завершения приёмки их можно остановить;4184 оставить.
 
-Сохранены5.0.1 ZIP `b8da93cd29a279a115d8c1e0562aebfa431a245ab2750caa2a0ef6bf0bc61d4e` и её сборка;4.9.1/4.9.2/5.0.0 тоже сверены упаковщиком. Чужой `Verification/FIX491-RELEASE.md` не изменён/не включается: SHA256 `3071311647c1391af4ff9dc16b1de0eda1b735d5b117bd078158c684e7f93cd5`.
+Сохранены 5.0.1 ZIP `b8da93cd29a279a115d8c1e0562aebfa431a245ab2750caa2a0ef6bf0bc61d4e` и её сборка;4.9.1/4.9.2/5.0.0 тоже сверены упаковщиком. Чужой `Verification/FIX491-RELEASE.md` не изменён/не включается: SHA256 `3071311647c1391af4ff9dc16b1de0eda1b735d5b117bd078158c684e7f93cd5`.
 
 Ограничение: viewport и managed touch не заменяют физический телефон; человеческий плейтест не блокирует поставку. Внешней публикации/загрузки не было. Следующее действие: независимый verdict Каталитика по финальному4184/reload и закрытие SOLO-08.

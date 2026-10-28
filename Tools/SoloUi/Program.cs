@@ -115,4 +115,3 @@ static class Program
         }foreach(int choice in new[]{FlightSettingsStore.ChosenPresetIndex,FlightSettingsStore.FastFlipPresetIndex})foreach(var camera in new[]{PartyCamera.Constant,PartyCamera.Lagger}){cases++;var ui=NewUi(true,choice);Solo(ui,camera);Layout(ui,1280,800);Start(ui,1280,800);Inputs(ui);Results(ui,1280,800);}Transitions();Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,cases,updates,pointers,Evidence,scope="Actual production Update, Pointer, menu, layout and Core; only native environment/texture shims. Synthetic terminal/input fixtures test UI dispatch and reset, not Core reachability. No native rendering, browser, or physical multitouch claim."},new JsonSerializerOptions{WriteIndented=true}));return 0;
     }catch(Exception ex){Console.Error.WriteLine(ex);return 1;}}
 }
-
