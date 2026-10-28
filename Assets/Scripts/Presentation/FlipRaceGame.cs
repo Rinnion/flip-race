@@ -17,14 +17,16 @@ namespace FlipRace.Presentation
         // CSS pixels from the canvas top-left, matching the rendered 180-degree upper lane.
         public Rect CharacterScreenRect(int playerIndex, int heroIndex)
         {
-            if (playerIndex < 0 || playerIndex > 1 || heroIndex < 0 || heroIndex >= CharacterRoster.Count) throw new ArgumentOutOfRangeException();
+            if (playerIndex < 0 || playerIndex >= Game.Players.Length || heroIndex < 0 || heroIndex >= CharacterRoster.Count) throw new ArgumentOutOfRangeException();
+            if (PartyEnabled) return PartyScreenRect(playerIndex, PartyCharacterRect(playerIndex, heroIndex));
             if (SharedEnabled) return SharedScreenRect(playerIndex, SharedCharacterRect(playerIndex, heroIndex));
             Rect lane = lanes[playerIndex];
             return LaneScreenRect(playerIndex, CharacterRect(heroIndex, lane.width, lane.height));
         }
         public Rect ReadyScreenRect(int playerIndex)
         {
-            if (playerIndex < 0 || playerIndex > 1) throw new ArgumentOutOfRangeException();
+            if (playerIndex < 0 || playerIndex >= Game.Players.Length) throw new ArgumentOutOfRangeException();
+            if (PartyEnabled) return PartyScreenRect(playerIndex, PartyReadyRect(playerIndex));
             if (SharedEnabled) return SharedScreenRect(playerIndex, SharedReadyRect(playerIndex));
             Rect lane = lanes[playerIndex];
             return LaneScreenRect(playerIndex, ReadyButtonRect(lane.width, lane.height));
@@ -36,8 +38,8 @@ namespace FlipRace.Presentation
                 ? new Rect(lane.xMax - local.xMax, lane.yMax - local.yMax, local.width, local.height)
                 : new Rect(lane.x + local.x, lane.y + local.y, local.width, local.height);
         }
-        readonly Color[] accents = { Hex(0x7e6baf), Hex(0xb56839) };
-        readonly Color[] pales = { Hex(0xd9d2f2), Hex(0xffc397) };
+        readonly Color[] accents = { Hex(0x7e6baf), Hex(0xb56839), Hex(0x428778), Hex(0xa45d83) };
+        readonly Color[] pales = { Hex(0xd9d2f2), Hex(0xffc397), Hex(0xc8e6d9), Hex(0xedd0e1) };
         readonly Color ink = Hex(0x353b31), paper = Hex(0xf5f3ea), muted = Hex(0x79806d);
         Font font, semibold;
         GUIStyle label;
@@ -51,9 +53,9 @@ namespace FlipRace.Presentation
         int inputBlockFrame, round = 1;
         string selectedTrackId;
         string buildVersion;
-        bool Trial { get { return Game.Mode == "trial"; } }
+        bool Trial { get { return Game.Mode == "trial" || PartyEnabled; } }
         bool Controls { get { return Trial && !legacyControls; } }
-        string pauseReason = "Оба катикаавра ждут на своих местах.";
+        string pauseReason = "Катикаавры ждут на своих местах.";
         double lastFrame;
         float uiScale, width, height, animationTime, winnerReactionAt = -10;
         Rect shell, session, arena, divider, footer, helpRect, headerHelp, pauseRect, soundRect,
@@ -180,7 +182,7 @@ namespace FlipRace.Presentation
             {
                 if (showRules || showTracks) CloseRules();
                 else if (paused && !Portrait) Resume();
-                else Pause("Оба катикаавра ждут на своих местах.");
+                else Pause("Катикаавры ждут на своих местах.");
             }
             for (int i = 0; i < Input.touchCount; i++)
             {
@@ -194,21 +196,23 @@ namespace FlipRace.Presentation
             {
                 if (Input.GetKeyDown(KeyCode.A)) Act(0);
                 if (Input.GetKeyDown(KeyCode.L)) Act(1);
+                if (PartyEnabled && Game.Players.Length > 2 && Input.GetKeyDown(KeyCode.S)) Act(2);
+                if (PartyEnabled && Game.Players.Length > 3 && Input.GetKeyDown(KeyCode.K)) Act(3);
                 animationTime += Mathf.Min((float)delta, .1f);
                 if (!suppressFrame)
                 {
                     string oldPhase = Game.Phase;
                     object winner = Game.Winner;
                     int countdown = (int)Math.Ceiling(Game.CountdownRemaining);
-                    int hits = Game.Players[0].Collisions + Game.Players[1].Collisions;
-                    int boosts = Rewards(Game.Players[0]) + Rewards(Game.Players[1]);
-                    int slows = Game.Players[0].SlowsEarned + Game.Players[1].SlowsEarned;
+                    int hits = TotalHits();
+                    int boosts = TotalRewards();
+                    int slows = TotalSlows();
                     RaceSimulation.Advance(Game, delta);
                     if (oldPhase == "countdown" && Game.Phase == "racing") Beep(startClip);
                     else if (Game.Phase == "countdown" && countdown != (int)Math.Ceiling(Game.CountdownRemaining)) Beep(tapClip);
-                    if (hits != Game.Players[0].Collisions + Game.Players[1].Collisions) Beep(hitClip);
-                    if (boosts != Rewards(Game.Players[0]) + Rewards(Game.Players[1])) Beep(startClip);
-                    if (slows != Game.Players[0].SlowsEarned + Game.Players[1].SlowsEarned) Beep(hitClip);
+                    if (hits != TotalHits()) Beep(hitClip);
+                    if (boosts != TotalRewards()) Beep(startClip);
+                    if (slows != TotalSlows()) Beep(hitClip);
                     if (winner == null && Game.Winner != null) { Beep(finishClip); winnerReactionAt = animationTime; }
                 }
             }
@@ -235,10 +239,11 @@ namespace FlipRace.Presentation
             }
             if (showRules) { if (rulesClose.Contains(p) || rulesDone.Contains(p)) CloseRules(); return; }
             if (paused) { if (resumeRect.Contains(p) || pauseRect.Contains(p)) Resume(); return; }
-            if (pauseRect.Contains(p)) { Pause("Оба катикаавра ждут на своих местах."); return; }
+            if (pauseRect.Contains(p)) { Pause("Катикаавры ждут на своих местах."); return; }
             if ((compact ? helpRect : headerHelp).Contains(p)) { OpenRules(); return; }
             if (soundRect.Contains(p)) { ToggleSound(); return; }
             if (trackButton.Contains(p) && !Active) { OpenTracks(); return; }
+            if (PartyEnabled) { PartyPointer(p); return; }
             if (SharedEnabled) { SharedPointer(p); return; }
             for (int slot = 0; slot < 2; slot++) if (lanes[slot].Contains(p))
             {
@@ -346,7 +351,8 @@ namespace FlipRace.Presentation
             Round(shell, compact ? 11 : 18, Hex(0xd8ddcb));
             Round(new Rect(shell.x + 1, shell.y + 1, shell.width - 2, shell.height - 2), compact ? 10 : 17, Hex(0xfbfbf3));
             DrawSession();
-            if (SharedEnabled) DrawSharedField();
+            if (PartyEnabled) DrawPartyField();
+            else if (SharedEnabled) DrawSharedField();
             else { DrawLane(0); DrawLane(1); DrawDivider(); }
             DrawPaws();
             DrawFooter();
@@ -385,20 +391,20 @@ namespace FlipRace.Presentation
             Text(new Rect(shell.x + 69, y + 4, 200, 48), "флип", 39, ink, true);
             Text(new Rect(shell.x + 169, y + 4, 35, 48), "!", 39, accents[0], true);
             Text(new Rect(shell.x + 72, y + 53, 240, 15), "ГОНКА КАТИКААВРОВ", 8, muted);
-            if (shell.width > 900)
+            if (shell.width > 900 && !PartyEnabled)
             {
                 Text(new Rect(shell.x + 265, y + 18, 380, 25), "Два катикаавра. Один экран.", 12, muted);
                 Text(new Rect(shell.x + 265, y + 43, 400, 22), "Кто перевернёт гонку?", 12, ink);
             }
             Text(headerHelp, "?   Как играть", 11, ink, false, TextAnchor.MiddleCenter);
             StrokeRound(new Rect(shell.xMax - 84, headerHelp.y + 2, 84, 28), 5, Hex(0xd8ddcb), paper);
-            Text(new Rect(shell.xMax - 84, headerHelp.y + 2, 84, 28), "ДЛЯ ДВОИХ", 8, muted, false, TextAnchor.MiddleCenter);
+            Text(new Rect(shell.xMax - 84, headerHelp.y + 2, 84, 28), (PartyEnabled ? "КОМПАНИЯ" : "ДЛЯ ДВОИХ"), 8, muted, false, TextAnchor.MiddleCenter);
         }
         void DrawSession()
         {
             float pad = compact ? 132 : 20;
             Ellipse(new Rect(session.x + pad, session.center.y - 2.5f, 5, 5), Hex(0x9ca986));
-            string title = (Trial ? TrialMotionName() + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
+            string title = (PartyEnabled ? "Компания " + Game.Players.Length + " · " + (Game.PartyCamera == PartyCamera.Constant ? "Скролл" : "Камера последнего") + " · " + Game.Track.Name : Trial ? TrialMotionName() + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
                 + (Game.Track.NegativeEnabled ? "  ·  ◇−" : "")
                 + (Active ? "   /   " + round.ToString("00") : "   ↗");
             Text(new Rect(session.x + pad + 14, session.y, helpRect.x - session.x - pad - 22, session.height), title,
@@ -725,7 +731,7 @@ namespace FlipRace.Presentation
                 if (footer.yMax + 15 < height)
                 {
                     Fill(new Rect(footer.x, footer.yMax - 2, footer.width, 1), Hex(0xe2e4d8));
-                    Text(new Rect(0, footer.yMax + 5, width, 20), "МАЛЕНЬКИЙ ПЕРЕВОРОТ. БОЛЬШАЯ ГОНКА.       A / L — на клавиатуре · Esc — пауза", 8, Hex(0xa0a590), false, TextAnchor.MiddleCenter);
+                    Text(new Rect(0, footer.yMax + 5, width, 20), (PartyEnabled ? "КОМПАНИЯ · A / L / S / K — игроки 1 / 2 / 3 / 4 · Esc — пауза" : "МАЛЕНЬКИЙ ПЕРЕВОРОТ. БОЛЬШАЯ ГОНКА.       A / L — на клавиатуре · Esc — пауза"), 8, Hex(0xa0a590), false, TextAnchor.MiddleCenter);
                 }
             }
         }
@@ -769,6 +775,11 @@ namespace FlipRace.Presentation
                 "Метка на грани: точная посадка даёт ×1,5. По камню можно бежать; с него можно прыгать.",
                 "Узкая метка у ленты: рывок −0,1 с. Настройки общие, реванш их сохраняет. Выбор — в меню."
             };
+            if (PartyEnabled) lines = new[] {
+                "Каждому своя четверть и номер. Тап или A / L / S / K — действие игроков 1 / 2 / 3 / 4.",
+                Game.PartyCamera == PartyCamera.Constant ? "Карта движется сама. Полностью ушёл за левый край — выбыл. Справа выбывания нет." : "Камера следует за последним бегущим. Выбывания за экран нет.",
+                "Бонусы и монеты личные. Выбывшие и финишировавшие больше не управляются.",
+                "Первый финиш побеждает. Остальные продолжают до своего исхода. Ещё раз — когда готовы все." };
             float start = r.y + 77, row = (r.height - 134) / 4;
             for (int i = 0; i < lines.Length; i++)
             {

@@ -8,6 +8,8 @@ namespace FlipRace.Core
 {
     public enum MotionMode { Linear, Gravity, GravityAirFlip, LinearAirFlip, JumpGravityFlip, GravityUnlimited }
     public enum SupportKind { None, Wall, Stone }
+    public enum PlayerStatus { Running, Finished, Eliminated }
+    public enum PartyCamera { Constant, Lagger }
 
     public static class RaceConfig
     {
@@ -116,6 +118,8 @@ namespace FlipRace.Core
         public int Id;
         public int CharacterIndex;
         public bool Ready;
+        public PlayerStatus Status = PlayerStatus.Running;
+        public double? TerminalTime;
         public double Distance;
         public double Y = 1;
         public bool Flipping;
@@ -200,6 +204,28 @@ namespace FlipRace.Core
 
     public sealed class GameState
     {
+        public readonly bool IsParty;
+        public readonly PartyCamera PartyCamera;
+        public readonly double PartyCameraStartLeft, PartyWindowWidth, PartyCameraSpeed;
+        internal double PartyLastCameraLeft;
+        public double PartyCameraLeft
+        {
+            get
+            {
+                if (PartyCamera == PartyCamera.Constant) return PartyCameraStartLeft + PartyCameraSpeed * Elapsed;
+                double last = double.PositiveInfinity;
+                foreach (var player in Players)
+                    if (player.Status == PlayerStatus.Running) last = Math.Min(last, player.Distance);
+                return double.IsInfinity(last) ? PartyLastCameraLeft : PartyCameraStartLeft + last;
+            }
+        }
+        public GameState() { }
+        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth)
+        {
+            IsParty = true; PartyCamera = camera; PartyCameraStartLeft = startLeft;
+            PartyWindowWidth = windowWidth; PartyCameraSpeed = track.Length / 36;
+            PartyLastCameraLeft = startLeft;
+        }
         public string Mode;
         public MotionMode Motion = MotionMode.Linear;
         public MotionProfile Profile = MotionProfiles.Baseline;
@@ -209,7 +235,7 @@ namespace FlipRace.Core
         public PlayerState[] Players = { new PlayerState(0), new PlayerState(1) };
         public double Elapsed;
         public double CountdownRemaining = RaceConfig.CountdownDuration;
-        // null before a finish, boxed int 0/1 for a winner, or "tie".
+        // null before a finish, boxed player ID for a winner, or "tie".
         public object Winner;
         public double? WinnerAt;
     }
@@ -393,6 +419,27 @@ namespace FlipRace.Core
             return game;
         }
 
+        // Window size and starting boundary remain fixed for the whole race.
+        public static GameState CreateParty(Track track, FlightSettings flight, int playerCount,
+            PartyCamera camera, double cameraStartLeft, double windowWidth)
+        {
+            if (track == null) throw new ArgumentNullException(nameof(track));
+            if (flight == null) throw new ArgumentNullException(nameof(flight));
+            if (playerCount < 2 || playerCount > 4) throw new ArgumentOutOfRangeException(nameof(playerCount));
+            if (!Enum.IsDefined(typeof(PartyCamera), camera)) throw new ArgumentOutOfRangeException(nameof(camera));
+            if (double.IsNaN(cameraStartLeft) || double.IsInfinity(cameraStartLeft))
+                throw new ArgumentOutOfRangeException(nameof(cameraStartLeft));
+            if (double.IsNaN(windowWidth) || double.IsInfinity(windowWidth) || windowWidth <= 0)
+                throw new ArgumentOutOfRangeException(nameof(windowWidth));
+            if (double.IsNaN(track.Length) || double.IsInfinity(track.Length) || track.Length <= 0)
+                throw new ArgumentOutOfRangeException(nameof(track));
+            var game = new GameState(track, camera, cameraStartLeft, windowWidth)
+            { Mode = "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
+            for (int i = 0; i < playerCount; i++)
+                game.Players[i] = new PlayerState(i) { AirFlipAvailable = SupportsAirFlip(flight) };
+            return game;
+        }
+
         private static FlightSettings Settings(GameState game)
         {
             if (game.Flight == null) game.Flight = FlightPresets.FromLegacy(game.Motion, game.Profile);
@@ -404,7 +451,7 @@ namespace FlipRace.Core
 
         public static bool SetCharacter(GameState game, int playerIndex, int characterIndex)
         {
-            if ((game.Phase != "ready" && game.Phase != "finished") || playerIndex < 0 || playerIndex > 1
+            if ((game.Phase != "ready" && game.Phase != "finished") || playerIndex < 0 || playerIndex >= game.Players.Length
                 || characterIndex < 0 || characterIndex >= RaceConfig.CharacterCount) return false;
             game.Players[playerIndex].CharacterIndex = characterIndex;
             game.Players[playerIndex].Ready = false;
@@ -420,12 +467,16 @@ namespace FlipRace.Core
             if (game.Phase == "ready" || game.Phase == "finished")
             {
                 player.Ready = true;
-                if (game.Players[0].Ready && game.Players[1].Ready)
+                bool allReady = true;
+                foreach (var participant in game.Players) allReady &= participant.Ready;
+                if (allReady)
                 {
-                    game.Players = new[] { new PlayerState(0) { Ready = true, CharacterIndex = game.Players[0].CharacterIndex,
-                            AirFlipAvailable = SupportsAirFlip(flight) },
-                        new PlayerState(1) { Ready = true, CharacterIndex = game.Players[1].CharacterIndex,
-                            AirFlipAvailable = SupportsAirFlip(flight) } };
+                    var resetPlayers = new PlayerState[game.Players.Length];
+                    for (int i = 0; i < game.Players.Length; i++)
+                        resetPlayers[i] = new PlayerState(i) { Ready = true,
+                            CharacterIndex = game.Players[i].CharacterIndex, AirFlipAvailable = SupportsAirFlip(flight) };
+                    game.Players = resetPlayers;
+                    game.PartyLastCameraLeft = game.PartyCameraStartLeft;
                     game.Phase = "countdown";
                     game.Elapsed = 0;
                     game.CountdownRemaining = RaceConfig.CountdownDuration;
@@ -434,7 +485,8 @@ namespace FlipRace.Core
                 }
                 return true;
             }
-            if (game.Phase != "racing" || player.Recovering > 0 || player.FinishTime.HasValue)
+            if (game.Phase != "racing" || player.Recovering > 0 || player.FinishTime.HasValue
+                || player.Status != PlayerStatus.Running)
                 return false;
             if (player.Flipping)
             {
@@ -925,16 +977,17 @@ namespace FlipRace.Core
             return result;
         }
 
-        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, FlightSettings flight)
+        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, FlightSettings flight, GameState party = null)
         {
-            if (player.FinishTime.HasValue) return;
+            if (player.FinishTime.HasValue || player.Status != PlayerStatus.Running) return;
             var remaining = dt;
             // Do not discard positive sub-nanosecond slices: one can contain the finish.
             while (remaining > 0)
             {
                 if (player.Recovering > Epsilon)
                 {
-                    var stopped = Math.Min(remaining, player.Recovering);
+                    double elimination = EliminationTime(party, player, elapsed + dt - remaining, 0);
+                    var stopped = Math.Min(Math.Min(remaining, player.Recovering), elimination);
                     player.Recovering = Math.Max(0, player.Recovering - stopped);
                     player.RecoveryElapsed += stopped;
                     if (player.Recovering < Epsilon)
@@ -944,6 +997,11 @@ namespace FlipRace.Core
                         player.CompletedRecoveries++;
                     }
                     remaining -= stopped;
+                    if (party != null && elimination <= stopped)
+                    {
+                        SetPartyTerminal(player, PlayerStatus.Eliminated, elapsed + dt - remaining);
+                        return;
+                    }
                     continue;
                 }
                 var surface = NextSurface(player, flight);
@@ -955,7 +1013,8 @@ namespace FlipRace.Core
                     flightHorizon = Math.Min(flightHorizon, -player.VerticalSpeed / acceleration);
                 double apexTime = JumpApexTime(player, flight);
                 flightHorizon = Math.Min(flightHorizon, apexTime);
-                var horizon = Math.Min(remaining, Math.Min(Math.Max(0, track.Length - player.Distance) / player.CurrentSpeed,
+                double finishTime = Math.Max(0, track.Length - player.Distance) / player.CurrentSpeed;
+                var horizon = Math.Min(remaining, Math.Min(finishTime,
                     Math.Min(flightHorizon,
                         player.FinishBoost ? Math.Max(0, RaceConfig.FinishBoostDuration - player.FinishBoostElapsed)
                             : player.ActiveEffect != null ? player.ActiveEffect.Remaining : double.PositiveInfinity)));
@@ -966,6 +1025,8 @@ namespace FlipRace.Core
                 double edgeTime = edge == null ? double.PositiveInfinity
                     : Math.Max(0, (edge.X + edge.Width - player.Distance) / player.CurrentSpeed);
                 horizon = Math.Min(horizon, edgeTime);
+                double eliminationTime = EliminationTime(party, player, elapsed + dt - remaining, player.CurrentSpeed);
+                horizon = Math.Min(horizon, eliminationTime);
                 var landing = NextLanding(player, track, horizon, flight);
                 if (landing != null) horizon = Math.Min(horizon, landing.Time);
                 var collision = NextCollision(player, track, horizon, flight, landing);
@@ -973,6 +1034,22 @@ namespace FlipRace.Core
                 var moving = Math.Min(collision != null ? collision.Time : horizon, risk != null ? risk.Time : horizon);
                 MovePlayer(player, moving, flight);
                 remaining -= moving;
+                // Terminal boundaries share the swept effects/collision timeline.
+                // Finish wins an exact boundary tie; terminal players earn no reward.
+                if (party != null)
+                {
+                    if (finishTime <= moving + Epsilon)
+                    {
+                        player.Distance = track.Length;
+                        SetPartyTerminal(player, PlayerStatus.Finished, elapsed + dt - remaining);
+                        return;
+                    }
+                    if (eliminationTime <= moving)
+                    {
+                        SetPartyTerminal(player, PlayerStatus.Eliminated, elapsed + dt - remaining);
+                        return;
+                    }
+                }
                 bool collided = collision != null && collision.Time <= moving + Epsilon;
                 if (collided)
                 {
@@ -1062,11 +1139,32 @@ namespace FlipRace.Core
                         + player.SlowElapsed * (1 - RaceConfig.SlowMultiplier)
                         - player.BoostElapsed * (RaceConfig.BoostMultiplier - 1)
                         - player.FinishBoostDistanceGained / RaceConfig.Speed;
+                    player.Status = PlayerStatus.Finished;
+                    player.TerminalTime = player.FinishTime;
                     player.FinishBoost = false;
                     player.FlightActive = false;
                     return;
                 }
             }
+        }
+
+        private static double EliminationTime(GameState party, PlayerState player, double at, double speed)
+        {
+            if (party == null || party.PartyCamera != PartyCamera.Constant) return double.PositiveInfinity;
+            double gap = player.Distance + RaceConfig.PlayerRadius
+                - (party.PartyCameraStartLeft + party.PartyCameraSpeed * at);
+            if (gap <= 0) return 0;
+            double closingSpeed = party.PartyCameraSpeed - speed;
+            return closingSpeed > 0 ? gap / closingSpeed : double.PositiveInfinity;
+        }
+
+        private static void SetPartyTerminal(PlayerState player, PlayerStatus status, double at)
+        {
+            player.Status = status;
+            player.TerminalTime = at;
+            if (status == PlayerStatus.Finished) player.FinishTime = at;
+            EndFlight(player, status == PlayerStatus.Eliminated, at);
+            player.FinishBoost = false;
         }
 
         // A coin is an immediate personal contact, never a speed-effect queue
@@ -1111,7 +1209,26 @@ namespace FlipRace.Core
                     tiedCount++;
                     game.Winner = player.Id;
                 }
-                if (tiedCount == 2) game.Winner = "tie";
+                if (tiedCount >= 2) game.Winner = "tie";
+            }
+            if (game.IsParty)
+            {
+                bool allTerminal = true;
+                double lastTerminal = 0;
+                foreach (var player in game.Players)
+                {
+                    allTerminal &= player.Status != PlayerStatus.Running;
+                    if (player.TerminalTime.HasValue) lastTerminal = Math.Max(lastTerminal, player.TerminalTime.Value);
+                }
+                if (allTerminal)
+                {
+                    game.Elapsed = lastTerminal;
+                    if (game.PartyCamera == PartyCamera.Lagger)
+                        game.PartyLastCameraLeft = game.PartyCameraStartLeft + game.Track.Length;
+                    game.Phase = "finished";
+                    foreach (var player in game.Players) player.Ready = false;
+                }
+                return;
             }
             if (finisherCount == 2 || (game.WinnerAt.HasValue && game.Elapsed >= game.WinnerAt.Value + RaceConfig.FinishGrace))
             {
@@ -1138,6 +1255,13 @@ namespace FlipRace.Core
             }
             if (game.Phase != "racing" || dt <= 0) return;
             var flight = Settings(game);
+            if (game.IsParty)
+            {
+                foreach (var player in game.Players) AdvancePlayer(player, game.Track, dt, game.Elapsed, flight, game);
+                game.Elapsed += dt;
+                ResolveFinish(game);
+                return;
+            }
             double maximumSpeed = game.Track.RiskZones.Length > 0 ? RaceConfig.Speed * RaceConfig.BoostMultiplier : RaceConfig.Speed;
             foreach (var zone in game.Track.RiskZones)
                 if (zone.IsFinish) { maximumSpeed = RaceConfig.FinishBoostSpeed; break; }

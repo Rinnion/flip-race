@@ -23,7 +23,10 @@ namespace FlipRace.Presentation
         public static string WinText(int characterIndex) { return Win[Normalize(characterIndex)]; }
         public static Color ScarfColor(int playerIndex)
         {
-            return playerIndex == 0 ? new Color(183/255f,161/255f,222/255f) : new Color(241/255f,171/255f,129/255f);
+            return playerIndex == 0 ? new Color(183/255f,161/255f,222/255f)
+                : playerIndex == 1 ? new Color(241/255f,171/255f,129/255f)
+                : playerIndex == 2 ? new Color(143/255f,202/255f,183/255f)
+                : new Color(219/255f,160/255f,188/255f);
         }
     }
 }

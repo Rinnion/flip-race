@@ -1,0 +1,58 @@
+Baseline revision: a235d398db1fb1c79603d68a973f451a098a520b
+Sources: all Core/*.cs, SharedFieldView.cs, TrackProofControl/Harness.cs, SharedCameraCheck/Program.cs exported directly with git show; no current source included.
+Command: dotnet run --project .tmp-v5-shared-baseline/Baseline.csproj -c Release -- .tmp-v5-shared-baseline/result.json
+Exit code: 3762504530
+Unhandled exception. System.Exception: Eight rewards/full ITER49 pad plus one collision finish: 34,1 != 33,85
+   at Program.Check(Boolean condition, String message) in F:\Home\Game\flip-race-unity\.tmp-v5-shared-baseline\Harness.cs:line 14
+   at Program.Near(Double actual, Double expected, String message, Double epsilon) in F:\Home\Game\flip-race-unity\.tmp-v5-shared-baseline\Harness.cs:line 16
+   at Program.Main(String[] args) in F:\Home\Game\flip-race-unity\.tmp-v5-shared-baseline\Program.cs:line 190
+
+Diagnostic-only isolated baseline rerun: replaced failed historical time assertion with route counters; production sources unchanged.
+Exit code: 0
+BASELINE ROUTE chosen finish=34,1 ordinary=8 final=0 hits=1
+BASELINE ROUTE fast finish=34,1 ordinary=8 final=0 hits=1
+chosen full/safe finish=33,3,36 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=594,000 leader=0,4834 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=594,000 leader=0,6222 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=594,000 leader=0,6155 minX=104,50 off=0:;1:
+chosen safe/full finish=36,33,3 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=594,000 leader=0,4834 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=594,000 leader=0,6222 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=594,000 leader=0,6155 minX=104,50 off=0:;1:
+chosen full/no-action finish=33,3, hits=0,8 finalX=7920,7216,000000000712
+ production481-lagger W1190 gap=1474,000 leader=0,9567 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1474,000 leader=1,2625 minX=156,94 off=0:22,8125..34,9396 return;1:
+ production481-lagger W550 gap=1474,000 leader=1,2459 minX=104,50 off=0:25,5954..34,8602 return;1:
+chosen no-action/full finish=,33,3 hits=8,0 finalX=7216,000000000712,7920
+ production481-lagger W1190 gap=1474,000 leader=0,9567 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1474,000 leader=1,2625 minX=156,94 off=0:;1:22,8125..34,9396 return
+ production481-lagger W550 gap=1474,000 leader=1,2459 minX=104,50 off=0:;1:25,5954..34,8602 return
+chosen miss first small then full/safe finish=34,1,36 hits=1,0 finalX=7920,7920
+ production481-lagger W1190 gap=418,000 leader=0,3887 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=418,000 leader=0,4941 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=418,000 leader=0,4894 minX=104,50 off=0:;1:
+fast full/safe finish=33,3,36 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=594,000 leader=0,4834 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=594,000 leader=0,6222 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=594,000 leader=0,6155 minX=104,50 off=0:;1:
+fast safe/full finish=36,33,3 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=594,000 leader=0,4834 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=594,000 leader=0,6222 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=594,000 leader=0,6155 minX=104,50 off=0:;1:
+fast full/no-action finish=33,3, hits=0,8 finalX=7920,7216,000000000706
+ production481-lagger W1190 gap=1474,000 leader=0,9567 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1474,000 leader=1,2625 minX=156,94 off=0:22,8130..34,9396 return;1:
+ production481-lagger W550 gap=1474,000 leader=1,2459 minX=104,50 off=0:25,6281..34,8602 return;1:
+fast no-action/full finish=,33,3 hits=8,0 finalX=7216,000000000706,7920
+ production481-lagger W1190 gap=1474,000 leader=0,9567 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=1474,000 leader=1,2625 minX=156,94 off=0:;1:22,8130..34,9396 return
+ production481-lagger W550 gap=1474,000 leader=1,2459 minX=104,50 off=0:;1:25,6281..34,8602 return
+fast miss first small then full/safe finish=34,1,36 hits=1,0 finalX=7920,7920
+ production481-lagger W1190 gap=418,000 leader=0,3887 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=418,000 leader=0,4941 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=418,000 leader=0,4894 minX=104,50 off=0:;1:
+fast safe delayed setup6080→6500 finish=36,36 hits=0,0 finalX=7920,7920
+ production481-lagger W1190 gap=0,000 leader=0,1639 minX=195,00 off=0:;1:
+ production481-lagger W826 gap=0,000 leader=0,1900 minX=156,94 off=0:;1:
+ production481-lagger W550 gap=0,000 leader=0,1900 minX=104,50 off=0:;1:
+PASS SharedCameraCheck 642991 checks / 11 actual games; centre crossings interpolated between <=5 ms samples.

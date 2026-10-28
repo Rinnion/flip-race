@@ -1,0 +1,29 @@
+# V5 PARTY status
+
+Source: direct human request in Catalytic01a13ea2-10f9-7821-b785-5c3a7e30b079,turn01a18278-c0f5-7443-9b7a-3da7fdbd3558,28October2026; feature1/company2–4,constantcamera,LEFTonly,oldcamera alternative,humancomfortstudydeferred. Contract F:/Home/Game/flip-race/docs/flip-race-v5-party-delivery-2026-10-28.md. Baselinea235d39/4.9.2. Progatik owns implementation/integration; Catalytic final acceptance. No new feature scope.
+
+FINAL CANDIDATE READY FOR CATALYTIC ACCEPTANCE: http://127.0.0.1:4184/ serves Build/WebGL final5.0.0-trial, actual4-player selection/updated runtime aria/console0 PASS. Exact directoryBuilds/WebGL-v5.0.0-final, PID70328(v5-stable-server.json). All5HTTPfilehashes equal manifest/build/ZIP/fresh extraction(v5-stable-http.json). Stableprevious4.9.2andarchivepreserved. 4216 samefinalbuild;4217 serves freshBuilds/WebGL-v5.0.0-unpacked-delivery, PID141236. Finalnativeproofv5-native.json andv5-native-stable-800.png. No furtherproductionchangesplanned.
+
+Latest final ZIP:8906342bytes,SHA2567e58ee62ab8a759726eb3794290e5bf6d9a194a81935622d2aa2b45bbe73225c. Public5files9039021bytes. Unitycompiled9038713bytes/exit0; then exactlyoneHTMLruntimearia line+308bytes updated sourceTemplate+generatedindex, fourUnityruntimefilehashesunchanged(v5-html-adjustment.json). No changedCore/WASM after acceptedtests. Finalpackage/freshextraction verified(v5-package-verification.json); earlier3b325/57d hashes superseded, historicalintermediatebuildfoldersnotusedfordelivery.
+
+| ID | State | Owner | Evidence |
+| --- | --- | --- | --- |
+| PARTY-00 | verified | party_core Sol/high + Progatik | PartyCheck512, PartyUi34434;2/3/4 actual menu/readiness/rematch; bothcameras/nativefullraces2/3/4 |
+| PARTY-01 | verified | Core + Astra/high design | fixed1520x240,C0-288.8,L/36=220; native measured220; pause/resize800->568 sameelapsed/left;36+Corecases |
+| PARTY-02 | verified | party_core Sol/high | sweptfullbody<=boundary/finishpriority/dt/order/recovery/effects/RIGHTcases; independent900comparisons |
+| PARTY-03 | verified | Progatik + party_artwork Sol/medium |34434/216configs/25020actualUpdate,4Began+compatmouse/holds/repeats; native4keys+4pawedges,all6hero44+ready44,568/800/960/1280 |
+| PARTY-04 | verified | party_artwork Sol/medium + Core | personalcoins/rings/boosts/terminalfreeze,4markers/color+shape+number,sameheroactual800/568; Catalyticnativepersonalbonus1and4ownpawsPASS |
+| PARTY-05 | verified | Core + Progatik | last runnercontinues/no3.5partygrace/alloutnoWinner/ties/rematch; nativeLagger2/3/4allfinish38s andConstant2/3/4allout6.085s; Catalyticwinner37.7vs38nativePASS |
+| PARTY-06 | verified | Progatik | actualmenu bothcameras/count/profile/custom;18legacyexits; nativecamera switchingretainsheroes; oldUI22854PASS |
+| PARTY-07 | verified | Progatik | unchangedJSfixtures40228snapshots/1448208fields; Settings736/114; Camera642997/11; FINISH62117; compilation0/0;10Tracks+inlineunchanged; VIEW/TOUCH/REWARDupdated |
+| PARTY-08 | verified | Progatik then Catalytic | finalWeb/ZIP/freshextraction/HTTP/stablenativePASS; Catalytic final acceptancePASS; stable/native/ZIP/HTTPcomplete; localcommitnext |
+
+Decisions/owners: Core RaceSimulation+PartyCheck ownedparty_coreSol/high; projection/artworkcache4/personalmarks thenPartyUi ownedparty_artworkSol/medium; fixedwindow/seatmapping readonlyAstra/high; controller/menu/paws/diagnostics/template/integration/docs/build/rootchecks ProgatikSol/high. Sourceownershipsequential; allspecialistsstopped. IndependentCore review CatalyticSol/high:900comparisons/300synthetictracks,4players,bothcameras,dt100/1/30Hz/240Hz,reversearrays,recovery+coins/instant/slow/finish/obstaclesPASS. ProbeF:/Home/Game/.scratch-v5-core-acceptance-20261028/Program.cs; CoreSHA25638A9B4F39BCB22DC67323002AD4BB9795BE84449A9DA59C171491A50E991D18E unchanged.
+
+Preservation: CONTROL REWARD FINISH GATE TOUCH VIEW. No changes to trackdata/profiles/settingsphysics. SharedCameraCheck stale33.85 assertion reproduced IDENTICALLY oncleana235d39,8rewards/1hit/skipfinaldash =>34.1; adjustedONLYtestexpectation(v5-camera-baseline.txt). FinaloldUI22854andPartyUi34434snapshots refreshed afterneutralpause text. OriginalFIX491-RELEASE.md foreignchange remainsbyteidentical SHA2563071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5 excludedfromcommit. Historicalfix491-finish-proof restored aftertest defaultoutput; freshcopyv5-finish-proof.json. Existing browserREADME/untrackedotherdocs/ZIP untouched; only3featurearticlesupdated. Unity.gitignoreadds isolated.tmp/.scratch dirs.
+
+Browser: firstfunctional allcounts/cameras testedbeforefinalcopy-onlyfixes; finalZIPfresh800/4selections/4pawedges/neutralpausepassed, finalHTML-onlyruntimeariabothunpacked4217andstable4184PASS,console0. Capturesandpublishedread-onlycanvasstatev5-native.json. Initialresizewaittimeouts were QA tab-selection/viewport mismatches, notgamefailures; actualstate/viewportrecheckedbeforecapture. No physicaldevice/4physicalfingerclaim. Humancomfortstudydeferredbyuser. Art integration per flip-race/docs/flip-race-art-direction.md; no newasset/Tanyaapprovalclaim. Publicitchuploadnotrequested/performed.
+
+Next: none after local commit. Catalytic FINAL ACCEPTANCE PASS, allPARTY00..08verified. Owned4216/4217servers stopped after PID/port/commandline checks; ownQA tabs2..5closed, failedinitialerrorTab left for automaticcleanup; stable4184/tab6 preserved, viewportreset. Docscommitc52a17b; originalforeignFIX491report unchanged/unstaged.
+
+FINAL ACCEPTANCE: Catalytic independently fresh4184menu/company4/readiness/runtimearia/console0 and5ZIP/build/unpacked/HTTPentryhashesPASS, finalZIP7e58ee62...,Core38A9unchanged. Acceptance reportVerification/V5-PARTY-CATALYTIC-ACCEPTANCE.md andscreenshotv5-catalytic-four-players.png. Delivery complete; no unresolved productblockers, humancomfortstudydeferred byrequest. Localcommit follows, no remote/publicupload.

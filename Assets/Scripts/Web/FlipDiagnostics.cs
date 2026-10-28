@@ -19,7 +19,7 @@ namespace FlipRace.Web
             public int coins, collisions, character, rings, instantBoosts, finishBoosts, slowRings, pendingRings, failedRings, queuedEffects;
             public double boost, slow, speed, flipElapsed, verticalSpeed, centerY, finishBoostElapsed, finishBoostDistanceGained;
             public int gravity;
-            public string support, supportObstacle, lastInstant, lastFinishBoost;
+            public string support, supportObstacle, lastInstant, lastFinishBoost, status;
             public int supportSide;
             public double flightDuration, flightMaxDistance, flightEndedAt;
         }
@@ -82,8 +82,8 @@ namespace FlipRace.Web
                 settingsCopyX = settingsCopy.x, settingsCopyY = settingsCopy.y,
                 settingsCopyWidth = settingsCopy.width, settingsCopyHeight = settingsCopy.height,
                 settingsCopyText = game.FlightSettingsVisible ? game.FlightCopyText : "",
-                players = new PlayerSnapshot[2]};
-            for (int i = 0; i < 2; i++)
+                players = new PlayerSnapshot[state.Players.Length]};
+            for (int i = 0; i < state.Players.Length; i++)
             {
                 var p = state.Players[i];
                 int pending = 0;
@@ -97,7 +97,7 @@ namespace FlipRace.Web
                     finishBoostElapsed=p.FinishBoostElapsed, finishBoostDistanceGained=p.FinishBoostDistanceGained,
                     speed=p.CurrentSpeed, slowRings=p.SlowsEarned, queuedEffects=p.PendingEffects.Count, flipElapsed=p.FlipElapsed,
                     verticalSpeed=p.VerticalSpeed, gravity=p.Gravity, airFlipAvailable=p.AirFlipAvailable,
-                    support=p.Support.ToString(), supportSide=p.SupportSide, supportObstacle=p.SupportObstacleId,
+                    status=p.Status.ToString(), support=p.Support.ToString(), supportSide=p.SupportSide, supportObstacle=p.SupportObstacleId,
                     lastInstant=p.LastInstant == null ? "" : p.LastInstant.Id,
                     lastFinishBoost=p.LastFinishBoost == null ? "" : p.LastFinishBoost.Id,
                     hasFlightMeasurement=p.LastFlight != null, flightInterrupted=p.LastFlight != null && p.LastFlight.Interrupted,
@@ -116,7 +116,7 @@ namespace FlipRace.Web
         {
             var output = new StringBuilder(json.Length + 500);
             output.Append(json, 0, json.Length - 1).Append(",\"characterRects\":[");
-            for (int player = 0; player < 2; player++)
+            for (int player = 0; player < game.Game.Players.Length; player++)
             {
                 if (player > 0) output.Append(',');
                 output.Append('[');
@@ -128,10 +128,9 @@ namespace FlipRace.Web
                 output.Append(']');
             }
             output.Append("],\"readyRects\":[");
-            AppendRect(output, game.ReadyScreenRect(0)); output.Append(',');
-            AppendRect(output, game.ReadyScreenRect(1));
+            AppendPlayerRects(output, game.ReadyScreenRect);
             output.Append("],\"pawRects\":[");
-            AppendRect(output, game.PawScreenRect(0)); output.Append(','); AppendRect(output, game.PawScreenRect(1));
+            AppendPlayerRects(output, game.PawScreenRect);
             output.Append("],\"trackMenuRect\":"); AppendRect(output, game.TrackMenuButtonRect);
             output.Append(",\"viewMenuRect\":"); AppendRect(output, game.ViewMenuButtonRect);
             output.Append(",\"viewOptionRects\":[");
@@ -143,7 +142,7 @@ namespace FlipRace.Web
             output.Append(']');
             output.Append(",\"sharedFieldRect\":"); AppendRect(output, game.SharedFieldRect);
             output.Append(",\"controlAreas\":[");
-            AppendRect(output, game.ControlAreaRect(0)); output.Append(','); AppendRect(output, game.ControlAreaRect(1));
+            AppendPlayerRects(output, game.ControlAreaRect);
             output.Append(']');
             if (game.SplitGhostEnabled)
             {
@@ -164,7 +163,7 @@ namespace FlipRace.Web
                 output.Append(",\"cameraLeft\":").Append(view.CameraLeft.ToString("R", CultureInfo.InvariantCulture));
                 output.Append(",\"scaleX\":").Append(view.ScaleX.ToString("R", CultureInfo.InvariantCulture));
                 output.Append(",\"projectedPlayers\":[");
-                for (int player = 0; player < 2; player++)
+                for (int player = 0; player < game.Game.Players.Length; player++)
                 {
                     if (player > 0) output.Append(',');
                     output.Append('[').Append((field.x + view.PlayerX(player)).ToString("R", CultureInfo.InvariantCulture))
@@ -172,8 +171,19 @@ namespace FlipRace.Web
                 }
                 output.Append(']');
             }
+                        output.Append(",\"party\":").Append(game.PartyEnabled ? "true" : "false");
+            output.Append(",\"partyCamera\":\"").Append(game.Game.PartyCamera.ToString()).Append('"');
+            output.Append(",\"logicalWindowWidth\":").Append(game.Game.PartyWindowWidth.ToString("R", CultureInfo.InvariantCulture));
+            output.Append(",\"partyMenuRect\":"); AppendRect(output, game.PartyMenuButtonRect);
+            output.Append(",\"partyCountRects\":[");
+            for(int i=0;i<3;i++){if(i>0)output.Append(',');AppendRect(output,game.PartyCountRect(i));}
+            output.Append("],\"partyCameraRects\":[");
+            for(int i=0;i<2;i++){if(i>0)output.Append(',');AppendRect(output,game.PartyCameraRect(i));}
+            output.Append("],\"partyLegacyRect\":"); AppendRect(output,game.PartyLegacyRect);
             return output.Append('}').ToString();
         }
+        void AppendPlayerRects(StringBuilder output, Func<int,Rect> rectangle)
+        { for(int i=0;i<game.Game.Players.Length;i++){if(i>0)output.Append(',');AppendRect(output,rectangle(i));} }
         static void AppendRect(StringBuilder output, Rect rect)
         {
             output.Append('[').Append(rect.x.ToString("R", CultureInfo.InvariantCulture)).Append(',')

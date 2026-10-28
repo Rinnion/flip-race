@@ -15,11 +15,11 @@ namespace FlipRace.Presentation
         public static readonly Rect UnitBounds = new Rect(-1.5f,-1.75f,3f,3f);
         const int TextureSize=128, Samples=2, RunningFrames=96, StrideFrames=16, AirFrames=12, DetailFrames=8;
         const float TwoPi=Mathf.PI*2, StrideRate=25, RunLoopSeconds=TwoPi*6/StrideRate;
-        // Only the two selected variants own animation caches. A selection prepares
+        // Only the four selected variants own animation caches. A selection prepares
         // the requested pose, not all 192 poses synchronously before the next paint.
-        static readonly FrameSet[] frames=new FrameSet[2];
-        static readonly int[] activeCharacters={-1,-1};
-        static readonly Texture2D[,] previews=new Texture2D[CharacterRoster.Count,2];
+        static readonly FrameSet[] frames=new FrameSet[4];
+        static readonly int[] activeCharacters={-1,-1,-1,-1};
+        static readonly Texture2D[,] previews=new Texture2D[CharacterRoster.Count,4];
         // WebGL cannot collect temporary managed arrays until the synchronous
         // Awake/Bake returns. Reuse these two 256 KiB supersampled canvases:
         // allocating both for every pose used nearly 200 MiB before first paint.
@@ -55,7 +55,7 @@ namespace FlipRace.Presentation
         public static Texture2D Create(int player) {return Create(player,player);}
         public static Texture2D Create(int characterIndex,int playerIndex)
         {
-            int c=CharacterRoster.Normalize(characterIndex),p=playerIndex==0?0:1;
+            int c=CharacterRoster.Normalize(characterIndex),p=Mathf.Clamp(playerIndex,0,3);
             if(previews[c,p]==null)
             {
                 Painter body=new Painter();DrawBody(body,c,p);
@@ -67,7 +67,7 @@ namespace FlipRace.Presentation
         public static void WarmUp(int characterIndex,int playerIndex) { Ensure(characterIndex,playerIndex); }
         static FrameSet Ensure(int characterIndex,int playerIndex)
         {
-            int c=CharacterRoster.Normalize(characterIndex),p=playerIndex==0?0:1;
+            int c=CharacterRoster.Normalize(characterIndex),p=Mathf.Clamp(playerIndex,0,3);
             if(frames[p]==null||activeCharacters[p]!=c)
             {
                 if(frames[p]!=null)frames[p].Dispose();
@@ -91,7 +91,7 @@ namespace FlipRace.Presentation
         /// visualTime is pause-aware time for breathing/blinks. motionTime is
         /// distance/base speed, so the stride follows actual boost/slow travel.
         /// flipProgress is the real 0..1 flip phase. Reactions keep locomotion.
-        /// The two selected characters cache 24 MiB of immutable RGBA frames.
+        /// Up to four selected characters lazily cache immutable RGBA frames.
         /// </summary>
         public static Texture2D GetMotionFrame(int characterIndex,int playerIndex,float visualTime,float motionTime,
             float flipProgress,bool running,bool airborne,bool recovering,MascotReaction reaction=MascotReaction.None,float reactionAge=0)
@@ -537,7 +537,7 @@ namespace FlipRace.Presentation
             }else DrawSmallPumpkin(p,x,y+.06f,.13f,.115f,false);
         }
         static Color32 Outline(int character) {return Hex(character==4?0x8b7767:character==5?0x7d7378:character==3?0x65596f:character==2?0x7d7967:0x746d58);}
-        static Color32 Scarf(int player) {return Hex(player==0?0xb7a1de:0xf1ab81);}
+        static Color32 Scarf(int player) {return Hex(player==0?0xb7a1de:player==1?0xf1ab81:player==2?0x8fcab7:0xdba0bc);}
 
         static Curve RoundedRect(float x,float y,float w,float h,float r)
         {

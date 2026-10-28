@@ -51,3 +51,7 @@ Desktop.ini
 
 # Keep Assets (including .meta), Packages, ProjectSettings, Tools sources,
 # compressed test fixtures and the curated Verification reports/assets.
+
+# Local isolated verification workspaces.
+/.tmp-*/
+/.scratch-*/

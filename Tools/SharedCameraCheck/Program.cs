@@ -187,7 +187,13 @@ internal static partial class Program
             var comeback=Run(flight,name,new[]{missed,safe},"miss first small then full/safe",false);
             Check(comeback.Hits[0]==1&&comeback.Hits[1]==0,"Exactly one real collision");
             Check(comeback.LeaderChanges==1,"Real leader change after one hit and later rewards");
-            Near(comeback.Finish[0].Value,36 - 8 * RaceConfig.BoostTimeGain - RaceConfig.FinishBoostDuration + RaceConfig.RecoveryDuration,"Eight rewards/full ITER49 pad plus one collision finish");runs.Add(comeback);
+            // The accepted 4.9.1 chevron shape is optional. These historical
+            // route inputs miss it in both presets; eight ordinary rewards and
+            // one real collision remain the intended comeback witness.
+            Check(comeback.Ordinary[0]==8,"Comeback preserves eight personal ordinary rewards");
+            Check(comeback.Final[0]==0,"Historical comeback route opts out of optional 4.9.1 finish target");
+            Near(comeback.Finish[0].Value,36 - 8 * RaceConfig.BoostTimeGain + RaceConfig.RecoveryDuration,
+                "Eight ordinary rewards plus one collision without optional finish dash");runs.Add(comeback);
             if(name=="fast") {
                 var deferred=(double[])safe.Clone();deferred[11]=6500;
                 runs.Add(Run(flight,name,new[]{deferred,deferred},"safe delayed setup6080→6500",true));

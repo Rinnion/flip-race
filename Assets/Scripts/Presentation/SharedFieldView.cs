@@ -10,11 +10,14 @@ namespace FlipRace.Presentation
     {
         public readonly double Width, Height, Top, Bottom, ScaleX, ScaleY;
         public readonly double CameraLeft, AnchorX, Gap;
-        readonly double x0, x1, y0, y1;
+        public readonly double Left;
+        readonly double x0, x1, x2, x3, y0, y1, y2, y3;
+        readonly int playerCount;
+        readonly bool party;
 
         SharedFieldView(double width, double height, GameState game)
         {
-            Width=width; Height=height;
+            Width=width; Height=height; Left=0; party=game.IsParty;
             Top=Clamp(height*.095,13,25); Bottom=height-Top;
             ScaleY=(Bottom-Top)/RaceConfig.CorridorHeight;
             // Exactly the old lane's horizontal scale; height never changes it.
@@ -23,10 +26,25 @@ namespace FlipRace.Presentation
             x0=game.Players[0].Distance; x1=game.Players[1].Distance;
             y0=RaceSimulation.GetPlayerCenterY(game.Players[0]);
             y1=RaceSimulation.GetPlayerCenterY(game.Players[1]);
+            playerCount=game.Players.Length;
+            x2=playerCount>2?game.Players[2].Distance:0;
+            x3=playerCount>3?game.Players[3].Distance:0;
+            y2=playerCount>2?RaceSimulation.GetPlayerCenterY(game.Players[2]):0;
+            y3=playerCount>3?RaceSimulation.GetPlayerCenterY(game.Players[3]):0;
             // Follow the lagger at the legacy lane anchor, including start and
             // finish. The leader's true projection may leave the right edge.
             CameraLeft=Math.Min(x0,x1)-AnchorX/ScaleX;
             Gap=Math.Abs(x0-x1);
+            if(game.IsParty) {
+                // Fit the immutable logical window uniformly. The Core owns
+                // the elimination boundary, independently of viewport size.
+                ScaleX=ScaleY=Math.Min(width/game.PartyWindowWidth,(height-2*Clamp(height*.095,13,25))/RaceConfig.CorridorHeight);
+                Left=(width-game.PartyWindowWidth*ScaleX)/2;
+                Top=(height-RaceConfig.CorridorHeight*ScaleY)/2;
+                Bottom=Top+RaceConfig.CorridorHeight*ScaleY;
+                CameraLeft=game.PartyCameraLeft;
+                AnchorX=Left+(x0-CameraLeft)*ScaleX;
+            }
         }
 
         public static SharedFieldView Create(double width,double height,GameState game)
@@ -34,11 +52,11 @@ namespace FlipRace.Presentation
             if(game==null||width<=82||height<=26) return default(SharedFieldView);
             return new SharedFieldView(width,height,game);
         }
-        public double WorldX(double x) { return (x-CameraLeft)*ScaleX; }
+        public double WorldX(double x) { return Left+(x-CameraLeft)*ScaleX; }
         public double WorldY(double y) { return Top+y*ScaleY; }
-        public double PlayerX(int player) { return WorldX(player==0?x0:x1); }
-        public double PlayerY(int player) { return WorldY(player==0?y0:y1); }
-        public bool IsPlayerVisible(int player) { double x=PlayerX(player); return ScaleX>0&&x>=0&&x<=Width; }
+        public double PlayerX(int player) { return WorldX(player==0?x0:player==1?x1:player==2?x2:x3); }
+        public double PlayerY(int player) { return WorldY(player==0?y0:player==1?y1:player==2?y2:y3); }
+        public bool IsPlayerVisible(int player) { double x=PlayerX(player); double radius=party?RaceConfig.PlayerRadius*ScaleX:0; return player>=0&&player<playerCount&&ScaleX>0&&x+radius>=Left&&x-radius<=Width-Left; }
 
         public static SharedRewardState RewardState(PlayerState player,string id)
         {
@@ -53,7 +71,7 @@ namespace FlipRace.Presentation
         public static bool ObjectVisible(GameState game,RiskZone zone)
         {
             if(zone.IsLanding) return true; // Physical rail survives its personal rewards.
-            for(int i=0;i<2;i++) {
+            for(int i=0;i<game.Players.Length;i++) {
                 var state=RewardState(game.Players[i],zone.Id);
                 if(state==SharedRewardState.Available||state==SharedRewardState.Pending) return true;
             }

@@ -1,0 +1,36 @@
+{
+  "kind": "Single runtime aria-description line replacement in source WebGL template and generated index only",
+  "unityBuildBytes": 9038713,
+  "finalWebBytes": 9039021,
+  "beforeIndexBytes": 11811,
+  "beforeIndexSha256": "c5ed9e7e5eb39afead3ee1b153f50c48c3cf5a6e074b52f3d3b59de26c917b46",
+  "afterIndexBytes": 12119,
+  "afterIndexSha256": "63a131db96544a9d5ca352f76fb73088e6500da06044e99eabf10e52e43cbe54",
+  "templateAfterSha256": "7b1fba68dc3b93b7d10b0d9f631c7f8d95a7a93de2a4e2d8595247b872d6bde1",
+  "unchangedRuntimeFiles": [
+    {
+      "path": "Build/WebGL-v5.0.0-final.data.unityweb",
+      "bytes": 1745466,
+      "sha256": "b0ed1591f35eebe551f2af351a5ee802fdaf0f17ee4acb152347e045ceb13005"
+    },
+    {
+      "path": "Build/WebGL-v5.0.0-final.framework.js.unityweb",
+      "bytes": 89724,
+      "sha256": "215fb6e68e2625801399a6ae63415583dca11c4ad9eb99b49d8fb63c1eac2151"
+    },
+    {
+      "path": "Build/WebGL-v5.0.0-final.loader.js",
+      "bytes": 39788,
+      "sha256": "3108f537706bfa99f156317450f3f9ad14d7e741e8b048435e42c1fcedb2b183"
+    },
+    {
+      "path": "Build/WebGL-v5.0.0-final.wasm.unityweb",
+      "bytes": 7151924,
+      "sha256": "91a5d751972ecaac6b73bdb707e88cd80b03522e2eedc87b8366730e7f9c2009"
+    }
+  ],
+  "coreSha256": "38A9B4F39BCB22DC67323002AD4BB9795BE84449A9DA59C171491A50E991D18E",
+  "beforeText": "const description = 'Флип! Два игрока: ' + regions + ' Выберите героев и касайтесь своей половины экрана.';",
+  "afterText": "const description = state.party ? 'Флип! Компания: ' + state.players.length + ' игрока. A / L / S / K — игроки 1 / 2 / 3 / 4. Выберите героев и касайтесь своей личной области экрана.' : 'Флип! Два игрока: ' + regions + ' Выберите героев и касайтесь своей половины экрана. В меню доступна компания 2–4: A / L / S / K.';",
+  "checkedAt": "2026-10-28T13:04:03.7293825Z"
+}

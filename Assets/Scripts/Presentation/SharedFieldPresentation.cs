@@ -8,17 +8,18 @@ namespace FlipRace.Presentation
     {
         // Session presentation choices: never included in FlightSettings or Core.
         bool sharedField = false, sharedAdjacent = false, sharedFullHeight = false;
-        public bool SharedEnabled { get { return sharedField && Trial; } }
-        public string FieldViewName { get { return SharedEnabled ? "shared" : SplitGhostEnabled ? "split-ghost" : "split"; } }
-        public string SeatingName { get { return SharedEnabled && sharedAdjacent ? "adjacent" : "opposite"; } }
+        public bool SharedEnabled { get { return PartyEnabled || (sharedField && Trial); } }
+        public string FieldViewName { get { return PartyEnabled ? "party" : SharedEnabled ? "shared" : SplitGhostEnabled ? "split-ghost" : "split"; } }
+        public string SeatingName { get { return PartyEnabled ? "four-corners" : SharedEnabled && sharedAdjacent ? "adjacent" : "opposite"; } }
         public string FieldHeightName { get { return "half"; } }
         public Rect SharedFieldRect
         {
-            get { return new Rect(arena.x, arena.center.y - lanes[0].height / 2, arena.width, lanes[0].height); }
+            get { return PartyEnabled ? PartyFieldRect : new Rect(arena.x, arena.center.y - lanes[0].height / 2, arena.width, lanes[0].height); }
         }
         void MigrateRetiredSharedHeight() { if (sharedFullHeight) sharedFullHeight = false; if (pendingSharedFullHeight) pendingSharedFullHeight = false; }
         public Rect ControlAreaRect(int slot)
         {
+            if (PartyEnabled) return PartyControlArea(slot);
             if (!SharedEnabled) return lanes[slot];
             return sharedAdjacent ? new Rect(arena.x + slot * arena.width / 2, arena.y, arena.width / 2, arena.height)
                 : new Rect(arena.x, arena.y + slot * arena.height / 2, arena.width, arena.height / 2);

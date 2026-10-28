@@ -48,6 +48,8 @@ namespace FlipRace.Presentation
             if (flightSelection == null) InitializeFlightMenu();
             if (activeCustomFlight) flightSelection.SelectCustom(); else flightSelection.SelectPreset(activeFlightPreset);
             pendingFlightTrack = RaceTracks.NormalizeId(Game.Track.Id); flightPage = 0;
+            pendingParty = PartyEnabled; pendingPartyCount = PartyEnabled ? Game.Players.Length : 4;
+            pendingPartyCamera = PartyEnabled ? Game.PartyCamera : PartyCamera.Constant;
             pendingSharedField = sharedField; pendingSharedAdjacent = sharedAdjacent; pendingSharedFullHeight = false; pendingSplitGhost = splitGhost;
         }
         void MeasureFlightMenu()
@@ -115,11 +117,13 @@ namespace FlipRace.Presentation
                 HandleFlightFields(p); return;
             }
             if (flightApply.Contains(p)) { if (CanApplyFlight) ApplyFlightChoice(); return; }
+            if (flightPage == 6) { PartyMenuPointer(p); return; }
             if (flightPage == 5)
             {
+                if (PartyMenuButtonRect.Contains(p)) { pendingParty = true; flightPage = 6; BlockGameplayInput(); return; }
                 for (int option = 0; option < 3; option++)
                     if (ViewOptionRect(0, option).Contains(p))
-                    { pendingSharedField = option == 2; pendingSplitGhost = option == 1; return; }
+                    { pendingParty = false; pendingSharedField = option == 2; pendingSplitGhost = option == 1; return; }
                 for (int option = 0; option < 2; option++)
                     if (pendingSharedField && ViewOptionRect(1, option).Contains(p))
                     { pendingSharedAdjacent = option == 1; return; }
@@ -147,7 +151,7 @@ namespace FlipRace.Presentation
                 if (flightCustom.Contains(p)) { flightSelection.SelectCustom(); flightPage = 1; BlockGameplayInput(); return; }
                 if (flightOldTracks.Contains(p)) { flightPage = 3; BlockGameplayInput(); return; }
                 if (flightTracks.Contains(p)) { flightPage = 4; BlockGameplayInput(); return; }
-                if (flightView.Contains(p)) { flightPage = 5; BlockGameplayInput(); return; }
+                if (flightView.Contains(p)) { flightPage = pendingParty ? 6 : 5; BlockGameplayInput(); return; }
                 if (flightEdit.Contains(p))
                 { flightSelection.Edit(d => { }); SaveCustomFlight(); flightPage = 1; BlockGameplayInput(); return; }
                 return;
@@ -156,7 +160,15 @@ namespace FlipRace.Presentation
         void ApplyFlightChoice()
         {
             if (Active || !showTracks) return;
+            GameState previousSelection = Game;
             Game = CreateSelectedFlight(Game, pendingFlightTrack, flightSelection.Settings);
+            if (pendingParty)
+            {
+                if (!RaceTracks.IsFull(Game.Track.Id)) Game = RaceSimulation.CreateTrial(RaceTracks.GetAt(0), flightSelection.Settings);
+                GameState previous = Game;
+                Game = RaceSimulation.CreateParty(previous.Track, flightSelection.Settings, pendingPartyCount, pendingPartyCamera, PartyStartLeft, PartyWindowWidth);
+                for (int i = 0; i < Game.Players.Length; i++) Game.Players[i].CharacterIndex = i < previousSelection.Players.Length ? previousSelection.Players[i].CharacterIndex : i % CharacterRoster.Count;
+            }
             sharedField = pendingSharedField; sharedAdjacent = pendingSharedAdjacent; splitGhost = pendingSplitGhost && !sharedField; MigrateRetiredSharedHeight();
             pendingFlightTrack = Game.Track.Id;
             activeCustomFlight = flightSelection.IsCustom; activeFlightPreset = flightSelection.PresetIndex;
@@ -216,17 +228,18 @@ namespace FlipRace.Presentation
             Text(flightBack, flightPage == 0 ? "×" : "‹", 23, muted, false, TextAnchor.MiddleCenter);
             Text(new Rect(flightPanel.x + 49, flightPanel.y + 10, flightPanel.width - 65, 23),
                 flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки"
-                    : flightPage == 4 ? "Трассы" : flightPage == 5 ? "Вид и посадка" : "Управление и трасса", 17, ink, true);
+                    : flightPage == 4 ? "Трассы" : flightPage == 5 ? "Вид и посадка" : flightPage == 6 ? "Компания · 2–4 игрока" : "Управление и трасса", 17, ink, true);
             if (flightPage == 1) { DrawFlightEditor(); return; }
             if (flightPage == 3) { DrawOldFlightTracks(); return; }
             if (flightPage == 4) { DrawFullFlightTracks(); return; }
             if (flightPage == 5) { DrawViewChoices(); return; }
+            if (flightPage == 6) { DrawPartyChoices(); return; }
             float col = (flightPanel.width - 48) / 2, right = flightPanel.x + 32 + col;
             Text(new Rect(flightPanel.x + 16, flightPanel.y + 43, col, 14), "ГОТОВЫЕ НАСТРОЙКИ", 8, muted);
             FlightButton(flightChosen, "Основной — прыжок и полёт", flightSelection.PresetIndex == FlightSettingsStore.ChosenPresetIndex, true, 10);
             FlightButton(flightFastFlip, "Быстрый переворот", flightSelection.PresetIndex == FlightSettingsStore.FastFlipPresetIndex, true, 10);
             FlightButton(flightCustom, "Свои настройки  ›", flightSelection.IsCustom);
-            FlightButton(flightView, (pendingSharedField ? "Общее поле" : pendingSplitGhost ? "Два поля + призрак" : "Два поля") + " · вид и посадка  ›", false, true, 9);
+            FlightButton(flightView, (pendingParty ? "Компания " + pendingPartyCount : pendingSharedField ? "Общее поле" : pendingSplitGhost ? "Два поля + призрак" : "Два поля") + " · вид и посадка  ›", false, true, 9);
             FlightButton(flightEdit, "Изменить выбранное  ›", false, true, 9);
             Text(new Rect(right, flightPanel.y + 43, col, 15), flightSelection.IsCustom ? "Свой набор" : FlightSettingsStore.PresetName(flightSelection.PresetIndex), 11, ink, true);
             label.wordWrap = true;
@@ -252,8 +265,7 @@ namespace FlipRace.Presentation
                     : pendingSplitGhost ? "Светлый призрак — живой соперник в твоём поле. Свой герой всегда сверху."
                         : "У каждого своя дорожка и камера.", 10, muted);
             label.wordWrap = false;
-            Text(new Rect(flightPanel.x + 16, flightPanel.y + 215, flightPanel.width - 32, 19),
-                "Круг — первый · ромб — второй. Метка у бонуса: ещё не подобрал.", 9, muted);
+            FlightButton(PartyMenuButtonRect, "Компания · 2–4 игрока  ›", false, true, 11);
             DrawFlightApplyFooter();
         }
         void DrawFullFlightTracks()

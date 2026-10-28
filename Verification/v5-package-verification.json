@@ -1,0 +1,94 @@
+{
+  "checkedAt": "2026-10-28T13:04:04.6451028Z",
+  "version": "5.0.0-trial",
+  "buildRevision": "v5-party-final",
+  "status": "PASS independent static package / fresh extraction verification",
+  "browserStatus": "Separate parent-owned browser check; this script does not start a server or browser.",
+  "buildLog": "Logs/v5-party-final-build.log",
+  "sourceDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v5.0.0-final",
+  "archive": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v5.0.0-trial-webgl.zip",
+  "archiveBytes": 8906342,
+  "archiveSha256": "7e58ee62ab8a759726eb3794290e5bf6d9a194a81935622d2aa2b45bbe73225c",
+  "manifest": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v5.0.0-trial-webgl.zip.manifest.json",
+  "manifestSha256": "741c31deabcc3aaf3361565d8b730f4e9fada517a7e87ccd97807ea9a42b3f0f",
+  "unpackedDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v5.0.0-unpacked-delivery",
+  "targetDidNotExistBeforeExtraction": true,
+  "entryPathsValidatedWithinWorkspace": true,
+  "entryReparseLinksRejected": true,
+  "fileCount": 5,
+  "webBytes": 9039021,
+  "indexAtRoot": true,
+  "runtimeVersionChecked": "5.0.0-trial",
+  "checkedRelativeReferences": [
+    "Build/WebGL-v5.0.0-final.data.unityweb",
+    "Build/WebGL-v5.0.0-final.framework.js.unityweb",
+    "Build/WebGL-v5.0.0-final.loader.js",
+    "Build/WebGL-v5.0.0-final.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v5.0.0-final.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v5.0.0-final.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v5.0.0-final.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v5.0.0-final.loader.js"
+  },
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "wasmHeaderAfterDecompressionVerified": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v5.0.0-final.data.unityweb",
+      "bytes": 1745466,
+      "sourceSha256": "b0ed1591f35eebe551f2af351a5ee802fdaf0f17ee4acb152347e045ceb13005",
+      "archiveSha256": "b0ed1591f35eebe551f2af351a5ee802fdaf0f17ee4acb152347e045ceb13005",
+      "manifestSha256": "b0ed1591f35eebe551f2af351a5ee802fdaf0f17ee4acb152347e045ceb13005",
+      "unpackedSha256": "b0ed1591f35eebe551f2af351a5ee802fdaf0f17ee4acb152347e045ceb13005",
+      "allFourMatch": true
+    },
+    {
+      "path": "Build/WebGL-v5.0.0-final.framework.js.unityweb",
+      "bytes": 89724,
+      "sourceSha256": "215fb6e68e2625801399a6ae63415583dca11c4ad9eb99b49d8fb63c1eac2151",
+      "archiveSha256": "215fb6e68e2625801399a6ae63415583dca11c4ad9eb99b49d8fb63c1eac2151",
+      "manifestSha256": "215fb6e68e2625801399a6ae63415583dca11c4ad9eb99b49d8fb63c1eac2151",
+      "unpackedSha256": "215fb6e68e2625801399a6ae63415583dca11c4ad9eb99b49d8fb63c1eac2151",
+      "allFourMatch": true
+    },
+    {
+      "path": "Build/WebGL-v5.0.0-final.loader.js",
+      "bytes": 39788,
+      "sourceSha256": "3108f537706bfa99f156317450f3f9ad14d7e741e8b048435e42c1fcedb2b183",
+      "archiveSha256": "3108f537706bfa99f156317450f3f9ad14d7e741e8b048435e42c1fcedb2b183",
+      "manifestSha256": "3108f537706bfa99f156317450f3f9ad14d7e741e8b048435e42c1fcedb2b183",
+      "unpackedSha256": "3108f537706bfa99f156317450f3f9ad14d7e741e8b048435e42c1fcedb2b183",
+      "allFourMatch": true
+    },
+    {
+      "path": "Build/WebGL-v5.0.0-final.wasm.unityweb",
+      "bytes": 7151924,
+      "sourceSha256": "91a5d751972ecaac6b73bdb707e88cd80b03522e2eedc87b8366730e7f9c2009",
+      "archiveSha256": "91a5d751972ecaac6b73bdb707e88cd80b03522e2eedc87b8366730e7f9c2009",
+      "manifestSha256": "91a5d751972ecaac6b73bdb707e88cd80b03522e2eedc87b8366730e7f9c2009",
+      "unpackedSha256": "91a5d751972ecaac6b73bdb707e88cd80b03522e2eedc87b8366730e7f9c2009",
+      "allFourMatch": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 12119,
+      "sourceSha256": "63a131db96544a9d5ca352f76fb73088e6500da06044e99eabf10e52e43cbe54",
+      "archiveSha256": "63a131db96544a9d5ca352f76fb73088e6500da06044e99eabf10e52e43cbe54",
+      "manifestSha256": "63a131db96544a9d5ca352f76fb73088e6500da06044e99eabf10e52e43cbe54",
+      "unpackedSha256": "63a131db96544a9d5ca352f76fb73088e6500da06044e99eabf10e52e43cbe54",
+      "allFourMatch": true
+    }
+  ],
+  "baseline491": {
+    "sha256": "a3d59215a493cb6c3382eb4dec87549450d5fd4fc551a8652c65b847a30ae04c",
+    "unchanged": true
+  },
+  "baseline492": {
+    "sha256": "9385b21ffe7ad91a3b0117736e9e6fee2cc707ddb1ac5296982a7711d0946466",
+    "unchanged": true
+  },
+  "reproduction": "pwsh -File Verification/v5-package-check.ps1 -BuildRevision v5-party-final -UnpackedDirectory Builds/WebGL-v5.0.0-unpacked-delivery (requires a new unpacked target)",
+  "noPublicUpload": true
+}

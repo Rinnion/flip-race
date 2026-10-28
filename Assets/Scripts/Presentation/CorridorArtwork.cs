@@ -20,15 +20,15 @@ namespace FlipRace.Presentation
             public bool MirrorX, Running, Recovering, ShowPracticeMarker, AtPracticeMarker;
         }
 
-        static readonly Color[] Ink = { Hex(0x7860a6), Hex(0xcf7962) };
-        static readonly Color[] Pale = { Hex(0xe9e0f4), Hex(0xf8e0d5) };
+        static readonly Color[] Ink = { Hex(0x7860a6), Hex(0xcf7962), Hex(0x398d80), Hex(0xb6648e) };
+        static readonly Color[] Pale = { Hex(0xe9e0f4), Hex(0xf8e0d5), Hex(0xd9eee5), Hex(0xf2dce8) };
         static readonly Color[] Confetti = { Hex(0xb6c993), Hex(0xe8ba71), Hex(0xbba5d8), Hex(0xe2a18d), Hex(0x91b9bf) };
         readonly Texture2D circle, star, leaf, floorRock, ceilingRock, floorSlab, ceilingSlab, coinArtwork, finishTargetArtwork;
         // Explicit lane-local clipping avoids Unity GUIClip's interaction with
         // rotated/scaled matrices (the upper player's entire lane is rotated).
         Rect clipBounds;
-        readonly float[] jumpRotation = new float[2];
-        readonly float[] jumpRotationTime = { -1, -1 };
+        readonly float[] jumpRotation = new float[4];
+        readonly float[] jumpRotationTime = { -1, -1, -1, -1 };
 
         public CorridorArtwork()
         {

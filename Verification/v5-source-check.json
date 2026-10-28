@@ -1,0 +1,122 @@
+{
+  "checkedAt": "2026-10-28T12:52:54.408767+00:00",
+  "baselineRevision": "a235d398db1fb1c79603d68a973f451a098a520b",
+  "status": "PASS",
+  "trackFiles": [
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "baselineSha256": "588be383b503f40ffc8083450237296ad1a6ea0954488684712fd5a3f74449d4",
+      "currentSha256": "588be383b503f40ffc8083450237296ad1a6ea0954488684712fd5a3f74449d4",
+      "unchanged": true,
+      "rawBytesEqual": true,
+      "baselineNormalizedSha256": "588be383b503f40ffc8083450237296ad1a6ea0954488684712fd5a3f74449d4",
+      "currentNormalizedSha256": "588be383b503f40ffc8083450237296ad1a6ea0954488684712fd5a3f74449d4",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "baselineSha256": "6a34206c0a4901808547865f866e9b62ccc2e10b1b69e746578240bf76e45201",
+      "currentSha256": "b412a88cd4f9bc17c8b41418ef2aa09892c36a94dd9a2f847f476b7bda4f7c79",
+      "unchanged": true,
+      "rawBytesEqual": false,
+      "baselineNormalizedSha256": "6a34206c0a4901808547865f866e9b62ccc2e10b1b69e746578240bf76e45201",
+      "currentNormalizedSha256": "6a34206c0a4901808547865f866e9b62ccc2e10b1b69e746578240bf76e45201",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "baselineSha256": "9a481e6efd7a7c1893f4cb001d56b361469a8122083c4f2ceba13a01fef7eb71",
+      "currentSha256": "496bfd134fdb69713ec339fab3938f5a94dbe3424f96be60aa571ceaf6b53156",
+      "unchanged": true,
+      "rawBytesEqual": false,
+      "baselineNormalizedSha256": "9a481e6efd7a7c1893f4cb001d56b361469a8122083c4f2ceba13a01fef7eb71",
+      "currentNormalizedSha256": "9a481e6efd7a7c1893f4cb001d56b361469a8122083c4f2ceba13a01fef7eb71",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "baselineSha256": "c808cd0898d5180597dccd8cb20a7c2f893fad037b0043a0018061114afaadd0",
+      "currentSha256": "c808cd0898d5180597dccd8cb20a7c2f893fad037b0043a0018061114afaadd0",
+      "unchanged": true,
+      "rawBytesEqual": true,
+      "baselineNormalizedSha256": "c808cd0898d5180597dccd8cb20a7c2f893fad037b0043a0018061114afaadd0",
+      "currentNormalizedSha256": "c808cd0898d5180597dccd8cb20a7c2f893fad037b0043a0018061114afaadd0",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "baselineSha256": "7b90cf8e786a997b8863fdc677ea5e07155d65898b1d0a53116dac709f5441d7",
+      "currentSha256": "7b90cf8e786a997b8863fdc677ea5e07155d65898b1d0a53116dac709f5441d7",
+      "unchanged": true,
+      "rawBytesEqual": true,
+      "baselineNormalizedSha256": "7b90cf8e786a997b8863fdc677ea5e07155d65898b1d0a53116dac709f5441d7",
+      "currentNormalizedSha256": "7b90cf8e786a997b8863fdc677ea5e07155d65898b1d0a53116dac709f5441d7",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "baselineSha256": "337a472d0e9e39e03f1e584fe38cdbed20558d5058a93dff0de5f9f578d5096a",
+      "currentSha256": "70a08021e5ec047e18e6db7ddc612532f95f45a175098d57d80137de9050ddc6",
+      "unchanged": true,
+      "rawBytesEqual": false,
+      "baselineNormalizedSha256": "337a472d0e9e39e03f1e584fe38cdbed20558d5058a93dff0de5f9f578d5096a",
+      "currentNormalizedSha256": "337a472d0e9e39e03f1e584fe38cdbed20558d5058a93dff0de5f9f578d5096a",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "baselineSha256": "5435c14bc8915039fbebba1fac9fdf767adf508b6e25a95a453cb9748b1de0a2",
+      "currentSha256": "5435c14bc8915039fbebba1fac9fdf767adf508b6e25a95a453cb9748b1de0a2",
+      "unchanged": true,
+      "rawBytesEqual": true,
+      "baselineNormalizedSha256": "5435c14bc8915039fbebba1fac9fdf767adf508b6e25a95a453cb9748b1de0a2",
+      "currentNormalizedSha256": "5435c14bc8915039fbebba1fac9fdf767adf508b6e25a95a453cb9748b1de0a2",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "baselineSha256": "86932f9e38cceabacb74da14d1cb44dc5cb5d139a385b53bd8e921feced38628",
+      "currentSha256": "86932f9e38cceabacb74da14d1cb44dc5cb5d139a385b53bd8e921feced38628",
+      "unchanged": true,
+      "rawBytesEqual": true,
+      "baselineNormalizedSha256": "86932f9e38cceabacb74da14d1cb44dc5cb5d139a385b53bd8e921feced38628",
+      "currentNormalizedSha256": "86932f9e38cceabacb74da14d1cb44dc5cb5d139a385b53bd8e921feced38628",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "baselineSha256": "9dbb5e53cf74dd93a9bcbcbfdacbff9c469040f2e5f8b16a14c346d1ff4f8cb1",
+      "currentSha256": "9dbb5e53cf74dd93a9bcbcbfdacbff9c469040f2e5f8b16a14c346d1ff4f8cb1",
+      "unchanged": true,
+      "rawBytesEqual": true,
+      "baselineNormalizedSha256": "9dbb5e53cf74dd93a9bcbcbfdacbff9c469040f2e5f8b16a14c346d1ff4f8cb1",
+      "currentNormalizedSha256": "9dbb5e53cf74dd93a9bcbcbfdacbff9c469040f2e5f8b16a14c346d1ff4f8cb1",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "baselineSha256": "da3242d2d9adee589cf9cf52c4842699d0693f8dfd2d7feccb4cc06015888ddb",
+      "currentSha256": "da3242d2d9adee589cf9cf52c4842699d0693f8dfd2d7feccb4cc06015888ddb",
+      "unchanged": true,
+      "rawBytesEqual": true,
+      "baselineNormalizedSha256": "da3242d2d9adee589cf9cf52c4842699d0693f8dfd2d7feccb4cc06015888ddb",
+      "currentNormalizedSha256": "da3242d2d9adee589cf9cf52c4842699d0693f8dfd2d7feccb4cc06015888ddb",
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF (Git checkout line-ending policy)"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs#Tracks",
+      "baselineSha256": "c6a468eca3848fe30ded86d8ff330da5060a3296b8a67309d6ad5c025b38426a",
+      "currentSha256": "c6a468eca3848fe30ded86d8ff330da5060a3296b8a67309d6ad5c025b38426a",
+      "unchanged": true,
+      "normalization": "UTF-8 without BOM; CRLF normalized to LF for extracted class region"
+    }
+  ],
+  "gitDiffTrackFiles": [],
+  "foreignReport": {
+    "path": "Verification/FIX491-RELEASE.md",
+    "expectedSha256": "3071311647c1391af4ff9dc16b1de0eda1b735d5b117bd078158c684e7f93cd5",
+    "currentSha256": "3071311647c1391af4ff9dc16b1de0eda1b735d5b117bd078158c684e7f93cd5",
+    "unchanged": true
+  },
+  "scope": "Read-only comparison; no track or foreign report source was edited."
+}

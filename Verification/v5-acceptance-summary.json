@@ -1,0 +1,63 @@
+{
+  "status": "PASS root acceptance",
+  "version": "5.0.0-trial",
+  "nativeOutcomes": [
+    {
+      "status": "PASS",
+      "elapsed": 6.085454545454545,
+      "players": 4,
+      "kind": "four-no-input-all-eliminated",
+      "winner": "",
+      "phase": "finished"
+    },
+    {
+      "status": "PASS",
+      "elapsed": 6.085454545454546,
+      "players": 2,
+      "kind": "two-constant-all-eliminated",
+      "winner": "",
+      "phase": "finished"
+    },
+    {
+      "status": "PASS",
+      "elapsed": 6.085454545454545,
+      "players": 3,
+      "kind": "three-constant-all-eliminated",
+      "winner": "",
+      "phase": "finished"
+    },
+    {
+      "status": "PASS",
+      "elapsed": 37.999999999999346,
+      "players": 4,
+      "kind": "four-lagger-all-finished",
+      "winner": "tie",
+      "phase": "finished"
+    },
+    {
+      "status": "PASS",
+      "elapsed": 37.99999999999929,
+      "players": 3,
+      "kind": "three-lagger-all-finished",
+      "winner": "tie",
+      "phase": "finished"
+    },
+    {
+      "status": "PASS",
+      "elapsed": 37.99999999999971,
+      "players": 2,
+      "kind": "two-lagger-all-finished",
+      "winner": "tie",
+      "phase": "finished"
+    }
+  ],
+  "cameraSpeed": 220,
+  "pauseResizeUnchanged": true,
+  "finalUnpackedAriaAndStable": true,
+  "httpFilesMatchFinalZip": true,
+  "zipSha256": "7e58ee62ab8a759726eb3794290e5bf6d9a194a81935622d2aa2b45bbe73225c",
+  "zipBytes": 8906342,
+  "docsCommit": "c52a17b",
+  "catalyticFinalAcceptance": "PASS; Verification/V5-PARTY-CATALYTIC-ACCEPTANCE.md",
+  "physicalDeviceStudy": "Deferred by direct user instruction"
+}

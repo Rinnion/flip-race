@@ -9,17 +9,19 @@ namespace FlipRace.Presentation
         public struct SharedFieldGeometry
         {
             public SharedFieldView View;
-            public Geometry Player0, Player1;
-            public Geometry Player(int index) { return index==0?Player0:Player1; }
+            public Geometry Player0, Player1, Player2, Player3;
+            public Geometry Player(int index) { return index==0?Player0:index==1?Player1:index==2?Player2:Player3; }
         }
 
-        /// <summary>One canonical world, then both personal backdrops. No player mirror or state writes.</summary>
+        /// <summary>One canonical world, then all personal backdrops. No player mirror or state writes.</summary>
         public SharedFieldGeometry DrawSharedWorld(float w,float h,GameState game,float time)
         {
             var view=SharedFieldView.Create(w,h,game);
             if(view.ScaleX<=0) return default(SharedFieldGeometry);
             var result=new SharedFieldGeometry {View=view,
-                Player0=SharedPlayerGeometry(view,game,0,time),Player1=SharedPlayerGeometry(view,game,1,time)};
+                Player0=SharedPlayerGeometry(view,game,0,time),Player1=SharedPlayerGeometry(view,game,1,time),
+                Player2=game.Players.Length>2?SharedPlayerGeometry(view,game,2,time):default(Geometry),
+                Player3=game.Players.Length>3?SharedPlayerGeometry(view,game,3,time):default(Geometry)};
             Matrix4x4 previous=GUI.matrix;Color previousColor=GUI.color;
             clipBounds=new Rect(0,0,w,h);
             float top=(float)view.Top,bottom=(float)view.Bottom,sx=(float)view.ScaleX,sy=(float)view.ScaleY;
@@ -50,7 +52,7 @@ namespace FlipRace.Presentation
             foreach(var zone in game.Track.RiskZones)DrawSharedReward(w,game,zone,time,view);
             float finish=(float)view.WorldX(game.Track.Length);
             if(finish<w+40&&finish> -50)Finish(finish,top,bottom,sy);
-            for(int i=0;i<2;i++)if(view.IsPlayerVisible(i))SharedPersonalBackdrop(game,i,time,result.Player(i));
+            for(int i=0;i<game.Players.Length;i++)if(view.IsPlayerVisible(i)&&(!game.IsParty||game.Players[i].Status!=PlayerStatus.Eliminated))SharedPersonalBackdrop(game,i,time,result.Player(i));
             GUI.matrix=previous;GUI.color=previousColor;return result;
         }
 
@@ -94,10 +96,10 @@ namespace FlipRace.Presentation
             // Keep the exact common projected centre. Gait is inside the sprite;
             // no player-specific bob or overlap offset moves this world point.
             return new Geometry {X=(float)view.PlayerX(index),Y=(float)view.PlayerY(index),
-                Radius=Mathf.Clamp((float)(RaceConfig.PlayerRadius*view.ScaleY),7.5f,25),Rotation=rotation,MirrorX=false,
+                Radius=game.IsParty?(float)(RaceConfig.PlayerRadius*view.ScaleY):Mathf.Clamp((float)(RaceConfig.PlayerRadius*view.ScaleY),7.5f,25),Rotation=rotation,MirrorX=false,
                 Top=(float)view.Top,Bottom=(float)view.Bottom,ScaleX=(float)view.ScaleX,ScaleY=(float)view.ScaleY,
                 Anchor=(float)view.PlayerX(index),FinishX=(float)view.WorldX(game.Track.Length),
-                Running=game.Phase=="racing"&&!p.FinishTime.HasValue&&p.Recovering<=0,Recovering=p.Recovering>0,
+                Running=game.Phase=="racing"&&!p.FinishTime.HasValue&&p.Recovering<=0&&(!game.IsParty||p.Status==PlayerStatus.Running),Recovering=p.Recovering>0,
                 MotionTime=(float)(p.Distance/RaceConfig.Speed),FlipProgress=flight};
         }
 
@@ -107,12 +109,14 @@ namespace FlipRace.Presentation
             if(x< -30||x>w+30||!SharedFieldView.ObjectVisible(game,zone))return;
             bool available0=SharedFieldView.MarkerAvailable(game.Players[0],zone.Id);
             bool available1=SharedFieldView.MarkerAvailable(game.Players[1],zone.Id);
+            bool anyAvailable=available0||available1;
+            for(int i=2;i<game.Players.Length;i++)anyAvailable|=SharedFieldView.MarkerAvailable(game.Players[i],zone.Id);
             float radius=Mathf.Max(6.5f,(float)(zone.Radius+4)*sy),badgeY=y-radius-8;
             if(zone.IsLanding) {
                 foreach(var stone in game.Track.Obstacles)if(stone.Id==zone.ObstacleId) {
                     bool ceiling=stone.Kind=="ceiling";
                     y=(float)view.WorldY(ceiling?stone.Height:RaceConfig.CorridorHeight-stone.Height);
-                    LandingPad(x,y,(float)(zone.LandingWidth*view.ScaleX),ceiling,!available0&&!available1,time);
+                    LandingPad(x,y,(float)(zone.LandingWidth*view.ScaleX),ceiling,!anyAvailable,time);
                     badgeY=y+(ceiling?12:-12);break;
                 }
             }else if(zone.IsFinish) {
@@ -138,8 +142,12 @@ namespace FlipRace.Presentation
                 if(!zone.IsNegative)Line(x,y-radius*.4f,x,y+radius*.4f,ink,1.6f);
             }
             // Fixed owner slots. A consumed/pending/failed marker never returns.
-            if(available0&&FullyInside(new Rect(x-8.4f,badgeY-3.4f,6.8f,6.8f)))DrawPersonalBadge(x-5,badgeY,0,3.4f);
-            if(available1&&FullyInside(new Rect(x+1.6f,badgeY-3.4f,6.8f,6.8f)))DrawPersonalBadge(x+5,badgeY,1,3.4f);
+            for(int i=0;i<game.Players.Length;i++) {
+                float markerX=x+(i-(game.Players.Length-1)*.5f)*10;
+                if(SharedFieldView.MarkerAvailable(game.Players[i],zone.Id)&&
+                    FullyInside(new Rect(markerX-3.4f,badgeY-3.4f,6.8f,6.8f)))
+                    DrawPersonalBadge(markerX,badgeY,i,3.4f);
+            }
         }
 
         void SharedPersonalBackdrop(GameState game,int index,float time,Geometry g)
@@ -160,17 +168,18 @@ namespace FlipRace.Presentation
 
         public void DrawSharedPersonalForeground(float w,float h,GameState game,int playerIndex,float time,Geometry geometry)
         {
-            if(geometry.X<0||geometry.X>w)return;
+            if((game.IsParty?(geometry.X+geometry.Radius<0||geometry.X-geometry.Radius>w):(geometry.X<0||geometry.X>w))||(game.IsParty&&game.Players[playerIndex].Status==PlayerStatus.Eliminated))return;
             Color previousColor=GUI.color;
             DrawPersonalForeground(w,h,game,playerIndex,time,geometry,false,game.Phase=="finished");
-            // Two differently sized contours and fixed badge slots remain visible
-            // even when both sprites occupy exactly the same physical point.
-            float r=geometry.Radius*(playerIndex==0?1.78f:2.02f);
-            int segments=playerIndex==0?32:4;
-            for(int i=0;i<segments;i++){float a=i*Mathf.PI*2/segments-Mathf.PI/2,b=(i+1)*Mathf.PI*2/segments-Mathf.PI/2;
+            // Distinct nested contours and fixed owner badges remain visible
+            // even when sprites occupy exactly the same physical point.
+            float r=geometry.Radius*(playerIndex==0?1.78f:playerIndex==1?2.02f:playerIndex==2?2.26f:2.5f);
+            int segments=playerIndex==0?32:playerIndex==2?3:4;
+            float angle=playerIndex==3?Mathf.PI/4:0;
+            for(int i=0;i<segments;i++){float a=i*Mathf.PI*2/segments-Mathf.PI/2+angle,b=(i+1)*Mathf.PI*2/segments-Mathf.PI/2+angle;
                 Line(geometry.X+Mathf.Cos(a)*r,geometry.Y+Mathf.Sin(a)*r,
                     geometry.X+Mathf.Cos(b)*r,geometry.Y+Mathf.Sin(b)*r,Alpha(Ink[playerIndex],.68f),1.3f);}
-            float badgeX=geometry.X+(playerIndex==0?-6:6),badgeY=Mathf.Clamp(geometry.Y-r-6,5,h-5);
+            float badgeX=geometry.X+(game.Players.Length==2?(playerIndex==0?-6:6):(playerIndex-(game.Players.Length-1)*.5f)*11),badgeY=Mathf.Clamp(geometry.Y-r-6,5,h-5);
             if(FullyInside(new Rect(badgeX-4,badgeY-4,8,8)))DrawPersonalBadge(badgeX,badgeY,playerIndex,4);
             GUI.color=previousColor;
         }
@@ -179,9 +188,11 @@ namespace FlipRace.Presentation
         {
             Rect previousClip=clipBounds;Color previousColor=GUI.color;
             clipBounds=new Rect(x-size-1,y-size-1,size*2+2,size*2+2);
-            Color ink=Ink[playerIndex==0?0:1];
+            Color ink=Ink[Mathf.Clamp(playerIndex,0,3)];
             if(playerIndex==0)Ellipse(x,y,size,size,ink);
-            else for(float row=-size;row<=size;row+=.75f){float half=size-Mathf.Abs(row);Fill(new Rect(x-half,y+row,half*2,.9f),ink);}
+            else if(playerIndex==1)for(float row=-size;row<=size;row+=.75f){float half=size-Mathf.Abs(row);Fill(new Rect(x-half,y+row,half*2,.9f),ink);}
+            else if(playerIndex==2)for(float row=-size;row<=size;row+=.75f){float half=(row+size)*.5f;Fill(new Rect(x-half,y+row,half*2,.9f),ink);}
+            else Fill(new Rect(x-size,y-size,size*2,size*2),ink);
             clipBounds=previousClip;GUI.color=previousColor;
         }
     }
