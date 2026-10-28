@@ -6,7 +6,7 @@ namespace FlipRace.Presentation
     public sealed partial class FlipRaceGame
     {
         bool splitGhost;
-        public bool SplitGhostEnabled { get { return Trial&&!sharedField&&splitGhost; } }
+        public bool SplitGhostEnabled { get { return Trial&&!SharedEnabled&&splitGhost; } }
         public Vector2 GhostScreenPoint(int observer)
         {
             Rect lane=lanes[observer];var view=SplitGhostView.Create(lane.width,lane.height,Game,observer);

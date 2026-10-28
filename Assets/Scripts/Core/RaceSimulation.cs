@@ -205,6 +205,8 @@ namespace FlipRace.Core
     public sealed class GameState
     {
         public readonly bool IsParty;
+        public readonly bool IsSolo;
+        public bool UsesSharedRaceCamera { get { return IsParty || IsSolo; } }
         public readonly PartyCamera PartyCamera;
         public readonly double PartyCameraStartLeft, PartyWindowWidth, PartyCameraSpeed;
         internal double PartyLastCameraLeft;
@@ -220,9 +222,9 @@ namespace FlipRace.Core
             }
         }
         public GameState() { }
-        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth)
+        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo)
         {
-            IsParty = true; PartyCamera = camera; PartyCameraStartLeft = startLeft;
+            IsParty = !solo; IsSolo = solo; PartyCamera = camera; PartyCameraStartLeft = startLeft;
             PartyWindowWidth = windowWidth; PartyCameraSpeed = track.Length / 36;
             PartyLastCameraLeft = startLeft;
         }
@@ -423,9 +425,21 @@ namespace FlipRace.Core
         public static GameState CreateParty(Track track, FlightSettings flight, int playerCount,
             PartyCamera camera, double cameraStartLeft, double windowWidth)
         {
+            return CreateSharedRace(track, flight, playerCount, camera, cameraStartLeft, windowWidth, false);
+        }
+
+        public static GameState CreateSolo(Track track, FlightSettings flight,
+            PartyCamera camera, double cameraStartLeft, double windowWidth)
+        {
+            return CreateSharedRace(track, flight, 1, camera, cameraStartLeft, windowWidth, true);
+        }
+
+        private static GameState CreateSharedRace(Track track, FlightSettings flight, int playerCount,
+            PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo)
+        {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (flight == null) throw new ArgumentNullException(nameof(flight));
-            if (playerCount < 2 || playerCount > 4) throw new ArgumentOutOfRangeException(nameof(playerCount));
+            if (!solo && (playerCount < 2 || playerCount > 4)) throw new ArgumentOutOfRangeException(nameof(playerCount));
             if (!Enum.IsDefined(typeof(PartyCamera), camera)) throw new ArgumentOutOfRangeException(nameof(camera));
             if (double.IsNaN(cameraStartLeft) || double.IsInfinity(cameraStartLeft))
                 throw new ArgumentOutOfRangeException(nameof(cameraStartLeft));
@@ -433,8 +447,8 @@ namespace FlipRace.Core
                 throw new ArgumentOutOfRangeException(nameof(windowWidth));
             if (double.IsNaN(track.Length) || double.IsInfinity(track.Length) || track.Length <= 0)
                 throw new ArgumentOutOfRangeException(nameof(track));
-            var game = new GameState(track, camera, cameraStartLeft, windowWidth)
-            { Mode = "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
+            var game = new GameState(track, camera, cameraStartLeft, windowWidth, solo)
+            { Mode = solo ? "solo" : "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
             for (int i = 0; i < playerCount; i++)
                 game.Players[i] = new PlayerState(i) { AirFlipAvailable = SupportsAirFlip(flight) };
             return game;
@@ -1211,7 +1225,7 @@ namespace FlipRace.Core
                 }
                 if (tiedCount >= 2) game.Winner = "tie";
             }
-            if (game.IsParty)
+            if (game.UsesSharedRaceCamera)
             {
                 bool allTerminal = true;
                 double lastTerminal = 0;
@@ -1255,7 +1269,7 @@ namespace FlipRace.Core
             }
             if (game.Phase != "racing" || dt <= 0) return;
             var flight = Settings(game);
-            if (game.IsParty)
+            if (game.UsesSharedRaceCamera)
             {
                 foreach (var player in game.Players) AdvancePlayer(player, game.Track, dt, game.Elapsed, flight, game);
                 game.Elapsed += dt;

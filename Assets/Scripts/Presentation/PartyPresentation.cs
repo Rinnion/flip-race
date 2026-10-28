@@ -11,12 +11,12 @@ namespace FlipRace.Presentation
         int pendingPartyCount = 4;
         PartyCamera pendingPartyCamera;
         public bool PartyEnabled { get { return Game != null && Game.IsParty; } }
-        public Rect PartyMenuButtonRect { get { return new Rect(flightPanel.x + 16, flightPanel.y + 204, flightPanel.width - 32, 32); } }
+        public Rect PartyMenuButtonRect { get { return new Rect(flightPanel.x + 16, flightPanel.y + 204, (flightPanel.width - 36)/2, 32); } }
         public Rect PartyCountRect(int option)
         { MeasureFlightMenu(); float cw=(flightPanel.width-40)/3; return new Rect(flightPanel.x+16+option*(cw+4),flightPanel.y+61,cw,44); }
         public Rect PartyCameraRect(int option)
         { MeasureFlightMenu(); float cw=(flightPanel.width-36)/2; return new Rect(flightPanel.x+16+option*(cw+4),flightPanel.y+126,cw,44); }
-        public Rect PartyLegacyRect { get { return new Rect(flightPanel.x+16,flightPanel.y+210,flightPanel.width-32,28); } }
+        public Rect PartyLegacyRect { get { return new Rect(flightPanel.x+16,flightPanel.y+210,(flightPanel.width-36)/2,28); } }
         public Rect PartyFieldRect
         {
             get
@@ -67,6 +67,7 @@ namespace FlipRace.Presentation
         {
             for(int i=0;i<3;i++)if(PartyCountRect(i).Contains(point)){pendingPartyCount=i+2;return;}
             for(int i=0;i<2;i++)if(PartyCameraRect(i).Contains(point)){pendingPartyCamera=(PartyCamera)i;return;}
+            if(SoloMenuButtonRect.Contains(point)){EnterSoloMenu();return;}
             if(PartyLegacyRect.Contains(point)){pendingParty=false;flightPage=5;BlockGameplayInput();}
         }
         void DrawPartyChoices()
@@ -82,6 +83,7 @@ namespace FlipRace.Presentation
                 : "Камера следует за последним бегущим. Выбывания за экран нет.",10,muted);
             label.wordWrap=false;
             FlightButton(PartyLegacyRect,"Прежние виды для двоих  ›",false,true,10);
+            FlightButton(SoloMenuButtonRect,"Один ›",false,true,11);
             DrawFlightApplyFooter();
         }
         void DrawPartyField()

@@ -8,24 +8,25 @@ namespace FlipRace.Presentation
     {
         // Session presentation choices: never included in FlightSettings or Core.
         bool sharedField = false, sharedAdjacent = false, sharedFullHeight = false;
-        public bool SharedEnabled { get { return PartyEnabled || (sharedField && Trial); } }
-        public string FieldViewName { get { return PartyEnabled ? "party" : SharedEnabled ? "shared" : SplitGhostEnabled ? "split-ghost" : "split"; } }
-        public string SeatingName { get { return PartyEnabled ? "four-corners" : SharedEnabled && sharedAdjacent ? "adjacent" : "opposite"; } }
+        public bool SharedEnabled { get { return SoloEnabled || PartyEnabled || (sharedField && Trial); } }
+        public string FieldViewName { get { return SoloEnabled ? "solo" : PartyEnabled ? "party" : SharedEnabled ? "shared" : SplitGhostEnabled ? "split-ghost" : "split"; } }
+        public string SeatingName { get { return SoloEnabled ? "solo" : PartyEnabled ? "four-corners" : SharedEnabled && sharedAdjacent ? "adjacent" : "opposite"; } }
         public string FieldHeightName { get { return "half"; } }
         public Rect SharedFieldRect
         {
-            get { return PartyEnabled ? PartyFieldRect : new Rect(arena.x, CommonFieldTop(lanes[0].height), arena.width, lanes[0].height); }
+            get { return SoloEnabled || PartyEnabled ? PartyFieldRect : new Rect(arena.x, CommonFieldTop(lanes[0].height), arena.width, lanes[0].height); }
         }
         void MigrateRetiredSharedHeight() { if (sharedFullHeight) sharedFullHeight = false; if (pendingSharedFullHeight) pendingSharedFullHeight = false; }
         public Rect ControlAreaRect(int slot)
         {
+            if (SoloEnabled) { if(slot!=0)throw new ArgumentOutOfRangeException(nameof(slot)); return arena; }
             if (PartyEnabled) return PartyControlArea(slot);
             if (!SharedEnabled) return lanes[slot];
             if (SessionCentered && !sharedAdjacent) return SharedSideArea(slot);
             return sharedAdjacent ? new Rect(arena.x + slot * arena.width / 2, arena.y, arena.width / 2, arena.height)
                 : new Rect(arena.x, arena.y + slot * arena.height / 2, arena.width, arena.height / 2);
         }
-        bool SharedRotated(int slot) { return !sharedAdjacent && slot == 0; }
+        bool SharedRotated(int slot) { return !SoloEnabled && !sharedAdjacent && slot == 0; }
         Rect SharedScreenRect(int slot, Rect local)
         {
             Rect r = ControlAreaRect(slot);

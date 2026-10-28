@@ -1,0 +1,29 @@
+SOLO Core verification — 2026-10-28
+Commands executed from F:/Home/Game/flip-race-unity against the actual working Core sources.
+
+Command: dotnet run --project Tools/SoloCheck/SoloCheck.csproj -- Verification/solo-core.json
+Exit code: 0
+SoloCheck PASS: 7662156 assertions; 59482 complete personal snapshots; 1478 tape actions; 84 full-track cases.
+Outcomes: 74 Finished, 10 Eliminated.
+Cases exercising collisions: 20; ordinary boosts: 44; slows: 20; coins: 4; finish boosts: 12.
+All five full tracks, both presets and both cameras. Additional lifecycle, validation, body-boundary/priority and terminal/repeat fixtures are included in the assertion total.
+
+Command: dotnet run --project Tools/PartyCheck/PartyCheck.csproj
+Exit code: 0
+PartyCheck PASS: 512 deterministic assertions (PARTY-00/01/02/04/05/06)
+
+Command: dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- Tools/engine-parity-fixtures.tsv.gz
+Exit code: 0
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.
+PASS: V4-01/02 18 scenarios / 1770 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.
+PASS: TUNE-01/02 13 scenarios / 1009 assertions; four profiles, instant boost, preserved effects and actual finishes.
+PASS: CONTROL 19 scenarios / 2166 assertions.
+PASS: chevron finish 10 scenarios / 2054 assertions.
+PASS: FLIGHT 12 scenarios / 2424 assertions.
+PASS: MODES 4 scenarios / 1190 assertions; open edges, real corners, geometric linked confirmation and Fast single air repeat.
+PASS: RHYTHM offset gates 4 scenarios / 2960 assertions; real mirrors, signed offsets, corners, one logical penalty and linked union clearance.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).
+
+Historical reports and fixtures were not regenerated. Core verification does not establish UI/WebGL/ZIP correctness.

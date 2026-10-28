@@ -133,6 +133,10 @@ namespace FlipRace.Web
             AppendPlayerRects(output, game.PawScreenRect);
             output.Append("],\"trackMenuRect\":"); AppendRect(output, game.TrackMenuButtonRect);
             output.Append(",\"sessionRect\":"); AppendRect(output, game.SessionBarRect);
+            output.Append(",\"solo\":").Append(game.SoloEnabled ? "true" : "false");
+            output.Append(",\"soloMenuRect\":"); AppendRect(output, game.SoloMenuButtonRect);
+            output.Append(",\"soloTrackChoiceRect\":"); AppendRect(output, game.SoloTrackChoiceRect);
+            output.Append(",\"soloCountdownRect\":"); AppendRect(output, game.SoloCountdownRect);
             output.Append(",\"viewMenuRect\":"); AppendRect(output, game.ViewMenuButtonRect);
             output.Append(",\"viewOptionRects\":[");
             for (int row = 0; row < 2; row++)

@@ -19,7 +19,7 @@ namespace FlipRace.Presentation
             var view=SharedFieldView.Create(w,h,game);
             if(view.ScaleX<=0) return default(SharedFieldGeometry);
             var result=new SharedFieldGeometry {View=view,
-                Player0=SharedPlayerGeometry(view,game,0,time),Player1=SharedPlayerGeometry(view,game,1,time),
+                Player0=SharedPlayerGeometry(view,game,0,time),Player1=game.Players.Length>1?SharedPlayerGeometry(view,game,1,time):default(Geometry),
                 Player2=game.Players.Length>2?SharedPlayerGeometry(view,game,2,time):default(Geometry),
                 Player3=game.Players.Length>3?SharedPlayerGeometry(view,game,3,time):default(Geometry)};
             Matrix4x4 previous=GUI.matrix;Color previousColor=GUI.color;
@@ -52,7 +52,7 @@ namespace FlipRace.Presentation
             foreach(var zone in game.Track.RiskZones)DrawSharedReward(w,game,zone,time,view);
             float finish=(float)view.WorldX(game.Track.Length);
             if(finish<w+40&&finish> -50)Finish(finish,top,bottom,sy);
-            for(int i=0;i<game.Players.Length;i++)if(view.IsPlayerVisible(i)&&(!game.IsParty||game.Players[i].Status!=PlayerStatus.Eliminated))SharedPersonalBackdrop(game,i,time,result.Player(i));
+            for(int i=0;i<game.Players.Length;i++)if(view.IsPlayerVisible(i)&&(!game.UsesSharedRaceCamera||game.Players[i].Status!=PlayerStatus.Eliminated))SharedPersonalBackdrop(game,i,time,result.Player(i));
             GUI.matrix=previous;GUI.color=previousColor;return result;
         }
 
@@ -96,10 +96,10 @@ namespace FlipRace.Presentation
             // Keep the exact common projected centre. Gait is inside the sprite;
             // no player-specific bob or overlap offset moves this world point.
             return new Geometry {X=(float)view.PlayerX(index),Y=(float)view.PlayerY(index),
-                Radius=game.IsParty?(float)(RaceConfig.PlayerRadius*view.ScaleY):Mathf.Clamp((float)(RaceConfig.PlayerRadius*view.ScaleY),7.5f,25),Rotation=rotation,MirrorX=false,
+                Radius=game.UsesSharedRaceCamera?(float)(RaceConfig.PlayerRadius*view.ScaleY):Mathf.Clamp((float)(RaceConfig.PlayerRadius*view.ScaleY),7.5f,25),Rotation=rotation,MirrorX=false,
                 Top=(float)view.Top,Bottom=(float)view.Bottom,ScaleX=(float)view.ScaleX,ScaleY=(float)view.ScaleY,
                 Anchor=(float)view.PlayerX(index),FinishX=(float)view.WorldX(game.Track.Length),
-                Running=game.Phase=="racing"&&!p.FinishTime.HasValue&&p.Recovering<=0&&(!game.IsParty||p.Status==PlayerStatus.Running),Recovering=p.Recovering>0,
+                Running=game.Phase=="racing"&&!p.FinishTime.HasValue&&p.Recovering<=0&&(!game.UsesSharedRaceCamera||p.Status==PlayerStatus.Running),Recovering=p.Recovering>0,
                 MotionTime=(float)(p.Distance/RaceConfig.Speed),FlipProgress=flight};
         }
 
@@ -108,7 +108,7 @@ namespace FlipRace.Presentation
             float x=(float)view.WorldX(zone.X),y=(float)view.WorldY(zone.Y),sy=(float)view.ScaleY;
             if(x< -30||x>w+30||!SharedFieldView.ObjectVisible(game,zone))return;
             bool available0=SharedFieldView.MarkerAvailable(game.Players[0],zone.Id);
-            bool available1=SharedFieldView.MarkerAvailable(game.Players[1],zone.Id);
+            bool available1=game.Players.Length>1&&SharedFieldView.MarkerAvailable(game.Players[1],zone.Id);
             bool anyAvailable=available0||available1;
             for(int i=2;i<game.Players.Length;i++)anyAvailable|=SharedFieldView.MarkerAvailable(game.Players[i],zone.Id);
             float radius=Mathf.Max(6.5f,(float)(zone.Radius+4)*sy),badgeY=y-radius-8;
@@ -168,7 +168,7 @@ namespace FlipRace.Presentation
 
         public void DrawSharedPersonalForeground(float w,float h,GameState game,int playerIndex,float time,Geometry geometry)
         {
-            if((game.IsParty?(geometry.X+geometry.Radius<0||geometry.X-geometry.Radius>w):(geometry.X<0||geometry.X>w))||(game.IsParty&&game.Players[playerIndex].Status==PlayerStatus.Eliminated))return;
+            if((game.UsesSharedRaceCamera?(geometry.X+geometry.Radius<0||geometry.X-geometry.Radius>w):(geometry.X<0||geometry.X>w))||(game.UsesSharedRaceCamera&&game.Players[playerIndex].Status==PlayerStatus.Eliminated))return;
             Color previousColor=GUI.color;
             DrawPersonalForeground(w,h,game,playerIndex,time,geometry,false,game.Phase=="finished");
             // Distinct nested contours and fixed owner badges remain visible

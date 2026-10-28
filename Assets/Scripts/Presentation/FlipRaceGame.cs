@@ -18,6 +18,7 @@ namespace FlipRace.Presentation
         public Rect CharacterScreenRect(int playerIndex, int heroIndex)
         {
             if (playerIndex < 0 || playerIndex >= Game.Players.Length || heroIndex < 0 || heroIndex >= CharacterRoster.Count) throw new ArgumentOutOfRangeException();
+            if (SoloEnabled) return SoloCharacterRect(heroIndex);
             if (PartyEnabled) return PartyScreenRect(playerIndex, PartyCharacterRect(playerIndex, heroIndex));
             if (SharedEnabled) return SharedScreenRect(playerIndex, SharedCharacterRect(playerIndex, heroIndex));
             Rect lane = lanes[playerIndex];
@@ -26,6 +27,7 @@ namespace FlipRace.Presentation
         public Rect ReadyScreenRect(int playerIndex)
         {
             if (playerIndex < 0 || playerIndex >= Game.Players.Length) throw new ArgumentOutOfRangeException();
+            if (SoloEnabled) return Game.Phase=="finished" ? SoloRetryRect : SoloStartRect;
             if (PartyEnabled) return PartyScreenRect(playerIndex, PartyReadyRect(playerIndex));
             if (SharedEnabled) return SharedScreenRect(playerIndex, SharedReadyRect(playerIndex));
             Rect lane = lanes[playerIndex];
@@ -53,7 +55,7 @@ namespace FlipRace.Presentation
         int inputBlockFrame, round = 1;
         string selectedTrackId;
         string buildVersion;
-        bool Trial { get { return Game.Mode == "trial" || PartyEnabled; } }
+        bool Trial { get { return Game.Mode == "trial" || PartyEnabled || SoloEnabled; } }
         bool Controls { get { return Trial && !legacyControls; } }
         string pauseReason = "Катикаавры ждут на своих местах.";
         double lastFrame;
@@ -183,7 +185,7 @@ namespace FlipRace.Presentation
             {
                 if (showRules || showTracks) CloseRules();
                 else if (paused && !Portrait) Resume();
-                else Pause("Катикаавры ждут на своих местах.");
+                else Pause(SoloEnabled ? "Гонка приостановлена." : "Катикаавры ждут на своих местах.");
             }
             for (int i = 0; i < Input.touchCount; i++)
             {
@@ -196,7 +198,7 @@ namespace FlipRace.Presentation
             if (!paused && !showRules && !Portrait)
             {
                 if (Input.GetKeyDown(KeyCode.A)) Act(0);
-                if (Input.GetKeyDown(KeyCode.L)) Act(1);
+                if (Game.Players.Length > 1 && Input.GetKeyDown(KeyCode.L)) Act(1);
                 if (PartyEnabled && Game.Players.Length > 2 && Input.GetKeyDown(KeyCode.S)) Act(2);
                 if (PartyEnabled && Game.Players.Length > 3 && Input.GetKeyDown(KeyCode.K)) Act(3);
                 animationTime += Mathf.Min((float)delta, .1f);
@@ -240,12 +242,13 @@ namespace FlipRace.Presentation
             }
             if (showRules) { if (rulesClose.Contains(p) || rulesDone.Contains(p)) CloseRules(); return; }
             if (paused) { if (resumeRect.Contains(p) || pauseRect.Contains(p)) Resume(); return; }
-            if (pauseRect.Contains(p)) { Pause("Катикаавры ждут на своих местах."); return; }
+            if (pauseRect.Contains(p)) { Pause(SoloEnabled ? "Гонка приостановлена." : "Катикаавры ждут на своих местах."); return; }
             if ((compact ? helpRect : headerHelp).Contains(p)) { OpenRules(); return; }
             if (soundRect.Contains(p)) { ToggleSound(); return; }
             if (trackButton.Contains(p) && !Active) { OpenTracks(); return; }
             if (session.Contains(p)) return;
             if (PointerPaw(p)) return;
+            if (SoloEnabled) { SoloPointer(p); return; }
             if (PartyEnabled) { PartyPointer(p); return; }
             if (SharedEnabled) { SharedPointer(p); return; }
             for (int slot = 0; slot < 2; slot++) if (lanes[slot].Contains(p))
@@ -271,7 +274,7 @@ namespace FlipRace.Presentation
         }
         void NewGame(string mode)
         {
-            int first = Game.Players[0].CharacterIndex, second = Game.Players[1].CharacterIndex;
+            int first = Game.Players[0].CharacterIndex, second = Game.Players.Length > 1 ? Game.Players[1].CharacterIndex : 1;
             Game = RaceSimulation.CreateGame(mode, selectedTrackId, selectedNegative);
             Game.Players[0].CharacterIndex = first; Game.Players[1].CharacterIndex = second;
             round = 1; paused = false; showRules = false; showTracks = false; suppressFrame = true;
@@ -353,7 +356,8 @@ namespace FlipRace.Presentation
             if (!compact) Round(new Rect(shell.x, shell.y + 5, shell.width, shell.height), 18, new Color(.36f, .4f, .29f, .07f));
             Round(shell, compact ? 11 : 18, Hex(0xd8ddcb));
             Round(new Rect(shell.x + 1, shell.y + 1, shell.width - 2, shell.height - 2), compact ? 10 : 17, Hex(0xfbfbf3));
-            if (PartyEnabled) DrawPartyField();
+            if (SoloEnabled) DrawSoloField();
+            else if (PartyEnabled) DrawPartyField();
             else if (SharedEnabled) DrawSharedField();
             else { DrawLane(0); DrawLane(1); DrawDivider(); }
             DrawPaws();
@@ -396,21 +400,21 @@ namespace FlipRace.Presentation
             Text(new Rect(DesktopBrandLeft + 69, y + 4, 200, 48), "флип", 39, ink, true);
             Text(new Rect(DesktopBrandLeft + 169, y + 4, 35, 48), "!", 39, accents[0], true);
             Text(new Rect(DesktopBrandLeft + 72, y + 53, 240, 15), "ГОНКА КАТИКААВРОВ", 8, muted);
-            if (shell.width > 900 && !PartyEnabled)
+            if (shell.width > 900 && !PartyEnabled && !SoloEnabled)
             {
                 Text(new Rect(DesktopBrandLeft + 265, y + 18, 380, 25), "Два катикаавра. Один экран.", 12, muted);
                 Text(new Rect(DesktopBrandLeft + 265, y + 43, 400, 22), "Кто перевернёт гонку?", 12, ink);
             }
             Text(headerHelp, "?   Как играть", 11, ink, false, TextAnchor.MiddleCenter);
             StrokeRound(new Rect(DesktopBrandRight - 84, headerHelp.y + 2, 84, 28), 5, Hex(0xd8ddcb), paper);
-            Text(new Rect(DesktopBrandRight - 84, headerHelp.y + 2, 84, 28), (PartyEnabled ? "КОМПАНИЯ" : "ДЛЯ ДВОИХ"), 8, muted, false, TextAnchor.MiddleCenter);
+            Text(new Rect(DesktopBrandRight - 84, headerHelp.y + 2, 84, 28), (SoloEnabled ? "ОДИН" : PartyEnabled ? "КОМПАНИЯ" : "ДЛЯ ДВОИХ"), 8, muted, false, TextAnchor.MiddleCenter);
         }
         void DrawSession()
         {
             Fill(session, Hex(0xfbfbf3));
             float pad = compact ? 132 : 20;
             Ellipse(new Rect(session.x + pad, session.center.y - 2.5f, 5, 5), Hex(0x9ca986));
-            string title = (PartyEnabled ? "Компания " + Game.Players.Length + " · " + (Game.PartyCamera == PartyCamera.Constant ? "Скролл" : "Камера последнего") + " · " + Game.Track.Name : Trial ? TrialMotionName() + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
+            string title = (SoloEnabled ? "Один · " + (Game.PartyCamera == PartyCamera.Constant ? "Скролл" : "За героем") + " · " + Game.Track.Name : PartyEnabled ? "Компания " + Game.Players.Length + " · " + (Game.PartyCamera == PartyCamera.Constant ? "Скролл" : "Камера последнего") + " · " + Game.Track.Name : Trial ? TrialMotionName() + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
                 + (Game.Track.NegativeEnabled ? "  ·  ◇−" : "")
                 + (Active ? "   /   " + round.ToString("00") : "   ↗");
             Text(new Rect(session.x + pad + 14, session.y, helpRect.x - session.x - pad - 22, session.height), title,
@@ -740,7 +744,7 @@ namespace FlipRace.Presentation
                 if (footer.yMax + 15 < height)
                 {
                     Fill(new Rect(footer.x, footer.yMax - 2, footer.width, 1), Hex(0xe2e4d8));
-                    Text(new Rect(0, footer.yMax + 5, width, 20), (PartyEnabled ? "КОМПАНИЯ · A / L / S / K — игроки 1 / 2 / 3 / 4 · Esc — пауза" : "МАЛЕНЬКИЙ ПЕРЕВОРОТ. БОЛЬШАЯ ГОНКА.       A / L — на клавиатуре · Esc — пауза"), 8, Hex(0xa0a590), false, TextAnchor.MiddleCenter);
+                    Text(new Rect(0, footer.yMax + 5, width, 20), (SoloEnabled ? "ОДИН · A — действие · Esc — пауза" : PartyEnabled ? "КОМПАНИЯ · A / L / S / K — игроки 1 / 2 / 3 / 4 · Esc — пауза" : "МАЛЕНЬКИЙ ПЕРЕВОРОТ. БОЛЬШАЯ ГОНКА.       A / L — на клавиатуре · Esc — пауза"), 8, Hex(0xa0a590), false, TextAnchor.MiddleCenter);
                 }
             }
         }
@@ -759,7 +763,7 @@ namespace FlipRace.Presentation
             }
             Text(new Rect(cover.x + 15, titleY, cover.width - 30, 30), Portrait ? "Поверни телефон" : "Маленькая передышка",
                 23, ink, true, TextAnchor.MiddleCenter);
-            Text(new Rect(cover.x + 20, Portrait ? cy + 5 : PauseSubtitleY, cover.width - 40, 28), Portrait ? "Положите телефон горизонтально.\nИгроки садятся друг напротив друга." : pauseReason,
+            Text(new Rect(cover.x + 20, Portrait ? cy + 5 : PauseSubtitleY, cover.width - 40, 28), Portrait ? (SoloEnabled ? "Положи телефон горизонтально." : "Положите телефон горизонтально.\nИгроки садятся друг напротив друга.") : pauseReason,
                 10, muted, false, TextAnchor.MiddleCenter);
             if (!Portrait)
             {
@@ -790,7 +794,13 @@ namespace FlipRace.Presentation
                 "Метка на грани: точная посадка даёт ×1,5. По камню можно бежать; с него можно прыгать.",
                 "Узкая метка у ленты: рывок −0,1 с. Настройки общие, реванш их сохраняет. Выбор — в меню."
             };
-            if (PartyEnabled) lines = new[] {
+            if (SoloEnabled) lines = new[] {
+                "Выбери героя и нажми «Начать». Тап по полю/лапке или A — действие.",
+                Game.PartyCamera == PartyCamera.Constant ? "Карта движется сама. Полностью за левым краем — выбыл; справа выбывания нет." : "Камера следует за героем. Выбывания за экран нет.",
+                "Награды личные. Финиш или выбывание сразу завершает попытку.",
+                "«Ещё раз» — сначала. Прогресс и результаты не сохраняются."
+            };
+            else if (PartyEnabled) lines = new[] {
                 "Каждому своя четверть и номер. Тап или A / L / S / K — действие игроков 1 / 2 / 3 / 4.",
                 Game.PartyCamera == PartyCamera.Constant ? "Карта движется сама. Полностью ушёл за левый край — выбыл. Справа выбывания нет." : "Камера следует за последним бегущим. Выбывания за экран нет.",
                 "Бонусы и монеты личные. Выбывшие и финишировавшие больше не управляются.",

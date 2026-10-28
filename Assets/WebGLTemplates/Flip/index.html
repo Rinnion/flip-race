@@ -25,7 +25,7 @@
 </head>
 <body>
 <main id="game">
-  <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="0" aria-label="Флип! Два игрока: A / L. Компания 2–4: A / L / S / K. Выберите героев и касайтесь своей личной области экрана."></canvas>
+  <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="0" aria-label="Флип! Один игрок: A. Два игрока: A / L. Компания 2–4: A / L / S / K. Выберите героев и касайтесь своей личной области экрана."></canvas>
   <button id="fullscreen" type="button" title="На весь экран" aria-label="На весь экран" hidden>⛶</button>
   <button id="copy-settings" type="button" title="Скопировать параметры полёта" hidden>Копировать</button>
   <span id="copy-status" role="status" aria-live="polite"></span>
@@ -88,7 +88,7 @@
       const state = JSON.parse(canvas.dataset.flipState);
       const regions = state.fieldView === 'shared' && state.seating === 'adjacent'
         ? 'A — левая половина, L — правая.' : 'A — верхняя половина, L — нижняя.';
-      const description = state.party ? 'Флип! Компания: ' + state.players.length + ' игрока. A / L / S / K — игроки 1 / 2 / 3 / 4. Выберите героев и касайтесь своей личной области экрана.' : 'Флип! Два игрока: ' + regions + ' Выберите героев и касайтесь своей половины экрана. В меню доступна компания 2–4: A / L / S / K.';
+      const description = state.solo ? 'Флип! Один игрок. A или одно касание по полю или лапке. Выберите героя и нажмите Начать. Полная трасса, прогресс не сохраняется.' : state.party ? 'Флип! Компания: ' + state.players.length + ' игрока. A / L / S / K — игроки 1 / 2 / 3 / 4. Выберите героев и касайтесь своей личной области экрана.' : 'Флип! Два игрока: ' + regions + ' Выберите героев и касайтесь своей половины экрана. В меню доступна компания 2–4: A / L / S / K.';
       if (canvas.getAttribute('aria-label') !== description) canvas.setAttribute('aria-label',description);
     } catch (_) { /* No valid snapshot yet. */ }
   }

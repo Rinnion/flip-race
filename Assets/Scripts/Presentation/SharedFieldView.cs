@@ -17,15 +17,15 @@ namespace FlipRace.Presentation
 
         SharedFieldView(double width, double height, GameState game)
         {
-            Width=width; Height=height; Left=0; party=game.IsParty;
+            Width=width; Height=height; Left=0; party=game.UsesSharedRaceCamera;
             Top=Clamp(height*.095,13,25); Bottom=height-Top;
             ScaleY=(Bottom-Top)/RaceConfig.CorridorHeight;
             // Exactly the old lane's horizontal scale; height never changes it.
             AnchorX=Clamp(width*.19,62,195);
             ScaleX=(width-AnchorX-20)/Math.Max(1080,width*1.28);
-            x0=game.Players[0].Distance; x1=game.Players[1].Distance;
+            x0=game.Players[0].Distance; x1=game.Players.Length>1?game.Players[1].Distance:0;
             y0=RaceSimulation.GetPlayerCenterY(game.Players[0]);
-            y1=RaceSimulation.GetPlayerCenterY(game.Players[1]);
+            y1=game.Players.Length>1?RaceSimulation.GetPlayerCenterY(game.Players[1]):0;
             playerCount=game.Players.Length;
             x2=playerCount>2?game.Players[2].Distance:0;
             x3=playerCount>3?game.Players[3].Distance:0;
@@ -35,7 +35,7 @@ namespace FlipRace.Presentation
             // finish. The leader's true projection may leave the right edge.
             CameraLeft=Math.Min(x0,x1)-AnchorX/ScaleX;
             Gap=Math.Abs(x0-x1);
-            if(game.IsParty) {
+            if(game.UsesSharedRaceCamera) {
                 // Fit the immutable logical window uniformly. The Core owns
                 // the elimination boundary, independently of viewport size.
                 ScaleX=ScaleY=Math.Min(width/game.PartyWindowWidth,(height-2*Clamp(height*.095,13,25))/RaceConfig.CorridorHeight);

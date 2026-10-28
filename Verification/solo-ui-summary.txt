@@ -1,0 +1,9 @@
+SOLO managed UI regression — PASS
+Frozen production source snapshot identical across all three reports (33 files).
+SoloUi: 4,962 assertions, 28 cases, 3,258 Update calls, 686 Pointer calls.
+PartyUi: 71,100 assertions, 216 cases, 31,716 Update calls, 7,722 Pointer calls.
+Iter49Ui: 72,892 assertions, 27 cases, 4,984 Pointer calls, 70 projection fixtures, 12 equivalence runs.
+Commands: Tools/SoloUi/Run.ps1, Tools/PartyUi/Run.ps1, Tools/Iter49Ui/Run.ps1.
+Reports: solo-ui.json, solo-party-ui.json, solo-legacy-ui.json.
+No production edits or regression-test weakening. All assertions pass without intended-layout exceptions.
+Native environment interop; no browser rendering or physical multitouch claim. Terminal outcomes/input isolation use explicit synthetic states; production menu, Update, Pointer, countdown, retry and transitions execute unchanged.
