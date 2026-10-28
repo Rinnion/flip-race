@@ -155,5 +155,52 @@
       ]
     }
   ],
-  "limitation": "HTTP bytes only; native browser and dynamic aria checked separately."
+  "limitation": "HTTP bytes only; native browser and dynamic aria checked separately.",
+  "temporaryServers": [
+    {
+      "stoppedAfterAcceptance": true,
+      "pid": 139808,
+      "port": 4222,
+      "path": "WebGL-v5.2.0-final-text"
+    },
+    {
+      "stoppedAfterAcceptance": true,
+      "pid": 132348,
+      "port": 4223,
+      "path": "WebGL-v5.2.0-unpacked-text-final"
+    }
+  ],
+  "finalStableAfterCleanup": {
+    "checkedAt": "2026-10-28T18:26:09.1745301Z",
+    "files": [
+      {
+        "sha256": "f4030af2c6662147b6348a00934ff483681e3dbc7d4124a5b56dd9a21d46157d",
+        "bytes": 1775057,
+        "path": "Build/WebGL-v5.2.0-final-text.data.unityweb"
+      },
+      {
+        "sha256": "98bed1faba8c67fe9a21cd07f73cce26a2b4d7d0207caeb53e82a142c40a3cdc",
+        "bytes": 89763,
+        "path": "Build/WebGL-v5.2.0-final-text.framework.js.unityweb"
+      },
+      {
+        "sha256": "a096a3113629d72b393b6ff2424d3859dbb15fd68946e9af901954ebda2ef7c2",
+        "bytes": 39788,
+        "path": "Build/WebGL-v5.2.0-final-text.loader.js"
+      },
+      {
+        "sha256": "00d13ece166c6022fdbd631916438abb1625c895907091ee1c05940d5f4a1fdf",
+        "bytes": 7174809,
+        "path": "Build/WebGL-v5.2.0-final-text.wasm.unityweb"
+      },
+      {
+        "sha256": "699463f5c7c428ed39833095ffe70fddbc0218950e6e6e346fe6e659dfa6f241",
+        "bytes": 12812,
+        "path": "index.html"
+      }
+    ],
+    "pid": 97332,
+    "port": 4184,
+    "status": "PASS"
+  }
 }

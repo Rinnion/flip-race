@@ -1,6 +1,6 @@
 # V5 BOT5 — 5.2.0-trial
 
-28 октября 2026. Собственная техническая приёмка завершена; независимая приёмка Каталитика ожидается. Production source frozen. Играть: http://127.0.0.1:4184/ — PID97332, Builds/WebGL-v5.2.0-final-text. Для независимой проверки доступны идентичный candidate4222PID139808 и свежая extraction4223PID132348. Root освободил viewport; browser ownership передан Каталитику, свои дальнейшие UI-действия root согласует.
+28 октября 2026. **Поставка принята по BOT-00–10.** [Независимая приёмка Каталитика](V5-BOTS-CATALYTIC-ACCEPTANCE.md) — PASS; открытых замечаний нет. Production source frozen. Играть: http://127.0.0.1:4184/ — PID97332, Builds/WebGL-v5.2.0-final-text. Временные candidate4222PID139808 и fresh extraction4223PID132348 остановлены после независимой приёмки. Постоянный4184 оставлен; все5HTTPфайлов повторно совпали с финальным manifest. Временные viewport сброшены, вкладки4184 сохранены.
 
 ## Источник и владельцы
 
@@ -10,7 +10,7 @@
 
 ## Матрица
 
-verified ниже означает собственное доказательство root; независимая финальная приёмка перечисляется отдельно.
+Собственные доказательства ниже независимо приняты Каталитиком; выборочные собственные проверки и их ограничения перечислены в отчёте приёмки.
 
 | ID | Статус | Доказательство |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ verified ниже означает собственное доказательс
 | BOT-07 | verified | BotUi280895checks,1319setups/2848layouts/48detailedinputcases/100actualfullraces,100nonzerocursorpause/resize,custom+mode roundtrips. FocusedBotUi7542/120+25Fast. Native4sizes568×320/800×360/960×432/1280×800,10level/profile/tracksetups,oneBRpaw/start, menus/results/actualruntime/accessibility; bots-native.json/screenshots |
 | BOT-08 | verified | ParityRunnerallbuiltins+unchangedJS/C#40228snapshots/1448208fields; SoloCheck84cases/59482states/1478actions; PartyCheck512; settings736/114physicalroundtrips. FinalsourceSoloUi4962/28cases,PartyUi71100/216cases. Logs/reports bots-*-regression. CONTROL/REWARD/FINISH/GATE/VIEW/TOUCH/SOLO unchanged physics/geometry/presets |
 | BOT-09 | verified | BOT article +affected featurecrossreferences/catalog, README/toolsREADME, source snapshots in runtime/UI reports, historykept. Docscommitpending below |
-| BOT-10 | working | FinalregularWebGL/ZIP/extraction/HTTP ownPASS below; independentКаталитик acceptance pending. No externalupload |
+| BOT-10 | verified | FinalregularWebGL/ZIP/extraction/HTTP ownPASS и independentCatalyticPASS; V5-BOTS-CATALYTIC-ACCEPTANCE.md, bots-catalytic-{package,http}.json. No externalupload |
 
 ## План, метрика и ограничения
 
@@ -37,7 +37,7 @@ verified ниже означает собственное доказательс
 - FinalUnity Logs/bots-text-build.log: FLIP_BUILD_OK9092229bytes, exit0; Builds/WebGL-v5.2.0-final-text. Исходный5.2candidate9091814bytes остаётсяисторическим, неfinal.
 - Releases/flip-race-v5.2.0-trial-webgl.zip:8960134bytes, SHA2562E078DDA8A639A06E39CC8F9F14A22728630EC06A190A5C4B1332E62D0515B10;5files/rootindex. Package manifest и Verification/bots-package-verification.json, fresh Builds/WebGL-v5.2.0-unpacked-text-final. Всеsource/ZIP/manifest/extractionbytesmatch.
 - Verification/bots-http.json:4222/4223/4184 все5filesmatchfinalmanifest, no-store,version/aria-templatebranch. Actualnativefinalariaправильноописывает1human/A/BRpaw/autoReadyBot/L-S-Kinactive. НезависимыйP2HTMLreviewисправленONLYtemplatebranch, финальнаяUnityсборка повторена; framework/loader/WASMбайтысовпадаютспервым5.2candidate,dataноваясборкаотличается и невыдаётсязаidentical.
-- СохраненыZIP5.1 SHA256EA75C7103C2C1600073E927B58D0DFB14C9A35970EC00875B8B9AF7C7E6CEF9E; чужойFIX491 SHA2563071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5. 4184прежнийPID103804проверенпоcommandlineиостановленпослеownchecks; oldcandidate146428остановлен. Временные4222/4223 остаютсядлянезависимойприёмки, убратьпосленеё.
+- СохраненыZIP5.1 SHA256EA75C7103C2C1600073E927B58D0DFB14C9A35970EC00875B8B9AF7C7E6CEF9E; чужойFIX491 SHA2563071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5. 4184прежнийPID103804проверенпоcommandlineиостановленпослеownchecks; oldcandidate146428остановлен. Временные4222/4223 остановлены после независимой приёмки; закрытая своя вкладка4222 больше не оставлена.
 
 ## Source freeze и проверки
 
@@ -45,9 +45,14 @@ CoreController78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67; 
 
 Reproduce: dotnet run --project Tools/BotPrototype/RuntimeCheck.csproj; Tools/BotUi/Run.ps1; Tools/BotUiCheck/Run.ps1; Tools/SoloUi/Run.ps1; Tools/PartyUi/Run.ps1; ParityRunner с неизменённойfixtures; FlightSettingsCheck; Verification/bots-package-check.ps1 сновойfresh target; nodeTools/BotPrototype/VerifyHttp.mjs origins. ТехническийWindowsAccessDenied(reparse) разрешён штатнойreviewedscopedэскалацией; настоящихauto-reviewrefusalsвэтойпоставкенебыло.
 
-Следующее: root commit explicit owned paths, затем Каталитик независимыйUI/browser/ZIP/HTTP review наfreeze; исправитьконкретныедефектыеслинайдены, послеacceptanceостановитьсвои4222/4223. Не выдавать dispatch или собственныйPASS за независимуюприёмку. Продуктовых/техническихблокеровсейчаснет.
+Поставка закрыта: независимо принята, документы/контракт/план актуализированы, явные ownedpaths сохранены в Git, свои temporaryservers остановлены. Следующая игровая реализация не поручена; человеческая проба интереса/различимости уровней остаётся последующим исследованием.
 
 Документация BOT/affectedfeatures/каталог/контракт закоммичена в flip-race99a2b93. Каталитик начал independentbrowser наfresh4223 и владеетviewport; root не выполняет browserUI до завершения. Nativeevidence Verification/bots-native.json/screenshots копирована из собственногоtemp, финальныйHTTP4184/4222/4223 PASS. ZIP/template/source заморожены.
 
 
 Implementation/source/evidence commit Unity4c7941e8d944f8e533ce0d754ede23d44a1a66d6; docs99a2b93. Послеcommit рабочеедеревоUnity содержиттолькочужойVerification/FIX491-RELEASE.md; hashсохранён. Gitdiff--cached--checkPASS. TemplateSHA256=DCAF2DD7ADA0DAFA43866848203CFD70A6C552718FBF6F767DD4097F4A103F4E. Каталитик independentreview active, rootостаётсяответственнымзазакрытиеприёмки/своихtemporaryservers.
+
+
+## Закрытие
+
+Независимая приёмка28октября PASS/BOT-00–10, production4c7941e (freeze e8621dd), docs99a2b93 + finalacceptance6a1addc. ZIP/source не менялись после приёмки; SHA2562E078DDA8A639A06E39CC8F9F14A22728630EC06A190A5C4B1332E62D0515B10. Parent ownbrowser100%coverageнеприписывается: matrixroot + independentreview/selectivenative/ZIP/HTTP. Послеpassдобавлены лишьнеобязательные снимки сохранённогоUI501 в финальной5.2: bots-final-party-{header,paws,result}.png; ниproduction,ниZIPнеизменялись. 4184PID97332active/5filesmatch;4222/4223stoppedAfterAcceptance. Browseroverrideсброшен. ЧужойFIX491неизменён/незакоммичен. Открытыхзамечаний/блокеровнет.
