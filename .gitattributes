@@ -12,3 +12,8 @@
 *.gz binary
 *.dll binary
 *.pdb binary
+
+# Release evidence and calibration input are hashed as exact bytes.
+Verification/bot-diversity-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+Releases/flip-race-v5.2.1-trial-webgl.zip.manifest.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+Tools/BotDiversitySpike/TimingWindows/initial-eight-bases.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

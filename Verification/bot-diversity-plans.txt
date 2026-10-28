@@ -1,0 +1,59 @@
+MASTER full-long/Chosen plans=29 Cartesian9=PASS windows=reused accepted scan simulations=111 traces=58
+MASTER full-long/FastFlip plans=29 Cartesian9=PASS windows=reused accepted scan simulations=209 traces=116
+MASTER full-short/Chosen plans=29 Cartesian9=PASS windows=measured simulations=813 traces=174
+MASTER full-short/FastFlip plans=29 Cartesian9=PASS windows=measured simulations=1309 traces=232
+MASTER full-flow/Chosen plans=29 Cartesian9=PASS windows=measured simulations=1904 traces=290
+MASTER full-flow/FastFlip plans=29 Cartesian9=PASS windows=measured simulations=2557 traces=348
+MASTER rhythm-cascade/Chosen plans=29 Cartesian9=PASS windows=reused accepted scan simulations=2667 traces=406
+MASTER rhythm-cascade/FastFlip plans=29 Cartesian9=PASS windows=reused accepted scan simulations=2775 traces=464
+MASTER mixed-tricks/Chosen plans=29 Cartesian9=PASS windows=reused accepted scan simulations=2879 traces=522
+MASTER mixed-tricks/FastFlip plans=29 Cartesian9=PASS windows=reused accepted scan simulations=2986 traces=580
+MASTERS READY: all10 pairs with two-separated-maneuver early/middle/late whole-route proofs.
+OUTCOMES full-flow/Chosen/Confident signatures=12 timingPlans=42 minimumTiming=3 broadProof=True simulations=3255 traces=664
+OUTCOMES full-flow/FastFlip/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=3570 traces=750
+OUTCOMES full-long/Chosen/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=3833 traces=836
+OUTCOMES full-long/FastFlip/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=4156 traces=922
+OUTCOMES full-short/Chosen/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=4428 traces=1008
+OUTCOMES full-short/FastFlip/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=4735 traces=1094
+OUTCOMES mixed-tricks/Chosen/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=5003 traces=1180
+OUTCOMES mixed-tricks/FastFlip/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=5303 traces=1266
+OUTCOMES rhythm-cascade/Chosen/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=5557 traces=1352
+OUTCOMES rhythm-cascade/FastFlip/Confident signatures=12 timingPlans=43 minimumTiming=3 broadProof=True simulations=5841 traces=1438
+OUTCOMES full-flow/Chosen/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=5963 traces=1510
+OUTCOMES full-flow/Chosen/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6082 traces=1582
+OUTCOMES full-flow/Chosen/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6205 traces=1654
+OUTCOMES full-flow/FastFlip/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6335 traces=1726
+OUTCOMES full-flow/FastFlip/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6462 traces=1798
+OUTCOMES full-flow/FastFlip/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6611 traces=1870
+OUTCOMES full-long/Chosen/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6734 traces=1942
+OUTCOMES full-long/Chosen/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6851 traces=2014
+OUTCOMES full-long/Chosen/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=6965 traces=2086
+OUTCOMES full-long/FastFlip/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=7099 traces=2158
+OUTCOMES full-long/FastFlip/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=7213 traces=2230
+OUTCOMES full-long/FastFlip/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=7347 traces=2302
+OUTCOMES full-short/Chosen/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=7461 traces=2374
+OUTCOMES full-short/Chosen/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=7575 traces=2446
+OUTCOMES full-short/Chosen/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=7696 traces=2518
+OUTCOMES full-short/FastFlip/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=7860 traces=2590
+OUTCOMES full-short/FastFlip/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8007 traces=2662
+OUTCOMES full-short/FastFlip/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8140 traces=2734
+OUTCOMES mixed-tricks/Chosen/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8268 traces=2806
+OUTCOMES mixed-tricks/Chosen/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8380 traces=2878
+OUTCOMES mixed-tricks/Chosen/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8510 traces=2950
+OUTCOMES mixed-tricks/FastFlip/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8637 traces=3022
+OUTCOMES mixed-tricks/FastFlip/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8782 traces=3094
+OUTCOMES mixed-tricks/FastFlip/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=8923 traces=3166
+OUTCOMES rhythm-cascade/Chosen/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=9036 traces=3238
+OUTCOMES rhythm-cascade/Chosen/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=9148 traces=3310
+OUTCOMES rhythm-cascade/Chosen/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=9268 traces=3382
+OUTCOMES rhythm-cascade/FastFlip/Amateur signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=9388 traces=3454
+OUTCOMES rhythm-cascade/FastFlip/Novice signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=9515 traces=3526
+OUTCOMES rhythm-cascade/FastFlip/Strong signatures=12 timingPlans=36 minimumTiming=3 broadProof=False simulations=9641 traces=3598
+STATUS COMPLETE libraries=50 plans=1799 simulations=9641 traceRuns=3598 sourceStable=True
+
+Metadata finalization accepted by direct human approval: Catalytic thread 01a13ea2-10f9-7821-b785-5c3a7e30b079, turn 01a18454-3bb7-7430-91a0-1c348c22b446, userMessage 01a18454-3c5d-7292-bde8-d0dd07cdce65 ('Ок делайте правки.'), read together with the exact preceding three-file request/explanation. This follows the two earlier binding auto-review refusals; no denied write was performed before this new approval.
+Root accepted completed offline generation after source/strict signature-uniform checks and the independent final data audit. JSON final status changed COMPLETE to PASS only. All 1,799 plans, proofs, metrics and recorded source hashes remain byte-for-byte unchanged, verified by restoring the original status token and recovering the exact old SHA256.
+Old JSON SHA256: 5BCDD9F6D597FE041D71A6791795D2903B6D09AC3B9818EA5953B3D78185AA46
+New JSON SHA256: C062311EF0C0FEBFC643023CB9800F064444BBD3548F67475BDA9E25568949EC
+JSON byte length: 45441140 -> 45441136; one exact ASCII status-token substitution, no data serialization or simulation rerun.
+The generator's final successful status literal now writes PASS for future runs. The artifact's recorded generator source hash remains its generation-time snapshot 5FEC2F614C76FE66814D3BC95800AAE5138A840282D37679F8079BA950854300; the current source hash after this literal-only edit is 58D86822C7F67B9ACEE5500C636B2AB74A495323C09D1E399FEA29E3B37904F5. Current Core integration edits postdate that generation snapshot. No physics or data regeneration was run for this metadata finalization.

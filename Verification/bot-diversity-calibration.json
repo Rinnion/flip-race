@@ -1,0 +1,2531 @@
+{
+  "status": "PASS",
+  "inputPath": "Verification/bot-diversity-plans.json",
+  "inputSha256": "5BCDD9F6D597FE041D71A6791795D2903B6D09AC3B9818EA5953B3D78185AA46",
+  "producerDeclaredSourceStable": true,
+  "currentSourceDifferences": [
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "producerHash": "994968AA1FA901B43CB6070E7E7670AA62ABDF654D6B12DA2619825C8CBD9FAB",
+      "currentHash": "A217479C26070DD5B561E6A2BD78DE54E09AE127868C877EB321CAD5880BEA31"
+    }
+  ],
+  "compiledDataPrefixSha256": "83D897FDDE9FF8C8144E3237DD26E3EEB7253D4218D07C1896FFC699666592D7",
+  "releaseStatus": "BLOCKED_AS_REPORTED_BY_ROOT: producer COMPLETE-to-PASS metadata update was denied by auto-review; dependent export/runtime remain blocked pending exact human approval. This read-only mathematical audit does not change that gate.",
+  "checks": 363821,
+  "failureCount": 0,
+  "findings": [],
+  "libraryCount": 50,
+  "planCount": 1799,
+  "signatureCount": 490,
+  "actualMetricsAudited": 3598,
+  "eventTracesAudited": 3598,
+  "broadCartesianProofs": 20,
+  "elapsedSeconds": 1.4127518,
+  "meanRule": "Uniform probability across signatures, then uniform within that signature: mean_s(mean_t(time[s,t])). Flat tape mean reported only for contrast and never used for acceptance.",
+  "limitations": "Read-only immutable-metrics/static-geometry audit; no physical simulations rerun and no current RaceSimulation methods/catalog/factory compiled. Only verbatim data definitions/constants and unchanged real track geometry are compiled; current integration-source differences are reported separately. Trace timestamps/distances and sampled connected window boundaries retain producer provenance; this audit verifies consistency, published Cartesian shapes/actual edges, geometry/runway, arithmetic and coverage, not continuous-window feasibility or full-state observer replay. Those are separate runtime/release checks.",
+  "pairs": [
+    {
+      "trackId": "full-long",
+      "profile": "Chosen",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        36.76249999989437,
+        35.79583333325484,
+        35.12499999998132,
+        33.800000000162406,
+        33.05000000008957
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.6708333332735208
+    },
+    {
+      "trackId": "full-long",
+      "profile": "FastFlip",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        37.10000000005859,
+        36.02083333341979,
+        35.23333333347739,
+        33.84583333344037,
+        33.05000000005319
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.7874999999423977
+    },
+    {
+      "trackId": "full-short",
+      "profile": "Chosen",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        36.81666666647298,
+        35.81666666644043,
+        35.074999999814516,
+        33.8000000001323,
+        33.05000000009734
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.7416666666259175
+    },
+    {
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        37.34583333333398,
+        36.00000000000079,
+        35.175000000000786,
+        33.91250000000061,
+        33.05000000000062
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.8250000000000028
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "Chosen",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        36.79999999972913,
+        35.85416666652495,
+        35.066666666426414,
+        33.862500000157894,
+        33.0500000000661
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.7875000000985324
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "FastFlip",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        37.15000000000087,
+        35.883333333334335,
+        35.21666666666771,
+        33.945833333334114,
+        33.05000000000081
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.6666666666666217
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "Chosen",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        38.06666666666727,
+        37.433333333333785,
+        35.9875000000006,
+        34.112500000000466,
+        33.04999999997881
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.6333333333334821
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "FastFlip",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        37.87500000000066,
+        36.60833333333405,
+        35.825000000000784,
+        34.09166666666716,
+        33.04999999995825
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.7833333333332675
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "Chosen",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        36.49583333333396,
+        35.61666666666723,
+        34.900000000000325,
+        33.920833333333555,
+        33.050000000000225
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.716666666666903
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "FastFlip",
+      "levels": [
+        "Novice",
+        "Amateur",
+        "Confident",
+        "Strong",
+        "Master"
+      ],
+      "signatureUniformMeans": [
+        36.69166666666734,
+        35.77083333333384,
+        35.07500000000044,
+        33.8625000000003,
+        33.04999999999395
+      ],
+      "strictlyOrdered": true,
+      "minimumAdjacentGap": 0.6958333333333968
+    }
+  ],
+  "libraries": [
+    {
+      "trackId": "full-long",
+      "profile": "Chosen",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.05000000008957,
+      "flatTapeMeanTime": 33.05000000008957,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "FastFlip",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.05000000005319,
+      "flatTapeMeanTime": 33.05000000005319,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "Chosen",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.05000000009734,
+      "flatTapeMeanTime": 33.05000000009734,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 30
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.05000000000062,
+      "flatTapeMeanTime": 33.05000000000062,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 30
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "Chosen",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.0500000000661,
+      "flatTapeMeanTime": 33.0500000000661,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "FastFlip",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.05000000000081,
+      "flatTapeMeanTime": 33.05000000000081,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "Chosen",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.04999999997881,
+      "flatTapeMeanTime": 33.04999999997881,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "FastFlip",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.04999999995825,
+      "flatTapeMeanTime": 33.04999999995825,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 12
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "Chosen",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.050000000000225,
+      "flatTapeMeanTime": 33.050000000000225,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 24
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "FastFlip",
+      "difficulty": "Master",
+      "signatures": 1,
+      "plans": 29,
+      "signatureUniformMeanTime": 33.04999999999395,
+      "flatTapeMeanTime": 33.04999999999395,
+      "coverage": {
+        "signatureCount": 1,
+        "positiveMaskCount": 1,
+        "hitMaskCount": 1,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 1,
+            "missedPlans": 0
+          }
+        ],
+        "nonconsecutive": 0,
+        "earlyMissLateSuccess": 0,
+        "earlySuccessLateMiss": 0,
+        "positiveAndHit": 0,
+        "constantActualSignatures": 1,
+        "constantPositiveMasks": 1,
+        "constantHitMasks": 1,
+        "constantCombinedPlans": 0
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "Chosen",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 42,
+      "signatureUniformMeanTime": 35.066666666426414,
+      "flatTapeMeanTime": 35.09285714265137,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 10,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 10,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 6,
+            "missedPlans": 6
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 1,
+        "earlySuccessLateMiss": 6,
+        "positiveAndHit": 9,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 10,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "FastFlip",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.21666666666771,
+      "flatTapeMeanTime": 35.181395348838265,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 6
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 11,
+            "missedPlans": 10
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 2,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 7,
+        "earlyMissLateSuccess": 1,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 40
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "Chosen",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.12499999998132,
+      "flatTapeMeanTime": 35.13720930231007,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 6
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 11,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 10,
+            "missedPlans": 8
+          }
+        ],
+        "nonconsecutive": 11,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 8,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 40
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "FastFlip",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.23333333347739,
+      "flatTapeMeanTime": 35.227906976894914,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 8,
+            "missedPlans": 11
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 11,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 40
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "Chosen",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.074999999814516,
+      "flatTapeMeanTime": 35.09534883709986,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 10,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 10,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 12,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 9,
+            "missedPlans": 6
+          }
+        ],
+        "nonconsecutive": 11,
+        "earlyMissLateSuccess": 6,
+        "earlySuccessLateMiss": 6,
+        "positiveAndHit": 10,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 10,
+        "constantCombinedPlans": 37
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.175000000000786,
+      "flatTapeMeanTime": 35.17906976744265,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 12,
+            "missedPlans": 3
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 12,
+            "missedPlans": 10
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 10,
+            "missedPlans": 9
+          }
+        ],
+        "nonconsecutive": 11,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 9,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 40
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "Chosen",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 34.900000000000325,
+      "flatTapeMeanTime": 34.86744186046545,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 11,
+            "missedPlans": 6
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 9
+          }
+        ],
+        "nonconsecutive": 10,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 9,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 40
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "FastFlip",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.07500000000044,
+      "flatTapeMeanTime": 35.01395348837251,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 3
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 10,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 7,
+        "earlyMissLateSuccess": 6,
+        "earlySuccessLateMiss": 12,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 40
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "Chosen",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.9875000000006,
+      "flatTapeMeanTime": 35.92441860465176,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 7,
+            "missedPlans": 8
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 7,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 7,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 12,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 40
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "FastFlip",
+      "difficulty": "Confident",
+      "signatures": 12,
+      "plans": 43,
+      "signatureUniformMeanTime": 35.825000000000784,
+      "flatTapeMeanTime": 35.83720930232635,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 11,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 10
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 6,
+            "missedPlans": 11
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 3,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 1,
+        "earlySuccessLateMiss": 12,
+        "positiveAndHit": 10,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 11,
+        "constantCombinedPlans": 37
+      },
+      "timing": {
+        "status": "PROVED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "Chosen",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 35.85416666652495,
+      "flatTapeMeanTime": 35.85416666652495,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 8
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 7,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 2,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 7,
+        "earlyMissLateSuccess": 1,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "Chosen",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.79999999972913,
+      "flatTapeMeanTime": 36.79999999972913,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 10,
+            "missedPlans": 10
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 3,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 1,
+            "missedPlans": 11
+          }
+        ],
+        "nonconsecutive": 4,
+        "earlyMissLateSuccess": 1,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 10,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 30
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "Chosen",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.862500000157894,
+      "flatTapeMeanTime": 33.862500000157894,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 11,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 6
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 9,
+            "missedPlans": 3
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 3,
+        "positiveAndHit": 10,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 11,
+        "constantCombinedPlans": 30
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "FastFlip",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 35.883333333334335,
+      "flatTapeMeanTime": 35.883333333334335,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 11
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 10,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 1,
+            "missedPlans": 11
+          }
+        ],
+        "nonconsecutive": 10,
+        "earlyMissLateSuccess": 1,
+        "earlySuccessLateMiss": 11,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "FastFlip",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 37.15000000000087,
+      "flatTapeMeanTime": 37.150000000000865,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 11,
+            "missedPlans": 10
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 7,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 1,
+            "missedPlans": 11
+          }
+        ],
+        "nonconsecutive": 6,
+        "earlyMissLateSuccess": 1,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-flow",
+      "profile": "FastFlip",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.945833333334114,
+      "flatTapeMeanTime": 33.94583333333412,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 10,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 4
+          },
+          {
+            "third": 3,
+            "goalCount": 1,
+            "collectedPlans": 11,
+            "missedPlans": 1
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 1,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 10,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "Chosen",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 35.79583333325484,
+      "flatTapeMeanTime": 35.79583333325483,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 8,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 9,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 10,
+        "earlyMissLateSuccess": 4,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "Chosen",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.76249999989437,
+      "flatTapeMeanTime": 36.762499999894374,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 11,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 9,
+            "missedPlans": 10
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 4,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 9,
+            "missedPlans": 11
+          }
+        ],
+        "nonconsecutive": 7,
+        "earlyMissLateSuccess": 6,
+        "earlySuccessLateMiss": 9,
+        "positiveAndHit": 10,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 11,
+        "constantHitMasks": 11,
+        "constantCombinedPlans": 27
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "Chosen",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.800000000162406,
+      "flatTapeMeanTime": 33.80000000016241,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 9,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 4
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 4
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 11,
+            "missedPlans": 6
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 6,
+        "positiveAndHit": 8,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 9,
+        "constantCombinedPlans": 24
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "FastFlip",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.02083333341979,
+      "flatTapeMeanTime": 36.02083333341979,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 11,
+            "missedPlans": 9
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 11,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 9,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 10,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 9,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "FastFlip",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 37.10000000005859,
+      "flatTapeMeanTime": 37.100000000058586,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 8,
+            "missedPlans": 10
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 9,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 6,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 8,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-long",
+      "profile": "FastFlip",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.84583333344037,
+      "flatTapeMeanTime": 33.84583333344037,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 8,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 4,
+            "collectedPlans": 12,
+            "missedPlans": 4
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 11,
+            "missedPlans": 3
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 3,
+        "positiveAndHit": 9,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 8,
+        "constantCombinedPlans": 27
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "Chosen",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 35.81666666644043,
+      "flatTapeMeanTime": 35.81666666644044,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 11,
+            "missedPlans": 6
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 11,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 7,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 4,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 30
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "Chosen",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.81666666647298,
+      "flatTapeMeanTime": 36.81666666647299,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 8,
+            "missedPlans": 9
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 5,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 9,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 6,
+        "earlyMissLateSuccess": 6,
+        "earlySuccessLateMiss": 8,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 11,
+        "constantPositiveMasks": 10,
+        "constantHitMasks": 11,
+        "constantCombinedPlans": 27
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "Chosen",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.8000000001323,
+      "flatTapeMeanTime": 33.800000000132286,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 9,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 12,
+            "missedPlans": 3
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 11,
+            "missedPlans": 6
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 6,
+        "positiveAndHit": 8,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 9,
+        "constantCombinedPlans": 24
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.00000000000079,
+      "flatTapeMeanTime": 36.00000000000079,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 11,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 11,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 8,
+            "missedPlans": 11
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 4,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 37.34583333333398,
+      "flatTapeMeanTime": 37.34583333333398,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 9,
+            "missedPlans": 8
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 10,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 10,
+            "missedPlans": 8
+          }
+        ],
+        "nonconsecutive": 10,
+        "earlyMissLateSuccess": 4,
+        "earlySuccessLateMiss": 5,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 11,
+        "constantPositiveMasks": 11,
+        "constantHitMasks": 11,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.91250000000061,
+      "flatTapeMeanTime": 33.91250000000062,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 8,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 2,
+            "collectedPlans": 11,
+            "missedPlans": 4
+          },
+          {
+            "third": 2,
+            "goalCount": 5,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 3,
+            "goalCount": 2,
+            "collectedPlans": 12,
+            "missedPlans": 2
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 4,
+        "earlySuccessLateMiss": 2,
+        "positiveAndHit": 9,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 8,
+        "constantCombinedPlans": 27
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "Chosen",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 35.61666666666723,
+      "flatTapeMeanTime": 35.61666666666724,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 6
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 11,
+            "missedPlans": 11
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 9,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 12,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "Chosen",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.49583333333396,
+      "flatTapeMeanTime": 36.495833333333955,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 9,
+            "missedPlans": 11
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 6,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 7,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 7,
+        "earlyMissLateSuccess": 4,
+        "earlySuccessLateMiss": 9,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "Chosen",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.920833333333555,
+      "flatTapeMeanTime": 33.92083333333356,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 4
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 5,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "FastFlip",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 35.77083333333384,
+      "flatTapeMeanTime": 35.77083333333384,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 11,
+            "missedPlans": 7
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 7,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 8,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 12,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "FastFlip",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.69166666666734,
+      "flatTapeMeanTime": 36.69166666666735,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 10,
+            "missedPlans": 11
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 6,
+            "missedPlans": 11
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 6,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 6,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 10,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profile": "FastFlip",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 33.8625000000003,
+      "flatTapeMeanTime": 33.86250000000031,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 11,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 3
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 6
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 6,
+        "positiveAndHit": 10,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 11,
+        "constantCombinedPlans": 30
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "Chosen",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 37.433333333333785,
+      "flatTapeMeanTime": 37.43333333333376,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 11,
+            "missedPlans": 7
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 8,
+            "missedPlans": 8
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 10,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 4,
+        "earlySuccessLateMiss": 9,
+        "positiveAndHit": 12,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 36
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "Chosen",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 38.06666666666727,
+      "flatTapeMeanTime": 38.066666666667246,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 6,
+            "missedPlans": 10
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 5,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 5,
+            "missedPlans": 10
+          }
+        ],
+        "nonconsecutive": 3,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 4,
+        "positiveAndHit": 12,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 36
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "Chosen",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 34.112500000000466,
+      "flatTapeMeanTime": 34.11250000000047,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 4
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 5,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 20
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "FastFlip",
+      "difficulty": "Amateur",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 36.60833333333405,
+      "flatTapeMeanTime": 36.60833333333406,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 8,
+            "missedPlans": 12
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 3,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 5,
+            "missedPlans": 12
+          }
+        ],
+        "nonconsecutive": 5,
+        "earlyMissLateSuccess": 5,
+        "earlySuccessLateMiss": 8,
+        "positiveAndHit": 12,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 36
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "FastFlip",
+      "difficulty": "Novice",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 37.87500000000066,
+      "flatTapeMeanTime": 37.87500000000064,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 6,
+            "missedPlans": 11
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 5,
+            "missedPlans": 12
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 4,
+            "missedPlans": 11
+          }
+        ],
+        "nonconsecutive": 2,
+        "earlyMissLateSuccess": 3,
+        "earlySuccessLateMiss": 5,
+        "positiveAndHit": 12,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 36
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profile": "FastFlip",
+      "difficulty": "Strong",
+      "signatures": 12,
+      "plans": 36,
+      "signatureUniformMeanTime": 34.09166666666716,
+      "flatTapeMeanTime": 34.091666666667166,
+      "coverage": {
+        "signatureCount": 12,
+        "positiveMaskCount": 12,
+        "hitMaskCount": 12,
+        "thirds": [
+          {
+            "third": 1,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          },
+          {
+            "third": 2,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 4
+          },
+          {
+            "third": 3,
+            "goalCount": 3,
+            "collectedPlans": 12,
+            "missedPlans": 5
+          }
+        ],
+        "nonconsecutive": 9,
+        "earlyMissLateSuccess": 2,
+        "earlySuccessLateMiss": 5,
+        "positiveAndHit": 11,
+        "constantActualSignatures": 12,
+        "constantPositiveMasks": 12,
+        "constantHitMasks": 12,
+        "constantCombinedPlans": 33
+      },
+      "timing": {
+        "status": "TIMING_VARIANTS_VERIFIED",
+        "minimumPairwiseLocalActionSeparation": 10
+      }
+    }
+  ]
+}

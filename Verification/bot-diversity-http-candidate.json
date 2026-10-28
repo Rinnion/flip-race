@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-10-28T21:14:32.9687912Z",
+  "status": "PASS",
+  "baseUrl": "http://127.0.0.1:4224/",
+  "expectedVersion": "5.2.1-trial",
+  "actualVersion": "5.2.1-trial",
+  "manifest": "F:\\Home\\Game\\flip-race-unity\\Verification\\bot-diversity-unpacked-manifest.json",
+  "manifestSha256": "bb1a7a3e84e4871282068e2e942cc5f24ab53c90f98d9993cebe529c5fbe26b8",
+  "fileCount": 5,
+  "files": [
+    {
+      "path": "Build/WebGL-v5.2.1-final.data.unityweb",
+      "url": "http://127.0.0.1:4224/Build/WebGL-v5.2.1-final.data.unityweb?verify=8898fc88814e4a5d9b7ef0ea897f5a13",
+      "httpStatus": 200,
+      "bytes": 1915345,
+      "expectedBytes": 1915345,
+      "sha256": "db2db40a956fee87689470d878f54ac0055ec80e0aec0d77a8c81cfcb5bff534",
+      "expectedSha256": "db2db40a956fee87689470d878f54ac0055ec80e0aec0d77a8c81cfcb5bff534",
+      "matchesManifest": true
+    },
+    {
+      "path": "Build/WebGL-v5.2.1-final.framework.js.unityweb",
+      "url": "http://127.0.0.1:4224/Build/WebGL-v5.2.1-final.framework.js.unityweb?verify=6b6c792984b74f1bbc6d9a2ef91cd76a",
+      "httpStatus": 200,
+      "bytes": 89776,
+      "expectedBytes": 89776,
+      "sha256": "03b9b83adc79bdab205547953b45fe8556d2bec3a816f67901d376ced9cb1190",
+      "expectedSha256": "03b9b83adc79bdab205547953b45fe8556d2bec3a816f67901d376ced9cb1190",
+      "matchesManifest": true
+    },
+    {
+      "path": "Build/WebGL-v5.2.1-final.loader.js",
+      "url": "http://127.0.0.1:4224/Build/WebGL-v5.2.1-final.loader.js?verify=8250cf01bed847668aca0c6e30d5de5e",
+      "httpStatus": 200,
+      "bytes": 39788,
+      "expectedBytes": 39788,
+      "sha256": "4dc826ef5264de321e63359e2d2ef90155045a507fe2aa9990fc940970adad45",
+      "expectedSha256": "4dc826ef5264de321e63359e2d2ef90155045a507fe2aa9990fc940970adad45",
+      "matchesManifest": true
+    },
+    {
+      "path": "Build/WebGL-v5.2.1-final.wasm.unityweb",
+      "url": "http://127.0.0.1:4224/Build/WebGL-v5.2.1-final.wasm.unityweb?verify=40c19b36573b493ea1fdcac14ca97ddf",
+      "httpStatus": 200,
+      "bytes": 7211581,
+      "expectedBytes": 7211581,
+      "sha256": "aa3bde430fa19943667e416321c3a9039057269e9122276297c9e4961fe9070f",
+      "expectedSha256": "aa3bde430fa19943667e416321c3a9039057269e9122276297c9e4961fe9070f",
+      "matchesManifest": true
+    },
+    {
+      "path": "index.html",
+      "url": "http://127.0.0.1:4224/index.html?verify=e7c0b1295a1e4f9bb19386207744db8b",
+      "httpStatus": 200,
+      "bytes": 12792,
+      "expectedBytes": 12792,
+      "sha256": "7ef65a6cac68fb26a0e11947f42bd7bc61634d2d9c9acd3e655e1e8ac9da705e",
+      "expectedSha256": "7ef65a6cac68fb26a0e11947f42bd7bc61634d2d9c9acd3e655e1e8ac9da705e",
+      "matchesManifest": true
+    }
+  ],
+  "allServedFilesMatchManifest": true,
+  "automaticHttpDecompression": false,
+  "serverStartedByCheck": false,
+  "noPublicUpload": true
+}

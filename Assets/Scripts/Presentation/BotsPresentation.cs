@@ -8,6 +8,25 @@ namespace FlipRace.Presentation
         bool pendingBot;
         BotDifficulty pendingBotDifficulty = BotDifficulty.Novice;
         BotRaceController botController;
+        BotPlanShuffle botShuffle;
+        uint botSessionSeed;
+        long botAttemptSequenceIndex;
+        public uint BotSessionSeed { get { return botSessionSeed; } }
+        public long BotAttemptSequenceIndex { get { return botAttemptSequenceIndex; } }
+        BotPlan NextBotPlan(Track track, FlightSettings flight, BotDifficulty difficulty)
+        {
+            int[][] groups = BotPlanCatalog.SignatureGroups(track.Id, flight, difficulty);
+            if (botShuffle == null)
+            {
+                botSessionSeed = BitConverter.ToUInt32(Guid.NewGuid().ToByteArray(), 0);
+                botShuffle = new BotPlanShuffle(botSessionSeed);
+            }
+            string profile = flight.FirstAction == FirstAction.Jump ? "Chosen" : "FastFlip";
+            string key = track.Id + "/" + profile + "/" + difficulty;
+            BotPlanChoice choice = botShuffle.Next(key, groups);
+            botAttemptSequenceIndex = choice.SequenceIndex;
+            return BotPlanCatalog.SelectAt(track.Id, flight, difficulty, choice.PlanIndex, choice.AttemptSeed);
+        }
         static readonly string[] BotLevelNames = { "Новичок", "Любитель", "Уверенный", "Сильный", "Мастер" };
         public bool BotEnabled { get { return Game != null && Game.IsBot; } }
         public int SelectedBotDifficulty { get { return (int)(BotEnabled ? Game.BotDifficulty : pendingBotDifficulty); } }
@@ -65,10 +84,11 @@ namespace FlipRace.Presentation
             Text(new Rect(flightPanel.x+16,flightPanel.y+175,flightPanel.width-32,32),flightSelection.IsCustom?"Боты доступны только с Основным или Быстрым переворотом. Выбери готовый профиль.":"Один человек и бот. Награды личные. Оба бегут до своего исхода.",10,muted);
             label.wordWrap=false;DrawModeChoices();DrawFlightApplyFooter();
         }
-        void ResetBotRace(int seed)
+        void ResetBotRace()
         {
             int hero=Game.Players[0].CharacterIndex;
-            Game=RaceSimulation.CreateBotRace(Game.Track,Game.Flight,Game.BotDifficulty,seed,Game.PartyCamera,PartyStartLeft,PartyWindowWidth);
+            BotPlan selectedPlan=NextBotPlan(Game.Track,Game.Flight,Game.BotDifficulty);
+            Game=RaceSimulation.CreateBotRace(Game.Track,Game.Flight,selectedPlan,Game.PartyCamera,PartyStartLeft,PartyWindowWidth);
             Game.Players[0].CharacterIndex=hero;Game.Players[1].CharacterIndex=(hero+1)%CharacterRoster.Count;
             botController=new BotRaceController(Game);
         }

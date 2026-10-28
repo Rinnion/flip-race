@@ -446,6 +446,22 @@ namespace FlipRace.Core
             return CreateSharedRace(track, flight, 2, camera, cameraStartLeft, windowWidth, false, plan);
         }
 
+        public static GameState CreateBotRace(Track track, FlightSettings flight, BotPlan selectedPlan,
+            PartyCamera camera = PartyCamera.Constant, double cameraStartLeft = -288.8, double windowWidth = 1520)
+        {
+            if (track == null) throw new ArgumentNullException(nameof(track));
+            if (selectedPlan == null) throw new ArgumentNullException(nameof(selectedPlan));
+            BotPlan expected = BotPlanCatalog.SelectAt(track.Id, flight, selectedPlan.Difficulty,
+                selectedPlan.PlanIndex, selectedPlan.Seed);
+            if (selectedPlan.TrackId != track.Id || selectedPlan.ProfileId != expected.ProfileId ||
+                selectedPlan.Id != expected.Id || selectedPlan.SignatureId != expected.SignatureId ||
+                selectedPlan.InputCount != expected.InputCount)
+                throw new ArgumentException("Selected bot plan does not belong to this library.", nameof(selectedPlan));
+            for (int i = 0; i < expected.InputCount; i++)
+                if (selectedPlan.GetDistance(i) != expected.GetDistance(i))
+                    throw new ArgumentException("Selected bot tape differs from its catalog.", nameof(selectedPlan));
+            return CreateSharedRace(track, flight, 2, camera, cameraStartLeft, windowWidth, false, selectedPlan);
+        }
         private static GameState CreateSharedRace(Track track, FlightSettings flight, int playerCount,
             PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo, BotPlan botPlan = null)
         {

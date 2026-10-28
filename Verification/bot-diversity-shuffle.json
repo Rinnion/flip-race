@@ -1,0 +1,346 @@
+{
+  "status": "PASS",
+  "checks": 214949,
+  "matrix": [
+    {
+      "label": "unequal-groups",
+      "seed": 0,
+      "variantCounts": [
+        1,
+        2,
+        7
+      ],
+      "draws": 2100,
+      "signatureCounts": [
+        700,
+        700,
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "AFAB75496113830AF050DF57B15F2080143B52D779875E8512DB55E6F76A0095"
+    },
+    {
+      "label": "master-one-signature",
+      "seed": 0,
+      "variantCounts": [
+        7
+      ],
+      "draws": 700,
+      "signatureCounts": [
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "5697B7E8CF48749BDC706768A09F6BBC021BB7D1F8C15E1DBD7D61B06F3B5497"
+    },
+    {
+      "label": "singleton",
+      "seed": 0,
+      "variantCounts": [
+        1
+      ],
+      "draws": 100,
+      "signatureCounts": [
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "8DE3ACDD90A1CEEA946DD6B438A667360475D5D2F9AA310DDA888BF449763BE3"
+    },
+    {
+      "label": "two-singleton-boundary",
+      "seed": 0,
+      "variantCounts": [
+        1,
+        1
+      ],
+      "draws": 200,
+      "signatureCounts": [
+        100,
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "B18DC021EEFFD2B9C6AF6D20D3114115EEB2F1B3BE66D5C9F515C02C9FF2B114"
+    },
+    {
+      "label": "unequal-groups",
+      "seed": 1,
+      "variantCounts": [
+        1,
+        2,
+        7
+      ],
+      "draws": 2100,
+      "signatureCounts": [
+        700,
+        700,
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "2228DC6F6014F41D01CA9974F01C79AD2216B06612A3345050E6CC5625FE6D6B"
+    },
+    {
+      "label": "master-one-signature",
+      "seed": 1,
+      "variantCounts": [
+        7
+      ],
+      "draws": 700,
+      "signatureCounts": [
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "B5CCB5701F31BC8C6A836A345EA94849E1F46C2A7EF57A2ED8A327CD552EA2F8"
+    },
+    {
+      "label": "singleton",
+      "seed": 1,
+      "variantCounts": [
+        1
+      ],
+      "draws": 100,
+      "signatureCounts": [
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "9EA48BFF85D242E3818E6E361CA3018EE28BD34811515163568FC1E7E08D60DE"
+    },
+    {
+      "label": "two-singleton-boundary",
+      "seed": 1,
+      "variantCounts": [
+        1,
+        1
+      ],
+      "draws": 200,
+      "signatureCounts": [
+        100,
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "24299D148080565A33B08069ACD95A8F3CDD471B6F8A71EC6CD3F3D034F37E23"
+    },
+    {
+      "label": "unequal-groups",
+      "seed": 4294967295,
+      "variantCounts": [
+        1,
+        2,
+        7
+      ],
+      "draws": 2100,
+      "signatureCounts": [
+        700,
+        700,
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "F87FEF2E1EBB0CF7A58FCEEE4B9C15FD752916EF5469478A4B3205AD4B845264"
+    },
+    {
+      "label": "master-one-signature",
+      "seed": 4294967295,
+      "variantCounts": [
+        7
+      ],
+      "draws": 700,
+      "signatureCounts": [
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "D0CCFFCD72A1B1EBD1C2AF805479150C39888457DD7FA3EFB3B1A8A9D10CBF46"
+    },
+    {
+      "label": "singleton",
+      "seed": 4294967295,
+      "variantCounts": [
+        1
+      ],
+      "draws": 100,
+      "signatureCounts": [
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "AF1C7374F701DE9228BDBAD3CCCE1071153B4038513DEB7DFD97FFCCB7F83922"
+    },
+    {
+      "label": "two-singleton-boundary",
+      "seed": 4294967295,
+      "variantCounts": [
+        1,
+        1
+      ],
+      "draws": 200,
+      "signatureCounts": [
+        100,
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "E10778D8829BA12B165EE2A4137294EFC2C29D4083D1336B36A6A72481B0CE1D"
+    },
+    {
+      "label": "unequal-groups",
+      "seed": 2147483648,
+      "variantCounts": [
+        1,
+        2,
+        7
+      ],
+      "draws": 2100,
+      "signatureCounts": [
+        700,
+        700,
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "9D5D03ADA384175DE1C3AEEC95D8AC7ED17B912590A4C9719B111436DB39D49F"
+    },
+    {
+      "label": "master-one-signature",
+      "seed": 2147483648,
+      "variantCounts": [
+        7
+      ],
+      "draws": 700,
+      "signatureCounts": [
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "E63F4EC2AB8B5195B488589E59A1188276166DAE33D8A39BD412DB168D6CEBDC"
+    },
+    {
+      "label": "singleton",
+      "seed": 2147483648,
+      "variantCounts": [
+        1
+      ],
+      "draws": 100,
+      "signatureCounts": [
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "B948AB8E0CCCC1F635FB1EE3414F4BA5C7D2C3090337BDA69403ED3E944BF801"
+    },
+    {
+      "label": "two-singleton-boundary",
+      "seed": 2147483648,
+      "variantCounts": [
+        1,
+        1
+      ],
+      "draws": 200,
+      "signatureCounts": [
+        100,
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "9D519605854FE985DED5814FDC8EE9C79F73586FD8C586B788BDD05BCC146662"
+    },
+    {
+      "label": "unequal-groups",
+      "seed": 4294967294,
+      "variantCounts": [
+        1,
+        2,
+        7
+      ],
+      "draws": 2100,
+      "signatureCounts": [
+        700,
+        700,
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "D02A2F6C03FB65B902E8942F735CA973DE3F62515023E6760E8B691104C62650"
+    },
+    {
+      "label": "master-one-signature",
+      "seed": 4294967294,
+      "variantCounts": [
+        7
+      ],
+      "draws": 700,
+      "signatureCounts": [
+        700
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "D596868E6FA341903FAFE4166FAFED02952B5C9BAFF81AC001038C21EA316785"
+    },
+    {
+      "label": "singleton",
+      "seed": 4294967294,
+      "variantCounts": [
+        1
+      ],
+      "draws": 100,
+      "signatureCounts": [
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "D80E9CAD16EC595DE9069FD6F423ABFA81CF2DBEFADBCBACD330BFE8841A4C73"
+    },
+    {
+      "label": "two-singleton-boundary",
+      "seed": 4294967294,
+      "variantCounts": [
+        1,
+        1
+      ],
+      "draws": 200,
+      "signatureCounts": [
+        100,
+        100
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "C2DDF750D40103AF87B2C560FD7506A357170CDBCB03B3061E10D1524E2F87B0"
+    },
+    {
+      "label": "eight-groups",
+      "seed": 42,
+      "variantCounts": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "draws": 15200,
+      "signatureCounts": [
+        1900,
+        1900,
+        1900,
+        1900,
+        1900,
+        1900,
+        1900,
+        1900
+      ],
+      "minimumTimingCycles": 100,
+      "sha256": "3E36244D2AB3AFBCB73204CA539B30F025D96730C06FF6D5E573BAD507614FE3"
+    },
+    {
+      "label": "interleaved-ordinal-unicode",
+      "draws": 3000,
+      "sha256": "152EF7BD3F310B459F4701D8F952FA4A5BF6AE9150CCF9E0EA9EF8166FF9D1EE"
+    },
+    {
+      "label": "invalid-and-mutation",
+      "status": "PASS"
+    },
+    {
+      "label": "1024-initial-seeds",
+      "firstSignatureCounts": [
+        330,
+        352,
+        342
+      ],
+      "distinctTapes": 1024
+    }
+  ],
+  "source": {
+    "path": "Assets/Scripts/Core/BotPlanShuffle.cs",
+    "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+  },
+  "scope": "Isolated deterministic selection only; not catalogue feasibility, physics, UI or native WebGL evidence."
+}

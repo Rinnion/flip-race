@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "sourceReportSha256": "C062311EF0C0FEBFC643023CB9800F064444BBD3548F67475BDA9E25568949EC",
+  "nativeEvidenceSha256": "00BD83A3ED219DB80FC74BE22DAAF9CF237155B27AB51CB67A72FAF8CE4492D1",
+  "cases": [
+    {
+      "sequence": 0,
+      "id": "rhythm-cascade/Chosen/Novice/A589035B2B03/t2",
+      "actualTime": 37.700000000001374,
+      "referenceTime": 37.70000000000075,
+      "timeError": 6.252776074688882E-13,
+      "boosts": 1,
+      "hits": 4,
+      "completed": 18,
+      "matches": true
+    },
+    {
+      "sequence": 1,
+      "id": "rhythm-cascade/Chosen/Novice/37F3787236E3/t0",
+      "actualTime": 37.70000000000044,
+      "referenceTime": 37.700000000000585,
+      "timeError": 1.4210854715202004E-13,
+      "boosts": 1,
+      "hits": 4,
+      "completed": 18,
+      "matches": true
+    },
+    {
+      "sequence": 2,
+      "id": "rhythm-cascade/Chosen/Novice/F1AB6EC6F4EB/t0",
+      "actualTime": 37.90000000000071,
+      "referenceTime": 37.90000000000084,
+      "timeError": 1.2789769243681803E-13,
+      "boosts": 2,
+      "hits": 5,
+      "completed": 18,
+      "matches": true
+    }
+  ],
+  "uniqueNativeSelections": 3,
+  "limitations": "Limited native observations and end metrics compared with released ordinary-simulation references. Full action-tape replay is separate."
+}

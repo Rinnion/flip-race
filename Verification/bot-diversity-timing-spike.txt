@@ -1,0 +1,15 @@
+mixed-tricks/Jump/Master/0 edges=29 sampled spans(ms) min/median/max=90.9/363.6/727.3 disconnected=4 joint raw/final/unique=1/20/20 probes=679
+mixed-tricks/Flip/Master/0 edges=23 sampled spans(ms) min/median/max=72.7/272.7/1000.0 disconnected=5 joint raw/final/unique=9/20/20 probes=624
+rhythm-cascade/Jump/Master/0 edges=44 sampled spans(ms) min/median/max=90.9/272.7/601.8 disconnected=5 joint raw/final/unique=0/20/20 probes=927
+rhythm-cascade/Flip/Master/0 edges=26 sampled spans(ms) min/median/max=90.9/272.7/863.6 disconnected=4 joint raw/final/unique=8/20/20 probes=754
+Measured requested bases; full simulations=2984; order-invalid candidates=471; elapsed=20.59s; sources stable=True
+Risk acceptance audit: four Mixed/Cascade Master bases, both profiles. Each selected two maneuvers in different track halves; all nine early/middle/late Cartesian whole routes are verified at1/120 under both cameras with the same100% outcome signature.
+mixed-tricks/Jump/Master/0 PROVED; Cartesian valid=9/9; actual distance coverage=1.00000000/1.00000000; raw independent seeds=1/20; repaired full variants=20/20 distinct=20
+mixed-tricks/Flip/Master/0 PROVED; Cartesian valid=9/9; actual distance coverage=1.00000000/1.00000000; raw independent seeds=9/20; repaired full variants=20/20 distinct=20
+rhythm-cascade/Jump/Master/0 PROVED; Cartesian valid=9/9; actual distance coverage=1.00000000/1.00000000; raw independent seeds=0/20; repaired full variants=20/20 distinct=20
+rhythm-cascade/Flip/Master/0 PROVED; Cartesian valid=9/9; actual distance coverage=1.00000000/1.00000000; raw independent seeds=8/20; repaired full variants=20/20 distinct=20
+Narrow examples: Mixed/Fast edge19 has valid refined shifts[-12,+4]units =72.73ms; linked landing edges can have disconnected sampled points (Mixed/Chosen edge15 and Cascade/Chosen edge21 valid at shifts-20 and0, while an intervening point fails). Do not fill the gap by treating global min/max as one safe interval.
+Finish preparation is also state-dependent: Mixed/Fast finish shift[-18,+18]units =163.64ms; Cascade/Chosen finish has disconnected components[-88,-70] and[-14,+14], so its overall sampled span463.64ms is not one continuous safe window.
+The grid is empirical:10-unit exploration and2-unit refinement for selected edges. No unsampled-continuum guarantee or universal400-500ms window is claimed. Actual positions relative to obstacle X and every selected joint action time/distance are in JSON.
+Initial scan of eight Long/Cascade Master/Novice bases:5052 full probes,33.34s, retained in Tools/BotDiversitySpike/TimingWindows/initial-eight-bases.json. Scope then changed to the prioritized four Master risk bases:2984 additional full probes,20.59s. Both phases kept physics/source hashes stable; all old343 reports/builds remain untouched.
+Outcome-mask diversity and final all10-pair/all50-library acceptance remain separate work owned by the coordinator. This report proves timing feasibility only for its selected bases.

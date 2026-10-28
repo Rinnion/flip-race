@@ -169,7 +169,8 @@ namespace FlipRace.Presentation
             Game = CreateSelectedFlight(Game, pendingFlightTrack, flightSelection.Settings);
             if (pendingBot)
             {
-                Game=RaceSimulation.CreateBotRace(Game.Track,flightSelection.Settings,pendingBotDifficulty,0,pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
+                BotPlan selectedPlan=NextBotPlan(Game.Track,flightSelection.Settings,pendingBotDifficulty);
+                Game=RaceSimulation.CreateBotRace(Game.Track,flightSelection.Settings,selectedPlan,pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
                 Game.Players[0].CharacterIndex=previousSelection.Players[0].CharacterIndex;
                 Game.Players[1].CharacterIndex=(Game.Players[0].CharacterIndex+1)%CharacterRoster.Count;
                 botController=new BotRaceController(Game);

@@ -1,0 +1,49 @@
+# BOT-DIVERSITY — 5.2.1-trial, интеграция и проверка
+
+Обновлено29октября2026. OwnerПрогатик Sol/high; Каталитик — scope/gameplay Astra/high и независимая финальная приёмка. [Контракт BVAR00–08](../../flip-race/docs/flip-race-bot-diversity-delivery-2026-10-28.md). Действующая4184 остаётся принятой5.2.0 изBuilds/WebGL-v5.2.0-final-text; новая сборка ещё не принята. Новых продуктовых решений/внешней публикации нет.
+
+## Источник и сохранение
+
+Прямые сообщения в Каталитике01a13ea2-10f9-7821-b785-5c3a7e30b079, turn01a1842e-b8c1-7dd1-96fe-6a807fe25a00: userMessage01a1842e-bee6-7232-b8fc-c1beccf83603 — разные реальные наборы ускорителей/пропусков/ударов по всей трассе в% сложности; дополнение01a18430-1ce1-72e0-98b8-fa3b552a268c — разные допустимые точки нажатия. Root прочитал оба черезread_thread. Оценка400–500мс не объявлена гарантией каждого окна.
+
+Baseline Unity9a67f2922fa9fc431240364980cbf90a5b50111f/docs6a1addc. ZIP5.2.0 SHA2E078DDA8A639A06E39CC8F9F14A22728630EC06A190A5C4B1332E62D0515B10 сохраняется; исторические343плана остаются вGit/ZIP. Чужой Verification/FIX491-RELEASE.md SHA3071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5 не менять/не stage. Rootнеизменялphysics/controller/geometry/UI501. Сохраняются CONTROL/REWARD/FINISH/GATE/VIEW/TOUCH/SOLO,каталоги/диапазоны,обе части ворот,личные и untouched rewards,необязательный полныйfinishdash. Workflow/affectedarticles прочитаны.
+
+## Матрица приёмки
+
+| ID | Статус | Доказательство/следующее |
+| --- | --- | --- |
+| BVAR00 | verified | Прямые источники/база/владение; старыеmenu0/retry+1/prefixи0positive младшихCascade воспроизведены. Контрактofflineполныхпроверенныхtapes,signature-first→timing принят |
+| BVAR01/02 | verified | [Outcomes](bot-diversity-outcomes.json):40libs/480basis,12signatures+12positive masks+8–12hit masks each; thirds/nonconsecutive/earlymiss-latesuccess/inverse/mixed PASS. [Finalcalibration](bot-diversity-calibration.json):1799plans490signatures/363821checks/0findings,нижниеConstant11–12actualpreterminalmasks. Не freshsimaudit |
+| BVAR03 | verified | [Finalplans](bot-diversity-plans.json)1799/50libs:10Master+10ConfidentPROVED two-separatedCartesian9 early/mid/late,≥halfconnectedspan;30otherlibs TIMING_VARIANTS_VERIFIED сpairProofRef,все480lowerSignature≥3meaningfultimings. Не утверждатьall50broadproof. Fullcombosfine1/120verifiedproducer; window72.7ms/narrow/disconnected честноразличены |
+| BVAR04 | verified | [Shuffle](bot-diversity-shuffle.json)214949assertions; [newUI](bot-diversity-ui.json)287372checks/1407setups(1200matrix)/100actualraces/1649selectionpredictions/directIndexWitness. Menu/retrykeybagscontinue,master29timings,no-repeat/seam/fixedseed/unequalgroups/pause/resize/countdown. ПоляmetadataSeedневыбираютпланчерезmodulo |
+| BVAR05 | verified | Producer1799Laggerfinish/ranges/Master100bothcams,signature-uniformexpectedmean strictall10(minadjacentgap0.633333s),Constant177honestelims/1622finish. Rootactualruntime всепланывработе |
+| BVAR06 | verified | Newfactory/directselectedindex+NextBotPlan/sessionseed/read-onlydiag integrated; Export94837roundtripchecks/compile0warnings/errors; smoke24actualcases128716immediatefullsnapshots/error0. Full12794cases запущены3batches (1799×2cams×3frames+20choices×50×2),unfiltered; ждёмreports |
+| BVAR07 | verified | All10ParityRunner suites+unchangedJSbaseline40228snapshots1448208fields PASS;FlightSettings736/114,PartyCheck512,SoloUi4962/28,PartyUi71100/216 PASS. Дополнительно запущенныйlegacySharedScreenCheck имеет Slot1finishassert3.8466784513710057vs3.9; helperпроверяетpreexistingнаbaselineбезправкитеста. Nativebrowser ещёнеrun |
+| BVAR08 | working | Version5.2.1Editor+ProjectSettings. RegularWebGL candidate buildingPID145092/session96694, Logs/bot-diversity-final-build.log, targetBuilds/WebGL-v5.2.1-final. Package/HTTPscripts готовы/syntaxPASS,ещёнеinvoke. ZIP/freshHTTP/browser4184/Каталитикacceptance впереди |
+
+## Freeze и доказательства
+
+- [Sourcefreeze](bot-diversity-source-freeze.json) — Core/Presentation/Web/Editor stable; исходники не менять при runtime/UI/regression. CatalogSHA3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C. [Export](bot-diversity-export.json):94837checks/1799plans490groups50libs,IEEE754fingerprint3A82350269E3462D0390E3474D5024365A386FAEF1F43B7EC0DE80F406B4D442.
+- Producer9641Probe simulations+3598actualtimedtraces,96.63s. OutcomesSHA94C0B410941566E3EB9C05D562B85172EF55BD20C5BD539C57370A77E40AD4CE. CurrentplansSHA C062311EF0C0FEBFC643023CB9800F064444BBD3548F67475BDA9E25568949EC. Только верхнийstatusCOMPLETE→PASS менял4bytes; обратнаяОДНАзамена восстанавливает5BCDD9F6D597FE041D71A6791795D2903B6D09AC3B9818EA5953B3D78185AA46 (rootнезависимопроверил). Все1799tapes/metrics/proofs/прочиебайты прежние. sourceStable/sourceHashes относятсякgeneration snapshot, не кcurrentintegration.
+- Actualruntime checker replay каждогоAdvance/Press наобычномCreateParty,полноесравнениепубличныхpersonalfields/queues/events/order сразу; pausephasefixtures отмечены. NewUIactualUpdate/Pointer/nativeenvironmentseams;142syntheticterminalfixtures+748sameplaninputfixtures честнопосчитаны;100actualfullraces отдельно. Это неnativebrowser/телефон.
+- Riskspikes/outcomes/calibrationreportисторическинепересчитывалисьиз-заmetadata; исходныеданные доступнывbot-diversity-{mask-spike,timing-spike,outcomes,calibration}.json.
+
+## Владельцы и текущее выполнение
+
+- Root: integrationCorefactory/UI/Web/version,Tools/BotDiversityCheck,STATUS,docs,build/package/browser/delivery. Runtimeexecsessions29475/5344/98707 — batches0/1/2,parts3. ПослеPASS агрегироватьстрогую12794coverage иfreeze,нефильтроватьfailseeds.
+- bots_ui Sol/medium: Shuffle/catalogexport/newUI DONE/PASS; сейчас NEW Verification/bot-diversity-runtime-summary.ps1 и outputbot-diversity-runtime.json. Долженотклонятьmissing/failedчасти ипроверятьполноеcoverage/means.
+- bots_complex_routes Sol/high: outcomes+independentauditDONE; сейчасрелевантныерегрессиив NEWbot-diversity-regressions.json/.txt и NEWsolo/party-ui reports. Legacyfailureclassificationbaselinepending;productionнеправить.
+- bots_first_routes Sol/high: finaltiming/разрешённыемetadataDONE,package+HTTPpreparationDONE,остановлен. NEWVerification/bot-diversity-package-check.ps1 иTools/BotDiversity/VerifyHttp.ps1 syntaxPASS. Не запускалserver/extract/build.
+
+## Закрытый permissionblocker
+
+Перваяmetadataоперация отклоненаcall_de9e74b792cc41fbbae07fbd905dadf8,2026-10-28T20:55:01.563Z: "This action was rejected due to unacceptable risk. Reason: This makes several persistent local file edits to a large verification artifact, source file, and report, but the trusted user messages do not authorize this unrelated bot-diversity finalization; the approval comes only from untrusted assistant history. Do not bypass this rejection through a workaround or indirect execution."
+
+Rootпослеfreshread_threadподалSAMEactionнапроверку; call_005be95a701f4734a4f9f98fa9716c25,20:56:34.297Z сноваrejected: «Это повтор того же ранее отклонённого изменения служебных артефактов; прямой запрос пользователя разрешает разнообразие ботов, но не конкретную замену COMPLETE→PASS и изменение генера…58 chars truncated…брения именно этой операции». Пропуск — renderertruncation; не домыслен. До новогоhumanapproval ничего не записали/guardнеослабляли.
+
+НОВОЕ directhumanapproval: Каталитикturn01a18454-3bb7-7430-91a0-1c348c22b446/userMessage01a18454-3c5d-7292-bde8-d0dd07cdce65 «Ок делайте правки.» Rootиисходныйвладелецпрочиталиответ+предыдущийточныйвопросо3файлахчерезread_thread. ШтатнаяreviewисходноговладельцаALLOWED. ИзмененыТОЛЬКОVerification/bot-diversity-plans.json status, Tools/BotDiversity/TimingGenerator.cs успешныйлитерал, Verification/bot-diversity-plans.txt честноепояснение. Блокерзакрыт. Новогоподтверждениянарутиннуюпоставкуненужно.
+
+Следующее: actualruntime/regressions/buildresult → ZIP/freshextraction+candidateHTTP/nativebrowser → docs/ownedcommits/sourcefreezehandоff Каталитику → independentacceptance →4184switch/cleanupпоacceptance. Старую5.2/FIXсохранить;поставкаещёнеобъявленаготовой.
+29Oct finalmanaged/runtime: all3batchesPASS; bot-diversity-runtime.json strictaggregatorPASS186964checks/12794cases/72684976immediatefullsnapshots/4597940508fieldcomparisons/replayerror0; sourcefreezeunchanged,all1799×2cams×3frames+unfiltered20choices×50×2 verified. Expected signature-uniform actualmeans strict10. RequiredregressionsPASS; legacySharedScreenassert reproducedEXACT on9a67baseline, toolunchanged (bot-diversity-regressions.json). Unitybuildexit0/FLIP_BUILD_OK9269282bytes;ZIP9126780bytes/SHA5C1563103EB02BB52E6795B11769E55FAFE2E0F6F88E6BE5C8EF244CF374D368. FreshBuilds/WebGL-v5.2.1-unpacked-final/package/5fileHTTP4224PASS. Candidate http://127.0.0.1:4224/ PID135996. Rootownbrowser16 atcandidate, nativeRUNNING; notyetfreeforindependentreview. 4184unchanged. BOTarticleupdatedpendingfinalacceptance, docsnotcommitted.
+
+BROWSER FREE FOR CATALYTIC — 29Oct. RootnativePASS/owncandidate16, viewportRESET; no morebrowseractionsuntilindependentcheckcomplete. Nativebot-diversity-native.json+3screenshots:800×360/568×320,3actualfullCascadeNoviceChosenLaggerruns; session1374116528/sequence0→1retry→2menu/3differentsignatures. Firstboostm8-free-high,time37.70,1boost4hits;retrym10-pad,time37.70,1boost4hits;menuvariantm6-padearly,2boost5hits,time37.90. Actualacceptedhumanpawedge/mobileresume/pause/resizekeepselection;warn/error0. CUAobservationtimeoutresethelperbindingsduringpausedresize; noappmutation/error,earlierlimitedfields honestlytranscribedfromtooloutputs, subsequentrawsnapshotsretained. Fullbrowseractiontapenotclaimed. Parentmayopenown4224tabnow. CandidatePID135996 Buildsunpacked/Web5.2.1 andZIPsha5C1563103EB02BB52E6795B11769E55FAFE2E0F6F88E6BE5C8EF244CF374D368/9126780bytes;all5HTTPmatch. 4184notyet switched. Docs/ownedcommitsinprogress; independentreviewneednotwaitforthem.

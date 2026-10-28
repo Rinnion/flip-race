@@ -1,0 +1,418 @@
+{
+  "status": "PASS_REQUIRED_CHECKS_WITH_PREEXISTING_LEGACY_FAILURE",
+  "requiredChecksPassed": true,
+  "allInvokedChecksPassed": false,
+  "sourceStable": true,
+  "sourceChanges": [],
+  "sourceFreezeMatches": true,
+  "sourceFreezeMismatches": [],
+  "checkedFrom": "2026-10-28T21:09:01.8684676Z",
+  "checkedUntil": "2026-10-28T21:11:57.1721920Z",
+  "baseline": {
+    "path": "Tools/engine-parity-fixtures.tsv.gz",
+    "sha256": "D8AB169B239E1643A7061740F4040D2045C4322C1D58199F3A911560A0CF3156",
+    "afterSha256": "D8AB169B239E1643A7061740F4040D2045C4322C1D58199F3A911560A0CF3156",
+    "unchanged": true,
+    "regenerated": false
+  },
+  "summary": {
+    "parityBuiltInAssertions": 18955,
+    "differentialSnapshots": 40228,
+    "differentialFields": 1448208,
+    "differentialTolerance": "<1e-8",
+    "flightSettingsAssertions": 736,
+    "flightSettingsPhysicalRoundTrips": 114,
+    "partyCoreAssertions": 512,
+    "soloUiAssertions": 4962,
+    "soloUiCases": 28,
+    "partyUiAssertions": 71100,
+    "partyUiCases": 216
+  },
+  "commands": [
+    {
+      "id": "parity_all_and_fixture",
+      "cmd": "dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- Tools/engine-parity-fixtures.tsv.gz",
+      "chunk_id": "a4086b",
+      "wall_time_seconds": 5.5857351,
+      "exit_code": 0,
+      "original_token_count": 283,
+      "output": "PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.\r\nPASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.\r\nPASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.\r\nPASS: V4-01/02 18 scenarios / 1770 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.\r\nPASS: TUNE-01/02 13 scenarios / 1009 assertions; four profiles, instant boost, preserved effects and actual finishes.\r\nPASS: CONTROL 19 scenarios / 2166 assertions.\r\nPASS: chevron finish 10 scenarios / 2054 assertions.\r\nPASS: FLIGHT 12 scenarios / 2424 assertions.\r\nPASS: MODES 4 scenarios / 1190 assertions; open edges, real corners, geometric linked confirmation and Fast single air repeat.\r\nPASS: RHYTHM offset gates 4 scenarios / 2960 assertions; real mirrors, signed offsets, corners, one logical penalty and linked union clearance.\r\nPASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).\r\n"
+    },
+    {
+      "id": "flight_settings",
+      "cmd": "dotnet run --project Tools/FlightSettingsCheck/FlightSettingsCheck.csproj",
+      "chunk_id": "5db269",
+      "wall_time_seconds": 4.8750454,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "PASS: FLIGHT settings 736 assertions / 114 physical round trips.\r\n"
+    },
+    {
+      "id": "party_core",
+      "cmd": "dotnet run --project Tools/PartyCheck/PartyCheck.csproj",
+      "chunk_id": "bef8b3",
+      "wall_time_seconds": 5.0495699,
+      "exit_code": 0,
+      "original_token_count": 19,
+      "output": "PartyCheck PASS: 512 deterministic assertions (PARTY-00/01/02/04/05/06)\r\n"
+    },
+    {
+      "id": "solo_ui",
+      "cmd": "& Tools/SoloUi/Run.ps1 | Set-Content -LiteralPath Verification/bot-diversity-solo-ui.json; $regUi = Get-Content Verification/bot-diversity-solo-ui.json -Raw | ConvertFrom-Json; $regUi | Select-Object status,checks,cases,updates,pointers | ConvertTo-Json",
+      "reportPath": "Verification/bot-diversity-solo-ui.json",
+      "chunk_id": "3ea6dd",
+      "wall_time_seconds": 7.548302,
+      "exit_code": 0,
+      "original_token_count": 26,
+      "output": "{\r\n  \"status\": \"PASS\",\r\n  \"checks\": 4962,\r\n  \"cases\": 28,\r\n  \"updates\": 3258,\r\n  \"pointers\": 686\r\n}\r\n"
+    },
+    {
+      "id": "party_ui",
+      "cmd": "& Tools/PartyUi/Run.ps1 | Set-Content -LiteralPath Verification/bot-diversity-party-ui.json; $regUi = Get-Content Verification/bot-diversity-party-ui.json -Raw | ConvertFrom-Json; $regUi | Select-Object status,checks,cases,updates,pointers | ConvertTo-Json",
+      "reportPath": "Verification/bot-diversity-party-ui.json",
+      "chunk_id": "6f843b",
+      "wall_time_seconds": 8.5117296,
+      "exit_code": 0,
+      "original_token_count": 27,
+      "output": "{\r\n  \"status\": \"PASS\",\r\n  \"checks\": 71100,\r\n  \"cases\": 216,\r\n  \"updates\": 31716,\r\n  \"pointers\": 7722\r\n}\r\n"
+    },
+    {
+      "id": "legacy_shared_screen",
+      "cmd": "& Tools/SharedScreenCheck/Run.ps1",
+      "reportPath": null,
+      "chunk_id": "059f50",
+      "wall_time_seconds": 3.9043844,
+      "exit_code": 1,
+      "original_token_count": 95,
+      "output": "ParentContainsErrorRecordException: F:\\Home\\Game\\flip-race-unity\\Tools\\SharedScreenCheck\\Run.ps1:9\r\nLine |\r\n   9 |  [FlipRace.SharedScreenCheck.Audit]::Run() | ConvertTo-Json -Depth 12\r\n     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n     | Exception calling \"Run\" with \"0\" argument(s): \"Slot1 actual finish: actual=3.8466784513710057 expected=3.9\"\r\n"
+    }
+  ],
+  "preexistingLegacyFailure": {
+    "status": "PREEXISTING_STALE_FIXTURE",
+    "productionExitCode": 1,
+    "baselineRevision": "9a67f29",
+    "baselineExitCode": 1,
+    "exactSameFailure": true,
+    "failure": "Slot1 actual finish: actual=3.8466784513710057 expected=3.9",
+    "fixture": "Tools/SharedScreenCheck/Audit.cs:191-201",
+    "classification": "Unchanged legacy fixture asserts old .1s finish target and3.9s finisher time. One9a67f29 baseline reproduction gives the identical actual3.8466784513710057s. No old assertion/test/source was edited and no passing result is claimed for this check.",
+    "baselineIsolation": "Only changed RaceSimulation.cs/BotPlanCatalog.cs copied with git show9a67f29 into ignored Tools/BotDiversity/obj/legacy-shared-baseline; new BotPlanShuffle excluded; remaining Core and SharedFieldView/Audit unchanged.",
+    "baselineOutput": "ParentContainsErrorRecordException: \r\nLine |\r\n  13 |  [FlipRace.SharedScreenCheck.Audit]::Run() | ConvertTo-Json -Depth 12\r\n     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n     | Exception calling \"Run\" with \"0\" argument(s): \"Slot1 actual finish: actual=3.8466784513710057 expected=3.9\"\r\n"
+  },
+  "uiReports": [
+    {
+      "path": "Verification/bot-diversity-solo-ui.json",
+      "sha256": "07ACD18BD85A040A16F3CE2DC33BE1924FFB7F3DEEB1E0EB824FE3FCC227E76C"
+    },
+    {
+      "path": "Verification/bot-diversity-party-ui.json",
+      "sha256": "AED21B42644BA3BADE90E7DE8C54DFFAC313C289C8E3CA114B881B65C4BEED3D"
+    }
+  ],
+  "sourceSnapshotBefore": [
+    {
+      "path": "Assets/Scripts/Core/BotPlanCatalog.cs",
+      "sha256": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotPlanShuffle.cs",
+      "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotRaceController.cs",
+      "sha256": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67"
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "A217479C26070DD5B561E6A2BD78DE54E09AE127868C877EB321CAD5880BEA31"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/BotsPresentation.cs",
+      "sha256": "AE29C7AD36EFE52C780A02353F957907D54A3CB1C5FA7AA6F408F1093C226EC0"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "B637638798B8250940530B232F3B015D7CCDA968637A3F61B6EAF13C8B635A28"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "94743E7F590371280A79B3EB877C52B594C8722EEC1FE6169993DA941E15C3FC"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "DE71AF34FC5CCF2B47EA0EFDD4756E41D0E37555D3C244DEB296D86A69E55424"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "1D3EC93C8645D53D6A2C4130BB2B17FF107BAA652FDA5F0FCD64AD0ABABC31B4"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "2880777EBC2A662EDB1BE6CC25C74B54EC81D864FA7846297EDD839E7B1E347E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PartyPresentation.cs",
+      "sha256": "3960FDC65166B0E0C428641CE0F2759388E97056308584006997B6F21A8ADAB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PawControls.cs",
+      "sha256": "7779414731F89912F23CB723A8B1BB243EE41C014B50EEDA0574412E2168ADB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SessionLayout.cs",
+      "sha256": "C82EDA4DDEF0D0230098AB3E7B5BFC2829BE587F6E5A39A624D039B3F71CA178"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "BA84D404162225933B44A8E08C97980C0DC94662C4A7496C5173EE666B1BEB84"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "D50C44A1B78194974C2F7898C7FFF55358353C30A7B0C0883037BBF350ADBC96"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "EAD37C536BD8C40259E84556D0C7BD639AD20BE58951A2FDB59A8CF66FD32509"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SoloPresentation.cs",
+      "sha256": "A373B074E55B55E9C9D4E895FE70DC152955BE9FC31431A58413BC0F717BEA72"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostPresentation.cs",
+      "sha256": "00725F8E1BAD0197635C0CB861D62BCF56FDCC9A31D7462F7284C047CDFB079B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostView.cs",
+      "sha256": "B0A60C80434B86C7A6C7B809F5C3182663C92F829A33AF9B30F458ED395B560E"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "719514FE7E259541E857BBE8AAD8CC3024896A0564261BC5C48CF0BB90F2ABE8"
+    }
+  ],
+  "sourceSnapshotAfter": [
+    {
+      "path": "Assets/Scripts/Core/BotPlanCatalog.cs",
+      "sha256": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotPlanShuffle.cs",
+      "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotRaceController.cs",
+      "sha256": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67"
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "A217479C26070DD5B561E6A2BD78DE54E09AE127868C877EB321CAD5880BEA31"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/BotsPresentation.cs",
+      "sha256": "AE29C7AD36EFE52C780A02353F957907D54A3CB1C5FA7AA6F408F1093C226EC0"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "B637638798B8250940530B232F3B015D7CCDA968637A3F61B6EAF13C8B635A28"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "94743E7F590371280A79B3EB877C52B594C8722EEC1FE6169993DA941E15C3FC"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "DE71AF34FC5CCF2B47EA0EFDD4756E41D0E37555D3C244DEB296D86A69E55424"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "1D3EC93C8645D53D6A2C4130BB2B17FF107BAA652FDA5F0FCD64AD0ABABC31B4"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "2880777EBC2A662EDB1BE6CC25C74B54EC81D864FA7846297EDD839E7B1E347E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PartyPresentation.cs",
+      "sha256": "3960FDC65166B0E0C428641CE0F2759388E97056308584006997B6F21A8ADAB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PawControls.cs",
+      "sha256": "7779414731F89912F23CB723A8B1BB243EE41C014B50EEDA0574412E2168ADB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SessionLayout.cs",
+      "sha256": "C82EDA4DDEF0D0230098AB3E7B5BFC2829BE587F6E5A39A624D039B3F71CA178"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "BA84D404162225933B44A8E08C97980C0DC94662C4A7496C5173EE666B1BEB84"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "D50C44A1B78194974C2F7898C7FFF55358353C30A7B0C0883037BBF350ADBC96"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "EAD37C536BD8C40259E84556D0C7BD639AD20BE58951A2FDB59A8CF66FD32509"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SoloPresentation.cs",
+      "sha256": "A373B074E55B55E9C9D4E895FE70DC152955BE9FC31431A58413BC0F717BEA72"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostPresentation.cs",
+      "sha256": "00725F8E1BAD0197635C0CB861D62BCF56FDCC9A31D7462F7284C047CDFB079B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostView.cs",
+      "sha256": "B0A60C80434B86C7A6C7B809F5C3182663C92F829A33AF9B30F458ED395B560E"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "719514FE7E259541E857BBE8AAD8CC3024896A0564261BC5C48CF0BB90F2ABE8"
+    }
+  ],
+  "rootFreeze": {
+    "status": "FROZEN",
+    "checkedAt": "2026-10-28T21:09:07.7903994Z",
+    "reportSha256": "C062311EF0C0FEBFC643023CB9800F064444BBD3548F67475BDA9E25568949EC"
+  },
+  "scope": "One final pass of agreed existing regressions against frozen Core/Presentation/Web. No obsolete seed0 BotUi test, new BotDiversityUi is separately owned. Managed UI tests do not establish native rendering/browser/device behavior. Historical reports and fixture preserved."
+}

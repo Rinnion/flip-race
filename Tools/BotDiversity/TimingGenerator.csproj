@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup><BaseIntermediateOutputPath>obj/TimingGenerator/</BaseIntermediateOutputPath><MSBuildProjectExtensionsPath>obj/TimingGenerator/</MSBuildProjectExtensionsPath><BaseOutputPath>bin/TimingGenerator/</BaseOutputPath></PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>disable</ImplicitUsings><Nullable>disable</Nullable><NuGetAudit>false</NuGetAudit><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup>
+  <ItemGroup><Compile Include="../../Assets/Scripts/Core/*.cs" /><Compile Include="../BotPrototype/SharedProbe.cs" Link="SharedProbe.cs" /><Compile Include="TimingGenerator.cs" /></ItemGroup>
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+</Project>

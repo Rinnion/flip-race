@@ -1,0 +1,56 @@
+PASS_REQUIRED_CHECKS_WITH_PREEXISTING_LEGACY_FAILURE
+
+Required checks passed=true; all invoked passed=false; sourceStable=true; rootFreezeMatches=true; baselineUnchanged=true
+
+parity_all_and_fixture: exit=0
+PASS: 13/13 original engine scenarios; 963 assertions; 186 sampled recovery states.
+PASS: V2 12 scenarios / 3554 assertions / 449 sampled recovery states; single risk, 3 tracks, real boosts, exact ties, grace and characters.
+PASS: V3 12 scenarios / 865 assertions; FIFO effects, real finishes, after-ring confirmation, pause/reset and independence.
+PASS: V4-01/02 18 scenarios / 1770 assertions; gravity, continuous contacts, one inertial air flip, free rings and legacy separation.
+PASS: TUNE-01/02 13 scenarios / 1009 assertions; four profiles, instant boost, preserved effects and actual finishes.
+PASS: CONTROL 19 scenarios / 2166 assertions.
+PASS: chevron finish 10 scenarios / 2054 assertions.
+PASS: FLIGHT 12 scenarios / 2424 assertions.
+PASS: MODES 4 scenarios / 1190 assertions; open edges, real corners, geometric linked confirmation and Fast single air repeat.
+PASS: RHYTHM offset gates 4 scenarios / 2960 assertions; real mirrors, signed offsets, corners, one logical penalty and linked union clearance.
+PASS: JS/C# differential comparison, 40228 snapshots / 1448208 state fields (numeric tolerance < 1e-8).
+
+flight_settings: exit=0
+PASS: FLIGHT settings 736 assertions / 114 physical round trips.
+
+party_core: exit=0
+PartyCheck PASS: 512 deterministic assertions (PARTY-00/01/02/04/05/06)
+
+solo_ui: exit=0
+{
+  "status": "PASS",
+  "checks": 4962,
+  "cases": 28,
+  "updates": 3258,
+  "pointers": 686
+}
+
+party_ui: exit=0
+{
+  "status": "PASS",
+  "checks": 71100,
+  "cases": 216,
+  "updates": 31716,
+  "pointers": 7722
+}
+
+legacy_shared_screen: exit=1
+ParentContainsErrorRecordException: F:\Home\Game\flip-race-unity\Tools\SharedScreenCheck\Run.ps1:9
+Line |
+   9 |  [FlipRace.SharedScreenCheck.Audit]::Run() | ConvertTo-Json -Depth 12
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Exception calling "Run" with "0" argument(s): "Slot1 actual finish: actual=3.8466784513710057 expected=3.9"
+
+BASELINE9a67f29 exact same legacy failure=true
+ParentContainsErrorRecordException:
+Line |
+  13 |  [FlipRace.SharedScreenCheck.Audit]::Run() | ConvertTo-Json -Depth 12
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Exception calling "Run" with "0" argument(s): "Slot1 actual finish: actual=3.8466784513710057 expected=3.9"
+
+One final pass of agreed existing regressions against frozen Core/Presentation/Web. No obsolete seed0 BotUi test, new BotDiversityUi is separately owned. Managed UI tests do not establish native rendering/browser/device behavior. Historical reports and fixture preserved.

@@ -1,0 +1,26 @@
+rhythm-cascade Jump Novice:newMasks=1049 positiveSets=15 hitSets=1005 boost+hit=1049 selectedVerified=8
+rhythm-cascade Jump Amateur:newMasks=176 positiveSets=10 hitSets=20 boost+hit=172 selectedVerified=8
+rhythm-cascade Jump Confident:newMasks=341 positiveSets=130 hitSets=21 boost+hit=172 selectedVerified=16
+rhythm-cascade Jump Strong:newMasks=369 positiveSets=255 hitSets=1 boost+hit=0 selectedVerified=8
+rhythm-cascade Jump Master:newMasks=0 positiveSets=0 hitSets=0 boost+hit=0 selectedVerified=0
+PAIR rhythm-cascade/Jump attempts=2989 simulations=3069 seconds=27.26
+rhythm-cascade Flip Novice:newMasks=1033 positiveSets=15 hitSets=923 boost+hit=1033 selectedVerified=8
+rhythm-cascade Flip Amateur:newMasks=149 positiveSets=10 hitSets=19 boost+hit=143 selectedVerified=8
+rhythm-cascade Flip Confident:newMasks=270 positiveSets=130 hitSets=16 boost+hit=101 selectedVerified=16
+rhythm-cascade Flip Strong:newMasks=369 positiveSets=255 hitSets=1 boost+hit=0 selectedVerified=8
+rhythm-cascade Flip Master:newMasks=0 positiveSets=0 hitSets=0 boost+hit=0 selectedVerified=0
+PAIR rhythm-cascade/Flip attempts=2873 simulations=2953 seconds=21.77
+mixed-tricks Jump Novice:newMasks=158 positiveSets=59 hitSets=13 boost+hit=151 selectedVerified=8
+mixed-tricks Jump Amateur:newMasks=134 positiveSets=80 hitSets=17 boost+hit=109 selectedVerified=8
+mixed-tricks Jump Confident:newMasks=82 positiveSets=61 hitSets=13 boost+hit=77 selectedVerified=16
+mixed-tricks Jump Strong:newMasks=31 positiveSets=25 hitSets=7 boost+hit=15 selectedVerified=8
+mixed-tricks Jump Master:newMasks=0 positiveSets=0 hitSets=0 boost+hit=0 selectedVerified=0
+PAIR mixed-tricks/Jump attempts=1186 simulations=1266 seconds=7.29
+mixed-tricks Flip Novice:newMasks=102 positiveSets=51 hitSets=11 boost+hit=95 selectedVerified=8
+mixed-tricks Flip Amateur:newMasks=107 positiveSets=61 hitSets=7 boost+hit=63 selectedVerified=8
+mixed-tricks Flip Confident:newMasks=124 positiveSets=83 hitSets=9 boost+hit=31 selectedVerified=16
+mixed-tricks Flip Strong:newMasks=58 positiveSets=37 hitSets=7 boost+hit=15 selectedVerified=8
+mixed-tricks Flip Master:newMasks=0 positiveSets=0 hitSets=0 boost+hit=0 selectedVerified=0
+PAIR mixed-tricks/Flip attempts=1170 simulations=1250 seconds=7.00
+
+SELECTED_FINE_REVALIDATION plans=160 simulations=320 CoreSourceStable=True seconds=3.90

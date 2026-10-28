@@ -323,7 +323,7 @@ namespace FlipRace.Presentation
         void Act(int index)
         {
             if (paused || showRules || showTracks || Portrait || gameplayInputBlocked || (BotEnabled && index!=0)) return;
-            if (BotEnabled && Game.Phase=="finished") { ResetBotRace(unchecked(Game.BotSeed+1)); round++; }
+            if (BotEnabled && Game.Phase=="finished") { ResetBotRace(); round++; }
             string phase = Game.Phase;
             if (Trial && (phase == "ready" || phase == "finished") && RaceTracks.NormalizeId(Game.Track.Id) != Game.Track.Id)
             {

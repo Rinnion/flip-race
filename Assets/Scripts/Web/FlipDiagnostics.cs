@@ -28,7 +28,9 @@ namespace FlipRace.Web
             public string mode, phase, winner, track, motion, profile, version;
             public string fieldView, seating, fieldHeight;
             public bool bot;
-            public string botDifficulty, botPlanId;
+            public string botDifficulty, botPlanId, botSignatureId;
+            public uint botSessionSeed;
+            public long botAttemptSequenceIndex;
             public int botSeed, botCursor, botGoalsTotal, botGoalsCompleted, botPlanCount;
             public double gravityAcceleration, departureImpulse;
             public string firstAction, motionLaw;
@@ -72,6 +74,8 @@ namespace FlipRace.Web
                 fieldView = game.FieldViewName, seating = game.SeatingName, fieldHeight = game.FieldHeightName,
                 bot = state.IsBot, botDifficulty = state.IsBot ? state.BotDifficulty.ToString() : "",
                 botPlanId = state.IsBot ? state.BotPlan.Id : "", botSeed = state.BotSeed,
+                botSignatureId = state.IsBot ? state.BotPlan.SignatureId : "", botSessionSeed = game.BotSessionSeed,
+                botAttemptSequenceIndex = game.BotAttemptSequenceIndex,
                 botCursor = game.BotActionCursor, botGoalsTotal = state.IsBot ? BotPlanCatalog.GoalCount(state.Track.Id,flight) : 0,
                 botGoalsCompleted = state.IsBot ? BotCompletedGoals(state) : 0,
                 botPlanCount = state.IsBot ? BotPlanCatalog.Count(state.Track.Id,flight,state.BotDifficulty) : 0,
