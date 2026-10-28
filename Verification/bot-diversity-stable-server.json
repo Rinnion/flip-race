@@ -1,0 +1,13 @@
+{
+  "status": "SERVING_VERIFIED_5.2.1",
+  "url": "http://127.0.0.1:4184/",
+  "pid": 148884,
+  "command": "\"D:\\Program Files\\nodejs\\node.exe\" Tools/serve.mjs Builds/WebGL-v5.2.1-unpacked-final",
+  "directory": "Builds/WebGL-v5.2.1-unpacked-final",
+  "previousOwnedPidStopped": 97332,
+  "temporaryRollbackPidStopped": 104636,
+  "previous520ZipPreserved": true,
+  "candidatePidStillRunning": 135996,
+  "zipSha256": "5C1563103EB02BB52E6795B11769E55FAFE2E0F6F88E6BE5C8EF244CF374D368",
+  "note": "First transition HTTP succeeded, but a stale native LASTEXITCODE triggered precautionary rollback. Repeated transition validates actual PowerShell report; no product/build change."
+}
