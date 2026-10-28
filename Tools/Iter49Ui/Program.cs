@@ -251,7 +251,7 @@ static class Program
         Click(ui,ui.CharacterScreenRect(0,4).center);Click(ui,ui.CharacterScreenRect(1,5).center);
         Check(ui.Game.Players.All(p=>!p.Flipping&&!p.Ready),"invisible paws do not intercept hero choices");
         Devices.Touches=new[]{TouchAt(1,ui.ReadyScreenRect(0).center,TouchPhase.Began),TouchAt(2,ui.ReadyScreenRect(1).center,TouchPhase.Began)};Tick(ui);Devices.Clear();
-        Check(ui.Game.Phase=="countdown"&&!ui.PawsVisible&&ui.Game.Players.All(p=>!p.Flipping),"two real ready edges produce countdown, no jump");
+        Check(ui.Game.Phase=="countdown"&&!ui.PawsVisible&&ui.Game.Players.All(p=>!p.Flipping),"two real ready edges produce countdown, no jump");Header501(ui,ui.SharedEnabled?(ui.SeatingName=="adjacent"?3:2):ui.SplitGhostEnabled?1:0);
         Devices.Touches=new[]{TouchAt(1,ui.PawScreenRect(0).center,TouchPhase.Began),TouchAt(2,ui.PawScreenRect(1).center,TouchPhase.Began)};Tick(ui);Devices.Clear();
         Check(ui.Game.Players.All(p=>!p.Flipping)&&(float)Field(ui,"firstPawAt")==-10&&(float)Field(ui,"secondPawAt")==-10,"countdown paw locations cannot act or flash");
         while(ui.Game.Phase=="countdown")Tick(ui,Math.Min(.1,ui.Game.CountdownRemaining));
@@ -262,24 +262,81 @@ static class Program
         var p=ui.Game.Players[slot];var f=ui.Game.Flight;int expected=f.FirstAction==FirstAction.Jump?1:-1;
         Check(p.Flipping&&p.Gravity==expected&&p.AirFlipAvailable,why+" exactly one action, no unintended air repeat");
     }
+    static void Header501(FlipRaceGame ui,int kind)
+    {
+        Call(ui,"Measure");Rect bar=ui.SessionBarRect,arena=(Rect)Field(ui,"arena");string before=Fingerprint(ui.Game);
+        Check(ui.SessionCentered==(kind!=3),"session strip centered only for opposite-side seating");
+        if(kind==3)Check(bar.yMax<=arena.yMin+.001,"adjacent same-side seating retains edge toolbar");
+        else if(kind>=2&&(ui.Game.Phase=="racing"||ui.Game.Phase=="countdown")) {
+            NearUI(bar.yMax,ui.SharedFieldRect.yMin,"shared active toolbar immediately above world");
+            Check(!bar.Overlaps(ui.SharedFieldRect),"toolbar cannot occlude active shared geometry");
+            for(int slot=0;slot<2;slot++) {
+                Check(!bar.Overlaps(ui.PawScreenRect(slot)),"active shared toolbar clear of viewport paws");
+                Check(!ui.SharedFieldRect.Overlaps(ui.PawScreenRect(slot)),"active shared world clear of viewport paws");
+            }
+        } else {
+            var a=ui.ControlAreaRect(0);var b=ui.ControlAreaRect(1);
+            Check(bar.yMin>=a.yMax-.001&&bar.yMax<=b.yMin+.001,"toolbar between upper/lower rows");
+            for(int slot=0;slot<2;slot++) {
+                Check(!bar.Overlaps(ui.ReadyScreenRect(slot)),"toolbar cannot cover readiness");
+                for(int hero=0;hero<6;hero++)Check(!bar.Overlaps(ui.CharacterScreenRect(slot,hero)),"toolbar cannot cover hero cards");
+            }
+        }
+        foreach(string name in new[]{"soundRect","pauseRect","fullscreenRect"})Check(Inside((Rect)Field(ui,name),bar),"session tools remain inside strip "+name);
+        NearUI(ui.SharedFieldRect.height,((Rect[])Field(ui,"lanes"))[0].height,"legacy shared world height preserved");
+        if(ui.SharedEnabled&&ui.SessionCentered&&ui.Game.Phase=="countdown")for(int slot=0;slot<2;slot++) {
+            Rect region=ui.ControlAreaRect(slot);bool upper=slot==0;
+            float local=(float)Call(ui,"SharedCountdownCenter",slot),physical=upper?region.yMax-local:region.yMin+local;
+            var glyph=new Rect(region.x,physical-30,region.width,60);
+            Check((float)Call(ui,"SharedCountdownBandHeight",slot)>=60,"countdown band fits 60px glyph");
+            Check(upper?glyph.yMin>=region.yMin-.001&&glyph.yMax<=bar.yMin+.001:
+                glyph.yMin>=ui.SharedFieldRect.yMax-.001&&glyph.yMax<=region.yMax+.001,"countdown glyph visible above bar or below world");
+        }
+        Check(Fingerprint(ui.Game)==before,"session layout never mutates Core");
+    }
+    static void Pause501(FlipRaceGame ui)
+    {
+        Rect cover=(Rect)Field(ui,"arena"),bar=ui.SessionBarRect;
+        float titleY=(float)typeof(FlipRaceGame).GetProperty("PauseTitleY",Private).GetValue(ui);
+        float subtitleY=(float)typeof(FlipRaceGame).GetProperty("PauseSubtitleY",Private).GetValue(ui);
+        float iconSize=(float)typeof(FlipRaceGame).GetProperty("PauseIconSize",Private).GetValue(ui);
+        var title=new Rect(cover.x+15,titleY,cover.width-30,30);
+        var subtitle=new Rect(cover.x+20,subtitleY,cover.width-40,28);
+        var resume=(Rect)Field(ui,"resumeRect");
+        foreach(var box in new[]{title,subtitle,resume})Check(Inside(box,cover)&&!box.Overlaps(bar),"pause title/subtitle/resume visible outside toolbar");
+        Check(!title.Overlaps(subtitle)&&!title.Overlaps(resume)&&!subtitle.Overlaps(resume),"pause text and resume independent");
+        if(iconSize>0) {
+            var icon=new Rect(cover.center.x-iconSize/2,titleY-iconSize-(ui.SessionCentered&&ui.SharedEnabled?8:14),iconSize,iconSize);
+            Check(Inside(icon,cover)&&!icon.Overlaps(bar)&&!icon.Overlaps(title),"optional pause icon wholly visible outside toolbar");
+        }
+    }
+    static void Toolbar501(FlipRaceGame ui,int kind)
+    {
+        Header501(ui,kind);string before=Fingerprint(ui.Game);
+        Click(ui,((Rect)Field(ui,"soundRect")).center);Check(Fingerprint(ui.Game)==before,"sound toolbar tap cannot act");
+        Click(ui,((Rect)Field(ui,"pauseRect")).center);Check(ui.IsPaused&&Fingerprint(ui.Game)==before,"pause toolbar tap cannot act");Pause501(ui);
+        Call(ui,"Resume");Devices.Clear();Tick(ui);
+        before=Fingerprint(ui.Game);Rect bar=ui.SessionBarRect;
+        Click(ui,new Vector2(bar.xMin+2,bar.center.y));Check(Fingerprint(ui.Game)==before,"toolbar label/background tap cannot act");
+    }
     static void PawBounds(FlipRaceGame ui,int w,int h,int kind)
     {
         Rect safe=new Rect(12,14,w-28,h-24);var first=ui.PawScreenRect(0);var second=ui.PawScreenRect(1);
         Check(!first.Overlaps(second),"two paw targets never overlap");
         for(int slot=0;slot<2;slot++){
-            Rect area=ui.ControlAreaRect(slot),r=ui.PawScreenRect(slot);NearUI(r.width,56,"56 CSS pixel paw width");NearUI(r.height,56,"56 CSS pixel paw height");Check(Inside(r,area)&&Inside(r,safe),"entire paw lies inside own control region and physical safe area");
-            bool upper=slot==0&&kind!=3;float inset=w>h&&h<=600?40:8;NearUI(upper?r.xMin:r.xMax,upper?Math.Max(area.xMin,safe.xMin)+inset:Math.Min(area.xMax,safe.xMax)-inset,"FIX492 compact40/desktop8 horizontal inset");
-            NearUI(upper?r.yMin:r.yMax,upper?Math.Max(area.yMin,safe.yMin)+8:Math.Min(area.yMax,safe.yMax)-8,"physical top-left for opposite upper, bottom-right otherwise");
+            Rect area=ui.ControlAreaRect(slot),r=ui.PawScreenRect(slot);NearUI(r.width,56,"56 CSS pixel paw width");NearUI(r.height,56,"56 CSS pixel paw height");Check(Inside(r,safe),"entire paw lies inside viewport physical safe area");
+            bool upper=slot==0&&kind!=3;float inset=w>h&&h<=600?40:8;NearUI(slot==0?r.xMin:r.xMax,slot==0?safe.xMin+inset:safe.xMax-inset,"FIX492 compact40/desktop8 horizontal inset");
+            NearUI(upper?r.yMin:r.yMax,upper?safe.yMin+8:safe.yMax-8,"physical top-left for opposite upper, bottom-right otherwise");
         }
     }
     static void Stage05Paws()
     {
         foreach(var size in new[]{(w:568,h:320),(w:800,h:360),(w:960,h:432),(w:1280,h:720)})foreach(int kind in new[]{0,1,2,3})foreach(float dpr in new[]{1f,2f,2.5f,3f})foreach(int choice in new[]{10,11}){
-            pawCases++;var ui=PawUi(size.w,size.h,choice,kind,dpr);PawBounds(ui,size.w,size.h,kind);
+            pawCases++;var ui=PawUi(size.w,size.h,choice,kind,dpr);PawBounds(ui,size.w,size.h,kind);Header501(ui,kind);
             // Actual menu keys are blocked; no hypothetical GUI paw button is
             // inserted, and no gameplay position/timer is assigned by the test.
             OpenView(ui);string menuState=Fingerprint(ui.Game);Devices.Keys.Add(KeyCode.A);Devices.Keys.Add(KeyCode.L);Tick(ui);Devices.Clear();Check(!ui.PawsVisible&&Fingerprint(ui.Game)==menuState,"menu blocks A/L and hides paws");Call(ui,"CloseRules");Devices.Clear();Tick(ui);
-            ReadyThroughUpdate(ui);float visual=(float)Field(ui,"animationTime");
+            ReadyThroughUpdate(ui);Header501(ui,kind);Toolbar501(ui,kind);float visual=(float)Field(ui,"animationTime");
             var p0=ui.PawScreenRect(0).center;var p1=ui.PawScreenRect(1).center;
             Devices.Touches=new[]{TouchAt(7,p0,TouchPhase.Began),TouchAt(9,p1,TouchPhase.Began)};Devices.MouseDown=Devices.MouseHeld=true;Devices.mousePosition=new Vector3(p1.x*dpr,Display.height-p1.y*dpr,0);Tick(ui);Devices.Clear();
             FirstActionState(ui,0,"simultaneous paw slot0");FirstActionState(ui,1,"simultaneous paw slot1");NearUI((float)Field(ui,"firstPawAt"),visual,"first paw gives immediate visual-clock feedback");NearUI((float)Field(ui,"secondPawAt"),visual,"second paw gives immediate feedback independently");
@@ -307,7 +364,7 @@ static class Program
     }
     static void Fix492PawEdges()
     {
-        foreach(var size in new[]{(w:800,h:360),(w:960,h:432)})foreach(int kind in new[]{0,1,2,3})foreach(float dpr in new[]{1f,2.5f,3f})foreach(int choice in new[]{10,11})foreach(int slot in new[]{0,1})foreach(var point in new[]{(x:.5f,y:.5f),(x:55.5f,y:.5f),(x:.5f,y:55.5f),(x:55.5f,y:55.5f),(x:.5f,y:28f),(x:55.5f,y:28f),(x:28f,y:.5f),(x:28f,y:55.5f),(x:28f,y:28f)})
+        foreach(var size in new[]{(w:568,h:320),(w:800,h:360),(w:960,h:432),(w:1280,h:720)})foreach(int kind in new[]{0,1,2,3})foreach(float dpr in new[]{1f,2.5f,3f})foreach(int choice in new[]{10,11})foreach(int slot in new[]{0,1})foreach(var point in new[]{(x:.5f,y:.5f),(x:55.5f,y:.5f),(x:.5f,y:55.5f),(x:55.5f,y:55.5f),(x:.5f,y:28f),(x:55.5f,y:28f),(x:28f,y:.5f),(x:28f,y:55.5f),(x:28f,y:28f)})
         {
             var ui=PawUi(size.w,size.h,choice,kind,dpr);ReadyThroughUpdate(ui);Rect r=ui.PawScreenRect(slot);float visual=(float)Field(ui,"animationTime");
             Vector2 p=new Vector2(r.x+point.x,r.y+point.y);
@@ -317,7 +374,7 @@ static class Program
             Check((float)Field(ui,slot==0?"secondPawAt":"firstPawAt")==-10,"FIX492 opponent never flashes");
         }
         Display.SafeAreaOverride=null;
-        Evidence.Add(new{Kind="fix492-visible-paw-edge-streams",Sizes=new[]{"800x360","960x432"},Dpr=new[]{1f,2.5f,3f},Views=4,Profiles=2,Players=2,InteriorPoints=9,Physical2400x1080=new[]{"800x360@3","960x432@2.5"}});
+        Evidence.Add(new{Kind="ui501-visible-paw-edge-streams",Sizes=new[]{"568x320","800x360","960x432","1280x720"},Dpr=new[]{1f,2.5f,3f},Views=4,Profiles=2,Players=2,InteriorPoints=9,Physical2400x1080=new[]{"800x360@3","960x432@2.5"}});
     }
     static void Stage05Equivalence()
     {
@@ -331,7 +388,7 @@ static class Program
                     if(target==0||target==.06){Devices.Touches=new[]{TouchAt(7,ui.PawScreenRect(0).center,TouchPhase.Began),TouchAt(9,ui.PawScreenRect(1).center,TouchPhase.Began)};Tick(ui);Devices.Clear();}
                     snapshots.Add(Fingerprint(ui.Game));
                 }
-                Check(ui.Game.Phase=="finished"&&ui.Game.Players.All(p=>p.FinishTime.HasValue),"actual paw stream reaches real finishes");
+                Check(ui.Game.Phase=="finished"&&ui.Game.Players.All(p=>p.FinishTime.HasValue),"actual paw stream reaches real finishes");Header501(ui,kind);
                 if(baseline==null)baseline=snapshots;else for(int i=0;i<snapshots.Count;i++)Check(snapshots[i]==baseline[i],"same actual paw actions preserve entire Core state/coin availability across four views at sample"+i);
                 Evidence.Add(new{Kind="stage05-actual-paw-update-equivalence",Choice=choice,View=kind,Winner=ui.Game.Winner,Players=ui.Game.Players.Select(p=>new{p.Distance,p.FinishTime,p.Collisions,p.CoinsEarned,p.BoostsEarned,p.SlowsEarned,p.FinishBoostElapsed}).ToArray()});
             }

@@ -14,3 +14,23 @@ Paw cases cover both target sizes, all four views, Main/Fast, DPR1/2 and asymmet
 Synthetic projection positions are not gameplay witnesses. Real input-stream witnesses start through normal readiness and use actual Update events. Rendering/layer/icon orientation/readability and native device timing remain browser checks.
 
 Keep historical stage02 and iter49-04 evidence and source snapshots. Current accepted evidence is separate iter49-05 output.
+## UI501 session strip and viewport paws
+
+The current runner preserves the previous gameplay/input checks while updating
+only explicitly changed layout expectations: paws use the safe viewport corners,
+including bottom-left/bottom-right in adjacent seating. Paws may lie outside the
+old desktop game arena. Nine-point fresh edge streams now cover 568x320,
+800x360, 960x432 and 1280x720, with all views, both profiles and DPR 1/2.5/3.
+
+Header501 checks the toolbar between opposite player rows during selection and
+results, above shared-world geometry while active, and at the original edge in
+adjacent seating. Card/readiness exclusion, tool containment, unchanged world
+height and Core state are checked. Actual sound, pause and label/background taps
+must never invoke a player action. Old proof files remain historical evidence.
+
+    powershell -NoProfile -File Tools/Iter49Ui/Run.ps1 > Verification/ui501-legacy-ui.json
+The UI501 checks also measure the production countdown helpers and require the
+full 60px glyph box above the session strip for upper players or below the world
+for lower players. Pause title (30px), subtitle (28px), resume (33px), and any
+drawn icon must fit the arena without overlapping the session strip or each
+other. These bounds checks complement the native screenshot review.

@@ -1,0 +1,40 @@
+{
+  "url": "http://127.0.0.1:4184/",
+  "checkedAt": "2026-10-28T13:43:59.1551665Z",
+  "fileCount": 5,
+  "status": "PASS",
+  "version": "5.0.1-trial",
+  "files": [
+    {
+      "path": "Build/WebGL-v5.0.1-final.data.unityweb",
+      "matches": true,
+      "sha256": "f7d3700e026cde09aae21584f44b3fc1584a572ed7cc34004fc2f04e7055df87",
+      "bytes": 1746442
+    },
+    {
+      "path": "Build/WebGL-v5.0.1-final.framework.js.unityweb",
+      "matches": true,
+      "sha256": "9300759129fc39b22172a00b6a687b0ccdda24647fa56b72f6712bab7280dd29",
+      "bytes": 89722
+    },
+    {
+      "path": "Build/WebGL-v5.0.1-final.loader.js",
+      "matches": true,
+      "sha256": "5d36102aadeb24659717fee495d27fb34eacce7429e6587881f5d79271dea80b",
+      "bytes": 39788
+    },
+    {
+      "path": "Build/WebGL-v5.0.1-final.wasm.unityweb",
+      "matches": true,
+      "sha256": "a310b2731ab61c12f0e2fa32738159ffe3020976b74c8bfdb1e26563d07d4f99",
+      "bytes": 7152789
+    },
+    {
+      "path": "index.html",
+      "matches": true,
+      "sha256": "ec4b27f3c6b712d8d0c19e9803320ace7e6ea12c44fb592c91f4209b709a8e9f",
+      "bytes": 12119
+    }
+  ],
+  "archiveSha256": "b8da93cd29a279a115d8c1e0562aebfa431a245ab2750caa2a0ef6bf0bc61d4e"
+}

@@ -23,7 +23,7 @@ namespace FlipRace.Presentation
             {
                 float h=lanes[0].height, inset=Mathf.Clamp(h*.095f,13,25);
                 float w=Mathf.Min(arena.width,(h-2*inset)*(float)(PartyWindowWidth/RaceConfig.CorridorHeight));
-                return new Rect(arena.center.x-w/2,arena.center.y-h/2,w,h);
+                return new Rect(arena.center.x-w/2,CommonFieldTop(h),w,h);
             }
         }
         int PartyCorner(int slot)
@@ -33,7 +33,7 @@ namespace FlipRace.Presentation
         }
         bool PartyRotated(int slot) { return PartyCorner(slot)<2; }
         Rect PartyControlArea(int slot)
-        { int corner=PartyCorner(slot); return new Rect(arena.x+(corner%2)*arena.width/2,arena.y+(corner/2)*arena.height/2,arena.width/2,arena.height/2); }
+        { int corner=PartyCorner(slot); float half=SessionCentered?(arena.height-session.height)/2:arena.height/2; return new Rect(arena.x+(corner%2)*arena.width/2,corner<2?arena.y:arena.yMax-half,arena.width/2,half); }
         Rect PartyScreenRect(int slot,Rect local)
         { Rect r=PartyControlArea(slot); return PartyRotated(slot)?new Rect(r.xMax-local.xMax,r.yMax-local.yMax,local.width,local.height):new Rect(r.x+local.x,r.y+local.y,local.width,local.height); }
         Rect PartyCharacterRect(int slot,int hero)
@@ -112,7 +112,7 @@ namespace FlipRace.Presentation
                 if(Game.Phase=="ready")DrawPartySelection(slot,region.width,region.height);
                 else if(Game.Phase=="countdown")
                 {
-                    Text(new Rect(0,region.height/2-35,region.width,70),Math.Ceiling(Game.CountdownRemaining).ToString(),48,accents[slot],true,TextAnchor.MiddleCenter);
+                    Text(new Rect(0,SharedCountdownCenter(slot)-35,region.width,70),Math.Ceiling(Game.CountdownRemaining).ToString(),48,accents[slot],true,TextAnchor.MiddleCenter);
                 }
                 else if(Game.Phase=="finished")DrawPartyResult(slot,region.width,region.height);
                 else DrawPartyStatus(slot,region.width,region.height,world.View.IsPlayerVisible(slot));
@@ -139,7 +139,7 @@ namespace FlipRace.Presentation
         {
             var p=Game.Players[slot];string state=p.Status==PlayerStatus.Eliminated?"Выбыл · "+Number(p.Distance,0)+" ед"
                 :p.Status==PlayerStatus.Finished?"Финиш · "+Number(p.FinishTime.Value,2)+" с":!visible?"Впереди →":"+"+Rewards(p)+" · −"+p.SlowsEarned+" · монеты "+p.CoinsEarned;
-            float sw=Mathf.Min(w-105,255);Rect status=new Rect(4,h-25,sw,22);
+            float sw=Mathf.Min(w-105,255);int corner=PartyCorner(slot); float statusX=corner==1||corner==2?w-sw-4:4;Rect status=new Rect(statusX,h-25,sw,22);
             Round(status,5,new Color(.98f,.98f,.94f,.94f));
             Text(status,(slot+1)+" · "+PlayerName(slot)+" · "+state,compact?8:10,accents[slot],true,TextAnchor.MiddleCenter);
         }

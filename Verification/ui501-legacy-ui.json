@@ -1,0 +1,7146 @@
+{
+  "status": "PASS",
+  "checks": 72892,
+  "cases": 27,
+  "pointers": 4984,
+  "projectionFixtures": 70,
+  "equivalenceRuns": 12,
+  "applies": 36,
+  "updates": 77682,
+  "pawCases": 128,
+  "pawEquivalenceRuns": 8,
+  "Evidence": [
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 0,
+      "Slot": 0,
+      "Area": [
+        9,
+        1,
+        550,
+        132.5
+      ],
+      "Ready": [
+        189,
+        1,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          375.6667,
+          85.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          85.5,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          85.5,
+          175.33333,
+          44
+        ],
+        [
+          375.6667,
+          37.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          37.5,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          37.5,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 0,
+      "Slot": 1,
+      "Area": [
+        9,
+        184.5,
+        550,
+        132.5
+      ],
+      "Ready": [
+        189,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          188.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          188.5,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          188.5,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          236.5,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          236.5,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          236.5,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 1,
+      "Slot": 0,
+      "Area": [
+        9,
+        1,
+        550,
+        144.5
+      ],
+      "Ready": [
+        189,
+        1,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          375.6667,
+          93.25,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          93.25,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          93.25,
+          175.33333,
+          44
+        ],
+        [
+          375.6667,
+          45.25,
+          175.33333,
+          44
+        ],
+        [
+          196.33334,
+          45.25,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          45.25,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 1,
+      "Slot": 1,
+      "Area": [
+        9,
+        172.5,
+        550,
+        144.5
+      ],
+      "Ready": [
+        189,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          180.75,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          180.75,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          180.75,
+          175.33333,
+          44
+        ],
+        [
+          17,
+          228.75,
+          175.33333,
+          44
+        ],
+        [
+          196.33333,
+          228.75,
+          175.33333,
+          44
+        ],
+        [
+          375.66666,
+          228.75,
+          175.33333,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 2,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        275,
+        289
+      ],
+      "Ready": [
+        51.5,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          104.666664,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          192.33333,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          17,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          104.666664,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          192.33333,
+          156.5,
+          83.666664,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Mode": 2,
+      "Slot": 1,
+      "Area": [
+        284,
+        28,
+        275,
+        289
+      ],
+      "Ready": [
+        326.5,
+        285,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          292,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          379.66666,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          467.3333,
+          108.5,
+          83.666664,
+          44
+        ],
+        [
+          292,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          379.66666,
+          156.5,
+          83.666664,
+          44
+        ],
+        [
+          467.3333,
+          156.5,
+          83.666664,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 0,
+      "Slot": 0,
+      "Area": [
+        9,
+        1,
+        826,
+        167.5
+      ],
+      "Ready": [
+        327,
+        1,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          514,
+          104.75,
+          176,
+          44
+        ],
+        [
+          334,
+          104.75,
+          176,
+          44
+        ],
+        [
+          154,
+          104.75,
+          176,
+          44
+        ],
+        [
+          514,
+          56.75,
+          176,
+          44
+        ],
+        [
+          334,
+          56.75,
+          176,
+          44
+        ],
+        [
+          154,
+          56.75,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 0,
+      "Slot": 1,
+      "Area": [
+        9,
+        219.5,
+        826,
+        167.5
+      ],
+      "Ready": [
+        327,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          154,
+          239.25,
+          176,
+          44
+        ],
+        [
+          334,
+          239.25,
+          176,
+          44
+        ],
+        [
+          514,
+          239.25,
+          176,
+          44
+        ],
+        [
+          154,
+          287.25,
+          176,
+          44
+        ],
+        [
+          334,
+          287.25,
+          176,
+          44
+        ],
+        [
+          514,
+          287.25,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 1,
+      "Slot": 0,
+      "Area": [
+        9,
+        1,
+        826,
+        179.5
+      ],
+      "Ready": [
+        327,
+        1,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          514,
+          110.75,
+          176,
+          44
+        ],
+        [
+          334,
+          110.75,
+          176,
+          44
+        ],
+        [
+          154,
+          110.75,
+          176,
+          44
+        ],
+        [
+          514,
+          62.75,
+          176,
+          44
+        ],
+        [
+          334,
+          62.75,
+          176,
+          44
+        ],
+        [
+          154,
+          62.75,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 1,
+      "Slot": 1,
+      "Area": [
+        9,
+        207.5,
+        826,
+        179.5
+      ],
+      "Ready": [
+        327,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          154,
+          233.25,
+          176,
+          44
+        ],
+        [
+          334,
+          233.25,
+          176,
+          44
+        ],
+        [
+          514,
+          233.25,
+          176,
+          44
+        ],
+        [
+          154,
+          281.25,
+          176,
+          44
+        ],
+        [
+          334,
+          281.25,
+          176,
+          44
+        ],
+        [
+          514,
+          281.25,
+          176,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 2,
+      "Slot": 0,
+      "Area": [
+        9,
+        28,
+        413,
+        359
+      ],
+      "Ready": [
+        120.5,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          17,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          150.66667,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          284.33334,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          17,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          150.66667,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          284.33334,
+          191.5,
+          129.66667,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 844,
+        "Item2": 390
+      },
+      "Mode": 2,
+      "Slot": 1,
+      "Area": [
+        422,
+        28,
+        413,
+        359
+      ],
+      "Ready": [
+        533.5,
+        355,
+        190,
+        32
+      ],
+      "Cards": [
+        [
+          430,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          563.6667,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          697.3334,
+          143.5,
+          129.66667,
+          44
+        ],
+        [
+          430,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          563.6667,
+          191.5,
+          129.66667,
+          44
+        ],
+        [
+          697.3334,
+          191.5,
+          129.66667,
+          44
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 0,
+      "Slot": 0,
+      "Area": [
+        45,
+        131,
+        1190,
+        201.6
+      ],
+      "Ready": [
+        530,
+        131,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          732,
+          254.8,
+          176,
+          56
+        ],
+        [
+          552,
+          254.8,
+          176,
+          56
+        ],
+        [
+          372,
+          254.8,
+          176,
+          56
+        ],
+        [
+          732,
+          194.8,
+          176,
+          56
+        ],
+        [
+          552,
+          194.8,
+          176,
+          56
+        ],
+        [
+          372,
+          194.8,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 0,
+      "Slot": 1,
+      "Area": [
+        45,
+        406.6,
+        1190,
+        201.6
+      ],
+      "Ready": [
+        530,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          372,
+          428.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          428.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          428.40002,
+          176,
+          56
+        ],
+        [
+          372,
+          488.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          488.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          488.40002,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 1,
+      "Slot": 0,
+      "Area": [
+        45,
+        131,
+        1190,
+        217.6
+      ],
+      "Ready": [
+        530,
+        131,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          732,
+          262.8,
+          176,
+          56
+        ],
+        [
+          552,
+          262.8,
+          176,
+          56
+        ],
+        [
+          372,
+          262.8,
+          176,
+          56
+        ],
+        [
+          732,
+          202.8,
+          176,
+          56
+        ],
+        [
+          552,
+          202.8,
+          176,
+          56
+        ],
+        [
+          372,
+          202.8,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 1,
+      "Slot": 1,
+      "Area": [
+        45,
+        390.6,
+        1190,
+        217.6
+      ],
+      "Ready": [
+        530,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          372,
+          420.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          420.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          420.40002,
+          176,
+          56
+        ],
+        [
+          372,
+          480.40002,
+          176,
+          56
+        ],
+        [
+          552,
+          480.40002,
+          176,
+          56
+        ],
+        [
+          732,
+          480.40002,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 2,
+      "Slot": 0,
+      "Area": [
+        45,
+        173,
+        595,
+        435.2
+      ],
+      "Ready": [
+        232.5,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          74.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          254.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          434.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          74.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          254.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          434.5,
+          371.6,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "six-card-layout",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Mode": 2,
+      "Slot": 1,
+      "Area": [
+        640,
+        173,
+        595,
+        435.2
+      ],
+      "Ready": [
+        827.5,
+        570.2,
+        220,
+        38
+      ],
+      "Cards": [
+        [
+          669.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          849.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          1029.5,
+          311.6,
+          176,
+          56
+        ],
+        [
+          669.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          849.5,
+          371.6,
+          176,
+          56
+        ],
+        [
+          1029.5,
+          371.6,
+          176,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 10,
+      "View": "split",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 10,
+      "View": "split-ghost",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 10,
+      "View": "shared",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 11,
+      "View": "split",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 11,
+      "View": "split-ghost",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": 11,
+      "View": "shared",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          275,
+          316
+        ],
+        [
+          284,
+          1,
+          275,
+          316
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": -1,
+      "View": "split",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": -1,
+      "View": "split-ghost",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "Choice": -1,
+      "View": "shared",
+      "Field": [
+        9,
+        92.75,
+        550,
+        132.5
+      ],
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 10,
+      "View": "split",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 10,
+      "View": "split-ghost",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 10,
+      "View": "shared",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 11,
+      "View": "split",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 11,
+      "View": "split-ghost",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": 11,
+      "View": "shared",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          595,
+          477.2
+        ],
+        [
+          640,
+          131,
+          595,
+          477.2
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": -1,
+      "View": "split",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": -1,
+      "View": "split-ghost",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-menu",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "Choice": -1,
+      "View": "shared",
+      "Field": [
+        45,
+        268.8,
+        1190,
+        201.6
+      ],
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 1,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 2,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 10,
+      "View": 3,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 9.75,
+          "Collisions": 0,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 1,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 2,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": 11,
+      "View": 3,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 0,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 1,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 2,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage04-actual-update-equivalence",
+      "Choice": -1,
+      "View": 3,
+      "Winner": 1,
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 1,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          132.5
+        ],
+        [
+          9,
+          184.5,
+          550,
+          132.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          550,
+          144.5
+        ],
+        [
+          9,
+          172.5,
+          550,
+          144.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 568,
+        "Item2": 320
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          275,
+          289
+        ],
+        [
+          284,
+          28,
+          275,
+          289
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          246,
+          56,
+          56
+        ],
+        [
+          456,
+          246,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          152.5
+        ],
+        [
+          9,
+          204.5,
+          782,
+          152.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          782,
+          164.5
+        ],
+        [
+          9,
+          192.5,
+          782,
+          164.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 800,
+        "Item2": 360
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          391,
+          329
+        ],
+        [
+          400,
+          28,
+          391,
+          329
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          286,
+          56,
+          56
+        ],
+        [
+          688,
+          286,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          188.5
+        ],
+        [
+          9,
+          240.5,
+          942,
+          188.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          1,
+          942,
+          200.5
+        ],
+        [
+          9,
+          228.5,
+          942,
+          200.5
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          22,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 960,
+        "Item2": 432
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          9,
+          28,
+          471,
+          401
+        ],
+        [
+          480,
+          28,
+          471,
+          401
+        ]
+      ],
+      "Paws": [
+        [
+          52,
+          358,
+          56,
+          56
+        ],
+        [
+          848,
+          358,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 0,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 1,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          201.6
+        ],
+        [
+          45,
+          406.6,
+          1190,
+          201.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 2,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          131,
+          1190,
+          217.6
+        ],
+        [
+          45,
+          390.6,
+          1190,
+          217.6
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          22,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 1,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 2,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 2.5,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 10,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "stage05-paw-layout-multitouch",
+      "Size": {
+        "Item1": 1280,
+        "Item2": 720
+      },
+      "View": 3,
+      "Dpr": 3,
+      "Choice": 11,
+      "Controls": [
+        [
+          45,
+          173,
+          595,
+          435.2
+        ],
+        [
+          640,
+          173,
+          595,
+          435.2
+        ]
+      ],
+      "Paws": [
+        [
+          20,
+          646,
+          56,
+          56
+        ],
+        [
+          1200,
+          646,
+          56,
+          56
+        ]
+      ]
+    },
+    {
+      "Kind": "ui501-visible-paw-edge-streams",
+      "Sizes": [
+        "568x320",
+        "800x360",
+        "960x432",
+        "1280x720"
+      ],
+      "Dpr": [
+        1,
+        2.5,
+        3
+      ],
+      "Views": 4,
+      "Profiles": 2,
+      "Players": 2,
+      "InteriorPoints": 9,
+      "Physical2400x1080": [
+        "800x360@3",
+        "960x432@2.5"
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 1,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 2,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 10,
+      "View": 3,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10,
+          "Collisions": 0,
+          "CoinsEarned": 0,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostElapsed": 0
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 0,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 1,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 2,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    },
+    {
+      "Kind": "stage05-actual-paw-update-equivalence",
+      "Choice": 11,
+      "View": 3,
+      "Winner": "tie",
+      "Players": [
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        },
+        {
+          "Distance": 2200,
+          "FinishTime": 10.25,
+          "Collisions": 1,
+          "CoinsEarned": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostElapsed": 0.25
+        }
+      ]
+    }
+  ],
+  "scope": "Production Measure/Pointer/Core retained. Native Screen/Input/Time/PlayerPrefs and selection texture acquisition use existing explicit managed shims; native pixels and device timing are separate.",
+  "sourceCopies": [
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "D87DBABC45B49B340124D1DA5BD962EF51FB5141A9E2C1504E1BD5E7C83AAEF7"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "A723743A4F2CD5B73679E09526FFAC518EEFCD9E57959E92A4FC8008908C3B12"
+    }
+  ],
+  "sourceSnapshot": [
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "38A9B4F39BCB22DC67323002AD4BB9795BE84449A9DA59C171491A50E991D18E"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "B637638798B8250940530B232F3B015D7CCDA968637A3F61B6EAF13C8B635A28"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "94743E7F590371280A79B3EB877C52B594C8722EEC1FE6169993DA941E15C3FC"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "A723743A4F2CD5B73679E09526FFAC518EEFCD9E57959E92A4FC8008908C3B12"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "D87DBABC45B49B340124D1DA5BD962EF51FB5141A9E2C1504E1BD5E7C83AAEF7"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "2880777EBC2A662EDB1BE6CC25C74B54EC81D864FA7846297EDD839E7B1E347E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PartyPresentation.cs",
+      "sha256": "AF2DE96A1A25D688E0C32BDA987AD927C5413F9990ED95C25E0A3C14F3752549"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PawControls.cs",
+      "sha256": "6AD56C7FDE1F1FFB5326724572952DF585B03077A27B5D09AE444C988B45A681"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SessionLayout.cs",
+      "sha256": "8CC3B0C48D97D5ECAC9E2FCFC940768BA717051EEFA81AF987D551C9855FBBC5"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "9B764989563CC43AB3CAEF4D25D59623698C1ABDB70D200655F20EBC3C4A3EC4"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "1D9F971F6BC5A42F92753765333900C629784CC7D5EBE20A15D3BB67BF8B85C9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "444737E2219DCB9D3A73184648DC333A110A97C769CCE6A4468525B01C801828"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostPresentation.cs",
+      "sha256": "76B011017305110A7131A38501DD176BEB95C339424CD91BEC6C969D7A50DBF4"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostView.cs",
+      "sha256": "B0A60C80434B86C7A6C7B809F5C3182663C92F829A33AF9B30F458ED395B560E"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "A1127936E6C6C1612734F4983E775400F3EB77FCBDFDC84B58ADB3332258A001"
+    }
+  ],
+  "checkedAt": "2026-10-28T13:39:41.0375723Z"
+}

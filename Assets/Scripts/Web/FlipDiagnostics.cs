@@ -132,6 +132,7 @@ namespace FlipRace.Web
             output.Append("],\"pawRects\":[");
             AppendPlayerRects(output, game.PawScreenRect);
             output.Append("],\"trackMenuRect\":"); AppendRect(output, game.TrackMenuButtonRect);
+            output.Append(",\"sessionRect\":"); AppendRect(output, game.SessionBarRect);
             output.Append(",\"viewMenuRect\":"); AppendRect(output, game.ViewMenuButtonRect);
             output.Append(",\"viewOptionRects\":[");
             for (int row = 0; row < 2; row++)

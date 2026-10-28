@@ -22,3 +22,28 @@ additional menu cases return both party cameras/counts to all legacy views.
 Native rendering, physical devices and event timing/chronology are separate checks.
 Availability and terminal-state fixtures are explicitly synthetic. Input-only
 witnesses restart with the same configuration between isolated input streams.
+## UI501 session strip and viewport paws
+
+Current layout assertions intentionally reflect UI501: the session strip sits
+between the upper/lower selection and result rows, immediately above the
+unchanged shared world during countdown/racing, and each paw uses its physical
+viewport corner within SafeUiArea. The previous control-area containment and
+area-relative paw inset expectations are retired by this explicit UI request.
+
+The 216 configurations also check the strip against all cards/readiness targets,
+all moved tools inside the strip, unchanged world height and Core state, nine
+fresh real Update edge/corner/center inputs per player's 56px paw, simultaneous
+touches plus mouse suppression, and toolbar sound/pause/background isolation.
+Nine-point tests use fresh synthetic racing Core states to isolate each edge;
+the existing readiness/countdown/multitouch streams still execute real UI input.
+
+Save UI501 output separately:
+
+    powershell -NoProfile -File Tools/PartyUi/Run.ps1 > Verification/ui501-party-ui.json
+
+Native pixels and device timing remain separate visual checks.
+The UI501 checks also measure the production countdown helpers and require the
+full 60px glyph box above the session strip for upper players or below the world
+for lower players. Pause title (30px), subtitle (28px), resume (33px), and any
+drawn icon must fit the arena without overlapping the session strip or each
+other. These bounds checks complement the native screenshot review.

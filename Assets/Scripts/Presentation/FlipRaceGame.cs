@@ -138,6 +138,7 @@ namespace FlipRace.Presentation
             lanes[1] = new Rect(left + 1, divider.yMax, sw - 2, lh);
             arena = new Rect(left + 1, lanes[0].y, sw - 2, lh * 2 + dh);
             footer = new Rect(left, shell.yMax, sw, compact ? 2 : 80);
+            PlaceSession(sh, dh, lh);
             float tool = compact ? 31 : 34, ty = session.y + (sh - 25) / 2;
             fullscreenRect = new Rect(session.xMax - tool - 12, ty, tool, 25);
             pauseRect = new Rect(fullscreenRect.x - tool, ty, tool, 25);
@@ -145,12 +146,12 @@ namespace FlipRace.Presentation
             helpRect = new Rect(soundRect.x - 31, ty, 31, 25);
             float trackLeft = session.x + 12 + (compact ? 120 : 0);
             trackButton = new Rect(trackLeft, session.y, helpRect.x - trackLeft - 8, sh);
-            headerHelp = new Rect(shell.xMax - 206, sy - 78, 100, 32);
+            headerHelp = new Rect(DesktopBrandRight - 206, sy - 78, 100, 32);
             float pw = Mathf.Min(width - 32, 410), ph = Mathf.Min(height - 24, 282);
             rulesPanel = new Rect((width - pw) / 2, (height - ph) / 2, pw, ph);
             rulesClose = new Rect(rulesPanel.xMax - 42, rulesPanel.y + 10, 32, 32);
             rulesDone = new Rect(rulesPanel.x + 24, rulesPanel.yMax - 49, 142, 31);
-            resumeRect = new Rect(arena.center.x - 92, arena.center.y + 39, 184, 33);
+            resumeRect = new Rect(arena.center.x - 92, SessionCentered && !SharedEnabled ? divider.yMax + 42 : arena.center.y + 39, 184, 33);
             float th = Mathf.Min(height - 24, Trial ? 232 : 264);
             trackPanel = new Rect((width - Mathf.Min(width - 32, 350)) / 2, (height - th) / 2, Mathf.Min(width - 32, 350), th);
             trackClose = new Rect(trackPanel.xMax - 42, trackPanel.y + 10, 32, 32);
@@ -243,6 +244,8 @@ namespace FlipRace.Presentation
             if ((compact ? helpRect : headerHelp).Contains(p)) { OpenRules(); return; }
             if (soundRect.Contains(p)) { ToggleSound(); return; }
             if (trackButton.Contains(p) && !Active) { OpenTracks(); return; }
+            if (session.Contains(p)) return;
+            if (PointerPaw(p)) return;
             if (PartyEnabled) { PartyPointer(p); return; }
             if (SharedEnabled) { SharedPointer(p); return; }
             for (int slot = 0; slot < 2; slot++) if (lanes[slot].Contains(p))
@@ -350,16 +353,17 @@ namespace FlipRace.Presentation
             if (!compact) Round(new Rect(shell.x, shell.y + 5, shell.width, shell.height), 18, new Color(.36f, .4f, .29f, .07f));
             Round(shell, compact ? 11 : 18, Hex(0xd8ddcb));
             Round(new Rect(shell.x + 1, shell.y + 1, shell.width - 2, shell.height - 2), compact ? 10 : 17, Hex(0xfbfbf3));
-            DrawSession();
             if (PartyEnabled) DrawPartyField();
             else if (SharedEnabled) DrawSharedField();
             else { DrawLane(0); DrawLane(1); DrawDivider(); }
             DrawPaws();
             DrawFooter();
+            DrawSession();
             if (Portrait) DrawPause();
             else if (showTracks) DrawTracks();
             else if (showRules) DrawRules();
             else if (paused || Portrait) DrawPause();
+            if (paused && !showTracks && !showRules && !Portrait) DrawSession();
             DrawBuildVersion();
             GUI.matrix = Matrix4x4.identity;
         }
@@ -368,15 +372,16 @@ namespace FlipRace.Presentation
         {
             if (compact || Portrait)
             {
-                float x = Portrait ? 24 : session.x + 12, y = Portrait ? 18 : session.y + 3;
+                bool overlay = showTracks || showRules;
+                float x = Portrait || overlay ? 24 : session.x + 12, y = Portrait ? 18 : overlay ? 3 : session.y + 3;
                 Round(new Rect(x - 4, y - 1, 120, 18), 4, paper);
                 Text(new Rect(x, y, 35, 16), "флип!", 11, ink, true);
                 Text(new Rect(x + 40, y, 76, 16), buildVersion, 10, muted, false, TextAnchor.MiddleLeft);
             }
             else
             {
-                Round(new Rect(shell.x + 184, shell.y - 54, 82, 18), 4, paper);
-                Text(new Rect(shell.x + 188, shell.y - 53, 74, 16), buildVersion, 10, muted, false, TextAnchor.MiddleLeft);
+                Round(new Rect(DesktopBrandLeft + 184, shell.y - 54, 82, 18), 4, paper);
+                Text(new Rect(DesktopBrandLeft + 188, shell.y - 53, 74, 16), buildVersion, 10, muted, false, TextAnchor.MiddleLeft);
             }
         }
 
@@ -384,24 +389,25 @@ namespace FlipRace.Presentation
         {
             float y = shell.y - 105;
             Matrix4x4 saved = GUI.matrix;
-            GUI.matrix = saved * Matrix4x4.TRS(new Vector3(shell.x + 27, y + 39, 0), Quaternion.Euler(0, 0, -8), Vector3.one);
+            GUI.matrix = saved * Matrix4x4.TRS(new Vector3(DesktopBrandLeft + 27, y + 39, 0), Quaternion.Euler(0, 0, -8), Vector3.one);
             Round(new Rect(-27, -29, 54, 58), 14, pales[0]);
             Text(new Rect(-25, -29, 50, 58), "↕", 36, accents[0], true, TextAnchor.MiddleCenter);
             GUI.matrix = saved;
-            Text(new Rect(shell.x + 69, y + 4, 200, 48), "флип", 39, ink, true);
-            Text(new Rect(shell.x + 169, y + 4, 35, 48), "!", 39, accents[0], true);
-            Text(new Rect(shell.x + 72, y + 53, 240, 15), "ГОНКА КАТИКААВРОВ", 8, muted);
+            Text(new Rect(DesktopBrandLeft + 69, y + 4, 200, 48), "флип", 39, ink, true);
+            Text(new Rect(DesktopBrandLeft + 169, y + 4, 35, 48), "!", 39, accents[0], true);
+            Text(new Rect(DesktopBrandLeft + 72, y + 53, 240, 15), "ГОНКА КАТИКААВРОВ", 8, muted);
             if (shell.width > 900 && !PartyEnabled)
             {
-                Text(new Rect(shell.x + 265, y + 18, 380, 25), "Два катикаавра. Один экран.", 12, muted);
-                Text(new Rect(shell.x + 265, y + 43, 400, 22), "Кто перевернёт гонку?", 12, ink);
+                Text(new Rect(DesktopBrandLeft + 265, y + 18, 380, 25), "Два катикаавра. Один экран.", 12, muted);
+                Text(new Rect(DesktopBrandLeft + 265, y + 43, 400, 22), "Кто перевернёт гонку?", 12, ink);
             }
             Text(headerHelp, "?   Как играть", 11, ink, false, TextAnchor.MiddleCenter);
-            StrokeRound(new Rect(shell.xMax - 84, headerHelp.y + 2, 84, 28), 5, Hex(0xd8ddcb), paper);
-            Text(new Rect(shell.xMax - 84, headerHelp.y + 2, 84, 28), (PartyEnabled ? "КОМПАНИЯ" : "ДЛЯ ДВОИХ"), 8, muted, false, TextAnchor.MiddleCenter);
+            StrokeRound(new Rect(DesktopBrandRight - 84, headerHelp.y + 2, 84, 28), 5, Hex(0xd8ddcb), paper);
+            Text(new Rect(DesktopBrandRight - 84, headerHelp.y + 2, 84, 28), (PartyEnabled ? "КОМПАНИЯ" : "ДЛЯ ДВОИХ"), 8, muted, false, TextAnchor.MiddleCenter);
         }
         void DrawSession()
         {
+            Fill(session, Hex(0xfbfbf3));
             float pad = compact ? 132 : 20;
             Ellipse(new Rect(session.x + pad, session.center.y - 2.5f, 5, 5), Hex(0x9ca986));
             string title = (PartyEnabled ? "Компания " + Game.Players.Length + " · " + (Game.PartyCamera == PartyCamera.Constant ? "Скролл" : "Камера последнего") + " · " + Game.Track.Name : Trial ? TrialMotionName() + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
@@ -556,12 +562,15 @@ namespace FlipRace.Presentation
             GUI.color = Color.white; GUI.DrawTexture(new Rect(0, 0, w, h), veil);
             PlayerState p = Game.Players[index];
             float center = h / 2 + (compact ? 8 : 6);
+            if (Game.Phase == "countdown" && SharedEnabled && SessionCentered) center = SharedCountdownCenter(index);
             if (Game.Phase == "ready") { DrawCharacterSelection(index, w, h); return; }
             if (Game.Phase == "countdown")
             {
-                Text(new Rect(0, center - (compact ? 40 : 55), w, compact ? 80 : 110),
-                    Math.Ceiling(Game.CountdownRemaining).ToString(), compact ? 58 : 80, accents[index], true, TextAnchor.MiddleCenter);
-                Text(new Rect(0, center + (compact ? 34 : 48), w, 14), "ПРИГОТОВЬСЯ К ПЕРЕВОРОТУ", compact ? 7 : 8, muted, false, TextAnchor.MiddleCenter);
+                bool narrowBand = SharedEnabled && SessionCentered && SharedCountdownBandHeight(index) < 80;
+                float numberHeight = narrowBand ? 60 : compact ? 80 : 110;
+                Text(new Rect(0, center - numberHeight / 2, w, numberHeight),
+                    Math.Ceiling(Game.CountdownRemaining).ToString(), narrowBand ? 48 : compact ? 58 : 80, accents[index], true, TextAnchor.MiddleCenter);
+                if (!narrowBand) Text(new Rect(0, center + (compact ? 34 : 48), w, 14), "ПРИГОТОВЬСЯ К ПЕРЕВОРОТУ", compact ? 7 : 8, muted, false, TextAnchor.MiddleCenter);
                 return;
             }
             bool results = Game.Phase == "finished", crossedFinish = p.FinishTime.HasValue;
@@ -740,11 +749,17 @@ namespace FlipRace.Presentation
             Rect cover = Portrait ? new Rect(0, 0, width, height) : arena;
             Fill(cover, new Color(.965f, .969f, .929f, .96f));
             float cx = cover.center.x, cy = cover.center.y;
-            Ellipse(new Rect(cx - 20, cy - 84, 40, 40), pales[0]);
-            Text(new Rect(cx - 20, cy - 84, 40, 40), Portrait ? "↻" : "Ⅱ", 22, accents[0], true, TextAnchor.MiddleCenter);
-            Text(new Rect(cover.x + 15, cy - 30, cover.width - 30, 30), Portrait ? "Поверни телефон" : "Маленькая передышка",
+            float titleY = Portrait ? cy - 30 : PauseTitleY;
+            float iconSize = Portrait ? 40 : PauseIconSize;
+            if (iconSize > 0)
+            {
+                Rect icon = new Rect(cx - iconSize / 2, titleY - iconSize - (SessionCentered && SharedEnabled ? 8 : 14), iconSize, iconSize);
+                Ellipse(icon, pales[0]);
+                Text(icon, Portrait ? "↻" : "Ⅱ", 22, accents[0], true, TextAnchor.MiddleCenter);
+            }
+            Text(new Rect(cover.x + 15, titleY, cover.width - 30, 30), Portrait ? "Поверни телефон" : "Маленькая передышка",
                 23, ink, true, TextAnchor.MiddleCenter);
-            Text(new Rect(cover.x + 20, cy + 5, cover.width - 40, 28), Portrait ? "Положите телефон горизонтально.\nИгроки садятся друг напротив друга." : pauseReason,
+            Text(new Rect(cover.x + 20, Portrait ? cy + 5 : PauseSubtitleY, cover.width - 40, 28), Portrait ? "Положите телефон горизонтально.\nИгроки садятся друг напротив друга." : pauseReason,
                 10, muted, false, TextAnchor.MiddleCenter);
             if (!Portrait)
             {

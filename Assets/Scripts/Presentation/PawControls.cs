@@ -9,13 +9,11 @@ namespace FlipRace.Presentation
         public Rect PawScreenRect(int slot)
         {
             if(slot<0||slot>=Game.Players.Length)throw new ArgumentOutOfRangeException(nameof(slot));
-            Rect area=ControlAreaRect(slot),safe=SafeUiArea();
-            bool rotated=PartyEnabled?PartyRotated(slot):SharedEnabled?SharedRotated(slot):slot==0;
-            // Keep compact touch targets away from the physical side gesture zones.
+            Rect safe=SafeUiArea(); int corner=PawCorner(slot);
             float horizontalInset=compact?40:8;
-            float left=Mathf.Max(area.xMin,safe.xMin)+horizontalInset,right=Mathf.Min(area.xMax,safe.xMax)-horizontalInset;
-            float top=Mathf.Max(area.yMin,safe.yMin)+8,bottom=Mathf.Min(area.yMax,safe.yMax)-8;
-            return new Rect(rotated?left:right-56,rotated?top:bottom-56,56,56);
+            float x=corner%2==0?safe.xMin+horizontalInset:safe.xMax-horizontalInset-56;
+            float y=corner<2?safe.yMin+8:safe.yMax-8-56;
+            return new Rect(x,y,56,56);
         }
         void LocalRacePress(int slot,Vector2 point)
         {
