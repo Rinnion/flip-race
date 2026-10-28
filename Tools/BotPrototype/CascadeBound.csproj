@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><EnableDefaultCompileItems>false</EnableDefaultCompileItems><ImplicitUsings>disable</ImplicitUsings><Nullable>disable</Nullable><NuGetAudit>false</NuGetAudit></PropertyGroup>
+  <ItemGroup><Compile Include="../../Assets/Scripts/Core/*.cs"/><Compile Include="SharedProbe.cs"/><Compile Include="CascadeBound.cs"/></ItemGroup>
+</Project>

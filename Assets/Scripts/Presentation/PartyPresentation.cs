@@ -11,12 +11,12 @@ namespace FlipRace.Presentation
         int pendingPartyCount = 4;
         PartyCamera pendingPartyCamera;
         public bool PartyEnabled { get { return Game != null && Game.IsParty; } }
-        public Rect PartyMenuButtonRect { get { return new Rect(flightPanel.x + 16, flightPanel.y + 204, (flightPanel.width - 36)/2, 32); } }
+        public Rect PartyMenuButtonRect { get { MeasureFlightMenu(); return ModeChoiceRect(1); } }
         public Rect PartyCountRect(int option)
         { MeasureFlightMenu(); float cw=(flightPanel.width-40)/3; return new Rect(flightPanel.x+16+option*(cw+4),flightPanel.y+61,cw,44); }
         public Rect PartyCameraRect(int option)
         { MeasureFlightMenu(); float cw=(flightPanel.width-36)/2; return new Rect(flightPanel.x+16+option*(cw+4),flightPanel.y+126,cw,44); }
-        public Rect PartyLegacyRect { get { return new Rect(flightPanel.x+16,flightPanel.y+210,(flightPanel.width-36)/2,28); } }
+        public Rect PartyLegacyRect { get { return ModeLegacyRect; } }
         public Rect PartyFieldRect
         {
             get
@@ -72,7 +72,7 @@ namespace FlipRace.Presentation
         }
         void DrawPartyChoices()
         {
-            Text(new Rect(flightPanel.x+16,flightPanel.y+43,flightPanel.width-32,15),"УЧАСТНИКИ · ВОКРУГ ОДНОГО ЭКРАНА",8,muted);
+            Text(new Rect(flightPanel.x+16,flightPanel.y+43,flightPanel.width-192,15),"УЧАСТНИКИ · ВОКРУГ ОДНОГО ЭКРАНА",8,muted);
             for(int i=0;i<3;i++)FlightButton(PartyCountRect(i),(i+2)+" игрока",pendingPartyCount==i+2,true,12);
             Text(new Rect(flightPanel.x+16,flightPanel.y+109,flightPanel.width-32,15),"КАМЕРА",8,muted);
             FlightButton(PartyCameraRect(0),"Постоянный скролл",pendingPartyCamera==PartyCamera.Constant,true,10);
@@ -82,8 +82,7 @@ namespace FlipRace.Presentation
                 ? "Карта движется сама. Полностью ушёл за левый край — выбыл. Справа выбывания нет."
                 : "Камера следует за последним бегущим. Выбывания за экран нет.",10,muted);
             label.wordWrap=false;
-            FlightButton(PartyLegacyRect,"Прежние виды для двоих  ›",false,true,10);
-            FlightButton(SoloMenuButtonRect,"Один ›",false,true,11);
+            DrawModeChoices();
             DrawFlightApplyFooter();
         }
         void DrawPartyField()

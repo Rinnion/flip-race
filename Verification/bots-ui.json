@@ -1,0 +1,4416 @@
+{
+  "status": "PASS",
+  "checks": 280895,
+  "setups": 1319,
+  "layouts": 2848,
+  "updates": 180411,
+  "pointers": 12224,
+  "inputCases": 48,
+  "fullRaces": 100,
+  "continuedAfterFirst": 100,
+  "inFlightPauses": 100,
+  "Evidence": [
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        568,
+        320
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        550,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        550,
+        132.5
+      ],
+      "paw": [
+        456,
+        246,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        800,
+        360
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        78,
+        782,
+        27
+      ],
+      "field": [
+        9,
+        105,
+        782,
+        152.5
+      ],
+      "paw": [
+        688,
+        286,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        960,
+        432
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        9,
+        93.75,
+        942,
+        27
+      ],
+      "field": [
+        9,
+        120.75,
+        942,
+        188.5
+      ],
+      "paw": [
+        848,
+        358,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 2.5,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 2.5,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Constant",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 3,
+      "preset": 10,
+      "camera": "Lagger",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Constant",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-viewport-input",
+      "size": [
+        1280,
+        800
+      ],
+      "dpr": 3,
+      "preset": 11,
+      "camera": "Lagger",
+      "bar": [
+        45,
+        238,
+        1190,
+        42
+      ],
+      "field": [
+        65.44,
+        280,
+        1149.12,
+        224
+      ],
+      "paw": [
+        1200,
+        726,
+        56,
+        56
+      ]
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1080,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999996693,
+        "FinishTime": 35.99999999996693,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2124,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.40000000000262,
+        "FinishTime": 35.40000000000262,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 682,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454545,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.50000000000083,
+        "FinishTime": 34.50000000000083,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1010,
+      "firstTerminalWaited": true,
+      "botCursor": 27,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.64999999996908,
+        "FinishTime": 33.64999999996908,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 1983,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.05000000000189,
+        "FinishTime": 33.05000000000189,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2160,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727273,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 36.0000000000027,
+        "FinishTime": 36.0000000000027,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 700,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727276,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.40000000000062,
+        "FinishTime": 35.40000000000062,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1050,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727273,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.99999999996778,
+        "FinishTime": 34.99999999996778,
+        "Collisions": 1,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2019,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727273,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.65000000000211,
+        "FinishTime": 33.65000000000211,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 653,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727273,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.050000000000466,
+        "FinishTime": 33.050000000000466,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 712,
+      "firstTerminalWaited": true,
+      "botCursor": 21,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545454,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 36.00000000000061,
+        "FinishTime": 36.00000000000061,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1062,
+      "firstTerminalWaited": true,
+      "botCursor": 21,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545456,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.39999999996742,
+        "FinishTime": 35.39999999996742,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2088,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545454,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.800000000002846,
+        "FinishTime": 34.800000000002846,
+        "Collisions": 0,
+        "BoostsEarned": 4,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 665,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545454,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.650000000000595,
+        "FinishTime": 33.650000000000595,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 992,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545456,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.04999999996959,
+        "FinishTime": 33.04999999996959,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 690,
+      "firstTerminalWaited": true,
+      "botCursor": 26,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Eliminated",
+        "Distance": 4754.792116004633,
+        "TerminalTime": 22.98905507274833,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2160,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 36.00000000000253,
+        "FinishTime": 36.00000000000253,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 700,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.40000000000065,
+        "FinishTime": 35.40000000000065,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1019,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.949999999968725,
+        "FinishTime": 33.949999999968725,
+        "Collisions": 0,
+        "BoostsEarned": 6,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 1983,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.05000000000165,
+        "FinishTime": 33.05000000000165,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2160,
+      "firstTerminalWaited": true,
+      "botCursor": 16,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.630909090909093,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 36.00000000000259,
+        "FinishTime": 36.00000000000259,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 695,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.63090909090909,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.10000000000074,
+        "FinishTime": 35.10000000000074,
+        "Collisions": 0,
+        "BoostsEarned": 3,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1035,
+      "firstTerminalWaited": true,
+      "botCursor": 28,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.63090909090909,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.49999999996821,
+        "FinishTime": 34.49999999996821,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2019,
+      "firstTerminalWaited": true,
+      "botCursor": 28,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.63090909090909,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.650000000001434,
+        "FinishTime": 33.650000000001434,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 653,
+      "firstTerminalWaited": true,
+      "botCursor": 29,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.63090909090909,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.050000000000146,
+        "FinishTime": 33.050000000000146,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1140,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.99999999996511,
+        "FinishTime": 37.99999999996511,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999996693,
+        "FinishTime": 35.99999999996693,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2280,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.99999999959622,
+        "FinishTime": 37.99999999959622,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.399999999634055,
+        "FinishTime": 35.399999999634055,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 750,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 38.000000000000526,
+        "FinishTime": 38.000000000000526,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.50000000000083,
+        "FinishTime": 34.50000000000083,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1140,
+      "firstTerminalWaited": true,
+      "botCursor": 27,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.999999999999766,
+        "FinishTime": 37.999999999999766,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.649999999999366,
+        "FinishTime": 33.649999999999366,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2280,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.999999999447006,
+        "FinishTime": 37.999999999447006,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.04999999951904,
+        "FinishTime": 33.04999999951904,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2370,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.49999999942517,
+        "FinishTime": 39.49999999942517,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.9999999994761,
+        "FinishTime": 35.9999999994761,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 780,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.500000000000476,
+        "FinishTime": 39.500000000000476,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.40000000000062,
+        "FinishTime": 35.40000000000062,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1185,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.49999999999974,
+        "FinishTime": 39.49999999999974,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.49999999999983,
+        "FinishTime": 34.49999999999983,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2370,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.49999999942523,
+        "FinishTime": 39.49999999942523,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.64999999951036,
+        "FinishTime": 33.64999999951036,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 780,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.50000000000049,
+        "FinishTime": 39.50000000000049,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.050000000000466,
+        "FinishTime": 33.050000000000466,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 800,
+      "firstTerminalWaited": true,
+      "botCursor": 21,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.50000000000036,
+        "FinishTime": 40.50000000000036,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 36.00000000000061,
+        "FinishTime": 36.00000000000061,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1215,
+      "firstTerminalWaited": true,
+      "botCursor": 21,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.49999999999976,
+        "FinishTime": 40.49999999999976,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.39999999999975,
+        "FinishTime": 35.39999999999975,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2430,
+      "firstTerminalWaited": true,
+      "botCursor": 22,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.499999999410626,
+        "FinishTime": 40.499999999410626,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.79999999949357,
+        "FinishTime": 34.79999999949357,
+        "Collisions": 0,
+        "BoostsEarned": 4,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 800,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.5000000000004,
+        "FinishTime": 40.5000000000004,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.650000000000595,
+        "FinishTime": 33.650000000000595,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1215,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.49999999999973,
+        "FinishTime": 40.49999999999973,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.049999999999635,
+        "FinishTime": 33.049999999999635,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1335,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.499999999999616,
+        "FinishTime": 44.499999999999616,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.499999999999616,
+        "FinishTime": 37.499999999999616,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2670,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.4999999993524,
+        "FinishTime": 44.4999999993524,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999947609,
+        "FinishTime": 35.99999999947609,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 880,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.50000000000016,
+        "FinishTime": 44.50000000000016,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.40000000000065,
+        "FinishTime": 35.40000000000065,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1335,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.49999999999963,
+        "FinishTime": 44.49999999999963,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.9499999999991,
+        "FinishTime": 33.9499999999991,
+        "Collisions": 0,
+        "BoostsEarned": 6,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2670,
+      "firstTerminalWaited": true,
+      "botCursor": 44,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.499999999352404,
+        "FinishTime": 44.499999999352404,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.049999999519024,
+        "FinishTime": 33.049999999519024,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2460,
+      "firstTerminalWaited": true,
+      "botCursor": 16,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.999999999403336,
+        "FinishTime": 40.999999999403336,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.999999999476096,
+        "FinishTime": 35.999999999476096,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 810,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 41.00000000000036,
+        "FinishTime": 41.00000000000036,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.10000000000074,
+        "FinishTime": 35.10000000000074,
+        "Collisions": 0,
+        "BoostsEarned": 3,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1230,
+      "firstTerminalWaited": true,
+      "botCursor": 28,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.999999999999666,
+        "FinishTime": 40.999999999999666,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.49999999999908,
+        "FinishTime": 34.49999999999908,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2460,
+      "firstTerminalWaited": true,
+      "botCursor": 28,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.999999999403386,
+        "FinishTime": 40.999999999403386,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.64999999951034,
+        "FinishTime": 33.64999999951034,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Jump",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 810,
+      "firstTerminalWaited": true,
+      "botCursor": 29,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 41.000000000000384,
+        "FinishTime": 41.000000000000384,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.050000000000146,
+        "FinishTime": 33.050000000000146,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1080,
+      "firstTerminalWaited": true,
+      "botCursor": 2,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999999976,
+        "FinishTime": 35.99999999999976,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2124,
+      "firstTerminalWaited": true,
+      "botCursor": 6,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.39999999948486,
+        "FinishTime": 35.39999999948486,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 682,
+      "firstTerminalWaited": true,
+      "botCursor": 10,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454545,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.50000000000088,
+        "FinishTime": 34.50000000000088,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1010,
+      "firstTerminalWaited": true,
+      "botCursor": 13,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.6499999999994,
+        "FinishTime": 33.6499999999994,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 1983,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1036,
+        "TerminalTime": 6.085454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.04999999951904,
+        "FinishTime": 33.04999999951904,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2160,
+      "firstTerminalWaited": true,
+      "botCursor": 4,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727276,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999947613,
+        "FinishTime": 35.99999999947613,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 700,
+      "firstTerminalWaited": true,
+      "botCursor": 6,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727273,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.400000000000624,
+        "FinishTime": 35.400000000000624,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1035,
+      "firstTerminalWaited": true,
+      "botCursor": 10,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727273,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.49999999999988,
+        "FinishTime": 34.49999999999988,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2019,
+      "firstTerminalWaited": true,
+      "botCursor": 15,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727276,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.649999999510314,
+        "FinishTime": 33.649999999510314,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 653,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 3836,
+        "TerminalTime": 18.812727272727273,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.050000000000466,
+        "FinishTime": 33.050000000000466,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 712,
+      "firstTerminalWaited": true,
+      "botCursor": 9,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545456,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 36.000000000000654,
+        "FinishTime": 36.000000000000654,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1062,
+      "firstTerminalWaited": true,
+      "botCursor": 13,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545454,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.39999999999974,
+        "FinishTime": 35.39999999999974,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2088,
+      "firstTerminalWaited": true,
+      "botCursor": 15,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545456,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.79999999949359,
+        "FinishTime": 34.79999999949359,
+        "Collisions": 0,
+        "BoostsEarned": 4,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 665,
+      "firstTerminalWaited": true,
+      "botCursor": 20,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545456,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.65000000000058,
+        "FinishTime": 33.65000000000058,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 992,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2886,
+        "TerminalTime": 14.494545454545454,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.0499999999996,
+        "FinishTime": 33.0499999999996,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 691,
+      "firstTerminalWaited": true,
+      "botCursor": 16,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.685454545454546,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Eliminated",
+        "Distance": 4761.687572710974,
+        "TerminalTime": 23.020398057777154,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2160,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.999999999476124,
+        "FinishTime": 35.999999999476124,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 700,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.400000000000695,
+        "FinishTime": 35.400000000000695,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1019,
+      "firstTerminalWaited": true,
+      "botCursor": 26,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.9499999999992,
+        "FinishTime": 33.9499999999992,
+        "Collisions": 0,
+        "BoostsEarned": 6,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 1983,
+      "firstTerminalWaited": true,
+      "botCursor": 26,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 1388,
+        "TerminalTime": 7.6854545454545455,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.049999999519066,
+        "FinishTime": 33.049999999519066,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2160,
+      "firstTerminalWaited": true,
+      "botCursor": 15,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.630909090909093,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999947612,
+        "FinishTime": 35.99999999947612,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 695,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.63090909090909,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.10000000000074,
+        "FinishTime": 35.10000000000074,
+        "Collisions": 0,
+        "BoostsEarned": 3,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Constant",
+      "cadence": 0,
+      "frames": 1035,
+      "firstTerminalWaited": true,
+      "botCursor": 19,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.63090909090909,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.499999999999595,
+        "FinishTime": 34.499999999999595,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Constant",
+      "cadence": 1,
+      "frames": 2019,
+      "firstTerminalWaited": true,
+      "botCursor": 21,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.630909090909093,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.64999999951032,
+        "FinishTime": 33.64999999951032,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Constant",
+      "cadence": 2,
+      "frames": 653,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Eliminated",
+        "Distance": 2036,
+        "TerminalTime": 10.63090909090909,
+        "FinishTime": null,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.05000000000014,
+        "FinishTime": 33.05000000000014,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1140,
+      "firstTerminalWaited": true,
+      "botCursor": 2,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.99999999999976,
+        "FinishTime": 37.99999999999976,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999999976,
+        "FinishTime": 35.99999999999976,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2280,
+      "firstTerminalWaited": true,
+      "botCursor": 6,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.99999999944703,
+        "FinishTime": 37.99999999944703,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.39999999948486,
+        "FinishTime": 35.39999999948486,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 750,
+      "firstTerminalWaited": true,
+      "botCursor": 10,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 38.000000000000554,
+        "FinishTime": 38.000000000000554,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.50000000000088,
+        "FinishTime": 34.50000000000088,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1140,
+      "firstTerminalWaited": true,
+      "botCursor": 13,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.99999999999977,
+        "FinishTime": 37.99999999999977,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.6499999999994,
+        "FinishTime": 33.6499999999994,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-long",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2280,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.999999999447006,
+        "FinishTime": 37.999999999447006,
+        "Collisions": 4,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.04999999951904,
+        "FinishTime": 33.04999999951904,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2370,
+      "firstTerminalWaited": true,
+      "botCursor": 4,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.4999999994252,
+        "FinishTime": 39.4999999994252,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999947613,
+        "FinishTime": 35.99999999947613,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 780,
+      "firstTerminalWaited": true,
+      "botCursor": 6,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.50000000000046,
+        "FinishTime": 39.50000000000046,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.400000000000624,
+        "FinishTime": 35.400000000000624,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1185,
+      "firstTerminalWaited": true,
+      "botCursor": 10,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.499999999999744,
+        "FinishTime": 39.499999999999744,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.49999999999988,
+        "FinishTime": 34.49999999999988,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2370,
+      "firstTerminalWaited": true,
+      "botCursor": 15,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.499999999425185,
+        "FinishTime": 39.499999999425185,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.649999999510314,
+        "FinishTime": 33.649999999510314,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-short",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 780,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 39.50000000000044,
+        "FinishTime": 39.50000000000044,
+        "Collisions": 7,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.050000000000466,
+        "FinishTime": 33.050000000000466,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 800,
+      "firstTerminalWaited": true,
+      "botCursor": 9,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.50000000000039,
+        "FinishTime": 40.50000000000039,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 36.000000000000654,
+        "FinishTime": 36.000000000000654,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1215,
+      "firstTerminalWaited": true,
+      "botCursor": 13,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.49999999999974,
+        "FinishTime": 40.49999999999974,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.39999999999974,
+        "FinishTime": 35.39999999999974,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2430,
+      "firstTerminalWaited": true,
+      "botCursor": 15,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.49999999941065,
+        "FinishTime": 40.49999999941065,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.79999999949359,
+        "FinishTime": 34.79999999949359,
+        "Collisions": 0,
+        "BoostsEarned": 4,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 800,
+      "firstTerminalWaited": true,
+      "botCursor": 20,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.50000000000034,
+        "FinishTime": 40.50000000000034,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.65000000000058,
+        "FinishTime": 33.65000000000058,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "full-flow",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1215,
+      "firstTerminalWaited": true,
+      "botCursor": 24,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.49999999999974,
+        "FinishTime": 40.49999999999974,
+        "Collisions": 9,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.0499999999996,
+        "FinishTime": 33.0499999999996,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1335,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.49999999999966,
+        "FinishTime": 44.49999999999966,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 37.499999999999645,
+        "FinishTime": 37.499999999999645,
+        "Collisions": 3,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2670,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.49999999935243,
+        "FinishTime": 44.49999999935243,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.999999999476124,
+        "FinishTime": 35.999999999476124,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 880,
+      "firstTerminalWaited": true,
+      "botCursor": 25,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.50000000000017,
+        "FinishTime": 44.50000000000017,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.400000000000695,
+        "FinishTime": 35.400000000000695,
+        "Collisions": 0,
+        "BoostsEarned": 2,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1335,
+      "firstTerminalWaited": true,
+      "botCursor": 26,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.49999999999969,
+        "FinishTime": 44.49999999999969,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.9499999999992,
+        "FinishTime": 33.9499999999992,
+        "Collisions": 0,
+        "BoostsEarned": 6,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "rhythm-cascade",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2670,
+      "firstTerminalWaited": true,
+      "botCursor": 26,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 44.49999999935245,
+        "FinishTime": 44.49999999935245,
+        "Collisions": 17,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.049999999519066,
+        "FinishTime": 33.049999999519066,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2460,
+      "firstTerminalWaited": true,
+      "botCursor": 15,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.99999999940336,
+        "FinishTime": 40.99999999940336,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.99999999947612,
+        "FinishTime": 35.99999999947612,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Amateur",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 810,
+      "firstTerminalWaited": true,
+      "botCursor": 17,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 41.000000000000355,
+        "FinishTime": 41.000000000000355,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 35.10000000000074,
+        "FinishTime": 35.10000000000074,
+        "Collisions": 0,
+        "BoostsEarned": 3,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Confident",
+      "camera": "Lagger",
+      "cadence": 0,
+      "frames": 1230,
+      "firstTerminalWaited": true,
+      "botCursor": 19,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.99999999999977,
+        "FinishTime": 40.99999999999977,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 34.499999999999595,
+        "FinishTime": 34.499999999999595,
+        "Collisions": 0,
+        "BoostsEarned": 5,
+        "FinishBoostsEarned": 0
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "cadence": 1,
+      "frames": 2460,
+      "firstTerminalWaited": true,
+      "botCursor": 21,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 40.999999999403364,
+        "FinishTime": 40.999999999403364,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.64999999951032,
+        "FinishTime": 33.64999999951032,
+        "Collisions": 0,
+        "BoostsEarned": 7,
+        "FinishBoostsEarned": 1
+      }
+    },
+    {
+      "kind": "actual-ui-full-race",
+      "track": "mixed-tricks",
+      "profile": "Flip",
+      "difficulty": "Master",
+      "camera": "Lagger",
+      "cadence": 2,
+      "frames": 810,
+      "firstTerminalWaited": true,
+      "botCursor": 23,
+      "human": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 41.000000000000306,
+        "FinishTime": 41.000000000000306,
+        "Collisions": 10,
+        "BoostsEarned": 0,
+        "FinishBoostsEarned": 0
+      },
+      "bot": {
+        "Status": "Finished",
+        "Distance": 7920,
+        "TerminalTime": 33.05000000000014,
+        "FinishTime": 33.05000000000014,
+        "Collisions": 0,
+        "BoostsEarned": 9,
+        "FinishBoostsEarned": 1
+      }
+    }
+  ],
+  "scope": "Independent actual production Update/Pointer/FlightPointer/Measure/BotRaceController and physical Core. Native Screen/Input/Clock/Prefs/DPR/selection texture acquisition are the only aliases. No production gameplay method replacement or injected terminal states. No native rendering/browser/physical multitouch claim.",
+  "sourceCopies": [
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "6D016818CBC0B945592D23BF99432455CD8FA2E9F8F8E097970E03FE45C50399"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "213AA27256BA859B82D19B93A494559BA9AB93DEA0847B8E1009E8A32DA40F6F"
+    }
+  ],
+  "sourceSnapshot": [
+    {
+      "path": "Assets/Scripts/Core/BotPlanCatalog.cs",
+      "sha256": "670399D4AB8E363F5A633928556D8A289E780D80AF22DC85B6CAC1E1248B4808"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotRaceController.cs",
+      "sha256": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67"
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "994968AA1FA901B43CB6070E7E7670AA62ABDF654D6B12DA2619825C8CBD9FAB"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/BotsPresentation.cs",
+      "sha256": "8DE8758211C5E6136553AE73D7599F80E8642301469A4E3547E8D79DAF1846EE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "B637638798B8250940530B232F3B015D7CCDA968637A3F61B6EAF13C8B635A28"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "94743E7F590371280A79B3EB877C52B594C8722EEC1FE6169993DA941E15C3FC"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "213AA27256BA859B82D19B93A494559BA9AB93DEA0847B8E1009E8A32DA40F6F"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "6D016818CBC0B945592D23BF99432455CD8FA2E9F8F8E097970E03FE45C50399"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "2880777EBC2A662EDB1BE6CC25C74B54EC81D864FA7846297EDD839E7B1E347E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PartyPresentation.cs",
+      "sha256": "3960FDC65166B0E0C428641CE0F2759388E97056308584006997B6F21A8ADAB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PawControls.cs",
+      "sha256": "7779414731F89912F23CB723A8B1BB243EE41C014B50EEDA0574412E2168ADB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SessionLayout.cs",
+      "sha256": "C82EDA4DDEF0D0230098AB3E7B5BFC2829BE587F6E5A39A624D039B3F71CA178"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "BA84D404162225933B44A8E08C97980C0DC94662C4A7496C5173EE666B1BEB84"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "D50C44A1B78194974C2F7898C7FFF55358353C30A7B0C0883037BBF350ADBC96"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "EAD37C536BD8C40259E84556D0C7BD639AD20BE58951A2FDB59A8CF66FD32509"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SoloPresentation.cs",
+      "sha256": "A373B074E55B55E9C9D4E895FE70DC152955BE9FC31431A58413BC0F717BEA72"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostPresentation.cs",
+      "sha256": "00725F8E1BAD0197635C0CB861D62BCF56FDCC9A31D7462F7284C047CDFB079B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostView.cs",
+      "sha256": "B0A60C80434B86C7A6C7B809F5C3182663C92F829A33AF9B30F458ED395B560E"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "F1C2DFB550A69644D14B020FAE0641878C183947082AD7E7782F55C16881D8FD"
+    }
+  ],
+  "checkedAt": "2026-10-28T18:01:27.5336289Z"
+}

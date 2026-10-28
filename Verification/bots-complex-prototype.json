@@ -1,0 +1,5866 @@
+{
+  "Result": "BLOCKED",
+  "BaseRevision": "92b61a6",
+  "Scope": "BOT-01/02/03 risk prototype; Cascade\u002BMixed x Chosen/FastFlip only; no production changes",
+  "Metric": "one clean objective per logical obstacle ID, one per nonnegative noncoin positive zone, one finish goal; shared catalog all levels",
+  "SearchRuns": 686,
+  "Notes": "Finite catalog of 3 Novice plans per pair selected by distinct missed-objective pattern. Distance-triggered real Press/Advance; no injected player state, human input or opponent lag. Minimum conservative bound subtracts220/120 from sampled margin.",
+  "Evidence": [
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Jump",
+      "Catalog": [
+        "finish:rhythm-cascade-finish",
+        "obstacle:rhythm-cascade-m0-gate",
+        "obstacle:rhythm-cascade-m1-pad-stone",
+        "obstacle:rhythm-cascade-m10-pad-stone",
+        "obstacle:rhythm-cascade-m11-gate",
+        "obstacle:rhythm-cascade-m12-gate",
+        "obstacle:rhythm-cascade-m13-after-stone",
+        "obstacle:rhythm-cascade-m14-gate",
+        "obstacle:rhythm-cascade-m15-chain-gate-1",
+        "obstacle:rhythm-cascade-m15-chain-gate-2",
+        "obstacle:rhythm-cascade-m16-gate",
+        "obstacle:rhythm-cascade-m17-gate",
+        "obstacle:rhythm-cascade-m18-gate",
+        "obstacle:rhythm-cascade-m2-gate",
+        "obstacle:rhythm-cascade-m3-gate",
+        "obstacle:rhythm-cascade-m4-exit-gate",
+        "obstacle:rhythm-cascade-m4-stone",
+        "obstacle:rhythm-cascade-m5-gate",
+        "obstacle:rhythm-cascade-m6-pad-stone",
+        "obstacle:rhythm-cascade-m7-gate",
+        "obstacle:rhythm-cascade-m8-gate",
+        "obstacle:rhythm-cascade-m9-gate",
+        "positive:rhythm-cascade-m1-pad",
+        "positive:rhythm-cascade-m10-pad",
+        "positive:rhythm-cascade-m13-after-ring",
+        "positive:rhythm-cascade-m15-chain-1",
+        "positive:rhythm-cascade-m15-chain-2",
+        "positive:rhythm-cascade-m3-free",
+        "positive:rhythm-cascade-m4-before",
+        "positive:rhythm-cascade-m6-pad",
+        "positive:rhythm-cascade-m8-free-high"
+      ],
+      "Master": {
+        "Distances": [
+          230.5,
+          281.5,
+          485.1811187353192,
+          960.5,
+          1011.5,
+          1248.5,
+          1301,
+          1718.5,
+          1741.5,
+          2047.8,
+          2128.3,
+          2376.5,
+          2427.5,
+          2631.181118735319,
+          3106.5,
+          3157.5,
+          3513,
+          3536,
+          3867.5,
+          3918.5,
+          4113,
+          4151,
+          4179,
+          4717.5,
+          4768.5,
+          5017.5,
+          5068.5,
+          5419.5,
+          5461.5,
+          5603,
+          5709.5,
+          6005.5,
+          6056.5,
+          6267.5,
+          6341,
+          6614,
+          6691.5,
+          6995.5,
+          7046.5,
+          7295.5,
+          7346.5,
+          7595.5,
+          7646.5,
+          7758
+        ],
+        "Valid": true,
+        "Constant": {
+          "Total": 31,
+          "Completed": 31,
+          "Score": 100,
+          "Time": 33.05000000000038,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 44,
+          "Rejected": 0,
+          "MinMargin": 302.79999999999905,
+          "MinMarginLowerBound": 300.96666666666573,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "rhythm-cascade-finish",
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ],
+          "CompletedIds": [
+            "finish:rhythm-cascade-finish",
+            "obstacle:rhythm-cascade-m0-gate",
+            "obstacle:rhythm-cascade-m1-pad-stone",
+            "obstacle:rhythm-cascade-m10-pad-stone",
+            "obstacle:rhythm-cascade-m11-gate",
+            "obstacle:rhythm-cascade-m12-gate",
+            "obstacle:rhythm-cascade-m13-after-stone",
+            "obstacle:rhythm-cascade-m14-gate",
+            "obstacle:rhythm-cascade-m15-chain-gate-1",
+            "obstacle:rhythm-cascade-m15-chain-gate-2",
+            "obstacle:rhythm-cascade-m16-gate",
+            "obstacle:rhythm-cascade-m17-gate",
+            "obstacle:rhythm-cascade-m18-gate",
+            "obstacle:rhythm-cascade-m2-gate",
+            "obstacle:rhythm-cascade-m3-gate",
+            "obstacle:rhythm-cascade-m4-exit-gate",
+            "obstacle:rhythm-cascade-m4-stone",
+            "obstacle:rhythm-cascade-m5-gate",
+            "obstacle:rhythm-cascade-m6-pad-stone",
+            "obstacle:rhythm-cascade-m7-gate",
+            "obstacle:rhythm-cascade-m8-gate",
+            "obstacle:rhythm-cascade-m9-gate",
+            "positive:rhythm-cascade-m1-pad",
+            "positive:rhythm-cascade-m10-pad",
+            "positive:rhythm-cascade-m13-after-ring",
+            "positive:rhythm-cascade-m15-chain-1",
+            "positive:rhythm-cascade-m15-chain-2",
+            "positive:rhythm-cascade-m3-free",
+            "positive:rhythm-cascade-m4-before",
+            "positive:rhythm-cascade-m6-pad",
+            "positive:rhythm-cascade-m8-free-high"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 230.49999984250394,
+              "Time": 1.047727272011378,
+              "Accepted": true
+            },
+            {
+              "Distance": 281.4999998226357,
+              "Time": 1.279545453739249,
+              "Accepted": true
+            },
+            {
+              "Distance": 485.1811187151778,
+              "Time": 2.2053687214326296,
+              "Accepted": true
+            },
+            {
+              "Distance": 960.4999999435678,
+              "Time": 4.065909090652559,
+              "Accepted": true
+            },
+            {
+              "Distance": 1011.4999998226356,
+              "Time": 4.2977272719210555,
+              "Accepted": true
+            },
+            {
+              "Distance": 1248.4999999418449,
+              "Time": 5.374999999735739,
+              "Accepted": true
+            },
+            {
+              "Distance": 1300.999999862372,
+              "Time": 5.613636363010884,
+              "Accepted": true
+            },
+            {
+              "Distance": 1718.4999998425037,
+              "Time": 7.211363635647966,
+              "Accepted": true
+            },
+            {
+              "Distance": 1741.4999998822402,
+              "Time": 7.31590909037405,
+              "Accepted": true
+            },
+            {
+              "Distance": 2047.7999998033047,
+              "Time": 8.567575756979982,
+              "Accepted": true
+            },
+            {
+              "Distance": 2128.300000121384,
+              "Time": 8.811515151883237,
+              "Accepted": true
+            },
+            {
+              "Distance": 2376.499999806741,
+              "Time": 9.902272726394385,
+              "Accepted": true
+            },
+            {
+              "Distance": 2427.4999998226353,
+              "Time": 10.13409090828479,
+              "Accepted": true
+            },
+            {
+              "Distance": 2631.1811187151775,
+              "Time": 11.059914175978037,
+              "Accepted": true
+            },
+            {
+              "Distance": 3106.4999999435677,
+              "Time": 12.920454545197781,
+              "Accepted": true
+            },
+            {
+              "Distance": 3157.4999998226353,
+              "Time": 13.15227272646624,
+              "Accepted": true
+            },
+            {
+              "Distance": 3512.9999998027674,
+              "Time": 14.768181817284804,
+              "Accepted": true
+            },
+            {
+              "Distance": 3535.99999988224,
+              "Time": 14.872727272191481,
+              "Accepted": true
+            },
+            {
+              "Distance": 3867.4999998226353,
+              "Time": 16.07954545373862,
+              "Accepted": true
+            },
+            {
+              "Distance": 3918.4999998226353,
+              "Time": 16.31136363555677,
+              "Accepted": true
+            },
+            {
+              "Distance": 4112.999999981582,
+              "Time": 17.195454545370055,
+              "Accepted": true
+            },
+            {
+              "Distance": 4150.999999842504,
+              "Time": 17.36818181746518,
+              "Accepted": true
+            },
+            {
+              "Distance": 4178.999999941845,
+              "Time": 17.495454545189478,
+              "Accepted": true
+            },
+            {
+              "Distance": 4717.499999842504,
+              "Time": 19.643181817465344,
+              "Accepted": true
+            },
+            {
+              "Distance": 4768.499999822636,
+              "Time": 19.87499999919324,
+              "Accepted": true
+            },
+            {
+              "Distance": 5017.499999822636,
+              "Time": 21.006818181011536,
+              "Accepted": true
+            },
+            {
+              "Distance": 5068.499999822636,
+              "Time": 21.238636362829737,
+              "Accepted": true
+            },
+            {
+              "Distance": 5419.499999902108,
+              "Time": 22.8340909086457,
+              "Accepted": true
+            },
+            {
+              "Distance": 5461.499999802768,
+              "Time": 23.02499999910326,
+              "Accepted": true
+            },
+            {
+              "Distance": 5602.999999961713,
+              "Time": 23.668181818007632,
+              "Accepted": true
+            },
+            {
+              "Distance": 5709.500000093215,
+              "Time": 24.137858032839727,
+              "Accepted": true
+            },
+            {
+              "Distance": 6005.499999961169,
+              "Time": 25.19772727255067,
+              "Accepted": true
+            },
+            {
+              "Distance": 6056.499999822636,
+              "Time": 25.429545453739177,
+              "Accepted": true
+            },
+            {
+              "Distance": 6267.499999981582,
+              "Time": 26.388636363552664,
+              "Accepted": true
+            },
+            {
+              "Distance": 6340.999999981582,
+              "Time": 26.7227272726436,
+              "Accepted": true
+            },
+            {
+              "Distance": 6613.999999802768,
+              "Time": 27.663636362739897,
+              "Accepted": true
+            },
+            {
+              "Distance": 6691.499999941845,
+              "Time": 28.015909090644826,
+              "Accepted": true
+            },
+            {
+              "Distance": 6995.499999822636,
+              "Time": 29.097727271921162,
+              "Accepted": true
+            },
+            {
+              "Distance": 7046.499999822636,
+              "Time": 29.329545453739364,
+              "Accepted": true
+            },
+            {
+              "Distance": 7295.499999822636,
+              "Time": 30.46136363555766,
+              "Accepted": true
+            },
+            {
+              "Distance": 7346.499999822636,
+              "Time": 30.693181817375862,
+              "Accepted": true
+            },
+            {
+              "Distance": 7595.499999822636,
+              "Time": 31.82499999919416,
+              "Accepted": true
+            },
+            {
+              "Distance": 7646.499999822636,
+              "Time": 32.05681818101235,
+              "Accepted": true
+            },
+            {
+              "Distance": 7757.999999822636,
+              "Time": 32.56363636283057,
+              "Accepted": true
+            }
+          ]
+        },
+        "Lagger": {
+          "Total": 31,
+          "Completed": 31,
+          "Score": 100,
+          "Time": 33.05000000000038,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 44,
+          "Rejected": 0,
+          "MinMargin": 302.7999999999997,
+          "MinMarginLowerBound": 300.9666666666664,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "rhythm-cascade-finish",
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ],
+          "CompletedIds": [
+            "finish:rhythm-cascade-finish",
+            "obstacle:rhythm-cascade-m0-gate",
+            "obstacle:rhythm-cascade-m1-pad-stone",
+            "obstacle:rhythm-cascade-m10-pad-stone",
+            "obstacle:rhythm-cascade-m11-gate",
+            "obstacle:rhythm-cascade-m12-gate",
+            "obstacle:rhythm-cascade-m13-after-stone",
+            "obstacle:rhythm-cascade-m14-gate",
+            "obstacle:rhythm-cascade-m15-chain-gate-1",
+            "obstacle:rhythm-cascade-m15-chain-gate-2",
+            "obstacle:rhythm-cascade-m16-gate",
+            "obstacle:rhythm-cascade-m17-gate",
+            "obstacle:rhythm-cascade-m18-gate",
+            "obstacle:rhythm-cascade-m2-gate",
+            "obstacle:rhythm-cascade-m3-gate",
+            "obstacle:rhythm-cascade-m4-exit-gate",
+            "obstacle:rhythm-cascade-m4-stone",
+            "obstacle:rhythm-cascade-m5-gate",
+            "obstacle:rhythm-cascade-m6-pad-stone",
+            "obstacle:rhythm-cascade-m7-gate",
+            "obstacle:rhythm-cascade-m8-gate",
+            "obstacle:rhythm-cascade-m9-gate",
+            "positive:rhythm-cascade-m1-pad",
+            "positive:rhythm-cascade-m10-pad",
+            "positive:rhythm-cascade-m13-after-ring",
+            "positive:rhythm-cascade-m15-chain-1",
+            "positive:rhythm-cascade-m15-chain-2",
+            "positive:rhythm-cascade-m3-free",
+            "positive:rhythm-cascade-m4-before",
+            "positive:rhythm-cascade-m6-pad",
+            "positive:rhythm-cascade-m8-free-high"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 230.49999984250394,
+              "Time": 1.047727272011378,
+              "Accepted": true
+            },
+            {
+              "Distance": 281.4999998226357,
+              "Time": 1.279545453739249,
+              "Accepted": true
+            },
+            {
+              "Distance": 485.1811187151778,
+              "Time": 2.2053687214326296,
+              "Accepted": true
+            },
+            {
+              "Distance": 960.4999999435678,
+              "Time": 4.065909090652559,
+              "Accepted": true
+            },
+            {
+              "Distance": 1011.4999998226356,
+              "Time": 4.2977272719210555,
+              "Accepted": true
+            },
+            {
+              "Distance": 1248.4999999418449,
+              "Time": 5.374999999735739,
+              "Accepted": true
+            },
+            {
+              "Distance": 1300.999999862372,
+              "Time": 5.613636363010884,
+              "Accepted": true
+            },
+            {
+              "Distance": 1718.4999998425037,
+              "Time": 7.211363635647966,
+              "Accepted": true
+            },
+            {
+              "Distance": 1741.4999998822402,
+              "Time": 7.31590909037405,
+              "Accepted": true
+            },
+            {
+              "Distance": 2047.7999998033047,
+              "Time": 8.567575756979982,
+              "Accepted": true
+            },
+            {
+              "Distance": 2128.300000121384,
+              "Time": 8.811515151883237,
+              "Accepted": true
+            },
+            {
+              "Distance": 2376.499999806741,
+              "Time": 9.902272726394385,
+              "Accepted": true
+            },
+            {
+              "Distance": 2427.4999998226353,
+              "Time": 10.13409090828479,
+              "Accepted": true
+            },
+            {
+              "Distance": 2631.1811187151775,
+              "Time": 11.059914175978037,
+              "Accepted": true
+            },
+            {
+              "Distance": 3106.4999999435677,
+              "Time": 12.920454545197781,
+              "Accepted": true
+            },
+            {
+              "Distance": 3157.4999998226353,
+              "Time": 13.15227272646624,
+              "Accepted": true
+            },
+            {
+              "Distance": 3512.9999998027674,
+              "Time": 14.768181817284804,
+              "Accepted": true
+            },
+            {
+              "Distance": 3535.99999988224,
+              "Time": 14.872727272191481,
+              "Accepted": true
+            },
+            {
+              "Distance": 3867.4999998226353,
+              "Time": 16.07954545373862,
+              "Accepted": true
+            },
+            {
+              "Distance": 3918.4999998226353,
+              "Time": 16.31136363555677,
+              "Accepted": true
+            },
+            {
+              "Distance": 4112.999999981582,
+              "Time": 17.195454545370055,
+              "Accepted": true
+            },
+            {
+              "Distance": 4150.999999842504,
+              "Time": 17.36818181746518,
+              "Accepted": true
+            },
+            {
+              "Distance": 4178.999999941845,
+              "Time": 17.495454545189478,
+              "Accepted": true
+            },
+            {
+              "Distance": 4717.499999842504,
+              "Time": 19.643181817465344,
+              "Accepted": true
+            },
+            {
+              "Distance": 4768.499999822636,
+              "Time": 19.87499999919324,
+              "Accepted": true
+            },
+            {
+              "Distance": 5017.499999822636,
+              "Time": 21.006818181011536,
+              "Accepted": true
+            },
+            {
+              "Distance": 5068.499999822636,
+              "Time": 21.238636362829737,
+              "Accepted": true
+            },
+            {
+              "Distance": 5419.499999902108,
+              "Time": 22.8340909086457,
+              "Accepted": true
+            },
+            {
+              "Distance": 5461.499999802768,
+              "Time": 23.02499999910326,
+              "Accepted": true
+            },
+            {
+              "Distance": 5602.999999961713,
+              "Time": 23.668181818007632,
+              "Accepted": true
+            },
+            {
+              "Distance": 5709.500000093215,
+              "Time": 24.137858032839727,
+              "Accepted": true
+            },
+            {
+              "Distance": 6005.499999961169,
+              "Time": 25.19772727255067,
+              "Accepted": true
+            },
+            {
+              "Distance": 6056.499999822636,
+              "Time": 25.429545453739177,
+              "Accepted": true
+            },
+            {
+              "Distance": 6267.499999981582,
+              "Time": 26.388636363552664,
+              "Accepted": true
+            },
+            {
+              "Distance": 6340.999999981582,
+              "Time": 26.7227272726436,
+              "Accepted": true
+            },
+            {
+              "Distance": 6613.999999802768,
+              "Time": 27.663636362739897,
+              "Accepted": true
+            },
+            {
+              "Distance": 6691.499999941845,
+              "Time": 28.015909090644826,
+              "Accepted": true
+            },
+            {
+              "Distance": 6995.499999822636,
+              "Time": 29.097727271921162,
+              "Accepted": true
+            },
+            {
+              "Distance": 7046.499999822636,
+              "Time": 29.329545453739364,
+              "Accepted": true
+            },
+            {
+              "Distance": 7295.499999822636,
+              "Time": 30.46136363555766,
+              "Accepted": true
+            },
+            {
+              "Distance": 7346.499999822636,
+              "Time": 30.693181817375862,
+              "Accepted": true
+            },
+            {
+              "Distance": 7595.499999822636,
+              "Time": 31.82499999919416,
+              "Accepted": true
+            },
+            {
+              "Distance": 7646.499999822636,
+              "Time": 32.05681818101235,
+              "Accepted": true
+            },
+            {
+              "Distance": 7757.999999822636,
+              "Time": 32.56363636283057,
+              "Accepted": true
+            }
+          ]
+        }
+      },
+      "Novices": []
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Flip",
+      "Catalog": [
+        "finish:rhythm-cascade-finish",
+        "obstacle:rhythm-cascade-m0-gate",
+        "obstacle:rhythm-cascade-m1-pad-stone",
+        "obstacle:rhythm-cascade-m10-pad-stone",
+        "obstacle:rhythm-cascade-m11-gate",
+        "obstacle:rhythm-cascade-m12-gate",
+        "obstacle:rhythm-cascade-m13-after-stone",
+        "obstacle:rhythm-cascade-m14-gate",
+        "obstacle:rhythm-cascade-m15-chain-gate-1",
+        "obstacle:rhythm-cascade-m15-chain-gate-2",
+        "obstacle:rhythm-cascade-m16-gate",
+        "obstacle:rhythm-cascade-m17-gate",
+        "obstacle:rhythm-cascade-m18-gate",
+        "obstacle:rhythm-cascade-m2-gate",
+        "obstacle:rhythm-cascade-m3-gate",
+        "obstacle:rhythm-cascade-m4-exit-gate",
+        "obstacle:rhythm-cascade-m4-stone",
+        "obstacle:rhythm-cascade-m5-gate",
+        "obstacle:rhythm-cascade-m6-pad-stone",
+        "obstacle:rhythm-cascade-m7-gate",
+        "obstacle:rhythm-cascade-m8-gate",
+        "obstacle:rhythm-cascade-m9-gate",
+        "positive:rhythm-cascade-m1-pad",
+        "positive:rhythm-cascade-m10-pad",
+        "positive:rhythm-cascade-m13-after-ring",
+        "positive:rhythm-cascade-m15-chain-1",
+        "positive:rhythm-cascade-m15-chain-2",
+        "positive:rhythm-cascade-m3-free",
+        "positive:rhythm-cascade-m4-before",
+        "positive:rhythm-cascade-m6-pad",
+        "positive:rhythm-cascade-m8-free-high"
+      ],
+      "Master": {
+        "Distances": [
+          265,
+          492.5,
+          608.5,
+          995,
+          1274,
+          1718,
+          2102,
+          2411,
+          2638.5,
+          2754.5,
+          3141,
+          3528.5,
+          3902,
+          4152.5,
+          4324.5,
+          4752,
+          5052,
+          5420.5,
+          5656.5,
+          6040,
+          6309,
+          6659,
+          7030,
+          7330,
+          7630,
+          7724
+        ],
+        "Valid": true,
+        "Constant": {
+          "Total": 31,
+          "Completed": 31,
+          "Score": 100,
+          "Time": 33.05000000000038,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 26,
+          "Rejected": 0,
+          "MinMargin": 302.79999999999967,
+          "MinMarginLowerBound": 300.96666666666636,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "rhythm-cascade-finish",
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ],
+          "CompletedIds": [
+            "finish:rhythm-cascade-finish",
+            "obstacle:rhythm-cascade-m0-gate",
+            "obstacle:rhythm-cascade-m1-pad-stone",
+            "obstacle:rhythm-cascade-m10-pad-stone",
+            "obstacle:rhythm-cascade-m11-gate",
+            "obstacle:rhythm-cascade-m12-gate",
+            "obstacle:rhythm-cascade-m13-after-stone",
+            "obstacle:rhythm-cascade-m14-gate",
+            "obstacle:rhythm-cascade-m15-chain-gate-1",
+            "obstacle:rhythm-cascade-m15-chain-gate-2",
+            "obstacle:rhythm-cascade-m16-gate",
+            "obstacle:rhythm-cascade-m17-gate",
+            "obstacle:rhythm-cascade-m18-gate",
+            "obstacle:rhythm-cascade-m2-gate",
+            "obstacle:rhythm-cascade-m3-gate",
+            "obstacle:rhythm-cascade-m4-exit-gate",
+            "obstacle:rhythm-cascade-m4-stone",
+            "obstacle:rhythm-cascade-m5-gate",
+            "obstacle:rhythm-cascade-m6-pad-stone",
+            "obstacle:rhythm-cascade-m7-gate",
+            "obstacle:rhythm-cascade-m8-gate",
+            "obstacle:rhythm-cascade-m9-gate",
+            "positive:rhythm-cascade-m1-pad",
+            "positive:rhythm-cascade-m10-pad",
+            "positive:rhythm-cascade-m13-after-ring",
+            "positive:rhythm-cascade-m15-chain-1",
+            "positive:rhythm-cascade-m15-chain-2",
+            "positive:rhythm-cascade-m3-free",
+            "positive:rhythm-cascade-m4-before",
+            "positive:rhythm-cascade-m6-pad",
+            "positive:rhythm-cascade-m8-free-high"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 264.9999998822404,
+              "Time": 1.2045454540101783,
+              "Accepted": true
+            },
+            {
+              "Distance": 492.4999999815814,
+              "Time": 2.238636363552643,
+              "Accepted": true
+            },
+            {
+              "Distance": 608.4999999418449,
+              "Time": 2.7659090906447417,
+              "Accepted": true
+            },
+            {
+              "Distance": 994.9999998226356,
+              "Time": 4.222727271921052,
+              "Accepted": true
+            },
+            {
+              "Distance": 1273.999999961713,
+              "Time": 5.4909090907351485,
+              "Accepted": true
+            },
+            {
+              "Distance": 1717.999999961713,
+              "Time": 7.209090908917098,
+              "Accepted": true
+            },
+            {
+              "Distance": 2101.9999998807907,
+              "Time": 8.731818181457204,
+              "Accepted": true
+            },
+            {
+              "Distance": 2410.9999999418446,
+              "Time": 10.059090908826658,
+              "Accepted": true
+            },
+            {
+              "Distance": 2638.4999999815814,
+              "Time": 11.093181818098046,
+              "Accepted": true
+            },
+            {
+              "Distance": 2754.4999999418446,
+              "Time": 11.620454545190082,
+              "Accepted": true
+            },
+            {
+              "Distance": 3140.9999998226353,
+              "Time": 13.077272726466255,
+              "Accepted": true
+            },
+            {
+              "Distance": 3528.4999999219767,
+              "Time": 14.838636363281196,
+              "Accepted": true
+            },
+            {
+              "Distance": 3901.9999998425037,
+              "Time": 16.23636363564709,
+              "Accepted": true
+            },
+            {
+              "Distance": 4152.4999998623725,
+              "Time": 17.374999999373664,
+              "Accepted": true
+            },
+            {
+              "Distance": 4324.499999822636,
+              "Time": 18.156818181011307,
+              "Accepted": true
+            },
+            {
+              "Distance": 4751.999999961713,
+              "Time": 19.79999999982537,
+              "Accepted": true
+            },
+            {
+              "Distance": 5051.9999998623725,
+              "Time": 21.163636363010315,
+              "Accepted": true
+            },
+            {
+              "Distance": 5420.5000000028995,
+              "Time": 22.83863636364926,
+              "Accepted": true
+            },
+            {
+              "Distance": 5656.499999842505,
+              "Time": 23.911363635647575,
+              "Accepted": true
+            },
+            {
+              "Distance": 6039.999999961713,
+              "Time": 25.3545454543713,
+              "Accepted": true
+            },
+            {
+              "Distance": 6308.999999842504,
+              "Time": 26.57727272655685,
+              "Accepted": true
+            },
+            {
+              "Distance": 6658.999999802768,
+              "Time": 27.868181817285354,
+              "Accepted": true
+            },
+            {
+              "Distance": 7029.999999921977,
+              "Time": 29.254545454190893,
+              "Accepted": true
+            },
+            {
+              "Distance": 7329.9999998623725,
+              "Time": 30.61818181755646,
+              "Accepted": true
+            },
+            {
+              "Distance": 7629.9999998623725,
+              "Time": 31.98181818119296,
+              "Accepted": true
+            },
+            {
+              "Distance": 7723.999999941845,
+              "Time": 32.40909090882696,
+              "Accepted": true
+            }
+          ]
+        },
+        "Lagger": {
+          "Total": 31,
+          "Completed": 31,
+          "Score": 100,
+          "Time": 33.05000000000038,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 26,
+          "Rejected": 0,
+          "MinMargin": 302.7999999999997,
+          "MinMarginLowerBound": 300.9666666666664,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "rhythm-cascade-finish",
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ],
+          "CompletedIds": [
+            "finish:rhythm-cascade-finish",
+            "obstacle:rhythm-cascade-m0-gate",
+            "obstacle:rhythm-cascade-m1-pad-stone",
+            "obstacle:rhythm-cascade-m10-pad-stone",
+            "obstacle:rhythm-cascade-m11-gate",
+            "obstacle:rhythm-cascade-m12-gate",
+            "obstacle:rhythm-cascade-m13-after-stone",
+            "obstacle:rhythm-cascade-m14-gate",
+            "obstacle:rhythm-cascade-m15-chain-gate-1",
+            "obstacle:rhythm-cascade-m15-chain-gate-2",
+            "obstacle:rhythm-cascade-m16-gate",
+            "obstacle:rhythm-cascade-m17-gate",
+            "obstacle:rhythm-cascade-m18-gate",
+            "obstacle:rhythm-cascade-m2-gate",
+            "obstacle:rhythm-cascade-m3-gate",
+            "obstacle:rhythm-cascade-m4-exit-gate",
+            "obstacle:rhythm-cascade-m4-stone",
+            "obstacle:rhythm-cascade-m5-gate",
+            "obstacle:rhythm-cascade-m6-pad-stone",
+            "obstacle:rhythm-cascade-m7-gate",
+            "obstacle:rhythm-cascade-m8-gate",
+            "obstacle:rhythm-cascade-m9-gate",
+            "positive:rhythm-cascade-m1-pad",
+            "positive:rhythm-cascade-m10-pad",
+            "positive:rhythm-cascade-m13-after-ring",
+            "positive:rhythm-cascade-m15-chain-1",
+            "positive:rhythm-cascade-m15-chain-2",
+            "positive:rhythm-cascade-m3-free",
+            "positive:rhythm-cascade-m4-before",
+            "positive:rhythm-cascade-m6-pad",
+            "positive:rhythm-cascade-m8-free-high"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 264.9999998822404,
+              "Time": 1.2045454540101783,
+              "Accepted": true
+            },
+            {
+              "Distance": 492.4999999815814,
+              "Time": 2.238636363552643,
+              "Accepted": true
+            },
+            {
+              "Distance": 608.4999999418449,
+              "Time": 2.7659090906447417,
+              "Accepted": true
+            },
+            {
+              "Distance": 994.9999998226356,
+              "Time": 4.222727271921052,
+              "Accepted": true
+            },
+            {
+              "Distance": 1273.999999961713,
+              "Time": 5.4909090907351485,
+              "Accepted": true
+            },
+            {
+              "Distance": 1717.999999961713,
+              "Time": 7.209090908917098,
+              "Accepted": true
+            },
+            {
+              "Distance": 2101.9999998807907,
+              "Time": 8.731818181457204,
+              "Accepted": true
+            },
+            {
+              "Distance": 2410.9999999418446,
+              "Time": 10.059090908826658,
+              "Accepted": true
+            },
+            {
+              "Distance": 2638.4999999815814,
+              "Time": 11.093181818098046,
+              "Accepted": true
+            },
+            {
+              "Distance": 2754.4999999418446,
+              "Time": 11.620454545190082,
+              "Accepted": true
+            },
+            {
+              "Distance": 3140.9999998226353,
+              "Time": 13.077272726466255,
+              "Accepted": true
+            },
+            {
+              "Distance": 3528.4999999219767,
+              "Time": 14.838636363281196,
+              "Accepted": true
+            },
+            {
+              "Distance": 3901.9999998425037,
+              "Time": 16.23636363564709,
+              "Accepted": true
+            },
+            {
+              "Distance": 4152.4999998623725,
+              "Time": 17.374999999373664,
+              "Accepted": true
+            },
+            {
+              "Distance": 4324.499999822636,
+              "Time": 18.156818181011307,
+              "Accepted": true
+            },
+            {
+              "Distance": 4751.999999961713,
+              "Time": 19.79999999982537,
+              "Accepted": true
+            },
+            {
+              "Distance": 5051.9999998623725,
+              "Time": 21.163636363010315,
+              "Accepted": true
+            },
+            {
+              "Distance": 5420.5000000028995,
+              "Time": 22.83863636364926,
+              "Accepted": true
+            },
+            {
+              "Distance": 5656.499999842505,
+              "Time": 23.911363635647575,
+              "Accepted": true
+            },
+            {
+              "Distance": 6039.999999961713,
+              "Time": 25.3545454543713,
+              "Accepted": true
+            },
+            {
+              "Distance": 6308.999999842504,
+              "Time": 26.57727272655685,
+              "Accepted": true
+            },
+            {
+              "Distance": 6658.999999802768,
+              "Time": 27.868181817285354,
+              "Accepted": true
+            },
+            {
+              "Distance": 7029.999999921977,
+              "Time": 29.254545454190893,
+              "Accepted": true
+            },
+            {
+              "Distance": 7329.9999998623725,
+              "Time": 30.61818181755646,
+              "Accepted": true
+            },
+            {
+              "Distance": 7629.9999998623725,
+              "Time": 31.98181818119296,
+              "Accepted": true
+            },
+            {
+              "Distance": 7723.999999941845,
+              "Time": 32.40909090882696,
+              "Accepted": true
+            }
+          ]
+        }
+      },
+      "Novices": []
+    },
+    {
+      "Track": "mixed-tricks",
+      "Profile": "Jump",
+      "Catalog": [
+        "finish:mixed-tricks-finish",
+        "obstacle:mixed-tricks-after-stone",
+        "obstacle:mixed-tricks-final-offset",
+        "obstacle:mixed-tricks-large-before",
+        "obstacle:mixed-tricks-large-pad",
+        "obstacle:mixed-tricks-low-ceiling",
+        "obstacle:mixed-tricks-low-floor",
+        "obstacle:mixed-tricks-middle-offset",
+        "obstacle:mixed-tricks-small-ceiling",
+        "obstacle:mixed-tricks-small-pad",
+        "obstacle:mixed-tricks-small-second",
+        "obstacle:mixed-tricks-straight",
+        "positive:mixed-tricks-after",
+        "positive:mixed-tricks-before",
+        "positive:mixed-tricks-ceiling-low-reward",
+        "positive:mixed-tricks-chain-center",
+        "positive:mixed-tricks-chain-low",
+        "positive:mixed-tricks-high-reward",
+        "positive:mixed-tricks-low-reward",
+        "positive:mixed-tricks-standard-pad",
+        "positive:mixed-tricks-wide-pad"
+      ],
+      "Master": {
+        "Distances": [
+          435.1811187353192,
+          965.7735849056604,
+          1320,
+          1866.8139808283297,
+          1910.8139808283306,
+          2666.1590934524424,
+          2722.20159047915,
+          2887.7735849056603,
+          3441.7735849056603,
+          4030.844877314131,
+          4074.844877314132,
+          4316.8139808283295,
+          4360.813980828326,
+          4519.238640178664,
+          5026,
+          5064,
+          5092,
+          5765,
+          5809,
+          6004,
+          6055,
+          6400,
+          6444,
+          6693,
+          7240.844877314131,
+          7284.844877314127,
+          7420,
+          7464,
+          7639
+        ],
+        "Valid": true,
+        "Constant": {
+          "Total": 21,
+          "Completed": 21,
+          "Score": 100,
+          "Time": 33.050000000000196,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 29,
+          "Rejected": 0,
+          "MinMargin": 302.7999999999992,
+          "MinMarginLowerBound": 300.9666666666659,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "mixed-tricks-after",
+            "mixed-tricks-before",
+            "mixed-tricks-ceiling-low-reward",
+            "mixed-tricks-chain-center",
+            "mixed-tricks-chain-low",
+            "mixed-tricks-finish",
+            "mixed-tricks-high-reward",
+            "mixed-tricks-low-reward",
+            "mixed-tricks-standard-pad",
+            "mixed-tricks-wide-pad"
+          ],
+          "CompletedIds": [
+            "finish:mixed-tricks-finish",
+            "obstacle:mixed-tricks-after-stone",
+            "obstacle:mixed-tricks-final-offset",
+            "obstacle:mixed-tricks-large-before",
+            "obstacle:mixed-tricks-large-pad",
+            "obstacle:mixed-tricks-low-ceiling",
+            "obstacle:mixed-tricks-low-floor",
+            "obstacle:mixed-tricks-middle-offset",
+            "obstacle:mixed-tricks-small-ceiling",
+            "obstacle:mixed-tricks-small-pad",
+            "obstacle:mixed-tricks-small-second",
+            "obstacle:mixed-tricks-straight",
+            "positive:mixed-tricks-after",
+            "positive:mixed-tricks-before",
+            "positive:mixed-tricks-ceiling-low-reward",
+            "positive:mixed-tricks-chain-center",
+            "positive:mixed-tricks-chain-low",
+            "positive:mixed-tricks-high-reward",
+            "positive:mixed-tricks-low-reward",
+            "positive:mixed-tricks-standard-pad",
+            "positive:mixed-tricks-wide-pad"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 435.18111865557313,
+              "Time": 1.9780959938889697,
+              "Accepted": true
+            },
+            {
+              "Distance": 965.7735848166144,
+              "Time": 4.08987993098459,
+              "Accepted": true
+            },
+            {
+              "Distance": 1319.9999999545905,
+              "Time": 5.699999999793703,
+              "Accepted": true
+            },
+            {
+              "Distance": 1866.8139807724815,
+              "Time": 7.8855180944206555,
+              "Accepted": true
+            },
+            {
+              "Distance": 1910.8139808312299,
+              "Time": 8.085518094687698,
+              "Accepted": true
+            },
+            {
+              "Distance": 2666.159093452533,
+              "Time": 11.21890497023876,
+              "Accepted": true
+            },
+            {
+              "Distance": 2722.2015903152374,
+              "Time": 11.4189049697417,
+              "Accepted": true
+            },
+            {
+              "Distance": 2887.7735847146473,
+              "Time": 11.926243566884684,
+              "Accepted": true
+            },
+            {
+              "Distance": 3441.7735848673733,
+              "Time": 14.444425385760352,
+              "Accepted": true
+            },
+            {
+              "Distance": 4030.844877247477,
+              "Time": 17.122022169305918,
+              "Accepted": true
+            },
+            {
+              "Distance": 4074.8448773170317,
+              "Time": 17.32202216962204,
+              "Accepted": true
+            },
+            {
+              "Distance": 4316.813980834913,
+              "Time": 18.421881731067057,
+              "Accepted": true
+            },
+            {
+              "Distance": 4360.813980831226,
+              "Time": 18.62188173105031,
+              "Accepted": true
+            },
+            {
+              "Distance": 4519.2386402128695,
+              "Time": 19.142307958274802,
+              "Accepted": true
+            },
+            {
+              "Distance": 5025.999999918928,
+              "Time": 21.045454545085374,
+              "Accepted": true
+            },
+            {
+              "Distance": 5063.999999842504,
+              "Time": 21.218181817465283,
+              "Accepted": true
+            },
+            {
+              "Distance": 5091.999999941845,
+              "Time": 21.34545454518958,
+              "Accepted": true
+            },
+            {
+              "Distance": 5764.999999981582,
+              "Time": 24.104545454461295,
+              "Accepted": true
+            },
+            {
+              "Distance": 5809.0000000028995,
+              "Time": 24.304545454558216,
+              "Accepted": true
+            },
+            {
+              "Distance": 6003.999999921977,
+              "Time": 25.190909090554122,
+              "Accepted": true
+            },
+            {
+              "Distance": 6054.999999822636,
+              "Time": 25.422727271920767,
+              "Accepted": true
+            },
+            {
+              "Distance": 6399.999999961713,
+              "Time": 26.690909090734785,
+              "Accepted": true
+            },
+            {
+              "Distance": 6444.0000000028995,
+              "Time": 26.890909090922015,
+              "Accepted": true
+            },
+            {
+              "Distance": 6692.999999822637,
+              "Time": 28.022727271920935,
+              "Accepted": true
+            },
+            {
+              "Distance": 7240.8448771353915,
+              "Time": 30.212931259706323,
+              "Accepted": true
+            },
+            {
+              "Distance": 7284.844877317028,
+              "Time": 30.41293126053197,
+              "Accepted": true
+            },
+            {
+              "Distance": 7419.999999843881,
+              "Time": 31.027272726563176,
+              "Accepted": true
+            },
+            {
+              "Distance": 7464.0000000028995,
+              "Time": 31.22727272728601,
+              "Accepted": true
+            },
+            {
+              "Distance": 7638.999999902109,
+              "Time": 32.02272727228248,
+              "Accepted": true
+            }
+          ]
+        },
+        "Lagger": {
+          "Total": 21,
+          "Completed": 21,
+          "Score": 100,
+          "Time": 33.050000000000196,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 29,
+          "Rejected": 0,
+          "MinMargin": 302.7999999999997,
+          "MinMarginLowerBound": 300.9666666666664,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "mixed-tricks-after",
+            "mixed-tricks-before",
+            "mixed-tricks-ceiling-low-reward",
+            "mixed-tricks-chain-center",
+            "mixed-tricks-chain-low",
+            "mixed-tricks-finish",
+            "mixed-tricks-high-reward",
+            "mixed-tricks-low-reward",
+            "mixed-tricks-standard-pad",
+            "mixed-tricks-wide-pad"
+          ],
+          "CompletedIds": [
+            "finish:mixed-tricks-finish",
+            "obstacle:mixed-tricks-after-stone",
+            "obstacle:mixed-tricks-final-offset",
+            "obstacle:mixed-tricks-large-before",
+            "obstacle:mixed-tricks-large-pad",
+            "obstacle:mixed-tricks-low-ceiling",
+            "obstacle:mixed-tricks-low-floor",
+            "obstacle:mixed-tricks-middle-offset",
+            "obstacle:mixed-tricks-small-ceiling",
+            "obstacle:mixed-tricks-small-pad",
+            "obstacle:mixed-tricks-small-second",
+            "obstacle:mixed-tricks-straight",
+            "positive:mixed-tricks-after",
+            "positive:mixed-tricks-before",
+            "positive:mixed-tricks-ceiling-low-reward",
+            "positive:mixed-tricks-chain-center",
+            "positive:mixed-tricks-chain-low",
+            "positive:mixed-tricks-high-reward",
+            "positive:mixed-tricks-low-reward",
+            "positive:mixed-tricks-standard-pad",
+            "positive:mixed-tricks-wide-pad"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 435.18111865557313,
+              "Time": 1.9780959938889697,
+              "Accepted": true
+            },
+            {
+              "Distance": 965.7735848166144,
+              "Time": 4.08987993098459,
+              "Accepted": true
+            },
+            {
+              "Distance": 1319.9999999545905,
+              "Time": 5.699999999793703,
+              "Accepted": true
+            },
+            {
+              "Distance": 1866.8139807724815,
+              "Time": 7.8855180944206555,
+              "Accepted": true
+            },
+            {
+              "Distance": 1910.8139808312299,
+              "Time": 8.085518094687698,
+              "Accepted": true
+            },
+            {
+              "Distance": 2666.159093452533,
+              "Time": 11.21890497023876,
+              "Accepted": true
+            },
+            {
+              "Distance": 2722.2015903152374,
+              "Time": 11.4189049697417,
+              "Accepted": true
+            },
+            {
+              "Distance": 2887.7735847146473,
+              "Time": 11.926243566884684,
+              "Accepted": true
+            },
+            {
+              "Distance": 3441.7735848673733,
+              "Time": 14.444425385760352,
+              "Accepted": true
+            },
+            {
+              "Distance": 4030.844877247477,
+              "Time": 17.122022169305918,
+              "Accepted": true
+            },
+            {
+              "Distance": 4074.8448773170317,
+              "Time": 17.32202216962204,
+              "Accepted": true
+            },
+            {
+              "Distance": 4316.813980834913,
+              "Time": 18.421881731067057,
+              "Accepted": true
+            },
+            {
+              "Distance": 4360.813980831226,
+              "Time": 18.62188173105031,
+              "Accepted": true
+            },
+            {
+              "Distance": 4519.2386402128695,
+              "Time": 19.142307958274802,
+              "Accepted": true
+            },
+            {
+              "Distance": 5025.999999918928,
+              "Time": 21.045454545085374,
+              "Accepted": true
+            },
+            {
+              "Distance": 5063.999999842504,
+              "Time": 21.218181817465283,
+              "Accepted": true
+            },
+            {
+              "Distance": 5091.999999941845,
+              "Time": 21.34545454518958,
+              "Accepted": true
+            },
+            {
+              "Distance": 5764.999999981582,
+              "Time": 24.104545454461295,
+              "Accepted": true
+            },
+            {
+              "Distance": 5809.0000000028995,
+              "Time": 24.304545454558216,
+              "Accepted": true
+            },
+            {
+              "Distance": 6003.999999921977,
+              "Time": 25.190909090554122,
+              "Accepted": true
+            },
+            {
+              "Distance": 6054.999999822636,
+              "Time": 25.422727271920767,
+              "Accepted": true
+            },
+            {
+              "Distance": 6399.999999961713,
+              "Time": 26.690909090734785,
+              "Accepted": true
+            },
+            {
+              "Distance": 6444.0000000028995,
+              "Time": 26.890909090922015,
+              "Accepted": true
+            },
+            {
+              "Distance": 6692.999999822637,
+              "Time": 28.022727271920935,
+              "Accepted": true
+            },
+            {
+              "Distance": 7240.8448771353915,
+              "Time": 30.212931259706323,
+              "Accepted": true
+            },
+            {
+              "Distance": 7284.844877317028,
+              "Time": 30.41293126053197,
+              "Accepted": true
+            },
+            {
+              "Distance": 7419.999999843881,
+              "Time": 31.027272726563176,
+              "Accepted": true
+            },
+            {
+              "Distance": 7464.0000000028995,
+              "Time": 31.22727272728601,
+              "Accepted": true
+            },
+            {
+              "Distance": 7638.999999902109,
+              "Time": 32.02272727228248,
+              "Accepted": true
+            }
+          ]
+        }
+      },
+      "Novices": [
+        {
+          "Name": "safe",
+          "Distances": [
+            515.7735849056604,
+            965.7735849056604,
+            1910,
+            1954,
+            2560,
+            2604,
+            2887.7735849056603,
+            3441.7735849056603,
+            4030.844877314131,
+            4074.844877314132,
+            6730.773584905661,
+            7240.844877314131,
+            7284.844877314127,
+            7420,
+            7464,
+            7591.773584905661
+          ],
+          "Valid": true,
+          "Constant": {
+            "Total": 21,
+            "Completed": 11,
+            "Score": 52.38095238095238,
+            "Time": 36.00000000000083,
+            "Status": "Finished",
+            "Collisions": 0,
+            "Accepted": 16,
+            "Rejected": 0,
+            "MinMargin": 302.7999999998174,
+            "MinMarginLowerBound": 300.96666666648406,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 515.7735848347597,
+                "Time": 2.3444253856125483,
+                "Accepted": true
+              },
+              {
+                "Distance": 965.7735848077689,
+                "Time": 4.389879930944379,
+                "Accepted": true
+              },
+              {
+                "Distance": 1909.999999994327,
+                "Time": 8.681818181792673,
+                "Accepted": true
+              },
+              {
+                "Distance": 1954.000000002899,
+                "Time": 8.881818181831637,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.9999998822404,
+                "Time": 11.636363635828307,
+                "Accepted": true
+              },
+              {
+                "Distance": 2604.000000002899,
+                "Time": 11.836363636376731,
+                "Accepted": true
+              },
+              {
+                "Distance": 2887.7735847354184,
+                "Time": 13.126243566978923,
+                "Accepted": true
+              },
+              {
+                "Distance": 3441.7735848673733,
+                "Time": 15.644425385760188,
+                "Accepted": true
+              },
+              {
+                "Distance": 4030.844877247477,
+                "Time": 18.322022169305754,
+                "Accepted": true
+              },
+              {
+                "Distance": 4074.8448773170317,
+                "Time": 18.522022169621877,
+                "Accepted": true
+              },
+              {
+                "Distance": 6730.773584756664,
+                "Time": 30.59442538525784,
+                "Accepted": true
+              },
+              {
+                "Distance": 7240.844877267346,
+                "Time": 32.91293126030666,
+                "Accepted": true
+              },
+              {
+                "Distance": 7284.844877317028,
+                "Time": 33.112931260532484,
+                "Accepted": true
+              },
+              {
+                "Distance": 7419.999999843881,
+                "Time": 33.72727272656369,
+                "Accepted": true
+              },
+              {
+                "Distance": 7464.0000000028995,
+                "Time": 33.92727272728652,
+                "Accepted": true
+              },
+              {
+                "Distance": 7591.773584755288,
+                "Time": 34.508061748888345,
+                "Accepted": true
+              }
+            ]
+          },
+          "Lagger": {
+            "Total": 21,
+            "Completed": 11,
+            "Score": 52.38095238095238,
+            "Time": 36.00000000000083,
+            "Status": "Finished",
+            "Collisions": 0,
+            "Accepted": 16,
+            "Rejected": 0,
+            "MinMargin": 302.7999999999997,
+            "MinMarginLowerBound": 300.9666666666664,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 515.7735848347597,
+                "Time": 2.3444253856125483,
+                "Accepted": true
+              },
+              {
+                "Distance": 965.7735848077689,
+                "Time": 4.389879930944379,
+                "Accepted": true
+              },
+              {
+                "Distance": 1909.999999994327,
+                "Time": 8.681818181792673,
+                "Accepted": true
+              },
+              {
+                "Distance": 1954.000000002899,
+                "Time": 8.881818181831637,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.9999998822404,
+                "Time": 11.636363635828307,
+                "Accepted": true
+              },
+              {
+                "Distance": 2604.000000002899,
+                "Time": 11.836363636376731,
+                "Accepted": true
+              },
+              {
+                "Distance": 2887.7735847354184,
+                "Time": 13.126243566978923,
+                "Accepted": true
+              },
+              {
+                "Distance": 3441.7735848673733,
+                "Time": 15.644425385760188,
+                "Accepted": true
+              },
+              {
+                "Distance": 4030.844877247477,
+                "Time": 18.322022169305754,
+                "Accepted": true
+              },
+              {
+                "Distance": 4074.8448773170317,
+                "Time": 18.522022169621877,
+                "Accepted": true
+              },
+              {
+                "Distance": 6730.773584756664,
+                "Time": 30.59442538525784,
+                "Accepted": true
+              },
+              {
+                "Distance": 7240.844877267346,
+                "Time": 32.91293126030666,
+                "Accepted": true
+              },
+              {
+                "Distance": 7284.844877317028,
+                "Time": 33.112931260532484,
+                "Accepted": true
+              },
+              {
+                "Distance": 7419.999999843881,
+                "Time": 33.72727272656369,
+                "Accepted": true
+              },
+              {
+                "Distance": 7464.0000000028995,
+                "Time": 33.92727272728652,
+                "Accepted": true
+              },
+              {
+                "Distance": 7591.773584755288,
+                "Time": 34.508061748888345,
+                "Accepted": true
+              }
+            ]
+          }
+        },
+        {
+          "Name": "mixed-tricks-small-pad/shift-48",
+          "Distances": [
+            467.7735849056604,
+            965.7735849056604,
+            1910,
+            1954,
+            2560,
+            2604,
+            2887.7735849056603,
+            3441.7735849056603,
+            4030.844877314131,
+            4074.844877314132,
+            6730.773584905661,
+            7240.844877314131,
+            7284.844877314127,
+            7420,
+            7464,
+            7591.773584905661
+          ],
+          "Valid": true,
+          "Constant": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.50000000000081,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 16,
+            "Rejected": 0,
+            "MinMargin": 192.79999999982192,
+            "MinMarginLowerBound": 190.96666666648858,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-pad"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-pad",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 467.7735848744962,
+                "Time": 2.1262435676113496,
+                "Accepted": true
+              },
+              {
+                "Distance": 965.7735848457826,
+                "Time": 4.889879931117192,
+                "Accepted": true
+              },
+              {
+                "Distance": 1909.999999994327,
+                "Time": 9.181818181792647,
+                "Accepted": true
+              },
+              {
+                "Distance": 1954.000000002899,
+                "Time": 9.38181818183161,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.9999998822404,
+                "Time": 12.13636363582828,
+                "Accepted": true
+              },
+              {
+                "Distance": 2604.000000002899,
+                "Time": 12.336363636376705,
+                "Accepted": true
+              },
+              {
+                "Distance": 2887.7735847354184,
+                "Time": 13.626243566978896,
+                "Accepted": true
+              },
+              {
+                "Distance": 3441.7735848673733,
+                "Time": 16.14442538576017,
+                "Accepted": true
+              },
+              {
+                "Distance": 4030.844877247477,
+                "Time": 18.822022169305733,
+                "Accepted": true
+              },
+              {
+                "Distance": 4074.8448773170317,
+                "Time": 19.022022169621856,
+                "Accepted": true
+              },
+              {
+                "Distance": 6730.773584756664,
+                "Time": 31.094425385257818,
+                "Accepted": true
+              },
+              {
+                "Distance": 7240.844877267346,
+                "Time": 33.412931260306635,
+                "Accepted": true
+              },
+              {
+                "Distance": 7284.844877317028,
+                "Time": 33.61293126053246,
+                "Accepted": true
+              },
+              {
+                "Distance": 7419.999999843881,
+                "Time": 34.22727272656367,
+                "Accepted": true
+              },
+              {
+                "Distance": 7464.0000000028995,
+                "Time": 34.4272727272865,
+                "Accepted": true
+              },
+              {
+                "Distance": 7591.773584755288,
+                "Time": 35.00806174888832,
+                "Accepted": true
+              }
+            ]
+          },
+          "Lagger": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.50000000000081,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 16,
+            "Rejected": 0,
+            "MinMargin": 302.7999999999997,
+            "MinMarginLowerBound": 300.9666666666664,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-pad"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-pad",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 467.7735848744962,
+                "Time": 2.1262435676113496,
+                "Accepted": true
+              },
+              {
+                "Distance": 965.7735848457826,
+                "Time": 4.889879931117192,
+                "Accepted": true
+              },
+              {
+                "Distance": 1909.999999994327,
+                "Time": 9.181818181792647,
+                "Accepted": true
+              },
+              {
+                "Distance": 1954.000000002899,
+                "Time": 9.38181818183161,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.9999998822404,
+                "Time": 12.13636363582828,
+                "Accepted": true
+              },
+              {
+                "Distance": 2604.000000002899,
+                "Time": 12.336363636376705,
+                "Accepted": true
+              },
+              {
+                "Distance": 2887.7735847354184,
+                "Time": 13.626243566978896,
+                "Accepted": true
+              },
+              {
+                "Distance": 3441.7735848673733,
+                "Time": 16.14442538576017,
+                "Accepted": true
+              },
+              {
+                "Distance": 4030.844877247477,
+                "Time": 18.822022169305733,
+                "Accepted": true
+              },
+              {
+                "Distance": 4074.8448773170317,
+                "Time": 19.022022169621856,
+                "Accepted": true
+              },
+              {
+                "Distance": 6730.773584756664,
+                "Time": 31.094425385257818,
+                "Accepted": true
+              },
+              {
+                "Distance": 7240.844877267346,
+                "Time": 33.412931260306635,
+                "Accepted": true
+              },
+              {
+                "Distance": 7284.844877317028,
+                "Time": 33.61293126053246,
+                "Accepted": true
+              },
+              {
+                "Distance": 7419.999999843881,
+                "Time": 34.22727272656367,
+                "Accepted": true
+              },
+              {
+                "Distance": 7464.0000000028995,
+                "Time": 34.4272727272865,
+                "Accepted": true
+              },
+              {
+                "Distance": 7591.773584755288,
+                "Time": 35.00806174888832,
+                "Accepted": true
+              }
+            ]
+          }
+        },
+        {
+          "Name": "mixed-tricks-small-second/shift-48",
+          "Distances": [
+            515.7735849056604,
+            917.7735849056604,
+            1910,
+            1954,
+            2560,
+            2604,
+            2887.7735849056603,
+            3441.7735849056603,
+            4030.844877314131,
+            4074.844877314132,
+            6730.773584905661,
+            7240.844877314131,
+            7284.844877314127,
+            7420,
+            7464,
+            7591.773584905661
+          ],
+          "Valid": true,
+          "Constant": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.5000000000008,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 16,
+            "Rejected": 0,
+            "MinMargin": 192.79999999982374,
+            "MinMarginLowerBound": 190.9666666664904,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-second"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-second",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 515.7735848347597,
+                "Time": 2.3444253856125483,
+                "Accepted": true
+              },
+              {
+                "Distance": 917.7735848475054,
+                "Time": 4.171698112943174,
+                "Accepted": true
+              },
+              {
+                "Distance": 1909.9999998137903,
+                "Time": 9.181818180972018,
+                "Accepted": true
+              },
+              {
+                "Distance": 1954.000000002899,
+                "Time": 9.381818181831605,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.9999998822404,
+                "Time": 12.136363635828275,
+                "Accepted": true
+              },
+              {
+                "Distance": 2604.000000002899,
+                "Time": 12.3363636363767,
+                "Accepted": true
+              },
+              {
+                "Distance": 2887.7735847354184,
+                "Time": 13.626243566978891,
+                "Accepted": true
+              },
+              {
+                "Distance": 3441.7735848673733,
+                "Time": 16.144425385760165,
+                "Accepted": true
+              },
+              {
+                "Distance": 4030.844877247477,
+                "Time": 18.82202216930573,
+                "Accepted": true
+              },
+              {
+                "Distance": 4074.8448773170317,
+                "Time": 19.022022169621852,
+                "Accepted": true
+              },
+              {
+                "Distance": 6730.773584756664,
+                "Time": 31.094425385257814,
+                "Accepted": true
+              },
+              {
+                "Distance": 7240.844877267346,
+                "Time": 33.41293126030663,
+                "Accepted": true
+              },
+              {
+                "Distance": 7284.844877317028,
+                "Time": 33.612931260532456,
+                "Accepted": true
+              },
+              {
+                "Distance": 7419.999999843881,
+                "Time": 34.22727272656366,
+                "Accepted": true
+              },
+              {
+                "Distance": 7464.0000000028995,
+                "Time": 34.42727272728649,
+                "Accepted": true
+              },
+              {
+                "Distance": 7591.773584755288,
+                "Time": 35.008061748888316,
+                "Accepted": true
+              }
+            ]
+          },
+          "Lagger": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.5000000000008,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 16,
+            "Rejected": 0,
+            "MinMargin": 302.7999999999997,
+            "MinMarginLowerBound": 300.9666666666664,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-second"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-second",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 515.7735848347597,
+                "Time": 2.3444253856125483,
+                "Accepted": true
+              },
+              {
+                "Distance": 917.7735848475054,
+                "Time": 4.171698112943174,
+                "Accepted": true
+              },
+              {
+                "Distance": 1909.9999998137903,
+                "Time": 9.181818180972018,
+                "Accepted": true
+              },
+              {
+                "Distance": 1954.000000002899,
+                "Time": 9.381818181831605,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.9999998822404,
+                "Time": 12.136363635828275,
+                "Accepted": true
+              },
+              {
+                "Distance": 2604.000000002899,
+                "Time": 12.3363636363767,
+                "Accepted": true
+              },
+              {
+                "Distance": 2887.7735847354184,
+                "Time": 13.626243566978891,
+                "Accepted": true
+              },
+              {
+                "Distance": 3441.7735848673733,
+                "Time": 16.144425385760165,
+                "Accepted": true
+              },
+              {
+                "Distance": 4030.844877247477,
+                "Time": 18.82202216930573,
+                "Accepted": true
+              },
+              {
+                "Distance": 4074.8448773170317,
+                "Time": 19.022022169621852,
+                "Accepted": true
+              },
+              {
+                "Distance": 6730.773584756664,
+                "Time": 31.094425385257814,
+                "Accepted": true
+              },
+              {
+                "Distance": 7240.844877267346,
+                "Time": 33.41293126030663,
+                "Accepted": true
+              },
+              {
+                "Distance": 7284.844877317028,
+                "Time": 33.612931260532456,
+                "Accepted": true
+              },
+              {
+                "Distance": 7419.999999843881,
+                "Time": 34.22727272656366,
+                "Accepted": true
+              },
+              {
+                "Distance": 7464.0000000028995,
+                "Time": 34.42727272728649,
+                "Accepted": true
+              },
+              {
+                "Distance": 7591.773584755288,
+                "Time": 35.008061748888316,
+                "Accepted": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Track": "mixed-tricks",
+      "Profile": "Flip",
+      "Catalog": [
+        "finish:mixed-tricks-finish",
+        "obstacle:mixed-tricks-after-stone",
+        "obstacle:mixed-tricks-final-offset",
+        "obstacle:mixed-tricks-large-before",
+        "obstacle:mixed-tricks-large-pad",
+        "obstacle:mixed-tricks-low-ceiling",
+        "obstacle:mixed-tricks-low-floor",
+        "obstacle:mixed-tricks-middle-offset",
+        "obstacle:mixed-tricks-small-ceiling",
+        "obstacle:mixed-tricks-small-pad",
+        "obstacle:mixed-tricks-small-second",
+        "obstacle:mixed-tricks-straight",
+        "positive:mixed-tricks-after",
+        "positive:mixed-tricks-before",
+        "positive:mixed-tricks-ceiling-low-reward",
+        "positive:mixed-tricks-chain-center",
+        "positive:mixed-tricks-chain-low",
+        "positive:mixed-tricks-high-reward",
+        "positive:mixed-tricks-low-reward",
+        "positive:mixed-tricks-standard-pad",
+        "positive:mixed-tricks-wide-pad"
+      ],
+      "Master": {
+        "Distances": [
+          430,
+          558.1196111528561,
+          980,
+          1046,
+          1320,
+          1480,
+          1891.1393785965915,
+          2662.141678133602,
+          2952.3,
+          2988.6,
+          3300,
+          3526.917064816087,
+          4055.150321356292,
+          4341.139378596592,
+          4513.2125172004025,
+          5237.5,
+          5785.5,
+          6030.5,
+          6400,
+          6730,
+          6796,
+          7265.150321356292,
+          7650
+        ],
+        "Valid": true,
+        "Constant": {
+          "Total": 21,
+          "Completed": 21,
+          "Score": 100,
+          "Time": 33.05000000000028,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 23,
+          "Rejected": 0,
+          "MinMargin": 302.7999999999989,
+          "MinMarginLowerBound": 300.96666666666556,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "mixed-tricks-after",
+            "mixed-tricks-before",
+            "mixed-tricks-ceiling-low-reward",
+            "mixed-tricks-chain-center",
+            "mixed-tricks-chain-low",
+            "mixed-tricks-finish",
+            "mixed-tricks-high-reward",
+            "mixed-tricks-low-reward",
+            "mixed-tricks-standard-pad",
+            "mixed-tricks-wide-pad"
+          ],
+          "CompletedIds": [
+            "finish:mixed-tricks-finish",
+            "obstacle:mixed-tricks-after-stone",
+            "obstacle:mixed-tricks-final-offset",
+            "obstacle:mixed-tricks-large-before",
+            "obstacle:mixed-tricks-large-pad",
+            "obstacle:mixed-tricks-low-ceiling",
+            "obstacle:mixed-tricks-low-floor",
+            "obstacle:mixed-tricks-middle-offset",
+            "obstacle:mixed-tricks-small-ceiling",
+            "obstacle:mixed-tricks-small-pad",
+            "obstacle:mixed-tricks-small-second",
+            "obstacle:mixed-tricks-straight",
+            "positive:mixed-tricks-after",
+            "positive:mixed-tricks-before",
+            "positive:mixed-tricks-ceiling-low-reward",
+            "positive:mixed-tricks-chain-center",
+            "positive:mixed-tricks-chain-low",
+            "positive:mixed-tricks-high-reward",
+            "positive:mixed-tricks-low-reward",
+            "positive:mixed-tricks-standard-pad",
+            "positive:mixed-tricks-wide-pad"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 429.99999988224033,
+              "Time": 1.9545454540101859,
+              "Accepted": true
+            },
+            {
+              "Distance": 558.119610961233,
+              "Time": 2.5369073225510608,
+              "Accepted": true
+            },
+            {
+              "Distance": 979.9999999759718,
+              "Time": 4.154545454436221,
+              "Accepted": true
+            },
+            {
+              "Distance": 1046.000000002899,
+              "Time": 4.45454545455863,
+              "Accepted": true
+            },
+            {
+              "Distance": 1319.9999999021086,
+              "Time": 5.699999999555147,
+              "Accepted": true
+            },
+            {
+              "Distance": 1479.9999998315689,
+              "Time": 6.208563051448201,
+              "Accepted": true
+            },
+            {
+              "Distance": 1891.1393784881093,
+              "Time": 7.996088084037152,
+              "Accepted": true
+            },
+            {
+              "Distance": 2662.1416780155682,
+              "Time": 11.200643990979849,
+              "Accepted": true
+            },
+            {
+              "Distance": 2952.29999994284,
+              "Time": 12.219545454285536,
+              "Accepted": true
+            },
+            {
+              "Distance": 2988.5999998266093,
+              "Time": 12.3845454537572,
+              "Accepted": true
+            },
+            {
+              "Distance": 3299.999999814688,
+              "Time": 13.799999999157361,
+              "Accepted": true
+            },
+            {
+              "Distance": 3526.9170646486095,
+              "Time": 14.83144120294777,
+              "Accepted": true
+            },
+            {
+              "Distance": 4055.150321329935,
+              "Time": 17.232501460589834,
+              "Accepted": true
+            },
+            {
+              "Distance": 4341.139378600797,
+              "Time": 18.532451720912025,
+              "Accepted": true
+            },
+            {
+              "Distance": 4513.212517019793,
+              "Time": 19.133300587394192,
+              "Accepted": true
+            },
+            {
+              "Distance": 5237.499999821777,
+              "Time": 22.006818181007556,
+              "Accepted": true
+            },
+            {
+              "Distance": 5785.499999802768,
+              "Time": 24.197727271830388,
+              "Accepted": true
+            },
+            {
+              "Distance": 6030.4999998623725,
+              "Time": 25.31136363573779,
+              "Accepted": true
+            },
+            {
+              "Distance": 6399.99999988224,
+              "Time": 26.690909090373605,
+              "Accepted": true
+            },
+            {
+              "Distance": 6730.0000000028995,
+              "Time": 28.190909090922215,
+              "Accepted": true
+            },
+            {
+              "Distance": 6796.0000000028995,
+              "Time": 28.490909090922248,
+              "Accepted": true
+            },
+            {
+              "Distance": 7265.150321161008,
+              "Time": 30.32341055073193,
+              "Accepted": true
+            },
+            {
+              "Distance": 7649.99999980082,
+              "Time": 32.07272727182217,
+              "Accepted": true
+            }
+          ]
+        },
+        "Lagger": {
+          "Total": 21,
+          "Completed": 21,
+          "Score": 100,
+          "Time": 33.05000000000028,
+          "Status": "Finished",
+          "Collisions": 0,
+          "Accepted": 23,
+          "Rejected": 0,
+          "MinMargin": 302.7999999999997,
+          "MinMarginLowerBound": 300.9666666666664,
+          "p": 7920,
+          "boosts": 9,
+          "slows": 0,
+          "finishBoosts": 1,
+          "hits": [],
+          "collected": [
+            "mixed-tricks-after",
+            "mixed-tricks-before",
+            "mixed-tricks-ceiling-low-reward",
+            "mixed-tricks-chain-center",
+            "mixed-tricks-chain-low",
+            "mixed-tricks-finish",
+            "mixed-tricks-high-reward",
+            "mixed-tricks-low-reward",
+            "mixed-tricks-standard-pad",
+            "mixed-tricks-wide-pad"
+          ],
+          "CompletedIds": [
+            "finish:mixed-tricks-finish",
+            "obstacle:mixed-tricks-after-stone",
+            "obstacle:mixed-tricks-final-offset",
+            "obstacle:mixed-tricks-large-before",
+            "obstacle:mixed-tricks-large-pad",
+            "obstacle:mixed-tricks-low-ceiling",
+            "obstacle:mixed-tricks-low-floor",
+            "obstacle:mixed-tricks-middle-offset",
+            "obstacle:mixed-tricks-small-ceiling",
+            "obstacle:mixed-tricks-small-pad",
+            "obstacle:mixed-tricks-small-second",
+            "obstacle:mixed-tricks-straight",
+            "positive:mixed-tricks-after",
+            "positive:mixed-tricks-before",
+            "positive:mixed-tricks-ceiling-low-reward",
+            "positive:mixed-tricks-chain-center",
+            "positive:mixed-tricks-chain-low",
+            "positive:mixed-tricks-high-reward",
+            "positive:mixed-tricks-low-reward",
+            "positive:mixed-tricks-standard-pad",
+            "positive:mixed-tricks-wide-pad"
+          ],
+          "MissedIds": [],
+          "Actions": [
+            {
+              "Distance": 429.99999988224033,
+              "Time": 1.9545454540101859,
+              "Accepted": true
+            },
+            {
+              "Distance": 558.119610961233,
+              "Time": 2.5369073225510608,
+              "Accepted": true
+            },
+            {
+              "Distance": 979.9999999759718,
+              "Time": 4.154545454436221,
+              "Accepted": true
+            },
+            {
+              "Distance": 1046.000000002899,
+              "Time": 4.45454545455863,
+              "Accepted": true
+            },
+            {
+              "Distance": 1319.9999999021086,
+              "Time": 5.699999999555147,
+              "Accepted": true
+            },
+            {
+              "Distance": 1479.9999998315689,
+              "Time": 6.208563051448201,
+              "Accepted": true
+            },
+            {
+              "Distance": 1891.1393784881093,
+              "Time": 7.996088084037152,
+              "Accepted": true
+            },
+            {
+              "Distance": 2662.1416780155682,
+              "Time": 11.200643990979849,
+              "Accepted": true
+            },
+            {
+              "Distance": 2952.29999994284,
+              "Time": 12.219545454285536,
+              "Accepted": true
+            },
+            {
+              "Distance": 2988.5999998266093,
+              "Time": 12.3845454537572,
+              "Accepted": true
+            },
+            {
+              "Distance": 3299.999999814688,
+              "Time": 13.799999999157361,
+              "Accepted": true
+            },
+            {
+              "Distance": 3526.9170646486095,
+              "Time": 14.83144120294777,
+              "Accepted": true
+            },
+            {
+              "Distance": 4055.150321329935,
+              "Time": 17.232501460589834,
+              "Accepted": true
+            },
+            {
+              "Distance": 4341.139378600797,
+              "Time": 18.532451720912025,
+              "Accepted": true
+            },
+            {
+              "Distance": 4513.212517019793,
+              "Time": 19.133300587394192,
+              "Accepted": true
+            },
+            {
+              "Distance": 5237.499999821777,
+              "Time": 22.006818181007556,
+              "Accepted": true
+            },
+            {
+              "Distance": 5785.499999802768,
+              "Time": 24.197727271830388,
+              "Accepted": true
+            },
+            {
+              "Distance": 6030.4999998623725,
+              "Time": 25.31136363573779,
+              "Accepted": true
+            },
+            {
+              "Distance": 6399.99999988224,
+              "Time": 26.690909090373605,
+              "Accepted": true
+            },
+            {
+              "Distance": 6730.0000000028995,
+              "Time": 28.190909090922215,
+              "Accepted": true
+            },
+            {
+              "Distance": 6796.0000000028995,
+              "Time": 28.490909090922248,
+              "Accepted": true
+            },
+            {
+              "Distance": 7265.150321161008,
+              "Time": 30.32341055073193,
+              "Accepted": true
+            },
+            {
+              "Distance": 7649.99999980082,
+              "Time": 32.07272727182217,
+              "Accepted": true
+            }
+          ]
+        }
+      },
+      "Novices": [
+        {
+          "Name": "safe",
+          "Distances": [
+            530,
+            596,
+            980,
+            1046,
+            1940,
+            2560,
+            2952.3,
+            2988.6,
+            3300,
+            3526.917064816087,
+            4055.150321356292,
+            6080,
+            7030,
+            7265.150321356292,
+            7676.917064816087
+          ],
+          "Valid": true,
+          "Constant": {
+            "Total": 21,
+            "Completed": 11,
+            "Score": 52.38095238095238,
+            "Time": 36.00000000000087,
+            "Status": "Finished",
+            "Collisions": 0,
+            "Accepted": 15,
+            "Rejected": 0,
+            "MinMargin": 302.7999999998092,
+            "MinMarginLowerBound": 300.9666666664759,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 529.9999999815814,
+                "Time": 2.4090909090071904,
+                "Accepted": true
+              },
+              {
+                "Distance": 596.0000000028991,
+                "Time": 2.709090909104083,
+                "Accepted": true
+              },
+              {
+                "Distance": 979.9999999021086,
+                "Time": 4.454545454100471,
+                "Accepted": true
+              },
+              {
+                "Distance": 1046.000000002899,
+                "Time": 4.754545454558623,
+                "Accepted": true
+              },
+              {
+                "Distance": 1939.999999862372,
+                "Time": 8.81818181755651,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.999999961713,
+                "Time": 11.636363636189545,
+                "Accepted": true
+              },
+              {
+                "Distance": 2952.300000006873,
+                "Time": 13.419545454576392,
+                "Accepted": true
+              },
+              {
+                "Distance": 2988.5999998266093,
+                "Time": 13.584545453756993,
+                "Accepted": true
+              },
+              {
+                "Distance": 3299.999999814688,
+                "Time": 14.999999999157156,
+                "Accepted": true
+              },
+              {
+                "Distance": 3526.9170646486095,
+                "Time": 16.03144120294757,
+                "Accepted": true
+              },
+              {
+                "Distance": 4055.150321329935,
+                "Time": 18.43250146058963,
+                "Accepted": true
+              },
+              {
+                "Distance": 6079.99999990016,
+                "Time": 27.63636363590979,
+                "Accepted": true
+              },
+              {
+                "Distance": 7029.999999961713,
+                "Time": 31.95454545437186,
+                "Accepted": true
+              },
+              {
+                "Distance": 7265.150321300086,
+                "Time": 33.023410551364584,
+                "Accepted": true
+              },
+              {
+                "Distance": 7676.917064686398,
+                "Time": 34.8950775667571,
+                "Accepted": true
+              }
+            ]
+          },
+          "Lagger": {
+            "Total": 21,
+            "Completed": 11,
+            "Score": 52.38095238095238,
+            "Time": 36.00000000000087,
+            "Status": "Finished",
+            "Collisions": 0,
+            "Accepted": 15,
+            "Rejected": 0,
+            "MinMargin": 302.7999999999997,
+            "MinMarginLowerBound": 300.9666666666664,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 529.9999999815814,
+                "Time": 2.4090909090071904,
+                "Accepted": true
+              },
+              {
+                "Distance": 596.0000000028991,
+                "Time": 2.709090909104083,
+                "Accepted": true
+              },
+              {
+                "Distance": 979.9999999021086,
+                "Time": 4.454545454100471,
+                "Accepted": true
+              },
+              {
+                "Distance": 1046.000000002899,
+                "Time": 4.754545454558623,
+                "Accepted": true
+              },
+              {
+                "Distance": 1939.999999862372,
+                "Time": 8.81818181755651,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.999999961713,
+                "Time": 11.636363636189545,
+                "Accepted": true
+              },
+              {
+                "Distance": 2952.300000006873,
+                "Time": 13.419545454576392,
+                "Accepted": true
+              },
+              {
+                "Distance": 2988.5999998266093,
+                "Time": 13.584545453756993,
+                "Accepted": true
+              },
+              {
+                "Distance": 3299.999999814688,
+                "Time": 14.999999999157156,
+                "Accepted": true
+              },
+              {
+                "Distance": 3526.9170646486095,
+                "Time": 16.03144120294757,
+                "Accepted": true
+              },
+              {
+                "Distance": 4055.150321329935,
+                "Time": 18.43250146058963,
+                "Accepted": true
+              },
+              {
+                "Distance": 6079.99999990016,
+                "Time": 27.63636363590979,
+                "Accepted": true
+              },
+              {
+                "Distance": 7029.999999961713,
+                "Time": 31.95454545437186,
+                "Accepted": true
+              },
+              {
+                "Distance": 7265.150321300086,
+                "Time": 33.023410551364584,
+                "Accepted": true
+              },
+              {
+                "Distance": 7676.917064686398,
+                "Time": 34.8950775667571,
+                "Accepted": true
+              }
+            ]
+          }
+        },
+        {
+          "Name": "mixed-tricks-small-pad/shift-48",
+          "Distances": [
+            482,
+            548,
+            980,
+            1046,
+            1940,
+            2560,
+            2952.3,
+            2988.6,
+            3300,
+            3526.917064816087,
+            4055.150321356292,
+            6080,
+            7030,
+            7265.150321356292,
+            7676.917064816087
+          ],
+          "Valid": true,
+          "Constant": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.500000000000824,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 15,
+            "Rejected": 0,
+            "MinMargin": 192.79999999981828,
+            "MinMarginLowerBound": 190.96666666648494,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-pad"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-pad",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 481.9999998027675,
+                "Time": 2.1909090900125823,
+                "Accepted": true
+              },
+              {
+                "Distance": 548.0000000028991,
+                "Time": 2.490909090922269,
+                "Accepted": true
+              },
+              {
+                "Distance": 979.9999998138342,
+                "Time": 4.954545453699248,
+                "Accepted": true
+              },
+              {
+                "Distance": 1046.000000002899,
+                "Time": 5.25454545455865,
+                "Accepted": true
+              },
+              {
+                "Distance": 1939.999999862372,
+                "Time": 9.318181817556484,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.999999961713,
+                "Time": 12.136363636189518,
+                "Accepted": true
+              },
+              {
+                "Distance": 2952.300000006873,
+                "Time": 13.919545454576365,
+                "Accepted": true
+              },
+              {
+                "Distance": 2988.5999998266093,
+                "Time": 14.084545453756967,
+                "Accepted": true
+              },
+              {
+                "Distance": 3299.999999814688,
+                "Time": 15.49999999915713,
+                "Accepted": true
+              },
+              {
+                "Distance": 3526.9170646486095,
+                "Time": 16.53144120294754,
+                "Accepted": true
+              },
+              {
+                "Distance": 4055.150321329935,
+                "Time": 18.932501460589602,
+                "Accepted": true
+              },
+              {
+                "Distance": 6079.99999990016,
+                "Time": 28.136363635909763,
+                "Accepted": true
+              },
+              {
+                "Distance": 7029.999999961713,
+                "Time": 32.45454545437182,
+                "Accepted": true
+              },
+              {
+                "Distance": 7265.150321300086,
+                "Time": 33.52341055136454,
+                "Accepted": true
+              },
+              {
+                "Distance": 7676.917064686398,
+                "Time": 35.39507756675706,
+                "Accepted": true
+              }
+            ]
+          },
+          "Lagger": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.500000000000824,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 15,
+            "Rejected": 0,
+            "MinMargin": 302.7999999999997,
+            "MinMarginLowerBound": 300.9666666666664,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-pad"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-second",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-pad",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 481.9999998027675,
+                "Time": 2.1909090900125823,
+                "Accepted": true
+              },
+              {
+                "Distance": 548.0000000028991,
+                "Time": 2.490909090922269,
+                "Accepted": true
+              },
+              {
+                "Distance": 979.9999998138342,
+                "Time": 4.954545453699248,
+                "Accepted": true
+              },
+              {
+                "Distance": 1046.000000002899,
+                "Time": 5.25454545455865,
+                "Accepted": true
+              },
+              {
+                "Distance": 1939.999999862372,
+                "Time": 9.318181817556484,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.999999961713,
+                "Time": 12.136363636189518,
+                "Accepted": true
+              },
+              {
+                "Distance": 2952.300000006873,
+                "Time": 13.919545454576365,
+                "Accepted": true
+              },
+              {
+                "Distance": 2988.5999998266093,
+                "Time": 14.084545453756967,
+                "Accepted": true
+              },
+              {
+                "Distance": 3299.999999814688,
+                "Time": 15.49999999915713,
+                "Accepted": true
+              },
+              {
+                "Distance": 3526.9170646486095,
+                "Time": 16.53144120294754,
+                "Accepted": true
+              },
+              {
+                "Distance": 4055.150321329935,
+                "Time": 18.932501460589602,
+                "Accepted": true
+              },
+              {
+                "Distance": 6079.99999990016,
+                "Time": 28.136363635909763,
+                "Accepted": true
+              },
+              {
+                "Distance": 7029.999999961713,
+                "Time": 32.45454545437182,
+                "Accepted": true
+              },
+              {
+                "Distance": 7265.150321300086,
+                "Time": 33.52341055136454,
+                "Accepted": true
+              },
+              {
+                "Distance": 7676.917064686398,
+                "Time": 35.39507756675706,
+                "Accepted": true
+              }
+            ]
+          }
+        },
+        {
+          "Name": "mixed-tricks-small-second/shift-48",
+          "Distances": [
+            530,
+            596,
+            932,
+            998,
+            1940,
+            2560,
+            2952.3,
+            2988.6,
+            3300,
+            3526.917064816087,
+            4055.150321356292,
+            6080,
+            7030,
+            7265.150321356292,
+            7676.917064816087
+          ],
+          "Valid": true,
+          "Constant": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.500000000000824,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 15,
+            "Rejected": 0,
+            "MinMargin": 192.79999999981828,
+            "MinMarginLowerBound": 190.96666666648494,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-second"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-second",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 529.9999999815814,
+                "Time": 2.4090909090071904,
+                "Accepted": true
+              },
+              {
+                "Distance": 596.0000000028991,
+                "Time": 2.709090909104083,
+                "Accepted": true
+              },
+              {
+                "Distance": 931.999999941845,
+                "Time": 4.2363636360992665,
+                "Accepted": true
+              },
+              {
+                "Distance": 998.0000000028991,
+                "Time": 4.536363636376794,
+                "Accepted": true
+              },
+              {
+                "Distance": 1939.999999992648,
+                "Time": 9.318181818148647,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.999999961713,
+                "Time": 12.136363636189516,
+                "Accepted": true
+              },
+              {
+                "Distance": 2952.300000006873,
+                "Time": 13.919545454576363,
+                "Accepted": true
+              },
+              {
+                "Distance": 2988.5999998266093,
+                "Time": 14.084545453756965,
+                "Accepted": true
+              },
+              {
+                "Distance": 3299.999999814688,
+                "Time": 15.499999999157128,
+                "Accepted": true
+              },
+              {
+                "Distance": 3526.9170646486095,
+                "Time": 16.53144120294754,
+                "Accepted": true
+              },
+              {
+                "Distance": 4055.150321329935,
+                "Time": 18.932501460589602,
+                "Accepted": true
+              },
+              {
+                "Distance": 6079.99999990016,
+                "Time": 28.136363635909763,
+                "Accepted": true
+              },
+              {
+                "Distance": 7029.999999961713,
+                "Time": 32.45454545437182,
+                "Accepted": true
+              },
+              {
+                "Distance": 7265.150321300086,
+                "Time": 33.52341055136454,
+                "Accepted": true
+              },
+              {
+                "Distance": 7676.917064686398,
+                "Time": 35.39507756675706,
+                "Accepted": true
+              }
+            ]
+          },
+          "Lagger": {
+            "Total": 21,
+            "Completed": 10,
+            "Score": 47.61904761904762,
+            "Time": 36.500000000000824,
+            "Status": "Finished",
+            "Collisions": 1,
+            "Accepted": 15,
+            "Rejected": 0,
+            "MinMargin": 302.7999999999997,
+            "MinMarginLowerBound": 300.9666666666664,
+            "p": 7920,
+            "boosts": 0,
+            "slows": 0,
+            "finishBoosts": 0,
+            "hits": [
+              "mixed-tricks-small-second"
+            ],
+            "collected": [],
+            "CompletedIds": [
+              "obstacle:mixed-tricks-after-stone",
+              "obstacle:mixed-tricks-final-offset",
+              "obstacle:mixed-tricks-large-before",
+              "obstacle:mixed-tricks-large-pad",
+              "obstacle:mixed-tricks-low-ceiling",
+              "obstacle:mixed-tricks-low-floor",
+              "obstacle:mixed-tricks-middle-offset",
+              "obstacle:mixed-tricks-small-ceiling",
+              "obstacle:mixed-tricks-small-pad",
+              "obstacle:mixed-tricks-straight"
+            ],
+            "MissedIds": [
+              "finish:mixed-tricks-finish",
+              "obstacle:mixed-tricks-small-second",
+              "positive:mixed-tricks-after",
+              "positive:mixed-tricks-before",
+              "positive:mixed-tricks-ceiling-low-reward",
+              "positive:mixed-tricks-chain-center",
+              "positive:mixed-tricks-chain-low",
+              "positive:mixed-tricks-high-reward",
+              "positive:mixed-tricks-low-reward",
+              "positive:mixed-tricks-standard-pad",
+              "positive:mixed-tricks-wide-pad"
+            ],
+            "Actions": [
+              {
+                "Distance": 529.9999999815814,
+                "Time": 2.4090909090071904,
+                "Accepted": true
+              },
+              {
+                "Distance": 596.0000000028991,
+                "Time": 2.709090909104083,
+                "Accepted": true
+              },
+              {
+                "Distance": 931.999999941845,
+                "Time": 4.2363636360992665,
+                "Accepted": true
+              },
+              {
+                "Distance": 998.0000000028991,
+                "Time": 4.536363636376794,
+                "Accepted": true
+              },
+              {
+                "Distance": 1939.999999992648,
+                "Time": 9.318181818148647,
+                "Accepted": true
+              },
+              {
+                "Distance": 2559.999999961713,
+                "Time": 12.136363636189516,
+                "Accepted": true
+              },
+              {
+                "Distance": 2952.300000006873,
+                "Time": 13.919545454576363,
+                "Accepted": true
+              },
+              {
+                "Distance": 2988.5999998266093,
+                "Time": 14.084545453756965,
+                "Accepted": true
+              },
+              {
+                "Distance": 3299.999999814688,
+                "Time": 15.499999999157128,
+                "Accepted": true
+              },
+              {
+                "Distance": 3526.9170646486095,
+                "Time": 16.53144120294754,
+                "Accepted": true
+              },
+              {
+                "Distance": 4055.150321329935,
+                "Time": 18.932501460589602,
+                "Accepted": true
+              },
+              {
+                "Distance": 6079.99999990016,
+                "Time": 28.136363635909763,
+                "Accepted": true
+              },
+              {
+                "Distance": 7029.999999961713,
+                "Time": 32.45454545437182,
+                "Accepted": true
+              },
+              {
+                "Distance": 7265.150321300086,
+                "Time": 33.52341055136454,
+                "Accepted": true
+              },
+              {
+                "Distance": 7676.917064686398,
+                "Time": 35.39507756675706,
+                "Accepted": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "Blockers": [
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Jump",
+      "Name": "rhythm-cascade-m0-gate/shift-48 \u002B rhythm-cascade-m1-pad-stone/shift-48 \u002B rhythm-cascade-m2-gate/shift-48",
+      "Distances": [
+        182.5,
+        233.5,
+        518,
+        912.5,
+        963.5,
+        1287.5,
+        1324.5,
+        1756.5,
+        1807,
+        2072.8,
+        2139.8,
+        2376.5,
+        2427.5,
+        2712,
+        3106.5,
+        3157.5,
+        3518.5,
+        3575.5,
+        3867.5,
+        3918.5,
+        4152,
+        4213,
+        4420,
+        4518,
+        4717.5,
+        4768.5,
+        5017.5,
+        5068.5,
+        5420.5,
+        5466,
+        5701.5,
+        5766,
+        6005.5,
+        6056.5,
+        6322.5,
+        6359.5,
+        6672.5,
+        6709.5,
+        6995.5,
+        7046.5,
+        7295.5,
+        7346.5,
+        7595.5,
+        7646.5
+      ],
+      "Constant": {
+        "Total": 31,
+        "Completed": 0,
+        "Score": 0,
+        "Time": 5.911782345218504,
+        "Status": "Eliminated",
+        "Collisions": 3,
+        "Accepted": 5,
+        "Rejected": 0,
+        "MinMargin": 1.1368683772161603E-13,
+        "MinMarginLowerBound": -1.8333333333332196,
+        "p": 997.792115948071,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m1-pad-stone",
+          "rhythm-cascade-m2-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 182.49999988224036,
+            "Time": 0.8295454540101818,
+            "Accepted": true
+          },
+          {
+            "Distance": 233.4999998226357,
+            "Time": 1.0613636355574316,
+            "Accepted": true
+          },
+          {
+            "Distance": 517.999999897195,
+            "Time": 2.8545454540781603,
+            "Accepted": true
+          },
+          {
+            "Distance": 912.4999998209128,
+            "Time": 5.147727271913256,
+            "Accepted": true
+          },
+          {
+            "Distance": 963.4999998226356,
+            "Time": 5.379545453739275,
+            "Accepted": true
+          }
+        ]
+      },
+      "Lagger": {
+        "Total": 31,
+        "Completed": 18,
+        "Score": 58.064516129032256,
+        "Time": 37.500000000000604,
+        "Status": "Finished",
+        "Collisions": 3,
+        "Accepted": 44,
+        "Rejected": 0,
+        "MinMargin": 302.7999999999997,
+        "MinMarginLowerBound": 300.9666666666664,
+        "p": 7920,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m1-pad-stone",
+          "rhythm-cascade-m2-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m2-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 182.49999988224036,
+            "Time": 0.8295454540101818,
+            "Accepted": true
+          },
+          {
+            "Distance": 233.4999998226357,
+            "Time": 1.0613636355574316,
+            "Accepted": true
+          },
+          {
+            "Distance": 517.999999897195,
+            "Time": 2.8545454540781603,
+            "Accepted": true
+          },
+          {
+            "Distance": 912.4999998209128,
+            "Time": 5.147727271913256,
+            "Accepted": true
+          },
+          {
+            "Distance": 963.4999998226356,
+            "Time": 5.379545453739275,
+            "Accepted": true
+          },
+          {
+            "Distance": 1287.4999999965362,
+            "Time": 7.352272727257143,
+            "Accepted": true
+          },
+          {
+            "Distance": 1324.499999961713,
+            "Time": 7.520454545280688,
+            "Accepted": true
+          },
+          {
+            "Distance": 1756.499999862372,
+            "Time": 9.484090908465516,
+            "Accepted": true
+          },
+          {
+            "Distance": 1806.9999998822402,
+            "Time": 9.71363636310128,
+            "Accepted": true
+          },
+          {
+            "Distance": 2072.800000006873,
+            "Time": 10.921818181849583,
+            "Accepted": true
+          },
+          {
+            "Distance": 2139.7999998822406,
+            "Time": 11.226363635828484,
+            "Accepted": true
+          },
+          {
+            "Distance": 2376.499999977608,
+            "Time": 12.302272727170909,
+            "Accepted": true
+          },
+          {
+            "Distance": 2427.4999998226353,
+            "Time": 12.534090908284645,
+            "Accepted": true
+          },
+          {
+            "Distance": 2711.999999961713,
+            "Time": 13.827272727098459,
+            "Accepted": true
+          },
+          {
+            "Distance": 3106.499999961713,
+            "Time": 15.620454545280028,
+            "Accepted": true
+          },
+          {
+            "Distance": 3157.4999998226353,
+            "Time": 15.852272726466012,
+            "Accepted": true
+          },
+          {
+            "Distance": 3518.4999998027674,
+            "Time": 17.493181817284565,
+            "Accepted": true
+          },
+          {
+            "Distance": 3575.4999999815814,
+            "Time": 17.752272727188227,
+            "Accepted": true
+          },
+          {
+            "Distance": 3867.4999999418446,
+            "Time": 19.079545454280154,
+            "Accepted": true
+          },
+          {
+            "Distance": 3918.4999998226353,
+            "Time": 19.311363635556447,
+            "Accepted": true
+          },
+          {
+            "Distance": 4151.999999921977,
+            "Time": 20.372727272371545,
+            "Accepted": true
+          },
+          {
+            "Distance": 4212.999999941845,
+            "Time": 20.649999999734614,
+            "Accepted": true
+          },
+          {
+            "Distance": 4419.999999802768,
+            "Time": 21.590909090011635,
+            "Accepted": true
+          },
+          {
+            "Distance": 4517.999999902108,
+            "Time": 22.036363635917784,
+            "Accepted": true
+          },
+          {
+            "Distance": 4717.499999822636,
+            "Time": 22.943181817374825,
+            "Accepted": true
+          },
+          {
+            "Distance": 4768.499999822636,
+            "Time": 23.174999999193027,
+            "Accepted": true
+          },
+          {
+            "Distance": 5017.499999822636,
+            "Time": 24.306818181011323,
+            "Accepted": true
+          },
+          {
+            "Distance": 5068.499999822636,
+            "Time": 24.538636362829525,
+            "Accepted": true
+          },
+          {
+            "Distance": 5420.5000000028995,
+            "Time": 26.13863636364908,
+            "Accepted": true
+          },
+          {
+            "Distance": 5465.999999822637,
+            "Time": 26.345454544647893,
+            "Accepted": true
+          },
+          {
+            "Distance": 5701.499999902108,
+            "Time": 27.415909090463785,
+            "Accepted": true
+          },
+          {
+            "Distance": 5765.999999961713,
+            "Time": 27.709090908916565,
+            "Accepted": true
+          },
+          {
+            "Distance": 6005.4999998623725,
+            "Time": 28.79772727210148,
+            "Accepted": true
+          },
+          {
+            "Distance": 6056.499999822636,
+            "Time": 29.029545453739058,
+            "Accepted": true
+          },
+          {
+            "Distance": 6322.499999981582,
+            "Time": 30.23863636355258,
+            "Accepted": true
+          },
+          {
+            "Distance": 6359.499999961713,
+            "Time": 30.406818181644113,
+            "Accepted": true
+          },
+          {
+            "Distance": 6672.499999842504,
+            "Time": 31.829545453829677,
+            "Accepted": true
+          },
+          {
+            "Distance": 6709.499999961713,
+            "Time": 31.99772727255337,
+            "Accepted": true
+          },
+          {
+            "Distance": 6995.5000000028995,
+            "Time": 33.29772727274071,
+            "Accepted": true
+          },
+          {
+            "Distance": 7046.499999822637,
+            "Time": 33.529545453739516,
+            "Accepted": true
+          },
+          {
+            "Distance": 7295.499999822636,
+            "Time": 34.66136363555779,
+            "Accepted": true
+          },
+          {
+            "Distance": 7346.499999822636,
+            "Time": 34.89318181737598,
+            "Accepted": true
+          },
+          {
+            "Distance": 7595.499999822636,
+            "Time": 36.02499999919426,
+            "Accepted": true
+          },
+          {
+            "Distance": 7646.499999822636,
+            "Time": 36.25681818101245,
+            "Accepted": true
+          }
+        ]
+      },
+      "Bound": {
+        "Obstacles": 21,
+        "PositiveGoals": 9,
+        "Catalog": 31,
+        "MaxNoviceCompleted": 18,
+        "BaselineSeconds": 36,
+        "CameraAllowance": 1.3763636363636365,
+        "MinimumNoviceDelay": 1.5,
+        "MinimumNoviceFinish": 37.5,
+        "LatestPossibleConstantFinish": 37.376363636363635,
+        "Algebra": "Full finish objectives=21-hits\u002Bbonuses\u002Bfinish. \u003C=18 implies hits-bonuses-finish\u003E=3. Delay=.5hits-.3bonuses-.25finish\u002B.3slows\u003E=1.5\u002B.2bonuses\u002B.25finish\u002B.3slows\u003E=1.5. Camera budget302.8/220=1.37636 seconds. No legal Novice Constant finish."
+      }
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Jump",
+      "Name": "rhythm-cascade-m0-gate/shift-48 \u002B rhythm-cascade-m1-pad-stone/shift-48 \u002B rhythm-cascade-m3-gate/shift24",
+      "Distances": [
+        182.5,
+        233.5,
+        518,
+        960.5,
+        1011.5,
+        1311.5,
+        1348.5,
+        1756.5,
+        1807,
+        2072.8,
+        2139.8,
+        2376.5,
+        2427.5,
+        2712,
+        3106.5,
+        3157.5,
+        3518.5,
+        3575.5,
+        3867.5,
+        3918.5,
+        4152,
+        4213,
+        4420,
+        4518,
+        4717.5,
+        4768.5,
+        5017.5,
+        5068.5,
+        5420.5,
+        5466,
+        5701.5,
+        5766,
+        6005.5,
+        6056.5,
+        6322.5,
+        6359.5,
+        6672.5,
+        6709.5,
+        6995.5,
+        7046.5,
+        7295.5,
+        7346.5,
+        7595.5,
+        7646.5
+      ],
+      "Constant": {
+        "Total": 31,
+        "Completed": 1,
+        "Score": 3.225806451612903,
+        "Time": 7.6854545454545455,
+        "Status": "Eliminated",
+        "Collisions": 3,
+        "Accepted": 7,
+        "Rejected": 0,
+        "MinMargin": 0,
+        "MinMarginLowerBound": -1.8333333333333333,
+        "p": 1388,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m1-pad-stone",
+          "rhythm-cascade-m3-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m2-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 182.49999988224036,
+            "Time": 0.8295454540101818,
+            "Accepted": true
+          },
+          {
+            "Distance": 233.4999998226357,
+            "Time": 1.0613636355574316,
+            "Accepted": true
+          },
+          {
+            "Distance": 517.999999897195,
+            "Time": 2.8545454540781603,
+            "Accepted": true
+          },
+          {
+            "Distance": 960.4999999997267,
+            "Time": 5.365909090907872,
+            "Accepted": true
+          },
+          {
+            "Distance": 1011.4999998226356,
+            "Time": 5.597727271921101,
+            "Accepted": true
+          },
+          {
+            "Distance": 1311.499999862372,
+            "Time": 6.961363635738204,
+            "Accepted": true
+          },
+          {
+            "Distance": 1348.499999961713,
+            "Time": 7.129545454371587,
+            "Accepted": true
+          }
+        ]
+      },
+      "Lagger": {
+        "Total": 31,
+        "Completed": 18,
+        "Score": 58.064516129032256,
+        "Time": 37.50000000000061,
+        "Status": "Finished",
+        "Collisions": 3,
+        "Accepted": 44,
+        "Rejected": 0,
+        "MinMargin": 302.7999999999997,
+        "MinMarginLowerBound": 300.9666666666664,
+        "p": 7920,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m1-pad-stone",
+          "rhythm-cascade-m3-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m3-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 182.49999988224036,
+            "Time": 0.8295454540101818,
+            "Accepted": true
+          },
+          {
+            "Distance": 233.4999998226357,
+            "Time": 1.0613636355574316,
+            "Accepted": true
+          },
+          {
+            "Distance": 517.999999897195,
+            "Time": 2.8545454540781603,
+            "Accepted": true
+          },
+          {
+            "Distance": 960.4999999997267,
+            "Time": 5.365909090907872,
+            "Accepted": true
+          },
+          {
+            "Distance": 1011.4999998226356,
+            "Time": 5.597727271921101,
+            "Accepted": true
+          },
+          {
+            "Distance": 1311.499999862372,
+            "Time": 6.961363635738204,
+            "Accepted": true
+          },
+          {
+            "Distance": 1348.499999961713,
+            "Time": 7.129545454371587,
+            "Accepted": true
+          },
+          {
+            "Distance": 1756.500000002899,
+            "Time": 9.484090909104282,
+            "Accepted": true
+          },
+          {
+            "Distance": 1806.9999998822404,
+            "Time": 9.713636363101283,
+            "Accepted": true
+          },
+          {
+            "Distance": 2072.800000006873,
+            "Time": 10.921818181849586,
+            "Accepted": true
+          },
+          {
+            "Distance": 2139.7999998822406,
+            "Time": 11.226363635828488,
+            "Accepted": true
+          },
+          {
+            "Distance": 2376.499999977608,
+            "Time": 12.302272727170912,
+            "Accepted": true
+          },
+          {
+            "Distance": 2427.4999998226353,
+            "Time": 12.534090908284648,
+            "Accepted": true
+          },
+          {
+            "Distance": 2711.999999961713,
+            "Time": 13.827272727098462,
+            "Accepted": true
+          },
+          {
+            "Distance": 3106.499999961713,
+            "Time": 15.620454545280031,
+            "Accepted": true
+          },
+          {
+            "Distance": 3157.4999998226353,
+            "Time": 15.852272726466015,
+            "Accepted": true
+          },
+          {
+            "Distance": 3518.4999998027674,
+            "Time": 17.49318181728457,
+            "Accepted": true
+          },
+          {
+            "Distance": 3575.4999999815814,
+            "Time": 17.75227272718823,
+            "Accepted": true
+          },
+          {
+            "Distance": 3867.4999999418446,
+            "Time": 19.079545454280158,
+            "Accepted": true
+          },
+          {
+            "Distance": 3918.4999998226353,
+            "Time": 19.31136363555645,
+            "Accepted": true
+          },
+          {
+            "Distance": 4151.999999921977,
+            "Time": 20.37272727237155,
+            "Accepted": true
+          },
+          {
+            "Distance": 4212.999999941845,
+            "Time": 20.649999999734618,
+            "Accepted": true
+          },
+          {
+            "Distance": 4419.999999802768,
+            "Time": 21.59090909001164,
+            "Accepted": true
+          },
+          {
+            "Distance": 4517.999999902108,
+            "Time": 22.036363635917787,
+            "Accepted": true
+          },
+          {
+            "Distance": 4717.499999822636,
+            "Time": 22.94318181737483,
+            "Accepted": true
+          },
+          {
+            "Distance": 4768.499999822636,
+            "Time": 23.17499999919303,
+            "Accepted": true
+          },
+          {
+            "Distance": 5017.499999822636,
+            "Time": 24.306818181011327,
+            "Accepted": true
+          },
+          {
+            "Distance": 5068.499999822636,
+            "Time": 24.53863636282953,
+            "Accepted": true
+          },
+          {
+            "Distance": 5420.5000000028995,
+            "Time": 26.138636363649084,
+            "Accepted": true
+          },
+          {
+            "Distance": 5465.999999822637,
+            "Time": 26.345454544647897,
+            "Accepted": true
+          },
+          {
+            "Distance": 5701.499999902108,
+            "Time": 27.41590909046379,
+            "Accepted": true
+          },
+          {
+            "Distance": 5765.999999961713,
+            "Time": 27.70909090891657,
+            "Accepted": true
+          },
+          {
+            "Distance": 6005.4999998623725,
+            "Time": 28.797727272101483,
+            "Accepted": true
+          },
+          {
+            "Distance": 6056.499999822636,
+            "Time": 29.02954545373906,
+            "Accepted": true
+          },
+          {
+            "Distance": 6322.499999981582,
+            "Time": 30.238636363552583,
+            "Accepted": true
+          },
+          {
+            "Distance": 6359.499999961713,
+            "Time": 30.406818181644116,
+            "Accepted": true
+          },
+          {
+            "Distance": 6672.499999842504,
+            "Time": 31.82954545382968,
+            "Accepted": true
+          },
+          {
+            "Distance": 6709.499999961713,
+            "Time": 31.997727272553373,
+            "Accepted": true
+          },
+          {
+            "Distance": 6995.5000000028995,
+            "Time": 33.297727272740715,
+            "Accepted": true
+          },
+          {
+            "Distance": 7046.499999822637,
+            "Time": 33.52954545373952,
+            "Accepted": true
+          },
+          {
+            "Distance": 7295.499999822636,
+            "Time": 34.6613636355578,
+            "Accepted": true
+          },
+          {
+            "Distance": 7346.499999822636,
+            "Time": 34.89318181737599,
+            "Accepted": true
+          },
+          {
+            "Distance": 7595.499999822636,
+            "Time": 36.024999999194264,
+            "Accepted": true
+          },
+          {
+            "Distance": 7646.499999822636,
+            "Time": 36.256818181012456,
+            "Accepted": true
+          }
+        ]
+      },
+      "Bound": {
+        "Obstacles": 21,
+        "PositiveGoals": 9,
+        "Catalog": 31,
+        "MaxNoviceCompleted": 18,
+        "BaselineSeconds": 36,
+        "CameraAllowance": 1.3763636363636365,
+        "MinimumNoviceDelay": 1.5,
+        "MinimumNoviceFinish": 37.5,
+        "LatestPossibleConstantFinish": 37.376363636363635,
+        "Algebra": "Full finish objectives=21-hits\u002Bbonuses\u002Bfinish. \u003C=18 implies hits-bonuses-finish\u003E=3. Delay=.5hits-.3bonuses-.25finish\u002B.3slows\u003E=1.5\u002B.2bonuses\u002B.25finish\u002B.3slows\u003E=1.5. Camera budget302.8/220=1.37636 seconds. No legal Novice Constant finish."
+      }
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Jump",
+      "Name": "rhythm-cascade-m0-gate/shift-48 \u002B rhythm-cascade-m1-pad-stone/shift-48 \u002B rhythm-cascade-m4-stone/shift72",
+      "Distances": [
+        182.5,
+        233.5,
+        518,
+        960.5,
+        1011.5,
+        1287.5,
+        1324.5,
+        1756.5,
+        1879,
+        2072.8,
+        2139.8,
+        2376.5,
+        2427.5,
+        2712,
+        3106.5,
+        3157.5,
+        3518.5,
+        3575.5,
+        3867.5,
+        3918.5,
+        4152,
+        4213,
+        4420,
+        4518,
+        4717.5,
+        4768.5,
+        5017.5,
+        5068.5,
+        5420.5,
+        5466,
+        5701.5,
+        5766,
+        6005.5,
+        6056.5,
+        6322.5,
+        6359.5,
+        6672.5,
+        6709.5,
+        6995.5,
+        7046.5,
+        7295.5,
+        7346.5,
+        7595.5,
+        7646.5
+      ],
+      "Constant": {
+        "Total": 31,
+        "Completed": 2,
+        "Score": 6.451612903225806,
+        "Time": 9.839999999999998,
+        "Status": "Eliminated",
+        "Collisions": 3,
+        "Accepted": 8,
+        "Rejected": 0,
+        "MinMargin": 2.2737367544323206E-13,
+        "MinMarginLowerBound": -1.8333333333331059,
+        "p": 1862,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m1-pad-stone",
+          "rhythm-cascade-m4-stone"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m3-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 182.49999988224036,
+            "Time": 0.8295454540101818,
+            "Accepted": true
+          },
+          {
+            "Distance": 233.4999998226357,
+            "Time": 1.0613636355574316,
+            "Accepted": true
+          },
+          {
+            "Distance": 517.999999897195,
+            "Time": 2.8545454540781603,
+            "Accepted": true
+          },
+          {
+            "Distance": 960.4999999997267,
+            "Time": 5.365909090907872,
+            "Accepted": true
+          },
+          {
+            "Distance": 1011.4999998226356,
+            "Time": 5.597727271921101,
+            "Accepted": true
+          },
+          {
+            "Distance": 1287.4999998822402,
+            "Time": 6.852272726737594,
+            "Accepted": true
+          },
+          {
+            "Distance": 1324.499999961713,
+            "Time": 7.020454545280662,
+            "Accepted": true
+          },
+          {
+            "Distance": 1756.499999862372,
+            "Time": 8.984090908465545,
+            "Accepted": true
+          }
+        ]
+      },
+      "Lagger": {
+        "Total": 31,
+        "Completed": 18,
+        "Score": 58.064516129032256,
+        "Time": 37.50000000000062,
+        "Status": "Finished",
+        "Collisions": 3,
+        "Accepted": 44,
+        "Rejected": 0,
+        "MinMargin": 302.7999999999997,
+        "MinMarginLowerBound": 300.9666666666664,
+        "p": 7920,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m1-pad-stone",
+          "rhythm-cascade-m4-stone"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m4-stone",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 182.49999988224036,
+            "Time": 0.8295454540101818,
+            "Accepted": true
+          },
+          {
+            "Distance": 233.4999998226357,
+            "Time": 1.0613636355574316,
+            "Accepted": true
+          },
+          {
+            "Distance": 517.999999897195,
+            "Time": 2.8545454540781603,
+            "Accepted": true
+          },
+          {
+            "Distance": 960.4999999997267,
+            "Time": 5.365909090907872,
+            "Accepted": true
+          },
+          {
+            "Distance": 1011.4999998226356,
+            "Time": 5.597727271921101,
+            "Accepted": true
+          },
+          {
+            "Distance": 1287.4999998822402,
+            "Time": 6.852272726737594,
+            "Accepted": true
+          },
+          {
+            "Distance": 1324.499999961713,
+            "Time": 7.020454545280662,
+            "Accepted": true
+          },
+          {
+            "Distance": 1756.499999862372,
+            "Time": 8.984090908465545,
+            "Accepted": true
+          },
+          {
+            "Distance": 1878.9999999418449,
+            "Time": 10.040909090644934,
+            "Accepted": true
+          },
+          {
+            "Distance": 2072.799999846478,
+            "Time": 10.921818181120516,
+            "Accepted": true
+          },
+          {
+            "Distance": 2139.79999988224,
+            "Time": 11.226363635828491,
+            "Accepted": true
+          },
+          {
+            "Distance": 2376.499999977608,
+            "Time": 12.30227272717092,
+            "Accepted": true
+          },
+          {
+            "Distance": 2427.4999998226353,
+            "Time": 12.534090908284655,
+            "Accepted": true
+          },
+          {
+            "Distance": 2711.999999961713,
+            "Time": 13.82727272709847,
+            "Accepted": true
+          },
+          {
+            "Distance": 3106.499999961713,
+            "Time": 15.620454545280039,
+            "Accepted": true
+          },
+          {
+            "Distance": 3157.4999998226353,
+            "Time": 15.852272726466023,
+            "Accepted": true
+          },
+          {
+            "Distance": 3518.4999998027674,
+            "Time": 17.493181817284576,
+            "Accepted": true
+          },
+          {
+            "Distance": 3575.4999999815814,
+            "Time": 17.752272727188238,
+            "Accepted": true
+          },
+          {
+            "Distance": 3867.4999999418446,
+            "Time": 19.079545454280165,
+            "Accepted": true
+          },
+          {
+            "Distance": 3918.4999998226353,
+            "Time": 19.311363635556457,
+            "Accepted": true
+          },
+          {
+            "Distance": 4151.999999921977,
+            "Time": 20.372727272371556,
+            "Accepted": true
+          },
+          {
+            "Distance": 4212.999999941845,
+            "Time": 20.649999999734625,
+            "Accepted": true
+          },
+          {
+            "Distance": 4419.999999802768,
+            "Time": 21.590909090011646,
+            "Accepted": true
+          },
+          {
+            "Distance": 4517.999999902108,
+            "Time": 22.036363635917795,
+            "Accepted": true
+          },
+          {
+            "Distance": 4717.499999822636,
+            "Time": 22.943181817374835,
+            "Accepted": true
+          },
+          {
+            "Distance": 4768.499999822636,
+            "Time": 23.174999999193037,
+            "Accepted": true
+          },
+          {
+            "Distance": 5017.499999822636,
+            "Time": 24.306818181011334,
+            "Accepted": true
+          },
+          {
+            "Distance": 5068.499999822636,
+            "Time": 24.538636362829536,
+            "Accepted": true
+          },
+          {
+            "Distance": 5420.5000000028995,
+            "Time": 26.13863636364909,
+            "Accepted": true
+          },
+          {
+            "Distance": 5465.999999822637,
+            "Time": 26.345454544647904,
+            "Accepted": true
+          },
+          {
+            "Distance": 5701.499999902108,
+            "Time": 27.415909090463796,
+            "Accepted": true
+          },
+          {
+            "Distance": 5765.999999961713,
+            "Time": 27.709090908916576,
+            "Accepted": true
+          },
+          {
+            "Distance": 6005.4999998623725,
+            "Time": 28.79772727210149,
+            "Accepted": true
+          },
+          {
+            "Distance": 6056.499999822636,
+            "Time": 29.02954545373907,
+            "Accepted": true
+          },
+          {
+            "Distance": 6322.499999981582,
+            "Time": 30.23863636355259,
+            "Accepted": true
+          },
+          {
+            "Distance": 6359.499999961713,
+            "Time": 30.406818181644123,
+            "Accepted": true
+          },
+          {
+            "Distance": 6672.499999842504,
+            "Time": 31.829545453829688,
+            "Accepted": true
+          },
+          {
+            "Distance": 6709.499999961713,
+            "Time": 31.99772727255338,
+            "Accepted": true
+          },
+          {
+            "Distance": 6995.5000000028995,
+            "Time": 33.29772727274072,
+            "Accepted": true
+          },
+          {
+            "Distance": 7046.499999822637,
+            "Time": 33.52954545373953,
+            "Accepted": true
+          },
+          {
+            "Distance": 7295.499999822636,
+            "Time": 34.661363635557805,
+            "Accepted": true
+          },
+          {
+            "Distance": 7346.499999822636,
+            "Time": 34.893181817375996,
+            "Accepted": true
+          },
+          {
+            "Distance": 7595.499999822636,
+            "Time": 36.02499999919427,
+            "Accepted": true
+          },
+          {
+            "Distance": 7646.499999822636,
+            "Time": 36.25681818101246,
+            "Accepted": true
+          }
+        ]
+      },
+      "Bound": {
+        "Obstacles": 21,
+        "PositiveGoals": 9,
+        "Catalog": 31,
+        "MaxNoviceCompleted": 18,
+        "BaselineSeconds": 36,
+        "CameraAllowance": 1.3763636363636365,
+        "MinimumNoviceDelay": 1.5,
+        "MinimumNoviceFinish": 37.5,
+        "LatestPossibleConstantFinish": 37.376363636363635,
+        "Algebra": "Full finish objectives=21-hits\u002Bbonuses\u002Bfinish. \u003C=18 implies hits-bonuses-finish\u003E=3. Delay=.5hits-.3bonuses-.25finish\u002B.3slows\u003E=1.5\u002B.2bonuses\u002B.25finish\u002B.3slows\u003E=1.5. Camera budget302.8/220=1.37636 seconds. No legal Novice Constant finish."
+      }
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Flip",
+      "Name": "rhythm-cascade-m0-gate/shift-48 \u002B rhythm-cascade-m2-gate/shift-48 \u002B rhythm-cascade-m3-gate/shift24",
+      "Distances": [
+        217,
+        523.5,
+        725,
+        947,
+        1332,
+        1774,
+        2121,
+        2411,
+        2669.5,
+        2871,
+        3141,
+        3561,
+        3902,
+        4152.5,
+        4509,
+        4752,
+        5052,
+        5420.5,
+        5715,
+        6040,
+        6343,
+        6693,
+        7030,
+        7330,
+        7630
+      ],
+      "Constant": {
+        "Total": 31,
+        "Completed": 1,
+        "Score": 3.225806451612903,
+        "Time": 7.6854545454545455,
+        "Status": "Eliminated",
+        "Collisions": 3,
+        "Accepted": 5,
+        "Rejected": 0,
+        "MinMargin": 0,
+        "MinMarginLowerBound": -1.8333333333333333,
+        "p": 1388,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m2-gate",
+          "rhythm-cascade-m3-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m1-pad-stone"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 216.99999992197678,
+            "Time": 0.9863636360089828,
+            "Accepted": true
+          },
+          {
+            "Distance": 523.4999998449961,
+            "Time": 2.8795454538408927,
+            "Accepted": true
+          },
+          {
+            "Distance": 724.9999998027674,
+            "Time": 3.795454544558014,
+            "Accepted": true
+          },
+          {
+            "Distance": 946.9999999815814,
+            "Time": 4.804545454461731,
+            "Accepted": true
+          },
+          {
+            "Distance": 1331.9999998847325,
+            "Time": 7.054545454021669,
+            "Accepted": true
+          }
+        ]
+      },
+      "Lagger": {
+        "Total": 31,
+        "Completed": 18,
+        "Score": 58.064516129032256,
+        "Time": 37.500000000000725,
+        "Status": "Finished",
+        "Collisions": 3,
+        "Accepted": 25,
+        "Rejected": 0,
+        "MinMargin": 302.7999999999997,
+        "MinMarginLowerBound": 300.9666666666664,
+        "p": 7920,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m2-gate",
+          "rhythm-cascade-m3-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 216.99999992197678,
+            "Time": 0.9863636360089828,
+            "Accepted": true
+          },
+          {
+            "Distance": 523.4999998449961,
+            "Time": 2.8795454538408927,
+            "Accepted": true
+          },
+          {
+            "Distance": 724.9999998027674,
+            "Time": 3.795454544558014,
+            "Accepted": true
+          },
+          {
+            "Distance": 946.9999999815814,
+            "Time": 4.804545454461731,
+            "Accepted": true
+          },
+          {
+            "Distance": 1331.9999998847325,
+            "Time": 7.054545454021669,
+            "Accepted": true
+          },
+          {
+            "Distance": 1773.9999998822402,
+            "Time": 9.563636363101294,
+            "Accepted": true
+          },
+          {
+            "Distance": 2120.9999999418446,
+            "Time": 11.14090909064489,
+            "Accepted": true
+          },
+          {
+            "Distance": 2410.999999961713,
+            "Time": 12.45909090891684,
+            "Accepted": true
+          },
+          {
+            "Distance": 2669.500000002899,
+            "Time": 13.634090909103884,
+            "Accepted": true
+          },
+          {
+            "Distance": 2870.9999998027674,
+            "Time": 14.549999999103159,
+            "Accepted": true
+          },
+          {
+            "Distance": 3140.9999999418446,
+            "Time": 15.777272727007885,
+            "Accepted": true
+          },
+          {
+            "Distance": 3560.9999999815814,
+            "Time": 17.686363636279154,
+            "Accepted": true
+          },
+          {
+            "Distance": 3902.000000002899,
+            "Time": 19.236363636375835,
+            "Accepted": true
+          },
+          {
+            "Distance": 4152.4999998623725,
+            "Time": 20.37499999937334,
+            "Accepted": true
+          },
+          {
+            "Distance": 4508.999999902108,
+            "Time": 21.995454545008673,
+            "Accepted": true
+          },
+          {
+            "Distance": 4751.99999988224,
+            "Time": 23.099999999463943,
+            "Accepted": true
+          },
+          {
+            "Distance": 5051.9999998623725,
+            "Time": 24.463636363010142,
+            "Accepted": true
+          },
+          {
+            "Distance": 5420.5000000028995,
+            "Time": 26.138636363649088,
+            "Accepted": true
+          },
+          {
+            "Distance": 5714.9999998623725,
+            "Time": 27.477272726646834,
+            "Accepted": true
+          },
+          {
+            "Distance": 6039.999999941845,
+            "Time": 28.95454545428097,
+            "Accepted": true
+          },
+          {
+            "Distance": 6342.999999941845,
+            "Time": 30.331818181553846,
+            "Accepted": true
+          },
+          {
+            "Distance": 6692.999999802768,
+            "Time": 31.922727271830922,
+            "Accepted": true
+          },
+          {
+            "Distance": 7029.999999822636,
+            "Time": 33.45454545373957,
+            "Accepted": true
+          },
+          {
+            "Distance": 7329.9999998623725,
+            "Time": 34.8181818175567,
+            "Accepted": true
+          },
+          {
+            "Distance": 7629.9999998623725,
+            "Time": 36.18181818119319,
+            "Accepted": true
+          }
+        ]
+      },
+      "Bound": {
+        "Obstacles": 21,
+        "PositiveGoals": 9,
+        "Catalog": 31,
+        "MaxNoviceCompleted": 18,
+        "BaselineSeconds": 36,
+        "CameraAllowance": 1.3763636363636365,
+        "MinimumNoviceDelay": 1.5,
+        "MinimumNoviceFinish": 37.5,
+        "LatestPossibleConstantFinish": 37.376363636363635,
+        "Algebra": "Full finish objectives=21-hits\u002Bbonuses\u002Bfinish. \u003C=18 implies hits-bonuses-finish\u003E=3. Delay=.5hits-.3bonuses-.25finish\u002B.3slows\u003E=1.5\u002B.2bonuses\u002B.25finish\u002B.3slows\u003E=1.5. Camera budget302.8/220=1.37636 seconds. No legal Novice Constant finish."
+      }
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Flip",
+      "Name": "rhythm-cascade-m0-gate/shift-48 \u002B rhythm-cascade-m2-gate/shift-48 \u002B rhythm-cascade-m4-exit-gate/shift-48",
+      "Distances": [
+        217,
+        523.5,
+        725,
+        947,
+        1308,
+        1774,
+        2073,
+        2411,
+        2669.5,
+        2871,
+        3141,
+        3561,
+        3902,
+        4152.5,
+        4509,
+        4752,
+        5052,
+        5420.5,
+        5715,
+        6040,
+        6343,
+        6693,
+        7030,
+        7330,
+        7630
+      ],
+      "Constant": {
+        "Total": 31,
+        "Completed": 3,
+        "Score": 9.67741935483871,
+        "Time": 11.061307149408773,
+        "Status": "Eliminated",
+        "Collisions": 3,
+        "Accepted": 7,
+        "Rejected": 0,
+        "MinMargin": 0,
+        "MinMarginLowerBound": -1.8333333333333333,
+        "p": 2130.6875728699297,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m2-gate",
+          "rhythm-cascade-m4-exit-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-stone"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 216.99999992197678,
+            "Time": 0.9863636360089828,
+            "Accepted": true
+          },
+          {
+            "Distance": 523.4999998449961,
+            "Time": 2.8795454538408927,
+            "Accepted": true
+          },
+          {
+            "Distance": 724.9999998027674,
+            "Time": 3.795454544558014,
+            "Accepted": true
+          },
+          {
+            "Distance": 946.9999999815814,
+            "Time": 4.804545454461731,
+            "Accepted": true
+          },
+          {
+            "Distance": 1307.9999999046008,
+            "Time": 6.945454545021063,
+            "Accepted": true
+          },
+          {
+            "Distance": 1773.999999961713,
+            "Time": 9.063636363462559,
+            "Accepted": true
+          },
+          {
+            "Distance": 2072.9999999815814,
+            "Time": 10.422727272643744,
+            "Accepted": true
+          }
+        ]
+      },
+      "Lagger": {
+        "Total": 31,
+        "Completed": 18,
+        "Score": 58.064516129032256,
+        "Time": 37.50000000000071,
+        "Status": "Finished",
+        "Collisions": 3,
+        "Accepted": 25,
+        "Rejected": 0,
+        "MinMargin": 302.7999999999997,
+        "MinMarginLowerBound": 300.9666666666664,
+        "p": 7920,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m2-gate",
+          "rhythm-cascade-m4-exit-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 216.99999992197678,
+            "Time": 0.9863636360089828,
+            "Accepted": true
+          },
+          {
+            "Distance": 523.4999998449961,
+            "Time": 2.8795454538408927,
+            "Accepted": true
+          },
+          {
+            "Distance": 724.9999998027674,
+            "Time": 3.795454544558014,
+            "Accepted": true
+          },
+          {
+            "Distance": 946.9999999815814,
+            "Time": 4.804545454461731,
+            "Accepted": true
+          },
+          {
+            "Distance": 1307.9999999046008,
+            "Time": 6.945454545021063,
+            "Accepted": true
+          },
+          {
+            "Distance": 1773.999999961713,
+            "Time": 9.063636363462559,
+            "Accepted": true
+          },
+          {
+            "Distance": 2072.9999999815814,
+            "Time": 10.422727272643744,
+            "Accepted": true
+          },
+          {
+            "Distance": 2410.9999998052594,
+            "Time": 12.459090908205674,
+            "Accepted": true
+          },
+          {
+            "Distance": 2669.500000002899,
+            "Time": 13.634090909103866,
+            "Accepted": true
+          },
+          {
+            "Distance": 2870.9999998027674,
+            "Time": 14.549999999103141,
+            "Accepted": true
+          },
+          {
+            "Distance": 3140.9999999418446,
+            "Time": 15.777272727007867,
+            "Accepted": true
+          },
+          {
+            "Distance": 3560.9999999815814,
+            "Time": 17.686363636279136,
+            "Accepted": true
+          },
+          {
+            "Distance": 3902.000000002899,
+            "Time": 19.236363636375817,
+            "Accepted": true
+          },
+          {
+            "Distance": 4152.4999998623725,
+            "Time": 20.374999999373323,
+            "Accepted": true
+          },
+          {
+            "Distance": 4508.999999902108,
+            "Time": 21.995454545008656,
+            "Accepted": true
+          },
+          {
+            "Distance": 4751.99999988224,
+            "Time": 23.099999999463925,
+            "Accepted": true
+          },
+          {
+            "Distance": 5051.9999998623725,
+            "Time": 24.463636363010124,
+            "Accepted": true
+          },
+          {
+            "Distance": 5420.5000000028995,
+            "Time": 26.13863636364907,
+            "Accepted": true
+          },
+          {
+            "Distance": 5714.9999998623725,
+            "Time": 27.477272726646817,
+            "Accepted": true
+          },
+          {
+            "Distance": 6039.999999941845,
+            "Time": 28.954545454280954,
+            "Accepted": true
+          },
+          {
+            "Distance": 6342.999999941845,
+            "Time": 30.331818181553828,
+            "Accepted": true
+          },
+          {
+            "Distance": 6692.999999802768,
+            "Time": 31.922727271830905,
+            "Accepted": true
+          },
+          {
+            "Distance": 7029.999999822636,
+            "Time": 33.454545453739556,
+            "Accepted": true
+          },
+          {
+            "Distance": 7329.9999998623725,
+            "Time": 34.818181817556685,
+            "Accepted": true
+          },
+          {
+            "Distance": 7629.9999998623725,
+            "Time": 36.18181818119317,
+            "Accepted": true
+          }
+        ]
+      },
+      "Bound": {
+        "Obstacles": 21,
+        "PositiveGoals": 9,
+        "Catalog": 31,
+        "MaxNoviceCompleted": 18,
+        "BaselineSeconds": 36,
+        "CameraAllowance": 1.3763636363636365,
+        "MinimumNoviceDelay": 1.5,
+        "MinimumNoviceFinish": 37.5,
+        "LatestPossibleConstantFinish": 37.376363636363635,
+        "Algebra": "Full finish objectives=21-hits\u002Bbonuses\u002Bfinish. \u003C=18 implies hits-bonuses-finish\u003E=3. Delay=.5hits-.3bonuses-.25finish\u002B.3slows\u003E=1.5\u002B.2bonuses\u002B.25finish\u002B.3slows\u003E=1.5. Camera budget302.8/220=1.37636 seconds. No legal Novice Constant finish."
+      }
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Flip",
+      "Name": "rhythm-cascade-m0-gate/shift-48 \u002B rhythm-cascade-m2-gate/shift-48 \u002B rhythm-cascade-m5-gate/shift-48",
+      "Distances": [
+        217,
+        523.5,
+        725,
+        947,
+        1308,
+        1774,
+        2121,
+        2363,
+        2669.5,
+        2871,
+        3141,
+        3561,
+        3902,
+        4152.5,
+        4509,
+        4752,
+        5052,
+        5420.5,
+        5715,
+        6040,
+        6343,
+        6693,
+        7030,
+        7330,
+        7630
+      ],
+      "Constant": {
+        "Total": 31,
+        "Completed": 4,
+        "Score": 12.903225806451612,
+        "Time": 12.379488967687488,
+        "Status": "Eliminated",
+        "Collisions": 3,
+        "Accepted": 8,
+        "Rejected": 0,
+        "MinMargin": 0,
+        "MinMarginLowerBound": -1.8333333333333333,
+        "p": 2420.6875728912473,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m2-gate",
+          "rhythm-cascade-m5-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m5-gate",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 216.99999992197678,
+            "Time": 0.9863636360089828,
+            "Accepted": true
+          },
+          {
+            "Distance": 523.4999998449961,
+            "Time": 2.8795454538408927,
+            "Accepted": true
+          },
+          {
+            "Distance": 724.9999998027674,
+            "Time": 3.795454544558014,
+            "Accepted": true
+          },
+          {
+            "Distance": 946.9999999815814,
+            "Time": 4.804545454461731,
+            "Accepted": true
+          },
+          {
+            "Distance": 1307.9999999046008,
+            "Time": 6.945454545021063,
+            "Accepted": true
+          },
+          {
+            "Distance": 1773.999999961713,
+            "Time": 9.063636363462559,
+            "Accepted": true
+          },
+          {
+            "Distance": 2120.9999999418446,
+            "Time": 10.64090909064491,
+            "Accepted": true
+          },
+          {
+            "Distance": 2363.000000002899,
+            "Time": 11.740909090922282,
+            "Accepted": true
+          }
+        ]
+      },
+      "Lagger": {
+        "Total": 31,
+        "Completed": 18,
+        "Score": 58.064516129032256,
+        "Time": 37.500000000000725,
+        "Status": "Finished",
+        "Collisions": 3,
+        "Accepted": 25,
+        "Rejected": 0,
+        "MinMargin": 302.7999999999997,
+        "MinMarginLowerBound": 300.9666666666664,
+        "p": 7920,
+        "boosts": 0,
+        "slows": 0,
+        "finishBoosts": 0,
+        "hits": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m2-gate",
+          "rhythm-cascade-m5-gate"
+        ],
+        "collected": [],
+        "CompletedIds": [
+          "obstacle:rhythm-cascade-m1-pad-stone",
+          "obstacle:rhythm-cascade-m10-pad-stone",
+          "obstacle:rhythm-cascade-m11-gate",
+          "obstacle:rhythm-cascade-m12-gate",
+          "obstacle:rhythm-cascade-m13-after-stone",
+          "obstacle:rhythm-cascade-m14-gate",
+          "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "obstacle:rhythm-cascade-m16-gate",
+          "obstacle:rhythm-cascade-m17-gate",
+          "obstacle:rhythm-cascade-m18-gate",
+          "obstacle:rhythm-cascade-m3-gate",
+          "obstacle:rhythm-cascade-m4-exit-gate",
+          "obstacle:rhythm-cascade-m4-stone",
+          "obstacle:rhythm-cascade-m6-pad-stone",
+          "obstacle:rhythm-cascade-m7-gate",
+          "obstacle:rhythm-cascade-m8-gate",
+          "obstacle:rhythm-cascade-m9-gate"
+        ],
+        "MissedIds": [
+          "finish:rhythm-cascade-finish",
+          "obstacle:rhythm-cascade-m0-gate",
+          "obstacle:rhythm-cascade-m2-gate",
+          "obstacle:rhythm-cascade-m5-gate",
+          "positive:rhythm-cascade-m1-pad",
+          "positive:rhythm-cascade-m10-pad",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-1",
+          "positive:rhythm-cascade-m15-chain-2",
+          "positive:rhythm-cascade-m3-free",
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m6-pad",
+          "positive:rhythm-cascade-m8-free-high"
+        ],
+        "Actions": [
+          {
+            "Distance": 216.99999992197678,
+            "Time": 0.9863636360089828,
+            "Accepted": true
+          },
+          {
+            "Distance": 523.4999998449961,
+            "Time": 2.8795454538408927,
+            "Accepted": true
+          },
+          {
+            "Distance": 724.9999998027674,
+            "Time": 3.795454544558014,
+            "Accepted": true
+          },
+          {
+            "Distance": 946.9999999815814,
+            "Time": 4.804545454461731,
+            "Accepted": true
+          },
+          {
+            "Distance": 1307.9999999046008,
+            "Time": 6.945454545021063,
+            "Accepted": true
+          },
+          {
+            "Distance": 1773.999999961713,
+            "Time": 9.063636363462559,
+            "Accepted": true
+          },
+          {
+            "Distance": 2120.9999999418446,
+            "Time": 10.64090909064491,
+            "Accepted": true
+          },
+          {
+            "Distance": 2363.000000002899,
+            "Time": 11.740909090922282,
+            "Accepted": true
+          },
+          {
+            "Distance": 2669.499999844996,
+            "Time": 13.634090908386144,
+            "Accepted": true
+          },
+          {
+            "Distance": 2870.9999998027674,
+            "Time": 14.549999999103157,
+            "Accepted": true
+          },
+          {
+            "Distance": 3140.9999999418446,
+            "Time": 15.777272727007883,
+            "Accepted": true
+          },
+          {
+            "Distance": 3560.9999999815814,
+            "Time": 17.68636363627915,
+            "Accepted": true
+          },
+          {
+            "Distance": 3902.000000002899,
+            "Time": 19.23636363637583,
+            "Accepted": true
+          },
+          {
+            "Distance": 4152.4999998623725,
+            "Time": 20.374999999373337,
+            "Accepted": true
+          },
+          {
+            "Distance": 4508.999999902108,
+            "Time": 21.99545454500867,
+            "Accepted": true
+          },
+          {
+            "Distance": 4751.99999988224,
+            "Time": 23.09999999946394,
+            "Accepted": true
+          },
+          {
+            "Distance": 5051.9999998623725,
+            "Time": 24.46363636301014,
+            "Accepted": true
+          },
+          {
+            "Distance": 5420.5000000028995,
+            "Time": 26.138636363649084,
+            "Accepted": true
+          },
+          {
+            "Distance": 5714.9999998623725,
+            "Time": 27.47727272664683,
+            "Accepted": true
+          },
+          {
+            "Distance": 6039.999999941845,
+            "Time": 28.954545454280968,
+            "Accepted": true
+          },
+          {
+            "Distance": 6342.999999941845,
+            "Time": 30.331818181553842,
+            "Accepted": true
+          },
+          {
+            "Distance": 6692.999999802768,
+            "Time": 31.92272727183092,
+            "Accepted": true
+          },
+          {
+            "Distance": 7029.999999822636,
+            "Time": 33.45454545373957,
+            "Accepted": true
+          },
+          {
+            "Distance": 7329.9999998623725,
+            "Time": 34.8181818175567,
+            "Accepted": true
+          },
+          {
+            "Distance": 7629.9999998623725,
+            "Time": 36.18181818119319,
+            "Accepted": true
+          }
+        ]
+      },
+      "Bound": {
+        "Obstacles": 21,
+        "PositiveGoals": 9,
+        "Catalog": 31,
+        "MaxNoviceCompleted": 18,
+        "BaselineSeconds": 36,
+        "CameraAllowance": 1.3763636363636365,
+        "MinimumNoviceDelay": 1.5,
+        "MinimumNoviceFinish": 37.5,
+        "LatestPossibleConstantFinish": 37.376363636363635,
+        "Algebra": "Full finish objectives=21-hits\u002Bbonuses\u002Bfinish. \u003C=18 implies hits-bonuses-finish\u003E=3. Delay=.5hits-.3bonuses-.25finish\u002B.3slows\u003E=1.5\u002B.2bonuses\u002B.25finish\u002B.3slows\u003E=1.5. Camera budget302.8/220=1.37636 seconds. No legal Novice Constant finish."
+      }
+    }
+  ]
+}

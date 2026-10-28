@@ -206,7 +206,11 @@ namespace FlipRace.Core
     {
         public readonly bool IsParty;
         public readonly bool IsSolo;
-        public bool UsesSharedRaceCamera { get { return IsParty || IsSolo; } }
+        public readonly bool IsBot;
+        public readonly BotPlan BotPlan;
+        public BotDifficulty BotDifficulty { get { return BotPlan == null ? BotDifficulty.Novice : BotPlan.Difficulty; } }
+        public int BotSeed { get { return BotPlan == null ? 0 : BotPlan.Seed; } }
+        public bool UsesSharedRaceCamera { get { return IsParty || IsSolo || IsBot; } }
         public readonly PartyCamera PartyCamera;
         public readonly double PartyCameraStartLeft, PartyWindowWidth, PartyCameraSpeed;
         internal double PartyLastCameraLeft;
@@ -222,9 +226,9 @@ namespace FlipRace.Core
             }
         }
         public GameState() { }
-        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo)
+        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo, BotPlan botPlan = null)
         {
-            IsParty = !solo; IsSolo = solo; PartyCamera = camera; PartyCameraStartLeft = startLeft;
+            IsParty = !solo && botPlan == null; IsSolo = solo; IsBot = botPlan != null; BotPlan = botPlan; PartyCamera = camera; PartyCameraStartLeft = startLeft;
             PartyWindowWidth = windowWidth; PartyCameraSpeed = track.Length / 36;
             PartyLastCameraLeft = startLeft;
         }
@@ -434,8 +438,16 @@ namespace FlipRace.Core
             return CreateSharedRace(track, flight, 1, camera, cameraStartLeft, windowWidth, true);
         }
 
+        public static GameState CreateBotRace(Track track, FlightSettings flight, BotDifficulty difficulty, int seed,
+            PartyCamera camera = PartyCamera.Constant, double cameraStartLeft = -288.8, double windowWidth = 1520)
+        {
+            if (track == null) throw new ArgumentNullException(nameof(track));
+            BotPlan plan = BotPlanCatalog.Select(track.Id, flight, difficulty, seed);
+            return CreateSharedRace(track, flight, 2, camera, cameraStartLeft, windowWidth, false, plan);
+        }
+
         private static GameState CreateSharedRace(Track track, FlightSettings flight, int playerCount,
-            PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo)
+            PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo, BotPlan botPlan = null)
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (flight == null) throw new ArgumentNullException(nameof(flight));
@@ -447,10 +459,11 @@ namespace FlipRace.Core
                 throw new ArgumentOutOfRangeException(nameof(windowWidth));
             if (double.IsNaN(track.Length) || double.IsInfinity(track.Length) || track.Length <= 0)
                 throw new ArgumentOutOfRangeException(nameof(track));
-            var game = new GameState(track, camera, cameraStartLeft, windowWidth, solo)
-            { Mode = solo ? "solo" : "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
+            var game = new GameState(track, camera, cameraStartLeft, windowWidth, solo, botPlan)
+            { Mode = botPlan != null ? "bot" : solo ? "solo" : "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
             for (int i = 0; i < playerCount; i++)
                 game.Players[i] = new PlayerState(i) { AirFlipAvailable = SupportsAirFlip(flight) };
+            if (botPlan != null) game.Players[1].Ready = true;
             return game;
         }
 

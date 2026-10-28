@@ -1,0 +1,159 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-28T18:10:06.465Z",
+  "archiveSha256": "2e078dda8a639a06e39cc8f9f14a22728630ec06a190a5c4b1332e62d0515b10",
+  "version": "5.2.0-trial",
+  "checks": [
+    {
+      "base": "http://127.0.0.1:4222/",
+      "files": [
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.data.unityweb",
+          "status": 200,
+          "bytes": 1775057,
+          "sha256": "f4030af2c6662147b6348a00934ff483681e3dbc7d4124a5b56dd9a21d46157d",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.framework.js.unityweb",
+          "status": 200,
+          "bytes": 89763,
+          "sha256": "98bed1faba8c67fe9a21cd07f73cce26a2b4d7d0207caeb53e82a142c40a3cdc",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.loader.js",
+          "status": 200,
+          "bytes": 39788,
+          "sha256": "a096a3113629d72b393b6ff2424d3859dbb15fd68946e9af901954ebda2ef7c2",
+          "contentType": "application/javascript; charset=utf-8",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.wasm.unityweb",
+          "status": 200,
+          "bytes": 7174809,
+          "sha256": "00d13ece166c6022fdbd631916438abb1625c895907091ee1c05940d5f4a1fdf",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "index.html",
+          "status": 200,
+          "bytes": 12812,
+          "sha256": "699463f5c7c428ed39833095ffe70fddbc0218950e6e6e346fe6e659dfa6f241",
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "no-store",
+          "allMatch": true
+        }
+      ]
+    },
+    {
+      "base": "http://127.0.0.1:4223/",
+      "files": [
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.data.unityweb",
+          "status": 200,
+          "bytes": 1775057,
+          "sha256": "f4030af2c6662147b6348a00934ff483681e3dbc7d4124a5b56dd9a21d46157d",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.framework.js.unityweb",
+          "status": 200,
+          "bytes": 89763,
+          "sha256": "98bed1faba8c67fe9a21cd07f73cce26a2b4d7d0207caeb53e82a142c40a3cdc",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.loader.js",
+          "status": 200,
+          "bytes": 39788,
+          "sha256": "a096a3113629d72b393b6ff2424d3859dbb15fd68946e9af901954ebda2ef7c2",
+          "contentType": "application/javascript; charset=utf-8",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.wasm.unityweb",
+          "status": 200,
+          "bytes": 7174809,
+          "sha256": "00d13ece166c6022fdbd631916438abb1625c895907091ee1c05940d5f4a1fdf",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "index.html",
+          "status": 200,
+          "bytes": 12812,
+          "sha256": "699463f5c7c428ed39833095ffe70fddbc0218950e6e6e346fe6e659dfa6f241",
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "no-store",
+          "allMatch": true
+        }
+      ]
+    },
+    {
+      "base": "http://127.0.0.1:4184/",
+      "files": [
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.data.unityweb",
+          "status": 200,
+          "bytes": 1775057,
+          "sha256": "f4030af2c6662147b6348a00934ff483681e3dbc7d4124a5b56dd9a21d46157d",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.framework.js.unityweb",
+          "status": 200,
+          "bytes": 89763,
+          "sha256": "98bed1faba8c67fe9a21cd07f73cce26a2b4d7d0207caeb53e82a142c40a3cdc",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.loader.js",
+          "status": 200,
+          "bytes": 39788,
+          "sha256": "a096a3113629d72b393b6ff2424d3859dbb15fd68946e9af901954ebda2ef7c2",
+          "contentType": "application/javascript; charset=utf-8",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "Build/WebGL-v5.2.0-final-text.wasm.unityweb",
+          "status": 200,
+          "bytes": 7174809,
+          "sha256": "00d13ece166c6022fdbd631916438abb1625c895907091ee1c05940d5f4a1fdf",
+          "contentType": "application/octet-stream",
+          "cacheControl": "no-store",
+          "allMatch": true
+        },
+        {
+          "path": "index.html",
+          "status": 200,
+          "bytes": 12812,
+          "sha256": "699463f5c7c428ed39833095ffe70fddbc0218950e6e6e346fe6e659dfa6f241",
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "no-store",
+          "allMatch": true
+        }
+      ]
+    }
+  ],
+  "limitation": "HTTP bytes only; native browser and dynamic aria checked separately."
+}

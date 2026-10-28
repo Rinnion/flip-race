@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>disable</ImplicitUsings><Nullable>disable</Nullable><NuGetAudit>false</NuGetAudit><EnableDefaultCompileItems>false</EnableDefaultCompileItems><DefineConstants Condition="'$(GenerateOnly)' == 'true'">GENERATE_ONLY</DefineConstants></PropertyGroup>
+  <ItemGroup><Compile Include="ExportCatalog.cs" /><Compile Include="../../Assets/Scripts/Core/*.cs" Condition="'$(GenerateOnly)' != 'true'" /></ItemGroup>
+</Project>

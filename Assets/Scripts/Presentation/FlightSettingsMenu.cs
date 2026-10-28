@@ -48,8 +48,9 @@ namespace FlipRace.Presentation
             if (flightSelection == null) InitializeFlightMenu();
             if (activeCustomFlight) flightSelection.SelectCustom(); else flightSelection.SelectPreset(activeFlightPreset);
             pendingFlightTrack = RaceTracks.NormalizeId(Game.Track.Id); flightPage = 0;
+            pendingBot = BotEnabled; if(BotEnabled)pendingBotDifficulty=Game.BotDifficulty;
             pendingSolo = SoloEnabled; pendingParty = PartyEnabled; pendingPartyCount = PartyEnabled ? Game.Players.Length : 4;
-            pendingPartyCamera = PartyEnabled || SoloEnabled ? Game.PartyCamera : PartyCamera.Constant;
+            pendingPartyCamera = BotEnabled || PartyEnabled || SoloEnabled ? Game.PartyCamera : PartyCamera.Constant;
             pendingSharedField = sharedField; pendingSharedAdjacent = sharedAdjacent; pendingSharedFullHeight = false; pendingSplitGhost = splitGhost;
         }
         void MeasureFlightMenu()
@@ -96,7 +97,7 @@ namespace FlipRace.Presentation
         { return new Rect(flightPanel.x + 16, flightPanel.y + 49 + row * 55, flightPanel.width - 32, 49); }
         public Rect ViewOptionRect(int row, int option)
         { MeasureFlightMenu(); return row < 0 || row > 1 || option < 0 || option >= (row == 0 ? 3 : 2) ? default(Rect) : FlightCell(ViewFieldRect(row), option, row == 0 ? 3 : 2); }
-        bool CanApplyFlight { get { return (!pendingSolo || RaceTracks.IsFull(pendingFlightTrack)) && (pendingFlightTrack != TracksControl.UnlimitedId || flightSelection.Settings.AirRepeats == AirRepeatLimit.Unlimited); } }
+        bool CanApplyFlight { get { return (!pendingBot || (!flightSelection.IsCustom && RaceTracks.IsFull(pendingFlightTrack))) && (!pendingSolo || RaceTracks.IsFull(pendingFlightTrack)) && (pendingFlightTrack != TracksControl.UnlimitedId || flightSelection.Settings.AirRepeats == AirRepeatLimit.Unlimited); } }
 
         void FlightPointer(Vector2 p)
         {
@@ -117,6 +118,8 @@ namespace FlipRace.Presentation
                 HandleFlightFields(p); return;
             }
             if (flightApply.Contains(p)) { if (CanApplyFlight) ApplyFlightChoice(); return; }
+            if ((flightPage==5||flightPage==6||flightPage==7||flightPage==8) && ModeChoicePointer(p))return;
+            if (flightPage == 8) { BotMenuPointer(p); return; }
             if (flightPage == 7) { SoloMenuPointer(p); return; }
             if (flightPage == 6) { PartyMenuPointer(p); return; }
             if (flightPage == 5)
@@ -125,7 +128,7 @@ namespace FlipRace.Presentation
                 if (SoloMenuButtonRect.Contains(p)) { EnterSoloMenu(); return; }
                 for (int option = 0; option < 3; option++)
                     if (ViewOptionRect(0, option).Contains(p))
-                    { pendingSolo = pendingParty = false; pendingSharedField = option == 2; pendingSplitGhost = option == 1; return; }
+                    { pendingBot = pendingSolo = pendingParty = false; pendingSharedField = option == 2; pendingSplitGhost = option == 1; return; }
                 for (int option = 0; option < 2; option++)
                     if (pendingSharedField && ViewOptionRect(1, option).Contains(p))
                     { pendingSharedAdjacent = option == 1; return; }
@@ -151,9 +154,9 @@ namespace FlipRace.Presentation
                 if (flightChosen.Contains(p)) { flightSelection.SelectPreset(FlightSettingsStore.ChosenPresetIndex); return; }
                 if (flightFastFlip.Contains(p)) { flightSelection.SelectPreset(FlightSettingsStore.FastFlipPresetIndex); return; }
                 if (flightCustom.Contains(p)) { flightSelection.SelectCustom(); flightPage = 1; BlockGameplayInput(); return; }
-                if (!pendingSolo && flightOldTracks.Contains(p)) { flightPage = 3; BlockGameplayInput(); return; }
+                if (!pendingBot && !pendingSolo && flightOldTracks.Contains(p)) { flightPage = 3; BlockGameplayInput(); return; }
                 if (flightTracks.Contains(p)) { flightPage = 4; BlockGameplayInput(); return; }
-                if (flightView.Contains(p)) { flightPage = pendingSolo ? 7 : pendingParty ? 6 : 5; BlockGameplayInput(); return; }
+                if (flightView.Contains(p)) { flightPage = pendingBot ? 8 : pendingSolo ? 7 : pendingParty ? 6 : 5; BlockGameplayInput(); return; }
                 if (flightEdit.Contains(p))
                 { flightSelection.Edit(d => { }); SaveCustomFlight(); flightPage = 1; BlockGameplayInput(); return; }
                 return;
@@ -164,7 +167,14 @@ namespace FlipRace.Presentation
             if (Active || !showTracks) return;
             GameState previousSelection = Game;
             Game = CreateSelectedFlight(Game, pendingFlightTrack, flightSelection.Settings);
-            if (pendingSolo)
+            if (pendingBot)
+            {
+                Game=RaceSimulation.CreateBotRace(Game.Track,flightSelection.Settings,pendingBotDifficulty,0,pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
+                Game.Players[0].CharacterIndex=previousSelection.Players[0].CharacterIndex;
+                Game.Players[1].CharacterIndex=(Game.Players[0].CharacterIndex+1)%CharacterRoster.Count;
+                botController=new BotRaceController(Game);
+            }
+            else if (pendingSolo)
             {
                 if (!RaceTracks.IsFull(Game.Track.Id)) Game = RaceSimulation.CreateTrial(RaceTracks.GetAt(0), flightSelection.Settings);
                 Game = RaceSimulation.CreateSolo(Game.Track, flightSelection.Settings, pendingPartyCamera, PartyStartLeft, PartyWindowWidth);
@@ -236,11 +246,12 @@ namespace FlipRace.Presentation
             Text(flightBack, flightPage == 0 ? "×" : "‹", 23, muted, false, TextAnchor.MiddleCenter);
             Text(new Rect(flightPanel.x + 49, flightPanel.y + 10, flightPanel.width - 65, 23),
                 flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки"
-                    : flightPage == 7 ? "Один · полная трасса" : flightPage == 4 ? "Трассы" : flightPage == 5 ? "Вид и посадка" : flightPage == 6 ? "Компания · 2–4 игрока" : "Управление и трасса", 17, ink, true);
+                    : flightPage == 8 ? "С ботом · полная трасса" : flightPage == 7 ? "Один · полная трасса" : flightPage == 4 ? "Трассы" : flightPage == 5 ? "Вид и посадка" : flightPage == 6 ? "Компания · 2–4 игрока" : "Управление и трасса", 17, ink, true);
             if (flightPage == 1) { DrawFlightEditor(); return; }
             if (flightPage == 3) { DrawOldFlightTracks(); return; }
             if (flightPage == 4) { DrawFullFlightTracks(); return; }
             if (flightPage == 5) { DrawViewChoices(); return; }
+            if (flightPage == 8) { DrawBotChoices(); return; }
             if (flightPage == 7) { DrawSoloChoices(); return; }
             if (flightPage == 6) { DrawPartyChoices(); return; }
             float col = (flightPanel.width - 48) / 2, right = flightPanel.x + 32 + col;
@@ -248,14 +259,14 @@ namespace FlipRace.Presentation
             FlightButton(flightChosen, "Основной — прыжок и полёт", flightSelection.PresetIndex == FlightSettingsStore.ChosenPresetIndex, true, 10);
             FlightButton(flightFastFlip, "Быстрый переворот", flightSelection.PresetIndex == FlightSettingsStore.FastFlipPresetIndex, true, 10);
             FlightButton(flightCustom, "Свои настройки  ›", flightSelection.IsCustom);
-            FlightButton(flightView, (pendingSolo ? "Один" : pendingParty ? "Компания " + pendingPartyCount : pendingSharedField ? "Общее поле" : pendingSplitGhost ? "Два поля + призрак" : "Два поля") + (pendingSolo ? " · камера  ›" : " · вид и посадка  ›"), false, true, 9);
+            FlightButton(flightView, (pendingBot ? "С ботом" : pendingSolo ? "Один" : pendingParty ? "Компания " + pendingPartyCount : pendingSharedField ? "Общее поле" : pendingSplitGhost ? "Два поля + призрак" : "Два поля") + (pendingSolo ? " · камера  ›" : " · вид и посадка  ›"), false, true, 9);
             FlightButton(flightEdit, "Изменить выбранное  ›", false, true, 9);
             Text(new Rect(right, flightPanel.y + 43, col, 15), flightSelection.IsCustom ? "Свой набор" : FlightSettingsStore.PresetName(flightSelection.PresetIndex), 11, ink, true);
             label.wordWrap = true;
             Text(new Rect(right, flightPanel.y + 63, col, 39), FlightSettingsStore.Summary(flightSelection.Settings), 10, muted);
             label.wordWrap = false;
             Text(new Rect(right, flightPanel.y + 134, col - 112, 14), "ТРАССЫ", 8, muted);
-            if (!pendingSolo) FlightButton(flightOldTracks, "Прежние участки ›", false, true, 8);
+            if (!pendingBot && !pendingSolo) FlightButton(flightOldTracks, "Прежние участки ›", false, true, 8);
             StrokeRound(flightTracks, 6, Hex(0xa5b98a), Hex(0xe5edd9));
             Text(new Rect(flightTracks.x + 8, flightTracks.y + 10, flightTracks.width - 16, 20),
                 PendingFlightTrackName(), 11, ink, true, TextAnchor.MiddleCenter);
@@ -274,8 +285,7 @@ namespace FlipRace.Presentation
                     : pendingSplitGhost ? "Светлый призрак — живой соперник в твоём поле. Свой герой всегда сверху."
                         : "У каждого своя дорожка и камера.", 10, muted);
             label.wordWrap = false;
-            FlightButton(PartyMenuButtonRect, "Компания · 2–4 игрока  ›", false, true, 11);
-            FlightButton(SoloMenuButtonRect, "Один ›", false, true, 11);
+            DrawModeChoices();
             DrawFlightApplyFooter();
         }
         void DrawFullFlightTracks()
@@ -301,12 +311,12 @@ namespace FlipRace.Presentation
         }
         void DrawFlightApplyFooter()
         {
-            string note = !CanApplyFlight ? "Проходы требуют повторов ∞"
+            string note = pendingBot && flightSelection.IsCustom ? "Боты: выбери готовый профиль" : !CanApplyFlight ? "Проходы требуют повторов ∞"
                 : RaceTracks.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : "36 сек · управление сохраняется"
                 : "Участок: " + PendingFlightTrackName();
             Text(new Rect(flightPanel.x + 16, flightPanel.yMax - 39, flightPanel.width - 205, 27), note,
                 9, !CanApplyFlight ? Hex(0x9a6844) : muted, false, TextAnchor.MiddleLeft);
-            FlightButton(flightApply, pendingSolo ? "Выбрать героя →" : "К готовности →", true, CanApplyFlight, 11);
+            FlightButton(flightApply, pendingBot || pendingSolo ? "Выбрать героя →" : "К готовности →", true, CanApplyFlight, 11);
         }
         string PendingFlightTrackName()
         {

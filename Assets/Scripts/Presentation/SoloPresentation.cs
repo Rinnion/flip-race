@@ -10,10 +10,10 @@ namespace FlipRace.Presentation
         public bool SoloEnabled { get { return Game != null && Game.IsSolo; } }
         public Rect SoloMenuButtonRect
         {
-            get { MeasureFlightMenu(); float cw=(flightPanel.width-36)/2; return new Rect(flightPanel.x+20+cw,flightPanel.y+(flightPage==6?210:204),cw,flightPage==6?28:32); }
+            get { MeasureFlightMenu(); return ModeChoiceRect(0); }
         }
-        Rect SoloPartyRect { get { return new Rect(flightPanel.x+16,flightPanel.y+210,(flightPanel.width-36)/2,28); } }
-        Rect SoloLegacyRect { get { Rect r=SoloPartyRect; return new Rect(r.xMax+4,r.y,r.width,r.height); } }
+        Rect SoloPartyRect { get { return ModeChoiceRect(1); } }
+        Rect SoloLegacyRect { get { return ModeLegacyRect; } }
         Rect SoloOverlayRect { get { return new Rect(arena.x,session.yMax+6,arena.width,Mathf.Max(0,arena.yMax-session.yMax-6)); } }
         float SoloContentTop(float contentHeight) { Rect r=SoloOverlayRect; return r.y+Mathf.Max(2,(r.height-contentHeight)/2); }
         public Rect SoloCharacterRect(int hero)
@@ -28,7 +28,7 @@ namespace FlipRace.Presentation
         public string SoloResultTitle { get { return Game.Players[0].Status==PlayerStatus.Finished?"Трасса пройдена":"Выбыл"; } }
         void EnterSoloMenu()
         {
-            pendingSolo=true; pendingParty=false;
+            pendingBot=false; pendingSolo=true; pendingParty=false;
             if(!RaceTracks.IsFull(pendingFlightTrack))pendingFlightTrack=RaceTracks.GetAt(0).Id;
             flightPage=7; BlockGameplayInput();
         }
@@ -36,11 +36,11 @@ namespace FlipRace.Presentation
         {
             for(int i=0;i<2;i++)if(PartyCameraRect(i).Contains(point)){pendingPartyCamera=(PartyCamera)i;return;}
             if(SoloPartyRect.Contains(point)){pendingSolo=false;pendingParty=true;flightPage=6;BlockGameplayInput();return;}
-            if(SoloLegacyRect.Contains(point)){pendingSolo=pendingParty=false;flightPage=5;BlockGameplayInput();}
+            if(SoloLegacyRect.Contains(point)){pendingBot=pendingSolo=pendingParty=false;flightPage=5;BlockGameplayInput();}
         }
         void DrawSoloChoices()
         {
-            Text(new Rect(flightPanel.x+16,flightPanel.y+43,flightPanel.width-32,24),"Один герой · та же полная трасса",12,ink,true);
+            Text(new Rect(flightPanel.x+16,flightPanel.y+43,flightPanel.width-192,24),"Один герой · та же полная трасса",12,ink,true);
             Text(new Rect(flightPanel.x+16,flightPanel.y+73,flightPanel.width-32,22),PendingFlightTrackName(),11,muted);
             Text(new Rect(flightPanel.x+16,flightPanel.y+109,flightPanel.width-32,15),"КАМЕРА",8,muted);
             FlightButton(PartyCameraRect(0),"Постоянный скролл",pendingPartyCamera==PartyCamera.Constant,true,10);
@@ -50,8 +50,7 @@ namespace FlipRace.Presentation
                 ?"Карта движется сама. Полностью ушёл за левый край — попытка завершена."
                 :"Камера следует за героем. Можно пройти всю трассу после ошибок.",10,muted);
             label.wordWrap=false;
-            FlightButton(SoloPartyRect,"Компания · 2–4 игрока ›",false,true,10);
-            FlightButton(SoloLegacyRect,"Прежние виды для двоих ›",false,true,10);
+            DrawModeChoices();
             DrawFlightApplyFooter();
         }
         void SoloPointer(Vector2 point)

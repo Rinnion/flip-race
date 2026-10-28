@@ -27,13 +27,17 @@ namespace FlipRace.Web
         {
             public string mode, phase, winner, track, motion, profile, version;
             public string fieldView, seating, fieldHeight;
+            public bool bot;
+            public string botDifficulty, botPlanId;
+            public int botSeed, botCursor, botGoalsTotal, botGoalsCompleted, botPlanCount;
             public double gravityAcceleration, departureImpulse;
             public string firstAction, motionLaw;
             public int airRepeatLimit;
             public int menuPage;
             public double flipImpulse, jumpImpulse, linearSpeed, linearJumpHeight;
             public bool pawsVisible, paused, negativeEnabled, customFlight, settingsVisible, characterSelectionVisible;
-            public double elapsed, countdown;
+            public double elapsed, countdown, realtime;
+            public int frame;
             public float fullscreenX, fullscreenY, fullscreenWidth, fullscreenHeight;
             public float settingsCopyX, settingsCopyY, settingsCopyWidth, settingsCopyHeight;
             public string settingsCopyText;
@@ -66,6 +70,11 @@ namespace FlipRace.Web
                 motion = state.Motion.ToString(),
                 profile = state.Profile.Id, version = Application.version,
                 fieldView = game.FieldViewName, seating = game.SeatingName, fieldHeight = game.FieldHeightName,
+                bot = state.IsBot, botDifficulty = state.IsBot ? state.BotDifficulty.ToString() : "",
+                botPlanId = state.IsBot ? state.BotPlan.Id : "", botSeed = state.BotSeed,
+                botCursor = game.BotActionCursor, botGoalsTotal = state.IsBot ? BotPlanCatalog.GoalCount(state.Track.Id,flight) : 0,
+                botGoalsCompleted = state.IsBot ? BotCompletedGoals(state) : 0,
+                botPlanCount = state.IsBot ? BotPlanCatalog.Count(state.Track.Id,flight,state.BotDifficulty) : 0,
                 menuPage = game.FlightMenuPage, pawsVisible = game.PawsVisible,
                 gravityAcceleration = flight.GravityAcceleration,
                 departureImpulse = flight.FirstAction == FirstAction.Jump ? flight.JumpImpulse : flight.FlipImpulse,
@@ -74,7 +83,7 @@ namespace FlipRace.Web
                 linearSpeed = flight.LinearSpeed, linearJumpHeight = flight.LinearJumpHeight,
                 negativeEnabled = state.Track.NegativeEnabled,
                 winner = state.Winner == null ? "" : state.Winner.ToString(), paused = game.IsPaused,
-                elapsed = state.Elapsed, countdown = state.CountdownRemaining,
+                elapsed = state.Elapsed, countdown = state.CountdownRemaining, realtime = Time.realtimeSinceStartupAsDouble, frame = Time.frameCount,
                 fullscreenX = fullscreen.x, fullscreenY = fullscreen.y,
                 fullscreenWidth = fullscreen.width, fullscreenHeight = fullscreen.height,
                 customFlight = game.IsCustomFlight, settingsVisible = game.FlightSettingsVisible,
@@ -135,6 +144,12 @@ namespace FlipRace.Web
             output.Append(",\"sessionRect\":"); AppendRect(output, game.SessionBarRect);
             output.Append(",\"solo\":").Append(game.SoloEnabled ? "true" : "false");
             output.Append(",\"soloMenuRect\":"); AppendRect(output, game.SoloMenuButtonRect);
+            output.Append(",\"botMenuRect\":"); AppendRect(output, game.BotMenuButtonRect);
+            output.Append(",\"botDifficultyRects\":[");
+            for(int i=0;i<5;i++){if(i>0)output.Append(',');AppendRect(output,game.BotDifficultyRect(i));}
+            output.Append(']');
+            output.Append(",\"botRetryRect\":"); AppendRect(output, game.BotRetryRect);
+            output.Append(",\"botTrackChoiceRect\":"); AppendRect(output, game.BotTrackChoiceRect);
             output.Append(",\"soloTrackChoiceRect\":"); AppendRect(output, game.SoloTrackChoiceRect);
             output.Append(",\"soloCountdownRect\":"); AppendRect(output, game.SoloCountdownRect);
             output.Append(",\"viewMenuRect\":"); AppendRect(output, game.ViewMenuButtonRect);
@@ -188,7 +203,20 @@ namespace FlipRace.Web
             return output.Append('}').ToString();
         }
         void AppendPlayerRects(StringBuilder output, Func<int,Rect> rectangle)
-        { for(int i=0;i<game.Game.Players.Length;i++){if(i>0)output.Append(',');AppendRect(output,rectangle(i));} }
+        { for(int i=0;i<(game.Game.IsBot?1:game.Game.Players.Length);i++){if(i>0)output.Append(',');AppendRect(output,rectangle(i));} }
+        static int BotCompletedGoals(GameState state)
+        {
+            var player=state.Players[1];int completed=0;
+            foreach(var obstacle in state.Track.Obstacles)
+                if(!player.HitObstacleIds.Contains(obstacle.Id)&&player.Distance>=ObstacleGeometry.Right(obstacle)+RaceConfig.PlayerRadius-1e-7)completed++;
+            foreach(var zone in state.Track.RiskZones)
+            {
+                if(zone.IsNegative||zone.IsCoin)continue;
+                if(zone.IsFinish){if(player.FinishBoostsEarned>0&&player.FinishBoostElapsed>=RaceConfig.FinishBoostDuration-1e-7)completed++;}
+                else if(player.SuccessfulRiskIds.Contains(zone.Id))completed++;
+            }
+            return completed;
+        }
         static void AppendRect(StringBuilder output, Rect rect)
         {
             output.Append('[').Append(rect.x.ToString("R", CultureInfo.InvariantCulture)).Append(',')

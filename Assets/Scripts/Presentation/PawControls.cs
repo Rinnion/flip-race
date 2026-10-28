@@ -9,6 +9,7 @@ namespace FlipRace.Presentation
         public Rect PawScreenRect(int slot)
         {
             if(slot<0||slot>=Game.Players.Length)throw new ArgumentOutOfRangeException(nameof(slot));
+            if(BotEnabled && slot!=0)return default(Rect);
             Rect safe=SafeUiArea(); int corner=PawCorner(slot);
             float horizontalInset=compact?40:8;
             float x=corner%2==0?safe.xMin+horizontalInset:safe.xMax-horizontalInset-56;
@@ -17,7 +18,7 @@ namespace FlipRace.Presentation
         }
         void LocalRacePress(int slot,Vector2 point)
         {
-            if((PartyEnabled||SoloEnabled) && Game.Phase=="racing" && Game.Players[slot].Status!=FlipRace.Core.PlayerStatus.Running)return;
+            if((BotEnabled||PartyEnabled||SoloEnabled) && Game.Phase=="racing" && Game.Players[slot].Status!=FlipRace.Core.PlayerStatus.Running)return;
             // One shared pointer edge reaches Act exactly once. The paw is
             // artwork over that existing area, never a second GUI.Button path.
             if(PawsVisible&&PawScreenRect(slot).Contains(point))
@@ -28,9 +29,9 @@ namespace FlipRace.Presentation
         {
             if(!PawsVisible)return;
             Matrix4x4 canvas=GUI.matrix;
-            for(int slot=0;slot<Game.Players.Length;slot++)
+            for(int slot=0;slot<(BotEnabled?1:Game.Players.Length);slot++)
             {
-                if(Game.Players[slot].FinishTime.HasValue||((PartyEnabled||SoloEnabled)&&Game.Players[slot].Status!=FlipRace.Core.PlayerStatus.Running))continue;
+                if(Game.Players[slot].FinishTime.HasValue||((BotEnabled||PartyEnabled||SoloEnabled)&&Game.Players[slot].Status!=FlipRace.Core.PlayerStatus.Running))continue;
                 Rect r=PawScreenRect(slot);bool rotated=PartyEnabled?PartyRotated(slot):SharedEnabled?SharedRotated(slot):slot==0;
                 GUI.matrix=canvas*Matrix4x4.TRS(new Vector3(r.center.x,r.center.y,0),Quaternion.Euler(0,0,rotated?180:0),Vector3.one);
                 float age=animationTime-(slot==0?firstPawAt:slot==1?secondPawAt:slot==2?thirdPawAt:fourthPawAt);

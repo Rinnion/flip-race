@@ -5,7 +5,7 @@ namespace FlipRace.Presentation
 {
     public sealed partial class FlipRaceGame
     {
-        public bool SessionCentered { get { return !Portrait && !(SharedEnabled && sharedAdjacent && !PartyEnabled && !SoloEnabled); } }
+        public bool SessionCentered { get { return !Portrait && !(SharedEnabled && sharedAdjacent && !PartyEnabled && !SoloEnabled && !BotEnabled); } }
         public Rect SessionBarRect { get { return session; } }
         void PlaceSession(float sh, float dh, float lh)
         {
@@ -20,7 +20,7 @@ namespace FlipRace.Presentation
             {
                 session.y = arena.center.y - sh / 2;
                 // A toolbar through the playable world would hide flight and obstacles.
-                if (SoloEnabled || Game.Phase == "racing" || Game.Phase == "countdown") session.y = SharedFieldRect.y - sh;
+                if (BotEnabled || SoloEnabled || Game.Phase == "racing" || Game.Phase == "countdown") session.y = SharedFieldRect.y - sh;
             }
         }
         float DesktopBrandLeft { get { return Mathf.Max(shell.x, SafeUiArea().xMin + 80); } }
@@ -66,12 +66,12 @@ namespace FlipRace.Presentation
         int PawCorner(int slot)
         {
             if (slot < 0 || slot >= Game.Players.Length) throw new ArgumentOutOfRangeException(nameof(slot));
-            return SoloEnabled ? 3 : PartyEnabled ? PartyCorner(slot) : SharedEnabled && sharedAdjacent ? slot + 2 : slot == 0 ? 0 : 3;
+            return BotEnabled || SoloEnabled ? 3 : PartyEnabled ? PartyCorner(slot) : SharedEnabled && sharedAdjacent ? slot + 2 : slot == 0 ? 0 : 3;
         }
         bool PointerPaw(Vector2 point)
         {
             if (!PawsVisible) return false;
-            for (int slot = 0; slot < Game.Players.Length; slot++)
+            for (int slot = 0; slot < (BotEnabled?1:Game.Players.Length); slot++)
                 if (PawScreenRect(slot).Contains(point)) { LocalRacePress(slot, point); return true; }
             return false;
         }

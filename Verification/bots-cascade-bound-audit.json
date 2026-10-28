@@ -1,0 +1,2040 @@
+{
+  "status": "PASS independent reproduction of incompatible BOT-03 constraints; not a successful release",
+  "obstacles": 21,
+  "positive": 9,
+  "finish": 1,
+  "total": 31,
+  "noviceCap": 18,
+  "earliestQualifyingFinish": 37.5,
+  "bestCase": {
+    "h": 3,
+    "b": 0,
+    "f": 0,
+    "goals": 18
+  },
+  "latestPossibleConstantFinish": 37.376363636363635,
+  "deficitSeconds": 0.12363636363636488,
+  "deficitWorldUnits": 27.200000000000273,
+  "cases": [
+    {
+      "profile": "Jump",
+      "dt": 0.03333333333333333,
+      "distances": [
+        182.5,
+        233.5,
+        518,
+        912.5,
+        963.5,
+        1287.5,
+        1324.5,
+        1756.5,
+        1807,
+        2072.8,
+        2139.8,
+        2376.5,
+        2427.5,
+        2712,
+        3106.5,
+        3157.5,
+        3518.5,
+        3575.5,
+        3867.5,
+        3918.5,
+        4152,
+        4213,
+        4420,
+        4518,
+        4717.5,
+        4768.5,
+        5017.5,
+        5068.5,
+        5420.5,
+        5466,
+        5701.5,
+        5766,
+        6005.5,
+        6056.5,
+        6322.5,
+        6359.5,
+        6672.5,
+        6709.5,
+        6995.5,
+        7046.5,
+        7295.5,
+        7346.5,
+        7595.5,
+        7646.5
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.500000000000796,
+      "hits": 3,
+      "accepted": 44,
+      "constantTime": 5.911782346084863,
+      "constantX": 997.7921161386697,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 182.49999980773455,
+          "Time": 0.8295454536715198,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.50000001283337,
+          "Time": 1.0613636364219687,
+          "Accepted": true
+        },
+        {
+          "Distance": 517.9999999753859,
+          "Time": 2.8545454544335747,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.5000000124026,
+          "Time": 5.147727272783635,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.5000000128332,
+          "Time": 5.379545454603772,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 182.49999980773455,
+          "Time": 0.8295454536715198,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.50000001283337,
+          "Time": 1.0613636364219687,
+          "Accepted": true
+        },
+        {
+          "Distance": 517.9999999753859,
+          "Time": 2.8545454544335747,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.5000000124026,
+          "Time": 5.147727272783635,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.5000000128332,
+          "Time": 5.379545454603772,
+          "Accepted": true
+        },
+        {
+          "Distance": 1287.4999998909461,
+          "Time": 7.352272726777019,
+          "Accepted": true
+        },
+        {
+          "Distance": 1324.4999999915153,
+          "Time": 7.520454545415973,
+          "Accepted": true
+        },
+        {
+          "Distance": 1756.4999998027674,
+          "Time": 9.484090908194402,
+          "Accepted": true
+        },
+        {
+          "Distance": 1806.9999998077344,
+          "Time": 9.713636362762433,
+          "Accepted": true
+        },
+        {
+          "Distance": 2072.7999999478056,
+          "Time": 10.921818181580946,
+          "Accepted": true
+        },
+        {
+          "Distance": 2139.799999971647,
+          "Time": 11.22636363623477,
+          "Accepted": true
+        },
+        {
+          "Distance": 2376.4999999408515,
+          "Time": 12.30227272700386,
+          "Accepted": true
+        },
+        {
+          "Distance": 2427.500000012833,
+          "Time": 12.534090909149231,
+          "Accepted": true
+        },
+        {
+          "Distance": 2711.999999827603,
+          "Time": 13.82727272648906,
+          "Accepted": true
+        },
+        {
+          "Distance": 3106.4999998276026,
+          "Time": 15.620454544670839,
+          "Accepted": true
+        },
+        {
+          "Distance": 3157.500000012833,
+          "Time": 15.852272727330977,
+          "Accepted": true
+        },
+        {
+          "Distance": 3518.499999951779,
+          "Time": 17.49318181796259,
+          "Accepted": true
+        },
+        {
+          "Distance": 3575.4999998325698,
+          "Time": 17.75227272651165,
+          "Accepted": true
+        },
+        {
+          "Distance": 3867.4999998226353,
+          "Time": 19.07954545373926,
+          "Accepted": true
+        },
+        {
+          "Distance": 3918.500000012833,
+          "Time": 19.311363636421984,
+          "Accepted": true
+        },
+        {
+          "Distance": 4151.999999817669,
+          "Time": 20.372727271898544,
+          "Accepted": true
+        },
+        {
+          "Distance": 4212.999999931911,
+          "Time": 20.649999999690582,
+          "Accepted": true
+        },
+        {
+          "Distance": 4419.9999999517795,
+          "Time": 21.590909090690054,
+          "Accepted": true
+        },
+        {
+          "Distance": 4517.999999921977,
+          "Time": 22.03636363600917,
+          "Accepted": true
+        },
+        {
+          "Distance": 4717.499999956746,
+          "Time": 22.94318181798548,
+          "Accepted": true
+        },
+        {
+          "Distance": 4768.500000012834,
+          "Time": 23.17500000005862,
+          "Accepted": true
+        },
+        {
+          "Distance": 5017.500000012834,
+          "Time": 24.30681818187688,
+          "Accepted": true
+        },
+        {
+          "Distance": 5068.500000012834,
+          "Time": 24.538636363695062,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.5000000028995,
+          "Time": 26.138636363650047,
+          "Accepted": true
+        },
+        {
+          "Distance": 5465.999999956747,
+          "Time": 26.345454545258445,
+          "Accepted": true
+        },
+        {
+          "Distance": 5701.499999976614,
+          "Time": 27.415909090803392,
+          "Accepted": true
+        },
+        {
+          "Distance": 5765.999999827603,
+          "Time": 27.709090908307918,
+          "Accepted": true
+        },
+        {
+          "Distance": 6005.499999857405,
+          "Time": 28.797727272079843,
+          "Accepted": true
+        },
+        {
+          "Distance": 6056.500000012834,
+          "Time": 29.029545454604545,
+          "Accepted": true
+        },
+        {
+          "Distance": 6322.499999941846,
+          "Time": 30.238636363372866,
+          "Accepted": true
+        },
+        {
+          "Distance": 6359.499999991515,
+          "Time": 30.40681818178047,
+          "Accepted": true
+        },
+        {
+          "Distance": 6672.499999852438,
+          "Time": 31.82954545387571,
+          "Accepted": true
+        },
+        {
+          "Distance": 6709.499999991515,
+          "Time": 31.997727272689705,
+          "Accepted": true
+        },
+        {
+          "Distance": 6995.5000000028995,
+          "Time": 33.29772727274143,
+          "Accepted": true
+        },
+        {
+          "Distance": 7046.500000012834,
+          "Time": 33.52954545460476,
+          "Accepted": true
+        },
+        {
+          "Distance": 7295.500000012834,
+          "Time": 34.66136363642289,
+          "Accepted": true
+        },
+        {
+          "Distance": 7346.500000012834,
+          "Time": 34.89318181824105,
+          "Accepted": true
+        },
+        {
+          "Distance": 7595.500000012834,
+          "Time": 36.02500000005918,
+          "Accepted": true
+        },
+        {
+          "Distance": 7646.500000012834,
+          "Time": 36.256818181877335,
+          "Accepted": true
+        }
+      ]
+    },
+    {
+      "profile": "Jump",
+      "dt": 0.016666666666666666,
+      "distances": [
+        182.5,
+        233.5,
+        518,
+        912.5,
+        963.5,
+        1287.5,
+        1324.5,
+        1756.5,
+        1807,
+        2072.8,
+        2139.8,
+        2376.5,
+        2427.5,
+        2712,
+        3106.5,
+        3157.5,
+        3518.5,
+        3575.5,
+        3867.5,
+        3918.5,
+        4152,
+        4213,
+        4420,
+        4518,
+        4717.5,
+        4768.5,
+        5017.5,
+        5068.5,
+        5420.5,
+        5466,
+        5701.5,
+        5766,
+        6005.5,
+        6056.5,
+        6322.5,
+        6359.5,
+        6672.5,
+        6709.5,
+        6995.5,
+        7046.5,
+        7295.5,
+        7346.5,
+        7595.5,
+        7646.5
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.49999999999807,
+      "hits": 3,
+      "accepted": 44,
+      "constantTime": 5.911782345129406,
+      "constantX": 997.7921159284692,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 182.4999998325698,
+          "Time": 0.8295454537844091,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.49999980276746,
+          "Time": 1.0613636354671265,
+          "Accepted": true
+        },
+        {
+          "Distance": 517.9999999493223,
+          "Time": 2.8545454543150908,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.499999801906,
+          "Time": 5.147727271826844,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.4999998027674,
+          "Time": 5.379545453648944,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 182.4999998325698,
+          "Time": 0.8295454537844091,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.49999980276746,
+          "Time": 1.0613636354671265,
+          "Accepted": true
+        },
+        {
+          "Distance": 517.9999999493223,
+          "Time": 2.8545454543150908,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.499999801906,
+          "Time": 5.147727271826844,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.4999998027674,
+          "Time": 5.379545453648944,
+          "Accepted": true
+        },
+        {
+          "Distance": 1287.4999999989927,
+          "Time": 7.352272727268122,
+          "Accepted": true
+        },
+        {
+          "Distance": 1324.4999999815814,
+          "Time": 7.520454545370794,
+          "Accepted": true
+        },
+        {
+          "Distance": 1756.4999998226356,
+          "Time": 9.48409090828471,
+          "Accepted": true
+        },
+        {
+          "Distance": 1806.9999998325698,
+          "Time": 9.713636362875326,
+          "Accepted": true
+        },
+        {
+          "Distance": 2072.7999998941614,
+          "Time": 10.921818181337144,
+          "Accepted": true
+        },
+        {
+          "Distance": 2139.799999941845,
+          "Time": 11.22636363609937,
+          "Accepted": true
+        },
+        {
+          "Distance": 2376.4999998802537,
+          "Time": 12.30227272672859,
+          "Accepted": true
+        },
+        {
+          "Distance": 2427.4999998027674,
+          "Time": 12.534090908194573,
+          "Accepted": true
+        },
+        {
+          "Distance": 2711.999999872306,
+          "Time": 13.82727272669259,
+          "Accepted": true
+        },
+        {
+          "Distance": 3106.499999872306,
+          "Time": 15.620454544874574,
+          "Accepted": true
+        },
+        {
+          "Distance": 3157.4999998027674,
+          "Time": 15.852272726376682,
+          "Accepted": true
+        },
+        {
+          "Distance": 3518.4999999021084,
+          "Time": 17.493181817737312,
+          "Accepted": true
+        },
+        {
+          "Distance": 3575.49999988224,
+          "Time": 17.75227272673791,
+          "Accepted": true
+        },
+        {
+          "Distance": 3867.499999862372,
+          "Time": 19.079545453920304,
+          "Accepted": true
+        },
+        {
+          "Distance": 3918.4999998027674,
+          "Time": 19.311363635467554,
+          "Accepted": true
+        },
+        {
+          "Distance": 4151.999999852438,
+          "Time": 20.372727272056924,
+          "Accepted": true
+        },
+        {
+          "Distance": 4212.9999998623725,
+          "Time": 20.649999999374767,
+          "Accepted": true
+        },
+        {
+          "Distance": 4419.999999902108,
+          "Time": 21.590909090464358,
+          "Accepted": true
+        },
+        {
+          "Distance": 4517.999999842504,
+          "Time": 22.03636363564793,
+          "Accepted": true
+        },
+        {
+          "Distance": 4717.499999912043,
+          "Time": 22.943181817782076,
+          "Accepted": true
+        },
+        {
+          "Distance": 4768.499999802768,
+          "Time": 23.17499999910353,
+          "Accepted": true
+        },
+        {
+          "Distance": 5017.499999802768,
+          "Time": 24.30681818092156,
+          "Accepted": true
+        },
+        {
+          "Distance": 5068.499999802768,
+          "Time": 24.538636362739712,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.5000000028995,
+          "Time": 26.13863636364919,
+          "Accepted": true
+        },
+        {
+          "Distance": 5465.999999912044,
+          "Time": 26.345454545054356,
+          "Accepted": true
+        },
+        {
+          "Distance": 5701.4999999517795,
+          "Time": 27.415909090689375,
+          "Accepted": true
+        },
+        {
+          "Distance": 5765.999999872306,
+          "Time": 27.709090908509914,
+          "Accepted": true
+        },
+        {
+          "Distance": 6005.499999931911,
+          "Time": 28.797727272417077,
+          "Accepted": true
+        },
+        {
+          "Distance": 6056.499999802768,
+          "Time": 29.029545453648215,
+          "Accepted": true
+        },
+        {
+          "Distance": 6322.49999988224,
+          "Time": 30.23863636310021,
+          "Accepted": true
+        },
+        {
+          "Distance": 6359.499999981582,
+          "Time": 30.406818181733545,
+          "Accepted": true
+        },
+        {
+          "Distance": 6672.499999921977,
+          "Time": 31.8295454541897,
+          "Accepted": true
+        },
+        {
+          "Distance": 6709.499999981582,
+          "Time": 31.997727272642425,
+          "Accepted": true
+        },
+        {
+          "Distance": 6995.5000000028995,
+          "Time": 33.29772727273914,
+          "Accepted": true
+        },
+        {
+          "Distance": 7046.499999802768,
+          "Time": 33.52954545364758,
+          "Accepted": true
+        },
+        {
+          "Distance": 7295.499999802768,
+          "Time": 34.6613636354656,
+          "Accepted": true
+        },
+        {
+          "Distance": 7346.499999802768,
+          "Time": 34.89318181728374,
+          "Accepted": true
+        },
+        {
+          "Distance": 7595.499999802768,
+          "Time": 36.024999999101766,
+          "Accepted": true
+        },
+        {
+          "Distance": 7646.499999802768,
+          "Time": 36.25681818091991,
+          "Accepted": true
+        }
+      ]
+    },
+    {
+      "profile": "Jump",
+      "dt": 0.004166666666666667,
+      "distances": [
+        182.5,
+        233.5,
+        518,
+        912.5,
+        963.5,
+        1287.5,
+        1324.5,
+        1756.5,
+        1807,
+        2072.8,
+        2139.8,
+        2376.5,
+        2427.5,
+        2712,
+        3106.5,
+        3157.5,
+        3518.5,
+        3575.5,
+        3867.5,
+        3918.5,
+        4152,
+        4213,
+        4420,
+        4518,
+        4717.5,
+        4768.5,
+        5017.5,
+        5068.5,
+        5420.5,
+        5466,
+        5701.5,
+        5766,
+        6005.5,
+        6056.5,
+        6322.5,
+        6359.5,
+        6672.5,
+        6709.5,
+        6995.5,
+        7046.5,
+        7295.5,
+        7346.5,
+        7595.5,
+        7646.5
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.49999999999829,
+      "hits": 3,
+      "accepted": 44,
+      "constantTime": 5.911782345396678,
+      "constantX": 997.7921159872693,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 182.49999998158142,
+          "Time": 0.8295454544617331,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.49999986237214,
+          "Time": 1.061363635738056,
+          "Accepted": true
+        },
+        {
+          "Distance": 518.0000000129404,
+          "Time": 2.8545454546042937,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.4999998589265,
+          "Time": 5.147727272086113,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.4999998623721,
+          "Time": 5.379545453919955,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 182.49999998158142,
+          "Time": 0.8295454544617331,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.49999986237214,
+          "Time": 1.061363635738056,
+          "Accepted": true
+        },
+        {
+          "Distance": 518.0000000129404,
+          "Time": 2.8545454546042937,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.4999998589265,
+          "Time": 5.147727272086113,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.4999998623721,
+          "Time": 5.379545453919955,
+          "Accepted": true
+        },
+        {
+          "Distance": 1287.4999999916226,
+          "Time": 7.352272727234533,
+          "Accepted": true
+        },
+        {
+          "Distance": 1324.4999999219767,
+          "Time": 7.520454545099758,
+          "Accepted": true
+        },
+        {
+          "Distance": 1756.4999999418449,
+          "Time": 9.484090908826163,
+          "Accepted": true
+        },
+        {
+          "Distance": 1806.9999999815814,
+          "Time": 9.713636363552206,
+          "Accepted": true
+        },
+        {
+          "Distance": 2072.800000010847,
+          "Time": 10.921818181866913,
+          "Accepted": true
+        },
+        {
+          "Distance": 2139.7999999815815,
+          "Time": 11.226363636279377,
+          "Accepted": true
+        },
+        {
+          "Distance": 2376.499999953766,
+          "Time": 12.302272727062144,
+          "Accepted": true
+        },
+        {
+          "Distance": 2427.499999862372,
+          "Time": 12.534090908464924,
+          "Accepted": true
+        },
+        {
+          "Distance": 2711.9999999219767,
+          "Time": 13.827272726917812,
+          "Accepted": true
+        },
+        {
+          "Distance": 3106.4999999219767,
+          "Time": 15.620454545099815,
+          "Accepted": true
+        },
+        {
+          "Distance": 3157.499999862372,
+          "Time": 15.85227272664709,
+          "Accepted": true
+        },
+        {
+          "Distance": 3518.4999998226353,
+          "Time": 17.493181817375735,
+          "Accepted": true
+        },
+        {
+          "Distance": 3575.499999961713,
+          "Time": 17.75227272709885,
+          "Accepted": true
+        },
+        {
+          "Distance": 3867.49999988224,
+          "Time": 19.07954545401048,
+          "Accepted": true
+        },
+        {
+          "Distance": 3918.499999862372,
+          "Time": 19.31136363573838,
+          "Accepted": true
+        },
+        {
+          "Distance": 4151.999999842504,
+          "Time": 20.372727272011694,
+          "Accepted": true
+        },
+        {
+          "Distance": 4212.99999988224,
+          "Time": 20.649999999464946,
+          "Accepted": true
+        },
+        {
+          "Distance": 4419.999999822636,
+          "Time": 21.590909090102738,
+          "Accepted": true
+        },
+        {
+          "Distance": 4517.999999802768,
+          "Time": 22.036363635466795,
+          "Accepted": true
+        },
+        {
+          "Distance": 4717.4999998623725,
+          "Time": 22.94318181755555,
+          "Accepted": true
+        },
+        {
+          "Distance": 4768.4999998623725,
+          "Time": 23.174999999373636,
+          "Accepted": true
+        },
+        {
+          "Distance": 5017.4999998623725,
+          "Time": 24.306818181191385,
+          "Accepted": true
+        },
+        {
+          "Distance": 5068.4999998623725,
+          "Time": 24.53863636300947,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.5000000028995,
+          "Time": 26.138636363647617,
+          "Accepted": true
+        },
+        {
+          "Distance": 5465.9999998623725,
+          "Time": 26.345454544826968,
+          "Accepted": true
+        },
+        {
+          "Distance": 5701.499999802768,
+          "Time": 27.415909090010167,
+          "Accepted": true
+        },
+        {
+          "Distance": 5765.999999921977,
+          "Time": 27.709090908733724,
+          "Accepted": true
+        },
+        {
+          "Distance": 6005.499999941845,
+          "Time": 28.797727272459994,
+          "Accepted": true
+        },
+        {
+          "Distance": 6056.4999998623725,
+          "Time": 29.029545453916846,
+          "Accepted": true
+        },
+        {
+          "Distance": 6322.499999961713,
+          "Time": 30.23863636345884,
+          "Accepted": true
+        },
+        {
+          "Distance": 6359.499999921977,
+          "Time": 30.406818181459965,
+          "Accepted": true
+        },
+        {
+          "Distance": 6672.499999902108,
+          "Time": 31.829545454096372,
+          "Accepted": true
+        },
+        {
+          "Distance": 6709.499999921977,
+          "Time": 31.997727272368433,
+          "Accepted": true
+        },
+        {
+          "Distance": 6995.5000000028995,
+          "Time": 33.29772727273684,
+          "Accepted": true
+        },
+        {
+          "Distance": 7046.4999998623725,
+          "Time": 33.52954545391636,
+          "Accepted": true
+        },
+        {
+          "Distance": 7295.4999998623725,
+          "Time": 34.661363635735064,
+          "Accepted": true
+        },
+        {
+          "Distance": 7346.4999998623725,
+          "Time": 34.893181817553334,
+          "Accepted": true
+        },
+        {
+          "Distance": 7595.4999998623725,
+          "Time": 36.02499999937204,
+          "Accepted": true
+        },
+        {
+          "Distance": 7646.4999998623725,
+          "Time": 36.25681818119031,
+          "Accepted": true
+        }
+      ]
+    },
+    {
+      "profile": "Jump",
+      "dt": 0.137,
+      "distances": [
+        182.5,
+        233.5,
+        518,
+        912.5,
+        963.5,
+        1287.5,
+        1324.5,
+        1756.5,
+        1807,
+        2072.8,
+        2139.8,
+        2376.5,
+        2427.5,
+        2712,
+        3106.5,
+        3157.5,
+        3518.5,
+        3575.5,
+        3867.5,
+        3918.5,
+        4152,
+        4213,
+        4420,
+        4518,
+        4717.5,
+        4768.5,
+        5017.5,
+        5068.5,
+        5420.5,
+        5466,
+        5701.5,
+        5766,
+        6005.5,
+        6056.5,
+        6322.5,
+        6359.5,
+        6672.5,
+        6709.5,
+        6995.5,
+        7046.5,
+        7295.5,
+        7346.5,
+        7595.5,
+        7646.5
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.49999999999984,
+      "hits": 3,
+      "accepted": 44,
+      "constantTime": 5.911782345342264,
+      "constantX": 997.792115975298,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 182.49999998307155,
+          "Time": 0.8295454544685072,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.4999998400204,
+          "Time": 1.0613636356364564,
+          "Accepted": true
+        },
+        {
+          "Distance": 517.9999999277295,
+          "Time": 2.8545454542169524,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.4999998699634,
+          "Time": 5.1477272721361995,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.4999998400203,
+          "Time": 5.379545453818276,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 182.49999998307155,
+          "Time": 0.8295454544685072,
+          "Accepted": true
+        },
+        {
+          "Distance": 233.4999998400204,
+          "Time": 1.0613636356364564,
+          "Accepted": true
+        },
+        {
+          "Distance": 517.9999999277295,
+          "Time": 2.8545454542169524,
+          "Accepted": true
+        },
+        {
+          "Distance": 912.4999998699634,
+          "Time": 5.1477272721361995,
+          "Accepted": true
+        },
+        {
+          "Distance": 963.4999998400203,
+          "Time": 5.379545453818276,
+          "Accepted": true
+        },
+        {
+          "Distance": 1287.499999857992,
+          "Time": 7.352272726627239,
+          "Accepted": true
+        },
+        {
+          "Distance": 1324.4999999443285,
+          "Time": 7.520454545201498,
+          "Accepted": true
+        },
+        {
+          "Distance": 1756.4999999206357,
+          "Time": 9.484090908730169,
+          "Accepted": true
+        },
+        {
+          "Distance": 1806.9999998437456,
+          "Time": 9.71363636292612,
+          "Accepted": true
+        },
+        {
+          "Distance": 2072.7999998115592,
+          "Time": 10.921818180961637,
+          "Accepted": true
+        },
+        {
+          "Distance": 2139.799999945372,
+          "Time": 11.226363636115334,
+          "Accepted": true
+        },
+        {
+          "Distance": 2376.4999998038106,
+          "Time": 12.302272726380973,
+          "Accepted": true
+        },
+        {
+          "Distance": 2427.4999998400203,
+          "Time": 12.53409090836374,
+          "Accepted": true
+        },
+        {
+          "Distance": 2711.9999998967937,
+          "Time": 13.827272726803631,
+          "Accepted": true
+        },
+        {
+          "Distance": 3106.499999975472,
+          "Time": 15.62045454534309,
+          "Accepted": true
+        },
+        {
+          "Distance": 3157.4999998400203,
+          "Time": 15.852272726545584,
+          "Accepted": true
+        },
+        {
+          "Distance": 3518.4999999979727,
+          "Time": 17.493181818172648,
+          "Accepted": true
+        },
+        {
+          "Distance": 3575.500000015317,
+          "Time": 17.752272727342383,
+          "Accepted": true
+        },
+        {
+          "Distance": 3867.4999998409144,
+          "Time": 19.079545453822384,
+          "Accepted": true
+        },
+        {
+          "Distance": 3918.4999998400203,
+          "Time": 19.3113636356365,
+          "Accepted": true
+        },
+        {
+          "Distance": 4151.999999827653,
+          "Time": 20.372727271943923,
+          "Accepted": true
+        },
+        {
+          "Distance": 4212.999999990076,
+          "Time": 20.649999999954918,
+          "Accepted": true
+        },
+        {
+          "Distance": 4419.999999800533,
+          "Time": 21.590909090002445,
+          "Accepted": true
+        },
+        {
+          "Distance": 4517.999999938965,
+          "Time": 22.03636363608623,
+          "Accepted": true
+        },
+        {
+          "Distance": 4717.499999856412,
+          "Time": 22.943181817529165,
+          "Accepted": true
+        },
+        {
+          "Distance": 4768.499999840021,
+          "Time": 23.174999999272828,
+          "Accepted": true
+        },
+        {
+          "Distance": 5017.499999936729,
+          "Time": 24.306818181530584,
+          "Accepted": true
+        },
+        {
+          "Distance": 5068.499999840021,
+          "Time": 24.538636362909177,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.499999843001,
+          "Time": 26.138636362922703,
+          "Accepted": true
+        },
+        {
+          "Distance": 5465.999999880999,
+          "Time": 26.34545454491359,
+          "Accepted": true
+        },
+        {
+          "Distance": 5701.499999812751,
+          "Time": 27.415909090057912,
+          "Accepted": true
+        },
+        {
+          "Distance": 5765.999999963999,
+          "Time": 27.709090908927216,
+          "Accepted": true
+        },
+        {
+          "Distance": 6005.5000000029495,
+          "Time": 28.79772727274062,
+          "Accepted": true
+        },
+        {
+          "Distance": 6056.499999840021,
+          "Time": 29.029545453818212,
+          "Accepted": true
+        },
+        {
+          "Distance": 6322.499999810069,
+          "Time": 30.238636362772976,
+          "Accepted": true
+        },
+        {
+          "Distance": 6359.499999944329,
+          "Time": 30.406818181565065,
+          "Accepted": true
+        },
+        {
+          "Distance": 6672.499999909013,
+          "Time": 31.82954545413179,
+          "Accepted": true
+        },
+        {
+          "Distance": 6709.499999944329,
+          "Time": 31.997727272474126,
+          "Accepted": true
+        },
+        {
+          "Distance": 6995.499999885618,
+          "Time": 33.29772727220723,
+          "Accepted": true
+        },
+        {
+          "Distance": 7046.499999840021,
+          "Time": 33.529545453818145,
+          "Accepted": true
+        },
+        {
+          "Distance": 7295.499999936729,
+          "Time": 34.661363636075905,
+          "Accepted": true
+        },
+        {
+          "Distance": 7346.499999840021,
+          "Time": 34.8931818174545,
+          "Accepted": true
+        },
+        {
+          "Distance": 7595.499999936729,
+          "Time": 36.02499999971226,
+          "Accepted": true
+        },
+        {
+          "Distance": 7646.499999840021,
+          "Time": 36.25681818109085,
+          "Accepted": true
+        }
+      ]
+    },
+    {
+      "profile": "Flip",
+      "dt": 0.03333333333333333,
+      "distances": [
+        217,
+        523.5,
+        725,
+        947,
+        1332,
+        1774,
+        2121,
+        2411,
+        2669.5,
+        2871,
+        3141,
+        3561,
+        3902,
+        4152.5,
+        4509,
+        4752,
+        5052,
+        5420.5,
+        5715,
+        6040,
+        6343,
+        6693,
+        7030,
+        7330,
+        7630
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.50000000000099,
+      "hits": 3,
+      "accepted": 25,
+      "constantTime": 7.6854545454545455,
+      "constantX": 1388,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 216.99999987230626,
+          "Time": 0.9863636357832088,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.5000000184234,
+          "Time": 2.8795454546292008,
+          "Accepted": true
+        },
+        {
+          "Distance": 724.9999998971415,
+          "Time": 3.7954545449870025,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.9999999418449,
+          "Time": 4.804545454281101,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.999999862995,
+          "Time": 7.054545453922697,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 216.99999987230626,
+          "Time": 0.9863636357832088,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.5000000184234,
+          "Time": 2.8795454546292008,
+          "Accepted": true
+        },
+        {
+          "Distance": 724.9999998971415,
+          "Time": 3.7954545449870025,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.9999999418449,
+          "Time": 4.804545454281101,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.999999862995,
+          "Time": 7.054545453922697,
+          "Accepted": true
+        },
+        {
+          "Distance": 1773.999999862372,
+          "Time": 9.563636363010785,
+          "Accepted": true
+        },
+        {
+          "Distance": 2120.9999999319107,
+          "Time": 11.1409090905996,
+          "Accepted": true
+        },
+        {
+          "Distance": 2410.99999988224,
+          "Time": 12.459090908555613,
+          "Accepted": true
+        },
+        {
+          "Distance": 2669.499999946812,
+          "Time": 13.634090908849101,
+          "Accepted": true
+        },
+        {
+          "Distance": 2870.999999897141,
+          "Time": 14.5499999995324,
+          "Accepted": true
+        },
+        {
+          "Distance": 3140.9999998226353,
+          "Time": 15.777272726466439,
+          "Accepted": true
+        },
+        {
+          "Distance": 3560.9999999418446,
+          "Time": 17.68636363609925,
+          "Accepted": true
+        },
+        {
+          "Distance": 3901.9999998921744,
+          "Time": 19.23636363587352,
+          "Accepted": true
+        },
+        {
+          "Distance": 4152.499999966681,
+          "Time": 20.37499999984859,
+          "Accepted": true
+        },
+        {
+          "Distance": 4508.999999867339,
+          "Time": 21.995454544851732,
+          "Accepted": true
+        },
+        {
+          "Distance": 4751.999999971647,
+          "Time": 23.099999999871425,
+          "Accepted": true
+        },
+        {
+          "Distance": 5051.999999802768,
+          "Time": 24.463636362740267,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.499999946812,
+          "Time": 26.138636363395175,
+          "Accepted": true
+        },
+        {
+          "Distance": 5714.999999966681,
+          "Time": 27.477272727121964,
+          "Accepted": true
+        },
+        {
+          "Distance": 6039.999999931911,
+          "Time": 28.954545454236783,
+          "Accepted": true
+        },
+        {
+          "Distance": 6342.999999931911,
+          "Time": 30.331818181509636,
+          "Accepted": true
+        },
+        {
+          "Distance": 6692.999999842504,
+          "Time": 31.92272727201248,
+          "Accepted": true
+        },
+        {
+          "Distance": 7030.000000012834,
+          "Time": 33.454545454604855,
+          "Accepted": true
+        },
+        {
+          "Distance": 7329.999999802768,
+          "Time": 34.81818181728635,
+          "Accepted": true
+        },
+        {
+          "Distance": 7629.999999802768,
+          "Time": 36.18181818092268,
+          "Accepted": true
+        }
+      ]
+    },
+    {
+      "profile": "Flip",
+      "dt": 0.016666666666666666,
+      "distances": [
+        217,
+        523.5,
+        725,
+        947,
+        1332,
+        1774,
+        2121,
+        2411,
+        2669.5,
+        2871,
+        3141,
+        3561,
+        3902,
+        4152.5,
+        4509,
+        4752,
+        5052,
+        5420.5,
+        5715,
+        6040,
+        6343,
+        6693,
+        7030,
+        7330,
+        7630
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.49999999999804,
+      "hits": 3,
+      "accepted": 25,
+      "constantTime": 7.685454545454545,
+      "constantX": 1388,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 216.9999999617132,
+          "Time": 0.9863636361896081,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.4999998139476,
+          "Time": 2.879545453699753,
+          "Accepted": true
+        },
+        {
+          "Distance": 725.0000000128332,
+          "Time": 3.7954545455128756,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.9999998822403,
+          "Time": 4.804545454010187,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.999999943091,
+          "Time": 7.054545454286748,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 216.9999999617132,
+          "Time": 0.9863636361896081,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.4999998139476,
+          "Time": 2.879545453699753,
+          "Accepted": true
+        },
+        {
+          "Distance": 725.0000000128332,
+          "Time": 3.7954545455128756,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.9999998822403,
+          "Time": 4.804545454010187,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.999999943091,
+          "Time": 7.054545454286748,
+          "Accepted": true
+        },
+        {
+          "Distance": 1773.999999941845,
+          "Time": 9.563636363372021,
+          "Accepted": true
+        },
+        {
+          "Distance": 2120.999999862372,
+          "Time": 11.140909090283568,
+          "Accepted": true
+        },
+        {
+          "Distance": 2410.9999999815814,
+          "Time": 12.459090909007354,
+          "Accepted": true
+        },
+        {
+          "Distance": 2669.4999998921744,
+          "Time": 13.634090908601058,
+          "Accepted": true
+        },
+        {
+          "Distance": 2871.000000012833,
+          "Time": 14.550000000058676,
+          "Accepted": true
+        },
+        {
+          "Distance": 3140.999999862372,
+          "Time": 15.777272726647602,
+          "Accepted": true
+        },
+        {
+          "Distance": 3560.99999988224,
+          "Time": 17.686363635828812,
+          "Accepted": true
+        },
+        {
+          "Distance": 3902.000000002899,
+          "Time": 19.236363636377227,
+          "Accepted": true
+        },
+        {
+          "Distance": 4152.499999931912,
+          "Time": 20.374999999690857,
+          "Accepted": true
+        },
+        {
+          "Distance": 4508.9999999517795,
+          "Time": 21.99545454523547,
+          "Accepted": true
+        },
+        {
+          "Distance": 4751.999999941845,
+          "Time": 23.099999999735633,
+          "Accepted": true
+        },
+        {
+          "Distance": 5051.999999822636,
+          "Time": 24.46363636282996,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.499999892175,
+          "Time": 26.13863636314582,
+          "Accepted": true
+        },
+        {
+          "Distance": 5714.999999931911,
+          "Time": 27.477272726962642,
+          "Accepted": true
+        },
+        {
+          "Distance": 6039.9999998623725,
+          "Time": 28.954545453919064,
+          "Accepted": true
+        },
+        {
+          "Distance": 6342.9999998623725,
+          "Time": 30.3318181811916,
+          "Accepted": true
+        },
+        {
+          "Distance": 6692.999999902108,
+          "Time": 31.922727272281094,
+          "Accepted": true
+        },
+        {
+          "Distance": 7029.999999802768,
+          "Time": 33.45454545364751,
+          "Accepted": true
+        },
+        {
+          "Distance": 7329.999999822636,
+          "Time": 34.818181817374004,
+          "Accepted": true
+        },
+        {
+          "Distance": 7629.999999822636,
+          "Time": 36.1818181810102,
+          "Accepted": true
+        }
+      ]
+    },
+    {
+      "profile": "Flip",
+      "dt": 0.004166666666666667,
+      "distances": [
+        217,
+        523.5,
+        725,
+        947,
+        1332,
+        1774,
+        2121,
+        2411,
+        2669.5,
+        2871,
+        3141,
+        3561,
+        3902,
+        4152.5,
+        4509,
+        4752,
+        5052,
+        5420.5,
+        5715,
+        6040,
+        6343,
+        6693,
+        7030,
+        7330,
+        7630
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.49999999999836,
+      "hits": 3,
+      "accepted": 25,
+      "constantTime": 7.685454545454545,
+      "constantX": 1388,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 216.9999998425039,
+          "Time": 0.9863636356477461,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.4999999070928,
+          "Time": 2.8795454541231726,
+          "Accepted": true
+        },
+        {
+          "Distance": 724.9999998226356,
+          "Time": 3.7954545446484493,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.9999999617131,
+          "Time": 4.804545454371535,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.9999999865659,
+          "Time": 7.054545454484276,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 216.9999998425039,
+          "Time": 0.9863636356477461,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.4999999070928,
+          "Time": 2.8795454541231726,
+          "Accepted": true
+        },
+        {
+          "Distance": 724.9999998226356,
+          "Time": 3.7954545446484493,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.9999999617131,
+          "Time": 4.804545454371535,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.9999999865659,
+          "Time": 7.054545454484276,
+          "Accepted": true
+        },
+        {
+          "Distance": 1773.9999999815814,
+          "Time": 9.563636363552222,
+          "Accepted": true
+        },
+        {
+          "Distance": 2120.99999988224,
+          "Time": 11.140909090373261,
+          "Accepted": true
+        },
+        {
+          "Distance": 2410.9999999219767,
+          "Time": 12.459090908735842,
+          "Accepted": true
+        },
+        {
+          "Distance": 2669.500000002899,
+          "Time": 13.634090909103803,
+          "Accepted": true
+        },
+        {
+          "Distance": 2870.999999822636,
+          "Time": 14.549999999193616,
+          "Accepted": true
+        },
+        {
+          "Distance": 3140.99999988224,
+          "Time": 15.777272726737403,
+          "Accepted": true
+        },
+        {
+          "Distance": 3560.999999961713,
+          "Time": 17.686363636189764,
+          "Accepted": true
+        },
+        {
+          "Distance": 3902.000000002899,
+          "Time": 19.236363636377146,
+          "Accepted": true
+        },
+        {
+          "Distance": 4152.499999941846,
+          "Time": 20.374999999735973,
+          "Accepted": true
+        },
+        {
+          "Distance": 4508.999999802768,
+          "Time": 21.995454544557727,
+          "Accepted": true
+        },
+        {
+          "Distance": 4751.999999981582,
+          "Time": 23.09999999991555,
+          "Accepted": true
+        },
+        {
+          "Distance": 5051.999999941845,
+          "Time": 24.463636363370775,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.5000000028995,
+          "Time": 26.13863636364765,
+          "Accepted": true
+        },
+        {
+          "Distance": 5714.999999941846,
+          "Time": 27.477272727005968,
+          "Accepted": true
+        },
+        {
+          "Distance": 6039.99999988224,
+          "Time": 28.9545454540072,
+          "Accepted": true
+        },
+        {
+          "Distance": 6342.99999988224,
+          "Time": 30.33181818127939,
+          "Accepted": true
+        },
+        {
+          "Distance": 6692.999999822636,
+          "Time": 31.922727271916937,
+          "Accepted": true
+        },
+        {
+          "Distance": 7029.9999998623725,
+          "Time": 33.45454545391637,
+          "Accepted": true
+        },
+        {
+          "Distance": 7329.999999941845,
+          "Time": 34.818181817914585,
+          "Accepted": true
+        },
+        {
+          "Distance": 7629.999999941845,
+          "Time": 36.18181818155158,
+          "Accepted": true
+        }
+      ]
+    },
+    {
+      "profile": "Flip",
+      "dt": 0.137,
+      "distances": [
+        217,
+        523.5,
+        725,
+        947,
+        1332,
+        1774,
+        2121,
+        2411,
+        2669.5,
+        2871,
+        3141,
+        3561,
+        3902,
+        4152.5,
+        4509,
+        4752,
+        5052,
+        5420.5,
+        5715,
+        6040,
+        6343,
+        6693,
+        7030,
+        7330,
+        7630
+      ],
+      "goals": 18,
+      "total": 31,
+      "time": 37.49999999999992,
+      "hits": 3,
+      "accepted": 25,
+      "constantTime": 7.6854545454545455,
+      "constantX": 1388,
+      "constantStatus": "Eliminated",
+      "constantActions": [
+        {
+          "Distance": 216.999999950587,
+          "Time": 0.9863636361390324,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.4999999381264,
+          "Time": 2.8795454542642105,
+          "Accepted": true
+        },
+        {
+          "Distance": 724.9999998415104,
+          "Time": 3.79545454473414,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.999999913334,
+          "Time": 4.804545454151522,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.9999998023768,
+          "Time": 7.054545453647175,
+          "Accepted": true
+        }
+      ],
+      "laggerActions": [
+        {
+          "Distance": 216.999999950587,
+          "Time": 0.9863636361390324,
+          "Accepted": true
+        },
+        {
+          "Distance": 523.4999999381264,
+          "Time": 2.8795454542642105,
+          "Accepted": true
+        },
+        {
+          "Distance": 724.9999998415104,
+          "Time": 3.79545454473414,
+          "Accepted": true
+        },
+        {
+          "Distance": 946.999999913334,
+          "Time": 4.804545454151522,
+          "Accepted": true
+        },
+        {
+          "Distance": 1331.9999998023768,
+          "Time": 7.054545453647175,
+          "Accepted": true
+        },
+        {
+          "Distance": 1773.9999998142414,
+          "Time": 9.563636362792018,
+          "Accepted": true
+        },
+        {
+          "Distance": 2120.9999998802537,
+          "Time": 11.140909090364806,
+          "Accepted": true
+        },
+        {
+          "Distance": 2410.9999998558155,
+          "Time": 12.45909090843555,
+          "Accepted": true
+        },
+        {
+          "Distance": 2669.499999865948,
+          "Time": 13.63409090848162,
+          "Accepted": true
+        },
+        {
+          "Distance": 2870.9999998415105,
+          "Time": 14.54999999927963,
+          "Accepted": true
+        },
+        {
+          "Distance": 3141.0000000002665,
+          "Time": 15.777272727273978,
+          "Accepted": true
+        },
+        {
+          "Distance": 3561.000000005482,
+          "Time": 17.6863636363886,
+          "Accepted": true
+        },
+        {
+          "Distance": 3901.999999924957,
+          "Time": 19.23636363602258,
+          "Accepted": true
+        },
+        {
+          "Distance": 4152.499999925553,
+          "Time": 20.374999999661643,
+          "Accepted": true
+        },
+        {
+          "Distance": 4508.999999809474,
+          "Time": 21.995454544588547,
+          "Accepted": true
+        },
+        {
+          "Distance": 4751.999999981433,
+          "Time": 23.099999999915635,
+          "Accepted": true
+        },
+        {
+          "Distance": 5052.000000001311,
+          "Time": 24.463636363642337,
+          "Accepted": true
+        },
+        {
+          "Distance": 5420.499999944627,
+          "Time": 26.138636363384677,
+          "Accepted": true
+        },
+        {
+          "Distance": 5714.999999822288,
+          "Time": 27.477272726464957,
+          "Accepted": true
+        },
+        {
+          "Distance": 6039.999999819606,
+          "Time": 28.95454545372547,
+          "Accepted": true
+        },
+        {
+          "Distance": 6342.999999983519,
+          "Time": 30.331818181743273,
+          "Accepted": true
+        },
+        {
+          "Distance": 6692.999999857902,
+          "Time": 31.922727272081367,
+          "Accepted": true
+        },
+        {
+          "Distance": 7029.99999995476,
+          "Time": 33.45454545433979,
+          "Accepted": true
+        },
+        {
+          "Distance": 7330.000000001311,
+          "Time": 34.818181818187725,
+          "Accepted": true
+        },
+        {
+          "Distance": 7630.000000001311,
+          "Time": 36.18181818182406,
+          "Accepted": true
+        }
+      ]
+    }
+  ],
+  "hashes": {
+    "Assets/Scripts/Core\\ContinuousMotion.cs": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+    "Assets/Scripts/Core\\FinishTargetGeometry.cs": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285",
+    "Assets/Scripts/Core\\FlightSettings.cs": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+    "Assets/Scripts/Core\\MotionProfiles.cs": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417",
+    "Assets/Scripts/Core\\ObstacleGeometry.cs": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+    "Assets/Scripts/Core\\RaceSimulation.cs": "57AE382F08BF73A0BDC1A9726248DD08D022BDD6F2AE7D5982C52CD8304604F2",
+    "Assets/Scripts/Core\\TracksControl.cs": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+    "Assets/Scripts/Core\\TracksFull.cs": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79",
+    "Assets/Scripts/Core\\TracksMixed.cs": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156",
+    "Assets/Scripts/Core\\TracksMixedStage.cs": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+    "Assets/Scripts/Core\\TracksRhythm.cs": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7",
+    "Assets/Scripts/Core\\TracksRhythmFull.cs": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6",
+    "Assets/Scripts/Core\\TracksRhythmNegatives.cs": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+    "Assets/Scripts/Core\\TracksTune.cs": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+    "Assets/Scripts/Core\\TracksV3.cs": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+    "Assets/Scripts/Core\\TracksV4.cs": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB",
+    "Tools/BotPrototype/SharedProbe.cs": "4F0BCE574E7901FBD726109848DE04C4F1EEA67E525C96E96C35FF3022E6A7F5",
+    "Tools/BotPrototype/CascadeBound.cs": "F690B52F9C1EBD5AEC30C2F64A7487A7EA3B00D234B53284E440B77C5A69D8C1"
+  }
+}

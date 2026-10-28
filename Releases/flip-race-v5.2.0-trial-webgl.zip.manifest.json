@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-28T18:06:09.073Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v5.2.0-final-text",
+  "fileCount": 5,
+  "totalBytes": 9092229,
+  "totalMiB": 8.671,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v5.2.0-final-text.data.unityweb",
+    "Build/WebGL-v5.2.0-final-text.framework.js.unityweb",
+    "Build/WebGL-v5.2.0-final-text.loader.js",
+    "Build/WebGL-v5.2.0-final-text.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v5.2.0-final-text.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v5.2.0-final-text.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v5.2.0-final-text.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v5.2.0-final-text.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v5.2.0-final-text.data.unityweb",
+      "bytes": 1775057,
+      "sha256": "f4030af2c6662147b6348a00934ff483681e3dbc7d4124a5b56dd9a21d46157d"
+    },
+    {
+      "path": "Build/WebGL-v5.2.0-final-text.framework.js.unityweb",
+      "bytes": 89763,
+      "sha256": "98bed1faba8c67fe9a21cd07f73cce26a2b4d7d0207caeb53e82a142c40a3cdc"
+    },
+    {
+      "path": "Build/WebGL-v5.2.0-final-text.loader.js",
+      "bytes": 39788,
+      "sha256": "a096a3113629d72b393b6ff2424d3859dbb15fd68946e9af901954ebda2ef7c2"
+    },
+    {
+      "path": "Build/WebGL-v5.2.0-final-text.wasm.unityweb",
+      "bytes": 7174809,
+      "sha256": "00d13ece166c6022fdbd631916438abb1625c895907091ee1c05940d5f4a1fdf"
+    },
+    {
+      "path": "index.html",
+      "bytes": 12812,
+      "sha256": "699463f5c7c428ed39833095ffe70fddbc0218950e6e6e346fe6e659dfa6f241"
+    }
+  ],
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks.",
+  "archive": {
+    "path": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-v5.2.0-trial-webgl.zip",
+    "bytes": 8960134,
+    "miB": 8.545,
+    "sha256": "2e078dda8a639a06e39cc8f9f14a22728630ec06a190a5c4b1332e62d0515b10",
+    "entriesVerified": true,
+    "indexAtRoot": true
+  }
+}

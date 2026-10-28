@@ -1,0 +1,68 @@
+All plans: full-long/Jump plans=40 cases=240 immediateSnapshots=1319024
+All plans: full-long/Flip plans=40 cases=480 immediateSnapshots=2557256
+All plans: full-short/Jump plans=40 cases=720 immediateSnapshots=3901924
+All plans: full-short/Flip plans=40 cases=960 immediateSnapshots=5172212
+All plans: full-flow/Jump plans=40 cases=1200 immediateSnapshots=6524663
+All plans: full-flow/Flip plans=39 cases=1434 immediateSnapshots=7810665
+All plans: rhythm-cascade/Jump plans=26 cases=1590 immediateSnapshots=8802602
+All plans: rhythm-cascade/Flip plans=26 cases=1746 immediateSnapshots=9727366
+All plans: mixed-tricks/Jump plans=26 cases=1902 immediateSnapshots=10608853
+All plans: mixed-tricks/Flip plans=26 cases=2058 immediateSnapshots=11481531
+Fixed seeds: full-long/Jump/Novice cases=2098
+Fixed seeds: full-long/Jump/Amateur cases=2138
+Fixed seeds: full-long/Jump/Confident cases=2178
+Fixed seeds: full-long/Jump/Strong cases=2218
+Fixed seeds: full-long/Jump/Master cases=2258
+Fixed seeds: full-long/Flip/Novice cases=2298
+Fixed seeds: full-long/Flip/Amateur cases=2338
+Fixed seeds: full-long/Flip/Confident cases=2378
+Fixed seeds: full-long/Flip/Strong cases=2418
+Fixed seeds: full-long/Flip/Master cases=2458
+Fixed seeds: full-short/Jump/Novice cases=2498
+Fixed seeds: full-short/Jump/Amateur cases=2538
+Fixed seeds: full-short/Jump/Confident cases=2578
+Fixed seeds: full-short/Jump/Strong cases=2618
+Fixed seeds: full-short/Jump/Master cases=2658
+Fixed seeds: full-short/Flip/Novice cases=2698
+Fixed seeds: full-short/Flip/Amateur cases=2738
+Fixed seeds: full-short/Flip/Confident cases=2778
+Fixed seeds: full-short/Flip/Strong cases=2818
+Fixed seeds: full-short/Flip/Master cases=2858
+Fixed seeds: full-flow/Jump/Novice cases=2898
+Fixed seeds: full-flow/Jump/Amateur cases=2938
+Fixed seeds: full-flow/Jump/Confident cases=2978
+Fixed seeds: full-flow/Jump/Strong cases=3018
+Fixed seeds: full-flow/Jump/Master cases=3058
+Fixed seeds: full-flow/Flip/Novice cases=3098
+Fixed seeds: full-flow/Flip/Amateur cases=3138
+Fixed seeds: full-flow/Flip/Confident cases=3178
+Fixed seeds: full-flow/Flip/Strong cases=3218
+Fixed seeds: full-flow/Flip/Master cases=3258
+Fixed seeds: rhythm-cascade/Jump/Novice cases=3298
+Fixed seeds: rhythm-cascade/Jump/Amateur cases=3338
+Fixed seeds: rhythm-cascade/Jump/Confident cases=3378
+Fixed seeds: rhythm-cascade/Jump/Strong cases=3418
+Fixed seeds: rhythm-cascade/Jump/Master cases=3458
+Fixed seeds: rhythm-cascade/Flip/Novice cases=3498
+Fixed seeds: rhythm-cascade/Flip/Amateur cases=3538
+Fixed seeds: rhythm-cascade/Flip/Confident cases=3578
+Fixed seeds: rhythm-cascade/Flip/Strong cases=3618
+Fixed seeds: rhythm-cascade/Flip/Master cases=3658
+Fixed seeds: mixed-tricks/Jump/Novice cases=3698
+Fixed seeds: mixed-tricks/Jump/Amateur cases=3738
+Fixed seeds: mixed-tricks/Jump/Confident cases=3778
+Fixed seeds: mixed-tricks/Jump/Strong cases=3818
+Fixed seeds: mixed-tricks/Jump/Master cases=3858
+Fixed seeds: mixed-tricks/Flip/Novice cases=3898
+Fixed seeds: mixed-tricks/Flip/Amateur cases=3938
+Fixed seeds: mixed-tricks/Flip/Confident cases=3978
+Fixed seeds: mixed-tricks/Flip/Strong cases=4018
+Fixed seeds: mixed-tricks/Flip/Master cases=4058
+PASS runtime actual replay: 4058 cases; 22833691 complete immediate snapshots; 1340330340 field comparisons; maximum replay error 0
+Final evidence audit: 343 finite plans x 2 cameras x 3 frame schedules = 2058 all-plan cases; 50 pair-level libraries x 20 predefined seeds x 2 cameras = 2000 seed cases. No filtering.
+Actual replay: 22,681,980 observed Advance calls and 85,533 bot Press calls, plus human inputs; 22,833,691 immediate complete PlayerState snapshots, 1,340,330,340 field comparisons; exact replay numeric error 0.
+Reference maxima: terminal time 7.05043134985317e-10 seconds; terminal distance 1.55110683408566e-7 units; input-edge time 1.18474829946535e-9 seconds.
+Human successful control: 700 cases all goals/finish; idle and erroneous human controls also included. Ten simultaneous-input-order proofs pass. 309,580 checks confirm personal-terminal minimum margin freezes while human continues.
+Every case includes actual terminalDistance, terminalTime, status, completedIds, effects/recoveries/input acceptance/minimum margin. All 12 Cascade Novice finite plans included under Constant, with actual elimination. Original Complex report named Distance may be absent while numeric shorthand p stores distance; runtime terminalDistance is explicit authoritative evidence.
+Source hashes captured before run and verified unchanged at end: sourceStable = true. Physics/controller runtime proof only; actual WebGL frame performance and UI validation remain separate delivery checks.
+Historical smoke failure was a harness subset-to-production seed mismatch, corrected before final proof; no production failure remained. Successful-human time scheduling was replaced with legal live-distance scheduling and explicit full-goal assertions before final matrix.
