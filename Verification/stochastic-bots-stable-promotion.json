@@ -1,0 +1,48 @@
+{
+  "status": "PASS_STABLE_530_BASE_FORMULA",
+  "url": "http://127.0.0.1:4184/",
+  "previousPid": 148884,
+  "previousCommand": "\"D:\\Program Files\\nodejs\\node.exe\" Tools/serve.mjs Builds/WebGL-v5.2.1-unpacked-final",
+  "previousDirectory": "Builds/WebGL-v5.2.1-unpacked-final",
+  "previous5ActualHttpBodiesVerified": true,
+  "newPid": 149760,
+  "newDirectory": "Builds/WebGL-v5.3.0-base-formula-unpacked-final",
+  "zipSha256": "73618D83B84C35A1147496F49D363551399043A870890869B964416A0AE70703",
+  "independentAcceptance": "Verification/V5-STOCHASTIC-BOTS-CATALYTIC-ACCEPTANCE.md",
+  "oldBuildAndZipPreserved": true,
+  "runtimeBuildZipUnchangedAfterAcceptance": true,
+  "initialAbsoluteOnlyGuardStoppedBeforeMutation": true,
+  "relativeInvocationNowExplicitlyVerifiedWithExactCommandAndAllHttpBytes": true,
+  "actualHttp": [
+    {
+      "path": "Build/WebGL-v5.3.0-trial-base-formula.data.unityweb",
+      "status": 200,
+      "bytes": 1927132,
+      "sha256": "4E0D75361F7D4B39E2552B8A7B0E84837F6AFB7CC743CF8598F8F4E48CE218C9"
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-base-formula.framework.js.unityweb",
+      "status": 200,
+      "bytes": 90939,
+      "sha256": "2EF08F7C3FC88112E6875FF53201085096F45106B6AF2B170F462628E5E851BD"
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-base-formula.loader.js",
+      "status": 200,
+      "bytes": 39788,
+      "sha256": "2035B106C708FD892D163912AB52E2AB639605A8B3048E71ECC8C05A84B33A64"
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-base-formula.wasm.unityweb",
+      "status": 200,
+      "bytes": 7240752,
+      "sha256": "8ED971695D9AB4230073A7D86A8BD6DE3FFBD9FA58430D704A8B159560340AF4"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 13411,
+      "sha256": "77DC2587C53E3E9F7D98ED9EC0705A8D9FCDA06B3043CDDD509E537079ECD021"
+    }
+  ]
+}

@@ -1,0 +1,643 @@
+{
+  "status": "EXISTING_RAW_DIAGNOSTIC_WITNESSES",
+  "sourceJson": "Verification/stochastic-bots-training-initial.json",
+  "sourceJsonSha256": "715C857AA5C4C3EE39D379AFF4204485356F7FDBE8B9D65844CCA9B83F1F30B9",
+  "assemblySha256": "0685B469A66930930EFEA185FDBEA632D2AE3CAAA974AAFAADB0D7111788DB09",
+  "manifestSha256": "615A50EA08B28AE3C842ECAFB4C6766E2D343E525F4439C8F3B1EA8B9A014B54",
+  "controllerSourceSha256": "3CF865EFF56CD7D24A5888BBF8362AC370D6933B3667E14BDF990032436873D0",
+  "currentControllerIsDifferent": "EB0C4B445CD6DCE8EC421BB5B43194120D91164D4A816B13796ECDC696D963B9",
+  "heldOutSeedsRun": false,
+  "newRaces": 0,
+  "parameterChanges": 0,
+  "derivationScriptSha256": "06CC8CEB31ADD2CEE60F94D8E3F2B6DB90EF83E2D4A1CA59532D6CED4F339190",
+  "geometryReference": {
+    "path": "Verification/stochastic-bots-map.json",
+    "sha256": "E0ECDEBCA751B9AC6CC95E65957064055C832186883C4876B0D35B3EA5AAA763",
+    "unchangedGeometrySourceChecks": [
+      {
+        "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+        "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+        "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/StochasticTrackMap.cs",
+        "sha256": "374384E8DF23CBC828355E7065FA30127750D38DA51376855DFD9FFAD092470D",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksControl.cs",
+        "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksFull.cs",
+        "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksMixed.cs",
+        "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+        "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksRhythm.cs",
+        "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+        "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+        "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksTune.cs",
+        "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksV3.cs",
+        "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+        "matches": true
+      },
+      {
+        "path": "Assets/Scripts/Core/TracksV4.cs",
+        "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB",
+        "matches": true
+      }
+    ]
+  },
+  "interpretation": "Five intentionally selected minimal diagnostic witnesses from exploratory TRAINING only. They neither prove legitimate incompatibility nor identify an execution defect. SelectedInputs/actual action chronology were not recorded; missing values are explicit. Original source publication is immutable; a current-controller reproduction must name its different hash.",
+  "reproduction": "Original initial CreateInitial(track,exactPreset,difficulty,uintSeed), actual CreateStochasticBotRace Lagger, ordinary Press human0, controller(game,1), Advance(1/60) until bot terminal. Use recorded seed/settings and name original3CF865 vs repairedEB0C4B source. No reconstruction or replay was executed by this extractor.",
+  "witnesses": [
+    {
+      "pattern": "CascadeChosenNoviceAvoidHit",
+      "caseId": "rhythm-cascade/Chosen/Novice/40",
+      "seed": 40,
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "frameSeconds": 0.016666666666666666,
+      "human": "idle",
+      "rawCaseIndex": 6040,
+      "rawJsonPointer": "/cases/6040",
+      "settings": {
+        "cohortId": "rhythm-cascade/Chosen/Novice",
+        "trackId": "rhythm-cascade",
+        "profileId": "Chosen",
+        "difficulty": "Novice",
+        "quality": 0.5,
+        "collectProbability": 0.5,
+        "hitProbability": 0.14047619047619048,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 10.5,
+        "targetMeanTime": 36
+      },
+      "target": {
+        "id": "obstacle:rhythm-cascade-m2-gate",
+        "kind": "Obstacle",
+        "intent": "avoid",
+        "controllerOutcome": "hit",
+        "actualOutcome": "hit",
+        "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+        "probability": 0.14047619047619048,
+        "roll": 0.7993544555502012,
+        "atDistance": 609.9999998410543,
+        "atTime": 2.772727272004778,
+        "horizonEndDistance": 1609.9999998410544,
+        "resolved": true,
+        "matched": false,
+        "initiallySelectedInputCount": 3,
+        "selectedInputs": null,
+        "selectedInputsAvailability": "NOT_RECORDED: initial raw sampler preserves only initiallySelectedInputCount, not the array or emitted press tape; reproduce from exact seed/source to obtain it."
+      },
+      "targetOpportunity": {
+        "id": "obstacle:rhythm-cascade-m2-gate",
+        "kind": "Obstacle",
+        "position": 990,
+        "endPosition": 1132.0000001,
+        "obstacleId": "rhythm-cascade-m2-gate"
+      },
+      "minimalSelection": {
+        "matchingIntentions": 160,
+        "priorDisruptionDecisions": 1,
+        "rank": "fewest earlier-decided hit/skip/failed intentions, then earliest physical opportunity position, then lowest seed/profile. Diagnostic selection only, not cohort filtering."
+      },
+      "priorRelevantDecisions": [
+        {
+          "id": "positive:rhythm-cascade-m1-pad",
+          "kind": "Positive",
+          "intent": "skip",
+          "controllerOutcome": "missed",
+          "actualOutcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.7738749358104542,
+          "atDistance": 301.9999998410543,
+          "atTime": 1.3727272720047843,
+          "horizonEndDistance": 1301.9999998410544,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 1
+        }
+      ],
+      "definitelyPriorFacts": {
+        "hitIds": [],
+        "failedRewardIds": [],
+        "settledSkippedGoalIds": [],
+        "derivation": "Final raw sets plus unchanged map EndPosition < target decision AtDistance-2e-7 prove these contacts/windows precede the decision. No precise event timestamp or execution-state projection is inferred."
+      },
+      "terminal": {
+        "status": "Finished",
+        "time": 35.84999999999858,
+        "distance": 7920.0,
+        "collisions": 2,
+        "boostsEarned": 3,
+        "fullFinish": 1,
+        "completedGoals": 23,
+        "totalGoals": 31,
+        "hitIds": [
+          "rhythm-cascade-m11-gate",
+          "rhythm-cascade-m2-gate"
+        ],
+        "failedRewardIds": null
+      },
+      "limits": "AtDistance/AtTime refer to intention/planning, not actual collision/collection/Press times. Reason is a bounded-search explanation, not proof of mathematical incompatibility. No new simulation or causal diagnosis was performed."
+    },
+    {
+      "pattern": "CascadeFastNoviceAvoidHit",
+      "caseId": "rhythm-cascade/FastFlip/Novice/17",
+      "seed": 17,
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "frameSeconds": 0.016666666666666666,
+      "human": "idle",
+      "rawCaseIndex": 7017,
+      "rawJsonPointer": "/cases/7017",
+      "settings": {
+        "cohortId": "rhythm-cascade/FastFlip/Novice",
+        "trackId": "rhythm-cascade",
+        "profileId": "FastFlip",
+        "difficulty": "Novice",
+        "quality": 0.5,
+        "collectProbability": 0.5,
+        "hitProbability": 0.14047619047619048,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 10.5,
+        "targetMeanTime": 36
+      },
+      "target": {
+        "id": "obstacle:rhythm-cascade-m2-gate",
+        "kind": "Obstacle",
+        "intent": "avoid",
+        "controllerOutcome": "hit",
+        "actualOutcome": "hit",
+        "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+        "probability": 0.14047619047619048,
+        "roll": 0.39775250491220504,
+        "atDistance": 609.9999998410543,
+        "atTime": 3.2727272720047775,
+        "horizonEndDistance": 1609.9999998410544,
+        "resolved": true,
+        "matched": false,
+        "initiallySelectedInputCount": 5,
+        "selectedInputs": null,
+        "selectedInputsAvailability": "NOT_RECORDED: initial raw sampler preserves only initiallySelectedInputCount, not the array or emitted press tape; reproduce from exact seed/source to obtain it."
+      },
+      "targetOpportunity": {
+        "id": "obstacle:rhythm-cascade-m2-gate",
+        "kind": "Obstacle",
+        "position": 990,
+        "endPosition": 1132.0000001,
+        "obstacleId": "rhythm-cascade-m2-gate"
+      },
+      "minimalSelection": {
+        "matchingIntentions": 127,
+        "priorDisruptionDecisions": 1,
+        "rank": "fewest earlier-decided hit/skip/failed intentions, then earliest physical opportunity position, then lowest seed/profile. Diagnostic selection only, not cohort filtering."
+      },
+      "priorRelevantDecisions": [
+        {
+          "id": "obstacle:rhythm-cascade-m0-gate",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "controllerOutcome": "hit",
+          "actualOutcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.14047619047619048,
+          "roll": 0.07056165661197156,
+          "atDistance": 0,
+          "atTime": 0,
+          "horizonEndDistance": 1000,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 2
+        }
+      ],
+      "definitelyPriorFacts": {
+        "hitIds": [
+          "rhythm-cascade-m0-gate"
+        ],
+        "failedRewardIds": [],
+        "settledSkippedGoalIds": [],
+        "derivation": "Final raw sets plus unchanged map EndPosition < target decision AtDistance-2e-7 prove these contacts/windows precede the decision. No precise event timestamp or execution-state projection is inferred."
+      },
+      "terminal": {
+        "status": "Finished",
+        "time": 37.349999999998495,
+        "distance": 7920.0,
+        "collisions": 5,
+        "boostsEarned": 3,
+        "fullFinish": 1,
+        "completedGoals": 20,
+        "totalGoals": 31,
+        "hitIds": [
+          "rhythm-cascade-m0-gate",
+          "rhythm-cascade-m2-gate",
+          "rhythm-cascade-m4-exit-gate",
+          "rhythm-cascade-m4-stone",
+          "rhythm-cascade-m6-pad-stone"
+        ],
+        "failedRewardIds": "rhythm-cascade-m4-before"
+      },
+      "limits": "AtDistance/AtTime refer to intention/planning, not actual collision/collection/Press times. Reason is a bounded-search explanation, not proof of mathematical incompatibility. No new simulation or causal diagnosis was performed."
+    },
+    {
+      "pattern": "CascadeFastNoviceFinishMiss",
+      "caseId": "rhythm-cascade/FastFlip/Novice/72",
+      "seed": 72,
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "frameSeconds": 0.016666666666666666,
+      "human": "idle",
+      "rawCaseIndex": 7072,
+      "rawJsonPointer": "/cases/7072",
+      "settings": {
+        "cohortId": "rhythm-cascade/FastFlip/Novice",
+        "trackId": "rhythm-cascade",
+        "profileId": "FastFlip",
+        "difficulty": "Novice",
+        "quality": 0.5,
+        "collectProbability": 0.5,
+        "hitProbability": 0.14047619047619048,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 10.5,
+        "targetMeanTime": 36
+      },
+      "target": {
+        "id": "finish:rhythm-cascade-finish",
+        "kind": "Finish",
+        "intent": "collect",
+        "controllerOutcome": "missed",
+        "actualOutcome": "missed",
+        "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+        "probability": 0.5,
+        "roll": 0.4698264467297122,
+        "atDistance": 7399.999999841054,
+        "atTime": 32.83636363564163,
+        "horizonEndDistance": 7920,
+        "resolved": true,
+        "matched": false,
+        "initiallySelectedInputCount": 2,
+        "selectedInputs": null,
+        "selectedInputsAvailability": "NOT_RECORDED: initial raw sampler preserves only initiallySelectedInputCount, not the array or emitted press tape; reproduce from exact seed/source to obtain it."
+      },
+      "targetOpportunity": {
+        "id": "finish:rhythm-cascade-finish",
+        "kind": "Finish",
+        "position": 7780,
+        "endPosition": 7806,
+        "obstacleId": null
+      },
+      "minimalSelection": {
+        "matchingIntentions": 3,
+        "priorDisruptionDecisions": 5,
+        "rank": "fewest earlier-decided hit/skip/failed intentions, then earliest physical opportunity position, then lowest seed/profile. Diagnostic selection only, not cohort filtering."
+      },
+      "priorRelevantDecisions": [
+        {
+          "id": "positive:rhythm-cascade-m4-before",
+          "kind": "Positive",
+          "intent": "skip",
+          "controllerOutcome": "missed",
+          "actualOutcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.7629045009380206,
+          "atDistance": 1395.9999998768071,
+          "atTime": 5.939596458322249,
+          "horizonEndDistance": 2395.999999876807,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 1
+        },
+        {
+          "id": "obstacle:rhythm-cascade-m5-gate",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "controllerOutcome": "hit",
+          "actualOutcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.14047619047619048,
+          "roll": 0.053987213992513716,
+          "atDistance": 2025.9999998807907,
+          "atTime": 8.609090908549325,
+          "horizonEndDistance": 3025.9999998807907,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 4
+        },
+        {
+          "id": "positive:rhythm-cascade-m13-after-ring",
+          "kind": "Positive",
+          "intent": "skip",
+          "controllerOutcome": "missed",
+          "actualOutcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.8084001211682335,
+          "atDistance": 5334.999999890724,
+          "atTime": 23.249999999502872,
+          "horizonEndDistance": 6334.999999890724,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 4
+        },
+        {
+          "id": "positive:rhythm-cascade-m15-chain-2",
+          "kind": "Positive",
+          "intent": "skip",
+          "controllerOutcome": "missed",
+          "actualOutcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.8321512622060254,
+          "atDistance": 6328.999999841054,
+          "atTime": 27.768181817459435,
+          "horizonEndDistance": 7328.999999841054,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 2
+        },
+        {
+          "id": "obstacle:rhythm-cascade-m17-gate",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "controllerOutcome": "hit",
+          "actualOutcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.14047619047619048,
+          "roll": 0.1390155676053837,
+          "atDistance": 6944.999999841054,
+          "atTime": 30.268181817459602,
+          "horizonEndDistance": 7920,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 1
+        }
+      ],
+      "definitelyPriorFacts": {
+        "hitIds": [
+          "rhythm-cascade-m5-gate"
+        ],
+        "failedRewardIds": [],
+        "settledSkippedGoalIds": [
+          "positive:rhythm-cascade-m4-before",
+          "positive:rhythm-cascade-m13-after-ring",
+          "positive:rhythm-cascade-m15-chain-2"
+        ],
+        "derivation": "Final raw sets plus unchanged map EndPosition < target decision AtDistance-2e-7 prove these contacts/windows precede the decision. No precise event timestamp or execution-state projection is inferred."
+      },
+      "terminal": {
+        "status": "Finished",
+        "time": 35.19999999999861,
+        "distance": 7920.0,
+        "collisions": 2,
+        "boostsEarned": 6,
+        "fullFinish": 0,
+        "completedGoals": 25,
+        "totalGoals": 31,
+        "hitIds": [
+          "rhythm-cascade-m17-gate",
+          "rhythm-cascade-m5-gate"
+        ],
+        "failedRewardIds": null
+      },
+      "limits": "AtDistance/AtTime refer to intention/planning, not actual collision/collection/Press times. Reason is a bounded-search explanation, not proof of mathematical incompatibility. No new simulation or causal diagnosis was performed."
+    },
+    {
+      "pattern": "MixedFastNoviceAvoidHit",
+      "caseId": "mixed-tricks/FastFlip/Novice/48",
+      "seed": 48,
+      "trackId": "mixed-tricks",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "camera": "Lagger",
+      "frameSeconds": 0.016666666666666666,
+      "human": "idle",
+      "rawCaseIndex": 9048,
+      "rawJsonPointer": "/cases/9048",
+      "settings": {
+        "cohortId": "mixed-tricks/FastFlip/Novice",
+        "trackId": "mixed-tricks",
+        "profileId": "FastFlip",
+        "difficulty": "Novice",
+        "quality": 0.5,
+        "collectProbability": 0.5,
+        "hitProbability": 0.26818181818181813,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 5.5,
+        "targetMeanTime": 36
+      },
+      "target": {
+        "id": "obstacle:mixed-tricks-final-offset",
+        "kind": "Obstacle",
+        "intent": "avoid",
+        "controllerOutcome": "hit",
+        "actualOutcome": "hit",
+        "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+        "probability": 0.26818181818181813,
+        "roll": 0.8663411001907662,
+        "atDistance": 6879.999999841054,
+        "atTime": 29.17272727200497,
+        "horizonEndDistance": 7879.999999841054,
+        "resolved": true,
+        "matched": false,
+        "initiallySelectedInputCount": 3,
+        "selectedInputs": null,
+        "selectedInputsAvailability": "NOT_RECORDED: initial raw sampler preserves only initiallySelectedInputCount, not the array or emitted press tape; reproduce from exact seed/source to obtain it."
+      },
+      "targetOpportunity": {
+        "id": "obstacle:mixed-tricks-final-offset",
+        "kind": "Obstacle",
+        "position": 7260,
+        "endPosition": 7402.0000001,
+        "obstacleId": "mixed-tricks-final-offset"
+      },
+      "minimalSelection": {
+        "matchingIntentions": 27,
+        "priorDisruptionDecisions": 2,
+        "rank": "fewest earlier-decided hit/skip/failed intentions, then earliest physical opportunity position, then lowest seed/profile. Diagnostic selection only, not cohort filtering."
+      },
+      "priorRelevantDecisions": [
+        {
+          "id": "positive:mixed-tricks-wide-pad",
+          "kind": "Positive",
+          "intent": "skip",
+          "controllerOutcome": "missed",
+          "actualOutcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.5886970014544204,
+          "atDistance": 4919.999999821186,
+          "atTime": 20.56363636282284,
+          "horizonEndDistance": 5919.999999821186,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 2
+        },
+        {
+          "id": "positive:mixed-tricks-ceiling-low-reward",
+          "kind": "Positive",
+          "intent": "skip",
+          "controllerOutcome": "missed",
+          "actualOutcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.7893501118524,
+          "atDistance": 6519.999999841054,
+          "atTime": 27.536363635641127,
+          "horizonEndDistance": 7519.999999841054,
+          "resolved": true,
+          "matched": true,
+          "initiallySelectedInputCount": 4
+        }
+      ],
+      "definitelyPriorFacts": {
+        "hitIds": [],
+        "failedRewardIds": [],
+        "settledSkippedGoalIds": [
+          "positive:mixed-tricks-wide-pad"
+        ],
+        "derivation": "Final raw sets plus unchanged map EndPosition < target decision AtDistance-2e-7 prove these contacts/windows precede the decision. No precise event timestamp or execution-state projection is inferred."
+      },
+      "terminal": {
+        "status": "Finished",
+        "time": 34.14999999999867,
+        "distance": 7920.0,
+        "collisions": 1,
+        "boostsEarned": 7,
+        "fullFinish": 1,
+        "completedGoals": 18,
+        "totalGoals": 21,
+        "hitIds": "mixed-tricks-final-offset",
+        "failedRewardIds": null
+      },
+      "limits": "AtDistance/AtTime refer to intention/planning, not actual collision/collection/Press times. Reason is a bounded-search explanation, not proof of mathematical incompatibility. No new simulation or causal diagnosis was performed."
+    },
+    {
+      "pattern": "FlowStrongHitAvoided",
+      "caseId": "full-flow/Chosen/Strong/52",
+      "seed": 52,
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "difficulty": "Strong",
+      "camera": "Lagger",
+      "frameSeconds": 0.016666666666666666,
+      "human": "idle",
+      "rawCaseIndex": 4652,
+      "rawJsonPointer": "/cases/4652",
+      "settings": {
+        "cohortId": "full-flow/Chosen/Strong",
+        "trackId": "full-flow",
+        "profileId": "Chosen",
+        "difficulty": "Strong",
+        "quality": 0.9,
+        "collectProbability": 0.9,
+        "hitProbability": 0.04916666666666665,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 33.64
+      },
+      "target": {
+        "id": "obstacle:full-flow-3-standard-pad",
+        "kind": "Obstacle",
+        "intent": "hit",
+        "controllerOutcome": "avoided",
+        "actualOutcome": "avoided",
+        "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+        "probability": 0.04916666666666665,
+        "roll": 0.040009411866776645,
+        "atDistance": 769.9999998479195,
+        "atTime": 3.3660651129762145,
+        "horizonEndDistance": 1769.9999998479195,
+        "resolved": true,
+        "matched": false,
+        "initiallySelectedInputCount": 2,
+        "selectedInputs": null,
+        "selectedInputsAvailability": "NOT_RECORDED: initial raw sampler preserves only initiallySelectedInputCount, not the array or emitted press tape; reproduce from exact seed/source to obtain it."
+      },
+      "targetOpportunity": {
+        "id": "obstacle:full-flow-3-standard-pad",
+        "kind": "Obstacle",
+        "position": 1150,
+        "endPosition": 1228.0000001,
+        "obstacleId": "full-flow-3-standard-pad"
+      },
+      "minimalSelection": {
+        "matchingIntentions": 48,
+        "priorDisruptionDecisions": 0,
+        "rank": "fewest earlier-decided hit/skip/failed intentions, then earliest physical opportunity position, then lowest seed/profile. Diagnostic selection only, not cohort filtering."
+      },
+      "priorRelevantDecisions": [],
+      "definitelyPriorFacts": {
+        "hitIds": [],
+        "failedRewardIds": [],
+        "settledSkippedGoalIds": [],
+        "derivation": "Final raw sets plus unchanged map EndPosition < target decision AtDistance-2e-7 prove these contacts/windows precede the decision. No precise event timestamp or execution-state projection is inferred."
+      },
+      "terminal": {
+        "status": "Finished",
+        "time": 33.04999999999876,
+        "distance": 7920.0,
+        "collisions": 0,
+        "boostsEarned": 9,
+        "fullFinish": 1,
+        "completedGoals": 22,
+        "totalGoals": 22,
+        "hitIds": null,
+        "failedRewardIds": null
+      },
+      "limits": "AtDistance/AtTime refer to intention/planning, not actual collision/collection/Press times. Reason is a bounded-search explanation, not proof of mathematical incompatibility. No new simulation or causal diagnosis was performed."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# Local stochastic controller targeted checks
+
+Run from the Unity repository:
+
+    dotnet run --project Tools/StochasticLocalProbe/StochasticLocalProbe.csproj -- --master-variation
+    dotnet run --project Tools/StochasticLocalProbe/StochasticLocalProbe.csproj -- --performance
+
+Master check declares seeds0..11 and30/60/irregular cadences on Cascade/Mixed and both profiles (144 runs). It requires at least two distinct ACTUAL emitted input-distance signatures per pair, cadence equality, Master9 complete ordinary pulses/full finish benefit/zero hits or slows, source-versus-ordinary replay immediately after each planning call, and both actual horizon checks. Separate shared-world/Constant matrices remain required. CPU observations include every Plan and never enter RNG/scoring.
+
+Requested horizon is1000. MaximumTrialHorizon observes actual distance extent from the candidate origin after EVERY forecast Advance, before any rollback; MaximumTrialOvershoot observes actual overrun beyond that candidate's requested endpoint. A step lasts at most.125s and speed is at most440, hence every trial extent is at most requested+55, globally1055. Pointwise internal assertions enforce both bounds, and ForecastObservations must equal ForecastSteps. MaximumObservedHorizon remains an explicitly documented compatibility alias for REQUESTED horizon. Discarded effects/events/clocks are not used for scoring; a deep checkpoint restores the branch before safe fallback. The live world remains ordinary Press/Advance at MaxSlice1/120, unchanged tolerance2e-7 and physical state.
+
+Master evaluates at most13 local combinations: baseline plus nearest single input or adjacent pair shifted by±2/6/12. Both original and shifted positions of each changed edge must occur before the next undecided spatial lead. This prevents a negative retime from being emitted early and then resurrected at its original reference position by the next plan. All certain q1 local future goals are constrained without creating early decisions or drawing rolls. Terminal Master forecasts must serve every ordinary pulse and full finish pulse. Only actually validated all-clean combinations receive zero score; stable per-candidate hash selects timing. A missing viable variant is a limitation to report, not a fabricated timing window.
+
+Per-request diagnostics identify only mismatched IDs; LastPlanningFailure describes a whole-plan problem. Physically met intentions clear prior reasons. No actual outcome, reward set or physical effect is rewritten by diagnostics. Old reports are historical; this tool writes only its own current targeted JSON files.

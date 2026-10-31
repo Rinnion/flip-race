@@ -1,0 +1,38 @@
+{
+  "studyId": "cascade-confirm-k075-k085",
+  "phase": "Training",
+  "tracks": [
+    "rhythm-cascade"
+  ],
+  "profiles": [
+    "Chosen",
+    "FastFlip"
+  ],
+  "levels": [
+    "Novice",
+    "Amateur",
+    "Confident",
+    "Strong"
+  ],
+  "seedRanges": [
+    {
+      "start": 0,
+      "count": 200
+    }
+  ],
+  "kByPair": [
+    {
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "k": 0.75
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "k": 0.85
+    }
+  ],
+  "camera": "Lagger",
+  "humanInput": "Idle",
+  "recordSelectedInputs": false
+}

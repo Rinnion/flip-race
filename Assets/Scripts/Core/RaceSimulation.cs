@@ -199,6 +199,9 @@ namespace FlipRace.Core
                 ? Math.Max(0, effect.Elapsed - effect.CompletedPulses * effect.PulseDuration) : 0;
         }
 
+        // Snapshot shell copies every scalar; RaceSnapshot replaces mutable references.
+        internal PlayerState SnapshotShell() { return (PlayerState)MemberwiseClone(); }
+
         public PlayerState(int id) { Id = id; CharacterIndex = id; }
     }
 
@@ -208,8 +211,10 @@ namespace FlipRace.Core
         public readonly bool IsSolo;
         public readonly bool IsBot;
         public readonly BotPlan BotPlan;
-        public BotDifficulty BotDifficulty { get { return BotPlan == null ? BotDifficulty.Novice : BotPlan.Difficulty; } }
-        public int BotSeed { get { return BotPlan == null ? 0 : BotPlan.Seed; } }
+        public readonly StochasticBotSettings StochasticBot;
+        public BotDifficulty BotDifficulty { get { return StochasticBot != null ? StochasticBot.Difficulty : BotPlan == null ? BotDifficulty.Novice : BotPlan.Difficulty; } }
+        // Preserve the legacy signed API; new callers read StochasticBot.Seed as uint.
+        public int BotSeed { get { return StochasticBot != null ? unchecked((int)StochasticBot.Seed) : BotPlan == null ? 0 : BotPlan.Seed; } }
         public bool UsesSharedRaceCamera { get { return IsParty || IsSolo || IsBot; } }
         public readonly PartyCamera PartyCamera;
         public readonly double PartyCameraStartLeft, PartyWindowWidth, PartyCameraSpeed;
@@ -226,9 +231,10 @@ namespace FlipRace.Core
             }
         }
         public GameState() { }
-        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo, BotPlan botPlan = null)
+        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo, BotPlan botPlan = null, StochasticBotSettings stochasticBot = null)
         {
-            IsParty = !solo && botPlan == null; IsSolo = solo; IsBot = botPlan != null; BotPlan = botPlan; PartyCamera = camera; PartyCameraStartLeft = startLeft;
+            if (botPlan != null && stochasticBot != null) throw new ArgumentException("Only one bot metadata model may be supplied.");
+            IsParty = !solo && botPlan == null && stochasticBot == null; IsSolo = solo; IsBot = botPlan != null || stochasticBot != null; BotPlan = botPlan; StochasticBot = stochasticBot; PartyCamera = camera; PartyCameraStartLeft = startLeft;
             PartyWindowWidth = windowWidth; PartyCameraSpeed = track.Length / 36;
             PartyLastCameraLeft = startLeft;
         }
@@ -244,6 +250,9 @@ namespace FlipRace.Core
         // null before a finish, boxed player ID for a winner, or "tie".
         public object Winner;
         public double? WinnerAt;
+
+        // Includes readonly race flags and camera state without restarting the race.
+        internal GameState SnapshotShell() { return (GameState)MemberwiseClone(); }
     }
 
     public static class Tracks
@@ -462,8 +471,20 @@ namespace FlipRace.Core
                     throw new ArgumentException("Selected bot tape differs from its catalog.", nameof(selectedPlan));
             return CreateSharedRace(track, flight, 2, camera, cameraStartLeft, windowWidth, false, selectedPlan);
         }
+        public static GameState CreateStochasticBotRace(Track track, FlightSettings flight, BotDifficulty difficulty, uint seed,
+            PartyCamera camera = PartyCamera.Constant, double cameraStartLeft = -288.8, double windowWidth = 1520)
+        {
+            return CreateStochasticBotRace(track, flight, StochasticBotSettings.CreateInitial(track, flight, difficulty, seed), camera, cameraStartLeft, windowWidth);
+        }
+        public static GameState CreateStochasticBotRace(Track track, FlightSettings flight, StochasticBotSettings settings,
+            PartyCamera camera = PartyCamera.Constant, double cameraStartLeft = -288.8, double windowWidth = 1520)
+        {
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
+            settings.RequireCompatible(track, flight);
+            return CreateSharedRace(track, flight, 2, camera, cameraStartLeft, windowWidth, false, null, settings);
+        }
         private static GameState CreateSharedRace(Track track, FlightSettings flight, int playerCount,
-            PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo, BotPlan botPlan = null)
+            PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo, BotPlan botPlan = null, StochasticBotSettings stochasticBot = null)
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (flight == null) throw new ArgumentNullException(nameof(flight));
@@ -475,11 +496,11 @@ namespace FlipRace.Core
                 throw new ArgumentOutOfRangeException(nameof(windowWidth));
             if (double.IsNaN(track.Length) || double.IsInfinity(track.Length) || track.Length <= 0)
                 throw new ArgumentOutOfRangeException(nameof(track));
-            var game = new GameState(track, camera, cameraStartLeft, windowWidth, solo, botPlan)
-            { Mode = botPlan != null ? "bot" : solo ? "solo" : "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
+            var game = new GameState(track, camera, cameraStartLeft, windowWidth, solo, botPlan, stochasticBot)
+            { Mode = botPlan != null || stochasticBot != null ? "bot" : solo ? "solo" : "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
             for (int i = 0; i < playerCount; i++)
                 game.Players[i] = new PlayerState(i) { AirFlipAvailable = SupportsAirFlip(flight) };
-            if (botPlan != null) game.Players[1].Ready = true;
+            if (botPlan != null || stochasticBot != null) game.Players[1].Ready = true;
             return game;
         }
 
@@ -499,6 +520,19 @@ namespace FlipRace.Core
             game.Players[playerIndex].CharacterIndex = characterIndex;
             game.Players[playerIndex].Ready = false;
             return true;
+        }
+
+        // Pure legality query. Press retains its ready/reset behavior and lazy
+        // Flight initialization; callers can inspect legality without mutation.
+        public static bool CanPress(GameState game, int index)
+        {
+            if (index < 0 || index >= game.Players.Length) return false;
+            if (game.Phase == "ready" || game.Phase == "finished") return true;
+            var player = game.Players[index];
+            if (game.Phase != "racing" || player.Recovering > 0 || player.FinishTime.HasValue
+                || player.Status != PlayerStatus.Running) return false;
+            var flight = game.Flight ?? FlightPresets.FromLegacy(game.Motion, game.Profile);
+            return !player.Flipping || (SupportsAirFlip(flight) && player.AirFlipAvailable);
         }
 
         // A single input edge. Rejected taps are never queued.
@@ -528,12 +562,9 @@ namespace FlipRace.Core
                 }
                 return true;
             }
-            if (game.Phase != "racing" || player.Recovering > 0 || player.FinishTime.HasValue
-                || player.Status != PlayerStatus.Running)
-                return false;
+            if (!CanPress(game, index)) return false;
             if (player.Flipping)
             {
-                if (!SupportsAirFlip(flight) || !player.AirFlipAvailable) return false;
                 if (player.LinearJumpActive)
                 {
                     player.LinearJumpActive = false;

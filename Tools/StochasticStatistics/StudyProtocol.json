@@ -1,0 +1,48 @@
+{
+  "protocolId": "BSTO-NAMED-TRAINING-1",
+  "phase": "Training",
+  "validationSupported": false,
+  "heldOutReservedFrom": 1000000,
+  "maximumParallelism": 3,
+  "minimumN": 200,
+  "frameSeconds": 0.016666666666666666,
+  "maximumVirtualSeconds": 150,
+  "maximumAdvanceCalls": 30000,
+  "probabilities": {
+    "collect": "q",
+    "hit": "k*(B/C)*(1-q)",
+    "master": {
+      "collect": 1,
+      "hit": 0
+    },
+    "k": "one explicit positive finite value per selected pair",
+    "invalid": "reject; no clamp"
+  },
+  "statistics": {
+    "confidence": 0.99,
+    "tCritical": 2.601,
+    "scope": "exploratory training only",
+    "missingTerminal": "mean/CI null",
+    "terminalQualityFailure": "included"
+  },
+  "sampler": {
+    "factory": "CreateStochasticBotRace(CreateFixed)",
+    "botSlot": 1,
+    "human": "Idle after ordinary ready Press",
+    "end": "bot terminal",
+    "errors": "retain all; no retries/rerolls/filter; unrun IDs explicit",
+    "postrunFailure": "retain accumulated outcomes; publicationStable=false"
+  },
+  "publication": {
+    "mode": "fresh unique named immutable Release DLL and source/config snapshots",
+    "hashes": [
+      "assembly",
+      "config",
+      "parameters",
+      "schedule",
+      "all published files"
+    ],
+    "run": "separate explicit GO after publication verification",
+    "overwrite": false
+  }
+}

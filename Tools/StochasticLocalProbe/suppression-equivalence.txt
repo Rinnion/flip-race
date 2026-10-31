@@ -1,0 +1,10 @@
+FAIL cases=0/11 queryFixtures=0 checks=2 sourceStable=True
+System.Reflection.AmbiguousMatchException: Ambiguous match found for 'FlipRace.Core.RaceTracks FlipRace.Core.Track Get(Int32)'.
+   at System.RuntimeType.GetMethodImplCommon(String name, Int32 genericParameterCount, BindingFlags bindingAttr, Binder binder, CallingConventions callConv, Type[] types, ParameterModifier[] modifiers)
+   at System.RuntimeType.GetMethodImpl(String name, BindingFlags bindingAttr, Binder binder, CallingConventions callConv, Type[] types, ParameterModifier[] modifiers)
+   at System.Type.GetMethod(String name, BindingFlags bindingAttr)
+   at SuppressionEquivalence.OldCore.Track(String id) in F:\Home\Game\flip-race-unity\Tools\StochasticLocalProbe\SuppressionEquivalence.cs:line 32
+   at SuppressionEquivalence.OldCore.Solo() in F:\Home\Game\flip-race-unity\Tools\StochasticLocalProbe\SuppressionEquivalence.cs:line 35
+   at SuppressionEquivalence.QueryChecks(OldCore old) in F:\Home\Game\flip-race-unity\Tools\StochasticLocalProbe\SuppressionEquivalence.cs:line 50
+   at SuppressionEquivalence.Run() in F:\Home\Game\flip-race-unity\Tools\StochasticLocalProbe\SuppressionEquivalence.cs:line 92
+See JSON for exact old/new full-rest-of-race equivalence to preserved EB0 assembly and separate suppression telemetry. No probability/planning/input-limit changes; no calibration or held-out runs.

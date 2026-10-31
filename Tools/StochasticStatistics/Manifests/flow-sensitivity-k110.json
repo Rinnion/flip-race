@@ -1,0 +1,503 @@
+{
+  "protocolId": "BSTO-NAMED-TRAINING-1",
+  "studyId": "flow-sensitivity-k110",
+  "publicationId": "flow-sensitivity-k110-20261031T115034344-30e0c3bf",
+  "phase": "Training",
+  "purpose": "Exploratory fixed-before-start named training only; not validation or automatic calibration",
+  "repositoryRoot": "F:\\Home\\Game\\flip-race-unity",
+  "publicationDirectory": "F:\\Home\\Game\\flip-race-unity\\Tools\\StochasticStatistics\\Published\\flow-sensitivity-k110-20261031T115034344-30e0c3bf",
+  "assemblySha256": "71CA97506B331BE912F307315D218EC5A9F9569FF213679575E5695930BA287E",
+  "runtimeVersion": "10.0.0",
+  "configPath": "sources/Tools/StochasticStatistics/Studies/flow-sensitivity-k110.json",
+  "configSha256": "92B8734F4C5C8254EF5FF41B38216FD9DCD2F5C3FE87B6FC3CB9207E644419EC",
+  "protocolSha256": "A257F128FC7831F9D2C4063FB6FF08673EDEB050F02CB81C87779E76A7B296B6",
+  "parameterTableSha256": "27930FE1E555EF2CF39409DE5B1802495562B31ED993B3D45D6C9085B420DFD1",
+  "scheduleSha256": "B4D47C8641DFD352E3125C2043E97B547EEB00082BBCDE78C0EA4D9B01502F74",
+  "expectedN": 200,
+  "cohorts": 8,
+  "expectedCases": 1600,
+  "camera": "Lagger",
+  "humanInput": "Idle",
+  "maximumParallelism": 3,
+  "fixedBeforeStart": true,
+  "parameters": [
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/Chosen/Novice",
+        "trackId": "full-flow",
+        "profileId": "Chosen",
+        "difficulty": "Novice",
+        "quality": 0.5,
+        "collectProbability": 0.5,
+        "hitProbability": 0.2704166666666667,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 36
+      }
+    },
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/Chosen/Amateur",
+        "trackId": "full-flow",
+        "profileId": "Chosen",
+        "difficulty": "Amateur",
+        "quality": 0.65,
+        "collectProbability": 0.65,
+        "hitProbability": 0.18929166666666666,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 35.115
+      }
+    },
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/Chosen/Confident",
+        "trackId": "full-flow",
+        "profileId": "Chosen",
+        "difficulty": "Confident",
+        "quality": 0.75,
+        "collectProbability": 0.75,
+        "hitProbability": 0.13520833333333335,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 34.525
+      }
+    },
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/Chosen/Strong",
+        "trackId": "full-flow",
+        "profileId": "Chosen",
+        "difficulty": "Strong",
+        "quality": 0.9,
+        "collectProbability": 0.9,
+        "hitProbability": 0.054083333333333324,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 33.64
+      }
+    },
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/FastFlip/Novice",
+        "trackId": "full-flow",
+        "profileId": "FastFlip",
+        "difficulty": "Novice",
+        "quality": 0.5,
+        "collectProbability": 0.5,
+        "hitProbability": 0.2704166666666667,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 36
+      }
+    },
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/FastFlip/Amateur",
+        "trackId": "full-flow",
+        "profileId": "FastFlip",
+        "difficulty": "Amateur",
+        "quality": 0.65,
+        "collectProbability": 0.65,
+        "hitProbability": 0.18929166666666666,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 35.115
+      }
+    },
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/FastFlip/Confident",
+        "trackId": "full-flow",
+        "profileId": "FastFlip",
+        "difficulty": "Confident",
+        "quality": 0.75,
+        "collectProbability": 0.75,
+        "hitProbability": 0.13520833333333335,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 34.525
+      }
+    },
+    {
+      "k": 1.1,
+      "parameters": {
+        "cohortId": "full-flow/FastFlip/Strong",
+        "trackId": "full-flow",
+        "profileId": "FastFlip",
+        "difficulty": "Strong",
+        "quality": 0.9,
+        "collectProbability": 0.9,
+        "hitProbability": 0.054083333333333324,
+        "baseTime": 36,
+        "masterTime": 33.05,
+        "bonusGain": 2.9499999999999997,
+        "collisionCostSum": 6,
+        "targetMeanTime": 33.64
+      }
+    }
+  ],
+  "selectedInputsScope": "Not recorded",
+  "heldOut": {
+    "allSeedsFrom": 1000000,
+    "executed": false,
+    "validationSupported": false
+  },
+  "sourceFiles": [
+    {
+      "path": "Assets/Scripts/Core/BotPlanCatalog.cs",
+      "sha256": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotPlanShuffle.cs",
+      "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotRaceController.cs",
+      "sha256": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67"
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "B97A3C9F3D54C34288AEBD48274CC2F451197818CC3DF77A2DA42A30BE0F7A5C"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSnapshot.cs",
+      "sha256": "E5F52025C2FECFCED0CFA44FFEFC515050B670183FF3DE85E506A8A928D862AB"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticBotController.cs",
+      "sha256": "EB0C4B445CD6DCE8EC421BB5B43194120D91164D4A816B13796ECDC696D963B9"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticBotSettings.cs",
+      "sha256": "392BD5A8060A1DB30F75EA4772B98D1B86958A7A05B029A94E8059AE6F9BED7B"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticTrackMap.cs",
+      "sha256": "374384E8DF23CBC828355E7065FA30127750D38DA51376855DFD9FFAD092470D"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Tools/StochasticStatistics/.gitattributes",
+      "sha256": "211CB3D7F7F3ACC5578B024F66FB40BFA8AB994BEB806F1AA1B9429CA29C2935"
+    },
+    {
+      "path": "Tools/StochasticStatistics/.gitignore",
+      "sha256": "BAD3A636EF07E235329589D9D415F1676E0732C010ABA6F80BA23447AE59E030"
+    },
+    {
+      "path": "Tools/StochasticStatistics/ExtractIntentWitnesses.ps1",
+      "sha256": "06CC8CEB31ADD2CEE60F94D8E3F2B6DB90EF83E2D4A1CA59532D6CED4F339190"
+    },
+    {
+      "path": "Tools/StochasticStatistics/Program.cs",
+      "sha256": "017E491EBE39CE28F49C5F0FF4E0093D058275A488B2C531B4C7E66CE43ED489"
+    },
+    {
+      "path": "Tools/StochasticStatistics/Protocol.json",
+      "sha256": "FB15D22DBC1D87BCB06DC0A13D8D9AC72BAE9622FD4F9A3A9FA983A002F47B4F"
+    },
+    {
+      "path": "Tools/StochasticStatistics/Publish.ps1",
+      "sha256": "8E5A3CB287CBD99746C822E6A7B8FF4EB91F53BDE020F0024EB09F5867634830"
+    },
+    {
+      "path": "Tools/StochasticStatistics/PublishStudy.ps1",
+      "sha256": "F2AE721CBBE035489D929787EC8A2ED4D8CDB3706CE3EBBE53D155A52E8FA55D"
+    },
+    {
+      "path": "Tools/StochasticStatistics/README.md",
+      "sha256": "10ABC9D64347C81D691EB0449C6452404D7A1BDCCAA8B8D25C4E47553D541769"
+    },
+    {
+      "path": "Tools/StochasticStatistics/StochasticStatistics.csproj",
+      "sha256": "1CC2D4B0745545939C9413FA56BCCBC634B58592397AD7B648526D21660C4C34"
+    },
+    {
+      "path": "Tools/StochasticStatistics/Studies/flow-sensitivity-k110.json",
+      "sha256": "92B8734F4C5C8254EF5FF41B38216FD9DCD2F5C3FE87B6FC3CB9207E644419EC"
+    },
+    {
+      "path": "Tools/StochasticStatistics/StudyProtocol.json",
+      "sha256": "A257F128FC7831F9D2C4063FB6FF08673EDEB050F02CB81C87779E76A7B296B6"
+    },
+    {
+      "path": "Tools/StochasticStatistics/StudyREADME.md",
+      "sha256": "FD2FDD0131DC90A2A03B21F25041C54394A5DED4C0DEDF154A2573A70A2F1ACA"
+    },
+    {
+      "path": "Tools/StochasticStatistics/StudyRunner.cs",
+      "sha256": "3520FE3D660194EA10AD8321064834CBED1B0FB580934C260421AAB0EB19960B"
+    },
+    {
+      "path": "Tools/StochasticStatistics/StudySchema.json",
+      "sha256": "D115E120DC9F20C0AFFC7BF8CF737B58F9938DA021EEA906990A4C4F0D49EB0B"
+    },
+    {
+      "path": "Tools/StochasticStatistics/SummarizeInitial.ps1",
+      "sha256": "81F90C4BAA1B373EDD37FDC38286ACD20EAD151CD99B6BF4BFB61CBAC974B948"
+    }
+  ],
+  "publishedFiles": [
+    {
+      "path": "parameter-table.json",
+      "sha256": "27930FE1E555EF2CF39409DE5B1802495562B31ED993B3D45D6C9085B420DFD1"
+    },
+    {
+      "path": "schedule.json",
+      "sha256": "B4D47C8641DFD352E3125C2043E97B547EEB00082BBCDE78C0EA4D9B01502F74"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/BotPlanCatalog.cs",
+      "sha256": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/BotPlanShuffle.cs",
+      "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/BotRaceController.cs",
+      "sha256": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "B97A3C9F3D54C34288AEBD48274CC2F451197818CC3DF77A2DA42A30BE0F7A5C"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/RaceSnapshot.cs",
+      "sha256": "E5F52025C2FECFCED0CFA44FFEFC515050B670183FF3DE85E506A8A928D862AB"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/StochasticBotController.cs",
+      "sha256": "EB0C4B445CD6DCE8EC421BB5B43194120D91164D4A816B13796ECDC696D963B9"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/StochasticBotSettings.cs",
+      "sha256": "392BD5A8060A1DB30F75EA4772B98D1B86958A7A05B029A94E8059AE6F9BED7B"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/StochasticTrackMap.cs",
+      "sha256": "374384E8DF23CBC828355E7065FA30127750D38DA51376855DFD9FFAD092470D"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "sources/Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/.gitattributes",
+      "sha256": "211CB3D7F7F3ACC5578B024F66FB40BFA8AB994BEB806F1AA1B9429CA29C2935"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/.gitignore",
+      "sha256": "BAD3A636EF07E235329589D9D415F1676E0732C010ABA6F80BA23447AE59E030"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/ExtractIntentWitnesses.ps1",
+      "sha256": "06CC8CEB31ADD2CEE60F94D8E3F2B6DB90EF83E2D4A1CA59532D6CED4F339190"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/Program.cs",
+      "sha256": "017E491EBE39CE28F49C5F0FF4E0093D058275A488B2C531B4C7E66CE43ED489"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/Protocol.json",
+      "sha256": "FB15D22DBC1D87BCB06DC0A13D8D9AC72BAE9622FD4F9A3A9FA983A002F47B4F"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/Publish.ps1",
+      "sha256": "8E5A3CB287CBD99746C822E6A7B8FF4EB91F53BDE020F0024EB09F5867634830"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/PublishStudy.ps1",
+      "sha256": "F2AE721CBBE035489D929787EC8A2ED4D8CDB3706CE3EBBE53D155A52E8FA55D"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/README.md",
+      "sha256": "10ABC9D64347C81D691EB0449C6452404D7A1BDCCAA8B8D25C4E47553D541769"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/StochasticStatistics.csproj",
+      "sha256": "1CC2D4B0745545939C9413FA56BCCBC634B58592397AD7B648526D21660C4C34"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/Studies/flow-sensitivity-k110.json",
+      "sha256": "92B8734F4C5C8254EF5FF41B38216FD9DCD2F5C3FE87B6FC3CB9207E644419EC"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/StudyProtocol.json",
+      "sha256": "A257F128FC7831F9D2C4063FB6FF08673EDEB050F02CB81C87779E76A7B296B6"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/StudyREADME.md",
+      "sha256": "FD2FDD0131DC90A2A03B21F25041C54394A5DED4C0DEDF154A2573A70A2F1ACA"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/StudyRunner.cs",
+      "sha256": "3520FE3D660194EA10AD8321064834CBED1B0FB580934C260421AAB0EB19960B"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/StudySchema.json",
+      "sha256": "D115E120DC9F20C0AFFC7BF8CF737B58F9938DA021EEA906990A4C4F0D49EB0B"
+    },
+    {
+      "path": "sources/Tools/StochasticStatistics/SummarizeInitial.ps1",
+      "sha256": "81F90C4BAA1B373EDD37FDC38286ACD20EAD151CD99B6BF4BFB61CBAC974B948"
+    },
+    {
+      "path": "StochasticStatistics.deps.json",
+      "sha256": "5F6A3AD481CBAAC9D017CC3191E5077058538E309B5D2C80245BCD4B31B4E9BC"
+    },
+    {
+      "path": "StochasticStatistics.dll",
+      "sha256": "71CA97506B331BE912F307315D218EC5A9F9569FF213679575E5695930BA287E"
+    },
+    {
+      "path": "StochasticStatistics.exe",
+      "sha256": "BFEED305FBAA2B04EA9648D3B9A8944DF7DC11DB1B3FCE653F7C00F66219021E"
+    },
+    {
+      "path": "StochasticStatistics.pdb",
+      "sha256": "8135E6775A3246E6789C2E2919716A4141F40D08CEC484333CEF8E48963D0BA3"
+    },
+    {
+      "path": "StochasticStatistics.runtimeconfig.json",
+      "sha256": "C230A317A54DD960BCBEB5F347F52E18DC665A26F7EFDA2159FCED9A5AC7E097"
+    }
+  ]
+}

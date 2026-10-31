@@ -1,0 +1,2314 @@
+{
+  "kind": "EARLY_PLAN_TIMING_ONLY_NOT_PER_FRAME_ACCEPTANCE",
+  "version": "5.3.0-trial-pilot",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "runs": [
+    {
+      "mode": "bot",
+      "phase": "finished",
+      "winner": "1",
+      "track": "full-long",
+      "motion": "Linear",
+      "profile": "base",
+      "version": "5.3.0-trial-pilot",
+      "fieldView": "bot",
+      "seating": "bot",
+      "fieldHeight": "half",
+      "bot": true,
+      "botDifficulty": "Amateur",
+      "botControllerKind": "StochasticBotController",
+      "botSessionSeed": 3198162742,
+      "botAttemptSequenceIndex": 1,
+      "botSeed": 1687041858,
+      "botCursor": 34,
+      "botGoalsTotal": 22,
+      "botGoalsCompleted": 18,
+      "botObstaclesTotal": 12,
+      "botPositiveGoalsTotal": 10,
+      "botTelemetry": {
+        "q": 0.65,
+        "pCollect": 0.65,
+        "pHit": 0.1720833333333333,
+        "maximumRequestedHorizon": 1000.0000000000005,
+        "maximumTrialHorizon": 1007.4889983537932,
+        "maximumTrialOvershoot": 7.488998353793249,
+        "decisionCount": 22,
+        "planningCalls": 23,
+        "candidateSimulations": 1367,
+        "forecastSteps": 51579,
+        "forecastObservations": 51579,
+        "horizonViolations": 0,
+        "forecastRollbacks": 13,
+        "lastPlanningFailure": "",
+        "decisions": [
+          {
+            "id": "obstacle:full-long-1-low",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.2560553072253242,
+            "atDistance": 0,
+            "atTime": 0,
+            "horizonEndDistance": 1000,
+            "selectedInputs": [
+              0,
+              45,
+              215.77358490566036,
+              485.1811187353192,
+              965.7735849056604
+            ]
+          },
+          {
+            "id": "obstacle:full-long-2-standard-pad",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.2499652934493497,
+            "atDistance": 269.9999998784065,
+            "atTime": 1.227272726720027,
+            "horizonEndDistance": 1269.9999998784065,
+            "selectedInputs": [
+              965.7735849056604
+            ]
+          },
+          {
+            "id": "positive:full-long-2-standard-pad-landing",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.5490661087678745,
+            "atDistance": 301.999999828736,
+            "atTime": 1.3727272719487988,
+            "horizonEndDistance": 1301.999999828736,
+            "selectedInputs": [
+              302,
+              485.1811187353192,
+              997.7735849056604,
+              1300
+            ]
+          },
+          {
+            "id": "obstacle:full-long-3-low",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.8104207656579092,
+            "atDistance": 669.9999998986721,
+            "atTime": 3.0454545449939565,
+            "horizonEndDistance": 1669.999999898672,
+            "selectedInputs": [
+              965.7735849056604,
+              1220,
+              1275
+            ]
+          },
+          {
+            "id": "positive:full-long-4-before-stone-ring",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.23819454212207347,
+            "atDistance": 1019.9999998859564,
+            "atTime": 4.33636363584524,
+            "horizonEndDistance": 2019.9999998859564,
+            "selectedInputs": [
+              1300,
+              1355
+            ]
+          },
+          {
+            "id": "obstacle:full-long-4-before-stone",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.34599845588672906,
+            "atDistance": 1119.9999998569488,
+            "atTime": 4.790909090258869,
+            "horizonEndDistance": 2119.9999998569488,
+            "selectedInputs": [
+              1300,
+              1355,
+              2080
+            ]
+          },
+          {
+            "id": "positive:full-long-5-free-low",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.37264370860066265,
+            "atDistance": 1569.9999998948972,
+            "atTime": 6.8363636358860225,
+            "horizonEndDistance": 2569.999999894897,
+            "selectedInputs": [
+              1932,
+              2562
+            ]
+          },
+          {
+            "id": "obstacle:full-long-6-high",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.8928578376071528,
+            "atDistance": 2369.999999828736,
+            "atTime": 9.872727271948794,
+            "horizonEndDistance": 3369.999999828736,
+            "selectedInputs": [
+              2518,
+              2573,
+              3000,
+              3080
+            ]
+          },
+          {
+            "id": "positive:full-long-7-chain-1",
+            "kind": "Positive",
+            "intent": "skip",
+            "outcome": "missed",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.7877031810348853,
+            "atDistance": 2674.9999998545645,
+            "atTime": 11.259090908429645,
+            "horizonEndDistance": 3674.9999998545645,
+            "selectedInputs": [
+              2795
+            ]
+          },
+          {
+            "id": "positive:full-long-7-chain-2",
+            "kind": "Positive",
+            "intent": "skip",
+            "outcome": "missed",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.9790555470390245,
+            "atDistance": 2819.9999998271464,
+            "atTime": 11.918181817395835,
+            "horizonEndDistance": 3819.9999998271464,
+            "selectedInputs": [
+              3000,
+              3080,
+              3120,
+              3515.7735849056603
+            ]
+          },
+          {
+            "id": "obstacle:full-long-8-low",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.3674739337293431,
+            "atDistance": 3219.9999998684725,
+            "atTime": 13.736363635765269,
+            "horizonEndDistance": 4219.9999998684725,
+            "selectedInputs": [
+              3527.7735849056603,
+              3847.181118735319
+            ]
+          },
+          {
+            "id": "obstacle:full-long-9-standard-pad",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.19965286937076598,
+            "atDistance": 3619.999999893705,
+            "atTime": 15.554545454061532,
+            "horizonEndDistance": 4619.9999998937055,
+            "selectedInputs": [
+              3835.181118735319,
+              4275,
+              4300
+            ]
+          },
+          {
+            "id": "positive:full-long-9-standard-pad-landing",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.42905613349284977,
+            "atDistance": 3651.9999998164176,
+            "atTime": 15.69999999916475,
+            "horizonEndDistance": 4651.999999816418,
+            "selectedInputs": [
+              3835.181118735319,
+              4355,
+              4460
+            ]
+          },
+          {
+            "id": "obstacle:full-long-10-high",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.9592117288848385,
+            "atDistance": 4119.999999843836,
+            "atTime": 17.693939393255327,
+            "horizonEndDistance": 5119.999999843836,
+            "selectedInputs": [
+              4300,
+              4367,
+              4798.884190641017,
+              4853.884190641017,
+              4966
+            ]
+          },
+          {
+            "id": "obstacle:full-long-11-large-pad",
+            "kind": "Obstacle",
+            "intent": "hit",
+            "outcome": "hit",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.1039775317767635,
+            "atDistance": 4419.999999887546,
+            "atTime": 18.89090909039709,
+            "horizonEndDistance": 5419.999999887546,
+            "selectedInputs": [
+              4773.884190641017,
+              4798.884190641017,
+              4966
+            ]
+          },
+          {
+            "id": "positive:full-long-11-large-pad-landing",
+            "kind": "Positive",
+            "intent": "skip",
+            "outcome": "missed",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.9879456938942894,
+            "atDistance": 4519.999999871254,
+            "atTime": 19.345454544868534,
+            "horizonEndDistance": 5519.999999871254,
+            "selectedInputs": [
+              4773.884190641017,
+              4798.884190641017,
+              4886
+            ]
+          },
+          {
+            "id": "obstacle:full-long-12-after-stone",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.9647398312808946,
+            "atDistance": 5519.999999874433,
+            "atTime": 24.390909090337978,
+            "horizonEndDistance": 6519.999999874433,
+            "selectedInputs": [
+              5700,
+              5755,
+              5820,
+              5865,
+              5980,
+              6500
+            ]
+          },
+          {
+            "id": "positive:full-long-12-after-stone-ring",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.0815939522581175,
+            "atDistance": 5619.999999871254,
+            "atTime": 24.84545454486902,
+            "horizonEndDistance": 6619.999999871254,
+            "selectedInputs": [
+              5700,
+              5755,
+              5980,
+              6420,
+              6475
+            ]
+          },
+          {
+            "id": "positive:full-long-13-free-mid",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.2562979235081002,
+            "atDistance": 6219.999999811649,
+            "atTime": 27.274242423671524,
+            "horizonEndDistance": 7219.999999811649,
+            "selectedInputs": [
+              6500,
+              6555,
+              6915.773584905661,
+              7135.773584905661
+            ]
+          },
+          {
+            "id": "obstacle:full-long-14-low",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.25694830308202654,
+            "atDistance": 6619.999999946267,
+            "atTime": 29.032731779966287,
+            "horizonEndDistance": 7619.999999946267,
+            "selectedInputs": [
+              6947.773584905661,
+              7247.773584905661
+            ]
+          },
+          {
+            "id": "obstacle:full-long-15-low",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.1720833333333333,
+            "roll": 0.2630329242674634,
+            "atDistance": 6919.999999818007,
+            "atTime": 30.154545453718306,
+            "horizonEndDistance": 7919.999999818007,
+            "selectedInputs": [
+              6947.773584905661,
+              7167.773584905661
+            ]
+          },
+          {
+            "id": "finish:full-long-finish",
+            "kind": "Finish",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.3173099140403792,
+            "atDistance": 7399.999999894897,
+            "atTime": 32.33636363588621,
+            "horizonEndDistance": 7920,
+            "selectedInputs": [
+              7412,
+              7445,
+              7736
+            ]
+          }
+        ],
+        "lastPlan": {
+          "number": 23,
+          "candidates": 56,
+          "forecastSteps": 1104,
+          "rollbacks": 0,
+          "atDistance": 7399.999999894897,
+          "horizonEndDistance": 7920,
+          "milliseconds": 5.8
+        },
+        "planningSamples": [
+          {
+            "number": 1,
+            "candidates": 55,
+            "forecastSteps": 2183,
+            "rollbacks": 0,
+            "atDistance": 0,
+            "horizonEndDistance": 1000,
+            "milliseconds": 11.2999
+          },
+          {
+            "number": 2,
+            "candidates": 40,
+            "forecastSteps": 1578,
+            "rollbacks": 0,
+            "atDistance": 269.9999998784065,
+            "horizonEndDistance": 1269.9999998784065,
+            "milliseconds": 6.1001
+          },
+          {
+            "number": 3,
+            "candidates": 96,
+            "forecastSteps": 3782,
+            "rollbacks": 0,
+            "atDistance": 301.999999828736,
+            "horizonEndDistance": 1301.999999828736,
+            "milliseconds": 10.8001
+          },
+          {
+            "number": 4,
+            "candidates": 58,
+            "forecastSteps": 2168,
+            "rollbacks": 2,
+            "atDistance": 669.9999998986721,
+            "horizonEndDistance": 1669.999999898672,
+            "milliseconds": 8.2001
+          },
+          {
+            "number": 5,
+            "candidates": 57,
+            "forecastSteps": 2165,
+            "rollbacks": 0,
+            "atDistance": 1019.9999998859564,
+            "horizonEndDistance": 2019.9999998859564,
+            "milliseconds": 8.8
+          },
+          {
+            "number": 6,
+            "candidates": 57,
+            "forecastSteps": 2061,
+            "rollbacks": 0,
+            "atDistance": 1119.9999998569488,
+            "horizonEndDistance": 2119.9999998569488,
+            "milliseconds": 7.6999
+          },
+          {
+            "number": 7,
+            "candidates": 37,
+            "forecastSteps": 1299,
+            "rollbacks": 2,
+            "atDistance": 1569.9999998948972,
+            "horizonEndDistance": 2569.999999894897,
+            "milliseconds": 4.3001
+          },
+          {
+            "number": 8,
+            "candidates": 71,
+            "forecastSteps": 2641,
+            "rollbacks": 1,
+            "atDistance": 2369.999999828736,
+            "horizonEndDistance": 3369.999999828736,
+            "milliseconds": 9.6
+          },
+          {
+            "number": 9,
+            "candidates": 15,
+            "forecastSteps": 596,
+            "rollbacks": 0,
+            "atDistance": 2674.9999998545645,
+            "horizonEndDistance": 3674.9999998545645,
+            "milliseconds": 1.7001
+          },
+          {
+            "number": 10,
+            "candidates": 53,
+            "forecastSteps": 2017,
+            "rollbacks": 1,
+            "atDistance": 2819.9999998271464,
+            "horizonEndDistance": 3819.9999998271464,
+            "milliseconds": 7.8001
+          },
+          {
+            "number": 11,
+            "candidates": 40,
+            "forecastSteps": 1573,
+            "rollbacks": 0,
+            "atDistance": 3219.9999998684725,
+            "horizonEndDistance": 4219.9999998684725,
+            "milliseconds": 7
+          },
+          {
+            "number": 12,
+            "candidates": 58,
+            "forecastSteps": 2236,
+            "rollbacks": 0,
+            "atDistance": 3619.999999893705,
+            "horizonEndDistance": 4619.9999998937055,
+            "milliseconds": 6.9
+          },
+          {
+            "number": 13,
+            "candidates": 57,
+            "forecastSteps": 2203,
+            "rollbacks": 0,
+            "atDistance": 3651.9999998164176,
+            "horizonEndDistance": 4651.999999816418,
+            "milliseconds": 8.4001
+          },
+          {
+            "number": 14,
+            "candidates": 91,
+            "forecastSteps": 3483,
+            "rollbacks": 0,
+            "atDistance": 4119.999999843836,
+            "horizonEndDistance": 5119.999999843836,
+            "milliseconds": 11.6001
+          },
+          {
+            "number": 15,
+            "candidates": 94,
+            "forecastSteps": 3715,
+            "rollbacks": 0,
+            "atDistance": 4419.999999887546,
+            "horizonEndDistance": 5419.999999887546,
+            "milliseconds": 9.9
+          },
+          {
+            "number": 16,
+            "candidates": 57,
+            "forecastSteps": 2378,
+            "rollbacks": 0,
+            "atDistance": 4519.999999871254,
+            "horizonEndDistance": 5519.999999871254,
+            "milliseconds": 6.6001
+          },
+          {
+            "number": 17,
+            "candidates": 67,
+            "forecastSteps": 2606,
+            "rollbacks": 0,
+            "atDistance": 4851.426767039051,
+            "horizonEndDistance": 5851.426767039051,
+            "milliseconds": 8
+          },
+          {
+            "number": 18,
+            "candidates": 72,
+            "forecastSteps": 2731,
+            "rollbacks": 0,
+            "atDistance": 5519.999999874433,
+            "horizonEndDistance": 6519.999999874433,
+            "milliseconds": 9.2999
+          },
+          {
+            "number": 19,
+            "candidates": 87,
+            "forecastSteps": 3216,
+            "rollbacks": 7,
+            "atDistance": 5619.999999871254,
+            "horizonEndDistance": 6619.999999871254,
+            "milliseconds": 11.4
+          },
+          {
+            "number": 20,
+            "candidates": 71,
+            "forecastSteps": 2719,
+            "rollbacks": 0,
+            "atDistance": 6219.999999811649,
+            "horizonEndDistance": 7219.999999811649,
+            "milliseconds": 9.1999
+          },
+          {
+            "number": 21,
+            "candidates": 40,
+            "forecastSteps": 1528,
+            "rollbacks": 0,
+            "atDistance": 6619.999999946267,
+            "horizonEndDistance": 7619.999999946267,
+            "milliseconds": 5.1
+          },
+          {
+            "number": 22,
+            "candidates": 38,
+            "forecastSteps": 1597,
+            "rollbacks": 0,
+            "atDistance": 6919.999999818007,
+            "horizonEndDistance": 7919.999999818007,
+            "milliseconds": 6
+          },
+          {
+            "number": 23,
+            "candidates": 56,
+            "forecastSteps": 1104,
+            "rollbacks": 0,
+            "atDistance": 7399.999999894897,
+            "horizonEndDistance": 7920,
+            "milliseconds": 5.8
+          }
+        ]
+      },
+      "gravityAcceleration": 662.5,
+      "departureImpulse": 350,
+      "firstAction": "Jump",
+      "motionLaw": "Gravity",
+      "airRepeatLimit": -1,
+      "menuPage": -1,
+      "flipImpulse": 0,
+      "jumpImpulse": 350,
+      "linearSpeed": 265,
+      "linearJumpHeight": 112,
+      "pawsVisible": false,
+      "paused": false,
+      "negativeEnabled": true,
+      "customFlight": false,
+      "settingsVisible": false,
+      "characterSelectionVisible": false,
+      "elapsed": 38.000000000000696,
+      "countdown": 0,
+      "realtime": 157.481,
+      "frame": 4953,
+      "fullscreenX": 1189,
+      "fullscreenY": 235.29998779296875,
+      "fullscreenWidth": 34,
+      "fullscreenHeight": 25,
+      "settingsCopyX": 346,
+      "settingsCopyY": 470,
+      "settingsCopyWidth": 103,
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "players": [
+        {
+          "ready": false,
+          "flipping": false,
+          "airFlipAvailable": true,
+          "finishBoost": false,
+          "hasFlightMeasurement": false,
+          "flightInterrupted": false,
+          "distance": 7920,
+          "y": 1,
+          "recovering": 0,
+          "finish": 38.000000000000696,
+          "coins": 0,
+          "collisions": 4,
+          "character": 0,
+          "rings": 0,
+          "instantBoosts": 0,
+          "finishBoosts": 0,
+          "slowRings": 0,
+          "pendingRings": 0,
+          "failedRings": 0,
+          "queuedEffects": 0,
+          "boost": 0,
+          "slow": 0,
+          "speed": 220,
+          "flipElapsed": 0,
+          "verticalSpeed": 0,
+          "centerY": 226,
+          "finishBoostElapsed": 0,
+          "finishBoostDistanceGained": 0,
+          "gravity": 1,
+          "support": "Wall",
+          "supportObstacle": "",
+          "lastInstant": "",
+          "lastFinishBoost": "",
+          "status": "Finished",
+          "supportSide": 1,
+          "flightDuration": 0,
+          "flightMaxDistance": 0,
+          "flightEndedAt": 0
+        },
+        {
+          "ready": false,
+          "flipping": true,
+          "airFlipAvailable": true,
+          "finishBoost": false,
+          "hasFlightMeasurement": true,
+          "flightInterrupted": false,
+          "distance": 7920,
+          "y": 0.4308308074063194,
+          "recovering": 0,
+          "finish": 34.45000000000043,
+          "coins": 0,
+          "collisions": 1,
+          "character": 1,
+          "rings": 6,
+          "instantBoosts": 4,
+          "finishBoosts": 1,
+          "slowRings": 0,
+          "pendingRings": 0,
+          "failedRings": 0,
+          "queuedEffects": 0,
+          "boost": 0,
+          "slow": 0,
+          "speed": 220,
+          "flipElapsed": 0.586363637096941,
+          "verticalSpeed": -38.46590957672326,
+          "centerY": 105.33613117013971,
+          "finishBoostElapsed": 0.25,
+          "finishBoostDistanceGained": 55.00000000000002,
+          "gravity": -1,
+          "support": "None",
+          "supportObstacle": "",
+          "lastInstant": "full-long-13-free-mid",
+          "lastFinishBoost": "full-long-finish",
+          "status": "Finished",
+          "supportSide": 0,
+          "flightDuration": 0.586363637096941,
+          "flightMaxDistance": 92.45283018867909,
+          "flightEndedAt": 34.45000000000043
+        }
+      ],
+      "characterRects": [
+        [
+          [
+            360,
+            468.2,
+            184,
+            44
+          ],
+          [
+            548,
+            468.2,
+            184,
+            44
+          ],
+          [
+            736,
+            468.2,
+            184,
+            44
+          ],
+          [
+            360,
+            516.2,
+            184,
+            44
+          ],
+          [
+            548,
+            516.2,
+            184,
+            44
+          ],
+          [
+            736,
+            516.2,
+            184,
+            44
+          ]
+        ]
+      ],
+      "readyRects": [
+        [
+          426,
+          563.2,
+          210,
+          44
+        ]
+      ],
+      "pawRects": [
+        [
+          1216,
+          656,
+          56,
+          56
+        ]
+      ],
+      "trackMenuRect": [
+        57,
+        226.799988,
+        968,
+        42
+      ],
+      "sessionRect": [
+        45,
+        226.799988,
+        1190,
+        42
+      ],
+      "solo": false,
+      "soloMenuRect": [
+        346,
+        420,
+        193.333328,
+        28
+      ],
+      "botMenuRect": [
+        740.6666,
+        420,
+        193.333328,
+        28
+      ],
+      "botDifficultyRects": [
+        [
+          346,
+          273,
+          114.4,
+          44
+        ],
+        [
+          464.4,
+          273,
+          114.4,
+          44
+        ],
+        [
+          582.8,
+          273,
+          114.4,
+          44
+        ],
+        [
+          701.2,
+          273,
+          114.4,
+          44
+        ],
+        [
+          819.6,
+          273,
+          114.4,
+          44
+        ]
+      ],
+      "botRetryRect": [
+        426,
+        563.2,
+        210,
+        44
+      ],
+      "botTrackChoiceRect": [
+        644,
+        563.2,
+        210,
+        44
+      ],
+      "soloTrackChoiceRect": [
+        644,
+        468.5,
+        206,
+        44
+      ],
+      "soloCountdownRect": [
+        45,
+        509.3,
+        1190,
+        60
+      ],
+      "viewMenuRect": [
+        346,
+        424,
+        286,
+        24
+      ],
+      "viewOptionRects": [
+        [
+          [
+            346,
+            273,
+            194,
+            34
+          ],
+          [
+            543,
+            273,
+            194,
+            34
+          ],
+          [
+            740,
+            273,
+            194,
+            34
+          ]
+        ],
+        [
+          [
+            346,
+            328,
+            292.5,
+            34
+          ],
+          [
+            641.5,
+            328,
+            292.5,
+            34
+          ]
+        ]
+      ],
+      "sharedFieldRect": [
+        122.895996,
+        268.8,
+        1034.208,
+        201.6
+      ],
+      "controlAreas": [
+        [
+          45,
+          468.2,
+          1190,
+          140
+        ]
+      ],
+      "cameraLeft": 7631.2,
+      "scaleX": 0.6804000051398026,
+      "projectedPlayers": [
+        [
+          319.3955175781251,
+          441.72239138954563
+        ],
+        [
+          319.3955175781251,
+          359.6226944175202
+        ]
+      ],
+      "party": false,
+      "partyCamera": "Lagger",
+      "logicalWindowWidth": 1520,
+      "partyMenuRect": [
+        543.3333,
+        420,
+        193.333328,
+        28
+      ],
+      "partyCountRects": [
+        [
+          346,
+          271,
+          193.333328,
+          44
+        ],
+        [
+          543.3333,
+          271,
+          193.333328,
+          44
+        ],
+        [
+          740.6666,
+          271,
+          193.333328,
+          44
+        ]
+      ],
+      "partyCameraRects": [
+        [
+          346,
+          336,
+          292,
+          44
+        ],
+        [
+          642,
+          336,
+          292,
+          44
+        ]
+      ],
+      "partyLegacyRect": [
+        790,
+        249,
+        144,
+        22
+      ]
+    },
+    {
+      "mode": "bot",
+      "phase": "finished",
+      "winner": "1",
+      "track": "rhythm-cascade",
+      "motion": "Linear",
+      "profile": "base",
+      "version": "5.3.0-trial-pilot",
+      "fieldView": "bot",
+      "seating": "bot",
+      "fieldHeight": "half",
+      "bot": true,
+      "botDifficulty": "Amateur",
+      "botControllerKind": "StochasticBotController",
+      "botSessionSeed": 3198162742,
+      "botAttemptSequenceIndex": 2,
+      "botSeed": 3659017165,
+      "botCursor": 46,
+      "botGoalsTotal": 31,
+      "botGoalsCompleted": 26,
+      "botObstaclesTotal": 21,
+      "botPositiveGoalsTotal": 10,
+      "botTelemetry": {
+        "q": 0.65,
+        "pCollect": 0.65,
+        "pHit": 0.09833333333333333,
+        "maximumRequestedHorizon": 1000,
+        "maximumTrialHorizon": 1008.9107653011124,
+        "maximumTrialOvershoot": 8.910765301112406,
+        "decisionCount": 31,
+        "planningCalls": 32,
+        "candidateSimulations": 2859,
+        "forecastSteps": 116943,
+        "forecastObservations": 116943,
+        "horizonViolations": 0,
+        "forecastRollbacks": 620,
+        "lastPlanningFailure": "",
+        "decisions": [
+          {
+            "id": "obstacle:rhythm-cascade-m0-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.9487027699360624,
+            "atDistance": 0,
+            "atTime": 0,
+            "horizonEndDistance": 1000,
+            "selectedInputs": [
+              230.5,
+              313.5,
+              485.1811187353192,
+              960.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m1-pad-stone",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.42799378687050194,
+            "atDistance": 269.9999998784065,
+            "atTime": 1.2272727267200265,
+            "horizonEndDistance": 1269.9999998784065,
+            "selectedInputs": [
+              281.5,
+              485.1811187353192,
+              972.5,
+              1023.5,
+              1248.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m1-pad",
+            "kind": "Positive",
+            "intent": "skip",
+            "outcome": "missed",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.6587004106258973,
+            "atDistance": 301.999999828736,
+            "atTime": 1.372727271948798,
+            "horizonEndDistance": 1301.999999828736,
+            "selectedInputs": [
+              533.1811187353192,
+              928.5,
+              1011.5,
+              1248.5,
+              1301
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m2-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.7303980243159458,
+            "atDistance": 609.9999998990695,
+            "atTime": 2.772727272268499,
+            "horizonEndDistance": 1609.9999998990695,
+            "selectedInputs": [
+              972.5,
+              1011.5,
+              1248.5,
+              1301
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m3-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.9368196214782074,
+            "atDistance": 909.9999998378753,
+            "atTime": 4.13636363562669,
+            "horizonEndDistance": 1909.9999998378753,
+            "selectedInputs": [
+              960.5,
+              1011.5,
+              1248.5,
+              1289,
+              1718.5,
+              1741.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m3-free",
+            "kind": "Positive",
+            "intent": "skip",
+            "outcome": "missed",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.9884173440514132,
+            "atDistance": 943.9999998569489,
+            "atTime": 4.290909090258847,
+            "horizonEndDistance": 1943.9999998569488,
+            "selectedInputs": [
+              960.5,
+              1011.5,
+              1280.5,
+              1333,
+              1718.5,
+              1741.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m4-before",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.08465974254067987,
+            "atDistance": 1395.9999998474123,
+            "atTime": 6.345454544761059,
+            "horizonEndDistance": 2395.9999998474123,
+            "selectedInputs": [
+              1706.5,
+              1729.5,
+              2047.8,
+              2128.3,
+              2376.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m4-stone",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.1708193215308711,
+            "atDistance": 1495.999999860128,
+            "atTime": 6.799999999364339,
+            "horizonEndDistance": 2495.999999860128,
+            "selectedInputs": [
+              1718.5,
+              1741.5,
+              2047.8,
+              2096.3,
+              2376.5,
+              2427.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m4-exit-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.976260147173889,
+            "atDistance": 1735.999999871254,
+            "atTime": 7.890909090324064,
+            "horizonEndDistance": 2735.9999998712537,
+            "selectedInputs": [
+              1741.5,
+              2079.8,
+              2128.3,
+              2376.5,
+              2427.5,
+              2631.181118735319
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m5-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.5005404792027548,
+            "atDistance": 2025.9999998128415,
+            "atTime": 9.101515150948154,
+            "horizonEndDistance": 3025.9999998128415,
+            "selectedInputs": [
+              2047.8,
+              2116.3,
+              2364.5,
+              2427.5,
+              2631.181118735319
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m6-pad-stone",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.9768861964112148,
+            "atDistance": 2415.9999998668827,
+            "atTime": 10.68181818121307,
+            "horizonEndDistance": 3415.9999998668827,
+            "selectedInputs": [
+              2459.5,
+              2631.181118735319,
+              3106.5,
+              3157.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m6-pad",
+            "kind": "Positive",
+            "intent": "skip",
+            "outcome": "missed",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.9196436697384343,
+            "atDistance": 2447.999999899864,
+            "atTime": 10.827272726817514,
+            "horizonEndDistance": 3447.999999899864,
+            "selectedInputs": [
+              2459.5,
+              2568,
+              2613,
+              2711.181118735319,
+              3106.5,
+              3157.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m7-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.7180532700149342,
+            "atDistance": 2755.9999998784065,
+            "atTime": 12.227272726719796,
+            "horizonEndDistance": 3755.9999998784065,
+            "selectedInputs": [
+              3138.5,
+              3189.5,
+              3513,
+              3536
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m8-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.8799406049074605,
+            "atDistance": 3161.999999872446,
+            "atTime": 14.072727272146992,
+            "horizonEndDistance": 4161.999999872446,
+            "selectedInputs": [
+              3189.5,
+              3513,
+              3536
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m8-free-high",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.09254906291607767,
+            "atDistance": 3211.999999847015,
+            "atTime": 14.29999999930409,
+            "horizonEndDistance": 4211.999999847015,
+            "selectedInputs": [
+              3501,
+              3536,
+              3867.5,
+              3918.5,
+              4113,
+              4151,
+              4179
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m9-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.4482972886180505,
+            "atDistance": 3516.9999998474123,
+            "atTime": 15.68636363566933,
+            "horizonEndDistance": 4516.999999847412,
+            "selectedInputs": [
+              3536,
+              3867.5,
+              3918.5,
+              4151,
+              4179,
+              4273
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m10-pad-stone",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.6211208518361673,
+            "atDistance": 3906.9999998927115,
+            "atTime": 17.159090908602415,
+            "horizonEndDistance": 4906.9999998927115,
+            "selectedInputs": [
+              3930.5,
+              4125,
+              4151,
+              4179,
+              4717.5,
+              4768.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m10-pad",
+            "kind": "Positive",
+            "intent": "skip",
+            "outcome": "missed",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.6957722081569955,
+            "atDistance": 4006.99999983867,
+            "atTime": 17.613636362902177,
+            "horizonEndDistance": 5006.99999983867,
+            "selectedInputs": [
+              4179,
+              4231,
+              4717.5,
+              4768.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m11-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "hit",
+            "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+            "probability": 0.09833333333333333,
+            "roll": 0.605869565741159,
+            "atDistance": 4366.999999895095,
+            "atTime": 19.24999999952239,
+            "horizonEndDistance": 5366.999999895095,
+            "selectedInputs": [
+              4780.5,
+              5029.5,
+              5068.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m12-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.7658037877408788,
+            "atDistance": 4666.99999983867,
+            "atTime": 20.613636362902398,
+            "horizonEndDistance": 5666.99999983867,
+            "selectedInputs": [
+              4952.5,
+              5068.5,
+              5189.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m13-after-stone",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.25296528229955584,
+            "atDistance": 5154.999999849399,
+            "atTime": 23.331818181133173,
+            "horizonEndDistance": 6154.999999849399,
+            "selectedInputs": [
+              5419.5,
+              5493.5,
+              5635,
+              5709.5,
+              6005.5,
+              6056.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m13-after-ring",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.4313265780219808,
+            "atDistance": 5334.999999877612,
+            "atTime": 24.149999999443317,
+            "horizonEndDistance": 6334.999999877612,
+            "selectedInputs": [
+              5419.5,
+              5473.5,
+              5603,
+              5709.5,
+              6005.5,
+              6056.5,
+              6267.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m14-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.7722963209962472,
+            "atDistance": 5654.999999866486,
+            "atTime": 25.604545453938332,
+            "horizonEndDistance": 6654.999999866486,
+            "selectedInputs": [
+              5709.5,
+              6005.5,
+              6056.5,
+              6279.5,
+              6341,
+              6614
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m15-chain-gate-1",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.8098881234182045,
+            "atDistance": 5944.999999815623,
+            "atTime": 26.622727271888998,
+            "horizonEndDistance": 6944.999999815623,
+            "selectedInputs": [
+              6005.5,
+              6056.5,
+              6267.5,
+              6341,
+              6626,
+              6691.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m15-chain-1",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.5485938588390127,
+            "atDistance": 5978.99999984781,
+            "atTime": 26.777272726580787,
+            "horizonEndDistance": 6978.99999984781,
+            "selectedInputs": [
+              6005.5,
+              6056.5,
+              6267.5,
+              6341,
+              6602,
+              6679.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m15-chain-gate-2",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.5370925447205082,
+            "atDistance": 6294.999999869267,
+            "atTime": 28.213636363042127,
+            "horizonEndDistance": 7294.999999869267,
+            "selectedInputs": [
+              6341,
+              6614,
+              6691.5,
+              6963.5,
+              7046.5
+            ]
+          },
+          {
+            "id": "positive:rhythm-cascade-m15-chain-2",
+            "kind": "Positive",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.5701649378752336,
+            "atDistance": 6328.99999988834,
+            "atTime": 28.368181817674284,
+            "horizonEndDistance": 7328.99999988834,
+            "selectedInputs": [
+              6341,
+              6582,
+              6691.5,
+              6995.5,
+              7046.5,
+              7295.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m16-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.7882880581310019,
+            "atDistance": 6644.999999814034,
+            "atTime": 29.50454545370018,
+            "horizonEndDistance": 7644.999999814034,
+            "selectedInputs": [
+              6691.5,
+              7007.5,
+              7058.5,
+              7295.5,
+              7346.5,
+              7595.5
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m17-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.6814012002432719,
+            "atDistance": 6944.9999998641015,
+            "atTime": 30.568181817564156,
+            "horizonEndDistance": 7920,
+            "selectedInputs": [
+              6995.5,
+              7046.5,
+              7283.5,
+              7334.5,
+              7595.5,
+              7646.5,
+              7758
+            ]
+          },
+          {
+            "id": "obstacle:rhythm-cascade-m18-gate",
+            "kind": "Obstacle",
+            "intent": "avoid",
+            "outcome": "avoided",
+            "unreachableReason": "",
+            "probability": 0.09833333333333333,
+            "roll": 0.27394544042181224,
+            "atDistance": 7244.999999866883,
+            "atTime": 31.931818181213295,
+            "horizonEndDistance": 7920,
+            "selectedInputs": [
+              7295.5,
+              7346.5,
+              7595.5,
+              7646.5,
+              7770
+            ]
+          },
+          {
+            "id": "finish:rhythm-cascade-finish",
+            "kind": "Finish",
+            "intent": "collect",
+            "outcome": "collected",
+            "unreachableReason": "",
+            "probability": 0.65,
+            "roll": 0.49360215512569994,
+            "atDistance": 7399.999999837875,
+            "atTime": 32.636363635626985,
+            "horizonEndDistance": 7920,
+            "selectedInputs": [
+              7424,
+              7469,
+              7595.5,
+              7646.5,
+              7758
+            ]
+          }
+        ],
+        "lastPlan": {
+          "number": 32,
+          "candidates": 57,
+          "forecastSteps": 1282,
+          "rollbacks": 12,
+          "atDistance": 7399.999999837875,
+          "horizonEndDistance": 7920,
+          "milliseconds": 6.7999
+        },
+        "planningSamples": [
+          {
+            "number": 1,
+            "candidates": 72,
+            "forecastSteps": 2971,
+            "rollbacks": 0,
+            "atDistance": 0,
+            "horizonEndDistance": 1000,
+            "milliseconds": 9.1
+          },
+          {
+            "number": 2,
+            "candidates": 85,
+            "forecastSteps": 3451,
+            "rollbacks": 0,
+            "atDistance": 269.9999998784065,
+            "horizonEndDistance": 1269.9999998784065,
+            "milliseconds": 11.1999
+          },
+          {
+            "number": 3,
+            "candidates": 96,
+            "forecastSteps": 3873,
+            "rollbacks": 0,
+            "atDistance": 301.999999828736,
+            "horizonEndDistance": 1301.999999828736,
+            "milliseconds": 12.0999
+          },
+          {
+            "number": 4,
+            "candidates": 74,
+            "forecastSteps": 2937,
+            "rollbacks": 0,
+            "atDistance": 609.9999998990695,
+            "horizonEndDistance": 1609.9999998990695,
+            "milliseconds": 9.2999
+          },
+          {
+            "number": 5,
+            "candidates": 96,
+            "forecastSteps": 3870,
+            "rollbacks": 0,
+            "atDistance": 909.9999998378753,
+            "horizonEndDistance": 1909.9999998378753,
+            "milliseconds": 19.2999
+          },
+          {
+            "number": 6,
+            "candidates": 96,
+            "forecastSteps": 3915,
+            "rollbacks": 0,
+            "atDistance": 943.9999998569489,
+            "horizonEndDistance": 1943.9999998569488,
+            "milliseconds": 18.9001
+          },
+          {
+            "number": 7,
+            "candidates": 89,
+            "forecastSteps": 3577,
+            "rollbacks": 3,
+            "atDistance": 1395.9999998474123,
+            "horizonEndDistance": 2395.9999998474123,
+            "milliseconds": 13.3
+          },
+          {
+            "number": 8,
+            "candidates": 96,
+            "forecastSteps": 3844,
+            "rollbacks": 3,
+            "atDistance": 1495.999999860128,
+            "horizonEndDistance": 2495.999999860128,
+            "milliseconds": 14.5
+          },
+          {
+            "number": 9,
+            "candidates": 96,
+            "forecastSteps": 3912,
+            "rollbacks": 1,
+            "atDistance": 1735.999999871254,
+            "horizonEndDistance": 2735.9999998712537,
+            "milliseconds": 14
+          },
+          {
+            "number": 10,
+            "candidates": 87,
+            "forecastSteps": 3400,
+            "rollbacks": 0,
+            "atDistance": 2025.9999998128415,
+            "horizonEndDistance": 3025.9999998128415,
+            "milliseconds": 12.1
+          },
+          {
+            "number": 11,
+            "candidates": 71,
+            "forecastSteps": 2926,
+            "rollbacks": 0,
+            "atDistance": 2415.9999998668827,
+            "horizonEndDistance": 3415.9999998668827,
+            "milliseconds": 12.2001
+          },
+          {
+            "number": 12,
+            "candidates": 96,
+            "forecastSteps": 4046,
+            "rollbacks": 0,
+            "atDistance": 2447.999999899864,
+            "horizonEndDistance": 3447.999999899864,
+            "milliseconds": 14.2
+          },
+          {
+            "number": 13,
+            "candidates": 75,
+            "forecastSteps": 3064,
+            "rollbacks": 0,
+            "atDistance": 2755.9999998784065,
+            "horizonEndDistance": 3755.9999998784065,
+            "milliseconds": 10.9
+          },
+          {
+            "number": 14,
+            "candidates": 55,
+            "forecastSteps": 2519,
+            "rollbacks": 0,
+            "atDistance": 3161.999999872446,
+            "horizonEndDistance": 4161.999999872446,
+            "milliseconds": 12.4
+          },
+          {
+            "number": 15,
+            "candidates": 96,
+            "forecastSteps": 3922,
+            "rollbacks": 0,
+            "atDistance": 3211.999999847015,
+            "horizonEndDistance": 4211.999999847015,
+            "milliseconds": 21.4
+          },
+          {
+            "number": 16,
+            "candidates": 96,
+            "forecastSteps": 3940,
+            "rollbacks": 0,
+            "atDistance": 3516.9999998474123,
+            "horizonEndDistance": 4516.999999847412,
+            "milliseconds": 21.5
+          },
+          {
+            "number": 17,
+            "candidates": 96,
+            "forecastSteps": 4170,
+            "rollbacks": 0,
+            "atDistance": 3906.9999998927115,
+            "horizonEndDistance": 4906.9999998927115,
+            "milliseconds": 22.2999
+          },
+          {
+            "number": 18,
+            "candidates": 96,
+            "forecastSteps": 3996,
+            "rollbacks": 0,
+            "atDistance": 4006.99999983867,
+            "horizonEndDistance": 5006.99999983867,
+            "milliseconds": 13.3999
+          },
+          {
+            "number": 19,
+            "candidates": 96,
+            "forecastSteps": 4489,
+            "rollbacks": 0,
+            "atDistance": 4366.999999895095,
+            "horizonEndDistance": 5366.999999895095,
+            "milliseconds": 16.1
+          },
+          {
+            "number": 20,
+            "candidates": 96,
+            "forecastSteps": 4649,
+            "rollbacks": 0,
+            "atDistance": 4666.99999983867,
+            "horizonEndDistance": 5666.99999983867,
+            "milliseconds": 16.1
+          },
+          {
+            "number": 21,
+            "candidates": 96,
+            "forecastSteps": 4365,
+            "rollbacks": 147,
+            "atDistance": 4733,
+            "horizonEndDistance": 5733,
+            "milliseconds": 17.5999
+          },
+          {
+            "number": 22,
+            "candidates": 96,
+            "forecastSteps": 4017,
+            "rollbacks": 102,
+            "atDistance": 5154.999999849399,
+            "horizonEndDistance": 6154.999999849399,
+            "milliseconds": 21.1
+          },
+          {
+            "number": 23,
+            "candidates": 96,
+            "forecastSteps": 4190,
+            "rollbacks": 103,
+            "atDistance": 5334.999999877612,
+            "horizonEndDistance": 6334.999999877612,
+            "milliseconds": 25.2001
+          },
+          {
+            "number": 24,
+            "candidates": 96,
+            "forecastSteps": 3986,
+            "rollbacks": 163,
+            "atDistance": 5654.999999866486,
+            "horizonEndDistance": 6654.999999866486,
+            "milliseconds": 18.5
+          },
+          {
+            "number": 25,
+            "candidates": 96,
+            "forecastSteps": 3806,
+            "rollbacks": 6,
+            "atDistance": 5944.999999815623,
+            "horizonEndDistance": 6944.999999815623,
+            "milliseconds": 15.5
+          },
+          {
+            "number": 26,
+            "candidates": 96,
+            "forecastSteps": 3806,
+            "rollbacks": 6,
+            "atDistance": 5978.99999984781,
+            "horizonEndDistance": 6978.99999984781,
+            "milliseconds": 17.5999
+          },
+          {
+            "number": 27,
+            "candidates": 90,
+            "forecastSteps": 3559,
+            "rollbacks": 15,
+            "atDistance": 6294.999999869267,
+            "horizonEndDistance": 7294.999999869267,
+            "milliseconds": 15.1999
+          },
+          {
+            "number": 28,
+            "candidates": 96,
+            "forecastSteps": 3899,
+            "rollbacks": 19,
+            "atDistance": 6328.99999988834,
+            "horizonEndDistance": 7328.99999988834,
+            "milliseconds": 16.1999
+          },
+          {
+            "number": 29,
+            "candidates": 96,
+            "forecastSteps": 4031,
+            "rollbacks": 8,
+            "atDistance": 6644.999999814034,
+            "horizonEndDistance": 7644.999999814034,
+            "milliseconds": 15.6
+          },
+          {
+            "number": 30,
+            "candidates": 96,
+            "forecastSteps": 3963,
+            "rollbacks": 16,
+            "atDistance": 6944.9999998641015,
+            "horizonEndDistance": 7920,
+            "milliseconds": 18
+          },
+          {
+            "number": 31,
+            "candidates": 88,
+            "forecastSteps": 2568,
+            "rollbacks": 16,
+            "atDistance": 7244.999999866883,
+            "horizonEndDistance": 7920,
+            "milliseconds": 12.8
+          },
+          {
+            "number": 32,
+            "candidates": 57,
+            "forecastSteps": 1282,
+            "rollbacks": 12,
+            "atDistance": 7399.999999837875,
+            "horizonEndDistance": 7920,
+            "milliseconds": 6.7999
+          }
+        ]
+      },
+      "gravityAcceleration": 662.5,
+      "departureImpulse": 350,
+      "firstAction": "Jump",
+      "motionLaw": "Gravity",
+      "airRepeatLimit": -1,
+      "menuPage": -1,
+      "flipImpulse": 0,
+      "jumpImpulse": 350,
+      "linearSpeed": 265,
+      "linearJumpHeight": 112,
+      "pawsVisible": false,
+      "paused": false,
+      "negativeEnabled": true,
+      "customFlight": false,
+      "settingsVisible": false,
+      "characterSelectionVisible": false,
+      "elapsed": 44.50000000000077,
+      "countdown": 0,
+      "realtime": 247.356,
+      "frame": 7826,
+      "fullscreenX": 1189,
+      "fullscreenY": 235.29998779296875,
+      "fullscreenWidth": 34,
+      "fullscreenHeight": 25,
+      "settingsCopyX": 346,
+      "settingsCopyY": 470,
+      "settingsCopyWidth": 103,
+      "settingsCopyHeight": 28,
+      "settingsCopyText": "",
+      "players": [
+        {
+          "ready": false,
+          "flipping": false,
+          "airFlipAvailable": true,
+          "finishBoost": false,
+          "hasFlightMeasurement": false,
+          "flightInterrupted": false,
+          "distance": 7920,
+          "y": 1,
+          "recovering": 0,
+          "finish": 44.50000000000077,
+          "coins": 0,
+          "collisions": 17,
+          "character": 0,
+          "rings": 0,
+          "instantBoosts": 0,
+          "finishBoosts": 0,
+          "slowRings": 0,
+          "pendingRings": 0,
+          "failedRings": 0,
+          "queuedEffects": 0,
+          "boost": 0,
+          "slow": 0,
+          "speed": 220,
+          "flipElapsed": 0,
+          "verticalSpeed": 0,
+          "centerY": 226,
+          "finishBoostElapsed": 0,
+          "finishBoostDistanceGained": 0,
+          "gravity": 1,
+          "support": "Wall",
+          "supportObstacle": "",
+          "lastInstant": "",
+          "lastFinishBoost": "",
+          "status": "Finished",
+          "supportSide": 1,
+          "flightDuration": 0,
+          "flightMaxDistance": 0,
+          "flightEndedAt": 0
+        },
+        {
+          "ready": false,
+          "flipping": true,
+          "airFlipAvailable": true,
+          "finishBoost": false,
+          "hasFlightMeasurement": true,
+          "flightInterrupted": false,
+          "distance": 7920,
+          "y": 0.43335010438688804,
+          "recovering": 0,
+          "finish": 34.75000000000048,
+          "coins": 0,
+          "collisions": 1,
+          "character": 1,
+          "rings": 5,
+          "instantBoosts": 3,
+          "finishBoosts": 1,
+          "slowRings": 0,
+          "pendingRings": 0,
+          "failedRings": 0,
+          "queuedEffects": 0,
+          "boost": 0,
+          "slow": 0,
+          "speed": 220,
+          "flipElapsed": 0.48636363717641345,
+          "verticalSpeed": 27.78409037062641,
+          "centerY": 105.87022213002027,
+          "finishBoostElapsed": 0.25,
+          "finishBoostDistanceGained": 55.00000000000002,
+          "gravity": -1,
+          "support": "None",
+          "supportObstacle": "",
+          "lastInstant": "rhythm-cascade-m15-chain-2",
+          "lastFinishBoost": "rhythm-cascade-finish",
+          "status": "Finished",
+          "supportSide": 0,
+          "flightDuration": 0.48636363717641345,
+          "flightMaxDistance": 91.87022213002027,
+          "flightEndedAt": 34.75000000000048
+        }
+      ],
+      "characterRects": [
+        [
+          [
+            360,
+            468.2,
+            184,
+            44
+          ],
+          [
+            548,
+            468.2,
+            184,
+            44
+          ],
+          [
+            736,
+            468.2,
+            184,
+            44
+          ],
+          [
+            360,
+            516.2,
+            184,
+            44
+          ],
+          [
+            548,
+            516.2,
+            184,
+            44
+          ],
+          [
+            736,
+            516.2,
+            184,
+            44
+          ]
+        ]
+      ],
+      "readyRects": [
+        [
+          426,
+          563.2,
+          210,
+          44
+        ]
+      ],
+      "pawRects": [
+        [
+          1216,
+          656,
+          56,
+          56
+        ]
+      ],
+      "trackMenuRect": [
+        57,
+        226.799988,
+        968,
+        42
+      ],
+      "sessionRect": [
+        45,
+        226.799988,
+        1190,
+        42
+      ],
+      "solo": false,
+      "soloMenuRect": [
+        346,
+        420,
+        193.333328,
+        28
+      ],
+      "botMenuRect": [
+        740.6666,
+        420,
+        193.333328,
+        28
+      ],
+      "botDifficultyRects": [
+        [
+          346,
+          273,
+          114.4,
+          44
+        ],
+        [
+          464.4,
+          273,
+          114.4,
+          44
+        ],
+        [
+          582.8,
+          273,
+          114.4,
+          44
+        ],
+        [
+          701.2,
+          273,
+          114.4,
+          44
+        ],
+        [
+          819.6,
+          273,
+          114.4,
+          44
+        ]
+      ],
+      "botRetryRect": [
+        426,
+        563.2,
+        210,
+        44
+      ],
+      "botTrackChoiceRect": [
+        644,
+        563.2,
+        210,
+        44
+      ],
+      "soloTrackChoiceRect": [
+        644,
+        468.5,
+        206,
+        44
+      ],
+      "soloCountdownRect": [
+        45,
+        509.3,
+        1190,
+        60
+      ],
+      "viewMenuRect": [
+        346,
+        424,
+        286,
+        24
+      ],
+      "viewOptionRects": [
+        [
+          [
+            346,
+            273,
+            194,
+            34
+          ],
+          [
+            543,
+            273,
+            194,
+            34
+          ],
+          [
+            740,
+            273,
+            194,
+            34
+          ]
+        ],
+        [
+          [
+            346,
+            328,
+            292.5,
+            34
+          ],
+          [
+            641.5,
+            328,
+            292.5,
+            34
+          ]
+        ]
+      ],
+      "sharedFieldRect": [
+        122.895996,
+        268.8,
+        1034.208,
+        201.6
+      ],
+      "controlAreas": [
+        [
+          45,
+          468.2,
+          1190,
+          140
+        ]
+      ],
+      "cameraLeft": 7631.2,
+      "scaleX": 0.6804000051398026,
+      "projectedPlayers": [
+        [
+          319.3955175781251,
+          441.72239138954563
+        ],
+        [
+          319.3955175781251,
+          359.98608990936805
+        ]
+      ],
+      "party": false,
+      "partyCamera": "Lagger",
+      "logicalWindowWidth": 1520,
+      "partyMenuRect": [
+        543.3333,
+        420,
+        193.333328,
+        28
+      ],
+      "partyCountRects": [
+        [
+          346,
+          271,
+          193.333328,
+          44
+        ],
+        [
+          543.3333,
+          271,
+          193.333328,
+          44
+        ],
+        [
+          740.6666,
+          271,
+          193.333328,
+          44
+        ]
+      ],
+      "partyCameraRects": [
+        [
+          346,
+          336,
+          292,
+          44
+        ],
+        [
+          642,
+          336,
+          292,
+          44
+        ]
+      ],
+      "partyLegacyRect": [
+        790,
+        249,
+        144,
+        22
+      ]
+    }
+  ]
+}

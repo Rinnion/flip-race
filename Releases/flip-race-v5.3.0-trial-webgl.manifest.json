@@ -1,0 +1,226 @@
+{
+  "version": "5.3.0-trial",
+  "status": "CANDIDATE_ARCHIVE_VERIFIED_BROWSER_ACCEPTANCE_PENDING",
+  "buildMethod": "FlipRace.Editor.BuildGame.WebGLTrial regular",
+  "buildLog": "Logs/stochastic-bots-final-build.log",
+  "buildLogSha256": "27A32A0F2587B8BEFAD1251AFBD866BD87533AD1079CECCAAA2604D15541D9CE",
+  "buildDirectory": "Builds/WebGL-v5.3.0-trial-candidate",
+  "freshUnpackedDirectory": "Builds/WebGL-v5.3.0-unpacked-final",
+  "zip": "Releases/flip-race-v5.3.0-trial-webgl.zip",
+  "zipBytes": 9164370,
+  "zipSha256": "C68A18FED8C050A60738AF52AB65ABBA514170503FC5ADCDE8175F4CB2192C09",
+  "rootIndex": true,
+  "fileCount": 5,
+  "files": [
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.data.unityweb",
+      "bytes": 1927277,
+      "sha256": "EB665EEE778A23D1E8C4D5A3AB2AC00D41715E1D85FB0475E020191F82BB3CB6",
+      "freshUnpackExact": true
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.framework.js.unityweb",
+      "bytes": 90939,
+      "sha256": "790814A96340DF86FCAE64CB1953FAAB33221D46B6303005A765FFC39093020F",
+      "freshUnpackExact": true
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.loader.js",
+      "bytes": 39788,
+      "sha256": "6144F9AF749F096C3D970E67D22EE19549FEB311022798D01A40B8B2C12F21AE",
+      "freshUnpackExact": true
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.wasm.unityweb",
+      "bytes": 7241636,
+      "sha256": "C834CBEB09419F3DB2F2E995243BD46CE14EE43D16FDD0C1DB58B3D252F6AD55",
+      "freshUnpackExact": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 13399,
+      "sha256": "8BADA9D08CCD0F5519199A6113DDE5B53EE1253FE639BE94C69B54EF2B280C07",
+      "freshUnpackExact": true
+    }
+  ],
+  "runtimeSourceFreezeMatchesFinalUiProof": true,
+  "sourceSnapshot": [
+    {
+      "path": "Assets/Scripts/Core/BotPlanCatalog.cs",
+      "sha256": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotPlanShuffle.cs",
+      "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotRaceController.cs",
+      "sha256": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67"
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "3C342AA734591DAB2AD88ABC10E16096B93F550CF816B78C16BE0AB9C91EFD2C"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSnapshot.cs",
+      "sha256": "E5F52025C2FECFCED0CFA44FFEFC515050B670183FF3DE85E506A8A928D862AB"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticBotController.cs",
+      "sha256": "3C1B710A6483B110059D77CF6B7C64BC300656BF55BE709982015E7E6F5D6344"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticBotSettings.cs",
+      "sha256": "A58C7FCDB8D93066A78E73A60553B835093B0E01872CBD7AFA1A87263C3FB93D"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticTrackMap.cs",
+      "sha256": "374384E8DF23CBC828355E7065FA30127750D38DA51376855DFD9FFAD092470D"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/BotsPresentation.cs",
+      "sha256": "DD9D798F50DB9B4CF83E6A20313E85D0885703FEBD1046F9019C9AC41E1F8927"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "B637638798B8250940530B232F3B015D7CCDA968637A3F61B6EAF13C8B635A28"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "94743E7F590371280A79B3EB877C52B594C8722EEC1FE6169993DA941E15C3FC"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "F870F5CA11B1D88FB7BC22D7C96558EFEBB8D24DB9561F7108DF2CC463A7CC18"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "B2B3CA6B24BF471EA8E752E613FC36E1557823F40EF414AF5D6FF83430F9F915"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "2880777EBC2A662EDB1BE6CC25C74B54EC81D864FA7846297EDD839E7B1E347E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PartyPresentation.cs",
+      "sha256": "3960FDC65166B0E0C428641CE0F2759388E97056308584006997B6F21A8ADAB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PawControls.cs",
+      "sha256": "7779414731F89912F23CB723A8B1BB243EE41C014B50EEDA0574412E2168ADB9"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SessionLayout.cs",
+      "sha256": "C82EDA4DDEF0D0230098AB3E7B5BFC2829BE587F6E5A39A624D039B3F71CA178"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "BA84D404162225933B44A8E08C97980C0DC94662C4A7496C5173EE666B1BEB84"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "D50C44A1B78194974C2F7898C7FFF55358353C30A7B0C0883037BBF350ADBC96"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "EAD37C536BD8C40259E84556D0C7BD639AD20BE58951A2FDB59A8CF66FD32509"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SoloPresentation.cs",
+      "sha256": "A373B074E55B55E9C9D4E895FE70DC152955BE9FC31431A58413BC0F717BEA72"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostPresentation.cs",
+      "sha256": "00725F8E1BAD0197635C0CB861D62BCF56FDCC9A31D7462F7284C047CDFB079B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostView.cs",
+      "sha256": "B0A60C80434B86C7A6C7B809F5C3182663C92F829A33AF9B30F458ED395B560E"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "EB102F7A558FF011016FE9F9C1922D404DAC22239623946E6CD5010D8E2B3CC5"
+    },
+    {
+      "path": "Assets/Plugins/WebGL/FlipDiagnostics.jslib",
+      "sha256": "2B2357EC26E9CD6DBF85276C82C492F821F03DC9A9F6694D19AD6CE61F56176A"
+    },
+    {
+      "path": "Assets/WebGLTemplates/Flip/index.html",
+      "sha256": "B93EDA473A3F4551E1D4A88A839C9AB79DE3D5DCE8E6FC812FF6310FF8624DD3"
+    }
+  ],
+  "editorBuildSourceSha256": "A076EA5DE311E172112AFDE186256C6A83710E270DE4E601CAECBB19F22752B9",
+  "uiProofSha256": "66FC5DA127E0A0D70AABFDF65AC5F5DF9CB4CE979A044B49DF0F61B1B538DF39",
+  "largeStatisticsNeverStarted": true,
+  "mvpApproximateStrengthPerDirectUserSteering": true,
+  "stablePromotion": false
+}

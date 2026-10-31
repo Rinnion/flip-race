@@ -28,10 +28,15 @@ namespace FlipRace.Web
             public string mode, phase, winner, track, motion, profile, version;
             public string fieldView, seating, fieldHeight;
             public bool bot;
-            public string botDifficulty, botPlanId, botSignatureId;
+            public string botDifficulty, botControllerKind;
             public uint botSessionSeed;
             public long botAttemptSequenceIndex;
-            public int botSeed, botCursor, botGoalsTotal, botGoalsCompleted, botPlanCount;
+            public uint botSeed;
+            public int botCursor, botGoalsTotal, botGoalsCompleted, botObstaclesTotal, botPositiveGoalsTotal;
+            public BotTelemetry botTelemetry;
+            public BotPerformanceSummary botPerformance;
+            public double previousDiagnosticsMilliseconds, previousTerminalExportMilliseconds;
+            public int previousDiagnosticsFrame;
             public double gravityAcceleration, departureImpulse;
             public string firstAction, motionLaw;
             public int airRepeatLimit;
@@ -46,13 +51,18 @@ namespace FlipRace.Web
             public PlayerSnapshot[] players;
         }
 #if UNITY_WEBGL && !UNITY_EDITOR
-        [DllImport("__Internal")] static extern void FlipReport(string json);
+        [DllImport("__Internal")] static extern void FlipReport(string json,int frame,int cohort,uint seed);
+        [DllImport("__Internal")] static extern void FlipBotPerformance(string json);
         [DllImport("__Internal")] public static extern float FlipPixelRatio();
 #else
         public static float FlipPixelRatio() { return 1f; }
 #endif
         FlipRaceGame game;
         double nextReport;
+        double previousDiagnosticsMilliseconds,previousTerminalExportMilliseconds;
+        int previousDiagnosticsFrame=-1;
+        BotFramePerformance performanceAttempt;
+        bool performancePublished;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Bootstrap() { new GameObject("FlipDiagnostics").AddComponent<FlipDiagnostics>(); }
         void LateUpdate()
@@ -61,6 +71,21 @@ namespace FlipRace.Web
             nextReport = Time.realtimeSinceStartupAsDouble + .05;
             if (game == null) game = FindFirstObjectByType<FlipRaceGame>();
             if (game == null || game.Game == null) return;
+            long diagnosticStarted=System.Diagnostics.Stopwatch.GetTimestamp();
+            int diagnosticFrame=Time.frameCount;
+            double terminalExportMilliseconds=-1;
+            bool diagnosticCompleted=false;
+            try
+            {
+            var currentPerformance=game.BotPerformance;
+            if(!ReferenceEquals(currentPerformance,performanceAttempt))
+            {
+                performanceAttempt=currentPerformance;performancePublished=false;
+                previousDiagnosticsMilliseconds=previousTerminalExportMilliseconds=0;previousDiagnosticsFrame=-1;
+#if UNITY_WEBGL && !UNITY_EDITOR
+                FlipBotPerformance("");
+#endif
+            }
             var state = game.Game;
             var flight = state.Flight ?? FlightPresets.FromLegacy(state.Motion, state.Profile);
             // This public rectangle is already measured in CSS pixels relative
@@ -73,12 +98,15 @@ namespace FlipRace.Web
                 profile = state.Profile.Id, version = Application.version,
                 fieldView = game.FieldViewName, seating = game.SeatingName, fieldHeight = game.FieldHeightName,
                 bot = state.IsBot, botDifficulty = state.IsBot ? state.BotDifficulty.ToString() : "",
-                botPlanId = state.IsBot ? state.BotPlan.Id : "", botSeed = state.BotSeed,
-                botSignatureId = state.IsBot ? state.BotPlan.SignatureId : "", botSessionSeed = game.BotSessionSeed,
+                botControllerKind = state.StochasticBot == null ? "" : "StochasticBotController",
+                botSeed = game.BotAttemptSeed, botSessionSeed = game.BotSessionSeed,
                 botAttemptSequenceIndex = game.BotAttemptSequenceIndex,
-                botCursor = game.BotActionCursor, botGoalsTotal = state.IsBot ? BotPlanCatalog.GoalCount(state.Track.Id,flight) : 0,
-                botGoalsCompleted = state.IsBot ? BotCompletedGoals(state) : 0,
-                botPlanCount = state.IsBot ? BotPlanCatalog.Count(state.Track.Id,flight,state.BotDifficulty) : 0,
+                botCursor = game.BotActionCursor, botGoalsTotal = game.BotGoalsTotal,
+                botGoalsCompleted = game.BotGoalsCompleted, botObstaclesTotal = game.BotObstacleCount,
+                botPositiveGoalsTotal = game.BotPositiveGoalCount, botTelemetry = ReadBotTelemetry(game),
+                botPerformance=ReadBotPerformance(game),
+                previousDiagnosticsMilliseconds=previousDiagnosticsMilliseconds,
+                previousTerminalExportMilliseconds=previousTerminalExportMilliseconds,previousDiagnosticsFrame=previousDiagnosticsFrame,
                 menuPage = game.FlightMenuPage, pawsVisible = game.PawsVisible,
                 gravityAcceleration = flight.GravityAcceleration,
                 departureImpulse = flight.FirstAction == FirstAction.Jump ? flight.JumpImpulse : flight.FlipImpulse,
@@ -120,8 +148,24 @@ namespace FlipRace.Web
                     centerY=FlipRace.Core.RaceSimulation.GetPlayerCenterY(p)};
             }
 #if UNITY_WEBGL && !UNITY_EDITOR
-            FlipReport(WithLayout(JsonUtility.ToJson(snapshot)));
+            FlipReport(WithLayout(JsonUtility.ToJson(snapshot)),diagnosticFrame,game.BotDiagnosticCohort(diagnosticFrame),game.BotAttemptSeed);
+            if(currentPerformance!=null&&currentPerformance.Sealed&&!performancePublished)
+            {
+                long exportStarted=System.Diagnostics.Stopwatch.GetTimestamp();
+                FlipBotPerformance(PerformanceTerminalJson(game));
+                terminalExportMilliseconds=(System.Diagnostics.Stopwatch.GetTimestamp()-exportStarted)*1000d/System.Diagnostics.Stopwatch.Frequency;
+                performancePublished=true;
+            }
 #endif
+            diagnosticCompleted=true;
+            }
+            finally
+            {
+                double milliseconds=(System.Diagnostics.Stopwatch.GetTimestamp()-diagnosticStarted)*1000d/System.Diagnostics.Stopwatch.Frequency;
+                previousDiagnosticsMilliseconds=milliseconds;previousDiagnosticsFrame=diagnosticFrame;
+                if(terminalExportMilliseconds>=0)previousTerminalExportMilliseconds=terminalExportMilliseconds;
+                game.RecordBotDiagnosticsCost(diagnosticFrame,milliseconds,!diagnosticCompleted);
+            }
         }
         // Unity's serializer does not support jagged arrays. Append only these
         // numeric, read-only rectangles as ordinary JSON arrays for browser QA.
@@ -129,7 +173,7 @@ namespace FlipRace.Web
         {
             var output = new StringBuilder(json.Length + 500);
             output.Append(json, 0, json.Length - 1).Append(",\"characterRects\":[");
-            for (int player = 0; player < game.Game.Players.Length; player++)
+            for (int player = 0; player < (game.Game.IsBot?1:game.Game.Players.Length); player++)
             {
                 if (player > 0) output.Append(',');
                 output.Append('[');
@@ -208,18 +252,88 @@ namespace FlipRace.Web
         }
         void AppendPlayerRects(StringBuilder output, Func<int,Rect> rectangle)
         { for(int i=0;i<(game.Game.IsBot?1:game.Game.Players.Length);i++){if(i>0)output.Append(',');AppendRect(output,rectangle(i));} }
-        static int BotCompletedGoals(GameState state)
+        [Serializable] sealed class TimingSummary
         {
-            var player=state.Players[1];int completed=0;
-            foreach(var obstacle in state.Track.Obstacles)
-                if(!player.HitObstacleIds.Contains(obstacle.Id)&&player.Distance>=ObstacleGeometry.Right(obstacle)+RaceConfig.PlayerRadius-1e-7)completed++;
-            foreach(var zone in state.Track.RiskZones)
+            public int count, over50;
+            public double sumMilliseconds,maximumMilliseconds,p95UpperBoundMilliseconds;
+        }
+        [Serializable] sealed class BotPerformanceSummary
+        {
+            public int capacity,storedFrames,totalFrames,activeFrames,countdownFrames,pausedFrames,suppressedFrames,zeroPlanActiveFrames,overflowFrames,terminalFrame,captureFaultFrames,activeCaptureFaultFrames;
+            public bool terminal,sealedSamples,complete;
+            public double histogramBinMilliseconds;
+            public string scope;
+            public TimingSummary advance,diagnostics,combined;
+        }
+        static TimingSummary Timing(BotTimingDistribution d)
+        {return new TimingSummary{count=d.Count,over50=d.Over50,sumMilliseconds=d.Sum,maximumMilliseconds=d.Maximum,p95UpperBoundMilliseconds=d.P95UpperBound};}
+        static BotPerformanceSummary ReadBotPerformance(FlipRaceGame game)
+        {
+            var p=game.BotPerformance;if(p==null)return null;
+            return new BotPerformanceSummary{capacity=BotFramePerformance.Capacity,storedFrames=p.StoredCount,totalFrames=p.TotalFrames,activeFrames=p.ActiveFrames,
+                countdownFrames=p.CountdownFrames,pausedFrames=p.PausedFrames,suppressedFrames=p.SuppressedFrames,zeroPlanActiveFrames=p.ZeroPlanActiveFrames,overflowFrames=p.OverflowFrames,
+                terminal=p.Terminal,sealedSamples=p.Sealed,complete=p.Sealed&&p.OverflowFrames==0&&p.ActiveCaptureFaultFrames==0,terminalFrame=p.TerminalFrame,captureFaultFrames=p.CaptureFaultFrames,activeCaptureFaultFrames=p.ActiveCaptureFaultFrames,histogramBinMilliseconds=BotTimingDistribution.BinMilliseconds,
+                scope="All active bot frames, including zero-plan frames and the terminal transition. Advance includes ordinary shared simulation. Diagnostics includes construction, JSON and synchronous publication ONLY; async HTML callbacks are measured separately in the persistent terminal export. Paused/countdown/suppressed cohorts are separate; post-bot-terminal continuation is excluded. P95 is a .05ms histogram upper bound, saturated-bin bound uses exact maximum. Previous completed diagnostic cost is reported by frame; persistent terminal export cost appears in subsequent scalar reports until the next attempt and is outside the frozen active cohort.",
+                advance=Timing(p.Advance),diagnostics=Timing(p.Diagnostics),combined=Timing(p.Combined)};
+        }
+        // Pure managed terminal serialization is shared with the scoped check.
+        static string PerformanceTerminalJson(FlipRaceGame game)
+        {
+            var p=game.BotPerformance;if(p==null||!p.Sealed)return "";
+            var b=new StringBuilder(p.StoredCount*150+512);
+            b.Append("{\"schema\":1,\"attemptSeed\":").Append(game.BotAttemptSeed).Append(",\"sessionSeed\":").Append(game.BotSessionSeed)
+                .Append(",\"attemptSequence\":").Append(game.BotAttemptSequenceIndex).Append(",\"capacity\":").Append(BotFramePerformance.Capacity)
+                .Append(",\"totalFrames\":").Append(p.TotalFrames).Append(",\"overflowFrames\":").Append(p.OverflowFrames)
+                .Append(",\"captureFaultFrames\":").Append(p.CaptureFaultFrames).Append(",\"activeCaptureFaultFrames\":").Append(p.ActiveCaptureFaultFrames)
+                .Append(",\"terminalFrame\":").Append(p.TerminalFrame).Append(",\"frames\":[");
+            var frames=p.CopySamples();
+            for(int i=0;i<frames.Length;i++)
             {
-                if(zone.IsNegative||zone.IsCoin)continue;
-                if(zone.IsFinish){if(player.FinishBoostsEarned>0&&player.FinishBoostElapsed>=RaceConfig.FinishBoostDuration-1e-7)completed++;}
-                else if(player.SuccessfulRiskIds.Contains(zone.Id))completed++;
+                if(i>0)b.Append(',');var f=frames[i];
+                b.Append("{\"frame\":").Append(f.Frame).Append(",\"cohort\":\"").Append(f.Cohort).Append("\",\"dt\":").Append(f.Delta.ToString("R",CultureInfo.InvariantCulture))
+                    .Append(",\"elapsed\":").Append(f.Elapsed.ToString("R",CultureInfo.InvariantCulture)).Append(",\"advanceInvoked\":").Append(f.AdvanceInvoked?"true":"false")
+                    .Append(",\"planCalls\":").Append(f.PlanCalls).Append(",\"advanceMilliseconds\":").Append(f.AdvanceMilliseconds.ToString("R",CultureInfo.InvariantCulture))
+                    .Append(",\"diagnosticsMilliseconds\":").Append(f.DiagnosticsMilliseconds.ToString("R",CultureInfo.InvariantCulture)).Append(",\"diagnosticCalls\":").Append(f.DiagnosticCalls).Append(",\"captureFault\":").Append(f.CaptureFault?"true":"false").Append('}');
             }
-            return completed;
+            return b.Append("]}").ToString();
+        }
+        [Serializable] sealed class BotDecisionSnapshot
+        {
+            public string id, kind, intent, outcome, unreachableReason;
+            public double probability, roll, atDistance, atTime, horizonEndDistance;
+            public double[] selectedInputs;
+        }
+        [Serializable] sealed class BotPlanSnapshot
+        {
+            public int number, candidates, forecastSteps, rollbacks;
+            public double atDistance, horizonEndDistance, milliseconds;
+        }
+        [Serializable] sealed class BotTelemetry
+        {
+            public double q, pCollect, pHit, maximumRequestedHorizon, maximumTrialHorizon, maximumTrialOvershoot;
+            public int decisionCount, planningCalls, candidateSimulations, forecastSteps, forecastObservations, horizonViolations, forecastRollbacks, suppressedInputs;
+            public string lastPlanningFailure;
+            public BotDecisionSnapshot[] decisions;
+            public BotPlanSnapshot lastPlan;
+            public BotPlanSnapshot[] planningSamples;
+        }
+        static BotPlanSnapshot PlanSnapshot(BotPlanningSample p)
+        { return p==null?null:new BotPlanSnapshot{number=p.Number,atDistance=p.AtDistance,horizonEndDistance=p.HorizonEndDistance,candidates=p.Candidates,forecastSteps=p.ForecastSteps,rollbacks=p.Rollbacks,milliseconds=p.Milliseconds}; }
+        static BotTelemetry ReadBotTelemetry(FlipRaceGame game)
+        {
+            if(!game.BotEnabled || game.Game.StochasticBot==null)return null;
+            var decisions=game.BotDecisions;var samples=game.BotPlanningSamples;
+            var result=new BotTelemetry{q=game.BotQuality,pCollect=game.BotCollectProbability,pHit=game.BotHitProbability,
+                decisionCount=decisions.Count,planningCalls=game.BotPlanningCalls,candidateSimulations=game.BotCandidateSimulations,
+                forecastSteps=game.BotForecastSteps,forecastObservations=game.BotForecastObservations,horizonViolations=game.BotForecastHorizonViolations,
+                forecastRollbacks=game.BotForecastRollbacks,suppressedInputs=game.BotSuppressedInputs,maximumRequestedHorizon=game.BotMaximumRequestedHorizon,
+                maximumTrialHorizon=game.BotMaximumTrialHorizon,maximumTrialOvershoot=game.BotMaximumTrialOvershoot,
+                lastPlanningFailure=game.BotLastPlanningFailure,lastPlan=PlanSnapshot(game.BotLastPlan),
+                decisions=new BotDecisionSnapshot[decisions.Count],planningSamples=new BotPlanSnapshot[samples.Count]};
+            for(int i=0;i<decisions.Count;i++)
+            {var d=decisions[i];result.decisions[i]=new BotDecisionSnapshot{id=d.Id,kind=d.Kind.ToString(),intent=d.Intent,probability=d.Probability,roll=d.Roll,atDistance=d.AtDistance,atTime=d.AtTime,horizonEndDistance=d.HorizonEndDistance,outcome=d.Outcome,unreachableReason=d.UnreachableReason,selectedInputs=d.SelectedInputs};}
+            for(int i=0;i<samples.Count;i++)result.planningSamples[i]=PlanSnapshot(samples[i]);
+            return result;
         }
         static void AppendRect(StringBuilder output, Rect rect)
         {

@@ -1,0 +1,2675 @@
+{
+  "status": "PASS",
+  "requirementIds": [
+    "BSTO00",
+    "BSTO01",
+    "BSTO04",
+    "CONTROL",
+    "REWARD",
+    "FINISH",
+    "GATE",
+    "VIEW",
+    "TOUCH",
+    "SOLO"
+  ],
+  "baseline": "0b1225b",
+  "startedUtc": "2026-10-31T09:19:33.7168484Z",
+  "elapsedSeconds": 2.1412703,
+  "checks": 7693,
+  "snapshots": 225,
+  "continuationSteps": 4050,
+  "sourceStable": true,
+  "sourceHashes": {
+    "Assets/Scripts/Core/BotPlanCatalog.cs": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C",
+    "Assets/Scripts/Core/BotPlanShuffle.cs": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42",
+    "Assets/Scripts/Core/BotRaceController.cs": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67",
+    "Assets/Scripts/Core/ContinuousMotion.cs": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+    "Assets/Scripts/Core/FinishTargetGeometry.cs": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285",
+    "Assets/Scripts/Core/FlightSettings.cs": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+    "Assets/Scripts/Core/MotionProfiles.cs": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417",
+    "Assets/Scripts/Core/ObstacleGeometry.cs": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+    "Assets/Scripts/Core/RaceSimulation.cs": "5D2C3DB7AF6A9DEF3AF19F5D023FD5B8B926E1E5AF868CC0C406555DBAEF28CA",
+    "Assets/Scripts/Core/RaceSnapshot.cs": "07E2C8693926A64C0AE2A417501CCA2D1C882DE536987713731842F9A12366BB",
+    "Assets/Scripts/Core/StochasticTrackMap.cs": "DBDC63B1369EC2917BD3143845C3766FCCA3652D5AA5C20705CD27527B2F48E9",
+    "Assets/Scripts/Core/TracksControl.cs": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+    "Assets/Scripts/Core/TracksFull.cs": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79",
+    "Assets/Scripts/Core/TracksMixed.cs": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156",
+    "Assets/Scripts/Core/TracksMixedStage.cs": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+    "Assets/Scripts/Core/TracksRhythm.cs": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7",
+    "Assets/Scripts/Core/TracksRhythmFull.cs": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6",
+    "Assets/Scripts/Core/TracksRhythmNegatives.cs": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+    "Assets/Scripts/Core/TracksTune.cs": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+    "Assets/Scripts/Core/TracksV3.cs": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+    "Assets/Scripts/Core/TracksV4.cs": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+  },
+  "changedSources": [],
+  "sharedInputs": "Track geometry/routes/cues are caller-frozen race input; FlightSettings/MotionProfile/FlightMeasurement/BotPlan immutable. Production clone contains no reflection or serialization.",
+  "limitations": [
+    "Structural fixture intentionally fills fields and aliases; it is not a reachable gameplay proof.",
+    "Actual scenario fixtures and authored tracks use only ordinary Press/Advance; pause is the existing Phase shell.",
+    "Snapshot checks do not establish stochastic policy, WebGL frame budget, visuals, or physical touch behavior.",
+    "No legacy catalog tape or bot controller was activated."
+  ],
+  "performance": {
+    "clones": 5000,
+    "players": 4,
+    "queuedEffectsPerPlayer": 3,
+    "setEntriesPerPlayer": 60,
+    "elapsedMilliseconds": 24.8718,
+    "microsecondsPerClone": 4.97436,
+    "bytesPerClone": 16872.008,
+    "environment": ".NET 8 managed desktop sample; not Unity/WebGL latency proof"
+  },
+  "cases": [
+    {
+      "label": "synthetic/all-timeline-fields",
+      "Phase": "ready",
+      "Elapsed": 0,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 7,
+          "status": "Running",
+          "Distance": 1.234,
+          "Recovering": 8.234,
+          "BoostsEarned": 7,
+          "InstantBoostsEarned": 14,
+          "SlowsEarned": 14,
+          "queue": 1,
+          "collected": [
+            "A",
+            "b"
+          ],
+          "successful": [
+            "A",
+            "b"
+          ],
+          "failed": [
+            "A",
+            "b"
+          ],
+          "hits": [
+            "A",
+            "b"
+          ],
+          "FinishBoost": true
+        },
+        {
+          "Id": 8,
+          "status": "Running",
+          "Distance": 2.234,
+          "Recovering": 9.234,
+          "BoostsEarned": 8,
+          "InstantBoostsEarned": 15,
+          "SlowsEarned": 15,
+          "queue": 1,
+          "collected": [
+            "A",
+            "b"
+          ],
+          "successful": [
+            "A",
+            "b"
+          ],
+          "failed": [
+            "A",
+            "b"
+          ],
+          "hits": [
+            "A",
+            "b"
+          ],
+          "FinishBoost": true
+        },
+        {
+          "Id": 9,
+          "status": "Running",
+          "Distance": 3.234,
+          "Recovering": 10.234,
+          "BoostsEarned": 9,
+          "InstantBoostsEarned": 16,
+          "SlowsEarned": 16,
+          "queue": 1,
+          "collected": [
+            "A",
+            "b"
+          ],
+          "successful": [
+            "A",
+            "b"
+          ],
+          "failed": [
+            "A",
+            "b"
+          ],
+          "hits": [
+            "A",
+            "b"
+          ],
+          "FinishBoost": true
+        },
+        {
+          "Id": 10,
+          "status": "Running",
+          "Distance": 4.234,
+          "Recovering": 11.234,
+          "BoostsEarned": 10,
+          "InstantBoostsEarned": 17,
+          "SlowsEarned": 17,
+          "queue": 1,
+          "collected": [
+            "A",
+            "b"
+          ],
+          "successful": [
+            "A",
+            "b"
+          ],
+          "failed": [
+            "A",
+            "b"
+          ],
+          "hits": [
+            "A",
+            "b"
+          ],
+          "FinishBoost": true
+        }
+      ]
+    },
+    {
+      "label": "actual/ready/Constant",
+      "Phase": "ready",
+      "Elapsed": 0,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/countdown/Constant",
+      "Phase": "countdown",
+      "Elapsed": 0,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/airborne/Constant",
+      "Phase": "racing",
+      "Elapsed": 0.17,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "pause-shell/Constant",
+      "Phase": "paused",
+      "Elapsed": 0.17,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/terminal-tie/Constant",
+      "Phase": "finished",
+      "Elapsed": 9.999999999999986,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/ready/Lagger",
+      "Phase": "ready",
+      "Elapsed": 0,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/countdown/Lagger",
+      "Phase": "countdown",
+      "Elapsed": 0,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 0,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/airborne/Lagger",
+      "Phase": "racing",
+      "Elapsed": 0.17,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "pause-shell/Lagger",
+      "Phase": "paused",
+      "Elapsed": 0.17,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Running",
+          "Distance": 37.400000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/terminal-tie/Lagger",
+      "Phase": "finished",
+      "Elapsed": 9.999999999999986,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 2,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 3,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/ordinary-queued-behind-slow",
+      "Phase": "racing",
+      "Elapsed": 0.366666666666667,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 55.33333333333327,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 1,
+          "queue": 1,
+          "collected": [
+            "slow",
+            "ordinary"
+          ],
+          "successful": [
+            "ordinary"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 55.33333333333327,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 1,
+          "queue": 1,
+          "collected": [
+            "slow",
+            "ordinary"
+          ],
+          "successful": [
+            "ordinary"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/instant-preempts-partially-served-slow",
+      "Phase": "racing",
+      "Elapsed": 0.591666666666667,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 80.24999999999997,
+          "Recovering": 0,
+          "BoostsEarned": 2,
+          "InstantBoostsEarned": 1,
+          "SlowsEarned": 1,
+          "queue": 2,
+          "collected": [
+            "slow",
+            "ordinary",
+            "instant"
+          ],
+          "successful": [
+            "ordinary",
+            "instant"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 80.24999999999997,
+          "Recovering": 0,
+          "BoostsEarned": 2,
+          "InstantBoostsEarned": 1,
+          "SlowsEarned": 1,
+          "queue": 2,
+          "collected": [
+            "slow",
+            "ordinary",
+            "instant"
+          ],
+          "successful": [
+            "ordinary",
+            "instant"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/merged-instant-pulses",
+      "Phase": "racing",
+      "Elapsed": 0.7333333333333332,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 126.99999999999997,
+          "Recovering": 0,
+          "BoostsEarned": 3,
+          "InstantBoostsEarned": 2,
+          "SlowsEarned": 1,
+          "queue": 2,
+          "collected": [
+            "slow",
+            "ordinary",
+            "instant",
+            "instant2"
+          ],
+          "successful": [
+            "ordinary",
+            "instant",
+            "instant2"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 126.99999999999997,
+          "Recovering": 0,
+          "BoostsEarned": 3,
+          "InstantBoostsEarned": 2,
+          "SlowsEarned": 1,
+          "queue": 2,
+          "collected": [
+            "slow",
+            "ordinary",
+            "instant",
+            "instant2"
+          ],
+          "successful": [
+            "ordinary",
+            "instant",
+            "instant2"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/effects-and-personal-coin",
+      "Phase": "racing",
+      "Elapsed": 1.9999999999999953,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 513.0000000000005,
+          "Recovering": 0,
+          "BoostsEarned": 3,
+          "InstantBoostsEarned": 2,
+          "SlowsEarned": 1,
+          "queue": 0,
+          "collected": [
+            "slow",
+            "ordinary",
+            "instant",
+            "instant2",
+            "coin"
+          ],
+          "successful": [
+            "ordinary",
+            "instant",
+            "instant2",
+            "coin"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 513.0000000000005,
+          "Recovering": 0,
+          "BoostsEarned": 3,
+          "InstantBoostsEarned": 2,
+          "SlowsEarned": 1,
+          "queue": 0,
+          "collected": [
+            "slow",
+            "ordinary",
+            "instant",
+            "instant2",
+            "coin"
+          ],
+          "successful": [
+            "ordinary",
+            "instant",
+            "instant2",
+            "coin"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/linked-pending-before-impact",
+      "Phase": "racing",
+      "Elapsed": 1.2999545454545456,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 285.99,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "linked"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 285.99,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "linked"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/failed-pending-and-recovery",
+      "Phase": "racing",
+      "Elapsed": 1.3009545454545455,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 286,
+          "Recovering": 0.4990454545454545,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "linked"
+          ],
+          "successful": [],
+          "failed": [
+            "linked"
+          ],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 286,
+          "Recovering": 0.4990454545454545,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "linked"
+          ],
+          "successful": [],
+          "failed": [
+            "linked"
+          ],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/hit-with-untouched-reward",
+      "Phase": "racing",
+      "Elapsed": 0.39090909090909093,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 86,
+          "Recovering": 0.5,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 86,
+          "Recovering": 0.5,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/post-recovery-pending",
+      "Phase": "racing",
+      "Elapsed": 1.8636363636363638,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 300,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "after"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 300,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "after"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/post-recovery-award",
+      "Phase": "racing",
+      "Elapsed": 1.9636363636363638,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 322.5,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "after"
+          ],
+          "successful": [
+            "after"
+          ],
+          "failed": [],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 322.5,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "after"
+          ],
+          "successful": [
+            "after"
+          ],
+          "failed": [],
+          "hits": [
+            "stone"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/active-finish-dash",
+      "Phase": "racing",
+      "Elapsed": 9.04,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 2003.5919333847612,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "finish"
+          ],
+          "successful": [
+            "finish"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": true
+        }
+      ]
+    },
+    {
+      "label": "actual/solo-finished",
+      "Phase": "finished",
+      "Elapsed": 9.750000000000002,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "finish"
+          ],
+          "successful": [
+            "finish"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/constant-eliminated",
+      "Phase": "finished",
+      "Elapsed": 0.19999999999999996,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "Distance": 44,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "adversarial/A-instant-after-partial-slow",
+      "Phase": "racing",
+      "Elapsed": 0.6000000000000001,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 104.30411896826504,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 1,
+          "SlowsEarned": 1,
+          "queue": 1,
+          "collected": [
+            "slow",
+            "instant-air"
+          ],
+          "successful": [
+            "instant-air"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 81.00000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 1,
+          "queue": 0,
+          "collected": [
+            "slow"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "adversarial/B-wait-after-partial-slow",
+      "Phase": "racing",
+      "Elapsed": 0.6000000000000001,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 81.00000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 1,
+          "queue": 0,
+          "collected": [
+            "slow"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Running",
+          "Distance": 81.00000000000006,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 1,
+          "queue": 0,
+          "collected": [
+            "slow"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "adversarial/A-B-vs-B-A",
+      "sourceHash": "73AC2248B928B7F059C70FE90C7EF737D9D178F1F635D5EB897B768D44B7682E",
+      "aHash": "D05438F2A9EC0CE325C91FB77D484C3FCBB82419E9AEB0712F98B8138AB6F188",
+      "bHash": "4D35676912ECCDE1667DD8BACFF6A20A7867DDA862D3173351456F2E37DFBBAE",
+      "differentPhysicalOutcomes": true
+    },
+    {
+      "label": "actual/bot-terminal-human-running/Constant",
+      "Phase": "racing",
+      "Elapsed": 9.809090909090909,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 2157.9999999999995,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "finish"
+          ],
+          "successful": [
+            "finish"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/bot-and-human-both-finished/Constant",
+      "Phase": "finished",
+      "Elapsed": 10,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "finish"
+          ],
+          "successful": [
+            "finish"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/bot-terminal-human-running/Lagger",
+      "Phase": "racing",
+      "Elapsed": 9.809090909090909,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Running",
+          "Distance": 2157.9999999999995,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "finish"
+          ],
+          "successful": [
+            "finish"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "actual/bot-and-human-both-finished/Lagger",
+      "Phase": "finished",
+      "Elapsed": 10,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 2200,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "finish"
+          ],
+          "successful": [
+            "finish"
+          ],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-long/Chosen/Constant",
+      "Phase": "finished",
+      "Elapsed": 35.99999999999987,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 1036,
+          "Recovering": 0.12363636363636327,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-long-1-low",
+            "full-long-2-standard-pad",
+            "full-long-3-low"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-long/Chosen/Lagger",
+      "Phase": "finished",
+      "Elapsed": 37.69999999999974,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-long-12-after-stone-ring"
+          ],
+          "successful": [
+            "full-long-12-after-stone-ring"
+          ],
+          "failed": [],
+          "hits": [
+            "full-long-1-low",
+            "full-long-2-standard-pad",
+            "full-long-3-low",
+            "full-long-4-before-stone"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-long/FastFlip/Constant",
+      "Phase": "finished",
+      "Elapsed": 21.767272727272726,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "Distance": 4486,
+          "Recovering": 0.3236363636365836,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-long-4-before-stone-ring"
+          ],
+          "successful": [
+            "full-long-4-before-stone-ring"
+          ],
+          "failed": [],
+          "hits": [
+            "full-long-2-standard-pad",
+            "full-long-6-high",
+            "full-long-9-standard-pad",
+            "full-long-10-high"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 2736,
+          "Recovering": 0.12363636363642386,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-long-1-low",
+            "full-long-3-low",
+            "full-long-6-high"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-long/FastFlip/Lagger",
+      "Phase": "finished",
+      "Elapsed": 39.19999999999961,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-long-4-before-stone-ring"
+          ],
+          "successful": [
+            "full-long-4-before-stone-ring"
+          ],
+          "failed": [],
+          "hits": [
+            "full-long-2-standard-pad",
+            "full-long-6-high",
+            "full-long-9-standard-pad",
+            "full-long-10-high",
+            "full-long-11-large-pad",
+            "full-long-12-after-stone",
+            "full-long-15-low"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-long-1-low",
+            "full-long-3-low",
+            "full-long-6-high",
+            "full-long-8-low",
+            "full-long-10-high",
+            "full-long-15-low"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-short/Chosen/Constant",
+      "Phase": "finished",
+      "Elapsed": 35.99999999999987,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 3836,
+          "Recovering": 0.12363636363652858,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-short-1-low",
+            "full-short-2-high",
+            "full-short-9-large-pad"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-short/Chosen/Lagger",
+      "Phase": "finished",
+      "Elapsed": 39.499999999999574,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-short-1-low",
+            "full-short-2-high",
+            "full-short-9-large-pad",
+            "full-short-10-low",
+            "full-short-11-standard-pad",
+            "full-short-12-after-stone",
+            "full-short-14-high"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-short/FastFlip/Constant",
+      "Phase": "finished",
+      "Elapsed": 27.67636363636364,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "Distance": 5786,
+          "Recovering": 0.32363636363659526,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-short-7-before-stone-ring"
+          ],
+          "successful": [
+            "full-short-7-before-stone-ring"
+          ],
+          "failed": [],
+          "hits": [
+            "full-short-4-standard-pad",
+            "full-short-9-large-pad",
+            "full-short-11-standard-pad",
+            "full-short-12-after-stone"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 2146,
+          "Recovering": 0.12363636363639496,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-short-1-low",
+            "full-short-3-low",
+            "full-short-6-low"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-short/FastFlip/Lagger",
+      "Phase": "finished",
+      "Elapsed": 38.69999999999964,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-short-7-before-stone-ring"
+          ],
+          "successful": [
+            "full-short-7-before-stone-ring"
+          ],
+          "failed": [],
+          "hits": [
+            "full-short-4-standard-pad",
+            "full-short-9-large-pad",
+            "full-short-11-standard-pad",
+            "full-short-12-after-stone",
+            "full-short-14-high",
+            "full-short-15-low"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-short-1-low",
+            "full-short-3-low",
+            "full-short-6-low",
+            "full-short-7-before-stone",
+            "full-short-10-low"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-flow/Chosen/Constant",
+      "Phase": "finished",
+      "Elapsed": 35.99999999999986,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 2886,
+          "Recovering": 0.12363636363642938,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "full-flow-1-passage",
+            "full-flow-4-passage",
+            "full-flow-7-passage"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-flow/Chosen/Lagger",
+      "Phase": "finished",
+      "Elapsed": 40.49999999999946,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 1,
+          "SlowsEarned": 1,
+          "queue": 0,
+          "collected": [
+            "full-flow-8-chain-1",
+            "flow-habit-trap"
+          ],
+          "successful": [
+            "full-flow-8-chain-1"
+          ],
+          "failed": [],
+          "hits": [
+            "full-flow-1-passage",
+            "full-flow-4-passage",
+            "full-flow-7-passage",
+            "full-flow-9-large-pad",
+            "full-flow-10-low",
+            "full-flow-11-standard-pad",
+            "full-flow-12-after-stone",
+            "full-flow-13-passage",
+            "full-flow-15-low"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-flow/FastFlip/Constant",
+      "Phase": "finished",
+      "Elapsed": 19.040000000000003,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "Distance": 1986,
+          "Recovering": 0.12363636363639008,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "successful": [],
+          "failed": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "hits": [
+            "full-flow-1-passage",
+            "full-flow-4-passage",
+            "full-flow-5-before-stone"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 3886,
+          "Recovering": 0.3236363636365318,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "successful": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "failed": [],
+          "hits": [
+            "full-flow-1-passage",
+            "full-flow-4-passage",
+            "full-flow-7-passage",
+            "full-flow-9-large-pad"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/full-flow/FastFlip/Lagger",
+      "Phase": "finished",
+      "Elapsed": 40.99999999999945,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "successful": [],
+          "failed": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "hits": [
+            "full-flow-1-passage",
+            "full-flow-4-passage",
+            "full-flow-5-before-stone",
+            "full-flow-7-passage",
+            "full-flow-9-large-pad",
+            "full-flow-11-standard-pad",
+            "full-flow-12-after-stone",
+            "full-flow-13-passage",
+            "full-flow-14-high",
+            "full-flow-15-low"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "successful": [
+            "full-flow-5-before-stone-ring"
+          ],
+          "failed": [],
+          "hits": [
+            "full-flow-1-passage",
+            "full-flow-4-passage",
+            "full-flow-7-passage",
+            "full-flow-9-large-pad",
+            "full-flow-10-low",
+            "full-flow-12-after-stone",
+            "full-flow-13-passage"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/rhythm-cascade/Chosen/Constant",
+      "Phase": "finished",
+      "Elapsed": 35.999999999999865,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 1388,
+          "Recovering": 0.12363636363636324,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "rhythm-cascade-m0-gate",
+            "rhythm-cascade-m2-gate",
+            "rhythm-cascade-m3-gate"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/rhythm-cascade/Chosen/Lagger",
+      "Phase": "finished",
+      "Elapsed": 44.79999999999914,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 1,
+          "queue": 0,
+          "collected": [
+            "rhythm-cascade-hasty-middle"
+          ],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "rhythm-cascade-m0-gate",
+            "rhythm-cascade-m2-gate",
+            "rhythm-cascade-m3-gate",
+            "rhythm-cascade-m4-exit-gate",
+            "rhythm-cascade-m5-gate",
+            "rhythm-cascade-m6-pad-stone",
+            "rhythm-cascade-m7-gate",
+            "rhythm-cascade-m8-gate",
+            "rhythm-cascade-m9-gate",
+            "rhythm-cascade-m11-gate",
+            "rhythm-cascade-m12-gate",
+            "rhythm-cascade-m14-gate",
+            "rhythm-cascade-m15-chain-gate-1",
+            "rhythm-cascade-m15-chain-gate-2",
+            "rhythm-cascade-m16-gate",
+            "rhythm-cascade-m17-gate",
+            "rhythm-cascade-m18-gate"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/rhythm-cascade/FastFlip/Constant",
+      "Phase": "finished",
+      "Elapsed": 6.00884342792692,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "Distance": 1019.1455541439224,
+          "Recovering": 0.12363636363636224,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "rhythm-cascade-m0-gate",
+            "rhythm-cascade-m1-pad-stone",
+            "rhythm-cascade-m2-gate"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 976,
+          "Recovering": 0.1236363636363631,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "rhythm-cascade-m0-gate",
+            "rhythm-cascade-m1-pad-stone",
+            "rhythm-cascade-m2-gate"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/rhythm-cascade/FastFlip/Lagger",
+      "Phase": "finished",
+      "Elapsed": 46.499999999999005,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "rhythm-cascade-m0-gate",
+            "rhythm-cascade-m1-pad-stone",
+            "rhythm-cascade-m2-gate",
+            "rhythm-cascade-m3-gate",
+            "rhythm-cascade-m4-stone",
+            "rhythm-cascade-m4-exit-gate",
+            "rhythm-cascade-m5-gate",
+            "rhythm-cascade-m6-pad-stone",
+            "rhythm-cascade-m7-gate",
+            "rhythm-cascade-m8-gate",
+            "rhythm-cascade-m9-gate",
+            "rhythm-cascade-m10-pad-stone",
+            "rhythm-cascade-m11-gate",
+            "rhythm-cascade-m12-gate",
+            "rhythm-cascade-m13-after-stone",
+            "rhythm-cascade-m14-gate",
+            "rhythm-cascade-m15-chain-gate-1",
+            "rhythm-cascade-m15-chain-gate-2",
+            "rhythm-cascade-m16-gate",
+            "rhythm-cascade-m17-gate",
+            "rhythm-cascade-m18-gate"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 1,
+          "InstantBoostsEarned": 1,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [
+            "rhythm-cascade-m15-chain-1"
+          ],
+          "successful": [
+            "rhythm-cascade-m15-chain-1"
+          ],
+          "failed": [],
+          "hits": [
+            "rhythm-cascade-m0-gate",
+            "rhythm-cascade-m1-pad-stone",
+            "rhythm-cascade-m2-gate",
+            "rhythm-cascade-m3-gate",
+            "rhythm-cascade-m5-gate",
+            "rhythm-cascade-m6-pad-stone",
+            "rhythm-cascade-m7-gate",
+            "rhythm-cascade-m8-gate",
+            "rhythm-cascade-m9-gate",
+            "rhythm-cascade-m11-gate",
+            "rhythm-cascade-m12-gate",
+            "rhythm-cascade-m13-after-stone",
+            "rhythm-cascade-m14-gate",
+            "rhythm-cascade-m15-chain-gate-1",
+            "rhythm-cascade-m15-chain-gate-2",
+            "rhythm-cascade-m16-gate",
+            "rhythm-cascade-m17-gate",
+            "rhythm-cascade-m18-gate"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/mixed-tricks/Chosen/Constant",
+      "Phase": "finished",
+      "Elapsed": 35.99999999999985,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 4148,
+          "Recovering": 0.12363636363656595,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "mixed-tricks-small-second",
+            "mixed-tricks-large-before",
+            "mixed-tricks-middle-offset"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/mixed-tricks/Chosen/Lagger",
+      "Phase": "finished",
+      "Elapsed": 39.499999999999574,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "mixed-tricks-small-second",
+            "mixed-tricks-large-before",
+            "mixed-tricks-middle-offset",
+            "mixed-tricks-large-pad",
+            "mixed-tricks-after-stone",
+            "mixed-tricks-final-offset",
+            "mixed-tricks-low-ceiling"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/mixed-tricks/FastFlip/Constant",
+      "Phase": "finished",
+      "Elapsed": 14.949090909090911,
+      "camera": "Constant",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "Distance": 2986,
+          "Recovering": 0.12363636363643635,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "mixed-tricks-small-second",
+            "mixed-tricks-large-before",
+            "mixed-tricks-straight"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "Distance": 2986,
+          "Recovering": 0.12363636363644051,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "mixed-tricks-small-second",
+            "mixed-tricks-large-before",
+            "mixed-tricks-straight"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    },
+    {
+      "label": "authored-terminal/mixed-tricks/FastFlip/Lagger",
+      "Phase": "finished",
+      "Elapsed": 40.99999999999944,
+      "camera": "Lagger",
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "mixed-tricks-small-second",
+            "mixed-tricks-large-before",
+            "mixed-tricks-straight",
+            "mixed-tricks-low-floor",
+            "mixed-tricks-middle-offset",
+            "mixed-tricks-large-pad",
+            "mixed-tricks-after-stone",
+            "mixed-tricks-small-ceiling",
+            "mixed-tricks-final-offset",
+            "mixed-tricks-low-ceiling"
+          ],
+          "FinishBoost": false
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "Distance": 7920,
+          "Recovering": 0,
+          "BoostsEarned": 0,
+          "InstantBoostsEarned": 0,
+          "SlowsEarned": 0,
+          "queue": 0,
+          "collected": [],
+          "successful": [],
+          "failed": [],
+          "hits": [
+            "mixed-tricks-small-second",
+            "mixed-tricks-large-before",
+            "mixed-tricks-straight",
+            "mixed-tricks-low-floor",
+            "mixed-tricks-middle-offset",
+            "mixed-tricks-large-pad",
+            "mixed-tricks-small-ceiling",
+            "mixed-tricks-final-offset",
+            "mixed-tricks-low-ceiling"
+          ],
+          "FinishBoost": false
+        }
+      ]
+    }
+  ],
+  "error": null
+}

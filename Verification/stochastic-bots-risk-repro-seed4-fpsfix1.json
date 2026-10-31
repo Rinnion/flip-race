@@ -1,0 +1,4125 @@
+{
+  "status": "PASS",
+  "smoke": false,
+  "reproCadenceSeed4": true,
+  "scope": "BSTO00/03/04 risk prototype. Actual solo Lagger and q1 Constant; every emitted actual Press/Advance immediately replayed on ordinary solo. Complete public player fields/queues/sets and world time/phase/camera compared. No UI/browser/performance acceptance claim, no old per-run goal bands, no seed filtering. Test-only Probe.Master establishes the independent compatible reference.",
+  "announcedSeeds": [
+    4
+  ],
+  "scheduledCases": 3,
+  "ranCases": 3,
+  "unrunCases": [],
+  "failedCase": null,
+  "error": null,
+  "advanceCostScope": "Managed controller Advance includes normal world and planning; excludes test observer replay/audits. Not an isolated planner or native WebGL benchmark.",
+  "maximumReplayNumericError": 0,
+  "snapshots": 25018,
+  "fieldComparisons": 1584052,
+  "horizonLimit": 1000,
+  "candidatesPerPlanLimit": 96,
+  "sourceHashes": {
+    "Assets/Scripts/Core/BotPlanCatalog.cs": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C",
+    "Assets/Scripts/Core/BotPlanShuffle.cs": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42",
+    "Assets/Scripts/Core/BotRaceController.cs": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67",
+    "Assets/Scripts/Core/ContinuousMotion.cs": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+    "Assets/Scripts/Core/FinishTargetGeometry.cs": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285",
+    "Assets/Scripts/Core/FlightSettings.cs": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+    "Assets/Scripts/Core/MotionProfiles.cs": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417",
+    "Assets/Scripts/Core/ObstacleGeometry.cs": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+    "Assets/Scripts/Core/RaceSimulation.cs": "5D2C3DB7AF6A9DEF3AF19F5D023FD5B8B926E1E5AF868CC0C406555DBAEF28CA",
+    "Assets/Scripts/Core/RaceSnapshot.cs": "07E2C8693926A64C0AE2A417501CCA2D1C882DE536987713731842F9A12366BB",
+    "Assets/Scripts/Core/StochasticBotController.cs": "C3980603786940FFB738766AEC7BAA8F42671F6CAA30FE79B6A34A94F3090E5D",
+    "Assets/Scripts/Core/StochasticTrackMap.cs": "374384E8DF23CBC828355E7065FA30127750D38DA51376855DFD9FFAD092470D",
+    "Assets/Scripts/Core/TracksControl.cs": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+    "Assets/Scripts/Core/TracksFull.cs": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79",
+    "Assets/Scripts/Core/TracksMixed.cs": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156",
+    "Assets/Scripts/Core/TracksMixedStage.cs": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+    "Assets/Scripts/Core/TracksRhythm.cs": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7",
+    "Assets/Scripts/Core/TracksRhythmFull.cs": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6",
+    "Assets/Scripts/Core/TracksRhythmNegatives.cs": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+    "Assets/Scripts/Core/TracksTune.cs": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+    "Assets/Scripts/Core/TracksV3.cs": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+    "Assets/Scripts/Core/TracksV4.cs": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB",
+    "Tools/StochasticRisk/Program.cs": "8FFF5F25FDA3280DD95F49CBF96349F5A991EA134580DB12E5F99EBBDE1CEEF6",
+    "Tools/BotPrototype/SharedProbe.cs": "4F0BCE574E7901FBD726109848DE04C4F1EEA67E525C96E96C35FF3022E6A7F5"
+  },
+  "sourceStable": true,
+  "results": [
+    {
+      "Case": {
+        "Key": "rhythm-cascade/Chosen/0.5/4/Lagger/0",
+        "Track": "rhythm-cascade",
+        "Profile": "Chosen",
+        "Camera": "Lagger",
+        "Q": 0.5,
+        "Seed": 4,
+        "Frame": 0
+      },
+      "Status": "Finished",
+      "Phase": "finished",
+      "Error": null,
+      "Time": 37.299999999998484,
+      "Distance": 7920,
+      "WallMilliseconds": 2172.5912,
+      "P95AdvanceMilliseconds": 0.1146,
+      "MaximumAdvanceMilliseconds": 81.8706,
+      "SuccessfulIds": [
+        "rhythm-cascade-m10-pad",
+        "rhythm-cascade-m15-chain-2",
+        "rhythm-cascade-m3-free",
+        "rhythm-cascade-m4-before"
+      ],
+      "FailedIds": [],
+      "CollectedIds": [
+        "rhythm-cascade-m10-pad",
+        "rhythm-cascade-m15-chain-2",
+        "rhythm-cascade-m3-free",
+        "rhythm-cascade-m4-before"
+      ],
+      "HitIds": [
+        "rhythm-cascade-m1-pad-stone",
+        "rhythm-cascade-m12-gate",
+        "rhythm-cascade-m17-gate",
+        "rhythm-cascade-m2-gate",
+        "rhythm-cascade-m5-gate"
+      ],
+      "MissedPositiveIds": [
+        "rhythm-cascade-m1-pad",
+        "rhythm-cascade-m13-after-ring",
+        "rhythm-cascade-m15-chain-1",
+        "rhythm-cascade-m6-pad",
+        "rhythm-cascade-m8-free-high"
+      ],
+      "ReferenceMasterTime": 0,
+      "Collisions": 5,
+      "Boosts": 4,
+      "FinishBoosts": 0,
+      "AcceptedInputs": 50,
+      "RejectedInputs": 0,
+      "Cursor": 50,
+      "ImmediateSnapshots": 8612,
+      "FieldComparisons": 546362,
+      "PlanningCalls": 36,
+      "CandidateSimulations": 2767,
+      "ForecastSteps": 526863,
+      "MaximumObservedHorizon": 1000.0000000000005,
+      "Decisions": [
+        {
+          "Id": "obstacle:rhythm-cascade-m0-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.18312848720233887,
+          "AtDistance": 0,
+          "AtTime": 0,
+          "HorizonEndDistance": 1000,
+          "SelectedInputs": [
+            218.5,
+            269.5,
+            485.1811187353192,
+            960.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m1-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.09008760715369135,
+          "AtDistance": 269.9999998807907,
+          "AtTime": 1.2272727267308632,
+          "HorizonEndDistance": 1269.9999998807907,
+          "SelectedInputs": [
+            294,
+            339
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m1-pad",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.5,
+          "Roll": 0.4384602637728676,
+          "AtDistance": 301.9999998410543,
+          "AtTime": 1.372727272004787,
+          "HorizonEndDistance": 1301.9999998410544,
+          "SelectedInputs": [
+            339,
+            647,
+            762
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m2-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.128258251468651,
+          "AtDistance": 609.9999998410543,
+          "AtTime": 2.7727272720047798,
+          "HorizonEndDistance": 1609.9999998410544,
+          "SelectedInputs": [
+            647,
+            762,
+            810
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m3-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.2608907049288973,
+          "AtDistance": 909.9999998410543,
+          "AtTime": 4.636363635641138,
+          "HorizonEndDistance": 1909.9999998410544,
+          "SelectedInputs": [
+            910,
+            955,
+            1040.5,
+            1091.5,
+            1248.5,
+            1301,
+            1718.5,
+            1741.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m3-free",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.28415117983240634,
+          "AtDistance": 943.9999998956919,
+          "AtTime": 4.79090909043495,
+          "HorizonEndDistance": 1943.9999998956919,
+          "SelectedInputs": [
+            955,
+            960.5,
+            1011.5,
+            1248.5,
+            1301,
+            1718.5,
+            1741.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m4-before",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.4080800843657926,
+          "AtDistance": 1395.9999998960384,
+          "AtTime": 7.2386187419415045,
+          "HorizonEndDistance": 2395.9999998960384,
+          "SelectedInputs": [
+            1661.5,
+            1718.5,
+            2047.8,
+            2128.3,
+            2376.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m4-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.19716726627666503,
+          "AtDistance": 1495.9999998364337,
+          "AtTime": 7.5416490447912015,
+          "HorizonEndDistance": 2495.9999998364337,
+          "SelectedInputs": [
+            1706.5,
+            1741.5,
+            2047.8,
+            2128.3,
+            2376.5,
+            2427.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m4-exit-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.9060664583230391,
+          "AtDistance": 1735.9999998956919,
+          "AtTime": 8.590909090435163,
+          "HorizonEndDistance": 2735.999999895692,
+          "SelectedInputs": [
+            1741.5,
+            2047.8,
+            2128.3,
+            2388.5,
+            2427.5,
+            2631.181118735319
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m5-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.09733795665670186,
+          "AtDistance": 2025.9999998807907,
+          "AtTime": 9.801515151154083,
+          "HorizonEndDistance": 3025.9999998807907,
+          "SelectedInputs": [
+            2047.8,
+            2128.3,
+            2347.5,
+            2376.5,
+            2631.181118735319
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m6-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.30278041411656886,
+          "AtDistance": 2415.9999998013177,
+          "AtTime": 11.381818180915085,
+          "HorizonEndDistance": 3415.9999998013177,
+          "SelectedInputs": [
+            2416,
+            2427.5,
+            2461,
+            2631.181118735319,
+            3106.5,
+            3157.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m6-pad",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.7588221897603944,
+          "AtDistance": 2447.9999998609223,
+          "AtTime": 12.027272726640527,
+          "HorizonEndDistance": 3447.9999998609223,
+          "SelectedInputs": [
+            2743.181118735319,
+            3157.5,
+            3186.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m7-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.34487184684257954,
+          "AtDistance": 2755.999999860923,
+          "AtTime": 13.427272726640325,
+          "HorizonEndDistance": 3755.999999860923,
+          "SelectedInputs": [
+            3106.5,
+            3157.5,
+            3513,
+            3548
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m8-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3924512838711962,
+          "AtDistance": 3161.9999998410544,
+          "AtTime": 15.272727272004282,
+          "HorizonEndDistance": 4161.999999841055,
+          "SelectedInputs": [
+            3513,
+            3536,
+            3855.5,
+            3918.5,
+            4113,
+            4151
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m8-free-high",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.7411654038587585,
+          "AtDistance": 3211.9999998907247,
+          "AtTime": 15.499999999502753,
+          "HorizonEndDistance": 4211.999999890724,
+          "SelectedInputs": [
+            3513,
+            3548,
+            3867.5,
+            3918.5,
+            4113,
+            4151,
+            4179
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m9-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.19425283593591303,
+          "AtDistance": 3516.9999998708563,
+          "AtTime": 16.886363635775872,
+          "HorizonEndDistance": 4516.999999870856,
+          "SelectedInputs": [
+            3548,
+            3899.5,
+            3950.5,
+            4113,
+            4151,
+            4179
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m10-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.8978585993172601,
+          "AtDistance": 3906.9999998807907,
+          "AtTime": 18.659090908548045,
+          "HorizonEndDistance": 4906.999999880791,
+          "SelectedInputs": [
+            3918.5,
+            4113,
+            4151,
+            4179,
+            4705.5,
+            4756.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m10-pad",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.1843048146693036,
+          "AtDistance": 4006.999999821186,
+          "AtTime": 19.113636362822508,
+          "HorizonEndDistance": 5006.999999821186,
+          "SelectedInputs": [
+            4113,
+            4119,
+            4147,
+            4717.5,
+            4768.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m11-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.6120436290511861,
+          "AtDistance": 4366.999999890724,
+          "AtTime": 20.74999999950225,
+          "HorizonEndDistance": 5366.999999890724,
+          "SelectedInputs": [
+            4717.5,
+            4768.5,
+            5068.5,
+            5097.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m12-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.13311585795599967,
+          "AtDistance": 4666.999999821186,
+          "AtTime": 21.813636362822532,
+          "HorizonEndDistance": 5666.999999821186,
+          "SelectedInputs": [
+            4717.5,
+            4768.5,
+            4937.5,
+            4988.5,
+            5419.5,
+            5461.5,
+            5603
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m13-after-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.8221606923034415,
+          "AtDistance": 5154.999999801318,
+          "AtTime": 24.53181818091416,
+          "HorizonEndDistance": 6154.999999801318,
+          "SelectedInputs": [
+            5179,
+            5224,
+            5419.5,
+            5621.5,
+            5709.5,
+            5763,
+            5925.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m13-after-ring",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.9277007930213585,
+          "AtDistance": 5334.999999890724,
+          "AtTime": 25.349999999502423,
+          "HorizonEndDistance": 6334.999999890724,
+          "SelectedInputs": [
+            5419.5,
+            5621.5,
+            5721.5,
+            5775,
+            5925.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m14-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.21196314960252494,
+          "AtDistance": 5654.999999880791,
+          "AtTime": 26.804545454002906,
+          "HorizonEndDistance": 6654.999999880791,
+          "SelectedInputs": [
+            5721.5,
+            5787,
+            5925.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3283433614997193,
+          "AtDistance": 5944.999999811252,
+          "AtTime": 28.122727271868794,
+          "HorizonEndDistance": 6944.999999811252,
+          "SelectedInputs": []
+        },
+        {
+          "Id": "positive:rhythm-cascade-m15-chain-1",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.5,
+          "Roll": 0.8967858349205926,
+          "AtDistance": 5978.999999860922,
+          "AtTime": 28.277272726640057,
+          "HorizonEndDistance": 6978.999999860922,
+          "SelectedInputs": [
+            6311,
+            6356
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3676970637170598,
+          "AtDistance": 6294.999999821186,
+          "AtTime": 29.713636362823234,
+          "HorizonEndDistance": 7294.999999821186,
+          "SelectedInputs": [
+            6299,
+            6356
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m15-chain-2",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.1560850195819512,
+          "AtDistance": 6328.999999841054,
+          "AtTime": 29.86818181745905,
+          "HorizonEndDistance": 7328.999999841054,
+          "SelectedInputs": [
+            6353,
+            6626,
+            6691.5,
+            6995.5,
+            7046.5,
+            7295.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m16-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.33174840279389173,
+          "AtDistance": 6644.999999880791,
+          "AtTime": 31.304545454003488,
+          "HorizonEndDistance": 7644.999999880791,
+          "SelectedInputs": [
+            6691.5,
+            6995.5,
+            7046.5,
+            7295.5,
+            7358.5,
+            7595.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m17-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.13452238438185304,
+          "AtDistance": 6944.999999841054,
+          "AtTime": 32.36818181745926,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            6995.5,
+            7046.5,
+            7266.5,
+            7295.5,
+            7515.5,
+            7646.5,
+            7758
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m18-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.6009040334029123,
+          "AtDistance": 7244.999999801317,
+          "AtTime": 33.73181818091518,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            7266.5,
+            7295.5,
+            7515.5,
+            7646.5,
+            7790
+          ]
+        },
+        {
+          "Id": "finish:rhythm-cascade-finish",
+          "Kind": "Finish",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.8490540193160996,
+          "AtDistance": 7399.999999841054,
+          "AtTime": 34.93636363564131,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            7595.5,
+            7646.5
+          ]
+        }
+      ],
+      "Facts": [
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m1-pad-stone",
+          "ObservedAtTime": 2.89166666666666,
+          "ObservedAtDistance": 636,
+          "IntervalStartTime": 2.8833333333333266,
+          "IntervalEndTime": 2.89166666666666,
+          "ExactEventTime": 2.8909090909090756,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m1-pad-stone",
+          "ObservedAtTime": 3.3909090909090733,
+          "ObservedAtDistance": 636,
+          "IntervalStartTime": 3.383333333333325,
+          "IntervalEndTime": 3.3909090909090733,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m2-gate",
+          "ObservedAtTime": 5.1333333333333755,
+          "ObservedAtDistance": 1018.8066487382581,
+          "IntervalStartTime": 5.125000000000042,
+          "IntervalEndTime": 5.1333333333333755,
+          "ExactEventTime": 5.130939312446621,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m2-gate",
+          "ObservedAtTime": 5.630939312446645,
+          "ObservedAtDistance": 1018.8066487382581,
+          "IntervalStartTime": 5.625000000000067,
+          "IntervalEndTime": 5.630939312446645,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m3-free",
+          "ObservedAtTime": 7.025000000000133,
+          "ObservedAtDistance": 1325.5058150553891,
+          "IntervalStartTime": 7.016666666666799,
+          "IntervalEndTime": 7.025000000000133,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m3-free",
+          "ObservedAtTime": 7.025000000000133,
+          "ObservedAtDistance": 1325.5058150553891,
+          "IntervalStartTime": 7.016666666666799,
+          "IntervalEndTime": 7.025000000000133,
+          "ExactEventTime": 7.024947135860214,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m4-before",
+          "ObservedAtTime": 8.750000000000139,
+          "ObservedAtDistance": 1770.9999999999873,
+          "IntervalStartTime": 8.741666666666806,
+          "IntervalEndTime": 8.750000000000139,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [
+            "rhythm-cascade-m4-before"
+          ],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m4-before",
+          "ObservedAtTime": 9.591666666666757,
+          "ObservedAtDistance": 1956.7499999999695,
+          "IntervalStartTime": 9.583333333333425,
+          "IntervalEndTime": 9.591666666666757,
+          "ExactEventTime": 9.586363636363819,
+          "PendingBefore": [
+            "rhythm-cascade-m4-before"
+          ],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m5-gate",
+          "ObservedAtTime": 11.39848484758175,
+          "ObservedAtDistance": 2418.1980809008583,
+          "IntervalStartTime": 11.390151514248418,
+          "IntervalEndTime": 11.39848484758175,
+          "ExactEventTime": 11.391809458640267,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m5-gate",
+          "ObservedAtTime": 11.891809458640239,
+          "ObservedAtDistance": 2418.1980809008583,
+          "IntervalStartTime": 11.891666666666628,
+          "IntervalEndTime": 11.891809458640239,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m10-pad",
+          "ObservedAtTime": 20.91666666666609,
+          "ObservedAtDistance": 4403.769275993852,
+          "IntervalStartTime": 20.908333333332756,
+          "IntervalEndTime": 20.91666666666609,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m10-pad",
+          "ObservedAtTime": 20.91666666666609,
+          "ObservedAtDistance": 4403.769275993852,
+          "IntervalStartTime": 20.908333333332756,
+          "IntervalEndTime": 20.91666666666609,
+          "ExactEventTime": 20.915733854601665,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m12-gate",
+          "ObservedAtTime": 23.483333333332613,
+          "ObservedAtDistance": 5033,
+          "IntervalStartTime": 23.47499999999928,
+          "IntervalEndTime": 23.483333333332613,
+          "ExactEventTime": 23.477272727271817,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m12-gate",
+          "ObservedAtTime": 23.97727272727179,
+          "ObservedAtDistance": 5033,
+          "IntervalStartTime": 23.974999999999252,
+          "IntervalEndTime": 23.97727272727179,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m15-chain-2",
+          "ObservedAtTime": 31.57499999999885,
+          "ObservedAtDistance": 6704.756824326482,
+          "IntervalStartTime": 31.56666666666552,
+          "IntervalEndTime": 31.57499999999885,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m15-chain-2",
+          "ObservedAtTime": 31.57499999999885,
+          "ObservedAtDistance": 6704.756824326482,
+          "IntervalStartTime": 31.56666666666552,
+          "IntervalEndTime": 31.57499999999885,
+          "ExactEventTime": 31.572665233392343,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m17-gate",
+          "ObservedAtTime": 34.15833333333202,
+          "ObservedAtDistance": 7337.160599551534,
+          "IntervalStartTime": 34.149999999998684,
+          "IntervalEndTime": 34.15833333333202,
+          "ExactEventTime": 34.150729997961655,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m17-gate",
+          "ObservedAtTime": 34.650729997961626,
+          "ObservedAtDistance": 7337.160599551534,
+          "IntervalStartTime": 34.649999999998656,
+          "IntervalEndTime": 34.650729997961626,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        }
+      ],
+      "Inputs": [
+        {
+          "Time": 0.9931818175947995,
+          "Distance": 218.4999998708566,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Time": 1.2249999995032896,
+          "Distance": 269.4999998907248,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Time": 1.3363636356411517,
+          "Distance": 293.9999998410543,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Time": 1.5409090900059852,
+          "Distance": 338.99999980131787,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Time": 4.636363635641138,
+          "Distance": 909.9999998410543,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Time": 4.840909090005978,
+          "Distance": 954.9999998013179,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Time": 4.865909090412374,
+          "Distance": 960.4999998907248,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Time": 5.09772727186932,
+          "Distance": 1011.499999811252,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Time": 6.6749999995034015,
+          "Distance": 1248.4999998907247,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Time": 6.968181817459475,
+          "Distance": 1312.9999998410542,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Time": 8.456818180915283,
+          "Distance": 1706.4999998013177,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Time": 8.615909090435164,
+          "Distance": 1741.4999998956919,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Time": 9.86757575735918,
+          "Distance": 2047.7999999284743,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Time": 10.111515151325655,
+          "Distance": 2128.2999999374156,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Time": 11.070454544551477,
+          "Distance": 2347.4999998013177,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Time": 11.202272726730886,
+          "Distance": 2376.4999998807907,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Time": 11.381818180915085,
+          "Distance": 2415.9999998013177,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Time": 11.934090908368399,
+          "Distance": 2427.499999841054,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Time": 13.369005084602806,
+          "Distance": 2743.1811186126642,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Time": 15.020454544731605,
+          "Distance": 3106.4999998410544,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Time": 15.252272726640056,
+          "Distance": 3157.499999860923,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Time": 16.8681818174586,
+          "Distance": 3512.9999998410544,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Time": 17.02727272663979,
+          "Distance": 3547.999999860923,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Time": 18.624999999502293,
+          "Distance": 3899.4999998907247,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Time": 18.711363635685302,
+          "Distance": 3918.4999998509884,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Time": 19.59545454473092,
+          "Distance": 4112.999999841055,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Time": 19.62272727186816,
+          "Distance": 4118.999999811253,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Time": 19.749999999502137,
+          "Distance": 4146.999999890724,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Time": 22.043181817593766,
+          "Distance": 4717.499999870857,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Time": 22.274999999502274,
+          "Distance": 4768.499999890724,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Time": 23.04318181759385,
+          "Distance": 4937.499999870857,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Time": 23.27499999950236,
+          "Distance": 4988.499999890724,
+          "Accepted": true,
+          "Cursor": 31
+        },
+        {
+          "Time": 24.138636363003247,
+          "Distance": 5068.499999860923,
+          "Accepted": true,
+          "Cursor": 32
+        },
+        {
+          "Time": 24.640909090005074,
+          "Distance": 5178.999999801318,
+          "Accepted": true,
+          "Cursor": 33
+        },
+        {
+          "Time": 24.845454544731147,
+          "Distance": 5223.999999841055,
+          "Accepted": true,
+          "Cursor": 34
+        },
+        {
+          "Time": 25.734090908367605,
+          "Distance": 5419.499999841054,
+          "Accepted": true,
+          "Cursor": 35
+        },
+        {
+          "Time": 26.652272726639858,
+          "Distance": 5621.499999860922,
+          "Accepted": true,
+          "Cursor": 36
+        },
+        {
+          "Time": 27.10681818100473,
+          "Distance": 5721.499999821186,
+          "Accepted": true,
+          "Cursor": 37
+        },
+        {
+          "Time": 27.40454545400296,
+          "Distance": 5786.999999880791,
+          "Accepted": true,
+          "Cursor": 38
+        },
+        {
+          "Time": 28.034090908367872,
+          "Distance": 5925.499999841054,
+          "Accepted": true,
+          "Cursor": 39
+        },
+        {
+          "Time": 29.731818181230857,
+          "Distance": 6298.999999870856,
+          "Accepted": true,
+          "Cursor": 40
+        },
+        {
+          "Time": 29.977272726640297,
+          "Distance": 6352.999999860922,
+          "Accepted": true,
+          "Cursor": 41
+        },
+        {
+          "Time": 31.218181817594694,
+          "Distance": 6625.999999870856,
+          "Accepted": true,
+          "Cursor": 42
+        },
+        {
+          "Time": 31.51590909043487,
+          "Distance": 6691.499999895692,
+          "Accepted": true,
+          "Cursor": 43
+        },
+        {
+          "Time": 32.59772727186929,
+          "Distance": 6995.499999811252,
+          "Accepted": true,
+          "Cursor": 44
+        },
+        {
+          "Time": 32.82954545377781,
+          "Distance": 7046.49999983112,
+          "Accepted": true,
+          "Cursor": 45
+        },
+        {
+          "Time": 33.82954545377793,
+          "Distance": 7266.49999983112,
+          "Accepted": true,
+          "Cursor": 46
+        },
+        {
+          "Time": 33.96136363568643,
+          "Distance": 7295.499999850988,
+          "Accepted": true,
+          "Cursor": 47
+        },
+        {
+          "Time": 35.82499999950353,
+          "Distance": 7595.499999890724,
+          "Accepted": true,
+          "Cursor": 48
+        },
+        {
+          "Time": 36.05681818091535,
+          "Distance": 7646.499999801317,
+          "Accepted": true,
+          "Cursor": 49
+        }
+      ],
+      "BranchCoverage": {
+        "skipIntentThenLaterRealCollect": true,
+        "hitThenRealRecoveryThenLaterCollect": true,
+        "untouchedLinkedRewardCollectedAfterHit": false,
+        "pendingObservedThenFailed": [],
+        "failedWithoutObservedPriorPending": [],
+        "note": "Observed set transitions identify intervals; only matching LastHit/LastSuccess/LastFinishBoost supply exact event timestamps. No exact contact distance is inferred from an endpoint."
+      },
+      "ReplayEqual": true,
+      "TerminalFrozen": true,
+      "PauseFrozen": true
+    },
+    {
+      "Case": {
+        "Key": "rhythm-cascade/Chosen/0.5/4/Lagger/1",
+        "Track": "rhythm-cascade",
+        "Profile": "Chosen",
+        "Camera": "Lagger",
+        "Q": 0.5,
+        "Seed": 4,
+        "Frame": 1
+      },
+      "Status": "Finished",
+      "Phase": "finished",
+      "Error": null,
+      "Time": 37.29999999999847,
+      "Distance": 7920,
+      "WallMilliseconds": 1520.7018,
+      "P95AdvanceMilliseconds": 0.0152,
+      "MaximumAdvanceMilliseconds": 55.9277,
+      "SuccessfulIds": [
+        "rhythm-cascade-m10-pad",
+        "rhythm-cascade-m15-chain-2",
+        "rhythm-cascade-m3-free",
+        "rhythm-cascade-m4-before"
+      ],
+      "FailedIds": [],
+      "CollectedIds": [
+        "rhythm-cascade-m10-pad",
+        "rhythm-cascade-m15-chain-2",
+        "rhythm-cascade-m3-free",
+        "rhythm-cascade-m4-before"
+      ],
+      "HitIds": [
+        "rhythm-cascade-m1-pad-stone",
+        "rhythm-cascade-m12-gate",
+        "rhythm-cascade-m17-gate",
+        "rhythm-cascade-m2-gate",
+        "rhythm-cascade-m5-gate"
+      ],
+      "MissedPositiveIds": [
+        "rhythm-cascade-m1-pad",
+        "rhythm-cascade-m13-after-ring",
+        "rhythm-cascade-m15-chain-1",
+        "rhythm-cascade-m6-pad",
+        "rhythm-cascade-m8-free-high"
+      ],
+      "ReferenceMasterTime": 0,
+      "Collisions": 5,
+      "Boosts": 4,
+      "FinishBoosts": 0,
+      "AcceptedInputs": 50,
+      "RejectedInputs": 0,
+      "Cursor": 50,
+      "ImmediateSnapshots": 8908,
+      "FieldComparisons": 561437,
+      "PlanningCalls": 36,
+      "CandidateSimulations": 2767,
+      "ForecastSteps": 526863,
+      "MaximumObservedHorizon": 1000.0000000000005,
+      "Decisions": [
+        {
+          "Id": "obstacle:rhythm-cascade-m0-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.18312848720233887,
+          "AtDistance": 0,
+          "AtTime": 0,
+          "HorizonEndDistance": 1000,
+          "SelectedInputs": [
+            218.5,
+            269.5,
+            485.1811187353192,
+            960.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m1-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.09008760715369135,
+          "AtDistance": 269.9999998807907,
+          "AtTime": 1.2272727267308636,
+          "HorizonEndDistance": 1269.9999998807907,
+          "SelectedInputs": [
+            294,
+            339
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m1-pad",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.5,
+          "Roll": 0.4384602637728676,
+          "AtDistance": 301.9999998410543,
+          "AtTime": 1.3727272720047874,
+          "HorizonEndDistance": 1301.9999998410544,
+          "SelectedInputs": [
+            339,
+            647,
+            762
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m2-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.128258251468651,
+          "AtDistance": 609.9999998410543,
+          "AtTime": 2.7727272720047798,
+          "HorizonEndDistance": 1609.9999998410544,
+          "SelectedInputs": [
+            647,
+            762,
+            810
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m3-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.2608907049288973,
+          "AtDistance": 909.9999998410543,
+          "AtTime": 4.636363635641138,
+          "HorizonEndDistance": 1909.9999998410544,
+          "SelectedInputs": [
+            910,
+            955,
+            1040.5,
+            1091.5,
+            1248.5,
+            1301,
+            1718.5,
+            1741.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m3-free",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.28415117983240634,
+          "AtDistance": 943.9999998013179,
+          "AtTime": 4.790909090005976,
+          "HorizonEndDistance": 1943.999999801318,
+          "SelectedInputs": [
+            955,
+            960.5,
+            1011.5,
+            1248.5,
+            1301,
+            1718.5,
+            1741.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m4-before",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.4080800843657926,
+          "AtDistance": 1395.9999998960384,
+          "AtTime": 7.2386187419415,
+          "HorizonEndDistance": 2395.9999998960384,
+          "SelectedInputs": [
+            1661.5,
+            1718.5,
+            2047.8,
+            2128.3,
+            2376.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m4-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.19716726627666503,
+          "AtDistance": 1495.9999998364337,
+          "AtTime": 7.541649044791198,
+          "HorizonEndDistance": 2495.9999998364337,
+          "SelectedInputs": [
+            1706.5,
+            1741.5,
+            2047.8,
+            2128.3,
+            2376.5,
+            2427.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m4-exit-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.9060664583230391,
+          "AtDistance": 1735.9999998013177,
+          "AtTime": 8.59090909000618,
+          "HorizonEndDistance": 2735.9999998013177,
+          "SelectedInputs": [
+            1741.5,
+            2047.8,
+            2128.3,
+            2388.5,
+            2427.5,
+            2631.181118735319
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m5-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.09733795665670186,
+          "AtDistance": 2025.9999998807907,
+          "AtTime": 9.801515151154076,
+          "HorizonEndDistance": 3025.9999998807907,
+          "SelectedInputs": [
+            2047.8,
+            2128.3,
+            2347.5,
+            2376.5,
+            2631.181118735319
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m6-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.30278041411656886,
+          "AtDistance": 2415.999999801318,
+          "AtTime": 11.381818180915065,
+          "HorizonEndDistance": 3415.999999801318,
+          "SelectedInputs": [
+            2416,
+            2427.5,
+            2461,
+            2631.181118735319,
+            3106.5,
+            3157.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m6-pad",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.7588221897603944,
+          "AtDistance": 2447.999999860923,
+          "AtTime": 12.027272726640476,
+          "HorizonEndDistance": 3447.999999860923,
+          "SelectedInputs": [
+            2743.181118735319,
+            3157.5,
+            3186.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m7-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.34487184684257954,
+          "AtDistance": 2755.999999860923,
+          "AtTime": 13.427272726640279,
+          "HorizonEndDistance": 3755.999999860923,
+          "SelectedInputs": [
+            3106.5,
+            3157.5,
+            3513,
+            3548
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m8-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3924512838711962,
+          "AtDistance": 3161.9999998410544,
+          "AtTime": 15.272727272004246,
+          "HorizonEndDistance": 4161.999999841055,
+          "SelectedInputs": [
+            3513,
+            3536,
+            3855.5,
+            3918.5,
+            4113,
+            4151
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m8-free-high",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.7411654038587585,
+          "AtDistance": 3211.9999998907247,
+          "AtTime": 15.49999999950272,
+          "HorizonEndDistance": 4211.999999890724,
+          "SelectedInputs": [
+            3513,
+            3548,
+            3867.5,
+            3918.5,
+            4113,
+            4151,
+            4179
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m9-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.19425283593591303,
+          "AtDistance": 3516.9999998410544,
+          "AtTime": 16.88636363564036,
+          "HorizonEndDistance": 4516.999999841055,
+          "SelectedInputs": [
+            3548,
+            3899.5,
+            3950.5,
+            4113,
+            4151,
+            4179
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m10-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.8978585993172601,
+          "AtDistance": 3906.9999998807907,
+          "AtTime": 18.659090908548,
+          "HorizonEndDistance": 4906.999999880791,
+          "SelectedInputs": [
+            3918.5,
+            4113,
+            4151,
+            4179,
+            4705.5,
+            4756.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m10-pad",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.1843048146693036,
+          "AtDistance": 4006.999999821186,
+          "AtTime": 19.113636362822465,
+          "HorizonEndDistance": 5006.999999821186,
+          "SelectedInputs": [
+            4113,
+            4119,
+            4147,
+            4717.5,
+            4768.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m11-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.6120436290511861,
+          "AtDistance": 4366.999999890724,
+          "AtTime": 20.74999999950222,
+          "HorizonEndDistance": 5366.999999890724,
+          "SelectedInputs": [
+            4717.5,
+            4768.5,
+            5068.5,
+            5097.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m12-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.13311585795599967,
+          "AtDistance": 4666.999999821186,
+          "AtTime": 21.81363636282251,
+          "HorizonEndDistance": 5666.999999821186,
+          "SelectedInputs": [
+            4717.5,
+            4768.5,
+            4937.5,
+            4988.5,
+            5419.5,
+            5461.5,
+            5603
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m13-after-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.8221606923034415,
+          "AtDistance": 5154.999999801318,
+          "AtTime": 24.53181818091416,
+          "HorizonEndDistance": 6154.999999801318,
+          "SelectedInputs": [
+            5179,
+            5224,
+            5419.5,
+            5621.5,
+            5709.5,
+            5763,
+            5925.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m13-after-ring",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.9277007930213585,
+          "AtDistance": 5334.999999890724,
+          "AtTime": 25.349999999502423,
+          "HorizonEndDistance": 6334.999999890724,
+          "SelectedInputs": [
+            5419.5,
+            5621.5,
+            5721.5,
+            5775,
+            5925.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m14-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.21196314960252494,
+          "AtDistance": 5654.999999880791,
+          "AtTime": 26.80454545400289,
+          "HorizonEndDistance": 6654.999999880791,
+          "SelectedInputs": [
+            5721.5,
+            5787,
+            5925.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3283433614997193,
+          "AtDistance": 5944.999999841054,
+          "AtTime": 28.122727272004248,
+          "HorizonEndDistance": 6944.999999841054,
+          "SelectedInputs": []
+        },
+        {
+          "Id": "positive:rhythm-cascade-m15-chain-1",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.5,
+          "Roll": 0.8967858349205926,
+          "AtDistance": 5978.999999860922,
+          "AtTime": 28.27727272664005,
+          "HorizonEndDistance": 6978.999999860922,
+          "SelectedInputs": [
+            6311,
+            6356
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3676970637170598,
+          "AtDistance": 6294.999999821186,
+          "AtTime": 29.713636362823205,
+          "HorizonEndDistance": 7294.999999821186,
+          "SelectedInputs": [
+            6299,
+            6356
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m15-chain-2",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.1560850195819512,
+          "AtDistance": 6328.999999841054,
+          "AtTime": 29.868181817459003,
+          "HorizonEndDistance": 7328.999999841054,
+          "SelectedInputs": [
+            6353,
+            6626,
+            6691.5,
+            6995.5,
+            7046.5,
+            7295.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m16-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.33174840279389173,
+          "AtDistance": 6644.999999880791,
+          "AtTime": 31.304545454003442,
+          "HorizonEndDistance": 7644.999999880791,
+          "SelectedInputs": [
+            6691.5,
+            6995.5,
+            7046.5,
+            7295.5,
+            7358.5,
+            7595.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m17-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.13452238438185304,
+          "AtDistance": 6944.999999841054,
+          "AtTime": 32.3681818174592,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            6995.5,
+            7046.5,
+            7266.5,
+            7295.5,
+            7515.5,
+            7646.5,
+            7758
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m18-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.6009040334029123,
+          "AtDistance": 7244.999999801317,
+          "AtTime": 33.73181818091513,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            7266.5,
+            7295.5,
+            7515.5,
+            7646.5,
+            7790
+          ]
+        },
+        {
+          "Id": "finish:rhythm-cascade-finish",
+          "Kind": "Finish",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.8490540193160996,
+          "AtDistance": 7399.999999841054,
+          "AtTime": 34.936363635641236,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            7595.5,
+            7646.5
+          ]
+        }
+      ],
+      "Facts": [
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m1-pad-stone",
+          "ObservedAtTime": 2.89166666666666,
+          "ObservedAtDistance": 636,
+          "IntervalStartTime": 2.8833333333333266,
+          "IntervalEndTime": 2.89166666666666,
+          "ExactEventTime": 2.8909090909090756,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m1-pad-stone",
+          "ObservedAtTime": 3.3909090909090733,
+          "ObservedAtDistance": 636,
+          "IntervalStartTime": 3.383333333333325,
+          "IntervalEndTime": 3.3909090909090733,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m2-gate",
+          "ObservedAtTime": 5.133333333333379,
+          "ObservedAtDistance": 1018.8066487207246,
+          "IntervalStartTime": 5.125000000000045,
+          "IntervalEndTime": 5.133333333333379,
+          "ExactEventTime": 5.130939312366923,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m2-gate",
+          "ObservedAtTime": 5.630939312366947,
+          "ObservedAtDistance": 1018.8066487207246,
+          "IntervalStartTime": 5.62500000000007,
+          "IntervalEndTime": 5.630939312366947,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m3-free",
+          "ObservedAtTime": 7.025000000000138,
+          "ObservedAtDistance": 1325.5058150553923,
+          "IntervalStartTime": 7.016666666666804,
+          "IntervalEndTime": 7.025000000000138,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m3-free",
+          "ObservedAtTime": 7.025000000000138,
+          "ObservedAtDistance": 1325.5058150553923,
+          "IntervalStartTime": 7.016666666666804,
+          "IntervalEndTime": 7.025000000000138,
+          "ExactEventTime": 7.024947135860219,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m4-before",
+          "ObservedAtTime": 8.750000000000146,
+          "ObservedAtDistance": 1770.9999999999902,
+          "IntervalStartTime": 8.741666666666813,
+          "IntervalEndTime": 8.750000000000146,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [
+            "rhythm-cascade-m4-before"
+          ],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m4-before",
+          "ObservedAtTime": 9.591666666666764,
+          "ObservedAtDistance": 1956.7499999999739,
+          "IntervalStartTime": 9.583333333333432,
+          "IntervalEndTime": 9.591666666666764,
+          "ExactEventTime": 9.586363636363814,
+          "PendingBefore": [
+            "rhythm-cascade-m4-before"
+          ],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m5-gate",
+          "ObservedAtTime": 11.399999999999999,
+          "ObservedAtDistance": 2418.1980809008633,
+          "IntervalStartTime": 11.391666666666666,
+          "IntervalEndTime": 11.399999999999999,
+          "ExactEventTime": 11.391809458640267,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m5-gate",
+          "ObservedAtTime": 11.891809458640239,
+          "ObservedAtDistance": 2418.1980809008633,
+          "IntervalStartTime": 11.891666666666637,
+          "IntervalEndTime": 11.891809458640239,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m10-pad",
+          "ObservedAtTime": 20.916666666666107,
+          "ObservedAtDistance": 4403.769276065571,
+          "IntervalStartTime": 20.908333333332774,
+          "IntervalEndTime": 20.916666666666107,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m10-pad",
+          "ObservedAtTime": 20.916666666666107,
+          "ObservedAtDistance": 4403.769276065571,
+          "IntervalStartTime": 20.908333333332774,
+          "IntervalEndTime": 20.916666666666107,
+          "ExactEventTime": 20.915733853949785,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m12-gate",
+          "ObservedAtTime": 23.483333333332624,
+          "ObservedAtDistance": 5033,
+          "IntervalStartTime": 23.47499999999929,
+          "IntervalEndTime": 23.483333333332624,
+          "ExactEventTime": 23.477272727271814,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m12-gate",
+          "ObservedAtTime": 23.977272727271785,
+          "ObservedAtDistance": 5033,
+          "IntervalStartTime": 23.974999999999262,
+          "IntervalEndTime": 23.977272727271785,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m15-chain-2",
+          "ObservedAtTime": 31.574999999998834,
+          "ObservedAtDistance": 6704.756824333639,
+          "IntervalStartTime": 31.5666666666655,
+          "IntervalEndTime": 31.574999999998834,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m15-chain-2",
+          "ObservedAtTime": 31.574999999998834,
+          "ObservedAtDistance": 6704.756824333639,
+          "IntervalStartTime": 31.5666666666655,
+          "IntervalEndTime": 31.574999999998834,
+          "ExactEventTime": 31.572665233327328,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m17-gate",
+          "ObservedAtTime": 34.158333333332,
+          "ObservedAtDistance": 7337.160599551535,
+          "IntervalStartTime": 34.14999999999867,
+          "IntervalEndTime": 34.158333333332,
+          "ExactEventTime": 34.1507299979616,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m17-gate",
+          "ObservedAtTime": 34.65072999796157,
+          "ObservedAtDistance": 7337.160599551535,
+          "IntervalStartTime": 34.64999999999864,
+          "IntervalEndTime": 34.65072999796157,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        }
+      ],
+      "Inputs": [
+        {
+          "Time": 0.9931818175947995,
+          "Distance": 218.4999998708566,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Time": 1.22499999950329,
+          "Distance": 269.4999998907248,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Time": 1.3363636356411521,
+          "Distance": 293.9999998410543,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Time": 1.5409090900059852,
+          "Distance": 338.99999980131787,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Time": 4.636363635641138,
+          "Distance": 909.9999998410543,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Time": 4.840909090005977,
+          "Distance": 954.9999998013179,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Time": 4.86590909043495,
+          "Distance": 960.4999998956919,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Time": 5.097727271869319,
+          "Distance": 1011.499999811252,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Time": 6.674999999503402,
+          "Distance": 1248.4999998907247,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Time": 6.968181817459467,
+          "Distance": 1312.9999998410544,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Time": 8.456818181005579,
+          "Distance": 1706.499999821186,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Time": 8.615909090435155,
+          "Distance": 1741.4999998956919,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Time": 9.867575757359171,
+          "Distance": 2047.7999999284743,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Time": 10.111515151325648,
+          "Distance": 2128.2999999374156,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Time": 11.070454544551474,
+          "Distance": 2347.4999998013177,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Time": 11.20227272673088,
+          "Distance": 2376.4999998807907,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Time": 11.381818180915065,
+          "Distance": 2415.999999801318,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Time": 11.93409090836837,
+          "Distance": 2427.4999998410544,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Time": 13.369005084602756,
+          "Distance": 2743.1811186126642,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Time": 15.020454544550944,
+          "Distance": 3106.499999801318,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Time": 15.252272726730336,
+          "Distance": 3157.4999998807907,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Time": 16.86818181745856,
+          "Distance": 3512.9999998410544,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Time": 17.02727272663974,
+          "Distance": 3547.999999860923,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Time": 18.624999999502247,
+          "Distance": 3899.4999998907247,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Time": 18.71136363568526,
+          "Distance": 3918.4999998509884,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Time": 19.595454544730885,
+          "Distance": 4112.999999841055,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Time": 19.622727272003598,
+          "Distance": 4118.999999841055,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Time": 19.74999999950211,
+          "Distance": 4146.999999890724,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Time": 22.043181817593744,
+          "Distance": 4717.499999870857,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Time": 22.27499999950226,
+          "Distance": 4768.499999890724,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Time": 23.04318181759384,
+          "Distance": 4937.499999870857,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Time": 23.274999999502356,
+          "Distance": 4988.499999890724,
+          "Accepted": true,
+          "Cursor": 31
+        },
+        {
+          "Time": 24.138636363003247,
+          "Distance": 5068.499999860923,
+          "Accepted": true,
+          "Cursor": 32
+        },
+        {
+          "Time": 24.640909090005064,
+          "Distance": 5178.999999801318,
+          "Accepted": true,
+          "Cursor": 33
+        },
+        {
+          "Time": 24.84545454473114,
+          "Distance": 5223.999999841055,
+          "Accepted": true,
+          "Cursor": 34
+        },
+        {
+          "Time": 25.734090908367616,
+          "Distance": 5419.499999841054,
+          "Accepted": true,
+          "Cursor": 35
+        },
+        {
+          "Time": 26.652272726730146,
+          "Distance": 5621.499999880791,
+          "Accepted": true,
+          "Cursor": 36
+        },
+        {
+          "Time": 27.10681818100471,
+          "Distance": 5721.499999821186,
+          "Accepted": true,
+          "Cursor": 37
+        },
+        {
+          "Time": 27.404545454002935,
+          "Distance": 5786.999999880791,
+          "Accepted": true,
+          "Cursor": 38
+        },
+        {
+          "Time": 28.034090908367855,
+          "Distance": 5925.499999841054,
+          "Accepted": true,
+          "Cursor": 39
+        },
+        {
+          "Time": 29.731818180914722,
+          "Distance": 6298.999999801317,
+          "Accepted": true,
+          "Cursor": 40
+        },
+        {
+          "Time": 29.97727272664025,
+          "Distance": 6352.999999860922,
+          "Accepted": true,
+          "Cursor": 41
+        },
+        {
+          "Time": 31.218181817459172,
+          "Distance": 6625.999999841054,
+          "Accepted": true,
+          "Cursor": 42
+        },
+        {
+          "Time": 31.515909090434825,
+          "Distance": 6691.499999895692,
+          "Accepted": true,
+          "Cursor": 43
+        },
+        {
+          "Time": 32.597727271869246,
+          "Distance": 6995.499999811252,
+          "Accepted": true,
+          "Cursor": 44
+        },
+        {
+          "Time": 32.82954545377777,
+          "Distance": 7046.49999983112,
+          "Accepted": true,
+          "Cursor": 45
+        },
+        {
+          "Time": 33.82954545377788,
+          "Distance": 7266.49999983112,
+          "Accepted": true,
+          "Cursor": 46
+        },
+        {
+          "Time": 33.961363635686375,
+          "Distance": 7295.499999850988,
+          "Accepted": true,
+          "Cursor": 47
+        },
+        {
+          "Time": 35.82499999950346,
+          "Distance": 7595.499999890724,
+          "Accepted": true,
+          "Cursor": 48
+        },
+        {
+          "Time": 36.05681818100558,
+          "Distance": 7646.499999821186,
+          "Accepted": true,
+          "Cursor": 49
+        }
+      ],
+      "BranchCoverage": {
+        "skipIntentThenLaterRealCollect": true,
+        "hitThenRealRecoveryThenLaterCollect": true,
+        "untouchedLinkedRewardCollectedAfterHit": false,
+        "pendingObservedThenFailed": [],
+        "failedWithoutObservedPriorPending": [],
+        "note": "Observed set transitions identify intervals; only matching LastHit/LastSuccess/LastFinishBoost supply exact event timestamps. No exact contact distance is inferred from an endpoint."
+      },
+      "ReplayEqual": true,
+      "TerminalFrozen": true,
+      "PauseFrozen": true
+    },
+    {
+      "Case": {
+        "Key": "rhythm-cascade/Chosen/0.5/4/Lagger/2",
+        "Track": "rhythm-cascade",
+        "Profile": "Chosen",
+        "Camera": "Lagger",
+        "Q": 0.5,
+        "Seed": 4,
+        "Frame": 2
+      },
+      "Status": "Finished",
+      "Phase": "finished",
+      "Error": null,
+      "Time": 37.300000000000345,
+      "Distance": 7920,
+      "WallMilliseconds": 1550.8405,
+      "P95AdvanceMilliseconds": 0.1758,
+      "MaximumAdvanceMilliseconds": 61.0057,
+      "SuccessfulIds": [
+        "rhythm-cascade-m10-pad",
+        "rhythm-cascade-m15-chain-2",
+        "rhythm-cascade-m3-free",
+        "rhythm-cascade-m4-before"
+      ],
+      "FailedIds": [],
+      "CollectedIds": [
+        "rhythm-cascade-m10-pad",
+        "rhythm-cascade-m15-chain-2",
+        "rhythm-cascade-m3-free",
+        "rhythm-cascade-m4-before"
+      ],
+      "HitIds": [
+        "rhythm-cascade-m1-pad-stone",
+        "rhythm-cascade-m12-gate",
+        "rhythm-cascade-m17-gate",
+        "rhythm-cascade-m2-gate",
+        "rhythm-cascade-m5-gate"
+      ],
+      "MissedPositiveIds": [
+        "rhythm-cascade-m1-pad",
+        "rhythm-cascade-m13-after-ring",
+        "rhythm-cascade-m15-chain-1",
+        "rhythm-cascade-m6-pad",
+        "rhythm-cascade-m8-free-high"
+      ],
+      "ReferenceMasterTime": 0,
+      "Collisions": 5,
+      "Boosts": 4,
+      "FinishBoosts": 0,
+      "AcceptedInputs": 50,
+      "RejectedInputs": 0,
+      "Cursor": 50,
+      "ImmediateSnapshots": 7498,
+      "FieldComparisons": 476253,
+      "PlanningCalls": 36,
+      "CandidateSimulations": 2767,
+      "ForecastSteps": 526861,
+      "MaximumObservedHorizon": 1000.0000000000005,
+      "Decisions": [
+        {
+          "Id": "obstacle:rhythm-cascade-m0-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.18312848720233887,
+          "AtDistance": 0,
+          "AtTime": 0,
+          "HorizonEndDistance": 1000,
+          "SelectedInputs": [
+            218.5,
+            269.5,
+            485.1811187353192,
+            960.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m1-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.09008760715369135,
+          "AtDistance": 269.99999988079065,
+          "AtTime": 1.2272727267308632,
+          "HorizonEndDistance": 1269.9999998807907,
+          "SelectedInputs": [
+            294,
+            339
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m1-pad",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.5,
+          "Roll": 0.4384602637728676,
+          "AtDistance": 301.99999982357025,
+          "AtTime": 1.3727272719253163,
+          "HorizonEndDistance": 1301.9999998235703,
+          "SelectedInputs": [
+            339,
+            647,
+            762
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m2-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.128258251468651,
+          "AtDistance": 609.999999819994,
+          "AtTime": 2.7727272719090563,
+          "HorizonEndDistance": 1609.999999819994,
+          "SelectedInputs": [
+            647,
+            762,
+            810
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m3-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.2608907049288973,
+          "AtDistance": 909.9999998235703,
+          "AtTime": 4.636363635561671,
+          "HorizonEndDistance": 1909.9999998235703,
+          "SelectedInputs": [
+            910,
+            955,
+            1040.5,
+            1091.5,
+            1248.5,
+            1301,
+            1718.5,
+            1741.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m3-free",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.28415117983240634,
+          "AtDistance": 943.9999998875459,
+          "AtTime": 4.790909090397929,
+          "HorizonEndDistance": 1943.999999887546,
+          "SelectedInputs": [
+            955,
+            960.5,
+            1011.5,
+            1248.5,
+            1301,
+            1718.5,
+            1741.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m4-before",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.4080800843657926,
+          "AtDistance": 1395.9999998566996,
+          "AtTime": 7.238618741809114,
+          "HorizonEndDistance": 2395.9999998566996,
+          "SelectedInputs": [
+            1661.5,
+            1718.5,
+            2047.8,
+            2128.3,
+            2376.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m4-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.19716726627666503,
+          "AtDistance": 1495.9999998364337,
+          "AtTime": 7.54164904477802,
+          "HorizonEndDistance": 2495.9999998364337,
+          "SelectedInputs": [
+            1706.5,
+            1741.5,
+            2047.8,
+            2128.3,
+            2376.5,
+            2427.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m4-exit-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.9060664583230391,
+          "AtDistance": 1735.999999843836,
+          "AtTime": 8.590909090199439,
+          "HorizonEndDistance": 2735.999999843836,
+          "SelectedInputs": [
+            1741.5,
+            2047.8,
+            2128.3,
+            2388.5,
+            2427.5,
+            2631.181118735319
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m5-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.09733795665670186,
+          "AtDistance": 2025.999999949932,
+          "AtTime": 9.801515151363601,
+          "HorizonEndDistance": 3025.9999999499323,
+          "SelectedInputs": [
+            2047.8,
+            2128.3,
+            2347.5,
+            2376.5,
+            2631.181118735319
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m6-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.30278041411656886,
+          "AtDistance": 2415.9999998668827,
+          "AtTime": 11.381818181213132,
+          "HorizonEndDistance": 3415.9999998668827,
+          "SelectedInputs": [
+            2416,
+            2427.5,
+            2461,
+            2631.181118735319,
+            3106.5,
+            3157.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m6-pad",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.7588221897603944,
+          "AtDistance": 2447.9999998871485,
+          "AtTime": 12.027272726759751,
+          "HorizonEndDistance": 3447.9999998871485,
+          "SelectedInputs": [
+            2743.181118735319,
+            3157.5,
+            3186.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m7-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.34487184684257954,
+          "AtDistance": 2755.9999998911553,
+          "AtTime": 13.427272726777804,
+          "HorizonEndDistance": 3755.9999998911553,
+          "SelectedInputs": [
+            3106.5,
+            3157.5,
+            3513,
+            3548
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m8-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3924512838711962,
+          "AtDistance": 3161.999999833107,
+          "AtTime": 15.272727271968275,
+          "HorizonEndDistance": 4161.999999833107,
+          "SelectedInputs": [
+            3513,
+            3536,
+            3855.5,
+            3918.5,
+            4113,
+            4151
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m8-free-high",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.7411654038587585,
+          "AtDistance": 3211.999999897281,
+          "AtTime": 15.499999999532674,
+          "HorizonEndDistance": 4211.999999897282,
+          "SelectedInputs": [
+            3513,
+            3548,
+            3867.5,
+            3918.5,
+            4113,
+            4151,
+            4179
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m9-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.19425283593591303,
+          "AtDistance": 3516.9999998708563,
+          "AtTime": 16.886363635776043,
+          "HorizonEndDistance": 4516.999999870856,
+          "SelectedInputs": [
+            3548,
+            3899.5,
+            3950.5,
+            4113,
+            4151,
+            4179
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m10-pad-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.8978585993172601,
+          "AtDistance": 3906.999999885559,
+          "AtTime": 18.65909090856993,
+          "HorizonEndDistance": 4906.999999885559,
+          "SelectedInputs": [
+            3918.5,
+            4113,
+            4151,
+            4179,
+            4705.5,
+            4756.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m10-pad",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.1843048146693036,
+          "AtDistance": 4006.999999834299,
+          "AtTime": 19.113636362882325,
+          "HorizonEndDistance": 5006.999999834299,
+          "SelectedInputs": [
+            4113,
+            4119,
+            4147,
+            4717.5,
+            4768.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m11-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.6120436290511861,
+          "AtDistance": 4366.999999895095,
+          "AtTime": 20.74999999952238,
+          "HorizonEndDistance": 5366.999999895095,
+          "SelectedInputs": [
+            4717.5,
+            4768.5,
+            5068.5,
+            5097.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m12-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.13311585795599967,
+          "AtDistance": 4666.999999847412,
+          "AtTime": 21.81363636294202,
+          "HorizonEndDistance": 5666.999999847412,
+          "SelectedInputs": [
+            4717.5,
+            4768.5,
+            4937.5,
+            4988.5,
+            5419.5,
+            5461.5,
+            5603
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m13-after-stone",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.8221606923034415,
+          "AtDistance": 5154.999999888738,
+          "AtTime": 24.531818181311827,
+          "HorizonEndDistance": 6154.999999888738,
+          "SelectedInputs": [
+            5179,
+            5224,
+            5419.5,
+            5621.5,
+            5709.5,
+            5763,
+            5925.5
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m13-after-ring",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.9277007930213585,
+          "AtDistance": 5334.999999855757,
+          "AtTime": 25.34999999934379,
+          "HorizonEndDistance": 6334.999999855757,
+          "SelectedInputs": [
+            5419.5,
+            5621.5,
+            5721.5,
+            5775,
+            5925.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m14-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.21196314960252494,
+          "AtDistance": 5654.999999813636,
+          "AtTime": 26.80454545369788,
+          "HorizonEndDistance": 6654.999999813636,
+          "SelectedInputs": [
+            5721.5,
+            5787,
+            5925.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m15-chain-gate-1",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3283433614997193,
+          "AtDistance": 5944.999999894699,
+          "AtTime": 28.122727272248287,
+          "HorizonEndDistance": 6944.999999894699,
+          "SelectedInputs": []
+        },
+        {
+          "Id": "positive:rhythm-cascade-m15-chain-1",
+          "Kind": "Positive",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.5,
+          "Roll": 0.8967858349205926,
+          "AtDistance": 5978.999999804099,
+          "AtTime": 28.277272726381945,
+          "HorizonEndDistance": 6978.999999804099,
+          "SelectedInputs": [
+            6311,
+            6356
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m15-chain-gate-2",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "bounded-local-search: no candidate satisfied every saved intention within this horizon",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.3676970637170598,
+          "AtDistance": 6294.999999869267,
+          "AtTime": 29.7136363630419,
+          "HorizonEndDistance": 7294.999999869267,
+          "SelectedInputs": [
+            6299,
+            6356
+          ]
+        },
+        {
+          "Id": "positive:rhythm-cascade-m15-chain-2",
+          "Kind": "Positive",
+          "Intent": "collect",
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.1560850195819512,
+          "AtDistance": 6328.99999988397,
+          "AtTime": 29.8681818176542,
+          "HorizonEndDistance": 7328.99999988397,
+          "SelectedInputs": [
+            6353,
+            6626,
+            6691.5,
+            6995.5,
+            7046.5,
+            7295.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m16-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.33174840279389173,
+          "AtDistance": 6644.999999839862,
+          "AtTime": 31.30454545381746,
+          "HorizonEndDistance": 7644.999999839862,
+          "SelectedInputs": [
+            6691.5,
+            6995.5,
+            7046.5,
+            7295.5,
+            7358.5,
+            7595.5
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m17-gate",
+          "Kind": "Obstacle",
+          "Intent": "hit",
+          "Outcome": "hit",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.13452238438185304,
+          "AtDistance": 6944.999999879598,
+          "AtTime": 32.36818181763446,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            6995.5,
+            7046.5,
+            7266.5,
+            7295.5,
+            7515.5,
+            7646.5,
+            7758
+          ]
+        },
+        {
+          "Id": "obstacle:rhythm-cascade-m18-gate",
+          "Kind": "Obstacle",
+          "Intent": "avoid",
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "Probability": 0.14047619047619048,
+          "Roll": 0.6009040334029123,
+          "AtDistance": 7244.999999828338,
+          "AtTime": 33.73181818103792,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            7266.5,
+            7295.5,
+            7515.5,
+            7646.5,
+            7790
+          ]
+        },
+        {
+          "Id": "finish:rhythm-cascade-finish",
+          "Kind": "Finish",
+          "Intent": "skip",
+          "Outcome": "missed",
+          "UnreachableReason": "",
+          "Probability": 0.5,
+          "Roll": 0.8490540193160996,
+          "AtDistance": 7399.999999872844,
+          "AtTime": 34.93636363578573,
+          "HorizonEndDistance": 7920,
+          "SelectedInputs": [
+            7595.5,
+            7646.5
+          ]
+        }
+      ],
+      "Facts": [
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m1-pad-stone",
+          "ObservedAtTime": 2.8949999999999925,
+          "ObservedAtDistance": 636,
+          "IntervalStartTime": 2.8893939385757226,
+          "IntervalEndTime": 2.8949999999999925,
+          "ExactEventTime": 2.8909090909090813,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m1-pad-stone",
+          "ObservedAtTime": 3.3909090909090787,
+          "ObservedAtDistance": 636,
+          "IntervalStartTime": 3.389333333333324,
+          "IntervalEndTime": 3.3909090909090787,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m2-gate",
+          "ObservedAtTime": 5.1310606052225305,
+          "ObservedAtDistance": 1018.8066493692303,
+          "IntervalStartTime": 5.122727271889197,
+          "IntervalEndTime": 5.1310606052225305,
+          "ExactEventTime": 5.130939315314685,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m2-gate",
+          "ObservedAtTime": 5.6309393153147065,
+          "ObservedAtDistance": 1018.8066493692303,
+          "IntervalStartTime": 5.626666666666726,
+          "IntervalEndTime": 5.6309393153147065,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m3-free",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m3-free",
+          "ObservedAtTime": 7.032000000000118,
+          "ObservedAtDistance": 1327.8158150597335,
+          "IntervalStartTime": 7.023666666666784,
+          "IntervalEndTime": 7.032000000000118,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m3-free",
+          "ObservedAtTime": 7.032000000000118,
+          "ObservedAtDistance": 1327.8158150597335,
+          "IntervalStartTime": 7.023666666666784,
+          "IntervalEndTime": 7.032000000000118,
+          "ExactEventTime": 7.024947135820695,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m4-before",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m4-before",
+          "ObservedAtTime": 8.749242423745898,
+          "ObservedAtDistance": 1770.8333332240568,
+          "IntervalStartTime": 8.740909090412565,
+          "IntervalEndTime": 8.749242423745898,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [
+            "rhythm-cascade-m4-before"
+          ],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m4-before",
+          "ObservedAtTime": 9.589333333333421,
+          "ObservedAtDistance": 1955.9799999999702,
+          "IntervalStartTime": 9.581000000000088,
+          "IntervalEndTime": 9.589333333333421,
+          "ExactEventTime": 9.586363636363814,
+          "PendingBefore": [
+            "rhythm-cascade-m4-before"
+          ],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m5-gate",
+          "ObservedAtTime": 11.398484847879798,
+          "ObservedAtDistance": 2418.1980809114907,
+          "IntervalStartTime": 11.390151514546465,
+          "IntervalEndTime": 11.398484847879798,
+          "ExactEventTime": 11.391809458688622,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m5-gate",
+          "ObservedAtTime": 11.891809458688597,
+          "ObservedAtDistance": 2418.1980809114907,
+          "IntervalStartTime": 11.889666666666647,
+          "IntervalEndTime": 11.891809458688597,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m10-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m10-pad",
+          "ObservedAtTime": 20.920333333332845,
+          "ObservedAtDistance": 4404.979276181151,
+          "IntervalStartTime": 20.911999999999512,
+          "IntervalEndTime": 20.920333333332845,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m10-pad",
+          "ObservedAtTime": 20.920333333332845,
+          "ObservedAtDistance": 4404.979276181151,
+          "IntervalStartTime": 20.911999999999512,
+          "IntervalEndTime": 20.920333333332845,
+          "ExactEventTime": 20.915733852898683,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m12-gate",
+          "ObservedAtTime": 23.481333333332714,
+          "ObservedAtDistance": 5033,
+          "IntervalStartTime": 23.47299999999938,
+          "IntervalEndTime": 23.481333333332714,
+          "ExactEventTime": 23.47727272727211,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m12-gate",
+          "ObservedAtTime": 23.977272727272076,
+          "ObservedAtDistance": 5033,
+          "IntervalStartTime": 23.972666666666015,
+          "IntervalEndTime": 23.977272727272076,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m15-chain-2",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "collected-contact-observed",
+          "Id": "rhythm-cascade-m15-chain-2",
+          "ObservedAtTime": 31.57424242367158,
+          "ObservedAtDistance": 6704.506824154271,
+          "IntervalStartTime": 31.56590909033825,
+          "IntervalEndTime": 31.57424242367158,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "positive-effect",
+          "Id": "rhythm-cascade-m15-chain-2",
+          "ObservedAtTime": 31.57424242367158,
+          "ObservedAtDistance": 6704.506824154271,
+          "IntervalStartTime": 31.56590909033825,
+          "IntervalEndTime": 31.57424242367158,
+          "ExactEventTime": 31.5726652332488,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "hit",
+          "Id": "rhythm-cascade-m17-gate",
+          "ObservedAtTime": 34.1573333333321,
+          "ObservedAtDistance": 7337.160599519081,
+          "IntervalStartTime": 34.148999999998765,
+          "IntervalEndTime": 34.1573333333321,
+          "ExactEventTime": 34.15072999781407,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        },
+        {
+          "Kind": "recovery-complete",
+          "Id": "rhythm-cascade-m17-gate",
+          "ObservedAtTime": 34.65072999781405,
+          "ObservedAtDistance": 7337.160599519081,
+          "IntervalStartTime": 34.65033333333208,
+          "IntervalEndTime": 34.65072999781405,
+          "ExactEventTime": null,
+          "PendingBefore": [],
+          "PendingAfter": [],
+          "FailedAfter": [],
+          "UntouchedPositiveAfter": [
+            "rhythm-cascade-m1-pad",
+            "rhythm-cascade-m13-after-ring",
+            "rhythm-cascade-m15-chain-1",
+            "rhythm-cascade-m6-pad",
+            "rhythm-cascade-m8-free-high"
+          ]
+        }
+      ],
+      "Inputs": [
+        {
+          "Time": 0.9931818174755914,
+          "Distance": 218.49999984463057,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Time": 1.2249999992251366,
+          "Distance": 269.4999998295307,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Time": 1.3363636358651214,
+          "Distance": 293.99999989032744,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Time": 1.5409090902588563,
+          "Distance": 338.9999998569489,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Time": 4.636363635561671,
+          "Distance": 909.9999998235703,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Time": 4.84090909041238,
+          "Distance": 954.9999998907248,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Time": 4.865909090042111,
+          "Distance": 960.4999998092651,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Time": 5.0977272718891955,
+          "Distance": 1011.4999998156229,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Time": 6.674999999344451,
+          "Distance": 1248.4999998557569,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Time": 6.9681818176147985,
+          "Distance": 1312.9999998752276,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Time": 8.456818181312629,
+          "Distance": 1706.4999998887379,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Time": 8.615909090412572,
+          "Distance": 1741.4999998907247,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Time": 9.867575757115343,
+          "Distance": 2047.7999998480082,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Time": 10.111515150987898,
+          "Distance": 2128.2999998259547,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Time": 11.070454544950671,
+          "Distance": 2347.4999998891353,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Time": 11.202272726600867,
+          "Distance": 2376.4999998521807,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Time": 11.381818181213132,
+          "Distance": 2415.9999998668827,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Time": 11.934090908397325,
+          "Distance": 2427.4999998474123,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Time": 13.369005084693324,
+          "Distance": 2743.181118632567,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Time": 15.020454544751578,
+          "Distance": 3106.499999845425,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Time": 15.25227272677925,
+          "Distance": 3157.4999998915196,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Time": 16.868181817514746,
+          "Distance": 3512.9999998533726,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Time": 17.02727272679801,
+          "Distance": 3547.999999895692,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Time": 18.624999999403155,
+          "Distance": 3899.49999986887,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Time": 18.711363635730663,
+          "Distance": 3918.4999998609223,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Time": 19.59545454471129,
+          "Distance": 4112.999999836684,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Time": 19.62272727209421,
+          "Distance": 4118.999999860922,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Time": 19.749999999366974,
+          "Distance": 4146.999999860922,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Time": 22.043181817554316,
+          "Distance": 4717.499999862115,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Time": 22.27499999928401,
+          "Distance": 4768.499999842644,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Time": 23.04318181745506,
+          "Distance": 4937.49999984026,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Time": 23.27499999920464,
+          "Distance": 4988.49999982516,
+          "Accepted": true,
+          "Cursor": 31
+        },
+        {
+          "Time": 24.138636363139916,
+          "Distance": 5068.499999890923,
+          "Accepted": true,
+          "Cursor": 32
+        },
+        {
+          "Time": 24.640909090079422,
+          "Distance": 5178.99999981761,
+          "Accepted": true,
+          "Cursor": 33
+        },
+        {
+          "Time": 24.845454544751338,
+          "Distance": 5223.999999845425,
+          "Accepted": true,
+          "Cursor": 34
+        },
+        {
+          "Time": 25.734090908591856,
+          "Distance": 5419.499999890328,
+          "Accepted": true,
+          "Cursor": 35
+        },
+        {
+          "Time": 26.652272726600348,
+          "Distance": 5621.499999852181,
+          "Accepted": true,
+          "Cursor": 36
+        },
+        {
+          "Time": 27.106818180914647,
+          "Distance": 5721.499999801317,
+          "Accepted": true,
+          "Cursor": 37
+        },
+        {
+          "Time": 27.40454545395622,
+          "Distance": 5786.999999870459,
+          "Accepted": true,
+          "Cursor": 38
+        },
+        {
+          "Time": 28.03409090821094,
+          "Distance": 5925.499999806483,
+          "Accepted": true,
+          "Cursor": 39
+        },
+        {
+          "Time": 29.731818181230945,
+          "Distance": 6298.999999870856,
+          "Accepted": true,
+          "Cursor": 40
+        },
+        {
+          "Time": 29.97727272673067,
+          "Distance": 6352.999999880791,
+          "Accepted": true,
+          "Cursor": 41
+        },
+        {
+          "Time": 31.218181817356275,
+          "Distance": 6625.999999818405,
+          "Accepted": true,
+          "Cursor": 42
+        },
+        {
+          "Time": 31.51590909033825,
+          "Distance": 6691.499999874433,
+          "Accepted": true,
+          "Cursor": 43
+        },
+        {
+          "Time": 32.597727271988475,
+          "Distance": 6995.499999837478,
+          "Accepted": true,
+          "Cursor": 44
+        },
+        {
+          "Time": 32.829545453638694,
+          "Distance": 7046.499999800523,
+          "Accepted": true,
+          "Cursor": 45
+        },
+        {
+          "Time": 33.82954545368756,
+          "Distance": 7266.499999811252,
+          "Accepted": true,
+          "Cursor": 46
+        },
+        {
+          "Time": 33.961363635507546,
+          "Distance": 7295.499999811649,
+          "Accepted": true,
+          "Cursor": 47
+        },
+        {
+          "Time": 35.824999999265046,
+          "Distance": 7595.499999838273,
+          "Accepted": true,
+          "Cursor": 48
+        },
+        {
+          "Time": 36.05681818133705,
+          "Distance": 7646.499999894102,
+          "Accepted": true,
+          "Cursor": 49
+        }
+      ],
+      "BranchCoverage": {
+        "skipIntentThenLaterRealCollect": true,
+        "hitThenRealRecoveryThenLaterCollect": true,
+        "untouchedLinkedRewardCollectedAfterHit": false,
+        "pendingObservedThenFailed": [],
+        "failedWithoutObservedPriorPending": [],
+        "note": "Observed set transitions identify intervals; only matching LastHit/LastSuccess/LastFinishBoost supply exact event timestamps. No exact contact distance is inferred from an endpoint."
+      },
+      "ReplayEqual": true,
+      "TerminalFrozen": true,
+      "PauseFrozen": true
+    }
+  ],
+  "variation": [
+    {
+      "key": "rhythm-cascade/Chosen/0.5/Lagger/0",
+      "announcedSeeds": [
+        4
+      ],
+      "ranSeeds": [
+        4
+      ],
+      "intentSignatures": 1,
+      "inputSignatures": 1,
+      "physicalEventSets": 1,
+      "terminalOutcomes": [
+        {
+          "status": "Finished",
+          "count": 1
+        }
+      ],
+      "meanTime": 37.299999999998484,
+      "minimumTime": 37.299999999998484,
+      "maximumTime": 37.299999999998484
+    },
+    {
+      "key": "rhythm-cascade/Chosen/0.5/Lagger/1",
+      "announcedSeeds": [
+        4
+      ],
+      "ranSeeds": [
+        4
+      ],
+      "intentSignatures": 1,
+      "inputSignatures": 1,
+      "physicalEventSets": 1,
+      "terminalOutcomes": [
+        {
+          "status": "Finished",
+          "count": 1
+        }
+      ],
+      "meanTime": 37.29999999999847,
+      "minimumTime": 37.29999999999847,
+      "maximumTime": 37.29999999999847
+    },
+    {
+      "key": "rhythm-cascade/Chosen/0.5/Lagger/2",
+      "announcedSeeds": [
+        4
+      ],
+      "ranSeeds": [
+        4
+      ],
+      "intentSignatures": 1,
+      "inputSignatures": 1,
+      "physicalEventSets": 1,
+      "terminalOutcomes": [
+        {
+          "status": "Finished",
+          "count": 1
+        }
+      ],
+      "meanTime": 37.300000000000345,
+      "minimumTime": 37.300000000000345,
+      "maximumTime": 37.300000000000345
+    }
+  ]
+}

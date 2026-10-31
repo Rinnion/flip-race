@@ -1,0 +1,468 @@
+{
+  "protocolId": "BSTO-HOLDOUT-PREPLAN-2026-10-31-V2",
+  "status": "PREDECLARED_NOT_EXECUTED",
+  "selectedBy": "Catalytic with Astra/high, before final calibration/source freeze",
+  "heldOutExecuted": false,
+  "startSeed": 1000000,
+  "expectedCases": 18000,
+  "firstScheduledBlockPerCohort": 200,
+  "sequentialPeeking": false,
+  "automaticPostInspectionExtension": false,
+  "confidence": "Two-sided99percent mean CI; final fixed N chosen before any held-out result",
+  "acceptance": "abs(mean-target)+halfWidth<=0.2 seconds; adjacent difficulty means strictly ordered; crossing boundary is INCONCLUSIVE, not PASS",
+  "scope": "Lagger terminal times, all outcomes/errors retained; Constant checked separately, no survivor filtering",
+  "rows": [
+    {
+      "cohortId": "full-long/Chosen/Novice",
+      "track": "full-long",
+      "profile": "Chosen",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-long/Chosen/Amateur",
+      "track": "full-long",
+      "profile": "Chosen",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-long/Chosen/Confident",
+      "track": "full-long",
+      "profile": "Chosen",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-long/Chosen/Strong",
+      "track": "full-long",
+      "profile": "Chosen",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-long/Chosen/Master",
+      "track": "full-long",
+      "profile": "Chosen",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-long/FastFlip/Novice",
+      "track": "full-long",
+      "profile": "FastFlip",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-long/FastFlip/Amateur",
+      "track": "full-long",
+      "profile": "FastFlip",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-long/FastFlip/Confident",
+      "track": "full-long",
+      "profile": "FastFlip",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-long/FastFlip/Strong",
+      "track": "full-long",
+      "profile": "FastFlip",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-long/FastFlip/Master",
+      "track": "full-long",
+      "profile": "FastFlip",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-short/Chosen/Novice",
+      "track": "full-short",
+      "profile": "Chosen",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-short/Chosen/Amateur",
+      "track": "full-short",
+      "profile": "Chosen",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-short/Chosen/Confident",
+      "track": "full-short",
+      "profile": "Chosen",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-short/Chosen/Strong",
+      "track": "full-short",
+      "profile": "Chosen",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-short/Chosen/Master",
+      "track": "full-short",
+      "profile": "Chosen",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-short/FastFlip/Novice",
+      "track": "full-short",
+      "profile": "FastFlip",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-short/FastFlip/Amateur",
+      "track": "full-short",
+      "profile": "FastFlip",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-short/FastFlip/Confident",
+      "track": "full-short",
+      "profile": "FastFlip",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-short/FastFlip/Strong",
+      "track": "full-short",
+      "profile": "FastFlip",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-short/FastFlip/Master",
+      "track": "full-short",
+      "profile": "FastFlip",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-flow/Chosen/Novice",
+      "track": "full-flow",
+      "profile": "Chosen",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-flow/Chosen/Amateur",
+      "track": "full-flow",
+      "profile": "Chosen",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-flow/Chosen/Confident",
+      "track": "full-flow",
+      "profile": "Chosen",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-flow/Chosen/Strong",
+      "track": "full-flow",
+      "profile": "Chosen",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-flow/Chosen/Master",
+      "track": "full-flow",
+      "profile": "Chosen",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Novice",
+      "track": "full-flow",
+      "profile": "FastFlip",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Amateur",
+      "track": "full-flow",
+      "profile": "FastFlip",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Confident",
+      "track": "full-flow",
+      "profile": "FastFlip",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Strong",
+      "track": "full-flow",
+      "profile": "FastFlip",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Master",
+      "track": "full-flow",
+      "profile": "FastFlip",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Novice",
+      "track": "rhythm-cascade",
+      "profile": "Chosen",
+      "level": "Novice",
+      "count": 800,
+      "seedFirst": 1000000,
+      "seedLast": 1000799
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Amateur",
+      "track": "rhythm-cascade",
+      "profile": "Chosen",
+      "level": "Amateur",
+      "count": 800,
+      "seedFirst": 1000000,
+      "seedLast": 1000799
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Confident",
+      "track": "rhythm-cascade",
+      "profile": "Chosen",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Strong",
+      "track": "rhythm-cascade",
+      "profile": "Chosen",
+      "level": "Strong",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Master",
+      "track": "rhythm-cascade",
+      "profile": "Chosen",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Novice",
+      "track": "rhythm-cascade",
+      "profile": "FastFlip",
+      "level": "Novice",
+      "count": 800,
+      "seedFirst": 1000000,
+      "seedLast": 1000799
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Amateur",
+      "track": "rhythm-cascade",
+      "profile": "FastFlip",
+      "level": "Amateur",
+      "count": 800,
+      "seedFirst": 1000000,
+      "seedLast": 1000799
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Confident",
+      "track": "rhythm-cascade",
+      "profile": "FastFlip",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Strong",
+      "track": "rhythm-cascade",
+      "profile": "FastFlip",
+      "level": "Strong",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Master",
+      "track": "rhythm-cascade",
+      "profile": "FastFlip",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Novice",
+      "track": "mixed-tricks",
+      "profile": "Chosen",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Amateur",
+      "track": "mixed-tricks",
+      "profile": "Chosen",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Confident",
+      "track": "mixed-tricks",
+      "profile": "Chosen",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Strong",
+      "track": "mixed-tricks",
+      "profile": "Chosen",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Master",
+      "track": "mixed-tricks",
+      "profile": "Chosen",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Novice",
+      "track": "mixed-tricks",
+      "profile": "FastFlip",
+      "level": "Novice",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Amateur",
+      "track": "mixed-tricks",
+      "profile": "FastFlip",
+      "level": "Amateur",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Confident",
+      "track": "mixed-tricks",
+      "profile": "FastFlip",
+      "level": "Confident",
+      "count": 400,
+      "seedFirst": 1000000,
+      "seedLast": 1000399
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Strong",
+      "track": "mixed-tricks",
+      "profile": "FastFlip",
+      "level": "Strong",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Master",
+      "track": "mixed-tricks",
+      "profile": "FastFlip",
+      "level": "Master",
+      "count": 200,
+      "seedFirst": 1000000,
+      "seedLast": 1000199
+    }
+  ],
+  "supersedesSha256": "26CF098679FDC1B446CB631762EB1F5D8DB69E9EA533EE445CB85EA60B4C47F3",
+  "revisionReason": "Before any holdout, Catalytic/Astra training-margin review raises Cascade Strong for both profiles200to400; all other fixed counts unchanged. No holdout inspection."
+}

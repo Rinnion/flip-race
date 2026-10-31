@@ -1,0 +1,1698 @@
+{
+  "status": "PASS",
+  "sourceHash": "EB0C4B445CD6DCE8EC421BB5B43194120D91164D4A816B13796ECDC696D963B9",
+  "rows": [
+    {
+      "repeat": 0,
+      "passed": true,
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "seed": 0,
+      "expectedTime": 33.05,
+      "expectedBoosts": 9,
+      "time": 33.04999999999874,
+      "hits": [],
+      "successes": [
+        "full-short-4-standard-pad-landing",
+        "full-short-5-free-low",
+        "full-short-7-before-stone-ring",
+        "full-short-8-chain-1",
+        "full-short-8-chain-2",
+        "full-short-9-large-pad-landing",
+        "full-short-11-standard-pad-landing",
+        "full-short-12-after-stone-ring",
+        "full-short-13-free-mid",
+        "full-short-finish"
+      ],
+      "failures": [],
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "FinishBoostsEarned": 1,
+      "FinishBoostElapsed": 0.25,
+      "replayObservations": 6780,
+      "presses": [
+        {
+          "Time": 0.7090909085490487,
+          "Distance": 155.9999998807907,
+          "Accepted": true,
+          "Cursor": 0,
+          "referenceNearest": 150
+        },
+        {
+          "Time": 3.3181818175947826,
+          "Distance": 729.9999998708566,
+          "Accepted": true,
+          "Cursor": 1,
+          "referenceNearest": 730
+        },
+        {
+          "Time": 6.345998231758234,
+          "Distance": 1396.119610986781,
+          "Accepted": true,
+          "Cursor": 2,
+          "referenceNearest": 1408.1196111528561
+        },
+        {
+          "Time": 7.609090908549278,
+          "Distance": 1739.9999998807907,
+          "Accepted": true,
+          "Cursor": 3,
+          "referenceNearest": 1740
+        },
+        {
+          "Time": 10.336363635641144,
+          "Distance": 2405.9999998410544,
+          "Accepted": true,
+          "Cursor": 4,
+          "referenceNearest": 2400
+        },
+        {
+          "Time": 11.31426990186108,
+          "Distance": 2621.13937840947,
+          "Accepted": true,
+          "Cursor": 5,
+          "referenceNearest": 2621.1393785965915
+        },
+        {
+          "Time": 13.418181817594398,
+          "Distance": 3149.9999998708568,
+          "Accepted": true,
+          "Cursor": 6,
+          "referenceNearest": 3150
+        },
+        {
+          "Time": 13.87219941523891,
+          "Distance": 3291.9999998911735,
+          "Accepted": true,
+          "Cursor": 7,
+          "referenceNearest": 3292
+        },
+        {
+          "Time": 15.099999999502748,
+          "Distance": 3651.9999998907247,
+          "Accepted": true,
+          "Cursor": 8,
+          "referenceNearest": 3650
+        },
+        {
+          "Time": 16.169084344012138,
+          "Distance": 3887.1985556828217,
+          "Accepted": true,
+          "Cursor": 9,
+          "referenceNearest": 3887.198555809634
+        },
+        {
+          "Time": 16.654545454081653,
+          "Distance": 4015.999999910593,
+          "Accepted": true,
+          "Cursor": 10,
+          "referenceNearest": 4016
+        },
+        {
+          "Time": 20.7641800498492,
+          "Distance": 4964.119610966913,
+          "Accepted": true,
+          "Cursor": 11,
+          "referenceNearest": 4958.119611152856
+        },
+        {
+          "Time": 23.345454544731854,
+          "Distance": 5597.999999841054,
+          "Accepted": true,
+          "Cursor": 12,
+          "referenceNearest": 5600
+        },
+        {
+          "Time": 24.581818180915008,
+          "Distance": 5869.999999801317,
+          "Accepted": true,
+          "Cursor": 13,
+          "referenceNearest": 5870
+        },
+        {
+          "Time": 26.59608808376978,
+          "Distance": 6379.139378429339,
+          "Accepted": true,
+          "Cursor": 14,
+          "referenceNearest": 6391.139378596592
+        },
+        {
+          "Time": 30.345454544732444,
+          "Distance": 7269.999999841054,
+          "Accepted": true,
+          "Cursor": 15,
+          "referenceNearest": 7270
+        },
+        {
+          "Time": 32.31818181759541,
+          "Distance": 7703.999999870856,
+          "Accepted": true,
+          "Cursor": 16,
+          "referenceNearest": 7706
+        }
+      ],
+      "contacts": [
+        {
+          "kind": "success",
+          "id": "full-short-4-standard-pad-landing",
+          "time": 6.6833333333334535,
+          "distance": 1470.500000083023,
+          "Y": 0.22641509433962265,
+          "VerticalSpeed": 0,
+          "planningCall": 6
+        },
+        {
+          "kind": "success",
+          "id": "full-short-5-free-low",
+          "time": 7.658333333333503,
+          "distance": 1751.5161497699355,
+          "Y": 0.023570693422632315,
+          "VerticalSpeed": 167.95454691740113,
+          "planningCall": 6
+        },
+        {
+          "kind": "success",
+          "id": "full-short-7-before-stone-ring",
+          "time": 12.399999999999938,
+          "distance": 2860.50000000008,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 10
+        },
+        {
+          "kind": "success",
+          "id": "full-short-8-chain-1",
+          "time": 13.491666666666541,
+          "distance": 3166.4241928622846,
+          "Y": 0.9534811281802545,
+          "VerticalSpeed": -233.4090924947972,
+          "planningCall": 11
+        },
+        {
+          "kind": "success",
+          "id": "full-short-8-chain-2",
+          "time": 14.00833333333318,
+          "distance": 3336.9241928622855,
+          "Y": 0.14048814183251998,
+          "VerticalSpeed": 402.56157885455093,
+          "planningCall": 11
+        },
+        {
+          "kind": "success",
+          "id": "full-short-9-large-pad-landing",
+          "time": 16.458333333333048,
+          "distance": 3951.2500000635496,
+          "Y": 0.5660377358490566,
+          "VerticalSpeed": 0,
+          "planningCall": 13
+        },
+        {
+          "kind": "success",
+          "id": "full-short-11-standard-pad-landing",
+          "time": 21.09999999999943,
+          "distance": 5038.000000092911,
+          "Y": 0.7735849056603774,
+          "VerticalSpeed": 0,
+          "planningCall": 16
+        },
+        {
+          "kind": "success",
+          "id": "full-short-12-after-stone-ring",
+          "time": 24.824999999999207,
+          "distance": 5923.749999999754,
+          "Y": 0.41673042357377865,
+          "VerticalSpeed": 691.5909115273722,
+          "planningCall": 18
+        },
+        {
+          "kind": "success",
+          "id": "full-short-13-free-mid",
+          "time": 26.849999999999092,
+          "distance": 6435.706560839113,
+          "Y": 0.5475324542810758,
+          "VerticalSpeed": -720.562173819182,
+          "planningCall": 19
+        },
+        {
+          "kind": "success",
+          "id": "full-short-finish",
+          "time": 32.6333333333321,
+          "distance": 7775.0861585900075,
+          "Y": 0.31550496143006573,
+          "VerticalSpeed": -885.9090924890991,
+          "planningCall": 22
+        }
+      ],
+      "plans": [
+        {
+          "number": 1,
+          "time": 0.008333333333333333,
+          "distance": 1.8333333333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 1
+        },
+        {
+          "number": 2,
+          "time": 1.4628787871111513,
+          "distance": 321.83333316445345,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 2
+        },
+        {
+          "number": 3,
+          "time": 2.281060605338131,
+          "distance": 501.8333331743876,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 3
+        },
+        {
+          "number": 4,
+          "time": 4.866666666666698,
+          "distance": 1070.666666666673,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 4
+        },
+        {
+          "number": 5,
+          "time": 5.017424241882398,
+          "distance": 1103.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 5
+        },
+        {
+          "number": 6,
+          "time": 6.233333333333431,
+          "distance": 1371.3333333333262,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 6
+        },
+        {
+          "number": 7,
+          "time": 7.752981364156,
+          "distance": 1782.749999941358,
+          "Y": 0.15559995889665257,
+          "VerticalSpeed": 423.50423013812735,
+          "Support": 0,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 7
+        },
+        {
+          "number": 8,
+          "time": 9.86287878711121,
+          "distance": 2301.833333164454,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 8
+        },
+        {
+          "number": 9,
+          "time": 10.31742424188238,
+          "distance": 2401.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 9
+        },
+        {
+          "number": 10,
+          "time": 12.133333333333287,
+          "distance": 2801.333333333382,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 10
+        },
+        {
+          "number": 11,
+          "time": 12.733333333333254,
+          "distance": 2970.50000000008,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 11
+        },
+        {
+          "number": 12,
+          "time": 14.419926688101615,
+          "distance": 3472.749999935877,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 12
+        },
+        {
+          "number": 13,
+          "time": 14.733333333333139,
+          "distance": 3571.3333333334003,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 13
+        },
+        {
+          "number": 14,
+          "time": 16.978030302656794,
+          "distance": 4122.749999940395,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 14
+        },
+        {
+          "number": 15,
+          "time": 19.19999999999956,
+          "distance": 4620.000000000019,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 15
+        },
+        {
+          "number": 16,
+          "time": 19.353787878064868,
+          "distance": 4653.833333174388,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 16
+        },
+        {
+          "number": 17,
+          "time": 22.54469696897419,
+          "distance": 5421.833333174387,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 17
+        },
+        {
+          "number": 18,
+          "time": 22.999242423768038,
+          "distance": 5521.833333229025,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 18
+        },
+        {
+          "number": 19,
+          "time": 25.276515151153838,
+          "distance": 6072.749999880791,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 19
+        },
+        {
+          "number": 20,
+          "time": 27.416798299982045,
+          "distance": 6622.749999833498,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 20
+        },
+        {
+          "number": 21,
+          "time": 29.299999999998953,
+          "distance": 7039.9999999997135,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 21
+        },
+        {
+          "number": 22,
+          "time": 30.94469696897494,
+          "distance": 7401.833333174387,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 22
+        }
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:full-short-1-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.24607712461147457,
+          "AtDistance": 0,
+          "AtTime": 0,
+          "HorizonEndDistance": 1000,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            156,
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-2-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6314481111476198,
+          "AtDistance": 319.99999983112014,
+          "AtTime": 1.454545453777818,
+          "HorizonEndDistance": 1319.99999983112,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-3-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.9396236807806417,
+          "AtDistance": 499.99999984105426,
+          "AtTime": 2.2727272720047975,
+          "HorizonEndDistance": 1499.9999998410542,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730,
+            1408.1196111528561
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-4-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5864889939548448,
+          "AtDistance": 1069.999999821186,
+          "AtTime": 4.863636362823575,
+          "HorizonEndDistance": 2069.999999821186,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-4-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.18368837784510106,
+          "AtDistance": 1101.9999998807907,
+          "AtTime": 5.009090908549064,
+          "HorizonEndDistance": 2101.9999998807907,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-5-free-low",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.31981358432676643,
+          "AtDistance": 1369.9999998609223,
+          "AtTime": 6.227272726640686,
+          "HorizonEndDistance": 2369.9999998609223,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1396.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-6-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6142159035662189,
+          "AtDistance": 1779.999999941358,
+          "AtTime": 7.744648030822666,
+          "HorizonEndDistance": 2779.999999941358,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915
+          ]
+        },
+        {
+          "Id": "positive:full-short-7-before-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.04421419359277934,
+          "AtDistance": 2299.9999998311205,
+          "AtTime": 9.854545453777877,
+          "HorizonEndDistance": 3299.9999998311205,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-7-before-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15837415482383221,
+          "AtDistance": 2399.9999998807907,
+          "AtTime": 10.309090908549047,
+          "HorizonEndDistance": 3399.9999998807907,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2406,
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-1",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.17211234231945127,
+          "AtDistance": 2799.999999860923,
+          "AtTime": 12.12727272664029,
+          "HorizonEndDistance": 3799.999999860923,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-2",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.9251614477252588,
+          "AtDistance": 2969.9999998658895,
+          "AtTime": 12.731818181411464,
+          "HorizonEndDistance": 3969.9999998658895,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650,
+            3887.198555809634
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-9-large-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8981585806468502,
+          "AtDistance": 3469.999999935877,
+          "AtTime": 14.411593354768282,
+          "HorizonEndDistance": 4469.999999935877,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3650,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "positive:full-short-9-large-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.646217423141934,
+          "AtDistance": 3569.999999860923,
+          "AtTime": 14.72727272664006,
+          "HorizonEndDistance": 4569.999999860923,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3652,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-10-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.39479243534151465,
+          "AtDistance": 4119.999999940395,
+          "AtTime": 16.96969696932346,
+          "HorizonEndDistance": 5119.999999940395,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4958.119611152856
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-11-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5129099119221792,
+          "AtDistance": 4619.999999890724,
+          "AtTime": 19.19999999950276,
+          "HorizonEndDistance": 5619.999999890724,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4958.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "positive:full-short-11-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.44890605576802045,
+          "AtDistance": 4651.999999841055,
+          "AtTime": 19.345454544731535,
+          "HorizonEndDistance": 5651.999999841055,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4964.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-12-after-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5568137526279315,
+          "AtDistance": 5419.999999841054,
+          "AtTime": 22.536363635640857,
+          "HorizonEndDistance": 6419.999999841054,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            5600,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-12-after-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.8345822665141895,
+          "AtDistance": 5519.999999895692,
+          "AtTime": 22.990909090434705,
+          "HorizonEndDistance": 6519.999999895692,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            5598,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-13-free-mid",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.6700353623600677,
+          "AtDistance": 6069.999999880791,
+          "AtTime": 25.268181817820505,
+          "HorizonEndDistance": 7069.999999880791,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            6379.139378596592
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-14-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15123646974097937,
+          "AtDistance": 6619.999999833498,
+          "AtTime": 27.40846496664871,
+          "HorizonEndDistance": 7619.999999833498,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7270
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-15-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8865196198457852,
+          "AtDistance": 7039.999999890724,
+          "AtTime": 29.299999999503548,
+          "HorizonEndDistance": 7920,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7270,
+            7706
+          ]
+        },
+        {
+          "Id": "finish:full-short-finish",
+          "Kind": 2,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.10143847961444408,
+          "AtDistance": 7399.999999841054,
+          "AtTime": 30.93636363564161,
+          "HorizonEndDistance": 7920,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7704
+          ]
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "passed": true,
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "seed": 0,
+      "expectedTime": 33.05,
+      "expectedBoosts": 9,
+      "time": 33.04999999999874,
+      "hits": [],
+      "successes": [
+        "full-short-4-standard-pad-landing",
+        "full-short-5-free-low",
+        "full-short-7-before-stone-ring",
+        "full-short-8-chain-1",
+        "full-short-8-chain-2",
+        "full-short-9-large-pad-landing",
+        "full-short-11-standard-pad-landing",
+        "full-short-12-after-stone-ring",
+        "full-short-13-free-mid",
+        "full-short-finish"
+      ],
+      "failures": [],
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "FinishBoostsEarned": 1,
+      "FinishBoostElapsed": 0.25,
+      "replayObservations": 6780,
+      "presses": [
+        {
+          "Time": 0.7090909085490487,
+          "Distance": 155.9999998807907,
+          "Accepted": true,
+          "Cursor": 0,
+          "referenceNearest": 150
+        },
+        {
+          "Time": 3.3181818175947826,
+          "Distance": 729.9999998708566,
+          "Accepted": true,
+          "Cursor": 1,
+          "referenceNearest": 730
+        },
+        {
+          "Time": 6.345998231758234,
+          "Distance": 1396.119610986781,
+          "Accepted": true,
+          "Cursor": 2,
+          "referenceNearest": 1408.1196111528561
+        },
+        {
+          "Time": 7.609090908549278,
+          "Distance": 1739.9999998807907,
+          "Accepted": true,
+          "Cursor": 3,
+          "referenceNearest": 1740
+        },
+        {
+          "Time": 10.336363635641144,
+          "Distance": 2405.9999998410544,
+          "Accepted": true,
+          "Cursor": 4,
+          "referenceNearest": 2400
+        },
+        {
+          "Time": 11.31426990186108,
+          "Distance": 2621.13937840947,
+          "Accepted": true,
+          "Cursor": 5,
+          "referenceNearest": 2621.1393785965915
+        },
+        {
+          "Time": 13.418181817594398,
+          "Distance": 3149.9999998708568,
+          "Accepted": true,
+          "Cursor": 6,
+          "referenceNearest": 3150
+        },
+        {
+          "Time": 13.87219941523891,
+          "Distance": 3291.9999998911735,
+          "Accepted": true,
+          "Cursor": 7,
+          "referenceNearest": 3292
+        },
+        {
+          "Time": 15.099999999502748,
+          "Distance": 3651.9999998907247,
+          "Accepted": true,
+          "Cursor": 8,
+          "referenceNearest": 3650
+        },
+        {
+          "Time": 16.169084344012138,
+          "Distance": 3887.1985556828217,
+          "Accepted": true,
+          "Cursor": 9,
+          "referenceNearest": 3887.198555809634
+        },
+        {
+          "Time": 16.654545454081653,
+          "Distance": 4015.999999910593,
+          "Accepted": true,
+          "Cursor": 10,
+          "referenceNearest": 4016
+        },
+        {
+          "Time": 20.7641800498492,
+          "Distance": 4964.119610966913,
+          "Accepted": true,
+          "Cursor": 11,
+          "referenceNearest": 4958.119611152856
+        },
+        {
+          "Time": 23.345454544731854,
+          "Distance": 5597.999999841054,
+          "Accepted": true,
+          "Cursor": 12,
+          "referenceNearest": 5600
+        },
+        {
+          "Time": 24.581818180915008,
+          "Distance": 5869.999999801317,
+          "Accepted": true,
+          "Cursor": 13,
+          "referenceNearest": 5870
+        },
+        {
+          "Time": 26.59608808376978,
+          "Distance": 6379.139378429339,
+          "Accepted": true,
+          "Cursor": 14,
+          "referenceNearest": 6391.139378596592
+        },
+        {
+          "Time": 30.345454544732444,
+          "Distance": 7269.999999841054,
+          "Accepted": true,
+          "Cursor": 15,
+          "referenceNearest": 7270
+        },
+        {
+          "Time": 32.31818181759541,
+          "Distance": 7703.999999870856,
+          "Accepted": true,
+          "Cursor": 16,
+          "referenceNearest": 7706
+        }
+      ],
+      "contacts": [
+        {
+          "kind": "success",
+          "id": "full-short-4-standard-pad-landing",
+          "time": 6.6833333333334535,
+          "distance": 1470.500000083023,
+          "Y": 0.22641509433962265,
+          "VerticalSpeed": 0,
+          "planningCall": 6
+        },
+        {
+          "kind": "success",
+          "id": "full-short-5-free-low",
+          "time": 7.658333333333503,
+          "distance": 1751.5161497699355,
+          "Y": 0.023570693422632315,
+          "VerticalSpeed": 167.95454691740113,
+          "planningCall": 6
+        },
+        {
+          "kind": "success",
+          "id": "full-short-7-before-stone-ring",
+          "time": 12.399999999999938,
+          "distance": 2860.50000000008,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 10
+        },
+        {
+          "kind": "success",
+          "id": "full-short-8-chain-1",
+          "time": 13.491666666666541,
+          "distance": 3166.4241928622846,
+          "Y": 0.9534811281802545,
+          "VerticalSpeed": -233.4090924947972,
+          "planningCall": 11
+        },
+        {
+          "kind": "success",
+          "id": "full-short-8-chain-2",
+          "time": 14.00833333333318,
+          "distance": 3336.9241928622855,
+          "Y": 0.14048814183251998,
+          "VerticalSpeed": 402.56157885455093,
+          "planningCall": 11
+        },
+        {
+          "kind": "success",
+          "id": "full-short-9-large-pad-landing",
+          "time": 16.458333333333048,
+          "distance": 3951.2500000635496,
+          "Y": 0.5660377358490566,
+          "VerticalSpeed": 0,
+          "planningCall": 13
+        },
+        {
+          "kind": "success",
+          "id": "full-short-11-standard-pad-landing",
+          "time": 21.09999999999943,
+          "distance": 5038.000000092911,
+          "Y": 0.7735849056603774,
+          "VerticalSpeed": 0,
+          "planningCall": 16
+        },
+        {
+          "kind": "success",
+          "id": "full-short-12-after-stone-ring",
+          "time": 24.824999999999207,
+          "distance": 5923.749999999754,
+          "Y": 0.41673042357377865,
+          "VerticalSpeed": 691.5909115273722,
+          "planningCall": 18
+        },
+        {
+          "kind": "success",
+          "id": "full-short-13-free-mid",
+          "time": 26.849999999999092,
+          "distance": 6435.706560839113,
+          "Y": 0.5475324542810758,
+          "VerticalSpeed": -720.562173819182,
+          "planningCall": 19
+        },
+        {
+          "kind": "success",
+          "id": "full-short-finish",
+          "time": 32.6333333333321,
+          "distance": 7775.0861585900075,
+          "Y": 0.31550496143006573,
+          "VerticalSpeed": -885.9090924890991,
+          "planningCall": 22
+        }
+      ],
+      "plans": [
+        {
+          "number": 1,
+          "time": 0.008333333333333333,
+          "distance": 1.8333333333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 1
+        },
+        {
+          "number": 2,
+          "time": 1.4628787871111513,
+          "distance": 321.83333316445345,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 2
+        },
+        {
+          "number": 3,
+          "time": 2.281060605338131,
+          "distance": 501.8333331743876,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 3
+        },
+        {
+          "number": 4,
+          "time": 4.866666666666698,
+          "distance": 1070.666666666673,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 4
+        },
+        {
+          "number": 5,
+          "time": 5.017424241882398,
+          "distance": 1103.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 5
+        },
+        {
+          "number": 6,
+          "time": 6.233333333333431,
+          "distance": 1371.3333333333262,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 6
+        },
+        {
+          "number": 7,
+          "time": 7.752981364156,
+          "distance": 1782.749999941358,
+          "Y": 0.15559995889665257,
+          "VerticalSpeed": 423.50423013812735,
+          "Support": 0,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 7
+        },
+        {
+          "number": 8,
+          "time": 9.86287878711121,
+          "distance": 2301.833333164454,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 8
+        },
+        {
+          "number": 9,
+          "time": 10.31742424188238,
+          "distance": 2401.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 9
+        },
+        {
+          "number": 10,
+          "time": 12.133333333333287,
+          "distance": 2801.333333333382,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 10
+        },
+        {
+          "number": 11,
+          "time": 12.733333333333254,
+          "distance": 2970.50000000008,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 11
+        },
+        {
+          "number": 12,
+          "time": 14.419926688101615,
+          "distance": 3472.749999935877,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 12
+        },
+        {
+          "number": 13,
+          "time": 14.733333333333139,
+          "distance": 3571.3333333334003,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 13
+        },
+        {
+          "number": 14,
+          "time": 16.978030302656794,
+          "distance": 4122.749999940395,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 14
+        },
+        {
+          "number": 15,
+          "time": 19.19999999999956,
+          "distance": 4620.000000000019,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 15
+        },
+        {
+          "number": 16,
+          "time": 19.353787878064868,
+          "distance": 4653.833333174388,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 16
+        },
+        {
+          "number": 17,
+          "time": 22.54469696897419,
+          "distance": 5421.833333174387,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 17
+        },
+        {
+          "number": 18,
+          "time": 22.999242423768038,
+          "distance": 5521.833333229025,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 18
+        },
+        {
+          "number": 19,
+          "time": 25.276515151153838,
+          "distance": 6072.749999880791,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 19
+        },
+        {
+          "number": 20,
+          "time": 27.416798299982045,
+          "distance": 6622.749999833498,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 20
+        },
+        {
+          "number": 21,
+          "time": 29.299999999998953,
+          "distance": 7039.9999999997135,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 21
+        },
+        {
+          "number": 22,
+          "time": 30.94469696897494,
+          "distance": 7401.833333174387,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 22
+        }
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:full-short-1-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.24607712461147457,
+          "AtDistance": 0,
+          "AtTime": 0,
+          "HorizonEndDistance": 1000,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            156,
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-2-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6314481111476198,
+          "AtDistance": 319.99999983112014,
+          "AtTime": 1.454545453777818,
+          "HorizonEndDistance": 1319.99999983112,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-3-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.9396236807806417,
+          "AtDistance": 499.99999984105426,
+          "AtTime": 2.2727272720047975,
+          "HorizonEndDistance": 1499.9999998410542,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730,
+            1408.1196111528561
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-4-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5864889939548448,
+          "AtDistance": 1069.999999821186,
+          "AtTime": 4.863636362823575,
+          "HorizonEndDistance": 2069.999999821186,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-4-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.18368837784510106,
+          "AtDistance": 1101.9999998807907,
+          "AtTime": 5.009090908549064,
+          "HorizonEndDistance": 2101.9999998807907,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-5-free-low",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.31981358432676643,
+          "AtDistance": 1369.9999998609223,
+          "AtTime": 6.227272726640686,
+          "HorizonEndDistance": 2369.9999998609223,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1396.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-6-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6142159035662189,
+          "AtDistance": 1779.999999941358,
+          "AtTime": 7.744648030822666,
+          "HorizonEndDistance": 2779.999999941358,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915
+          ]
+        },
+        {
+          "Id": "positive:full-short-7-before-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.04421419359277934,
+          "AtDistance": 2299.9999998311205,
+          "AtTime": 9.854545453777877,
+          "HorizonEndDistance": 3299.9999998311205,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-7-before-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15837415482383221,
+          "AtDistance": 2399.9999998807907,
+          "AtTime": 10.309090908549047,
+          "HorizonEndDistance": 3399.9999998807907,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2406,
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-1",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.17211234231945127,
+          "AtDistance": 2799.999999860923,
+          "AtTime": 12.12727272664029,
+          "HorizonEndDistance": 3799.999999860923,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-2",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.9251614477252588,
+          "AtDistance": 2969.9999998658895,
+          "AtTime": 12.731818181411464,
+          "HorizonEndDistance": 3969.9999998658895,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650,
+            3887.198555809634
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-9-large-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8981585806468502,
+          "AtDistance": 3469.999999935877,
+          "AtTime": 14.411593354768282,
+          "HorizonEndDistance": 4469.999999935877,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3650,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "positive:full-short-9-large-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.646217423141934,
+          "AtDistance": 3569.999999860923,
+          "AtTime": 14.72727272664006,
+          "HorizonEndDistance": 4569.999999860923,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3652,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-10-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.39479243534151465,
+          "AtDistance": 4119.999999940395,
+          "AtTime": 16.96969696932346,
+          "HorizonEndDistance": 5119.999999940395,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4958.119611152856
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-11-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5129099119221792,
+          "AtDistance": 4619.999999890724,
+          "AtTime": 19.19999999950276,
+          "HorizonEndDistance": 5619.999999890724,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4958.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "positive:full-short-11-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.44890605576802045,
+          "AtDistance": 4651.999999841055,
+          "AtTime": 19.345454544731535,
+          "HorizonEndDistance": 5651.999999841055,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4964.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-12-after-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5568137526279315,
+          "AtDistance": 5419.999999841054,
+          "AtTime": 22.536363635640857,
+          "HorizonEndDistance": 6419.999999841054,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            5600,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-12-after-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.8345822665141895,
+          "AtDistance": 5519.999999895692,
+          "AtTime": 22.990909090434705,
+          "HorizonEndDistance": 6519.999999895692,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            5598,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-13-free-mid",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.6700353623600677,
+          "AtDistance": 6069.999999880791,
+          "AtTime": 25.268181817820505,
+          "HorizonEndDistance": 7069.999999880791,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            6379.139378596592
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-14-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15123646974097937,
+          "AtDistance": 6619.999999833498,
+          "AtTime": 27.40846496664871,
+          "HorizonEndDistance": 7619.999999833498,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7270
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-15-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8865196198457852,
+          "AtDistance": 7039.999999890724,
+          "AtTime": 29.299999999503548,
+          "HorizonEndDistance": 7920,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7270,
+            7706
+          ]
+        },
+        {
+          "Id": "finish:full-short-finish",
+          "Kind": 2,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.10143847961444408,
+          "AtDistance": 7399.999999841054,
+          "AtTime": 30.93636363564161,
+          "HorizonEndDistance": 7920,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7704
+          ]
+        }
+      ]
+    }
+  ]
+}

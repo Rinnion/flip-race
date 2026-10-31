@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4230/",
+  "actualServerPid": 155324,
+  "servedDirectory": "Builds/WebGL-v5.3.0-unpacked-final",
+  "version": "5.3.0-trial",
+  "zipSha256": "C68A18FED8C050A60738AF52AB65ABBA514170503FC5ADCDE8175F4CB2192C09",
+  "all5ActualHttpBodiesExactFreshUnpack": true,
+  "stable4184Still521": true,
+  "files": [
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.data.unityweb",
+      "status": 200,
+      "bytes": 1927277,
+      "sha256": "EB665EEE778A23D1E8C4D5A3AB2AC00D41715E1D85FB0475E020191F82BB3CB6",
+      "mime": "application/octet-stream"
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.framework.js.unityweb",
+      "status": 200,
+      "bytes": 90939,
+      "sha256": "790814A96340DF86FCAE64CB1953FAAB33221D46B6303005A765FFC39093020F",
+      "mime": "application/octet-stream"
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.loader.js",
+      "status": 200,
+      "bytes": 39788,
+      "sha256": "6144F9AF749F096C3D970E67D22EE19549FEB311022798D01A40B8B2C12F21AE",
+      "mime": "application/javascript; charset=utf-8"
+    },
+    {
+      "path": "Build/WebGL-v5.3.0-trial-candidate.wasm.unityweb",
+      "status": 200,
+      "bytes": 7241636,
+      "sha256": "C834CBEB09419F3DB2F2E995243BD46CE14EE43D16FDD0C1DB58B3D252F6AD55",
+      "mime": "application/octet-stream"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 13399,
+      "sha256": "8BADA9D08CCD0F5519199A6113DDE5B53EE1253FE639BE94C69B54EF2B280C07",
+      "mime": "text/html; charset=utf-8"
+    }
+  ]
+}

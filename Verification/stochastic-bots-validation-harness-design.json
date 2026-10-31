@@ -1,0 +1,49 @@
+{
+  "status":"DESIGN_ONLY_NOT_EXECUTED",
+  "protocolId":"BSTO-FINAL-VALIDATION-1",
+  "owner":"Progatik root; new isolated validation tool, Statistics sources remain read-only",
+  "contract":"flip-race/docs/flip-race-stochastic-bots-delivery-2026-10-31.md BSTO02/03/04/05/07",
+  "fileOwnership":["Tools/StochasticValidation/** only; never edit Tools/StochasticStatistics or Core/UI"],
+  "architecture":{
+    "project":"net10.0, StartupObject=ValidationEntry; link all Core plus frozen Statistics Program.cs/StudyRunner.cs",
+    "sharedSeam":"new static partial Program accesses existing private Run, Parameters, CaseResult, Stats and CheckAfterCohort; new ValidationEntry.Main dispatches validation only",
+    "noPhysicsDuplication":true,
+    "settings":"resolve immutable actual difficulty-factory settings for each exact track/profile/seed; same frozen actual API as UI; existing Run receives that settings factory",
+    "physicalPath":"normal human readiness, bot slot1 controller, ordinary Press/Advance only; human idle; stop on bot terminal",
+    "initialToolUntouched":true
+  },
+  "preplan":{
+    "path":"Verification/stochastic-bots-holdout-preplan.json",
+    "sha256":"26CF098679FDC1B446CB631762EB1F5D8DB69E9EA533EE445CB85EA60B4C47F3",
+    "holdoutCases":17600,
+    "cohorts":50,
+    "counts":"Master/Strong200 eachpair; Cascade Novice/Amateur800 eachprofile; allother400",
+    "seedStart":1000000,
+    "blocks":[{"offset":0,"count":200,"eligible":"all50cohorts"},{"offset":200,"count":200,"eligible":"N400/N800"},{"offset":400,"count":400,"eligible":"N800"}],
+    "inspectOrStopBetweenBlocks":false,
+    "automaticExtension":false,
+    "refitOnValidation":false
+  },
+  "phases":{
+    "Validation":{"camera":"Lagger","cases":17600,"acceptance":"every cohort complete and error-free; Master clean/full gain; 99percent mean CI entirely target plus-or-minus0.2; adjacent mean times strictly decreasing with level; actual outcome patterns diverse for juniorlevels"},
+    "ConstantAudit":{"camera":"Constant","cases":10000,"counts":"200 each of all50, same first held-out seeds; separate paired camera audit, no independence claim across cameras","acceptance":"all outcomes/errors/eliminations retained; Master clean finish; no target-mean criterion applied to censored cohorts"}
+  },
+  "statistics":{
+    "method":"existing Stats with expectedN200/400/800, sample SD n-1, conservative two-sided99percent tCritical2.601 for all n>=200",
+    "missingTerminal":"all corresponding aggregates and CI null; never silently reduce n",
+    "terminalQualityFailure":"actual terminal time/counts included, but cohort acceptance fails",
+    "boundary":"abs(mean-target)+halfWidth<=0.2 with explicit numeric tolerance<=1e-9 seconds; crossing boundary is INCONCLUSIVE, not PASS",
+    "confidenceScope":"pointwise per-cohort99percent, no familywise claim",
+    "diversity":"retain distinct physical hit/success/fullfinish patterns and saved intention patterns; do not enforce per-race success quotas"
+  },
+  "publication":{
+    "config":"safe unique named config; phase and camera exact, no runtime seed/parameter overrides; preplan bytes must match published hash",
+    "parameters":"describe actual frozen Core difficulty factory at seed0 for all50, publish exact canonical settings table; pCollect=q, Master1/0, infer and verify one shared junior-level k per pair without clamping",
+    "snapshots":"all Core, shared Statistics C# sources, new tool/protocol/config/preplan; Release DLL, canonical table/schedule, hashes and fresh tracked manifest; read-only publication",
+    "guards":"CreateNew outputs and permanent claim, source checks before/after publish; exact assembly/config/table/schedule/published-file hashes before/after cohort",
+    "failure":"retain accumulated outcomes and explicit unrun IDs; postrun verification failure never becomes zero-case setup result",
+    "execution":"no publication or physical cohort before root technical GO; final validation only after calibration/source/table freeze"
+  },
+  "selfchecks":"metadata only: fixed50/17600 and Constant10000 schedule/hash; disjoint training range; invalid counts/phase/camera/ID/preplan/table/duplicate fields; Stats partial and terminal-quality-error handling; synthetic postrun missing-manifest retains observations; actual factory immutable metadata and snapshot isolation without Press/Advance",
+  "report":"raw allcase facts/intents/errors plus summary CI/targets/order/diversity/eliminations, exact source/assembly/config/table/schedule hashes, all unrun IDs; phase-aware labels, no Training/exploratory flags mislabelled as validation acceptance"
+}

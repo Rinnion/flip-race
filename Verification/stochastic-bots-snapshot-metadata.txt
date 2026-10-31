@@ -1,0 +1,5 @@
+PASS RaceSnapshot.Clone
+7916 checks; 231 source snapshots; 4158 paired continuation steps.
+Source stable: True
+{"clones":5000,"players":4,"queuedEffectsPerPlayer":3,"setEntriesPerPlayer":60,"elapsedMilliseconds":29.2818,"microsecondsPerClone":5.85636,"bytesPerClone":16880.008,"environment":".NET 8 managed desktop sample; not Unity/WebGL latency proof"}
+No mutable timeline alias across source or sibling branches. See JSON for fixtures, immutable-input contract and limits.

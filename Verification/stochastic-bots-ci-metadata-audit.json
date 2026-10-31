@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "method": "Independent reconstruction of every complete historical reported metric interval from recorded mean/sampleSD/expectedN using2.601; no race reruns/outcome changes",
+  "correctTCritical": 2.601,
+  "numericalTolerance": 1E-09,
+  "intervalsChecked": 1272,
+  "maximumEndpointError": 0.0,
+  "rawReportsUnmodified": true,
+  "immutablePublishedMetadataTypoRetained": true,
+  "sources": [
+    {
+      "source": "Verification/stochastic-bots-training-initial.json",
+      "sourceSha256": "715C857AA5C4C3EE39D379AFF4204485356F7FDBE8B9D65844CCA9B83F1F30B9",
+      "cohorts": 50,
+      "metricIntervalsReconstructed": 450
+    },
+    {
+      "source": "Verification/stochastic-bots-study-postclip-initial.json",
+      "sourceSha256": "CEF42C19E0A54C40A3F4C7EBFD0B19D418190F81B398612E0DA55CE4E7F17D02",
+      "cohorts": 50,
+      "metricIntervalsReconstructed": 450
+    },
+    {
+      "source": "Verification/stochastic-bots-study-cascade-sensitivity-k070.json",
+      "sourceSha256": "36CCFBD2CCC0D318108BCB2E3EDF7ED13CF13D47D9FCABD0D8851919155E5564",
+      "cohorts": 8,
+      "metricIntervalsReconstructed": 72
+    },
+    {
+      "source": "Verification/stochastic-bots-study-cascade-confirm-k075-k085.json",
+      "sourceSha256": "1016F08CA4E8E394509321990ADDE915CFF0F89838B868A68456200C88D274A7",
+      "cohorts": 8,
+      "metricIntervalsReconstructed": 72
+    },
+    {
+      "source": "Verification/stochastic-bots-study-flow-sensitivity-k110.json",
+      "sourceSha256": "D71F370C90A4B9DA5E6681664AB21D7AFF1ACA60707B7E5DFC030400BA119BF4",
+      "cohorts": 8,
+      "metricIntervalsReconstructed": 72
+    },
+    {
+      "source": "Verification/stochastic-bots-study-long-fast-sensitivity-k110.json",
+      "sourceSha256": "A3EEF14F19DF2C907DF1A7A25B4E2D2BE0AE327A85C6B87819D306F801E1F5DA",
+      "cohorts": 4,
+      "metricIntervalsReconstructed": 36
+    },
+    {
+      "source": "Verification/stochastic-bots-study-flow-confirm-k105-k108.json",
+      "sourceSha256": "563059705A502F2217E2357893EB3F1BBBCC9F1D785CFA2F81AFA2CE5E7766E9",
+      "cohorts": 8,
+      "metricIntervalsReconstructed": 80
+    },
+    {
+      "source": "Verification/stochastic-bots-study-long-fast-confirm-k104.json",
+      "sourceSha256": "49477879F42B02DB61BF8D86954BB357756597A6DD7C3BA0118C0FE8AD90C51A",
+      "cohorts": 4,
+      "metricIntervalsReconstructed": 40
+    }
+  ]
+}

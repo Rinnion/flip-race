@@ -55,3 +55,18 @@ Desktop.ini
 # Local isolated verification workspaces.
 /.tmp-*/
 /.scratch-*/
+
+# Full raw initial training stays local; exact lossless .json.gz and hash manifest are versioned.
+/Verification/stochastic-bots-training-initial.json
+/Verification/stochastic-bots-study-postclip-initial.json
+/Verification/stochastic-bots-study-cascade-sensitivity-k070.json
+
+/Verification/stochastic-bots-study-cascade-confirm-k075-k085.json
+
+/Verification/stochastic-bots-study-flow-sensitivity-k110.json
+
+/Verification/stochastic-bots-study-long-fast-sensitivity-k110.json
+
+/Verification/stochastic-bots-study-flow-confirm-k105-k108.json
+
+/Verification/stochastic-bots-study-long-fast-confirm-k104.json

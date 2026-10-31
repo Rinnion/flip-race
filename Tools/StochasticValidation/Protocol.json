@@ -1,0 +1,56 @@
+{
+  "protocolId": "BSTO-FINAL-VALIDATION-1",
+  "phases": {
+    "Validation": {
+      "camera": "Lagger",
+      "cases": 18000
+    },
+    "ConstantAudit": {
+      "camera": "Constant",
+      "cases": 10000,
+      "pairedSeeds": true,
+      "noIndependentCameraClaim": true
+    }
+  },
+  "preplanSha256": "2233FBCDF0B7E65D5AD1EFD864A74988B00BFC032B4CCDF7AF146F197FE7319D",
+  "blocks": [
+    {
+      "offset": 0,
+      "count": 200,
+      "eligible": "all50"
+    },
+    {
+      "offset": 200,
+      "count": 200,
+      "eligible": "N400/N800"
+    },
+    {
+      "offset": 400,
+      "count": 400,
+      "eligible": "N800"
+    }
+  ],
+  "maximumParallelism": 3,
+  "automaticExtension": false,
+  "inspectBetweenBlocks": false,
+  "trainingCLI": false,
+  "settings": "actual immutable difficulty-factory settings; no local probability override",
+  "statistics": {
+    "expectedN": [
+      200,
+      400,
+      800
+    ],
+    "tCritical": 2.601,
+    "confidence": 0.99,
+    "scope": "pointwise, not familywise",
+    "targetAllowance": 0.2,
+    "numericTolerance": 1e-9,
+    "missingTerminal": "metric means/CI null",
+    "terminalQualityFailure": "included, acceptance fails",
+    "constantJuniorTime": "not a Lagger target test"
+  },
+  "diversity": "exact physical success/hit/fullfinish/status patterns and saved intention patterns; junior<2 needs review; no per-race quotas",
+  "errors": "all actual/partial/errors/eliminations retained; all unrun IDs explicit; postrun hash failure retains accumulated cases",
+  "execution": "no publication/cohort until root technical GO and frozen final calibration; parent independent review mandatory"
+}

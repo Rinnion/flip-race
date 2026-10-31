@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "studyId",
+    "phase",
+    "camera",
+    "preplanSha256"
+  ],
+  "properties": {
+    "studyId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      "maxLength": 64,
+      "not": {
+        "const": "initial"
+      }
+    },
+    "phase": {
+      "enum": [
+        "Validation",
+        "ConstantAudit"
+      ]
+    },
+    "camera": {
+      "enum": [
+        "Lagger",
+        "Constant"
+      ]
+    },
+    "preplanSha256": {
+      "const": "2233FBCDF0B7E65D5AD1EFD864A74988B00BFC032B4CCDF7AF146F197FE7319D"
+    },
+    "recordSelectedInputs": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "Validation"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "camera": {
+            "const": "Lagger"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "camera": {
+            "const": "Constant"
+          }
+        }
+      }
+    }
+  ]
+}

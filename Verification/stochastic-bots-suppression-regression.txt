@@ -1,0 +1,17 @@
+Stochastic bot no-op suppression: existing ordinary-engine regression
+Command: dotnet run --project Tools/ParityRunner/ParityRunner.csproj -- Tools/engine-parity-fixtures.tsv.gz
+Core RaceSimulation SHA256: 7FBF61AE7751C64E6EC9131BC7F8E9AA4EA45E952D331EABBCA605BE2208683B
+Core StochasticBotController SHA256: 3C1B710A6483B110059D77CF6B7C64BC300656BF55BE709982015E7E6F5D6344
+Root session24180, initial9d4ae7/finald92bfc, exit0.
+PASS original13scenarios/963assertions/186sampledrecoveries.
+PASS V2 12scenarios/3554assertions/449sampledrecoveries.
+PASS V3 12scenarios/865assertions, FIFOeffects/realfinishes/afterring/pause/reset/independence.
+PASS V4 18scenarios/1770assertions, continuouscontacts/oneairflip/freerings/legacy.
+PASS TUNE13scenarios/1009assertions.
+PASS CONTROL19scenarios/2166assertions.
+PASS chevronfinish10scenarios/2054assertions.
+PASS FLIGHT12scenarios/2424assertions.
+PASS MODES4scenarios/1190assertions.
+PASS RHYTHM offsetgates4scenarios/2960assertions.
+PASS JS/C# differential40228snapshots/1448208statefields, numerictolerance<1e-8.
+Original fixture baseline was not regenerated. This is ordinary-engine regression, not a new bot trajectory/calibration/browser performance proof.

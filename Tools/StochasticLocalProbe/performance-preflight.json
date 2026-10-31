@@ -1,0 +1,2450 @@
+{
+  "status": "PASS",
+  "sourceHash": "9FB640D34AD77B1615AA8D40FEC92F891E26A2D0954908D8BFB08E56DE379378",
+  "sourceStable": true,
+  "checks": 1212,
+  "elapsedMilliseconds": 2678.1314,
+  "declaredSeeds": [
+    0
+  ],
+  "declaredCadences": [
+    0
+  ],
+  "environment": "Managed desktop; all Plan durations retained, no WebGL latency claim",
+  "planCount": 219,
+  "planP95Milliseconds": 37.3122,
+  "planMaximumMilliseconds": 51.0927,
+  "variation": [
+    {
+      "pair": "rhythm-cascade/Chosen",
+      "actualInputSignatures": 1
+    },
+    {
+      "pair": "rhythm-cascade/FastFlip",
+      "actualInputSignatures": 1
+    },
+    {
+      "pair": "mixed-tricks/Chosen",
+      "actualInputSignatures": 1
+    },
+    {
+      "pair": "mixed-tricks/FastFlip",
+      "actualInputSignatures": 1
+    }
+  ],
+  "cases": [
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Chosen",
+      "Q": 1,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 33.049999999998754,
+      "Collisions": 0,
+      "Boosts": 9,
+      "FinishBoosts": 1,
+      "Inputs": [
+        236.4999998907248,
+        293.4999998410543,
+        483.181118565578,
+        954.4999998609226,
+        1011.499999811252,
+        1248.4999998907247,
+        1300.999999821186,
+        1706.4999998013177,
+        1741.4999998956919,
+        2047.7999999284743,
+        2128.2999999374156,
+        2376.4999998807907,
+        2427.499999841054,
+        2631.1811186053146,
+        3100.4999998708568,
+        3151.4999998907247,
+        3506.999999801318,
+        3533.999999821186,
+        3865.499999801318,
+        3924.499999860923,
+        4124.999999890724,
+        4150.999999841055,
+        4178.999999841055,
+        4729.499999811253,
+        4768.499999890724,
+        5017.499999821186,
+        5068.499999860922,
+        5407.49999983112,
+        5449.499999801317,
+        5602.999999841054,
+        5715.499999881199,
+        5999.499999801317,
+        6056.49999983112,
+        6267.499999821186,
+        6346.999999890724,
+        6613.999999821186,
+        6689.499999821186,
+        7007.499999860922,
+        7046.49999983112,
+        7307.499999895692,
+        7358.499999811252,
+        7597.499999841054,
+        7646.499999801317,
+        7757.999999821186
+      ],
+      "Signature": "236.50000|293.50000|483.18112|954.50000|1011.50000|1248.50000|1301.00000|1706.50000|1741.50000|2047.80000|2128.30000|2376.50000|2427.50000|2631.18112|3100.50000|3151.50000|3507.00000|3534.00000|3865.50000|3924.50000|4125.00000|4151.00000|4179.00000|4729.50000|4768.50000|5017.50000|5068.50000|5407.50000|5449.50000|5603.00000|5715.50000|5999.50000|6056.50000|6267.50000|6347.00000|6614.00000|6689.50000|7007.50000|7046.50000|7307.50000|7358.50000|7597.50000|7646.50000|7758.00000",
+      "ForecastSteps": 8090,
+      "Rollbacks": 45,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 31,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 0,
+          "HorizonEndDistance": 1000,
+          "Candidates": 7,
+          "ForecastSteps": 253,
+          "Rollbacks": 0,
+          "Milliseconds": 9.1371
+        },
+        {
+          "Number": 2,
+          "AtDistance": 269.9999998609225,
+          "HorizonEndDistance": 1269.9999998609226,
+          "Candidates": 6,
+          "ForecastSteps": 215,
+          "Rollbacks": 0,
+          "Milliseconds": 1.2095
+        },
+        {
+          "Number": 3,
+          "AtDistance": 301.9999998410543,
+          "HorizonEndDistance": 1301.9999998410544,
+          "Candidates": 7,
+          "ForecastSteps": 255,
+          "Rollbacks": 0,
+          "Milliseconds": 2.0158
+        },
+        {
+          "Number": 4,
+          "AtDistance": 609.9999998410543,
+          "HorizonEndDistance": 1609.9999998410544,
+          "Candidates": 1,
+          "ForecastSteps": 33,
+          "Rollbacks": 0,
+          "Milliseconds": 1.0081
+        },
+        {
+          "Number": 5,
+          "AtDistance": 909.9999998410543,
+          "HorizonEndDistance": 1909.9999998410544,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2893
+        },
+        {
+          "Number": 6,
+          "AtDistance": 943.9999998956919,
+          "HorizonEndDistance": 1943.9999998956919,
+          "Candidates": 13,
+          "ForecastSteps": 473,
+          "Rollbacks": 0,
+          "Milliseconds": 3.1418
+        },
+        {
+          "Number": 7,
+          "AtDistance": 1395.9999998805797,
+          "HorizonEndDistance": 2395.9999998805797,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2696
+        },
+        {
+          "Number": 8,
+          "AtDistance": 1495.999999939551,
+          "HorizonEndDistance": 2495.999999939551,
+          "Candidates": 7,
+          "ForecastSteps": 256,
+          "Rollbacks": 0,
+          "Milliseconds": 1.6542
+        },
+        {
+          "Number": 9,
+          "AtDistance": 1735.9999998956919,
+          "HorizonEndDistance": 2735.999999895692,
+          "Candidates": 5,
+          "ForecastSteps": 182,
+          "Rollbacks": 0,
+          "Milliseconds": 1.1023
+        },
+        {
+          "Number": 10,
+          "AtDistance": 2025.9999998807907,
+          "HorizonEndDistance": 3025.9999998807907,
+          "Candidates": 13,
+          "ForecastSteps": 445,
+          "Rollbacks": 0,
+          "Milliseconds": 2.5681
+        },
+        {
+          "Number": 11,
+          "AtDistance": 2415.9999998013177,
+          "HorizonEndDistance": 3415.9999998013177,
+          "Candidates": 6,
+          "ForecastSteps": 215,
+          "Rollbacks": 0,
+          "Milliseconds": 1.1879
+        },
+        {
+          "Number": 12,
+          "AtDistance": 2447.9999998609223,
+          "HorizonEndDistance": 3447.9999998609223,
+          "Candidates": 7,
+          "ForecastSteps": 248,
+          "Rollbacks": 0,
+          "Milliseconds": 1.9933
+        },
+        {
+          "Number": 13,
+          "AtDistance": 2755.999999860923,
+          "HorizonEndDistance": 3755.999999860923,
+          "Candidates": 11,
+          "ForecastSteps": 376,
+          "Rollbacks": 0,
+          "Milliseconds": 2.0285
+        },
+        {
+          "Number": 14,
+          "AtDistance": 3161.9999998410544,
+          "HorizonEndDistance": 4161.999999841055,
+          "Candidates": 1,
+          "ForecastSteps": 37,
+          "Rollbacks": 0,
+          "Milliseconds": 0.1997
+        },
+        {
+          "Number": 15,
+          "AtDistance": 3211.9999998907247,
+          "HorizonEndDistance": 4211.999999890724,
+          "Candidates": 5,
+          "ForecastSteps": 193,
+          "Rollbacks": 0,
+          "Milliseconds": 0.919
+        },
+        {
+          "Number": 16,
+          "AtDistance": 3516.9999998509884,
+          "HorizonEndDistance": 4516.999999850988,
+          "Candidates": 13,
+          "ForecastSteps": 481,
+          "Rollbacks": 0,
+          "Milliseconds": 3.042
+        },
+        {
+          "Number": 17,
+          "AtDistance": 3906.9999998807907,
+          "HorizonEndDistance": 4906.999999880791,
+          "Candidates": 6,
+          "ForecastSteps": 231,
+          "Rollbacks": 0,
+          "Milliseconds": 1.3501
+        },
+        {
+          "Number": 18,
+          "AtDistance": 4006.999999821186,
+          "HorizonEndDistance": 5006.999999821186,
+          "Candidates": 13,
+          "ForecastSteps": 494,
+          "Rollbacks": 0,
+          "Milliseconds": 2.602
+        },
+        {
+          "Number": 19,
+          "AtDistance": 4366.999999890724,
+          "HorizonEndDistance": 5366.999999890724,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2087
+        },
+        {
+          "Number": 20,
+          "AtDistance": 4666.999999821186,
+          "HorizonEndDistance": 5666.999999821186,
+          "Candidates": 13,
+          "ForecastSteps": 523,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3162
+        },
+        {
+          "Number": 21,
+          "AtDistance": 5154.999999801317,
+          "HorizonEndDistance": 6154.999999801317,
+          "Candidates": 1,
+          "ForecastSteps": 41,
+          "Rollbacks": 2,
+          "Milliseconds": 0.76
+        },
+        {
+          "Number": 22,
+          "AtDistance": 5334.999999890724,
+          "HorizonEndDistance": 6334.999999890724,
+          "Candidates": 13,
+          "ForecastSteps": 538,
+          "Rollbacks": 26,
+          "Milliseconds": 7.9515
+        },
+        {
+          "Number": 23,
+          "AtDistance": 5654.999999880791,
+          "HorizonEndDistance": 6654.999999880791,
+          "Candidates": 7,
+          "ForecastSteps": 258,
+          "Rollbacks": 9,
+          "Milliseconds": 1.6328
+        },
+        {
+          "Number": 24,
+          "AtDistance": 5944.999999811252,
+          "HorizonEndDistance": 6944.999999811252,
+          "Candidates": 1,
+          "ForecastSteps": 34,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2508
+        },
+        {
+          "Number": 25,
+          "AtDistance": 5978.999999860922,
+          "HorizonEndDistance": 6978.999999860922,
+          "Candidates": 13,
+          "ForecastSteps": 451,
+          "Rollbacks": 0,
+          "Milliseconds": 2.5031
+        },
+        {
+          "Number": 26,
+          "AtDistance": 6294.999999821186,
+          "HorizonEndDistance": 7294.999999821186,
+          "Candidates": 1,
+          "ForecastSteps": 34,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2032
+        },
+        {
+          "Number": 27,
+          "AtDistance": 6328.999999841054,
+          "HorizonEndDistance": 7328.999999841054,
+          "Candidates": 11,
+          "ForecastSteps": 402,
+          "Rollbacks": 8,
+          "Milliseconds": 2.0706
+        },
+        {
+          "Number": 28,
+          "AtDistance": 6644.999999880791,
+          "HorizonEndDistance": 7644.999999880791,
+          "Candidates": 7,
+          "ForecastSteps": 261,
+          "Rollbacks": 0,
+          "Milliseconds": 1.6382
+        },
+        {
+          "Number": 29,
+          "AtDistance": 6944.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 13,
+          "ForecastSteps": 484,
+          "Rollbacks": 0,
+          "Milliseconds": 3.2518
+        },
+        {
+          "Number": 30,
+          "AtDistance": 7244.999999801317,
+          "HorizonEndDistance": 7920,
+          "Candidates": 13,
+          "ForecastSteps": 328,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3574
+        },
+        {
+          "Number": 31,
+          "AtDistance": 7399.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 13,
+          "ForecastSteps": 242,
+          "Rollbacks": 0,
+          "Milliseconds": 1.4542
+        }
+      ]
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "Chosen",
+      "Q": 0.5,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 37.24999999999854,
+      "Collisions": 3,
+      "Boosts": 0,
+      "FinishBoosts": 1,
+      "Inputs": [
+        230.49999981125197,
+        293.4999998410543,
+        597.1811185457098,
+        960.4999998956919,
+        1011.499999811252,
+        1248.4999998907247,
+        1332.9999998807907,
+        1455.9999998708565,
+        1741.4999998956919,
+        1795.999999821186,
+        1830.4999998410542,
+        2025.9999998807907,
+        2047.7999998927114,
+        2070.999999821186,
+        2140.2999998430414,
+        2376.4999998807907,
+        2427.499999841054,
+        2711.1811185357756,
+        2755.999999860923,
+        2800.999999801318,
+        3106.4999998410544,
+        3157.499999860923,
+        3524.999999811252,
+        3547.999999860923,
+        3867.4999998311205,
+        3918.4999998509884,
+        4112.999999841055,
+        4150.999999841055,
+        4338.999999811253,
+        4726.999999850988,
+        4756.999999811253,
+        4801.999999860923,
+        5168.999999841054,
+        5399.999999841054,
+        5434.999999880791,
+        5654.999999880791,
+        5789.499999895692,
+        6005.499999811252,
+        6056.49999983112,
+        6347.499999860922,
+        6372.999999841054,
+        6679.499999850988,
+        6725.999999841054,
+        6995.499999811252,
+        7046.49999983112,
+        7307.499999895692,
+        7358.499999811252,
+        7595.499999890724,
+        7658.499999850988,
+        7757.999999821186
+      ],
+      "Signature": "230.50000|293.50000|597.18112|960.50000|1011.50000|1248.50000|1333.00000|1456.00000|1741.50000|1796.00000|1830.50000|2026.00000|2047.80000|2071.00000|2140.30000|2376.50000|2427.50000|2711.18112|2756.00000|2801.00000|3106.50000|3157.50000|3525.00000|3548.00000|3867.50000|3918.50000|4113.00000|4151.00000|4339.00000|4727.00000|4757.00000|4802.00000|5169.00000|5400.00000|5435.00000|5655.00000|5789.50000|6005.50000|6056.50000|6347.50000|6373.00000|6679.50000|6726.00000|6995.50000|7046.50000|7307.50000|7358.50000|7595.50000|7658.50000|7758.00000",
+      "ForecastSteps": 104591,
+      "Rollbacks": 78,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 34,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 0,
+          "HorizonEndDistance": 1000,
+          "Candidates": 72,
+          "ForecastSteps": 2971,
+          "Rollbacks": 0,
+          "Milliseconds": 13.5757
+        },
+        {
+          "Number": 2,
+          "AtDistance": 269.9999998609225,
+          "HorizonEndDistance": 1269.9999998609226,
+          "Candidates": 85,
+          "ForecastSteps": 3451,
+          "Rollbacks": 0,
+          "Milliseconds": 31.3815
+        },
+        {
+          "Number": 3,
+          "AtDistance": 301.9999998410543,
+          "HorizonEndDistance": 1301.9999998410544,
+          "Candidates": 96,
+          "ForecastSteps": 3896,
+          "Rollbacks": 0,
+          "Milliseconds": 38.819
+        },
+        {
+          "Number": 4,
+          "AtDistance": 609.9999998410543,
+          "HorizonEndDistance": 1609.9999998410544,
+          "Candidates": 74,
+          "ForecastSteps": 2946,
+          "Rollbacks": 0,
+          "Milliseconds": 22.8464
+        },
+        {
+          "Number": 5,
+          "AtDistance": 909.9999998410543,
+          "HorizonEndDistance": 1909.9999998410544,
+          "Candidates": 96,
+          "ForecastSteps": 3870,
+          "Rollbacks": 0,
+          "Milliseconds": 39.561
+        },
+        {
+          "Number": 6,
+          "AtDistance": 943.9999998956919,
+          "HorizonEndDistance": 1943.9999998956919,
+          "Candidates": 96,
+          "ForecastSteps": 3915,
+          "Rollbacks": 0,
+          "Milliseconds": 44.1188
+        },
+        {
+          "Number": 7,
+          "AtDistance": 1395.9999998410542,
+          "HorizonEndDistance": 2395.999999841054,
+          "Candidates": 41,
+          "ForecastSteps": 1924,
+          "Rollbacks": 0,
+          "Milliseconds": 13.2015
+        },
+        {
+          "Number": 8,
+          "AtDistance": 1495.9999998907247,
+          "HorizonEndDistance": 2495.9999998907247,
+          "Candidates": 93,
+          "ForecastSteps": 4292,
+          "Rollbacks": 0,
+          "Milliseconds": 39.2045
+        },
+        {
+          "Number": 9,
+          "AtDistance": 1735.9999998956919,
+          "HorizonEndDistance": 2735.999999895692,
+          "Candidates": 49,
+          "ForecastSteps": 2381,
+          "Rollbacks": 0,
+          "Milliseconds": 27.222
+        },
+        {
+          "Number": 10,
+          "AtDistance": 2025.9999998807907,
+          "HorizonEndDistance": 3025.9999998807907,
+          "Candidates": 88,
+          "ForecastSteps": 3857,
+          "Rollbacks": 0,
+          "Milliseconds": 37.5831
+        },
+        {
+          "Number": 11,
+          "AtDistance": 2102,
+          "HorizonEndDistance": 3102,
+          "Candidates": 71,
+          "ForecastSteps": 2860,
+          "Rollbacks": 0,
+          "Milliseconds": 30.2249
+        },
+        {
+          "Number": 12,
+          "AtDistance": 2415.9999998013177,
+          "HorizonEndDistance": 3415.9999998013177,
+          "Candidates": 71,
+          "ForecastSteps": 2917,
+          "Rollbacks": 0,
+          "Milliseconds": 37.4584
+        },
+        {
+          "Number": 13,
+          "AtDistance": 2447.9999998609223,
+          "HorizonEndDistance": 3447.9999998609223,
+          "Candidates": 94,
+          "ForecastSteps": 3757,
+          "Rollbacks": 0,
+          "Milliseconds": 51.0927
+        },
+        {
+          "Number": 14,
+          "AtDistance": 2755.999999860923,
+          "HorizonEndDistance": 3755.999999860923,
+          "Candidates": 75,
+          "ForecastSteps": 3064,
+          "Rollbacks": 0,
+          "Milliseconds": 26.9473
+        },
+        {
+          "Number": 15,
+          "AtDistance": 3161.9999998410544,
+          "HorizonEndDistance": 4161.999999841055,
+          "Candidates": 96,
+          "ForecastSteps": 3879,
+          "Rollbacks": 0,
+          "Milliseconds": 35.6797
+        },
+        {
+          "Number": 16,
+          "AtDistance": 3211.9999998907247,
+          "HorizonEndDistance": 4211.999999890724,
+          "Candidates": 96,
+          "ForecastSteps": 3919,
+          "Rollbacks": 0,
+          "Milliseconds": 37.3122
+        },
+        {
+          "Number": 17,
+          "AtDistance": 3516.9999998509884,
+          "HorizonEndDistance": 4516.999999850988,
+          "Candidates": 96,
+          "ForecastSteps": 4190,
+          "Rollbacks": 0,
+          "Milliseconds": 43.181
+        },
+        {
+          "Number": 18,
+          "AtDistance": 3906.9999998807907,
+          "HorizonEndDistance": 4906.999999880791,
+          "Candidates": 96,
+          "ForecastSteps": 4168,
+          "Rollbacks": 0,
+          "Milliseconds": 33.9474
+        },
+        {
+          "Number": 19,
+          "AtDistance": 4006.999999821186,
+          "HorizonEndDistance": 5006.999999821186,
+          "Candidates": 96,
+          "ForecastSteps": 4000,
+          "Rollbacks": 0,
+          "Milliseconds": 28.878
+        },
+        {
+          "Number": 20,
+          "AtDistance": 4366.999999890724,
+          "HorizonEndDistance": 5366.999999890724,
+          "Candidates": 96,
+          "ForecastSteps": 4497,
+          "Rollbacks": 0,
+          "Milliseconds": 28.7778
+        },
+        {
+          "Number": 21,
+          "AtDistance": 4666.999999821186,
+          "HorizonEndDistance": 5666.999999821186,
+          "Candidates": 15,
+          "ForecastSteps": 727,
+          "Rollbacks": 0,
+          "Milliseconds": 2.7597
+        },
+        {
+          "Number": 22,
+          "AtDistance": 4733,
+          "HorizonEndDistance": 5733,
+          "Candidates": 14,
+          "ForecastSteps": 615,
+          "Rollbacks": 2,
+          "Milliseconds": 3.9679
+        },
+        {
+          "Number": 23,
+          "AtDistance": 5145,
+          "HorizonEndDistance": 6145,
+          "Candidates": 14,
+          "ForecastSteps": 621,
+          "Rollbacks": 2,
+          "Milliseconds": 3.3056
+        },
+        {
+          "Number": 24,
+          "AtDistance": 5154.999999801317,
+          "HorizonEndDistance": 6154.999999801317,
+          "Candidates": 20,
+          "ForecastSteps": 871,
+          "Rollbacks": 2,
+          "Milliseconds": 5.1116
+        },
+        {
+          "Number": 25,
+          "AtDistance": 5334.999999890724,
+          "HorizonEndDistance": 6334.999999890724,
+          "Candidates": 34,
+          "ForecastSteps": 1542,
+          "Rollbacks": 2,
+          "Milliseconds": 7.7701
+        },
+        {
+          "Number": 26,
+          "AtDistance": 5654.999999880791,
+          "HorizonEndDistance": 6654.999999880791,
+          "Candidates": 96,
+          "ForecastSteps": 4426,
+          "Rollbacks": 11,
+          "Milliseconds": 37.4942
+        },
+        {
+          "Number": 27,
+          "AtDistance": 5944.999999811252,
+          "HorizonEndDistance": 6944.999999811252,
+          "Candidates": 96,
+          "ForecastSteps": 3813,
+          "Rollbacks": 6,
+          "Milliseconds": 32.9326
+        },
+        {
+          "Number": 28,
+          "AtDistance": 5978.999999860922,
+          "HorizonEndDistance": 6978.999999860922,
+          "Candidates": 96,
+          "ForecastSteps": 3833,
+          "Rollbacks": 6,
+          "Milliseconds": 40.578
+        },
+        {
+          "Number": 29,
+          "AtDistance": 6294.999999821186,
+          "HorizonEndDistance": 7294.999999821186,
+          "Candidates": 70,
+          "ForecastSteps": 3164,
+          "Rollbacks": 2,
+          "Milliseconds": 23.8856
+        },
+        {
+          "Number": 30,
+          "AtDistance": 6328.999999841054,
+          "HorizonEndDistance": 7328.999999841054,
+          "Candidates": 96,
+          "ForecastSteps": 4692,
+          "Rollbacks": 1,
+          "Milliseconds": 34.0105
+        },
+        {
+          "Number": 31,
+          "AtDistance": 6644.999999880791,
+          "HorizonEndDistance": 7644.999999880791,
+          "Candidates": 35,
+          "ForecastSteps": 1727,
+          "Rollbacks": 0,
+          "Milliseconds": 8.1931
+        },
+        {
+          "Number": 32,
+          "AtDistance": 6944.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 96,
+          "ForecastSteps": 3957,
+          "Rollbacks": 16,
+          "Milliseconds": 27.239
+        },
+        {
+          "Number": 33,
+          "AtDistance": 7244.999999801317,
+          "HorizonEndDistance": 7920,
+          "Candidates": 88,
+          "ForecastSteps": 2568,
+          "Rollbacks": 16,
+          "Milliseconds": 23.4268
+        },
+        {
+          "Number": 34,
+          "AtDistance": 7399.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 57,
+          "ForecastSteps": 1281,
+          "Rollbacks": 12,
+          "Milliseconds": 11.75
+        }
+      ]
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "FastFlip",
+      "Q": 1,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 33.04999999999877,
+      "Collisions": 0,
+      "Boosts": 9,
+      "FinishBoosts": 1,
+      "Inputs": [
+        262.9999998410543,
+        494.49999981125194,
+        608.4999998956919,
+        1000.9999998907248,
+        1273.9999998956919,
+        1711.9999998013177,
+        2101.9999998658895,
+        2410.9999998807907,
+        2632.499999895692,
+        2754.4999998410544,
+        3140.999999860923,
+        3530.499999811252,
+        3901.9999998410544,
+        4146.499999811253,
+        4324.499999801318,
+        4749.999999895692,
+        5049.99999983112,
+        5432.499999870856,
+        5656.499999821186,
+        6041.999999821186,
+        6302.999999890724,
+        6664.999999841054,
+        7035.999999801317,
+        7341.999999841054,
+        7617.999999860922,
+        7711.99999983112
+      ],
+      "Signature": "263.00000|494.50000|608.50000|1001.00000|1274.00000|1712.00000|2102.00000|2411.00000|2632.50000|2754.50000|3141.00000|3530.50000|3902.00000|4146.50000|4324.50000|4750.00000|5050.00000|5432.50000|5656.50000|6042.00000|6303.00000|6665.00000|7036.00000|7342.00000|7618.00000|7712.00000",
+      "ForecastSteps": 5803,
+      "Rollbacks": 0,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 31,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 0,
+          "HorizonEndDistance": 1000,
+          "Candidates": 5,
+          "ForecastSteps": 185,
+          "Rollbacks": 0,
+          "Milliseconds": 1.2301
+        },
+        {
+          "Number": 2,
+          "AtDistance": 269.9999998609225,
+          "HorizonEndDistance": 1269.9999998609226,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.5222
+        },
+        {
+          "Number": 3,
+          "AtDistance": 301.9999998410543,
+          "HorizonEndDistance": 1301.9999998410544,
+          "Candidates": 10,
+          "ForecastSteps": 371,
+          "Rollbacks": 0,
+          "Milliseconds": 2.1417
+        },
+        {
+          "Number": 4,
+          "AtDistance": 609.9999998410543,
+          "HorizonEndDistance": 1609.9999998410544,
+          "Candidates": 1,
+          "ForecastSteps": 33,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2772
+        },
+        {
+          "Number": 5,
+          "AtDistance": 909.9999998410543,
+          "HorizonEndDistance": 1909.9999998410544,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2994
+        },
+        {
+          "Number": 6,
+          "AtDistance": 943.9999998956919,
+          "HorizonEndDistance": 1943.9999998956919,
+          "Candidates": 13,
+          "ForecastSteps": 471,
+          "Rollbacks": 0,
+          "Milliseconds": 3.4974
+        },
+        {
+          "Number": 7,
+          "AtDistance": 1395.9999998768071,
+          "HorizonEndDistance": 2395.999999876807,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.3772
+        },
+        {
+          "Number": 8,
+          "AtDistance": 1495.9999998172025,
+          "HorizonEndDistance": 2495.9999998172025,
+          "Candidates": 7,
+          "ForecastSteps": 251,
+          "Rollbacks": 0,
+          "Milliseconds": 2.4311
+        },
+        {
+          "Number": 9,
+          "AtDistance": 1735.9999998956919,
+          "HorizonEndDistance": 2735.999999895692,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2723
+        },
+        {
+          "Number": 10,
+          "AtDistance": 2025.9999998807907,
+          "HorizonEndDistance": 3025.9999998807907,
+          "Candidates": 11,
+          "ForecastSteps": 386,
+          "Rollbacks": 0,
+          "Milliseconds": 2.8514
+        },
+        {
+          "Number": 11,
+          "AtDistance": 2415.9999998013177,
+          "HorizonEndDistance": 3415.9999998013177,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.3284
+        },
+        {
+          "Number": 12,
+          "AtDistance": 2447.9999998609223,
+          "HorizonEndDistance": 3447.9999998609223,
+          "Candidates": 10,
+          "ForecastSteps": 361,
+          "Rollbacks": 0,
+          "Milliseconds": 2.6444
+        },
+        {
+          "Number": 13,
+          "AtDistance": 2755.999999821186,
+          "HorizonEndDistance": 3755.999999821186,
+          "Candidates": 7,
+          "ForecastSteps": 237,
+          "Rollbacks": 0,
+          "Milliseconds": 1.8184
+        },
+        {
+          "Number": 14,
+          "AtDistance": 3161.9999998410544,
+          "HorizonEndDistance": 4161.999999841055,
+          "Candidates": 1,
+          "ForecastSteps": 37,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2913
+        },
+        {
+          "Number": 15,
+          "AtDistance": 3211.9999998907247,
+          "HorizonEndDistance": 4211.999999890724,
+          "Candidates": 1,
+          "ForecastSteps": 37,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2641
+        },
+        {
+          "Number": 16,
+          "AtDistance": 3516.9999998509884,
+          "HorizonEndDistance": 4516.999999850988,
+          "Candidates": 9,
+          "ForecastSteps": 322,
+          "Rollbacks": 0,
+          "Milliseconds": 3.822
+        },
+        {
+          "Number": 17,
+          "AtDistance": 3906.9999998112517,
+          "HorizonEndDistance": 4906.999999811252,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.6194
+        },
+        {
+          "Number": 18,
+          "AtDistance": 4006.999999821186,
+          "HorizonEndDistance": 5006.999999821186,
+          "Candidates": 13,
+          "ForecastSteps": 476,
+          "Rollbacks": 0,
+          "Milliseconds": 6.649
+        },
+        {
+          "Number": 19,
+          "AtDistance": 4366.999999890724,
+          "HorizonEndDistance": 5366.999999890724,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2965
+        },
+        {
+          "Number": 20,
+          "AtDistance": 4666.999999821186,
+          "HorizonEndDistance": 5666.999999821186,
+          "Candidates": 13,
+          "ForecastSteps": 504,
+          "Rollbacks": 0,
+          "Milliseconds": 4.0617
+        },
+        {
+          "Number": 21,
+          "AtDistance": 5154.999999801317,
+          "HorizonEndDistance": 6154.999999801317,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.7573
+        },
+        {
+          "Number": 22,
+          "AtDistance": 5334.999999890724,
+          "HorizonEndDistance": 6334.999999890724,
+          "Candidates": 7,
+          "ForecastSteps": 251,
+          "Rollbacks": 0,
+          "Milliseconds": 2.6849
+        },
+        {
+          "Number": 23,
+          "AtDistance": 5654.999999880791,
+          "HorizonEndDistance": 6654.999999880791,
+          "Candidates": 4,
+          "ForecastSteps": 136,
+          "Rollbacks": 0,
+          "Milliseconds": 1.1265
+        },
+        {
+          "Number": 24,
+          "AtDistance": 5944.999999811252,
+          "HorizonEndDistance": 6944.999999811252,
+          "Candidates": 1,
+          "ForecastSteps": 33,
+          "Rollbacks": 0,
+          "Milliseconds": 0.5552
+        },
+        {
+          "Number": 25,
+          "AtDistance": 5978.999999860922,
+          "HorizonEndDistance": 6978.999999860922,
+          "Candidates": 7,
+          "ForecastSteps": 237,
+          "Rollbacks": 0,
+          "Milliseconds": 2.0815
+        },
+        {
+          "Number": 26,
+          "AtDistance": 6294.999999821186,
+          "HorizonEndDistance": 7294.999999821186,
+          "Candidates": 7,
+          "ForecastSteps": 237,
+          "Rollbacks": 0,
+          "Milliseconds": 1.5934
+        },
+        {
+          "Number": 27,
+          "AtDistance": 6328.999999841054,
+          "HorizonEndDistance": 7328.999999841054,
+          "Candidates": 1,
+          "ForecastSteps": 33,
+          "Rollbacks": 0,
+          "Milliseconds": 0.4735
+        },
+        {
+          "Number": 28,
+          "AtDistance": 6644.999999880791,
+          "HorizonEndDistance": 7644.999999880791,
+          "Candidates": 7,
+          "ForecastSteps": 250,
+          "Rollbacks": 0,
+          "Milliseconds": 1.8355
+        },
+        {
+          "Number": 29,
+          "AtDistance": 6944.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 7,
+          "ForecastSteps": 252,
+          "Rollbacks": 0,
+          "Milliseconds": 1.8217
+        },
+        {
+          "Number": 30,
+          "AtDistance": 7244.999999801317,
+          "HorizonEndDistance": 7920,
+          "Candidates": 7,
+          "ForecastSteps": 175,
+          "Rollbacks": 0,
+          "Milliseconds": 2.152
+        },
+        {
+          "Number": 31,
+          "AtDistance": 7399.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 13,
+          "ForecastSteps": 242,
+          "Rollbacks": 0,
+          "Milliseconds": 2.2921
+        }
+      ]
+    },
+    {
+      "Track": "rhythm-cascade",
+      "Profile": "FastFlip",
+      "Q": 0.5,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 36.74999999999855,
+      "Collisions": 2,
+      "Boosts": 0,
+      "FinishBoosts": 1,
+      "Inputs": [
+        264.9999998807907,
+        572.4999998807907,
+        700.4999998807907,
+        1026.9999998410544,
+        1143.9999998907247,
+        1188.9999998807907,
+        1305.9999998410542,
+        1407.9999998907247,
+        1519.9999998807907,
+        1564.999999821186,
+        2101.99999983112,
+        2398.9999998807907,
+        2718.499999801318,
+        2846.499999860923,
+        3108.999999801318,
+        3548.4999998311205,
+        3877.999999860923,
+        4152.499999890724,
+        4756.999999811253,
+        4801.999999860923,
+        5200.999999801317,
+        5213.999999890724,
+        5358.999999880791,
+        5403.999999821186,
+        5736.499999890724,
+        6071.999999890724,
+        6178.999999850988,
+        6223.999999895692,
+        6340.999999811252,
+        6690.999999821186,
+        7061.999999890724,
+        7329.999999870856,
+        7617.999999860922,
+        7711.99999983112
+      ],
+      "Signature": "265.00000|572.50000|700.50000|1027.00000|1144.00000|1189.00000|1306.00000|1408.00000|1520.00000|1565.00000|2102.00000|2399.00000|2718.50000|2846.50000|3109.00000|3548.50000|3878.00000|4152.50000|4757.00000|4802.00000|5201.00000|5214.00000|5359.00000|5404.00000|5736.50000|6072.00000|6179.00000|6224.00000|6341.00000|6691.00000|7062.00000|7330.00000|7618.00000|7712.00000",
+      "ForecastSteps": 78423,
+      "Rollbacks": 28,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 33,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 0,
+          "HorizonEndDistance": 1000,
+          "Candidates": 70,
+          "ForecastSteps": 2939,
+          "Rollbacks": 0,
+          "Milliseconds": 17.2328
+        },
+        {
+          "Number": 2,
+          "AtDistance": 269.99999981125194,
+          "HorizonEndDistance": 1269.9999998112519,
+          "Candidates": 57,
+          "ForecastSteps": 2366,
+          "Rollbacks": 0,
+          "Milliseconds": 17.7197
+        },
+        {
+          "Number": 3,
+          "AtDistance": 301.99999984105426,
+          "HorizonEndDistance": 1301.9999998410542,
+          "Candidates": 96,
+          "ForecastSteps": 4079,
+          "Rollbacks": 1,
+          "Milliseconds": 30.482
+        },
+        {
+          "Number": 4,
+          "AtDistance": 609.9999998410542,
+          "HorizonEndDistance": 1609.9999998410542,
+          "Candidates": 56,
+          "ForecastSteps": 2275,
+          "Rollbacks": 1,
+          "Milliseconds": 19.5662
+        },
+        {
+          "Number": 5,
+          "AtDistance": 909.9999998410543,
+          "HorizonEndDistance": 1909.9999998410544,
+          "Candidates": 57,
+          "ForecastSteps": 2401,
+          "Rollbacks": 0,
+          "Milliseconds": 13.1339
+        },
+        {
+          "Number": 6,
+          "AtDistance": 943.9999998956919,
+          "HorizonEndDistance": 1943.9999998956919,
+          "Candidates": 94,
+          "ForecastSteps": 4016,
+          "Rollbacks": 4,
+          "Milliseconds": 23.766
+        },
+        {
+          "Number": 7,
+          "AtDistance": 1395.9999998410542,
+          "HorizonEndDistance": 2395.999999841054,
+          "Candidates": 19,
+          "ForecastSteps": 864,
+          "Rollbacks": 0,
+          "Milliseconds": 5.0396
+        },
+        {
+          "Number": 8,
+          "AtDistance": 1495.9999998907247,
+          "HorizonEndDistance": 2495.9999998907247,
+          "Candidates": 14,
+          "ForecastSteps": 657,
+          "Rollbacks": 0,
+          "Milliseconds": 2.9076
+        },
+        {
+          "Number": 9,
+          "AtDistance": 1735.9999998956919,
+          "HorizonEndDistance": 2735.999999895692,
+          "Candidates": 56,
+          "ForecastSteps": 2376,
+          "Rollbacks": 0,
+          "Milliseconds": 12.6094
+        },
+        {
+          "Number": 10,
+          "AtDistance": 2025.9999998807907,
+          "HorizonEndDistance": 3025.9999998807907,
+          "Candidates": 73,
+          "ForecastSteps": 3076,
+          "Rollbacks": 0,
+          "Milliseconds": 19.798
+        },
+        {
+          "Number": 11,
+          "AtDistance": 2415.9999998013177,
+          "HorizonEndDistance": 3415.9999998013177,
+          "Candidates": 57,
+          "ForecastSteps": 2394,
+          "Rollbacks": 0,
+          "Milliseconds": 14.9346
+        },
+        {
+          "Number": 12,
+          "AtDistance": 2447.9999998609223,
+          "HorizonEndDistance": 3447.9999998609223,
+          "Candidates": 95,
+          "ForecastSteps": 3926,
+          "Rollbacks": 1,
+          "Milliseconds": 27.4231
+        },
+        {
+          "Number": 13,
+          "AtDistance": 2755.999999860923,
+          "HorizonEndDistance": 3755.999999860923,
+          "Candidates": 40,
+          "ForecastSteps": 1809,
+          "Rollbacks": 1,
+          "Milliseconds": 11.1204
+        },
+        {
+          "Number": 14,
+          "AtDistance": 3161.9999998410544,
+          "HorizonEndDistance": 4161.999999841055,
+          "Candidates": 53,
+          "ForecastSteps": 2216,
+          "Rollbacks": 0,
+          "Milliseconds": 14.7097
+        },
+        {
+          "Number": 15,
+          "AtDistance": 3211.9999998907247,
+          "HorizonEndDistance": 4211.999999890724,
+          "Candidates": 93,
+          "ForecastSteps": 3845,
+          "Rollbacks": 0,
+          "Milliseconds": 26.6172
+        },
+        {
+          "Number": 16,
+          "AtDistance": 3516.9999998509884,
+          "HorizonEndDistance": 4516.999999850988,
+          "Candidates": 55,
+          "ForecastSteps": 2434,
+          "Rollbacks": 0,
+          "Milliseconds": 15.1878
+        },
+        {
+          "Number": 17,
+          "AtDistance": 3906.9999998807907,
+          "HorizonEndDistance": 4906.999999880791,
+          "Candidates": 57,
+          "ForecastSteps": 2396,
+          "Rollbacks": 0,
+          "Milliseconds": 14.6962
+        },
+        {
+          "Number": 18,
+          "AtDistance": 4006.999999821186,
+          "HorizonEndDistance": 5006.999999821186,
+          "Candidates": 91,
+          "ForecastSteps": 3770,
+          "Rollbacks": 0,
+          "Milliseconds": 25.3251
+        },
+        {
+          "Number": 19,
+          "AtDistance": 4366.999999890724,
+          "HorizonEndDistance": 5366.999999890724,
+          "Candidates": 49,
+          "ForecastSteps": 2271,
+          "Rollbacks": 0,
+          "Milliseconds": 9.7517
+        },
+        {
+          "Number": 20,
+          "AtDistance": 4666.999999821186,
+          "HorizonEndDistance": 5666.999999821186,
+          "Candidates": 15,
+          "ForecastSteps": 724,
+          "Rollbacks": 0,
+          "Milliseconds": 3.8737
+        },
+        {
+          "Number": 21,
+          "AtDistance": 4733,
+          "HorizonEndDistance": 5733,
+          "Candidates": 14,
+          "ForecastSteps": 611,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3761
+        },
+        {
+          "Number": 22,
+          "AtDistance": 5145,
+          "HorizonEndDistance": 6145,
+          "Candidates": 14,
+          "ForecastSteps": 622,
+          "Rollbacks": 0,
+          "Milliseconds": 3.6609
+        },
+        {
+          "Number": 23,
+          "AtDistance": 5154.999999801317,
+          "HorizonEndDistance": 6154.999999801317,
+          "Candidates": 34,
+          "ForecastSteps": 1483,
+          "Rollbacks": 0,
+          "Milliseconds": 8.1479
+        },
+        {
+          "Number": 24,
+          "AtDistance": 5334.999999890724,
+          "HorizonEndDistance": 6334.999999890724,
+          "Candidates": 14,
+          "ForecastSteps": 646,
+          "Rollbacks": 0,
+          "Milliseconds": 2.8585
+        },
+        {
+          "Number": 25,
+          "AtDistance": 5654.999999880791,
+          "HorizonEndDistance": 6654.999999880791,
+          "Candidates": 89,
+          "ForecastSteps": 3563,
+          "Rollbacks": 3,
+          "Milliseconds": 21.2196
+        },
+        {
+          "Number": 26,
+          "AtDistance": 5944.999999811252,
+          "HorizonEndDistance": 6944.999999811252,
+          "Candidates": 57,
+          "ForecastSteps": 2318,
+          "Rollbacks": 0,
+          "Milliseconds": 17.3821
+        },
+        {
+          "Number": 27,
+          "AtDistance": 5978.999999860922,
+          "HorizonEndDistance": 6978.999999860922,
+          "Candidates": 94,
+          "ForecastSteps": 3924,
+          "Rollbacks": 4,
+          "Milliseconds": 26.537
+        },
+        {
+          "Number": 28,
+          "AtDistance": 6294.999999821186,
+          "HorizonEndDistance": 7294.999999821186,
+          "Candidates": 39,
+          "ForecastSteps": 1803,
+          "Rollbacks": 0,
+          "Milliseconds": 9.0789
+        },
+        {
+          "Number": 29,
+          "AtDistance": 6328.999999841054,
+          "HorizonEndDistance": 7328.999999841054,
+          "Candidates": 56,
+          "ForecastSteps": 2784,
+          "Rollbacks": 1,
+          "Milliseconds": 16.9109
+        },
+        {
+          "Number": 30,
+          "AtDistance": 6644.999999880791,
+          "HorizonEndDistance": 7644.999999880791,
+          "Candidates": 96,
+          "ForecastSteps": 4123,
+          "Rollbacks": 0,
+          "Milliseconds": 26.8714
+        },
+        {
+          "Number": 31,
+          "AtDistance": 6944.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 74,
+          "ForecastSteps": 3111,
+          "Rollbacks": 4,
+          "Milliseconds": 22.8098
+        },
+        {
+          "Number": 32,
+          "AtDistance": 7244.999999801317,
+          "HorizonEndDistance": 7920,
+          "Candidates": 56,
+          "ForecastSteps": 1693,
+          "Rollbacks": 4,
+          "Milliseconds": 12.5648
+        },
+        {
+          "Number": 33,
+          "AtDistance": 7399.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 40,
+          "ForecastSteps": 908,
+          "Rollbacks": 4,
+          "Milliseconds": 8.3251
+        }
+      ]
+    },
+    {
+      "Track": "mixed-tricks",
+      "Profile": "Chosen",
+      "Q": 1,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 33.04999999999873,
+      "Collisions": 0,
+      "Boosts": 9,
+      "FinishBoosts": 1,
+      "Inputs": [
+        429.18111861524847,
+        963.7735847204738,
+        1313.9999998410542,
+        1878.813980651823,
+        1910.8139806904064,
+        2678.159093274531,
+        2734.2015903324195,
+        2887.7735847269155,
+        3447.773584773706,
+        4028.844877144563,
+        4074.84487713463,
+        4314.813980660603,
+        4358.8139806606,
+        4519.238640040525,
+        5037.999999890724,
+        5063.999999870857,
+        5091.999999841055,
+        5770.999999801317,
+        5814.999999801317,
+        6003.999999895692,
+        6054.999999811252,
+        6399.999999895692,
+        6445.999999890724,
+        6694.999999801317,
+        7228.8448772041675,
+        7272.844877204164,
+        7407.999999841054,
+        7463.999999860922,
+        7638.999999811252
+      ],
+      "Signature": "429.18112|963.77358|1314.00000|1878.81398|1910.81398|2678.15909|2734.20159|2887.77358|3447.77358|4028.84488|4074.84488|4314.81398|4358.81398|4519.23864|5038.00000|5064.00000|5092.00000|5771.00000|5815.00000|6004.00000|6055.00000|6400.00000|6446.00000|6695.00000|7228.84488|7272.84488|7408.00000|7464.00000|7639.00000",
+      "ForecastSteps": 5238,
+      "Rollbacks": 0,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 21,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 219.9999998907248,
+          "HorizonEndDistance": 1219.999999890725,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2924
+        },
+        {
+          "Number": 2,
+          "AtDistance": 251.9999998410543,
+          "HorizonEndDistance": 1251.9999998410542,
+          "Candidates": 7,
+          "ForecastSteps": 248,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3169
+        },
+        {
+          "Number": 3,
+          "AtDistance": 669.9999999254942,
+          "HorizonEndDistance": 1669.9999999254942,
+          "Candidates": 5,
+          "ForecastSteps": 167,
+          "Rollbacks": 0,
+          "Milliseconds": 1.1691
+        },
+        {
+          "Number": 4,
+          "AtDistance": 969.9999998807907,
+          "HorizonEndDistance": 1969.9999998807907,
+          "Candidates": 7,
+          "ForecastSteps": 253,
+          "Rollbacks": 0,
+          "Milliseconds": 1.8213
+        },
+        {
+          "Number": 5,
+          "AtDistance": 1569.9999998410542,
+          "HorizonEndDistance": 2569.999999841054,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.203
+        },
+        {
+          "Number": 6,
+          "AtDistance": 1669.9999998956919,
+          "HorizonEndDistance": 2669.999999895692,
+          "Candidates": 13,
+          "ForecastSteps": 475,
+          "Rollbacks": 0,
+          "Milliseconds": 2.4288
+        },
+        {
+          "Number": 7,
+          "AtDistance": 2319.999999925494,
+          "HorizonEndDistance": 3319.999999925494,
+          "Candidates": 1,
+          "ForecastSteps": 34,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2227
+        },
+        {
+          "Number": 8,
+          "AtDistance": 2619.9999998807907,
+          "HorizonEndDistance": 3619.9999998807907,
+          "Candidates": 13,
+          "ForecastSteps": 482,
+          "Rollbacks": 0,
+          "Milliseconds": 2.4178
+        },
+        {
+          "Number": 9,
+          "AtDistance": 3169.9999998807907,
+          "HorizonEndDistance": 4169.999999880791,
+          "Candidates": 7,
+          "ForecastSteps": 267,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3974
+        },
+        {
+          "Number": 10,
+          "AtDistance": 3669.999999801318,
+          "HorizonEndDistance": 4669.999999801318,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2272
+        },
+        {
+          "Number": 11,
+          "AtDistance": 4019.9999998410544,
+          "HorizonEndDistance": 5019.999999841055,
+          "Candidates": 11,
+          "ForecastSteps": 386,
+          "Rollbacks": 0,
+          "Milliseconds": 2.1324
+        },
+        {
+          "Number": 12,
+          "AtDistance": 4189.999999841055,
+          "HorizonEndDistance": 5189.999999841055,
+          "Candidates": 13,
+          "ForecastSteps": 469,
+          "Rollbacks": 0,
+          "Milliseconds": 2.4153
+        },
+        {
+          "Number": 13,
+          "AtDistance": 4819.999999880791,
+          "HorizonEndDistance": 5819.999999880791,
+          "Candidates": 1,
+          "ForecastSteps": 38,
+          "Rollbacks": 0,
+          "Milliseconds": 0.1534
+        },
+        {
+          "Number": 14,
+          "AtDistance": 4919.999999821186,
+          "HorizonEndDistance": 5919.999999821186,
+          "Candidates": 13,
+          "ForecastSteps": 507,
+          "Rollbacks": 0,
+          "Milliseconds": 2.4209
+        },
+        {
+          "Number": 15,
+          "AtDistance": 5519.999999896817,
+          "HorizonEndDistance": 6519.999999896817,
+          "Candidates": 1,
+          "ForecastSteps": 37,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2162
+        },
+        {
+          "Number": 16,
+          "AtDistance": 5699.999999880791,
+          "HorizonEndDistance": 6699.999999880791,
+          "Candidates": 13,
+          "ForecastSteps": 504,
+          "Rollbacks": 0,
+          "Milliseconds": 2.8294
+        },
+        {
+          "Number": 17,
+          "AtDistance": 6419.999999801317,
+          "HorizonEndDistance": 7419.999999801317,
+          "Candidates": 7,
+          "ForecastSteps": 251,
+          "Rollbacks": 0,
+          "Milliseconds": 2.9071
+        },
+        {
+          "Number": 18,
+          "AtDistance": 6519.999999841054,
+          "HorizonEndDistance": 7519.999999841054,
+          "Candidates": 7,
+          "ForecastSteps": 263,
+          "Rollbacks": 0,
+          "Milliseconds": 1.9157
+        },
+        {
+          "Number": 19,
+          "AtDistance": 6879.999999841054,
+          "HorizonEndDistance": 7879.999999841054,
+          "Candidates": 13,
+          "ForecastSteps": 447,
+          "Rollbacks": 0,
+          "Milliseconds": 3.7308
+        },
+        {
+          "Number": 20,
+          "AtDistance": 7319.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 1,
+          "ForecastSteps": 22,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2008
+        },
+        {
+          "Number": 21,
+          "AtDistance": 7331.999999860922,
+          "HorizonEndDistance": 7920,
+          "Candidates": 13,
+          "ForecastSteps": 282,
+          "Rollbacks": 0,
+          "Milliseconds": 1.9861
+        }
+      ]
+    },
+    {
+      "Track": "mixed-tricks",
+      "Profile": "Chosen",
+      "Q": 0.5,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 35.99999999999864,
+      "Collisions": 3,
+      "Boosts": 5,
+      "FinishBoosts": 0,
+      "Inputs": [
+        547.1811185755121,
+        965.7735847105396,
+        1029.999999801318,
+        1074.9999998509884,
+        1878.813980651823,
+        1910.8139806904064,
+        2642.201590347925,
+        2887.7735847800786,
+        3169.9999998807907,
+        4030.844877134629,
+        4074.84487713463,
+        4316.81398065067,
+        4520.813980732928,
+        4679.238640042295,
+        4939.9999998311205,
+        5119.999999841054,
+        5764.999999880791,
+        5808.999999880791,
+        6054.999999811252,
+        6083.99999983112,
+        6399.999999895692,
+        6443.999999895692,
+        6692.999999811252,
+        6879.999999841054,
+        7419.999999860922,
+        7543.999999895692,
+        7638.999999811252
+      ],
+      "Signature": "547.18112|965.77358|1030.00000|1075.00000|1878.81398|1910.81398|2642.20159|2887.77358|3170.00000|4030.84488|4074.84488|4316.81398|4520.81398|4679.23864|4940.00000|5120.00000|5765.00000|5809.00000|6055.00000|6084.00000|6400.00000|6444.00000|6693.00000|6880.00000|7420.00000|7544.00000|7639.00000",
+      "ForecastSteps": 54602,
+      "Rollbacks": 23,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 24,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 219.9999998907248,
+          "HorizonEndDistance": 1219.999999890725,
+          "Candidates": 40,
+          "ForecastSteps": 1596,
+          "Rollbacks": 0,
+          "Milliseconds": 8.3706
+        },
+        {
+          "Number": 2,
+          "AtDistance": 251.9999998410543,
+          "HorizonEndDistance": 1251.9999998410542,
+          "Candidates": 60,
+          "ForecastSteps": 2400,
+          "Rollbacks": 0,
+          "Milliseconds": 15.9033
+        },
+        {
+          "Number": 3,
+          "AtDistance": 669.9999998410543,
+          "HorizonEndDistance": 1669.9999998410544,
+          "Candidates": 41,
+          "ForecastSteps": 1544,
+          "Rollbacks": 0,
+          "Milliseconds": 9.5412
+        },
+        {
+          "Number": 4,
+          "AtDistance": 969.9999998807907,
+          "HorizonEndDistance": 1969.9999998807907,
+          "Candidates": 15,
+          "ForecastSteps": 557,
+          "Rollbacks": 0,
+          "Milliseconds": 4.9333
+        },
+        {
+          "Number": 5,
+          "AtDistance": 1569.9999998410542,
+          "HorizonEndDistance": 2569.999999841054,
+          "Candidates": 40,
+          "ForecastSteps": 1537,
+          "Rollbacks": 0,
+          "Milliseconds": 7.7526
+        },
+        {
+          "Number": 6,
+          "AtDistance": 1669.9999998956919,
+          "HorizonEndDistance": 2669.999999895692,
+          "Candidates": 54,
+          "ForecastSteps": 2109,
+          "Rollbacks": 0,
+          "Milliseconds": 9.5944
+        },
+        {
+          "Number": 7,
+          "AtDistance": 2319.999999925494,
+          "HorizonEndDistance": 3319.999999925494,
+          "Candidates": 58,
+          "ForecastSteps": 2103,
+          "Rollbacks": 6,
+          "Milliseconds": 16.9941
+        },
+        {
+          "Number": 8,
+          "AtDistance": 2619.9999998807907,
+          "HorizonEndDistance": 3619.9999998807907,
+          "Candidates": 96,
+          "ForecastSteps": 3888,
+          "Rollbacks": 12,
+          "Milliseconds": 26.3662
+        },
+        {
+          "Number": 9,
+          "AtDistance": 2986,
+          "HorizonEndDistance": 3986,
+          "Candidates": 22,
+          "ForecastSteps": 882,
+          "Rollbacks": 0,
+          "Milliseconds": 4.0677
+        },
+        {
+          "Number": 10,
+          "AtDistance": 3169.9999998807907,
+          "HorizonEndDistance": 4169.999999880791,
+          "Candidates": 15,
+          "ForecastSteps": 678,
+          "Rollbacks": 0,
+          "Milliseconds": 2.9188
+        },
+        {
+          "Number": 11,
+          "AtDistance": 3536,
+          "HorizonEndDistance": 4536,
+          "Candidates": 88,
+          "ForecastSteps": 3448,
+          "Rollbacks": 0,
+          "Milliseconds": 21.8242
+        },
+        {
+          "Number": 12,
+          "AtDistance": 3669.999999801318,
+          "HorizonEndDistance": 4669.999999801318,
+          "Candidates": 90,
+          "ForecastSteps": 3460,
+          "Rollbacks": 0,
+          "Milliseconds": 21.422
+        },
+        {
+          "Number": 13,
+          "AtDistance": 4019.9999998410544,
+          "HorizonEndDistance": 5019.999999841055,
+          "Candidates": 84,
+          "ForecastSteps": 3148,
+          "Rollbacks": 0,
+          "Milliseconds": 17.8134
+        },
+        {
+          "Number": 14,
+          "AtDistance": 4189.999999841055,
+          "HorizonEndDistance": 5189.999999841055,
+          "Candidates": 96,
+          "ForecastSteps": 3626,
+          "Rollbacks": 0,
+          "Milliseconds": 22.5677
+        },
+        {
+          "Number": 15,
+          "AtDistance": 4819.999999880791,
+          "HorizonEndDistance": 5819.999999880791,
+          "Candidates": 15,
+          "ForecastSteps": 605,
+          "Rollbacks": 0,
+          "Milliseconds": 3.1528
+        },
+        {
+          "Number": 16,
+          "AtDistance": 4919.999999821186,
+          "HorizonEndDistance": 5919.999999821186,
+          "Candidates": 49,
+          "ForecastSteps": 2082,
+          "Rollbacks": 0,
+          "Milliseconds": 13.087
+        },
+        {
+          "Number": 17,
+          "AtDistance": 5519.999999895692,
+          "HorizonEndDistance": 6519.999999895692,
+          "Candidates": 96,
+          "ForecastSteps": 3708,
+          "Rollbacks": 0,
+          "Milliseconds": 20.904
+        },
+        {
+          "Number": 18,
+          "AtDistance": 5699.999999880791,
+          "HorizonEndDistance": 6699.999999880791,
+          "Candidates": 96,
+          "ForecastSteps": 3869,
+          "Rollbacks": 2,
+          "Milliseconds": 24.3552
+        },
+        {
+          "Number": 19,
+          "AtDistance": 6419.999999801317,
+          "HorizonEndDistance": 7419.999999801317,
+          "Candidates": 70,
+          "ForecastSteps": 2799,
+          "Rollbacks": 0,
+          "Milliseconds": 18.7861
+        },
+        {
+          "Number": 20,
+          "AtDistance": 6519.999999841054,
+          "HorizonEndDistance": 7519.999999841054,
+          "Candidates": 89,
+          "ForecastSteps": 3565,
+          "Rollbacks": 0,
+          "Milliseconds": 22.5362
+        },
+        {
+          "Number": 21,
+          "AtDistance": 6879.999999841054,
+          "HorizonEndDistance": 7879.999999841054,
+          "Candidates": 15,
+          "ForecastSteps": 651,
+          "Rollbacks": 2,
+          "Milliseconds": 3.9119
+        },
+        {
+          "Number": 22,
+          "AtDistance": 7246,
+          "HorizonEndDistance": 7920,
+          "Candidates": 96,
+          "ForecastSteps": 2765,
+          "Rollbacks": 1,
+          "Milliseconds": 19.5826
+        },
+        {
+          "Number": 23,
+          "AtDistance": 7319.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 56,
+          "ForecastSteps": 1342,
+          "Rollbacks": 0,
+          "Milliseconds": 8.3818
+        },
+        {
+          "Number": 24,
+          "AtDistance": 7331.999999860922,
+          "HorizonEndDistance": 7920,
+          "Candidates": 89,
+          "ForecastSteps": 2240,
+          "Rollbacks": 0,
+          "Milliseconds": 13.9332
+        }
+      ]
+    },
+    {
+      "Track": "mixed-tricks",
+      "Profile": "FastFlip",
+      "Q": 1,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 33.04999999999877,
+      "Collisions": 0,
+      "Boosts": 9,
+      "FinishBoosts": 1,
+      "Inputs": [
+        435.9999998013178,
+        564.1196109669128,
+        977.9999998410543,
+        1045.9999998311202,
+        1319.9999998907247,
+        1479.9999998315689,
+        1891.1393784293382,
+        2674.1416779562774,
+        2952.2999998529754,
+        2988.5999998748302,
+        3297.999999895692,
+        3524.9170646322823,
+        4053.150321158584,
+        4335.139378460768,
+        4513.212517029101,
+        5237.499999821186,
+        5783.499999821186,
+        6028.499999880791,
+        6399.999999895692,
+        6735.999999870856,
+        6801.999999870856,
+        7253.15032124098,
+        7643.999999841054
+      ],
+      "Signature": "436.00000|564.11961|978.00000|1046.00000|1320.00000|1480.00000|1891.13938|2674.14168|2952.30000|2988.60000|3298.00000|3524.91706|4053.15032|4335.13938|4513.21252|5237.50000|5783.50000|6028.50000|6400.00000|6736.00000|6802.00000|7253.15032|7644.00000",
+      "ForecastSteps": 4657,
+      "Rollbacks": 0,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 21,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 219.9999998907248,
+          "HorizonEndDistance": 1219.999999890725,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2168
+        },
+        {
+          "Number": 2,
+          "AtDistance": 251.9999998410543,
+          "HorizonEndDistance": 1251.9999998410542,
+          "Candidates": 13,
+          "ForecastSteps": 472,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3714
+        },
+        {
+          "Number": 3,
+          "AtDistance": 669.9999998956919,
+          "HorizonEndDistance": 1669.9999998956919,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2363
+        },
+        {
+          "Number": 4,
+          "AtDistance": 969.9999998807907,
+          "HorizonEndDistance": 1969.9999998807907,
+          "Candidates": 11,
+          "ForecastSteps": 408,
+          "Rollbacks": 0,
+          "Milliseconds": 2.1284
+        },
+        {
+          "Number": 5,
+          "AtDistance": 1569.9999998410542,
+          "HorizonEndDistance": 2569.999999841054,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.1619
+        },
+        {
+          "Number": 6,
+          "AtDistance": 1669.9999998956919,
+          "HorizonEndDistance": 2669.999999895692,
+          "Candidates": 7,
+          "ForecastSteps": 250,
+          "Rollbacks": 0,
+          "Milliseconds": 1.3468
+        },
+        {
+          "Number": 7,
+          "AtDistance": 2319.999999925494,
+          "HorizonEndDistance": 3319.999999925494,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2454
+        },
+        {
+          "Number": 8,
+          "AtDistance": 2619.9999998807907,
+          "HorizonEndDistance": 3619.9999998807907,
+          "Candidates": 13,
+          "ForecastSteps": 491,
+          "Rollbacks": 0,
+          "Milliseconds": 3.5424
+        },
+        {
+          "Number": 9,
+          "AtDistance": 3169.9999998807907,
+          "HorizonEndDistance": 4169.999999880791,
+          "Candidates": 13,
+          "ForecastSteps": 506,
+          "Rollbacks": 0,
+          "Milliseconds": 3.9032
+        },
+        {
+          "Number": 10,
+          "AtDistance": 3669.999999801318,
+          "HorizonEndDistance": 4669.999999801318,
+          "Candidates": 1,
+          "ForecastSteps": 35,
+          "Rollbacks": 0,
+          "Milliseconds": 0.2677
+        },
+        {
+          "Number": 11,
+          "AtDistance": 4019.9999998410544,
+          "HorizonEndDistance": 5019.999999841055,
+          "Candidates": 7,
+          "ForecastSteps": 236,
+          "Rollbacks": 0,
+          "Milliseconds": 1.9948
+        },
+        {
+          "Number": 12,
+          "AtDistance": 4189.999999841055,
+          "HorizonEndDistance": 5189.999999841055,
+          "Candidates": 13,
+          "ForecastSteps": 429,
+          "Rollbacks": 0,
+          "Milliseconds": 2.5928
+        },
+        {
+          "Number": 13,
+          "AtDistance": 4819.999999880791,
+          "HorizonEndDistance": 5819.999999880791,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.1985
+        },
+        {
+          "Number": 14,
+          "AtDistance": 4919.999999821186,
+          "HorizonEndDistance": 5919.999999821186,
+          "Candidates": 7,
+          "ForecastSteps": 245,
+          "Rollbacks": 0,
+          "Milliseconds": 1.1506
+        },
+        {
+          "Number": 15,
+          "AtDistance": 5519.999999895692,
+          "HorizonEndDistance": 6519.999999895692,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.1887
+        },
+        {
+          "Number": 16,
+          "AtDistance": 5699.999999880791,
+          "HorizonEndDistance": 6699.999999880791,
+          "Candidates": 13,
+          "ForecastSteps": 463,
+          "Rollbacks": 0,
+          "Milliseconds": 2.0809
+        },
+        {
+          "Number": 17,
+          "AtDistance": 6419.999999801317,
+          "HorizonEndDistance": 7419.999999801317,
+          "Candidates": 1,
+          "ForecastSteps": 36,
+          "Rollbacks": 0,
+          "Milliseconds": 0.1711
+        },
+        {
+          "Number": 18,
+          "AtDistance": 6519.999999841054,
+          "HorizonEndDistance": 7519.999999841054,
+          "Candidates": 13,
+          "ForecastSteps": 476,
+          "Rollbacks": 0,
+          "Milliseconds": 3.4221
+        },
+        {
+          "Number": 19,
+          "AtDistance": 6879.999999841054,
+          "HorizonEndDistance": 7879.999999841054,
+          "Candidates": 7,
+          "ForecastSteps": 235,
+          "Rollbacks": 0,
+          "Milliseconds": 1.379
+        },
+        {
+          "Number": 20,
+          "AtDistance": 7319.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 1,
+          "ForecastSteps": 20,
+          "Rollbacks": 0,
+          "Milliseconds": 0.1186
+        },
+        {
+          "Number": 21,
+          "AtDistance": 7331.999999860922,
+          "HorizonEndDistance": 7920,
+          "Candidates": 7,
+          "ForecastSteps": 142,
+          "Rollbacks": 0,
+          "Milliseconds": 0.9443
+        }
+      ]
+    },
+    {
+      "Track": "mixed-tricks",
+      "Profile": "FastFlip",
+      "Q": 0.5,
+      "Seed": 0,
+      "Cadence": 0,
+      "Time": 35.999999999998586,
+      "Collisions": 3,
+      "Boosts": 5,
+      "FinishBoosts": 0,
+      "Inputs": [
+        311.99999987085664,
+        356.999999811252,
+        509.9999998708566,
+        638.119611038786,
+        979.9999998311202,
+        1045.9999998311202,
+        1399.999999821186,
+        1559.9999998956919,
+        1569.9999998410542,
+        1614.9999998013177,
+        1891.1393784293382,
+        2662.1416779984875,
+        2872.299999903255,
+        3148.599999845028,
+        3169.9999998807907,
+        3616,
+        4055.150321252471,
+        4139.999999870857,
+        4341.139378493097,
+        4673.212517088395,
+        5077.49999983112,
+        5219.999999860922,
+        5296.999999886708,
+        5759.999999801317,
+        5804.999999850988,
+        6419.999999801317,
+        6464.999999850988,
+        6729.999999895692,
+        6783.999999841054,
+        6999.999999855959,
+        7044.999999949088,
+        7319.999999841054,
+        7693.999999841054
+      ],
+      "Signature": "312.00000|357.00000|510.00000|638.11961|980.00000|1046.00000|1400.00000|1560.00000|1570.00000|1615.00000|1891.13938|2662.14168|2872.30000|3148.60000|3170.00000|3616.00000|4055.15032|4140.00000|4341.13938|4673.21252|5077.50000|5220.00000|5297.00000|5760.00000|5805.00000|6420.00000|6465.00000|6730.00000|6784.00000|7000.00000|7045.00000|7320.00000|7694.00000",
+      "ForecastSteps": 50428,
+      "Rollbacks": 5,
+      "Requested": 1000.0000000000005,
+      "Trial": 1000.0000000000005,
+      "Overrun": 0,
+      "SourceComparisons": 24,
+      "Plans": [
+        {
+          "Number": 1,
+          "AtDistance": 219.9999998907248,
+          "HorizonEndDistance": 1219.999999890725,
+          "Candidates": 74,
+          "ForecastSteps": 3037,
+          "Rollbacks": 0,
+          "Milliseconds": 13.4775
+        },
+        {
+          "Number": 2,
+          "AtDistance": 251.9999998410543,
+          "HorizonEndDistance": 1251.9999998410542,
+          "Candidates": 96,
+          "ForecastSteps": 3919,
+          "Rollbacks": 0,
+          "Milliseconds": 18.3416
+        },
+        {
+          "Number": 3,
+          "AtDistance": 669.9999998410543,
+          "HorizonEndDistance": 1669.9999998410544,
+          "Candidates": 73,
+          "ForecastSteps": 2881,
+          "Rollbacks": 0,
+          "Milliseconds": 12.4957
+        },
+        {
+          "Number": 4,
+          "AtDistance": 969.9999998807907,
+          "HorizonEndDistance": 1969.9999998807907,
+          "Candidates": 96,
+          "ForecastSteps": 3715,
+          "Rollbacks": 0,
+          "Milliseconds": 16.0079
+        },
+        {
+          "Number": 5,
+          "AtDistance": 1569.9999998410542,
+          "HorizonEndDistance": 2569.999999841054,
+          "Candidates": 22,
+          "ForecastSteps": 870,
+          "Rollbacks": 0,
+          "Milliseconds": 3.0824
+        },
+        {
+          "Number": 6,
+          "AtDistance": 1669.9999998956919,
+          "HorizonEndDistance": 2669.999999895692,
+          "Candidates": 36,
+          "ForecastSteps": 1418,
+          "Rollbacks": 0,
+          "Milliseconds": 5.9006
+        },
+        {
+          "Number": 7,
+          "AtDistance": 2319.999999925494,
+          "HorizonEndDistance": 3319.999999925494,
+          "Candidates": 72,
+          "ForecastSteps": 2715,
+          "Rollbacks": 0,
+          "Milliseconds": 15.0222
+        },
+        {
+          "Number": 8,
+          "AtDistance": 2619.9999998807907,
+          "HorizonEndDistance": 3619.9999998807907,
+          "Candidates": 96,
+          "ForecastSteps": 4003,
+          "Rollbacks": 0,
+          "Milliseconds": 21.756
+        },
+        {
+          "Number": 9,
+          "AtDistance": 2986,
+          "HorizonEndDistance": 3986,
+          "Candidates": 53,
+          "ForecastSteps": 2209,
+          "Rollbacks": 0,
+          "Milliseconds": 10.0366
+        },
+        {
+          "Number": 10,
+          "AtDistance": 3169.9999998807907,
+          "HorizonEndDistance": 4169.999999880791,
+          "Candidates": 15,
+          "ForecastSteps": 679,
+          "Rollbacks": 0,
+          "Milliseconds": 4.4506
+        },
+        {
+          "Number": 11,
+          "AtDistance": 3616,
+          "HorizonEndDistance": 4616,
+          "Candidates": 96,
+          "ForecastSteps": 3804,
+          "Rollbacks": 0,
+          "Milliseconds": 20.8271
+        },
+        {
+          "Number": 12,
+          "AtDistance": 3669.999999801318,
+          "HorizonEndDistance": 4669.999999801318,
+          "Candidates": 56,
+          "ForecastSteps": 2129,
+          "Rollbacks": 0,
+          "Milliseconds": 11.6634
+        },
+        {
+          "Number": 13,
+          "AtDistance": 4019.9999998410544,
+          "HorizonEndDistance": 5019.999999841055,
+          "Candidates": 55,
+          "ForecastSteps": 2042,
+          "Rollbacks": 0,
+          "Milliseconds": 12.7401
+        },
+        {
+          "Number": 14,
+          "AtDistance": 4189.999999841055,
+          "HorizonEndDistance": 5189.999999841055,
+          "Candidates": 39,
+          "ForecastSteps": 1517,
+          "Rollbacks": 0,
+          "Milliseconds": 5.8918
+        },
+        {
+          "Number": 15,
+          "AtDistance": 4819.999999880791,
+          "HorizonEndDistance": 5819.999999880791,
+          "Candidates": 57,
+          "ForecastSteps": 2327,
+          "Rollbacks": 0,
+          "Milliseconds": 11.9673
+        },
+        {
+          "Number": 16,
+          "AtDistance": 4919.999999821186,
+          "HorizonEndDistance": 5919.999999821186,
+          "Candidates": 96,
+          "ForecastSteps": 4004,
+          "Rollbacks": 2,
+          "Milliseconds": 18.0173
+        },
+        {
+          "Number": 17,
+          "AtDistance": 5519.999999895692,
+          "HorizonEndDistance": 6519.999999895692,
+          "Candidates": 15,
+          "ForecastSteps": 607,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3039
+        },
+        {
+          "Number": 18,
+          "AtDistance": 5699.999999880791,
+          "HorizonEndDistance": 6699.999999880791,
+          "Candidates": 14,
+          "ForecastSteps": 554,
+          "Rollbacks": 0,
+          "Milliseconds": 2.3305
+        },
+        {
+          "Number": 19,
+          "AtDistance": 6419.999999801317,
+          "HorizonEndDistance": 7419.999999801317,
+          "Candidates": 56,
+          "ForecastSteps": 2318,
+          "Rollbacks": 0,
+          "Milliseconds": 10.7293
+        },
+        {
+          "Number": 20,
+          "AtDistance": 6519.999999841054,
+          "HorizonEndDistance": 7519.999999841054,
+          "Candidates": 57,
+          "ForecastSteps": 2331,
+          "Rollbacks": 0,
+          "Milliseconds": 8.9856
+        },
+        {
+          "Number": 21,
+          "AtDistance": 6879.999999841054,
+          "HorizonEndDistance": 7879.999999841054,
+          "Candidates": 15,
+          "ForecastSteps": 652,
+          "Rollbacks": 3,
+          "Milliseconds": 1.9781
+        },
+        {
+          "Number": 22,
+          "AtDistance": 7319.999999841054,
+          "HorizonEndDistance": 7920,
+          "Candidates": 39,
+          "ForecastSteps": 1160,
+          "Rollbacks": 0,
+          "Milliseconds": 3.912
+        },
+        {
+          "Number": 23,
+          "AtDistance": 7331.999999860922,
+          "HorizonEndDistance": 7920,
+          "Candidates": 29,
+          "ForecastSteps": 838,
+          "Rollbacks": 0,
+          "Milliseconds": 3.2824
+        },
+        {
+          "Number": 24,
+          "AtDistance": 7358,
+          "HorizonEndDistance": 7920,
+          "Candidates": 29,
+          "ForecastSteps": 699,
+          "Rollbacks": 0,
+          "Milliseconds": 3.0773
+        }
+      ]
+    }
+  ]
+}

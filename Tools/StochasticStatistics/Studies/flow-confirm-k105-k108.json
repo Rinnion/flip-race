@@ -1,0 +1,38 @@
+{
+  "studyId": "flow-confirm-k105-k108",
+  "phase": "Training",
+  "tracks": [
+    "full-flow"
+  ],
+  "profiles": [
+    "Chosen",
+    "FastFlip"
+  ],
+  "levels": [
+    "Novice",
+    "Amateur",
+    "Confident",
+    "Strong"
+  ],
+  "seedRanges": [
+    {
+      "start": 200,
+      "count": 200
+    }
+  ],
+  "kByPair": [
+    {
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "k": 1.05
+    },
+    {
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "k": 1.08
+    }
+  ],
+  "camera": "Lagger",
+  "humanInput": "Idle",
+  "recordSelectedInputs": false
+}

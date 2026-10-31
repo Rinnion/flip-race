@@ -1,0 +1,32 @@
+{
+  "studyId": "long-fast-sensitivity-k110",
+  "phase": "Training",
+  "tracks": [
+    "full-long"
+  ],
+  "profiles": [
+    "FastFlip"
+  ],
+  "levels": [
+    "Novice",
+    "Amateur",
+    "Confident",
+    "Strong"
+  ],
+  "seedRanges": [
+    {
+      "start": 0,
+      "count": 200
+    }
+  ],
+  "kByPair": [
+    {
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "k": 1.1
+    }
+  ],
+  "camera": "Lagger",
+  "humanInput": "Idle",
+  "recordSelectedInputs": false
+}

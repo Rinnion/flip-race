@@ -80,9 +80,21 @@
         width:width+'px', height:height+'px'});
     } catch (_) { copySettings.hidden = true; }
   }
+  // Context comes from explicit bridge arguments, avoiding another JSON parse.
+  // Timing includes the complete existing callback body and its JSON/DOM work.
+  function timedDiagnosticObserver(callback,index) {
+    return function() {
+      const started=performance.now(),context=canvas.flipDiagnosticContext;
+      try { return callback(); }
+      finally {
+        const audit=canvas.flipBotDiagnosticAudit;
+        if(audit)audit.record(index,started,context);
+      }
+    };
+  }
   // The same snapshot places the browser control and hides it behind modals.
-  new MutationObserver(positionFullscreenButton).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
-  new MutationObserver(positionCopyButton).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
+  new MutationObserver(timedDiagnosticObserver(positionFullscreenButton,0)).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
+  new MutationObserver(timedDiagnosticObserver(positionCopyButton,1)).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
   function describeControls() {
     try {
       const state = JSON.parse(canvas.dataset.flipState);
@@ -92,7 +104,7 @@
       if (canvas.getAttribute('aria-label') !== description) canvas.setAttribute('aria-label',description);
     } catch (_) { /* No valid snapshot yet. */ }
   }
-  new MutationObserver(describeControls).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
+  new MutationObserver(timedDiagnosticObserver(describeControls,2)).observe(canvas,{attributes:true,attributeFilter:['data-flip-state']});
   function fallbackCopy(text) {
     const field = document.createElement('textarea');
     field.value = text; field.readOnly = true;

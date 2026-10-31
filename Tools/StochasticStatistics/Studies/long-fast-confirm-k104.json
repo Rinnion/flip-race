@@ -1,0 +1,32 @@
+{
+  "studyId": "long-fast-confirm-k104",
+  "phase": "Training",
+  "tracks": [
+    "full-long"
+  ],
+  "profiles": [
+    "FastFlip"
+  ],
+  "levels": [
+    "Novice",
+    "Amateur",
+    "Confident",
+    "Strong"
+  ],
+  "seedRanges": [
+    {
+      "start": 200,
+      "count": 200
+    }
+  ],
+  "kByPair": [
+    {
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "k": 1.04
+    }
+  ],
+  "camera": "Lagger",
+  "humanInput": "Idle",
+  "recordSelectedInputs": false
+}

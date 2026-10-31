@@ -1,0 +1,1670 @@
+{
+  "status": "FRESH_TRAINING_CONFIRMATION_COMPLETE_NEEDS_ASTRA_FREEZE_DECISION",
+  "actualCases": 2400,
+  "errors": 0,
+  "heldoutExecuted": false,
+  "seedRange": "200..399, fixed beforestart, no retries/filtering",
+  "projectionScope": "Planning estimate from fresh Training mean/SD and predeclaredV2 N, NOT validation result or fit",
+  "negativeProjectedMarginGroups": [
+    "full-flow/Chosen/Novice",
+    "full-flow/FastFlip/Novice",
+    "full-flow/FastFlip/Amateur",
+    "full-flow/FastFlip/Confident"
+  ],
+  "studies": [
+    {
+      "studyId": "flow-confirm-k105-k108",
+      "source": "Verification/stochastic-bots-study-flow-confirm-k105-k108.json",
+      "sourceSha256": "563059705A502F2217E2357893EB3F1BBBCC9F1D785CFA2F81AFA2CE5E7766E9",
+      "actualCases": 1600,
+      "errors": 0.0,
+      "publicationStable": true,
+      "assemblySha256": "89DFFC08820A8F010C4239DDF1287362F11D8E774366EC924DBB24431AB6A6B7",
+      "manifestSha256": "B372DCA308CA6691030EEBA7C14671DBB0F1B86F5EDA5A6FCF9D0B9F6C91BAA6",
+      "parameterTableSha256": "7DD38A1AD50F49B7B46B9FB8B9EE032D8E292565E87AEB768593F9DB073EA07B",
+      "scheduleSha256": "DD377D31D64632E4BE03BF49BEA78B7D0CDCA40B2CA68C4D83C381E07346437C"
+    },
+    {
+      "studyId": "long-fast-confirm-k104",
+      "source": "Verification/stochastic-bots-study-long-fast-confirm-k104.json",
+      "sourceSha256": "49477879F42B02DB61BF8D86954BB357756597A6DD7C3BA0118C0FE8AD90C51A",
+      "actualCases": 800,
+      "errors": 0.0,
+      "publicationStable": true,
+      "assemblySha256": "89DFFC08820A8F010C4239DDF1287362F11D8E774366EC924DBB24431AB6A6B7",
+      "manifestSha256": "899D65450E6778D8C1683ABC154985379C51AC9F350EF180288CA17635AE3D33",
+      "parameterTableSha256": "17D9FA9A668A776D3AE0F46CF871490E2A5C8E321D0852B6B7A779E7AF402E78",
+      "scheduleSha256": "8028313873BAC6F3FD00C0E204F5642119A1D944A43BBA9E269FB433C6A59169"
+    }
+  ],
+  "rows": [
+    {
+      "cohort": "full-flow/Chosen/Novice",
+      "k": 1.05,
+      "pCollect": 0.5,
+      "pHit": 0.258125,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 36,
+      "trainingMean": 36.11924999999857,
+      "trainingSD": 0.9540271360825068,
+      "trainingCI99": [
+        35.943786785179256,
+        36.29471321481789
+      ],
+      "trainingBias": 0.11924999999857278,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.12407122904753001,
+      "projectedMargin": -0.04332122904610278,
+      "meanHits": 2.965,
+      "meanBoosts": 4.115,
+      "meanFullFinish": 0.515,
+      "meanAcceptedInputs": 30.9,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 103,
+          "resolved": 103,
+          "unresolved": 0,
+          "matched": 103,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 103
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 97,
+          "resolved": 97,
+          "unresolved": 0,
+          "matched": 97,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 97
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1762,
+          "resolved": 1762,
+          "unresolved": 0,
+          "matched": 1762,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1762
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 638,
+          "resolved": 638,
+          "unresolved": 0,
+          "matched": 593,
+          "matchRateAllDecisions": 0.9294670846394985,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 45
+            },
+            {
+              "outcome": "hit",
+              "count": 593
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 898,
+          "resolved": 898,
+          "unresolved": 0,
+          "matched": 822,
+          "matchRateAllDecisions": 0.9153674832962138,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 822
+            },
+            {
+              "outcome": "failed",
+              "count": 5
+            },
+            {
+              "outcome": "missed",
+              "count": 71
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 902,
+          "resolved": 902,
+          "unresolved": 0,
+          "matched": 901,
+          "matchRateAllDecisions": 0.9988913525498891,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1
+            },
+            {
+              "outcome": "failed",
+              "count": 5
+            },
+            {
+              "outcome": "missed",
+              "count": 896
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-flow/Chosen/Amateur",
+      "k": 1.05,
+      "pCollect": 0.65,
+      "pHit": 0.18068749999999997,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 35.115,
+      "trainingMean": 35.167249999998674,
+      "trainingSD": 0.8742778426970811,
+      "trainingCI99": [
+        35.006454153504365,
+        35.328045846492984
+      ],
+      "trainingBias": 0.05224999999867208,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.1136998334427554,
+      "projectedMargin": 0.03405016655857253,
+      "meanHits": 1.98,
+      "meanBoosts": 5.555,
+      "meanFullFinish": 0.625,
+      "meanAcceptedInputs": 30.435,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 125,
+          "resolved": 125,
+          "unresolved": 0,
+          "matched": 125,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 125
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 75,
+          "resolved": 75,
+          "unresolved": 0,
+          "matched": 75,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 75
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1961,
+          "resolved": 1961,
+          "unresolved": 0,
+          "matched": 1960,
+          "matchRateAllDecisions": 0.9994900560938297,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1960
+            },
+            {
+              "outcome": "hit",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 439,
+          "resolved": 439,
+          "unresolved": 0,
+          "matched": 395,
+          "matchRateAllDecisions": 0.8997722095671982,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 44
+            },
+            {
+              "outcome": "hit",
+              "count": 395
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1171,
+          "resolved": 1171,
+          "unresolved": 0,
+          "matched": 1109,
+          "matchRateAllDecisions": 0.9470538001707942,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1109
+            },
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 59
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 629,
+          "resolved": 629,
+          "unresolved": 0,
+          "matched": 627,
+          "matchRateAllDecisions": 0.9968203497615262,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 2
+            },
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 623
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-flow/Chosen/Confident",
+      "k": 1.05,
+      "pCollect": 0.75,
+      "pHit": 0.1290625,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 34.525,
+      "trainingMean": 34.58874999999867,
+      "trainingSD": 0.8092343533818773,
+      "trainingCI99": [
+        34.43991685278897,
+        34.73758314720837
+      ],
+      "trainingBias": 0.06374999999867015,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.10524092765731315,
+      "projectedMargin": 0.031009072344016717,
+      "meanHits": 1.43,
+      "meanBoosts": 6.45,
+      "meanFullFinish": 0.765,
+      "meanAcceptedInputs": 30.215,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 153,
+          "resolved": 153,
+          "unresolved": 0,
+          "matched": 153,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 153
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 47,
+          "resolved": 47,
+          "unresolved": 0,
+          "matched": 47,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 47
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2078,
+          "resolved": 2078,
+          "unresolved": 0,
+          "matched": 2078,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2078
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 322,
+          "resolved": 322,
+          "unresolved": 0,
+          "matched": 286,
+          "matchRateAllDecisions": 0.8881987577639752,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 36
+            },
+            {
+              "outcome": "hit",
+              "count": 286
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1339,
+          "resolved": 1339,
+          "unresolved": 0,
+          "matched": 1288,
+          "matchRateAllDecisions": 0.9619118745332338,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1288
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 50
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 461,
+          "resolved": 461,
+          "unresolved": 0,
+          "matched": 459,
+          "matchRateAllDecisions": 0.9956616052060737,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 2
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 458
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-flow/Chosen/Strong",
+      "k": 1.05,
+      "pCollect": 0.9,
+      "pHit": 0.05162499999999999,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 33.64,
+      "trainingMean": 33.678499999998664,
+      "trainingSD": 0.5048137623652268,
+      "trainingCI99": [
+        33.58565542327797,
+        33.77134457671936
+      ],
+      "trainingBias": 0.03849999999866327,
+      "heldoutFixedV2N": 200,
+      "projectedHalf99FromFreshTrainingSD": 0.09284457672069449,
+      "projectedMargin": 0.06865542328064225,
+      "meanHits": 0.54,
+      "meanBoosts": 7.88,
+      "meanFullFinish": 0.91,
+      "meanAcceptedInputs": 30.05,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 182,
+          "resolved": 182,
+          "unresolved": 0,
+          "matched": 182,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 182
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 18,
+          "resolved": 18,
+          "unresolved": 0,
+          "matched": 18,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 18
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2273,
+          "resolved": 2273,
+          "unresolved": 0,
+          "matched": 2272,
+          "matchRateAllDecisions": 0.9995600527936648,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2272
+            },
+            {
+              "outcome": "hit",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 127,
+          "resolved": 127,
+          "unresolved": 0,
+          "matched": 107,
+          "matchRateAllDecisions": 0.84251968503937,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 20
+            },
+            {
+              "outcome": "hit",
+              "count": 107
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1623,
+          "resolved": 1623,
+          "unresolved": 0,
+          "matched": 1576,
+          "matchRateAllDecisions": 0.9710412815773259,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1576
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 46
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 177,
+          "resolved": 177,
+          "unresolved": 0,
+          "matched": 177,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 177
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-flow/FastFlip/Novice",
+      "k": 1.08,
+      "pCollect": 0.5,
+      "pHit": 0.2655,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 36,
+      "trainingMean": 36.154749999998586,
+      "trainingSD": 0.9823773530670225,
+      "trainingCI99": [
+        35.97407265653996,
+        36.33542734345721
+      ],
+      "trainingBias": 0.15474999999858596,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.12775817476636625,
+      "projectedMargin": -0.0825081747649522,
+      "meanHits": 3.09,
+      "meanBoosts": 4.205,
+      "meanFullFinish": 0.515,
+      "meanAcceptedInputs": 30.32,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 103,
+          "resolved": 103,
+          "unresolved": 0,
+          "matched": 103,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 103
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 97,
+          "resolved": 97,
+          "unresolved": 0,
+          "matched": 97,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 97
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1743,
+          "resolved": 1743,
+          "unresolved": 0,
+          "matched": 1739,
+          "matchRateAllDecisions": 0.9977051061388411,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1739
+            },
+            {
+              "outcome": "hit",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 657,
+          "resolved": 657,
+          "unresolved": 0,
+          "matched": 614,
+          "matchRateAllDecisions": 0.9345509893455098,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 43
+            },
+            {
+              "outcome": "hit",
+              "count": 614
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 898,
+          "resolved": 898,
+          "unresolved": 0,
+          "matched": 841,
+          "matchRateAllDecisions": 0.9365256124721604,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 841
+            },
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 53
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 902,
+          "resolved": 902,
+          "unresolved": 0,
+          "matched": 902,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 895
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-flow/FastFlip/Amateur",
+      "k": 1.08,
+      "pCollect": 0.65,
+      "pHit": 0.18585,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 35.115,
+      "trainingMean": 35.21024999999866,
+      "trainingSD": 0.8907438241724799,
+      "trainingCI99": [
+        35.046425755322,
+        35.37407424467532
+      ],
+      "trainingBias": 0.09524999999865713,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.115841234333631,
+      "projectedMargin": -0.011091234332288119,
+      "meanHits": 2.09,
+      "meanBoosts": 5.595,
+      "meanFullFinish": 0.625,
+      "meanAcceptedInputs": 30.32,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 125,
+          "resolved": 125,
+          "unresolved": 0,
+          "matched": 125,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 125
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 75,
+          "resolved": 75,
+          "unresolved": 0,
+          "matched": 75,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 75
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1944,
+          "resolved": 1944,
+          "unresolved": 0,
+          "matched": 1942,
+          "matchRateAllDecisions": 0.9989711934156379,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1942
+            },
+            {
+              "outcome": "hit",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 456,
+          "resolved": 456,
+          "unresolved": 0,
+          "matched": 416,
+          "matchRateAllDecisions": 0.9122807017543859,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 40
+            },
+            {
+              "outcome": "hit",
+              "count": 416
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1171,
+          "resolved": 1171,
+          "unresolved": 0,
+          "matched": 1119,
+          "matchRateAllDecisions": 0.955593509820666,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1119
+            },
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 50
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 629,
+          "resolved": 629,
+          "unresolved": 0,
+          "matched": 629,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 627
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-flow/FastFlip/Confident",
+      "k": 1.08,
+      "pCollect": 0.75,
+      "pHit": 0.13275,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 34.525,
+      "trainingMean": 34.63524999999866,
+      "trainingSD": 0.792787802630645,
+      "trainingCI99": [
+        34.48944167730219,
+        34.78105832269514
+      ],
+      "trainingBias": 0.1102499999986648,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.10310205373211538,
+      "projectedMargin": -0.013352053730780175,
+      "meanHits": 1.505,
+      "meanBoosts": 6.42,
+      "meanFullFinish": 0.765,
+      "meanAcceptedInputs": 30.345,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 153,
+          "resolved": 153,
+          "unresolved": 0,
+          "matched": 153,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 153
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 47,
+          "resolved": 47,
+          "unresolved": 0,
+          "matched": 47,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 47
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2073,
+          "resolved": 2073,
+          "unresolved": 0,
+          "matched": 2071,
+          "matchRateAllDecisions": 0.9990352146647371,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2071
+            },
+            {
+              "outcome": "hit",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 327,
+          "resolved": 327,
+          "unresolved": 0,
+          "matched": 299,
+          "matchRateAllDecisions": 0.9143730886850153,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 28
+            },
+            {
+              "outcome": "hit",
+              "count": 299
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1339,
+          "resolved": 1339,
+          "unresolved": 0,
+          "matched": 1284,
+          "matchRateAllDecisions": 0.958924570575056,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1284
+            },
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 53
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 461,
+          "resolved": 461,
+          "unresolved": 0,
+          "matched": 461,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 461
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-flow/FastFlip/Strong",
+      "k": 1.08,
+      "pCollect": 0.9,
+      "pHit": 0.053099999999999994,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 33.64,
+      "trainingMean": 33.68099999999868,
+      "trainingSD": 0.512912660191665,
+      "trainingCI99": [
+        33.586665886350396,
+        33.77533411364697
+      ],
+      "trainingBias": 0.04099999999868231,
+      "heldoutFixedV2N": 200,
+      "projectedHalf99FromFreshTrainingSD": 0.09433411364828678,
+      "projectedMargin": 0.06466588635303092,
+      "meanHits": 0.59,
+      "meanBoosts": 7.955,
+      "meanFullFinish": 0.91,
+      "meanAcceptedInputs": 29.615,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 182,
+          "resolved": 182,
+          "unresolved": 0,
+          "matched": 182,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 182
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 18,
+          "resolved": 18,
+          "unresolved": 0,
+          "matched": 18,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 18
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2270,
+          "resolved": 2270,
+          "unresolved": 0,
+          "matched": 2269,
+          "matchRateAllDecisions": 0.9995594713656387,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2269
+            },
+            {
+              "outcome": "hit",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 130,
+          "resolved": 130,
+          "unresolved": 0,
+          "matched": 117,
+          "matchRateAllDecisions": 0.9,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 13
+            },
+            {
+              "outcome": "hit",
+              "count": 117
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1623,
+          "resolved": 1623,
+          "unresolved": 0,
+          "matched": 1591,
+          "matchRateAllDecisions": 0.9802834257547751,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1591
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 31
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 177,
+          "resolved": 177,
+          "unresolved": 0,
+          "matched": 177,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 177
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-long/FastFlip/Novice",
+      "k": 1.04,
+      "pCollect": 0.5,
+      "pHit": 0.25566666666666665,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 36,
+      "trainingMean": 36.07874999999854,
+      "trainingSD": 0.9081766688309824,
+      "trainingCI99": [
+        35.91171953313853,
+        36.245780466858555
+      ],
+      "trainingBias": 0.07874999999854282,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.11810837578146927,
+      "projectedMargin": 0.0031416242199879263,
+      "meanHits": 2.84,
+      "meanBoosts": 4.1,
+      "meanFullFinish": 0.445,
+      "meanAcceptedInputs": 25.91,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0.02,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 89,
+          "resolved": 89,
+          "unresolved": 0,
+          "matched": 89,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 89
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 111,
+          "resolved": 111,
+          "unresolved": 0,
+          "matched": 111,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 111
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1769,
+          "resolved": 1769,
+          "unresolved": 0,
+          "matched": 1769,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1769
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 631,
+          "resolved": 631,
+          "unresolved": 0,
+          "matched": 568,
+          "matchRateAllDecisions": 0.9001584786053882,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 63
+            },
+            {
+              "outcome": "hit",
+              "count": 568
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 875,
+          "resolved": 875,
+          "unresolved": 0,
+          "matched": 820,
+          "matchRateAllDecisions": 0.9371428571428572,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 820
+            },
+            {
+              "outcome": "failed",
+              "count": 5
+            },
+            {
+              "outcome": "missed",
+              "count": 50
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 925,
+          "resolved": 925,
+          "unresolved": 0,
+          "matched": 925,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 13
+            },
+            {
+              "outcome": "missed",
+              "count": 912
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-long/FastFlip/Amateur",
+      "k": 1.04,
+      "pCollect": 0.65,
+      "pHit": 0.17896666666666664,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 35.115,
+      "trainingMean": 35.18149999999862,
+      "trainingSD": 0.7295505259056319,
+      "trainingCI99": [
+        35.04732218072383,
+        35.31567781927341
+      ],
+      "trainingBias": 0.06649999999861933,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.09487804589402742,
+      "projectedMargin": 0.038621954107353265,
+      "meanHits": 1.86,
+      "meanBoosts": 5.37,
+      "meanFullFinish": 0.55,
+      "meanAcceptedInputs": 25.74,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0.015,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 110,
+          "resolved": 110,
+          "unresolved": 0,
+          "matched": 110,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 110
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 90,
+          "resolved": 90,
+          "unresolved": 0,
+          "matched": 90,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 90
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1971,
+          "resolved": 1971,
+          "unresolved": 0,
+          "matched": 1971,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1971
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 429,
+          "resolved": 429,
+          "unresolved": 0,
+          "matched": 372,
+          "matchRateAllDecisions": 0.8671328671328671,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 57
+            },
+            {
+              "outcome": "hit",
+              "count": 372
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1137,
+          "resolved": 1137,
+          "unresolved": 0,
+          "matched": 1074,
+          "matchRateAllDecisions": 0.9445910290237467,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1074
+            },
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 59
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 663,
+          "resolved": 663,
+          "unresolved": 0,
+          "matched": 663,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 661
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-long/FastFlip/Confident",
+      "k": 1.04,
+      "pCollect": 0.75,
+      "pHit": 0.12783333333333333,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 34.525,
+      "trainingMean": 34.59949999999868,
+      "trainingSD": 0.7080830871383651,
+      "trainingCI99": [
+        34.46927043929807,
+        34.72972956069928
+      ],
+      "trainingBias": 0.07449999999867885,
+      "heldoutFixedV2N": 400,
+      "projectedHalf99FromFreshTrainingSD": 0.09208620548234439,
+      "projectedMargin": 0.033413794518976775,
+      "meanHits": 1.3,
+      "meanBoosts": 6.26,
+      "meanFullFinish": 0.69,
+      "meanAcceptedInputs": 25.475,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0.01,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 138,
+          "resolved": 138,
+          "unresolved": 0,
+          "matched": 138,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 138
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 62,
+          "resolved": 62,
+          "unresolved": 0,
+          "matched": 62,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 62
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2091,
+          "resolved": 2091,
+          "unresolved": 0,
+          "matched": 2091,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2091
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 309,
+          "resolved": 309,
+          "unresolved": 0,
+          "matched": 260,
+          "matchRateAllDecisions": 0.8414239482200647,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 49
+            },
+            {
+              "outcome": "hit",
+              "count": 260
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1307,
+          "resolved": 1307,
+          "unresolved": 0,
+          "matched": 1252,
+          "matchRateAllDecisions": 0.9579188982402448,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1252
+            },
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 51
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 493,
+          "resolved": 493,
+          "unresolved": 0,
+          "matched": 493,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 491
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohort": "full-long/FastFlip/Strong",
+      "k": 1.04,
+      "pCollect": 0.9,
+      "pHit": 0.05113333333333332,
+      "observedCases": 200,
+      "terminalMetricsComplete": true,
+      "errors": 0,
+      "target": 33.64,
+      "trainingMean": 33.680249999998665,
+      "trainingSD": 0.47721705553178173,
+      "trainingCI99": [
+        33.59248096748031,
+        33.76801903251702
+      ],
+      "trainingBias": 0.04024999999866452,
+      "heldoutFixedV2N": 200,
+      "projectedHalf99FromFreshTrainingSD": 0.08776903251835046,
+      "projectedMargin": 0.07198096748298503,
+      "meanHits": 0.52,
+      "meanBoosts": 7.87,
+      "meanFullFinish": 0.875,
+      "meanAcceptedInputs": 25.005,
+      "meanRejectedInputs": 0,
+      "meanSuppressedInputs": 0.01,
+      "intentionVersusActual": [
+        {
+          "key": "Finish/collect",
+          "decisions": 175,
+          "resolved": 175,
+          "unresolved": 0,
+          "matched": 175,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 175
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 25,
+          "resolved": 25,
+          "unresolved": 0,
+          "matched": 25,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 25
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2271,
+          "resolved": 2271,
+          "unresolved": 0,
+          "matched": 2271,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2271
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 129,
+          "resolved": 129,
+          "unresolved": 0,
+          "matched": 104,
+          "matchRateAllDecisions": 0.8062015503875969,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 25
+            },
+            {
+              "outcome": "hit",
+              "count": 104
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1600,
+          "resolved": 1600,
+          "unresolved": 0,
+          "matched": 1574,
+          "matchRateAllDecisions": 0.98375,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1574
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 25
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 200,
+          "resolved": 200,
+          "unresolved": 0,
+          "matched": 200,
+          "matchRateAllDecisions": 1,
+          "unresolvedIncludedInDenominator": true,
+          "actualOutcomes": [
+            {
+              "outcome": "missed",
+              "count": 200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

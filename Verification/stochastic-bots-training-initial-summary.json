@@ -1,0 +1,6351 @@
+{
+  "status": "DERIVED_INITIAL_TRAINING_SUMMARY",
+  "sourceDataStatus": "TRAINING_WITH_ERRORS",
+  "sourceJson": "Verification/stochastic-bots-training-initial.json",
+  "sourceJsonSha256": "715C857AA5C4C3EE39D379AFF4204485356F7FDBE8B9D65844CCA9B83F1F30B9",
+  "summaryScriptSha256": "81F90C4BAA1B373EDD37FDC38286ACD20EAD151CD99B6BF4BFB61CBAC974B948",
+  "exploratoryOnly": true,
+  "validationAcceptance": false,
+  "heldOutSeedsRun": false,
+  "cases": 10000,
+  "cohorts": 50,
+  "seedsPerCohort": "0..199",
+  "publicationStable": true,
+  "assemblySha256": "0685B469A66930930EFEA185FDBEA632D2AE3CAAA974AAFAADB0D7111788DB09",
+  "manifestSha256": "615A50EA08B28AE3C842ECAFB4C6766E2D343E525F4439C8F3B1EA8B9A014B54",
+  "parameterTableSha256": "BBC0050E2E5A184EFB5F5851E8984D9E1C86FEBAE00FE13AD58B70B7915741C4",
+  "scheduleSha256": "8177827AE97AF9DAE2DA9BEFE24EE28B195E17C2B13396803DD64A600421426D",
+  "method": "Derived only from the completed raw initial report; no races/retries/calibration/parameter changes. Mean/SD/99% CI copied from all-terminal cohort metrics; terminal quality failures stay included. Unmet intent rate=(all observed decisions-matched)/all observed decisions, unresolved included; individual kind/intent buckets preserved.",
+  "masterFailures": [
+    {
+      "pair": "full-short/Chosen",
+      "count": 200,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ]
+    },
+    {
+      "pair": "full-short/FastFlip",
+      "count": 200,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "cohortId": "full-long/Chosen/Novice",
+      "trackId": "full-long",
+      "profileId": "Chosen",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.24583333333333332,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.93449999999856,
+      "timeSampleStd": 0.9317729089047049,
+      "lower99": 35.76312974867708,
+      "upper99": 36.105870251320034,
+      "meanMinusTarget": -0.06550000000144252,
+      "meanHits": 2.65,
+      "meanBoostsEarned": 4.235,
+      "meanCompletedBoostPulses": 4.235,
+      "meanFullFinish": 0.48,
+      "meanUnreachableReasons": 0.595,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4281,
+      "unmetIntentions": 119,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.027045454545454546,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 96,
+          "matched": 96,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 96
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 104,
+          "matched": 104,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 104
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1822,
+          "matched": 1822,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 1822
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 578,
+          "matched": 530,
+          "unmet": 48,
+          "unresolved": 0,
+          "unmetRate": 0.08304498269896193,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 48
+            },
+            {
+              "outcome": "hit",
+              "count": 530
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 918,
+          "matched": 847,
+          "unmet": 71,
+          "unresolved": 0,
+          "unmetRate": 0.07734204793028322,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 847
+            },
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 69
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 882,
+          "matched": 882,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 10
+            },
+            {
+              "outcome": "missed",
+              "count": 872
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/Chosen/Amateur",
+      "trackId": "full-long",
+      "profileId": "Chosen",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1720833333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.071999999998646,
+      "timeSampleStd": 0.8378100191216501,
+      "lower99": 34.91791125995865,
+      "upper99": 35.22608874003864,
+      "meanMinusTarget": -0.0430000000013564,
+      "meanHits": 1.785,
+      "meanBoostsEarned": 5.535,
+      "meanCompletedBoostPulses": 5.535,
+      "meanFullFinish": 0.64,
+      "meanUnreachableReasons": 0.545,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4291,
+      "unmetIntentions": 109,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.024772727272727273,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 128,
+          "matched": 128,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 128
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 72,
+          "matched": 72,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 72
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2010,
+          "matched": 2010,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2010
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 390,
+          "matched": 357,
+          "unmet": 33,
+          "unresolved": 0,
+          "unmetRate": 0.08461538461538462,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 33
+            },
+            {
+              "outcome": "hit",
+              "count": 357
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1181,
+          "matched": 1106,
+          "unmet": 75,
+          "unresolved": 0,
+          "unmetRate": 0.06350550381033022,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1106
+            },
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 73
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 619,
+          "matched": 618,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.0016155088852988692,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1
+            },
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 615
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/Chosen/Confident",
+      "trackId": "full-long",
+      "profileId": "Chosen",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.12291666666666666,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.49074999999869,
+      "timeSampleStd": 0.735941565232675,
+      "lower99": 34.35539675052496,
+      "upper99": 34.62610324947242,
+      "meanMinusTarget": -0.03425000000130751,
+      "meanHits": 1.205,
+      "meanBoostsEarned": 6.41,
+      "meanCompletedBoostPulses": 6.41,
+      "meanFullFinish": 0.755,
+      "meanUnreachableReasons": 0.495,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4301,
+      "unmetIntentions": 99,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0225,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 151,
+          "matched": 151,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 151
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 49,
+          "matched": 49,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 49
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2131,
+          "matched": 2131,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2131
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 269,
+          "matched": 241,
+          "unmet": 28,
+          "unresolved": 0,
+          "unmetRate": 0.10408921933085502,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 28
+            },
+            {
+              "outcome": "hit",
+              "count": 241
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1353,
+          "matched": 1282,
+          "unmet": 71,
+          "unresolved": 0,
+          "unmetRate": 0.0524759793052476,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1282
+            },
+            {
+              "outcome": "missed",
+              "count": 71
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 447,
+          "matched": 447,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 446
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/Chosen/Strong",
+      "trackId": "full-long",
+      "profileId": "Chosen",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.04916666666666665,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.637249999998666,
+      "timeSampleStd": 0.4798449681587882,
+      "lower99": 33.54899764580071,
+      "upper99": 33.72550235419662,
+      "meanMinusTarget": -0.0027500000013347403,
+      "meanHits": 0.485,
+      "meanBoostsEarned": 7.905,
+      "meanCompletedBoostPulses": 7.905,
+      "meanFullFinish": 0.935,
+      "meanUnreachableReasons": 0.31,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4338,
+      "unmetIntentions": 62,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.014090909090909091,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 187,
+          "matched": 187,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 187
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 13,
+          "matched": 13,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 13
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2291,
+          "matched": 2291,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2291
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 109,
+          "matched": 97,
+          "unmet": 12,
+          "unresolved": 0,
+          "unmetRate": 0.11009174311926606,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 12
+            },
+            {
+              "outcome": "hit",
+              "count": 97
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1631,
+          "matched": 1581,
+          "unmet": 50,
+          "unresolved": 0,
+          "unmetRate": 0.030656039239730228,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1581
+            },
+            {
+              "outcome": "missed",
+              "count": 50
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 169,
+          "matched": 169,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 169
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/Chosen/Master",
+      "trackId": "full-long",
+      "profileId": "Chosen",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.04999999999863,
+      "timeSampleStd": 1.2418598690197717E-13,
+      "lower99": 33.04999999999861,
+      "upper99": 33.049999999998654,
+      "meanMinusTarget": -1.3642420526593924E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4400,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2400,
+          "matched": 2400,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2400
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/FastFlip/Novice",
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.24583333333333332,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.94249999999855,
+      "timeSampleStd": 0.9230405022771835,
+      "lower99": 35.772735799576495,
+      "upper99": 36.11226420042061,
+      "meanMinusTarget": -0.05750000000144695,
+      "meanHits": 2.675,
+      "meanBoostsEarned": 4.25,
+      "meanCompletedBoostPulses": 4.25,
+      "meanFullFinish": 0.48,
+      "meanUnreachableReasons": 0.555,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4289,
+      "unmetIntentions": 111,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.025227272727272727,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 96,
+          "matched": 96,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 96
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 104,
+          "matched": 104,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 104
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1822,
+          "matched": 1822,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 1822
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 578,
+          "matched": 535,
+          "unmet": 43,
+          "unresolved": 0,
+          "unmetRate": 0.07439446366782007,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 43
+            },
+            {
+              "outcome": "hit",
+              "count": 535
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 918,
+          "matched": 850,
+          "unmet": 68,
+          "unresolved": 0,
+          "unmetRate": 0.07407407407407407,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 850
+            },
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 61
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 882,
+          "matched": 882,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 9
+            },
+            {
+              "outcome": "missed",
+              "count": 873
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/FastFlip/Amateur",
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1720833333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.024499999998646,
+      "timeSampleStd": 0.8248951509435406,
+      "lower99": 34.87278654280313,
+      "upper99": 35.176213457194166,
+      "meanMinusTarget": -0.09050000000135583,
+      "meanHits": 1.75,
+      "meanBoostsEarned": 5.635,
+      "meanCompletedBoostPulses": 5.635,
+      "meanFullFinish": 0.64,
+      "meanUnreachableReasons": 0.47,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4306,
+      "unmetIntentions": 94,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.021363636363636362,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 128,
+          "matched": 128,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 128
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 72,
+          "matched": 72,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 72
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2010,
+          "matched": 2010,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2010
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 390,
+          "matched": 350,
+          "unmet": 40,
+          "unresolved": 0,
+          "unmetRate": 0.10256410256410256,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 40
+            },
+            {
+              "outcome": "hit",
+              "count": 350
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1181,
+          "matched": 1127,
+          "unmet": 54,
+          "unresolved": 0,
+          "unmetRate": 0.04572396274343776,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1127
+            },
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 47
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 619,
+          "matched": 619,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 615
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/FastFlip/Confident",
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.12291666666666666,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.43424999999868,
+      "timeSampleStd": 0.6909787956079735,
+      "lower99": 34.30716623449154,
+      "upper99": 34.561333765505815,
+      "meanMinusTarget": -0.0907500000013215,
+      "meanHits": 1.155,
+      "meanBoostsEarned": 6.515,
+      "meanCompletedBoostPulses": 6.515,
+      "meanFullFinish": 0.755,
+      "meanUnreachableReasons": 0.44,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4312,
+      "unmetIntentions": 88,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.02,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 151,
+          "matched": 151,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 151
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 49,
+          "matched": 49,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 49
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2131,
+          "matched": 2131,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2131
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 269,
+          "matched": 231,
+          "unmet": 38,
+          "unresolved": 0,
+          "unmetRate": 0.1412639405204461,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 38
+            },
+            {
+              "outcome": "hit",
+              "count": 231
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1353,
+          "matched": 1303,
+          "unmet": 50,
+          "unresolved": 0,
+          "unmetRate": 0.03695491500369549,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1303
+            },
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 47
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 447,
+          "matched": 447,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 444
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/FastFlip/Strong",
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.04916666666666665,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.58424999999864,
+      "timeSampleStd": 0.45050439347767673,
+      "lower99": 33.50139391951606,
+      "upper99": 33.66710608048122,
+      "meanMinusTarget": -0.055750000001360434,
+      "meanHits": 0.46,
+      "meanBoostsEarned": 8.04,
+      "meanCompletedBoostPulses": 8.04,
+      "meanFullFinish": 0.935,
+      "meanUnreachableReasons": 0.2,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4360,
+      "unmetIntentions": 40,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.00909090909090909,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 187,
+          "matched": 187,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 187
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 13,
+          "matched": 13,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 13
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2291,
+          "matched": 2291,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2291
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 109,
+          "matched": 92,
+          "unmet": 17,
+          "unresolved": 0,
+          "unmetRate": 0.1559633027522936,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 17
+            },
+            {
+              "outcome": "hit",
+              "count": 92
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1631,
+          "matched": 1608,
+          "unmet": 23,
+          "unresolved": 0,
+          "unmetRate": 0.014101778050275904,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1608
+            },
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 21
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 169,
+          "matched": 169,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 169
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-long/FastFlip/Master",
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.04999999999863,
+      "timeSampleStd": 1.20161568736206E-13,
+      "lower99": 33.04999999999861,
+      "upper99": 33.049999999998654,
+      "meanMinusTarget": -1.3642420526593924E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4400,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2400,
+          "matched": 2400,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2400
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/Chosen/Novice",
+      "trackId": "full-short",
+      "profileId": "Chosen",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.24583333333333332,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 36.00699999999856,
+      "timeSampleStd": 0.942559329937455,
+      "lower99": 35.833645926583124,
+      "upper99": 36.180354073414,
+      "meanMinusTarget": 0.0069999999985626005,
+      "meanHits": 2.795,
+      "meanBoostsEarned": 4.26,
+      "meanCompletedBoostPulses": 4.26,
+      "meanFullFinish": 0.45,
+      "meanUnreachableReasons": 0.535,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4293,
+      "unmetIntentions": 107,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.02431818181818182,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 90,
+          "matched": 90,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 90
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 110,
+          "matched": 110,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 110
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1793,
+          "matched": 1793,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 1793
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 607,
+          "matched": 559,
+          "unmet": 48,
+          "unresolved": 0,
+          "unmetRate": 0.07907742998352553,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 48
+            },
+            {
+              "outcome": "hit",
+              "count": 559
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 911,
+          "matched": 852,
+          "unmet": 59,
+          "unresolved": 0,
+          "unmetRate": 0.06476399560922064,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 852
+            },
+            {
+              "outcome": "failed",
+              "count": 9
+            },
+            {
+              "outcome": "missed",
+              "count": 50
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 889,
+          "matched": 889,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 13
+            },
+            {
+              "outcome": "missed",
+              "count": 876
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/Chosen/Amateur",
+      "trackId": "full-short",
+      "profileId": "Chosen",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1720833333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.14949999999868,
+      "timeSampleStd": 0.8892997358036292,
+      "lower99": 34.98594134985083,
+      "upper99": 35.31305865014653,
+      "meanMinusTarget": 0.0344999999986797,
+      "meanHits": 1.855,
+      "meanBoostsEarned": 5.41,
+      "meanCompletedBoostPulses": 5.41,
+      "meanFullFinish": 0.62,
+      "meanUnreachableReasons": 0.595,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4281,
+      "unmetIntentions": 119,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.027045454545454546,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 124,
+          "matched": 124,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 124
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 76,
+          "matched": 76,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 76
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1983,
+          "matched": 1983,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 1983
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 417,
+          "matched": 371,
+          "unmet": 46,
+          "unresolved": 0,
+          "unmetRate": 0.11031175059952038,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 46
+            },
+            {
+              "outcome": "hit",
+              "count": 371
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1155,
+          "matched": 1082,
+          "unmet": 73,
+          "unresolved": 0,
+          "unmetRate": 0.0632034632034632,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1082
+            },
+            {
+              "outcome": "failed",
+              "count": 9
+            },
+            {
+              "outcome": "missed",
+              "count": 64
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 645,
+          "matched": 645,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 6
+            },
+            {
+              "outcome": "missed",
+              "count": 639
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/Chosen/Confident",
+      "trackId": "full-short",
+      "profileId": "Chosen",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.12291666666666666,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.52749999999868,
+      "timeSampleStd": 0.8388606475032468,
+      "lower99": 34.37321802999023,
+      "upper99": 34.68178197000714,
+      "meanMinusTarget": 0.002499999998683222,
+      "meanHits": 1.23,
+      "meanBoostsEarned": 6.35,
+      "meanCompletedBoostPulses": 6.35,
+      "meanFullFinish": 0.73,
+      "meanUnreachableReasons": 0.51,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4298,
+      "unmetIntentions": 102,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.023181818181818182,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 146,
+          "matched": 146,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 146
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 54,
+          "matched": 54,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 54
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2117,
+          "matched": 2117,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2117
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 283,
+          "matched": 246,
+          "unmet": 37,
+          "unresolved": 0,
+          "unmetRate": 0.13074204946996468,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 37
+            },
+            {
+              "outcome": "hit",
+              "count": 246
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1335,
+          "matched": 1270,
+          "unmet": 65,
+          "unresolved": 0,
+          "unmetRate": 0.04868913857677903,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1270
+            },
+            {
+              "outcome": "failed",
+              "count": 5
+            },
+            {
+              "outcome": "missed",
+              "count": 60
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 465,
+          "matched": 465,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 463
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/Chosen/Strong",
+      "trackId": "full-short",
+      "profileId": "Chosen",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.04916666666666665,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.661499999998654,
+      "timeSampleStd": 0.5006957470917329,
+      "lower99": 33.56941280236209,
+      "upper99": 33.75358719763522,
+      "meanMinusTarget": 0.021499999998653152,
+      "meanHits": 0.475,
+      "meanBoostsEarned": 7.845,
+      "meanCompletedBoostPulses": 7.845,
+      "meanFullFinish": 0.89,
+      "meanUnreachableReasons": 0.27,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4346,
+      "unmetIntentions": 54,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.012272727272727272,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 178,
+          "matched": 178,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 178
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 22,
+          "matched": 22,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 22
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2288,
+          "matched": 2288,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2288
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 112,
+          "matched": 95,
+          "unmet": 17,
+          "unresolved": 0,
+          "unmetRate": 0.15178571428571427,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 17
+            },
+            {
+              "outcome": "hit",
+              "count": 95
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1606,
+          "matched": 1569,
+          "unmet": 37,
+          "unresolved": 0,
+          "unmetRate": 0.02303860523038605,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1569
+            },
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 34
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 194,
+          "matched": 194,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 193
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/Chosen/Master",
+      "trackId": "full-short",
+      "profileId": "Chosen",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 200,
+      "masterQuality": "FAIL",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 38.19999999999842,
+      "timeSampleStd": 3.829372241213528E-14,
+      "lower99": 38.19999999999841,
+      "upper99": 38.199999999998425,
+      "meanMinusTarget": 5.149999999998421,
+      "meanHits": 5.0,
+      "meanBoostsEarned": 1.0,
+      "meanCompletedBoostPulses": 1.0,
+      "meanFullFinish": 0.0,
+      "meanUnreachableReasons": 14.0,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 1600,
+      "unmetIntentions": 2800,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.6363636363636364,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 0,
+          "unmet": 200,
+          "unresolved": 0,
+          "unmetRate": 1.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2400,
+          "matched": 1400,
+          "unmet": 1000,
+          "unresolved": 0,
+          "unmetRate": 0.4166666666666667,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1400
+            },
+            {
+              "outcome": "hit",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 200,
+          "unmet": 1600,
+          "unresolved": 0,
+          "unmetRate": 0.8888888888888888,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 200
+            },
+            {
+              "outcome": "failed",
+              "count": 200
+            },
+            {
+              "outcome": "missed",
+              "count": 1400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/FastFlip/Novice",
+      "trackId": "full-short",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.24583333333333332,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 36.07299999999856,
+      "timeSampleStd": 0.9359626758867827,
+      "lower99": 35.90085917312822,
+      "upper99": 36.2451408268689,
+      "meanMinusTarget": 0.072999999998558,
+      "meanHits": 2.885,
+      "meanBoostsEarned": 4.19,
+      "meanCompletedBoostPulses": 4.19,
+      "meanFullFinish": 0.45,
+      "meanUnreachableReasons": 0.545,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4291,
+      "unmetIntentions": 109,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.024772727272727273,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 90,
+          "matched": 90,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 90
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 110,
+          "matched": 110,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 110
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1793,
+          "matched": 1790,
+          "unmet": 3,
+          "unresolved": 0,
+          "unmetRate": 0.0016731734523145567,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1790
+            },
+            {
+              "outcome": "hit",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 607,
+          "matched": 574,
+          "unmet": 33,
+          "unresolved": 0,
+          "unmetRate": 0.054365733113673806,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 33
+            },
+            {
+              "outcome": "hit",
+              "count": 574
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 911,
+          "matched": 838,
+          "unmet": 73,
+          "unresolved": 0,
+          "unmetRate": 0.0801317233809001,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 838
+            },
+            {
+              "outcome": "failed",
+              "count": 13
+            },
+            {
+              "outcome": "missed",
+              "count": 60
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 889,
+          "matched": 889,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 882
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/FastFlip/Amateur",
+      "trackId": "full-short",
+      "profileId": "FastFlip",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1720833333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.17749999999863,
+      "timeSampleStd": 0.872121971783902,
+      "lower99": 35.01710065799236,
+      "upper99": 35.3378993420049,
+      "meanMinusTarget": 0.06249999999862865,
+      "meanHits": 1.935,
+      "meanBoostsEarned": 5.45,
+      "meanCompletedBoostPulses": 5.45,
+      "meanFullFinish": 0.62,
+      "meanUnreachableReasons": 0.515,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4297,
+      "unmetIntentions": 103,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.02340909090909091,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 124,
+          "matched": 124,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 124
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 76,
+          "matched": 76,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 76
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1983,
+          "matched": 1979,
+          "unmet": 4,
+          "unresolved": 0,
+          "unmetRate": 0.002017145738779627,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1979
+            },
+            {
+              "outcome": "hit",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 417,
+          "matched": 383,
+          "unmet": 34,
+          "unresolved": 0,
+          "unmetRate": 0.0815347721822542,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 34
+            },
+            {
+              "outcome": "hit",
+              "count": 383
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1155,
+          "matched": 1090,
+          "unmet": 65,
+          "unresolved": 0,
+          "unmetRate": 0.05627705627705628,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1090
+            },
+            {
+              "outcome": "failed",
+              "count": 13
+            },
+            {
+              "outcome": "missed",
+              "count": 52
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 645,
+          "matched": 645,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 644
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/FastFlip/Confident",
+      "trackId": "full-short",
+      "profileId": "FastFlip",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.12291666666666666,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.54499999999866,
+      "timeSampleStd": 0.8568377059112537,
+      "lower99": 34.38741171684463,
+      "upper99": 34.702588283152686,
+      "meanMinusTarget": 0.0199999999986602,
+      "meanHits": 1.31,
+      "meanBoostsEarned": 6.425,
+      "meanCompletedBoostPulses": 6.425,
+      "meanFullFinish": 0.73,
+      "meanUnreachableReasons": 0.405,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4319,
+      "unmetIntentions": 81,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.01840909090909091,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 146,
+          "matched": 146,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 146
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 54,
+          "matched": 54,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 54
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2117,
+          "matched": 2112,
+          "unmet": 5,
+          "unresolved": 0,
+          "unmetRate": 0.0023618327822390174,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2112
+            },
+            {
+              "outcome": "hit",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 283,
+          "matched": 257,
+          "unmet": 26,
+          "unresolved": 0,
+          "unmetRate": 0.09187279151943463,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 26
+            },
+            {
+              "outcome": "hit",
+              "count": 257
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1335,
+          "matched": 1285,
+          "unmet": 50,
+          "unresolved": 0,
+          "unmetRate": 0.03745318352059925,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1285
+            },
+            {
+              "outcome": "failed",
+              "count": 13
+            },
+            {
+              "outcome": "missed",
+              "count": 37
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 465,
+          "matched": 465,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 465
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/FastFlip/Strong",
+      "trackId": "full-short",
+      "profileId": "FastFlip",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.04916666666666665,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.66099999999865,
+      "timeSampleStd": 0.5306239808425482,
+      "lower99": 33.56340844728751,
+      "upper99": 33.758591552709795,
+      "meanMinusTarget": 0.020999999998650765,
+      "meanHits": 0.525,
+      "meanBoostsEarned": 7.93,
+      "meanCompletedBoostPulses": 7.93,
+      "meanFullFinish": 0.89,
+      "meanUnreachableReasons": 0.155,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4369,
+      "unmetIntentions": 31,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.007045454545454546,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 178,
+          "matched": 178,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 178
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 22,
+          "matched": 22,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 22
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2288,
+          "matched": 2286,
+          "unmet": 2,
+          "unresolved": 0,
+          "unmetRate": 0.0008741258741258741,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2286
+            },
+            {
+              "outcome": "hit",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 112,
+          "matched": 103,
+          "unmet": 9,
+          "unresolved": 0,
+          "unmetRate": 0.08035714285714286,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 9
+            },
+            {
+              "outcome": "hit",
+              "count": 103
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1606,
+          "matched": 1586,
+          "unmet": 20,
+          "unresolved": 0,
+          "unmetRate": 0.012453300124533,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1586
+            },
+            {
+              "outcome": "failed",
+              "count": 5
+            },
+            {
+              "outcome": "missed",
+              "count": 15
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 194,
+          "matched": 194,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 194
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-short/FastFlip/Master",
+      "trackId": "full-short",
+      "profileId": "FastFlip",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 200,
+      "masterQuality": "FAIL",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 37.54999999999839,
+      "timeSampleStd": 8.65527122567057E-14,
+      "lower99": 37.54999999999838,
+      "upper99": 37.549999999998406,
+      "meanMinusTarget": 4.499999999998394,
+      "meanHits": 6.0,
+      "meanBoostsEarned": 4.0,
+      "meanCompletedBoostPulses": 4.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 11.0,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 2200,
+      "unmetIntentions": 2200,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.5,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2400,
+          "matched": 1200,
+          "unmet": 1200,
+          "unresolved": 0,
+          "unmetRate": 0.5,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1200
+            },
+            {
+              "outcome": "hit",
+              "count": 1200
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 800,
+          "unmet": 1000,
+          "unresolved": 0,
+          "unmetRate": 0.5555555555555556,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 800
+            },
+            {
+              "outcome": "failed",
+              "count": 200
+            },
+            {
+              "outcome": "missed",
+              "count": 800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/Chosen/Novice",
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.24583333333333332,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.90024999999859,
+      "timeSampleStd": 0.906599165970604,
+      "lower99": 35.733509665057056,
+      "upper99": 36.06699033494013,
+      "meanMinusTarget": -0.0997500000014071,
+      "meanHits": 2.61,
+      "meanBoostsEarned": 4.245,
+      "meanCompletedBoostPulses": 4.245,
+      "meanFullFinish": 0.525,
+      "meanUnreachableReasons": 0.77,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4246,
+      "unmetIntentions": 154,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.035,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 105,
+          "matched": 105,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 105
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 95,
+          "matched": 95,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 95
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1824,
+          "matched": 1820,
+          "unmet": 4,
+          "unresolved": 0,
+          "unmetRate": 0.0021929824561403508,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1820
+            },
+            {
+              "outcome": "hit",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 576,
+          "matched": 518,
+          "unmet": 58,
+          "unresolved": 0,
+          "unmetRate": 0.10069444444444445,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 58
+            },
+            {
+              "outcome": "hit",
+              "count": 518
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 941,
+          "matched": 849,
+          "unmet": 92,
+          "unresolved": 0,
+          "unmetRate": 0.09776833156216791,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 849
+            },
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 88
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 859,
+          "matched": 859,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 857
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/Chosen/Amateur",
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1720833333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.08499999999865,
+      "timeSampleStd": 0.8310252794441939,
+      "lower99": 34.932159098925176,
+      "upper99": 35.237840901072126,
+      "meanMinusTarget": -0.030000000001351168,
+      "meanHits": 1.84,
+      "meanBoostsEarned": 5.575,
+      "meanCompletedBoostPulses": 5.575,
+      "meanFullFinish": 0.65,
+      "meanUnreachableReasons": 0.71,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4258,
+      "unmetIntentions": 142,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.03227272727272727,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 130,
+          "matched": 130,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 130
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 70,
+          "matched": 70,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 70
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1984,
+          "matched": 1980,
+          "unmet": 4,
+          "unresolved": 0,
+          "unmetRate": 0.0020161290322580645,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1980
+            },
+            {
+              "outcome": "hit",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 416,
+          "matched": 364,
+          "unmet": 52,
+          "unresolved": 0,
+          "unmetRate": 0.125,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 52
+            },
+            {
+              "outcome": "hit",
+              "count": 364
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1201,
+          "matched": 1115,
+          "unmet": 86,
+          "unresolved": 0,
+          "unmetRate": 0.07160699417152373,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1115
+            },
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 83
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 599,
+          "matched": 599,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/Chosen/Confident",
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.12291666666666666,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.54124999999869,
+      "timeSampleStd": 0.7591723458831363,
+      "lower99": 34.401624180802855,
+      "upper99": 34.680875819194526,
+      "meanMinusTarget": 0.016249999998692033,
+      "meanHits": 1.28,
+      "meanBoostsEarned": 6.375,
+      "meanCompletedBoostPulses": 6.375,
+      "meanFullFinish": 0.745,
+      "meanUnreachableReasons": 0.66,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4268,
+      "unmetIntentions": 132,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.03,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 149,
+          "matched": 149,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 149
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 51,
+          "matched": 51,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 51
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2107,
+          "matched": 2103,
+          "unmet": 4,
+          "unresolved": 0,
+          "unmetRate": 0.0018984337921214998,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2103
+            },
+            {
+              "outcome": "hit",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 293,
+          "matched": 252,
+          "unmet": 41,
+          "unresolved": 0,
+          "unmetRate": 0.13993174061433447,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 41
+            },
+            {
+              "outcome": "hit",
+              "count": 252
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1362,
+          "matched": 1275,
+          "unmet": 87,
+          "unresolved": 0,
+          "unmetRate": 0.06387665198237885,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1275
+            },
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 84
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 438,
+          "matched": 438,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 438
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/Chosen/Strong",
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.04916666666666665,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.63574999999866,
+      "timeSampleStd": 0.49635296800179485,
+      "lower99": 33.54446151966431,
+      "upper99": 33.72703848033301,
+      "meanMinusTarget": -0.004250000001341903,
+      "meanHits": 0.39,
+      "meanBoostsEarned": 7.81,
+      "meanCompletedBoostPulses": 7.81,
+      "meanFullFinish": 0.865,
+      "meanUnreachableReasons": 0.415,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4317,
+      "unmetIntentions": 83,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.018863636363636364,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 173,
+          "matched": 173,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 173
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 27,
+          "matched": 27,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 27
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2297,
+          "matched": 2296,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.00043535045711797995,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2296
+            },
+            {
+              "outcome": "hit",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 103,
+          "matched": 77,
+          "unmet": 26,
+          "unresolved": 0,
+          "unmetRate": 0.2524271844660194,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 26
+            },
+            {
+              "outcome": "hit",
+              "count": 77
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1618,
+          "matched": 1562,
+          "unmet": 56,
+          "unresolved": 0,
+          "unmetRate": 0.034610630407911,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1562
+            },
+            {
+              "outcome": "missed",
+              "count": 56
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 182,
+          "matched": 182,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 182
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/Chosen/Master",
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.04999999999864,
+      "timeSampleStd": 1.3384428949451274E-13,
+      "lower99": 33.04999999999862,
+      "upper99": 33.04999999999866,
+      "meanMinusTarget": -1.3571366253017914E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4400,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2400,
+          "matched": 2400,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2400
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Novice",
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.24583333333333332,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.88274999999861,
+      "timeSampleStd": 0.9379572251874254,
+      "lower99": 35.710242338665005,
+      "upper99": 36.05525766133221,
+      "meanMinusTarget": -0.11725000000139119,
+      "meanHits": 2.635,
+      "meanBoostsEarned": 4.345,
+      "meanCompletedBoostPulses": 4.345,
+      "meanFullFinish": 0.525,
+      "meanUnreachableReasons": 0.635,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4273,
+      "unmetIntentions": 127,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.028863636363636362,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 105,
+          "matched": 105,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 105
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 95,
+          "matched": 95,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 95
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1824,
+          "matched": 1821,
+          "unmet": 3,
+          "unresolved": 0,
+          "unmetRate": 0.001644736842105263,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1821
+            },
+            {
+              "outcome": "hit",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 576,
+          "matched": 524,
+          "unmet": 52,
+          "unresolved": 0,
+          "unmetRate": 0.09027777777777778,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 52
+            },
+            {
+              "outcome": "hit",
+              "count": 524
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 941,
+          "matched": 869,
+          "unmet": 72,
+          "unresolved": 0,
+          "unmetRate": 0.0765143464399575,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 869
+            },
+            {
+              "outcome": "failed",
+              "count": 8
+            },
+            {
+              "outcome": "missed",
+              "count": 64
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 859,
+          "matched": 859,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 852
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Amateur",
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1720833333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.07099999999867,
+      "timeSampleStd": 0.8865743456426353,
+      "lower99": 34.907942599449704,
+      "upper99": 35.234057400547634,
+      "meanMinusTarget": -0.04400000000133275,
+      "meanHits": 1.89,
+      "meanBoostsEarned": 5.705,
+      "meanCompletedBoostPulses": 5.705,
+      "meanFullFinish": 0.65,
+      "meanUnreachableReasons": 0.51,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4298,
+      "unmetIntentions": 102,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.023181818181818182,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 130,
+          "matched": 130,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 130
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 70,
+          "matched": 70,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 70
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1984,
+          "matched": 1982,
+          "unmet": 2,
+          "unresolved": 0,
+          "unmetRate": 0.0010080645161290322,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1982
+            },
+            {
+              "outcome": "hit",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 416,
+          "matched": 376,
+          "unmet": 40,
+          "unresolved": 0,
+          "unmetRate": 0.09615384615384616,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 40
+            },
+            {
+              "outcome": "hit",
+              "count": 376
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1201,
+          "matched": 1141,
+          "unmet": 60,
+          "unresolved": 0,
+          "unmetRate": 0.04995836802664446,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1141
+            },
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 53
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 599,
+          "matched": 599,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 599
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Confident",
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.12291666666666666,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.487749999998684,
+      "timeSampleStd": 0.790497863285679,
+      "lower99": 34.342362839451596,
+      "upper99": 34.63313716054577,
+      "meanMinusTarget": -0.03725000000131473,
+      "meanHits": 1.29,
+      "meanBoostsEarned": 6.57,
+      "meanCompletedBoostPulses": 6.57,
+      "meanFullFinish": 0.745,
+      "meanUnreachableReasons": 0.445,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4311,
+      "unmetIntentions": 89,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.020227272727272726,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 149,
+          "matched": 149,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 149
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 51,
+          "matched": 51,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 51
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2107,
+          "matched": 2104,
+          "unmet": 3,
+          "unresolved": 0,
+          "unmetRate": 0.0014238253440911248,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2104
+            },
+            {
+              "outcome": "hit",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 293,
+          "matched": 255,
+          "unmet": 38,
+          "unresolved": 0,
+          "unmetRate": 0.1296928327645051,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 38
+            },
+            {
+              "outcome": "hit",
+              "count": 255
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1362,
+          "matched": 1314,
+          "unmet": 48,
+          "unresolved": 0,
+          "unmetRate": 0.03524229074889868,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1314
+            },
+            {
+              "outcome": "failed",
+              "count": 6
+            },
+            {
+              "outcome": "missed",
+              "count": 42
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 438,
+          "matched": 438,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 438
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Strong",
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.04916666666666665,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.586249999998664,
+      "timeSampleStd": 0.4744459212184,
+      "lower99": 33.49899063027389,
+      "upper99": 33.67350936972344,
+      "meanMinusTarget": -0.05375000000133667,
+      "meanHits": 0.405,
+      "meanBoostsEarned": 8.0,
+      "meanCompletedBoostPulses": 8.0,
+      "meanFullFinish": 0.865,
+      "meanUnreachableReasons": 0.2,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4360,
+      "unmetIntentions": 40,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.00909090909090909,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 173,
+          "matched": 173,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 173
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 27,
+          "matched": 27,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 27
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2297,
+          "matched": 2297,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2297
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 103,
+          "matched": 81,
+          "unmet": 22,
+          "unresolved": 0,
+          "unmetRate": 0.21359223300970873,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 22
+            },
+            {
+              "outcome": "hit",
+              "count": 81
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1618,
+          "matched": 1600,
+          "unmet": 18,
+          "unresolved": 0,
+          "unmetRate": 0.011124845488257108,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1600
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 17
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 182,
+          "matched": 182,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 182
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "full-flow/FastFlip/Master",
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.04999999999863,
+      "timeSampleStd": 1.3006042767896653E-13,
+      "lower99": 33.04999999999861,
+      "upper99": 33.049999999998654,
+      "meanMinusTarget": -1.3642420526593924E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 4400,
+      "matchedIntentions": 4400,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2400,
+          "matched": 2400,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2400
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Novice",
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.14047619047619048,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 36.396249999998524,
+      "timeSampleStd": 1.069529289926141,
+      "lower99": 36.19954380532522,
+      "upper99": 36.59295619467183,
+      "meanMinusTarget": 0.39624999999852406,
+      "meanHits": 3.61,
+      "meanBoostsEarned": 4.305,
+      "meanCompletedBoostPulses": 4.305,
+      "meanFullFinish": 0.475,
+      "meanUnreachableReasons": 1.065,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 5987,
+      "unmetIntentions": 213,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.03435483870967742,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 95,
+          "matched": 95,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 95
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 105,
+          "matched": 105,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 105
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 3614,
+          "matched": 3454,
+          "unmet": 160,
+          "unresolved": 0,
+          "unmetRate": 0.04427227448810182,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 3454
+            },
+            {
+              "outcome": "hit",
+              "count": 160
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 586,
+          "matched": 562,
+          "unmet": 24,
+          "unresolved": 0,
+          "unmetRate": 0.040955631399317405,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 24
+            },
+            {
+              "outcome": "hit",
+              "count": 562
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 882,
+          "matched": 857,
+          "unmet": 25,
+          "unresolved": 0,
+          "unmetRate": 0.02834467120181406,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 857
+            },
+            {
+              "outcome": "missed",
+              "count": 25
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 918,
+          "matched": 914,
+          "unmet": 4,
+          "unresolved": 0,
+          "unmetRate": 0.004357298474945534,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 4
+            },
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 907
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Amateur",
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.09833333333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.398749999998586,
+      "timeSampleStd": 1.0059925659334952,
+      "lower99": 35.21372938263141,
+      "upper99": 35.58377061736576,
+      "meanMinusTarget": 0.28374999999858375,
+      "meanHits": 2.475,
+      "meanBoostsEarned": 5.63,
+      "meanCompletedBoostPulses": 5.63,
+      "meanFullFinish": 0.605,
+      "meanUnreachableReasons": 0.85,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6030,
+      "unmetIntentions": 170,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.027419354838709678,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 121,
+          "matched": 121,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 121
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 79,
+          "matched": 79,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 79
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 3801,
+          "matched": 3680,
+          "unmet": 121,
+          "unresolved": 0,
+          "unmetRate": 0.03183372796632465,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 3680
+            },
+            {
+              "outcome": "hit",
+              "count": 121
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 399,
+          "matched": 374,
+          "unmet": 25,
+          "unresolved": 0,
+          "unmetRate": 0.06265664160401002,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 25
+            },
+            {
+              "outcome": "hit",
+              "count": 374
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1146,
+          "matched": 1124,
+          "unmet": 22,
+          "unresolved": 0,
+          "unmetRate": 0.019197207678883072,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1124
+            },
+            {
+              "outcome": "missed",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 654,
+          "matched": 652,
+          "unmet": 2,
+          "unresolved": 0,
+          "unmetRate": 0.0030581039755351682,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 2
+            },
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 648
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Confident",
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.07023809523809524,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.70349999999864,
+      "timeSampleStd": 0.9068902910495286,
+      "lower99": 34.53670612177691,
+      "upper99": 34.87029387822037,
+      "meanMinusTarget": 0.17849999999864252,
+      "meanHits": 1.76,
+      "meanBoostsEarned": 6.66,
+      "meanCompletedBoostPulses": 6.66,
+      "meanFullFinish": 0.72,
+      "meanUnreachableReasons": 0.575,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6085,
+      "unmetIntentions": 115,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.018548387096774192,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 144,
+          "matched": 144,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 144
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 56,
+          "matched": 56,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 56
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 3906,
+          "matched": 3827,
+          "unmet": 79,
+          "unresolved": 0,
+          "unmetRate": 0.020225294418842805,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 3827
+            },
+            {
+              "outcome": "hit",
+              "count": 79
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 294,
+          "matched": 273,
+          "unmet": 21,
+          "unresolved": 0,
+          "unmetRate": 0.07142857142857142,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 21
+            },
+            {
+              "outcome": "hit",
+              "count": 273
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1345,
+          "matched": 1331,
+          "unmet": 14,
+          "unresolved": 0,
+          "unmetRate": 0.010408921933085501,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1331
+            },
+            {
+              "outcome": "missed",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 455,
+          "matched": 454,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.002197802197802198,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1
+            },
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 452
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Strong",
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.02809523809523809,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.77274999999864,
+      "timeSampleStd": 0.6133931801603988,
+      "lower99": 33.659935662472414,
+      "upper99": 33.88556433752486,
+      "meanMinusTarget": 0.13274999999863724,
+      "meanHits": 0.73,
+      "meanBoostsEarned": 7.925,
+      "meanCompletedBoostPulses": 7.925,
+      "meanFullFinish": 0.865,
+      "meanUnreachableReasons": 0.225,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6155,
+      "unmetIntentions": 45,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.007258064516129033,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 173,
+          "matched": 173,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 173
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 27,
+          "matched": 27,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 27
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 4075,
+          "matched": 4045,
+          "unmet": 30,
+          "unresolved": 0,
+          "unmetRate": 0.007361963190184049,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 4045
+            },
+            {
+              "outcome": "hit",
+              "count": 30
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 125,
+          "matched": 116,
+          "unmet": 9,
+          "unresolved": 0,
+          "unmetRate": 0.072,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 9
+            },
+            {
+              "outcome": "hit",
+              "count": 116
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1591,
+          "matched": 1585,
+          "unmet": 6,
+          "unresolved": 0,
+          "unmetRate": 0.003771213073538655,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1585
+            },
+            {
+              "outcome": "missed",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 209,
+          "matched": 209,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 209
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/Chosen/Master",
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.04999999999864,
+      "timeSampleStd": 1.3283204720228314E-13,
+      "lower99": 33.04999999999862,
+      "upper99": 33.04999999999866,
+      "meanMinusTarget": -1.3571366253017914E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6200,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 4200,
+          "matched": 4200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 4200
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Novice",
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.14047619047619048,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 36.30699999999857,
+      "timeSampleStd": 1.1746488837094355,
+      "lower99": 36.09096037007157,
+      "upper99": 36.52303962992556,
+      "meanMinusTarget": 0.30699999999856686,
+      "meanHits": 3.445,
+      "meanBoostsEarned": 4.335,
+      "meanCompletedBoostPulses": 4.335,
+      "meanFullFinish": 0.46,
+      "meanUnreachableReasons": 0.855,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6029,
+      "unmetIntentions": 171,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.027580645161290322,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 95,
+          "matched": 92,
+          "unmet": 3,
+          "unresolved": 0,
+          "unmetRate": 0.031578947368421054,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 92
+            },
+            {
+              "outcome": "missed",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 105,
+          "matched": 105,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 105
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 3614,
+          "matched": 3487,
+          "unmet": 127,
+          "unresolved": 0,
+          "unmetRate": 0.03514111787493082,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 3487
+            },
+            {
+              "outcome": "hit",
+              "count": 127
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 586,
+          "matched": 562,
+          "unmet": 24,
+          "unresolved": 0,
+          "unmetRate": 0.040955631399317405,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 24
+            },
+            {
+              "outcome": "hit",
+              "count": 562
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 882,
+          "matched": 866,
+          "unmet": 16,
+          "unresolved": 0,
+          "unmetRate": 0.018140589569160998,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 866
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 15
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 918,
+          "matched": 917,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.0010893246187363835,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1
+            },
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 910
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Amateur",
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.09833333333333333,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.284999999998654,
+      "timeSampleStd": 1.0314038829910988,
+      "lower99": 35.09530577198134,
+      "upper99": 35.47469422801597,
+      "meanMinusTarget": 0.16999999999865167,
+      "meanHits": 2.275,
+      "meanBoostsEarned": 5.675,
+      "meanCompletedBoostPulses": 5.675,
+      "meanFullFinish": 0.6,
+      "meanUnreachableReasons": 0.56,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6088,
+      "unmetIntentions": 112,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.01806451612903226,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 121,
+          "matched": 120,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.008264462809917356,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 120
+            },
+            {
+              "outcome": "missed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 79,
+          "matched": 79,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 79
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 3801,
+          "matched": 3723,
+          "unmet": 78,
+          "unresolved": 0,
+          "unmetRate": 0.020520915548539857,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 3723
+            },
+            {
+              "outcome": "hit",
+              "count": 78
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 399,
+          "matched": 377,
+          "unmet": 22,
+          "unresolved": 0,
+          "unmetRate": 0.05513784461152882,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 22
+            },
+            {
+              "outcome": "hit",
+              "count": 377
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1146,
+          "matched": 1135,
+          "unmet": 11,
+          "unresolved": 0,
+          "unmetRate": 0.009598603839441536,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1135
+            },
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 654,
+          "matched": 654,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 4
+            },
+            {
+              "outcome": "missed",
+              "count": 650
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Confident",
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.07023809523809524,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.64474999999867,
+      "timeSampleStd": 0.9529825898634289,
+      "lower99": 34.46947889652577,
+      "upper99": 34.820021103471575,
+      "meanMinusTarget": 0.11974999999867464,
+      "meanHits": 1.655,
+      "meanBoostsEarned": 6.68,
+      "meanCompletedBoostPulses": 6.68,
+      "meanFullFinish": 0.715,
+      "meanUnreachableReasons": 0.435,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6113,
+      "unmetIntentions": 87,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.014032258064516129,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 144,
+          "matched": 143,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.006944444444444444,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 143
+            },
+            {
+              "outcome": "missed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 56,
+          "matched": 56,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 56
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 3906,
+          "matched": 3849,
+          "unmet": 57,
+          "unresolved": 0,
+          "unmetRate": 0.014592933947772658,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 3849
+            },
+            {
+              "outcome": "hit",
+              "count": 57
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 294,
+          "matched": 274,
+          "unmet": 20,
+          "unresolved": 0,
+          "unmetRate": 0.06802721088435375,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 20
+            },
+            {
+              "outcome": "hit",
+              "count": 274
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1345,
+          "matched": 1336,
+          "unmet": 9,
+          "unresolved": 0,
+          "unmetRate": 0.006691449814126394,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1336
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 455,
+          "matched": 455,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 453
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Strong",
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.02809523809523809,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.747999999998655,
+      "timeSampleStd": 0.5905844137366856,
+      "lower99": 33.639380615982034,
+      "upper99": 33.856619384015275,
+      "meanMinusTarget": 0.10799999999865406,
+      "meanHits": 0.69,
+      "meanBoostsEarned": 7.94,
+      "meanCompletedBoostPulses": 7.94,
+      "meanFullFinish": 0.86,
+      "meanUnreachableReasons": 0.165,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6167,
+      "unmetIntentions": 33,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.00532258064516129,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 173,
+          "matched": 172,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.005780346820809248,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 172
+            },
+            {
+              "outcome": "missed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 27,
+          "matched": 27,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 27
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 4075,
+          "matched": 4054,
+          "unmet": 21,
+          "unresolved": 0,
+          "unmetRate": 0.0051533742331288344,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 4054
+            },
+            {
+              "outcome": "hit",
+              "count": 21
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 125,
+          "matched": 117,
+          "unmet": 8,
+          "unresolved": 0,
+          "unmetRate": 0.064,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 8
+            },
+            {
+              "outcome": "hit",
+              "count": 117
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1591,
+          "matched": 1588,
+          "unmet": 3,
+          "unresolved": 0,
+          "unmetRate": 0.0018856065367693275,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1588
+            },
+            {
+              "outcome": "missed",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 209,
+          "matched": 209,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 209
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "rhythm-cascade/FastFlip/Master",
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.04999999999863,
+      "timeSampleStd": 1.2730320001025406E-13,
+      "lower99": 33.04999999999861,
+      "upper99": 33.049999999998654,
+      "meanMinusTarget": -1.3642420526593924E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 6200,
+      "matchedIntentions": 6200,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 4200,
+          "matched": 4200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 4200
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Novice",
+      "trackId": "mixed-tricks",
+      "profileId": "Chosen",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.26818181818181813,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 36.034499999998566,
+      "timeSampleStd": 0.9657500274800809,
+      "lower99": 35.856880728885045,
+      "upper99": 36.21211927111209,
+      "meanMinusTarget": 0.03449999999856601,
+      "meanHits": 2.825,
+      "meanBoostsEarned": 4.21,
+      "meanCompletedBoostPulses": 4.21,
+      "meanFullFinish": 0.46,
+      "meanUnreachableReasons": 0.48,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4104,
+      "unmetIntentions": 96,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.022857142857142857,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 96,
+          "matched": 92,
+          "unmet": 4,
+          "unresolved": 0,
+          "unmetRate": 0.041666666666666664,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 92
+            },
+            {
+              "outcome": "missed",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 104,
+          "matched": 104,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 104
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1603,
+          "matched": 1603,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 1603
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 597,
+          "matched": 565,
+          "unmet": 32,
+          "unresolved": 0,
+          "unmetRate": 0.05360134003350084,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 32
+            },
+            {
+              "outcome": "hit",
+              "count": 565
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 902,
+          "matched": 842,
+          "unmet": 60,
+          "unresolved": 0,
+          "unmetRate": 0.06651884700665188,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 842
+            },
+            {
+              "outcome": "failed",
+              "count": 17
+            },
+            {
+              "outcome": "missed",
+              "count": 43
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 898,
+          "matched": 898,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 18
+            },
+            {
+              "outcome": "missed",
+              "count": 880
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Amateur",
+      "trackId": "mixed-tricks",
+      "profileId": "Chosen",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1877272727272727,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.102499999998656,
+      "timeSampleStd": 0.8534993001029906,
+      "lower99": 34.945525711345766,
+      "upper99": 35.259474288651546,
+      "meanMinusTarget": -0.012500000001345768,
+      "meanHits": 1.865,
+      "meanBoostsEarned": 5.575,
+      "meanCompletedBoostPulses": 5.575,
+      "meanFullFinish": 0.63,
+      "meanUnreachableReasons": 0.515,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4097,
+      "unmetIntentions": 103,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.024523809523809524,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 126,
+          "matched": 124,
+          "unmet": 2,
+          "unresolved": 0,
+          "unmetRate": 0.015873015873015872,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 124
+            },
+            {
+              "outcome": "missed",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 74,
+          "matched": 72,
+          "unmet": 2,
+          "unresolved": 0,
+          "unmetRate": 0.02702702702702703,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 72
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1787,
+          "matched": 1787,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 1787
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 413,
+          "matched": 373,
+          "unmet": 40,
+          "unresolved": 0,
+          "unmetRate": 0.09685230024213075,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 40
+            },
+            {
+              "outcome": "hit",
+              "count": 373
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1174,
+          "matched": 1115,
+          "unmet": 59,
+          "unresolved": 0,
+          "unmetRate": 0.05025553662691652,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1115
+            },
+            {
+              "outcome": "failed",
+              "count": 11
+            },
+            {
+              "outcome": "missed",
+              "count": 48
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 626,
+          "matched": 626,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 6
+            },
+            {
+              "outcome": "missed",
+              "count": 620
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Confident",
+      "trackId": "mixed-tricks",
+      "profileId": "Chosen",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.13409090909090907,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.521249999998666,
+      "timeSampleStd": 0.71083568732289,
+      "lower99": 34.390514185273176,
+      "upper99": 34.651985814724156,
+      "meanMinusTarget": -0.0037500000013324097,
+      "meanHits": 1.285,
+      "meanBoostsEarned": 6.45,
+      "meanCompletedBoostPulses": 6.45,
+      "meanFullFinish": 0.745,
+      "meanUnreachableReasons": 0.395,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4121,
+      "unmetIntentions": 79,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.01880952380952381,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 148,
+          "matched": 148,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 148
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 52,
+          "matched": 51,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.019230769230769232,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 51
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1918,
+          "matched": 1918,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 1918
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 282,
+          "matched": 257,
+          "unmet": 25,
+          "unresolved": 0,
+          "unmetRate": 0.08865248226950355,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 25
+            },
+            {
+              "outcome": "hit",
+              "count": 257
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1343,
+          "matched": 1290,
+          "unmet": 53,
+          "unresolved": 0,
+          "unmetRate": 0.039463886820551006,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1290
+            },
+            {
+              "outcome": "failed",
+              "count": 8
+            },
+            {
+              "outcome": "missed",
+              "count": 45
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 457,
+          "matched": 457,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 454
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Strong",
+      "trackId": "mixed-tricks",
+      "profileId": "Chosen",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.053636363636363614,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.649749999998654,
+      "timeSampleStd": 0.4226471228486486,
+      "lower99": 33.57201738621402,
+      "upper99": 33.72748261378329,
+      "meanMinusTarget": 0.009749999998653891,
+      "meanHits": 0.43,
+      "meanBoostsEarned": 7.78,
+      "meanCompletedBoostPulses": 7.78,
+      "meanFullFinish": 0.925,
+      "meanUnreachableReasons": 0.28,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4144,
+      "unmetIntentions": 56,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.013333333333333334,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 184,
+          "matched": 184,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 184
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 16,
+          "matched": 15,
+          "unmet": 1,
+          "unresolved": 0,
+          "unmetRate": 0.0625,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 15
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2102,
+          "matched": 2102,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2102
+          }
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 98,
+          "matched": 86,
+          "unmet": 12,
+          "unresolved": 0,
+          "unmetRate": 0.12244897959183673,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 12
+            },
+            {
+              "outcome": "hit",
+              "count": 86
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1599,
+          "matched": 1556,
+          "unmet": 43,
+          "unresolved": 0,
+          "unmetRate": 0.02689180737961226,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1556
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 42
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 201,
+          "matched": 201,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 199
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/Chosen/Master",
+      "trackId": "mixed-tricks",
+      "profileId": "Chosen",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.049999999998626,
+      "timeSampleStd": 1.1585864426204686E-13,
+      "lower99": 33.049999999998604,
+      "upper99": 33.04999999999865,
+      "meanMinusTarget": -1.3713474800169934E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4200,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2200,
+          "matched": 2200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2200
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Novice",
+      "trackId": "mixed-tricks",
+      "profileId": "FastFlip",
+      "difficulty": "Novice",
+      "quality": 0.5,
+      "collectProbability": 0.5,
+      "hitProbability": 0.26818181818181813,
+      "targetMeanTime": 36.0,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 36.06349999999855,
+      "timeSampleStd": 0.9581796759779326,
+      "lower99": 35.88727305637933,
+      "upper99": 36.23972694361777,
+      "meanMinusTarget": 0.06349999999854816,
+      "meanHits": 2.92,
+      "meanBoostsEarned": 4.255,
+      "meanCompletedBoostPulses": 4.255,
+      "meanFullFinish": 0.48,
+      "meanUnreachableReasons": 0.59,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4082,
+      "unmetIntentions": 118,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.028095238095238097,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 96,
+          "matched": 96,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 96
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 104,
+          "matched": 104,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 104
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1603,
+          "matched": 1576,
+          "unmet": 27,
+          "unresolved": 0,
+          "unmetRate": 0.01684341859014348,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1576
+            },
+            {
+              "outcome": "hit",
+              "count": 27
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 597,
+          "matched": 557,
+          "unmet": 40,
+          "unresolved": 0,
+          "unmetRate": 0.06700167504187604,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 40
+            },
+            {
+              "outcome": "hit",
+              "count": 557
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 902,
+          "matched": 851,
+          "unmet": 51,
+          "unresolved": 0,
+          "unmetRate": 0.0565410199556541,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 851
+            },
+            {
+              "outcome": "failed",
+              "count": 10
+            },
+            {
+              "outcome": "missed",
+              "count": 41
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 898,
+          "matched": 898,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 15
+            },
+            {
+              "outcome": "missed",
+              "count": 883
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Amateur",
+      "trackId": "mixed-tricks",
+      "profileId": "FastFlip",
+      "difficulty": "Amateur",
+      "quality": 0.65,
+      "collectProbability": 0.65,
+      "hitProbability": 0.1877272727272727,
+      "targetMeanTime": 35.115,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 35.14399999999864,
+      "timeSampleStd": 0.844812131593977,
+      "lower99": 34.988623442119454,
+      "upper99": 35.29937655787783,
+      "meanMinusTarget": 0.028999999998639225,
+      "meanHits": 1.975,
+      "meanBoostsEarned": 5.62,
+      "meanCompletedBoostPulses": 5.62,
+      "meanFullFinish": 0.63,
+      "meanUnreachableReasons": 0.6,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4080,
+      "unmetIntentions": 120,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.02857142857142857,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 126,
+          "matched": 126,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 126
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 74,
+          "matched": 74,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 74
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1787,
+          "matched": 1761,
+          "unmet": 26,
+          "unresolved": 0,
+          "unmetRate": 0.014549524342473419,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1761
+            },
+            {
+              "outcome": "hit",
+              "count": 26
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 413,
+          "matched": 369,
+          "unmet": 44,
+          "unresolved": 0,
+          "unmetRate": 0.10653753026634383,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 44
+            },
+            {
+              "outcome": "hit",
+              "count": 369
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1174,
+          "matched": 1124,
+          "unmet": 50,
+          "unresolved": 0,
+          "unmetRate": 0.04258943781942078,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1124
+            },
+            {
+              "outcome": "failed",
+              "count": 9
+            },
+            {
+              "outcome": "missed",
+              "count": 41
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 626,
+          "matched": 626,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Confident",
+      "trackId": "mixed-tricks",
+      "profileId": "FastFlip",
+      "difficulty": "Confident",
+      "quality": 0.75,
+      "collectProbability": 0.75,
+      "hitProbability": 0.13409090909090907,
+      "targetMeanTime": 34.525,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 34.561999999998676,
+      "timeSampleStd": 0.7373427777222987,
+      "lower99": 34.426389041662404,
+      "upper99": 34.69761095833495,
+      "meanMinusTarget": 0.036999999998677424,
+      "meanHits": 1.385,
+      "meanBoostsEarned": 6.485,
+      "meanCompletedBoostPulses": 6.485,
+      "meanFullFinish": 0.74,
+      "meanUnreachableReasons": 0.515,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4097,
+      "unmetIntentions": 103,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.024523809523809524,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 148,
+          "matched": 148,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 148
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 52,
+          "matched": 52,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 52
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 1918,
+          "matched": 1892,
+          "unmet": 26,
+          "unresolved": 0,
+          "unmetRate": 0.013555787278415016,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 1892
+            },
+            {
+              "outcome": "hit",
+              "count": 26
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 282,
+          "matched": 251,
+          "unmet": 31,
+          "unresolved": 0,
+          "unmetRate": 0.1099290780141844,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 31
+            },
+            {
+              "outcome": "hit",
+              "count": 251
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1343,
+          "matched": 1297,
+          "unmet": 46,
+          "unresolved": 0,
+          "unmetRate": 0.03425167535368578,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1297
+            },
+            {
+              "outcome": "failed",
+              "count": 7
+            },
+            {
+              "outcome": "missed",
+              "count": 39
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 457,
+          "matched": 457,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 3
+            },
+            {
+              "outcome": "missed",
+              "count": 454
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Strong",
+      "trackId": "mixed-tricks",
+      "profileId": "FastFlip",
+      "difficulty": "Strong",
+      "quality": 0.9,
+      "collectProbability": 0.9,
+      "hitProbability": 0.053636363636363614,
+      "targetMeanTime": 33.64,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "NOT_APPLICABLE",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.66199999999864,
+      "timeSampleStd": 0.5016615608236422,
+      "lower99": 33.569735171374546,
+      "upper99": 33.75426482862274,
+      "meanMinusTarget": 0.02199999999864133,
+      "meanHits": 0.5,
+      "meanBoostsEarned": 7.86,
+      "meanCompletedBoostPulses": 7.86,
+      "meanFullFinish": 0.92,
+      "meanUnreachableReasons": 0.315,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4137,
+      "unmetIntentions": 63,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.015,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 184,
+          "matched": 184,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 184
+          }
+        },
+        {
+          "key": "Finish/skip",
+          "decisions": 16,
+          "matched": 16,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "missed",
+            "count": 16
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2102,
+          "matched": 2083,
+          "unmet": 19,
+          "unresolved": 0,
+          "unmetRate": 0.009039010466222646,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 2083
+            },
+            {
+              "outcome": "hit",
+              "count": 19
+            }
+          ]
+        },
+        {
+          "key": "Obstacle/hit",
+          "decisions": 98,
+          "matched": 81,
+          "unmet": 17,
+          "unresolved": 0,
+          "unmetRate": 0.17346938775510204,
+          "actualOutcomes": [
+            {
+              "outcome": "avoided",
+              "count": 17
+            },
+            {
+              "outcome": "hit",
+              "count": 81
+            }
+          ]
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1599,
+          "matched": 1572,
+          "unmet": 27,
+          "unresolved": 0,
+          "unmetRate": 0.016885553470919325,
+          "actualOutcomes": [
+            {
+              "outcome": "collected",
+              "count": 1572
+            },
+            {
+              "outcome": "failed",
+              "count": 1
+            },
+            {
+              "outcome": "missed",
+              "count": 26
+            }
+          ]
+        },
+        {
+          "key": "Positive/skip",
+          "decisions": 201,
+          "matched": 201,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": [
+            {
+              "outcome": "failed",
+              "count": 2
+            },
+            {
+              "outcome": "missed",
+              "count": 199
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cohortId": "mixed-tricks/FastFlip/Master",
+      "trackId": "mixed-tricks",
+      "profileId": "FastFlip",
+      "difficulty": "Master",
+      "quality": 1.0,
+      "collectProbability": 1.0,
+      "hitProbability": 0.0,
+      "targetMeanTime": 33.05,
+      "cases": 200,
+      "terminalCases": 200,
+      "errors": 0,
+      "masterQuality": "PASS",
+      "timeObserved": 200,
+      "timeComplete": true,
+      "meanTime": 33.049999999998626,
+      "timeSampleStd": 1.1092515840591493E-13,
+      "lower99": 33.049999999998604,
+      "upper99": 33.04999999999865,
+      "meanMinusTarget": -1.3713474800169934E-12,
+      "meanHits": 0.0,
+      "meanBoostsEarned": 9.0,
+      "meanCompletedBoostPulses": 9.0,
+      "meanFullFinish": 1.0,
+      "meanUnreachableReasons": 0.0,
+      "intendedDecisions": 4200,
+      "matchedIntentions": 4200,
+      "unmetIntentions": 0,
+      "unresolvedIntentions": 0,
+      "unmetIntentRate": 0.0,
+      "intentionBreakdown": [
+        {
+          "key": "Finish/collect",
+          "decisions": 200,
+          "matched": 200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 200
+          }
+        },
+        {
+          "key": "Obstacle/avoid",
+          "decisions": 2200,
+          "matched": 2200,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "avoided",
+            "count": 2200
+          }
+        },
+        {
+          "key": "Positive/collect",
+          "decisions": 1800,
+          "matched": 1800,
+          "unmet": 0,
+          "unresolved": 0,
+          "unmetRate": 0.0,
+          "actualOutcomes": {
+            "outcome": "collected",
+            "count": 1800
+          }
+        }
+      ]
+    }
+  ]
+}

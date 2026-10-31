@@ -1,0 +1,83 @@
+{
+  "studyId": "postclip-initial",
+  "phase": "Training",
+  "tracks": [
+    "full-long",
+    "full-short",
+    "full-flow",
+    "rhythm-cascade",
+    "mixed-tricks"
+  ],
+  "profiles": [
+    "Chosen",
+    "FastFlip"
+  ],
+  "levels": [
+    "Novice",
+    "Amateur",
+    "Confident",
+    "Strong",
+    "Master"
+  ],
+  "seedRanges": [
+    {
+      "start": 0,
+      "count": 200
+    }
+  ],
+  "kByPair": [
+    {
+      "trackId": "full-long",
+      "profileId": "Chosen",
+      "k": 1
+    },
+    {
+      "trackId": "full-long",
+      "profileId": "FastFlip",
+      "k": 1
+    },
+    {
+      "trackId": "full-short",
+      "profileId": "Chosen",
+      "k": 1
+    },
+    {
+      "trackId": "full-short",
+      "profileId": "FastFlip",
+      "k": 1
+    },
+    {
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "k": 1
+    },
+    {
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "k": 1
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profileId": "Chosen",
+      "k": 1
+    },
+    {
+      "trackId": "rhythm-cascade",
+      "profileId": "FastFlip",
+      "k": 1
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profileId": "Chosen",
+      "k": 1
+    },
+    {
+      "trackId": "mixed-tricks",
+      "profileId": "FastFlip",
+      "k": 1
+    }
+  ],
+  "camera": "Lagger",
+  "humanInput": "Idle",
+  "recordSelectedInputs": false
+}

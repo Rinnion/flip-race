@@ -1,0 +1,141 @@
+{
+  "kind": "Exact pre-suppression EB0 Core baseline used by isolated equivalence, not current production or release",
+  "archive": "Verification/stochastic-bots-suppression-baseline.zip",
+  "archiveBytes": 355935,
+  "archiveSha256": "A60F4D27422CBB19D844708169344947013C3E833E4BC1DECAEE26688A51D104",
+  "allEntriesByteExact": true,
+  "restoreRoot": "Tools/StochasticLocalProbe/obj",
+  "baselineDllSha256": "53B79A72A7579ADC00E934D108679AFF84B1EB639FC079602102A60BAFBB7749",
+  "files": [
+    {
+      "path": "suppression-baseline-src/BotPlanCatalog.cs",
+      "bytes": 774329,
+      "sha256": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C"
+    },
+    {
+      "path": "suppression-baseline-src/BotPlanShuffle.cs",
+      "bytes": 6332,
+      "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+    },
+    {
+      "path": "suppression-baseline-src/BotRaceController.cs",
+      "bytes": 3821,
+      "sha256": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67"
+    },
+    {
+      "path": "suppression-baseline-src/ContinuousMotion.cs",
+      "bytes": 5613,
+      "sha256": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36"
+    },
+    {
+      "path": "suppression-baseline-src/FinishTargetGeometry.cs",
+      "bytes": 5893,
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "suppression-baseline-src/FlightSettings.cs",
+      "bytes": 5364,
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "suppression-baseline-src/MotionProfiles.cs",
+      "bytes": 2375,
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "suppression-baseline-src/ObstacleGeometry.cs",
+      "bytes": 2723,
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "suppression-baseline-src/RaceSimulation.cs",
+      "bytes": 76739,
+      "sha256": "B97A3C9F3D54C34288AEBD48274CC2F451197818CC3DF77A2DA42A30BE0F7A5C"
+    },
+    {
+      "path": "suppression-baseline-src/RaceSnapshot.cs",
+      "bytes": 5132,
+      "sha256": "E5F52025C2FECFCED0CFA44FFEFC515050B670183FF3DE85E506A8A928D862AB"
+    },
+    {
+      "path": "suppression-baseline-src/StochasticBotController.cs",
+      "bytes": 26117,
+      "sha256": "EB0C4B445CD6DCE8EC421BB5B43194120D91164D4A816B13796ECDC696D963B9"
+    },
+    {
+      "path": "suppression-baseline-src/StochasticBotSettings.cs",
+      "bytes": 3804,
+      "sha256": "392BD5A8060A1DB30F75EA4772B98D1B86958A7A05B029A94E8059AE6F9BED7B"
+    },
+    {
+      "path": "suppression-baseline-src/StochasticTrackMap.cs",
+      "bytes": 7951,
+      "sha256": "374384E8DF23CBC828355E7065FA30127750D38DA51376855DFD9FFAD092470D"
+    },
+    {
+      "path": "suppression-baseline-src/TracksControl.cs",
+      "bytes": 4769,
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "suppression-baseline-src/TracksFull.cs",
+      "bytes": 13232,
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "suppression-baseline-src/TracksMixed.cs",
+      "bytes": 7804,
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "suppression-baseline-src/TracksMixedStage.cs",
+      "bytes": 5749,
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "suppression-baseline-src/TracksRhythm.cs",
+      "bytes": 7284,
+      "sha256": "7B90CF8E786A997B8863FDC677EA5E07155D65898B1D0A53116DAC709F5441D7"
+    },
+    {
+      "path": "suppression-baseline-src/TracksRhythmFull.cs",
+      "bytes": 28403,
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "suppression-baseline-src/TracksRhythmNegatives.cs",
+      "bytes": 2098,
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "suppression-baseline-src/TracksTune.cs",
+      "bytes": 4342,
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "suppression-baseline-src/TracksV3.cs",
+      "bytes": 9351,
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "suppression-baseline-src/TracksV4.cs",
+      "bytes": 3848,
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "suppression-baseline-source-hashes.json",
+      "bytes": 2940,
+      "sha256": "76210037694430B7D33DF939396C484775CF0F4068667D68C004308016223130"
+    },
+    {
+      "path": "suppression-baseline/BaselineCore.csproj",
+      "bytes": 458,
+      "sha256": "46A3CA83A3F2D4FA471D0EED4C78E9EC1E7EB173D64BAF4003006EBAACAF4D9C"
+    },
+    {
+      "path": "suppression-baseline/bin/Debug/net8.0/StochasticSuppressionBaseline.dll",
+      "bytes": 961024,
+      "sha256": "53B79A72A7579ADC00E934D108679AFF84B1EB639FC079602102A60BAFBB7749"
+    }
+  ]
+}

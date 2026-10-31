@@ -1,0 +1,20 @@
+{
+  "kind": "Protocol metadata typo correction before held-out publication",
+  "heldOutExecuted": false,
+  "wrongMetadataValue": 20.601,
+  "actualExecutableAndCorrectMetadataValue": 2.601,
+  "scope": "Only two current protocol JSON metadata numbers corrected. Program TCritical99=2.601, CI computation, probabilities, reports and every immutable old publication remain unchanged. Old frozen StudyProtocol metadata contains the typo; old reported CIs use actual executable2.601.",
+  "actualProgramSha256": "8C651E1784A469FABCA7469C7B05B3B42C850180725425BA5050ABE576CBDD39",
+  "changes": [
+    {
+      "path": "Tools/StochasticValidation/Protocol.json",
+      "oldSha256": "F854429A00D520836655BA6760AAD110377EAC41F32B6912F1DAA38C875A61B5",
+      "newSha256": "266F6CF1CE432FA2A63556D0C6A5FD801F38162E19028C026097C0142F5D605B"
+    },
+    {
+      "path": "Tools/StochasticStatistics/StudyProtocol.json",
+      "oldSha256": "A257F128FC7831F9D2C4063FB6FF08673EDEB050F02CB81C87779E76A7B296B6",
+      "newSha256": "0F599AC2F4C4817E26B68B1628E097054FD8D0468BDFC887673DAD9132820A3E"
+    }
+  ]
+}

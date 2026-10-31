@@ -197,6 +197,10 @@ namespace FlipRace.Presentation
             }
             if (Input.touchCount == 0 && Input.GetMouseButtonDown(0))
                 Pointer(new Vector2(Input.mousePosition.x / uiScale, (Screen.height - Input.mousePosition.y) / uiScale));
+            BeginBotPerformanceFrame(delta);
+            bool botPerformanceFrameCompleted=false;
+            try
+            {
             if (!paused && !showRules && !showTracks && !Portrait)
             {
                 if (Input.GetKeyDown(KeyCode.A)) Act(0);
@@ -212,7 +216,7 @@ namespace FlipRace.Presentation
                     int hits = TotalHits();
                     int boosts = TotalRewards();
                     int slows = TotalSlows();
-                    if(BotEnabled) botController.Advance(delta); else RaceSimulation.Advance(Game, delta);
+                    if(BotEnabled) AdvanceMeasuredBot(delta); else RaceSimulation.Advance(Game, delta);
                     if (oldPhase == "countdown" && Game.Phase == "racing") Beep(startClip);
                     else if (Game.Phase == "countdown" && countdown != (int)Math.Ceiling(Game.CountdownRemaining)) Beep(tapClip);
                     if (hits != TotalHits()) Beep(hitClip);
@@ -221,6 +225,9 @@ namespace FlipRace.Presentation
                     if (winner == null && Game.Winner != null) { Beep(finishClip); winnerReactionAt = animationTime; }
                 }
             }
+            botPerformanceFrameCompleted=true;
+            }
+            finally { EndBotPerformanceFrame(!botPerformanceFrameCompleted); }
             suppressFrame = false;
         }
 

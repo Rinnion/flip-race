@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><StartupObject>ValidationEntry</StartupObject><ImplicitUsings>disable</ImplicitUsings><Nullable>disable</Nullable><NuGetAudit>false</NuGetAudit><EnableDefaultCompileItems>false</EnableDefaultCompileItems><UseSharedCompilation>false</UseSharedCompilation><AssemblyName>StochasticValidation</AssemblyName><Deterministic>true</Deterministic></PropertyGroup>
+<ItemGroup><Compile Include="../../Assets/Scripts/Core/*.cs"/><Compile Include="../StochasticStatistics/Program.cs" Link="SharedStatistics/Program.cs"/><Compile Include="../StochasticStatistics/StudyRunner.cs" Link="SharedStatistics/StudyRunner.cs"/><Compile Include="ValidationRunner.cs"/></ItemGroup>
+</Project>

@@ -1,0 +1,39 @@
+{
+  "status": "PASS_EARLY_NORMAL_PATH_ONLY",
+  "source": "Verification\\stochastic-bots-pilot2-frames.json",
+  "method": "Independent reconstruction from all raw active frames plus matching raw HTML callbacks; no frame/outlier removal; terminal exports checked separately; not final calibrated build acceptance",
+  "runs": [
+    {
+      "track": "full-long",
+      "profile": "Chosen",
+      "level": "Novice",
+      "camera": "Constant",
+      "seed": 4146664421,
+      "activeFrames": 1106,
+      "zeroPlanFrames": 1084,
+      "p95Exact": 1.2999998092651368,
+      "p95HistogramUpper": 1.3,
+      "maximum": 10.300000381469726,
+      "over50": 0,
+      "observedWholeUpdateDeltaOver50": 0,
+      "browserExportMilliseconds": 1.8000001907348633,
+      "csharpExportMilliseconds": 9.5
+    },
+    {
+      "track": "rhythm-cascade",
+      "profile": "Chosen",
+      "level": "Novice",
+      "camera": "Lagger",
+      "seed": 3383575607,
+      "activeFrames": 1143,
+      "zeroPlanFrames": 1109,
+      "p95Exact": 1.5000001907348635,
+      "p95HistogramUpper": 1.55,
+      "maximum": 18.2001,
+      "over50": 0,
+      "observedWholeUpdateDeltaOver50": 0,
+      "browserExportMilliseconds": 1.3999996185302734,
+      "csharpExportMilliseconds": 9.3
+    }
+  ]
+}

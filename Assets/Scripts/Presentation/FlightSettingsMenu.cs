@@ -169,11 +169,11 @@ namespace FlipRace.Presentation
             Game = CreateSelectedFlight(Game, pendingFlightTrack, flightSelection.Settings);
             if (pendingBot)
             {
-                BotPlan selectedPlan=NextBotPlan(Game.Track,flightSelection.Settings,pendingBotDifficulty);
-                Game=RaceSimulation.CreateBotRace(Game.Track,flightSelection.Settings,selectedPlan,pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
+                uint seed=NextBotSeed();
+                Game=RaceSimulation.CreateStochasticBotRace(Game.Track,flightSelection.Settings,pendingBotDifficulty,seed,pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
                 Game.Players[0].CharacterIndex=previousSelection.Players[0].CharacterIndex;
                 Game.Players[1].CharacterIndex=(Game.Players[0].CharacterIndex+1)%CharacterRoster.Count;
-                botController=new BotRaceController(Game);
+                InitializeBotController();
             }
             else if (pendingSolo)
             {

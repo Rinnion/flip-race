@@ -1,0 +1,20 @@
+CASE rhythm-cascade/Chosen/0.5/0/Lagger/0 Finished time=36.750000 hits=2 boosts=0 decisions=31 forecast=491695
+CASE rhythm-cascade/Chosen/0.5/0/Lagger/1 Finished time=36.750000 hits=2 boosts=0 decisions=31 forecast=491695
+CASE rhythm-cascade/Chosen/0.5/0/Lagger/2 Finished time=36.750000 hits=2 boosts=0 decisions=31 forecast=491695
+CASE rhythm-cascade/Chosen/0.5/1/Lagger/0 Finished time=37.500000 hits=6 boosts=5 decisions=31 forecast=499803
+CASE rhythm-cascade/Chosen/0.5/1/Lagger/1 Finished time=37.500000 hits=6 boosts=5 decisions=31 forecast=499803
+CASE rhythm-cascade/Chosen/0.5/1/Lagger/2 Finished time=37.500000 hits=6 boosts=5 decisions=31 forecast=499803
+CASE rhythm-cascade/Chosen/0.5/2/Lagger/0 Finished time=39.100000 hits=8 boosts=3 decisions=31 forecast=571361
+CASE rhythm-cascade/Chosen/0.5/2/Lagger/1 Finished time=39.100000 hits=8 boosts=3 decisions=31 forecast=571361
+CASE rhythm-cascade/Chosen/0.5/2/Lagger/2 Finished time=39.100000 hits=8 boosts=3 decisions=31 forecast=571361
+CASE rhythm-cascade/Chosen/0.5/3/Lagger/0 Finished time=36.600000 hits=3 boosts=3 decisions=31 forecast=534990
+CASE rhythm-cascade/Chosen/0.5/3/Lagger/1 Finished time=36.600000 hits=3 boosts=3 decisions=31 forecast=534990
+CASE rhythm-cascade/Chosen/0.5/3/Lagger/2 Finished time=36.600000 hits=3 boosts=3 decisions=31 forecast=534990
+CASE rhythm-cascade/Chosen/0.5/4/Lagger/0 Finished time=37.000000 hits=5 boosts=5 decisions=31 forecast=599800
+CASE rhythm-cascade/Chosen/0.5/4/Lagger/1 Finished time=37.000000 hits=5 boosts=5 decisions=31 forecast=599800
+CASE rhythm-cascade/Chosen/0.5/4/Lagger/2 Finished time=37.000000 hits=5 boosts=5 decisions=31 forecast=599809
+FAIL cadence rhythm-cascade/Chosen/0.5/4/Lagger/0 vs rhythm-cascade/Chosen/0.5/4/Lagger/2: System.Exception: cadence rhythm-cascade/Chosen/0.5/4/Lagger/0 vs rhythm-cascade/Chosen/0.5/4/Lagger/2: same seed cadence changed selected input timing
+   at StochasticRisk.Need(Boolean ok, String why) in F:\Home\Game\flip-race-unity\Tools\StochasticRisk\Program.cs:line 43
+   at StochasticRisk.CompareCadence(CaseResult a, CaseResult b) in F:\Home\Game\flip-race-unity\Tools\StochasticRisk\Program.cs:line 200
+   at StochasticRisk.Main(String[] args) in F:\Home\Game\flip-race-unity\Tools\StochasticRisk\Program.cs:line 221
+STATUS FAIL cases=15/576 snapshots=125023 sourceStable=True

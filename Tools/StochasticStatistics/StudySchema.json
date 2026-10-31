@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BSTO named Training-only study v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "studyId",
+    "phase",
+    "tracks",
+    "profiles",
+    "levels",
+    "seedRanges",
+    "kByPair"
+  ],
+  "properties": {
+    "studyId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      "maxLength": 64,
+      "not": {
+        "const": "initial"
+      }
+    },
+    "phase": {
+      "const": "Training"
+    },
+    "tracks": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "full-long",
+          "full-short",
+          "full-flow",
+          "rhythm-cascade",
+          "mixed-tricks"
+        ]
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "Chosen",
+          "FastFlip"
+        ]
+      }
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "Novice",
+          "Amateur",
+          "Confident",
+          "Strong",
+          "Master"
+        ]
+      }
+    },
+    "seedRanges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "start",
+          "count"
+        ],
+        "properties": {
+          "start": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999999
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          }
+        }
+      }
+    },
+    "kByPair": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "trackId",
+          "profileId",
+          "k"
+        ],
+        "properties": {
+          "trackId": {
+            "enum": [
+              "full-long",
+              "full-short",
+              "full-flow",
+              "rhythm-cascade",
+              "mixed-tricks"
+            ]
+          },
+          "profileId": {
+            "enum": [
+              "Chosen",
+              "FastFlip"
+            ]
+          },
+          "k": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        }
+      }
+    },
+    "camera": {
+      "enum": [
+        "Lagger",
+        "Constant"
+      ],
+      "default": "Lagger"
+    },
+    "humanInput": {
+      "const": "Idle",
+      "default": "Idle"
+    },
+    "recordSelectedInputs": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "description": "Runtime additionally rejects duplicate JSON fields, overlapping/reserved/overflow ranges, N<200, missing/extra/duplicate pair k, and any nonfinite/out-of-range resulting probability. No clamping. Canonical schedule uses fixed track/profile/level order and ascending unique seeds."
+}

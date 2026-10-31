@@ -1,0 +1,6 @@
+PASS — BSTO01/BSTO02 immutable map and initial time model
+4373 assertions; 20 clean full-reference ordinary solo simulations (10 pairs x two cameras); 20 empty-track baseline simulations; 186 isolated actual collision simulations.
+Every clean reference: finished; all logical goals; nine completed ordinary effects; one full .25 s finish pulse; zero hits/rejections/negative effects/pending effects.
+All pairs Tbase=36, Tmaster=33.05, B=2.95 s. C=6 s for Long/Short/Flow, 10.5 s for Cascade, 5.5 s for Mixed. Gate halves tested on both surface approaches but counted once per logical ID.
+No online choices/calibration/statistical acceptance claimed. Initial q values .5/.65/.75/.9/1 are supported without clamping; B<=0/C<=0/out-of-range are explicitly unsupported.
+Opportunity export uses five explicit DTO fields (id/kind/position/endPosition/obstacleId); serialized JSON round-trip matches every actual map entry in all ten pairs. Source hashes stable during this run, including current controller compilation provenance. Geometry and physics untouched. See JSON for exact inputs/actions/event bounds, terminal metrics, probability rows and source hashes.

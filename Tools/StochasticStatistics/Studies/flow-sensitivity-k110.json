@@ -1,0 +1,38 @@
+{
+  "studyId": "flow-sensitivity-k110",
+  "phase": "Training",
+  "tracks": [
+    "full-flow"
+  ],
+  "profiles": [
+    "Chosen",
+    "FastFlip"
+  ],
+  "levels": [
+    "Novice",
+    "Amateur",
+    "Confident",
+    "Strong"
+  ],
+  "seedRanges": [
+    {
+      "start": 0,
+      "count": 200
+    }
+  ],
+  "kByPair": [
+    {
+      "trackId": "full-flow",
+      "profileId": "Chosen",
+      "k": 1.1
+    },
+    {
+      "trackId": "full-flow",
+      "profileId": "FastFlip",
+      "k": 1.1
+    }
+  ],
+  "camera": "Lagger",
+  "humanInput": "Idle",
+  "recordSelectedInputs": false
+}

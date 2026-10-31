@@ -1,0 +1,1858 @@
+{
+  "status": "FAIL",
+  "sourceHash": "3CF865EFF56CD7D24A5888BBF8362AC370D6933B3667E14BDF990032436873D0",
+  "rows": [
+    {
+      "repeat": 0,
+      "passed": false,
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "seed": 0,
+      "expectedTime": 33.05,
+      "expectedBoosts": 9,
+      "time": 37.54999999999846,
+      "hits": [
+        "full-short-7-before-stone",
+        "full-short-9-large-pad",
+        "full-short-10-low",
+        "full-short-12-after-stone",
+        "full-short-14-high",
+        "full-short-15-low"
+      ],
+      "successes": [
+        "full-short-4-standard-pad-landing",
+        "full-short-5-free-low",
+        "full-short-8-chain-2",
+        "full-short-13-free-mid",
+        "full-short-finish"
+      ],
+      "failures": [
+        "full-short-7-before-stone-ring"
+      ],
+      "BoostsEarned": 4,
+      "CompletedBoosts": 4,
+      "FinishBoostsEarned": 1,
+      "FinishBoostElapsed": 0.25,
+      "replayObservations": 6816,
+      "presses": [
+        {
+          "Time": 0.7090909085490487,
+          "Distance": 155.9999998807907,
+          "Accepted": true,
+          "Cursor": 0,
+          "referenceNearest": 150
+        },
+        {
+          "Time": 3.3181818175947826,
+          "Distance": 729.9999998708566,
+          "Accepted": true,
+          "Cursor": 1,
+          "referenceNearest": 730
+        },
+        {
+          "Time": 6.345998231758234,
+          "Distance": 1396.119610986781,
+          "Accepted": true,
+          "Cursor": 2,
+          "referenceNearest": 1408.1196111528561
+        },
+        {
+          "Time": 7.609090908549278,
+          "Distance": 1739.9999998807907,
+          "Accepted": true,
+          "Cursor": 3,
+          "referenceNearest": 1740
+        },
+        {
+          "Time": 11.314269901861088,
+          "Distance": 2621.13937840947,
+          "Accepted": true,
+          "Cursor": 4,
+          "referenceNearest": 2621.1393785965915
+        },
+        {
+          "Time": 14.218181817594294,
+          "Distance": 3149.9999998708568,
+          "Accepted": true,
+          "Cursor": 5,
+          "referenceNearest": 3150
+        },
+        {
+          "Time": 14.863636362822975,
+          "Distance": 3291.999999821186,
+          "Accepted": true,
+          "Cursor": 6,
+          "referenceNearest": 3292
+        },
+        {
+          "Time": 16.199999999502555,
+          "Distance": 3651.9999998907247,
+          "Accepted": true,
+          "Cursor": 7,
+          "referenceNearest": 3650
+        },
+        {
+          "Time": 17.823629798677914,
+          "Distance": 3899.1985557093426,
+          "Accepted": true,
+          "Cursor": 8,
+          "referenceNearest": 3887.198555809634
+        },
+        {
+          "Time": 18.354545453776826,
+          "Distance": 4015.9999998311205,
+          "Accepted": true,
+          "Cursor": 9,
+          "referenceNearest": 4016
+        },
+        {
+          "Time": 23.08236186840816,
+          "Distance": 4946.11961104995,
+          "Accepted": true,
+          "Cursor": 10,
+          "referenceNearest": 4958.119611152856
+        },
+        {
+          "Time": 26.04545454473169,
+          "Distance": 5597.999999841054,
+          "Accepted": true,
+          "Cursor": 11,
+          "referenceNearest": 5600
+        },
+        {
+          "Time": 27.809090908548775,
+          "Distance": 5875.999999880791,
+          "Accepted": true,
+          "Cursor": 12,
+          "referenceNearest": 5870
+        },
+        {
+          "Time": 30.096088083769686,
+          "Distance": 6379.139378429339,
+          "Accepted": true,
+          "Cursor": 13,
+          "referenceNearest": 6391.139378596592
+        },
+        {
+          "Time": 34.34545454473229,
+          "Distance": 7269.999999841054,
+          "Accepted": true,
+          "Cursor": 14,
+          "referenceNearest": 7270
+        },
+        {
+          "Time": 36.854545453778236,
+          "Distance": 7711.99999983112,
+          "Accepted": true,
+          "Cursor": 15,
+          "referenceNearest": 7706
+        }
+      ],
+      "contacts": [
+        {
+          "kind": "success",
+          "id": "full-short-4-standard-pad-landing",
+          "time": 6.6833333333334535,
+          "distance": 1470.500000083023,
+          "Y": 0.22641509433962265,
+          "VerticalSpeed": 0,
+          "planningCall": 6
+        },
+        {
+          "kind": "success",
+          "id": "full-short-5-free-low",
+          "time": 7.658333333333503,
+          "distance": 1751.5161497699355,
+          "Y": 0.023570693422632315,
+          "VerticalSpeed": 167.95454691740113,
+          "planningCall": 6
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-7-before-stone",
+          "time": 11.974999999999968,
+          "distance": 2766,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "planningCall": 9
+        },
+        {
+          "kind": "failed",
+          "id": "full-short-7-before-stone-ring",
+          "time": 11.974999999999968,
+          "distance": 2766,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "planningCall": 9
+        },
+        {
+          "kind": "success",
+          "id": "full-short-8-chain-2",
+          "time": 15.183333333333115,
+          "distance": 3362.5364681694978,
+          "Y": 0.2963787714391076,
+          "VerticalSpeed": -898.1818203774271,
+          "planningCall": 12
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-9-large-pad",
+          "time": 17.041666666666345,
+          "distance": 3836,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 14
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-10-low",
+          "time": 20.49166666666615,
+          "distance": 4486,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 16
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-12-after-stone",
+          "time": 26.89999999999911,
+          "distance": 5785.999999999866,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 21
+        },
+        {
+          "kind": "success",
+          "id": "full-short-13-free-mid",
+          "time": 30.34999999999891,
+          "distance": 6435.706560839094,
+          "Y": 0.45246754571862974,
+          "VerticalSpeed": 720.5621738189476,
+          "planningCall": 23
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-14-high",
+          "time": 32.55833333333212,
+          "distance": 6986,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 24
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-15-low",
+          "time": 34.96666666666528,
+          "distance": 7406,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "planningCall": 27
+        },
+        {
+          "kind": "success",
+          "id": "full-short-finish",
+          "time": 37.04999999999849,
+          "distance": 7755.840710225368,
+          "Y": 0.2755389463643371,
+          "VerticalSpeed": 562.7272747947208,
+          "planningCall": 28
+        }
+      ],
+      "plans": [
+        {
+          "number": 1,
+          "time": 0.008333333333333333,
+          "distance": 1.8333333333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 1
+        },
+        {
+          "number": 2,
+          "time": 1.4628787871111513,
+          "distance": 321.83333316445345,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 2
+        },
+        {
+          "number": 3,
+          "time": 2.281060605338131,
+          "distance": 501.8333331743876,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 3
+        },
+        {
+          "number": 4,
+          "time": 4.866666666666698,
+          "distance": 1070.666666666673,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 4
+        },
+        {
+          "number": 5,
+          "time": 5.017424241882398,
+          "distance": 1103.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 5
+        },
+        {
+          "number": 6,
+          "time": 6.233333333333431,
+          "distance": 1371.3333333333262,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 6
+        },
+        {
+          "number": 7,
+          "time": 7.752981364156,
+          "distance": 1782.749999941358,
+          "Y": 0.15559995889665257,
+          "VerticalSpeed": 423.50423013812735,
+          "Support": 0,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 7
+        },
+        {
+          "number": 8,
+          "time": 9.86287878711121,
+          "distance": 2301.833333164454,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 8
+        },
+        {
+          "number": 9,
+          "time": 10.31742424188238,
+          "distance": 2401.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 9
+        },
+        {
+          "number": 10,
+          "time": 12.481060606060352,
+          "distance": 2767.8333333333335,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 9
+        },
+        {
+          "number": 11,
+          "time": 12.633333333333264,
+          "distance": 2801.333333333381,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 10
+        },
+        {
+          "number": 12,
+          "time": 13.399999999999888,
+          "distance": 2970.0000000000605,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 11
+        },
+        {
+          "number": 13,
+          "time": 15.517313732284196,
+          "distance": 3472.7499998233598,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 12
+        },
+        {
+          "number": 14,
+          "time": 15.833333333333082,
+          "distance": 3571.333333333429,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 13
+        },
+        {
+          "number": 15,
+          "time": 17.544696969696087,
+          "distance": 3837.8333333333335,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 13
+        },
+        {
+          "number": 16,
+          "time": 18.83333333333291,
+          "distance": 4121.333333333472,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 14
+        },
+        {
+          "number": 17,
+          "time": 20.99924242424152,
+          "distance": 4487.833333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 14
+        },
+        {
+          "number": 18,
+          "time": 21.59999999999942,
+          "distance": 4620.000000000056,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 15
+        },
+        {
+          "number": 19,
+          "time": 21.753787878064557,
+          "distance": 4653.833333174388,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 16
+        },
+        {
+          "number": 20,
+          "time": 25.244696968974033,
+          "distance": 5421.833333174387,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 17
+        },
+        {
+          "number": 21,
+          "time": 25.699242423767874,
+          "distance": 5521.833333229025,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 18
+        },
+        {
+          "number": 22,
+          "time": 27.399999999999082,
+          "distance": 5785.999999999866,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 18
+        },
+        {
+          "number": 23,
+          "time": 28.699242423768105,
+          "distance": 6071.833333229025,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 19
+        },
+        {
+          "number": 24,
+          "time": 30.91679829998192,
+          "distance": 6622.749999833498,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 20
+        },
+        {
+          "number": 25,
+          "time": 33.062878787878894,
+          "distance": 6987.833333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 20
+        },
+        {
+          "number": 26,
+          "time": 33.29999999999872,
+          "distance": 7039.999999999695,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 21
+        },
+        {
+          "number": 27,
+          "time": 34.94469696897478,
+          "distance": 7401.833333174387,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 22
+        },
+        {
+          "number": 28,
+          "time": 35.466666666665255,
+          "distance": 7406.666666666298,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 22
+        }
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:full-short-1-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.24607712461147457,
+          "AtDistance": 0,
+          "AtTime": 0,
+          "HorizonEndDistance": 1000,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            156,
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-2-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6314481111476198,
+          "AtDistance": 319.99999983112014,
+          "AtTime": 1.454545453777818,
+          "HorizonEndDistance": 1319.99999983112,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-3-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.9396236807806417,
+          "AtDistance": 499.99999984105426,
+          "AtTime": 2.2727272720047975,
+          "HorizonEndDistance": 1499.9999998410542,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730,
+            1408.1196111528561
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-4-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5864889939548448,
+          "AtDistance": 1069.999999821186,
+          "AtTime": 4.863636362823575,
+          "HorizonEndDistance": 2069.999999821186,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-4-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.18368837784510106,
+          "AtDistance": 1101.9999998807907,
+          "AtTime": 5.009090908549064,
+          "HorizonEndDistance": 2101.9999998807907,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-5-free-low",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.31981358432676643,
+          "AtDistance": 1369.9999998609223,
+          "AtTime": 6.227272726640686,
+          "HorizonEndDistance": 2369.9999998609223,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1396.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-6-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6142159035662189,
+          "AtDistance": 1779.999999941358,
+          "AtTime": 7.744648030822666,
+          "HorizonEndDistance": 2779.999999941358,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915
+          ]
+        },
+        {
+          "Id": "positive:full-short-7-before-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.04421419359277934,
+          "AtDistance": 2299.9999998311205,
+          "AtTime": 9.854545453777877,
+          "HorizonEndDistance": 3299.9999998311205,
+          "Outcome": "failed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-7-before-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15837415482383221,
+          "AtDistance": 2399.9999998807907,
+          "AtTime": 10.309090908549047,
+          "HorizonEndDistance": 3399.9999998807907,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-1",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.17211234231945127,
+          "AtDistance": 2799.999999860923,
+          "AtTime": 12.627272726640273,
+          "HorizonEndDistance": 3799.999999860923,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-2",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.9251614477252588,
+          "AtDistance": 2969.9999998907247,
+          "AtTime": 13.399999999502906,
+          "HorizonEndDistance": 3969.9999998907247,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650,
+            3887.198555809634
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-9-large-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8981585806468502,
+          "AtDistance": 3469.9999998233598,
+          "AtTime": 15.508980398950863,
+          "HorizonEndDistance": 4469.99999982336,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            3650,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "positive:full-short-9-large-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.646217423141934,
+          "AtDistance": 3569.999999860923,
+          "AtTime": 15.827272726639873,
+          "HorizonEndDistance": 4569.999999860923,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            3652,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-10-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.39479243534151465,
+          "AtDistance": 4119.999999860923,
+          "AtTime": 18.827272726639503,
+          "HorizonEndDistance": 5119.999999860923,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            4958.119611152856
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-11-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5129099119221792,
+          "AtDistance": 4619.999999890724,
+          "AtTime": 21.599999999502455,
+          "HorizonEndDistance": 5619.999999890724,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4958.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "positive:full-short-11-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.44890605576802045,
+          "AtDistance": 4651.999999841055,
+          "AtTime": 21.745454544731224,
+          "HorizonEndDistance": 5651.999999841055,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            4946.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-12-after-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5568137526279315,
+          "AtDistance": 5419.999999841054,
+          "AtTime": 25.2363636356407,
+          "HorizonEndDistance": 6419.999999841054,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            5600,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-12-after-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.8345822665141895,
+          "AtDistance": 5519.999999895692,
+          "AtTime": 25.69090909043454,
+          "HorizonEndDistance": 6519.999999895692,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            5598,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-13-free-mid",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.6700353623600677,
+          "AtDistance": 6069.999999895692,
+          "AtTime": 28.690909090434772,
+          "HorizonEndDistance": 7069.999999895692,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            6379.139378596592
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-14-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15123646974097937,
+          "AtDistance": 6619.999999833498,
+          "AtTime": 30.908464966648587,
+          "HorizonEndDistance": 7619.999999833498,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            7270
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-15-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8865196198457852,
+          "AtDistance": 7039.999999890724,
+          "AtTime": 33.2999999995034,
+          "HorizonEndDistance": 7920,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            7270,
+            7706
+          ]
+        },
+        {
+          "Id": "finish:full-short-finish",
+          "Kind": 2,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.10143847961444408,
+          "AtDistance": 7399.999999841054,
+          "AtTime": 34.93636363564145,
+          "HorizonEndDistance": 7920,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7712
+          ]
+        }
+      ]
+    },
+    {
+      "repeat": 1,
+      "passed": false,
+      "trackId": "full-short",
+      "profile": "FastFlip",
+      "seed": 0,
+      "expectedTime": 33.05,
+      "expectedBoosts": 9,
+      "time": 37.54999999999846,
+      "hits": [
+        "full-short-7-before-stone",
+        "full-short-9-large-pad",
+        "full-short-10-low",
+        "full-short-12-after-stone",
+        "full-short-14-high",
+        "full-short-15-low"
+      ],
+      "successes": [
+        "full-short-4-standard-pad-landing",
+        "full-short-5-free-low",
+        "full-short-8-chain-2",
+        "full-short-13-free-mid",
+        "full-short-finish"
+      ],
+      "failures": [
+        "full-short-7-before-stone-ring"
+      ],
+      "BoostsEarned": 4,
+      "CompletedBoosts": 4,
+      "FinishBoostsEarned": 1,
+      "FinishBoostElapsed": 0.25,
+      "replayObservations": 6816,
+      "presses": [
+        {
+          "Time": 0.7090909085490487,
+          "Distance": 155.9999998807907,
+          "Accepted": true,
+          "Cursor": 0,
+          "referenceNearest": 150
+        },
+        {
+          "Time": 3.3181818175947826,
+          "Distance": 729.9999998708566,
+          "Accepted": true,
+          "Cursor": 1,
+          "referenceNearest": 730
+        },
+        {
+          "Time": 6.345998231758234,
+          "Distance": 1396.119610986781,
+          "Accepted": true,
+          "Cursor": 2,
+          "referenceNearest": 1408.1196111528561
+        },
+        {
+          "Time": 7.609090908549278,
+          "Distance": 1739.9999998807907,
+          "Accepted": true,
+          "Cursor": 3,
+          "referenceNearest": 1740
+        },
+        {
+          "Time": 11.314269901861088,
+          "Distance": 2621.13937840947,
+          "Accepted": true,
+          "Cursor": 4,
+          "referenceNearest": 2621.1393785965915
+        },
+        {
+          "Time": 14.218181817594294,
+          "Distance": 3149.9999998708568,
+          "Accepted": true,
+          "Cursor": 5,
+          "referenceNearest": 3150
+        },
+        {
+          "Time": 14.863636362822975,
+          "Distance": 3291.999999821186,
+          "Accepted": true,
+          "Cursor": 6,
+          "referenceNearest": 3292
+        },
+        {
+          "Time": 16.199999999502555,
+          "Distance": 3651.9999998907247,
+          "Accepted": true,
+          "Cursor": 7,
+          "referenceNearest": 3650
+        },
+        {
+          "Time": 17.823629798677914,
+          "Distance": 3899.1985557093426,
+          "Accepted": true,
+          "Cursor": 8,
+          "referenceNearest": 3887.198555809634
+        },
+        {
+          "Time": 18.354545453776826,
+          "Distance": 4015.9999998311205,
+          "Accepted": true,
+          "Cursor": 9,
+          "referenceNearest": 4016
+        },
+        {
+          "Time": 23.08236186840816,
+          "Distance": 4946.11961104995,
+          "Accepted": true,
+          "Cursor": 10,
+          "referenceNearest": 4958.119611152856
+        },
+        {
+          "Time": 26.04545454473169,
+          "Distance": 5597.999999841054,
+          "Accepted": true,
+          "Cursor": 11,
+          "referenceNearest": 5600
+        },
+        {
+          "Time": 27.809090908548775,
+          "Distance": 5875.999999880791,
+          "Accepted": true,
+          "Cursor": 12,
+          "referenceNearest": 5870
+        },
+        {
+          "Time": 30.096088083769686,
+          "Distance": 6379.139378429339,
+          "Accepted": true,
+          "Cursor": 13,
+          "referenceNearest": 6391.139378596592
+        },
+        {
+          "Time": 34.34545454473229,
+          "Distance": 7269.999999841054,
+          "Accepted": true,
+          "Cursor": 14,
+          "referenceNearest": 7270
+        },
+        {
+          "Time": 36.854545453778236,
+          "Distance": 7711.99999983112,
+          "Accepted": true,
+          "Cursor": 15,
+          "referenceNearest": 7706
+        }
+      ],
+      "contacts": [
+        {
+          "kind": "success",
+          "id": "full-short-4-standard-pad-landing",
+          "time": 6.6833333333334535,
+          "distance": 1470.500000083023,
+          "Y": 0.22641509433962265,
+          "VerticalSpeed": 0,
+          "planningCall": 6
+        },
+        {
+          "kind": "success",
+          "id": "full-short-5-free-low",
+          "time": 7.658333333333503,
+          "distance": 1751.5161497699355,
+          "Y": 0.023570693422632315,
+          "VerticalSpeed": 167.95454691740113,
+          "planningCall": 6
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-7-before-stone",
+          "time": 11.974999999999968,
+          "distance": 2766,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "planningCall": 9
+        },
+        {
+          "kind": "failed",
+          "id": "full-short-7-before-stone-ring",
+          "time": 11.974999999999968,
+          "distance": 2766,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "planningCall": 9
+        },
+        {
+          "kind": "success",
+          "id": "full-short-8-chain-2",
+          "time": 15.183333333333115,
+          "distance": 3362.5364681694978,
+          "Y": 0.2963787714391076,
+          "VerticalSpeed": -898.1818203774271,
+          "planningCall": 12
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-9-large-pad",
+          "time": 17.041666666666345,
+          "distance": 3836,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 14
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-10-low",
+          "time": 20.49166666666615,
+          "distance": 4486,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 16
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-12-after-stone",
+          "time": 26.89999999999911,
+          "distance": 5785.999999999866,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 21
+        },
+        {
+          "kind": "success",
+          "id": "full-short-13-free-mid",
+          "time": 30.34999999999891,
+          "distance": 6435.706560839094,
+          "Y": 0.45246754571862974,
+          "VerticalSpeed": 720.5621738189476,
+          "planningCall": 23
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-14-high",
+          "time": 32.55833333333212,
+          "distance": 6986,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "planningCall": 24
+        },
+        {
+          "kind": "hit",
+          "id": "full-short-15-low",
+          "time": 34.96666666666528,
+          "distance": 7406,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "planningCall": 27
+        },
+        {
+          "kind": "success",
+          "id": "full-short-finish",
+          "time": 37.04999999999849,
+          "distance": 7755.840710225368,
+          "Y": 0.2755389463643371,
+          "VerticalSpeed": 562.7272747947208,
+          "planningCall": 28
+        }
+      ],
+      "plans": [
+        {
+          "number": 1,
+          "time": 0.008333333333333333,
+          "distance": 1.8333333333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 1
+        },
+        {
+          "number": 2,
+          "time": 1.4628787871111513,
+          "distance": 321.83333316445345,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 2
+        },
+        {
+          "number": 3,
+          "time": 2.281060605338131,
+          "distance": 501.8333331743876,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "",
+          "decisions": 3
+        },
+        {
+          "number": 4,
+          "time": 4.866666666666698,
+          "distance": 1070.666666666673,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 4
+        },
+        {
+          "number": 5,
+          "time": 5.017424241882398,
+          "distance": 1103.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 5
+        },
+        {
+          "number": 6,
+          "time": 6.233333333333431,
+          "distance": 1371.3333333333262,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 6
+        },
+        {
+          "number": 7,
+          "time": 7.752981364156,
+          "distance": 1782.749999941358,
+          "Y": 0.15559995889665257,
+          "VerticalSpeed": 423.50423013812735,
+          "Support": 0,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 7
+        },
+        {
+          "number": 8,
+          "time": 9.86287878711121,
+          "distance": 2301.833333164454,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "",
+          "decisions": 8
+        },
+        {
+          "number": 9,
+          "time": 10.31742424188238,
+          "distance": 2401.833333214124,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 9
+        },
+        {
+          "number": 10,
+          "time": 12.481060606060352,
+          "distance": 2767.8333333333335,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 9
+        },
+        {
+          "number": 11,
+          "time": 12.633333333333264,
+          "distance": 2801.333333333381,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 10
+        },
+        {
+          "number": 12,
+          "time": 13.399999999999888,
+          "distance": 2970.0000000000605,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 11
+        },
+        {
+          "number": 13,
+          "time": 15.517313732284196,
+          "distance": 3472.7499998233598,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 12
+        },
+        {
+          "number": 14,
+          "time": 15.833333333333082,
+          "distance": 3571.333333333429,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 13
+        },
+        {
+          "number": 15,
+          "time": 17.544696969696087,
+          "distance": 3837.8333333333335,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 13
+        },
+        {
+          "number": 16,
+          "time": 18.83333333333291,
+          "distance": 4121.333333333472,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 14
+        },
+        {
+          "number": 17,
+          "time": 20.99924242424152,
+          "distance": 4487.833333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 14
+        },
+        {
+          "number": 18,
+          "time": 21.59999999999942,
+          "distance": 4620.000000000056,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 15
+        },
+        {
+          "number": 19,
+          "time": 21.753787878064557,
+          "distance": 4653.833333174388,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 16
+        },
+        {
+          "number": 20,
+          "time": 25.244696968974033,
+          "distance": 5421.833333174387,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 17
+        },
+        {
+          "number": 21,
+          "time": 25.699242423767874,
+          "distance": 5521.833333229025,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 18
+        },
+        {
+          "number": 22,
+          "time": 27.399999999999082,
+          "distance": 5785.999999999866,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 18
+        },
+        {
+          "number": 23,
+          "time": 28.699242423768105,
+          "distance": 6071.833333229025,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 19
+        },
+        {
+          "number": 24,
+          "time": 30.91679829998192,
+          "distance": 6622.749999833498,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 20
+        },
+        {
+          "number": 25,
+          "time": 33.062878787878894,
+          "distance": 6987.833333333333,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 20
+        },
+        {
+          "number": 26,
+          "time": 33.29999999999872,
+          "distance": 7039.999999999695,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": 1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 21
+        },
+        {
+          "number": 27,
+          "time": 34.94469696897478,
+          "distance": 7401.833333174387,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 22
+        },
+        {
+          "number": 28,
+          "time": 35.466666666665255,
+          "distance": 7406.666666666298,
+          "Y": 0,
+          "VerticalSpeed": 0,
+          "Support": 1,
+          "Gravity": -1,
+          "LastPlanningFailure": "master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger",
+          "decisions": 22
+        }
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:full-short-1-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.24607712461147457,
+          "AtDistance": 0,
+          "AtTime": 0,
+          "HorizonEndDistance": 1000,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            156,
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-2-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6314481111476198,
+          "AtDistance": 319.99999983112014,
+          "AtTime": 1.454545453777818,
+          "HorizonEndDistance": 1319.99999983112,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-3-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.9396236807806417,
+          "AtDistance": 499.99999984105426,
+          "AtTime": 2.2727272720047975,
+          "HorizonEndDistance": 1499.9999998410542,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            730,
+            1408.1196111528561
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-4-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5864889939548448,
+          "AtDistance": 1069.999999821186,
+          "AtTime": 4.863636362823575,
+          "HorizonEndDistance": 2069.999999821186,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-4-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.18368837784510106,
+          "AtDistance": 1101.9999998807907,
+          "AtTime": 5.009090908549064,
+          "HorizonEndDistance": 2101.9999998807907,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1408.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "positive:full-short-5-free-low",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.31981358432676643,
+          "AtDistance": 1369.9999998609223,
+          "AtTime": 6.227272726640686,
+          "HorizonEndDistance": 2369.9999998609223,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            1396.1196111528561,
+            1740
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-6-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.6142159035662189,
+          "AtDistance": 1779.999999941358,
+          "AtTime": 7.744648030822666,
+          "HorizonEndDistance": 2779.999999941358,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915
+          ]
+        },
+        {
+          "Id": "positive:full-short-7-before-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.04421419359277934,
+          "AtDistance": 2299.9999998311205,
+          "AtTime": 9.854545453777877,
+          "HorizonEndDistance": 3299.9999998311205,
+          "Outcome": "failed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            2400,
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-7-before-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15837415482383221,
+          "AtDistance": 2399.9999998807907,
+          "AtTime": 10.309090908549047,
+          "HorizonEndDistance": 3399.9999998807907,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            2621.1393785965915,
+            3150,
+            3292
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-1",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.17211234231945127,
+          "AtDistance": 2799.999999860923,
+          "AtTime": 12.627272726640273,
+          "HorizonEndDistance": 3799.999999860923,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650
+          ]
+        },
+        {
+          "Id": "positive:full-short-8-chain-2",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.9251614477252588,
+          "AtDistance": 2969.9999998907247,
+          "AtTime": 13.399999999502906,
+          "HorizonEndDistance": 3969.9999998907247,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            3150,
+            3292,
+            3650,
+            3887.198555809634
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-9-large-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8981585806468502,
+          "AtDistance": 3469.9999998233598,
+          "AtTime": 15.508980398950863,
+          "HorizonEndDistance": 4469.99999982336,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            3650,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "positive:full-short-9-large-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.646217423141934,
+          "AtDistance": 3569.999999860923,
+          "AtTime": 15.827272726639873,
+          "HorizonEndDistance": 4569.999999860923,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            3652,
+            3887.198555809634,
+            4016
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-10-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.39479243534151465,
+          "AtDistance": 4119.999999860923,
+          "AtTime": 18.827272726639503,
+          "HorizonEndDistance": 5119.999999860923,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            4958.119611152856
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-11-standard-pad",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5129099119221792,
+          "AtDistance": 4619.999999890724,
+          "AtTime": 21.599999999502455,
+          "HorizonEndDistance": 5619.999999890724,
+          "Outcome": "avoided",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            4958.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "positive:full-short-11-standard-pad-landing",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.44890605576802045,
+          "AtDistance": 4651.999999841055,
+          "AtTime": 21.745454544731224,
+          "HorizonEndDistance": 5651.999999841055,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            4946.119611152856,
+            5600
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-12-after-stone",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.5568137526279315,
+          "AtDistance": 5419.999999841054,
+          "AtTime": 25.2363636356407,
+          "HorizonEndDistance": 6419.999999841054,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            5600,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-12-after-stone-ring",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.8345822665141895,
+          "AtDistance": 5519.999999895692,
+          "AtTime": 25.69090909043454,
+          "HorizonEndDistance": 6519.999999895692,
+          "Outcome": "missed",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            5598,
+            5870,
+            6391.139378596592
+          ]
+        },
+        {
+          "Id": "positive:full-short-13-free-mid",
+          "Kind": 1,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.6700353623600677,
+          "AtDistance": 6069.999999895692,
+          "AtTime": 28.690909090434772,
+          "HorizonEndDistance": 7069.999999895692,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            6379.139378596592
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-14-high",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.15123646974097937,
+          "AtDistance": 6619.999999833498,
+          "AtTime": 30.908464966648587,
+          "HorizonEndDistance": 7619.999999833498,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            7270
+          ]
+        },
+        {
+          "Id": "obstacle:full-short-15-low",
+          "Kind": 0,
+          "Intent": "avoid",
+          "Probability": 0,
+          "Roll": 0.8865196198457852,
+          "AtDistance": 7039.999999890724,
+          "AtTime": 33.2999999995034,
+          "HorizonEndDistance": 7920,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "SelectedInputs": [
+            7270,
+            7706
+          ]
+        },
+        {
+          "Id": "finish:full-short-finish",
+          "Kind": 2,
+          "Intent": "collect",
+          "Probability": 1,
+          "Roll": 0.10143847961444408,
+          "AtDistance": 7399.999999841054,
+          "AtTime": 34.93636363564145,
+          "HorizonEndDistance": 7920,
+          "Outcome": "collected",
+          "UnreachableReason": "",
+          "SelectedInputs": [
+            7712
+          ]
+        }
+      ]
+    }
+  ]
+}

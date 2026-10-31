@@ -1,0 +1,27 @@
+# Stochastic UI integration check
+
+Run `./Tools/StochasticUiCheck/Run.ps1` from the Unity project, after the Core/UI source freeze.
+
+The check executes actual production Update/Pointer/menu/measure methods with only existing native environment seams (Screen/Input/Time/Prefs/DPR/selection texture acquisition). It covers 1200 setup layouts, 48 viewport/profile/camera input cases, custom gating, legacy modes, deterministic session/attempt seeds and no draws on menu/pause/resize/countdown. Explicit synthetic terminal fixtures exercise repeated attempts; same-attempt factory fixtures isolate repeated human input. Five actual full UI Update races exercise the live controller, both cameras, Master and a lower level. Diagnostics are inspected from their actual managed telemetry builder. Requested and observed trial horizons are separate assertions with 2e-7 numerical tolerance.
+
+This does not establish native rendering, browser performance or physical touch quality. Historical BotUi/BotDiversityUi evidence is unchanged.
+## Per-frame CPU instrumentation
+
+Production instrumentation lives only in BotsPresentation.cs, FlipRaceGame.Update, FlipDiagnostics.cs, the WebGL diagnostic bridge and three HTML observer wrappers. Core physics/planning and menu semantics are unchanged. Source hashes include the bridge and template as well as all Core/Presentation/Web C# files.
+
+`canvas.dataset.flipState` continues to publish small summaries at the existing 20Hz cadence. `botPerformance` reports exact count/sum/max/>50ms counts and nearest-rank p95 upper bounds from .05ms histogram bins. The saturated bin uses the exact maximum as its conservative bound. Advance includes ordinary shared-world simulation. Its synchronous diagnostic distribution includes construction, JSON, layout serialization and synchronous bridge publication; asynchronous HTML work is intentionally separate. `previousDiagnosticsFrame` and `previousDiagnosticsMilliseconds` identify the last completed diagnostic invocation, avoiding recursive self-measurement. `previousTerminalExportMilliseconds` retains the C# terminal serialization/bridge scheduling cost until the next attempt.
+
+After the bot's terminal transition, the C# frame records seal on the next Update; the existing three MutationObserver callback bodies are measured independently with explicit frame/cohort/seed context. A single terminal microtask joins their costs to the C# frames after the queued observers complete. Read the persistent result with:
+
+```js
+const canvas = document.querySelector('canvas');
+const raw = JSON.parse(canvas.dataset.flipBotPerformance);
+const summary = raw.activeAdvanceDiagnosticsAndCallbacks;
+const browserTerminalExportMs = Number(canvas.dataset.flipBotPerformanceBrowserExportMilliseconds);
+const browserTerminalExportOver50 = canvas.dataset.flipBotPerformanceBrowserExportOver50;
+```
+
+The persistent export contains every retained frame (`frame`, `cohort`, `dt`, `elapsed`, `advanceInvoked`, `planCalls`, `advanceMilliseconds`, `diagnosticsMilliseconds`, `diagnosticCalls`), all eligible HTML callback records, and a joined active-frame summary. It survives subsequent 20Hz scalar updates and clears on the first diagnostic report for the next attempt. Both buffers have capacity10000 with explicit overflow counts; `measurementComplete` is false after either overflow. Active frames include zero-plan and terminal-transition frames. Countdown, paused and suppressed frames are separate and do not dilute the active denominator. Post-bot-terminal human continuation is excluded. Terminal joining/stringifying/publication occurs after the active cohort; its cost and >50ms flag persist separately and must also be reported.
+
+This is a conservative execution-cost proxy including ordinary simulation and preexisting diagnostics/HTML callbacks; it does not subtract an earlier baseline or claim isolated net bot CPU. Browser/renderer/GPU/device performance still requires the real WebGL build. The Node bridge check uses a synthetic clock and DOM, and injected managed durations verify accounting rather than performance. The managed check verifies five actual full-Update races retain all active/zero-plan frames with no overflow and freeze on bot terminal. Known-duration checks cover quantiles, cold outliers, diagnostics association, cohort separation, defensive copies, reset and overflow; the actual bridge and actual HTML timing wrapper checks cover asynchronous joining, persistent raw retention, reset and separately retained export work above50ms.
+Update's capture finalizer also runs when the real controller/observer throws. Samples have `captureFault`, with `captureFaultFrames` and `activeCaptureFaultFrames` counters. An active fault makes both scalar `complete` and terminal `measurementComplete` false, even after the run later reaches terminal. The scoped fixture injects exactly one observer exception after a real physical Advance slice, checks the retained CPU duration/partial physical state, resumes the ordinary UI race to terminal, and confirms that the fault remains visible. This is separate from the five normal full races. Initial performance evidence is retained byte-for-byte in stochastic-bots-ui-performance-initial.json; fault-fix evidence uses a distinct report name.
