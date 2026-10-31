@@ -1,6 +1,6 @@
 # STOCHASTIC BOTS — 5.3.0-trial MVP
 
-31October2026. ACCEPTED and LIVE at http://127.0.0.1:4184/. Only final ownedGit recording remains; runtime/build/ZIP frozen after independent acceptance. Stable serverPID149760 serves Builds/WebGL-v5.3.0-base-formula-unpacked-final.
+31October2026. ACCEPTED and LIVE at http://127.0.0.1:4184/. DELIVERY COMPLETE; runtime/build/ZIP frozen after independent acceptance. Stable serverPID149760 serves Builds/WebGL-v5.3.0-base-formula-unpacked-final.
 
 ## Delivered behavior / direct human decisions
 
@@ -19,7 +19,7 @@ OriginalparentuserMessage01a19132-331f-7383-870e-e91a27d9f121 requestedthebot. R
 | BSTO04 | verified | 11caseexactsharedworld/controller/ordinaryreplay,447907checks +ordinaryParity40228snapshots/1448208fieldsPASS; currenthashesmatchtestedsource. |
 | BSTO05 | verified MVP | Two actualdesktop/compact ordinaryruns, existingframecapturecomplete/no>50/nohang. Largeprecisionseriescancellednotstarted, no exactbalance/fun/phoneclaim. |
 | BSTO06 | verified | ExistingUI125530+20JSchecks/fault5fullUpdate cases retained; onlyfactoryformulachangedafterwards, new1165factory+native2runs. Humanpaw/retry/pause/seed/visiblecharactersPASS. |
-| BSTO07 | working Git only | ActualregularWebGL/ZIP/freshunpack/HTTP/sourcehash/independentacceptance/promotionPASS; finalownedcommitsbeingrecorded. |
+| BSTO07 | verified | ActualregularWebGL/ZIP/freshunpack/HTTP/sourcehash/independentacceptance/promotionPASS; ownedGitcommitsrecorded. |
 
 IndependentCatalyticacceptance PASS: Verification/V5-STOCHASTIC-BOTS-CATALYTIC-ACCEPTANCE.md + stochastic-bots-catalytic-base-formula.png. Parent ownnativeLongChosenConfidentConstant verified q.75/pHit.1229166667, movingbot/humanA/ordinarypause/console0. Parent explicitlyhandedbackcontract/acceptance/screenshotforownedcommits. Afterpromotion parentindependentlyreloadedstabletab5: actualDOMversion5.3.0-trial/ready, deliverableleftopen. No furtherparentedits/checksneeded. Source/build/ZIPunchangedafteracceptance.
 
@@ -37,7 +37,10 @@ PureCanPress preservesordinaryguards/ready/lazyFlight; consumes knownillegalno-o
 
 ## Git / preservation
 
-Docscommit a94712232953f013f308df44b3a22353f5f602c8 (onlyBOTarticle/catalog+parentapprovedcontract). Unitysource/proof/acceptancecommitpendingbelow; no push/PR. ForeignUnityVerification/FIX491-RELEASE.md SHA3071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5 unchanged/unstaged. ForeignDocsREADME/untracked preserved. Allnewownedtools/historyretained; generatedbin/obj/Library/Builds/Logs/Releasesbinaryignored, exactrawTrainingignoredonlyafterlosslessgzipverified; no datafiltering/deletion. CRLFdataattrs preserveproofhashes. KnownhistoricalSharedScreenCheckexpected3.9actual3.8466784513710057 staysoutsideBOTscope; currentordinaryregressionPASS.
+Docscommit a94712232953f013f308df44b3a22353f5f602c8 (onlyBOTarticle/catalog+parentapprovedcontract). Unityimplementation/source/proof/acceptancecommit 698e59623986f1a2b6c983873809d812c360096b; no push/PR. ForeignUnityVerification/FIX491-RELEASE.md SHA3071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5 unchanged/unstaged. ForeignDocsREADME/untracked preserved. Allnewownedtools/historyretained; generatedbin/obj/Library/Builds/Logs/Releasesbinaryignored, exactrawTrainingignoredonlyafterlosslessgzipverified; no datafiltering/deletion. CRLFdataattrs preserveproofhashes. KnownhistoricalSharedScreenCheckexpected3.9actual3.8466784513710057 staysoutsideBOTscope; currentordinaryregressionPASS.
 
 Priorpolicydenials allclosedtransparentsupportedoriginalhumancontextreview, exactrefusal/action/allowrecords retained in journals. Noopenblocker, no assistantmessage/documenttreatedasnewhumanapproval. RootcurrentSTATUS supersedesolderprecision/calibrationgates in history. Latestfullchronology: Verification/stochastic-bots-delivery-journal-before-final.md; olderimplementationjournalsretained. No furtheroptionalwork.
 Latest exact full delivery journal SHA256 BDBE3C9F0FE87EFA143E2ED80B7F27E067F6B2A9D4BC6FE761071CEC3E15B4A1
+
+
+FINAL DELIVERY: Unity implementation commit 698e59623986f1a2b6c983873809d812c360096b; docs commit a94712232953f013f308df44b3a22353f5f602c8. This final metadata commit records those actual source revisions; runtime/build/ZIP unchanged. Parent independently confirmed stable4184actualDOM5.3.0-trial afterpromotion. AllBSTO00-07 verified under directuserMVPcriteria. No requiredwork or openblockers remain.
