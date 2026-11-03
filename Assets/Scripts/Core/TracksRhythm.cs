@@ -103,10 +103,12 @@ namespace FlipRace.Core
 #if FLIP_MIX_STAGE
             return TracksMixedStage.All;
 #else
-            var result = new Track[TracksFull.All.Length + TracksRhythm.All.Length + 1];
+            int originalCount = TracksFull.All.Length + TracksRhythm.All.Length + 1;
+            var result = new Track[originalCount + TracksHidden.All.Length];
             Array.Copy(TracksFull.All, result, TracksFull.All.Length);
             Array.Copy(TracksRhythm.All, 0, result, TracksFull.All.Length, TracksRhythm.All.Length);
-            result[result.Length - 1] = TracksMixed.Get();
+            result[originalCount - 1] = TracksMixed.Get();
+            Array.Copy(TracksHidden.All, 0, result, originalCount, TracksHidden.All.Length);
             return result;
 #endif
         }
@@ -115,7 +117,7 @@ namespace FlipRace.Core
 #if FLIP_MIX_STAGE
             foreach (var track in TracksMixedStage.All) if (track.Id == id) return true;
 #endif
-            return TracksFull.IsFull(id) || TracksRhythm.IsFull(id) || id == TracksMixed.Id;
+            return TracksFull.IsFull(id) || TracksRhythm.IsFull(id) || id == TracksMixed.Id || TracksHidden.IsNew(id);
         }
         // Old selections may survive in an open game or an external caller.
         // Legacy index 4/5 must not become a newly appended UI course.
@@ -137,6 +139,7 @@ namespace FlipRace.Core
             foreach (var track in TracksMixedStage.All) if (track.Id == id) return track;
 #endif
             if (id == TracksMixed.Id) return TracksMixed.Get();
+            if (TracksHidden.IsNew(id)) return TracksHidden.Get(id);
             return TracksRhythm.IsFull(id) || id == TracksRhythm.PracticeId ? TracksRhythm.Get(id) : TracksFull.Get(id);
         }
     }

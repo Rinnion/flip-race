@@ -42,6 +42,8 @@ namespace FlipRace.Core
         // Each horizontal offset is relative to X; zero preserves straight gates.
         public double TopOffsetX, BottomOffsetX;
         public string Kind;
+        // Immutable track input. Visibility/collision phase belongs to GameState.
+        public bool Hidden;
     }
 
     public sealed class Cue
@@ -247,6 +249,8 @@ namespace FlipRace.Core
         public PlayerState[] Players = { new PlayerState(0), new PlayerState(1) };
         public double Elapsed;
         public double CountdownRemaining = RaceConfig.CountdownDuration;
+        public double HiddenWarningDuration = .8;
+        public Dictionary<string, HiddenObstacleState> HiddenObstacles = new Dictionary<string, HiddenObstacleState>();
         // null before a finish, boxed player ID for a winner, or "tie".
         public object Winner;
         public double? WinnerAt;
@@ -559,6 +563,7 @@ namespace FlipRace.Core
                     game.CountdownRemaining = RaceConfig.CountdownDuration;
                     game.Winner = null;
                     game.WinnerAt = null;
+                    game.HiddenObstacles.Clear();
                 }
                 return true;
             }
@@ -766,7 +771,7 @@ namespace FlipRace.Core
                 : obstacle.Height + RaceConfig.PlayerRadius;
         }
 
-        private static SurfaceContact NextLanding(PlayerState player, Track track, double horizon, FlightSettings flight)
+        private static SurfaceContact NextLanding(PlayerState player, Track track, double horizon, FlightSettings flight, GameState world)
         {
             if (!player.Flipping || flight.LegacyLinear) return null;
             double y = GetPlayerCenterY(player), vy = player.VerticalSpeed;
@@ -778,6 +783,7 @@ namespace FlipRace.Core
                 foreach (var obstacle in track.Obstacles)
                 {
                     if (obstacle.Id != zone.ObstacleId || (obstacle.Kind != "floor" && obstacle.Kind != "ceiling")) continue;
+                    if (HiddenObstacles.GetPhase(world, obstacle) != HiddenObstaclePhase.Solid) continue;
                     int side = obstacle.Kind == "floor" ? 1 : 0, sign = side == 1 ? 1 : -1;
                     double plane = StonePlane(obstacle);
                     int count = ContinuousMotion.QuadraticRoots(.5 * acceleration, vy, y - plane,
@@ -868,7 +874,7 @@ namespace FlipRace.Core
         // Swept rectangles find the exact first contact even when one frame crosses
         // an entire obstacle. Both halves of a gate share one obstacle ID.
         private static Collision NextCollision(PlayerState player, Track track, double horizon, FlightSettings flight,
-            SurfaceContact landing)
+            SurfaceContact landing, GameState world)
         {
             var radius = RaceConfig.PlayerRadius;
             var verticalTravel = RaceConfig.CorridorHeight - 2 * radius;
@@ -876,6 +882,7 @@ namespace FlipRace.Core
             Collision collision = null;
             foreach (var obstacle in track.Obstacles)
             {
+                if (HiddenObstacles.GetPhase(world, obstacle) != HiddenObstaclePhase.Solid) continue;
                 if (player.HitObstacleIds.Contains(obstacle.Id)) continue;
                 if ((player.Support == SupportKind.Stone && player.SupportObstacleId == obstacle.Id)
                     || (player.EdgeClearObstacleId == obstacle.Id && player.Distance >= obstacle.X + obstacle.Width - Epsilon)) continue;
@@ -1051,7 +1058,7 @@ namespace FlipRace.Core
             return result;
         }
 
-        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, FlightSettings flight, GameState party = null)
+        private static void AdvancePlayer(PlayerState player, Track track, double dt, double elapsed, FlightSettings flight, GameState party = null, GameState world = null)
         {
             if (player.FinishTime.HasValue || player.Status != PlayerStatus.Running) return;
             var remaining = dt;
@@ -1101,11 +1108,12 @@ namespace FlipRace.Core
                 horizon = Math.Min(horizon, edgeTime);
                 double eliminationTime = EliminationTime(party, player, elapsed + dt - remaining, player.CurrentSpeed);
                 horizon = Math.Min(horizon, eliminationTime);
-                var landing = NextLanding(player, track, horizon, flight);
+                var landing = NextLanding(player, track, horizon, flight, world);
                 if (landing != null) horizon = Math.Min(horizon, landing.Time);
-                var collision = NextCollision(player, track, horizon, flight, landing);
+                var collision = NextCollision(player, track, horizon, flight, landing, world);
                 var risk = NextRiskEvent(player, track, horizon, flight, landing ?? surface);
                 var moving = Math.Min(collision != null ? collision.Time : horizon, risk != null ? risk.Time : horizon);
+                HiddenObstacles.ObserveMotion(world, player, moving, elapsed + dt - remaining);
                 MovePlayer(player, moving, flight);
                 remaining -= moving;
                 // Terminal boundaries share the swept effects/collision timeline.
@@ -1329,11 +1337,19 @@ namespace FlipRace.Core
             }
             if (game.Phase != "racing" || dt <= 0) return;
             var flight = Settings(game);
+            bool hidden = HiddenObstacles.HasHidden(game.Track);
             if (game.UsesSharedRaceCamera)
             {
-                foreach (var player in game.Players) AdvancePlayer(player, game.Track, dt, game.Elapsed, flight, game);
-                game.Elapsed += dt;
-                ResolveFinish(game);
+                do
+                {
+                    if (hidden) HiddenObstacles.Update(game);
+                    double step = hidden ? Math.Min(dt, HiddenObstacles.StepLimit(game)) : dt;
+                    foreach (var player in game.Players) AdvancePlayer(player, game.Track, step, game.Elapsed, flight, game, hidden ? game : null);
+                    game.Elapsed += step;
+                    dt -= step;
+                    if (hidden) HiddenObstacles.Update(game);
+                    ResolveFinish(game);
+                } while (dt > 0 && game.Phase == "racing");
                 return;
             }
             double maximumSpeed = game.Track.RiskZones.Length > 0 ? RaceConfig.Speed * RaceConfig.BoostMultiplier : RaceConfig.Speed;
@@ -1341,6 +1357,7 @@ namespace FlipRace.Core
                 if (zone.IsFinish) { maximumSpeed = RaceConfig.FinishBoostSpeed; break; }
             while (dt > 0 && game.Phase == "racing")
             {
+                if (hidden) HiddenObstacles.Update(game);
                 // Stop at the earliest possible finish so a large step cannot let
                 // the other player run beyond the winner's grace deadline.
                 var finishHorizon = double.PositiveInfinity;
@@ -1351,9 +1368,11 @@ namespace FlipRace.Core
                 var graceHorizon = game.WinnerAt.HasValue
                     ? game.WinnerAt.Value + RaceConfig.FinishGrace - game.Elapsed : double.PositiveInfinity;
                 var step = Math.Min(dt, Math.Min(finishHorizon, Math.Max(0, graceHorizon)));
-                foreach (var player in game.Players) AdvancePlayer(player, game.Track, step, game.Elapsed, flight);
+                if (hidden) step = Math.Min(step, HiddenObstacles.StepLimit(game));
+                foreach (var player in game.Players) AdvancePlayer(player, game.Track, step, game.Elapsed, flight, world: hidden ? game : null);
                 game.Elapsed += step;
                 dt -= step;
+                if (hidden) HiddenObstacles.Update(game);
                 ResolveFinish(game);
                 if (step <= 0) break;
             }

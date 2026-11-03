@@ -35,6 +35,14 @@ namespace FlipRace.Presentation
                 float left=(float)view.WorldX(ObstacleGeometry.Left(obstacle));
                 float right=(float)view.WorldX(ObstacleGeometry.Right(obstacle));
                 if(right< -35||left>w+35)continue;
+                var phase=HiddenObstacles.GetPhase(game,obstacle);
+                if(phase==HiddenObstaclePhase.Hidden)continue;
+                if(phase==HiddenObstaclePhase.Warning) {
+                    if(ObstacleGeometry.TryGetBand(obstacle,0,out var warningBand))
+                        HiddenObstacleOutline((float)view.WorldX(warningBand.X),(float)view.WorldY(warningBand.Y),
+                            (float)warningBand.Width*sx,(float)warningBand.Height*sy);
+                    continue;
+                }
                 // Personal collision immunity never fades shared physical geometry.
                 if(obstacle.Kind=="gate") {
                     for(int part=0;part<2;part++)if(ObstacleGeometry.TryGetBand(obstacle,part,out var band))
@@ -114,6 +122,7 @@ namespace FlipRace.Presentation
             float radius=Mathf.Max(6.5f,(float)(zone.Radius+4)*sy),badgeY=y-radius-8;
             if(zone.IsLanding) {
                 foreach(var stone in game.Track.Obstacles)if(stone.Id==zone.ObstacleId) {
+                    if(HiddenObstacles.GetPhase(game,stone)!=HiddenObstaclePhase.Solid)return;
                     bool ceiling=stone.Kind=="ceiling";
                     y=(float)view.WorldY(ceiling?stone.Height:RaceConfig.CorridorHeight-stone.Height);
                     LandingPad(x,y,(float)(zone.LandingWidth*view.ScaleX),ceiling,!anyAvailable,time);

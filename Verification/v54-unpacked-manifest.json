@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-03T17:58:38.996Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v5.4.0-hidden-tracks-unpacked",
+  "fileCount": 5,
+  "totalBytes": 9320441,
+  "totalMiB": 8.889,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v5.4.0-hidden-tracks.data.unityweb",
+    "Build/WebGL-v5.4.0-hidden-tracks.framework.js.unityweb",
+    "Build/WebGL-v5.4.0-hidden-tracks.loader.js",
+    "Build/WebGL-v5.4.0-hidden-tracks.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v5.4.0-hidden-tracks.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v5.4.0-hidden-tracks.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v5.4.0-hidden-tracks.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v5.4.0-hidden-tracks.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v5.4.0-hidden-tracks.data.unityweb",
+      "bytes": 1929104,
+      "sha256": "4631bd3dbc7a0e7a6763994e80c6a67c5dcc9a15bd795e487a6d16b6fe1427ed"
+    },
+    {
+      "path": "Build/WebGL-v5.4.0-hidden-tracks.framework.js.unityweb",
+      "bytes": 90901,
+      "sha256": "51d9eb75329c05f896593178a604ef81d424c435b4597ca4faaf9ccd5a092020"
+    },
+    {
+      "path": "Build/WebGL-v5.4.0-hidden-tracks.loader.js",
+      "bytes": 39788,
+      "sha256": "5cff4022eba2e688d006f96747dbdda37fdd7b7772483f021e3f2a8cde93f745"
+    },
+    {
+      "path": "Build/WebGL-v5.4.0-hidden-tracks.wasm.unityweb",
+      "bytes": 7247257,
+      "sha256": "55ec73ebe8d7e14f29e1d6a69a602dc17ca458b3d3547d9caa7afdaeb1d347b3"
+    },
+    {
+      "path": "index.html",
+      "bytes": 13391,
+      "sha256": "645eb10b141561d116b02614688883c0cc7ac2a3fb2c370fcb7cb39f55562526"
+    }
+  ],
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks."
+}

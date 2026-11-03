@@ -225,6 +225,15 @@ namespace FlipRace.Presentation
                 float right = WorldX(ObstacleGeometry.Right(obstacle), player.Distance, anchor, sx);
                 float width = (float)obstacle.Width * sx;
                 if (right < -35 || x > w + 35) continue;
+                var phase = HiddenObstacles.GetPhase(game, obstacle);
+                if (phase == HiddenObstaclePhase.Hidden) continue;
+                if (phase == HiddenObstaclePhase.Warning)
+                {
+                    if (ObstacleGeometry.TryGetBand(obstacle, 0, out var warningBand))
+                        HiddenObstacleOutline(WorldX(warningBand.X, player.Distance, anchor, sx),
+                            top + (float)warningBand.Y * sy, (float)warningBand.Width * sx, (float)warningBand.Height * sy);
+                    continue;
+                }
                 bool hit = player.HitObstacleIds.Contains(obstacle.Id);
                 if (obstacle.Kind == "gate")
                 {
@@ -268,6 +277,7 @@ namespace FlipRace.Presentation
                     foreach (var stone in game.Track.Obstacles)
                         if (stone.Id == zone.ObstacleId)
                         {
+                            if (HiddenObstacles.GetPhase(game, stone) != HiddenObstaclePhase.Solid) break;
                             bool ceiling = stone.Kind == "ceiling";
                             float face = ceiling ? top + (float)stone.Height * sy : bottom - (float)stone.Height * sy;
                             LandingPad(ringX, face, (float)zone.LandingWidth * sx, ceiling,

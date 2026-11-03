@@ -23,6 +23,12 @@ namespace FlipRace.Core
             var copies = new Dictionary<object, object>(ReferenceComparer.Instance);
             var copy = source.SnapshotShell();
             copies.Add(source, copy);
+            if (source.HiddenObstacles != null)
+            {
+                copy.HiddenObstacles = new Dictionary<string, HiddenObstacleState>(source.HiddenObstacles.Comparer);
+                foreach (var pair in source.HiddenObstacles)
+                    copy.HiddenObstacles.Add(pair.Key, pair.Value.Copy());
+            }
             if (source.Players != null)
             {
                 copy.Players = new PlayerState[source.Players.Length];
