@@ -39,7 +39,7 @@ namespace FlipRace.Presentation
                 if(phase==HiddenObstaclePhase.Hidden)continue;
                 if(phase==HiddenObstaclePhase.Warning) {
                     if(ObstacleGeometry.TryGetBand(obstacle,0,out var warningBand))
-                        HiddenObstacleOutline((float)view.WorldX(warningBand.X),(float)view.WorldY(warningBand.Y),
+                        HiddenObstacleWarning(game,obstacle,(float)view.WorldX(warningBand.X),(float)view.WorldY(warningBand.Y),
                             (float)warningBand.Width*sx,(float)warningBand.Height*sy);
                     continue;
                 }

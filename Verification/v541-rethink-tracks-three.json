@@ -1,0 +1,6112 @@
+{
+  "m2": {
+    "name": "M2 cancellation",
+    "entries": [
+      {
+        "entryJitterMs": -50,
+        "signal": {
+          "id": "rethink-m2-cancel-landing",
+          "phase": "Warning",
+          "x": 1520.5000000000089,
+          "time": 6.911363636363619,
+          "y": 147.23828124999912,
+          "vy": -134.6875,
+          "air": true,
+          "revealedAt": 6.909090909090852,
+          "solidAt": null
+        },
+        "firstSuccessfulInput": {
+          "requested": 1520,
+          "x": 1520,
+          "time": 6.909090909090852,
+          "y": 147.54610020661613,
+          "vy": -136.1931818182081,
+          "speed": 220,
+          "effect": null,
+          "effectRemaining": null,
+          "Flipping": true,
+          "support": "None",
+          "SupportSide": 1,
+          "phases": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning"
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden"
+            }
+          ]
+        },
+        "lastSuccessfulInput": {
+          "requested": 1625,
+          "x": 1625,
+          "time": 7.386363636363511,
+          "y": 157.99999999998013,
+          "vy": 179.99999999993466,
+          "speed": 220,
+          "effect": null,
+          "effectRemaining": null,
+          "Flipping": true,
+          "support": "None",
+          "SupportSide": 1,
+          "phases": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden"
+            }
+          ]
+        },
+        "windowSeconds": 0.47727272727265824,
+        "lastInputAfterSignal": 0.47727272727265824,
+        "meaning": "Post-reveal correction window",
+        "points": [
+          {
+            "x": 1520,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.909090909090852,
+            "y": 147.54610020661613,
+            "vy": -136.1931818182081,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1525,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.931818181818121,
+            "y": 144.62190082645054,
+            "vy": -121.13636363639198,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1530,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.954545454545391,
+            "y": 142.03990185950798,
+            "vy": -106.07954545457544,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1535,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.97727272727266,
+            "y": 139.80010330578844,
+            "vy": -91.02272727275931,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1540,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.99999999999993,
+            "y": 137.90250516529204,
+            "vy": -75.96590909094277,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1545,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.0227272727272,
+            "y": 136.34710743801867,
+            "vy": -60.909090909126654,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1550,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.0454545454544695,
+            "y": 135.1339101239683,
+            "vy": -45.852272727310115,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1555,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.068181818181738,
+            "y": 134.26291322314103,
+            "vy": -30.795454545493985,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1560,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.090909090909008,
+            "y": 133.73411673553682,
+            "vy": -15.738636363677447,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1565,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.113636363636277,
+            "y": 133.54752066115566,
+            "vy": -0.6818181818613183,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1570,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.136363636363547,
+            "y": 133.70312499999756,
+            "vy": 14.37499999995522,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1575,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.159090909090816,
+            "y": 134.20092975206256,
+            "vy": 29.431818181771348,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1580,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.181818181818085,
+            "y": 135.0409349173505,
+            "vy": 44.488636363587474,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1585,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.204545454545355,
+            "y": 136.22314049586157,
+            "vy": 59.54545454540401,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1590,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.2272727272726245,
+            "y": 137.74754648759577,
+            "vy": 74.60227272722014,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1595,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.249999999999894,
+            "y": 139.6141528925529,
+            "vy": 89.65909090903668,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1600,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.272727272727163,
+            "y": 141.82295971073307,
+            "vy": 104.7159090908528,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1605,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.295454545454433,
+            "y": 144.3739669421364,
+            "vy": 119.77272727266934,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1610,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.318181818181702,
+            "y": 147.26717458676274,
+            "vy": 134.82954545448547,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1615,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.340909090908972,
+            "y": 150.50258264461215,
+            "vy": 149.886363636302,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1620,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.363636363636241,
+            "y": 154.08019111568456,
+            "vy": 164.94318181811815,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1625,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.386363636363511,
+            "y": 157.99999999998013,
+            "vy": 179.99999999993466,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1630,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.4090909090907795,
+            "y": 162.26200929749865,
+            "vy": 195.0568181817508,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1635,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.431818181818048,
+            "y": 166.86621900824017,
+            "vy": 210.11363636356694,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1640,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.454545454545318,
+            "y": 171.81262913220496,
+            "vy": 225.17045454538348,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1645,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.477272727272588,
+            "y": 177.1012396693926,
+            "vy": 240.2272727271996,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1650,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.499999999999858,
+            "y": 182.73205061980343,
+            "vy": 255.28409090901613,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1655,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.522727272727127,
+            "y": 188.70506198343725,
+            "vy": 270.34090909083227,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1660,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.545454545454397,
+            "y": 195.02027376029426,
+            "vy": 285.3977272726488,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1665,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.568181818181666,
+            "y": 201.6776859503741,
+            "vy": 300.45454545446495,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1670,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.590909090908935,
+            "y": 208.6772985536772,
+            "vy": 315.5113636362815,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1675,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.613636363636204,
+            "y": 216.0191115702032,
+            "vy": 330.5681818180976,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1680,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.636363636363474,
+            "y": 223.70312499995245,
+            "vy": 345.62499999991417,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1685,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.659090909090743,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1690,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.681818181818013,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1695,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.704545454545283,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1700,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.727272727272552,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1705,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.7499999999998215,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1710,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.77272727272709,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1715,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.79545454545436,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1720,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.818181818181629,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1725,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.840909090908899,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1730,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.863636363636168,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1735,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.886363636363438,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1740,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.909090909090707,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          }
+        ],
+        "firstWitness": {
+          "Hits": 0,
+          "Rejected": 0,
+          "Earned": 0,
+          "Completed": 0,
+          "FinishEarned": 0,
+          "StoneLandings": 0,
+          "Finish": 17.99999999999835,
+          "Gain": 0,
+          "FinishGain": 0,
+          "Clean": true,
+          "Inputs": [
+            {
+              "requested": 360,
+              "x": 360,
+              "time": 1.636363636363615,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 900,
+              "x": 900,
+              "time": 4.090909090909325,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 944,
+              "x": 943.9999999999964,
+              "time": 4.290909090909321,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1190,
+              "x": 1190,
+              "time": 5.409090909091068,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1234,
+              "x": 1234,
+              "time": 5.60909090909104,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1449,
+              "x": 1449,
+              "time": 6.586363636363626,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1520,
+              "x": 1520,
+              "time": 6.909090909090852,
+              "y": 147.54610020661613,
+              "vy": -136.1931818182081,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Warning"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1960,
+              "x": 1960,
+              "time": 8.909090909090402,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2004,
+              "x": 2004,
+              "time": 9.10909090909034,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2684,
+              "x": 2684,
+              "time": 12.19999999999903,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2935.7735849056603,
+              "x": 2935.7735849056603,
+              "time": 13.344425385933716,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3400,
+              "x": 3400,
+              "time": 15.454545454544103,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3444,
+              "x": 3443.9999999999964,
+              "time": 15.654545454544063,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3711.7735849056603,
+              "x": 3711.7735849056603,
+              "time": 16.87169811320603,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            }
+          ],
+          "Landings": [
+            {
+              "x": 593.1999999999965,
+              "time": 2.696363636363654,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1039.6999999999919,
+              "time": 4.725909090909312,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1329.7000000000116,
+              "time": 6.044090909091031,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1622.3000000000127,
+              "time": 7.374090909090842,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2099.700000000001,
+              "time": 9.544090909090253,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2917.199999999981,
+              "time": 13.25999999999882,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3168.9735849056415,
+              "time": 14.404425385933505,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3539.6999999999884,
+              "time": 16.089545454543977,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3944.9735849056415,
+              "time": 17.93169811320582,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            }
+          ],
+          "Events": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Warning",
+              "x": 440.30000000000166,
+              "time": 2.0013636363636076,
+              "y": 142.38078124999905,
+              "vy": -108.1875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid",
+              "x": 517.3000000000028,
+              "time": 2.3513636363636308,
+              "y": 145.0932812499981,
+              "vy": 123.6875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": 2.3499999999999637
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning",
+              "x": 1520,
+              "time": 6.909090909090852,
+              "y": 147.54610020661613,
+              "vy": -136.1931818182081,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid",
+              "x": 1597.0000000000095,
+              "time": 7.259090909090845,
+              "y": 59.3003615702436,
+              "vy": -368.0681818182081,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": 7.259090909090845
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Warning",
+              "x": 2800.599999999991,
+              "time": 12.729999999998924,
+              "y": 133.54812499999858,
+              "vy": 1.125,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Solid",
+              "x": 2877.5999999999844,
+              "time": 13.079999999998856,
+              "y": 174.5199999999977,
+              "vy": 233,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": 13.077272727271696
+            }
+          ],
+          "HitIds": [],
+          "RewardIds": []
+        },
+        "lastWitness": {
+          "Hits": 0,
+          "Rejected": 0,
+          "Earned": 0,
+          "Completed": 0,
+          "FinishEarned": 0,
+          "StoneLandings": 0,
+          "Finish": 17.99999999999835,
+          "Gain": 0,
+          "FinishGain": 0,
+          "Clean": true,
+          "Inputs": [
+            {
+              "requested": 360,
+              "x": 360,
+              "time": 1.636363636363615,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 900,
+              "x": 900,
+              "time": 4.090909090909325,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 944,
+              "x": 943.9999999999964,
+              "time": 4.290909090909321,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1190,
+              "x": 1190,
+              "time": 5.409090909091068,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1234,
+              "x": 1234,
+              "time": 5.60909090909104,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1449,
+              "x": 1449,
+              "time": 6.586363636363626,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1625,
+              "x": 1625,
+              "time": 7.386363636363511,
+              "y": 157.99999999998013,
+              "vy": 179.99999999993466,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1960,
+              "x": 1960,
+              "time": 8.909090909090402,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2004,
+              "x": 2004,
+              "time": 9.10909090909034,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2684,
+              "x": 2684,
+              "time": 12.19999999999903,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2935.7735849056603,
+              "x": 2935.7735849056603,
+              "time": 13.344425385933716,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3400,
+              "x": 3400,
+              "time": 15.454545454544103,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3444,
+              "x": 3443.9999999999964,
+              "time": 15.654545454544063,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3711.7735849056603,
+              "x": 3711.7735849056603,
+              "time": 16.87169811320603,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            }
+          ],
+          "Landings": [
+            {
+              "x": 593.1999999999965,
+              "time": 2.696363636363654,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1039.6999999999919,
+              "time": 4.725909090909312,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1329.7000000000116,
+              "time": 6.044090909091031,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1841.7000000000266,
+              "time": 8.371363636363423,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2099.700000000001,
+              "time": 9.544090909090253,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2917.199999999981,
+              "time": 13.25999999999882,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3168.9735849056415,
+              "time": 14.404425385933505,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3539.6999999999884,
+              "time": 16.089545454543977,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3944.9735849056415,
+              "time": 17.93169811320582,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            }
+          ],
+          "Events": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Warning",
+              "x": 440.30000000000166,
+              "time": 2.0013636363636076,
+              "y": 142.38078124999905,
+              "vy": -108.1875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid",
+              "x": 517.3000000000028,
+              "time": 2.3513636363636308,
+              "y": 145.0932812499981,
+              "vy": 123.6875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": 2.3499999999999637
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning",
+              "x": 1520.5000000000089,
+              "time": 6.911363636363619,
+              "y": 147.23828124999912,
+              "vy": -134.6875,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid",
+              "x": 1597.5000000000184,
+              "time": 7.261363636363612,
+              "y": 140.67578124999818,
+              "vy": 97.1875,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": 7.259090909090852
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Warning",
+              "x": 2800.599999999991,
+              "time": 12.729999999998924,
+              "y": 133.54812499999858,
+              "vy": 1.125,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Solid",
+              "x": 2877.5999999999844,
+              "time": 13.079999999998856,
+              "y": 174.5199999999977,
+              "vy": 233,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": 13.077272727271696
+            }
+          ],
+          "HitIds": [],
+          "RewardIds": []
+        },
+        "wrong": null
+      },
+      {
+        "entryJitterMs": 0,
+        "signal": {
+          "id": "rethink-m2-cancel-landing",
+          "phase": "Warning",
+          "x": 1520.5000000000075,
+          "time": 6.911363636363613,
+          "y": 154.8007812499993,
+          "vy": -167.8125,
+          "air": true,
+          "revealedAt": 6.909090909090852,
+          "solidAt": null
+        },
+        "firstSuccessfulInput": {
+          "requested": 1520,
+          "x": 1520,
+          "time": 6.909090909090852,
+          "y": 155.18388429752565,
+          "vy": -169.318181818204,
+          "speed": 220,
+          "effect": null,
+          "effectRemaining": null,
+          "Flipping": true,
+          "support": "None",
+          "SupportSide": 1,
+          "phases": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning"
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden"
+            }
+          ]
+        },
+        "lastSuccessfulInput": {
+          "requested": 1635,
+          "x": 1635,
+          "time": 7.431818181818048,
+          "y": 157.1886621900631,
+          "vy": 176.98863636357103,
+          "speed": 220,
+          "effect": null,
+          "effectRemaining": null,
+          "Flipping": true,
+          "support": "None",
+          "SupportSide": 1,
+          "phases": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden"
+            }
+          ]
+        },
+        "windowSeconds": 0.5227272727271961,
+        "lastInputAfterSignal": 0.5227272727271961,
+        "meaning": "Post-reveal correction window",
+        "points": [
+          {
+            "x": 1520,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.909090909090852,
+            "y": 155.18388429752565,
+            "vy": -169.318181818204,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1525,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.931818181818121,
+            "y": 151.50684400826933,
+            "vy": -154.26136363638787,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1530,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.954545454545391,
+            "y": 148.17200413223597,
+            "vy": -139.20454545457133,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1535,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.97727272727266,
+            "y": 145.1793646694258,
+            "vy": -124.1477272727552,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1540,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.99999999999993,
+            "y": 142.52892561983865,
+            "vy": -109.09090909093867,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1545,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.0227272727272,
+            "y": 140.22068698347456,
+            "vy": -94.03409090912254,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1550,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.0454545454544695,
+            "y": 138.25464876033348,
+            "vy": -78.977272727306,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1555,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.068181818181738,
+            "y": 136.63081095041548,
+            "vy": -63.920454545489875,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1560,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.090909090909008,
+            "y": 135.34917355372053,
+            "vy": -48.863636363673336,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1565,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.113636363636277,
+            "y": 134.40973657024864,
+            "vy": -33.80681818185721,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1570,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.136363636363547,
+            "y": 133.81249999999983,
+            "vy": -18.75000000004067,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1575,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.159090909090816,
+            "y": 133.55746384297404,
+            "vy": -3.693181818224544,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1580,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.181818181818085,
+            "y": 133.64462809917126,
+            "vy": 11.363636363591583,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1585,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.204545454545355,
+            "y": 134.07399276859172,
+            "vy": 26.420454545408123,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1590,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.2272727272726245,
+            "y": 134.84555785123507,
+            "vy": 41.47727272722425,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1595,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.249999999999894,
+            "y": 135.95932334710147,
+            "vy": 56.53409090904079,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1600,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.272727272727163,
+            "y": 137.4152892561911,
+            "vy": 71.59090909085691,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1605,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.295454545454433,
+            "y": 139.21345557850367,
+            "vy": 86.64772727267345,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1610,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.318181818181702,
+            "y": 141.3538223140392,
+            "vy": 101.70454545448958,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1615,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.340909090908972,
+            "y": 143.83638946279788,
+            "vy": 116.76136363630613,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1620,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.363636363636241,
+            "y": 146.6611570247796,
+            "vy": 131.81818181812224,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1625,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.386363636363511,
+            "y": 149.82812499998442,
+            "vy": 146.87499999993878,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1630,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.4090909090907795,
+            "y": 153.3372933884122,
+            "vy": 161.93181818175492,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1635,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.431818181818048,
+            "y": 157.1886621900631,
+            "vy": 176.98863636357103,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1640,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.454545454545318,
+            "y": 161.3822314049371,
+            "vy": 192.04545454538757,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1645,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.477272727272588,
+            "y": 165.918001033034,
+            "vy": 207.1022727272037,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1650,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.499999999999858,
+            "y": 170.79597107435418,
+            "vy": 222.15909090902025,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1655,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.522727272727127,
+            "y": 176.01614152889724,
+            "vy": 237.21590909083636,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1660,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.545454545454397,
+            "y": 181.57851239666348,
+            "vy": 252.2727272726529,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1665,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.568181818181666,
+            "y": 187.48308367765264,
+            "vy": 267.32954545446904,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1670,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.590909090908935,
+            "y": 193.72985537186503,
+            "vy": 282.3863636362856,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1675,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.613636363636204,
+            "y": 200.3188274793003,
+            "vy": 297.4431818181017,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1680,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.636363636363474,
+            "y": 207.2499999999588,
+            "vy": 312.49999999991826,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1685,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.659090909090743,
+            "y": 214.5233729338402,
+            "vy": 327.5568181817344,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1690,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.681818181818013,
+            "y": 222.13894628094457,
+            "vy": 342.6136363635505,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1695,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.704545454545283,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1700,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.727272727272552,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1705,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.7499999999998215,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1710,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.77272727272709,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1715,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.79545454545436,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1720,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.818181818181629,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1725,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.840909090908899,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1730,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.863636363636168,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1735,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.886363636363438,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1740,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.909090909090707,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          }
+        ],
+        "firstWitness": {
+          "Hits": 0,
+          "Rejected": 0,
+          "Earned": 0,
+          "Completed": 0,
+          "FinishEarned": 0,
+          "StoneLandings": 0,
+          "Finish": 17.99999999999835,
+          "Gain": 0,
+          "FinishGain": 0,
+          "Clean": true,
+          "Inputs": [
+            {
+              "requested": 360,
+              "x": 360,
+              "time": 1.636363636363615,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 900,
+              "x": 900,
+              "time": 4.090909090909325,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 944,
+              "x": 943.9999999999964,
+              "time": 4.290909090909321,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1190,
+              "x": 1190,
+              "time": 5.409090909091068,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1234,
+              "x": 1234,
+              "time": 5.60909090909104,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1460,
+              "x": 1460,
+              "time": 6.636363636363619,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1520,
+              "x": 1520,
+              "time": 6.909090909090852,
+              "y": 155.18388429752565,
+              "vy": -169.318181818204,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Warning"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1960,
+              "x": 1960,
+              "time": 8.909090909090402,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2004,
+              "x": 2004,
+              "time": 9.10909090909034,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2684,
+              "x": 2684,
+              "time": 12.19999999999903,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2935.7735849056603,
+              "x": 2935.7735849056603,
+              "time": 13.344425385933716,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3400,
+              "x": 3400,
+              "time": 15.454545454544103,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3444,
+              "x": 3443.9999999999964,
+              "time": 15.654545454544063,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3711.7735849056603,
+              "x": 3711.7735849056603,
+              "time": 16.87169811320603,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            }
+          ],
+          "Landings": [
+            {
+              "x": 593.1999999999965,
+              "time": 2.696363636363654,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1039.6999999999919,
+              "time": 4.725909090909312,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1329.7000000000116,
+              "time": 6.044090909091031,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1619.0000000000123,
+              "time": 7.359090909090843,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2099.700000000001,
+              "time": 9.544090909090253,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2917.199999999981,
+              "time": 13.25999999999882,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3168.9735849056415,
+              "time": 14.404425385933505,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3539.6999999999884,
+              "time": 16.089545454543977,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3944.9735849056415,
+              "time": 17.93169811320582,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            }
+          ],
+          "Events": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Warning",
+              "x": 440.30000000000166,
+              "time": 2.0013636363636076,
+              "y": 142.38078124999905,
+              "vy": -108.1875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid",
+              "x": 517.3000000000028,
+              "time": 2.3513636363636308,
+              "y": 145.0932812499981,
+              "vy": 123.6875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": 2.3499999999999637
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning",
+              "x": 1520,
+              "time": 6.909090909090852,
+              "y": 155.18388429752565,
+              "vy": -169.318181818204,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid",
+              "x": 1597.0000000000095,
+              "time": 7.259090909090845,
+              "y": 55.34439566115467,
+              "vy": -401.193181818204,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": 7.259090909090845
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Warning",
+              "x": 2800.599999999991,
+              "time": 12.729999999998924,
+              "y": 133.54812499999858,
+              "vy": 1.125,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Solid",
+              "x": 2877.5999999999844,
+              "time": 13.079999999998856,
+              "y": 174.5199999999977,
+              "vy": 233,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": 13.077272727271696
+            }
+          ],
+          "HitIds": [],
+          "RewardIds": []
+        },
+        "lastWitness": {
+          "Hits": 0,
+          "Rejected": 0,
+          "Earned": 0,
+          "Completed": 0,
+          "FinishEarned": 0,
+          "StoneLandings": 0,
+          "Finish": 17.99999999999835,
+          "Gain": 0,
+          "FinishGain": 0,
+          "Clean": true,
+          "Inputs": [
+            {
+              "requested": 360,
+              "x": 360,
+              "time": 1.636363636363615,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 900,
+              "x": 900,
+              "time": 4.090909090909325,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 944,
+              "x": 943.9999999999964,
+              "time": 4.290909090909321,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1190,
+              "x": 1190,
+              "time": 5.409090909091068,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1234,
+              "x": 1234,
+              "time": 5.60909090909104,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1460,
+              "x": 1460,
+              "time": 6.636363636363619,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1635,
+              "x": 1635,
+              "time": 7.431818181818048,
+              "y": 157.1886621900631,
+              "vy": 176.98863636357103,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1960,
+              "x": 1960,
+              "time": 8.9090909090904,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2004,
+              "x": 2004,
+              "time": 9.109090909090337,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2684,
+              "x": 2684,
+              "time": 12.199999999999028,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2935.7735849056603,
+              "x": 2935.7735849056603,
+              "time": 13.344425385933715,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3400,
+              "x": 3400,
+              "time": 15.454545454544101,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3444,
+              "x": 3443.9999999999964,
+              "time": 15.654545454544062,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3711.7735849056603,
+              "x": 3711.7735849056603,
+              "time": 16.87169811320603,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            }
+          ],
+          "Landings": [
+            {
+              "x": 593.1999999999965,
+              "time": 2.696363636363654,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1039.6999999999919,
+              "time": 4.725909090909312,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1329.7000000000116,
+              "time": 6.044090909091031,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1850.6000000000267,
+              "time": 8.411818181817955,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2099.700000000001,
+              "time": 9.54409090909025,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2917.199999999981,
+              "time": 13.259999999998819,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3168.9735849056415,
+              "time": 14.404425385933504,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3539.6999999999884,
+              "time": 16.089545454543977,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3944.9735849056415,
+              "time": 17.93169811320582,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            }
+          ],
+          "Events": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Warning",
+              "x": 440.30000000000166,
+              "time": 2.0013636363636076,
+              "y": 142.38078124999905,
+              "vy": -108.1875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid",
+              "x": 517.3000000000028,
+              "time": 2.3513636363636308,
+              "y": 145.0932812499981,
+              "vy": 123.6875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": 2.3499999999999637
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning",
+              "x": 1520.5000000000075,
+              "time": 6.911363636363613,
+              "y": 154.8007812499993,
+              "vy": -167.8125,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid",
+              "x": 1597.500000000017,
+              "time": 7.261363636363606,
+              "y": 136.64453124999835,
+              "vy": 64.0625,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": 7.259090909090852
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Warning",
+              "x": 2800.599999999991,
+              "time": 12.729999999998922,
+              "y": 133.54812499999858,
+              "vy": 1.125,
+              "air": true,
+              "revealedAt": 12.727272727271695,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Solid",
+              "x": 2877.5999999999844,
+              "time": 13.079999999998854,
+              "y": 174.5199999999977,
+              "vy": 233,
+              "air": true,
+              "revealedAt": 12.727272727271695,
+              "solidAt": 13.077272727271694
+            }
+          ],
+          "HitIds": [],
+          "RewardIds": []
+        },
+        "wrong": null
+      },
+      {
+        "entryJitterMs": 50,
+        "signal": {
+          "id": "rethink-m2-cancel-landing",
+          "phase": "Warning",
+          "x": 1520.5000000000061,
+          "time": 6.911363636363607,
+          "y": 164.0195312499994,
+          "vy": -200.9375,
+          "air": true,
+          "revealedAt": 6.909090909090852,
+          "solidAt": null
+        },
+        "firstSuccessfulInput": {
+          "requested": 1520,
+          "x": 1520,
+          "time": 6.909090909090852,
+          "y": 164.4779183884347,
+          "vy": -202.4431818181999,
+          "speed": 220,
+          "effect": null,
+          "effectRemaining": null,
+          "Flipping": true,
+          "support": "None",
+          "SupportSide": 1,
+          "phases": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning"
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden"
+            }
+          ]
+        },
+        "lastSuccessfulInput": {
+          "requested": 1645,
+          "x": 1645,
+          "time": 7.477272727272588,
+          "y": 156.39101239667522,
+          "vy": 173.9772727272078,
+          "speed": 220,
+          "effect": null,
+          "effectRemaining": null,
+          "Flipping": true,
+          "support": "None",
+          "SupportSide": 1,
+          "phases": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid"
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden"
+            }
+          ]
+        },
+        "windowSeconds": 0.5681818181817357,
+        "lastInputAfterSignal": 0.5681818181817357,
+        "meaning": "Post-reveal correction window",
+        "points": [
+          {
+            "x": 1520,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.909090909090852,
+            "y": 164.4779183884347,
+            "vy": -202.4431818181999,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1525,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.931818181818121,
+            "y": 160.04803719008765,
+            "vy": -187.38636363638378,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1530,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.954545454545391,
+            "y": 155.96035640496368,
+            "vy": -172.32954545456724,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1535,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.97727272727266,
+            "y": 152.21487603306275,
+            "vy": -157.2727272727511,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1540,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 6.99999999999993,
+            "y": 148.81159607438482,
+            "vy": -142.21590909093456,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1545,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.0227272727272,
+            "y": 145.75051652893004,
+            "vy": -127.15909090911843,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1550,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.0454545454544695,
+            "y": 143.03163739669824,
+            "vy": -112.1022727273019,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1555,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.068181818181738,
+            "y": 140.65495867768954,
+            "vy": -97.04545454548577,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1560,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.090909090909008,
+            "y": 138.62048037190385,
+            "vy": -81.98863636366923,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1565,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.113636363636277,
+            "y": 136.92820247934122,
+            "vy": -66.9318181818531,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1570,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.136363636363547,
+            "y": 135.5781250000017,
+            "vy": -51.875000000036565,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1575,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.159090909090816,
+            "y": 134.57024793388516,
+            "vy": -36.81818181822044,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1580,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.181818181818085,
+            "y": 133.90457128099177,
+            "vy": -21.761363636404308,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1585,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.204545454545355,
+            "y": 133.58109504132136,
+            "vy": -6.70454545458777,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1590,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.2272727272726245,
+            "y": 133.599819214874,
+            "vy": 8.352272727228359,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1595,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.249999999999894,
+            "y": 133.9607438016498,
+            "vy": 23.4090909090449,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1600,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.272727272727163,
+            "y": 134.66386880164862,
+            "vy": 38.465909090861025,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1605,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.295454545454433,
+            "y": 135.70919421487042,
+            "vy": 53.522727272677564,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1610,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.318181818181702,
+            "y": 137.0967200413154,
+            "vy": 68.5795454544937,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1615,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.340909090908972,
+            "y": 138.82644628098342,
+            "vy": 83.63636363631024,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1620,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.363636363636241,
+            "y": 140.89837293387447,
+            "vy": 98.69318181812636,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1625,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.386363636363511,
+            "y": 143.3124999999885,
+            "vy": 113.7499999999429,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1630,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.4090909090907795,
+            "y": 146.0688274793256,
+            "vy": 128.806818181759,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1635,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.431818181818048,
+            "y": 149.16735537188575,
+            "vy": 143.86363636357515,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1640,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.454545454545318,
+            "y": 152.60808367766896,
+            "vy": 158.9204545453917,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1645,
+            "Clean": true,
+            "usable": true,
+            "Hits": 0,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.477272727272588,
+            "y": 156.39101239667522,
+            "vy": 173.9772727272078,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1650,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.499999999999858,
+            "y": 160.51614152890465,
+            "vy": 189.03409090902434,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1655,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.522727272727127,
+            "y": 164.98347107435697,
+            "vy": 204.09090909084048,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1660,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.545454545454397,
+            "y": 169.7930010330325,
+            "vy": 219.14772727265702,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1665,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.568181818181666,
+            "y": 174.94473140493096,
+            "vy": 234.20454545447316,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1670,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.590909090908935,
+            "y": 180.43866219005258,
+            "vy": 249.26136363628967,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1675,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.613636363636204,
+            "y": 186.27479338839714,
+            "vy": 264.3181818181058,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1680,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.636363636363474,
+            "y": 192.45312499996493,
+            "vy": 279.37499999992235,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1685,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.659090909090743,
+            "y": 198.97365702475557,
+            "vy": 294.4318181817385,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1690,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.681818181818013,
+            "y": 205.83638946276923,
+            "vy": 309.48863636355463,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1695,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.704545454545283,
+            "y": 213.04132231400624,
+            "vy": 324.5454545453712,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1700,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.727272727272552,
+            "y": 220.58845557846604,
+            "vy": 339.60227272718726,
+            "speed": 220,
+            "support": "None",
+            "airborne": true
+          },
+          {
+            "x": 1705,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.749999999999822,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1710,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.772727272727091,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1715,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.795454545454361,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1720,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.81818181818163,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1725,
+            "Clean": false,
+            "usable": false,
+            "Hits": 4,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.8409090909089,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1730,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.863636363636169,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1735,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.886363636363439,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          },
+          {
+            "x": 1740,
+            "Clean": false,
+            "usable": false,
+            "Hits": 1,
+            "Rejected": 0,
+            "Earned": 0,
+            "time": 7.909090909090708,
+            "y": 226,
+            "vy": 0,
+            "speed": 220,
+            "support": "Wall",
+            "airborne": false
+          }
+        ],
+        "firstWitness": {
+          "Hits": 0,
+          "Rejected": 0,
+          "Earned": 0,
+          "Completed": 0,
+          "FinishEarned": 0,
+          "StoneLandings": 0,
+          "Finish": 17.99999999999835,
+          "Gain": 0,
+          "FinishGain": 0,
+          "Clean": true,
+          "Inputs": [
+            {
+              "requested": 360,
+              "x": 360,
+              "time": 1.636363636363615,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 900,
+              "x": 900,
+              "time": 4.090909090909325,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 944,
+              "x": 943.9999999999964,
+              "time": 4.290909090909321,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1190,
+              "x": 1190,
+              "time": 5.409090909091068,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1234,
+              "x": 1234,
+              "time": 5.60909090909104,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1471,
+              "x": 1471,
+              "time": 6.686363636363612,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1520,
+              "x": 1520,
+              "time": 6.909090909090852,
+              "y": 164.4779183884347,
+              "vy": -202.4431818181999,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Warning"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1960,
+              "x": 1960,
+              "time": 8.909090909090402,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2004,
+              "x": 2004,
+              "time": 9.10909090909034,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2684,
+              "x": 2684,
+              "time": 12.19999999999903,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2935.7735849056603,
+              "x": 2935.7735849056603,
+              "time": 13.344425385933716,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3400,
+              "x": 3400,
+              "time": 15.454545454544103,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3444,
+              "x": 3443.9999999999964,
+              "time": 15.654545454544063,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3711.7735849056603,
+              "x": 3711.7735849056603,
+              "time": 16.87169811320603,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            }
+          ],
+          "Landings": [
+            {
+              "x": 593.1999999999965,
+              "time": 2.696363636363654,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1039.6999999999919,
+              "time": 4.725909090909312,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1329.7000000000116,
+              "time": 6.044090909091031,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1615.7000000000119,
+              "time": 7.344090909090843,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2099.700000000001,
+              "time": 9.544090909090253,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2917.199999999981,
+              "time": 13.25999999999882,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3168.9735849056415,
+              "time": 14.404425385933505,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3539.6999999999884,
+              "time": 16.089545454543977,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3944.9735849056415,
+              "time": 17.93169811320582,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            }
+          ],
+          "Events": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Warning",
+              "x": 440.30000000000166,
+              "time": 2.0013636363636076,
+              "y": 142.38078124999905,
+              "vy": -108.1875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid",
+              "x": 517.3000000000028,
+              "time": 2.3513636363636308,
+              "y": 145.0932812499981,
+              "vy": 123.6875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": 2.3499999999999637
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning",
+              "x": 1520,
+              "time": 6.909090909090852,
+              "y": 164.4779183884347,
+              "vy": -202.4431818181999,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid",
+              "x": 1597.0000000000095,
+              "time": 7.259090909090845,
+              "y": 53.04467975206511,
+              "vy": -434.3181818181999,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": 7.259090909090845
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Warning",
+              "x": 2800.599999999991,
+              "time": 12.729999999998924,
+              "y": 133.54812499999858,
+              "vy": 1.125,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Solid",
+              "x": 2877.5999999999844,
+              "time": 13.079999999998856,
+              "y": 174.5199999999977,
+              "vy": 233,
+              "air": true,
+              "revealedAt": 12.727272727271696,
+              "solidAt": 13.077272727271696
+            }
+          ],
+          "HitIds": [],
+          "RewardIds": []
+        },
+        "lastWitness": {
+          "Hits": 0,
+          "Rejected": 0,
+          "Earned": 0,
+          "Completed": 0,
+          "FinishEarned": 0,
+          "StoneLandings": 0,
+          "Finish": 17.99999999999835,
+          "Gain": 0,
+          "FinishGain": 0,
+          "Clean": true,
+          "Inputs": [
+            {
+              "requested": 360,
+              "x": 360,
+              "time": 1.636363636363615,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 900,
+              "x": 900,
+              "time": 4.090909090909325,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 944,
+              "x": 943.9999999999964,
+              "time": 4.290909090909321,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1190,
+              "x": 1190,
+              "time": 5.409090909091068,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1234,
+              "x": 1234,
+              "time": 5.60909090909104,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1471,
+              "x": 1471,
+              "time": 6.686363636363612,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Hidden"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1645,
+              "x": 1645,
+              "time": 7.477272727272588,
+              "y": 156.39101239667522,
+              "vy": 173.9772727272078,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 1960,
+              "x": 1960,
+              "time": 8.9090909090904,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2004,
+              "x": 2004,
+              "time": 9.109090909090337,
+              "y": 70.74999999999466,
+              "vy": 217.50000000001603,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2684,
+              "x": 2684,
+              "time": 12.199999999999028,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Hidden"
+                }
+              ]
+            },
+            {
+              "requested": 2935.7735849056603,
+              "x": 2935.7735849056603,
+              "time": 13.344425385933715,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3400,
+              "x": 3400,
+              "time": 15.454545454544101,
+              "y": 226,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3444,
+              "x": 3443.9999999999964,
+              "time": 15.654545454544062,
+              "y": 169.2499999999995,
+              "vy": -217.5,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": true,
+              "support": "None",
+              "SupportSide": 1,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            },
+            {
+              "requested": 3711.7735849056603,
+              "x": 3711.7735849056603,
+              "time": 16.87169811320603,
+              "y": 14,
+              "vy": 0,
+              "speed": 220,
+              "effect": null,
+              "effectRemaining": null,
+              "Flipping": false,
+              "support": "Wall",
+              "SupportSide": 0,
+              "phases": [
+                {
+                  "id": "rethink-m1-no-return",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m2-cancel-landing",
+                  "phase": "Solid"
+                },
+                {
+                  "id": "rethink-m3-price",
+                  "phase": "Solid"
+                }
+              ]
+            }
+          ],
+          "Landings": [
+            {
+              "x": 593.1999999999965,
+              "time": 2.696363636363654,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1039.6999999999919,
+              "time": 4.725909090909312,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1329.7000000000116,
+              "time": 6.044090909091031,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 1858.4000000000265,
+              "time": 8.447272727272487,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2099.700000000001,
+              "time": 9.54409090909025,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 2917.199999999981,
+              "time": 13.259999999998819,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3168.9735849056415,
+              "time": 14.404425385933504,
+              "y": 226,
+              "support": "Wall",
+              "SupportSide": 1,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3539.6999999999884,
+              "time": 16.089545454543977,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            },
+            {
+              "x": 3944.9735849056415,
+              "time": 17.93169811320582,
+              "y": 14,
+              "support": "Wall",
+              "SupportSide": 0,
+              "SupportObstacleId": null
+            }
+          ],
+          "Events": [
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Hidden",
+              "x": 1.1,
+              "time": 0.005,
+              "y": 226,
+              "vy": 0,
+              "air": false,
+              "revealedAt": null,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Warning",
+              "x": 440.30000000000166,
+              "time": 2.0013636363636076,
+              "y": 142.38078124999905,
+              "vy": -108.1875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m1-no-return",
+              "phase": "Solid",
+              "x": 517.3000000000028,
+              "time": 2.3513636363636308,
+              "y": 145.0932812499981,
+              "vy": 123.6875,
+              "air": true,
+              "revealedAt": 1.9999999999999636,
+              "solidAt": 2.3499999999999637
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Warning",
+              "x": 1520.5000000000061,
+              "time": 6.911363636363607,
+              "y": 164.0195312499994,
+              "vy": -200.9375,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m2-cancel-landing",
+              "phase": "Solid",
+              "x": 1597.5000000000157,
+              "time": 7.261363636363599,
+              "y": 134.26953124999852,
+              "vy": 30.9375,
+              "air": true,
+              "revealedAt": 6.909090909090852,
+              "solidAt": 7.259090909090852
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Warning",
+              "x": 2800.599999999991,
+              "time": 12.729999999998922,
+              "y": 133.54812499999858,
+              "vy": 1.125,
+              "air": true,
+              "revealedAt": 12.727272727271695,
+              "solidAt": null
+            },
+            {
+              "id": "rethink-m3-price",
+              "phase": "Solid",
+              "x": 2877.5999999999844,
+              "time": 13.079999999998854,
+              "y": 174.5199999999977,
+              "vy": 233,
+              "air": true,
+              "revealedAt": 12.727272727271695,
+              "solidAt": 13.077272727271694
+            }
+          ],
+          "HitIds": [],
+          "RewardIds": []
+        },
+        "wrong": null
+      }
+    ]
+  },
+  "noResponse": {
+    "Hits": 4,
+    "Rejected": 0,
+    "Earned": 0,
+    "Completed": 0,
+    "FinishEarned": 0,
+    "StoneLandings": 0,
+    "Finish": 19.999999999997943,
+    "Gain": 0,
+    "FinishGain": 0,
+    "Clean": false,
+    "Inputs": [
+      {
+        "requested": 360,
+        "x": 360,
+        "time": 1.636363636363615,
+        "y": 226,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 1,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Hidden"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Hidden"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 900,
+        "x": 900,
+        "time": 4.090909090909325,
+        "y": 226,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 1,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Hidden"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 944,
+        "x": 943.9999999999964,
+        "time": 4.290909090909321,
+        "y": 169.2499999999995,
+        "vy": -217.5,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": true,
+        "support": "None",
+        "SupportSide": 1,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Hidden"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 1190,
+        "x": 1190,
+        "time": 5.409090909091068,
+        "y": 14,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 0,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Hidden"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 1234,
+        "x": 1234,
+        "time": 5.60909090909104,
+        "y": 70.74999999999466,
+        "vy": 217.50000000001603,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": true,
+        "support": "None",
+        "SupportSide": 0,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Hidden"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 1460,
+        "x": 1460,
+        "time": 6.636363636363619,
+        "y": 226,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 1,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Hidden"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 1960,
+        "x": 1960,
+        "time": 9.409090909090299,
+        "y": 226,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 1,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 2004,
+        "x": 2004,
+        "time": 9.609090909090236,
+        "y": 169.25000000000477,
+        "vy": -217.50000000001603,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": true,
+        "support": "None",
+        "SupportSide": 1,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 2684,
+        "x": 2684,
+        "time": 13.199999999998825,
+        "y": 14,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 0,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Hidden"
+          }
+        ]
+      },
+      {
+        "requested": 2935.7735849056603,
+        "x": 2935.7735849056603,
+        "time": 14.344425385933512,
+        "y": 14,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 0,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Solid"
+          }
+        ]
+      },
+      {
+        "requested": 3400,
+        "x": 3400,
+        "time": 16.4545454545439,
+        "y": 14,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 0,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Solid"
+          }
+        ]
+      },
+      {
+        "requested": 3444,
+        "x": 3443.9999999999964,
+        "time": 16.65454545454386,
+        "y": 70.74999999999993,
+        "vy": 217.5,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": true,
+        "support": "None",
+        "SupportSide": 0,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Solid"
+          }
+        ]
+      },
+      {
+        "requested": 3711.7735849056603,
+        "x": 3711.7735849056603,
+        "time": 18.371698113205724,
+        "y": 226,
+        "vy": 0,
+        "speed": 220,
+        "effect": null,
+        "effectRemaining": null,
+        "Flipping": false,
+        "support": "Wall",
+        "SupportSide": 1,
+        "phases": [
+          {
+            "id": "rethink-m1-no-return",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m2-cancel-landing",
+            "phase": "Solid"
+          },
+          {
+            "id": "rethink-m3-price",
+            "phase": "Solid"
+          }
+        ]
+      }
+    ],
+    "Landings": [
+      {
+        "x": 593.1999999999965,
+        "time": 2.696363636363654,
+        "y": 226,
+        "support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 1039.6999999999919,
+        "time": 4.725909090909312,
+        "y": 14,
+        "support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 1329.7000000000116,
+        "time": 6.044090909091031,
+        "y": 226,
+        "support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 1693.200000000029,
+        "time": 7.696363636363596,
+        "y": 226,
+        "support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 2099.1999999999994,
+        "time": 10.541818181817312,
+        "y": 14,
+        "support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 2917.199999999981,
+        "time": 14.259999999998616,
+        "y": 14,
+        "support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 3168.9735849056415,
+        "time": 15.404425385933301,
+        "y": 14,
+        "support": "Wall",
+        "SupportSide": 0,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 3539.899999999996,
+        "time": 17.590454545452797,
+        "y": 226,
+        "support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      },
+      {
+        "x": 3944.973584905642,
+        "time": 19.931698113205414,
+        "y": 226,
+        "support": "Wall",
+        "SupportSide": 1,
+        "SupportObstacleId": null
+      }
+    ],
+    "Events": [
+      {
+        "id": "rethink-m1-no-return",
+        "phase": "Hidden",
+        "x": 1.1,
+        "time": 0.005,
+        "y": 226,
+        "vy": 0,
+        "air": false,
+        "revealedAt": null,
+        "solidAt": null
+      },
+      {
+        "id": "rethink-m2-cancel-landing",
+        "phase": "Hidden",
+        "x": 1.1,
+        "time": 0.005,
+        "y": 226,
+        "vy": 0,
+        "air": false,
+        "revealedAt": null,
+        "solidAt": null
+      },
+      {
+        "id": "rethink-m3-price",
+        "phase": "Hidden",
+        "x": 1.1,
+        "time": 0.005,
+        "y": 226,
+        "vy": 0,
+        "air": false,
+        "revealedAt": null,
+        "solidAt": null
+      },
+      {
+        "id": "rethink-m1-no-return",
+        "phase": "Warning",
+        "x": 440.30000000000166,
+        "time": 2.0013636363636076,
+        "y": 142.38078124999905,
+        "vy": -108.1875,
+        "air": true,
+        "revealedAt": 1.9999999999999636,
+        "solidAt": null
+      },
+      {
+        "id": "rethink-m1-no-return",
+        "phase": "Solid",
+        "x": 517.3000000000028,
+        "time": 2.3513636363636308,
+        "y": 145.0932812499981,
+        "vy": 123.6875,
+        "air": true,
+        "revealedAt": 1.9999999999999636,
+        "solidAt": 2.3499999999999637
+      },
+      {
+        "id": "rethink-m2-cancel-landing",
+        "phase": "Warning",
+        "x": 1520.5000000000075,
+        "time": 6.911363636363613,
+        "y": 154.8007812499993,
+        "vy": -167.8125,
+        "air": true,
+        "revealedAt": 6.909090909090852,
+        "solidAt": null
+      },
+      {
+        "id": "rethink-m2-cancel-landing",
+        "phase": "Solid",
+        "x": 1597.500000000017,
+        "time": 7.261363636363606,
+        "y": 136.64453124999835,
+        "vy": 64.0625,
+        "air": true,
+        "revealedAt": 6.909090909090852,
+        "solidAt": 7.259090909090852
+      },
+      {
+        "phase": "Hit",
+        "id": "rethink-m2-cancel-landing",
+        "x": 1766,
+        "time": 8.031363636363583,
+        "y": 226,
+        "vy": 0
+      },
+      {
+        "phase": "Hit",
+        "id": "rethink-m2-exit",
+        "x": 2086,
+        "time": 9.984090909090162,
+        "y": 42.16270661157435,
+        "vy": -464.4318181818271
+      },
+      {
+        "id": "rethink-m3-price",
+        "phase": "Warning",
+        "x": 2800.599999999991,
+        "time": 13.72999999999872,
+        "y": 106.45187499999983,
+        "vy": -1.125,
+        "air": true,
+        "revealedAt": 13.727272727271492,
+        "solidAt": null
+      },
+      {
+        "id": "rethink-m3-price",
+        "phase": "Solid",
+        "x": 2877.5999999999844,
+        "time": 14.079999999998652,
+        "y": 65.47999999999979,
+        "vy": -233,
+        "air": true,
+        "revealedAt": 13.727272727271492,
+        "solidAt": 14.077272727271492
+      },
+      {
+        "phase": "Hit",
+        "id": "rethink-m3-large",
+        "x": 3486,
+        "time": 16.849545454543822,
+        "y": 124.34555785125073,
+        "vy": 343.97727272729406
+      },
+      {
+        "phase": "Hit",
+        "id": "rethink-m3-exit",
+        "x": 3886,
+        "time": 19.166698113205566,
+        "y": 156.57041361298266,
+        "vy": 174.65909090913306
+      }
+    ],
+    "HitIds": [
+      "rethink-m2-cancel-landing",
+      "rethink-m2-exit",
+      "rethink-m3-large",
+      "rethink-m3-exit"
+    ],
+    "RewardIds": []
+  }
+}

@@ -44,6 +44,9 @@ namespace FlipRace.Core
         public string Kind;
         // Immutable track input. Visibility/collision phase belongs to GameState.
         public bool Hidden;
+        // Optional authored timing. Null preserves the ordinary 440-unit lead
+        // and the race's selected warning duration on every existing course.
+        public double? HiddenRevealDistance, HiddenWarningDuration;
     }
 
     public sealed class Cue
@@ -408,12 +411,14 @@ namespace FlipRace.Core
             else if (trackId != null && !trackId.StartsWith("v3-", StringComparison.Ordinal)) track = Tracks.Get(trackId);
             else if (mode == "practice") track = TracksV3.StageOne(negativeEnabled);
             else track = TracksV3.Get(trackId ?? TracksV3.All[0].Id, negativeEnabled);
+            HiddenObstacles.ValidateTrack(track);
             return new GameState { Mode = mode, Track = track, Flight = FlightPresets.FromLegacy(MotionMode.Linear) };
         }
 
         public static GameState CreateTrial(Track track, MotionMode motion, MotionProfile profile = null)
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
+            HiddenObstacles.ValidateTrack(track);
             if (!Enum.IsDefined(typeof(MotionMode), motion)) throw new ArgumentOutOfRangeException(nameof(motion));
             var game = new GameState { Mode = "trial", Track = track, Motion = motion,
                 Profile = profile ?? (motion == MotionMode.JumpGravityFlip ? MotionProfiles.Jump
@@ -427,6 +432,7 @@ namespace FlipRace.Core
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (flight == null) throw new ArgumentNullException(nameof(flight));
+            HiddenObstacles.ValidateTrack(track);
             MotionMode mode = flight.LegacyLinear ? MotionMode.Linear : flight.Law == MotionLaw.Linear ? MotionMode.LinearAirFlip
                 : flight.FirstAction == FirstAction.Jump ? MotionMode.JumpGravityFlip
                 : flight.AirRepeats == AirRepeatLimit.Unlimited ? MotionMode.GravityUnlimited
@@ -492,6 +498,7 @@ namespace FlipRace.Core
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (flight == null) throw new ArgumentNullException(nameof(flight));
+            HiddenObstacles.ValidateTrack(track);
             if (!solo && (playerCount < 2 || playerCount > 4)) throw new ArgumentOutOfRangeException(nameof(playerCount));
             if (!Enum.IsDefined(typeof(PartyCamera), camera)) throw new ArgumentOutOfRangeException(nameof(camera));
             if (double.IsNaN(cameraStartLeft) || double.IsInfinity(cameraStartLeft))

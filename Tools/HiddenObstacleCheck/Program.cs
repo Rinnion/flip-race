@@ -12,7 +12,9 @@ static class Program
         Action[] tests = { DelaysAndRealCollision, WarningHasNoLanding, SolidHasRealLanding,
             DepartingBodyThenReturn, PauseCountdownRetrySnapshot, SharedWorldPermutations,
             TerminalBodiesDoNotProtect, AirborneDoesNotProtect, BoostCrossing, GatesStaySolid,
-            FirstParticipantAndObstacleOrder, NonPartyHiddenTrack, OldTracksHaveNoHidden };
+            FirstParticipantAndObstacleOrder, NonPartyHiddenTrack, OldTracksHaveNoHidden,
+            AuthoredTimelinesAndFirstPlayer, WarningProgressPausePostponementAndClone,
+            AuthoredMetadataValidation, SevenExistingTracksUseDefaults };
         foreach (var test in tests)
         {
             try { test(); Console.WriteLine("PASS " + test.Method.Name); }
@@ -270,6 +272,129 @@ static class Program
             Check(track.Obstacles.All(o => !o.Hidden), "old track has no hidden data " + track.Id);
             var game = Ready(track); Start(game); Run(game, .1, .317);
             Check(game.HiddenObstacles.Count == 0, "old world has no hidden timeline " + track.Id);
+        }
+    }
+    static void AuthoredTimelinesAndFirstPlayer()
+    {
+        foreach (double frame in Frames)
+        {
+            var a = Stone(600); a.HiddenRevealDistance = 180; a.HiddenWarningDuration = .3;
+            var b = Stone(630); b.Id = "other"; b.HiddenRevealDistance = 220; b.HiddenWarningDuration = .4;
+            var legacy = Stone(900); legacy.Id = "legacy";
+            var game = Ready(new Track(10000, new[] { a, b, legacy }), 4);
+            HiddenObstacles.ConfigureWarning(game, 1.2); Start(game);
+            foreach (var p in game.Players) { p.Y = 0; p.SupportSide = 0; }
+            // ID 1 crosses just before ID 0, within the same shared 1/240 s slice.
+            game.Players[1].Distance = .2;
+            var reversed = RaceSnapshot.Clone(game); Array.Reverse(reversed.Players);
+            reversed.Track = new Track(10000, new[] { legacy, b, a });
+            var events = new[] { a, b, legacy }.SelectMany(o =>
+            {
+                double reveal = (o.X - HiddenObstacles.RevealDistanceFor(o) - .2) / 220;
+                return new[] { (obstacle: o, time: reveal, deadline: false),
+                    (obstacle: o, time: reveal + HiddenObstacles.WarningDurationFor(game, o), deadline: true) };
+            }).OrderBy(e => e.time).ToArray();
+            foreach (var e in events)
+            {
+                Run(game, e.time - game.Elapsed - 1e-6, frame);
+                Run(reversed, e.time - reversed.Elapsed - 1e-6, frame);
+                var before = e.deadline ? HiddenObstaclePhase.Warning : HiddenObstaclePhase.Hidden;
+                Check(HiddenObstacles.GetPhase(game, e.obstacle) == before, "individual boundary not crossed early");
+                Run(game, 2e-6, frame); Run(reversed, 2e-6, frame);
+                var state = game.HiddenObstacles[e.obstacle.Id]; var other = reversed.HiddenObstacles[e.obstacle.Id];
+                Check(state.Phase == (e.deadline ? HiddenObstaclePhase.Solid : HiddenObstaclePhase.Warning),
+                    "individual exact reveal/deadline phase");
+                Near(e.deadline ? state.SolidAt.Value : state.RevealedAt.Value, e.time, "individual exact timestamp");
+                Near(e.deadline ? other.SolidAt.Value : other.RevealedAt.Value, e.time, "source-order independent authored timing");
+                Check(state.TriggerPlayerId == 1 && other.TriggerPlayerId == 1, "first actual player with authored lead");
+                Near(game.HiddenWarningDuration, 1.2, "authored duration preserves selected global duration");
+            }
+            Check(game.Players.All(p => p.Collisions == 0), "shared authored timeline leaves clear ceiling route unchanged");
+        }
+    }
+    static void WarningProgressPausePostponementAndClone()
+    {
+        var stone = Stone(0, 1200); stone.HiddenRevealDistance = 200; stone.HiddenWarningDuration = .3;
+        var game = Ready(Track(stone)); HiddenObstacles.ConfigureWarning(game, 1.2);
+        Near(HiddenObstacles.WarningProgress(game, stone), 0, "hidden progress starts zero");
+        Start(game); Run(game, .1, .317);
+        Near(HiddenObstacles.WarningProgress(game, stone), 1d / 3, "progress uses authored duration");
+        var copy = RaceSnapshot.Clone(game); double pausedProgress = HiddenObstacles.WarningProgress(game, stone);
+        game.Phase = "paused"; RaceSimulation.Advance(game, 20);
+        Near(HiddenObstacles.WarningProgress(game, stone), pausedProgress, "pause freezes progress");
+        Near(game.Elapsed, .1, "pause freezes authored clock");
+        Run(copy, .3, .317);
+        Check(State(copy).Phase == HiddenObstaclePhase.Warning && State(copy).ActivationPostponed,
+            "forecast body's postponed phase stays warning after full progress");
+        Near(HiddenObstacles.WarningProgress(copy, stone), 1, "postponed progress reaches one");
+        Check(State(copy).SolidAt == null && State(game).SolidAt == null && !State(game).ActivationPostponed,
+            "forecast phase/timestamps/postponement independent");
+        Near(HiddenObstacles.WarningProgress(game, stone), pausedProgress, "forecast does not advance live progress");
+        game.Phase = "racing"; Run(game, .1, .317);
+        double next = HiddenObstacles.WarningProgress(game, stone);
+        Check(next > pausedProgress, "progress increases after resume"); Near(next, 2d / 3, "elapsed-based monotonic progress");
+        Run(game, .501, .317);
+        Near(HiddenObstacles.WarningProgress(game, stone), 1, "postponed progress bounded at one");
+        Check(Phase(game) == HiddenObstaclePhase.Warning && State(game).SolidAt == null && game.Players[0].Collisions == 0,
+            "progress one cannot activate inside a body");
+        Check(RaceSimulation.Press(game, 0), "real jump to free postponed body"); Run(game, .4, .317);
+        Check(Phase(game) == HiddenObstaclePhase.Solid && game.Players[0].Collisions == 0,
+            "body clearance activates authored stone safely");
+        Near(HiddenObstacles.WarningProgress(game, stone), 1, "solid progress remains one");
+        game.Phase = "finished"; RaceSimulation.Press(game, 0);
+        Near(HiddenObstacles.WarningProgress(game, stone), 0, "retry resets progress");
+        Near(game.HiddenWarningDuration, 1.2, "retry preserves saved global choice despite override");
+        Near(HiddenObstacles.WarningDurationFor(game, stone), .3, "retry preserves authored override");
+        RaceSimulation.Advance(game, 3.1);
+        Near(HiddenObstacles.WarningProgress(game, stone), 1d / 3, "retry starts fresh authored warning");
+    }
+    static void AuthoredMetadataValidation()
+    {
+        void RejectedByFactories(Obstacle stone)
+        {
+            var track = Track(stone);
+            Action[] factories = { () => RaceSimulation.CreateTrial(track, MotionMode.Linear),
+                () => RaceSimulation.CreateTrial(track, FlightPresets.Chosen), () => Ready(track), () => Ready(track, 2) };
+            foreach (var factory in factories)
+            {
+                bool rejected = false;
+                try { factory(); } catch (ArgumentOutOfRangeException) { rejected = true; }
+                Check(rejected, "invalid authored metadata rejected without clamping");
+            }
+        }
+        foreach (double lead in new[] { 0d, -1, double.NaN, double.PositiveInfinity, double.NegativeInfinity })
+        { var stone = Stone(); stone.HiddenRevealDistance = lead; RejectedByFactories(stone); }
+        foreach (double duration in new[] { 0d, -1, Tick / 2, Tick, double.NaN, double.PositiveInfinity, double.NegativeInfinity })
+        { var stone = Stone(); stone.HiddenWarningDuration = duration; RejectedByFactories(stone); }
+        foreach (double duration in new[] { .3, .35, .4, Tick * 1.1 })
+        {
+            var stone = Stone(); stone.HiddenRevealDistance = 195.5; stone.HiddenWarningDuration = duration;
+            var game = Ready(Track(stone)); HiddenObstacles.ConfigureWarning(game, 1.2);
+            Near(HiddenObstacles.RevealDistanceFor(stone), 195.5, "arbitrary valid authored lead");
+            Near(HiddenObstacles.WarningDurationFor(game, stone), duration, "authored duration is not limited to global choices");
+            Near(game.HiddenWarningDuration, 1.2, "validation leaves global selection intact");
+        }
+        var gate = new Obstacle { Id = "hidden", Kind = "gate", Hidden = true, X = 100, Width = 12,
+            GapTop = 48, GapBottom = 192, HiddenRevealDistance = 200, HiddenWarningDuration = .3 };
+        var gateGame = Ready(Track(gate)); Start(gateGame); Run(gateGame, .5, .317);
+        Check(Phase(gateGame) == HiddenObstaclePhase.Solid && gateGame.HiddenObstacles.Count == 0 && gateGame.Players[0].Collisions == 1,
+            "authored fields never hide gates");
+        Near(HiddenObstacles.WarningProgress(gateGame, gate), 1, "visible gate progress is complete");
+    }
+    static void SevenExistingTracksUseDefaults()
+    {
+        var original = TracksFull.All.Concat(TracksRhythm.All).Concat(new[] { TracksMixed.Get() }).Concat(TracksHidden.All).ToArray();
+        Check(original.Length == 7, "seven existing full tracks are covered");
+        foreach (var track in original)
+        {
+            Check(track.Obstacles.All(o => !o.HiddenRevealDistance.HasValue && !o.HiddenWarningDuration.HasValue),
+                "existing geometry has no authored timing override " + track.Id);
+            var game = Ready(track); HiddenObstacles.ConfigureWarning(game, .6);
+            foreach (var stone in track.Obstacles.Where(o => o.Hidden))
+            {
+                Near(HiddenObstacles.RevealDistanceFor(stone), 440, "legacy default reveal lead");
+                Near(HiddenObstacles.WarningDurationFor(game, stone), .6, "legacy selected global warning");
+            }
         }
     }
 }

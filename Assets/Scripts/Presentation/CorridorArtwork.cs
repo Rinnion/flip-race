@@ -230,7 +230,7 @@ namespace FlipRace.Presentation
                 if (phase == HiddenObstaclePhase.Warning)
                 {
                     if (ObstacleGeometry.TryGetBand(obstacle, 0, out var warningBand))
-                        HiddenObstacleOutline(WorldX(warningBand.X, player.Distance, anchor, sx),
+                        HiddenObstacleWarning(game, obstacle, WorldX(warningBand.X, player.Distance, anchor, sx),
                             top + (float)warningBand.Y * sy, (float)warningBand.Width * sx, (float)warningBand.Height * sy);
                     continue;
                 }
@@ -535,9 +535,10 @@ namespace FlipRace.Presentation
             }
         }
 
-        void Rock(float x, float width, float height, float surface, bool inverted, bool hit, bool marked, bool large)
+        void Rock(float x, float width, float height, float surface, bool inverted, bool hit, bool marked, bool large, float warningOpacity = -1)
         {
-            GUI.color = new Color(1, 1, 1, hit ? .26f : 1);
+            Color previous = GUI.color;
+            GUI.color = new Color(1, 1, 1, warningOpacity >= 0 ? warningOpacity : hit ? .26f : 1);
             Rect uv = inverted ? new Rect(0, 1, 1, -1) : new Rect(0, 0, 1, 1);
             if (large)
             {
@@ -552,6 +553,8 @@ namespace FlipRace.Presentation
                 Texture(new Rect(x - width / 6, inverted ? surface - height / 6 : surface - height * 7 / 6,
                     width * 4 / 3, height * 4 / 3), inverted ? ceilingRock : floorRock, uv);
             GUI.color = Color.white;
+            // Warning texture must never paint solid support/landing decoration.
+            if (warningOpacity >= 0) { GUI.color = previous; return; }
             if (marked)
             {
                 float face = surface + (inverted ? height : -height);
@@ -564,6 +567,7 @@ namespace FlipRace.Presentation
                 Ellipse(x + width * .18f, surface + direction * (height + 1), 2.5f, 1.8f, Hex(0xb6c88b));
                 Ellipse(x + width * .3f, surface + direction * (height + 1.7f), 3, 2.3f, Hex(0xb6c88b));
             }
+            GUI.color = previous;
         }
 
         // Authored offset passages use the first half to identify the intended

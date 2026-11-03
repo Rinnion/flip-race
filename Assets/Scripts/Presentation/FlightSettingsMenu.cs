@@ -103,8 +103,10 @@ namespace FlipRace.Presentation
         { return new Rect(flightPanel.x + 16, flightPanel.y + 49 + row * 55, flightPanel.width - 32, 49); }
         public Rect ViewOptionRect(int row, int option)
         { MeasureFlightMenu(); return row < 0 || row > 1 || option < 0 || option >= (row == 0 ? 3 : 2) ? default(Rect) : FlightCell(ViewFieldRect(row), option, row == 0 ? 3 : 2); }
-        bool BotTrackSupported { get { return RaceTracks.IsFull(pendingFlightTrack) && !TracksHidden.IsNew(pendingFlightTrack); } }
-        bool CanApplyFlight { get { return (!pendingBot || (!flightSelection.IsCustom && BotTrackSupported)) && (!pendingSolo || RaceTracks.IsFull(pendingFlightTrack)) && (pendingFlightTrack != TracksControl.UnlimitedId || flightSelection.Settings.AirRepeats == AirRepeatLimit.Unlimited); } }
+        bool AuthoredHiddenWarning { get { return pendingFlightTrack == TracksRethink.Id; } }
+        bool TrackProfileSupported { get { return !AuthoredHiddenWarning || TracksRethink.IsSupported(flightSelection.Settings); } }
+        bool BotTrackSupported { get { return RaceTracks.IsFull(pendingFlightTrack) && !TracksHidden.IsNew(pendingFlightTrack) && !AuthoredHiddenWarning; } }
+        bool CanApplyFlight { get { return TrackProfileSupported && (!pendingBot || (!flightSelection.IsCustom && BotTrackSupported)) && (!pendingSolo || RaceTracks.IsFull(pendingFlightTrack)) && (pendingFlightTrack != TracksControl.UnlimitedId || flightSelection.Settings.AirRepeats == AirRepeatLimit.Unlimited); } }
 
         void FlightPointer(Vector2 p)
         {
@@ -149,9 +151,9 @@ namespace FlipRace.Presentation
             }
             if (flightPage == 4)
             {
-                if (HiddenWarningButton.Contains(p)) { flightPage = 9; BlockGameplayInput(); return; }
+                if (HiddenWarningButton.Contains(p)) { if (!AuthoredHiddenWarning) { flightPage = 9; BlockGameplayInput(); } return; }
                 for (int i = 0; i < RaceTracks.All.Length; i++) if (FullTrackRect(i).Contains(p))
-                { if (!pendingBot || !TracksHidden.IsNew(RaceTracks.GetAt(i).Id)) pendingFlightTrack = RaceTracks.GetAt(i).Id; return; }
+                { string id = RaceTracks.GetAt(i).Id; if (!pendingBot || (!TracksHidden.IsNew(id) && id != TracksRethink.Id)) pendingFlightTrack = id; return; }
                 return;
             }
             if (flightPage == 3)
@@ -307,10 +309,10 @@ namespace FlipRace.Presentation
         }
         void DrawFullFlightTracks()
         {
-            FlightButton(HiddenWarningButton, "Предупреждение · " + Number(pendingHiddenWarning, 1) + " с  ›", false, true, 11);
+            FlightButton(HiddenWarningButton, AuthoredHiddenWarning ? "Появление камней задано трассой" : "Предупреждение · " + Number(pendingHiddenWarning, 1) + " с  ›", false, !AuthoredHiddenWarning, 11);
             for (int i = 0; i < RaceTracks.All.Length; i++)
-                FlightButton(FullTrackRect(i), RaceTracks.All[i].Name, pendingFlightTrack == RaceTracks.All[i].Id,
-                    !pendingBot || !TracksHidden.IsNew(RaceTracks.All[i].Id), 11);
+                FlightButton(FullTrackRect(i), RaceTracks.All[i].Id == TracksRethink.Id ? "Передумай · Основной" : RaceTracks.All[i].Name, pendingFlightTrack == RaceTracks.All[i].Id,
+                    !pendingBot || (!TracksHidden.IsNew(RaceTracks.All[i].Id) && RaceTracks.All[i].Id != TracksRethink.Id), 11);
             DrawFlightApplyFooter();
         }
         void DrawHiddenWarningChoices()
@@ -336,7 +338,7 @@ namespace FlipRace.Presentation
         }
         void DrawFlightApplyFooter()
         {
-            string note = pendingBot && !BotTrackSupported ? "Новые трассы пока без ботов. Выбери прежнюю." : pendingBot && flightSelection.IsCustom ? "Боты: выбери готовый профиль" : !CanApplyFlight ? "Проходы требуют повторов ∞"
+            string note = pendingBot && !BotTrackSupported ? "Новые трассы пока без ботов. Выбери прежнюю." : !TrackProfileSupported ? "Передумай: выбери Основной профиль" : pendingBot && flightSelection.IsCustom ? "Боты: выбери готовый профиль" : !CanApplyFlight ? "Проходы требуют повторов ∞"
                 : RaceTracks.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : "36 сек · управление сохраняется"
                 : "Участок: " + PendingFlightTrackName();
             label.wordWrap = true;

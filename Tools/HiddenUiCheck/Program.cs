@@ -43,7 +43,7 @@ static class Program
     static void LayoutAndCards(FlipRaceGame ui)
     {
         Open(ui);Catalogue(ui);Rect panel=R(ui,"flightPanel"),apply=R(ui,"flightApply"),warning=(Rect)Prop(ui,"HiddenWarningButton");
-        Check(RaceTracks.All.Length==7&&RaceTracks.All.Select(t=>t.Id).Distinct().Count()==7,"seven unique catalogue maps");
+        Check(RaceTracks.All.Length==8&&RaceTracks.All.Select(t=>t.Id).Distinct().Count()==8,"eight unique catalogue maps; legacy seven selection cases retained below");
         var cards=new List<Rect>();
         for(int i=0;i<7;i++) {
             Rect card=TrackRect(ui,i);Check(Inside(card,panel)&&card.height>=44&&card.width>=44,"whole 44-unit track target");
