@@ -1,0 +1,66 @@
+*** Begin Patch
+*** Update File: F:/Home/Game/flip-race-unity/Assets/Scripts/Core/RaceSimulation.cs
+@@
+         public double TopOffsetX, BottomOffsetX;
+         public string Kind;
++        // Immutable track input. Visibility/collision phase belongs to GameState.
++        public bool Hidden;
+@@
+         public double CountdownRemaining = RaceConfig.CountdownDuration;
++        public double HiddenWarningDuration = .8;
++        public Dictionary<string, HiddenObstacleState> HiddenObstacles = new Dictionary<string, HiddenObstacleState>();
+*** Update File: F:/Home/Game/flip-race-unity/Assets/Scripts/Core/RaceSnapshot.cs
+@@
+             copies.Add(source, copy);
++            if (source.HiddenObstacles != null)
++            {
++                copy.HiddenObstacles = new Dictionary<string, HiddenObstacleState>(source.HiddenObstacles.Comparer);
++                foreach (var pair in source.HiddenObstacles)
++                    copy.HiddenObstacles.Add(pair.Key, pair.Value.Copy());
++            }
+*** Add File: F:/Home/Game/flip-race-unity/Assets/Scripts/Core/HiddenObstacles.cs
++using System;
++
++namespace FlipRace.Core
++{
++    public enum HiddenObstaclePhase { Hidden, Warning, Solid }
++
++    // Shared per-race timeline; never attach mutable state to track geometry.
++    public sealed class HiddenObstacleState
++    {
++        public HiddenObstaclePhase Phase;
++        public double? RevealedAt, SolidAt;
++        public int? TriggerPlayerId;
++        public bool ActivationPostponed;
++        internal HiddenObstacleState Copy() { return (HiddenObstacleState)MemberwiseClone(); }
++    }
++
++    public static class HiddenObstacles
++    {
++        public static HiddenObstaclePhase GetPhase(GameState game, Obstacle obstacle)
++        {
++            if (!obstacle.Hidden) return HiddenObstaclePhase.Solid;
++            return game != null && game.HiddenObstacles.TryGetValue(obstacle.Id, out var state)
++                ? state.Phase : HiddenObstaclePhase.Hidden;
++        }
++
++        public static void ConfigureWarning(GameState game, double seconds)
++        {
++            if (game == null) throw new ArgumentNullException(nameof(game));
++            if (game.Elapsed > 0) throw new InvalidOperationException("Warning duration is fixed for an attempt.");
++            if (seconds != .4 && seconds != .6 && seconds != .8 && seconds != 1 && seconds != 1.2)
++                throw new ArgumentOutOfRangeException(nameof(seconds));
++            game.HiddenWarningDuration = seconds;
++        }
++
++        internal static bool HasHidden(Track track)
++        {
++            foreach (var obstacle in track.Obstacles) if (obstacle.Hidden) return true;
++            return false;
++        }
++    }
++}
+*** Add File: F:/Home/Game/flip-race-unity/Assets/Scripts/Core/HiddenObstacles.cs.meta
++fileFormatVersion: 2
++guid: 650e805b377742efa86a127516b80cf9
+*** End Patch
