@@ -1,0 +1,1002 @@
+{
+  "airRepeatLimit": -1,
+  "bot": true,
+  "botAttemptSequenceIndex": 1,
+  "botControllerKind": "StochasticBotController",
+  "botCursor": 26,
+  "botDifficulty": "Master",
+  "botDifficultyRects": [
+    [
+      243,
+      419,
+      114.4,
+      44
+    ],
+    [
+      361.4,
+      419,
+      114.4,
+      44
+    ],
+    [
+      479.8,
+      419,
+      114.4,
+      44
+    ],
+    [
+      598.2,
+      419,
+      114.4,
+      44
+    ],
+    [
+      716.6,
+      419,
+      114.4,
+      44
+    ]
+  ],
+  "botGoalsCompleted": 20,
+  "botGoalsTotal": 20,
+  "botMenuRect": [
+    637.6666,
+    566,
+    193.333328,
+    28
+  ],
+  "botObstaclesTotal": 16,
+  "botPerformance": {
+    "activeCaptureFaultFrames": 0,
+    "activeFrames": 1116,
+    "advance": {
+      "count": 1116,
+      "maximumMilliseconds": 10.5,
+      "over50": 0,
+      "p95UpperBoundMilliseconds": 0.25,
+      "sumMilliseconds": 182.200999999999
+    },
+    "capacity": 10000,
+    "captureFaultFrames": 0,
+    "combined": {
+      "count": 1116,
+      "maximumMilliseconds": 11.8,
+      "over50": 0,
+      "p95UpperBoundMilliseconds": 2.9000000000000004,
+      "sumMilliseconds": 1039.999300000007
+    },
+    "complete": true,
+    "countdownFrames": 97,
+    "diagnostics": {
+      "count": 1116,
+      "maximumMilliseconds": 4,
+      "over50": 0,
+      "p95UpperBoundMilliseconds": 2.7,
+      "sumMilliseconds": 857.7982999999998
+    },
+    "histogramBinMilliseconds": 0.05,
+    "overflowFrames": 0,
+    "pausedFrames": 0,
+    "scope": "All active bot frames, including zero-plan frames and the terminal transition. Advance includes ordinary shared simulation. Diagnostics includes construction, JSON and synchronous publication ONLY; async HTML callbacks are measured separately in the persistent terminal export. Paused/countdown/suppressed cohorts are separate; post-bot-terminal continuation is excluded. P95 is a .05ms histogram upper bound, saturated-bin bound uses exact maximum. Previous completed diagnostic cost is reported by frame; persistent terminal export cost appears in subsequent scalar reports until the next attempt and is outside the frozen active cohort.",
+    "sealedSamples": true,
+    "storedFrames": 1213,
+    "suppressedFrames": 0,
+    "terminal": true,
+    "terminalFrame": 4573,
+    "totalFrames": 1213,
+    "zeroPlanActiveFrames": 1096
+  },
+  "botPositiveGoalsTotal": 4,
+  "botRetryRect": [
+    323,
+    726.720032,
+    210,
+    44
+  ],
+  "botSeed": 3615732746,
+  "botSessionSeed": 2296183688,
+  "botTelemetry": {
+    "candidateSimulations": 136,
+    "decisionCount": 20,
+    "decisions": [
+      {
+        "atDistance": 79.99999985178312,
+        "atTime": 0.3636363629626508,
+        "horizonEndDistance": 1079.999999851783,
+        "id": "obstacle:rethink-m1-entry",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.22095337754581124,
+        "selectedInputs": [
+          360,
+          900,
+          944
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 279.999999811252,
+        "atTime": 1.2727272718693234,
+        "horizonEndDistance": 1279.999999811252,
+        "id": "obstacle:rethink-m1-no-return",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.9376489721471444,
+        "selectedInputs": [
+          348,
+          900,
+          944,
+          1190,
+          1234
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 659.9999998120467,
+        "atTime": 2.9999999991456585,
+        "horizonEndDistance": 1659.9999998120466,
+        "id": "obstacle:rethink-m1-exit",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.5334512341069058,
+        "selectedInputs": [
+          912,
+          956,
+          1190,
+          1234,
+          1460,
+          1600
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 1399.9999998386702,
+        "atTime": 6.363636362903118,
+        "horizonEndDistance": 2399.99999983867,
+        "id": "obstacle:rethink-m2-cancel-landing",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.9113611882785336,
+        "selectedInputs": [
+          1448,
+          1588,
+          1960,
+          2004,
+          2140
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 1719.9999998378753,
+        "atTime": 7.818181817445046,
+        "horizonEndDistance": 2719.9999998378753,
+        "id": "obstacle:rethink-m2-exit",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.9532933329464868,
+        "selectedInputs": [
+          1960,
+          2004,
+          2140
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 1869.9999998120463,
+        "atTime": 8.499999999145823,
+        "horizonEndDistance": 2869.9999998120466,
+        "id": "positive:rethink-m2-air",
+        "intent": "collect",
+        "kind": "Positive",
+        "outcome": "collected",
+        "probability": 1,
+        "roll": 0.5644669948378578,
+        "selectedInputs": [
+          1958,
+          2004,
+          2140
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 2419.999999891518,
+        "atTime": 10.720378801992716,
+        "horizonEndDistance": 3419.999999891518,
+        "id": "positive:rethink-m3-price-bonus",
+        "intent": "collect",
+        "kind": "Positive",
+        "outcome": "collected",
+        "probability": 1,
+        "roll": 0.8742446574615315,
+        "selectedInputs": [
+          2920,
+          3400
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 2639.9999998295307,
+        "atTime": 11.699999999224984,
+        "horizonEndDistance": 3639.99999982953,
+        "id": "obstacle:rethink-m3-price",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.06272704561706632,
+        "selectedInputs": [
+          2922,
+          3400,
+          3444
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 3119.999999849399,
+        "atTime": 13.581818181133256,
+        "horizonEndDistance": 4119.999999849399,
+        "id": "obstacle:rethink-m3-large",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.5581924464786425,
+        "selectedInputs": [
+          3394,
+          3444,
+          3711.77358490566
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 3439.999999885559,
+        "atTime": 15.036363635842884,
+        "horizonEndDistance": 4439.999999885559,
+        "id": "obstacle:rethink-m3-exit",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.9449118509655818,
+        "selectedInputs": [
+          3446,
+          3711.77358490566,
+          4320
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 4039.999999821186,
+        "atTime": 17.76363636282274,
+        "horizonEndDistance": 5039.999999821186,
+        "id": "obstacle:rethink-m4-entry",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.457453700597398,
+        "selectedInputs": [
+          4320,
+          4860,
+          4904
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 4239.99999988993,
+        "atTime": 18.67272727222617,
+        "horizonEndDistance": 5239.99999988993,
+        "id": "obstacle:rethink-m4-no-return",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.597686447086744,
+        "selectedInputs": [
+          4322,
+          4860,
+          4904,
+          5150,
+          5194
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 4619.999999890724,
+        "atTime": 20.399999999502665,
+        "horizonEndDistance": 5619.999999890724,
+        "id": "obstacle:rethink-m4-large",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.94287947693374,
+        "selectedInputs": [
+          4860,
+          4904,
+          5150,
+          5194,
+          5420,
+          5560
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 4859.999999808868,
+        "atTime": 21.490909090039786,
+        "horizonEndDistance": 5859.999999808868,
+        "id": "obstacle:rethink-m4-exit",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.2463875567773357,
+        "selectedInputs": [
+          4872,
+          4916,
+          5150,
+          5194,
+          5420,
+          5560
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 5359.999999821186,
+        "atTime": 23.76363636282324,
+        "horizonEndDistance": 6359.999999821186,
+        "id": "obstacle:rethink-m5-cancel-landing",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.1918282766127959,
+        "selectedInputs": [
+          5426,
+          5560,
+          5920,
+          5964
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 5679.999999809663,
+        "atTime": 25.218181817316445,
+        "horizonEndDistance": 6679.999999809663,
+        "id": "obstacle:rethink-m5-exit",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.9232157313963398,
+        "selectedInputs": [
+          5914,
+          5958
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 6479.99999987483,
+        "atTime": 28.854545453976655,
+        "horizonEndDistance": 7479.99999987483,
+        "id": "obstacle:rethink-m6-pad",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.4496621153084561,
+        "selectedInputs": [
+          6695.18111873532,
+          7200
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 6511.999999812047,
+        "atTime": 28.99999999914582,
+        "horizonEndDistance": 7511.999999812047,
+        "id": "positive:rethink-m6-landing",
+        "intent": "collect",
+        "kind": "Positive",
+        "outcome": "collected",
+        "probability": 1,
+        "roll": 0.5550623735180125,
+        "selectedInputs": [
+          6695.18111873532,
+          7200
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 6899.999999880791,
+        "atTime": 30.751515150929535,
+        "horizonEndDistance": 7899.999999880791,
+        "id": "obstacle:rethink-m6-again",
+        "intent": "avoid",
+        "kind": "Obstacle",
+        "outcome": "avoided",
+        "probability": 0,
+        "roll": 0.997679085819982,
+        "selectedInputs": [
+          7206,
+          7674
+        ],
+        "unreachableReason": ""
+      },
+      {
+        "atDistance": 7409.999999828338,
+        "atTime": 32.78181818103837,
+        "horizonEndDistance": 7920,
+        "id": "finish:rethink-finish",
+        "intent": "collect",
+        "kind": "Finish",
+        "outcome": "collected",
+        "probability": 1,
+        "roll": 0.7523633382515982,
+        "selectedInputs": [
+          7674
+        ],
+        "unreachableReason": ""
+      }
+    ],
+    "forecastObservations": 5019,
+    "forecastRollbacks": 0,
+    "forecastSteps": 5019,
+    "horizonViolations": 0,
+    "lastPlan": {
+      "atDistance": 7409.999999828338,
+      "candidates": 7,
+      "forecastSteps": 123,
+      "horizonEndDistance": 7920,
+      "milliseconds": 0.9001,
+      "number": 20,
+      "rollbacks": 0
+    },
+    "lastPlanningFailure": "",
+    "maximumRequestedHorizon": 1000,
+    "maximumTrialHorizon": 1000,
+    "maximumTrialOvershoot": 0,
+    "pCollect": 1,
+    "pHit": 0,
+    "planningCalls": 20,
+    "planningSamples": [
+      {
+        "atDistance": 79.99999985178312,
+        "candidates": 1,
+        "forecastSteps": 38,
+        "horizonEndDistance": 1079.999999851783,
+        "milliseconds": 2.1001,
+        "number": 1,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 279.999999811252,
+        "candidates": 7,
+        "forecastSteps": 269,
+        "horizonEndDistance": 1279.999999811252,
+        "milliseconds": 4.3999,
+        "number": 2,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 659.9999998120467,
+        "candidates": 13,
+        "forecastSteps": 526,
+        "horizonEndDistance": 1659.9999998120466,
+        "milliseconds": 6.8999,
+        "number": 3,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 1399.9999998386702,
+        "candidates": 13,
+        "forecastSteps": 486,
+        "horizonEndDistance": 2399.99999983867,
+        "milliseconds": 7.4001,
+        "number": 4,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 1719.9999998378753,
+        "candidates": 1,
+        "forecastSteps": 35,
+        "horizonEndDistance": 2719.9999998378753,
+        "milliseconds": 1.0999,
+        "number": 5,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 1869.9999998120463,
+        "candidates": 13,
+        "forecastSteps": 457,
+        "horizonEndDistance": 2869.9999998120466,
+        "milliseconds": 3,
+        "number": 6,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 2419.999999891518,
+        "candidates": 1,
+        "forecastSteps": 35,
+        "horizonEndDistance": 3419.999999891518,
+        "milliseconds": 0.5,
+        "number": 7,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 2639.9999998295307,
+        "candidates": 7,
+        "forecastSteps": 252,
+        "horizonEndDistance": 3639.99999982953,
+        "milliseconds": 5.1001,
+        "number": 8,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 3119.999999849399,
+        "candidates": 7,
+        "forecastSteps": 275,
+        "horizonEndDistance": 4119.999999849399,
+        "milliseconds": 1.5999,
+        "number": 9,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 3439.999999885559,
+        "candidates": 9,
+        "forecastSteps": 369,
+        "horizonEndDistance": 4439.999999885559,
+        "milliseconds": 7.4001,
+        "number": 10,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 4039.999999821186,
+        "candidates": 1,
+        "forecastSteps": 38,
+        "horizonEndDistance": 5039.999999821186,
+        "milliseconds": 0.8,
+        "number": 11,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 4239.99999988993,
+        "candidates": 7,
+        "forecastSteps": 269,
+        "horizonEndDistance": 5239.99999988993,
+        "milliseconds": 4.8999,
+        "number": 12,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 4619.999999890724,
+        "candidates": 1,
+        "forecastSteps": 40,
+        "horizonEndDistance": 5619.999999890724,
+        "milliseconds": 0.3999,
+        "number": 13,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 4859.999999808868,
+        "candidates": 7,
+        "forecastSteps": 279,
+        "horizonEndDistance": 5859.999999808868,
+        "milliseconds": 6.3,
+        "number": 14,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 5359.999999821186,
+        "candidates": 13,
+        "forecastSteps": 512,
+        "horizonEndDistance": 6359.999999821186,
+        "milliseconds": 8.6001,
+        "number": 15,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 5679.999999809663,
+        "candidates": 13,
+        "forecastSteps": 494,
+        "horizonEndDistance": 6679.999999809663,
+        "milliseconds": 10,
+        "number": 16,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 6479.99999987483,
+        "candidates": 1,
+        "forecastSteps": 35,
+        "horizonEndDistance": 7479.99999987483,
+        "milliseconds": 1.1001,
+        "number": 17,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 6511.999999812047,
+        "candidates": 7,
+        "forecastSteps": 249,
+        "horizonEndDistance": 7511.999999812047,
+        "milliseconds": 4.6,
+        "number": 18,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 6899.999999880791,
+        "candidates": 7,
+        "forecastSteps": 238,
+        "horizonEndDistance": 7899.999999880791,
+        "milliseconds": 1.7,
+        "number": 19,
+        "rollbacks": 0
+      },
+      {
+        "atDistance": 7409.999999828338,
+        "candidates": 7,
+        "forecastSteps": 123,
+        "horizonEndDistance": 7920,
+        "milliseconds": 0.9001,
+        "number": 20,
+        "rollbacks": 0
+      }
+    ],
+    "q": 1,
+    "suppressedInputs": 0
+  },
+  "botTrackChoiceRect": [
+    541,
+    726.720032,
+    210,
+    44
+  ],
+  "cameraLeft": 7378.200000000132,
+  "characterRects": [
+    [
+      [
+        257,
+        631.720032,
+        184,
+        44
+      ],
+      [
+        445,
+        631.720032,
+        184,
+        44
+      ],
+      [
+        633,
+        631.720032,
+        184,
+        44
+      ],
+      [
+        257,
+        679.720032,
+        184,
+        44
+      ],
+      [
+        445,
+        679.720032,
+        184,
+        44
+      ],
+      [
+        633,
+        679.720032,
+        184,
+        44
+      ]
+    ]
+  ],
+  "characterSelectionVisible": false,
+  "controlAreas": [
+    [
+      45,
+      631.720032,
+      984,
+      140
+    ]
+  ],
+  "countdown": 0,
+  "currentTrackId": "rethink",
+  "customFlight": false,
+  "departureImpulse": 350,
+  "elapsed": 34.8500000000006,
+  "fieldHeight": "half",
+  "fieldView": "bot",
+  "firstAction": "Jump",
+  "flipImpulse": 0,
+  "frame": 5760,
+  "fullscreenHeight": 25,
+  "fullscreenWidth": 34,
+  "fullscreenX": 983,
+  "fullscreenY": 276.17999267578125,
+  "gravityAcceleration": 662.5,
+  "jumpImpulse": 350,
+  "linearJumpHeight": 112,
+  "linearSpeed": 265,
+  "logicalWindowWidth": 1520,
+  "menuPage": -1,
+  "mode": "bot",
+  "motion": "Linear",
+  "motionLaw": "Gravity",
+  "negativeEnabled": false,
+  "party": false,
+  "partyCamera": "Constant",
+  "partyCameraRects": [
+    [
+      243,
+      482,
+      292,
+      44
+    ],
+    [
+      539,
+      482,
+      292,
+      44
+    ]
+  ],
+  "partyCountRects": [
+    [
+      243,
+      417,
+      193.333328,
+      44
+    ],
+    [
+      440.3333,
+      417,
+      193.333328,
+      44
+    ],
+    [
+      637.6666,
+      417,
+      193.333328,
+      44
+    ]
+  ],
+  "partyLegacyRect": [
+    687,
+    395,
+    144,
+    22
+  ],
+  "partyMenuRect": [
+    440.3333,
+    566,
+    193.333328,
+    28
+  ],
+  "paused": false,
+  "pawRects": [
+    [
+      1010,
+      948,
+      56,
+      56
+    ]
+  ],
+  "pawsVisible": false,
+  "pendingTrackId": "rethink",
+  "phase": "finished",
+  "players": [
+    {
+      "airFlipAvailable": true,
+      "boost": 0,
+      "centerY": 226,
+      "character": 0,
+      "coins": 0,
+      "collisions": 3,
+      "distance": 1766,
+      "failedRings": 0,
+      "finish": -1,
+      "finishBoost": false,
+      "finishBoostDistanceGained": 0,
+      "finishBoostElapsed": 0,
+      "finishBoosts": 0,
+      "flightDuration": 0,
+      "flightEndedAt": 0,
+      "flightInterrupted": false,
+      "flightMaxDistance": 0,
+      "flipElapsed": 0,
+      "flipping": false,
+      "gravity": 1,
+      "hasFlightMeasurement": false,
+      "instantBoosts": 0,
+      "lastFinishBoost": "",
+      "lastInstant": "",
+      "pendingRings": 0,
+      "queuedEffects": 0,
+      "ready": false,
+      "recovering": 0.12363636363645115,
+      "rings": 0,
+      "slow": 0,
+      "slowRings": 0,
+      "speed": 220,
+      "status": "Eliminated",
+      "support": "Wall",
+      "supportObstacle": "",
+      "supportSide": 1,
+      "verticalSpeed": 0,
+      "y": 1
+    },
+    {
+      "airFlipAvailable": true,
+      "boost": 0,
+      "centerY": 68.18737069572633,
+      "character": 1,
+      "coins": 0,
+      "collisions": 0,
+      "distance": 7920,
+      "failedRings": 0,
+      "finish": 34.8500000000006,
+      "finishBoost": false,
+      "finishBoostDistanceGained": 55.000000000000014,
+      "finishBoostElapsed": 0.25,
+      "finishBoosts": 1,
+      "flightDuration": 0.8681818189458694,
+      "flightEndedAt": 34.8500000000006,
+      "flightInterrupted": false,
+      "flightMaxDistance": 92.45283018867906,
+      "flipElapsed": 0.8681818189458694,
+      "flipping": true,
+      "gravity": -1,
+      "hasFlightMeasurement": true,
+      "instantBoosts": 3,
+      "lastFinishBoost": "rethink-finish",
+      "lastInstant": "rethink-m6-landing",
+      "pendingRings": 0,
+      "queuedEffects": 0,
+      "ready": false,
+      "recovering": 0,
+      "rings": 3,
+      "slow": 0,
+      "slowRings": 0,
+      "speed": 220,
+      "status": "Finished",
+      "support": "None",
+      "supportObstacle": "",
+      "supportSide": 0,
+      "verticalSpeed": -225.17045505163907,
+      "y": 0.2556008051685204
+    }
+  ],
+  "previousDiagnosticsFrame": 5758,
+  "previousDiagnosticsMilliseconds": 0.8,
+  "previousTerminalExportMilliseconds": 9.8001,
+  "profile": "base",
+  "projectedPlayers": [
+    [
+      -3588.1610526316645,
+      519.9810532419306
+    ],
+    [
+      395.7442105262305,
+      417.81814058705856
+    ]
+  ],
+  "readyRects": [
+    [
+      323,
+      726.720032,
+      210,
+      44
+    ]
+  ],
+  "realtime": 182.425,
+  "scaleX": 0.6473684210526316,
+  "seating": "bot",
+  "sessionRect": [
+    45,
+    267.68,
+    984,
+    42
+  ],
+  "settingsCopyHeight": 28,
+  "settingsCopyText": "",
+  "settingsCopyWidth": 103,
+  "settingsCopyX": 243,
+  "settingsCopyY": 616,
+  "settingsVisible": false,
+  "sharedFieldRect": [
+    45,
+    309.68,
+    984,
+    283.360016
+  ],
+  "solo": false,
+  "soloCountdownRect": [
+    45,
+    652.38,
+    984,
+    60
+  ],
+  "soloMenuRect": [
+    243,
+    566,
+    193.333328,
+    28
+  ],
+  "soloTrackChoiceRect": [
+    541,
+    570.7,
+    206,
+    44
+  ],
+  "track": "rethink",
+  "trackCatalogCount": 8,
+  "trackCatalogPage": 1,
+  "trackCatalogPages": 1,
+  "trackCatalogState": "ready",
+  "trackImportHeight": 0,
+  "trackImportStatus": "",
+  "trackImportVisible": false,
+  "trackImportWidth": 0,
+  "trackImportX": 0,
+  "trackImportY": 0,
+  "trackMenuRect": [
+    57,
+    267.68,
+    762,
+    42
+  ],
+  "version": "5.4.3-trial",
+  "viewMenuRect": [
+    243,
+    570,
+    286,
+    24
+  ],
+  "viewOptionRects": [
+    [
+      [
+        243,
+        419,
+        194,
+        34
+      ],
+      [
+        440,
+        419,
+        194,
+        34
+      ],
+      [
+        637,
+        419,
+        194,
+        34
+      ]
+    ],
+    [
+      [
+        243,
+        474,
+        292.5,
+        34
+      ],
+      [
+        538.5,
+        474,
+        292.5,
+        34
+      ]
+    ]
+  ],
+  "winner": "1"
+}
