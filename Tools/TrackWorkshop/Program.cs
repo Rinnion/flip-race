@@ -1,23 +1,17 @@
-using System.Net;
 using TrackWorkshop;
 
+var deployment=ServerOptions.FromEnvironment();
 var builder=WebApplication.CreateBuilder(new WebApplicationOptions{Args=args,ContentRootPath=AppContext.BaseDirectory});
-// Explicit endpoint overrides environment URLs: this tool cannot bind remotely.
-builder.WebHost.ConfigureKestrel(options=>{options.Listen(IPAddress.Loopback,4186);options.Limits.MaxRequestBodySize=16*1024*1024;});
+// Explicit listener and identity override generic URL configuration. Forwarded
+// headers are intentionally not enabled; the configured public origin is final.
+builder.WebHost.ConfigureKestrel(options=>{options.Listen(deployment.BindAddress,deployment.Port);options.Limits.MaxRequestBodySize=16*1024*1024;});
+builder.Services.PostConfigure<ForwardedHeadersOptions>(options=>options.ForwardedHeaders=Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.None);
 builder.Services.ConfigureHttpJsonOptions(options=>options.SerializerOptions.PropertyNamingPolicy=System.Text.Json.JsonNamingPolicy.CamelCase);
 var app=builder.Build();
 var service=new WorkshopService(Path.Combine(AppContext.BaseDirectory,"Catalog"));
-app.Use(async(context,next)=>{
-    context.Response.Headers["X-Content-Type-Options"]="nosniff";
-    context.Response.Headers["Content-Security-Policy"]="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'";
-    var host=context.Request.Host;
-    if(host.Port!=4186||(host.Host!="127.0.0.1"&&host.Host!="localhost")){context.Response.StatusCode=400;return;}
-    if(context.Request.Method=="POST"){
-        string origin=context.Request.Headers.Origin.ToString();
-        if((origin.Length>0&&origin!="http://"+host)||!context.Request.HasJsonContentType()) {context.Response.StatusCode=400;await context.Response.WriteAsJsonAsync(new{error="Same-origin JSON requests required."});return;}
-    }
-    try{await next();}catch(ArgumentException e){context.Response.StatusCode=400;await context.Response.WriteAsJsonAsync(new{error=e.Message});}
-});
+using var policy=new ServerPolicy(deployment);
+app.Use((HttpContext context,RequestDelegate next)=>policy.InvokeAsync(context,next));
+app.MapGet("/healthz",()=>new{status="ok",version="0.4.0"});
 app.MapGet("/api/catalog",()=>new{entries=service.Catalog()});
 app.MapGet("/api/catalog/{id}",(string id)=>service.CatalogJson(id) is string json?Results.Ok(new{json}):Results.NotFound(new{error="Unknown catalog ID."}));
 app.MapPost("/api/analyze",(AnalyzeRequest request)=>service.Analyze(request));

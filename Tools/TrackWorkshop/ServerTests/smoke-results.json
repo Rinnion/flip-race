@@ -1,0 +1,172 @@
+{
+  "passed": true,
+  "base": "http://127.0.0.1:4197",
+  "publicOrigin": "https://workshop.example.com",
+  "requests": 20,
+  "results": [
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/edit-model.mjs",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog/full-long",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "workshop.example.com",
+      "origin": "https://workshop.example.com",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze/",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "workshop.example.com",
+      "origin": "https://wrong.example",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "workshop.example.com",
+      "origin": "null",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "workshop.example.com",
+      "origin": "https://workshop.example.com",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "workshop.example.com",
+      "origin": "https://workshop.example.com",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "workshop.example.com",
+      "origin": "https://workshop.example.com",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "host": "wrong.example",
+      "origin": null,
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "host": "127.0.0.1:4197",
+      "origin": null,
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/ServerOptions.cs",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/README.md",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/Web/tests/model.test.mjs",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/Catalog/full-long.track.json",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog/..%2F..%2FProgram.cs",
+      "host": "workshop.example.com",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/replay",
+      "host": "workshop.example.com",
+      "origin": "https://workshop.example.com",
+      "status": 200
+    }
+  ],
+  "replaySummary": {
+    "status": "Finished",
+    "finishTime": 37.99999999999849,
+    "elapsed": 37.99999999999849,
+    "cleanFinish": false,
+    "collisions": 4,
+    "boosts": 0,
+    "instantBoosts": 0,
+    "slows": 0,
+    "coins": 0,
+    "finishBoosts": 0,
+    "acceptedInputs": 0,
+    "ignoredInputs": 0,
+    "unreachedInputs": 0,
+    "collectedIds": [],
+    "successfulIds": [],
+    "failedIds": [],
+    "hitIds": [
+      "full-long-1-low",
+      "full-long-2-standard-pad",
+      "full-long-3-low",
+      "full-long-4-before-stone"
+    ]
+  }
+}

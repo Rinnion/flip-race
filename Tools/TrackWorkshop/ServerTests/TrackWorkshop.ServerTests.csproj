@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><WorkshopTargetFramework Condition="'$(WorkshopTargetFramework)' == ''">net8.0</WorkshopTargetFramework><TargetFramework>$(WorkshopTargetFramework)</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>disable</Nullable><NuGetAudit>false</NuGetAudit></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../TrackWorkshop.csproj" /><FrameworkReference Include="Microsoft.AspNetCore.App" /></ItemGroup>
+</Project>

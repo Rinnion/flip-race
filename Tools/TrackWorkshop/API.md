@@ -1,6 +1,10 @@
 # Track Workshop API
 
-Local protocol v1. JSON properties use camelCase. API errors return HTTP 400 `{ "error": "readable detail" }`. JSON documents are bounded to 2 MiB. No paths or remote URLs are accepted. POST requires JSON content type and same-origin browser requests.
+HTTP protocol v1, Workshop 0.4. JSON properties use camelCase. Validation errors return HTTP 400 `{ "error": "readable detail" }`. JSON documents are bounded to 2 MiB; request body to 16 MiB. No paths or remote URLs are accepted. POST requires JSON content type and same-origin browser requests.
+
+The default endpoint remains local `http://127.0.0.1:4186`. Deployment can set `WORKSHOP_BIND_ADDRESS`, `WORKSHOP_PORT` and an exact `WORKSHOP_PUBLIC_ORIGIN` (mandatory for non-loopback binding). Host and browser POST Origin must match the configured public origin; no wildcard CORS or forwarded-header trust is used. JSON CLI requests without Origin remain supported. TLS and authentication belong to the supplied Caddy deployment, whose app port is private.
+
+`GET /healthz` returns `{status:"ok",version:"0.4.0"}` under the same host policy. By default two analyze/replay POSTs may run concurrently; `WORKSHOP_MAX_CONCURRENT_REQUESTS` accepts 1..32. Excess requests receive HTTP 429 with JSON error and `Retry-After: 1`, without an unbounded queue. Payloads and edited files are not persisted; each simulation uses its own state.
 
 `GET /api/catalog` returns `{entries:[{id,name,file,profiles:["Chosen","FastFlip"]}]}`. `GET /api/catalog/{id}` returns `{json:string}` using only explicitly loaded manifest entries.
 

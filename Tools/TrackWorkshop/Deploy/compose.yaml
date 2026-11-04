@@ -1,0 +1,44 @@
+name: track-workshop
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      WORKSHOP_BIND_ADDRESS: 0.0.0.0
+      WORKSHOP_PORT: "8080"
+      WORKSHOP_PUBLIC_ORIGIN: https://${WORKSHOP_DOMAIN:?Set WORKSHOP_DOMAIN in .env}
+    networks:
+      - backend
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      WORKSHOP_DOMAIN: ${WORKSHOP_DOMAIN:?Set WORKSHOP_DOMAIN in .env}
+      WORKSHOP_USER: ${WORKSHOP_USER:?Set WORKSHOP_USER in .env}
+      WORKSHOP_PASSWORD_HASH: ${WORKSHOP_PASSWORD_HASH:?Set WORKSHOP_PASSWORD_HASH in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - backend
+      - edge
+
+networks:
+  backend:
+    internal: true
+  edge:
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "origin": "https://localhost:4191",
+  "tls": "Verified with explicit test CA; no insecure TLS option",
+  "checks": 18,
+  "evidence": [
+    {
+      "name": "UI requires password",
+      "status": 401
+    },
+    {
+      "name": "API requires password",
+      "status": 401
+    },
+    {
+      "name": "Health requires password",
+      "status": 401
+    },
+    {
+      "name": "Wrong password rejected",
+      "status": 401
+    },
+    {
+      "name": "Authenticated health through verified TLS",
+      "status": 200
+    },
+    {
+      "name": "Authenticated UI",
+      "status": 200
+    },
+    {
+      "name": "Editor module",
+      "status": 200
+    },
+    {
+      "name": "No project file serving",
+      "status": 404
+    },
+    {
+      "name": "Catalog",
+      "status": 200
+    },
+    {
+      "name": "Track source",
+      "status": 200
+    },
+    {
+      "name": "Same-origin analyze",
+      "status": 200
+    },
+    {
+      "name": "Foreign Origin rejected",
+      "status": 400
+    },
+    {
+      "name": "Wrong content type rejected",
+      "status": 400
+    },
+    {
+      "name": "No-Origin CLI supported",
+      "status": 200
+    },
+    {
+      "name": "Forwarded identity is ignored",
+      "status": 200
+    },
+    {
+      "name": "Invalid JSON track returns 400",
+      "status": 400
+    },
+    {
+      "name": "Replay Chosen",
+      "status": 200
+    },
+    {
+      "name": "Replay FastFlip",
+      "status": 200
+    }
+  ],
+  "summaries": [
+    {
+      "profile": "Chosen",
+      "status": "Finished",
+      "finishTime": 33.05000000000027,
+      "elapsed": 33.05000000000027,
+      "cleanFinish": true,
+      "collisions": 0,
+      "boosts": 9,
+      "instantBoosts": 7,
+      "slows": 0,
+      "coins": 0,
+      "finishBoosts": 1,
+      "acceptedInputs": 29,
+      "ignoredInputs": 0,
+      "unreachedInputs": 0,
+      "collectedIds": [
+        "mixed-tricks-after",
+        "mixed-tricks-before",
+        "mixed-tricks-ceiling-low-reward",
+        "mixed-tricks-chain-center",
+        "mixed-tricks-chain-low",
+        "mixed-tricks-finish",
+        "mixed-tricks-high-reward",
+        "mixed-tricks-low-reward",
+        "mixed-tricks-standard-pad",
+        "mixed-tricks-wide-pad"
+      ],
+      "successfulIds": [
+        "mixed-tricks-after",
+        "mixed-tricks-before",
+        "mixed-tricks-ceiling-low-reward",
+        "mixed-tricks-chain-center",
+        "mixed-tricks-chain-low",
+        "mixed-tricks-finish",
+        "mixed-tricks-high-reward",
+        "mixed-tricks-low-reward",
+        "mixed-tricks-standard-pad",
+        "mixed-tricks-wide-pad"
+      ],
+      "failedIds": [],
+      "hitIds": []
+    },
+    {
+      "profile": "FastFlip",
+      "status": "Finished",
+      "finishTime": 33.050000000000274,
+      "elapsed": 33.050000000000274,
+      "cleanFinish": true,
+      "collisions": 0,
+      "boosts": 9,
+      "instantBoosts": 7,
+      "slows": 0,
+      "coins": 0,
+      "finishBoosts": 1,
+      "acceptedInputs": 23,
+      "ignoredInputs": 0,
+      "unreachedInputs": 0,
+      "collectedIds": [
+        "mixed-tricks-after",
+        "mixed-tricks-before",
+        "mixed-tricks-ceiling-low-reward",
+        "mixed-tricks-chain-center",
+        "mixed-tricks-chain-low",
+        "mixed-tricks-finish",
+        "mixed-tricks-high-reward",
+        "mixed-tricks-low-reward",
+        "mixed-tricks-standard-pad",
+        "mixed-tricks-wide-pad"
+      ],
+      "successfulIds": [
+        "mixed-tricks-after",
+        "mixed-tricks-before",
+        "mixed-tricks-ceiling-low-reward",
+        "mixed-tricks-chain-center",
+        "mixed-tricks-chain-low",
+        "mixed-tricks-finish",
+        "mixed-tricks-high-reward",
+        "mixed-tricks-low-reward",
+        "mixed-tricks-standard-pad",
+        "mixed-tricks-wide-pad"
+      ],
+      "failedIds": [],
+      "hitIds": []
+    }
+  ]
+}

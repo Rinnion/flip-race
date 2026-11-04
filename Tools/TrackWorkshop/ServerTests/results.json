@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "assertions": 75,
+  "coverage": [
+    "environment validation",
+    "local aliases",
+    "exact public Host/Origin",
+    "proxy identity without forwarded trust",
+    "prebinding failfast capacity incl trailing slash",
+    "GET availability",
+    "lease release on errors/cancel",
+    "security headers"
+  ]
+}
