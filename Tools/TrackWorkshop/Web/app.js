@@ -1,10 +1,12 @@
-import { clamp, parseInputs, sampleAt, viewMetrics, rewardAppearance, Revision } from './model.mjs';
+import { clamp, parseInputs, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision } from './model.mjs';
 
 const $ = id => document.getElementById(id);
 const svgNS = 'http://www.w3.org/2000/svg';
 const number = (n, digits = 0) => Number(n).toLocaleString('ru-RU', { maximumFractionDigits: digits });
 const state = { analysis: null, valid: false, catalog: [], zoom: 1, left: -20, replay: null, time: 0, playing: false,
-  sourceName: 'track.json', sourceText: '', loadRevision: 0, analysisRevision: new Revision(), replayRevision: new Revision(), debounce: null, analysisAbort: null };
+  sourceName: 'track.json', sourceText: '', loadRevision: 0, analysisRevision: new Revision(), replayRevision: new Revision(), debounce: null, analysisAbort: null,
+  preview: null, moving: false, undoMove: null };
+let drag = null, spacePan = false;
 const eventNames = { collision: 'Удар', collected: 'Касание', reward: 'Бонус', failedReward: 'Срыв награды', negative: 'Ловушка', coin: 'Монета', finishBoost: 'Финишный рывок', hidden: 'Скрытый камень' };
 
 function el(tag, attrs = {}, text) {
@@ -25,10 +27,11 @@ async function api(path, data, signal) {
 }
 function badge(text, kind) { $('validation-badge').textContent = text; $('validation-badge').className = `badge ${kind}`; }
 function controls() {
-  $('download').disabled = !state.valid;
-  $('replay').disabled = !state.valid;
+  $('download').disabled = !state.valid || state.moving;
+  $('replay').disabled = !state.valid || state.moving;
   const a = state.analysis;
-  $('reference').disabled = !state.valid || !a?.references?.some(r => r.profileId === $('profile').value);
+  $('reference').disabled = !state.valid || state.moving || !a?.references?.some(r => r.profileId === $('profile').value);
+  $('undo-move').disabled = state.moving || !state.undoMove || state.undoMove.after !== $('json').value;
   $('download').textContent = a?.staleReferences && state.valid ? '↓ Скачать без эталонов' : '↓ Скачать JSON';
 }
 function invalidateReplay(reason) {
@@ -40,7 +43,10 @@ function invalidateReplay(reason) {
   else if (reason) message('replay-state', reason);
   draw();
 }
-function edited(immediate = false) {
+function edited(immediate = false, options = {}) {
+  if (drag) finishDrag(false);
+  if (!options.keepPreview) state.preview = null;
+  if (!options.preserveUndo) state.undoMove = null;
   state.loadRevision++;
   state.analysisRevision.bump();
   state.analysisAbort?.abort();
@@ -50,6 +56,7 @@ function edited(immediate = false) {
   $('char-count').textContent = `${number($('json').value.length)} символов`;
   $('validation-message').textContent = 'Проверяем текущий текст…';
   $('stale').hidden = !state.analysis;
+  $('stale').textContent = options.keepPreview ? 'Перемещение записано в JSON; схема ожидает проверки Unity.' : 'Схема последней корректной версии. Исправьте JSON, чтобы обновить её.';
   message('validation-errors', '', false);
   message('reference-warning', '', false);
   invalidateReplay('JSON изменён. Для новой геометрии нужно новое прохождение.');
@@ -65,7 +72,7 @@ async function analyze() {
     const result = await api('/api/analyze', { json: text }, abort.signal);
     if (!state.analysisRevision.current(revision)) return;
     const newTrack = state.analysis?.id !== result.id;
-    state.analysis = result; state.valid = true;
+    state.preview = null; state.analysis = result; state.valid = true;
     if (newTrack) { state.left = -20; state.zoom = 1; }
     $('stale').hidden = true; $('empty-diagram').hidden = true;
     badge(result.staleReferences ? 'Геометрия верна' : 'JSON корректен', 'good');
@@ -87,11 +94,12 @@ async function analyze() {
     controls(); draw();
   } catch (error) {
     if (!state.analysisRevision.current(revision) || error.name === 'AbortError') return;
-    state.valid = false; badge('Ошибка JSON', 'bad');
+    state.preview = null; state.valid = false; badge('Ошибка JSON', 'bad');
     $('validation-message').textContent = state.analysis ? 'Схема сохранена от последней корректной версии.' : 'Исправьте файл, чтобы увидеть геометрию.';
     message('validation-errors', error.message);
     $('stale').hidden = !state.analysis;
-    controls();
+    $('stale').textContent = 'Схема последней корректной версии. Исправьте JSON, чтобы обновить её.';
+    controls(); draw();
   }
 }
 function loadText(text, filename) {
@@ -119,8 +127,9 @@ function dimensions() {
   const box = $('diagram').getBoundingClientRect();
   return viewMetrics(Math.max(1, box.width), Math.max(1, box.height), a?.corridorHeight || 240, state.zoom, a?.length || 1000, state.left);
 }
-function objectGroup(parent, description) {
-  const g = el('g', { class: 'object', tabindex: 0, role: 'button', 'aria-label': description });
+function objectGroup(parent, description, target = null) {
+  const g = el('g', { class: 'object', tabindex: 0, role: 'button', 'aria-label': description,
+    'data-collection': target?.collection, 'data-id': target?.id });
   g.append(el('title', {}, description));
   const show = () => { $('object-detail').textContent = description; };
   g.addEventListener('click', show); g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(); } });
@@ -134,7 +143,7 @@ function hiddenPhase(obstacle) {
   return 'Solid';
 }
 function drawGeometry(parent, overview = false) {
-  const a = state.analysis;
+  const a = state.preview || state.analysis;
   const h = a.corridorHeight;
   parent.append(el('rect', { x: -30, y: 0, width: a.length + 70, height: h, fill: '#f3f6eb' }));
   for (const y of [0, h]) line(parent, -30, y, a.length + 40, y, { stroke: '#bac9ae', 'stroke-width': overview ? 4 : 2 });
@@ -151,7 +160,7 @@ function drawGeometry(parent, overview = false) {
   for (const o of a.obstacles) {
     const phase = hiddenPhase(o), isGate = o.bands.length > 1;
     const desc = `${o.id} · ${isGate ? 'ворота, обе части' : 'камень'}${o.hidden ? ` · скрытый (${phase})` : ''} · X ${number(o.x, 2)} · ширина ${number(o.width, 2)}${isGate ? ` · проём Y ${number(o.gapTop, 2)}…${number(o.gapBottom, 2)} · смещения ${number(o.topOffsetX, 2)} / ${number(o.bottomOffsetX, 2)}` : ` · высота ${number(o.height, 2)}`}`;
-    const g = overview ? parent : objectGroup(parent, desc);
+    const g = overview ? parent : objectGroup(parent, desc, { collection: 'obstacles', id: o.id });
     for (const b of o.bands) {
       const outlined = o.hidden && phase !== 'Solid';
       g.append(el('rect', { x: b.x, y: b.y, width: b.width, height: b.height,
@@ -166,12 +175,14 @@ function drawGeometry(parent, overview = false) {
   }
   for (const r of a.rewards) {
     const appearance = rewardAppearance(r.kind), name = appearance.label;
-    const g = overview ? parent : objectGroup(parent, `${r.id} · ${name} · X ${number(r.x, 2)}, Y ${number(r.y, 2)}${r.shape === 'landing' ? ` · окно X ${number(r.left, 2)}…${number(r.right, 2)} · плоскость Y ${number(r.planeY, 2)}` : r.shape === 'circle' ? ` · радиус ${number(r.radius, 2)}` : ' · 4 физических штриха'}`);
+    const g = overview ? parent : objectGroup(parent, `${r.id} · ${name} · X ${number(r.x, 2)}, Y ${number(r.y, 2)}${r.shape === 'landing' ? ` · окно X ${number(r.left, 2)}…${number(r.right, 2)} · плоскость Y ${number(r.planeY, 2)}` : r.shape === 'circle' ? ` · радиус ${number(r.radius, 2)}` : ' · 4 физических штриха'}`, { collection: 'rewards', id: r.id });
     if (r.shape === 'finish') {
+      if (!overview) g.append(el('rect', { x: r.x - 12, y: r.y - 10, width: 24, height: 20, fill: 'transparent', 'pointer-events': 'all' }));
       for (const s of r.segments) line(g, s.x1, s.y1, s.x2, s.y2, { stroke: '#9982b2', 'stroke-width': r.strokeWidth, 'stroke-linecap': 'round' });
     } else if (r.shape === 'landing') {
       const linked = a.obstacles.find(o => o.id === r.obstacleId);
       const muted = linked?.hidden && hiddenPhase(linked) !== 'Solid';
+      if (!overview) line(g, r.left, r.planeY, r.right, r.planeY, { stroke: 'transparent', 'stroke-width': 14, 'pointer-events': 'stroke' });
       line(g, r.left, r.planeY, r.right, r.planeY, { stroke: '#739eaa', 'stroke-width': 3, 'stroke-dasharray': muted ? '4 3' : null, opacity: muted ? .5 : 1 });
       for (const x of [r.left, r.right]) line(g, x, r.planeY - 4, x, r.planeY + 4, { stroke: '#739eaa', 'stroke-width': 1.5, opacity: muted ? .5 : 1 });
     } else {
@@ -227,6 +238,7 @@ function draw() {
   $('view-end').textContent = `${number(Math.min(state.analysis.length, v.left + v.width))} ед.`;
 }
 function zoom(factor, anchor = .5) {
+  if (drag) return;
   if (!state.analysis) return;
   const old = dimensions(); state.zoom = clamp(state.zoom * factor, 1, 3);
   const next = dimensions(); state.left = old.left + anchor * (old.width - next.width); draw();
@@ -340,10 +352,77 @@ $('fit').addEventListener('click', () => { state.zoom = 1; draw(); });
 $('pan').addEventListener('input', () => { if (state.analysis) { state.left = Number($('pan').value) / 1000 * Math.max(0, state.analysis.length + 50 - dimensions().width) - 20; draw(); } });
 $('overview').addEventListener('click', event => { if (!state.analysis) return; const box = $('overview').getBoundingClientRect(); state.left = (event.clientX - box.left) / box.width * (state.analysis.length + 50) - 20 - dimensions().width / 2; draw(); });
 $('diagram').addEventListener('wheel', event => { if (!state.analysis) return; event.preventDefault(); const box = $('diagram').getBoundingClientRect(); zoom(event.deltaY < 0 ? 1.12 : 1 / 1.12, (event.clientX - box.left) / box.width); }, { passive: false });
-let drag = null;
-$('diagram').addEventListener('pointerdown', event => { if (!state.analysis || event.button !== 0) return; drag = { pointerId: event.pointerId, x: event.clientX, left: state.left, scale: dimensions().scale, description: event.target.closest('.object')?.getAttribute('aria-label') }; $('diagram').setPointerCapture(event.pointerId); $('diagram').classList.add('dragging'); });
-$('diagram').addEventListener('pointermove', event => { if (!drag || event.pointerId !== drag.pointerId) return; state.left = drag.left - (event.clientX - drag.x) / drag.scale; draw(); });
-for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) $('diagram').addEventListener(type, event => { if (type === 'pointerup' && drag?.description && Math.abs(event.clientX - drag.x) < 3) $('object-detail').textContent = drag.description; drag = null; $('diagram').classList.remove('dragging'); });
+function finishDrag(commit) {
+  if (!drag) return;
+  const gesture = drag; drag = null;
+  state.moving = false; $('json').readOnly = false;
+  $('diagram').classList.remove('dragging', 'moving-object');
+  if ($('diagram').hasPointerCapture(gesture.pointerId)) $('diagram').releasePointerCapture(gesture.pointerId);
+  if (gesture.mode === 'object' && gesture.active) {
+    if (commit && gesture.plan?.changes.length && $('json').value === gesture.source && state.analysisRevision.current(gesture.revision)) {
+      try {
+        const after = patchNumbers(gesture.source, gesture.plan.changes);
+        $('json').value = after;
+        state.undoMove = { before: gesture.source, after };
+        state.preview = gesture.plan.analysis;
+        edited(true, { keepPreview: true, preserveUndo: true });
+        $('object-detail').textContent = `${gesture.target.id} · перемещено: ΔX ${number(gesture.plan.dx, 1)}, ΔY ${number(gesture.plan.dy, 1)} · координаты записаны в JSON`;
+        notice('Координаты записаны в JSON и проверяются. Эталоны сохранены в исходнике; после изменения геометрии они могут устареть.');
+      } catch (error) { state.preview = null; $('object-detail').textContent = 'Перемещение не записано. JSON не изменён.'; notice(`Перемещение не записано: ${error.message}`, true); }
+    } else {
+      state.preview = null;
+      $('object-detail').textContent = commit ? 'Положение не изменилось.' : 'Перемещение отменено. JSON не изменён.';
+      notice(commit ? 'Положение не изменилось.' : 'Перемещение отменено. JSON не изменён.');
+    }
+  } else if (!gesture.active && gesture.description) $('object-detail').textContent = gesture.description;
+  if (!commit && gesture.mode === 'pan') state.left = gesture.left;
+  controls(); draw();
+}
+$('diagram').addEventListener('pointerdown', event => {
+  if (!state.analysis || event.button !== 0 || drag) return;
+  const group = event.target.closest('.object'), collection = group?.dataset.collection;
+  const mode = collection && !event.altKey && !spacePan ? 'object' : 'pan';
+  if (mode === 'object' && !state.valid) { notice('Для перемещения объектов сначала исправьте JSON и дождитесь проверки текущего текста.', true); return; }
+  try {
+    drag = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, left: state.left, scale: dimensions().scale,
+      mode, active: false, target: { collection, id: group?.dataset.id }, description: group?.getAttribute('aria-label'),
+      source: $('json').value, document: mode === 'object' ? JSON.parse($('json').value) : null,
+      analysis: state.analysis, revision: state.analysisRevision.value, plan: null };
+    $('diagram').setPointerCapture(event.pointerId); $('diagram').focus({ preventScroll: true }); event.preventDefault();
+  } catch (error) { drag = null; notice(`Перемещение недоступно: ${error.message}`, true); }
+});
+$('diagram').addEventListener('pointermove', event => {
+  if (!drag || event.pointerId !== drag.pointerId) return;
+  const pixelDx = event.clientX - drag.x, pixelDy = event.clientY - drag.y;
+  if (!drag.active && Math.hypot(pixelDx, pixelDy) < 4) return;
+  if (!drag.active) {
+    drag.active = true;
+    if (drag.mode === 'object') {
+      state.moving = true; $('json').readOnly = true;
+      invalidateReplay('Объект перемещается. Прежняя траектория сброшена; после проверки постройте её заново.'); controls();
+      $('diagram').classList.add('moving-object');
+    } else $('diagram').classList.add('dragging');
+  }
+  if (drag.mode === 'pan') { state.left = drag.left - pixelDx / drag.scale; draw(); return; }
+  try {
+    drag.plan = translateObject(drag.document, drag.analysis, drag.target, pixelDx / drag.scale, pixelDy / drag.scale);
+    state.preview = drag.plan.analysis; draw();
+    $('object-detail').textContent = `${drag.target.id} · ΔX ${number(drag.plan.dx, 1)}, ΔY ${number(drag.plan.dy, 1)} · отпустите для записи · Esc — отмена`;
+  } catch (error) { finishDrag(false); notice(error.message, true); }
+});
+$('diagram').addEventListener('pointerup', event => { if (drag?.pointerId === event.pointerId) finishDrag(true); });
+for (const type of ['pointercancel', 'lostpointercapture']) $('diagram').addEventListener(type, event => { if (drag?.pointerId === event.pointerId) finishDrag(false); });
+window.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && drag) { event.preventDefault(); finishDrag(false); return; }
+  if (event.code === 'Space' && !event.target.closest('textarea,input,select,button')) { spacePan = true; event.preventDefault(); $('diagram').classList.add('pan-ready'); }
+});
+window.addEventListener('keyup', event => { if (event.code === 'Space') { spacePan = false; $('diagram').classList.remove('pan-ready'); } });
+window.addEventListener('blur', () => { spacePan = false; $('diagram').classList.remove('pan-ready'); finishDrag(false); });
+$('undo-move').addEventListener('click', () => {
+  if (!state.undoMove || state.undoMove.after !== $('json').value) return;
+  $('json').value = state.undoMove.before; state.undoMove = null;
+  edited(true); notice('Последнее перемещение отменено. Восстановлен точный текст JSON до него.');
+});
 $('diagram').addEventListener('keydown', event => { if (!state.analysis) return; if (event.key === '+' || event.key === '=') zoom(1.25); else if (event.key === '-') zoom(.8); else if (event.key === 'ArrowRight') { state.left += dimensions().width / 5; draw(); } else if (event.key === 'ArrowLeft') { state.left -= dimensions().width / 5; draw(); } else return; event.preventDefault(); });
 new ResizeObserver(() => draw()).observe($('diagram'));
 window.addEventListener('beforeunload', event => { if ($('json').value !== state.sourceText) { event.preventDefault(); event.returnValue = ''; } });
