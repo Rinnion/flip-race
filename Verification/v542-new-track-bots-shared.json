@@ -1,0 +1,218 @@
+{
+  "status": "PASS",
+  "checks": 29513,
+  "mode": "--shared",
+  "results": [
+    {
+      "name": "rethink/Chosen/Master/0/0,8/human",
+      "Status": 1,
+      "Collisions": 0,
+      "BoostsEarned": 3,
+      "CompletedBoosts": 3,
+      "FinishTime": 34.84999999999668,
+      "humanTriggered": true,
+      "earlyHumanTriggered": true,
+      "resumedLead": true,
+      "advances": 5816,
+      "PlanningCalls": 20,
+      "CandidateSimulations": 136,
+      "ForecastSteps": 5018,
+      "SuppressedInputs": 0,
+      "LastPlanningFailure": "",
+      "maximumPlanningMilliseconds": 86.7452,
+      "p95PlanningMilliseconds": 64.3293,
+      "milliseconds": 772.3422,
+      "inputs": [
+        359.9999998013178,
+        905.9999998410542,
+        949.9999998410542,
+        1189.9999998013177,
+        1233.9999998013177,
+        1457.9999998013177,
+        1597.9999998013177,
+        1953.999999821186,
+        2003.9999998013177,
+        2139.9999998013177,
+        2913.9999998807907,
+        3393.999999821186,
+        3441.9999998807907,
+        3711.773584706978,
+        4321.999999890724,
+        4859.999999801317,
+        4903.999999801317,
+        5149.999999801317,
+        5193.999999801317,
+        5425.999999841054,
+        5565.999999841054,
+        5931.999999841054,
+        5975.999999841054,
+        6707.181118576374,
+        7211.999999841054,
+        7685.999999841054
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:rethink-m1-entry",
+          "Intent": "avoid",
+          "Roll": 0.0653078454779461,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m1-no-return",
+          "Intent": "avoid",
+          "Roll": 0.3961356395157054,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m1-exit",
+          "Intent": "avoid",
+          "Roll": 0.3327072731917724,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m2-cancel-landing",
+          "Intent": "avoid",
+          "Roll": 0.9989373359130695,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m2-exit",
+          "Intent": "avoid",
+          "Roll": 0.9567808212013915,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:rethink-m2-air",
+          "Intent": "collect",
+          "Roll": 0.7551455287029967,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:rethink-m3-price-bonus",
+          "Intent": "collect",
+          "Roll": 0.0815641280496493,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m3-price",
+          "Intent": "avoid",
+          "Roll": 0.2530383205739781,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m3-large",
+          "Intent": "avoid",
+          "Roll": 0.4048999293008819,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m3-exit",
+          "Intent": "avoid",
+          "Roll": 0.8423984743421897,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-entry",
+          "Intent": "avoid",
+          "Roll": 0.4125049685826525,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-no-return",
+          "Intent": "avoid",
+          "Roll": 0.7331439451081678,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-large",
+          "Intent": "avoid",
+          "Roll": 0.6722789671039209,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-exit",
+          "Intent": "avoid",
+          "Roll": 0.8138899585464969,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m5-cancel-landing",
+          "Intent": "avoid",
+          "Roll": 0.907066787709482,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m5-exit",
+          "Intent": "avoid",
+          "Roll": 0.06614008953329176,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m6-pad",
+          "Intent": "avoid",
+          "Roll": 0.6737046827329323,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:rethink-m6-landing",
+          "Intent": "collect",
+          "Roll": 0.3898377128643915,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m6-again",
+          "Intent": "avoid",
+          "Roll": 0.5381411070702597,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "finish:rethink-finish",
+          "Intent": "collect",
+          "Roll": 0.972750338842161,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        }
+      ]
+    }
+  ],
+  "limitations": "Managed targeted integration/replay cases, not statistics or WebGL frame-budget proof. Unknown future human input is not predicted."
+}

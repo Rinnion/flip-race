@@ -1,0 +1,316 @@
+{
+  "status": "PASS",
+  "checks": 38454,
+  "mode": "--lower",
+  "results": [
+    {
+      "name": "hidden-intercepts/Chosen/Novice/123/0,8",
+      "Status": 1,
+      "Collisions": 2,
+      "BoostsEarned": 3,
+      "CompletedBoosts": 3,
+      "FinishTime": 35.84999999999823,
+      "humanTriggered": false,
+      "advances": 7134,
+      "PlanningCalls": 32,
+      "CandidateSimulations": 2203,
+      "ForecastSteps": 91315,
+      "SuppressedInputs": 0,
+      "LastPlanningFailure": "",
+      "maximumPlanningMilliseconds": 428.784,
+      "p95PlanningMilliseconds": 335.0468,
+      "milliseconds": 3994.524,
+      "inputs": [
+        380.8448771246948,
+        392.8448771921693,
+        611.7735847204738,
+        1020.8448771339408,
+        1064.8448771339408,
+        1263.77358476021,
+        1419.9999998807907,
+        1464.9999998807907,
+        1660.8448772094787,
+        1704.8448772094787,
+        1811.773584800696,
+        1959.9999998807907,
+        1979.9999998907247,
+        2004.999999821186,
+        2167.9999998807907,
+        2224.999999821186,
+        2608.8448772041675,
+        2780.844877133941,
+        2856.8448771921694,
+        3043.773584800696,
+        3388.8448772134134,
+        3464.844877209479,
+        3651.773584803133,
+        4092.8448772134134,
+        4104.8448772041675,
+        4291.773584799947,
+        4517.999999841054,
+        4631.999999850532,
+        5180.844877209478,
+        5224.844877209478,
+        5411.773584803133,
+        5759.999999801318,
+        5779.999999841055,
+        5820.8448772041675,
+        5824.999999860923,
+        5864.8448772041675,
+        6051.773584799947,
+        6460.844877144176,
+        6504.844877144176,
+        6691.7735848036955,
+        6915.181118630581,
+        7039.999999890724,
+        7289.999999841055,
+        7433.999999908629,
+        7478.999999849025,
+        7673.999999801318
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.5413127263309434,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.5731115237576887,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g2",
+          "Intent": "avoid",
+          "Roll": 0.15703436557669193,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g3",
+          "Intent": "avoid",
+          "Roll": 0.40674979181494564,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g4",
+          "Intent": "avoid",
+          "Roll": 0.21442305913660675,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g5",
+          "Intent": "avoid",
+          "Roll": 0.9246656281175092,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-a-0",
+          "Intent": "skip",
+          "Roll": 0.8270847125677392,
+          "Probability": 0.5,
+          "Outcome": "missed",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-b-0",
+          "Intent": "skip",
+          "Roll": 0.5790341260144487,
+          "Probability": 0.5,
+          "Outcome": "missed",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-0",
+          "Intent": "avoid",
+          "Roll": 0.7736550323897973,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-0",
+          "Intent": "skip",
+          "Roll": 0.7949670412344858,
+          "Probability": 0.5,
+          "Outcome": "missed",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g0",
+          "Intent": "avoid",
+          "Roll": 0.18194910150486976,
+          "Probability": 0.1261904761904762,
+          "Outcome": "hit",
+          "UnreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate"
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g1",
+          "Intent": "avoid",
+          "Roll": 0.7593172517372295,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g2",
+          "Intent": "avoid",
+          "Roll": 0.9543322114041075,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g3",
+          "Intent": "avoid",
+          "Roll": 0.9781313262647018,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g4",
+          "Intent": "avoid",
+          "Roll": 0.20862975961063057,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g5",
+          "Intent": "avoid",
+          "Roll": 0.22091047873254865,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-a-1",
+          "Intent": "collect",
+          "Roll": 0.14376275369431823,
+          "Probability": 0.5,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-b-1",
+          "Intent": "collect",
+          "Roll": 0.1901716081192717,
+          "Probability": 0.5,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-1",
+          "Intent": "avoid",
+          "Roll": 0.7995571017963812,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-1",
+          "Intent": "skip",
+          "Roll": 0.6459610626334324,
+          "Probability": 0.5,
+          "Outcome": "missed",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g0",
+          "Intent": "avoid",
+          "Roll": 0.3104501775233075,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g1",
+          "Intent": "avoid",
+          "Roll": 0.36804821726400405,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g2",
+          "Intent": "hit",
+          "Roll": 0.11917471757624298,
+          "Probability": 0.1261904761904762,
+          "Outcome": "hit",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g3",
+          "Intent": "avoid",
+          "Roll": 0.4539135176455602,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g4",
+          "Intent": "avoid",
+          "Roll": 0.8077781453030184,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g5",
+          "Intent": "avoid",
+          "Roll": 0.17952543462160975,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-2",
+          "Intent": "avoid",
+          "Roll": 0.20441535103600472,
+          "Probability": 0.1261904761904762,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-2",
+          "Intent": "skip",
+          "Roll": 0.5075894034234807,
+          "Probability": 0.5,
+          "Outcome": "missed",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-air-2",
+          "Intent": "collect",
+          "Roll": 0.15170726890210062,
+          "Probability": 0.5,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "finish:hidden-intercepts-finish",
+          "Intent": "collect",
+          "Roll": 0.14524843904655427,
+          "Probability": 0.5,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        }
+      ]
+    }
+  ],
+  "limitations": "Managed targeted integration/replay cases, not statistics or WebGL frame-budget proof. Unknown future human input is not predicted."
+}

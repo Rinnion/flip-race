@@ -1,0 +1,1148 @@
+{
+  "status": "PASS",
+  "checks": 135104,
+  "mode": "--smoke",
+  "results": [
+    {
+      "name": "hidden-intercepts/Chosen/Master/0/0,8",
+      "Status": 1,
+      "Collisions": 0,
+      "BoostsEarned": 8,
+      "CompletedBoosts": 8,
+      "FinishTime": 33.34999999999643,
+      "humanTriggered": false,
+      "advances": 6839,
+      "PlanningCalls": 30,
+      "CandidateSimulations": 180,
+      "ForecastSteps": 6577,
+      "SuppressedInputs": 0,
+      "LastPlanningFailure": "",
+      "maximumPlanningMilliseconds": 93.3135,
+      "p95PlanningMilliseconds": 89.5745,
+      "milliseconds": 1166.9514,
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.3733422945952043,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.700284295133315,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g2",
+          "Intent": "avoid",
+          "Roll": 0.20277464191894978,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g3",
+          "Intent": "avoid",
+          "Roll": 0.06145039258990437,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g4",
+          "Intent": "avoid",
+          "Roll": 0.48014080722350627,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g5",
+          "Intent": "avoid",
+          "Roll": 0.5399846677901223,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-a-0",
+          "Intent": "collect",
+          "Roll": 0.07016463193576783,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-b-0",
+          "Intent": "collect",
+          "Roll": 0.7170439289184287,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-0",
+          "Intent": "avoid",
+          "Roll": 0.85352232248988,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-0",
+          "Intent": "collect",
+          "Roll": 0.7342270264634863,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g0",
+          "Intent": "avoid",
+          "Roll": 0.08404768106993288,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g1",
+          "Intent": "avoid",
+          "Roll": 0.9718835436506197,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g2",
+          "Intent": "avoid",
+          "Roll": 0.0770162072731182,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g3",
+          "Intent": "avoid",
+          "Roll": 0.9357376926345751,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g4",
+          "Intent": "avoid",
+          "Roll": 0.08887611248064786,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g5",
+          "Intent": "avoid",
+          "Roll": 0.04836312949191779,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-a-1",
+          "Intent": "collect",
+          "Roll": 0.8520206183893606,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-b-1",
+          "Intent": "collect",
+          "Roll": 0.1850412426283583,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-1",
+          "Intent": "avoid",
+          "Roll": 0.05986571672838181,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-1",
+          "Intent": "collect",
+          "Roll": 0.6263987721176818,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g0",
+          "Intent": "avoid",
+          "Roll": 0.12300392205361277,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g1",
+          "Intent": "avoid",
+          "Roll": 0.4720824054675177,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g2",
+          "Intent": "avoid",
+          "Roll": 0.757664380944334,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g3",
+          "Intent": "avoid",
+          "Roll": 0.46832080732565373,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g4",
+          "Intent": "avoid",
+          "Roll": 0.8946177690522745,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g5",
+          "Intent": "avoid",
+          "Roll": 0.5973559661069885,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-2",
+          "Intent": "avoid",
+          "Roll": 0.8834704345790669,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-2",
+          "Intent": "collect",
+          "Roll": 0.2928054422372952,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-air-2",
+          "Intent": "collect",
+          "Roll": 0.042514059343375266,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "finish:hidden-intercepts-finish",
+          "Intent": "collect",
+          "Roll": 0.2279067017370835,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        }
+      ]
+    },
+    {
+      "name": "hidden-intercepts/Fast/Master/0/0,8",
+      "Status": 1,
+      "Collisions": 0,
+      "BoostsEarned": 10,
+      "CompletedBoosts": 10,
+      "FinishTime": 32.74999999999593,
+      "humanTriggered": false,
+      "advances": 6923,
+      "PlanningCalls": 32,
+      "CandidateSimulations": 222,
+      "ForecastSteps": 7862,
+      "SuppressedInputs": 0,
+      "LastPlanningFailure": "",
+      "maximumPlanningMilliseconds": 65.809,
+      "p95PlanningMilliseconds": 64.4929,
+      "milliseconds": 1170.8821,
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.3733422945952043,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.700284295133315,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g2",
+          "Intent": "avoid",
+          "Roll": 0.20277464191894978,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g3",
+          "Intent": "avoid",
+          "Roll": 0.06145039258990437,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g4",
+          "Intent": "avoid",
+          "Roll": 0.48014080722350627,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g5",
+          "Intent": "avoid",
+          "Roll": 0.5399846677901223,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-a-0",
+          "Intent": "collect",
+          "Roll": 0.07016463193576783,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-b-0",
+          "Intent": "collect",
+          "Roll": 0.7170439289184287,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-0",
+          "Intent": "avoid",
+          "Roll": 0.85352232248988,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-0",
+          "Intent": "collect",
+          "Roll": 0.7342270264634863,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-air-0",
+          "Intent": "collect",
+          "Roll": 0.9311935264850035,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g0",
+          "Intent": "avoid",
+          "Roll": 0.08404768106993288,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g1",
+          "Intent": "avoid",
+          "Roll": 0.9718835436506197,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g2",
+          "Intent": "avoid",
+          "Roll": 0.0770162072731182,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g3",
+          "Intent": "avoid",
+          "Roll": 0.9357376926345751,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g4",
+          "Intent": "avoid",
+          "Roll": 0.08887611248064786,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s1-g5",
+          "Intent": "avoid",
+          "Roll": 0.04836312949191779,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-a-1",
+          "Intent": "collect",
+          "Roll": 0.8520206183893606,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-pair-b-1",
+          "Intent": "collect",
+          "Roll": 0.1850412426283583,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-1",
+          "Intent": "avoid",
+          "Roll": 0.05986571672838181,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-1",
+          "Intent": "collect",
+          "Roll": 0.6263987721176818,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-air-1",
+          "Intent": "collect",
+          "Roll": 0.366014675819315,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g0",
+          "Intent": "avoid",
+          "Roll": 0.12300392205361277,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g1",
+          "Intent": "avoid",
+          "Roll": 0.4720824054675177,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g2",
+          "Intent": "avoid",
+          "Roll": 0.757664380944334,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g3",
+          "Intent": "avoid",
+          "Roll": 0.46832080732565373,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g4",
+          "Intent": "avoid",
+          "Roll": 0.8946177690522745,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s2-g5",
+          "Intent": "avoid",
+          "Roll": 0.5973559661069885,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-hidden-2",
+          "Intent": "avoid",
+          "Roll": 0.8834704345790669,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-landing-2",
+          "Intent": "collect",
+          "Roll": 0.2928054422372952,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-intercepts-air-2",
+          "Intent": "collect",
+          "Roll": 0.042514059343375266,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "finish:hidden-intercepts-finish",
+          "Intent": "collect",
+          "Roll": 0.2279067017370835,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        }
+      ]
+    },
+    {
+      "name": "hidden-manifestation/Chosen/Master/0/0,8",
+      "Status": 1,
+      "Collisions": 0,
+      "BoostsEarned": 6,
+      "CompletedBoosts": 6,
+      "FinishTime": 33.9499999999961,
+      "humanTriggered": false,
+      "advances": 6243,
+      "PlanningCalls": 24,
+      "CandidateSimulations": 144,
+      "ForecastSteps": 5703,
+      "SuppressedInputs": 0,
+      "LastPlanningFailure": "",
+      "maximumPlanningMilliseconds": 64.8576,
+      "p95PlanningMilliseconds": 63.0367,
+      "milliseconds": 725.7159,
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.4937914999900386,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.35110667918343097,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g2",
+          "Intent": "avoid",
+          "Roll": 0.005775250378064811,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g3",
+          "Intent": "avoid",
+          "Roll": 0.8316124727716669,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-hidden-0",
+          "Intent": "avoid",
+          "Roll": 0.3715689479140565,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-landing-0",
+          "Intent": "collect",
+          "Roll": 0.2476949932752177,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-air-0",
+          "Intent": "collect",
+          "Roll": 0.41737021470908076,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-inner-1",
+          "Intent": "avoid",
+          "Roll": 0.5360732750268653,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s1-g2",
+          "Intent": "avoid",
+          "Roll": 0.07625690649729222,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s1-g3",
+          "Intent": "avoid",
+          "Roll": 0.835648248787038,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-hidden-1",
+          "Intent": "avoid",
+          "Roll": 0.2917571844300255,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-landing-1",
+          "Intent": "collect",
+          "Roll": 0.20353730616625398,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-air-1",
+          "Intent": "collect",
+          "Roll": 0.3270662355935201,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g0",
+          "Intent": "avoid",
+          "Roll": 0.17033425520639867,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g1",
+          "Intent": "avoid",
+          "Roll": 0.8307876220205799,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g2",
+          "Intent": "avoid",
+          "Roll": 0.021128238062374294,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g3",
+          "Intent": "avoid",
+          "Roll": 0.40857349534053355,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-hidden-2",
+          "Intent": "avoid",
+          "Roll": 0.7056022320175543,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-landing-2",
+          "Intent": "collect",
+          "Roll": 0.05408372275996953,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-air-2",
+          "Intent": "collect",
+          "Roll": 0.07603941729757935,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-inner-3",
+          "Intent": "avoid",
+          "Roll": 0.5596845861291513,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s3-g2",
+          "Intent": "avoid",
+          "Roll": 0.7531726738670841,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s3-g3",
+          "Intent": "avoid",
+          "Roll": 0.8062902534147725,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "finish:hidden-manifestation-finish",
+          "Intent": "collect",
+          "Roll": 0.22081730735953897,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        }
+      ]
+    },
+    {
+      "name": "hidden-manifestation/Fast/Master/0/0,8",
+      "Status": 1,
+      "Collisions": 0,
+      "BoostsEarned": 6,
+      "CompletedBoosts": 6,
+      "FinishTime": 33.949999999996095,
+      "humanTriggered": false,
+      "advances": 6433,
+      "PlanningCalls": 24,
+      "CandidateSimulations": 186,
+      "ForecastSteps": 6826,
+      "SuppressedInputs": 0,
+      "LastPlanningFailure": "",
+      "maximumPlanningMilliseconds": 61.2704,
+      "p95PlanningMilliseconds": 58.7659,
+      "milliseconds": 880.4126,
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.4937914999900386,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.35110667918343097,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g2",
+          "Intent": "avoid",
+          "Roll": 0.005775250378064811,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s0-g3",
+          "Intent": "avoid",
+          "Roll": 0.8316124727716669,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-hidden-0",
+          "Intent": "avoid",
+          "Roll": 0.3715689479140565,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-landing-0",
+          "Intent": "collect",
+          "Roll": 0.2476949932752177,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-air-0",
+          "Intent": "collect",
+          "Roll": 0.41737021470908076,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-inner-1",
+          "Intent": "avoid",
+          "Roll": 0.5360732750268653,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s1-g2",
+          "Intent": "avoid",
+          "Roll": 0.07625690649729222,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s1-g3",
+          "Intent": "avoid",
+          "Roll": 0.835648248787038,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-hidden-1",
+          "Intent": "avoid",
+          "Roll": 0.2917571844300255,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-landing-1",
+          "Intent": "collect",
+          "Roll": 0.20353730616625398,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-air-1",
+          "Intent": "collect",
+          "Roll": 0.3270662355935201,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g0",
+          "Intent": "avoid",
+          "Roll": 0.17033425520639867,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g1",
+          "Intent": "avoid",
+          "Roll": 0.8307876220205799,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g2",
+          "Intent": "avoid",
+          "Roll": 0.021128238062374294,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s2-g3",
+          "Intent": "avoid",
+          "Roll": 0.40857349534053355,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-hidden-2",
+          "Intent": "avoid",
+          "Roll": 0.7056022320175543,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-landing-2",
+          "Intent": "collect",
+          "Roll": 0.05408372275996953,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:hidden-manifestation-air-2",
+          "Intent": "collect",
+          "Roll": 0.07603941729757935,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-inner-3",
+          "Intent": "avoid",
+          "Roll": 0.5596845861291513,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s3-g2",
+          "Intent": "avoid",
+          "Roll": 0.7531726738670841,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:hidden-manifestation-s3-g3",
+          "Intent": "avoid",
+          "Roll": 0.8062902534147725,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "finish:hidden-manifestation-finish",
+          "Intent": "collect",
+          "Roll": 0.22081730735953897,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        }
+      ]
+    },
+    {
+      "name": "rethink/Chosen/Master/0/0,8",
+      "Status": 1,
+      "Collisions": 0,
+      "BoostsEarned": 3,
+      "CompletedBoosts": 3,
+      "FinishTime": 34.84999999999656,
+      "humanTriggered": true,
+      "advances": 5911,
+      "PlanningCalls": 20,
+      "CandidateSimulations": 136,
+      "ForecastSteps": 5018,
+      "SuppressedInputs": 0,
+      "LastPlanningFailure": "",
+      "maximumPlanningMilliseconds": 61.9301,
+      "p95PlanningMilliseconds": 60.6539,
+      "milliseconds": 646.3007,
+      "decisions": [
+        {
+          "Id": "obstacle:rethink-m1-entry",
+          "Intent": "avoid",
+          "Roll": 0.0653078454779461,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m1-no-return",
+          "Intent": "avoid",
+          "Roll": 0.3961356395157054,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m1-exit",
+          "Intent": "avoid",
+          "Roll": 0.3327072731917724,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m2-cancel-landing",
+          "Intent": "avoid",
+          "Roll": 0.9989373359130695,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m2-exit",
+          "Intent": "avoid",
+          "Roll": 0.9567808212013915,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:rethink-m2-air",
+          "Intent": "collect",
+          "Roll": 0.7551455287029967,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:rethink-m3-price-bonus",
+          "Intent": "collect",
+          "Roll": 0.0815641280496493,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m3-price",
+          "Intent": "avoid",
+          "Roll": 0.2530383205739781,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m3-large",
+          "Intent": "avoid",
+          "Roll": 0.4048999293008819,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m3-exit",
+          "Intent": "avoid",
+          "Roll": 0.8423984743421897,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-entry",
+          "Intent": "avoid",
+          "Roll": 0.4125049685826525,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-no-return",
+          "Intent": "avoid",
+          "Roll": 0.7331439451081678,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-large",
+          "Intent": "avoid",
+          "Roll": 0.6722789671039209,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m4-exit",
+          "Intent": "avoid",
+          "Roll": 0.8138899585464969,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m5-cancel-landing",
+          "Intent": "avoid",
+          "Roll": 0.907066787709482,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m5-exit",
+          "Intent": "avoid",
+          "Roll": 0.06614008953329176,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m6-pad",
+          "Intent": "avoid",
+          "Roll": 0.6737046827329323,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "positive:rethink-m6-landing",
+          "Intent": "collect",
+          "Roll": 0.3898377128643915,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "obstacle:rethink-m6-again",
+          "Intent": "avoid",
+          "Roll": 0.5381411070702597,
+          "Probability": 0,
+          "Outcome": "avoided",
+          "UnreachableReason": ""
+        },
+        {
+          "Id": "finish:rethink-finish",
+          "Intent": "collect",
+          "Roll": 0.972750338842161,
+          "Probability": 1,
+          "Outcome": "collected",
+          "UnreachableReason": ""
+        }
+      ]
+    }
+  ],
+  "limitations": "Managed targeted integration/replay cases, not statistics or WebGL frame-budget proof. Unknown future human input is not predicted."
+}

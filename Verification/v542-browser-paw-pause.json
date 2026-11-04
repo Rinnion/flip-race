@@ -1,0 +1,3466 @@
+{
+  "pawBefore": {
+    "mode": "bot",
+    "phase": "racing",
+    "winner": "",
+    "track": "hidden-intercepts",
+    "motion": "Linear",
+    "profile": "base",
+    "version": "5.4.2-trial",
+    "fieldView": "bot",
+    "seating": "bot",
+    "fieldHeight": "half",
+    "bot": true,
+    "botDifficulty": "Novice",
+    "botControllerKind": "StochasticBotController",
+    "botSessionSeed": 2446261415,
+    "botAttemptSequenceIndex": 2,
+    "botSeed": 4066748159,
+    "botCursor": 17,
+    "botGoalsTotal": 30,
+    "botGoalsCompleted": 9,
+    "botObstaclesTotal": 21,
+    "botPositiveGoalsTotal": 9,
+    "botTelemetry": {
+      "q": 0.5,
+      "pCollect": 0.5,
+      "pHit": 0.1261904761904762,
+      "maximumRequestedHorizon": 1000.0000000000005,
+      "maximumTrialHorizon": 1000.0000000000005,
+      "maximumTrialOvershoot": 0,
+      "decisionCount": 14,
+      "planningCalls": 16,
+      "candidateSimulations": 1238,
+      "forecastSteps": 51520,
+      "forecastObservations": 51520,
+      "horizonViolations": 0,
+      "forecastRollbacks": 65,
+      "suppressedInputs": 0,
+      "lastPlanningFailure": "",
+      "decisions": [
+        {
+          "id": "obstacle:hidden-intercepts-s0-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.5037356141256168,
+          "atDistance": 19.999999852577844,
+          "atTime": 0.09090909023899019,
+          "horizonEndDistance": 1019.9999998525778,
+          "selectedInputs": [
+            380.8448773141309,
+            436.8448773141309,
+            623.7735849056604
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g1",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8442948212614283,
+          "atDistance": 339.9999998104572,
+          "atTime": 1.5454545445929873,
+          "horizonEndDistance": 1339.9999998104572,
+          "selectedInputs": [
+            380.8448773141309,
+            424.8448773141309,
+            611.7735849056604,
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.7194131285650656,
+          "atDistance": 659.9999998120467,
+          "atTime": 2.999999999145662,
+          "horizonEndDistance": 1659.9999998120466,
+          "selectedInputs": [
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g3",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.06405613769311458,
+          "atDistance": 979.9999998915196,
+          "atTime": 4.454545454052343,
+          "horizonEndDistance": 1979.9999998915196,
+          "selectedInputs": [
+            980,
+            1020.8448773141309,
+            1025,
+            1091.7735849056603,
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g4",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.6654921754961833,
+          "atDistance": 1299.9999998903274,
+          "atTime": 5.9090909085924475,
+          "horizonEndDistance": 2299.9999998903277,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603,
+            2098
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g5",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8142131533240899,
+          "atDistance": 1619.999999851783,
+          "atTime": 7.863636362962799,
+          "horizonEndDistance": 2619.9999998517833,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1879.7735849056603,
+            2130
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-a-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "missed",
+          "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "probability": 0.5,
+          "roll": 0.47857842536177486,
+          "atDistance": 1839.999999851783,
+          "atTime": 8.86363636296278,
+          "horizonEndDistance": 2839.9999998517833,
+          "selectedInputs": [
+            1891.7735849056603,
+            2130,
+            2780.844877314131,
+            2836.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-b-0",
+          "kind": "Positive",
+          "intent": "skip",
+          "outcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.7562120765214786,
+          "atDistance": 1869.9999998120466,
+          "atTime": 8.999999999145794,
+          "horizonEndDistance": 2869.9999998120466,
+          "selectedInputs": [
+            1879.7735849056603,
+            2130,
+            2170,
+            2215,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-hidden-0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.21554442623164505,
+          "atDistance": 1979.9999998120466,
+          "atTime": 9.499999999145784,
+          "horizonEndDistance": 2979.9999998120466,
+          "selectedInputs": [
+            2130,
+            2170,
+            2295,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-landing-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "collected",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.053358577308245,
+          "atDistance": 2011.9999998410542,
+          "atTime": 9.645454544732182,
+          "horizonEndDistance": 3011.999999841054,
+          "selectedInputs": [
+            2210,
+            2780.844877314131,
+            2824.844877314131,
+            3011.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.15908261656295508,
+          "atDistance": 2419.999999945768,
+          "atTime": 11.480028607525172,
+          "horizonEndDistance": 3419.999999945768,
+          "selectedInputs": [
+            2780.844877314131,
+            2792.844877314131,
+            2979.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g1",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.08544731873553246,
+          "atDistance": 2739.9999998311205,
+          "atTime": 12.654545453777576,
+          "horizonEndDistance": 3739.9999998311205,
+          "selectedInputs": [
+            2740,
+            2780.844877314131,
+            2785,
+            2851.7735849056603,
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2583469144301489,
+          "atDistance": 3059.9999998021126,
+          "atTime": 14.109090908190979,
+          "horizonEndDistance": 4059.9999998021126,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3619.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g3",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "pending",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2883656403282657,
+          "atDistance": 3379.9999998664857,
+          "atTime": 16.063636363028795,
+          "horizonEndDistance": 4379.999999866486,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603,
+            4072.844877314131,
+            4116.844877314131,
+            4291.773584905661
+          ]
+        }
+      ],
+      "lastPlan": {
+        "number": 16,
+        "candidates": 96,
+        "forecastSteps": 4096,
+        "rollbacks": 0,
+        "atDistance": 3379.9999998664857,
+        "horizonEndDistance": 4379.999999866486,
+        "milliseconds": 29.8999
+      },
+      "planningSamples": [
+        {
+          "number": 1,
+          "candidates": 57,
+          "forecastSteps": 2395,
+          "rollbacks": 0,
+          "atDistance": 19.999999852577844,
+          "horizonEndDistance": 1019.9999998525778,
+          "milliseconds": 15.1
+        },
+        {
+          "number": 2,
+          "candidates": 96,
+          "forecastSteps": 4099,
+          "rollbacks": 0,
+          "atDistance": 339.9999998104572,
+          "horizonEndDistance": 1339.9999998104572,
+          "milliseconds": 23.1
+        },
+        {
+          "number": 3,
+          "candidates": 57,
+          "forecastSteps": 2421,
+          "rollbacks": 0,
+          "atDistance": 659.9999998120467,
+          "horizonEndDistance": 1659.9999998120466,
+          "milliseconds": 15.2
+        },
+        {
+          "number": 4,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 979.9999998915196,
+          "horizonEndDistance": 1979.9999998915196,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 5,
+          "candidates": 74,
+          "forecastSteps": 3374,
+          "rollbacks": 0,
+          "atDistance": 1299.9999998903274,
+          "horizonEndDistance": 2299.9999998903277,
+          "milliseconds": 25.8
+        },
+        {
+          "number": 6,
+          "candidates": 74,
+          "forecastSteps": 3030,
+          "rollbacks": 0,
+          "atDistance": 1346,
+          "horizonEndDistance": 2346,
+          "milliseconds": 16.7
+        },
+        {
+          "number": 7,
+          "candidates": 71,
+          "forecastSteps": 2743,
+          "rollbacks": 0,
+          "atDistance": 1619.999999851783,
+          "horizonEndDistance": 2619.9999998517833,
+          "milliseconds": 16.5
+        },
+        {
+          "number": 8,
+          "candidates": 67,
+          "forecastSteps": 2548,
+          "rollbacks": 0,
+          "atDistance": 1839.999999851783,
+          "horizonEndDistance": 2839.9999998517833,
+          "milliseconds": 15.8
+        },
+        {
+          "number": 9,
+          "candidates": 96,
+          "forecastSteps": 3790,
+          "rollbacks": 12,
+          "atDistance": 1869.9999998120466,
+          "horizonEndDistance": 2869.9999998120466,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 10,
+          "candidates": 90,
+          "forecastSteps": 3677,
+          "rollbacks": 49,
+          "atDistance": 1979.9999998120466,
+          "horizonEndDistance": 2979.9999998120466,
+          "milliseconds": 24.5999
+        },
+        {
+          "number": 11,
+          "candidates": 70,
+          "forecastSteps": 2589,
+          "rollbacks": 4,
+          "atDistance": 2011.9999998410542,
+          "horizonEndDistance": 3011.999999841054,
+          "milliseconds": 26.2
+        },
+        {
+          "number": 12,
+          "candidates": 57,
+          "forecastSteps": 2251,
+          "rollbacks": 0,
+          "atDistance": 2419.999999945768,
+          "horizonEndDistance": 3419.999999945768,
+          "milliseconds": 16.4
+        },
+        {
+          "number": 13,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 2739.9999998311205,
+          "horizonEndDistance": 3739.9999998311205,
+          "milliseconds": 27
+        },
+        {
+          "number": 14,
+          "candidates": 57,
+          "forecastSteps": 2629,
+          "rollbacks": 0,
+          "atDistance": 3059.9999998021126,
+          "horizonEndDistance": 4059.9999998021126,
+          "milliseconds": 21.5
+        },
+        {
+          "number": 15,
+          "candidates": 84,
+          "forecastSteps": 3642,
+          "rollbacks": 0,
+          "atDistance": 3106,
+          "horizonEndDistance": 4106,
+          "milliseconds": 22
+        },
+        {
+          "number": 16,
+          "candidates": 96,
+          "forecastSteps": 4096,
+          "rollbacks": 0,
+          "atDistance": 3379.9999998664857,
+          "horizonEndDistance": 4379.999999866486,
+          "milliseconds": 29.8999
+        }
+      ]
+    },
+    "botPerformance": {
+      "capacity": 10000,
+      "storedFrames": 641,
+      "totalFrames": 641,
+      "activeFrames": 544,
+      "countdownFrames": 97,
+      "pausedFrames": 0,
+      "suppressedFrames": 0,
+      "zeroPlanActiveFrames": 528,
+      "overflowFrames": 0,
+      "terminalFrame": -1,
+      "captureFaultFrames": 0,
+      "activeCaptureFaultFrames": 0,
+      "terminal": false,
+      "sealedSamples": false,
+      "complete": false,
+      "histogramBinMilliseconds": 0.05,
+      "scope": "All active bot frames, including zero-plan frames and the terminal transition. Advance includes ordinary shared simulation. Diagnostics includes construction, JSON and synchronous publication ONLY; async HTML callbacks are measured separately in the persistent terminal export. Paused/countdown/suppressed cohorts are separate; post-bot-terminal continuation is excluded. P95 is a .05ms histogram upper bound, saturated-bin bound uses exact maximum. Previous completed diagnostic cost is reported by frame; persistent terminal export cost appears in subsequent scalar reports until the next attempt and is outside the frozen active cohort.",
+      "advance": {
+        "count": 544,
+        "over50": 0,
+        "sumMilliseconds": 384.09930000000026,
+        "maximumMilliseconds": 30.1,
+        "p95UpperBoundMilliseconds": 0.30000000000000004
+      },
+      "diagnostics": {
+        "count": 544,
+        "over50": 0,
+        "sumMilliseconds": 340.60029999999995,
+        "maximumMilliseconds": 3.1,
+        "p95UpperBoundMilliseconds": 2.1
+      },
+      "combined": {
+        "count": 544,
+        "over50": 0,
+        "sumMilliseconds": 724.6996000000036,
+        "maximumMilliseconds": 30.900000000000002,
+        "p95UpperBoundMilliseconds": 2.4000000000000004
+      }
+    },
+    "previousDiagnosticsMilliseconds": 0.6001,
+    "previousTerminalExportMilliseconds": 0,
+    "previousDiagnosticsFrame": 5714,
+    "gravityAcceleration": 662.5,
+    "departureImpulse": 350,
+    "firstAction": "Jump",
+    "motionLaw": "Gravity",
+    "airRepeatLimit": -1,
+    "menuPage": -1,
+    "flipImpulse": 0,
+    "jumpImpulse": 350,
+    "linearSpeed": 265,
+    "linearJumpHeight": 112,
+    "pawsVisible": true,
+    "paused": false,
+    "negativeEnabled": false,
+    "customFlight": false,
+    "settingsVisible": false,
+    "characterSelectionVisible": false,
+    "elapsed": 16.99999999999966,
+    "countdown": 0,
+    "realtime": 181.078,
+    "frame": 5716,
+    "fullscreenX": 1189,
+    "fullscreenY": 235.29998779296875,
+    "fullscreenWidth": 34,
+    "fullscreenHeight": 25,
+    "settingsCopyX": 346,
+    "settingsCopyY": 470,
+    "settingsCopyWidth": 103,
+    "settingsCopyHeight": 28,
+    "settingsCopyText": "",
+    "players": [
+      {
+        "ready": false,
+        "flipping": false,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": false,
+        "flightInterrupted": false,
+        "distance": 2970.000000000061,
+        "y": 1,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 7,
+        "character": 0,
+        "rings": 0,
+        "instantBoosts": 0,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0,
+        "verticalSpeed": 0,
+        "centerY": 226,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": 1,
+        "support": "Wall",
+        "supportObstacle": "",
+        "lastInstant": "",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 1,
+        "flightDuration": 0,
+        "flightMaxDistance": 0,
+        "flightEndedAt": 0
+      },
+      {
+        "ready": false,
+        "flipping": false,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": true,
+        "flightInterrupted": false,
+        "distance": 3586.000000000095,
+        "y": 0,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 2,
+        "character": 1,
+        "rings": 1,
+        "instantBoosts": 1,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0.6309486478759285,
+        "verticalSpeed": 0,
+        "centerY": 14,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": -1,
+        "support": "Wall",
+        "supportObstacle": "",
+        "lastInstant": "hidden-intercepts-landing-0",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 0,
+        "flightDuration": 0.6309486478759285,
+        "flightMaxDistance": 212,
+        "flightEndedAt": 16.880243543945323
+      }
+    ],
+    "characterRects": [
+      [
+        [
+          360,
+          468.2,
+          184,
+          44
+        ],
+        [
+          548,
+          468.2,
+          184,
+          44
+        ],
+        [
+          736,
+          468.2,
+          184,
+          44
+        ],
+        [
+          360,
+          516.2,
+          184,
+          44
+        ],
+        [
+          548,
+          516.2,
+          184,
+          44
+        ],
+        [
+          736,
+          516.2,
+          184,
+          44
+        ]
+      ]
+    ],
+    "readyRects": [
+      [
+        530,
+        564.2,
+        220,
+        44
+      ]
+    ],
+    "pawRects": [
+      [
+        1216,
+        656,
+        56,
+        56
+      ]
+    ],
+    "trackMenuRect": [
+      57,
+      226.799988,
+      968,
+      42
+    ],
+    "sessionRect": [
+      45,
+      226.799988,
+      1190,
+      42
+    ],
+    "solo": false,
+    "soloMenuRect": [
+      346,
+      420,
+      193.333328,
+      28
+    ],
+    "botMenuRect": [
+      740.6666,
+      420,
+      193.333328,
+      28
+    ],
+    "botDifficultyRects": [
+      [
+        346,
+        273,
+        114.4,
+        44
+      ],
+      [
+        464.4,
+        273,
+        114.4,
+        44
+      ],
+      [
+        582.8,
+        273,
+        114.4,
+        44
+      ],
+      [
+        701.2,
+        273,
+        114.4,
+        44
+      ],
+      [
+        819.6,
+        273,
+        114.4,
+        44
+      ]
+    ],
+    "botRetryRect": [
+      426,
+      563.2,
+      210,
+      44
+    ],
+    "botTrackChoiceRect": [
+      644,
+      563.2,
+      210,
+      44
+    ],
+    "soloTrackChoiceRect": [
+      644,
+      468.5,
+      206,
+      44
+    ],
+    "soloCountdownRect": [
+      45,
+      509.3,
+      1190,
+      60
+    ],
+    "viewMenuRect": [
+      346,
+      424,
+      286,
+      24
+    ],
+    "viewOptionRects": [
+      [
+        [
+          346,
+          273,
+          194,
+          34
+        ],
+        [
+          543,
+          273,
+          194,
+          34
+        ],
+        [
+          740,
+          273,
+          194,
+          34
+        ]
+      ],
+      [
+        [
+          346,
+          328,
+          292.5,
+          34
+        ],
+        [
+          641.5,
+          328,
+          292.5,
+          34
+        ]
+      ]
+    ],
+    "sharedFieldRect": [
+      122.895996,
+      268.8,
+      1034.208,
+      201.6
+    ],
+    "controlAreas": [
+      [
+        45,
+        468.2,
+        1190,
+        140
+      ]
+    ],
+    "cameraLeft": 2681.2000000000608,
+    "scaleX": 0.6804000051398026,
+    "projectedPlayers": [
+      [
+        319.3955175781251,
+        441.72239138954563
+      ],
+      [
+        738.5219207442667,
+        297.4775902999075
+      ]
+    ],
+    "party": false,
+    "partyCamera": "Lagger",
+    "logicalWindowWidth": 1520,
+    "partyMenuRect": [
+      543.3333,
+      420,
+      193.333328,
+      28
+    ],
+    "partyCountRects": [
+      [
+        346,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        543.3333,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        740.6666,
+        271,
+        193.333328,
+        44
+      ]
+    ],
+    "partyCameraRects": [
+      [
+        346,
+        336,
+        292,
+        44
+      ],
+      [
+        642,
+        336,
+        292,
+        44
+      ]
+    ],
+    "partyLegacyRect": [
+      790,
+      249,
+      144,
+      22
+    ]
+  },
+  "pawAfter": {
+    "mode": "bot",
+    "phase": "racing",
+    "winner": "",
+    "track": "hidden-intercepts",
+    "motion": "Linear",
+    "profile": "base",
+    "version": "5.4.2-trial",
+    "fieldView": "bot",
+    "seating": "bot",
+    "fieldHeight": "half",
+    "bot": true,
+    "botDifficulty": "Novice",
+    "botControllerKind": "StochasticBotController",
+    "botSessionSeed": 2446261415,
+    "botAttemptSequenceIndex": 2,
+    "botSeed": 4066748159,
+    "botCursor": 18,
+    "botGoalsTotal": 30,
+    "botGoalsCompleted": 9,
+    "botObstaclesTotal": 21,
+    "botPositiveGoalsTotal": 9,
+    "botTelemetry": {
+      "q": 0.5,
+      "pCollect": 0.5,
+      "pHit": 0.1261904761904762,
+      "maximumRequestedHorizon": 1000.0000000000005,
+      "maximumTrialHorizon": 1000.0000000000005,
+      "maximumTrialOvershoot": 0,
+      "decisionCount": 14,
+      "planningCalls": 16,
+      "candidateSimulations": 1238,
+      "forecastSteps": 51520,
+      "forecastObservations": 51520,
+      "horizonViolations": 0,
+      "forecastRollbacks": 65,
+      "suppressedInputs": 0,
+      "lastPlanningFailure": "",
+      "decisions": [
+        {
+          "id": "obstacle:hidden-intercepts-s0-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.5037356141256168,
+          "atDistance": 19.999999852577844,
+          "atTime": 0.09090909023899019,
+          "horizonEndDistance": 1019.9999998525778,
+          "selectedInputs": [
+            380.8448773141309,
+            436.8448773141309,
+            623.7735849056604
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g1",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8442948212614283,
+          "atDistance": 339.9999998104572,
+          "atTime": 1.5454545445929873,
+          "horizonEndDistance": 1339.9999998104572,
+          "selectedInputs": [
+            380.8448773141309,
+            424.8448773141309,
+            611.7735849056604,
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.7194131285650656,
+          "atDistance": 659.9999998120467,
+          "atTime": 2.999999999145662,
+          "horizonEndDistance": 1659.9999998120466,
+          "selectedInputs": [
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g3",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.06405613769311458,
+          "atDistance": 979.9999998915196,
+          "atTime": 4.454545454052343,
+          "horizonEndDistance": 1979.9999998915196,
+          "selectedInputs": [
+            980,
+            1020.8448773141309,
+            1025,
+            1091.7735849056603,
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g4",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.6654921754961833,
+          "atDistance": 1299.9999998903274,
+          "atTime": 5.9090909085924475,
+          "horizonEndDistance": 2299.9999998903277,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603,
+            2098
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g5",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8142131533240899,
+          "atDistance": 1619.999999851783,
+          "atTime": 7.863636362962799,
+          "horizonEndDistance": 2619.9999998517833,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1879.7735849056603,
+            2130
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-a-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "missed",
+          "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "probability": 0.5,
+          "roll": 0.47857842536177486,
+          "atDistance": 1839.999999851783,
+          "atTime": 8.86363636296278,
+          "horizonEndDistance": 2839.9999998517833,
+          "selectedInputs": [
+            1891.7735849056603,
+            2130,
+            2780.844877314131,
+            2836.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-b-0",
+          "kind": "Positive",
+          "intent": "skip",
+          "outcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.7562120765214786,
+          "atDistance": 1869.9999998120466,
+          "atTime": 8.999999999145794,
+          "horizonEndDistance": 2869.9999998120466,
+          "selectedInputs": [
+            1879.7735849056603,
+            2130,
+            2170,
+            2215,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-hidden-0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.21554442623164505,
+          "atDistance": 1979.9999998120466,
+          "atTime": 9.499999999145784,
+          "horizonEndDistance": 2979.9999998120466,
+          "selectedInputs": [
+            2130,
+            2170,
+            2295,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-landing-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "collected",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.053358577308245,
+          "atDistance": 2011.9999998410542,
+          "atTime": 9.645454544732182,
+          "horizonEndDistance": 3011.999999841054,
+          "selectedInputs": [
+            2210,
+            2780.844877314131,
+            2824.844877314131,
+            3011.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.15908261656295508,
+          "atDistance": 2419.999999945768,
+          "atTime": 11.480028607525172,
+          "horizonEndDistance": 3419.999999945768,
+          "selectedInputs": [
+            2780.844877314131,
+            2792.844877314131,
+            2979.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g1",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.08544731873553246,
+          "atDistance": 2739.9999998311205,
+          "atTime": 12.654545453777576,
+          "horizonEndDistance": 3739.9999998311205,
+          "selectedInputs": [
+            2740,
+            2780.844877314131,
+            2785,
+            2851.7735849056603,
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2583469144301489,
+          "atDistance": 3059.9999998021126,
+          "atTime": 14.109090908190979,
+          "horizonEndDistance": 4059.9999998021126,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3619.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g3",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "pending",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2883656403282657,
+          "atDistance": 3379.9999998664857,
+          "atTime": 16.063636363028795,
+          "horizonEndDistance": 4379.999999866486,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603,
+            4072.844877314131,
+            4116.844877314131,
+            4291.773584905661
+          ]
+        }
+      ],
+      "lastPlan": {
+        "number": 16,
+        "candidates": 96,
+        "forecastSteps": 4096,
+        "rollbacks": 0,
+        "atDistance": 3379.9999998664857,
+        "horizonEndDistance": 4379.999999866486,
+        "milliseconds": 29.8999
+      },
+      "planningSamples": [
+        {
+          "number": 1,
+          "candidates": 57,
+          "forecastSteps": 2395,
+          "rollbacks": 0,
+          "atDistance": 19.999999852577844,
+          "horizonEndDistance": 1019.9999998525778,
+          "milliseconds": 15.1
+        },
+        {
+          "number": 2,
+          "candidates": 96,
+          "forecastSteps": 4099,
+          "rollbacks": 0,
+          "atDistance": 339.9999998104572,
+          "horizonEndDistance": 1339.9999998104572,
+          "milliseconds": 23.1
+        },
+        {
+          "number": 3,
+          "candidates": 57,
+          "forecastSteps": 2421,
+          "rollbacks": 0,
+          "atDistance": 659.9999998120467,
+          "horizonEndDistance": 1659.9999998120466,
+          "milliseconds": 15.2
+        },
+        {
+          "number": 4,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 979.9999998915196,
+          "horizonEndDistance": 1979.9999998915196,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 5,
+          "candidates": 74,
+          "forecastSteps": 3374,
+          "rollbacks": 0,
+          "atDistance": 1299.9999998903274,
+          "horizonEndDistance": 2299.9999998903277,
+          "milliseconds": 25.8
+        },
+        {
+          "number": 6,
+          "candidates": 74,
+          "forecastSteps": 3030,
+          "rollbacks": 0,
+          "atDistance": 1346,
+          "horizonEndDistance": 2346,
+          "milliseconds": 16.7
+        },
+        {
+          "number": 7,
+          "candidates": 71,
+          "forecastSteps": 2743,
+          "rollbacks": 0,
+          "atDistance": 1619.999999851783,
+          "horizonEndDistance": 2619.9999998517833,
+          "milliseconds": 16.5
+        },
+        {
+          "number": 8,
+          "candidates": 67,
+          "forecastSteps": 2548,
+          "rollbacks": 0,
+          "atDistance": 1839.999999851783,
+          "horizonEndDistance": 2839.9999998517833,
+          "milliseconds": 15.8
+        },
+        {
+          "number": 9,
+          "candidates": 96,
+          "forecastSteps": 3790,
+          "rollbacks": 12,
+          "atDistance": 1869.9999998120466,
+          "horizonEndDistance": 2869.9999998120466,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 10,
+          "candidates": 90,
+          "forecastSteps": 3677,
+          "rollbacks": 49,
+          "atDistance": 1979.9999998120466,
+          "horizonEndDistance": 2979.9999998120466,
+          "milliseconds": 24.5999
+        },
+        {
+          "number": 11,
+          "candidates": 70,
+          "forecastSteps": 2589,
+          "rollbacks": 4,
+          "atDistance": 2011.9999998410542,
+          "horizonEndDistance": 3011.999999841054,
+          "milliseconds": 26.2
+        },
+        {
+          "number": 12,
+          "candidates": 57,
+          "forecastSteps": 2251,
+          "rollbacks": 0,
+          "atDistance": 2419.999999945768,
+          "horizonEndDistance": 3419.999999945768,
+          "milliseconds": 16.4
+        },
+        {
+          "number": 13,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 2739.9999998311205,
+          "horizonEndDistance": 3739.9999998311205,
+          "milliseconds": 27
+        },
+        {
+          "number": 14,
+          "candidates": 57,
+          "forecastSteps": 2629,
+          "rollbacks": 0,
+          "atDistance": 3059.9999998021126,
+          "horizonEndDistance": 4059.9999998021126,
+          "milliseconds": 21.5
+        },
+        {
+          "number": 15,
+          "candidates": 84,
+          "forecastSteps": 3642,
+          "rollbacks": 0,
+          "atDistance": 3106,
+          "horizonEndDistance": 4106,
+          "milliseconds": 22
+        },
+        {
+          "number": 16,
+          "candidates": 96,
+          "forecastSteps": 4096,
+          "rollbacks": 0,
+          "atDistance": 3379.9999998664857,
+          "horizonEndDistance": 4379.999999866486,
+          "milliseconds": 29.8999
+        }
+      ]
+    },
+    "botPerformance": {
+      "capacity": 10000,
+      "storedFrames": 651,
+      "totalFrames": 651,
+      "activeFrames": 554,
+      "countdownFrames": 97,
+      "pausedFrames": 0,
+      "suppressedFrames": 0,
+      "zeroPlanActiveFrames": 538,
+      "overflowFrames": 0,
+      "terminalFrame": -1,
+      "captureFaultFrames": 0,
+      "activeCaptureFaultFrames": 0,
+      "terminal": false,
+      "sealedSamples": false,
+      "complete": false,
+      "histogramBinMilliseconds": 0.05,
+      "scope": "All active bot frames, including zero-plan frames and the terminal transition. Advance includes ordinary shared simulation. Diagnostics includes construction, JSON and synchronous publication ONLY; async HTML callbacks are measured separately in the persistent terminal export. Paused/countdown/suppressed cohorts are separate; post-bot-terminal continuation is excluded. P95 is a .05ms histogram upper bound, saturated-bin bound uses exact maximum. Previous completed diagnostic cost is reported by frame; persistent terminal export cost appears in subsequent scalar reports until the next attempt and is outside the frozen active cohort.",
+      "advance": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 384.9992000000003,
+        "maximumMilliseconds": 30.1,
+        "p95UpperBoundMilliseconds": 0.30000000000000004
+      },
+      "diagnostics": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 346.6004,
+        "maximumMilliseconds": 3.1,
+        "p95UpperBoundMilliseconds": 2.1
+      },
+      "combined": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 731.5996000000038,
+        "maximumMilliseconds": 30.900000000000002,
+        "p95UpperBoundMilliseconds": 2.45
+      }
+    },
+    "previousDiagnosticsMilliseconds": 2.3,
+    "previousTerminalExportMilliseconds": 0,
+    "previousDiagnosticsFrame": 5724,
+    "gravityAcceleration": 662.5,
+    "departureImpulse": 350,
+    "firstAction": "Jump",
+    "motionLaw": "Gravity",
+    "airRepeatLimit": -1,
+    "menuPage": -1,
+    "flipImpulse": 0,
+    "jumpImpulse": 350,
+    "linearSpeed": 265,
+    "linearJumpHeight": 112,
+    "pawsVisible": true,
+    "paused": false,
+    "negativeEnabled": false,
+    "customFlight": false,
+    "settingsVisible": false,
+    "characterSelectionVisible": false,
+    "elapsed": 17.311999999999674,
+    "countdown": 0,
+    "realtime": 181.39000000000001,
+    "frame": 5726,
+    "fullscreenX": 1189,
+    "fullscreenY": 235.29998779296875,
+    "fullscreenWidth": 34,
+    "fullscreenHeight": 25,
+    "settingsCopyX": 346,
+    "settingsCopyY": 470,
+    "settingsCopyWidth": 103,
+    "settingsCopyHeight": 28,
+    "settingsCopyText": "",
+    "players": [
+      {
+        "ready": false,
+        "flipping": true,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": false,
+        "flightInterrupted": false,
+        "distance": 3038.640000000068,
+        "y": 0.6602358490566036,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 7,
+        "character": 0,
+        "rings": 0,
+        "instantBoosts": 0,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0.28000000000000125,
+        "verticalSpeed": -164.4999999999994,
+        "centerY": 153.96999999999997,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": 1,
+        "support": "None",
+        "supportObstacle": "",
+        "lastInstant": "",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 1,
+        "flightDuration": 0,
+        "flightMaxDistance": 0,
+        "flightEndedAt": 0
+      },
+      {
+        "ready": false,
+        "flipping": true,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": true,
+        "flightInterrupted": false,
+        "distance": 3654.6400000001017,
+        "y": 0.021245157263170653,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 2,
+        "character": 1,
+        "rings": 1,
+        "instantBoosts": 1,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0.013029160035023494,
+        "verticalSpeed": 341.36818147679696,
+        "centerY": 18.50397333979218,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": -1,
+        "support": "None",
+        "supportObstacle": "",
+        "lastInstant": "hidden-intercepts-landing-0",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 0,
+        "flightDuration": 0.6309486478759285,
+        "flightMaxDistance": 212,
+        "flightEndedAt": 16.880243543945323
+      }
+    ],
+    "characterRects": [
+      [
+        [
+          360,
+          468.2,
+          184,
+          44
+        ],
+        [
+          548,
+          468.2,
+          184,
+          44
+        ],
+        [
+          736,
+          468.2,
+          184,
+          44
+        ],
+        [
+          360,
+          516.2,
+          184,
+          44
+        ],
+        [
+          548,
+          516.2,
+          184,
+          44
+        ],
+        [
+          736,
+          516.2,
+          184,
+          44
+        ]
+      ]
+    ],
+    "readyRects": [
+      [
+        530,
+        564.2,
+        220,
+        44
+      ]
+    ],
+    "pawRects": [
+      [
+        1216,
+        656,
+        56,
+        56
+      ]
+    ],
+    "trackMenuRect": [
+      57,
+      226.799988,
+      968,
+      42
+    ],
+    "sessionRect": [
+      45,
+      226.799988,
+      1190,
+      42
+    ],
+    "solo": false,
+    "soloMenuRect": [
+      346,
+      420,
+      193.333328,
+      28
+    ],
+    "botMenuRect": [
+      740.6666,
+      420,
+      193.333328,
+      28
+    ],
+    "botDifficultyRects": [
+      [
+        346,
+        273,
+        114.4,
+        44
+      ],
+      [
+        464.4,
+        273,
+        114.4,
+        44
+      ],
+      [
+        582.8,
+        273,
+        114.4,
+        44
+      ],
+      [
+        701.2,
+        273,
+        114.4,
+        44
+      ],
+      [
+        819.6,
+        273,
+        114.4,
+        44
+      ]
+    ],
+    "botRetryRect": [
+      426,
+      563.2,
+      210,
+      44
+    ],
+    "botTrackChoiceRect": [
+      644,
+      563.2,
+      210,
+      44
+    ],
+    "soloTrackChoiceRect": [
+      644,
+      468.5,
+      206,
+      44
+    ],
+    "soloCountdownRect": [
+      45,
+      509.3,
+      1190,
+      60
+    ],
+    "viewMenuRect": [
+      346,
+      424,
+      286,
+      24
+    ],
+    "viewOptionRects": [
+      [
+        [
+          346,
+          273,
+          194,
+          34
+        ],
+        [
+          543,
+          273,
+          194,
+          34
+        ],
+        [
+          740,
+          273,
+          194,
+          34
+        ]
+      ],
+      [
+        [
+          346,
+          328,
+          292.5,
+          34
+        ],
+        [
+          641.5,
+          328,
+          292.5,
+          34
+        ]
+      ]
+    ],
+    "sharedFieldRect": [
+      122.895996,
+      268.8,
+      1034.208,
+      201.6
+    ],
+    "controlAreas": [
+      [
+        45,
+        468.2,
+        1190,
+        140
+      ]
+    ],
+    "cameraLeft": 2749.840000000068,
+    "scaleX": 0.6804000051398026,
+    "projectedPlayers": [
+      [
+        319.3955175781251,
+        392.71317901932565
+      ],
+      [
+        738.5219207442664,
+        300.5420937834516
+      ]
+    ],
+    "party": false,
+    "partyCamera": "Lagger",
+    "logicalWindowWidth": 1520,
+    "partyMenuRect": [
+      543.3333,
+      420,
+      193.333328,
+      28
+    ],
+    "partyCountRects": [
+      [
+        346,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        543.3333,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        740.6666,
+        271,
+        193.333328,
+        44
+      ]
+    ],
+    "partyCameraRects": [
+      [
+        346,
+        336,
+        292,
+        44
+      ],
+      [
+        642,
+        336,
+        292,
+        44
+      ]
+    ],
+    "partyLegacyRect": [
+      790,
+      249,
+      144,
+      22
+    ]
+  },
+  "pause1": {
+    "mode": "bot",
+    "phase": "racing",
+    "winner": "",
+    "track": "hidden-intercepts",
+    "motion": "Linear",
+    "profile": "base",
+    "version": "5.4.2-trial",
+    "fieldView": "bot",
+    "seating": "bot",
+    "fieldHeight": "half",
+    "bot": true,
+    "botDifficulty": "Novice",
+    "botControllerKind": "StochasticBotController",
+    "botSessionSeed": 2446261415,
+    "botAttemptSequenceIndex": 2,
+    "botSeed": 4066748159,
+    "botCursor": 18,
+    "botGoalsTotal": 30,
+    "botGoalsCompleted": 9,
+    "botObstaclesTotal": 21,
+    "botPositiveGoalsTotal": 9,
+    "botTelemetry": {
+      "q": 0.5,
+      "pCollect": 0.5,
+      "pHit": 0.1261904761904762,
+      "maximumRequestedHorizon": 1000.0000000000005,
+      "maximumTrialHorizon": 1000.0000000000005,
+      "maximumTrialOvershoot": 0,
+      "decisionCount": 14,
+      "planningCalls": 16,
+      "candidateSimulations": 1238,
+      "forecastSteps": 51520,
+      "forecastObservations": 51520,
+      "horizonViolations": 0,
+      "forecastRollbacks": 65,
+      "suppressedInputs": 0,
+      "lastPlanningFailure": "",
+      "decisions": [
+        {
+          "id": "obstacle:hidden-intercepts-s0-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.5037356141256168,
+          "atDistance": 19.999999852577844,
+          "atTime": 0.09090909023899019,
+          "horizonEndDistance": 1019.9999998525778,
+          "selectedInputs": [
+            380.8448773141309,
+            436.8448773141309,
+            623.7735849056604
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g1",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8442948212614283,
+          "atDistance": 339.9999998104572,
+          "atTime": 1.5454545445929873,
+          "horizonEndDistance": 1339.9999998104572,
+          "selectedInputs": [
+            380.8448773141309,
+            424.8448773141309,
+            611.7735849056604,
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.7194131285650656,
+          "atDistance": 659.9999998120467,
+          "atTime": 2.999999999145662,
+          "horizonEndDistance": 1659.9999998120466,
+          "selectedInputs": [
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g3",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.06405613769311458,
+          "atDistance": 979.9999998915196,
+          "atTime": 4.454545454052343,
+          "horizonEndDistance": 1979.9999998915196,
+          "selectedInputs": [
+            980,
+            1020.8448773141309,
+            1025,
+            1091.7735849056603,
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g4",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.6654921754961833,
+          "atDistance": 1299.9999998903274,
+          "atTime": 5.9090909085924475,
+          "horizonEndDistance": 2299.9999998903277,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603,
+            2098
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g5",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8142131533240899,
+          "atDistance": 1619.999999851783,
+          "atTime": 7.863636362962799,
+          "horizonEndDistance": 2619.9999998517833,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1879.7735849056603,
+            2130
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-a-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "missed",
+          "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "probability": 0.5,
+          "roll": 0.47857842536177486,
+          "atDistance": 1839.999999851783,
+          "atTime": 8.86363636296278,
+          "horizonEndDistance": 2839.9999998517833,
+          "selectedInputs": [
+            1891.7735849056603,
+            2130,
+            2780.844877314131,
+            2836.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-b-0",
+          "kind": "Positive",
+          "intent": "skip",
+          "outcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.7562120765214786,
+          "atDistance": 1869.9999998120466,
+          "atTime": 8.999999999145794,
+          "horizonEndDistance": 2869.9999998120466,
+          "selectedInputs": [
+            1879.7735849056603,
+            2130,
+            2170,
+            2215,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-hidden-0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.21554442623164505,
+          "atDistance": 1979.9999998120466,
+          "atTime": 9.499999999145784,
+          "horizonEndDistance": 2979.9999998120466,
+          "selectedInputs": [
+            2130,
+            2170,
+            2295,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-landing-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "collected",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.053358577308245,
+          "atDistance": 2011.9999998410542,
+          "atTime": 9.645454544732182,
+          "horizonEndDistance": 3011.999999841054,
+          "selectedInputs": [
+            2210,
+            2780.844877314131,
+            2824.844877314131,
+            3011.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.15908261656295508,
+          "atDistance": 2419.999999945768,
+          "atTime": 11.480028607525172,
+          "horizonEndDistance": 3419.999999945768,
+          "selectedInputs": [
+            2780.844877314131,
+            2792.844877314131,
+            2979.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g1",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.08544731873553246,
+          "atDistance": 2739.9999998311205,
+          "atTime": 12.654545453777576,
+          "horizonEndDistance": 3739.9999998311205,
+          "selectedInputs": [
+            2740,
+            2780.844877314131,
+            2785,
+            2851.7735849056603,
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2583469144301489,
+          "atDistance": 3059.9999998021126,
+          "atTime": 14.109090908190979,
+          "horizonEndDistance": 4059.9999998021126,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3619.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g3",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "pending",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2883656403282657,
+          "atDistance": 3379.9999998664857,
+          "atTime": 16.063636363028795,
+          "horizonEndDistance": 4379.999999866486,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603,
+            4072.844877314131,
+            4116.844877314131,
+            4291.773584905661
+          ]
+        }
+      ],
+      "lastPlan": {
+        "number": 16,
+        "candidates": 96,
+        "forecastSteps": 4096,
+        "rollbacks": 0,
+        "atDistance": 3379.9999998664857,
+        "horizonEndDistance": 4379.999999866486,
+        "milliseconds": 29.8999
+      },
+      "planningSamples": [
+        {
+          "number": 1,
+          "candidates": 57,
+          "forecastSteps": 2395,
+          "rollbacks": 0,
+          "atDistance": 19.999999852577844,
+          "horizonEndDistance": 1019.9999998525778,
+          "milliseconds": 15.1
+        },
+        {
+          "number": 2,
+          "candidates": 96,
+          "forecastSteps": 4099,
+          "rollbacks": 0,
+          "atDistance": 339.9999998104572,
+          "horizonEndDistance": 1339.9999998104572,
+          "milliseconds": 23.1
+        },
+        {
+          "number": 3,
+          "candidates": 57,
+          "forecastSteps": 2421,
+          "rollbacks": 0,
+          "atDistance": 659.9999998120467,
+          "horizonEndDistance": 1659.9999998120466,
+          "milliseconds": 15.2
+        },
+        {
+          "number": 4,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 979.9999998915196,
+          "horizonEndDistance": 1979.9999998915196,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 5,
+          "candidates": 74,
+          "forecastSteps": 3374,
+          "rollbacks": 0,
+          "atDistance": 1299.9999998903274,
+          "horizonEndDistance": 2299.9999998903277,
+          "milliseconds": 25.8
+        },
+        {
+          "number": 6,
+          "candidates": 74,
+          "forecastSteps": 3030,
+          "rollbacks": 0,
+          "atDistance": 1346,
+          "horizonEndDistance": 2346,
+          "milliseconds": 16.7
+        },
+        {
+          "number": 7,
+          "candidates": 71,
+          "forecastSteps": 2743,
+          "rollbacks": 0,
+          "atDistance": 1619.999999851783,
+          "horizonEndDistance": 2619.9999998517833,
+          "milliseconds": 16.5
+        },
+        {
+          "number": 8,
+          "candidates": 67,
+          "forecastSteps": 2548,
+          "rollbacks": 0,
+          "atDistance": 1839.999999851783,
+          "horizonEndDistance": 2839.9999998517833,
+          "milliseconds": 15.8
+        },
+        {
+          "number": 9,
+          "candidates": 96,
+          "forecastSteps": 3790,
+          "rollbacks": 12,
+          "atDistance": 1869.9999998120466,
+          "horizonEndDistance": 2869.9999998120466,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 10,
+          "candidates": 90,
+          "forecastSteps": 3677,
+          "rollbacks": 49,
+          "atDistance": 1979.9999998120466,
+          "horizonEndDistance": 2979.9999998120466,
+          "milliseconds": 24.5999
+        },
+        {
+          "number": 11,
+          "candidates": 70,
+          "forecastSteps": 2589,
+          "rollbacks": 4,
+          "atDistance": 2011.9999998410542,
+          "horizonEndDistance": 3011.999999841054,
+          "milliseconds": 26.2
+        },
+        {
+          "number": 12,
+          "candidates": 57,
+          "forecastSteps": 2251,
+          "rollbacks": 0,
+          "atDistance": 2419.999999945768,
+          "horizonEndDistance": 3419.999999945768,
+          "milliseconds": 16.4
+        },
+        {
+          "number": 13,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 2739.9999998311205,
+          "horizonEndDistance": 3739.9999998311205,
+          "milliseconds": 27
+        },
+        {
+          "number": 14,
+          "candidates": 57,
+          "forecastSteps": 2629,
+          "rollbacks": 0,
+          "atDistance": 3059.9999998021126,
+          "horizonEndDistance": 4059.9999998021126,
+          "milliseconds": 21.5
+        },
+        {
+          "number": 15,
+          "candidates": 84,
+          "forecastSteps": 3642,
+          "rollbacks": 0,
+          "atDistance": 3106,
+          "horizonEndDistance": 4106,
+          "milliseconds": 22
+        },
+        {
+          "number": 16,
+          "candidates": 96,
+          "forecastSteps": 4096,
+          "rollbacks": 0,
+          "atDistance": 3379.9999998664857,
+          "horizonEndDistance": 4379.999999866486,
+          "milliseconds": 29.8999
+        }
+      ]
+    },
+    "botPerformance": {
+      "capacity": 10000,
+      "storedFrames": 659,
+      "totalFrames": 659,
+      "activeFrames": 554,
+      "countdownFrames": 97,
+      "pausedFrames": 8,
+      "suppressedFrames": 0,
+      "zeroPlanActiveFrames": 538,
+      "overflowFrames": 0,
+      "terminalFrame": -1,
+      "captureFaultFrames": 0,
+      "activeCaptureFaultFrames": 0,
+      "terminal": false,
+      "sealedSamples": false,
+      "complete": false,
+      "histogramBinMilliseconds": 0.05,
+      "scope": "All active bot frames, including zero-plan frames and the terminal transition. Advance includes ordinary shared simulation. Diagnostics includes construction, JSON and synchronous publication ONLY; async HTML callbacks are measured separately in the persistent terminal export. Paused/countdown/suppressed cohorts are separate; post-bot-terminal continuation is excluded. P95 is a .05ms histogram upper bound, saturated-bin bound uses exact maximum. Previous completed diagnostic cost is reported by frame; persistent terminal export cost appears in subsequent scalar reports until the next attempt and is outside the frozen active cohort.",
+      "advance": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 384.9992000000003,
+        "maximumMilliseconds": 30.1,
+        "p95UpperBoundMilliseconds": 0.30000000000000004
+      },
+      "diagnostics": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 347.40029999999996,
+        "maximumMilliseconds": 3.1,
+        "p95UpperBoundMilliseconds": 2.1
+      },
+      "combined": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 732.3995000000037,
+        "maximumMilliseconds": 30.900000000000002,
+        "p95UpperBoundMilliseconds": 2.45
+      }
+    },
+    "previousDiagnosticsMilliseconds": 2.2,
+    "previousTerminalExportMilliseconds": 0,
+    "previousDiagnosticsFrame": 5732,
+    "gravityAcceleration": 662.5,
+    "departureImpulse": 350,
+    "firstAction": "Jump",
+    "motionLaw": "Gravity",
+    "airRepeatLimit": -1,
+    "menuPage": -1,
+    "flipImpulse": 0,
+    "jumpImpulse": 350,
+    "linearSpeed": 265,
+    "linearJumpHeight": 112,
+    "pawsVisible": false,
+    "paused": true,
+    "negativeEnabled": false,
+    "customFlight": false,
+    "settingsVisible": false,
+    "characterSelectionVisible": false,
+    "elapsed": 17.311999999999674,
+    "countdown": 0,
+    "realtime": 181.641,
+    "frame": 5734,
+    "fullscreenX": 1189,
+    "fullscreenY": 235.29998779296875,
+    "fullscreenWidth": 34,
+    "fullscreenHeight": 25,
+    "settingsCopyX": 346,
+    "settingsCopyY": 470,
+    "settingsCopyWidth": 103,
+    "settingsCopyHeight": 28,
+    "settingsCopyText": "",
+    "players": [
+      {
+        "ready": false,
+        "flipping": true,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": false,
+        "flightInterrupted": false,
+        "distance": 3038.640000000068,
+        "y": 0.6602358490566036,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 7,
+        "character": 0,
+        "rings": 0,
+        "instantBoosts": 0,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0.28000000000000125,
+        "verticalSpeed": -164.4999999999994,
+        "centerY": 153.96999999999997,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": 1,
+        "support": "None",
+        "supportObstacle": "",
+        "lastInstant": "",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 1,
+        "flightDuration": 0,
+        "flightMaxDistance": 0,
+        "flightEndedAt": 0
+      },
+      {
+        "ready": false,
+        "flipping": true,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": true,
+        "flightInterrupted": false,
+        "distance": 3654.6400000001017,
+        "y": 0.021245157263170653,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 2,
+        "character": 1,
+        "rings": 1,
+        "instantBoosts": 1,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0.013029160035023494,
+        "verticalSpeed": 341.36818147679696,
+        "centerY": 18.50397333979218,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": -1,
+        "support": "None",
+        "supportObstacle": "",
+        "lastInstant": "hidden-intercepts-landing-0",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 0,
+        "flightDuration": 0.6309486478759285,
+        "flightMaxDistance": 212,
+        "flightEndedAt": 16.880243543945323
+      }
+    ],
+    "characterRects": [
+      [
+        [
+          360,
+          468.2,
+          184,
+          44
+        ],
+        [
+          548,
+          468.2,
+          184,
+          44
+        ],
+        [
+          736,
+          468.2,
+          184,
+          44
+        ],
+        [
+          360,
+          516.2,
+          184,
+          44
+        ],
+        [
+          548,
+          516.2,
+          184,
+          44
+        ],
+        [
+          736,
+          516.2,
+          184,
+          44
+        ]
+      ]
+    ],
+    "readyRects": [
+      [
+        530,
+        564.2,
+        220,
+        44
+      ]
+    ],
+    "pawRects": [
+      [
+        1216,
+        656,
+        56,
+        56
+      ]
+    ],
+    "trackMenuRect": [
+      57,
+      226.799988,
+      968,
+      42
+    ],
+    "sessionRect": [
+      45,
+      226.799988,
+      1190,
+      42
+    ],
+    "solo": false,
+    "soloMenuRect": [
+      346,
+      420,
+      193.333328,
+      28
+    ],
+    "botMenuRect": [
+      740.6666,
+      420,
+      193.333328,
+      28
+    ],
+    "botDifficultyRects": [
+      [
+        346,
+        273,
+        114.4,
+        44
+      ],
+      [
+        464.4,
+        273,
+        114.4,
+        44
+      ],
+      [
+        582.8,
+        273,
+        114.4,
+        44
+      ],
+      [
+        701.2,
+        273,
+        114.4,
+        44
+      ],
+      [
+        819.6,
+        273,
+        114.4,
+        44
+      ]
+    ],
+    "botRetryRect": [
+      426,
+      563.2,
+      210,
+      44
+    ],
+    "botTrackChoiceRect": [
+      644,
+      563.2,
+      210,
+      44
+    ],
+    "soloTrackChoiceRect": [
+      644,
+      468.5,
+      206,
+      44
+    ],
+    "soloCountdownRect": [
+      45,
+      509.3,
+      1190,
+      60
+    ],
+    "viewMenuRect": [
+      346,
+      424,
+      286,
+      24
+    ],
+    "viewOptionRects": [
+      [
+        [
+          346,
+          273,
+          194,
+          34
+        ],
+        [
+          543,
+          273,
+          194,
+          34
+        ],
+        [
+          740,
+          273,
+          194,
+          34
+        ]
+      ],
+      [
+        [
+          346,
+          328,
+          292.5,
+          34
+        ],
+        [
+          641.5,
+          328,
+          292.5,
+          34
+        ]
+      ]
+    ],
+    "sharedFieldRect": [
+      122.895996,
+      268.8,
+      1034.208,
+      201.6
+    ],
+    "controlAreas": [
+      [
+        45,
+        468.2,
+        1190,
+        140
+      ]
+    ],
+    "cameraLeft": 2749.840000000068,
+    "scaleX": 0.6804000051398026,
+    "projectedPlayers": [
+      [
+        319.3955175781251,
+        392.71317901932565
+      ],
+      [
+        738.5219207442664,
+        300.5420937834516
+      ]
+    ],
+    "party": false,
+    "partyCamera": "Lagger",
+    "logicalWindowWidth": 1520,
+    "partyMenuRect": [
+      543.3333,
+      420,
+      193.333328,
+      28
+    ],
+    "partyCountRects": [
+      [
+        346,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        543.3333,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        740.6666,
+        271,
+        193.333328,
+        44
+      ]
+    ],
+    "partyCameraRects": [
+      [
+        346,
+        336,
+        292,
+        44
+      ],
+      [
+        642,
+        336,
+        292,
+        44
+      ]
+    ],
+    "partyLegacyRect": [
+      790,
+      249,
+      144,
+      22
+    ]
+  },
+  "pause2": {
+    "mode": "bot",
+    "phase": "racing",
+    "winner": "",
+    "track": "hidden-intercepts",
+    "motion": "Linear",
+    "profile": "base",
+    "version": "5.4.2-trial",
+    "fieldView": "bot",
+    "seating": "bot",
+    "fieldHeight": "half",
+    "bot": true,
+    "botDifficulty": "Novice",
+    "botControllerKind": "StochasticBotController",
+    "botSessionSeed": 2446261415,
+    "botAttemptSequenceIndex": 2,
+    "botSeed": 4066748159,
+    "botCursor": 18,
+    "botGoalsTotal": 30,
+    "botGoalsCompleted": 9,
+    "botObstaclesTotal": 21,
+    "botPositiveGoalsTotal": 9,
+    "botTelemetry": {
+      "q": 0.5,
+      "pCollect": 0.5,
+      "pHit": 0.1261904761904762,
+      "maximumRequestedHorizon": 1000.0000000000005,
+      "maximumTrialHorizon": 1000.0000000000005,
+      "maximumTrialOvershoot": 0,
+      "decisionCount": 14,
+      "planningCalls": 16,
+      "candidateSimulations": 1238,
+      "forecastSteps": 51520,
+      "forecastObservations": 51520,
+      "horizonViolations": 0,
+      "forecastRollbacks": 65,
+      "suppressedInputs": 0,
+      "lastPlanningFailure": "",
+      "decisions": [
+        {
+          "id": "obstacle:hidden-intercepts-s0-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.5037356141256168,
+          "atDistance": 19.999999852577844,
+          "atTime": 0.09090909023899019,
+          "horizonEndDistance": 1019.9999998525778,
+          "selectedInputs": [
+            380.8448773141309,
+            436.8448773141309,
+            623.7735849056604
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g1",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8442948212614283,
+          "atDistance": 339.9999998104572,
+          "atTime": 1.5454545445929873,
+          "horizonEndDistance": 1339.9999998104572,
+          "selectedInputs": [
+            380.8448773141309,
+            424.8448773141309,
+            611.7735849056604,
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.7194131285650656,
+          "atDistance": 659.9999998120467,
+          "atTime": 2.999999999145662,
+          "horizonEndDistance": 1659.9999998120466,
+          "selectedInputs": [
+            1020.8448773141309,
+            1076.8448773141308,
+            1263.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g3",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.06405613769311458,
+          "atDistance": 979.9999998915196,
+          "atTime": 4.454545454052343,
+          "horizonEndDistance": 1979.9999998915196,
+          "selectedInputs": [
+            980,
+            1020.8448773141309,
+            1025,
+            1091.7735849056603,
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g4",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.6654921754961833,
+          "atDistance": 1299.9999998903274,
+          "atTime": 5.9090909085924475,
+          "horizonEndDistance": 2299.9999998903277,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1891.7735849056603,
+            2098
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s0-g5",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.8142131533240899,
+          "atDistance": 1619.999999851783,
+          "atTime": 7.863636362962799,
+          "horizonEndDistance": 2619.9999998517833,
+          "selectedInputs": [
+            1660.8448773141308,
+            1704.8448773141308,
+            1879.7735849056603,
+            2130
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-a-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "missed",
+          "unreachableReason": "bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate",
+          "probability": 0.5,
+          "roll": 0.47857842536177486,
+          "atDistance": 1839.999999851783,
+          "atTime": 8.86363636296278,
+          "horizonEndDistance": 2839.9999998517833,
+          "selectedInputs": [
+            1891.7735849056603,
+            2130,
+            2780.844877314131,
+            2836.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-pair-b-0",
+          "kind": "Positive",
+          "intent": "skip",
+          "outcome": "missed",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.7562120765214786,
+          "atDistance": 1869.9999998120466,
+          "atTime": 8.999999999145794,
+          "horizonEndDistance": 2869.9999998120466,
+          "selectedInputs": [
+            1879.7735849056603,
+            2130,
+            2170,
+            2215,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-hidden-0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.21554442623164505,
+          "atDistance": 1979.9999998120466,
+          "atTime": 9.499999999145784,
+          "horizonEndDistance": 2979.9999998120466,
+          "selectedInputs": [
+            2130,
+            2170,
+            2295,
+            2780.844877314131,
+            2824.844877314131
+          ]
+        },
+        {
+          "id": "positive:hidden-intercepts-landing-0",
+          "kind": "Positive",
+          "intent": "collect",
+          "outcome": "collected",
+          "unreachableReason": "",
+          "probability": 0.5,
+          "roll": 0.053358577308245,
+          "atDistance": 2011.9999998410542,
+          "atTime": 9.645454544732182,
+          "horizonEndDistance": 3011.999999841054,
+          "selectedInputs": [
+            2210,
+            2780.844877314131,
+            2824.844877314131,
+            3011.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g0",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.15908261656295508,
+          "atDistance": 2419.999999945768,
+          "atTime": 11.480028607525172,
+          "horizonEndDistance": 3419.999999945768,
+          "selectedInputs": [
+            2780.844877314131,
+            2792.844877314131,
+            2979.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g1",
+          "kind": "Obstacle",
+          "intent": "hit",
+          "outcome": "hit",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.08544731873553246,
+          "atDistance": 2739.9999998311205,
+          "atTime": 12.654545453777576,
+          "horizonEndDistance": 3739.9999998311205,
+          "selectedInputs": [
+            2740,
+            2780.844877314131,
+            2785,
+            2851.7735849056603,
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g2",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "avoided",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2583469144301489,
+          "atDistance": 3059.9999998021126,
+          "atTime": 14.109090908190979,
+          "horizonEndDistance": 4059.9999998021126,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3619.7735849056603
+          ]
+        },
+        {
+          "id": "obstacle:hidden-intercepts-s1-g3",
+          "kind": "Obstacle",
+          "intent": "avoid",
+          "outcome": "pending",
+          "unreachableReason": "",
+          "probability": 0.1261904761904762,
+          "roll": 0.2883656403282657,
+          "atDistance": 3379.9999998664857,
+          "atTime": 16.063636363028795,
+          "horizonEndDistance": 4379.999999866486,
+          "selectedInputs": [
+            3420.844877314131,
+            3464.844877314131,
+            3651.7735849056603,
+            4072.844877314131,
+            4116.844877314131,
+            4291.773584905661
+          ]
+        }
+      ],
+      "lastPlan": {
+        "number": 16,
+        "candidates": 96,
+        "forecastSteps": 4096,
+        "rollbacks": 0,
+        "atDistance": 3379.9999998664857,
+        "horizonEndDistance": 4379.999999866486,
+        "milliseconds": 29.8999
+      },
+      "planningSamples": [
+        {
+          "number": 1,
+          "candidates": 57,
+          "forecastSteps": 2395,
+          "rollbacks": 0,
+          "atDistance": 19.999999852577844,
+          "horizonEndDistance": 1019.9999998525778,
+          "milliseconds": 15.1
+        },
+        {
+          "number": 2,
+          "candidates": 96,
+          "forecastSteps": 4099,
+          "rollbacks": 0,
+          "atDistance": 339.9999998104572,
+          "horizonEndDistance": 1339.9999998104572,
+          "milliseconds": 23.1
+        },
+        {
+          "number": 3,
+          "candidates": 57,
+          "forecastSteps": 2421,
+          "rollbacks": 0,
+          "atDistance": 659.9999998120467,
+          "horizonEndDistance": 1659.9999998120466,
+          "milliseconds": 15.2
+        },
+        {
+          "number": 4,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 979.9999998915196,
+          "horizonEndDistance": 1979.9999998915196,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 5,
+          "candidates": 74,
+          "forecastSteps": 3374,
+          "rollbacks": 0,
+          "atDistance": 1299.9999998903274,
+          "horizonEndDistance": 2299.9999998903277,
+          "milliseconds": 25.8
+        },
+        {
+          "number": 6,
+          "candidates": 74,
+          "forecastSteps": 3030,
+          "rollbacks": 0,
+          "atDistance": 1346,
+          "horizonEndDistance": 2346,
+          "milliseconds": 16.7
+        },
+        {
+          "number": 7,
+          "candidates": 71,
+          "forecastSteps": 2743,
+          "rollbacks": 0,
+          "atDistance": 1619.999999851783,
+          "horizonEndDistance": 2619.9999998517833,
+          "milliseconds": 16.5
+        },
+        {
+          "number": 8,
+          "candidates": 67,
+          "forecastSteps": 2548,
+          "rollbacks": 0,
+          "atDistance": 1839.999999851783,
+          "horizonEndDistance": 2839.9999998517833,
+          "milliseconds": 15.8
+        },
+        {
+          "number": 9,
+          "candidates": 96,
+          "forecastSteps": 3790,
+          "rollbacks": 12,
+          "atDistance": 1869.9999998120466,
+          "horizonEndDistance": 2869.9999998120466,
+          "milliseconds": 22.6
+        },
+        {
+          "number": 10,
+          "candidates": 90,
+          "forecastSteps": 3677,
+          "rollbacks": 49,
+          "atDistance": 1979.9999998120466,
+          "horizonEndDistance": 2979.9999998120466,
+          "milliseconds": 24.5999
+        },
+        {
+          "number": 11,
+          "candidates": 70,
+          "forecastSteps": 2589,
+          "rollbacks": 4,
+          "atDistance": 2011.9999998410542,
+          "horizonEndDistance": 3011.999999841054,
+          "milliseconds": 26.2
+        },
+        {
+          "number": 12,
+          "candidates": 57,
+          "forecastSteps": 2251,
+          "rollbacks": 0,
+          "atDistance": 2419.999999945768,
+          "horizonEndDistance": 3419.999999945768,
+          "milliseconds": 16.4
+        },
+        {
+          "number": 13,
+          "candidates": 96,
+          "forecastSteps": 4118,
+          "rollbacks": 0,
+          "atDistance": 2739.9999998311205,
+          "horizonEndDistance": 3739.9999998311205,
+          "milliseconds": 27
+        },
+        {
+          "number": 14,
+          "candidates": 57,
+          "forecastSteps": 2629,
+          "rollbacks": 0,
+          "atDistance": 3059.9999998021126,
+          "horizonEndDistance": 4059.9999998021126,
+          "milliseconds": 21.5
+        },
+        {
+          "number": 15,
+          "candidates": 84,
+          "forecastSteps": 3642,
+          "rollbacks": 0,
+          "atDistance": 3106,
+          "horizonEndDistance": 4106,
+          "milliseconds": 22
+        },
+        {
+          "number": 16,
+          "candidates": 96,
+          "forecastSteps": 4096,
+          "rollbacks": 0,
+          "atDistance": 3379.9999998664857,
+          "horizonEndDistance": 4379.999999866486,
+          "milliseconds": 29.8999
+        }
+      ]
+    },
+    "botPerformance": {
+      "capacity": 10000,
+      "storedFrames": 659,
+      "totalFrames": 659,
+      "activeFrames": 554,
+      "countdownFrames": 97,
+      "pausedFrames": 8,
+      "suppressedFrames": 0,
+      "zeroPlanActiveFrames": 538,
+      "overflowFrames": 0,
+      "terminalFrame": -1,
+      "captureFaultFrames": 0,
+      "activeCaptureFaultFrames": 0,
+      "terminal": false,
+      "sealedSamples": false,
+      "complete": false,
+      "histogramBinMilliseconds": 0.05,
+      "scope": "All active bot frames, including zero-plan frames and the terminal transition. Advance includes ordinary shared simulation. Diagnostics includes construction, JSON and synchronous publication ONLY; async HTML callbacks are measured separately in the persistent terminal export. Paused/countdown/suppressed cohorts are separate; post-bot-terminal continuation is excluded. P95 is a .05ms histogram upper bound, saturated-bin bound uses exact maximum. Previous completed diagnostic cost is reported by frame; persistent terminal export cost appears in subsequent scalar reports until the next attempt and is outside the frozen active cohort.",
+      "advance": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 384.9992000000003,
+        "maximumMilliseconds": 30.1,
+        "p95UpperBoundMilliseconds": 0.30000000000000004
+      },
+      "diagnostics": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 347.40029999999996,
+        "maximumMilliseconds": 3.1,
+        "p95UpperBoundMilliseconds": 2.1
+      },
+      "combined": {
+        "count": 554,
+        "over50": 0,
+        "sumMilliseconds": 732.3995000000037,
+        "maximumMilliseconds": 30.900000000000002,
+        "p95UpperBoundMilliseconds": 2.45
+      }
+    },
+    "previousDiagnosticsMilliseconds": 2.2,
+    "previousTerminalExportMilliseconds": 0,
+    "previousDiagnosticsFrame": 5732,
+    "gravityAcceleration": 662.5,
+    "departureImpulse": 350,
+    "firstAction": "Jump",
+    "motionLaw": "Gravity",
+    "airRepeatLimit": -1,
+    "menuPage": -1,
+    "flipImpulse": 0,
+    "jumpImpulse": 350,
+    "linearSpeed": 265,
+    "linearJumpHeight": 112,
+    "pawsVisible": false,
+    "paused": true,
+    "negativeEnabled": false,
+    "customFlight": false,
+    "settingsVisible": false,
+    "characterSelectionVisible": false,
+    "elapsed": 17.311999999999674,
+    "countdown": 0,
+    "realtime": 181.641,
+    "frame": 5734,
+    "fullscreenX": 1189,
+    "fullscreenY": 235.29998779296875,
+    "fullscreenWidth": 34,
+    "fullscreenHeight": 25,
+    "settingsCopyX": 346,
+    "settingsCopyY": 470,
+    "settingsCopyWidth": 103,
+    "settingsCopyHeight": 28,
+    "settingsCopyText": "",
+    "players": [
+      {
+        "ready": false,
+        "flipping": true,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": false,
+        "flightInterrupted": false,
+        "distance": 3038.640000000068,
+        "y": 0.6602358490566036,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 7,
+        "character": 0,
+        "rings": 0,
+        "instantBoosts": 0,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0.28000000000000125,
+        "verticalSpeed": -164.4999999999994,
+        "centerY": 153.96999999999997,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": 1,
+        "support": "None",
+        "supportObstacle": "",
+        "lastInstant": "",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 1,
+        "flightDuration": 0,
+        "flightMaxDistance": 0,
+        "flightEndedAt": 0
+      },
+      {
+        "ready": false,
+        "flipping": true,
+        "airFlipAvailable": true,
+        "finishBoost": false,
+        "hasFlightMeasurement": true,
+        "flightInterrupted": false,
+        "distance": 3654.6400000001017,
+        "y": 0.021245157263170653,
+        "recovering": 0,
+        "finish": -1,
+        "coins": 0,
+        "collisions": 2,
+        "character": 1,
+        "rings": 1,
+        "instantBoosts": 1,
+        "finishBoosts": 0,
+        "slowRings": 0,
+        "pendingRings": 0,
+        "failedRings": 0,
+        "queuedEffects": 0,
+        "boost": 0,
+        "slow": 0,
+        "speed": 220,
+        "flipElapsed": 0.013029160035023494,
+        "verticalSpeed": 341.36818147679696,
+        "centerY": 18.50397333979218,
+        "finishBoostElapsed": 0,
+        "finishBoostDistanceGained": 0,
+        "gravity": -1,
+        "support": "None",
+        "supportObstacle": "",
+        "lastInstant": "hidden-intercepts-landing-0",
+        "lastFinishBoost": "",
+        "status": "Running",
+        "supportSide": 0,
+        "flightDuration": 0.6309486478759285,
+        "flightMaxDistance": 212,
+        "flightEndedAt": 16.880243543945323
+      }
+    ],
+    "characterRects": [
+      [
+        [
+          360,
+          468.2,
+          184,
+          44
+        ],
+        [
+          548,
+          468.2,
+          184,
+          44
+        ],
+        [
+          736,
+          468.2,
+          184,
+          44
+        ],
+        [
+          360,
+          516.2,
+          184,
+          44
+        ],
+        [
+          548,
+          516.2,
+          184,
+          44
+        ],
+        [
+          736,
+          516.2,
+          184,
+          44
+        ]
+      ]
+    ],
+    "readyRects": [
+      [
+        530,
+        564.2,
+        220,
+        44
+      ]
+    ],
+    "pawRects": [
+      [
+        1216,
+        656,
+        56,
+        56
+      ]
+    ],
+    "trackMenuRect": [
+      57,
+      226.799988,
+      968,
+      42
+    ],
+    "sessionRect": [
+      45,
+      226.799988,
+      1190,
+      42
+    ],
+    "solo": false,
+    "soloMenuRect": [
+      346,
+      420,
+      193.333328,
+      28
+    ],
+    "botMenuRect": [
+      740.6666,
+      420,
+      193.333328,
+      28
+    ],
+    "botDifficultyRects": [
+      [
+        346,
+        273,
+        114.4,
+        44
+      ],
+      [
+        464.4,
+        273,
+        114.4,
+        44
+      ],
+      [
+        582.8,
+        273,
+        114.4,
+        44
+      ],
+      [
+        701.2,
+        273,
+        114.4,
+        44
+      ],
+      [
+        819.6,
+        273,
+        114.4,
+        44
+      ]
+    ],
+    "botRetryRect": [
+      426,
+      563.2,
+      210,
+      44
+    ],
+    "botTrackChoiceRect": [
+      644,
+      563.2,
+      210,
+      44
+    ],
+    "soloTrackChoiceRect": [
+      644,
+      468.5,
+      206,
+      44
+    ],
+    "soloCountdownRect": [
+      45,
+      509.3,
+      1190,
+      60
+    ],
+    "viewMenuRect": [
+      346,
+      424,
+      286,
+      24
+    ],
+    "viewOptionRects": [
+      [
+        [
+          346,
+          273,
+          194,
+          34
+        ],
+        [
+          543,
+          273,
+          194,
+          34
+        ],
+        [
+          740,
+          273,
+          194,
+          34
+        ]
+      ],
+      [
+        [
+          346,
+          328,
+          292.5,
+          34
+        ],
+        [
+          641.5,
+          328,
+          292.5,
+          34
+        ]
+      ]
+    ],
+    "sharedFieldRect": [
+      122.895996,
+      268.8,
+      1034.208,
+      201.6
+    ],
+    "controlAreas": [
+      [
+        45,
+        468.2,
+        1190,
+        140
+      ]
+    ],
+    "cameraLeft": 2749.840000000068,
+    "scaleX": 0.6804000051398026,
+    "projectedPlayers": [
+      [
+        319.3955175781251,
+        392.71317901932565
+      ],
+      [
+        738.5219207442664,
+        300.5420937834516
+      ]
+    ],
+    "party": false,
+    "partyCamera": "Lagger",
+    "logicalWindowWidth": 1520,
+    "partyMenuRect": [
+      543.3333,
+      420,
+      193.333328,
+      28
+    ],
+    "partyCountRects": [
+      [
+        346,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        543.3333,
+        271,
+        193.333328,
+        44
+      ],
+      [
+        740.6666,
+        271,
+        193.333328,
+        44
+      ]
+    ],
+    "partyCameraRects": [
+      [
+        346,
+        336,
+        292,
+        44
+      ],
+      [
+        642,
+        336,
+        292,
+        44
+      ]
+    ],
+    "partyLegacyRect": [
+      790,
+      249,
+      144,
+      22
+    ]
+  }
+}

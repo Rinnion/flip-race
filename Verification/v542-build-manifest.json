@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-04T10:24:45.343Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v5.4.2-new-track-bots",
+  "fileCount": 5,
+  "totalBytes": 9333333,
+  "totalMiB": 8.901,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v5.4.2-new-track-bots.data.unityweb",
+    "Build/WebGL-v5.4.2-new-track-bots.framework.js.unityweb",
+    "Build/WebGL-v5.4.2-new-track-bots.loader.js",
+    "Build/WebGL-v5.4.2-new-track-bots.wasm.unityweb"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v5.4.2-new-track-bots.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v5.4.2-new-track-bots.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v5.4.2-new-track-bots.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v5.4.2-new-track-bots.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v5.4.2-new-track-bots.data.unityweb",
+      "bytes": 1930254,
+      "sha256": "60da76eaab2ddc43ea7c323ac4170eac19739ad460033fd4f161bcba912f3284"
+    },
+    {
+      "path": "Build/WebGL-v5.4.2-new-track-bots.framework.js.unityweb",
+      "bytes": 90931,
+      "sha256": "e05095ab11deb19d907a98785e17459d3f9ea7a64fa3ef408765f634974f8b36"
+    },
+    {
+      "path": "Build/WebGL-v5.4.2-new-track-bots.loader.js",
+      "bytes": 39788,
+      "sha256": "d90a4cab255e1e3d3d63254057479deab2892fa202535f5f9314edf28ead571d"
+    },
+    {
+      "path": "Build/WebGL-v5.4.2-new-track-bots.wasm.unityweb",
+      "bytes": 7258965,
+      "sha256": "14e2660bd9dc11ebbbdf973082e9cf98a6454f7d325db378b429f0af718558c9"
+    },
+    {
+      "path": "index.html",
+      "bytes": 13395,
+      "sha256": "0f5ea86f93008ce66d68d25558c6b199392ff6edf5fa4b68bf649f7168d175af"
+    }
+  ],
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks."
+}

@@ -1,0 +1,371 @@
+{
+  "status": "PASS",
+  "seed": 2944602636,
+  "targetPlans": 2,
+  "targetMilliseconds": 50,
+  "maximum": 40.75,
+  "sources": {
+    "Assets/Scripts/Core\\BotPlanCatalog.cs": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C",
+    "Assets/Scripts/Core\\BotPlanShuffle.cs": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42",
+    "Assets/Scripts/Core\\BotRaceController.cs": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67",
+    "Assets/Scripts/Core\\BotReferenceRoutes.cs": "F7F63D0658089BA8A46B0563D7D232A86C8BF4EB0FE5DB19A663EDB7D12F66DA",
+    "Assets/Scripts/Core\\ContinuousMotion.cs": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+    "Assets/Scripts/Core\\FinishTargetGeometry.cs": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285",
+    "Assets/Scripts/Core\\FlightSettings.cs": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+    "Assets/Scripts/Core\\HiddenObstacles.cs": "07782B10C63D24690F764E663ACECAF678AFF7E62ACAAA05512CBEA2CE011C18",
+    "Assets/Scripts/Core\\MotionProfiles.cs": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417",
+    "Assets/Scripts/Core\\ObstacleGeometry.cs": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+    "Assets/Scripts/Core\\RaceSimulation.cs": "A85B9D1F7D417C43038F65829FACD372B224AD809AFC22BF2CBDB3B85D08217C",
+    "Assets/Scripts/Core\\RaceSnapshot.cs": "A3D73D23A36FA9BC82F5C198ADAA0BE082D91FE82FBF2A6BCC7E97BD58EB9DA5",
+    "Assets/Scripts/Core\\StochasticBotController.cs": "4AA4E40D39A9A64CFA1AC9411B494EB8B05394C682385139280F4B25B6836079",
+    "Assets/Scripts/Core\\StochasticBotSettings.cs": "392BD5A8060A1DB30F75EA4772B98D1B86958A7A05B029A94E8059AE6F9BED7B",
+    "Assets/Scripts/Core\\StochasticTrackMap.cs": "6D999A6D52C8F1A8D113F997CEED5A8F7418250E7B10F7B3E5568074732491B9",
+    "Assets/Scripts/Core\\TracksControl.cs": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+    "Assets/Scripts/Core\\TracksFull.cs": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79",
+    "Assets/Scripts/Core\\TracksHidden.cs": "A6123CF0FB0638C268808795F92CDC02041CEB792449B31C2CCAB5107EDD133E",
+    "Assets/Scripts/Core\\TracksMixed.cs": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156",
+    "Assets/Scripts/Core\\TracksMixedStage.cs": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+    "Assets/Scripts/Core\\TracksRethink.cs": "502A479F66D6E7AA6F82D082B9ACA2D6E3332290797BEB7105380521532EA488",
+    "Assets/Scripts/Core\\TracksRhythm.cs": "643B43086C633AB1E982D0DAF1A7BD469DE4BA0E0B88BA880D8E8672E5620B02",
+    "Assets/Scripts/Core\\TracksRhythmFull.cs": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6",
+    "Assets/Scripts/Core\\TracksRhythmNegatives.cs": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+    "Assets/Scripts/Core\\TracksTune.cs": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+    "Assets/Scripts/Core\\TracksV3.cs": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+    "Assets/Scripts/Core\\TracksV4.cs": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+  },
+  "warmup": {
+    "maximum": 30.6823,
+    "milliseconds": 68.3872,
+    "Elapsed": 1.5499999999999967,
+    "edges": [],
+    "players": [
+      {
+        "Id": 0,
+        "Distance": 340.9999999999994,
+        "Y": 1,
+        "VerticalSpeed": 0,
+        "Recovering": 0,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "CompletedBoosts": 0,
+        "FinishBoostsEarned": 0,
+        "hits": [],
+        "successful": []
+      },
+      {
+        "Id": 1,
+        "Distance": 340.9999999999994,
+        "Y": 1,
+        "VerticalSpeed": 0,
+        "Recovering": 0,
+        "Collisions": 0,
+        "BoostsEarned": 0,
+        "CompletedBoosts": 0,
+        "FinishBoostsEarned": 0,
+        "hits": [],
+        "successful": []
+      }
+    ],
+    "plans": [
+      {
+        "Number": 1,
+        "AtDistance": 19.99999980131785,
+        "HorizonEndDistance": 1019.9999998013178,
+        "Candidates": 57,
+        "ForecastSteps": 2395,
+        "Rollbacks": 0,
+        "Milliseconds": 27.5674
+      },
+      {
+        "Number": 2,
+        "AtDistance": 339.99999984105426,
+        "HorizonEndDistance": 1339.9999998410542,
+        "Candidates": 96,
+        "ForecastSteps": 4098,
+        "Rollbacks": 0,
+        "Milliseconds": 30.6823
+      }
+    ],
+    "decisions": [
+      {
+        "Id": "obstacle:hidden-intercepts-s0-g0",
+        "Intent": "avoid",
+        "Roll": 0.3625389140797779,
+        "Probability": 0.1261904761904762,
+        "Outcome": "pending",
+        "inputs": [
+          380.8448773141309,
+          456.8448773141309,
+          643.7735849056604
+        ]
+      },
+      {
+        "Id": "obstacle:hidden-intercepts-s0-g1",
+        "Intent": "avoid",
+        "Roll": 0.48364060500171036,
+        "Probability": 0.1261904761904762,
+        "Outcome": "pending",
+        "inputs": [
+          380.8448773141309,
+          424.8448773141309,
+          611.7735849056604,
+          988.8448773141309,
+          1064.8448773141308,
+          1251.7735849056603
+        ]
+      }
+    ]
+  },
+  "runs": [
+    {
+      "maximum": 32.4623,
+      "milliseconds": 52.7604,
+      "Elapsed": 1.5499999999999967,
+      "edges": [],
+      "players": [
+        {
+          "Id": 0,
+          "Distance": 340.9999999999994,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Recovering": 0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "CompletedBoosts": 0,
+          "FinishBoostsEarned": 0,
+          "hits": [],
+          "successful": []
+        },
+        {
+          "Id": 1,
+          "Distance": 340.9999999999994,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Recovering": 0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "CompletedBoosts": 0,
+          "FinishBoostsEarned": 0,
+          "hits": [],
+          "successful": []
+        }
+      ],
+      "plans": [
+        {
+          "Number": 1,
+          "AtDistance": 19.99999980131785,
+          "HorizonEndDistance": 1019.9999998013178,
+          "Candidates": 57,
+          "ForecastSteps": 2395,
+          "Rollbacks": 0,
+          "Milliseconds": 18.985
+        },
+        {
+          "Number": 2,
+          "AtDistance": 339.99999984105426,
+          "HorizonEndDistance": 1339.9999998410542,
+          "Candidates": 96,
+          "ForecastSteps": 4098,
+          "Rollbacks": 0,
+          "Milliseconds": 32.4623
+        }
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.3625389140797779,
+          "Probability": 0.1261904761904762,
+          "Outcome": "pending",
+          "inputs": [
+            380.8448773141309,
+            456.8448773141309,
+            643.7735849056604
+          ]
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.48364060500171036,
+          "Probability": 0.1261904761904762,
+          "Outcome": "pending",
+          "inputs": [
+            380.8448773141309,
+            424.8448773141309,
+            611.7735849056604,
+            988.8448773141309,
+            1064.8448773141308,
+            1251.7735849056603
+          ]
+        }
+      ]
+    },
+    {
+      "maximum": 32.5709,
+      "milliseconds": 53.9699,
+      "Elapsed": 1.5499999999999967,
+      "edges": [],
+      "players": [
+        {
+          "Id": 0,
+          "Distance": 340.9999999999994,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Recovering": 0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "CompletedBoosts": 0,
+          "FinishBoostsEarned": 0,
+          "hits": [],
+          "successful": []
+        },
+        {
+          "Id": 1,
+          "Distance": 340.9999999999994,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Recovering": 0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "CompletedBoosts": 0,
+          "FinishBoostsEarned": 0,
+          "hits": [],
+          "successful": []
+        }
+      ],
+      "plans": [
+        {
+          "Number": 1,
+          "AtDistance": 19.99999980131785,
+          "HorizonEndDistance": 1019.9999998013178,
+          "Candidates": 57,
+          "ForecastSteps": 2395,
+          "Rollbacks": 0,
+          "Milliseconds": 20.2311
+        },
+        {
+          "Number": 2,
+          "AtDistance": 339.99999984105426,
+          "HorizonEndDistance": 1339.9999998410542,
+          "Candidates": 96,
+          "ForecastSteps": 4098,
+          "Rollbacks": 0,
+          "Milliseconds": 32.5709
+        }
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.3625389140797779,
+          "Probability": 0.1261904761904762,
+          "Outcome": "pending",
+          "inputs": [
+            380.8448773141309,
+            456.8448773141309,
+            643.7735849056604
+          ]
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.48364060500171036,
+          "Probability": 0.1261904761904762,
+          "Outcome": "pending",
+          "inputs": [
+            380.8448773141309,
+            424.8448773141309,
+            611.7735849056604,
+            988.8448773141309,
+            1064.8448773141308,
+            1251.7735849056603
+          ]
+        }
+      ]
+    },
+    {
+      "maximum": 40.75,
+      "milliseconds": 65.3192,
+      "Elapsed": 1.5499999999999967,
+      "edges": [],
+      "players": [
+        {
+          "Id": 0,
+          "Distance": 340.9999999999994,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Recovering": 0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "CompletedBoosts": 0,
+          "FinishBoostsEarned": 0,
+          "hits": [],
+          "successful": []
+        },
+        {
+          "Id": 1,
+          "Distance": 340.9999999999994,
+          "Y": 1,
+          "VerticalSpeed": 0,
+          "Recovering": 0,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "CompletedBoosts": 0,
+          "FinishBoostsEarned": 0,
+          "hits": [],
+          "successful": []
+        }
+      ],
+      "plans": [
+        {
+          "Number": 1,
+          "AtDistance": 19.99999980131785,
+          "HorizonEndDistance": 1019.9999998013178,
+          "Candidates": 57,
+          "ForecastSteps": 2395,
+          "Rollbacks": 0,
+          "Milliseconds": 23.0212
+        },
+        {
+          "Number": 2,
+          "AtDistance": 339.99999984105426,
+          "HorizonEndDistance": 1339.9999998410542,
+          "Candidates": 96,
+          "ForecastSteps": 4098,
+          "Rollbacks": 0,
+          "Milliseconds": 40.75
+        }
+      ],
+      "decisions": [
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g0",
+          "Intent": "avoid",
+          "Roll": 0.3625389140797779,
+          "Probability": 0.1261904761904762,
+          "Outcome": "pending",
+          "inputs": [
+            380.8448773141309,
+            456.8448773141309,
+            643.7735849056604
+          ]
+        },
+        {
+          "Id": "obstacle:hidden-intercepts-s0-g1",
+          "Intent": "avoid",
+          "Roll": 0.48364060500171036,
+          "Probability": 0.1261904761904762,
+          "Outcome": "pending",
+          "inputs": [
+            380.8448773141309,
+            424.8448773141309,
+            611.7735849056604,
+            988.8448773141309,
+            1064.8448773141308,
+            1251.7735849056603
+          ]
+        }
+      ]
+    }
+  ],
+  "limitation": "Release managed actual Advance-to-Plan prefix; this is a fast red-capable gate, not a substitute for browser measurement."
+}
