@@ -1,0 +1,210 @@
+{
+  "passed": true,
+  "method": "actual local C# /api/analyze, bounded editor operations, no route searches",
+  "requests": 29,
+  "evidence": [
+    {
+      "context": "base",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 2,
+      "rewards": 0
+    },
+    {
+      "context": "create:stone-floor",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 3,
+      "rewards": 0
+    },
+    {
+      "context": "create:stone-ceiling",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 4,
+      "rewards": 0
+    },
+    {
+      "context": "create:hidden-floor",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 5,
+      "rewards": 0
+    },
+    {
+      "context": "create:hidden-ceiling",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 6,
+      "rewards": 0
+    },
+    {
+      "context": "create:gate",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 0
+    },
+    {
+      "context": "create:instant",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 1
+    },
+    {
+      "context": "create:negative",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 2
+    },
+    {
+      "context": "create:coin",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 3
+    },
+    {
+      "context": "create:landing",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 4
+    },
+    {
+      "context": "create:positive-before",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 5
+    },
+    {
+      "context": "create:positive-after",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 6
+    },
+    {
+      "context": "create:finish",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "stone:shrink+height+landing-coupling",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "stone:expand-right-bound+clearX",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "gate:width-offset-bound",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "gate:top-minimum",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "gate:bottom-maximum",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "landing:left-bound",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "landing:right-bound",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "circle:radius-minimum",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "circle:radius-maximum",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 7,
+      "rewards": 7
+    },
+    {
+      "context": "delete:cascade-all-linked",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 6,
+      "rewards": 4
+    },
+    {
+      "context": "authored:base",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 1,
+      "rewards": 0
+    },
+    {
+      "context": "authored:add-hidden-default-timer",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 2,
+      "rewards": 0
+    },
+    {
+      "context": "authored:delete-last-hidden-selected-empty",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 0,
+      "rewards": 0
+    },
+    {
+      "context": "references:base",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 12,
+      "rewards": 12
+    },
+    {
+      "context": "references:edit-stales-without-deleting-raw",
+      "gameValid": false,
+      "staleReferences": true,
+      "obstacles": 12,
+      "rewards": 13
+    },
+    {
+      "context": "references:explicit-clean-export",
+      "gameValid": true,
+      "staleReferences": false,
+      "obstacles": 12,
+      "rewards": 13
+    }
+  ]
+}

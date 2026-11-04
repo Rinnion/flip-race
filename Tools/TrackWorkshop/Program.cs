@@ -23,7 +23,7 @@ app.MapGet("/api/catalog/{id}",(string id)=>service.CatalogJson(id) is string js
 app.MapPost("/api/analyze",(AnalyzeRequest request)=>service.Analyze(request));
 app.MapPost("/api/replay",(ReplayRequest request)=>service.Replay(request));
 // Only explicit Web assets are served. No generic project file provider.
-foreach(var pair in new[]{("/","index.html","text/html; charset=utf-8"),("/index.html","index.html","text/html; charset=utf-8"),("/app.js","app.js","text/javascript; charset=utf-8"),("/model.mjs","model.mjs","text/javascript; charset=utf-8"),("/styles.css","styles.css","text/css; charset=utf-8")}){
+foreach(var pair in new[]{("/","index.html","text/html; charset=utf-8"),("/index.html","index.html","text/html; charset=utf-8"),("/app.js","app.js","text/javascript; charset=utf-8"),("/model.mjs","model.mjs","text/javascript; charset=utf-8"),("/edit-model.mjs","edit-model.mjs","text/javascript; charset=utf-8"),("/styles.css","styles.css","text/css; charset=utf-8")}){
     string file=pair.Item2,type=pair.Item3;app.MapGet(pair.Item1,()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web",file),type));
 }
 app.Run();

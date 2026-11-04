@@ -1,0 +1,58 @@
+{
+  "version": "0.3",
+  "browserGestureEvidence": "track-workshop-edit-browser-source.json",
+  "analysis": {
+    "gameValid": false,
+    "staleReferences": true,
+    "obstacles": 12,
+    "rewards": 17
+  },
+  "cleanExport": {
+    "gameValid": true,
+    "staleReferences": false
+  },
+  "replay": {
+    "status": "Finished",
+    "finishTime": 33.55000000000024,
+    "elapsed": 33.55000000000024,
+    "cleanFinish": false,
+    "collisions": 1,
+    "boosts": 9,
+    "instantBoosts": 7,
+    "slows": 0,
+    "coins": 0,
+    "finishBoosts": 1,
+    "acceptedInputs": 29,
+    "ignoredInputs": 0,
+    "unreachedInputs": 0,
+    "collectedIds": [
+      "instant-1",
+      "mixed-tricks-after",
+      "mixed-tricks-before",
+      "mixed-tricks-ceiling-low-reward",
+      "mixed-tricks-chain-center",
+      "mixed-tricks-chain-low",
+      "mixed-tricks-finish",
+      "mixed-tricks-high-reward",
+      "mixed-tricks-low-reward",
+      "mixed-tricks-wide-pad"
+    ],
+    "successfulIds": [
+      "instant-1",
+      "mixed-tricks-after",
+      "mixed-tricks-before",
+      "mixed-tricks-ceiling-low-reward",
+      "mixed-tricks-chain-center",
+      "mixed-tricks-chain-low",
+      "mixed-tricks-finish",
+      "mixed-tricks-high-reward",
+      "mixed-tricks-low-reward",
+      "mixed-tricks-wide-pad"
+    ],
+    "failedIds": [],
+    "hitIds": [
+      "gate-1"
+    ]
+  },
+  "gameServerHttpStatus": 200
+}

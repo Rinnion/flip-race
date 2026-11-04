@@ -55,9 +55,9 @@ export class Revision {
   current(value) { return value === this.value; }
 }
 
-// Replace only selected numeric tokens. All other bytes (including unknown
-// properties, exponent notation, long decimals and botReferences) survive.
-export function patchNumbers(source, changes) {
+// Source coordinates include every value, so structural edits can retain the
+// exact text of untouched objects instead of serializing the document again.
+export function scanJson(source) {
   JSON.parse(source);
   let position = 0;
   const spans = new Map();
@@ -73,34 +73,52 @@ export function patchNumbers(source, changes) {
   };
   const value = path => {
     whitespace();
+    const start = position, node = { start, end: null, kind: null, items: [] };
+    spans.set(JSON.stringify(path), node);
     if (source[position] === '{') {
+      node.kind = 'object';
       position++; whitespace(); const keys = new Set();
       if (source[position] !== '}') while (true) {
         whitespace(); const key = string();
         if (keys.has(key)) throw new Error('Повторяющиеся поля JSON нельзя редактировать мышью.');
-        keys.add(key); whitespace(); position++; value([...path, key]); whitespace();
+        keys.add(key); node.items.push(key); whitespace(); position++; value([...path, key]); whitespace();
         if (source[position] !== ',') break;
         position++;
       }
       position++;
     } else if (source[position] === '[') {
+      node.kind = 'array';
       position++; whitespace(); let index = 0;
       if (source[position] !== ']') while (true) {
-        value([...path, index++]); whitespace(); if (source[position] !== ',') break; position++;
+        node.items.push(value([...path, index++])); whitespace(); if (source[position] !== ',') break; position++;
       }
       position++;
-    } else if (source[position] === '"') string();
+    } else if (source[position] === '"') { node.kind = 'string'; string(); }
     else {
       const token = /^(?:-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?|true|false|null)/.exec(source.slice(position));
       if (!token) throw new Error('Некорректный JSON.');
-      if (/^-?\d/.test(token[0])) spans.set(JSON.stringify(path), { start: position, end: position + token[0].length });
+      node.kind = /^-?\d/.test(token[0]) ? 'number' : token[0];
       position += token[0].length;
     }
+    node.end = position;
+    return node;
   };
   value([]);
+  return spans;
+}
+
+// Replace only selected numeric tokens. All other bytes (including unknown
+// properties, exponent notation, long decimals and botReferences) survive.
+export function patchNumbers(source, changes) {
+  const spans = scanJson(source);
   const replacements = changes.map(change => {
     const span = spans.get(JSON.stringify(change.path));
-    if (!span || !Number.isFinite(change.value)) throw new Error('Поле координаты отсутствует или не является числом.');
+    if (!span && change.insert === true && Number.isFinite(change.value)) {
+      const parent = spans.get(JSON.stringify(change.path.slice(0, -1))), property = change.path.at(-1);
+      if (!parent || parent.kind !== 'object' || typeof property !== 'string') throw new Error('Нельзя добавить числовое поле.');
+      return { start: parent.end - 1, end: parent.end - 1, text: `${parent.items.length ? ',' : ''}${JSON.stringify(property)}:${change.value}` };
+    }
+    if (!span || span.kind !== 'number' || !Number.isFinite(change.value)) throw new Error('Поле координаты отсутствует или не является числом.');
     return { ...span, text: String(change.value) };
   }).sort((a, b) => b.start - a.start);
   let result = source;
