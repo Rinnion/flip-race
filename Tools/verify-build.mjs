@@ -9,7 +9,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const fail = message => { throw new Error(message); };
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 
-export async function verifyBuild(buildDirectory) {
+export async function verifyBuild(buildDirectory, { requireTrackCatalog = false } = {}) {
   const root = await realpath(buildDirectory);
   const files = [];
   async function walk(directory, prefix = '') {
@@ -99,11 +99,32 @@ export async function verifyBuild(buildDirectory) {
     }
   }
   if (!wasm.subarray(0, 8).equals(Buffer.from([0, 97, 115, 109, 1, 0, 0, 0]))) fail('Invalid WebAssembly header.');
+  let trackCatalog;
+  const cataloguePath = 'StreamingAssets/Tracks/index.json';
+  if (requireTrackCatalog && !paths.has(cataloguePath)) fail(`Missing track catalogue: ${cataloguePath}`);
+  if (paths.has(cataloguePath)) {
+    const catalogue = JSON.parse(await readFile(path.join(root, cataloguePath), 'utf8'));
+    if (!Array.isArray(catalogue.files) || catalogue.files.length === 0
+        || new Set(catalogue.files).size !== catalogue.files.length) fail('Track catalogue must list distinct files.');
+    const tracks = [], ids = new Set();
+    for (const name of catalogue.files) {
+      if (typeof name !== 'string' || !/^[a-zA-Z0-9._-]+\.json$/.test(name)) fail(`Invalid track filename: ${name}`);
+      checkReference(name, cataloguePath);
+      const documentPath = path.posix.join(path.posix.dirname(cataloguePath), name);
+      const document = JSON.parse(await readFile(path.join(root, documentPath), 'utf8'));
+      if (!document.track || typeof document.track.id !== 'string' || !document.track.id
+          || ids.has(document.track.id)) fail(`Missing or duplicate track ID: ${name}`);
+      ids.add(document.track.id);
+      tracks.push({ path: documentPath, id: document.track.id, schemaVersion: document.schemaVersion });
+    }
+    trackCatalog = { path: cataloguePath, count: tracks.length, tracks };
+  }
   return {
     checkedAt: new Date().toISOString(), buildDirectory: root, fileCount: files.length,
     totalBytes: size, totalMiB: Number((size / 1048576).toFixed(3)), compression: format,
     ...(fallbackCodec ? { fallbackCodec } : {}),
     checkedReferences: [...references].sort(), runtime, files,
+    ...(trackCatalog ? { trackCatalog } : {}),
     note: 'Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks.',
   };
 }
@@ -115,7 +136,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const reportPath = jsonIndex >= 0 ? args[jsonIndex + 1] : null;
     if (jsonIndex >= 0 && !reportPath) fail('--json requires a report path.');
     const directory = args[0] && !args[0].startsWith('--') ? path.resolve(args[0]) : path.join(projectRoot, 'Builds', 'WebGL');
-    const report = await verifyBuild(directory);
+    const report = await verifyBuild(directory, { requireTrackCatalog: args.includes('--require-track-catalog') });
     if (reportPath) {
       await mkdir(path.dirname(path.resolve(reportPath)), { recursive: true });
       await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`);

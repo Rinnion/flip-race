@@ -29,3 +29,6 @@ Tools/StochasticStatistics/Manifests/*.json -text whitespace=blank-at-eol,blank-
 Tools/StochasticStatistics/Studies/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 
 Verification/V5-STOCHASTIC-BOTS-CATALYTIC-ACCEPTANCE.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# The pre-JSON migration oracle is verified by its original byte SHA256.
+Tools/JsonTracksCheck/accepted-14e22ba.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

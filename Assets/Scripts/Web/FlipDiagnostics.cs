@@ -48,6 +48,11 @@ namespace FlipRace.Web
             public float fullscreenX, fullscreenY, fullscreenWidth, fullscreenHeight;
             public float settingsCopyX, settingsCopyY, settingsCopyWidth, settingsCopyHeight;
             public string settingsCopyText;
+            public bool trackImportVisible;
+            public float trackImportX, trackImportY, trackImportWidth, trackImportHeight;
+            public string trackImportStatus;
+            public string trackCatalogState, pendingTrackId, currentTrackId;
+            public int trackCatalogCount, trackCatalogPage, trackCatalogPages;
             public PlayerSnapshot[] players;
         }
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -88,6 +93,7 @@ namespace FlipRace.Web
             }
             var state = game.Game;
             var flight = state.Flight ?? FlightPresets.FromLegacy(state.Motion, state.Profile);
+            var trackImport = game.TrackImportVisible ? game.TrackImportRect : default(Rect);
             // This public rectangle is already measured in CSS pixels relative
             // to the canvas origin. The HTML bridge must not scale it by DPR.
             Rect fullscreen = game.FullscreenRect;
@@ -123,6 +129,11 @@ namespace FlipRace.Web
                 settingsCopyX = settingsCopy.x, settingsCopyY = settingsCopy.y,
                 settingsCopyWidth = settingsCopy.width, settingsCopyHeight = settingsCopy.height,
                 settingsCopyText = game.FlightSettingsVisible ? game.FlightCopyText : "",
+                trackImportVisible = game.TrackImportVisible, trackImportX = trackImport.x, trackImportY = trackImport.y,
+                trackImportWidth = trackImport.width, trackImportHeight = trackImport.height, trackImportStatus = game.TrackImportStatus,
+                trackCatalogState = game.TrackCatalogState, trackCatalogCount = TrackCatalog.Entries.Length,
+                trackCatalogPage = game.TrackCatalogPage, trackCatalogPages = game.TrackCatalogPages,
+                pendingTrackId = game.PendingTrackId, currentTrackId = state.Track.Id,
                 players = new PlayerSnapshot[state.Players.Length]};
             for (int i = 0; i < state.Players.Length; i++)
             {

@@ -47,6 +47,7 @@ namespace FlipRace.Core
         // Flight compatibility remains an independent exact-profile check.
         public static bool SupportsTrack(string id)
         {
+            if(TrackCatalog.HasAttemptedInstall)return TrackCatalog.HasPreparedBots(id);
             return id == TracksFull.LongId || id == TracksFull.ShortId || id == TracksFull.FlowId
                 || id == TracksRhythm.CascadeId || id == TracksMixed.Id
                 || id == TracksHidden.InterceptsId || id == TracksHidden.ManifestationId || id == TracksRethink.Id;
@@ -61,11 +62,18 @@ namespace FlipRace.Core
             bool full = track.Id == TracksFull.LongId || track.Id == TracksFull.ShortId || track.Id == TracksFull.FlowId;
             bool cascade = track.Id == TracksRhythm.CascadeId, mixed = track.Id == TracksMixed.Id;
             if (!SupportsTrack(track.Id)) throw new NotSupportedException("This course has no authored bot reference.");
-            bool authored = TracksHidden.IsNew(track.Id) || track.Id == TracksRethink.Id;
+            bool fromCatalog=TrackCatalog.HasAttemptedInstall;
+            TrackBotReference loadedReference=null;
+            if(fromCatalog&&!TrackCatalog.TryGetBotReference(track,flight,out loadedReference))
+                throw new NotSupportedException("This track has no trusted compatible reference for its actual content and profile.");
+            bool authored = !fromCatalog&&(TracksHidden.IsNew(track.Id) || track.Id == TracksRethink.Id);
             if (authored && !BotReferenceRoutes.Supports(track.Id, flight))
                 throw new NotSupportedException("This course has no bot reference for the selected flight profile.");
             var compatible = authored ? BotReferenceRoutes.Get(track.Id, flight) : null;
-            var rewardIds = compatible == null ? null : new HashSet<string>(compatible.RewardIds, StringComparer.Ordinal);
+            var selectedIds=loadedReference!=null?loadedReference.RewardIds:compatible!=null?compatible.RewardIds:null;
+            var rewardIds = selectedIds==null?null:new HashSet<string>(selectedIds,StringComparer.Ordinal);
+            if(selectedIds!=null&&rewardIds.Count!=selectedIds.Length)
+                throw new ArgumentException("Bot reference reward IDs must be unique.",nameof(track));
             if (compatible != null && rewardIds.Count != compatible.RewardIds.Length)
                 throw new ArgumentException("Bot reference reward IDs must be unique.", nameof(track));
             if (double.IsNaN(track.Length) || double.IsInfinity(track.Length) || track.Length <= 0)
@@ -125,6 +133,9 @@ namespace FlipRace.Core
                 throw new ArgumentException("Bot reference contains an absent or non-positive reward ID.", nameof(track));
             if (finishCount != 1) throw new NotSupportedException("One finish opportunity is required.");
             list.Sort((a, b) => { int n = a.Position.CompareTo(b.Position); return n != 0 ? n : string.CompareOrdinal(a.Id, b.Id); });
+            if(loadedReference!=null)
+                return new StochasticTrackMap(chosen?"Chosen":"FastFlip",list.ToArray(),loadedReference.Inputs,
+                    track.Length,ordinaryRewards,bounds.Count,loadedReference.BonusGain);
             if (compatible != null)
                 return new StochasticTrackMap(chosen ? "Chosen" : "FastFlip", list.ToArray(), compatible.Inputs,
                     track.Length, ordinaryRewards, bounds.Count, compatible.BonusGain);

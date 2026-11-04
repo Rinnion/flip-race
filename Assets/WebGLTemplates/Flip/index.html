@@ -17,6 +17,12 @@
     #fullscreen[hidden]{display:none}#portrait{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px;background:#f7f4e9;gap:16px;font-size:20px;z-index:5}
     #copy-settings{position:absolute;padding:0;border:1px solid #d8ddcb;border-radius:6px;background:#f1f3e8;color:#353b31;font:10px system-ui,sans-serif;cursor:pointer;touch-action:manipulation}
     #copy-settings[hidden]{display:none}#copy-settings:focus-visible{outline:2px solid #7770b5;outline-offset:1px}
+    #import-track{position:absolute;padding:2px;border:1px solid #d8ddcb;border-radius:6px;background:#f1f3e8;color:#353b31;font:11px system-ui,sans-serif;cursor:pointer;touch-action:manipulation}
+    #import-track small{display:block;font-size:9px;color:#79806d}#import-track[hidden],#track-json-file{display:none}
+    #import-track:focus-visible,#retry-tracks:focus-visible{outline:2px solid #7770b5;outline-offset:1px}
+    #retry-tracks{min-width:180px;min-height:44px;border:1px solid #a5b98a;border-radius:6px;background:#e5edd9;color:#353b31;font:14px system-ui,sans-serif;cursor:pointer}
+    #retry-tracks[hidden]{display:none}#catalog-error{color:#9a6844;max-width:520px;overflow-wrap:anywhere}
+    #track-import-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
     #copy-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
     #portrait strong{font-size:34px;color:#597549}#status{font-size:12px;opacity:.75}
     #portrait .build-version{position:absolute;top:18px;left:24px;font-size:11px;color:#353b31;font-weight:600}#portrait .build-version small{margin-left:8px;font-size:9px;color:#79806d;font-weight:400}
@@ -28,8 +34,11 @@
   <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="0" aria-label="Флип! Один игрок: A. Два игрока: A / L. Компания 2–4: A / L / S / K. Выберите героев и касайтесь своей личной области экрана."></canvas>
   <button id="fullscreen" type="button" title="На весь экран" aria-label="На весь экран" hidden>⛶</button>
   <button id="copy-settings" type="button" title="Скопировать параметры полёта" hidden>Копировать</button>
+  <button id="import-track" type="button" title="Добавить один JSON только в текущую сессию" hidden>Импорт JSON<small>только в этой сессии</small></button>
+  <input id="track-json-file" type="file" accept=".json,application/json" aria-label="Выбрать JSON трассы">
+  <span id="track-import-status" role="status" aria-live="polite"></span>
   <span id="copy-status" role="status" aria-live="polite"></span>
-  <div id="loading"><h1>Флип!</h1><p>Гонка катикаавров · {{{ PRODUCT_VERSION }}}</p><progress id="progress" max="1" value="0"></progress><p id="status">Готовим героев и трассу…</p></div>
+  <div id="loading"><h1>Флип!</h1><p>Гонка катикаавров · {{{ PRODUCT_VERSION }}}</p><progress id="progress" max="1" value="0"></progress><p id="status">Готовим героев и трассу…</p><p id="catalog-error" role="alert"></p><button id="retry-tracks" type="button" hidden>Повторить загрузку</button></div>
   <div id="error" role="alert"></div>
   <div id="portrait"><div class="build-version">флип! <small>v{{{ PRODUCT_VERSION }}}</small></div><strong>Поверните телефон</strong><span>Положите его горизонтально.<br>Посадка и вид выбираются перед стартом.</span><small>Забег на паузе до вашего продолжения.</small></div>
 </main>
@@ -39,10 +48,43 @@
   const full = document.getElementById('fullscreen');
   const copySettings = document.getElementById('copy-settings');
   const copyStatus = document.getElementById('copy-status');
+  const importTrack = document.getElementById('import-track');
+  const trackFile = document.getElementById('track-json-file');
+  const importStatus = document.getElementById('track-import-status');
+  const retryTracks = document.getElementById('retry-tracks');
   const gameElement = document.getElementById('game');
   const bootAt = performance.now();
   let fullscreenAvailable = Boolean(document.fullscreenEnabled && document.documentElement.requestFullscreen);
   window.flipDiagnostics = {loaded:false,errors:[]};
+  let unityReady = false, catalogPhase = 'loading', importBusy = false;
+  function finishCatalogBoot() {
+    window.flipDiagnostics.loaded = unityReady && catalogPhase === 'ready';
+    document.getElementById('loading').style.display = window.flipDiagnostics.loaded ? 'none' : 'flex';
+  }
+  function resetImportButton() {
+    importBusy = false; importTrack.disabled = false;
+    importTrack.textContent = 'Импорт JSON';
+    const notice=document.createElement('small');notice.textContent='только в этой сессии';importTrack.appendChild(notice);
+  }
+  window.flipTrackFiles = {
+    catalog(phase,message) {
+      catalogPhase = phase;
+      canvas.dataset.flipCatalogState = JSON.stringify({phase,message});
+      document.getElementById('status').textContent = phase === 'error' ? 'Трассы не загружены. Можно повторить.' : message;
+      document.getElementById('catalog-error').textContent = phase === 'error' ? message : '';
+      retryTracks.hidden = phase !== 'error';
+      finishCatalogBoot();
+    },
+    result(success,message) {
+      resetImportButton(); importStatus.textContent = message;
+      canvas.dataset.flipTrackImport = JSON.stringify({success,message});
+    }
+  };
+  retryTracks.addEventListener('click',()=>{
+    if (!window.unityInstance || catalogPhase !== 'error') return;
+    retryTracks.hidden = true;
+    window.unityInstance.SendMessage('FlipRace','RetryTrackCatalog');
+  });
   function positionFullscreenButton() {
     try {
       const state = JSON.parse(canvas.dataset.flipState);
@@ -67,6 +109,7 @@
   function positionCopyButton() {
     try {
       const state = JSON.parse(canvas.dataset.flipState);
+      positionImportButton(state);
       const x = state.settingsCopyX, y = state.settingsCopyY;
       const width = state.settingsCopyWidth, height = state.settingsCopyHeight;
       const valid = [x,y,width,height].every(Number.isFinite) && x >= 0 && y >= 0
@@ -78,7 +121,18 @@
       const canvasBox = canvas.getBoundingClientRect(), gameBox = gameElement.getBoundingClientRect();
       Object.assign(copySettings.style, {left:(canvasBox.left-gameBox.left+x)+'px', top:(canvasBox.top-gameBox.top+y)+'px',
         width:width+'px', height:height+'px'});
-    } catch (_) { copySettings.hidden = true; }
+    } catch (_) { copySettings.hidden = true; importTrack.hidden = true; }
+  }
+  function positionImportButton(state) {
+    try {
+      const x=state.trackImportX,y=state.trackImportY,width=state.trackImportWidth,height=state.trackImportHeight;
+      const valid=[x,y,width,height].every(Number.isFinite)&&x>=0&&y>=0&&width>=44&&height>=44
+        &&x+width<=canvas.clientWidth+1&&y+height<=canvas.clientHeight+1;
+      importTrack.hidden=!window.flipDiagnostics.loaded||!state.trackImportVisible||!valid||(innerWidth<=700&&innerHeight>innerWidth);
+      if(importTrack.hidden)return;
+      const box=canvas.getBoundingClientRect(),gameBox=gameElement.getBoundingClientRect();
+      Object.assign(importTrack.style,{left:(box.left-gameBox.left+x)+'px',top:(box.top-gameBox.top+y)+'px',width:width+'px',height:height+'px'});
+    } catch (_) { importTrack.hidden=true; }
   }
   // Context comes from explicit bridge arguments, avoiding another JSON parse.
   // Timing includes the complete existing callback body and its JSON/DOM work.
@@ -114,6 +168,29 @@
   }
   let copyFeedbackTimer;
   copySettings.addEventListener('pointerdown',event=>event.stopPropagation());
+  importTrack.addEventListener('pointerdown',event=>event.stopPropagation());
+  importTrack.addEventListener('click',event=>{
+    event.stopPropagation();
+    if(importBusy||importTrack.hidden||!window.unityInstance)return;
+    // The real HTML click retains browser user activation for the file chooser.
+    trackFile.value=''; trackFile.click();
+  });
+  trackFile.addEventListener('cancel',()=>{resetImportButton();canvas.focus();});
+  trackFile.addEventListener('change',async()=>{
+    const file=trackFile.files&&trackFile.files[0];
+    if(!file){resetImportButton();canvas.focus();return;}
+    importBusy=true;importTrack.disabled=true;importTrack.textContent='Читаем JSON…';importStatus.textContent='Читаем файл трассы';
+    try {
+      // TrackJson.MaximumBytes: same UTF-8 file budget, enforced again by Core.
+      if(file.size>2*1024*1024)throw new Error('Файл JSON больше 2 МиБ.');
+      const json=await file.text();
+      window.unityInstance.SendMessage('FlipRace','ImportTrackFile',json);
+    } catch(error) {
+      const message=error&&error.message?error.message:'Не удалось прочитать файл JSON.';
+      window.unityInstance.SendMessage('FlipRace','ImportTrackError',message);
+    }
+    canvas.focus();
+  });
   copySettings.addEventListener('click',async event=>{
     event.stopPropagation();
     let success = false;
@@ -167,9 +244,9 @@
     showBanner: (message,type)=>{if(type==='error')showError(message);else console.warn(message);}
   }, value=>{document.getElementById('progress').value=value;}).then(instance=>{
     window.unityInstance=instance;
-    window.flipDiagnostics.loaded=true;
+    unityReady=true;
     window.flipDiagnostics.loadMilliseconds=Math.round(performance.now()-bootAt);
-    document.getElementById('loading').style.display='none';
+    finishCatalogBoot();
     positionFullscreenButton();
     canvas.focus();
     if(innerWidth<=700&&innerHeight>innerWidth)pause('Поверните телефон горизонтально');

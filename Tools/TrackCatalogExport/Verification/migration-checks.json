@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "physicsVersion": 1,
+  "mode": "check",
+  "assertions": 7660,
+  "tracks": 8,
+  "references": 15,
+  "exactStoredFieldRoundtrip": true,
+  "canonicalRoundtrip": true,
+  "entries": [
+    {
+      "id": "full-long",
+      "hash": "a7e7cfae14f78534a293a80210fbd1a531aefc2e8b5ad788c62bceba12667b6e",
+      "obstacles": 12,
+      "zones": 12,
+      "profiles": [
+        "Chosen",
+        "FastFlip"
+      ],
+      "bytes": 11991
+    },
+    {
+      "id": "full-short",
+      "hash": "91c33a18eaeb110b9de9a020ce47873097afa160d8d6eb7f06bec2a01394c355",
+      "obstacles": 12,
+      "zones": 12,
+      "profiles": [
+        "Chosen",
+        "FastFlip"
+      ],
+      "bytes": 12025
+    },
+    {
+      "id": "full-flow",
+      "hash": "2086ec2c05b8ca8f598a5e6deec9dfd291e17be7ed23f575929a85746b480347",
+      "obstacles": 12,
+      "zones": 12,
+      "profiles": [
+        "Chosen",
+        "FastFlip"
+      ],
+      "bytes": 12174
+    },
+    {
+      "id": "rhythm-cascade",
+      "hash": "e8d237e3bbce5158b113780d130599d1944e6c8640995c40e64a34293a6be558",
+      "obstacles": 21,
+      "zones": 12,
+      "profiles": [
+        "Chosen",
+        "FastFlip"
+      ],
+      "bytes": 16219
+    },
+    {
+      "id": "mixed-tricks",
+      "hash": "c01ded8253a330dc23a164c8c7a1586e64f0d3713df2917e0ddaa67ac5a85e47",
+      "obstacles": 11,
+      "zones": 16,
+      "profiles": [
+        "Chosen",
+        "FastFlip"
+      ],
+      "bytes": 14213
+    },
+    {
+      "id": "hidden-intercepts",
+      "hash": "cf238900eeeeffc4186253ebc950ee1837019a194a6ee163a659c2272f98b6a4",
+      "obstacles": 21,
+      "zones": 11,
+      "profiles": [
+        "Chosen",
+        "FastFlip"
+      ],
+      "bytes": 16600
+    },
+    {
+      "id": "hidden-manifestation",
+      "hash": "8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d",
+      "obstacles": 17,
+      "zones": 7,
+      "profiles": [
+        "Chosen",
+        "FastFlip"
+      ],
+      "bytes": 13026
+    },
+    {
+      "id": "rethink",
+      "hash": "e3e06c98215414786afd166e1cce2f463546a52de2d80545032c00c7cd10eb40",
+      "obstacles": 16,
+      "zones": 4,
+      "profiles": [
+        "Chosen"
+      ],
+      "bytes": 9251
+    }
+  ]
+}

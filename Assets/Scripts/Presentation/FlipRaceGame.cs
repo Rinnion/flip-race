@@ -57,7 +57,7 @@ namespace FlipRace.Presentation
         int inputBlockFrame, round = 1;
         string selectedTrackId;
         string buildVersion;
-        bool Trial { get { return Game.Mode == "trial" || PartyEnabled || SoloEnabled || BotEnabled; } }
+        bool Trial { get { return Game != null && (Game.Mode == "trial" || PartyEnabled || SoloEnabled || BotEnabled); } }
         bool Controls { get { return Trial && !legacyControls; } }
         string pauseReason = "Катикаавры ждут на своих местах.";
         double lastFrame;
@@ -85,21 +85,6 @@ namespace FlipRace.Presentation
             Input.simulateMouseWithTouches = false;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             InitializeFlightMenu();
-#if FLIP_V4_TRIAL
-            Game = RaceSimulation.CreateTrial(InitialFlightTrack(), flightSelection.Settings);
-            legacyControls = !activeCustomFlight && activeFlightPreset >= 4 && activeFlightPreset <= 9;
-#else
-            Game = RaceSimulation.CreateGame();
-#endif
-            selectedTrackId = Game.Track.Id;
-            Game.Players[0].CharacterIndex = 0;
-            Game.Players[1].CharacterIndex = 1;
-#if FLIP_SCREEN_STAGE
-            Game = RaceSimulation.CreateTrial(TracksMixed.Get(), flightSelection.Settings);
-            selectedTrackId = Game.Track.Id;
-            Game.Players[0].CharacterIndex = Game.Players[1].CharacterIndex = 0;
-            sharedField = true;
-#endif
             font = Resources.Load<Font>("Inter-Regular");
             if (font == null) font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             semibold = Resources.Load<Font>("Inter-SemiBold");
@@ -117,7 +102,7 @@ namespace FlipRace.Presentation
             tapClip = Tone(680, .085f); hitClip = Tone(150, .18f);
             startClip = Tone(880, .18f); finishClip = Tone(1040, .3f);
             lastFrame = Time.realtimeSinceStartupAsDouble;
-            Measure();
+            StartCoroutine(LoadTrackCatalog());
         }
 
         void Measure()
@@ -169,11 +154,12 @@ namespace FlipRace.Presentation
             if(safe.width<=0||safe.height<=0)return new Rect(0,0,width,height);
             return new Rect(safe.x/uiScale,(Screen.height-safe.yMax)/uiScale,safe.width/uiScale,safe.height/uiScale);
         }
-        bool Active { get { return Game.Phase == "racing" || Game.Phase == "countdown"; } }
+        bool Active { get { return Game != null && (Game.Phase == "racing" || Game.Phase == "countdown"); } }
         bool Portrait { get { return height > width && width <= 700; } }
 
         void Update()
         {
+            if (Game == null) { lastFrame = Time.realtimeSinceStartupAsDouble; return; }
             Measure();
             double now = Time.realtimeSinceStartupAsDouble, delta = Math.Max(0, now - lastFrame);
             lastFrame = now;
@@ -357,7 +343,7 @@ namespace FlipRace.Presentation
 
         void OnGUI()
         {
-            if (Game == null) return;
+            if (Game == null) { DrawCatalogLoading(); return; }
             Measure();
             if (label == null) label = new GUIStyle(GUI.skin.label) { font = font, richText = false,
                 wordWrap = false, clipping = TextClipping.Clip, padding = new RectOffset(0, 0, 0, 0) };

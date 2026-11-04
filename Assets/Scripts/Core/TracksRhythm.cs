@@ -97,7 +97,17 @@ namespace FlipRace.Core
 
     public static class RaceTracks
     {
-        public static readonly Track[] All = Combined();
+        static Track[] offline;
+        public static Track[] All
+        {
+            get
+            {
+                if(!TrackCatalog.HasAttemptedInstall)return offline??(offline=Combined());
+                var entries=TrackCatalog.Entries;var result=new Track[entries.Length];
+                for(int i=0;i<result.Length;i++)result[i]=entries[i].Package.Track;
+                return result;
+            }
+        }
         static Track[] Combined()
         {
 #if FLIP_MIX_STAGE
@@ -115,6 +125,7 @@ namespace FlipRace.Core
         }
         public static bool IsFull(string id)
         {
+            if(TrackCatalog.HasAttemptedInstall)return TrackCatalog.TryGet(id,out _);
 #if FLIP_MIX_STAGE
             foreach (var track in TracksMixedStage.All) if (track.Id == id) return true;
 #endif
@@ -132,10 +143,18 @@ namespace FlipRace.Core
         // Only current menu positions use the active catalogue, including the
         // isolated FLIP_MIX_STAGE catalogue during its separate verification.
         public static Track GetAt(int index)
-        { return index >= 0 && index < All.Length ? All[index] : Get(TracksRhythm.CascadeId); }
+        { return TrackCatalog.HasAttemptedInstall?TrackCatalog.GetAt(index).Package.Track
+            :index>=0&&index<All.Length?All[index]:Get(TracksRhythm.CascadeId); }
         public static Track Get(string id)
         {
             id = NormalizeId(id);
+            if(TrackCatalog.HasAttemptedInstall)
+            {
+                if(TrackCatalog.TryGet(id,out var loaded))return loaded.Package.Track;
+                if(id==TracksFull.PracticeId)return TracksFull.Practice();
+                if(id==TracksRhythm.PracticeId)return TracksRhythm.Practice();
+                throw new KeyNotFoundException(TrackCatalog.LastLoadError??("Трасса не загружена: "+id));
+            }
 #if FLIP_MIX_STAGE
             foreach (var track in TracksMixedStage.All) if (track.Id == id) return track;
 #endif
