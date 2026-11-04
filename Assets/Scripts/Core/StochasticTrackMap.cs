@@ -26,20 +26,30 @@ namespace FlipRace.Core
         public BotOpportunity[] Opportunities { get { return (BotOpportunity[])opportunities.Clone(); } }
         public double[] ReferenceInputs { get { return (double[])referenceInputs.Clone(); } }
 
-        StochasticTrackMap(string profileId, BotOpportunity[] items, double[] inputs, double length, int ordinaryRewards, int obstacleCount)
+        StochasticTrackMap(string profileId, BotOpportunity[] items, double[] inputs, double length, int ordinaryRewards, int obstacleCount,
+            double? referenceGain = null)
         {
             ProfileId = profileId; opportunities = items; referenceInputs = inputs;
             BaseTime = length / RaceConfig.Speed;
-            // All nine ordinary effects and the full finish effect are served in the
-            // validated clean witnesses. These are actual time gains, not effect lengths.
-            BonusGain = ordinaryRewards * RaceConfig.BoostTimeGain
-                + RaceConfig.FinishBoostDuration * (RaceConfig.FinishBoostSpeed / RaceConfig.Speed - 1);
+            // Legacy witnesses serve all nine ordinary effects and the full finish
+            // effect. New courses provide one validated compatible reference gain.
+            BonusGain = referenceGain ?? (ordinaryRewards * RaceConfig.BoostTimeGain
+                + RaceConfig.FinishBoostDuration * (RaceConfig.FinishBoostSpeed / RaceConfig.Speed - 1));
             MasterTime = BaseTime - BonusGain;
             CollisionCostSum = obstacleCount * RaceConfig.RecoveryDuration;
-            if (BonusGain <= 0 || CollisionCostSum <= 0)
+            if (double.IsNaN(BonusGain) || double.IsInfinity(BonusGain) || BonusGain <= 0 || CollisionCostSum <= 0)
                 throw new NotSupportedException("Stochastic probabilities require positive bonus gain and collision cost.");
             if (BonusGain / CollisionCostSum * .5 > 1)
                 throw new NotSupportedException("Initial hit probability is outside [0,1] at the supported minimum q=.5; no clamping is permitted.");
+        }
+
+        // Catalogue query only: no track construction, route lookup or simulation.
+        // Flight compatibility remains an independent exact-profile check.
+        public static bool SupportsTrack(string id)
+        {
+            return id == TracksFull.LongId || id == TracksFull.ShortId || id == TracksFull.FlowId
+                || id == TracksRhythm.CascadeId || id == TracksMixed.Id
+                || id == TracksHidden.InterceptsId || id == TracksHidden.ManifestationId || id == TracksRethink.Id;
         }
 
         public static StochasticTrackMap Create(Track track, FlightSettings flight)
@@ -50,7 +60,14 @@ namespace FlipRace.Core
             if (!chosen && !fast) throw new NotSupportedException("Only exact Chosen and FastFlip flight settings are supported.");
             bool full = track.Id == TracksFull.LongId || track.Id == TracksFull.ShortId || track.Id == TracksFull.FlowId;
             bool cascade = track.Id == TracksRhythm.CascadeId, mixed = track.Id == TracksMixed.Id;
-            if (!full && !cascade && !mixed) throw new NotSupportedException("Only the five authored full tracks are supported.");
+            if (!SupportsTrack(track.Id)) throw new NotSupportedException("This course has no authored bot reference.");
+            bool authored = TracksHidden.IsNew(track.Id) || track.Id == TracksRethink.Id;
+            if (authored && !BotReferenceRoutes.Supports(track.Id, flight))
+                throw new NotSupportedException("This course has no bot reference for the selected flight profile.");
+            var compatible = authored ? BotReferenceRoutes.Get(track.Id, flight) : null;
+            var rewardIds = compatible == null ? null : new HashSet<string>(compatible.RewardIds, StringComparer.Ordinal);
+            if (compatible != null && rewardIds.Count != compatible.RewardIds.Length)
+                throw new ArgumentException("Bot reference reward IDs must be unique.", nameof(track));
             if (double.IsNaN(track.Length) || double.IsInfinity(track.Length) || track.Length <= 0)
                 throw new ArgumentException("A finite positive track length is required.", nameof(track));
             var list = new List<BotOpportunity>();
@@ -72,6 +89,9 @@ namespace FlipRace.Core
                 if (zone.IsNegative || zone.IsCoin) continue;
                 if (string.IsNullOrEmpty(zone.Id) || !zoneIds.Add(zone.Id))
                     throw new ArgumentException("Unique reward IDs are required.", nameof(track));
+                // Physical alternatives remain on the track, but do not create
+                // collect/skip decisions or inflate this reference's benefit.
+                if (rewardIds != null && !rewardIds.Contains(zone.Id)) continue;
                 double end;
                 if (zone.IsFinish)
                 {
@@ -101,8 +121,13 @@ namespace FlipRace.Core
                 list.Add(new BotOpportunity((zone.IsFinish ? "finish:" : "positive:") + zone.Id,
                     zone.IsFinish ? BotOpportunityKind.Finish : BotOpportunityKind.Positive, zone.X, end, zone.ObstacleId));
             }
+            if (rewardIds != null && !rewardIds.IsSubsetOf(zoneIds))
+                throw new ArgumentException("Bot reference contains an absent or non-positive reward ID.", nameof(track));
             if (finishCount != 1) throw new NotSupportedException("One finish opportunity is required.");
             list.Sort((a, b) => { int n = a.Position.CompareTo(b.Position); return n != 0 ? n : string.CompareOrdinal(a.Id, b.Id); });
+            if (compatible != null)
+                return new StochasticTrackMap(chosen ? "Chosen" : "FastFlip", list.ToArray(), compatible.Inputs,
+                    track.Length, ordinaryRewards, bounds.Count, compatible.BonusGain);
             double[] route = mixed ? TracksMixed.FullRoute(flight) : cascade ? TracksRhythm.FullRoute(track.Id, flight) : TracksFull.FullRoute(track.Id, flight);
             var inputs = new List<double>(route);
             double aim = mixed ? (chosen ? 7639 : 7650) : cascade ? (chosen ? 7758 : 7724) : (chosen ? 7736 : 7706);

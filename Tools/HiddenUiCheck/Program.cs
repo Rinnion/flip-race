@@ -80,9 +80,9 @@ static class Program
         for(int map=5;map<7;map++) {
             Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,map));Back(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.BotMenuButtonRect);
             string id=RaceTracks.GetAt(map).Id;var before=ui.Game;long seedIndex=ui.BotAttemptSequenceIndex;
-            Check(ui.FlightMenuPage==8&&(string)Field(ui,"pendingFlightTrack")==id&&!(bool)Prop(ui,"CanApplyFlight"),"new map retained and BOT Apply disabled");
-            Apply(ui);Check(ReferenceEquals(before,ui.Game)&&ui.BotAttemptSequenceIndex==seedIndex,"disabled Apply creates no game or seed");
-            Back(ui);Catalogue(ui);Click(ui,TrackRect(ui,map==5?6:5));Check((string)Field(ui,"pendingFlightTrack")==id,"disabled new BOT card ignores pointer");
+            Check(ui.FlightMenuPage==8&&(string)Field(ui,"pendingFlightTrack")==id&&(bool)Prop(ui,"CanApplyFlight"),"hidden map retained and BOT Apply enabled");
+            Apply(ui);Check(!ReferenceEquals(before,ui.Game)&&ui.BotAttemptSequenceIndex==seedIndex+1&&ui.BotEnabled&&ui.Game.Track.Id==id,"supported Apply creates exact hidden-map bot race and one seed");
+            Open(ui);Catalogue(ui);int other=map==5?6:5;Click(ui,TrackRect(ui,other));Check((string)Field(ui,"pendingFlightTrack")==RaceTracks.GetAt(other).Id,"other hidden BOT card selects exact map");
             Click(ui,TrackRect(ui,0));Check((bool)Prop(ui,"CanApplyFlight"),"explicit old card enables BOT Apply");Apply(ui);
             Check(ui.BotEnabled&&ui.Game.Track.Id==RaceTracks.GetAt(0).Id,"explicit old map starts BOT");
             double warning=ui.Game.HiddenWarningDuration;ui.Game.Phase="finished";foreach(var p in ui.Game.Players){p.Status=PlayerStatus.Finished;p.FinishTime=1;}Tick(ui);

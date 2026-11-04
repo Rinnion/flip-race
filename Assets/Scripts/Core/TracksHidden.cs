@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace FlipRace.Core
 {
-    // Shared geometry for Chosen/Fast. These tapes are offline author witnesses,
-    // never controllers or bot references; these two courses are human-only.
+    // Shared geometry for Chosen/Fast. These tapes remain offline author witnesses;
+    // bot orientation data is separately validated in BotReferenceRoutes.
     public static class TracksHidden
     {
         public const string InterceptsId = "hidden-intercepts";

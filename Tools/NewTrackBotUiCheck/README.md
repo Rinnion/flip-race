@@ -1,0 +1,7 @@
+# New-track bot menu checks
+
+Run `pwsh -NoProfile -File Tools/NewTrackBotUiCheck/Run.ps1` from the Unity project root after coordinating a Core/Presentation/Web freeze. `-BuildOnly` prepares native environment seams and compiles without a final assertion result. The runner reuses HiddenUiCheck's exact source transforms and rejects a result if a production source hash changes during execution.
+
+The matrix exercises actual production menu, Pointer, Apply and Update methods at 568×320 and 1280×720, DPR1/2/3. Each of five new map/profile combinations is selected at every difficulty and all five global warning values. Assertions check the exact selected map, settings and timer immediately after Apply before Update, explicit human start, countdown Update, result Retry with a new seed, and preserved timer when switching to/from authored Rethink timing. Camera choices alternate between both supported views. Separate cases preserve Rethink's Fast rejection, all custom BOT restrictions, equivalent Chosen custom in human SOLO, and all five original maps with both profiles and five levels.
+
+The runner compiles production Core/Presentation/Web with the existing native clock/display/input/preferences/selection-texture seams. No menu or Apply body is replaced. Result Retry uses explicit synthetic terminal fixtures: full bot gameplay, compatible reward routes, safe hidden activation and performance belong to Core/integration checks. Browser rendering and physical-phone usability require separate validation.

@@ -133,9 +133,24 @@ namespace FlipRace.Core
         }
         GameState PersonalForecast()
         {
-            // Forecast-only projection excludes humans and Constant camera elimination.
-            var copy=RaceSnapshot.Clone(game);var personal=RaceSimulation.CreateSolo(game.Track,game.Flight,PartyCamera.Lagger,-288.8,1520);
-            personal.Players=new[]{copy.Players[slot]};personal.Elapsed=game.Elapsed;personal.Phase="racing";personal.Motion=game.Motion;personal.Profile=game.Profile;personal.CountdownRemaining=0;return personal;
+            var copy=RaceSnapshot.Clone(game);
+            bool sharedHidden=HiddenObstacles.HasHidden(game.Track);
+            // Constant-camera elimination remains excluded inside forecasts.
+            // Hidden geometry needs every current body and the shared clocks.
+            // Other participants continue ordinary physics without future Press
+            // inputs; unknown human inputs remain forecast uncertainty.
+            var personal=sharedHidden&&copy.Players.Length>1
+                ? RaceSimulation.CreateParty(game.Track,game.Flight,copy.Players.Length,PartyCamera.Lagger,-288.8,1520)
+                : RaceSimulation.CreateSolo(game.Track,game.Flight,PartyCamera.Lagger,-288.8,1520);
+            if(sharedHidden)
+            {
+                personal.Players=copy.Players;
+                var bot=personal.Players[slot];personal.Players[slot]=personal.Players[0];personal.Players[0]=bot;
+                personal.HiddenObstacles=copy.HiddenObstacles;personal.HiddenWarningDuration=copy.HiddenWarningDuration;
+                personal.Winner=copy.Winner;personal.WinnerAt=copy.WinnerAt;personal.PartyLastCameraLeft=copy.PartyLastCameraLeft;
+            }
+            else personal.Players=new[]{copy.Players[slot]};
+            personal.Elapsed=game.Elapsed;personal.Phase="racing";personal.Motion=game.Motion;personal.Profile=game.Profile;personal.CountdownRemaining=0;return personal;
         }
         double[] Clip(IEnumerable<double> source,double start,double end)
         {
@@ -201,9 +216,17 @@ namespace FlipRace.Core
                 if(item.Kind!=BotOpportunityKind.Obstacle||item.Position<origin.Players[0].Distance||item.Position>end||!Hit(p,item)||Hit(origin.Players[0],item))continue;
                 bool desired=false;foreach(var r in pending)if(r.Opportunity.Id==item.Id&&r.Intent=="hit"){desired=true;break;}if(!desired)unintended++;
             }
-            bool masterClean=q!=1||(p.Collisions==0&&p.SlowsEarned==0&&p.FailedRiskIds.Count==0
-                &&(end<game.Track.Length-EdgeTolerance||(p.Status==PlayerStatus.Finished&&p.CompletedBoosts==ordinaryGoalCount
-                    &&p.CompletedSlows==0&&p.FinishBoostsEarned==1&&p.FinishBoostElapsed>=RaceConfig.FinishBoostDuration-1e-8)));
+            bool selectedFailed=false,selectedCollected=true;
+            foreach(var item in opportunities)if(item.Kind!=BotOpportunityKind.Obstacle)
+            { string id=RawId(item);selectedFailed|=p.FailedRiskIds.Contains(id);selectedCollected&=p.SuccessfulRiskIds.Contains(id); }
+            // Alternatives stay physical. Their success/failure or extra pulses
+            // do not invalidate the selected compatible reference. Pulse service
+            // is an aggregate guard; the engine does not expose per-ID service
+            // for merged instant effects.
+            bool masterClean=q!=1||(p.Collisions==0&&p.SlowsEarned==0&&!selectedFailed
+                &&(end<game.Track.Length-EdgeTolerance||(p.Status==PlayerStatus.Finished&&selectedCollected
+                    &&p.CompletedBoosts>=ordinaryGoalCount&&p.CompletedSlows==0&&p.FinishBoostsEarned==1
+                    &&p.FinishBoostElapsed>=RaceConfig.FinishBoostDuration-1e-8)));
             int score=mismatches*10000+unintended*1000+rejected*100+(p.SlowsEarned-origin.Players[0].SlowsEarned)*10+(completed?0:1000000)+(masterClean?0:100000);
             return new Evaluation{Inputs=inputs,Score=score,IntentMismatches=mismatches,Rejected=rejected,Completed=completed,MasterClean=masterClean,UnmetIds=unmet.ToArray()};
         }

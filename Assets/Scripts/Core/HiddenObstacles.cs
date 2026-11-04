@@ -96,19 +96,32 @@ namespace FlipRace.Core
 
         internal static double StepLimit(GameState game)
         {
-            double step = MaximumStep;
+            double step = double.PositiveInfinity;
             foreach (var obstacle in game.Track.Obstacles)
-                if (game.HiddenObstacles.TryGetValue(obstacle.Id, out var state)
-                    && state.Phase == HiddenObstaclePhase.Warning && state.RevealedAt.HasValue)
+            {
+                if (!IsHiddenStone(obstacle)) continue;
+                if (!game.HiddenObstacles.TryGetValue(obstacle.Id, out var state)
+                    || state.Phase == HiddenObstaclePhase.Hidden)
+                {
+                    // A new warning can start inside an analytic player segment.
+                    // Cap by its duration so its deadline cannot also be crossed
+                    // before all participants have advanced and Update runs.
+                    step = Math.Min(step, WarningDurationFor(game, obstacle));
+                }
+                else if (state.Phase == HiddenObstaclePhase.Warning && state.RevealedAt.HasValue)
                 {
                     double remaining = state.RevealedAt.Value + WarningDurationFor(game, obstacle) - game.Elapsed;
-                    if (remaining > 1e-12) step = Math.Min(step, remaining);
+                    // Update already activates any safe, due warning. Only an
+                    // occupied overdue volume needs the 1/240 s clearance bound.
+                    step = Math.Min(step, remaining > 1e-12 ? remaining : MaximumStep);
                 }
+            }
             return step;
         }
 
         // AdvancePlayer reports each existing analytic constant-speed segment.
-        // New warnings have no physical effect in this slice (duration > MaximumStep),
+        // StepLimit bounds an unrevealed stone's slice by its warning duration,
+        // so a new warning has no physical effect inside that same slice;
         // so candidates can be reduced to the earliest time after any player
         // order, without changing another participant's collision state.
         internal static void ObserveMotion(GameState game, PlayerState player, double duration, double at)

@@ -72,9 +72,11 @@ static class Program
             Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.PartyMenuButtonRect);Click(ui,ui.PartyCountRect(count-2));Apply(ui);
             Check(ui.PartyEnabled&&ui.Game.Players.Length==count&&ui.Game.Track.Id==TracksRethink.Id,"actual rethink Party "+count);partyModes++;
         }
-        Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.BotMenuButtonRect);CheckRejection(ui,"BOT");
-        Back(ui);Catalogue(ui);Click(ui,TrackRect(ui,0));Check(CanApply(ui),"explicit old BOT map enables Apply");Apply(ui);Check(ui.BotEnabled,"old BOT still starts");
-        Open(ui);Catalogue(ui);string old=Pending(ui);Click(ui,TrackRect(ui,7));Check(Pending(ui)==old,"BOT rethink card ignores pointer");Back(ui);
+        Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.BotMenuButtonRect);
+        Check(CanApply(ui)&&Pending(ui)==TracksRethink.Id,"Chosen rethink BOT now supported without map substitution");Apply(ui);
+        Check(ui.BotEnabled&&ui.Game.Track.Id==TracksRethink.Id,"actual rethink Chosen BOT applies");
+        Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,0));Check(CanApply(ui),"explicit old BOT map enables Apply");Apply(ui);Check(ui.BotEnabled,"old BOT still starts");
+        Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,7));Check(Pending(ui)==TracksRethink.Id&&CanApply(ui),"BOT rethink card selects exact supported map");Back(ui);
         Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.SoloMenuButtonRect);Back(ui);Catalogue(ui);Click(ui,TrackRect(ui,7));Back(ui);
         Click(ui,R(ui,"flightEdit"));Check(ui.FlightMenuPage==1,"explicit Edit creates equivalent Chosen custom");Click(ui,R(ui,"flightDone"));
         Check(((FlightSelection)Field(ui,"flightSelection")).IsCustom&&CanApply(ui),"equivalent Chosen custom allowed");Apply(ui);
