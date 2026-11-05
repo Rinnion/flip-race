@@ -9,7 +9,24 @@ namespace FlipRace.Core
     {
         public TrackPackage Package { get; private set; }
         public TrackOrigin Origin { get; private set; }
+        readonly Dictionary<string,PreparedReferenceProof> proofs=new Dictionary<string,PreparedReferenceProof>(StringComparer.Ordinal);
         internal TrackCatalogEntry(TrackPackage package, TrackOrigin origin) { Package=package; Origin=origin; }
+        public PreparedReferenceProof GetOrCreateProof(FlightSettings flight)
+        {
+            if(Origin!=TrackOrigin.Local||!Package.TryGetReference(flight,out var reference))return null;
+            if(!proofs.TryGetValue(reference.ProfileId,out var proof))
+            { proof=new PreparedReferenceProof(Package,flight);proofs.Add(reference.ProfileId,proof); }
+            return proof;
+        }
+        internal bool HasProof(FlightSettings flight)
+        { return Package.TryGetReference(flight,out var r)&&proofs.TryGetValue(r.ProfileId,out var p)&&p.Success&&p.Matches(Package,flight); }
+        internal string ProofMessage(FlightSettings flight)
+        {
+            if(!Package.TryGetReference(flight,out var r))return "Для этого управления нет подготовленного маршрута. Доступны человеческие режимы.";
+            if(!proofs.TryGetValue(r.ProfileId,out var p)||!p.Complete)return "Проверяем маршрут и Мастера. Пока доступны человеческие режимы.";
+            if(!p.Success)return "Бот не допущен: "+p.Failure+". Карта доступна для людей.";
+            return HasProof(flight)?"Маршрут и Мастер проверены.":"Содержимое трассы изменилось после проверки. Бот недоступен.";
+        }
     }
 
     // Runtime catalogue is published only after complete validation. Offline
@@ -86,21 +103,25 @@ namespace FlipRace.Core
         public static bool HasPreparedBots(string id)
         {
             if(!HasAttemptedInstall)return IsLegacyFullId(id);
-            return TryGet(id,out var e)&&e.Origin==TrackOrigin.BuiltIn&&e.Package.References.Length>0;
+            if(!TryGet(id,out var e))return false;
+            return e.Origin==TrackOrigin.BuiltIn?e.Package.References.Length>0:e.HasProof(FlightPresets.Chosen)||e.HasProof(FlightPresets.FastFlip);
         }
-        // Cheap menu predicate. The simulation factory separately recomputes the
-        // actual content hash, so stale/mutated geometry cannot reuse a reference.
+        // Admission is bound to the current geometry/profile. The simulation
+        // factory also recomputes the hash, so mutation cannot reuse a reference.
         public static bool SupportsBot(string id,FlightSettings flight)
         {
             if(!HasAttemptedInstall)return IsLegacyFullId(id)
                 &&(TrackPackage.MatchesProfile("Chosen",flight)||(id!=TracksRethink.Id&&TrackPackage.MatchesProfile("FastFlip",flight)));
-            return TryGet(id,out var e)&&e.Origin==TrackOrigin.BuiltIn&&e.Package.TryGetReference(flight,out var reference)
-                &&reference.TrackHash==e.Package.ContentHash;
+            return TryGet(id,out var e)&&(e.Origin==TrackOrigin.BuiltIn||e.HasProof(flight))&&e.Package.TryGetReference(flight,out var reference)
+                &&reference.TrackHash==e.Package.ContentHash
+                &&TrackFingerprint.Compute(e.Package.Track,e.Package.ProfilePolicy,e.Package.WarningMode)==e.Package.ContentHash;
         }
+        public static string BotSupportMessage(string id,FlightSettings flight)
+        { return TryGet(id,out var e)&&e.Origin==TrackOrigin.Local?e.ProofMessage(flight):"Для этой трассы нет подготовленного бота. Выбери другую трассу или человеческий режим."; }
         internal static bool TryGetBotReference(Track actual,FlightSettings flight,out TrackBotReference reference)
         {
             reference=null;
-            if(actual==null||!TryGet(actual.Id,out var e)||e.Origin!=TrackOrigin.BuiltIn
+            if(actual==null||!TryGet(actual.Id,out var e)||(e.Origin!=TrackOrigin.BuiltIn&&!e.HasProof(flight))
                 ||!e.Package.TryGetReference(flight,out var found))return false;
             string hash=TrackFingerprint.Compute(actual,e.Package.ProfilePolicy,e.Package.WarningMode);
             if(hash!=e.Package.ContentHash||hash!=found.TrackHash)return false;
@@ -110,6 +131,8 @@ namespace FlipRace.Core
         static bool IsLegacyFullId(string id)
         { return id==TracksFull.LongId||id==TracksFull.ShortId||id==TracksFull.FlowId||id==TracksRhythm.CascadeId||id==TracksMixed.Id
             ||id==TracksHidden.InterceptsId||id==TracksHidden.ManifestationId||id==TracksRethink.Id; }
+        public static bool IsReservedImportId(string id)
+        { return string.IsNullOrEmpty(id)||IsReservedLegacyId(id)||IsLegacyFullId(id); }
         static bool IsCodePracticeId(string id)
         { return id==TracksFull.PracticeId||id==TracksRhythm.PracticeId||id==TracksControl.ChallengeId||id==TracksControl.UnlimitedId
             ||id==TracksV4.OpenId||id==TracksV4.ChallengeId||id==TracksTune.ChallengeId; }

@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 $workshopRoot = $PSScriptRoot
-Write-Host 'Track Workshop 0.4 - default http://127.0.0.1:4186/'
+Write-Host 'Track Workshop 0.5 - default http://127.0.0.1:4186/'
 Write-Host 'Keep this window open. Press Ctrl+C to stop.'
 if (Test-Path -LiteralPath (Join-Path $workshopRoot 'TrackWorkshop.dll')) {
     & dotnet (Join-Path $workshopRoot 'TrackWorkshop.dll')

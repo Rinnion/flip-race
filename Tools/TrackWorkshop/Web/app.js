@@ -1,5 +1,6 @@
 import { clamp, parseInputs, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision } from './model.mjs';
 import { createObject, deleteObject, resizeObject, getResizeHandles } from './edit-model.mjs';
+import { DRAFT_KEY, readDraft, writeDraft, clearDraft } from './draft.mjs';
 
 const $ = id => document.getElementById(id);
 const svgNS = 'http://www.w3.org/2000/svg';
@@ -8,6 +9,97 @@ const state = { analysis: null, valid: false, catalog: [], zoom: 1, left: -20, r
   sourceName: 'track.json', sourceText: '', loadRevision: 0, analysisRevision: new Revision(), replayRevision: new Revision(), debounce: null, analysisAbort: null,
   preview: null, moving: false, history: [], future: [], selection: null, addKind: null };
 let drag = null, spacePan = false;
+let draftStorage, pendingDraft = null, draftBlocked = false, draftTimer = null, draftTouched = false;
+const preparation = { revision: 0, abort: null, pending: false, result: null, sourceId: null };
+function invalidatePrepared(reason = 'Исходник или настройки изменены. Подготовьте бота заново.') {
+  preparation.revision++; preparation.abort?.abort(); preparation.abort = null;
+  const existed = preparation.pending || preparation.result;
+  preparation.pending = false; preparation.result = null;
+  $('prepare-result').hidden = true; $('prepare-cancel').hidden = true;
+  if (existed) message('prepare-state', reason);
+}
+function updatePrepareControls() {
+  const a = state.analysis, reserved = state.catalog.some(e => e.id === a?.id);
+  if (state.valid && (preparation.sourceId !== a.id || (reserved && $('output-track-id').value === a.id))) {
+    preparation.sourceId = a.id;
+    $('output-track-id').value = reserved ? `custom-${a.id}` : a.id;
+  }
+  $('prepare-copy-note').textContent = reserved
+    ? 'Будет создан новый ID для импорта: ID встроенной карты занят. Проверьте ID выше. Исходный JSON останется в редакторе.'
+    : 'Исходный JSON останется в редакторе. Подготовленный результат с этим ID скачивается отдельно.';
+  $('prepare-bot').disabled = !state.valid || state.moving || preparation.pending || !$('output-track-id').value.trim();
+  $('output-track-id').disabled = preparation.pending;
+  $('prepare-cancel').hidden = !preparation.pending;
+  $('download-prepared').disabled = !preparation.result || preparation.pending || !state.valid || state.moving;
+}
+async function prepareBot() {
+  if (!state.valid || state.moving || preparation.pending) return;
+  invalidatePrepared(); invalidateReplay('Подготавливаем новый эталон для текущего управления…');
+  const revision = preparation.revision, replayRevision = state.replayRevision.value;
+  const source = $('json').value, profile = $('profile').value, warning = Number($('warning').value);
+  const outputTrackId = $('output-track-id').value.trim(), abort = new AbortController();
+  preparation.abort = abort; preparation.pending = true; controls();
+  message('prepare-state', 'Поиск ограничен бюджетом. Затем проверяем эталон и настоящего Мастера; это может занять несколько десятков секунд. Отмена прерывает запрос.');
+  message('replay-error', '', false);
+  const request = { json: source, profiles: [profile], warningDuration: warning, outputTrackId };
+  // An optional author seed is only a hint, never a prerequisite for search.
+  if ($('axis').value === 'distance') { try { request.inputs = parseInputs($('inputs').value); } catch { /* Invalid manual inputs do not prevent preparation. */ } }
+  try {
+    const result = await api('/api/prepare-bot', request, abort.signal);
+    if (revision !== preparation.revision) return;
+    const ready = result.profiles?.find(p => p.profileId === profile && p.status === 'ready');
+    if (result.status !== 'prepared' || !result.preparedJson || !ready) {
+      message('prepare-state', `${result.message || 'В пределах бюджета подходящий маршрут не найден.'} ${result.profiles?.map(p => p.message).filter(Boolean).join(' ') || ''} Это не доказывает непроходимость карты. Исходный JSON сохранён.`);
+      return;
+    }
+    preparation.result = result;
+    $('prepare-result').hidden = false;
+    $('prepare-summary').textContent = `${$('profile').selectedOptions[0].textContent} · ID ${result.outputTrackId} · эталон ${number(ready.finishTime, 2)} с · Мастер проверен. ${number(ready.expandedStates)} состояний; поиск ${number(ready.elapsedMilliseconds / 1000, 2)} с. Оптимальность не утверждается.`;
+    const hiddenVerification = state.analysis.warningMode === 'selected' && state.analysis.obstacles.some(o => o.hidden)
+      ? 'Проверены все пять длительностей предупреждения.' : state.analysis.warningMode === 'authored' ? 'Проверены индивидуальные таймеры скрытых камней.' : '';
+    $('prepare-rewards').textContent = `Выбранные положительные награды: ${ready.rewardIds?.length ? ready.rewardIds.join(', ') : 'нет'}. Финишный рывок проверен полностью. ${hiddenVerification}`;
+    message('prepare-state', result.message || 'Подготовленный JSON готов для импорта в игру. Исходный текст в редакторе не изменён.');
+    controls();
+    try {
+      const route = await api('/api/replay', { json: result.preparedJson, profile, warningDuration: warning, axis: 'distance', inputs: ready.inputs }, abort.signal);
+      if (revision !== preparation.revision || !state.replayRevision.current(replayRevision)) return;
+      showResult(route);
+      message('replay-state', `Подготовленный эталон · ${$('profile').selectedOptions[0].textContent} · нажатия по X. Список ручных нажатий выше сохранён; на схеме показан найденный маршрут.`);
+    } catch (error) {
+      if (revision !== preparation.revision || error.name === 'AbortError') return;
+      message('replay-error', `JSON подготовлен, но траекторию не удалось показать: ${error.message}`);
+    }
+  } catch (error) {
+    if (revision !== preparation.revision || error.name === 'AbortError') return;
+    message('prepare-state', `Подготовка не выполнена: ${error.message} Исходный JSON сохранён.`);
+  } finally {
+    if (revision === preparation.revision) { preparation.pending = false; preparation.abort = null; controls(); }
+  }
+}
+function draftStatus(text, error = false) { $('draft-status').textContent = text; $('draft-status').classList.toggle('storage-error', error); }
+function draftValue() { return { json: $('json').value, inputs: $('inputs').value, filename: state.sourceName, profile: $('profile').value, axis: $('axis').value, warning: $('warning').value }; }
+function saveDraft() {
+  clearTimeout(draftTimer);
+  if (draftBlocked || !draftTouched) return;
+  const result = writeDraft(draftStorage, draftValue());
+  draftStatus(result.kind === 'saved' ? `Черновик сохранён в этом браузере · ${new Date(result.draft.savedAt).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}. Сервер файл не хранит.` : 'Автосохранение недоступно или превышен лимит. Скачайте исходный текст, чтобы сохранить правки.', result.kind === 'error');
+}
+function scheduleDraft() {
+  draftTouched = true;
+  clearTimeout(draftTimer);
+  if (draftBlocked) { draftStatus('Сохранённый черновик ожидает решения. Текущие правки его не перезаписывают.'); return; }
+  draftStatus('Изменения ожидают сохранения только в этом браузере…');
+  draftTimer = setTimeout(saveDraft, 500);
+}
+function offerDraft() {
+  try { draftStorage = window.localStorage; } catch { /* Storage may be disabled. */ }
+  const result = readDraft(draftStorage);
+  if (result.kind === 'empty') { draftStatus('Автосохранение — только в этом браузере. Сервер файл не хранит.'); return; }
+  draftBlocked = true; pendingDraft = result.kind === 'saved' ? result.draft : null;
+  $('draft-offer').hidden = false; $('draft-restore').hidden = !pendingDraft;
+  $('draft-offer-text').textContent = pendingDraft ? `Есть черновик «${pendingDraft.filename}» от ${new Date(pendingDraft.savedAt).toLocaleString('ru-RU')}. Восстановить его вместе с нажатиями и настройками?` : 'Сохранённый черновик недоступен или повреждён. Редактор работает; удалите сохранение, чтобы снова включить автосохранение, либо скачивайте исходный текст.';
+  draftStatus('Автосохранение приостановлено до решения о черновике.', !pendingDraft);
+}
 const eventNames = { collision: 'Удар', collected: 'Касание', reward: 'Бонус', failedReward: 'Срыв награды', negative: 'Ловушка', coin: 'Монета', finishBoost: 'Финишный рывок', hidden: 'Скрытый камень' };
 
 function el(tag, attrs = {}, text) {
@@ -28,6 +120,7 @@ async function api(path, data, signal) {
 }
 function badge(text, kind) { $('validation-badge').textContent = text; $('validation-badge').className = `badge ${kind}`; }
 function controls() {
+  updatePrepareControls();
   $('download').disabled = !state.valid || state.moving;
   $('replay').disabled = !state.valid || state.moving;
   const a = state.analysis;
@@ -57,6 +150,8 @@ function edited(immediate = false, options = {}) {
     if (hadHistory) notice('Текст изменён или загружен файл. История визуальных правок очищена.');
   }
   state.loadRevision++;
+  invalidatePrepared();
+  scheduleDraft();
   state.analysisRevision.bump();
   state.analysisAbort?.abort();
   clearTimeout(state.debounce);
@@ -92,6 +187,7 @@ async function analyze() {
     const fast = $('profile').querySelector('[value="FastFlip"]'); fast.disabled = result.profilePolicy === 'chosen-only';
     if (fast.disabled && $('profile').value === 'FastFlip') {
       $('profile').value = 'Chosen';
+      scheduleDraft();
       notice('Эта трасса разрешает только Основное управление. Профиль изменён с «Быстрый переворот» на «Основной»; прежняя траектория сброшена.');
     }
     $('warning').disabled = result.warningMode === 'authored';
@@ -347,15 +443,25 @@ $('download').addEventListener('click', () => {
 });
 $('download-source').addEventListener('click', () => download($('json').value, state.sourceName));
 for (const id of ['profile', 'warning', 'axis']) $(id).addEventListener('change', () => {
-  invalidateReplay(id === 'axis' ? 'Единицы нажатий изменены. Числа в списке сохранены без пересчёта — проверьте их перед запуском.' : 'Настройки изменены. Постройте траекторию заново.'); controls();
+  if (id !== 'axis') invalidatePrepared();
+  scheduleDraft(); invalidateReplay(id === 'axis' ? 'Единицы нажатий изменены. Числа в списке сохранены без пересчёта — проверьте их перед запуском.' : 'Настройки изменены. Постройте траекторию заново.'); controls();
 });
-$('inputs').addEventListener('input', () => { invalidateReplay('Список нажатий изменён. Постройте траекторию заново.'); message('replay-error', '', false); controls(); });
+$('inputs').addEventListener('input', () => { scheduleDraft(); invalidateReplay('Список нажатий изменён. Постройте траекторию заново.'); message('replay-error', '', false); controls(); });
 $('reference').addEventListener('click', () => {
   const r = state.analysis?.references?.find(r => r.profileId === $('profile').value); if (!r || !state.valid) return;
   $('inputs').value = JSON.stringify(r.inputs); $('axis').value = 'distance';
+  scheduleDraft();
   invalidateReplay('Загружены нажатия эталона из файла для выбранного профиля. Это не новый найденный маршрут.'); controls();
 });
 $('replay').addEventListener('click', replay); $('play').addEventListener('click', play);
+$('prepare-bot').addEventListener('click', prepareBot);
+$('prepare-cancel').addEventListener('click', () => { invalidatePrepared('Подготовка отменена. Исходный JSON и ручные нажатия сохранены.'); controls(); });
+$('output-track-id').addEventListener('input', () => { invalidatePrepared('ID результата изменён. Подготовьте бота заново.'); controls(); });
+$('download-prepared').addEventListener('click', () => {
+  if (!preparation.result || preparation.pending || !state.valid || state.moving) return;
+  download(preparation.result.preparedJson, `${preparation.result.outputTrackId}.bot.track.json`);
+  notice('Скачан отдельный JSON для игры с проверенными botReferences. В игре выберите «Импорт JSON», затем подготовленное управление. Исходный текст редактора сохранён.');
+});
 $('timeline').addEventListener('input', () => { stopPlayback(); seek(Number($('timeline').value)); });
 $('zoom-in').addEventListener('click', () => zoom(1.25)); $('zoom-out').addEventListener('click', () => zoom(.8));
 $('fit').addEventListener('click', () => { state.zoom = 1; draw(); });
@@ -531,11 +637,41 @@ $('diagram').addEventListener('keydown', event => {
 $('diagram').addEventListener('keydown', event => { if (!state.analysis) return; if (event.key === '+' || event.key === '=') zoom(1.25); else if (event.key === '-') zoom(.8); else if (event.key === 'ArrowRight') { state.left += dimensions().width / 5; draw(); } else if (event.key === 'ArrowLeft') { state.left -= dimensions().width / 5; draw(); } else return; event.preventDefault(); });
 new ResizeObserver(() => draw()).observe($('diagram'));
 window.addEventListener('beforeunload', event => { if ($('json').value !== state.sourceText) { event.preventDefault(); event.returnValue = ''; } });
+window.addEventListener('pagehide', saveDraft);
+window.addEventListener('storage', event => {
+  if (event.key !== DRAFT_KEY) return;
+  clearTimeout(draftTimer);
+  if (event.newValue !== null) offerDraft();
+  else {
+    draftBlocked = true; pendingDraft = null; $('draft-offer').hidden = false; $('draft-restore').hidden = true;
+    $('draft-offer-text').textContent = 'Сохранение удалено в другой вкладке. Текущий текст оставлен в редакторе. Нажмите «Удалить сохранённый черновик», чтобы продолжить автосохранение текущих правок.';
+    draftStatus('Автосохранение приостановлено: другая вкладка изменила черновик.');
+  }
+});
+$('draft-restore').addEventListener('click', () => {
+  if (!pendingDraft) return;
+  const draft = pendingDraft;
+  draftBlocked = false; pendingDraft = null; $('draft-offer').hidden = true; $('catalog').value = '';
+  state.sourceName = draft.filename; state.sourceText = '';
+  $('filename').textContent = draft.filename; $('json').value = draft.json; $('inputs').value = draft.inputs;
+  $('profile').value = draft.profile; $('axis').value = draft.axis; $('warning').value = draft.warning;
+  notice('Черновик восстановлен из этого браузера. Исходный текст сохранён точно; проверяем JSON заново. История визуальных правок очищена.'); edited(true);
+});
+$('draft-clear').addEventListener('click', () => {
+  const result = clearDraft(draftStorage);
+  if (result.kind === 'error') { draftStatus('Не удалось удалить сохранение: хранилище браузера недоступно. Редактор продолжает работать; скачайте исходный текст.', true); return; }
+  draftBlocked = false; pendingDraft = null; $('draft-offer').hidden = true;
+  draftStatus('Прежний черновик удалён из этого браузера.');
+  if ($('json').value) scheduleDraft();
+});
 async function start() {
+  offerDraft();
+  const allowInitialCatalog = !draftBlocked;
   try {
     const result = await api('/api/catalog'); state.catalog = result.entries;
     $('catalog').replaceChildren(new Option('Выберите трассу…', ''), ...result.entries.map(e => new Option(e.name, e.id)));
-    if (result.entries.length && !$('json').value) { const id = result.entries.find(e => e.id === 'mixed-tricks')?.id || result.entries[0].id; $('catalog').value = id; await loadBuiltin(id); }
+    controls();
+    if (allowInitialCatalog && !draftBlocked && !draftTouched && result.entries.length && !$('json').value) { const id = result.entries.find(e => e.id === 'mixed-tricks')?.id || result.entries[0].id; $('catalog').value = id; await loadBuiltin(id); }
   } catch (error) { $('catalog').replaceChildren(new Option('Каталог недоступен', '')); notice(error.message, true); }
 }
 start();

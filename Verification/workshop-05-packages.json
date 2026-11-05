@@ -1,0 +1,736 @@
+{
+  "version": "0.5",
+  "createdUtc": "2026-11-05T13:00:16.392478Z",
+  "packages": [
+    {
+      "source": "F:\\Home\\Game\\flip-race-unity\\Builds\\TrackWorkshop-0.5",
+      "archive": "F:\\Home\\Game\\flip-race-unity\\Releases\\track-workshop-0.5-win-x64.zip",
+      "files": 28,
+      "bytes": 409887,
+      "sha256": "CB6306CFA56778DE295B6C8B264874E8461C0B0BB9CF7F0146890258E2052700",
+      "allEntryHashesMatchSource": true,
+      "entries": [
+        {
+          "path": "API.md",
+          "bytes": 10617,
+          "sha256": "D5938176D41D60EF2553CA13CB6D7A5F527AD32A84EEE116DD3591DAFC0E0356"
+        },
+        {
+          "path": "README.md",
+          "bytes": 16439,
+          "sha256": "5ED7656A7DB919102212C1836856005DC16E3D0D66F4FEA8527DA11E521AB9A1"
+        },
+        {
+          "path": "Start.cmd",
+          "bytes": 295,
+          "sha256": "71F3117FFA35F0FF08399591B7D24445077E4E8C48FF5BEA75D7E4198A1D7B04"
+        },
+        {
+          "path": "Start.ps1",
+          "bytes": 446,
+          "sha256": "1D450765168346EF356B1DC918ABEC5FCBFE9984C53CB0634D24C6676754D9C2"
+        },
+        {
+          "path": "TrackWorkshop.deps.json",
+          "bytes": 431,
+          "sha256": "81E2B41DC82A6D2CD37892817FD5B38AC0D3F91652447859E6A35382801F6BB1"
+        },
+        {
+          "path": "TrackWorkshop.dll",
+          "bytes": 1117184,
+          "sha256": "DFFC1B6ABBC3D4680DF53BAEFB7466C000B6BE7BC2934C6D7C89A968AB40102E"
+        },
+        {
+          "path": "TrackWorkshop.pdb",
+          "bytes": 88072,
+          "sha256": "ECB378F01C4BFEFB684A075E4865C384931A1941F563DC7E0E03F5BF5B55F099"
+        },
+        {
+          "path": "TrackWorkshop.runtimeconfig.json",
+          "bytes": 488,
+          "sha256": "2927E7D9A65748A82C4F265A0C9C1876A5EE233D9F5283881E0966E81CA94E14"
+        },
+        {
+          "path": "TrackWorkshop.staticwebassets.endpoints.json",
+          "bytes": 53,
+          "sha256": "C1686417E8D5C31BBA969F12B6F3D2B35E6609ADB5CA42F212261A3A02771AAC"
+        },
+        {
+          "path": "web.config",
+          "bytes": 499,
+          "sha256": "7E213179158741F5DC7F0453BE19958D7158BAE5BED825C00E49BFDC50A26C02"
+        },
+        {
+          "path": "Catalog/full-flow.track.json",
+          "bytes": 12174,
+          "sha256": "68A2C4ADE5AA78DC0F0AA6CC4575B91E11D879E8BC911F34730940D8D1BB5D2C"
+        },
+        {
+          "path": "Catalog/full-long.track.json",
+          "bytes": 11991,
+          "sha256": "38C5EFB624CD3ED176812583A69DD5CA92BCCFD83DA1AE69C1616187CEB5E441"
+        },
+        {
+          "path": "Catalog/full-short.track.json",
+          "bytes": 12025,
+          "sha256": "45435AA8000EE55E348B396031EB9604B303D3481E4538CC7E6CA104117B4D33"
+        },
+        {
+          "path": "Catalog/hidden-intercepts.track.json",
+          "bytes": 16600,
+          "sha256": "EFFE313BAE518C3C61346150808EFEE523F91E2DA0E83E9A7717D3C368AFF33C"
+        },
+        {
+          "path": "Catalog/hidden-manifestation.track.json",
+          "bytes": 13026,
+          "sha256": "7EA257B9161A1B8B07380F890DD37C7839F516FFEFDB3F2AE0A9BE6C2B97106F"
+        },
+        {
+          "path": "Catalog/index.json",
+          "bytes": 315,
+          "sha256": "0F8697F7CA54095AE5CF18AFD340A78C6AF5C0A222136486AC7A00D4804CB8F6"
+        },
+        {
+          "path": "Catalog/mixed-tricks.track.json",
+          "bytes": 14213,
+          "sha256": "8F5C1BB3DF7E803B074D40A7090BE975FB18E6CC88337824E55F22D84C5584E4"
+        },
+        {
+          "path": "Catalog/rethink.track.json",
+          "bytes": 9251,
+          "sha256": "B673CABC88B227512EEA239F14F5A5ED10051A0B236808E05DF78109F2045F70"
+        },
+        {
+          "path": "Catalog/rhythm-cascade.track.json",
+          "bytes": 16219,
+          "sha256": "D9CBFFB5C7A6C5269A112C118AF0C5E3BE297BF523B40FAAD6AF6B9140063AAD"
+        },
+        {
+          "path": "Web/app.js",
+          "bytes": 56462,
+          "sha256": "17398CC9E07CDBCFD65E186EEF195AE5FFBFE4B257AC1241CE15D77D0A992029"
+        },
+        {
+          "path": "Web/draft.mjs",
+          "bytes": 2126,
+          "sha256": "AF13287C75D91C0C6EF9BE03C3C8EF93AE3F9D9718210D5B31530F3F0EF0F3A3"
+        },
+        {
+          "path": "Web/edit-model.mjs",
+          "bytes": 16840,
+          "sha256": "1BABB14B062B7179CA6211B556B51C52806E4B31846AAC5BFF2F6022C0F8729F"
+        },
+        {
+          "path": "Web/index.html",
+          "bytes": 12227,
+          "sha256": "143C4E540DC9AF9CB005398056AB05472B26A2E0F38A92357205DB60C8FCFD67"
+        },
+        {
+          "path": "Web/model.mjs",
+          "bytes": 12804,
+          "sha256": "E5CC430300137FE2E97388BF8DCD971AEBB0170F9BAB632DC8B32FF6C83A823A"
+        },
+        {
+          "path": "Web/styles.css",
+          "bytes": 15570,
+          "sha256": "308C105B630619B17B680D038F8A1B81E54D4D59D31D719189FE0EC7D65F291D"
+        },
+        {
+          "path": "Web/tests/draft.test.mjs",
+          "bytes": 2458,
+          "sha256": "1233B3E4CCC27B8F8D7E8668AB6DDD6FB6343F51DD918262806D37378A811D41"
+        },
+        {
+          "path": "Web/tests/edit-model.test.mjs",
+          "bytes": 14274,
+          "sha256": "64142A2CC97E41B67ED51E03BE683FAF52F8ED02A7F438C55F1F1A257FDEB449"
+        },
+        {
+          "path": "Web/tests/model.test.mjs",
+          "bytes": 8843,
+          "sha256": "E7210B54C2478F5E649C1BC3EEAB0B346F7FA19ECD74521234CC6C06722CF38E"
+        }
+      ]
+    },
+    {
+      "source": "F:\\Home\\Game\\flip-race-unity\\Builds\\TrackWorkshop-0.5-server",
+      "archive": "F:\\Home\\Game\\flip-race-unity\\Releases\\track-workshop-0.5-server.zip",
+      "files": 34,
+      "bytes": 415893,
+      "sha256": "2087922163D01B001F668F149BC254F39E6409EDD9ACB837986AD7ADC5A9BB03",
+      "allEntryHashesMatchSource": true,
+      "entries": [
+        {
+          "path": ".dockerignore",
+          "bytes": 16,
+          "sha256": "5A500E7E793BF0D826023C44D23BD4D72ECC3FFD5128286C2FCAA0F3EAAABBF9"
+        },
+        {
+          "path": ".env.example",
+          "bytes": 289,
+          "sha256": "DA2DAA59587F2FEC75D96EBE86F04950E87C2FBEF7B4135D66A88F3AAC156F18"
+        },
+        {
+          "path": "Caddyfile",
+          "bytes": 115,
+          "sha256": "BCE808D7FCC3BA5E1B410268FF8DB07850232049DC578EE50BDE0731615C6C9E"
+        },
+        {
+          "path": "compose.yaml",
+          "bytes": 962,
+          "sha256": "0FDB33FEB67017503B4E9D32B4A8A51C9F1BE4FE17C45B3EC1A75FE4A2BFC658"
+        },
+        {
+          "path": "Dockerfile",
+          "bytes": 132,
+          "sha256": "DB9B0D9E7C91FB1239016539C435A10AFA9385F9C31997B12884167FDECE0766"
+        },
+        {
+          "path": "README.md",
+          "bytes": 8972,
+          "sha256": "D07951A7495A5F12F235C0B4926D62D8E3D340BEA0CB75E639FCC7154B481B7F"
+        },
+        {
+          "path": "app/API.md",
+          "bytes": 10617,
+          "sha256": "D5938176D41D60EF2553CA13CB6D7A5F527AD32A84EEE116DD3591DAFC0E0356"
+        },
+        {
+          "path": "app/README.md",
+          "bytes": 16439,
+          "sha256": "5ED7656A7DB919102212C1836856005DC16E3D0D66F4FEA8527DA11E521AB9A1"
+        },
+        {
+          "path": "app/Start.cmd",
+          "bytes": 295,
+          "sha256": "71F3117FFA35F0FF08399591B7D24445077E4E8C48FF5BEA75D7E4198A1D7B04"
+        },
+        {
+          "path": "app/Start.ps1",
+          "bytes": 446,
+          "sha256": "1D450765168346EF356B1DC918ABEC5FCBFE9984C53CB0634D24C6676754D9C2"
+        },
+        {
+          "path": "app/TrackWorkshop.deps.json",
+          "bytes": 433,
+          "sha256": "D0EBAAFD79BDBF4E29011D8F69DD78B1A1A722F332C9AE9538E10AD8D3FDD975"
+        },
+        {
+          "path": "app/TrackWorkshop.dll",
+          "bytes": 1118208,
+          "sha256": "946FD18166D1E82C8900B79A0727369FDB917B7F94C315A1F000A607ECC849E0"
+        },
+        {
+          "path": "app/TrackWorkshop.pdb",
+          "bytes": 88788,
+          "sha256": "4A9F3056E99E12FCA7716B2E817A7C9EE2E2B4A985F81B0675607A56D4BD968D"
+        },
+        {
+          "path": "app/TrackWorkshop.runtimeconfig.json",
+          "bytes": 491,
+          "sha256": "41442586A8262BC96A1C80F82F4D9384C03BFD465D221CBF01FB3563170F9E65"
+        },
+        {
+          "path": "app/TrackWorkshop.staticwebassets.endpoints.json",
+          "bytes": 53,
+          "sha256": "C1686417E8D5C31BBA969F12B6F3D2B35E6609ADB5CA42F212261A3A02771AAC"
+        },
+        {
+          "path": "app/web.config",
+          "bytes": 499,
+          "sha256": "7E213179158741F5DC7F0453BE19958D7158BAE5BED825C00E49BFDC50A26C02"
+        },
+        {
+          "path": "app/Catalog/full-flow.track.json",
+          "bytes": 12174,
+          "sha256": "68A2C4ADE5AA78DC0F0AA6CC4575B91E11D879E8BC911F34730940D8D1BB5D2C"
+        },
+        {
+          "path": "app/Catalog/full-long.track.json",
+          "bytes": 11991,
+          "sha256": "38C5EFB624CD3ED176812583A69DD5CA92BCCFD83DA1AE69C1616187CEB5E441"
+        },
+        {
+          "path": "app/Catalog/full-short.track.json",
+          "bytes": 12025,
+          "sha256": "45435AA8000EE55E348B396031EB9604B303D3481E4538CC7E6CA104117B4D33"
+        },
+        {
+          "path": "app/Catalog/hidden-intercepts.track.json",
+          "bytes": 16600,
+          "sha256": "EFFE313BAE518C3C61346150808EFEE523F91E2DA0E83E9A7717D3C368AFF33C"
+        },
+        {
+          "path": "app/Catalog/hidden-manifestation.track.json",
+          "bytes": 13026,
+          "sha256": "7EA257B9161A1B8B07380F890DD37C7839F516FFEFDB3F2AE0A9BE6C2B97106F"
+        },
+        {
+          "path": "app/Catalog/index.json",
+          "bytes": 315,
+          "sha256": "0F8697F7CA54095AE5CF18AFD340A78C6AF5C0A222136486AC7A00D4804CB8F6"
+        },
+        {
+          "path": "app/Catalog/mixed-tricks.track.json",
+          "bytes": 14213,
+          "sha256": "8F5C1BB3DF7E803B074D40A7090BE975FB18E6CC88337824E55F22D84C5584E4"
+        },
+        {
+          "path": "app/Catalog/rethink.track.json",
+          "bytes": 9251,
+          "sha256": "B673CABC88B227512EEA239F14F5A5ED10051A0B236808E05DF78109F2045F70"
+        },
+        {
+          "path": "app/Catalog/rhythm-cascade.track.json",
+          "bytes": 16219,
+          "sha256": "D9CBFFB5C7A6C5269A112C118AF0C5E3BE297BF523B40FAAD6AF6B9140063AAD"
+        },
+        {
+          "path": "app/Web/app.js",
+          "bytes": 56462,
+          "sha256": "17398CC9E07CDBCFD65E186EEF195AE5FFBFE4B257AC1241CE15D77D0A992029"
+        },
+        {
+          "path": "app/Web/draft.mjs",
+          "bytes": 2126,
+          "sha256": "AF13287C75D91C0C6EF9BE03C3C8EF93AE3F9D9718210D5B31530F3F0EF0F3A3"
+        },
+        {
+          "path": "app/Web/edit-model.mjs",
+          "bytes": 16840,
+          "sha256": "1BABB14B062B7179CA6211B556B51C52806E4B31846AAC5BFF2F6022C0F8729F"
+        },
+        {
+          "path": "app/Web/index.html",
+          "bytes": 12227,
+          "sha256": "143C4E540DC9AF9CB005398056AB05472B26A2E0F38A92357205DB60C8FCFD67"
+        },
+        {
+          "path": "app/Web/model.mjs",
+          "bytes": 12804,
+          "sha256": "E5CC430300137FE2E97388BF8DCD971AEBB0170F9BAB632DC8B32FF6C83A823A"
+        },
+        {
+          "path": "app/Web/styles.css",
+          "bytes": 15570,
+          "sha256": "308C105B630619B17B680D038F8A1B81E54D4D59D31D719189FE0EC7D65F291D"
+        },
+        {
+          "path": "app/Web/tests/draft.test.mjs",
+          "bytes": 2458,
+          "sha256": "1233B3E4CCC27B8F8D7E8668AB6DDD6FB6343F51DD918262806D37378A811D41"
+        },
+        {
+          "path": "app/Web/tests/edit-model.test.mjs",
+          "bytes": 14274,
+          "sha256": "64142A2CC97E41B67ED51E03BE683FAF52F8ED02A7F438C55F1F1A257FDEB449"
+        },
+        {
+          "path": "app/Web/tests/model.test.mjs",
+          "bytes": 8843,
+          "sha256": "E7210B54C2478F5E649C1BC3EEAB0B346F7FA19ECD74521234CC6C06722CF38E"
+        }
+      ]
+    }
+  ],
+  "runtimeSmoke": "passed: native 19 requests + prepare; server net10 20 requests + prepare",
+  "nativeRuntime": {
+    "tfm": "net8.0",
+    "port": 4197,
+    "smoke": {
+      "passed": true,
+      "base": "http://127.0.0.1:4197",
+      "publicOrigin": null,
+      "requests": 19,
+      "results": [
+        {
+          "method": "GET",
+          "path": "/healthz",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/edit-model.mjs",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/catalog",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/catalog/full-long",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "127.0.0.1:4197",
+          "origin": "http://127.0.0.1:4197",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze/",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "127.0.0.1:4197",
+          "origin": "https://wrong.example",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "127.0.0.1:4197",
+          "origin": "null",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "127.0.0.1:4197",
+          "origin": "http://127.0.0.1:4197",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "127.0.0.1:4197",
+          "origin": "http://127.0.0.1:4197",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "127.0.0.1:4197",
+          "origin": "http://127.0.0.1:4197",
+          "status": 400
+        },
+        {
+          "method": "GET",
+          "path": "/healthz",
+          "host": "wrong.example",
+          "origin": null,
+          "status": 400
+        },
+        {
+          "method": "GET",
+          "path": "/ServerOptions.cs",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/README.md",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/Web/tests/model.test.mjs",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/Catalog/full-long.track.json",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/api/catalog/..%2F..%2FProgram.cs",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "POST",
+          "path": "/api/replay",
+          "host": "127.0.0.1:4197",
+          "origin": "http://127.0.0.1:4197",
+          "status": 200
+        }
+      ],
+      "replaySummary": {
+        "status": "Finished",
+        "finishTime": 37.99999999999849,
+        "elapsed": 37.99999999999849,
+        "cleanFinish": false,
+        "collisions": 4,
+        "boosts": 0,
+        "instantBoosts": 0,
+        "slows": 0,
+        "coins": 0,
+        "finishBoosts": 0,
+        "acceptedInputs": 0,
+        "ignoredInputs": 0,
+        "unreachedInputs": 0,
+        "collectedIds": [],
+        "successfulIds": [],
+        "failedIds": [],
+        "hitIds": [
+          "full-long-1-low",
+          "full-long-2-standard-pad",
+          "full-long-3-low",
+          "full-long-4-before-stone"
+        ]
+      }
+    },
+    "preparation": {
+      "status": "prepared",
+      "preparedJson": "{\n  \"botReferences\": [\n    {\n      \"bonusGain\": 0.55,\n      \"inputs\": [\n        297,\n        957\n      ],\n      \"profileId\": \"Chosen\",\n      \"rewardIds\": [\n        \"ordinary-ground\",\n        \"prepared-custom-bonus-finish\"\n      ],\n      \"trackHash\": \"d7cc2b56733b892f8490ab340a06bfbb684eaad91e9899d2513d7f4db1d516b5\"\n    }\n  ],\n  \"physicsVersion\": 1,\n  \"profilePolicy\": \"any\",\n  \"schemaVersion\": 1,\n  \"track\": {\n    \"cues\": [],\n    \"focus\": \"\",\n    \"id\": \"package-native-custom-bonus\",\n    \"length\": 1200,\n    \"name\": \"prepared-custom-bonus\",\n    \"negativeEnabled\": false,\n    \"obstacles\": [\n      {\n        \"bottomOffsetX\": 0,\n        \"gapBottom\": 0,\n        \"gapTop\": 0,\n        \"height\": 48,\n        \"hidden\": false,\n        \"hiddenRevealDistance\": null,\n        \"hiddenWarningDuration\": null,\n        \"id\": \"stone\",\n        \"kind\": \"floor\",\n        \"topOffsetX\": 0,\n        \"width\": 64,\n        \"x\": 350\n      }\n    ],\n    \"riskRoute\": [],\n    \"riskZones\": [\n      {\n        \"clearX\": 0,\n        \"finishHeight\": 8,\n        \"finishWidth\": 32,\n        \"freeReward\": false,\n        \"id\": \"ordinary-ground\",\n        \"kind\": \"instant\",\n        \"landingWidth\": 0,\n        \"obstacleId\": null,\n        \"placement\": \"before\",\n        \"radius\": 8,\n        \"riskFlipX\": 0,\n        \"safeFlipX\": 0,\n        \"x\": 80,\n        \"y\": 226\n      },\n      {\n        \"clearX\": 0,\n        \"finishHeight\": 8,\n        \"finishWidth\": 32,\n        \"freeReward\": false,\n        \"id\": \"prepared-custom-bonus-finish\",\n        \"kind\": \"finish\",\n        \"landingWidth\": 0,\n        \"obstacleId\": null,\n        \"placement\": \"before\",\n        \"radius\": 8,\n        \"riskFlipX\": 0,\n        \"safeFlipX\": 0,\n        \"x\": 1100,\n        \"y\": 120\n      }\n    ],\n    \"safeRoute\": []\n  },\n  \"warningMode\": \"selected\"\n}\n",
+      "outputTrackId": "package-native-custom-bonus",
+      "profiles": [
+        {
+          "profileId": "Chosen",
+          "status": "ready",
+          "message": "Чистый маршрут и настоящий Мастер проверены. Оптимальность не утверждается.",
+          "inputs": [
+            297,
+            957
+          ],
+          "rewardIds": [
+            "ordinary-ground",
+            "prepared-custom-bonus-finish"
+          ],
+          "finishTime": 4.9045454545454445,
+          "expandedStates": 23632,
+          "elapsedMilliseconds": 189
+        }
+      ],
+      "message": "Подготовлен отдельный JSON для импорта. BOT доступен только для профилей со статусом ready; исходный черновик не изменён."
+    }
+  },
+  "serverRuntime": {
+    "tfm": "net10.0",
+    "port": 4197,
+    "publicOrigin": "https://workshop.example.com",
+    "smoke": {
+      "passed": true,
+      "base": "http://127.0.0.1:4197",
+      "publicOrigin": "https://workshop.example.com",
+      "requests": 20,
+      "results": [
+        {
+          "method": "GET",
+          "path": "/healthz",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/edit-model.mjs",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/catalog",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/catalog/full-long",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "workshop.example.com",
+          "origin": "https://workshop.example.com",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze/",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "workshop.example.com",
+          "origin": "https://wrong.example",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "workshop.example.com",
+          "origin": "null",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "workshop.example.com",
+          "origin": "https://workshop.example.com",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "workshop.example.com",
+          "origin": "https://workshop.example.com",
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/api/analyze",
+          "host": "workshop.example.com",
+          "origin": "https://workshop.example.com",
+          "status": 400
+        },
+        {
+          "method": "GET",
+          "path": "/healthz",
+          "host": "wrong.example",
+          "origin": null,
+          "status": 400
+        },
+        {
+          "method": "GET",
+          "path": "/healthz",
+          "host": "127.0.0.1:4197",
+          "origin": null,
+          "status": 400
+        },
+        {
+          "method": "GET",
+          "path": "/ServerOptions.cs",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/README.md",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/Web/tests/model.test.mjs",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/Catalog/full-long.track.json",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "GET",
+          "path": "/api/catalog/..%2F..%2FProgram.cs",
+          "host": "workshop.example.com",
+          "origin": null,
+          "status": 404
+        },
+        {
+          "method": "POST",
+          "path": "/api/replay",
+          "host": "workshop.example.com",
+          "origin": "https://workshop.example.com",
+          "status": 200
+        }
+      ],
+      "replaySummary": {
+        "status": "Finished",
+        "finishTime": 37.99999999999849,
+        "elapsed": 37.99999999999849,
+        "cleanFinish": false,
+        "collisions": 4,
+        "boosts": 0,
+        "instantBoosts": 0,
+        "slows": 0,
+        "coins": 0,
+        "finishBoosts": 0,
+        "acceptedInputs": 0,
+        "ignoredInputs": 0,
+        "unreachedInputs": 0,
+        "collectedIds": [],
+        "successfulIds": [],
+        "failedIds": [],
+        "hitIds": [
+          "full-long-1-low",
+          "full-long-2-standard-pad",
+          "full-long-3-low",
+          "full-long-4-before-stone"
+        ]
+      }
+    },
+    "preparation": {
+      "status": "prepared",
+      "preparedJson": "{\n  \"botReferences\": [\n    {\n      \"bonusGain\": 0.55,\n      \"inputs\": [\n        297,\n        957\n      ],\n      \"profileId\": \"Chosen\",\n      \"rewardIds\": [\n        \"ordinary-ground\",\n        \"prepared-custom-bonus-finish\"\n      ],\n      \"trackHash\": \"20a58b5a3dcc348e155a924a9f1f3ac57b8dea86d53ed4f2bb5981f0ae69a181\"\n    }\n  ],\n  \"physicsVersion\": 1,\n  \"profilePolicy\": \"any\",\n  \"schemaVersion\": 1,\n  \"track\": {\n    \"cues\": [],\n    \"focus\": \"\",\n    \"id\": \"package-server-custom-bonus\",\n    \"length\": 1200,\n    \"name\": \"prepared-custom-bonus\",\n    \"negativeEnabled\": false,\n    \"obstacles\": [\n      {\n        \"bottomOffsetX\": 0,\n        \"gapBottom\": 0,\n        \"gapTop\": 0,\n        \"height\": 48,\n        \"hidden\": false,\n        \"hiddenRevealDistance\": null,\n        \"hiddenWarningDuration\": null,\n        \"id\": \"stone\",\n        \"kind\": \"floor\",\n        \"topOffsetX\": 0,\n        \"width\": 64,\n        \"x\": 350\n      }\n    ],\n    \"riskRoute\": [],\n    \"riskZones\": [\n      {\n        \"clearX\": 0,\n        \"finishHeight\": 8,\n        \"finishWidth\": 32,\n        \"freeReward\": false,\n        \"id\": \"ordinary-ground\",\n        \"kind\": \"instant\",\n        \"landingWidth\": 0,\n        \"obstacleId\": null,\n        \"placement\": \"before\",\n        \"radius\": 8,\n        \"riskFlipX\": 0,\n        \"safeFlipX\": 0,\n        \"x\": 80,\n        \"y\": 226\n      },\n      {\n        \"clearX\": 0,\n        \"finishHeight\": 8,\n        \"finishWidth\": 32,\n        \"freeReward\": false,\n        \"id\": \"prepared-custom-bonus-finish\",\n        \"kind\": \"finish\",\n        \"landingWidth\": 0,\n        \"obstacleId\": null,\n        \"placement\": \"before\",\n        \"radius\": 8,\n        \"riskFlipX\": 0,\n        \"safeFlipX\": 0,\n        \"x\": 1100,\n        \"y\": 120\n      }\n    ],\n    \"safeRoute\": []\n  },\n  \"warningMode\": \"selected\"\n}\n",
+      "outputTrackId": "package-server-custom-bonus",
+      "profiles": [
+        {
+          "profileId": "Chosen",
+          "status": "ready",
+          "message": "Чистый маршрут и настоящий Мастер проверены. Оптимальность не утверждается.",
+          "inputs": [
+            297,
+            957
+          ],
+          "rewardIds": [
+            "ordinary-ground",
+            "prepared-custom-bonus-finish"
+          ],
+          "finishTime": 4.9045454545454445,
+          "expandedStates": 23632,
+          "elapsedMilliseconds": 181
+        }
+      ],
+      "message": "Подготовлен отдельный JSON для импорта. BOT доступен только для профилей со статусом ready; исходный черновик не изменён."
+    }
+  },
+  "cleanup": {
+    "nativeProcess": 55512,
+    "serverProcess": 27124,
+    "scope": "Only task-created 4197 processes stopped; 4186 and 4184 untouched; Docker not used."
+  }
+}

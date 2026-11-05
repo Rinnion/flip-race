@@ -66,7 +66,7 @@ using(var policy=new ServerPolicy(local))
     var started=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var release=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);int entered=0;
     async Task Held(HttpContext _){if(Interlocked.Increment(ref entered)==2)started.SetResult();await release.Task;}
     var first=policy.InvokeAsync(Context(),Held);var second=policy.InvokeAsync(Context(path:"/api/replay"),Held);await started.Task.WaitAsync(TimeSpan.FromSeconds(2));
-    foreach(string path in new[]{"/api/analyze","/api/analyze/","/API/REPLAY","/api/replay/"})
+    foreach(string path in new[]{"/api/analyze","/api/analyze/","/API/REPLAY","/api/replay/","/api/prepare-bot","/API/PREPARE-BOT/"})
     {
         var rejected=Context(path:path);await policy.InvokeAsync(rejected,_=>throw new Exception("429 must not bind/read body"));
         Need(rejected.Response.StatusCode==429&&rejected.Response.Headers["Retry-After"]=="1","capacity rejects route variant "+path);

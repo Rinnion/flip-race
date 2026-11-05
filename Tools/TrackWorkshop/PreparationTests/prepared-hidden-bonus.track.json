@@ -1,0 +1,81 @@
+{
+  "botReferences": [
+    {
+      "bonusGain": 0.55,
+      "inputs": [
+        297,
+        957
+      ],
+      "profileId": "Chosen",
+      "rewardIds": [
+        "hidden-ordinary",
+        "prepared-hidden-bonus-finish"
+      ],
+      "trackHash": "48553fcee820ef519332f03ff0630e3386b79fddcf94d12f8c99191e8d5a2bfd"
+    }
+  ],
+  "physicsVersion": 1,
+  "profilePolicy": "any",
+  "schemaVersion": 1,
+  "track": {
+    "cues": [],
+    "focus": "",
+    "id": "prepared-hidden-bonus",
+    "length": 1200,
+    "name": "prepared-hidden-bonus",
+    "negativeEnabled": false,
+    "obstacles": [
+      {
+        "bottomOffsetX": 0,
+        "gapBottom": 0,
+        "gapTop": 0,
+        "height": 48,
+        "hidden": true,
+        "hiddenRevealDistance": null,
+        "hiddenWarningDuration": null,
+        "id": "hidden",
+        "kind": "floor",
+        "topOffsetX": 0,
+        "width": 64,
+        "x": 350
+      }
+    ],
+    "riskRoute": [],
+    "riskZones": [
+      {
+        "clearX": 0,
+        "finishHeight": 8,
+        "finishWidth": 32,
+        "freeReward": false,
+        "id": "hidden-ordinary",
+        "kind": "instant",
+        "landingWidth": 0,
+        "obstacleId": null,
+        "placement": "before",
+        "radius": 8,
+        "riskFlipX": 0,
+        "safeFlipX": 0,
+        "x": 80,
+        "y": 226
+      },
+      {
+        "clearX": 0,
+        "finishHeight": 8,
+        "finishWidth": 32,
+        "freeReward": false,
+        "id": "prepared-hidden-bonus-finish",
+        "kind": "finish",
+        "landingWidth": 0,
+        "obstacleId": null,
+        "placement": "before",
+        "radius": 8,
+        "riskFlipX": 0,
+        "safeFlipX": 0,
+        "x": 1100,
+        "y": 120
+      }
+    ],
+    "safeRoute": []
+  },
+  "warningMode": "selected"
+}

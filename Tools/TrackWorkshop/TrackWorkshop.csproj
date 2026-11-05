@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup><WorkshopTargetFramework Condition="'$(WorkshopTargetFramework)' == ''">net8.0</WorkshopTargetFramework><TargetFramework>$(WorkshopTargetFramework)</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>disable</Nullable><EnableDefaultCompileItems>false</EnableDefaultCompileItems><EnableDefaultContentItems>false</EnableDefaultContentItems><NuGetAudit>false</NuGetAudit><Version>0.4.0</Version></PropertyGroup>
+  <PropertyGroup><WorkshopTargetFramework Condition="'$(WorkshopTargetFramework)' == ''">net8.0</WorkshopTargetFramework><TargetFramework>$(WorkshopTargetFramework)</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>disable</Nullable><EnableDefaultCompileItems>false</EnableDefaultCompileItems><EnableDefaultContentItems>false</EnableDefaultContentItems><NuGetAudit>false</NuGetAudit><Version>0.5.0</Version></PropertyGroup>
   <ItemGroup>
     <Compile Include="../../Assets/Scripts/Core/*.cs" />
-    <Compile Include="Program.cs;WorkshopService.cs;ServerOptions.cs" />
+    <Compile Include="Program.cs;WorkshopService.cs;ServerOptions.cs;BotPreparation*.cs" />
     <Content Include="Web/**/*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="../../Assets/StreamingAssets/Tracks/*.json" Link="Catalog/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="README.md;API.md;Start.cmd;Start.ps1" CopyToPublishDirectory="PreserveNewest" />

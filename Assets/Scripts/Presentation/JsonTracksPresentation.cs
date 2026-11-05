@@ -128,10 +128,32 @@ namespace FlipRace.Presentation
                     if (RaceTracks.All[i].Id == pendingFlightTrack) { trackCatalogPage = i / TracksPerPage; break; }
                 flightPage = 4;
                 SetTrackImportResult(true, "Добавлено: " + entry.Package.Track.Name + ". Только в этой сессии.");
+                if(entry.Package.References.Length>0)StartCoroutine(VerifyImportedReferences(entry));
             }
             catch (Exception)
             { SetTrackImportResult(false, "Не удалось прочитать файл JSON."); }
             BlockGameplayInput();
+        }
+        IEnumerator VerifyImportedReferences(TrackCatalogEntry entry)
+        {
+            // The map is already usable for people. Proof runs in small slices
+            // while the player can navigate the menu; no synchronous full replay.
+            foreach(var reference in entry.Package.References)
+            {
+                var flight=reference.ProfileId=="Chosen"?FlightPresets.Chosen:FlightPresets.FastFlip;
+                var proof=entry.GetOrCreateProof(flight);
+                if(proof==null)continue;
+                while(!proof.Complete)
+                {
+                    double until=Time.realtimeSinceStartupAsDouble+.004;
+                    do { proof.Step(1); } while(!proof.Complete&&Time.realtimeSinceStartupAsDouble<until);
+                    if(pendingFlightTrack==entry.Package.Track.Id)
+                        SetTrackImportResult(true,"Добавлено: "+entry.Package.Track.Name+". "+reference.ProfileId+": "+proof.Progress);
+                    yield return null;
+                }
+            }
+            if(pendingFlightTrack==entry.Package.Track.Id)
+                SetTrackImportResult(true,"Добавлено: "+entry.Package.Track.Name+". "+TrackCatalog.BotSupportMessage(entry.Package.Track.Id,flightSelection.Settings));
         }
         void SetTrackImportResult(bool success, string message)
         {

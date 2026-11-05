@@ -100,7 +100,7 @@ public sealed class ServerPolicy : IDisposable
         if(post&&(!options.AcceptsOrigin(context.Request.Host,context.Request.Headers.Origin.ToString())||!context.Request.HasJsonContentType()))
         {await Error(context,400,"Same-origin JSON requests required.");return;}
         string path=context.Request.Path.Value?.TrimEnd('/');
-        bool heavy=post&&(string.Equals(path,"/api/analyze",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/replay",StringComparison.OrdinalIgnoreCase));
+        bool heavy=post&&(string.Equals(path,"/api/analyze",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/replay",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/prepare-bot",StringComparison.OrdinalIgnoreCase));
         bool acquired=false;
         if(heavy)
         {

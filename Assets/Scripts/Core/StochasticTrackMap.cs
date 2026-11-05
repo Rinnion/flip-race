@@ -54,6 +54,18 @@ namespace FlipRace.Core
         }
 
         public static StochasticTrackMap Create(Track track, FlightSettings flight)
+        { return CreateInternal(track,flight,null,false); }
+
+        // Proof construction is deliberately internal: callers receive admission only
+        // after replay and an actual Master run, never from a JSON trust flag.
+        internal static StochasticTrackMap CreateForProof(TrackPackage package,FlightSettings flight,TrackBotReference reference)
+        {
+            if(package==null||reference==null||!package.SupportsProfile(flight)||!TrackPackage.MatchesProfile(reference.ProfileId,flight)
+                ||TrackFingerprint.Compute(package.Track,package.ProfilePolicy,package.WarningMode)!=package.ContentHash
+                ||reference.TrackHash!=package.ContentHash)throw new NotSupportedException("Reference content/profile mismatch.");
+            return CreateInternal(package.Track,flight,reference,true);
+        }
+        static StochasticTrackMap CreateInternal(Track track, FlightSettings flight,TrackBotReference explicitReference,bool proof)
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (flight == null) throw new ArgumentNullException(nameof(flight));
@@ -61,12 +73,12 @@ namespace FlipRace.Core
             if (!chosen && !fast) throw new NotSupportedException("Only exact Chosen and FastFlip flight settings are supported.");
             bool full = track.Id == TracksFull.LongId || track.Id == TracksFull.ShortId || track.Id == TracksFull.FlowId;
             bool cascade = track.Id == TracksRhythm.CascadeId, mixed = track.Id == TracksMixed.Id;
-            if (!SupportsTrack(track.Id)) throw new NotSupportedException("This course has no authored bot reference.");
-            bool fromCatalog=TrackCatalog.HasAttemptedInstall;
-            TrackBotReference loadedReference=null;
+            if (!proof&&!SupportsTrack(track.Id)) throw new NotSupportedException("This course has no authored bot reference.");
+            bool fromCatalog=!proof&&TrackCatalog.HasAttemptedInstall;
+            TrackBotReference loadedReference=explicitReference;
             if(fromCatalog&&!TrackCatalog.TryGetBotReference(track,flight,out loadedReference))
                 throw new NotSupportedException("This track has no trusted compatible reference for its actual content and profile.");
-            bool authored = !fromCatalog&&(TracksHidden.IsNew(track.Id) || track.Id == TracksRethink.Id);
+            bool authored = !proof&&!fromCatalog&&(TracksHidden.IsNew(track.Id) || track.Id == TracksRethink.Id);
             if (authored && !BotReferenceRoutes.Supports(track.Id, flight))
                 throw new NotSupportedException("This course has no bot reference for the selected flight profile.");
             var compatible = authored ? BotReferenceRoutes.Get(track.Id, flight) : null;

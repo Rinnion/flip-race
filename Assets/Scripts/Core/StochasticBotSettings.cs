@@ -10,6 +10,8 @@ namespace FlipRace.Core
         public readonly uint Seed;
         public readonly double Quality,CollectProbability,HitProbability;
         public readonly double BaseTime,MasterTime,BonusGain,CollisionCostSum;
+        TrackPackage proofPackage;
+        TrackBotReference proofReference;
         StochasticBotSettings(Track track,StochasticTrackMap map,BotDifficulty difficulty,uint seed,double collect,double hit)
         {
             TrackId=track.Id;ProfileId=map.ProfileId;Difficulty=difficulty;Seed=seed;Quality=QualityFor(difficulty);
@@ -36,10 +38,18 @@ namespace FlipRace.Core
         }
         internal StochasticTrackMap RequireCompatible(Track track,FlightSettings flight)
         {
-            var map=StochasticTrackMap.Create(track,flight);
+            if(proofPackage!=null&&(!ReferenceEquals(track,proofPackage.Track)
+                ||TrackFingerprint.Compute(track,proofPackage.ProfilePolicy,proofPackage.WarningMode)!=proofPackage.ContentHash))
+                throw new ArgumentException("Proof settings content changed.");
+            var map=proofPackage==null?StochasticTrackMap.Create(track,flight):StochasticTrackMap.CreateForProof(proofPackage,flight,proofReference);
             if(TrackId!=track.Id||ProfileId!=map.ProfileId||BaseTime!=map.BaseTime||MasterTime!=map.MasterTime||BonusGain!=map.BonusGain||CollisionCostSum!=map.CollisionCostSum)
                 throw new ArgumentException("Stochastic settings do not match this exact track/profile map.");
             return map;
+        }
+        internal static StochasticBotSettings CreateProofMaster(TrackPackage package,FlightSettings flight,TrackBotReference reference)
+        {
+            var map=StochasticTrackMap.CreateForProof(package,flight,reference);
+            return new StochasticBotSettings(package.Track,map,BotDifficulty.Master,1,1,0){proofPackage=package,proofReference=reference};
         }
         internal bool SameAs(StochasticBotSettings other)
         {return other!=null&&TrackId==other.TrackId&&ProfileId==other.ProfileId&&Difficulty==other.Difficulty&&Seed==other.Seed&&Quality==other.Quality&&CollectProbability==other.CollectProbability&&HitProbability==other.HitProbability&&BaseTime==other.BaseTime&&MasterTime==other.MasterTime&&BonusGain==other.BonusGain&&CollisionCostSum==other.CollisionCostSum;}

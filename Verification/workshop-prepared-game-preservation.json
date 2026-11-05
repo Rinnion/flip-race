@@ -1,0 +1,524 @@
+{
+  "status": "PASS",
+  "checks": 19103,
+  "pairs": 15,
+  "mode": "--full",
+  "sources": {
+    "Assets/Scripts/Core\\BotPlanCatalog.cs": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C",
+    "Assets/Scripts/Core\\BotPlanShuffle.cs": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42",
+    "Assets/Scripts/Core\\BotRaceController.cs": "78C0AE389AD62F6CFD9882C9F8864A4DD61D2A3177707BF4CE400F5994B4EA67",
+    "Assets/Scripts/Core\\BotReferenceRoutes.cs": "F7F63D0658089BA8A46B0563D7D232A86C8BF4EB0FE5DB19A663EDB7D12F66DA",
+    "Assets/Scripts/Core\\ContinuousMotion.cs": "98D06EA07562B30F2979C3BFAEBDB31723F1854AB62F953E76AD959A3AD85F36",
+    "Assets/Scripts/Core\\FinishTargetGeometry.cs": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285",
+    "Assets/Scripts/Core\\FlightSettings.cs": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E",
+    "Assets/Scripts/Core\\HiddenObstacles.cs": "07782B10C63D24690F764E663ACECAF678AFF7E62ACAAA05512CBEA2CE011C18",
+    "Assets/Scripts/Core\\MotionProfiles.cs": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417",
+    "Assets/Scripts/Core\\ObstacleGeometry.cs": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B",
+    "Assets/Scripts/Core\\PreparedReferenceProof.cs": "683D1B80C2D494449298DEA267C06FA82CFD37E029FCD176C7F90A3EFEDFF674",
+    "Assets/Scripts/Core\\RaceSimulation.cs": "A85B9D1F7D417C43038F65829FACD372B224AD809AFC22BF2CBDB3B85D08217C",
+    "Assets/Scripts/Core\\RaceSnapshot.cs": "A3D73D23A36FA9BC82F5C198ADAA0BE082D91FE82FBF2A6BCC7E97BD58EB9DA5",
+    "Assets/Scripts/Core\\StochasticBotController.cs": "4AA4E40D39A9A64CFA1AC9411B494EB8B05394C682385139280F4B25B6836079",
+    "Assets/Scripts/Core\\StochasticBotSettings.cs": "A7326F28A070DF08F44E5A4F83A854A25007B277368CBC779F2808BA7FEEC1F0",
+    "Assets/Scripts/Core\\StochasticTrackMap.cs": "66A0EB0FEDE4BD3489CE10EA493FFDCC3D2C27BECD89398EFC3802321515BADB",
+    "Assets/Scripts/Core\\TrackCatalog.cs": "59149A242BFC3EF2078AD1FB7AA5DC30246755ED19C189CDBC745BF6C87A35B1",
+    "Assets/Scripts/Core\\TrackFingerprint.cs": "E38E0C2408CA6157F762A175EE29257B2774C209A33D164E8BDC7F9940C09685",
+    "Assets/Scripts/Core\\TrackJson.cs": "4A6016D15029C151200E96CAEE7CBCB8100651CF6E9AE605B21C2E3E8FCA7788",
+    "Assets/Scripts/Core\\TrackPackage.cs": "D6CF5134A98FF2569B5D6E71BA1DBE7EAACCD1C1658FE4CF03DC2CEE2032BF81",
+    "Assets/Scripts/Core\\TracksControl.cs": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4",
+    "Assets/Scripts/Core\\TracksFull.cs": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79",
+    "Assets/Scripts/Core\\TracksHidden.cs": "A6123CF0FB0638C268808795F92CDC02041CEB792449B31C2CCAB5107EDD133E",
+    "Assets/Scripts/Core\\TracksMixed.cs": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156",
+    "Assets/Scripts/Core\\TracksMixedStage.cs": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0",
+    "Assets/Scripts/Core\\TracksRethink.cs": "502A479F66D6E7AA6F82D082B9ACA2D6E3332290797BEB7105380521532EA488",
+    "Assets/Scripts/Core\\TracksRhythm.cs": "BD2D0EFFF4B5DCC85FC700C3601A79B3EEE8056EEF2CB3D12324F4710226F318",
+    "Assets/Scripts/Core\\TracksRhythmFull.cs": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6",
+    "Assets/Scripts/Core\\TracksRhythmNegatives.cs": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2",
+    "Assets/Scripts/Core\\TracksTune.cs": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628",
+    "Assets/Scripts/Core\\TracksV3.cs": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1",
+    "Assets/Scripts/Core\\TracksV4.cs": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+  },
+  "fixtureSha": "ABA65005AE1A4A4CD2CC6ED00013A413235AD440E47C5A02D69BC762CBB6F704",
+  "negatives": [
+    {
+      "name": "syntax/root",
+      "error": "JSON, \u043F\u043E\u0437\u0438\u0446\u0438\u044F 0: \u041D\u0435\u043E\u0436\u0438\u0434\u0430\u043D\u043D\u044B\u0439 \u043A\u043E\u043D\u0435\u0446 \u0444\u0430\u0439\u043B\u0430."
+    },
+    {
+      "name": "syntax/root",
+      "error": "JSON, \u043F\u043E\u0437\u0438\u0446\u0438\u044F 1: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F \u0438\u043C\u044F \u043F\u043E\u043B\u044F."
+    },
+    {
+      "name": "syntax/root",
+      "error": "$: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F JSON-\u043E\u0431\u044A\u0435\u043A\u0442."
+    },
+    {
+      "name": "syntax/root",
+      "error": "$: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F JSON-\u043E\u0431\u044A\u0435\u043A\u0442."
+    },
+    {
+      "name": "syntax/root",
+      "error": "$: \u041B\u0438\u0448\u043D\u0438\u0435 \u0434\u0430\u043D\u043D\u044B\u0435 \u043F\u043E\u0441\u043B\u0435 JSON (\u043F\u043E\u0437\u0438\u0446\u0438\u044F 712)."
+    },
+    {
+      "name": "duplicate JSON key",
+      "error": "JSON, \u043F\u043E\u0437\u0438\u0446\u0438\u044F 112: \u041F\u043E\u0432\u0442\u043E\u0440 JSON-\u043F\u043E\u043B\u044F: schemaVersion"
+    },
+    {
+      "name": "schemaVersion unsupported",
+      "error": "$.schemaVersion: \u041D\u0435\u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043C\u0430\u044F \u0432\u0435\u0440\u0441\u0438\u044F JSON-\u0441\u0445\u0435\u043C\u044B."
+    },
+    {
+      "name": "schemaVersion null",
+      "error": "$.schemaVersion: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F \u043A\u043E\u043D\u0435\u0447\u043D\u043E\u0435 JSON-\u0447\u0438\u0441\u043B\u043E, \u043D\u0435 \u0441\u0442\u0440\u043E\u043A\u0430/null."
+    },
+    {
+      "name": "physicsVersion unsupported",
+      "error": "$.physicsVersion: \u041D\u0435\u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043C\u0430\u044F \u0432\u0435\u0440\u0441\u0438\u044F \u0444\u0438\u0437\u0438\u043A\u0438."
+    },
+    {
+      "name": "physicsVersion null",
+      "error": "$.physicsVersion: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F \u043A\u043E\u043D\u0435\u0447\u043D\u043E\u0435 JSON-\u0447\u0438\u0441\u043B\u043E, \u043D\u0435 \u0441\u0442\u0440\u043E\u043A\u0430/null."
+    },
+    {
+      "name": "unknown policy",
+      "error": "$.profilePolicy: \u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F."
+    },
+    {
+      "name": "unknown warning mode",
+      "error": "$.warningMode: \u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u0440\u0435\u0436\u0438\u043C \u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u044F."
+    },
+    {
+      "name": "authored without hidden",
+      "error": "$.warningMode: \u0420\u0435\u0436\u0438\u043C authored \u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u0441\u043A\u0440\u044B\u0442\u044B\u0435 \u043A\u0430\u043C\u043D\u0438."
+    },
+    {
+      "name": "required null id",
+      "error": "$.track.id: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F \u0441\u0442\u0440\u043E\u043A\u0430, \u043D\u0435 null."
+    },
+    {
+      "name": "required null name",
+      "error": "$.track.name: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F \u0441\u0442\u0440\u043E\u043A\u0430, \u043D\u0435 null."
+    },
+    {
+      "name": "required null length",
+      "error": "$.track.length: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F \u043A\u043E\u043D\u0435\u0447\u043D\u043E\u0435 JSON-\u0447\u0438\u0441\u043B\u043E, \u043D\u0435 \u0441\u0442\u0440\u043E\u043A\u0430/null."
+    },
+    {
+      "name": "required null obstacles",
+      "error": "$.track.obstacles: \u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435 \u043E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u043E null."
+    },
+    {
+      "name": "negative length",
+      "error": "$.track.length: \u0427\u0438\u0441\u043B\u043E \u0432\u044B\u0445\u043E\u0434\u0438\u0442 \u0437\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0433\u0440\u0430\u043D\u0438\u0446\u044B."
+    },
+    {
+      "name": "nonfinite length",
+      "error": "JSON, \u043F\u043E\u0437\u0438\u0446\u0438\u044F 201: \u0427\u0438\u0441\u043B\u043E \u043D\u0435 \u043A\u043E\u043D\u0435\u0447\u043D\u043E\u0435."
+    },
+    {
+      "name": "null obstacle",
+      "error": "$.track.obstacles[0]: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F JSON-\u043E\u0431\u044A\u0435\u043A\u0442."
+    },
+    {
+      "name": "unknown obstacle kind",
+      "error": "$.track.obstacles[0].kind: \u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u0442\u0438\u043F \u043F\u0440\u0435\u043F\u044F\u0442\u0441\u0442\u0432\u0438\u044F: flooor"
+    },
+    {
+      "name": "null obstacle kind",
+      "error": "$.track.obstacles[0].kind: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F \u0441\u0442\u0440\u043E\u043A\u0430, \u043D\u0435 null."
+    },
+    {
+      "name": "zero width",
+      "error": "$.track.obstacles[0].width: \u0427\u0438\u0441\u043B\u043E \u0432\u044B\u0445\u043E\u0434\u0438\u0442 \u0437\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0433\u0440\u0430\u043D\u0438\u0446\u044B."
+    },
+    {
+      "name": "out of bounds band",
+      "error": "$.track.obstacles[0]: \u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0447\u0430\u0441\u0442\u044C \u043F\u0440\u0435\u043F\u044F\u0442\u0441\u0442\u0432\u0438\u044F \u0432\u044B\u0445\u043E\u0434\u0438\u0442 \u0437\u0430 \u0434\u043B\u0438\u043D\u0443 \u0442\u0440\u0430\u0441\u0441\u044B."
+    },
+    {
+      "name": "duplicate obstacle ID",
+      "error": "$.track.obstacles[1].id: \u041F\u043E\u0432\u0442\u043E\u0440 ID \u043F\u0440\u0435\u043F\u044F\u0442\u0441\u0442\u0432\u0438\u044F: custom-stone"
+    },
+    {
+      "name": "unknown reward kind",
+      "error": "$.track.riskZones[0].kind: \u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u0442\u0438\u043F \u0437\u043E\u043D\u044B: loot"
+    },
+    {
+      "name": "missing linked stone",
+      "error": "$.track.riskZones[0].obstacleId: \u041D\u0435\u0442 \u0441\u0432\u044F\u0437\u0430\u043D\u043D\u043E\u0433\u043E \u043F\u0440\u0435\u043F\u044F\u0442\u0441\u0442\u0432\u0438\u044F: absent"
+    },
+    {
+      "name": "zero authored lead",
+      "error": "$.track.obstacles[0].hiddenRevealDistance: \u0427\u0438\u0441\u043B\u043E \u0432\u044B\u0445\u043E\u0434\u0438\u0442 \u0437\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0433\u0440\u0430\u043D\u0438\u0446\u044B."
+    },
+    {
+      "name": "too short warning",
+      "error": "$.track.obstacles[0].hiddenWarningDuration: \u0427\u0438\u0441\u043B\u043E \u0432\u044B\u0445\u043E\u0434\u0438\u0442 \u0437\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0433\u0440\u0430\u043D\u0438\u0446\u044B."
+    },
+    {
+      "name": "null optional array",
+      "error": "$.track.riskZones: \u041E\u0436\u0438\u0434\u0430\u0435\u0442\u0441\u044F JSON-\u043C\u0430\u0441\u0441\u0438\u0432."
+    },
+    {
+      "name": "stale reference after geometry edit",
+      "error": "$.botReferences[0].trackHash: \u042D\u0442\u0430\u043B\u043E\u043D \u0443\u0441\u0442\u0430\u0440\u0435\u043B: \u0445\u0435\u0448 \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u044B\u043C \u0442\u0440\u0430\u0441\u0441\u044B."
+    },
+    {
+      "name": "stale reference after policy edit",
+      "error": "$.botReferences[0].trackHash: \u042D\u0442\u0430\u043B\u043E\u043D \u0443\u0441\u0442\u0430\u0440\u0435\u043B: \u0445\u0435\u0448 \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u044B\u043C \u0442\u0440\u0430\u0441\u0441\u044B."
+    },
+    {
+      "name": "missing selected goal",
+      "error": "$.botReferences[0].rewardIds: \u041D\u0435\u0442 \u043F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439 \u043D\u0430\u0433\u0440\u0430\u0434\u044B: not-present"
+    },
+    {
+      "name": "unordered reference inputs",
+      "error": "$.botReferences[0].inputs[1]: \u041D\u0430\u0436\u0430\u0442\u0438\u044F \u0434\u043E\u043B\u0436\u043D\u044B \u0441\u0442\u0440\u043E\u0433\u043E \u0432\u043E\u0437\u0440\u0430\u0441\u0442\u0430\u0442\u044C \u0438 \u043B\u0435\u0436\u0430\u0442\u044C \u0434\u043E \u0444\u0438\u043D\u0438\u0448\u0430."
+    },
+    {
+      "name": "incorrect reference gain",
+      "error": "$.botReferences[0].bonusGain: B \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u043F\u043E\u043B\u043D\u044B\u043C\u0438 \u044D\u0444\u0444\u0435\u043A\u0442\u0430\u043C\u0438 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u043D\u0430\u0433\u0440\u0430\u0434."
+    },
+    {
+      "name": "missing builtin file",
+      "error": "\u041D\u0435 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D \u0444\u0430\u0439\u043B \u0442\u0440\u0430\u0441\u0441\u044B: full-long.track.json"
+    },
+    {
+      "name": "malformed builtin",
+      "error": "full-long.track.json: JSON, \u043F\u043E\u0437\u0438\u0446\u0438\u044F 0: \u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 JSON-\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435."
+    },
+    {
+      "name": "manifest invalid path",
+      "error": "$.files: \u041D\u0443\u0436\u043D\u043E \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0438\u043C\u044F JSON-\u0444\u0430\u0439\u043B\u0430 \u0431\u0435\u0437 \u043F\u0443\u0442\u0438 \u0438\u043B\u0438 URL."
+    },
+    {
+      "name": "manifest invalid path",
+      "error": "$.files: \u041D\u0443\u0436\u043D\u043E \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0438\u043C\u044F JSON-\u0444\u0430\u0439\u043B\u0430 \u0431\u0435\u0437 \u043F\u0443\u0442\u0438 \u0438\u043B\u0438 URL."
+    },
+    {
+      "name": "duplicate builtin IDs",
+      "error": "b.json: \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u044E\u0449\u0438\u0439\u0441\u044F ID \u0442\u0440\u0430\u0441\u0441\u044B: full-long"
+    },
+    {
+      "name": "reserved builtin ID",
+      "error": "one.json: ID \u0437\u0430\u043D\u044F\u0442 \u043F\u0440\u0435\u0436\u043D\u0438\u043C \u0443\u0447\u0430\u0441\u0442\u043A\u043E\u043C: control-comparison"
+    }
+  ],
+  "races": [
+    {
+      "kind": "reference",
+      "Id": "full-long",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.050000000000296,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 25
+    },
+    {
+      "kind": "Master",
+      "Id": "full-long",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.049999999998725,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 22,
+      "CandidateSimulations": 158
+    },
+    {
+      "kind": "reference",
+      "Id": "full-long",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.050000000104156,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 17
+    },
+    {
+      "kind": "Master",
+      "Id": "full-long",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.04999999999877,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 22,
+      "CandidateSimulations": 124
+    },
+    {
+      "kind": "reference",
+      "Id": "full-short",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.05000000000027,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 25
+    },
+    {
+      "kind": "Master",
+      "Id": "full-short",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.04999999999879,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 22,
+      "CandidateSimulations": 148
+    },
+    {
+      "kind": "reference",
+      "Id": "full-short",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.050000000070305,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 17
+    },
+    {
+      "kind": "Master",
+      "Id": "full-short",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.04999999999874,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 22,
+      "CandidateSimulations": 112
+    },
+    {
+      "kind": "reference",
+      "Id": "full-flow",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.05000000000025,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 24
+    },
+    {
+      "kind": "Master",
+      "Id": "full-flow",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.049999999998754,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 22,
+      "CandidateSimulations": 154
+    },
+    {
+      "kind": "reference",
+      "Id": "full-flow",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.05000000000023,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 24
+    },
+    {
+      "kind": "Master",
+      "Id": "full-flow",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.04999999999875,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 22,
+      "CandidateSimulations": 165
+    },
+    {
+      "kind": "reference",
+      "Id": "rhythm-cascade",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.050000000000125,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 44
+    },
+    {
+      "kind": "Master",
+      "Id": "rhythm-cascade",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.049999999998754,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 31,
+      "CandidateSimulations": 230
+    },
+    {
+      "kind": "reference",
+      "Id": "rhythm-cascade",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.05000000000022,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 26
+    },
+    {
+      "kind": "Master",
+      "Id": "rhythm-cascade",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.04999999999877,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 31,
+      "CandidateSimulations": 170
+    },
+    {
+      "kind": "reference",
+      "Id": "mixed-tricks",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.05000000000021,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 29
+    },
+    {
+      "kind": "Master",
+      "Id": "mixed-tricks",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.04999999999873,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 21,
+      "CandidateSimulations": 149
+    },
+    {
+      "kind": "reference",
+      "Id": "mixed-tricks",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.050000000000246,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "edges": 23
+    },
+    {
+      "kind": "Master",
+      "Id": "mixed-tricks",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.04999999999877,
+      "Collisions": 0,
+      "BoostsEarned": 9,
+      "CompletedBoosts": 9,
+      "PlanningCalls": 21,
+      "CandidateSimulations": 133
+    },
+    {
+      "kind": "reference",
+      "Id": "hidden-intercepts",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.350000000000286,
+      "Collisions": 0,
+      "BoostsEarned": 8,
+      "CompletedBoosts": 8,
+      "edges": 32
+    },
+    {
+      "kind": "Master",
+      "Id": "hidden-intercepts",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.34999999999876,
+      "Collisions": 0,
+      "BoostsEarned": 8,
+      "CompletedBoosts": 8,
+      "PlanningCalls": 30,
+      "CandidateSimulations": 180
+    },
+    {
+      "kind": "reference",
+      "Id": "hidden-intercepts",
+      "ProfileId": "FastFlip",
+      "FinishTime": 32.75000000000018,
+      "Collisions": 0,
+      "BoostsEarned": 10,
+      "CompletedBoosts": 10,
+      "edges": 40
+    },
+    {
+      "kind": "Master",
+      "Id": "hidden-intercepts",
+      "ProfileId": "FastFlip",
+      "FinishTime": 32.74999999999879,
+      "Collisions": 0,
+      "BoostsEarned": 10,
+      "CompletedBoosts": 10,
+      "PlanningCalls": 32,
+      "CandidateSimulations": 222
+    },
+    {
+      "kind": "reference",
+      "Id": "hidden-manifestation",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.950000000000244,
+      "Collisions": 0,
+      "BoostsEarned": 6,
+      "CompletedBoosts": 6,
+      "edges": 26
+    },
+    {
+      "kind": "Master",
+      "Id": "hidden-manifestation",
+      "ProfileId": "Chosen",
+      "FinishTime": 33.94999999999863,
+      "Collisions": 0,
+      "BoostsEarned": 6,
+      "CompletedBoosts": 6,
+      "PlanningCalls": 24,
+      "CandidateSimulations": 144
+    },
+    {
+      "kind": "reference",
+      "Id": "hidden-manifestation",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.95000000000015,
+      "Collisions": 0,
+      "BoostsEarned": 6,
+      "CompletedBoosts": 6,
+      "edges": 35
+    },
+    {
+      "kind": "Master",
+      "Id": "hidden-manifestation",
+      "ProfileId": "FastFlip",
+      "FinishTime": 33.94999999999872,
+      "Collisions": 0,
+      "BoostsEarned": 6,
+      "CompletedBoosts": 6,
+      "PlanningCalls": 24,
+      "CandidateSimulations": 186
+    },
+    {
+      "kind": "reference",
+      "Id": "rethink",
+      "ProfileId": "Chosen",
+      "FinishTime": 34.85000000000011,
+      "Collisions": 0,
+      "BoostsEarned": 3,
+      "CompletedBoosts": 3,
+      "edges": 26
+    },
+    {
+      "kind": "Master",
+      "Id": "rethink",
+      "ProfileId": "Chosen",
+      "FinishTime": 34.84999999999863,
+      "Collisions": 0,
+      "BoostsEarned": 3,
+      "CompletedBoosts": 3,
+      "PlanningCalls": 20,
+      "CandidateSimulations": 136
+    }
+  ]
+}
