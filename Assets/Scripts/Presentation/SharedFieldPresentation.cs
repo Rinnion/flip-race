@@ -152,6 +152,7 @@ namespace FlipRace.Presentation
             float inset = 4;
             float statusY = !sharedAdjacent && Game.Phase == "racing" ? h - statusHeight - inset : inset;
             Rect status = new Rect(8, statusY, Mathf.Min(w - 16, 250), statusHeight);
+            DrawSurfaceRunStatus(slot, new Rect(status.x, statusY + (statusY > inset ? -24 : statusHeight + 3), 92, 20));
             Round(status, 6, new Color(.98f, .98f, .94f, .94f));
             artwork.DrawPersonalBadge(18, status.center.y, slot, 5);
             string name = "Игрок " + (slot + 1) + " · " + (slot == 0 ? "A" : "L");

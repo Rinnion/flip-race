@@ -59,6 +59,19 @@ namespace FlipRace.Core
             return roots.Count > 0 ? roots[0] : double.PositiveInfinity;
         }
 
+        internal static double FirstCircleContact(double dx, double dy, double vx, double vy,
+            double ax, double ay, double radius, double duration)
+        {
+            if (ax == 0) return FirstCircleContact(dx, dy, vx, vy, ay, radius, duration);
+            var coefficients = new[] { dx * dx + dy * dy - radius * radius,
+                2 * (dx * vx + dy * vy), vx * vx + vy * vy + ax * dx + ay * dy,
+                ax * vx + ay * vy, .25 * (ax * ax + ay * ay) };
+            if (coefficients[0] <= Tolerance(coefficients, 0)) return 0;
+            var roots = new List<double>();
+            Roots(coefficients, 0, duration, roots);
+            return roots.Count > 0 ? roots[0] : double.PositiveInfinity;
+        }
+
         static double Value(double[] coefficients, double x)
         {
             double value = coefficients[coefficients.Length - 1];

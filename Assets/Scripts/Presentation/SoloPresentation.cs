@@ -86,6 +86,7 @@ namespace FlipRace.Presentation
             else
             {
                 var p=Game.Players[0];
+                DrawSurfaceRunStatus(0,new Rect(arena.x+8,field.yMax+32,92,20));
                 Text(new Rect(arena.x+8,field.yMax+8,arena.width-120,22),(!world.View.IsPlayerVisible(0)?"Впереди → · ":"")+PlayerName(0)+" · "+Number(Game.Elapsed,1)+" с · +"+Rewards(p)+" · −"+p.SlowsEarned+CoinScore(p),compact?9:11,accents[0],true);
             }
         }

@@ -131,7 +131,7 @@ namespace FlipRace.Core
             {
                 if (!IsHiddenStone(obstacle)) continue;
                 double boundary = ObstacleGeometry.Left(obstacle) - RevealDistanceFor(obstacle);
-                double crossing = Math.Max(0, (boundary - player.Distance) / player.CurrentSpeed);
+                double crossing = SurfaceRunMotion.TimeToDistance(player, boundary);
                 if (crossing > duration + 1e-12) continue;
                 double revealedAt = at + Math.Min(crossing, duration);
                 if (!game.HiddenObstacles.TryGetValue(obstacle.Id, out var state))

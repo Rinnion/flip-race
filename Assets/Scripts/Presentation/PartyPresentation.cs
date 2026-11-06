@@ -141,6 +141,7 @@ namespace FlipRace.Presentation
             var p=Game.Players[slot];string state=p.Status==PlayerStatus.Eliminated?"Выбыл · "+Number(p.Distance,0)+" ед"
                 :p.Status==PlayerStatus.Finished?"Финиш · "+Number(p.FinishTime.Value,2)+" с":!visible?"Впереди →":"+"+Rewards(p)+" · −"+p.SlowsEarned+" · монеты "+p.CoinsEarned;
             float sw=Mathf.Min(w-105,255);int corner=PartyCorner(slot); float statusX=corner==1||corner==2?w-sw-4:4;Rect status=new Rect(statusX,h-25,sw,22);
+            DrawSurfaceRunStatus(slot,new Rect(statusX,h-49,92,20));
             Round(status,5,new Color(.98f,.98f,.94f,.94f));
             Text(status,(slot+1)+" · "+PlayerName(slot)+" · "+state,compact?8:10,accents[slot],true,TextAnchor.MiddleCenter);
         }

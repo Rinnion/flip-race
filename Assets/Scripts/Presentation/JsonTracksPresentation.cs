@@ -84,6 +84,7 @@ namespace FlipRace.Presentation
             Game.Players[0].CharacterIndex = Game.Players[1].CharacterIndex = 0;
             sharedField = true;
 #endif
+            ConfigureSessionSurfaceRun();
             lastFrame = Time.realtimeSinceStartupAsDouble;
             suppressFrame = true;
             Measure();

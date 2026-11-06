@@ -240,7 +240,7 @@ namespace FlipRace.Presentation
             FlightButton(PartyCameraRect(0),"Постоянный скролл",pendingPartyCamera==PartyCamera.Constant,true,10);
             FlightButton(PartyCameraRect(1),"За последним · без выбывания",pendingPartyCamera==PartyCamera.Lagger,true,10);
             label.wordWrap=true;
-            Text(new Rect(flightPanel.x+16,flightPanel.y+175,flightPanel.width-32,32),!TrackProfileSupported?"Эта трасса поддерживает только Основной. Выбери его в настройках управления.":flightSelection.IsCustom?"Боты доступны только с Основным или Быстрым переворотом. Выбери готовый профиль.":!BotTrackSupported?TrackCatalog.BotSupportMessage(pendingFlightTrack,flightSelection.Settings):"Один человек и бот. Награды личные. Оба бегут до своего исхода.",10,muted);
+            Text(new Rect(flightPanel.x+16,flightPanel.y+175,flightPanel.width-32,32),!TrackProfileSupported?"Эта трасса поддерживает только Основной. Выбери его в настройках управления.":flightSelection.IsCustom?"Боты доступны только с Основным или Быстрым переворотом. Выбери готовый профиль.":!BotTrackSupported?TrackCatalog.BotSupportMessage(pendingFlightTrack,flightSelection.Settings):"Разгон от бега ВЫКЛ у обоих: эталон бота проверен без разгона. Награды личные.",10,muted);
             label.wordWrap=false;DrawModeChoices();DrawFlightApplyFooter();
         }
         void ResetBotRace()

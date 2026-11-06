@@ -148,6 +148,8 @@ namespace FlipRace.Core
         public int FlightOriginSide;
         public string FlightOriginObstacleId;
         public FlightMeasurement LastFlight;
+        public bool SurfaceRunEnabled { get; internal set; }
+        public double SurfaceRunReserve { get; internal set; }
         public double Recovering;
         public int Collisions;
         public double? FinishTime;
@@ -175,7 +177,9 @@ namespace FlipRace.Core
         public double FinishBoostElapsed, FinishBoostDistanceGained;
         public HitInfo LastFinishBoost;
         public HashSet<string> NegativeRiskIds = new HashSet<string>();
-        public double CurrentSpeed { get { return FinishBoost ? RaceConfig.FinishBoostSpeed
+        public double CurrentSpeed { get { if (SurfaceRunEnabled) return RaceConfig.Speed * (1 + SurfaceRunReserve)
+                + (FinishBoost ? RaceConfig.Speed : ActiveEffect != null ? RaceConfig.Speed * (ActiveEffect.Multiplier - 1) : 0);
+            return FinishBoost ? RaceConfig.FinishBoostSpeed
             : RaceConfig.Speed * (ActiveEffect != null ? ActiveEffect.Multiplier : 1); } }
         // Actual served motion/stops, used to stabilize analytically identical
         // finishes. Awarded but unserved boost never changes FinishTime.
@@ -243,6 +247,7 @@ namespace FlipRace.Core
             PartyWindowWidth = windowWidth; PartyCameraSpeed = track.Length / 36;
             PartyLastCameraLeft = startLeft;
         }
+        public bool SurfaceRunEnabled { get; internal set; }
         public string Mode;
         public MotionMode Motion = MotionMode.Linear;
         public MotionProfile Profile = MotionProfiles.Baseline;
@@ -515,6 +520,18 @@ namespace FlipRace.Core
             return game;
         }
 
+        // Session option, deliberately outside persisted flight profiles and bot tapes.
+        public static void ConfigureSurfaceRun(GameState game, bool enabled)
+        {
+            if (game == null) throw new ArgumentNullException(nameof(game));
+            if (enabled && game.IsBot) throw new InvalidOperationException("Surface running is unavailable for bot races.");
+            if (game.Phase != "ready" && game.Phase != "finished")
+                throw new InvalidOperationException("Surface running is fixed for an attempt.");
+            game.SurfaceRunEnabled = enabled;
+            foreach (var player in game.Players)
+            { player.SurfaceRunEnabled = enabled; player.SurfaceRunReserve = 0; }
+        }
+
         private static FlightSettings Settings(GameState game)
         {
             if (game.Flight == null) game.Flight = FlightPresets.FromLegacy(game.Motion, game.Profile);
@@ -562,7 +579,8 @@ namespace FlipRace.Core
                     var resetPlayers = new PlayerState[game.Players.Length];
                     for (int i = 0; i < game.Players.Length; i++)
                         resetPlayers[i] = new PlayerState(i) { Ready = true,
-                            CharacterIndex = game.Players[i].CharacterIndex, AirFlipAvailable = SupportsAirFlip(flight) };
+                            CharacterIndex = game.Players[i].CharacterIndex, AirFlipAvailable = SupportsAirFlip(flight),
+                            SurfaceRunEnabled = game.SurfaceRunEnabled };
                     game.Players = resetPlayers;
                     game.PartyLastCameraLeft = game.PartyCameraStartLeft;
                     game.Phase = "countdown";
@@ -665,13 +683,19 @@ namespace FlipRace.Core
         private static void MovePlayer(PlayerState player, double dt, FlightSettings flight)
         {
             MeasureFlight(player, dt, flight);
-            player.Distance += player.CurrentSpeed * dt;
+            if (player.SurfaceRunEnabled)
+            {
+                double rate = SurfaceRunMotion.ReserveRate(player);
+                player.Distance += player.CurrentSpeed * dt + .5 * RaceConfig.Speed * rate * dt * dt;
+                player.SurfaceRunReserve = Math.Max(0, player.SurfaceRunReserve + rate * dt);
+            }
+            else player.Distance += player.CurrentSpeed * dt;
             var effect = player.ActiveEffect;
             if (player.FinishBoost)
             {
                 player.FinishBoostElapsed += dt;
-                // Suspend ordinary effect service while the fixed 2x pulse runs.
-                // Its extra motion is credited only as it actually happens.
+                // Suspend ordinary effect service during the finish pulse:
+                // fixed 2x with the option OFF, additive +220 with it ON.
                 player.FinishBoostDistanceGained += (RaceConfig.FinishBoostSpeed - RaceConfig.Speed) * dt;
                 if (player.FinishBoostElapsed >= RaceConfig.FinishBoostDuration - Epsilon)
                     player.FinishBoost = false;
@@ -790,6 +814,10 @@ namespace FlipRace.Core
                 foreach (var obstacle in track.Obstacles)
                 {
                     if (obstacle.Id != zone.ObstacleId || (obstacle.Kind != "floor" && obstacle.Kind != "ceiling")) continue;
+                    // At the inclusive trailing X, a legal walk-off must not
+                    // reattach to the departed face as a fresh t=0 landing.
+                    if (player.SurfaceRunEnabled && player.EdgeClearObstacleId == obstacle.Id
+                        && player.Distance >= obstacle.X + obstacle.Width - Epsilon) continue;
                     if (HiddenObstacles.GetPhase(world, obstacle) != HiddenObstaclePhase.Solid) continue;
                     int side = obstacle.Kind == "floor" ? 1 : 0, sign = side == 1 ? 1 : -1;
                     double plane = StonePlane(obstacle);
@@ -814,7 +842,7 @@ namespace FlipRace.Core
                         // but never collect merely by departing from this plane.
                         if (approach < -1e-8 || (Math.Abs(approach) <= 1e-8
                             && (time <= 1e-12 || sign * acceleration >= 0))) continue;
-                        double x = player.Distance + player.CurrentSpeed * time;
+                        double x = SurfaceRunMotion.Position(player, time);
                         if (x < Math.Max(obstacle.X, zone.X - zone.LandingWidth / 2) - Epsilon
                             || x > Math.Min(obstacle.X + obstacle.Width, zone.X + zone.LandingWidth / 2) + Epsilon) continue;
                         if (result == null || time < result.Time)
@@ -893,13 +921,13 @@ namespace FlipRace.Core
                 if (player.HitObstacleIds.Contains(obstacle.Id)) continue;
                 if ((player.Support == SupportKind.Stone && player.SupportObstacleId == obstacle.Id)
                     || (player.EdgeClearObstacleId == obstacle.Id && player.Distance >= obstacle.X + obstacle.Width - Epsilon)) continue;
-                if (!RangeTimes(player.Distance, player.CurrentSpeed, ObstacleGeometry.Left(obstacle) - radius,
+                if (!SurfaceRunMotion.RangeTimes(player, ObstacleGeometry.Left(obstacle) - radius,
                     ObstacleGeometry.Right(obstacle) + radius, horizon, out _, out _)) continue;
                 var bandCount = obstacle.Kind == "gate" ? 2 : 1;
                 for (var band = 0; band < bandCount; band++)
                 {
                     if (!ObstacleGeometry.TryGetBand(obstacle, band, out var solid)) continue;
-                    if (!RangeTimes(player.Distance, player.CurrentSpeed, solid.Left - radius,
+                    if (!SurfaceRunMotion.RangeTimes(player, solid.Left - radius,
                         solid.Right + radius, horizon, out var horizontalEnter, out var horizontalLeave)) continue;
                     double minimum, maximum;
                     if (obstacle.Kind == "gate")
@@ -986,6 +1014,9 @@ namespace FlipRace.Core
                 ? (player.FlipTo - player.FlipFrom) * (RaceConfig.CorridorHeight - 2 * radius) / RaceConfig.FlipDuration
                 : player.VerticalSpeed;
             double acceleration = player.Flipping && !flight.LegacyLinear ? Acceleration(player, flight) : 0;
+            if (player.SurfaceRunEnabled)
+                return SurfaceRunMotion.FirstFinishContact(x - zone.X, y - zone.Y, vx, vy,
+                    SurfaceRunMotion.Acceleration(player), acceleration, radius, horizon);
             return FinishTargetGeometry.FirstContact(x - zone.X, y - zone.Y, vx, vy,
                 acceleration, radius, horizon);
         }
@@ -1021,7 +1052,7 @@ namespace FlipRace.Core
                     foreach (var obstacle in track.Obstacles)
                         if (obstacle.Id == zone.ObstacleId)
                             clearX = Math.Max(clearX, ObstacleGeometry.Right(obstacle) + RaceConfig.PlayerRadius + 1e-7);
-                    time = Math.Max(0, (clearX - player.Distance) / player.CurrentSpeed);
+                    time = SurfaceRunMotion.TimeToDistance(player, clearX);
                     // Once the whole body has passed the linked stone, no
                     // later vertical return can touch it. Landing is not
                     // required; collision-first ordering still cancels a
@@ -1036,15 +1067,16 @@ namespace FlipRace.Core
                         * (RaceConfig.CorridorHeight - 2 * RaceConfig.PlayerRadius) / RaceConfig.FlipDuration : 0;
                     double radius = zone.Radius + RaceConfig.PlayerRadius;
                     double c = dx * dx + dy * dy - radius * radius;
-                    if (!flight.LegacyLinear)
+                    if (player.SurfaceRunEnabled || !flight.LegacyLinear)
                     {
-                        if (!RangeTimes(player.Distance, vx, zone.X - radius, zone.X + radius,
+                        if (!SurfaceRunMotion.RangeTimes(player, zone.X - radius, zone.X + radius,
                             horizon, out double enter, out double leave)) continue;
-                        double acceleration = player.Flipping ? Acceleration(player, flight) : 0;
-                        vy = player.Flipping ? player.VerticalSpeed : 0;
-                        double contact = ContinuousMotion.FirstCircleContact(dx + vx * enter,
-                            dy + vy * enter + .5 * acceleration * enter * enter, vx, vy + acceleration * enter,
-                            acceleration, radius, Math.Max(0, leave - enter));
+                        double acceleration = player.Flipping && !flight.LegacyLinear ? Acceleration(player, flight) : 0;
+                        if (!flight.LegacyLinear) vy = player.Flipping ? player.VerticalSpeed : 0;
+                        double ax = SurfaceRunMotion.Acceleration(player);
+                        double contact = ContinuousMotion.FirstCircleContact(dx + vx * enter + .5 * ax * enter * enter,
+                            dy + vy * enter + .5 * acceleration * enter * enter, vx + ax * enter, vy + acceleration * enter,
+                            ax, acceleration, radius, Math.Max(0, leave - enter));
                         if (double.IsInfinity(contact)) continue;
                         time = enter + contact;
                     }
@@ -1101,17 +1133,19 @@ namespace FlipRace.Core
                     flightHorizon = Math.Min(flightHorizon, -player.VerticalSpeed / acceleration);
                 double apexTime = JumpApexTime(player, flight);
                 flightHorizon = Math.Min(flightHorizon, apexTime);
-                double finishTime = Math.Max(0, track.Length - player.Distance) / player.CurrentSpeed;
+                double finishTime = SurfaceRunMotion.TimeToDistance(player, track.Length);
                 var horizon = Math.Min(remaining, Math.Min(finishTime,
                     Math.Min(flightHorizon,
                         player.FinishBoost ? Math.Max(0, RaceConfig.FinishBoostDuration - player.FinishBoostElapsed)
                             : player.ActiveEffect != null ? player.ActiveEffect.Remaining : double.PositiveInfinity)));
+                if (player.SurfaceRunEnabled && SurfaceRunMotion.ReserveRate(player) < 0)
+                    horizon = Math.Min(horizon, player.SurfaceRunReserve / SurfaceRunMotion.DecayPerSecond);
                 Obstacle edge = null;
                 if (player.Support == SupportKind.Stone)
                     foreach (var obstacle in track.Obstacles)
                         if (obstacle.Id == player.SupportObstacleId) { edge = obstacle; break; }
                 double edgeTime = edge == null ? double.PositiveInfinity
-                    : Math.Max(0, (edge.X + edge.Width - player.Distance) / player.CurrentSpeed);
+                    : SurfaceRunMotion.TimeToDistance(player, edge.X + edge.Width);
                 horizon = Math.Min(horizon, edgeTime);
                 double eliminationTime = EliminationTime(party, player, elapsed + dt - remaining, player.CurrentSpeed);
                 horizon = Math.Min(horizon, eliminationTime);
@@ -1146,6 +1180,7 @@ namespace FlipRace.Core
                     player.HitObstacleIds.Add(collision.Obstacle.Id);
                     player.Collisions++;
                     player.Recovering = RaceConfig.RecoveryDuration;
+                    if (player.SurfaceRunEnabled) player.SurfaceRunReserve = 0;
                     // Cancel only contacts that were already pending before this
                     // impact. An untouched ring can still be earned after recovery.
                     foreach (var zone in track.RiskZones)
@@ -1222,7 +1257,7 @@ namespace FlipRace.Core
                     // its timestamp from *served* motion/stops to make exact ties
                     // independent of integration drift. Partial boosts count only
                     // the extra distance actually travelled before the finish.
-                    player.FinishTime = track.Length / RaceConfig.Speed
+                    player.FinishTime = player.SurfaceRunEnabled ? elapsed + dt - remaining : track.Length / RaceConfig.Speed
                         + player.CompletedRecoveries * RaceConfig.RecoveryDuration + player.RecoveryElapsed
                         + (player.CompletedSlows - player.CompletedBoosts) * RaceConfig.BoostTimeGain
                         + player.SlowElapsed * (1 - RaceConfig.SlowMultiplier)
@@ -1243,6 +1278,9 @@ namespace FlipRace.Core
             double gap = player.Distance + RaceConfig.PlayerRadius
                 - (party.PartyCameraStartLeft + party.PartyCameraSpeed * at);
             if (gap <= 0) return 0;
+            if (player.SurfaceRunEnabled && speed > 0)
+                return SurfaceRunMotion.FirstNonnegativeRoot(.5 * SurfaceRunMotion.Acceleration(player),
+                    speed - party.PartyCameraSpeed, gap);
             double closingSpeed = party.PartyCameraSpeed - speed;
             return closingSpeed > 0 ? gap / closingSpeed : double.PositiveInfinity;
         }
@@ -1371,7 +1409,10 @@ namespace FlipRace.Core
                 foreach (var player in game.Players)
                     if (!player.FinishTime.HasValue)
                         finishHorizon = Math.Min(finishHorizon,
-                            (game.Track.Length - player.Distance) / Math.Max(maximumSpeed, player.CurrentSpeed) + player.Recovering);
+                            (game.SurfaceRunEnabled ? SurfaceRunMotion.TimeForDelta(game.Track.Length - player.Distance,
+                                Math.Max(maximumSpeed + RaceConfig.Speed * player.SurfaceRunReserve, player.CurrentSpeed),
+                                RaceConfig.Speed * SurfaceRunMotion.GrowthPerSecond)
+                                : (game.Track.Length - player.Distance) / Math.Max(maximumSpeed, player.CurrentSpeed)) + player.Recovering);
                 var graceHorizon = game.WinnerAt.HasValue
                     ? game.WinnerAt.Value + RaceConfig.FinishGrace - game.Elapsed : double.PositiveInfinity;
                 var step = Math.Min(dt, Math.Min(finishHorizon, Math.Max(0, graceHorizon)));

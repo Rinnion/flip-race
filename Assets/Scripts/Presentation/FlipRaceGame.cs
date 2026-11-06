@@ -272,6 +272,7 @@ namespace FlipRace.Presentation
         {
             int first = Game.Players[0].CharacterIndex, second = Game.Players.Length > 1 ? Game.Players[1].CharacterIndex : 1;
             Game = RaceSimulation.CreateGame(mode, selectedTrackId, selectedNegative);
+            ConfigureSessionSurfaceRun();
             Game.Players[0].CharacterIndex = first; Game.Players[1].CharacterIndex = second;
             round = 1; paused = false; showRules = false; showTracks = false; suppressFrame = true;
             lastFrame = Time.realtimeSinceStartupAsDouble;
@@ -484,10 +485,10 @@ namespace FlipRace.Presentation
                     if (zone.Id == p.LastInstant.Id && zone.IsLanding) { landed = true; break; }
                 bool recentFinish = p.LastFinishBoost != null && Game.Elapsed - p.LastFinishBoost.At < 1.1;
                 bool recentCoin = p.LastCoin != null && Game.Elapsed - p.LastCoin.At < .8;
-                string reaction = recentCoin ? "Монетка +1" : recentFinish ? "Рывок ×2"
-                    : recentInstant ? (landed ? "Точная посадка! ×1,5" : "Молния! Скорость ×1,5") : recentSlow ? CharacterRoster.SlowText(p.CharacterIndex) + "  +0,3 с"
+                string reaction = recentCoin ? "Монетка +1" : recentFinish ? (Game.SurfaceRunEnabled ? "Финишный рывок" : "Рывок ×2")
+                    : recentInstant ? (landed ? (Game.SurfaceRunEnabled ? "Точная посадка!" : "Точная посадка! ×1,5") : (Game.SurfaceRunEnabled ? "Молния! Ускорение" : "Молния! Скорость ×1,5")) : recentSlow ? CharacterRoster.SlowText(p.CharacterIndex) + (Game.SurfaceRunEnabled ? " · замедление" : "  +0,3 с")
                     : p.LastSuccess != null && Game.Elapsed - p.LastSuccess.At < 1.15
-                    ? CharacterRoster.SuccessText(p.CharacterIndex) + "  −0,3 с"
+                    ? CharacterRoster.SuccessText(p.CharacterIndex) + (Game.SurfaceRunEnabled ? " · ускорение" : "  −0,3 с")
                     : p.LastHit != null && Game.Elapsed - p.LastHit.At < .8 ? CharacterRoster.HitText(p.CharacterIndex) : "";
                 if (reaction.Length > 0)
                 {
@@ -533,10 +534,11 @@ namespace FlipRace.Presentation
                 Round(new Rect(x + pw - 27, y + 5, 18, 16), 4, Hex(0xeceee4));
                 Text(new Rect(x + pw - 27, y + 5, 18, 16), index == 0 ? "A" : "L", 9, muted, false, TextAnchor.MiddleCenter);
             }
+            DrawSurfaceRunStatus(index, new Rect(x, y + ph + 3, 92, 20));
             string status = p.FinishTime.HasValue ? "На финише ✓" : Game.Phase != "racing" ? "Твоя половина экрана" : p.Recovering > 0 ? "Кувырок · +0,5 с"
-                : p.FinishBoost ? "К ленте · ×2"
-                : p.SlowRemaining > 0 ? "Замедление · +0,3 с"
-                : p.BoostRemaining > 0 ? "Рывок · −0,3 сек"
+                : p.FinishBoost ? (Game.SurfaceRunEnabled ? "К ленте · рывок" : "К ленте · ×2")
+                : p.SlowRemaining > 0 ? (Game.SurfaceRunEnabled ? "Замедление" : "Замедление · +0,3 с")
+                : p.BoostRemaining > 0 ? (Game.SurfaceRunEnabled ? "Ускорение" : "Рывок · −0,3 сек")
                 : p.Flipping ? "В полёте" : p.Support == SupportKind.Stone ? "На камне" : "Готов к перевороту";
             if (p.PendingEffects.Count > 0 && p.Recovering <= 0) status += " · +" + p.PendingEffects.Count;
             if (Trial && Game.Phase == "racing" && !p.FinishTime.HasValue)
@@ -545,8 +547,8 @@ namespace FlipRace.Presentation
                     : p.Gravity < 0 ? "↑ тяга" : "↓ тяга";
                 string charge = Game.Flight.AirRepeats == AirRepeatLimit.Unlimited ? " · повтор ∞"
                     : Game.Flight.AirRepeats == AirRepeatLimit.One ? p.AirFlipAvailable ? " · повтор 1" : " · повтор 0" : " · повтор 0";
-                status = gravity + charge + (p.Recovering > 0 ? " · удар" : p.FinishBoost ? " · ×2" : p.SlowRemaining > 0 ? " · ×0,5"
-                    : p.BoostRemaining > 0 ? " · ×1,5" : "");
+                status = gravity + charge + (p.Recovering > 0 ? " · удар" : p.FinishBoost ? (Game.SurfaceRunEnabled ? " · рывок" : " · ×2") : p.SlowRemaining > 0 ? (Game.SurfaceRunEnabled ? " · медленнее" : " · ×0,5")
+                    : p.BoostRemaining > 0 ? (Game.SurfaceRunEnabled ? " · быстрее" : " · ×1,5") : "");
                 if (p.Support == SupportKind.Stone) status += " · камень";
             }
             int ss = compact ? 8 : 10;
@@ -587,7 +589,7 @@ namespace FlipRace.Presentation
             string subtitle = results ? finishTime + " · +" + Rewards(p) + "/" + Game.Track.PositiveRingCount
                 + (Game.Track.NegativeEnabled ? " · −" + p.SlowsEarned : "") + " · ошибок: " + p.Collisions : crossedFinish ? finishTime + " · ждём соперника"
                 : p.Ready ? "Ждём второго игрока — и начинаем." : Game.Mode == "practice" ? "Короткая трасса с подсказками для двоих." : "Коснись своей половины — и ты на потолке.";
-            if (results && p.FinishBoostsEarned > 0) subtitle += " · Рывок ×2";
+            if (results && p.FinishBoostsEarned > 0) subtitle += (Game.SurfaceRunEnabled ? " · Финишный рывок" : " · Рывок ×2");
             if (results && Trial && activeCustomFlight)
                 subtitle = finishTime + " · " + LastFlightText(p);
             if (results) subtitle += CoinScore(p);
@@ -612,7 +614,7 @@ namespace FlipRace.Presentation
                 if (activeCustomFlight && !TracksV4.IsOpen(Game.Track.Id))
                     detail += " · +" + Rewards(p) + "/" + Game.Track.PositiveRingCount
                         + (Game.Track.NegativeEnabled ? " · −" + p.SlowsEarned : "")
-                        + " · ошибок " + p.Collisions + (p.FinishBoostsEarned > 0 ? " · Рывок ×2" : "");
+                        + " · ошибок " + p.Collisions + (p.FinishBoostsEarned > 0 ? (Game.SurfaceRunEnabled ? " · Финишный рывок" : " · Рывок ×2") : "");
                 int detailSize = compact ? 8 : 9;
                 if (!narrowResult) while (detailSize > 7 && TextWidth(detail, detailSize) > w - 12) detailSize--;
                 label.wordWrap = narrowResult;
@@ -735,9 +737,9 @@ namespace FlipRace.Presentation
                 {
                     Text(new Rect(footer.x + 470, footer.y + 33, 340, 20), Controls && Game.Track.Id == TracksControl.UnlimitedId
                         ? "Меняй высоту перед каждым проходом"
-                        : Controls ? "Посадка — ×1,5  ·  Две стрелки — рывок ×2"
+                        : Controls ? (Game.SurfaceRunEnabled ? "Посадка — ускорение  ·  Две стрелки — финишный рывок" : "Посадка — ×1,5  ·  Две стрелки — рывок ×2")
                         : Trial ? "Молния — сразу  ·  Ромб − — замедление"
-                        : "+кольцо: −0,3 с  ·  ◇−: +0,3 с  ·  удар: +0,5 с", 10, muted);
+                        : (Game.SurfaceRunEnabled ? "+кольцо: ускорение  ·  ◇−: замедление  ·  удар: 0,5 с" : "+кольцо: −0,3 с  ·  ◇−: +0,3 с  ·  удар: +0,5 с"), 10, muted);
                 }
                 if (footer.yMax + 15 < height)
                 {
@@ -780,8 +782,8 @@ namespace FlipRace.Presentation
             Text(rulesClose, "×", 24, muted, false, TextAnchor.MiddleCenter);
             string[] lines = {
                 "Своя половина — переворот. Клавиши A / L. В полёте дождись посадки.",
-                "Круг +: −0,3 с после манёвра. Удар о его камень после касания отменяет ожидающую награду.",
-                "Ромб −: +0,3 с, переворот работает. Ромбы можно отключить в меню трасс.",
+                (Game.SurfaceRunEnabled ? "Круг +: ускорение после манёвра. Удар отменяет ожидающую награду." : "Круг +: −0,3 с после манёвра. Удар о его камень после касания отменяет ожидающую награду."),
+                (Game.SurfaceRunEnabled ? "Ромб −: замедление, переворот работает. Ромбы можно отключить в меню трасс." : "Ромб −: +0,3 с, переворот работает. Ромбы можно отключить в меню трасс."),
                 "Удар: +0,5 с; нетронутые кольца доступны. Первый на финише побеждает. Реванш — вдвоём."
             };
             if (Trial) lines = new[] {
@@ -789,8 +791,9 @@ namespace FlipRace.Presentation
                     ? "Тап с опоры — обычный прыжок. Своя половина экрана или клавиши A / L."
                     : "Тап с опоры — перелёт к другой стене. Своя половина экрана или клавиши A / L.",
                 FlightRule(),
-                "Метка на грани: точная посадка даёт ×1,5. По камню можно бежать; с него можно прыгать.",
-                "Узкая метка у ленты: рывок −0,1 с. Настройки общие, реванш их сохраняет. Выбор — в меню."
+                (Game.SurfaceRunEnabled ? "Метка на грани: точная посадка ускоряет. По камню можно бежать; с него можно прыгать." : "Метка на грани: точная посадка даёт ×1,5. По камню можно бежать; с него можно прыгать."),
+                Game.SurfaceRunEnabled ? "Разгон от бега: +5%/с на опоре, −10%/с в воздухе. Удар обнуляет запас. Выбор — в меню."
+                    : "Узкая метка у ленты: рывок −0,1 с. Настройки общие, реванш их сохраняет. Выбор — в меню."
             };
             if (BotEnabled) lines = new[] { "Выбери героя и нажми «Начать». A, поле или лапка — твоё действие.", "Бот готов автоматически. Уровень выбран до старта; награды личные.", Game.PartyCamera==PartyCamera.Constant?"Карта движется сама. Полностью за левым краем — выбыл.":"Камера за последним. Выбывания за экран нет.", "Оба бегут до своего исхода. Повтор — новый план; результаты не сохраняются." };
             else if (SoloEnabled) lines = new[] {
@@ -855,7 +858,7 @@ namespace FlipRace.Presentation
                     if (zone.IsLanding && zone.X - p.Distance > 0 && zone.X - p.Distance < 350)
                         return "Приземлись точно в метку на грани камня.";
                     if (zone.IsFinish && zone.X - p.Distance > 0 && zone.X - p.Distance < 650)
-                        return "Стрелки у ленты: пролети через них для рывка ×2.";
+                        return Game.SurfaceRunEnabled ? "Стрелки у ленты: пролети через них для финишного рывка." : "Стрелки у ленты: пролети через них для рывка ×2.";
                 }
             if (Trial)
                 return TracksV4.IsOpen(Game.Track.Id) || Game.Elapsed < 3.5 ? TrialMotionHint() : "";
