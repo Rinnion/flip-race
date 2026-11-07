@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": 45528,
+  "cases": 24,
+  "scope": "Production menu/apply/cancel/mode/retry methods with native environment aliases. Retry fixture forces finished phase. No rendering or physical touchscreen claim.",
+  "version": "5.5.3-trial",
+  "command": "./Tools/SurfaceRunUiCheck/Run.ps1",
+  "sourceSha256": {
+    "Assets/Scripts/Presentation/FlightSettingsMenu.cs": "2b0ee23d4c47eef4ea6c8ca3c56ff2c5e73a720872b9241982b989fe97f4830e"
+  },
+  "checkedAtUtc": "2026-11-07T10:51:12.9659227Z"
+}

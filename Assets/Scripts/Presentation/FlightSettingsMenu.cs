@@ -74,7 +74,7 @@ namespace FlipRace.Presentation
             FlightButton(surfaceRunToggle, pendingSurfaceRun ? "Разгон ВКЛ" : "Разгон ВЫКЛ", pendingSurfaceRun, true, 12);
             DrawFlightApplyButton();
 
-            Text(SurfaceRunLabelRect(0), "Стартовый темп\nп.п. в секунду", 10, ink, true, TextAnchor.MiddleLeft);
+            Text(SurfaceRunLabelRect(0), "% от базовой\nскорости в секунду", 10, ink, true, TextAnchor.MiddleLeft);
             for (int rate = 1; rate <= 5; rate++) FlightButton(SurfaceRunRateRect(rate), "+" + rate, settings.RatePercent == rate, true, 12);
             Text(SurfaceRunLabelRect(1), "Набор запаса", 10, ink, true, TextAnchor.MiddleLeft);
             FlightButton(SurfaceRunCurveRect(SurfaceRunCurve.Linear), "Линейный\nравномерный набор", settings.Curve == SurfaceRunCurve.Linear, true, 10);
@@ -414,7 +414,7 @@ namespace FlipRace.Presentation
             string curveName = run.Curve == SurfaceRunCurve.Linear ? "линейный" : "плавный";
             FlightButton(SurfaceRunMenuRect, pendingBot ? "Разгон от бега · ВЫКЛ\nБот: эталон без разгона"
                 : "Разгон от бега · " + (pendingSurfaceRun ? "ВКЛ  ›" : "ВЫКЛ  ›") + "\n"
-                    + (pendingSurfaceRun ? run.RatePercent + " п.п./с · " + curveName + " · до +" + run.CapPercent + "%" : "Настроить или включить"),
+                    + (pendingSurfaceRun ? run.RatePercent + "% базы/с · " + curveName + " · до +" + run.CapPercent + "%" : "Настроить или включить"),
                 !pendingBot && pendingSurfaceRun, !pendingBot, 10);
             DrawFlightApplyFooter();
         }
