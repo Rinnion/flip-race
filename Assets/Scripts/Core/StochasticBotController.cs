@@ -41,8 +41,10 @@ namespace FlipRace.Core
         public const double MaxHorizonDistance=1000;
         public const int MaxInputs=12;
         public const int MaxMasterTimingCandidates=13;
+        public const int MaxAcceleratedMasterTimingCandidates=32;
         public const double MaxForecastSlice=.125;
-        public const double MaxTrialOverrunDistance=MaxForecastSlice*RaceConfig.FinishBoostSpeed;
+        public const double MaxTrialOverrunDistance=MaxForecastSlice*(RaceConfig.FinishBoostSpeed
+            + RaceConfig.Speed*SurfaceRunSettings.MaximumCapPercent/100d);
         public const double MaxTrialHorizonDistance=MaxHorizonDistance+MaxTrialOverrunDistance;
         public const double DecisionLeadDistance=380;
         public const double MaxSlice=1d/120;
@@ -54,7 +56,7 @@ namespace FlipRace.Core
         readonly ReadOnlyCollection<StochasticBotDecision> readOnlyDecisions;
         readonly Dictionary<string,StochasticBotDecision> saved=new Dictionary<string,StochasticBotDecision>(StringComparer.Ordinal);
         double[] planned=Array.Empty<double>();int plannedCursor,nextOpportunity,cursor;bool wasRecovering;
-        double lastEmittedDistance=double.NegativeInfinity;
+        double lastEmittedDistance=double.NegativeInfinity, plannedThrough;
         public int Cursor { get { return cursor; } }
         public int SuppressedInputs { get; private set; }
         public IReadOnlyList<StochasticBotDecision> Decisions { get { return readOnlyDecisions; } }
@@ -138,6 +140,32 @@ namespace FlipRace.Core
             var list=new List<double>();foreach(double v in source)if(!double.IsNaN(v)&&!double.IsInfinity(v)&&v>=start-EdgeTolerance&&v<=end&&v>lastEmittedDistance+EdgeTolerance)list.Add(Math.Max(start,v));
             list.Sort();for(int i=list.Count-1;i>0;i--)if(list[i]-list[i-1]<1e-6)list.RemoveAt(i);if(list.Count>MaxInputs)list.RemoveRange(MaxInputs,list.Count-MaxInputs);return list.ToArray();
         }
+
+        // Estimate where a legacy edge would occur if its approach to a nearby
+        // feature covered more distance in the same flight time. Both directions
+        // are useful: an edge may start a maneuver or end one already in progress.
+        IEnumerable<double> RetimedReference(double[] basis, double reserve, bool anchorAhead, double nextLead)
+        {
+            foreach (double edge in basis)
+            {
+                double gap = 160;
+                foreach (var opportunity in opportunities)
+                {
+                    double distance = anchorAhead ? opportunity.Position - edge : edge - opportunity.Position;
+                    if (distance >= 16) gap = Math.Min(gap, distance);
+                }
+                double shifted = edge + (anchorAhead ? -1 : 1) * gap * reserve;
+                yield return PreserveDecisionInterval(edge, shifted, nextLead);
+            }
+        }
+
+        internal static double PreserveDecisionInterval(double edge, double shifted, double nextLead)
+        {
+            // A new plan can still see the original edge after this decision.
+            // Never execute its retimed counterpart on the other side first.
+            double boundary = nextLead - EdgeTolerance;
+            return (edge < boundary) == (shifted < boundary) ? shifted : edge;
+        }
         // Canonical identity only: original validated input doubles and all physical
         // player state remain untouched. Source-relative generic anchors use this grid.
         string CandidateKey(double[] values){return string.Join("|",Array.ConvertAll(values,v=>v.ToString("F5",System.Globalization.CultureInfo.InvariantCulture)));}
@@ -148,11 +176,13 @@ namespace FlipRace.Core
             RaceSimulation.Advance(forecast,delta);ForecastSteps++;ForecastObservations++;
             // Observe BEFORE rollback: discarded contacts are excluded from scoring,
             // but their actual transient distance still counts toward the bound.
-            double distance=forecast.Players[0].Distance;
+            var player = forecast.Players[0];
+            double distance=player.Distance;
             double extent=Math.Max(0,distance-origin),overrun=Math.Max(0,distance-end);
             MaximumTrialHorizon=Math.Max(MaximumTrialHorizon,extent);
             MaximumTrialOvershoot=Math.Max(MaximumTrialOvershoot,overrun);
-            if(delta>MaxForecastSlice+1e-12||extent>MaxTrialHorizonDistance+EdgeTolerance||overrun>MaxTrialOverrunDistance+EdgeTolerance)
+            double overrunLimit = MaxForecastSlice * player.MaximumHorizontalSpeed;
+            if(delta>MaxForecastSlice+1e-12||extent>MaxHorizonDistance+overrunLimit+EdgeTolerance||overrun>overrunLimit+EdgeTolerance)
             {ForecastHorizonViolations++;throw new InvalidOperationException("Forecast transient horizon bound exceeded");}
         }
         Evaluation Evaluate(GameState origin,double[] inputs,double end,List<Pending> pending)
@@ -179,7 +209,7 @@ namespace FlipRace.Core
                 {
                     g=checkpoint;p=g.Players[0];ForecastTrialRollbacks++;
                     if(steps>=MaxForecastStepsPerCandidate)break;
-                    double safe=Math.Min(MaxForecastSlice,Math.Max(1e-10,(target-p.Distance)/RaceConfig.FinishBoostSpeed));
+                    double safe=Math.Min(MaxForecastSlice,Math.Max(1e-10,(target-p.Distance)/p.MaximumHorizontalSpeed));
                     ForecastAdvance(g,safe,origin.Players[0].Distance,end);steps++;
                 }
             }
@@ -205,9 +235,10 @@ namespace FlipRace.Core
             // is an aggregate guard; the engine does not expose per-ID service
             // for merged instant effects.
             bool masterClean=q!=1||(p.Collisions==0&&p.SlowsEarned==0&&!selectedFailed
-                &&(end<game.Track.Length-EdgeTolerance||(p.Status==PlayerStatus.Finished&&selectedCollected
-                    &&p.CompletedBoosts>=ordinaryGoalCount&&p.CompletedSlows==0&&p.FinishBoostsEarned==1
-                    &&p.FinishBoostElapsed>=RaceConfig.FinishBoostDuration-1e-8)));
+                 &&(end<game.Track.Length-EdgeTolerance||(p.Status==PlayerStatus.Finished&&selectedCollected
+                     &&p.FinishBoostsEarned==1&&(origin.SurfaceRunEnabled||
+                         (p.CompletedBoosts>=ordinaryGoalCount&&p.CompletedSlows==0
+                             &&p.FinishBoostElapsed>=RaceConfig.FinishBoostDuration-1e-8)))));
             int score=mismatches*10000+unintended*1000+rejected*100+(p.SlowsEarned-origin.Players[0].SlowsEarned)*10+(completed?0:1000000)+(masterClean?0:100000);
             return new Evaluation{Inputs=inputs,Score=score,IntentMismatches=mismatches,Rejected=rejected,Completed=completed,MasterClean=masterClean,UnmetIds=unmet.ToArray()};
         }
@@ -224,7 +255,9 @@ namespace FlipRace.Core
                 bool exists=false;foreach(var request in pending)if(request.Opportunity.Id==item.Id){exists=true;break;}
                 if(!exists)pending.Add(new Pending{Opportunity=item,Intent=item.Kind==BotOpportunityKind.Obstacle?"avoid":"collect",Probability=1});
             }
-            var origin=PersonalForecast();var candidates=new HashSet<string>(StringComparer.Ordinal);var ties=new List<Evaluation>();Evaluation best=null;int calls=0,candidateLimit=q==1?MaxMasterTimingCandidates:MaxCandidatesPerPlanningCall;
+            var origin=PersonalForecast();var candidates=new HashSet<string>(StringComparer.Ordinal);var ties=new List<Evaluation>();Evaluation best=null;int calls=0;
+            int candidateLimit = q != 1 ? MaxCandidatesPerPlanningCall
+                : origin.SurfaceRunEnabled ? MaxAcceleratedMasterTimingCandidates : MaxMasterTimingCandidates;
             Evaluation Try(IEnumerable<double> values)
             {
                 if(calls>=candidateLimit)return best;var input=Clip(values,start,end);string key=CandidateKey(input);if(!candidates.Add(key))return best;
@@ -233,9 +266,9 @@ namespace FlipRace.Core
             // A spatial decision may coincide with an unexecuted reference edge.
             // lastEmittedDistance excludes consumed edges; a start offset can lose a pending one.
             var baseline=Clip(reference,start,end);Try(baseline);
+            double nextLead=nextOpportunity<opportunities.Length?Math.Max(0,opportunities[nextOpportunity].Position-DecisionLeadDistance):game.Track.Length+1;
             if(q==1&&baseline.Length>0)
             {
-                double nextLead=nextOpportunity<opportunities.Length?Math.Max(0,opportunities[nextOpportunity].Position-DecisionLeadDistance):game.Track.Length+1;
                 // Original AND shifted edges must precede the next decision: a negative
                 // retime must not resurrect its old reference position on replanning.
                 // Both changed edges of a pair must execute before another decision
@@ -246,6 +279,40 @@ namespace FlipRace.Core
                     {var single=(double[])baseline.Clone();single[0]+=shift;Try(single);}
                     if(baseline.Length>1&&baseline[1]<nextLead-EdgeTolerance&&baseline[0]+shift>start+EdgeTolerance&&baseline[1]+shift<nextLead-EdgeTolerance)
                     {var pair=(double[])baseline.Clone();pair[0]+=shift;pair[1]+=shift;Try(pair);}
+                }
+            }
+            if (origin.SurfaceRunEnabled && best.Score > 0)
+            {
+                if (planned.Length > 0)
+                {
+                    var remaining = new List<double>();
+                    for (int i = plannedCursor; i < planned.Length; i++) remaining.Add(planned[i]);
+                    foreach (double edge in baseline)
+                        if (edge > plannedThrough + EdgeTolerance) remaining.Add(edge);
+                    Try(remaining);
+                }
+                double reserve = Math.Max(player.SurfaceRunReserve, new SurfaceRunMotion(player).ReserveAfter(.5));
+                Try(RetimedReference(baseline, reserve, true, nextLead));
+                Try(RetimedReference(baseline, reserve, false, nextLead));
+                Try(RetimedReference(baseline, reserve * .5, true, nextLead));
+                if (q == 1)
+                {
+                    var basis = best.Inputs;
+                    // Explore a wider range around the strongest available hint.
+                    // Actual acceptance still uses only the ordinary forecast.
+                    for (int i = 0; i < Math.Min(2, basis.Length) && best.Score > 0 && calls < candidateLimit; i++)
+                    foreach (double shift in new[] { -8d, 8, -24, 24, -48, 48 })
+                    {
+                        var shifted = (double[])basis.Clone();
+                        shifted[i] = PreserveDecisionInterval(basis[i], basis[i] + shift, nextLead);
+                        Try(shifted);
+                        if (i == 0 && basis.Length > 1 && Math.Abs(shift) >= 24)
+                        {
+                            shifted[1] = PreserveDecisionInterval(basis[1], basis[1] + shift, nextLead);
+                            Try(shifted);
+                        }
+                        if (best.Score == 0 || calls == candidateLimit) break;
+                    }
                 }
             }
             if(q!=1)
@@ -266,8 +333,10 @@ namespace FlipRace.Core
             // entering/leaving the pool must not remap all other timing choices.
             Evaluation selected=ties[0];string selectedKey=CandidateKey(selected.Inputs);uint selectedRank=Hash(choiceId+"|"+selectedKey,0x85ebca6bu);
             for(int i=1;i<ties.Count;i++){string key=CandidateKey(ties[i].Inputs);uint rank=Hash(choiceId+"|"+key,0x85ebca6bu);if(rank<selectedRank||(rank==selectedRank&&string.CompareOrdinal(key,selectedKey)<0)){selected=ties[i];selectedKey=key;selectedRank=rank;}}
-            planned=(double[])selected.Inputs.Clone();plannedCursor=0;
-            LastPlanningFailure=!selected.Completed?"bounded-local-search: forecast step cap":!selected.MasterClean?"master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger":selected.IntentMismatches>0?"bounded-local-search: selected forecast unmet IDs: "+string.Join(",",selected.UnmetIds):"";
+            planned=(double[])selected.Inputs.Clone();plannedCursor=0;plannedThrough=end;
+            LastPlanningFailure=!selected.Completed?"bounded-local-search: forecast step cap":!selected.MasterClean?
+                (origin.SurfaceRunEnabled?"master-local-forecast: hit, slow, failed reward, or incomplete finish goals":"master-local-forecast: hit, slow, failed reward, or incomplete terminal pulse ledger"):
+                selected.IntentMismatches>0?"bounded-local-search: selected forecast unmet IDs: "+string.Join(",",selected.UnmetIds):"";
             string Reason(string id){return Array.IndexOf(selected.UnmetIds,id)>=0?"bounded-local-search: selected forecast did not realize this saved intention; no better tested local candidate":"";}
             foreach(var d in decisions)if(!IsFinal(d))d.UnreachableReason=Reason(d.Id);
             foreach(var r in fresh){var d=new StochasticBotDecision(r.Opportunity,r.Intent,r.Probability,r.Roll,start,game.Elapsed,end,planned,Reason(r.Opportunity.Id));saved.Add(d.Id,d);decisions.Add(d);}
@@ -316,7 +385,7 @@ namespace FlipRace.Core
             if (nextOpportunity < opportunities.Length)
                 target = Math.Min(target, Math.Max(0, opportunities[nextOpportunity].Position - DecisionLeadDistance));
             if (!double.IsInfinity(target))
-                step = Math.Min(step, Math.Max(1e-10, (target - player.Distance) / RaceConfig.FinishBoostSpeed));
+                step = Math.Min(step, Math.Max(1e-10, (target - player.Distance) / player.MaximumHorizontalSpeed));
             return false;
         }
 

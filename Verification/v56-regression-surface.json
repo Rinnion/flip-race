@@ -1,0 +1,615 @@
+{
+  "Status": "PASS",
+  "BaselineRevision": "3ec4965",
+  "UnifiedLoopRevision": "c865abe",
+  "CommonPhysicsCases": 600,
+  "HiddenForecasts": 2,
+  "PreparedImportProfiles": 2,
+  "EnabledRaceCases": 16,
+  "LegacyExactCases": 23,
+  "EnabledFullReportSha256": "91B6CC74B3938939F1BF64788F8677FDA3E82D6A301CDCFD36E97CE20D7FC7C3",
+  "LegacyComparisonFullReportSha256": "ABB1E1025BBA9474E844BAD672545B4C65D43A85B9D943176336CA9FE13E3EB1",
+  "SourcesSha256": {
+    "Assets/Scripts/Core/RaceRunner.cs": "09E101FCF490754FA69B1A51E8475FB07E824639E5E3FC9A8DBF7941F6D2727B",
+    "Assets/Scripts/Core/StochasticBotController.cs": "241E4E34A6F55E22A466CFCE59F9CC530850540F8A430985E1F2F0C0E148A21D",
+    "Assets/Scripts/Core/BotRaceController.cs": "A1DBC7D95B228EB341ADDDE6C035E2876E32B3C0AFE2FF2E68836015FAC58E29",
+    "Assets/Scripts/Core/PreparedReferenceProof.cs": "FF2302E4625E8026F2BB4434C166F06D482213BF2B5EB6EF4B18BCF42116A056",
+    "Assets/Scripts/Core/RaceSnapshot.cs": "B5143DE723FC599914F4966F8435669A2C74212C75A7AB5AA4FBCB2EB5501079",
+    "Assets/Scripts/Core/RaceSimulation.cs": "7C21B6889B0B4C652A0FB4A1B4176E3C97EC7C965603C910234322B212AB8511",
+    "Assets/Scripts/Core/SurfaceRunSettings.cs": "62A0627DFBE519AC4D07CDC23FD9CF28008C584932C0E363E69497F2296302CE",
+    "Assets/Scripts/Core/TrackCatalog.cs": "FC8EDF911A15D5AB7B543C7E96BBA68E159A9FC245E700E8E438E157F1EA9315",
+    "Tools/engine-parity-fixtures.tsv.gz": "D8AB169B239E1643A7061740F4040D2045C4322C1D58199F3A911560A0CF3156"
+  },
+  "AdditionalChecks": {
+    "HistoricalParity": "40228 snapshots / 1448208 state fields",
+    "SurfaceRunCheck": "15 scenarios / 7606 assertions",
+    "FlightSettingsCheck": "736 assertions / 114 exact physical round trips",
+    "PreparedTracksCheck": "both profiles, forged/stale/geometry/policy, selected/author warnings"
+  },
+  "EnabledTotals": {
+    "Advances": 97284.0,
+    "HumanAccepted": 114.0,
+    "HumanRejected": 65.0,
+    "BotAccepted": 498.0,
+    "BotSuppressed": 0.0,
+    "Pauses": 16.0
+  },
+  "Cases": [
+    {
+      "Name": "mixed-tricks/Chosen/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "2D1620754A57357ADF3F045937ABB764675361A0BC0A4B3D5E8E1C7D0B5B2912",
+      "DecisionTraceSha256": "D4DBCB3CC79176E567482117DDA1410DF0455DD3FFAC332F6ED02BBFCEBDBA13",
+      "Advances": 5882,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 38.07578762121686,
+      "Winner": 1,
+      "WinnerAt": 32.23144187418666,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.07578762121686,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.03440804327886001
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.23144187418666,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "7EF8C48014565480BCBD3A54EC822C0E72255501509F23E5C2B7A67D44DEA707",
+      "DecisionTraceSha256": "B60D462C4833B2054881300A9CDE84BD71671475D8933CBCC3BE9CB9FBC87B77",
+      "Advances": 6901,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 32,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 43.7365209428013,
+      "Winner": 1,
+      "WinnerAt": 33.015060306786616,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.7365209428013,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.21617881460372154
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.015060306786616,
+          "Collisions": 0,
+          "BoostsEarned": 8,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/Chosen/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "17CD4CA287AA275A9CAD05B9A4A0B0C1B997D682CBA06B0324A53D41325BF86F",
+      "DecisionTraceSha256": "359B926ABC69E4C5193DE220E0C224B2F19796173B17ADFAED3FF54C1953A889",
+      "Advances": 5018,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 28,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 32.93037406733074,
+      "Winner": 1,
+      "WinnerAt": 27.25410628418936,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.93037406733074,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830777
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 27.25410628418936,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.308623203066272
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "FB68CF07522596C4F32271F33260DBFE6022754F3F6D3F84399DC2740CC949C5",
+      "DecisionTraceSha256": "1ACD26032E8003DCAA044E03C0B3714902D0E8CAAABFC58F462DA0030BDE29D1",
+      "Advances": 5951,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 32,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 37.43037406733043,
+      "Winner": 1,
+      "WinnerAt": 29.24635208967002,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 37.43037406733043,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830775
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 29.24635208967002,
+          "Collisions": 0,
+          "BoostsEarned": 3,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.27797093507418047
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/Chosen/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "95189E8899A6D4E6DF1A618800ED7C0E584B55F1DFE9E9398467C1330E0C7DFB",
+      "DecisionTraceSha256": "CA3784B17FDA2603DAA86358251EF142DD5A10F64A4FD1C96B59FBF5AA887C6D",
+      "Advances": 5814,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 38.12083426665314,
+      "Winner": 1,
+      "WinnerAt": 32.37883066747524,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.12083426665314,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.03440804327885974
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.37883066747524,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "A21164E62000C1B76348458B9E4D44F92153BB850FB7ADD550958AB7C27AB0B6",
+      "DecisionTraceSha256": "AC67B10D80DA3D24D90A977E37BFF4C0D91FED3486CD9A77B58CF5E68DCF2AFB",
+      "Advances": 6803,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 32,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 43.73870222648451,
+      "Winner": 1,
+      "WinnerAt": 33.07603919820453,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.73870222648451,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.2
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.07603919820453,
+          "Collisions": 0,
+          "BoostsEarned": 8,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "v56-regression-import/Chosen/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "DAE6B7FAB0B35AE8BCBED20CBB01E0188CE98829336951A27D1BAB44900E827F",
+      "DecisionTraceSha256": "189AAECE72B726CD220EA1AFC6916B8C214928D322749D23E4C0CE1958E4F4E0",
+      "Advances": 5996,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 39.02092416576228,
+      "Winner": 1,
+      "WinnerAt": 33.20904692992137,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 39.02092416576228,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.08166538263919655
+        },
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 33.20904692992137,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.0473358748398694
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "3EB2D28DAAFB545C5C441D2230D95444142FA21A96252BFA7B43C87EF2A92916",
+      "DecisionTraceSha256": "907742715EF8D7CB0FA4E123336438A8C6C851E1045423A684DC6D1D65CC707A",
+      "Advances": 5577,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 38.075787621216826,
+      "Winner": 1,
+      "WinnerAt": 29.5400938300319,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.075787621216826,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.03440804327885994
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 29.5400938300319,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.1846842538400531
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/FastFlip/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "4FE12C35E9C629F1C5D949860FE3E09B9E3B78CE1FDE3303C76CA4BBD54ABBFC",
+      "DecisionTraceSha256": "0C72AEC0E8A825DB8FC9C85B74A2665F0EA9BBACD7198993FFF4FA2E0BFA24C6",
+      "Advances": 6958,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 40,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 43.73652094280132,
+      "Winner": 1,
+      "WinnerAt": 31.57457700252362,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.73652094280132,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.21617881460372174
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 31.57457700252362,
+          "Collisions": 0,
+          "BoostsEarned": 10,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.018543803376671494
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "A3DCE17D56DB53030716520364048FFE9C45D7C298E14078B957D739D6066724",
+      "DecisionTraceSha256": "E562CD4EB0BFE0432B5F180325749DB78ACE69706307CE3C7B986BAA9B07A983",
+      "Advances": 4897,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 32.93037406733067,
+      "Winner": 1,
+      "WinnerAt": 26.626197705391785,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.93037406733067,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830777
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 26.626197705391785,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.3563665966763127
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/FastFlip/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "C41A99AACB6F5CE7F8660FA27F883B4C9E58A274FBD1EAB8E64BB71A05868117",
+      "DecisionTraceSha256": "14A020EDC1EEA9C2ACAA79D60F264B7D086DFD7D52B4F69F1D999DC5D2E846C0",
+      "Advances": 5963,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 40,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 37.43037406733044,
+      "Winner": 1,
+      "WinnerAt": 27.234895696972192,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 37.43037406733044,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830778
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 27.234895696972192,
+          "Collisions": 0,
+          "BoostsEarned": 7,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.33895864465628905
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "4341DF5182F7A153185D0A6A459E400FA26CEF869922658C45D87AD4B47B8B7C",
+      "DecisionTraceSha256": "8B7A4A468FA247FF03DADE5E3CF34CCD2A878E4F36A84914BFFD6C991FB702A7",
+      "Advances": 5645,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 38.12083426665309,
+      "Winner": 1,
+      "WinnerAt": 31.881161451818937,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.12083426665309,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.034408043278859976
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 31.881161451818937,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.03003904985320277
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/FastFlip/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "6D23D1BAAD6E6B6DE7BB3FFF834B7CE3C5D22B2E48F70EE8CF8D19ED8771E587",
+      "DecisionTraceSha256": "FF471ED6CF9C8553C677711D2DFA2CB9BDBE1D5AFDC1501E7DD257D79C82DFD7",
+      "Advances": 6891,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 40,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 43.73870222648467,
+      "Winner": 1,
+      "WinnerAt": 32.17405118118567,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.73870222648467,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.2
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.17405118118567,
+          "Collisions": 0,
+          "BoostsEarned": 10,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.011632059938970775
+        }
+      ]
+    },
+    {
+      "Name": "v56-regression-import/FastFlip/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "77E6C54F523401F145E02F290F51551F40D040F2988233A777990DBE61DADAD3",
+      "DecisionTraceSha256": "E0F2669FD2222E1290505BC433CC7E943621A9C067F105378FE2322328D9FFDA",
+      "Advances": 5691,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 39.02092416576237,
+      "Winner": 1,
+      "WinnerAt": 30.369669882047234,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 39.02092416576237,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.08166538263919665
+        },
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 30.369669882047234,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.2261634398432498
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Novice/2944602636/Lagger/human/5-Linear-30-200-True",
+      "StateTraceSha256": "BEFC6CAF3901DAAB792178FD28A6DD16F2CCE06762E1283EC2D0BD189A7E1600",
+      "DecisionTraceSha256": "A729F004A5F2A01456CA5AEE6E8B27FF4F50FB0317B64CCEBEBC98AC205BCFE8",
+      "Advances": 7907,
+      "HumanAccepted": 67,
+      "HumanRejected": 19,
+      "BotAccepted": 46,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 43.56472038523605,
+      "Winner": 1,
+      "WinnerAt": 36.26784605083628,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.56472038523605,
+          "Collisions": 17,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 36.26784605083628,
+          "Collisions": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.041461502126240994
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Confident/456/Lagger/human/5-Exponential-40-0-False",
+      "StateTraceSha256": "1A2488635339B0668AA1282CD4A8218511E2E08C4A2B30685C3A22D2CF27FB54",
+      "DecisionTraceSha256": "2F26F5563809559945ACF05030223E23F1E080608209F24635FE3748D9846214",
+      "Advances": 5390,
+      "HumanAccepted": 33,
+      "HumanRejected": 32,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 32.96800848143069,
+      "Winner": 1,
+      "WinnerAt": 28.86284173829235,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.96800848143069,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.38722723284046745
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 28.86284173829235,
+          "Collisions": 4,
+          "BoostsEarned": 7,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.3531987101155422
+        }
+      ]
+    }
+  ]
+}

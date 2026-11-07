@@ -59,6 +59,7 @@ namespace FlipRace.Core
                 controller=new StochasticBotController(game);
             }
             else game=RaceSimulation.CreateSolo(package.Track,flight,PartyCamera.Constant,-288.8,1520);
+            RaceSimulation.ConfigureSurfaceRun(game, false);
             HiddenObstacles.ConfigureWarning(game,warnings[configuration]);
             RaceRunner.Press(game,0);RaceRunner.Advance(game,RaceConfig.CountdownDuration);
         }

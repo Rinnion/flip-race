@@ -149,7 +149,7 @@ namespace FlipRace.Presentation
                     double until=Time.realtimeSinceStartupAsDouble+.004;
                     do { proof.Step(1); } while(!proof.Complete&&Time.realtimeSinceStartupAsDouble<until);
                     if(pendingFlightTrack==entry.Package.Track.Id)
-                        SetTrackImportResult(true,"Добавлено: "+entry.Package.Track.Name+". "+reference.ProfileId+": "+proof.Progress);
+                        SetTrackImportResult(true,"Добавлено: "+entry.Package.Track.Name+". "+reference.ProfileId+": "+(proof.Success ? "Проверено без разгона" : proof.Progress));
                     yield return null;
                 }
             }

@@ -1,0 +1,851 @@
+{
+  "Status": "PASS",
+  "BaselineRevision": "3ec4965",
+  "FullReportSha256": "6CC567BC8DAA25C1FF130D6C5492B199818BAAEA0DAD038F388BC08F754ABA8C",
+  "TotalCases": 23,
+  "Totals": {
+    "Advances": 109713.0,
+    "HumanAccepted": 560.0,
+    "HumanRejected": 387.0,
+    "BotAccepted": 554.0,
+    "BotSuppressed": 0.0,
+    "Pauses": 23.0
+  },
+  "StageASourceSha256": {
+    "Assets/Scripts/Core/RaceRunner.cs": "09E101FCF490754FA69B1A51E8475FB07E824639E5E3FC9A8DBF7941F6D2727B",
+    "Assets/Scripts/Core/StochasticBotController.cs": "206B1626A93A961F29A69B126484252133873286F4652C0F047504F5A9FB42DA",
+    "Assets/Scripts/Core/PreparedReferenceProof.cs": "FC803C16A734965150B1F9EF9586FA09454135AF76E6F8FA34864BA65FF09FE8",
+    "Assets/Scripts/Core/RaceSnapshot.cs": "B5143DE723FC599914F4966F8435669A2C74212C75A7AB5AA4FBCB2EB5501079",
+    "Tools/engine-parity-fixtures.tsv.gz": "D8AB169B239E1643A7061740F4040D2045C4322C1D58199F3A911560A0CF3156"
+  },
+  "Cases": [
+    {
+      "Name": "full-long/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "5BA8F092B7586BB798D17181AE689738DE3D4F602FD696BCD0AFE9FDAA99F318",
+      "DecisionTraceSha256": "00CE351C10BA57809502DB9A70408DBB99FB721D29C2517351EFC8C24307E3B6",
+      "Advances": 4982,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 25,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.05000000000046,
+      "Winner": 1,
+      "WinnerAt": 33.05000000000046,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1036,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.05000000000046,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "full-long/FastFlip/Master/0/Constant/idle",
+      "StateTraceSha256": "400FAE3E623B5DB616A80E8D684483B08AE5C94A455F98DD2F454058DF8A25C5",
+      "DecisionTraceSha256": "676AA841E21E7C4AADB251B4F76B1643CEA2976079CB317863ACB61AEAFF0DF0",
+      "Advances": 4780,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 17,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.0500000000005,
+      "Winner": 1,
+      "WinnerAt": 33.0500000000005,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1036,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.0500000000005,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "full-short/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "7229C7E7202579CFBD5A5B3012979C5D484B4DA1379B4E4C8EAC9C9CDA3B42D9",
+      "DecisionTraceSha256": "658F3C80E767ACC03412E1869C769158C57F2626A0C24F8900F912991C3AEC29",
+      "Advances": 4956,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 25,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.050000000000615,
+      "Winner": 1,
+      "WinnerAt": 33.050000000000615,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 3836,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.050000000000615,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "full-short/FastFlip/Master/0/Constant/idle",
+      "StateTraceSha256": "CED84803D9B657A208669B79C578171D78203D938011B1FF8D50B8E50DC8C486",
+      "DecisionTraceSha256": "4FD7A2686526E0C79F30C4CAF55553732C5AA75D40CCCF030EAD95F489849225",
+      "Advances": 4776,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 17,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.050000000000594,
+      "Winner": 1,
+      "WinnerAt": 33.050000000000594,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 3836,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.050000000000594,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "full-flow/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "EF2EF1E528D3813C0D672E92D3A44C8691F3FBE0185696282401E364140DCED2",
+      "DecisionTraceSha256": "52198C6452389C52D2CE7741CA261E0DBB92D78956AC4182EC880E90D70135FE",
+      "Advances": 4912,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 24,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.050000000000786,
+      "Winner": 1,
+      "WinnerAt": 33.050000000000786,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 2886,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.050000000000786,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "full-flow/FastFlip/Master/0/Constant/idle",
+      "StateTraceSha256": "0B8650B851D9C91DBB59B0943F936E0A84D866C4CA72286381D01FE67074CA79",
+      "DecisionTraceSha256": "1854A6C2FB62F05D19BA5DE818C8199334F32728247047F0B6783592F80A603C",
+      "Advances": 4908,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 24,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.05000000000082,
+      "Winner": 1,
+      "WinnerAt": 33.05000000000082,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 2886,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.05000000000082,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "rhythm-cascade/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "4D123CCD85892AA828C1EC082114BF536E03AB2D1B87A7FB88502EEBACFA25E1",
+      "DecisionTraceSha256": "9BC9FE78C30D3DA1B3939FD89BB6A8AAAFC34640AFA1F3F551BA3399332C0906",
+      "Advances": 5634,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 44,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.05000000000045,
+      "Winner": 1,
+      "WinnerAt": 33.05000000000045,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1388,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.05000000000045,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "rhythm-cascade/FastFlip/Master/0/Constant/idle",
+      "StateTraceSha256": "8E1D78595212BA5625E15E6C7D982D41E4D3C5CD53B6FBCF9D596E15F6888AAD",
+      "DecisionTraceSha256": "5F915ADF2BAF772BF315BC9AEBA72D5A329E36899F32B6315A9787A398F27FCF",
+      "Advances": 5237,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 26,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.05000000000045,
+      "Winner": 1,
+      "WinnerAt": 33.05000000000045,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1388,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.05000000000045,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "C266257A490BCE9C76DFAD03771BE2A833BF8A4BA1D6D434521D484265536192",
+      "DecisionTraceSha256": "6E7783454C428E693237B3E252463463AEFB0A33CA36460871EC4610F3AED576",
+      "Advances": 5084,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.05000000000015,
+      "Winner": 1,
+      "WinnerAt": 33.05000000000015,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 2036,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.05000000000015,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Master/0/Constant/idle",
+      "StateTraceSha256": "347BAEFD408AA3DD95E78AA5D53B1ADAAED42830A0C8BDBD2E5C5BE46CCDEFE2",
+      "DecisionTraceSha256": "7F758AC62B2818E73C2AAA2B7CDA0B63705EEFB0614B311758B7C428D26AC001",
+      "Advances": 4960,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.050000000000246,
+      "Winner": 1,
+      "WinnerAt": 33.050000000000246,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 2036,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.050000000000246,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "0F5CE2B6CCA9C8EAECE31C6CDC974BBAC550ABDBFB71703053E406E5AA9203AE",
+      "DecisionTraceSha256": "563ACA6940ED2D89D096DF94830487DA865B7BD73A1EA32A695F564FDBFEE61C",
+      "Advances": 5386,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 32,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.35000000000028,
+      "Winner": 1,
+      "WinnerAt": 33.35000000000028,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1026,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.35000000000028,
+          "Collisions": 0,
+          "BoostsEarned": 8,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/FastFlip/Master/0/Constant/idle",
+      "StateTraceSha256": "14DED8C037EB9D716DF4F27D94B9AAA0E2B6D7C86B8ED6E4F6AE0796F0772298",
+      "DecisionTraceSha256": "2FF0531692FCAA2FD35B06C9756B8C85299D730F684D1196F96D343F11F14064",
+      "Advances": 5409,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 40,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 32.75000000000029,
+      "Winner": 1,
+      "WinnerAt": 32.75000000000029,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1026,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.75000000000029,
+          "Collisions": 0,
+          "BoostsEarned": 10,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-manifestation/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "43A61331F1A563959B5BCF4B8D71A325DF0A3AE8B8FBEA09ED4C4610B44934D2",
+      "DecisionTraceSha256": "C025AE1550132BB1C12925D84FB17A22FF1EEF73D027D3F8F992CDBD726D0813",
+      "Advances": 5154,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 26,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.950000000000706,
+      "Winner": 1,
+      "WinnerAt": 33.950000000000706,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1026,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.950000000000706,
+          "Collisions": 0,
+          "BoostsEarned": 6,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-manifestation/FastFlip/Master/0/Constant/idle",
+      "StateTraceSha256": "90098B85759DAD919F4CB7AF787E76FE8D677D15B998A836DCD8B5E680B8A201",
+      "DecisionTraceSha256": "1CB7F9FF3F020059195D6D98DBA2F0E8732BD0E7EF5B33E977A310EAC30E09F6",
+      "Advances": 5344,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 35,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 33.95000000000066,
+      "Winner": 1,
+      "WinnerAt": 33.95000000000066,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1026,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.95000000000066,
+          "Collisions": 0,
+          "BoostsEarned": 6,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "rethink/Chosen/Master/0/Constant/idle",
+      "StateTraceSha256": "691B900EE362CB63437E1B1C9536D5F2352ED3AA763FCE0919BC8E768BA2C071",
+      "DecisionTraceSha256": "DBE88D46BE2A8392003A2CDE9151D5230E8DCD406C6CA67507ACF60DD4C0B8F5",
+      "Advances": 5224,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 26,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 34.85000000000074,
+      "Winner": 1,
+      "WinnerAt": 34.85000000000074,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1766,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 34.85000000000074,
+          "Collisions": 0,
+          "BoostsEarned": 3,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Novice/2944602636/Constant/human",
+      "StateTraceSha256": "87E083C97FDDF6866D1F919A4AC4217EC62F3C5459B1EE83DEA72040A2AD6136",
+      "DecisionTraceSha256": "D820177124ED6B3B69EFB31F4502A4E614C9DC936AB91D74FB0F9484C60BDBAD",
+      "Advances": 6532,
+      "HumanAccepted": 13,
+      "HumanRejected": 58,
+      "BotAccepted": 46,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 35.90000000000074,
+      "Winner": 1,
+      "WinnerAt": 35.90000000000074,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 1026,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 35.90000000000074,
+          "Collisions": 1,
+          "BoostsEarned": 2,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-manifestation/FastFlip/Confident/456/Lagger/human",
+      "StateTraceSha256": "61972850A1048DD7B1A6ACB70344038D85BC824717E1012CD73C1A084B0B4355",
+      "DecisionTraceSha256": "86708B12CBBC33D2CF031469E3462DE9AC5EAAEFE8D01A91C218DF1C9F15A0C5",
+      "Advances": 7043,
+      "HumanAccepted": 51,
+      "HumanRejected": 35,
+      "BotAccepted": 38,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 42.999999999286985,
+      "Winner": 1,
+      "WinnerAt": 34.45000000000068,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 42.999999999286985,
+          "Collisions": 14,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 34.45000000000068,
+          "Collisions": 1,
+          "BoostsEarned": 6,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "rethink/Chosen/Strong/123/Lagger/human",
+      "StateTraceSha256": "62BDC444FE69237A7B4005AE1FB088D0C89A9B5886D65EED229CDD972D8E9DFE",
+      "DecisionTraceSha256": "E68CCA7F29706861E0822981B0330407AD98B21EE3D9C10D848E45D14148B1B3",
+      "Advances": 6541,
+      "HumanAccepted": 73,
+      "HumanRejected": 7,
+      "BotAccepted": 28,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 40.45000000000047,
+      "Winner": 1,
+      "WinnerAt": 34.850000000000726,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 40.45000000000047,
+          "Collisions": 10,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 34.850000000000726,
+          "Collisions": 0,
+          "BoostsEarned": 3,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "full-flow/FastFlip/Amateur/123/Constant/human",
+      "StateTraceSha256": "88A9501FE21C63C66974C3FF58D416A370761294E2AFB392D281B427F2BC8233",
+      "DecisionTraceSha256": "34856285CFF5A1F439317E771FA71487C474B207C9483A1BC63C395A5177E771",
+      "Advances": 5817,
+      "HumanAccepted": 15,
+      "HumanRejected": 56,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 35.000000000000576,
+      "Winner": 1,
+      "WinnerAt": 35.000000000000576,
+      "Players": [
+        {
+          "Status": 2,
+          "Distance": 2886,
+          "FinishTime": null,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 35.000000000000576,
+          "Collisions": 1,
+          "BoostsEarned": 5,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "solo/Intercepts/Chosen/Lagger/OFF",
+      "StateTraceSha256": "B0248EE4AC7F6041B46E1C53DF4B4CBAB1BBF05F47D7EC847B3F244B6DD695A5",
+      "DecisionTraceSha256": "74234E98AFE7498FB5DAF1F36AC2D78ACC339464F950703B8C019892F982B90B",
+      "Advances": 1982,
+      "HumanAccepted": 67,
+      "HumanRejected": 19,
+      "BotAccepted": 0,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 43.999999999999126,
+      "Winner": 0,
+      "WinnerAt": 43.999999999999126,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.999999999999126,
+          "Collisions": 16,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "solo/Manifestation/FastFlip/Lagger/ON",
+      "StateTraceSha256": "1F2692C2458FE033CA0EBBBB18DFF61EDD7E94CF8422BAA79D5D53EE5C3E1D42",
+      "DecisionTraceSha256": "74234E98AFE7498FB5DAF1F36AC2D78ACC339464F950703B8C019892F982B90B",
+      "Advances": 1576,
+      "HumanAccepted": 43,
+      "HumanRejected": 28,
+      "BotAccepted": 0,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 34.97504413751872,
+      "Winner": 0,
+      "WinnerAt": 34.97504413751872,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 34.97504413751872,
+          "Collisions": 14,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.38702999238472247
+        }
+      ]
+    },
+    {
+      "Name": "party4/Mixed/Chosen/Lagger/ON",
+      "StateTraceSha256": "F683CCFE82EE35FC10C1B4B43B4302DA8D7B14B010C29FF2B7B260B43220856D",
+      "DecisionTraceSha256": "74234E98AFE7498FB5DAF1F36AC2D78ACC339464F950703B8C019892F982B90B",
+      "Advances": 1606,
+      "HumanAccepted": 235,
+      "HumanRejected": 52,
+      "BotAccepted": 0,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 35.62758254028225,
+      "Winner": 3,
+      "WinnerAt": 33.27846814111158,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 34.45799727539768,
+          "Collisions": 8,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.29356089499010823
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 35.62758254028225,
+          "Collisions": 10,
+          "BoostsEarned": 1,
+          "SlowsEarned": 1,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.2815313333243111
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.671840192934084,
+          "Collisions": 6,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.29906221006819916
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.27846814111158,
+          "Collisions": 6,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.304908318200434
+        }
+      ]
+    },
+    {
+      "Name": "legacy/split",
+      "StateTraceSha256": "5D318B1AC5BA9ECCA95EB4C5844CB8432997046A178107F370D5BFF45B2D210A",
+      "DecisionTraceSha256": "74234E98AFE7498FB5DAF1F36AC2D78ACC339464F950703B8C019892F982B90B",
+      "Advances": 1870,
+      "HumanAccepted": 48,
+      "HumanRejected": 117,
+      "BotAccepted": 0,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Elapsed": 41.49999999999929,
+      "Winner": 0,
+      "WinnerAt": 40,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 40,
+          "Collisions": 8,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 41.5,
+          "Collisions": 11,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    }
+  ]
+}

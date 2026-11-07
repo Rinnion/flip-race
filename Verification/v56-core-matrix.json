@@ -1,0 +1,101 @@
+{
+  "report": "v56 final managed Master probe",
+  "stageABase": "c865abe9f1e2366e8a309a83887e78d7a55029fb",
+  "seed": 0,
+  "camera": "Lagger",
+  "outerFrameSeconds": "1/30",
+  "maximumFrames": 1800,
+  "human": "Starts countdown and then has no further input.",
+  "warningSeconds": 0.8,
+  "trackSource": "Built-in Core factory; standalone managed probe.",
+  "settings": {
+    "default": {
+      "ratePercent": 5,
+      "curve": "Linear",
+      "capPercent": 30,
+      "airDecayPercent": 200,
+      "resetOnCollision": true
+    },
+    "preserve": {
+      "ratePercent": 5,
+      "curve": "Linear",
+      "capPercent": 40,
+      "airDecayPercent": 0,
+      "resetOnCollision": false
+    },
+    "pres-exp": {
+      "ratePercent": 5,
+      "curve": "Exponential",
+      "capPercent": 40,
+      "airDecayPercent": 0,
+      "resetOnCollision": false
+    },
+    "decay": {
+      "ratePercent": 5,
+      "curve": "Exponential",
+      "capPercent": 40,
+      "airDecayPercent": 400,
+      "resetOnCollision": true
+    }
+  },
+  "caps": {
+    "masterOff": 13,
+    "masterOn": 32,
+    "otherLevels": 96,
+    "candidateSteps": 640,
+    "requestedHorizon": 1000,
+    "maxForecastSliceSeconds": 0.125
+  },
+  "checks": {
+    "runner": {
+      "assertions": 200157,
+      "stateComparisons": 2365,
+      "offAdvanceSlices": 1250,
+      "onAdvanceSlices": 1091,
+      "perSettingAccepted": 7,
+      "perSettingRejected": 3,
+      "replanBoundaryAssertions": 5
+    },
+    "surface": {
+      "scenarios": 15,
+      "assertions": 7606
+    }
+  },
+  "coreSourceDigest": {
+    "sha256": "73eeb0f041123e53ab1bb5927bf4c89f6898269ebb462fd9299d999ebfe90e02",
+    "input": "Assets/Scripts/Core/*.cs, by filename; lines 'filename lowercaseSha256' joined with LF, UTF-8, no final LF"
+  },
+  "sourceSha256": {
+    "Assets/Scripts/Core/RaceRunner.cs": "09e101fcf490754fa69b1a51e8475fb07e824639e5e3fc9a8dbf7941f6d2727b",
+    "Assets/Scripts/Core/BotRaceController.cs": "a1dbc7d95b228eb341addde6c035e2876e32b3c0afe2ff2e68836015fac58e29",
+    "Assets/Scripts/Core/PreparedReferenceProof.cs": "ff2302e4625e8026f2bb4434c166f06d482213bf2b5eb6ef4b18bcf42116a056",
+    "Assets/Scripts/Core/RaceSimulation.cs": "7c21b6889b0b4c652a0fb4a1b4176e3c97ec7c965603c910234322b212ab8511",
+    "Assets/Scripts/Core/RaceSnapshot.cs": "b5143de723fc599914f4966f8435669a2c74212c75a7ab5aa4fbcb2eb5501079",
+    "Assets/Scripts/Core/StochasticBotController.cs": "241e4e34a6f55e22a466cfce59f9cc530850540f8a430985e1f2f0c0e148a21d",
+    "Assets/Scripts/Core/SurfaceRunSettings.cs": "62a0627dfbe519ac4d07cdc23fd9cf28008c584932c0e363e69497f2296302ce",
+    "Assets/Scripts/Core/TrackCatalog.cs": "fc8edf911a15d5ab7b543c7e96bba68e159a9fc245e700e8e438e157f1ea9315",
+    "Tools/SurfaceRunCheck/Program.cs": "700bda3ce95f9c1b991a024f36c10b9b2b632dab1c2a63e9b40d0e8c736bf9bc",
+    "Tools/StochasticWorldCheck/Program.cs": "7d2cc5eeb044af2d9a2b6ee3b670bd923a1eeb65733d95fca4c3729ad5d8b74c",
+    ".scratch-v56-core/accel/Accel.csproj": "cbd632ee35b7125a216718071b517aef96aae1f6f58abcdf223fc4972f9deec4",
+    ".scratch-v56-core/accel/Program.cs": "514b151e067263e1216ef5e7f2c117744219af604671788306a91eb190e742db"
+  },
+  "timing": "Serial managed run; millisecond values rounded to 0.1ms. A parallel run with the same outcomes had one 75.1ms maximum planning observation. No WebGL inference.",
+  "cases": [
+    {"track":"rhythm-cascade","profile":"Chosen","settings":"default","status":"Finished","finishSeconds":32.648,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0,"suppressedInputs":0,"elapsedWallMs":376,"maxPlanningCallMs":29.1},
+    {"track":"rhythm-cascade","profile":"Chosen","settings":"preserve","status":"Finished","finishSeconds":26.666,"hits":1,"hitIds":["obstacle:rhythm-cascade-m9-gate"],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.4,"suppressedInputs":0,"elapsedWallMs":217,"maxPlanningCallMs":14.4},
+    {"track":"rhythm-cascade","profile":"Chosen","settings":"pres-exp","status":"Finished","finishSeconds":28.123,"hits":1,"hitIds":["obstacle:rhythm-cascade-m9-gate"],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.306,"suppressedInputs":0,"elapsedWallMs":190,"maxPlanningCallMs":12.7},
+    {"track":"rhythm-cascade","profile":"Chosen","settings":"decay","status":"Finished","finishSeconds":32.732,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0,"suppressedInputs":0,"elapsedWallMs":80,"maxPlanningCallMs":4.3},
+    {"track":"rhythm-cascade","profile":"FastFlip","settings":"default","status":"Finished","finishSeconds":31.51,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.042,"suppressedInputs":0,"elapsedWallMs":87,"maxPlanningCallMs":5.1},
+    {"track":"rhythm-cascade","profile":"FastFlip","settings":"preserve","status":"Finished","finishSeconds":25.372,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.4,"suppressedInputs":0,"elapsedWallMs":67,"maxPlanningCallMs":4.6},
+    {"track":"rhythm-cascade","profile":"FastFlip","settings":"pres-exp","status":"Finished","finishSeconds":26.748,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.348,"suppressedInputs":0,"elapsedWallMs":52,"maxPlanningCallMs":3.4},
+    {"track":"rhythm-cascade","profile":"FastFlip","settings":"decay","status":"Finished","finishSeconds":32.448,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.015,"suppressedInputs":0,"elapsedWallMs":62,"maxPlanningCallMs":4.5},
+    {"track":"hidden-intercepts","profile":"Chosen","settings":"default","status":"Finished","finishSeconds":33.015,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0,"suppressedInputs":0,"elapsedWallMs":171,"maxPlanningCallMs":17.8},
+    {"track":"hidden-intercepts","profile":"Chosen","settings":"preserve","status":"Finished","finishSeconds":28.078,"hits":1,"hitIds":["obstacle:hidden-intercepts-s1-g5"],"missedGoalIds":["positive:hidden-intercepts-pair-a-0","positive:hidden-intercepts-landing-0","positive:hidden-intercepts-landing-1","positive:hidden-intercepts-landing-2","positive:hidden-intercepts-air-2"],"slows":0,"finishDashSeconds":0.248,"finalReserve":0.4,"suppressedInputs":0,"elapsedWallMs":240,"maxPlanningCallMs":16.3},
+    {"track":"hidden-intercepts","profile":"Chosen","settings":"pres-exp","status":"Finished","finishSeconds":29.246,"hits":0,"hitIds":[],"missedGoalIds":["positive:hidden-intercepts-pair-a-0","positive:hidden-intercepts-landing-0","positive:hidden-intercepts-pair-a-1","positive:hidden-intercepts-landing-1","positive:hidden-intercepts-landing-2"],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.278,"suppressedInputs":0,"elapsedWallMs":196,"maxPlanningCallMs":13.2},
+    {"track":"hidden-intercepts","profile":"Chosen","settings":"decay","status":"Finished","finishSeconds":33.09,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0,"suppressedInputs":0,"elapsedWallMs":84,"maxPlanningCallMs":6.2},
+    {"track":"hidden-intercepts","profile":"FastFlip","settings":"default","status":"Finished","finishSeconds":31.575,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.019,"suppressedInputs":0,"elapsedWallMs":142,"maxPlanningCallMs":9},
+    {"track":"hidden-intercepts","profile":"FastFlip","settings":"preserve","status":"Finished","finishSeconds":25.519,"hits":0,"hitIds":[],"missedGoalIds":["positive:hidden-intercepts-landing-0","positive:hidden-intercepts-landing-1"],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.4,"suppressedInputs":1,"elapsedWallMs":163,"maxPlanningCallMs":12.1},
+    {"track":"hidden-intercepts","profile":"FastFlip","settings":"pres-exp","status":"Finished","finishSeconds":27.235,"hits":0,"hitIds":[],"missedGoalIds":["positive:hidden-intercepts-landing-0","positive:hidden-intercepts-pair-a-1","positive:hidden-intercepts-landing-1"],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.339,"suppressedInputs":0,"elapsedWallMs":159,"maxPlanningCallMs":9.6},
+    {"track":"hidden-intercepts","profile":"FastFlip","settings":"decay","status":"Finished","finishSeconds":32.215,"hits":0,"hitIds":[],"missedGoalIds":[],"slows":0,"finishDashSeconds":0.25,"finalReserve":0.011,"suppressedInputs":0,"elapsedWallMs":88,"maxPlanningCallMs":6.1}
+  ]
+}

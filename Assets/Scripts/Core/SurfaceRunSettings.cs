@@ -6,6 +6,7 @@ namespace FlipRace.Core
 
     public readonly struct SurfaceRunSettings
     {
+        internal const int MaximumCapPercent = 40;
         public static readonly SurfaceRunSettings Default = new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30);
 
         public int RatePercent { get; }
@@ -21,7 +22,7 @@ namespace FlipRace.Core
             if (ratePercent < 1 || ratePercent > 5) throw new ArgumentOutOfRangeException(nameof(ratePercent));
             if (curve != SurfaceRunCurve.Linear && curve != SurfaceRunCurve.Exponential)
                 throw new ArgumentOutOfRangeException(nameof(curve));
-            if (capPercent != 20 && capPercent != 30 && capPercent != 40)
+            if (capPercent != 20 && capPercent != 30 && capPercent != MaximumCapPercent)
                 throw new ArgumentOutOfRangeException(nameof(capPercent));
             if (airDecayPercent != 0 && airDecayPercent != 50 && airDecayPercent != 100
                 && airDecayPercent != 200 && airDecayPercent != 400)

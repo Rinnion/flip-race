@@ -239,7 +239,12 @@ namespace FlipRace.Presentation
             FlightButton(PartyCameraRect(0),"Постоянный скролл",pendingPartyCamera==PartyCamera.Constant,true,10);
             FlightButton(PartyCameraRect(1),"За последним · без выбывания",pendingPartyCamera==PartyCamera.Lagger,true,10);
             label.wordWrap=true;
-            Text(new Rect(flightPanel.x+16,flightPanel.y+175,flightPanel.width-32,32),!TrackProfileSupported?"Эта трасса поддерживает только Основной. Выбери его в настройках управления.":flightSelection.IsCustom?"Боты доступны только с Основным или Быстрым переворотом. Выбери готовый профиль.":!BotTrackSupported?TrackCatalog.BotSupportMessage(pendingFlightTrack,flightSelection.Settings):"Разгон от бега ВЫКЛ у обоих: эталон бота проверен без разгона. Награды личные.",10,muted);
+            string note = !TrackProfileSupported ? "Эта трасса поддерживает только Основной. Выбери его в настройках управления."
+                : flightSelection.IsCustom ? "Боты доступны только с Основным или Быстрым переворотом. Выбери готовый профиль."
+                : !BotTrackSupported ? TrackCatalog.BotSupportMessage(pendingFlightTrack, flightSelection.Settings)
+                : pendingSurfaceRun ? "С разгоном бот подстраивает прыжки. Мастер тоже может ошибаться."
+                : "Награды личные.";
+            Text(new Rect(flightPanel.x+16,flightPanel.y+175,flightPanel.width-32,32),note,10,muted);
             label.wordWrap=false;DrawModeChoices();DrawFlightApplyFooter();
         }
         void ResetBotRace()
@@ -249,6 +254,7 @@ namespace FlipRace.Presentation
             uint seed=NextBotSeed();
             Game=RaceSimulation.CreateStochasticBotRace(Game.Track,Game.Flight,Game.BotDifficulty,seed,Game.PartyCamera,PartyStartLeft,PartyWindowWidth);
             HiddenObstacles.ConfigureWarning(Game,warning);
+            ConfigureSessionSurfaceRun();
             Game.Players[0].CharacterIndex=hero;Game.Players[1].CharacterIndex=(hero+1)%CharacterRoster.Count;
             InitializeBotController();
         }
@@ -332,7 +338,10 @@ namespace FlipRace.Presentation
             else for(int slot=0;slot<2;slot++)
             {
                 var p=Game.Players[slot];string state=p.Status==PlayerStatus.Eliminated?"Выбыл":p.Status==PlayerStatus.Finished?"Финиш · "+Number(p.FinishTime.Value,2)+" с":!world.View.IsPlayerVisible(slot)?"Впереди →":"+"+Rewards(p)+CoinScore(p);
-                Text(new Rect(arena.x+8,slot==1?field.y-48:field.yMax+8,arena.width-120,22),(slot==0?"Ты":"Бот · "+BotLevelNames[(int)Game.BotDifficulty])+" · "+state,10,accents[slot],true);
+                float statusY = slot == 0 ? field.yMax + 8 : Game.SurfaceRunEnabled ? session.yMin - 22 : field.y - 48;
+                float statusWidth = Game.SurfaceRunEnabled ? arena.width / 2 - 62 : arena.width - 120;
+                Text(new Rect(arena.x+8,statusY,statusWidth,22),(slot==0?"Ты":"Бот · "+BotLevelNames[(int)Game.BotDifficulty])+" · "+state,10,accents[slot],true);
+                DrawSurfaceRunStatus(slot, new Rect(arena.center.x - 46, statusY + 1, 92, 20));
             }
         }
     }

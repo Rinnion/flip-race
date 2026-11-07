@@ -198,6 +198,8 @@ namespace FlipRace.Core
                 + (FinishBoost ? RaceConfig.Speed : ActiveEffect != null ? RaceConfig.Speed * (ActiveEffect.Multiplier - 1) : 0);
             return FinishBoost ? RaceConfig.FinishBoostSpeed
             : RaceConfig.Speed * (ActiveEffect != null ? ActiveEffect.Multiplier : 1); } }
+        internal double MaximumHorizontalSpeed => RaceConfig.FinishBoostSpeed
+            + (SurfaceRunEnabled ? RaceConfig.Speed * SurfaceRunSettings.Cap : 0);
         // Actual served motion/stops, used to stabilize analytically identical
         // finishes. Awarded but unserved boost never changes FinishTime.
         public int CompletedBoosts;
@@ -568,7 +570,6 @@ namespace FlipRace.Core
         public static void ConfigureSurfaceRun(GameState game, bool enabled, SurfaceRunSettings settings)
         {
             if (game == null) throw new ArgumentNullException(nameof(game));
-            if (enabled && game.IsBot) throw new InvalidOperationException("Surface running is unavailable for bot races.");
             if (game.Phase != "ready" && game.Phase != "finished")
                 throw new InvalidOperationException("Surface running is fixed for an attempt.");
             if (settings.RatePercent == 0) throw new ArgumentOutOfRangeException(nameof(settings));

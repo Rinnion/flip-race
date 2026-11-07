@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -16,7 +17,7 @@ static class Program
     static readonly SurfaceRunCurve[] Curves = { SurfaceRunCurve.Linear, SurfaceRunCurve.Exponential };
     static readonly SurfaceRunSettings ExpectedDefault = new(5, SurfaceRunCurve.Linear, 30, 200, true);
     static readonly SurfaceRunSettings Edited = new(2, SurfaceRunCurve.Exponential, 40, 50, false);
-    static int checks, cases;
+    static int checks, cases, botSettingApplies;
     static object Call(object ui, string method, params object[] args) => ui.GetType().GetMethod(method, Private).Invoke(ui, args);
     static object Field(object ui, string name) => ui.GetType().GetField(name, Private).GetValue(ui);
     static void Set(object ui, string name, object value) => ui.GetType().GetField(name, Private).SetValue(ui, value);
@@ -42,6 +43,12 @@ static class Program
         Call(ui, "ConfigureSessionSurfaceRun"); Set(ui, "selectedTrackId", ui.Game.Track.Id); Call(ui, "Measure"); return ui;
     }
     static void Open(FlipRaceGame ui) { Call(ui, "OpenTracks"); Check(ui.FlightMenuPage == 0, "real root menu opened"); }
+    static void Tick(FlipRaceGame ui, double dt = 0)
+    {
+        Clock.frameCount++;
+        Clock.realtimeSinceStartupAsDouble += dt;
+        Call(ui, "Update");
+    }
     static void OpenSurfaceRun(FlipRaceGame ui)
     {
         Click(ui, ui.SurfaceRunMenuRect);
@@ -85,6 +92,12 @@ static class Program
         Click(ui, ui.SurfaceRunResetRect(target.ResetOnCollision));
         Check(Matches(ui.PendingSurfaceRunSettings, target) && ui.PendingSurfaceRun == enabled, "reset click changes only collision reset");
     }
+    static IEnumerable<SurfaceRunSettings> AllSettings()
+    {
+        foreach (int decay in AirDecayChoices) foreach (bool reset in ResetChoices) foreach (var curve in Curves)
+            for (int rate = 1; rate <= 5; rate++) for (int cap = 20; cap <= 40; cap += 10)
+                yield return new SurfaceRunSettings(rate, curve, cap, decay, reset);
+    }
     static void CheckSurfaceRunHelp(FlipRaceGame ui)
     {
         string[] expectedAir = { "В воздухе запас сохраняется.", "В воздухе −2,5 п.п./с.", "В воздухе −5 п.п./с.", "В воздухе −10 п.п./с.", "В воздухе −20 п.п./с." };
@@ -117,19 +130,83 @@ static class Program
         };
         Check(expectedMode && !ui.BotEnabled, "actual menu applied requested human mode");
     }
+    static void BotMode(FlipRaceGame ui)
+    {
+        Open(ui); Click(ui, ui.ViewMenuButtonRect); Click(ui, ui.BotMenuButtonRect); Apply(ui);
+    }
+    static void CheckBotSettings(FlipRaceGame ui, bool enabled, SurfaceRunSettings settings)
+    {
+        Check(ui.BotEnabled && ui.Game.Players.Length == 2 && ui.SurfaceRunChoice == enabled
+            && ui.Game.SurfaceRunEnabled == enabled && Matches(ui.Game.SurfaceRunSettings, settings)
+            && ui.Game.Players.All(p => p.SurfaceRunEnabled == enabled && Matches(p.SurfaceRunSettings, settings)),
+            "BOT and both players receive the exact chosen settings and ON/OFF state");
+    }
+    static void BotResultFixture(FlipRaceGame ui)
+    {
+        ui.Game.Phase = "finished";
+        foreach (var p in ui.Game.Players) { p.Status = PlayerStatus.Finished; p.FinishTime = 1; }
+        Tick(ui);
+    }
+    static void RetryBot(FlipRaceGame ui, bool enabled)
+    {
+        BotResultFixture(ui);
+        uint seed = ui.BotAttemptSeed;
+        long sequence = ui.BotAttemptSequenceIndex;
+        Call(ui, "Pointer", ui.BotRetryRect.center);
+        CheckBotSettings(ui, enabled, Edited);
+        Check(ui.Game.Phase == "countdown" && ui.BotAttemptSequenceIndex == sequence + 1 && ui.BotAttemptSeed != seed
+            && ui.Game.Players.All(p => p.SurfaceRunReserve == 0), "BOT retry starts with a new seed and zero reserves");
+    }
+    static void CheckBotSurfaceRun(FlipRaceGame ui)
+    {
+        BotMode(ui); CheckBotSettings(ui, true, Edited);
+        Open(ui); OpenSurfaceRun(ui); CheckSurfaceRunTargets(ui, (Rect)Field(ui, "flightPanel"));
+        Check(ui.PendingSurfaceRun && Matches(ui.PendingSurfaceRunSettings, Edited), "BOT menu opens with the previously chosen settings");
+        ChooseSurfaceRun(ui, ExpectedDefault); Click(ui, ui.SurfaceRunToggleRect);
+        Back(ui); Back(ui); CheckBotSettings(ui, true, Edited);
+
+        foreach (var settings in AllSettings())
+        {
+            Open(ui); OpenSurfaceRun(ui); ChooseSurfaceRun(ui, settings); Apply(ui);
+            CheckBotSettings(ui, true, settings);
+            botSettingApplies++;
+        }
+        Open(ui); OpenSurfaceRun(ui); ChooseSurfaceRun(ui, Edited); Apply(ui);
+        Tick(ui); Call(ui, "Pointer", ui.BotStartRect.center);
+        Check(ui.Game.Phase == "countdown", "BOT start via the actual pointer starts countdown");
+        Tick(ui);
+        for (int frame = 0; frame < 40 && ui.Game.Phase == "countdown"; frame++) Tick(ui, .1);
+        Tick(ui, .2);
+        Check(ui.Game.Phase == "racing" && ui.Game.Players.All(p => p.SurfaceRunReserve > 0 && p.CurrentSpeed > RaceConfig.Speed),
+            "actual Update gives the human and bot reserve and increased speed");
+        var active = ui.Game;
+        Call(ui, "OpenTracks"); Call(ui, "ApplyFlightChoice");
+        Check(ui.FlightMenuPage == -1 && ReferenceEquals(active, ui.Game), "BOT cannot change settings mid-attempt");
+        CheckBotSettings(ui, true, Edited);
+        RetryBot(ui, true);
+
+        BotResultFixture(ui);
+        Open(ui); OpenSurfaceRun(ui); Click(ui, ui.SurfaceRunToggleRect); Apply(ui);
+        CheckBotSettings(ui, false, Edited);
+        RetryBot(ui, false);
+        BotResultFixture(ui);
+        HumanMode(ui, 0);
+        Check(ui.SoloEnabled && !ui.Game.SurfaceRunEnabled && Matches(ui.Game.SurfaceRunSettings, Edited), "return from BOT keeps OFF and all options");
+        Open(ui); OpenSurfaceRun(ui); Click(ui, ui.SurfaceRunToggleRect); Apply(ui);
+        Check(ui.Game.SurfaceRunEnabled && Matches(ui.Game.SurfaceRunSettings, Edited), "re-enabling after BOT restores the same settings");
+    }
     static void Run(int preset, int w, int h, float dpr)
     {
         cases++; var ui = NewUi(preset, w, h, dpr);
         Check(ui.SurfaceRunChoice && ui.Game.SurfaceRunEnabled && ui.Game.Players.All(p => p.SurfaceRunEnabled), "human default ON");
         Check(Matches(ui.Game.SurfaceRunSettings, ExpectedDefault), "human default is 5/linear/30/200/reset ON");
+        BotMode(ui); CheckBotSettings(ui, true, ExpectedDefault); HumanMode(ui, 2);
         CheckSurfaceRunHelp(ui);
         Open(ui); Rect entry = ui.SurfaceRunMenuRect, panel = (Rect)Field(ui, "flightPanel"), apply = (Rect)Field(ui, "flightApply");
         Check(entry.height == 44 && Includes(panel, entry), "44px root entry inside panel");
         Check(!entry.Overlaps(apply) && !entry.Overlaps((Rect)Field(ui, "flightTracks")) && panel.yMax <= h, "entry doesn't overlap track/apply or clip viewport");
         OpenSurfaceRun(ui); CheckSurfaceRunTargets(ui, panel);
-        foreach (int decay in AirDecayChoices) foreach (bool reset in ResetChoices) foreach (var curve in Curves)
-            for (int rate = 1; rate <= 5; rate++) for (int cap = 20; cap <= 40; cap += 10)
-                ChooseSurfaceRun(ui, new(rate, curve, cap, decay, reset));
+        foreach (var settings in AllSettings()) ChooseSurfaceRun(ui, settings);
         ChooseSurfaceRun(ui, Edited);
         Click(ui, ui.SurfaceRunToggleRect);
         Check(!ui.PendingSurfaceRun && Matches(ui.PendingSurfaceRunSettings, Edited), "global OFF does not change any option");
@@ -153,14 +230,7 @@ static class Program
             HumanMode(ui, mode);
             Check(ui.Game.SurfaceRunEnabled && ui.Game.Players.All(p => p.SurfaceRunEnabled && Matches(p.SurfaceRunSettings, Edited)), "ON and active settings copied to all human modes");
         }
-        Open(ui); Click(ui, ui.ViewMenuButtonRect); Click(ui, ui.BotMenuButtonRect); Apply(ui);
-        Check(ui.BotEnabled && !ui.Game.SurfaceRunEnabled && ui.SurfaceRunChoice && ui.Game.Players.All(p => !p.SurfaceRunEnabled), "BOT forced OFF retains human ON");
-        Open(ui); Click(ui, ui.SurfaceRunMenuRect);
-        Check(ui.FlightMenuPage == 0 && ui.PendingSurfaceRun && Matches(ui.PendingSurfaceRunSettings, Edited), "BOT cannot edit remembered human choice");
-        Back(ui);
-        Call(ui, "ResetBotRace"); Check(!ui.Game.SurfaceRunEnabled && ui.SurfaceRunChoice, "BOT retry stays OFF");
-        HumanMode(ui, 0);
-        Check(ui.SoloEnabled && ui.Game.SurfaceRunEnabled && Matches(ui.Game.SurfaceRunSettings, Edited), "return from BOT restores ON and settings");
+        CheckBotSurfaceRun(ui);
         RaceSimulation.Press(ui.Game, 0); RaceSimulation.Advance(ui.Game, 3.1); RaceSimulation.Advance(ui.Game, .4);
         Check(ui.Game.Players[0].SurfaceRunReserve > 0, "actual running gains reserve");
         var active = ui.Game; Call(ui, "OpenTracks"); Check(ui.FlightMenuPage == -1 && ReferenceEquals(active, ui.Game), "cannot open menu mid-race");
@@ -176,7 +246,7 @@ static class Program
             foreach (int preset in new[] { FlightSettingsStore.ChosenPresetIndex, FlightSettingsStore.FastFlipPresetIndex })
                 foreach (var size in new[] { (568,320), (800,360), (960,432), (1280,800) })
                     foreach (float dpr in new[] { 1f, 2.5f, 3f }) Run(preset, size.Item1, size.Item2, dpr);
-            Console.WriteLine(JsonSerializer.Serialize(new { status = "PASS", checks, cases, scope = "Production menu/apply/cancel/mode/retry methods with native environment aliases. Retry fixture forces finished phase. No rendering or physical touchscreen claim." })); return 0;
+            Console.WriteLine(JsonSerializer.Serialize(new { status = "PASS", checks, cases, botSettingApplies, scope = "Production menu/apply/cancel/mode/retry and Update with native environment aliases. Retry fixtures force finished phase. No rendering or physical touchscreen claim." })); return 0;
         }
         catch (Exception error) { Console.Error.WriteLine(error); return 1; }
     }

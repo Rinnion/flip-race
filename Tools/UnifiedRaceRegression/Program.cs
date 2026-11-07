@@ -192,11 +192,17 @@ static partial class Program
     }
 
     static CaseResult BotCase(Track track, FlightSettings flight, BotDifficulty difficulty, uint seed,
-        PartyCamera camera, bool scriptedHuman)
+        PartyCamera camera, bool scriptedHuman, SurfaceRunSettings? surface = null)
     {
         string name = $"{track.Id}/{ProfileName(flight)}/{difficulty}/{seed}/{camera}/{(scriptedHuman ? "human" : "idle")}";
         var live = RaceSimulation.CreateStochasticBotRace(track, flight, difficulty, seed, camera);
         var replay = RaceSimulation.CreateStochasticBotRace(track, flight, difficulty, seed, camera);
+        if (surface.HasValue)
+        {
+            name += $"/{surface.Value.RatePercent}-{surface.Value.Curve}-{surface.Value.CapPercent}-{surface.Value.AirDecayPercent}-{surface.Value.ResetOnCollision}";
+            RaceSimulation.ConfigureSurfaceRun(live, true, surface.Value);
+            RaceSimulation.ConfigureSurfaceRun(replay, true, surface.Value);
+        }
         using var trace = new Trace(name, live, replay);
         var bot = new StochasticBotController(live) { Observer = trace.Bot };
         trace.Human(0);
@@ -214,6 +220,29 @@ static partial class Program
         if (scriptedHuman)
             Require(result.HumanAccepted > 1 && result.HumanRejected > 1,
                 $"{name}: incomplete human inputs ({result.HumanAccepted} accepted, {result.HumanRejected} rejected)");
+        if (surface.HasValue)
+        {
+            Require(live.Players.All(p => p.SurfaceRunEnabled && p.SurfaceRunSettings.Equals(surface.Value)),
+                name + ": selected settings changed");
+            double overrun = StochasticBotController.MaxForecastSlice
+                * (RaceConfig.FinishBoostSpeed + RaceConfig.Speed * surface.Value.CapPercent / 100d);
+            double limit = StochasticBotController.MaxHorizonDistance;
+            const double tolerance = 2e-7;
+            Require(bot.ForecastHorizonViolations == 0 && bot.ForecastObservations == bot.ForecastSteps
+                && bot.MaximumRequestedHorizon <= limit + tolerance
+                && bot.MaximumTrialHorizon <= limit + overrun + tolerance
+                && bot.MaximumTrialOvershoot <= overrun + tolerance, name + ": forecast exceeded bounded horizon");
+            Require(live.Players[1].Status == PlayerStatus.Finished, name + ": accelerated bot did not finish");
+            foreach (var decision in bot.Decisions)
+            {
+                bool obstacle = decision.Kind == BotOpportunityKind.Obstacle;
+                double probability = obstacle ? bot.Settings.HitProbability : bot.Settings.CollectProbability;
+                string intent = obstacle ? (decision.Roll < probability ? "hit" : "avoid")
+                    : (decision.Roll < probability ? "collect" : "skip");
+                Require(decision.Probability == probability && decision.Intent == intent,
+                    name + ": acceleration changed stochastic intention rule");
+            }
+        }
         return result;
     }
 
@@ -276,14 +305,19 @@ static partial class Program
 
     static int Main(string[] args)
     {
-        if (args.Length is < 2 or > 3)
+        bool surfaceMode = args.Length >= 3 && args[2] == "--surface";
+        if (args.Length < 2 || args.Length > (surfaceMode ? 4 : 3))
         {
-            Console.Error.WriteLine("Usage: UnifiedRaceRegression <track-directory> <report.json> [baseline.json]");
+            Console.Error.WriteLine("Usage: UnifiedRaceRegression <track-directory> <report.json> [baseline.json | --surface [import.json]]");
             return 2;
         }
         try
         {
             var entries = Install(args[0]);
+#if !BASELINE
+            if (surfaceMode)
+                return StageB(entries, args[1], args.Length == 4 ? args[3] : null);
+#endif
             using var baseline = args.Length == 3 ? JsonDocument.Parse(File.ReadAllText(args[2])) : null;
             var expected = baseline?.RootElement.GetProperty("Cases").EnumerateArray()
                 .ToDictionary(c => c.GetProperty("Name").GetString());

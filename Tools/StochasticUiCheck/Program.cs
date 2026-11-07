@@ -24,6 +24,7 @@ static class Program
     static void CheckNextSelection(FlipRaceGame ui)
     {
         Check(ui.Game.StochasticBot!=null&&ui.Game.BotPlan==null,"active bot uses immutable stochastic settings with no whole tape");
+        Check(!ui.Game.SurfaceRunEnabled,"historical route and timing checks use an explicitly OFF session");
         if(!Models.ContainsKey(ui)){Models.Add(ui,0);Seeds.Add(ui,new HashSet<uint>());}
         long sequence=++Models[ui];uint seed=ExpectedSeed(ui.BotSessionSeed,sequence);
         Check(ui.BotAttemptSequenceIndex==sequence&&ui.BotAttemptSeed==seed&&ui.Game.StochasticBot.Seed==seed,"actual Apply/Retry uses session+monotonic sequence mix");
@@ -82,7 +83,15 @@ static class Program
     }
     static void Enter(FlipRaceGame ui,int track,int level,PartyCamera camera)
     {
-        Call(ui,"OpenTracks");Check(ui.FlightMenuPage==0,"OpenTracks real menu");Call(ui,"MeasureFlightMenu");Click(ui,((Rect)Field(ui,"flightTracks")).center);Check(ui.FlightMenuPage==4,"full-track list");Click(ui,((Rect)Call(ui,"FullTrackRect",track)).center);Click(ui,((Rect)Field(ui,"flightBack")).center);Check(ui.FlightMenuPage==0,"track selected returns menu");Click(ui,ui.ViewMenuButtonRect.center);Click(ui,ui.BotMenuButtonRect.center);Check(ui.FlightMenuPage==8,"independent BOT route");
+        Call(ui,"OpenTracks");Check(ui.FlightMenuPage==0,"OpenTracks real menu");
+        if (ui.PendingSurfaceRun)
+        {
+            Click(ui, ui.SurfaceRunMenuRect.center);
+            Click(ui, ui.SurfaceRunToggleRect.center);
+            Click(ui, ((Rect)Field(ui, "flightBack")).center);
+            Check(ui.FlightMenuPage == 0 && !ui.PendingSurfaceRun, "real menu selects OFF before the historical bot fixtures");
+        }
+        Call(ui,"MeasureFlightMenu");Click(ui,((Rect)Field(ui,"flightTracks")).center);Check(ui.FlightMenuPage==4,"full-track list");Click(ui,((Rect)Call(ui,"FullTrackRect",track)).center);Click(ui,((Rect)Field(ui,"flightBack")).center);Check(ui.FlightMenuPage==0,"track selected returns menu");Click(ui,ui.ViewMenuButtonRect.center);Click(ui,ui.BotMenuButtonRect.center);Check(ui.FlightMenuPage==8,"independent BOT route");
         for(int i=0;i<5;i++)Check(Inside(ui.BotDifficultyRect(i),(Rect)Field(ui,"flightPanel"))&&ui.BotDifficultyRect(i).height>=44,"all five visible level choices");
         Click(ui,ui.BotDifficultyRect(level).center);Click(ui,ui.PartyCameraRect((int)camera).center);Apply(ui);Devices.Clear();Tick(ui);
         Check(ui.BotEnabled&&!ui.SoloEnabled&&!ui.PartyEnabled&&ui.Game.Players.Length==2,"isolated human+bot");Check(ui.Game.Phase=="ready"&&!ui.Game.Players[0].Ready&&ui.Game.Players[1].Ready,"bot auto ready, human awaits start");Check(ui.Game.BotDifficulty==(BotDifficulty)level&&ui.Game.Track.Id==RaceTracks.GetAt(track).Id&&ui.Game.PartyCamera==camera,"actual menu applies track level camera");Check(ui.Game.Players[0].CharacterIndex!=ui.Game.Players[1].CharacterIndex,"distinct bot identity");Check(ui.BotInputCursor==0,"new choice clean cursor");CheckNextSelection(ui);setups++;

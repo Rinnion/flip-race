@@ -25,7 +25,7 @@ namespace FlipRace.Core
             if(!Package.TryGetReference(flight,out var r))return "Для этого управления нет подготовленного маршрута. Доступны человеческие режимы.";
             if(!proofs.TryGetValue(r.ProfileId,out var p)||!p.Complete)return "Проверяем маршрут и Мастера. Пока доступны человеческие режимы.";
             if(!p.Success)return "Бот не допущен: "+p.Failure+". Карта доступна для людей.";
-            return HasProof(flight)?"Маршрут и Мастер проверены.":"Содержимое трассы изменилось после проверки. Бот недоступен.";
+            return HasProof(flight)?"Маршрут и Мастер проверены без разгона.":"Содержимое трассы изменилось после проверки. Бот недоступен.";
         }
     }
 

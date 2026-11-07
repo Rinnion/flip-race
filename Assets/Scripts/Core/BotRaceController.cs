@@ -43,9 +43,8 @@ namespace FlipRace.Core
             if (player.Status != PlayerStatus.Running || cursor >= distances.Length) return false;
             double gap = distances[cursor] - player.Distance;
             if (gap <= 2e-7) return true;
-            // 440 is the maximum speed of the effects supported by legacy tapes.
             step = player.Recovering > 0 ? Math.Min(step, player.Recovering)
-                : Math.Min(step, Math.Max(1e-9, gap / RaceConfig.FinishBoostSpeed));
+                : Math.Min(step, Math.Max(1e-9, gap / player.MaximumHorizontalSpeed));
             return false;
         }
 

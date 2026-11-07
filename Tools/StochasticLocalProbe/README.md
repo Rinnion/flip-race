@@ -1,5 +1,7 @@
 # Local stochastic controller targeted checks
 
+These historical schedules exercise acceleration OFF. In 5.6, accelerated execution is checked by [UnifiedRaceRegression](../UnifiedRaceRegression/README.md) in its `--surface` mode and StochasticWorldCheck in its `--runner` mode; see the exact commands in those instructions and [the Core report](../../Verification/v56-core.md). With acceleration ON the Master candidate cap is 32, the maximum supported speed is 528, and the global transient overrun bound is 66. OFF retains the 13-candidate schedule and per-run 440/55 bounds described below. Both sources execute through the common RaceRunner.
+
 Run from the Unity repository:
 
     dotnet run --project Tools/StochasticLocalProbe/StochasticLocalProbe.csproj -- --master-variation

@@ -4,6 +4,8 @@ Run `./Tools/StochasticUiCheck/Run.ps1` from the Unity project, after the Core/U
 
 The check executes actual production Update/Pointer/menu/measure methods with only existing native environment seams (Screen/Input/Time/Prefs/DPR/selection texture acquisition). It covers 1200 setup layouts, 48 viewport/profile/camera input cases, custom gating, legacy modes, deterministic session/attempt seeds and no draws on menu/pause/resize/countdown. Explicit synthetic terminal fixtures exercise repeated attempts; same-attempt factory fixtures isolate repeated human input. Five actual full UI Update races exercise the live controller, both cameras, Master and a lower level. Diagnostics are inspected from their actual managed telemetry builder. Requested and observed trial horizons are separate assertions with 2e-7 numerical tolerance.
 
+The fixture explicitly selects surface acceleration OFF through the menu to preserve the original route and timing checks. `Tools/SurfaceRunUiCheck` covers accelerated BOT setup and live Update.
+
 This does not establish native rendering, browser performance or physical touch quality. Historical BotUi/BotDiversityUi evidence is unchanged.
 ## Per-frame CPU instrumentation
 

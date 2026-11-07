@@ -111,7 +111,7 @@ static class Program
     {
         context = "runner scheduled input, acceleration=" + acceleration;
         var track = RaceTracks.Get(TracksHidden.InterceptsId);
-        var race = RaceSimulation.CreateParty(track, FlightPresets.Chosen, 2, PartyCamera.Lagger, -288.8, 1520);
+        var race = RaceSimulation.CreateParty(track, FlightPresets.FastFlip, 2, PartyCamera.Lagger, -288.8, 1520);
         var settings = new SurfaceRunSettings(3, SurfaceRunCurve.Exponential, 40, 50, false);
         RaceSimulation.ConfigureSurfaceRun(race, acceleration, settings);
         HiddenObstacles.ConfigureWarning(race, .6);
@@ -141,6 +141,22 @@ static class Program
         Need(race.Phase == "finished" && race.HiddenObstacles.Count > 0, "hidden objects and finish exercised");
         Need(input.Accepted > 0 && input.Rejected > 0, "both command results exercised");
         Console.WriteLine($"PASS acceleration={acceleration}, advances={input.Advances}, accepted={input.Accepted}, rejected={input.Rejected}");
+    }
+
+    static void RetimeAcrossDecision()
+    {
+        context = "accelerated replan edge";
+        const double nextLead = 200;
+        Need(StochasticBotController.PreserveDecisionInterval(212, 188, nextLead) == 212,
+            "cannot emit a reference before a replan that would see it again");
+        Need(StochasticBotController.PreserveDecisionInterval(188, 212, nextLead) == 188,
+            "cannot delay a reference beyond a replan that would omit it");
+        Need(StochasticBotController.PreserveDecisionInterval(196, 188, nextLead) == 188,
+            "may retime before the same replan");
+        Need(StochasticBotController.PreserveDecisionInterval(212, 204, nextLead) == 204,
+            "may retime after the same replan");
+        Need(StochasticBotController.PreserveDecisionInterval(200 - 1e-7, 199, nextLead) == 200 - 1e-7,
+            "decision edge tolerance is part of the replan boundary");
     }
     sealed class Spec
     {
@@ -297,6 +313,7 @@ static class Program
         {
             ScheduledReplay(false);
             ScheduledReplay(true);
+            RetimeAcrossDecision();
             Console.WriteLine($"PASS {checks} assertions, {immediateSnapshots} state comparisons");
             return 0;
         }

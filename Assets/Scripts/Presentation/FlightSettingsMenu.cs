@@ -18,7 +18,7 @@ namespace FlipRace.Presentation
         public SurfaceRunSettings PendingSurfaceRunSettings { get { return pendingSurfaceRunSettings; } }
         public Rect SurfaceRunMenuRect { get { MeasureFlightMenu(); float col = (flightPanel.width - 48) / 2; return new Rect(flightPanel.x + 32 + col, flightPanel.y + 192, col, 44); } }
         public Rect SurfaceRunToggleRect { get { MeasureFlightMenu(); return surfaceRunToggle; } }
-        void ConfigureSessionSurfaceRun() { RaceSimulation.ConfigureSurfaceRun(Game, !Game.IsBot && surfaceRunChoice, surfaceRunSettings); }
+        void ConfigureSessionSurfaceRun() { RaceSimulation.ConfigureSurfaceRun(Game, surfaceRunChoice, surfaceRunSettings); }
         Rect SurfaceRunLabelRect(int row)
         { return new Rect(flightPanel.x + 16, flightPanel.y + 47 + row * 46, 114, 44); }
         Rect SurfaceRunOptionRect(int row, int option, int count)
@@ -41,7 +41,6 @@ namespace FlipRace.Presentation
 
         void SurfaceRunPointer(Vector2 p)
         {
-            if (pendingBot) return;
             if (SurfaceRunToggleRect.Contains(p)) { pendingSurfaceRun = !pendingSurfaceRun; return; }
             var settings = pendingSurfaceRunSettings;
             for (int rate = 1; rate <= 5; rate++)
@@ -280,7 +279,7 @@ namespace FlipRace.Presentation
             if (flightPage == 0)
             {
                 if (SurfaceRunMenuRect.Contains(p))
-                { if (!pendingBot) { flightPage = SurfaceRunPage; BlockGameplayInput(); } return; }
+                { flightPage = SurfaceRunPage; BlockGameplayInput(); return; }
                 if (flightChosen.Contains(p)) { flightSelection.SelectPreset(FlightSettingsStore.ChosenPresetIndex); return; }
                 if (flightFastFlip.Contains(p)) { flightSelection.SelectPreset(FlightSettingsStore.FastFlipPresetIndex); return; }
                 if (flightCustom.Contains(p)) { flightSelection.SelectCustom(); flightPage = 1; BlockGameplayInput(); return; }
@@ -303,7 +302,6 @@ namespace FlipRace.Presentation
                 Game=RaceSimulation.CreateStochasticBotRace(Game.Track,flightSelection.Settings,pendingBotDifficulty,seed,pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
                 Game.Players[0].CharacterIndex=previousSelection.Players[0].CharacterIndex;
                 Game.Players[1].CharacterIndex=(Game.Players[0].CharacterIndex+1)%CharacterRoster.Count;
-                InitializeBotController();
             }
             else if (pendingSolo)
             {
@@ -322,6 +320,7 @@ namespace FlipRace.Presentation
             surfaceRunSettings = pendingSurfaceRunSettings;
             ConfigureSessionSurfaceRun();
             HiddenObstacles.ConfigureWarning(Game, pendingHiddenWarning);
+            if (BotEnabled) InitializeBotController();
             sharedField = pendingSharedField; sharedAdjacent = pendingSharedAdjacent; splitGhost = pendingSplitGhost && !sharedField; MigrateRetiredSharedHeight();
             pendingFlightTrack = Game.Track.Id;
             activeCustomFlight = flightSelection.IsCustom; activeFlightPreset = flightSelection.PresetIndex;
@@ -412,10 +411,9 @@ namespace FlipRace.Presentation
                 "Выбрать трассу  ›", 9, muted, false, TextAnchor.MiddleCenter);
             var run = pendingSurfaceRunSettings;
             string curveName = run.Curve == SurfaceRunCurve.Linear ? "линейный" : "плавный";
-            FlightButton(SurfaceRunMenuRect, pendingBot ? "Разгон от бега · ВЫКЛ\nБот: эталон без разгона"
-                : "Разгон от бега · " + (pendingSurfaceRun ? "ВКЛ  ›" : "ВЫКЛ  ›") + "\n"
+            FlightButton(SurfaceRunMenuRect, "Разгон от бега · " + (pendingSurfaceRun ? "ВКЛ  ›" : "ВЫКЛ  ›") + "\n"
                     + (pendingSurfaceRun ? run.RatePercent + "% базы/с · " + curveName + " · до +" + run.CapPercent + "%" : "Настроить или включить"),
-                !pendingBot && pendingSurfaceRun, !pendingBot, 10);
+                pendingSurfaceRun, true, 10);
             DrawFlightApplyFooter();
         }
         void DrawViewChoices()
@@ -479,7 +477,8 @@ namespace FlipRace.Presentation
         void DrawFlightApplyFooter()
         {
             string restriction = FlightApplyRestriction();
-            string note = pendingBot && CanApplyFlight ? "Разгон от бега ВЫКЛ: эталон бота без разгона" : restriction.Length != 0 ? restriction
+            string note = restriction.Length != 0 ? restriction
+                : pendingBot ? "Разгон от бега " + (pendingSurfaceRun ? "ВКЛ" : "ВЫКЛ") + " у обоих"
                 : RaceTracks.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : pendingSurfaceRun ? "Разгон от бега ВКЛ · управление сохраняется" : Number(RaceTracks.Get(pendingFlightTrack).Length / RaceConfig.Speed, 1) + " сек · управление сохраняется"
                 : "Участок: " + PendingFlightTrackName();
             label.wordWrap = true;

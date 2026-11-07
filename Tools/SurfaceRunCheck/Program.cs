@@ -431,8 +431,13 @@ static class Program
         Near(off.Players[0].SurfaceRunReserve, 0, "off has no airborne reserve");
         bool rejected = false; try { RaceSimulation.ConfigureSurfaceRun(off, true); } catch (InvalidOperationException) { rejected = true; } Check(rejected, "attempt immutable");
         var bot = RaceSimulation.CreateStochasticBotRace(RaceTracks.Get(TracksRhythm.CascadeId), FlightPresets.Chosen, BotDifficulty.Master, 1u);
-        rejected = false; try { RaceSimulation.ConfigureSurfaceRun(bot, true, custom); } catch (InvalidOperationException) { rejected = true; }
-        Check(rejected && !bot.SurfaceRunEnabled && Array.TrueForAll(bot.Players, p => !p.SurfaceRunEnabled), "bot on rejected for both participants");
+        RaceSimulation.ConfigureSurfaceRun(bot, true, custom);
+        Check(bot.SurfaceRunEnabled && bot.SurfaceRunSettings.Equals(custom)
+            && Array.TrueForAll(bot.Players, p => p.SurfaceRunEnabled && p.SurfaceRunSettings.Equals(custom)), "bot and human receive all selected settings");
+        RaceRunner.Press(bot, 0); RaceRunner.Advance(bot, 4);
+        Near(bot.Players[0].SurfaceRunReserve, GroundReserve(custom, 0, 1), "human builds configured reserve");
+        Near(bot.Players[1].SurfaceRunReserve, bot.Players[0].SurfaceRunReserve, "bot builds the same reserve from the same input");
+        Near(bot.Players[1].Distance, bot.Players[0].Distance, "bot and human move identically from the same input");
         var game = RaceSimulation.CreateSolo(Empty(), FlightPresets.Linear, PartyCamera.Lagger, 0, 1000);
         Action[] invalid = {
             () => RaceSimulation.ConfigureSurfaceRun(game, true, default),
