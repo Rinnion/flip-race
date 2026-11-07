@@ -119,19 +119,19 @@ namespace FlipRace.Core
             return step;
         }
 
-        // AdvancePlayer reports each existing analytic constant-speed segment.
+        // AdvancePlayer reports each analytic horizontal segment.
         // StepLimit bounds an unrevealed stone's slice by its warning duration,
         // so a new warning has no physical effect inside that same slice;
         // so candidates can be reduced to the earliest time after any player
         // order, without changing another participant's collision state.
-        internal static void ObserveMotion(GameState game, PlayerState player, double duration, double at)
+        internal static void ObserveMotion(GameState game, PlayerState player, SurfaceRunMotion motion, double duration, double at)
         {
             if (game == null || !Active(player)) return;
             foreach (var obstacle in game.Track.Obstacles)
             {
                 if (!IsHiddenStone(obstacle)) continue;
                 double boundary = ObstacleGeometry.Left(obstacle) - RevealDistanceFor(obstacle);
-                double crossing = SurfaceRunMotion.TimeToDistance(player, boundary);
+                double crossing = motion.TimeToDistance(boundary, duration);
                 if (crossing > duration + 1e-12) continue;
                 double revealedAt = at + Math.Min(crossing, duration);
                 if (!game.HiddenObstacles.TryGetValue(obstacle.Id, out var state))
