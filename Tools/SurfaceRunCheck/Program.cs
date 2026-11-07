@@ -8,7 +8,8 @@ static class Program
     static readonly SurfaceRunSettings Cap40 = new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 40);
     static void Main()
     {
-        Action[] tests = { SettingsMatrix, GroundAirLandingAndFlip, FreezeResetAndSnapshot, AdditiveEffects,
+        Action[] tests = { SettingsMatrix, GroundAirLandingAndFlip, ZeroDecayThroughAirFlip, CollisionResetOptions,
+            FreezeResetAndSnapshot, AdditiveEffects,
             AcceleratedGatesAndRings, MarkedLandingAndEdge, FinishStrokesAndTime,
             HiddenRevealAndPostponement, ConstantCameraBoundary, ExponentialSweeps, ExponentialCamera,
             NonsharedFinishAndGrace, GuardsAndOff };
@@ -52,17 +53,28 @@ static class Program
         double ramp = Math.Min(time, (cap - start) / rate);
         return 220 * ((1 + start) * ramp + rate * ramp * ramp / 2 + (1 + cap) * (time - ramp));
     }
+    static double AirDistance(double start, double decay, double time)
+    {
+        double ramp = decay == 0 ? time : Math.Min(time, start / decay);
+        return 220 * (time + start * ramp - decay * ramp * ramp / 2);
+    }
     static void SettingsMatrix()
     {
         foreach (int rate in new[] { 1, 2, 3, 4, 5 })
         foreach (int cap in new[] { 20, 30, 40 })
         foreach (var curve in new[] { SurfaceRunCurve.Linear, SurfaceRunCurve.Exponential })
+        foreach (int airDecay in new[] { 0, 50, 100, 200, 400 })
+        foreach (bool resetOnCollision in new[] { false, true })
         foreach (double frame in new[] { .013, 50d })
         {
-            var settings = new SurfaceRunSettings(rate, curve, cap);
+            var settings = new SurfaceRunSettings(rate, curve, cap, airDecay, resetOnCollision);
             var flight = new FlightSettings(FirstAction.Flip, MotionLaw.Linear, AirRepeatLimit.One, linearSpeed: 106);
             var game = Start(flight: flight, settings: settings);
             var p = game.Players[0];
+            double decay = rate * airDecay / 10000d;
+            Near(p.SurfaceRunSettings.AirDecayRatePercent, 100 * decay, "air rate in percentage points per second");
+            Check(p.SurfaceRunSettings.AirDecayPercent == airDecay
+                && p.SurfaceRunSettings.ResetOnCollision == resetOnCollision, "attempt retains both configured options");
             Run(game, 3.75, frame);
             double before = GroundReserve(settings, 0, 3.75);
             Near(p.SurfaceRunReserve, before, "configured ground reserve");
@@ -70,15 +82,17 @@ static class Program
             double startX = p.Distance;
             RaceSimulation.Press(game, 0);
             Run(game, .75, frame);
-            Near(p.SurfaceRunReserve, before - 1.5 * settings.Rate, "configured air uses twice nominal rate");
-            Near(p.Distance - startX, 220 * ((1 + before) * .75 - settings.Rate * .75 * .75), "configured air integral");
+            Near(p.SurfaceRunReserve, Math.Max(0, before - decay * .75), "air decay scales with nominal rate");
+            Near(p.Distance - startX, AirDistance(before, decay, .75), "configured air integral");
             Run(game, 1.25, frame);
             Check(p.Support == SupportKind.Wall && p.SupportSide == 0, "configured ceiling landing");
-            Near(p.SurfaceRunReserve, 0, "reserve zero during long air segment");
+            double landed = Math.Max(0, before - decay * 2);
+            Near(p.SurfaceRunReserve, landed, "landing retains the remaining reserve");
+            Near(p.Distance - startX, AirDistance(before, decay, 2), "air integral through landing");
             startX = p.Distance;
             Run(game, 50, frame);
-            Near(p.SurfaceRunReserve, GroundReserve(settings, 0, 50), "cap or asymptote after sustained run");
-            Near(p.Distance - startX, GroundDistance(settings, 0, 50), "integral through cap or asymptote", 2e-7);
+            Near(p.SurfaceRunReserve, GroundReserve(settings, landed, 50), "cap or asymptote after sustained run");
+            Near(p.Distance - startX, GroundDistance(settings, landed, 50), "integral through cap or asymptote", 2e-7);
             Check(p.SurfaceRunReserve <= settings.Cap, "cap is respected");
         }
     }
@@ -106,19 +120,88 @@ static class Program
         Near(zero.Players[0].SurfaceRunReserve, 0, "cross reserve zero without negative or zero-step loop");
         Near(zero.Players[0].Distance, 2200.11, "air zero crossing exact integral");
     }
+    static void ZeroDecayThroughAirFlip()
+    {
+        var settings = new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30, 0);
+        var flight = new FlightSettings(FirstAction.Flip, MotionLaw.Linear, AirRepeatLimit.One, linearSpeed: 1);
+        foreach (double frame in new[] { .317, 60d })
+        {
+            var game = Start(flight: flight, settings: settings);
+            var p = game.Players[0];
+            Run(game, 4, frame);
+            double startX = p.Distance;
+            Check(RaceSimulation.Press(game, 0), "initial zero-decay takeoff");
+            Run(game, 60, frame);
+            Near(p.SurfaceRunReserve, .2, "long zero-decay flight holds reserve");
+            Check(p.Flipping && RaceSimulation.Press(game, 0), "legal air reversal");
+            Near(p.SurfaceRunReserve, .2, "air reversal holds reserve");
+            Run(game, 60, frame);
+            Check(p.Support == SupportKind.Wall && p.SupportSide == 1, "zero-decay return to original wall");
+            Near(p.SurfaceRunReserve, .2, "zero-decay landing holds reserve");
+            Near(p.Distance - startX, 120 * 264, "constant horizontal speed through the whole flight");
+            Run(game, .5, frame);
+            Near(p.SurfaceRunReserve, .225, "ground growth resumes after zero-decay landing");
+        }
+    }
+    static void CollisionResetOptions()
+    {
+        const double before = .4, decay = .05, at = .4, contact = .12;
+        double hitX = AirDistance(before, decay, at);
+        var flight = new FlightSettings(FirstAction.Flip, MotionLaw.Linear, AirRepeatLimit.One, linearSpeed: 106);
+        foreach (bool reset in new[] { false, true })
+        foreach (double frame in Frames)
+        {
+            var settings = new SurfaceRunSettings(5, SurfaceRunCurve.Exponential, 40, 100, reset);
+            var gate = new Obstacle { Id = "gate", Kind = "gate", X = hitX + 39, Width = 12,
+                GapTop = 48, GapBottom = 192, TopOffsetX = 30, BottomOffsetX = -25 };
+            var track = new Track(100000, new[] { gate }) { RiskZones = new[] {
+                new RiskZone { Id = "pending", Kind = "positive", ObstacleId = gate.Id,
+                    X = AirDistance(before, decay, contact), Y = 226 - 106 * contact, Radius = 6 },
+                new RiskZone { Id = "untouched", Kind = "positive", ObstacleId = gate.Id, X = 400, Y = 180, Radius = 6 }
+            } };
+            var game = Start(track, flight, settings);
+            var p = game.Players[0];
+            p.SurfaceRunReserve = before;
+            RaceSimulation.Press(game, 0);
+            Run(game, .2, frame);
+            Check(p.CollectedRiskIds.Contains("pending") && p.BoostsEarned == 0, "linked reward pending before hit");
+            Run(game, .4, frame);
+            Check(p.Collisions == 1, "one hit with either reset setting");
+            Near(p.LastHit.At, at, "reset setting preserves impact time");
+            Near(p.Distance, hitX, "recovery freezes position after impact");
+            double retained = reset ? 0 : before - decay * at;
+            Near(p.SurfaceRunReserve, retained, "recovery holds the impact reserve or zero");
+            Near(p.Recovering, .3, "usual impact penalty");
+            Check(!RaceSimulation.CanPress(game, 0) && !RaceSimulation.Press(game, 0), "input rejected during recovery");
+            Check(p.FailedRiskIds.Contains("pending") && !p.FailedRiskIds.Contains("untouched") && p.BoostsEarned == 0,
+                "hit cancels only the linked pending reward");
+            Run(game, .4, frame);
+            Check(p.CompletedRecoveries == 1 && p.Collisions == 1, "ordinary recovery completes without another hit");
+            Near(p.SurfaceRunReserve, Math.Max(0, retained - decay * .1), "decay resumes when airborne after recovery");
+            Near(p.Distance - hitX, AirDistance(retained, decay, .1), "motion resumes after the usual stop");
+        }
+    }
     static void FreezeResetAndSnapshot()
     {
-        var game = Ready(); RaceSimulation.Press(game, 0); RaceSimulation.Advance(game, 2);
+        var settings = new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30, 50, false);
+        var game = Ready(settings: settings); RaceSimulation.Press(game, 0); RaceSimulation.Advance(game, 2);
         Near(game.Players[0].SurfaceRunReserve, 0, "countdown freeze"); RaceSimulation.Advance(game, 2);
         Near(game.Players[0].SurfaceRunReserve, .05, "countdown leftover");
         game.Phase = "paused"; RaceSimulation.Advance(game, 100); Near(game.Players[0].SurfaceRunReserve, .05, "pause freeze"); game.Phase = "racing";
         var clone = RaceSnapshot.Clone(game); Run(clone, 2, 2);
         Check(clone.SurfaceRunEnabled && clone.Players[0].SurfaceRunEnabled, "snapshot flags");
+        Check(clone.SurfaceRunSettings.AirDecayPercent == 50 && !clone.SurfaceRunSettings.ResetOnCollision
+            && clone.Players[0].SurfaceRunSettings.AirDecayPercent == 50 && !clone.Players[0].SurfaceRunSettings.ResetOnCollision,
+            "snapshot retains both options on game and player");
         Near(game.Players[0].SurfaceRunReserve, .05, "independent snapshot reserve"); Near(clone.Players[0].SurfaceRunReserve, .15, "snapshot progression");
+        RaceSimulation.Press(clone, 0); Run(clone, .2, .2);
+        Near(clone.Players[0].SurfaceRunReserve, .145, "snapshot uses the stored decay");
         game.Players[0].Recovering = .5; Run(game, .25, .25); Near(game.Players[0].SurfaceRunReserve, .05, "recovery freeze");
         Run(game, .5, .5); Near(game.Players[0].SurfaceRunReserve, .0625, "post recovery growth");
         game.Phase = "finished"; RaceSimulation.Advance(game, 50); Near(game.Players[0].SurfaceRunReserve, .0625, "finished freeze");
         RaceSimulation.Press(game, 0); Check(game.Players[0].SurfaceRunEnabled, "retry retains flag"); Near(game.Players[0].SurfaceRunReserve, 0, "retry clears reserve");
+        Check(game.Players[0].SurfaceRunSettings.AirDecayPercent == 50 && !game.Players[0].SurfaceRunSettings.ResetOnCollision,
+            "retry retains both options");
     }
     static void AdditiveEffects()
     {
@@ -332,19 +415,35 @@ static class Program
     }
     static void GuardsAndOff()
     {
+        var explicitDefaults = new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30, 200, true);
+        Check(SurfaceRunSettings.Default.Equals(explicitDefaults)
+            && new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30).Equals(explicitDefaults),
+            "omitting new options preserves 5.5.1 defaults");
+        var custom = new SurfaceRunSettings(3, SurfaceRunCurve.Exponential, 40, 0, false);
         var off = RaceSimulation.CreateSolo(Empty(), FlightPresets.Linear, PartyCamera.Lagger, 0, 1000);
-        Check(!off.SurfaceRunEnabled && !off.Players[0].SurfaceRunEnabled, "factory default off"); RaceSimulation.Press(off, 0); RaceSimulation.Advance(off, 7);
+        Check(!off.SurfaceRunEnabled && !off.Players[0].SurfaceRunEnabled, "factory default off");
+        RaceSimulation.ConfigureSurfaceRun(off, false, custom);
+        RaceSimulation.Press(off, 0); RaceSimulation.Advance(off, 7);
+        Check(off.SurfaceRunSettings.Equals(custom) && off.Players[0].SurfaceRunSettings.Equals(custom), "off retains custom settings");
         Near(off.Players[0].Distance, 880, "off original 220"); Near(off.Players[0].SurfaceRunReserve, 0, "off no accumulation");
+        RaceSimulation.Press(off, 0); RaceSimulation.Advance(off, .4);
+        Near(off.Players[0].Distance, 968, "off preserves ordinary airborne speed");
+        Near(off.Players[0].SurfaceRunReserve, 0, "off has no airborne reserve");
         bool rejected = false; try { RaceSimulation.ConfigureSurfaceRun(off, true); } catch (InvalidOperationException) { rejected = true; } Check(rejected, "attempt immutable");
         var bot = RaceSimulation.CreateStochasticBotRace(RaceTracks.Get(TracksRhythm.CascadeId), FlightPresets.Chosen, BotDifficulty.Master, 1u);
-        rejected = false; try { RaceSimulation.ConfigureSurfaceRun(bot, true); } catch (InvalidOperationException) { rejected = true; } Check(rejected, "bot on rejected");
+        rejected = false; try { RaceSimulation.ConfigureSurfaceRun(bot, true, custom); } catch (InvalidOperationException) { rejected = true; }
+        Check(rejected && !bot.SurfaceRunEnabled && Array.TrueForAll(bot.Players, p => !p.SurfaceRunEnabled), "bot on rejected for both participants");
         var game = RaceSimulation.CreateSolo(Empty(), FlightPresets.Linear, PartyCamera.Lagger, 0, 1000);
         Action[] invalid = {
             () => RaceSimulation.ConfigureSurfaceRun(game, true, default),
             () => new SurfaceRunSettings(0, SurfaceRunCurve.Linear, 30),
             () => new SurfaceRunSettings(6, SurfaceRunCurve.Linear, 30),
             () => new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 25),
-            () => new SurfaceRunSettings(5, (SurfaceRunCurve)8, 30)
+            () => new SurfaceRunSettings(5, (SurfaceRunCurve)8, 30),
+            () => new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30, -1),
+            () => new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30, 25),
+            () => new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30, 300),
+            () => new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 30, 401)
         };
         foreach (Action action in invalid)
         {

@@ -1,0 +1,148 @@
+{
+  "checkedAt": "2026-11-07T10:07:10.546Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v5.5.2-decay-settings-unpacked",
+  "fileCount": 14,
+  "totalBytes": 9527129,
+  "totalMiB": 9.086,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v5.5.2-decay-settings.data.unityweb",
+    "Build/WebGL-v5.5.2-decay-settings.framework.js.unityweb",
+    "Build/WebGL-v5.5.2-decay-settings.loader.js",
+    "Build/WebGL-v5.5.2-decay-settings.wasm.unityweb",
+    "StreamingAssets/Tracks/full-flow.track.json",
+    "StreamingAssets/Tracks/full-long.track.json",
+    "StreamingAssets/Tracks/full-short.track.json",
+    "StreamingAssets/Tracks/hidden-intercepts.track.json",
+    "StreamingAssets/Tracks/hidden-manifestation.track.json",
+    "StreamingAssets/Tracks/mixed-tricks.track.json",
+    "StreamingAssets/Tracks/rethink.track.json",
+    "StreamingAssets/Tracks/rhythm-cascade.track.json"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v5.5.2-decay-settings.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v5.5.2-decay-settings.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v5.5.2-decay-settings.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v5.5.2-decay-settings.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v5.5.2-decay-settings.data.unityweb",
+      "bytes": 1950345,
+      "sha256": "d6c4f21bdd8126bac785f66476078a6100c3a24c03fd6de0820c043fecc36f91"
+    },
+    {
+      "path": "Build/WebGL-v5.5.2-decay-settings.framework.js.unityweb",
+      "bytes": 91263,
+      "sha256": "21268e00686c9de4f55146ce818572f8ddb91a772f4968eb9e8997817ab8b12c"
+    },
+    {
+      "path": "Build/WebGL-v5.5.2-decay-settings.loader.js",
+      "bytes": 39788,
+      "sha256": "b8dd311f1a2fd2a13d636d4f4e4f1ed9002d6b0179a0a6553e2cb961ca0bd9f3"
+    },
+    {
+      "path": "Build/WebGL-v5.5.2-decay-settings.wasm.unityweb",
+      "bytes": 7321378,
+      "sha256": "3e95909801127d634f716fe8c453667d0ceae8139215b95522ecd1e3680f6c6b"
+    },
+    {
+      "path": "index.html",
+      "bytes": 18541,
+      "sha256": "fe092d129f05a5baefa61ca02e816377d1f754347ae35590528d193f448f613b"
+    },
+    {
+      "path": "StreamingAssets/Tracks/full-flow.track.json",
+      "bytes": 12174,
+      "sha256": "68a2c4ade5aa78dc0f0aa6cc4575b91e11d879e8bc911f34730940d8d1bb5d2c"
+    },
+    {
+      "path": "StreamingAssets/Tracks/full-long.track.json",
+      "bytes": 11991,
+      "sha256": "38c5efb624cd3ed176812583a69dd5ca92bccfd83da1ae69c1616187ceb5e441"
+    },
+    {
+      "path": "StreamingAssets/Tracks/full-short.track.json",
+      "bytes": 12025,
+      "sha256": "45435aa8000ee55e348b396031eb9604b303d3481e4538cc7e6ca104117b4d33"
+    },
+    {
+      "path": "StreamingAssets/Tracks/hidden-intercepts.track.json",
+      "bytes": 16600,
+      "sha256": "effe313bae518c3c61346150808efee523f91e2da0e83e9a7717d3c368aff33c"
+    },
+    {
+      "path": "StreamingAssets/Tracks/hidden-manifestation.track.json",
+      "bytes": 13026,
+      "sha256": "7ea257b9161a1b8b07380f890dd37c7839f516ffefdb3f2ae0a9be6c2b97106f"
+    },
+    {
+      "path": "StreamingAssets/Tracks/index.json",
+      "bytes": 315,
+      "sha256": "0f8697f7ca54095ae5cf18afd340a78c6af5c0a222136486ac7a00d4804cb8f6"
+    },
+    {
+      "path": "StreamingAssets/Tracks/mixed-tricks.track.json",
+      "bytes": 14213,
+      "sha256": "8f5c1bb3df7e803b074d40a7090be975fb18e6cc88337824e55f22d84c5584e4"
+    },
+    {
+      "path": "StreamingAssets/Tracks/rethink.track.json",
+      "bytes": 9251,
+      "sha256": "b673cabc88b227512eea239f14f5a5ed10051a0b236808e05df78109f2045f70"
+    },
+    {
+      "path": "StreamingAssets/Tracks/rhythm-cascade.track.json",
+      "bytes": 16219,
+      "sha256": "d9cbffb5c7a6c5269a112c118af0c5e3be297bf523b40faad6af6b9140063aad"
+    }
+  ],
+  "trackCatalog": {
+    "path": "StreamingAssets/Tracks/index.json",
+    "count": 8,
+    "tracks": [
+      {
+        "path": "StreamingAssets/Tracks/full-long.track.json",
+        "id": "full-long",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/full-short.track.json",
+        "id": "full-short",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/full-flow.track.json",
+        "id": "full-flow",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/rhythm-cascade.track.json",
+        "id": "rhythm-cascade",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/mixed-tricks.track.json",
+        "id": "mixed-tricks",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/hidden-intercepts.track.json",
+        "id": "hidden-intercepts",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/hidden-manifestation.track.json",
+        "id": "hidden-manifestation",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/rethink.track.json",
+        "id": "rethink",
+        "schemaVersion": 1
+      }
+    ]
+  },
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks."
+}

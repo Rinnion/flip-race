@@ -771,6 +771,15 @@ namespace FlipRace.Presentation
                 Text(resumeRect, "Продолжить гонку →", 11, Hex(0x536547), true, TextAnchor.MiddleCenter);
             }
         }
+        string SurfaceRunRule()
+        {
+            var settings = Game.SurfaceRunSettings;
+            double rate = settings.AirDecayRatePercent;
+            string air = rate == 0 ? "В воздухе запас сохраняется."
+                : "В воздухе −" + Number(rate, rate % 1 == 0 ? 0 : 1) + " п.п./с.";
+            string collision = settings.ResetOnCollision ? "Удар обнуляет запас." : "Запас при ударе сохраняется.";
+            return "Разгон на опоре до +" + settings.CapPercent + "%. " + air + " " + collision;
+        }
         void DrawRules()
         {
             Fill(new Rect(0, 0, width, height), new Color(.16f, .2f, .14f, .44f));
@@ -792,7 +801,7 @@ namespace FlipRace.Presentation
                     : "Тап с опоры — перелёт к другой стене. Своя половина экрана или клавиши A / L.",
                 FlightRule(),
                 (Game.SurfaceRunEnabled ? "Метка на грани: точная посадка ускоряет. По камню можно бежать; с него можно прыгать." : "Метка на грани: точная посадка даёт ×1,5. По камню можно бежать; с него можно прыгать."),
-                Game.SurfaceRunEnabled ? "Разгон на опоре до +" + Game.SurfaceRunSettings.CapPercent + "%. В воздухе −" + 2 * Game.SurfaceRunSettings.RatePercent + " п.п./с. Удар обнуляет запас."
+                Game.SurfaceRunEnabled ? SurfaceRunRule()
                     : "Узкая метка у ленты: рывок −0,1 с. Настройки общие, реванш их сохраняет. Выбор — в меню."
             };
             if (BotEnabled) lines = new[] { "Выбери героя и нажми «Начать». A, поле или лапка — твоё действие.", "Бот готов автоматически. Уровень выбран до старта; награды личные.", Game.PartyCamera==PartyCamera.Constant?"Карта движется сама. Полностью за левым краем — выбыл.":"Камера за последним. Выбывания за экран нет.", "Оба бегут до своего исхода. Повтор — новый план; результаты не сохраняются." };

@@ -150,13 +150,22 @@ namespace FlipRace.Core
         public FlightMeasurement LastFlight;
         public bool SurfaceRunEnabled { get; internal set; }
         public double SurfaceRunReserve { get; internal set; }
-        private int surfaceRunRatePercent, surfaceRunCapPercent;
+        private int surfaceRunRatePercent, surfaceRunCapPercent, surfaceRunAirDecayPercent;
         private SurfaceRunCurve surfaceRunCurve;
+        private bool surfaceRunResetOnCollision;
         public SurfaceRunSettings SurfaceRunSettings
         {
             get { return surfaceRunRatePercent == 0 ? SurfaceRunSettings.Default
-                : new SurfaceRunSettings(surfaceRunRatePercent, surfaceRunCurve, surfaceRunCapPercent); }
-            internal set { surfaceRunRatePercent = value.RatePercent; surfaceRunCurve = value.Curve; surfaceRunCapPercent = value.CapPercent; }
+                : new SurfaceRunSettings(surfaceRunRatePercent, surfaceRunCurve, surfaceRunCapPercent,
+                    surfaceRunAirDecayPercent, surfaceRunResetOnCollision); }
+            internal set
+            {
+                surfaceRunRatePercent = value.RatePercent;
+                surfaceRunCurve = value.Curve;
+                surfaceRunCapPercent = value.CapPercent;
+                surfaceRunAirDecayPercent = value.AirDecayPercent;
+                surfaceRunResetOnCollision = value.ResetOnCollision;
+            }
         }
         public double Recovering;
         public int Collisions;
@@ -256,13 +265,22 @@ namespace FlipRace.Core
             PartyLastCameraLeft = startLeft;
         }
         public bool SurfaceRunEnabled { get; internal set; }
-        private int surfaceRunRatePercent, surfaceRunCapPercent;
+        private int surfaceRunRatePercent, surfaceRunCapPercent, surfaceRunAirDecayPercent;
         private SurfaceRunCurve surfaceRunCurve;
+        private bool surfaceRunResetOnCollision;
         public SurfaceRunSettings SurfaceRunSettings
         {
             get { return surfaceRunRatePercent == 0 ? SurfaceRunSettings.Default
-                : new SurfaceRunSettings(surfaceRunRatePercent, surfaceRunCurve, surfaceRunCapPercent); }
-            internal set { surfaceRunRatePercent = value.RatePercent; surfaceRunCurve = value.Curve; surfaceRunCapPercent = value.CapPercent; }
+                : new SurfaceRunSettings(surfaceRunRatePercent, surfaceRunCurve, surfaceRunCapPercent,
+                    surfaceRunAirDecayPercent, surfaceRunResetOnCollision); }
+            internal set
+            {
+                surfaceRunRatePercent = value.RatePercent;
+                surfaceRunCurve = value.Curve;
+                surfaceRunCapPercent = value.CapPercent;
+                surfaceRunAirDecayPercent = value.AirDecayPercent;
+                surfaceRunResetOnCollision = value.ResetOnCollision;
+            }
         }
         public string Mode;
         public MotionMode Motion = MotionMode.Linear;
@@ -1225,7 +1243,8 @@ namespace FlipRace.Core
                     player.HitObstacleIds.Add(collision.Obstacle.Id);
                     player.Collisions++;
                     player.Recovering = RaceConfig.RecoveryDuration;
-                    if (player.SurfaceRunEnabled) player.SurfaceRunReserve = 0;
+                    if (player.SurfaceRunEnabled && player.SurfaceRunSettings.ResetOnCollision)
+                        player.SurfaceRunReserve = 0;
                     // Cancel only contacts that were already pending before this
                     // impact. An untouched ring can still be earned after recovery.
                     foreach (var zone in track.RiskZones)

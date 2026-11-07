@@ -1,1 +1,20 @@
-{"status":"PASS","checks":2172,"cases":12,"scope":"Production menu/apply/cancel/mode/retry methods with native environment aliases. Retry fixture forces finished phase. No rendering or physical touchscreen claim."}
+{
+  "status": "PASS",
+  "checks": 45528,
+  "cases": 24,
+  "scope": "Production menu/apply/cancel/mode/retry methods with native environment aliases. Retry fixture forces finished phase. No rendering or physical touchscreen claim.",
+  "version": "5.5.2-trial",
+  "command": "./Tools/SurfaceRunUiCheck/Run.ps1",
+  "baseCommit": "05e4815c1cf25c1b9c71baf59d473787763cc0be",
+  "sourceSha256": {
+    "Assets/Scripts/Core/RaceSimulation.cs": "d2b4f61387a803744e12e0f792010353e9441127a80a0b1a8f7cd11bdb368905",
+    "Assets/Scripts/Core/SurfaceRunMotion.cs": "6c36b6f5bbb561c3d6cc32de19ec2ea332199fdbcc3470fb53e3aede401442b2",
+    "Assets/Scripts/Core/SurfaceRunSettings.cs": "dce7e8e2433797d735dae093e86186057fb75e7e15ac7266f42a4ac366680c0b",
+    "Assets/Scripts/Presentation/FlightSettingsMenu.cs": "1dcf20ae8d6975c27abe0b5bd5e4bc4f82cbb4e7b89a7340854610e53b0f719d",
+    "Assets/Scripts/Presentation/FlipRaceGame.cs": "adf925009b9061ed2c38c43cbbc2603f94601bce6be739a0f3d3c9953720d935",
+    "Tools/Iter49Ui/Run.ps1": "c689f62c4cf1ca0281bdc3ca3b58bdfdcdb4fbb49c64730ecc538c510da35126",
+    "Tools/SurfaceRunUiCheck/Program.cs": "4389999b5c7fde83f348e21b7d2d39bf127fa5aa8f48ed8515220364b15a625d",
+    "Tools/SurfaceRunUiCheck/Run.ps1": "f0f0f5f9345c8cc2902af6aea182cc38ae4823b45d97500167979968f6cfffb6"
+  },
+  "checkedAtUtc": "2026-11-07T10:07:00.0470218Z"
+}

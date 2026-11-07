@@ -10,23 +10,34 @@ namespace FlipRace.Presentation
         int flightPage, activeFlightPreset;
         bool activeCustomFlight;
         const int SurfaceRunPage = 11;
+        static readonly int[] SurfaceRunAirDecayChoices = { 0, 50, 100, 200, 400 };
         bool surfaceRunChoice = true, pendingSurfaceRun = true;
         SurfaceRunSettings surfaceRunSettings, pendingSurfaceRunSettings;
         public bool SurfaceRunChoice { get { return surfaceRunChoice; } }
         public bool PendingSurfaceRun { get { return pendingSurfaceRun; } }
         public SurfaceRunSettings PendingSurfaceRunSettings { get { return pendingSurfaceRunSettings; } }
         public Rect SurfaceRunMenuRect { get { MeasureFlightMenu(); float col = (flightPanel.width - 48) / 2; return new Rect(flightPanel.x + 32 + col, flightPanel.y + 192, col, 44); } }
-        public Rect SurfaceRunToggleRect { get { MeasureFlightMenu(); return new Rect(flightPanel.xMax - 112, flightPanel.y + 191, 96, 44); } }
+        public Rect SurfaceRunToggleRect { get { MeasureFlightMenu(); return surfaceRunToggle; } }
         void ConfigureSessionSurfaceRun() { RaceSimulation.ConfigureSurfaceRun(Game, !Game.IsBot && surfaceRunChoice, surfaceRunSettings); }
+        Rect SurfaceRunLabelRect(int row)
+        { return new Rect(flightPanel.x + 16, flightPanel.y + 47 + row * 46, 114, 44); }
         Rect SurfaceRunOptionRect(int row, int option, int count)
         {
-            const float labelWidth = 114, gap = 4;
-            float w = (flightPanel.width - 32 - labelWidth - (count - 1) * gap) / count;
-            return new Rect(flightPanel.x + 16 + labelWidth + option * (w + gap), flightPanel.y + 47 + row * 48, w, 44);
+            const float gap = 4;
+            Rect caption = SurfaceRunLabelRect(row);
+            float w = (flightPanel.xMax - 16 - caption.xMax - gap * count) / count;
+            return new Rect(caption.xMax + gap + option * (w + gap), caption.y, w, caption.height);
         }
         public Rect SurfaceRunRateRect(int rate) { MeasureFlightMenu(); return SurfaceRunOptionRect(0, rate - 1, 5); }
         public Rect SurfaceRunCurveRect(SurfaceRunCurve curve) { MeasureFlightMenu(); return SurfaceRunOptionRect(1, curve == SurfaceRunCurve.Linear ? 0 : 1, 2); }
         public Rect SurfaceRunCapRect(int cap) { MeasureFlightMenu(); return SurfaceRunOptionRect(2, (cap - 20) / 10, 3); }
+        public Rect SurfaceRunAirDecayRect(int percent)
+        {
+            MeasureFlightMenu();
+            int option = Array.IndexOf(SurfaceRunAirDecayChoices, percent);
+            return option < 0 ? default(Rect) : SurfaceRunOptionRect(3, option, SurfaceRunAirDecayChoices.Length);
+        }
+        public Rect SurfaceRunResetRect(bool reset) { MeasureFlightMenu(); return SurfaceRunOptionRect(4, reset ? 0 : 1, 2); }
 
         void SurfaceRunPointer(Vector2 p)
         {
@@ -34,30 +45,48 @@ namespace FlipRace.Presentation
             if (SurfaceRunToggleRect.Contains(p)) { pendingSurfaceRun = !pendingSurfaceRun; return; }
             var settings = pendingSurfaceRunSettings;
             for (int rate = 1; rate <= 5; rate++)
-                if (SurfaceRunRateRect(rate).Contains(p)) { pendingSurfaceRunSettings = new SurfaceRunSettings(rate, settings.Curve, settings.CapPercent); return; }
+                if (SurfaceRunRateRect(rate).Contains(p))
+                { pendingSurfaceRunSettings = new SurfaceRunSettings(rate, settings.Curve, settings.CapPercent, settings.AirDecayPercent, settings.ResetOnCollision); return; }
             foreach (var curve in new[] { SurfaceRunCurve.Linear, SurfaceRunCurve.Exponential })
-                if (SurfaceRunCurveRect(curve).Contains(p)) { pendingSurfaceRunSettings = new SurfaceRunSettings(settings.RatePercent, curve, settings.CapPercent); return; }
+                if (SurfaceRunCurveRect(curve).Contains(p))
+                { pendingSurfaceRunSettings = new SurfaceRunSettings(settings.RatePercent, curve, settings.CapPercent, settings.AirDecayPercent, settings.ResetOnCollision); return; }
             for (int cap = 20; cap <= 40; cap += 10)
-                if (SurfaceRunCapRect(cap).Contains(p)) { pendingSurfaceRunSettings = new SurfaceRunSettings(settings.RatePercent, settings.Curve, cap); return; }
+                if (SurfaceRunCapRect(cap).Contains(p))
+                { pendingSurfaceRunSettings = new SurfaceRunSettings(settings.RatePercent, settings.Curve, cap, settings.AirDecayPercent, settings.ResetOnCollision); return; }
+            foreach (int percent in SurfaceRunAirDecayChoices)
+                if (SurfaceRunAirDecayRect(percent).Contains(p))
+                { pendingSurfaceRunSettings = new SurfaceRunSettings(settings.RatePercent, settings.Curve, settings.CapPercent, percent, settings.ResetOnCollision); return; }
+            if (SurfaceRunResetRect(true).Contains(p))
+                pendingSurfaceRunSettings = new SurfaceRunSettings(settings.RatePercent, settings.Curve, settings.CapPercent, settings.AirDecayPercent, true);
+            else if (SurfaceRunResetRect(false).Contains(p))
+                pendingSurfaceRunSettings = new SurfaceRunSettings(settings.RatePercent, settings.Curve, settings.CapPercent, settings.AirDecayPercent, false);
         }
 
         void DrawSurfaceRunChoices()
         {
             var settings = pendingSurfaceRunSettings;
-            Rect first = SurfaceRunRateRect(1);
-            float x = flightPanel.x + 16;
-            Text(new Rect(x, first.y, first.x - x - 4, 44), "Стартовый темп\nп.п. в секунду", 10, ink, true);
+            string restriction = FlightApplyRestriction();
+            Rect title = surfaceRunTitle;
+            if (restriction.Length != 0) title.height = 24;
+            Text(title, "Разгон от бега", 17, ink, true, TextAnchor.MiddleLeft);
+            if (restriction.Length != 0)
+                Text(new Rect(title.x, title.yMax, title.width, 17), restriction, 9, Hex(0x9a6844), false, TextAnchor.MiddleLeft);
+            FlightButton(surfaceRunToggle, pendingSurfaceRun ? "Разгон ВКЛ" : "Разгон ВЫКЛ", pendingSurfaceRun, true, 12);
+            DrawFlightApplyButton();
+
+            Text(SurfaceRunLabelRect(0), "Стартовый темп\nп.п. в секунду", 10, ink, true, TextAnchor.MiddleLeft);
             for (int rate = 1; rate <= 5; rate++) FlightButton(SurfaceRunRateRect(rate), "+" + rate, settings.RatePercent == rate, true, 12);
-            Text(new Rect(x, first.y + 48, first.x - x - 4, 44), "Набор запаса", 10, ink, true);
+            Text(SurfaceRunLabelRect(1), "Набор запаса", 10, ink, true, TextAnchor.MiddleLeft);
             FlightButton(SurfaceRunCurveRect(SurfaceRunCurve.Linear), "Линейный\nравномерный набор", settings.Curve == SurfaceRunCurve.Linear, true, 10);
             FlightButton(SurfaceRunCurveRect(SurfaceRunCurve.Exponential), "Плавный (экспоненциальный)\nмедленнее у предела", settings.Curve == SurfaceRunCurve.Exponential, true, 10);
-            Text(new Rect(x, first.y + 96, first.x - x - 4, 44), "Предел запаса", 10, ink, true);
+            Text(SurfaceRunLabelRect(2), "Предел запаса", 10, ink, true, TextAnchor.MiddleLeft);
             for (int cap = 20; cap <= 40; cap += 10) FlightButton(SurfaceRunCapRect(cap), "+" + cap + "%", settings.CapPercent == cap, true, 12);
-            Rect toggle = SurfaceRunToggleRect;
-            Text(new Rect(x, toggle.y, toggle.x - x - 4, toggle.height),
-                "В воздухе −" + 2 * settings.RatePercent + " п.п./с. Удар обнуляет запас.", 10, muted);
-            FlightButton(toggle, pendingSurfaceRun ? "ВКЛ" : "ВЫКЛ", pendingSurfaceRun, true, 12);
-            DrawFlightApplyFooter();
+            Text(SurfaceRunLabelRect(3), "Спад в воздухе\n% от стартового темпа", 10, ink, true, TextAnchor.MiddleLeft);
+            foreach (int percent in SurfaceRunAirDecayChoices)
+                FlightButton(SurfaceRunAirDecayRect(percent), percent + "%", settings.AirDecayPercent == percent, true, 12);
+            Text(SurfaceRunLabelRect(4), "Удар сбрасывает\nзапас", 10, ink, true, TextAnchor.MiddleLeft);
+            FlightButton(SurfaceRunResetRect(true), "ВКЛ", settings.ResetOnCollision, true, 12);
+            FlightButton(SurfaceRunResetRect(false), "ВЫКЛ", !settings.ResetOnCollision, true, 12);
         }
 
         void DrawSurfaceRunStatus(int slot, Rect rect)
@@ -69,7 +98,7 @@ namespace FlipRace.Presentation
         bool pendingSharedField, pendingSharedAdjacent, pendingSharedFullHeight, pendingSplitGhost;
         string pendingFlightTrack;
         Rect flightPanel, flightBack, flightApply, flightCustom, flightEdit, flightReset, flightDone, flightCopy, flightChosen, flightFastFlip, flightOldTracks, flightTracks;
-        Rect flightView;
+        Rect flightView, surfaceRunTitle, surfaceRunToggle;
         double pendingHiddenWarning = .8;
         static readonly double[] HiddenWarningChoices = { .4, .6, .8, 1, 1.2 };
         Rect HiddenWarningButton { get { return new Rect(flightPanel.x + 16, flightPanel.y + 39, flightPanel.width - 32, 44); } }
@@ -130,6 +159,13 @@ namespace FlipRace.Presentation
             flightBack = flightPage == SurfaceRunPage ? new Rect(flightPanel.x + 4, flightPanel.y + 1, 44, 44)
                 : new Rect(flightPanel.x + 12, flightPanel.y + 8, 30, 27);
             flightApply = new Rect(flightPanel.xMax - 177, flightPanel.yMax - 44, 161, 44);
+            if (flightPage == SurfaceRunPage)
+            {
+                flightApply = new Rect(flightPanel.xMax - 142, flightBack.y, 126, 44);
+                surfaceRunToggle = new Rect(flightApply.x - 112, flightBack.y, 104, 44);
+                float titleX = flightBack.xMax + 4;
+                surfaceRunTitle = new Rect(titleX, flightBack.y, surfaceRunToggle.x - titleX - 8, 44);
+            }
             flightCopy = new Rect(flightPanel.x + 16, flightPanel.yMax - 40, 103, 28);
             flightReset = new Rect(flightCopy.xMax + 8, flightCopy.y, 150, 28);
             flightDone = new Rect(flightPanel.xMax - 126, flightCopy.y, 110, 28);
@@ -343,11 +379,11 @@ namespace FlipRace.Presentation
             Fill(new Rect(0, 0, width, height), new Color(.16f, .2f, .14f, .44f));
             Round(flightPanel, 12, Hex(0xfbfbf1));
             Text(flightBack, flightPage == 0 ? "×" : "‹", 23, muted, false, TextAnchor.MiddleCenter);
+            if (flightPage == SurfaceRunPage) { DrawSurfaceRunChoices(); return; }
             Text(new Rect(flightPanel.x + 49, flightPanel.y + 10, flightPanel.width - 65, 23),
-                flightPage == SurfaceRunPage ? "Разгон от бега" : flightPage == 10 ? "Не удалось импортировать JSON" : flightPage == 9 ? "Предупреждение о камне" : flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки"
+                flightPage == 10 ? "Не удалось импортировать JSON" : flightPage == 9 ? "Предупреждение о камне" : flightPage == 1 ? "Свои настройки" : flightPage == 3 ? "Прежние участки"
                     : flightPage == 8 ? "С ботом · полная трасса" : flightPage == 7 ? "Один · полная трасса" : flightPage == 4 ? "Трассы" + (TrackPageCount > 1 ? " · " + (trackCatalogPage + 1) + "/" + TrackPageCount : "") : flightPage == 5 ? "Вид и посадка" : flightPage == 6 ? "Компания · 2–4 игрока" : "Управление и трасса", 17, ink, true);
             if (flightPage == 1) { DrawFlightEditor(); return; }
-            if (flightPage == SurfaceRunPage) { DrawSurfaceRunChoices(); return; }
             if (flightPage == 3) { DrawOldFlightTracks(); return; }
             if (flightPage == 4) { DrawFullFlightTracks(); return; }
             if (flightPage == 9) { DrawHiddenWarningChoices(); return; }
@@ -431,9 +467,19 @@ namespace FlipRace.Presentation
                     OldTrackIds[i] != TracksControl.UnlimitedId || flightSelection.Settings.AirRepeats == AirRepeatLimit.Unlimited, 10);
             DrawFlightApplyFooter();
         }
+        string FlightApplyRestriction()
+        {
+            if (!TrackProfileSupported) return "Для этой трассы выбери Основной профиль";
+            if (pendingBot && flightSelection.IsCustom) return "Боты: выбери готовый профиль";
+            if (pendingBot && !BotTrackSupported) return "Для этой трассы бот недоступен";
+            return CanApplyFlight ? "" : "Проходы требуют повторов ∞";
+        }
+        void DrawFlightApplyButton()
+        { FlightButton(flightApply, pendingBot || pendingSolo ? "Выбрать героя →" : "К готовности →", true, CanApplyFlight, 11); }
         void DrawFlightApplyFooter()
         {
-            string note = pendingBot && CanApplyFlight ? "Разгон от бега ВЫКЛ: эталон бота без разгона" : !TrackProfileSupported ? "Для этой трассы выбери Основной профиль" : pendingBot && flightSelection.IsCustom ? "Боты: выбери готовый профиль" : pendingBot && !BotTrackSupported ? "Для этой трассы бот недоступен" : !CanApplyFlight ? "Проходы требуют повторов ∞"
+            string restriction = FlightApplyRestriction();
+            string note = pendingBot && CanApplyFlight ? "Разгон от бега ВЫКЛ: эталон бота без разгона" : restriction.Length != 0 ? restriction
                 : RaceTracks.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : pendingSurfaceRun ? "Разгон от бега ВКЛ · управление сохраняется" : Number(RaceTracks.Get(pendingFlightTrack).Length / RaceConfig.Speed, 1) + " сек · управление сохраняется"
                 : "Участок: " + PendingFlightTrackName();
             label.wordWrap = true;
@@ -446,7 +492,7 @@ namespace FlipRace.Presentation
             Text(new Rect(flightPanel.x + (paging ? 120 : 16), flightPanel.yMax - 39, flightPanel.width - (paging ? 309 : 205), 27), note,
                 9, !CanApplyFlight ? Hex(0x9a6844) : muted, false, TextAnchor.MiddleLeft);
             label.wordWrap = false;
-            FlightButton(flightApply, pendingBot || pendingSolo ? "Выбрать героя →" : "К готовности →", true, CanApplyFlight, 11);
+            DrawFlightApplyButton();
         }
         string PendingFlightTrackName()
         {

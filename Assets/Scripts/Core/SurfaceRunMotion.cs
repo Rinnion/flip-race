@@ -34,9 +34,9 @@ namespace FlipRace.Core
                     TransitionTime = (cap - reserve) / rate;
                 }
             }
-            else if (reserve > 0)
+            else if (reserve > 0 && settings.AirDecayPercent > 0)
             {
-                rate = -2 * settings.Rate;
+                rate = -settings.AirDecayRatePercent / 100d;
                 TransitionTime = -reserve / rate;
             }
         }
