@@ -28,6 +28,18 @@
 # Build output from all standalone .NET verification tools.
 /Tools/**/bin/
 /Tools/**/obj/
+/Tools/**/TestResults/
+
+# JavaScript tooling dependencies and local caches (keep lockfiles).
+node_modules/
+/.npm/
+/.cache/
+
+# Runtime logs and process IDs; curated reports and fixtures stay trackable.
+# Already tracked historical logs are not removed by these rules.
+*.log
+*.pid
+*.pid.lock
 
 # Release binaries are generated; keep the small verification manifests.
 /Releases/*
@@ -38,12 +50,15 @@
 .env.*
 !.env.example
 !.env.sample
+!.env.*.example
+!.env.*.sample
 /sysinfo.txt
 /mono_crash.*
 /crash.dmp
 *.tmp
 *.bak
 *.swp
+*.swo
 *~
 .DS_Store
 Thumbs.db
@@ -53,8 +68,10 @@ Desktop.ini
 # compressed test fixtures and the curated Verification reports/assets.
 
 # Local isolated verification workspaces.
-/.tmp-*/
-/.scratch-*/
+/.tmp/
+/tmp/
+/.tmp-*
+/.scratch-*
 
 # Full raw initial training stays local; exact lossless .json.gz and hash manifest are versioned.
 /Verification/stochastic-bots-training-initial.json
