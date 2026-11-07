@@ -202,7 +202,7 @@ namespace FlipRace.Presentation
                     int hits = TotalHits();
                     int boosts = TotalRewards();
                     int slows = TotalSlows();
-                    if(BotEnabled) AdvanceMeasuredBot(delta); else RaceSimulation.Advance(Game, delta);
+                    AdvanceRace(delta);
                     if (oldPhase == "countdown" && Game.Phase == "racing") Beep(startClip);
                     else if (Game.Phase == "countdown" && countdown != (int)Math.Ceiling(Game.CountdownRemaining)) Beep(tapClip);
                     if (hits != TotalHits()) Beep(hitClip);
@@ -215,6 +215,14 @@ namespace FlipRace.Presentation
             }
             finally { EndBotPerformanceFrame(!botPerformanceFrameCompleted); }
             suppressFrame = false;
+        }
+
+        void AdvanceRace(double delta)
+        {
+            bool botRace = BotEnabled;
+            long started = botRace ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
+            try { RaceRunner.Advance(Game, delta, botRace ? botController : null); }
+            finally { if (botRace) RecordBotAdvance(started); }
         }
 
         // Drawing and hit-testing share CSS-pixel rectangles, including all touch controls.
@@ -324,7 +332,7 @@ namespace FlipRace.Presentation
                 Game.Track = RaceTracks.Get(Game.Track.Id);
                 selectedTrackId = Game.Track.Id;
             }
-            if (RaceSimulation.Press(Game, index)) Beep(tapClip);
+            if (RaceRunner.Press(Game, index)) Beep(tapClip);
             if (phase == "finished" && Game.Phase == "countdown") round++;
             if ((phase == "ready" || phase == "finished") && Game.Phase == "countdown") suppressFrame = true;
         }

@@ -15,13 +15,37 @@ namespace FlipRace.Core
     public static class RaceSnapshot
     {
         public static GameState Clone(GameState source)
+        { return Clone(source, false); }
+
+        // Planning ignores Constant-camera elimination. It keeps all current
+        // bodies when they can affect the shared hidden world, with no future
+        // inputs from the other participants. Player IDs remain unchanged.
+        internal static GameState ForBotForecast(GameState source, int slot)
+        {
+            var copy = Clone(source, true);
+            var bot = copy.Players[slot];
+            if (HiddenObstacles.HasHidden(copy.Track))
+            {
+                copy.Players[slot] = copy.Players[0];
+                copy.Players[0] = bot;
+            }
+            else
+            {
+                copy.Players = new[] { bot };
+                copy.Winner = null;
+                copy.WinnerAt = null;
+            }
+            return copy;
+        }
+
+        private static GameState Clone(GameState source, bool useBotForecastCamera)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));
             // Winner is the engine's immutable union, not an arbitrary object graph.
             if (source.Winner != null && !(source.Winner is int) && !(source.Winner is string))
                 throw new ArgumentException("Winner must be null, a player ID, or a tie string.", nameof(source));
             var copies = new Dictionary<object, object>(ReferenceComparer.Instance);
-            var copy = source.SnapshotShell();
+            var copy = source.SnapshotShell(useBotForecastCamera);
             copies.Add(source, copy);
             if (source.HiddenObstacles != null)
             {

@@ -101,11 +101,10 @@ namespace FlipRace.Presentation
             botFramePending=true;botFrameAdvanced=false;botFrameOrdinal=Time.frameCount;botFrameDelta=delta;botFrameAdvanceMs=0;botFramePlans=BotPlanningCalls;
             botFrameCohort=paused||showRules||showTracks||Portrait?BotFrameCohort.Paused:Game.Phase=="countdown"?BotFrameCohort.Countdown:suppressFrame?BotFrameCohort.Suppressed:BotFrameCohort.Active;
         }
-        void AdvanceMeasuredBot(double delta)
+        void RecordBotAdvance(long started)
         {
-            long started=System.Diagnostics.Stopwatch.GetTimestamp();
-            try{botController.Advance(delta);}
-            finally{botFrameAdvanceMs=(System.Diagnostics.Stopwatch.GetTimestamp()-started)*1000d/System.Diagnostics.Stopwatch.Frequency;botFrameAdvanced=true;}
+            botFrameAdvanceMs = (System.Diagnostics.Stopwatch.GetTimestamp() - started) * 1000d / System.Diagnostics.Stopwatch.Frequency;
+            botFrameAdvanced = true;
         }
         void EndBotPerformanceFrame(bool captureFault=false)
         {

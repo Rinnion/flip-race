@@ -50,11 +50,97 @@ static class Program
     {
         foreach (var field in typeof(GameState).GetFields(BindingFlags.Public | BindingFlags.Instance))
         {
+            if (field.Name == nameof(GameState.HiddenObstacles)) continue;
             if (field.Name == "Track" || field.Name == "Flight" || field.Name == "Profile")
                 Need(ReferenceEquals(field.GetValue(actual), field.GetValue(replay)), "shared readonly world " + field.Name);
             else Same(field.GetValue(actual), field.GetValue(replay), "world." + field.Name);
         }
-        Need(actual.PartyCameraLeft == replay.PartyCameraLeft, "world.PartyCameraLeft"); immediateSnapshots++;
+        Need(actual.HiddenObstacles.Count == replay.HiddenObstacles.Count, "hidden timeline count");
+        foreach (var entry in actual.HiddenObstacles)
+        {
+            Need(replay.HiddenObstacles.TryGetValue(entry.Key, out var other), "hidden timeline ID " + entry.Key);
+            Same(entry.Value, other, "world.HiddenObstacles." + entry.Key);
+        }
+        Need(actual.PartyCamera == replay.PartyCamera && actual.PartyCameraLeft == replay.PartyCameraLeft, "world camera");
+        Need(actual.SurfaceRunEnabled == replay.SurfaceRunEnabled && actual.SurfaceRunSettings.Equals(replay.SurfaceRunSettings), "world surface run");
+        for (int i = 0; i < actual.Players.Length; i++)
+        {
+            var first = actual.Players[i]; var second = replay.Players[i];
+            Need(first.SurfaceRunEnabled == second.SurfaceRunEnabled && first.SurfaceRunReserve == second.SurfaceRunReserve
+                && first.SurfaceRunSettings.Equals(second.SurfaceRunSettings), "player surface run");
+        }
+        immediateSnapshots++;
+    }
+
+    sealed class TimedInput(GameState race, GameState replay) : IRaceScheduledInput
+    {
+        readonly double[] presses = { 0, 0, 0, .2, .35, .55, 2.75, 5.31, 12.13, 17.19 };
+        int cursor;
+        public int Accepted { get; private set; }
+        public int Rejected { get; private set; }
+        public int Advances { get; private set; }
+        public GameState Race => race;
+        public int Slot => 1;
+
+        public bool TryGetPress(double remaining, out double step)
+        {
+            step = Math.Min(remaining, .037);
+            if (cursor == presses.Length) return false;
+            double gap = presses[cursor] - race.Elapsed;
+            step = Math.Min(step, Math.Max(1e-10, gap));
+            return gap <= 1e-10;
+        }
+
+        public void PressCompleted(bool accepted)
+        {
+            Need(accepted == RaceRunner.Press(replay, Slot), "same local and scheduled command acceptance");
+            if (accepted) Accepted++; else Rejected++;
+            cursor++;
+            WorldSame(race, replay);
+        }
+
+        public void AdvanceCompleted(double delta, bool wasRunning)
+        {
+            RaceRunner.Advance(replay, delta);
+            WorldSame(race, replay);
+            Advances++;
+        }
+    }
+
+    static void ScheduledReplay(bool acceleration)
+    {
+        context = "runner scheduled input, acceleration=" + acceleration;
+        var track = RaceTracks.Get(TracksHidden.InterceptsId);
+        var race = RaceSimulation.CreateParty(track, FlightPresets.Chosen, 2, PartyCamera.Lagger, -288.8, 1520);
+        var settings = new SurfaceRunSettings(3, SurfaceRunCurve.Exponential, 40, 50, false);
+        RaceSimulation.ConfigureSurfaceRun(race, acceleration, settings);
+        HiddenObstacles.ConfigureWarning(race, .6);
+        Need(RaceRunner.Press(race, 0) && RaceRunner.Press(race, 1), "both local commands start countdown");
+        var replay = RaceSnapshot.Clone(race);
+        var input = new TimedInput(race, replay);
+        RaceRunner.Advance(race, 2, input, paused: true);
+        Need(input.Advances == 0 && input.Accepted + input.Rejected == 0, "pause does not advance or apply input");
+        WorldSame(race, replay);
+
+        RaceRunner.Advance(race, RaceConfig.CountdownDuration + .1, input);
+        Need(race.Phase == "racing" && Math.Abs(race.Elapsed - .1) < 1e-9, "countdown remainder advances once");
+        var forecast = RaceSnapshot.ForBotForecast(race, input.Slot);
+        Need(forecast.SurfaceRunEnabled == acceleration && forecast.SurfaceRunSettings.Equals(settings)
+            && forecast.Players[0].Id == race.Players[input.Slot].Id
+            && forecast.Players[0].SurfaceRunReserve == race.Players[input.Slot].SurfaceRunReserve
+            && forecast.HiddenWarningDuration == race.HiddenWarningDuration, "forecast preserves physical settings and identity");
+        RaceRunner.Advance(forecast, 2);
+        WorldSame(race, replay);
+
+        for (int frame = 0; frame < 600 && race.Phase == "racing"; frame++)
+        {
+            if (frame % 71 == 0)
+                Need(RaceRunner.Press(race, 0) == RaceRunner.Press(replay, 0), "other participant's local acceptance");
+            RaceRunner.Advance(race, .11, input);
+        }
+        Need(race.Phase == "finished" && race.HiddenObstacles.Count > 0, "hidden objects and finish exercised");
+        Need(input.Accepted > 0 && input.Rejected > 0, "both command results exercised");
+        Console.WriteLine($"PASS acceleration={acceleration}, advances={input.Advances}, accepted={input.Accepted}, rejected={input.Rejected}");
     }
     sealed class Spec
     {
@@ -207,6 +293,13 @@ static class Program
     static Dictionary<string,string> Hashes() => Directory.GetFiles("Assets/Scripts/Core", "*.cs").Concat(Directory.GetFiles("Tools/StochasticWorldCheck", "*.cs")).Concat(Directory.GetFiles("Tools/StochasticWorldCheck", "*.csproj")).OrderBy(x => x).ToDictionary(f => f.Replace('\\','/'), f => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(f))));
     static int Main(string[] args)
     {
+        if (args.SequenceEqual(new[] { "--runner" }))
+        {
+            ScheduledReplay(false);
+            ScheduledReplay(true);
+            Console.WriteLine($"PASS {checks} assertions, {immediateSnapshots} state comparisons");
+            return 0;
+        }
         if (args.Length > 1 || (args.Length == 1 && args[0] != "--masterfix" && !args[0].StartsWith("--output-stem=",StringComparison.Ordinal))) throw new ArgumentException("Choose optional --masterfix or a fresh scoped --output-stem selector.");
         string reportStem = args.Length == 1 && args[0]=="--masterfix" ? "stochastic-bots-world-masterfix" : "stochastic-bots-world";
         if(args.Length==1 && args[0].StartsWith("--output-stem=",StringComparison.Ordinal))

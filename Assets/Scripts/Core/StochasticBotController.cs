@@ -35,7 +35,7 @@ namespace FlipRace.Core
         {Number=number;AtDistance=at;HorizonEndDistance=end;Candidates=candidates;ForecastSteps=steps;Rollbacks=rollbacks;Milliseconds=milliseconds;}
     }
     // Bounded personal forecasts; only ordinary Press/Advance touches the shared race.
-    public sealed class StochasticBotController
+    public sealed class StochasticBotController : IRaceScheduledInput
     {
         public const int MaxCandidatesPerPlanningCall=96;
         public const double MaxHorizonDistance=1000;
@@ -132,26 +132,7 @@ namespace FlipRace.Core
             }
         }
         GameState PersonalForecast()
-        {
-            var copy=RaceSnapshot.Clone(game);
-            bool sharedHidden=HiddenObstacles.HasHidden(game.Track);
-            // Constant-camera elimination remains excluded inside forecasts.
-            // Hidden geometry needs every current body and the shared clocks.
-            // Other participants continue ordinary physics without future Press
-            // inputs; unknown human inputs remain forecast uncertainty.
-            var personal=sharedHidden&&copy.Players.Length>1
-                ? RaceSimulation.CreateParty(game.Track,game.Flight,copy.Players.Length,PartyCamera.Lagger,-288.8,1520)
-                : RaceSimulation.CreateSolo(game.Track,game.Flight,PartyCamera.Lagger,-288.8,1520);
-            if(sharedHidden)
-            {
-                personal.Players=copy.Players;
-                var bot=personal.Players[slot];personal.Players[slot]=personal.Players[0];personal.Players[0]=bot;
-                personal.HiddenObstacles=copy.HiddenObstacles;personal.HiddenWarningDuration=copy.HiddenWarningDuration;
-                personal.Winner=copy.Winner;personal.WinnerAt=copy.WinnerAt;personal.PartyLastCameraLeft=copy.PartyLastCameraLeft;
-            }
-            else personal.Players=new[]{copy.Players[slot]};
-            personal.Elapsed=game.Elapsed;personal.Phase="racing";personal.Motion=game.Motion;personal.Profile=game.Profile;personal.CountdownRemaining=0;return personal;
-        }
+        { return RaceSnapshot.ForBotForecast(game, slot); }
         double[] Clip(IEnumerable<double> source,double start,double end)
         {
             var list=new List<double>();foreach(double v in source)if(!double.IsNaN(v)&&!double.IsInfinity(v)&&v>=start-EdgeTolerance&&v<=end&&v>lastEmittedDistance+EdgeTolerance)list.Add(Math.Max(start,v));
@@ -302,24 +283,58 @@ namespace FlipRace.Core
             if(p.Recovering>0){double end=Math.Min(game.Track.Length,p.Distance+MaxHorizonDistance);foreach(var r in fresh){var d=new StochasticBotDecision(r.Opportunity,r.Intent,r.Probability,r.Roll,p.Distance,game.Elapsed,end,Array.Empty<double>(),"");saved.Add(d.Id,d);decisions.Add(d);}}
             else Plan(fresh);return true;
         }
-        void Step(double dt){RaceSimulation.Advance(game,dt);UpdateOutcomes();Observer?.Invoke(new BotSlice{Kind="advance",Delta=dt,Time=game.Elapsed,Distance=game.Players[slot].Distance,Cursor=cursor});}
         public void Advance(double delta,bool paused=false)
+        { RaceRunner.Advance(game, delta, this, paused); }
+
+        GameState IRaceScheduledInput.Race => game;
+        int IRaceScheduledInput.Slot => slot;
+
+        bool IRaceScheduledInput.TryGetPress(double remaining, out double step)
         {
-            if(paused||double.IsNaN(delta)||double.IsInfinity(delta)||delta<=0)return;double remaining=delta;int guard=0;
-            while(remaining>0)
+            step = Math.Min(remaining, MaxSlice);
+            var player = game.Players[slot];
+            if (player.Status != PlayerStatus.Running) return false;
+
+            UpdateOutcomes();
+            Decide();
+            if (player.Recovering > 0)
             {
-                if(++guard>100000)throw new InvalidOperationException("Stochastic controller step guard");
-                if(game.Phase=="countdown"){double part=Math.Min(remaining,Math.Max(1e-9,game.CountdownRemaining));Step(part);remaining-=part;continue;}
-                if(game.Phase!="racing"){Step(remaining);break;}var p=game.Players[slot];
-                if(p.Status==PlayerStatus.Running)
-                {
-                    UpdateOutcomes();Decide();if(p.Recovering>0)wasRecovering=true;else if(wasRecovering){wasRecovering=false;planned=Array.Empty<double>();plannedCursor=0;Plan(new List<Pending>());}
-                    if(p.Recovering<=0&&plannedCursor<planned.Length&&planned[plannedCursor]-p.Distance<=EdgeTolerance){bool legal=RaceSimulation.CanPress(game,slot),accepted=false;if(legal)accepted=RaceSimulation.Press(game,slot);else SuppressedInputs++;lastEmittedDistance=p.Distance;Observer?.Invoke(new BotSlice{Kind=legal?"press":"suppressed",Time=game.Elapsed,Distance=p.Distance,Cursor=cursor,Accepted=accepted});cursor++;plannedCursor++;continue;}
-                }
-                double dt=Math.Min(remaining,MaxSlice);
-                if(p.Status==PlayerStatus.Running){if(p.Recovering>0)dt=Math.Min(dt,p.Recovering);else{double target=double.PositiveInfinity;if(plannedCursor<planned.Length)target=planned[plannedCursor];if(nextOpportunity<opportunities.Length)target=Math.Min(target,Math.Max(0,opportunities[nextOpportunity].Position-DecisionLeadDistance));if(!double.IsInfinity(target))dt=Math.Min(dt,Math.Max(1e-10,(target-p.Distance)/RaceConfig.FinishBoostSpeed));}}
-                Step(dt);remaining-=dt;
+                wasRecovering = true;
+                step = Math.Min(step, player.Recovering);
+                return false;
             }
+            if (wasRecovering)
+            {
+                wasRecovering = false;
+                planned = Array.Empty<double>();
+                plannedCursor = 0;
+                Plan(new List<Pending>());
+            }
+
+            double target = plannedCursor < planned.Length ? planned[plannedCursor] : double.PositiveInfinity;
+            if (target - player.Distance <= EdgeTolerance) return true;
+            if (nextOpportunity < opportunities.Length)
+                target = Math.Min(target, Math.Max(0, opportunities[nextOpportunity].Position - DecisionLeadDistance));
+            if (!double.IsInfinity(target))
+                step = Math.Min(step, Math.Max(1e-10, (target - player.Distance) / RaceConfig.FinishBoostSpeed));
+            return false;
+        }
+
+        void IRaceScheduledInput.PressCompleted(bool accepted)
+        {
+            if (!accepted) SuppressedInputs++;
+            lastEmittedDistance = game.Players[slot].Distance;
+            Observer?.Invoke(new BotSlice { Kind = accepted ? "press" : "suppressed", Time = game.Elapsed,
+                Distance = lastEmittedDistance, Cursor = cursor, Accepted = accepted });
+            cursor++;
+            plannedCursor++;
+        }
+
+        void IRaceScheduledInput.AdvanceCompleted(double delta, bool wasRunning)
+        {
+            UpdateOutcomes();
+            Observer?.Invoke(new BotSlice { Kind = "advance", Delta = delta, Time = game.Elapsed,
+                Distance = game.Players[slot].Distance, Cursor = cursor });
         }
     }
 }

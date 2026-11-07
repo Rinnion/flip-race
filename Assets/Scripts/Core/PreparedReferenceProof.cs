@@ -60,7 +60,7 @@ namespace FlipRace.Core
             }
             else game=RaceSimulation.CreateSolo(package.Track,flight,PartyCamera.Constant,-288.8,1520);
             HiddenObstacles.ConfigureWarning(game,warnings[configuration]);
-            RaceSimulation.Press(game,0);RaceSimulation.Advance(game,RaceConfig.CountdownDuration);
+            RaceRunner.Press(game,0);RaceRunner.Advance(game,RaceConfig.CountdownDuration);
         }
         // At most maxSteps ordinary simulation/controller slices. UI callers
         // should also yield on a wall-clock budget between calls (one step is atomic).
@@ -75,17 +75,17 @@ namespace FlipRace.Core
                     var p=game.Players[master?1:0];
                     if(p.Status!=PlayerStatus.Running||game.Phase!="racing") { EndRun(p);continue; }
                     if(game.Elapsed>MaximumRaceSeconds) { Fail("Достигнут предел 120 секунд одного забега. Доступна игра с людьми.");break; }
-                    if(master)controller.Advance(1d/120);
+                    if(master)RaceRunner.Advance(game,1d/120,controller);
                     else if(cursor<inputs.Length&&inputs[cursor]-p.Distance<=1e-6)
                     {
-                        if(!RaceSimulation.Press(game,0)) { Fail("Недопустимое нажатие №"+(cursor+1));break; }
+                        if(!RaceRunner.Press(game,0)) { Fail("Недопустимое нажатие №"+(cursor+1));break; }
                         cursor++;
                     }
                     else
                     {
                         double dt=1d/120;
                         if(cursor<inputs.Length)dt=Math.Min(dt,Math.Max(1e-10,(inputs[cursor]-p.Distance)/RaceConfig.FinishBoostSpeed));
-                        RaceSimulation.Advance(game,dt);
+                        RaceRunner.Advance(game,dt);
                     }
                 }
             }

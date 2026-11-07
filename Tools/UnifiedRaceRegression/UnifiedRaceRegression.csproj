@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <NuGetAudit>false</NuGetAudit>
+    <CoreRoot Condition="'$(BaselineRoot)' == ''">../../Assets/Scripts/Core</CoreRoot>
+    <CoreRoot Condition="'$(BaselineRoot)' != ''">$(BaselineRoot)/Assets/Scripts/Core</CoreRoot>
+    <DefineConstants Condition="'$(BaselineRoot)' != ''">$(DefineConstants);BASELINE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(CoreRoot)/*.cs" />
+  </ItemGroup>
+</Project>

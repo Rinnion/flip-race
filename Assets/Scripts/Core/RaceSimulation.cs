@@ -241,8 +241,10 @@ namespace FlipRace.Core
         public BotDifficulty BotDifficulty { get { return StochasticBot != null ? StochasticBot.Difficulty : BotPlan == null ? BotDifficulty.Novice : BotPlan.Difficulty; } }
         // Preserve the legacy signed API; new callers read StochasticBot.Seed as uint.
         public int BotSeed { get { return StochasticBot != null ? unchecked((int)StochasticBot.Seed) : BotPlan == null ? 0 : BotPlan.Seed; } }
-        public bool UsesSharedRaceCamera { get { return IsParty || IsSolo || IsBot; } }
-        public readonly PartyCamera PartyCamera;
+        private bool botForecastCamera;
+        public bool UsesSharedRaceCamera { get { return IsParty || IsSolo || IsBot || botForecastCamera; } }
+        private readonly PartyCamera partyCamera;
+        public PartyCamera PartyCamera => botForecastCamera ? PartyCamera.Lagger : partyCamera;
         public readonly double PartyCameraStartLeft, PartyWindowWidth, PartyCameraSpeed;
         internal double PartyLastCameraLeft;
         public double PartyCameraLeft
@@ -260,7 +262,7 @@ namespace FlipRace.Core
         internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo, BotPlan botPlan = null, StochasticBotSettings stochasticBot = null)
         {
             if (botPlan != null && stochasticBot != null) throw new ArgumentException("Only one bot metadata model may be supplied.");
-            IsParty = !solo && botPlan == null && stochasticBot == null; IsSolo = solo; IsBot = botPlan != null || stochasticBot != null; BotPlan = botPlan; StochasticBot = stochasticBot; PartyCamera = camera; PartyCameraStartLeft = startLeft;
+            IsParty = !solo && botPlan == null && stochasticBot == null; IsSolo = solo; IsBot = botPlan != null || stochasticBot != null; BotPlan = botPlan; StochasticBot = stochasticBot; partyCamera = camera; PartyCameraStartLeft = startLeft;
             PartyWindowWidth = windowWidth; PartyCameraSpeed = track.Length / 36;
             PartyLastCameraLeft = startLeft;
         }
@@ -298,7 +300,12 @@ namespace FlipRace.Core
         public double? WinnerAt;
 
         // Includes readonly race flags and camera state without restarting the race.
-        internal GameState SnapshotShell() { return (GameState)MemberwiseClone(); }
+        internal GameState SnapshotShell(bool useBotForecastCamera)
+        {
+            var copy = (GameState)MemberwiseClone();
+            if (useBotForecastCamera) copy.botForecastCamera = true;
+            return copy;
+        }
     }
 
     public static class Tracks
