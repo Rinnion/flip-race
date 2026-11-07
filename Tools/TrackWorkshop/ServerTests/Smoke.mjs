@@ -39,8 +39,8 @@ async function request(path, { method = 'GET', host = authority, sourceOrigin, b
   return { response, text };
 }
 const health = await request('/healthz');
-assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.0' });
-await request('/'); await request('/edit-model.mjs');
+assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.3' });
+await request('/'); await request('/edit-model.mjs'); await request('/object-source.mjs');
 const catalog = JSON.parse((await request('/api/catalog')).text); assert.equal(catalog.entries.length, 8);
 const json = JSON.parse((await request('/api/catalog/full-long')).text).json;
 await request('/api/analyze', { method: 'POST', sourceOrigin: origin, body: JSON.stringify({ json }) });
@@ -57,4 +57,4 @@ const replay = JSON.parse((await request('/api/replay', { method: 'POST', source
 assert.ok(replay.summary.finishTime > 0); assert.equal(replay.summary.status, 'Finished');
 const evidence = { passed: true, base: base.origin, publicOrigin, requests: results.length, results, replaySummary: replay.summary };
 await writeFile(fileURLToPath(new URL('./smoke-results.json', import.meta.url)), JSON.stringify(evidence, null, 2) + '\n');
-console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.0, identity/error/static/replay checks.`);
+console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.3, identity/error/static/replay checks.`);

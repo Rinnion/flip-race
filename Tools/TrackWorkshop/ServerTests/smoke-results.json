@@ -1,91 +1,98 @@
 {
   "passed": true,
-  "base": "http://127.0.0.1:4197",
-  "publicOrigin": "https://workshop.example.com",
+  "base": "http://127.0.0.1:4198",
+  "publicOrigin": null,
   "requests": 20,
   "results": [
     {
       "method": "GET",
       "path": "/healthz",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 200
     },
     {
       "method": "GET",
       "path": "/",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 200
     },
     {
       "method": "GET",
       "path": "/edit-model.mjs",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/object-source.mjs",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 200
     },
     {
       "method": "GET",
       "path": "/api/catalog",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 200
     },
     {
       "method": "GET",
       "path": "/api/catalog/full-long",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 200
     },
     {
       "method": "POST",
       "path": "/api/analyze",
-      "host": "workshop.example.com",
-      "origin": "https://workshop.example.com",
+      "host": "127.0.0.1:4198",
+      "origin": "http://127.0.0.1:4198",
       "status": 200
     },
     {
       "method": "POST",
       "path": "/api/analyze/",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 200
     },
     {
       "method": "POST",
       "path": "/api/analyze",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": "https://wrong.example",
       "status": 400
     },
     {
       "method": "POST",
       "path": "/api/analyze",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": "null",
       "status": 400
     },
     {
       "method": "POST",
       "path": "/api/analyze",
-      "host": "workshop.example.com",
-      "origin": "https://workshop.example.com",
+      "host": "127.0.0.1:4198",
+      "origin": "http://127.0.0.1:4198",
       "status": 400
     },
     {
       "method": "POST",
       "path": "/api/analyze",
-      "host": "workshop.example.com",
-      "origin": "https://workshop.example.com",
+      "host": "127.0.0.1:4198",
+      "origin": "http://127.0.0.1:4198",
       "status": 400
     },
     {
       "method": "POST",
       "path": "/api/analyze",
-      "host": "workshop.example.com",
-      "origin": "https://workshop.example.com",
+      "host": "127.0.0.1:4198",
+      "origin": "http://127.0.0.1:4198",
       "status": 400
     },
     {
@@ -97,51 +104,44 @@
     },
     {
       "method": "GET",
-      "path": "/healthz",
-      "host": "127.0.0.1:4197",
-      "origin": null,
-      "status": 400
-    },
-    {
-      "method": "GET",
       "path": "/ServerOptions.cs",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 404
     },
     {
       "method": "GET",
       "path": "/README.md",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 404
     },
     {
       "method": "GET",
       "path": "/Web/tests/model.test.mjs",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 404
     },
     {
       "method": "GET",
       "path": "/Catalog/full-long.track.json",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 404
     },
     {
       "method": "GET",
       "path": "/api/catalog/..%2F..%2FProgram.cs",
-      "host": "workshop.example.com",
+      "host": "127.0.0.1:4198",
       "origin": null,
       "status": 404
     },
     {
       "method": "POST",
       "path": "/api/replay",
-      "host": "workshop.example.com",
-      "origin": "https://workshop.example.com",
+      "host": "127.0.0.1:4198",
+      "origin": "http://127.0.0.1:4198",
       "status": 200
     }
   ],

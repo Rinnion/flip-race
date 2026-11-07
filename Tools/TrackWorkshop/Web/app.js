@@ -1,6 +1,7 @@
 import { clamp, parseInputs, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision } from './model.mjs';
 import { createObject, deleteObject, resizeObject, getResizeHandles } from './edit-model.mjs';
 import { DRAFT_KEY, readDraft, writeDraft, clearDraft } from './draft.mjs';
+import { selectedObjectSource, replaceObjectSource } from './object-source.mjs';
 
 const $ = id => document.getElementById(id);
 const svgNS = 'http://www.w3.org/2000/svg';
@@ -11,6 +12,7 @@ const state = { analysis: null, valid: false, catalog: [], zoom: 1, left: -20, r
 let drag = null, spacePan = false;
 let draftStorage, pendingDraft = null, draftBlocked = false, draftTimer = null, draftTouched = false;
 const preparation = { revision: 0, abort: null, pending: false, result: null, sourceId: null };
+const objectEdit = { revision: 0, timer: null, abort: null, dirty: false, committing: false, error: '', source: null, target: null };
 function invalidatePrepared(reason = 'Исходник или настройки изменены. Подготовьте бота заново.') {
   preparation.revision++; preparation.abort?.abort(); preparation.abort = null;
   const existed = preparation.pending || preparation.result;
@@ -127,9 +129,13 @@ function controls() {
   $('reference').disabled = !state.valid || state.moving || !a?.references?.some(r => r.profileId === $('profile').value);
   $('undo-move').disabled = state.moving || !state.history.length || state.history.at(-1).after !== $('json').value;
   $('redo').disabled = state.moving || !state.future.length || state.future.at(-1).before !== $('json').value;
-  $('add-type').disabled = !state.valid || state.moving;
-  $('add-object').disabled = !state.valid || state.moving;
+  for (const button of document.querySelectorAll('[data-add-kind]')) {
+    button.disabled = !state.valid || state.moving;
+    button.setAttribute('aria-pressed', String(button.dataset.addKind === state.addKind));
+  }
   updateSelectionPanel();
+  if (objectEdit.dirty) for (const id of ['undo-move', 'redo', 'delete-object', 'download', 'replay', 'prepare-bot']) $(id).disabled = true;
+  if (objectEdit.dirty) for (const button of document.querySelectorAll('[data-add-kind]')) button.disabled = true;
   $('download').textContent = a?.staleReferences && state.valid ? '↓ Скачать без эталонов' : '↓ Скачать JSON';
 }
 function invalidateReplay(reason) {
@@ -142,6 +148,7 @@ function invalidateReplay(reason) {
   draw();
 }
 function edited(immediate = false, options = {}) {
+  if (!options.preserveObjectBuffer) resetObjectEdit();
   if (drag) finishDrag(false);
   if (!options.keepPreview) state.preview = null;
   if (!options.preserveHistory) {
@@ -164,19 +171,20 @@ function edited(immediate = false, options = {}) {
   message('validation-errors', '', false);
   message('reference-warning', '', false);
   invalidateReplay('JSON изменён. Для новой геометрии нужно новое прохождение.');
-  state.debounce = setTimeout(analyze, immediate ? 0 : 300);
+  if (options.acceptedAnalysis) analyze(options.acceptedAnalysis);
+  else state.debounce = setTimeout(analyze, immediate ? 0 : 300);
 }
-async function analyze() {
+async function analyze(acceptedAnalysis = null) {
   const revision = state.analysisRevision.value;
   const text = $('json').value;
   const abort = new AbortController(); state.analysisAbort = abort;
   try {
     if (new TextEncoder().encode(text).length > 2 * 1024 * 1024) throw new Error('Файл больше 2 МиБ.');
     JSON.parse(text);
-    const result = await api('/api/analyze', { json: text }, abort.signal);
+    const result = acceptedAnalysis || await api('/api/analyze', { json: text }, abort.signal);
     if (!state.analysisRevision.current(revision)) return;
     const newTrack = state.analysis?.id !== result.id;
-    state.preview = null; state.analysis = result; state.valid = true;
+    state.preview = null; state.analysis = result; state.valid = true; objectEdit.committing = false;
     if (state.selection && !selectedObject(result)) state.selection = null;
     if (newTrack) { state.left = -20; state.zoom = 1; }
     $('stale').hidden = true; $('empty-diagram').hidden = true;
@@ -216,6 +224,7 @@ function loadText(text, filename) {
 }
 async function loadBuiltin(id) {
   if (!id) return;
+  resetObjectEdit(); controls();
   const revision = ++state.loadRevision;
   try {
     const result = await api(`/api/catalog/${encodeURIComponent(id)}`);
@@ -238,7 +247,7 @@ function objectGroup(parent, description, target = null) {
     'data-collection': target?.collection, 'data-id': target?.id });
   g.append(el('title', {}, description));
   const show = () => { $('object-detail').textContent = description; };
-  g.addEventListener('click', show); g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (target) { state.selection = target; controls(); draw(); } show(); } });
+  g.addEventListener('click', show); g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (objectEditBlocked()) return; if (target) { state.selection = target; controls(); draw(); } show(); } });
   parent.append(g); return g;
 }
 function hiddenPhase(obstacle) {
@@ -426,6 +435,7 @@ $('format').addEventListener('click', () => { try { $('json').value = JSON.strin
 $('open').addEventListener('click', () => $('file').click());
 $('file').addEventListener('change', async () => {
   const file = $('file').files[0]; if (!file) return;
+  resetObjectEdit(); controls();
   const revision = ++state.loadRevision;
   try {
     if (file.size > 2 * 1024 * 1024) throw new Error('Файл больше 2 МиБ.');
@@ -479,11 +489,76 @@ function updateSelectionPanel() {
   $('delete-object').textContent = count > 1 ? `Удалить группу · ${count} объектов` : 'Удалить объект';
   $('delete-object').disabled = !object || !state.valid || state.moving || !!state.addKind;
   $('cancel-add').hidden = !state.addKind;
-  $('add-object').textContent = state.addKind ? 'Укажите место на схеме…' : '＋ Разместить на схеме';
-  const chosenKind = state.addKind || $('add-type').value;
+  updateObjectSource();
+  const chosenKind = state.addKind;
   const linked = ['landing', 'positive-before', 'positive-after'].includes(chosenKind), anchorName = chosenKind === 'landing' ? 'камень' : 'препятствие';
-  $('add-help').textContent = state.addKind ? linked ? `Нажмите ${anchorName} на подробной схеме; либо выберите его заранее и нажмите место награды. Esc — отмена добавления.` : 'Нажмите место на подробной схеме. Будет добавлен один объект, затем вернётся выбор. Esc — отмена.' : linked ? `Для этого типа нужно связанное ${anchorName === 'камень' ? 'основание — камень' : 'препятствие'}: выберите его заранее или нажмите на него при размещении.` : 'Выберите тип и нажмите «Разместить на схеме», затем укажите место на подробной схеме.';
+  $('add-help').textContent = state.addKind ? linked ? `Нажмите ${anchorName} на подробной схеме; либо выберите его заранее и нажмите место награды. Повторное нажатие кнопки палитры или Esc — отмена.` : 'Нажмите место на подробной схеме. Будет добавлен один объект, затем вернётся обычный режим. Повторное нажатие кнопки палитры или Esc — отмена.' : 'Нажмите кнопку палитры, затем место на подробной схеме. Сейчас доступны навигация и редактирование объектов.';
   $('diagram').classList.toggle('adding-object', !!state.addKind);
+}
+function updateObjectSource() {
+  if (objectEdit.dirty || objectEdit.committing) {
+    $('object-json').hidden = false; $('object-json').readOnly = false;
+    $('select-object-json').disabled = false; $('reset-object-json').disabled = false;
+    $('object-json-status').textContent = objectEdit.error || (objectEdit.committing ? 'Правка применена. Обновляем схему…' : 'Проверяем правку… Другие правки схемы доступны после применения или сброса.');
+    $('object-json-status').classList.toggle('storage-error', !!objectEdit.error);
+    return;
+  }
+  let source = null, status = 'Выберите объект на схеме.';
+  if (!state.valid) status = 'Текущий JSON ещё не проверен или содержит ошибку. JSON объекта недоступен до успешной проверки.';
+  else if (state.selection) {
+    try {
+      source = selectedObjectSource($('json').value, state.selection);
+      status = source ? `${state.selection.id} · правки применяются после проверки Unity. ${state.moving ? 'Завершите жест для редактирования JSON.' : 'Связи и параметры меняются по правилам исходного JSON.'}` : 'Выбранного объекта нет в текущем исходнике.';
+    } catch { status = 'Не удалось прочитать объект из текущего исходника.'; }
+  }
+  const focusedEquivalent = document.activeElement === $('object-json') && source && $('object-json').value.trim() === source;
+  if (!focusedEquivalent && $('object-json').value !== (source || '')) $('object-json').value = source || '';
+  $('object-json').hidden = !source;
+  $('object-json').readOnly = !source || state.moving || !!drag;
+  $('select-object-json').disabled = !source;
+  $('reset-object-json').disabled = true;
+  $('object-json-status').textContent = status;
+  $('object-json-status').classList.remove('storage-error');
+}
+function resetObjectEdit() {
+  objectEdit.revision++; clearTimeout(objectEdit.timer); objectEdit.abort?.abort();
+  objectEdit.abort = null; objectEdit.dirty = false; objectEdit.committing = false; objectEdit.error = '';
+  objectEdit.source = null; objectEdit.target = null;
+}
+function objectEditBlocked() {
+  if (!objectEdit.dirty) return false;
+  notice('Сначала исправьте JSON выбранного объекта или нажмите «Сбросить правку». Другой объект и схема пока защищены от изменений.', true);
+  return true;
+}
+function editObjectSource() {
+  if (!state.valid || state.moving || drag || !state.selection) return;
+  if (!objectEdit.dirty) { objectEdit.source = $('json').value; objectEdit.target = { ...state.selection }; }
+  objectEdit.dirty = true; objectEdit.error = ''; objectEdit.revision++;
+  clearTimeout(objectEdit.timer); objectEdit.abort?.abort(); state.addKind = null;
+  objectEdit.timer = setTimeout(validateObjectEdit, 300);
+  controls(); draw();
+}
+async function validateObjectEdit() {
+  const revision = objectEdit.revision, before = objectEdit.source, target = objectEdit.target;
+  const analysisRevision = state.analysisRevision.value, loadRevision = state.loadRevision, buffer = $('object-json').value;
+  const abort = new AbortController(); objectEdit.abort = abort;
+  const current = () => revision === objectEdit.revision && objectEdit.dirty && loadRevision === state.loadRevision && before === $('json').value && state.analysisRevision.current(analysisRevision) && state.selection?.collection === target.collection && state.selection?.id === target.id;
+  try {
+    const candidate = replaceObjectSource(before, target, buffer);
+    const result = await api('/api/analyze', { json: candidate.source }, abort.signal);
+    if (!current()) return;
+    if (!result[candidate.target.collection]?.some(object => object.id === candidate.target.id)) throw new Error('Unity не вернул изменённый объект.');
+    if (candidate.source === before) { resetObjectEdit(); controls(); return; }
+    remember(before, candidate.source, 'Изменён JSON объекта', target, candidate.target);
+    $('json').value = candidate.source; state.selection = candidate.target;
+    objectEdit.dirty = false; objectEdit.committing = true; objectEdit.abort = null;
+    edited(true, { preserveHistory: true, preserveObjectBuffer: true, acceptedAnalysis: result });
+    $('object-detail').textContent = `${candidate.target.id} · параметры обновлены из JSON`;
+  } catch (error) {
+    if (!current() || error.name === 'AbortError') return;
+    objectEdit.error = `Не применено: ${error.message} Исправьте текст или сбросьте правку. Исходник трассы сохранён.`;
+    controls();
+  }
 }
 function drawSelection(parent) {
   const analysis = state.preview || state.analysis, object = selectedObject(analysis);
@@ -504,8 +579,8 @@ function drawSelection(parent) {
     rect.style.cursor = handle.cursor; rect.append(el('title', {}, handle.label)); parent.append(rect);
   }
 }
-function remember(before, after, description) {
-  state.history.push({ before, after, description }); state.future = [];
+function remember(before, after, description, beforeTarget, afterTarget) {
+  state.history.push({ before, after, description, beforeTarget, afterTarget }); state.future = [];
   const size = () => state.history.reduce((sum, step) => sum + step.before.length + step.after.length, 0);
   while (state.history.length > 20 || (state.history.length > 1 && size() > 8 * 1024 * 1024)) state.history.shift();
 }
@@ -520,15 +595,18 @@ function commitVisual(before, after, description, preview = null, target = state
   return true;
 }
 function historyStep(redo = false) {
+  if (objectEditBlocked()) return;
   if (state.moving || drag) return;
   const from = redo ? state.future : state.history, to = redo ? state.history : state.future, step = from.at(-1);
   if (!step || $('json').value !== (redo ? step.before : step.after)) return;
   from.pop(); to.push(step); state.addKind = null;
+  if (step.beforeTarget) state.selection = redo ? step.afterTarget : step.beforeTarget;
   $('json').value = redo ? step.after : step.before;
   edited(true, { preserveHistory: true });
   notice(`${redo ? 'Повторено' : 'Отменено'}: ${step.description}. Восстановлен точный текст JSON.`);
 }
 function removeSelection() {
+  if (objectEditBlocked()) return;
   if (!state.valid || state.moving || !selectedObject() || state.addKind) return;
   try {
     const before = $('json').value, revision = state.analysisRevision.value;
@@ -575,6 +653,7 @@ $('diagram').addEventListener('pointerdown', event => {
   const collection = handleElement?.dataset.collection || group?.dataset.collection;
   const id = handleElement?.dataset.id || group?.dataset.id;
   const mode = event.altKey || spacePan ? 'pan' : state.addKind ? 'add' : handleElement ? 'resize' : collection ? 'object' : 'pan';
+  if (objectEditBlocked()) return;
   if (mode !== 'pan' && !state.valid) { notice('Для редактирования объектов сначала исправьте JSON и дождитесь проверки текущего текста.', true); return; }
   try {
     const view = dimensions(), box = $('diagram').getBoundingClientRect(), target = { collection, id };
@@ -628,15 +707,29 @@ window.addEventListener('blur', () => { spacePan = false; $('diagram').classList
 $('undo-move').addEventListener('click', () => historyStep());
 $('redo').addEventListener('click', () => historyStep(true));
 $('delete-object').addEventListener('click', removeSelection);
-$('add-type').addEventListener('change', () => { state.addKind = null; controls(); draw(); });
-$('add-object').addEventListener('click', () => { if (!state.valid || state.moving) return; state.addKind = $('add-type').value; controls(); draw(); $('diagram').focus({ preventScroll: true }); });
+for (const button of document.querySelectorAll('[data-add-kind]')) button.addEventListener('click', () => {
+  if (!state.valid || state.moving || objectEditBlocked()) return;
+  state.addKind = state.addKind === button.dataset.addKind ? null : button.dataset.addKind;
+  controls(); draw();
+});
+$('toggle-source').addEventListener('click', () => {
+  const collapsed = !$('source-panel').hidden;
+  $('source-panel').hidden = collapsed;
+  $('workspace').classList.toggle('source-collapsed', collapsed);
+  $('toggle-source').setAttribute('aria-expanded', String(!collapsed));
+  $('toggle-source').textContent = collapsed ? 'Показать JSON трассы' : 'Скрыть JSON трассы';
+  draw();
+});
+$('select-object-json').addEventListener('click', () => { $('object-json').focus(); $('object-json').select(); });
+$('object-json').addEventListener('input', editObjectSource);
+$('reset-object-json').addEventListener('click', () => { resetObjectEdit(); controls(); draw(); });
 $('cancel-add').addEventListener('click', () => { state.addKind = null; controls(); draw(); });
 $('diagram').addEventListener('keydown', event => {
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') { event.preventDefault(); historyStep(event.shiftKey); }
 });
 $('diagram').addEventListener('keydown', event => { if (!state.analysis) return; if (event.key === '+' || event.key === '=') zoom(1.25); else if (event.key === '-') zoom(.8); else if (event.key === 'ArrowRight') { state.left += dimensions().width / 5; draw(); } else if (event.key === 'ArrowLeft') { state.left -= dimensions().width / 5; draw(); } else return; event.preventDefault(); });
 new ResizeObserver(() => draw()).observe($('diagram'));
-window.addEventListener('beforeunload', event => { if ($('json').value !== state.sourceText) { event.preventDefault(); event.returnValue = ''; } });
+window.addEventListener('beforeunload', event => { if (objectEdit.dirty || $('json').value !== state.sourceText) { event.preventDefault(); event.returnValue = ''; } });
 window.addEventListener('pagehide', saveDraft);
 window.addEventListener('storage', event => {
   if (event.key !== DRAFT_KEY) return;

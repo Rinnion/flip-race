@@ -1,0 +1,198 @@
+{
+  "scope": "Cost and firstgeometry only; no productionedit",
+  "variant": 1,
+  "wallMilliseconds": 19.7402,
+  "runs": 2,
+  "geometry": [
+    {
+      "Id": "cross-a",
+      "Kind": "gate",
+      "X": 200,
+      "Width": 16,
+      "GapTop": 110,
+      "GapBottom": 130,
+      "TopOffsetX": 0,
+      "BottomOffsetX": 112
+    },
+    {
+      "Id": "low-b",
+      "Kind": "gate",
+      "X": 520,
+      "Width": 16,
+      "GapTop": 16,
+      "GapBottom": 126,
+      "TopOffsetX": 0,
+      "BottomOffsetX": 80
+    },
+    {
+      "Id": "cross-c",
+      "Kind": "gate",
+      "X": 840,
+      "Width": 16,
+      "GapTop": 110,
+      "GapBottom": 130,
+      "TopOffsetX": 112,
+      "BottomOffsetX": 0
+    },
+    {
+      "Id": "low-d",
+      "Kind": "gate",
+      "X": 1160,
+      "Width": 16,
+      "GapTop": 114,
+      "GapBottom": 224,
+      "TopOffsetX": 80,
+      "BottomOffsetX": 0
+    }
+  ],
+  "rows": [
+    {
+      "profile": "Chosen",
+      "clean": true,
+      "collisions": 0,
+      "rejected": 0,
+      "error": "",
+      "finish": 6.2727272727272725,
+      "wall": 1,
+      "support": "Wall",
+      "inputs": [
+        {
+          "x": 180.8448773141309,
+          "time": 0.822022169609689,
+          "y": 226,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 1
+        },
+        {
+          "x": 224.84487731413068,
+          "time": 1.0220221696096887,
+          "y": 169.25000000000043,
+          "vy": -217.5,
+          "airborne": true,
+          "airAvailable": true,
+          "support": "None",
+          "side": 1
+        },
+        {
+          "x": 411.77358490566036,
+          "time": 1.8716981132075192,
+          "y": 14,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 0
+        },
+        {
+          "x": 820.8448773141309,
+          "time": 3.7311130787004902,
+          "y": 14,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 0
+        },
+        {
+          "x": 864.8448773141309,
+          "time": 3.931113078700482,
+          "y": 70.74999999999909,
+          "vy": 217.50000000000267,
+          "airborne": true,
+          "airAvailable": true,
+          "support": "None",
+          "side": 0
+        },
+        {
+          "x": 1051.7735849056603,
+          "time": 4.78078902229832,
+          "y": 226,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 1
+        }
+      ],
+      "hitIds": [],
+      "trace": []
+    },
+    {
+      "profile": "FastFlip",
+      "clean": true,
+      "collisions": 0,
+      "rejected": 0,
+      "error": "",
+      "finish": 6.2727272727272725,
+      "wall": 1,
+      "support": "Wall",
+      "inputs": [
+        {
+          "x": 205.1503213562917,
+          "time": 0.9325014607104205,
+          "y": 226,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 1
+        },
+        {
+          "x": 460,
+          "time": 2.0909090909090535,
+          "y": 14,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 0
+        },
+        {
+          "x": 493,
+          "time": 2.240909090909047,
+          "y": 49.624999999998664,
+          "vy": 439.9999999999919,
+          "airborne": true,
+          "airAvailable": true,
+          "support": "None",
+          "side": 0
+        },
+        {
+          "x": 845.1503213562917,
+          "time": 3.841592369801215,
+          "y": 14,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 0
+        },
+        {
+          "x": 1100,
+          "time": 4.9999999999998765,
+          "y": 226,
+          "vy": 0,
+          "airborne": false,
+          "airAvailable": true,
+          "support": "Wall",
+          "side": 1
+        },
+        {
+          "x": 1132.9999999999973,
+          "time": 5.149999999999873,
+          "y": 190.37500000000006,
+          "vy": -440,
+          "airborne": true,
+          "airAvailable": true,
+          "support": "None",
+          "side": 1
+        }
+      ],
+      "hitIds": [],
+      "trace": []
+    }
+  ]
+}

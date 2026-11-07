@@ -1,0 +1,234 @@
+{
+  "result": "COMMON_SEQUENTIAL_CHAIN_FOUND; ALTERNATIVE_WALL_CHAINS_NOT_MET",
+  "sourceRequest": "01a1933d-d845-7071-b7d2-e1ad1352302d",
+  "unityBase": "4bf0d8507a481b7ce886613d85720a7fac6fa600",
+  "startUtc": "2026-10-31T18:38:52Z",
+  "completedUtc": "2026-10-31T18:55:47.0783420Z",
+  "hardStopUtc": "2026-10-31T18:58:52Z",
+  "maximumGeometries": 2,
+  "instantiatedGeometries": 2,
+  "totalRaceReplaysIncludingRepeatedEvidence": 530,
+  "measuredSimulationWallMilliseconds": 1064.906,
+  "acceptanceCommand": "./Tools/DenseChainsProbe/Replay.ps1 -Tag independent",
+  "integrationMaximumSeconds": 0.005,
+  "requirements": [
+    {
+      "cleanProfiles": [
+        {
+          "profile": "Chosen",
+          "clean": true,
+          "finish": 6.2727272727272725
+        },
+        {
+          "profile": "FastFlip",
+          "clean": true,
+          "finish": 6.2727272727272725
+        }
+      ],
+      "result": "VERIFIED_VARIANT_1",
+      "id": "GEO-01"
+    },
+    {
+      "actionsPerProfile": 6,
+      "result": "VERIFIED_FOR_THESE_TAPES",
+      "id": "GEO-02",
+      "omissionCollisionCounts": [
+        {
+          "hits": [
+            2,
+            1,
+            1,
+            2,
+            1,
+            1
+          ],
+          "rejected": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "profile": "Chosen"
+        },
+        {
+          "hits": [
+            4,
+            3,
+            3,
+            2,
+            1,
+            1
+          ],
+          "rejected": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "profile": "FastFlip"
+        }
+      ]
+    },
+    {
+      "finiteEntranceAndSwitchTrials": 8,
+      "id": "GEO-03",
+      "centerBypassClean": true,
+      "cleanWallBaselineEstablished": false,
+      "result": "NOT_MET",
+      "globalImpossibilityProven": false
+    },
+    {
+      "fastIndividualSymmetricGridMs": 20,
+      "realPulse": [
+        {
+          "inputSpeeds": [
+            330,
+            330,
+            220,
+            220,
+            220,
+            220
+          ],
+          "profile": "Chosen",
+          "earned": 1,
+          "allTimingSamplesEarnedAndCompleted": true,
+          "completed": 1,
+          "distanceGain": 66
+        },
+        {
+          "inputSpeeds": [
+            330,
+            220,
+            220,
+            220,
+            220,
+            220
+          ],
+          "profile": "FastFlip",
+          "earned": 1,
+          "allTimingSamplesEarnedAndCompleted": true,
+          "completed": 1,
+          "distanceGain": 66
+        }
+      ],
+      "id": "GEO-04",
+      "maximumGeometryWindowProven": false,
+      "chosenIndividualSymmetricGridMs": 60,
+      "jointRobustnessProven": false,
+      "result": "FINITE_GRID_MEASURED"
+    },
+    {
+      "unavoidableCascadeProven": false,
+      "result": "FINITE_CONTINUATION_ATTEMPTS",
+      "id": "GEO-05",
+      "rows": [
+        {
+          "profile": "Chosen",
+          "edge": 2,
+          "shift": 0.3,
+          "collisions": 4,
+          "finish": 8.272727272727273
+        },
+        {
+          "profile": "FastFlip",
+          "edge": 3,
+          "shift": -0.06,
+          "collisions": 1,
+          "finish": 6.7727272727272725
+        }
+      ]
+    },
+    {
+      "result": "REPORTED",
+      "id": "GEO-06",
+      "report": "Verification/dense-chains-probe-report.md"
+    }
+  ],
+  "limitations": [
+    "Two opposite clean wall chains not constructed; center bypass exists.",
+    "Finite fixed tapes, not exhaustive or adaptive search.",
+    "Individual shifts keep other inputs distance-triggered.",
+    "No continuous/joint timing proof, all-FPS test, or human playtest.",
+    "No production/UI/build/archive/server edits."
+  ],
+  "evidence": [
+    {
+      "path": "Verification/dense-chains-probe-cost.json",
+      "sha256": "80479FC5F0497EA44A88B8C8F0EF9F31CFE6D2AF162C31552CF13F103BE92F1E"
+    },
+    {
+      "path": "Verification/dense-chains-probe-entrances-acceptance.json",
+      "sha256": "9EB673590AAA2E5B4DBCD7569C301E128A33CD90D4CCA5EE8653CAD3ADC43CDE"
+    },
+    {
+      "path": "Verification/dense-chains-probe-entrances.json",
+      "sha256": "0E1780BAC0164E2F10E266DBC15AB82C560D5E98C0BC81BFD9D03585AB850DB0"
+    },
+    {
+      "path": "Verification/dense-chains-probe-parallel-acceptance.json",
+      "sha256": "0C59C16149F1D80D7A41179922ACED92E0C70135D2BEFC9B1DEB809BE33A02C7"
+    },
+    {
+      "path": "Verification/dense-chains-probe-parallel-final.json",
+      "sha256": "5BB9AA8948ADD1CE751406CBF78EE55A6D7355167249C8B3A95DDEC11722723F"
+    },
+    {
+      "path": "Verification/dense-chains-probe-parallel.json",
+      "sha256": "4D7091F98866AA20EFEC0329D090EE1335E3311693DA7D469033B147066685FF"
+    },
+    {
+      "path": "Verification/dense-chains-probe-recovery-acceptance.json",
+      "sha256": "BB9ECEB07289FA51A0C16F65C6C99DA3F7F1A973C3B56DB8D5A4F69C7221A646"
+    },
+    {
+      "path": "Verification/dense-chains-probe-recovery.json",
+      "sha256": "1E3513CF6CEC6B436CA6CD1F4A9F86E1F1B5D55053DFFD071B01C6F4F7151858"
+    },
+    {
+      "path": "Verification/dense-chains-probe-witnesses-acceptance.json",
+      "sha256": "EAD8E3113D9EED8E028ED4C2CC2AC5CE474D81EA65B31A195D9CF2046B09DB2B"
+    },
+    {
+      "path": "Verification/dense-chains-probe-witnesses-final.json",
+      "sha256": "C1F583B2CB8FFD038AB2A76F7D4667F29D6B7AAC6209B55AF5957509D5E8D76C"
+    },
+    {
+      "path": "Verification/dense-chains-probe-witnesses.json",
+      "sha256": "7C5716D8E60B578B55FA3FDB88A48CD6E0BC25E0598EB092DBA19B7B68EC12A4"
+    }
+  ],
+  "sourceHashes": [
+    {
+      "Path": "F:\\Home\\Game\\flip-race-unity\\Tools\\DenseChainsProbe\\Program.cs",
+      "Hash": "D203B9434B6352D0D825A57F9E53C924FCB4E057119212415A4E3DBA65F8FB87"
+    },
+    {
+      "Path": "F:\\Home\\Game\\flip-race-unity\\Tools\\DenseChainsProbe\\Replay.ps1",
+      "Hash": "260B7C9BD6385CBF2932058EA65CAC3939557BE9B76B62F6813D7BEFDECB50AA"
+    },
+    {
+      "Path": "F:\\Home\\Game\\flip-race-unity\\Tools\\DenseChainsProbe\\DenseChainsProbe.csproj",
+      "Hash": "333C75D1ED289EBEB475C47D5EEC4C6C229E81B7585A14E708456CF2E0AEE1A3"
+    },
+    {
+      "Path": "F:\\Home\\Game\\flip-race-unity\\Assets\\Scripts\\Core\\RaceSimulation.cs",
+      "Hash": "7FBF61AE7751C64E6EC9131BC7F8E9AA4EA45E952D331EABBCA605BE2208683B"
+    },
+    {
+      "Path": "F:\\Home\\Game\\flip-race-unity\\Assets\\Scripts\\Core\\FlightSettings.cs",
+      "Hash": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "Path": "F:\\Home\\Game\\flip-race-unity\\Assets\\Scripts\\Presentation\\FlipRaceGame.cs",
+      "Hash": "B2B3CA6B24BF471EA8E752E613FC36E1557823F40EF414AF5D6FF83430F9F915"
+    },
+    {
+      "Path": "F:\\Home\\Game\\flip-race-unity\\Verification\\FIX491-RELEASE.md",
+      "Hash": "3071311647C1391AF4FF9DC16B1DE0EDA1B735D5B117BD078158C684E7F93CD5"
+    }
+  ]
+}
