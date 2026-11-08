@@ -1,0 +1,48 @@
+diff --git a/PrestartBotSearch.cs b/PrestartBotSearch.cs
+--- a/PrestartBotSearch.cs
++++ b/PrestartBotSearch.cs
+@@ -177,7 +177,12 @@
+             ulong key = StateKey(p);
+             if (buckets.TryGetValue(key, out int index))
+             {
+-                if (score > candidates[index].Score) candidates[index] = new Node(game, edge, score, Expansions);
++                if (prioritizeFinishTime)
++                {
++                    var child = new Node(game, edge, score, Expansions);
++                    if (CompareMasterFrontier(child, candidates[index]) < 0) candidates[index] = child;
++                }
++                else if (score > candidates[index].Score) candidates[index] = new Node(game, edge, score, Expansions);
+                 return;
+             }
+             buckets.Add(key, candidates.Count);
+@@ -189,7 +194,8 @@
+             generation++;
+             if (candidates.Count == 0 || Expansions >= MaxExpansions || (firstFinish >= 0 && generation > firstFinish + TailGenerations))
+             { Complete = true; return; }
+-            candidates.Sort(Compare);
++            if (prioritizeFinishTime) candidates.Sort(CompareMasterFrontier);
++            else candidates.Sort(Compare);
+             frontier.Clear();
+             for (int i = 0; i < Math.Min(Width, candidates.Count); i++) frontier.Add(candidates[i]);
+             candidates.Clear();
+@@ -240,6 +246,20 @@
+             return score != 0 ? score : a.Sequence.CompareTo(b.Sequence);
+         }
+ 
++        int CompareMasterFrontier(Node a, Node b)
++        {
++            if (a.Game.Elapsed != b.Game.Elapsed)
++                throw new InvalidOperationException("Master frontier must compare equal simulation times.");
++            var playerA = a.Game.Players[0];
++            var playerB = b.Game.Players[0];
++            int contacts = intent.UndesiredContacts(playerA).CompareTo(intent.UndesiredContacts(playerB));
++            if (contacts != 0) return contacts;
++            int distance = playerB.Distance.CompareTo(playerA.Distance);
++            if (distance != 0) return distance;
++            int goals = intent.Preference(playerB).CompareTo(intent.Preference(playerA));
++            return goals != 0 ? goals : a.Sequence.CompareTo(b.Sequence);
++        }
++
+         int CompareFinish(Node a, Node b)
+         {
+             int contacts = intent.UndesiredContacts(a.Game.Players[0]).CompareTo(intent.UndesiredContacts(b.Game.Players[0]));

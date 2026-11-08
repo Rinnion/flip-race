@@ -1,0 +1,55 @@
+diff --git a/PrestartBotSearch.cs b/PrestartBotSearch.cs
+--- a/PrestartBotSearch.cs
++++ b/PrestartBotSearch.cs
+@@ -104,6 +104,7 @@
+         }
+ 
+         readonly PrestartBotIntent intent;
++        readonly bool prioritizeFinishTime;
+         readonly double[] landmarks;
+         List<Node> frontier = new List<Node>(Width);
+         List<Node> candidates = new List<Node>(Width * 2);
+@@ -117,6 +118,7 @@
+         internal PrestartBotSearch(GameState game, BotDifficulty difficulty, uint seed)
+         {
+             intent = new PrestartBotIntent(game.Track, difficulty, seed);
++            prioritizeFinishTime = difficulty == BotDifficulty.Master;
+             landmarks = new double[game.Track.Obstacles.Length + game.Track.RiskZones.Length];
+             int index = 0;
+             foreach (var obstacle in game.Track.Obstacles) landmarks[index++] = ObstacleGeometry.Left(obstacle);
+@@ -242,9 +244,10 @@
+         {
+             int contacts = intent.UndesiredContacts(a.Game.Players[0]).CompareTo(intent.UndesiredContacts(b.Game.Players[0]));
+             if (contacts != 0) return contacts;
++            int elapsed = a.Game.Elapsed.CompareTo(b.Game.Elapsed);
++            if (prioritizeFinishTime && elapsed != 0) return elapsed;
+             int goals = b.Score.CompareTo(a.Score);
+             if (goals != 0) return goals;
+-            int elapsed = a.Game.Elapsed.CompareTo(b.Game.Elapsed);
+             return elapsed != 0 ? elapsed : a.Sequence.CompareTo(b.Sequence);
+         }
+ 
+diff --git a/PrestartBotPreparation.cs b/PrestartBotPreparation.cs
+--- a/PrestartBotPreparation.cs
++++ b/PrestartBotPreparation.cs
+@@ -107,7 +107,7 @@
+             int contacts = intent.UndesiredContacts(player);
+             double goals = intent.Preference(player), time = personal.Elapsed;
+             uint rank = StochasticBotController.Mix(unchecked(seed + (uint)variant * 0x85ebca6bu));
+-            if (variant == 0 || Better(contacts, goals, time, rank))
++            if (variant == 0 || Better(contacts, goals, time, rank, difficulty == BotDifficulty.Master))
+             {
+                 selected[slot] = bank[slot][variant];
+                 selectedPersonal[slot] = personalInput.Accepted();
+@@ -128,9 +128,10 @@
+             finishedSlots++;
+         }
+ 
+-        bool Better(int contacts, double goals, double time, uint rank)
++        bool Better(int contacts, double goals, double time, uint rank, bool prioritizeFinishTime)
+         {
+             if (contacts != bestContacts) return contacts < bestContacts;
++            if (prioritizeFinishTime && Math.Abs(time - bestTime) > 1e-8) return time < bestTime;
+             if (goals != bestGoals) return goals > bestGoals;
+             if (Math.Abs(time - bestTime) > 1e-8) return time < bestTime;
+             return rank < bestRank;
