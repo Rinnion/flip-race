@@ -48,7 +48,7 @@ namespace FlipRace.Presentation
             BlockGameplayInput();
         }
 
-        GameState CreateSelectedParty(Track track)
+        GameState CreateSelectedParty(Track track, TrackPackage prestartPackage)
         {
             if (!PendingPartyHasBots)
                 return RaceSimulation.CreateParty(track, flightSelection.Settings, pendingPartyCount,
@@ -60,6 +60,7 @@ namespace FlipRace.Presentation
                 var seat = pendingPartySeats[PartyCorner(slot, slots.Length)];
                 if (seat.IsBot) slots[slot] = seat.Level;
             }
+            if (prestartPackage != null) return CreateSelectedPrestartRace(prestartPackage, slots, false);
             return RaceSimulation.CreateParty(track, flightSelection.Settings, slots, NextBotSeed(),
                 pendingPartyCamera, PartyStartLeft, PartyWindowWidth);
         }
@@ -94,6 +95,7 @@ namespace FlipRace.Presentation
 
         void PartyRosterPointer(Vector2 point)
         {
+            if (PendingPartyHasBots && BotAlgorithmPointer(point)) return;
             for (int slot = 0; slot < pendingPartyCount; slot++)
             {
                 int corner = PartyCorner(slot, pendingPartyCount);
@@ -145,6 +147,7 @@ namespace FlipRace.Presentation
                 if (seat.IsBot)
                     FlightButton(PartyRosterDifficultyRect(corner), BotLevelNames[(int)seat.Level] + " ›", false, true, 11);
             }
+            if (PendingPartyHasBots) DrawBotAlgorithms();
             DrawFlightApplyFooter();
         }
 

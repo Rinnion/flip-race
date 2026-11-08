@@ -1,0 +1,36 @@
+{
+  "Status": "PASS",
+  "UnityBaselineRevision": "91f2c44",
+  "UnifiedRaceRegression": {
+    "Cases": 23,
+    "AdvanceSlices": 109713,
+    "ExactAgainstV56Baseline": 23,
+    "ExactStateAndDecisionHashesAgainstV57": 23,
+    "BaselineV56": "v56-regression-baseline.json",
+    "BaselineV57": "v57-regression-legacy.json",
+    "GeneratedFullReportSha256": "ABB1E1025BBA9474E844BAD672545B4C65D43A85B9D943176336CA9FE13E3EB1"
+  },
+  "PartyBotsRegression": {
+    "Assertions": 9034,
+    "Compositions": 28
+  },
+  "ParityRunner": {
+    "Snapshots": 40228,
+    "Fields": 1448208,
+    "NumericTolerance": 1e-8,
+    "UnchangedFixtureSha256": "D8AB169B239E1643A7061740F4040D2045C4322C1D58199F3A911560A0CF3156"
+  },
+  "SurfaceRunCheck": {
+    "Scenarios": 15,
+    "Assertions": 7606
+  },
+  "FlightSettingsCheck": {
+    "Assertions": 736,
+    "PhysicalRoundTrips": 114
+  },
+  "PreservationSourceSha256": {
+    "RaceRunner.cs": "D3447627F7CDCF6C630666DB7A143068B98C48014B22AD80D6A004880118FB19",
+    "RaceSimulation.cs": "731D1A06D8624AA6EFED29596F55A8571961FD1B56C7BF7F93C15BC75E165DC4",
+    "StochasticBotController.cs": "0947D5D1B651A443C293606F3D1DBF318BA1FDF5BC529F0693A60D8674091D14"
+  }
+}

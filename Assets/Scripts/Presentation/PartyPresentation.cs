@@ -59,7 +59,7 @@ namespace FlipRace.Presentation
         }
 
         string PartyBotName(int slot) => "Бот " + (slot + 1);
-        string PartyBotLevelName(int slot) => BotLevelNames[(int)Game.GetPartyBotSettings(slot).Difficulty];
+        string PartyBotLevelName(int slot) => BotLevelNames[(int)Game.GetBotDifficulty(slot).Value];
         int TotalHits() { int n=0;foreach(var p in Game.Players)n+=p.Collisions;return n; }
         int TotalRewards() { int n=0;foreach(var p in Game.Players)n+=Rewards(p);return n; }
         int TotalSlows() { int n=0;foreach(var p in Game.Players)n+=p.SlowsEarned;return n; }
@@ -67,6 +67,11 @@ namespace FlipRace.Presentation
         {
             if (PartyAllBotActionRect.Contains(point))
             {
+                if (Game.UsesPrestartBots)
+                {
+                    PrestartStartPointer(-1);
+                    return;
+                }
                 string phase = Game.Phase;
                 if (RaceRunner.StartAllBotParty(Game)) Beep(tapClip);
                 if (Game.Phase == "countdown")
@@ -150,7 +155,7 @@ namespace FlipRace.Presentation
             if (allBotAction.width > 0)
             {
                 Round(allBotAction, 6, Hex(0xdbe7ca));
-                Text(allBotAction, Game.Phase == "ready" ? "Старт →" : "Повтор →", 13, ink, true, TextAnchor.MiddleCenter);
+                Text(allBotAction, PrestartActionLabel(Game.Phase == "ready" ? "Старт →" : "Повтор →"), 13, ink, true, TextAnchor.MiddleCenter);
             }
             Fill(new Rect(arena.center.x-.5f,arena.y,1,8),Hex(0xb7beaa));
             Fill(new Rect(arena.center.x-.5f,arena.yMax-8,1,8),Hex(0xb7beaa));
@@ -176,11 +181,12 @@ namespace FlipRace.Presentation
                     else ready.width -= inset;
                 }
                 Round(ready, 6, pales[slot]);
-                Text(ready, PartyBotName(slot) + " · " + PartyBotLevelName(slot) + " · Готов", 10, accents[slot], true, TextAnchor.MiddleCenter);
+                string status = Game.UsesPrestartBots && !Game.PrestartReady ? "" : " · Готов";
+                Text(ready, PartyBotName(slot) + " · " + PartyBotLevelName(slot) + status, 10, accents[slot], true, TextAnchor.MiddleCenter);
                 return;
             }
             Round(ready,6,Game.Players[slot].Ready?Hex(0xdbe7ca):pales[slot]);
-            Text(ready,(slot+1)+" · "+(Game.Players[slot].Ready?"Готов · ждём остальных":"Готов →"),10,accents[slot],true,TextAnchor.MiddleCenter);
+            Text(ready,(slot+1)+" · "+PrestartActionLabel(Game.Players[slot].Ready?"Готов · ждём остальных":"Готов →"),10,accents[slot],true,TextAnchor.MiddleCenter);
         }
         void DrawPartyStatus(int slot,float w,float h,bool visible)
         {
@@ -205,7 +211,7 @@ namespace FlipRace.Presentation
             Text(new Rect(4,56,w-8,18),"+"+Rewards(p)+" · −"+p.SlowsEarned+" · монеты "+p.CoinsEarned+" · ударов "+p.Collisions,compact?9:10,muted,false,TextAnchor.MiddleCenter);
             if (Game.IsBotSlot(slot)) return;
             Rect ready=PartyReadyRect(slot);Round(ready,6,p.Ready?Hex(0xdbe7ca):pales[slot]);
-            Text(ready,p.Ready?"Готов · ждём остальных":"Ещё раз →",11,accents[slot],true,TextAnchor.MiddleCenter);
+            Text(ready,PrestartActionLabel(p.Ready?"Готов · ждём остальных":"Ещё раз →"),11,accents[slot],true,TextAnchor.MiddleCenter);
         }
     }
 }

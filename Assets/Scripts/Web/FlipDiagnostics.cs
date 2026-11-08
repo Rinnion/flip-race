@@ -14,9 +14,11 @@ namespace FlipRace.Web
     {
         [Serializable] sealed class PlayerSnapshot
         {
-            public bool ready, flipping, airFlipAvailable, finishBoost, hasFlightMeasurement, flightInterrupted;
+            public bool ready, flipping, airFlipAvailable, finishBoost, hasFlightMeasurement, flightInterrupted, bot;
+            public string botDifficulty;
             public double distance, y, recovering, finish;
             public int coins, collisions, character, rings, instantBoosts, finishBoosts, slowRings, pendingRings, failedRings, queuedEffects;
+            public int prestartAcceptedCommands, prestartCorrections;
             public double boost, slow, speed, flipElapsed, verticalSpeed, centerY, finishBoostElapsed, finishBoostDistanceGained;
             public int gravity;
             public string support, supportObstacle, lastInstant, lastFinishBoost, status;
@@ -29,6 +31,10 @@ namespace FlipRace.Web
             public string fieldView, seating, fieldHeight;
             public bool bot;
             public string botDifficulty, botControllerKind;
+            public bool prestartBots, pendingPrestartBots, prestartUsedCache, prestartReady;
+            public string prestartPreparationState, prestartPreparationFailure;
+            public double prestartPreparationSeconds;
+            public uint prestartAttemptSeed;
             public uint botSessionSeed;
             public long botAttemptSequenceIndex;
             public uint botSeed;
@@ -104,7 +110,11 @@ namespace FlipRace.Web
                 profile = state.Profile.Id, version = Application.version,
                 fieldView = game.FieldViewName, seating = game.SeatingName, fieldHeight = game.FieldHeightName,
                 bot = state.IsBot, botDifficulty = state.IsBot ? state.BotDifficulty.ToString() : "",
-                botControllerKind = state.StochasticBot == null ? "" : "StochasticBotController",
+                botControllerKind = state.UsesPrestartBots ? "Prestart" : state.StochasticBot == null ? "" : "StochasticBotController",
+                prestartBots = state.UsesPrestartBots, pendingPrestartBots = game.PendingPrestartBots,
+                prestartReady = state.PrestartReady, prestartUsedCache = game.PrestartUsedCache,
+                prestartPreparationState = game.PrestartPreparationState, prestartPreparationFailure = game.PrestartPreparationFailure,
+                prestartPreparationSeconds = game.PrestartPreparationSeconds, prestartAttemptSeed = game.PrestartAttemptSeed,
                 botSeed = game.BotAttemptSeed, botSessionSeed = game.BotSessionSeed,
                 botAttemptSequenceIndex = game.BotAttemptSequenceIndex,
                 botCursor = game.BotActionCursor, botGoalsTotal = game.BotGoalsTotal,
@@ -142,6 +152,9 @@ namespace FlipRace.Web
                 foreach (string id in p.CollectedRiskIds)
                     if (!p.SuccessfulRiskIds.Contains(id) && !p.FailedRiskIds.Contains(id) && !p.NegativeRiskIds.Contains(id)) pending++;
                 snapshot.players[i] = new PlayerSnapshot {ready=p.Ready, distance=p.Distance, y=p.Y,
+                    bot = state.IsBotSlot(i), botDifficulty = state.GetBotDifficulty(i)?.ToString() ?? "",
+                    prestartAcceptedCommands = state.UsesPrestartBots ? RaceRunner.PrestartAcceptedCommands(state, i) : 0,
+                    prestartCorrections = state.UsesPrestartBots ? RaceRunner.PrestartCorrections(state, i) : 0,
                     recovering=p.Recovering, flipping=p.Flipping, collisions=p.Collisions, finish=p.FinishTime ?? -1,
                     character=p.CharacterIndex, coins=p.CoinsEarned, rings=p.BoostsEarned, instantBoosts=p.InstantBoostsEarned, pendingRings=pending,
                     finishBoost=p.FinishBoost, finishBoosts=p.FinishBoostsEarned,
@@ -204,6 +217,9 @@ namespace FlipRace.Web
             output.Append(",\"solo\":").Append(game.SoloEnabled ? "true" : "false");
             output.Append(",\"soloMenuRect\":"); AppendRect(output, game.SoloMenuButtonRect);
             output.Append(",\"botMenuRect\":"); AppendRect(output, game.BotMenuButtonRect);
+            output.Append(",\"flightApplyRect\":"); AppendRect(output, game.FlightApplyRect);
+            output.Append(",\"botAlgorithmRects\":["); AppendRect(output, game.BotAlgorithmRect(false));
+            output.Append(','); AppendRect(output, game.BotAlgorithmRect(true)); output.Append(']');
             output.Append(",\"botDifficultyRects\":[");
             for(int i=0;i<5;i++){if(i>0)output.Append(',');AppendRect(output,game.BotDifficultyRect(i));}
             output.Append(']');
@@ -259,6 +275,14 @@ namespace FlipRace.Web
             output.Append("],\"partyCameraRects\":[");
             for(int i=0;i<2;i++){if(i>0)output.Append(',');AppendRect(output,game.PartyCameraRect(i));}
             output.Append("],\"partyLegacyRect\":"); AppendRect(output,game.PartyLegacyRect);
+            output.Append(",\"partyAllBotActionRect\":"); AppendRect(output, game.PartyAllBotActionRect);
+            output.Append(",\"partyRosterRoleRects\":[");
+            for (int i = 0; i < 4; i++) { if (i > 0) output.Append(','); AppendRect(output, game.PartyRosterRoleRect(i)); }
+            output.Append("],\"partyRosterDifficultyRects\":[");
+            for (int i = 0; i < 4; i++) { if (i > 0) output.Append(','); AppendRect(output, game.PartyRosterDifficultyRect(i)); }
+            output.Append("],\"partyRosterLevelRects\":[");
+            for (int i = 0; i < 5; i++) { if (i > 0) output.Append(','); AppendRect(output, game.PartyRosterLevelRect(i)); }
+            output.Append(']');
             return output.Append('}').ToString();
         }
         void AppendPlayerRects(StringBuilder output, Func<int,Rect> rectangle)

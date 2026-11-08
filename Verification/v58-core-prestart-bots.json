@@ -1,0 +1,835 @@
+{
+  "assertions": 852,
+  "results": [
+    {
+      "name": "full-long",
+      "ContentHash": "a7e7cfae14f78534a293a80210fbd1a531aefc2e8b5ad788c62bceba12667b6e",
+      "CacheKey": "prestart-v1/a7e7cfae14f78534a293a80210fbd1a531aefc2e8b5ad788c62bceba12667b6e/chosen/1/bot/h4/-288.8/1520/0.8/off/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 54.8284,
+        "ExpandedStates": 4707,
+        "ReplaySteps": 1122,
+        "JointRejectedCommands": 0,
+        "peakBytes": 519872,
+        "maxSliceMilliseconds": 12.1796,
+        "slices": 33
+      },
+      "outcome": {
+        "Elapsed": 37.999999999998,
+        "Winner": 1,
+        "frame": 2280,
+        "corrections": 0,
+        "hidden": 0,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 37.999999999998,
+            "Collisions": 4,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "full-long-1-low",
+              "full-long-2-standard-pad",
+              "full-long-3-low",
+              "full-long-4-before-stone"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 33.94999999999843,
+            "Collisions": 0,
+            "BoostsEarned": 6,
+            "hitIds": [],
+            "positiveIds": [
+              "full-long-11-large-pad-landing",
+              "full-long-12-after-stone-ring",
+              "full-long-13-free-mid",
+              "full-long-5-free-low",
+              "full-long-7-chain-1",
+              "full-long-7-chain-2",
+              "full-long-finish"
+            ],
+            "commands": 16,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "full-long",
+      "ContentHash": "a7e7cfae14f78534a293a80210fbd1a531aefc2e8b5ad788c62bceba12667b6e",
+      "CacheKey": "prestart-v1/a7e7cfae14f78534a293a80210fbd1a531aefc2e8b5ad788c62bceba12667b6e/fast/1/bot/h4/-288.8/1520/0.8/off/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 37.4704,
+        "ExpandedStates": 3680,
+        "ReplaySteps": 1107,
+        "JointRejectedCommands": 0,
+        "peakBytes": 505288,
+        "maxSliceMilliseconds": 2.0182,
+        "slices": 31
+      },
+      "outcome": {
+        "Elapsed": 37.99999999999799,
+        "Winner": 1,
+        "frame": 2280,
+        "corrections": 0,
+        "hidden": 0,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 37.99999999999799,
+            "Collisions": 4,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "full-long-1-low",
+              "full-long-2-standard-pad",
+              "full-long-3-low",
+              "full-long-4-before-stone"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 33.3499999999985,
+            "Collisions": 0,
+            "BoostsEarned": 8,
+            "hitIds": [],
+            "positiveIds": [
+              "full-long-11-large-pad-landing",
+              "full-long-12-after-stone-ring",
+              "full-long-13-free-mid",
+              "full-long-2-standard-pad-landing",
+              "full-long-5-free-low",
+              "full-long-7-chain-1",
+              "full-long-7-chain-2",
+              "full-long-9-standard-pad-landing",
+              "full-long-finish"
+            ],
+            "commands": 18,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "mixed-tricks",
+      "ContentHash": "c01ded8253a330dc23a164c8c7a1586e64f0d3713df2917e0ddaa67ac5a85e47",
+      "CacheKey": "prestart-v1/c01ded8253a330dc23a164c8c7a1586e64f0d3713df2917e0ddaa67ac5a85e47/chosen/1/bot/h4/-288.8/1520/0.8/off/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 32.6227,
+        "ExpandedStates": 4687,
+        "ReplaySteps": 1144,
+        "JointRejectedCommands": 0,
+        "peakBytes": 521616,
+        "maxSliceMilliseconds": 1.5323,
+        "slices": 32
+      },
+      "outcome": {
+        "Elapsed": 40.999999999997826,
+        "Winner": 1,
+        "frame": 2460,
+        "corrections": 0,
+        "hidden": 0,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 40.999999999997826,
+            "Collisions": 10,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "mixed-tricks-after-stone",
+              "mixed-tricks-final-offset",
+              "mixed-tricks-large-before",
+              "mixed-tricks-large-pad",
+              "mixed-tricks-low-ceiling",
+              "mixed-tricks-low-floor",
+              "mixed-tricks-middle-offset",
+              "mixed-tricks-small-pad",
+              "mixed-tricks-small-second",
+              "mixed-tricks-straight"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 33.949999999998575,
+            "Collisions": 0,
+            "BoostsEarned": 6,
+            "hitIds": [],
+            "positiveIds": [
+              "mixed-tricks-after",
+              "mixed-tricks-chain-center",
+              "mixed-tricks-chain-low",
+              "mixed-tricks-finish",
+              "mixed-tricks-high-reward",
+              "mixed-tricks-low-reward",
+              "mixed-tricks-wide-pad"
+            ],
+            "commands": 23,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "mixed-tricks",
+      "ContentHash": "c01ded8253a330dc23a164c8c7a1586e64f0d3713df2917e0ddaa67ac5a85e47",
+      "CacheKey": "prestart-v1/c01ded8253a330dc23a164c8c7a1586e64f0d3713df2917e0ddaa67ac5a85e47/fast/1/bot/h4/-288.8/1520/0.8/off/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 26.3521,
+        "ExpandedStates": 3665,
+        "ReplaySteps": 1131,
+        "JointRejectedCommands": 0,
+        "peakBytes": 465328,
+        "maxSliceMilliseconds": 1.4682,
+        "slices": 32
+      },
+      "outcome": {
+        "Elapsed": 40.99999999999782,
+        "Winner": 1,
+        "frame": 2460,
+        "corrections": 0,
+        "hidden": 0,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 40.99999999999782,
+            "Collisions": 10,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "mixed-tricks-after-stone",
+              "mixed-tricks-final-offset",
+              "mixed-tricks-large-before",
+              "mixed-tricks-large-pad",
+              "mixed-tricks-low-ceiling",
+              "mixed-tricks-low-floor",
+              "mixed-tricks-middle-offset",
+              "mixed-tricks-small-pad",
+              "mixed-tricks-small-second",
+              "mixed-tricks-straight"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 33.34999999999867,
+            "Collisions": 0,
+            "BoostsEarned": 8,
+            "hitIds": [],
+            "positiveIds": [
+              "mixed-tricks-after",
+              "mixed-tricks-ceiling-low-reward",
+              "mixed-tricks-chain-center",
+              "mixed-tricks-chain-low",
+              "mixed-tricks-finish",
+              "mixed-tricks-high-reward",
+              "mixed-tricks-low-reward",
+              "mixed-tricks-standard-pad",
+              "mixed-tricks-wide-pad"
+            ],
+            "commands": 20,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "hidden-manifestation",
+      "ContentHash": "8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d",
+      "CacheKey": "prestart-v1/8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d/chosen/1/bot/h4/-288.8/1520/0.8/on/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 90.5487,
+        "ExpandedStates": 4746,
+        "ReplaySteps": 1149,
+        "JointRejectedCommands": 0,
+        "peakBytes": 620112,
+        "maxSliceMilliseconds": 4.7376,
+        "slices": 33
+      },
+      "outcome": {
+        "Elapsed": 40.48835672035435,
+        "Winner": 1,
+        "frame": 2430,
+        "corrections": 0,
+        "hidden": 5,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 40.48835672035435,
+            "Collisions": 14,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "hidden-manifestation-hidden-0",
+              "hidden-manifestation-inner-1",
+              "hidden-manifestation-s0-g0",
+              "hidden-manifestation-s0-g1",
+              "hidden-manifestation-s0-g2",
+              "hidden-manifestation-s0-g3",
+              "hidden-manifestation-s1-g2",
+              "hidden-manifestation-s1-g3",
+              "hidden-manifestation-s2-g0",
+              "hidden-manifestation-s2-g1",
+              "hidden-manifestation-s2-g2",
+              "hidden-manifestation-s2-g3",
+              "hidden-manifestation-s3-g2",
+              "hidden-manifestation-s3-g3"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 34.26534657382205,
+            "Collisions": 1,
+            "BoostsEarned": 3,
+            "hitIds": [
+              "hidden-manifestation-s3-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-0",
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish"
+            ],
+            "commands": 38,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "hidden-manifestation",
+      "ContentHash": "8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d",
+      "CacheKey": "prestart-v1/8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d/fast/1/bot/h4/-288.8/1520/0.8/on/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 96.8088,
+        "ExpandedStates": 3611,
+        "ReplaySteps": 1103,
+        "JointRejectedCommands": 0,
+        "peakBytes": 515944,
+        "maxSliceMilliseconds": 5.0012,
+        "slices": 32
+      },
+      "outcome": {
+        "Elapsed": 40.488356720354346,
+        "Winner": 1,
+        "frame": 2430,
+        "corrections": 0,
+        "hidden": 5,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 40.488356720354346,
+            "Collisions": 14,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "hidden-manifestation-hidden-0",
+              "hidden-manifestation-inner-1",
+              "hidden-manifestation-s0-g0",
+              "hidden-manifestation-s0-g1",
+              "hidden-manifestation-s0-g2",
+              "hidden-manifestation-s0-g3",
+              "hidden-manifestation-s1-g2",
+              "hidden-manifestation-s1-g3",
+              "hidden-manifestation-s2-g0",
+              "hidden-manifestation-s2-g1",
+              "hidden-manifestation-s2-g2",
+              "hidden-manifestation-s2-g3",
+              "hidden-manifestation-s3-g2",
+              "hidden-manifestation-s3-g3"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 32.35352925463115,
+            "Collisions": 0,
+            "BoostsEarned": 6,
+            "hitIds": [],
+            "positiveIds": [
+              "hidden-manifestation-air-0",
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish",
+              "hidden-manifestation-landing-0",
+              "hidden-manifestation-landing-1",
+              "hidden-manifestation-landing-2"
+            ],
+            "commands": 35,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "hidden four-bot cold \u002B warm retry",
+      "CacheKey": "prestart-v1/8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d/chosen/1/party/1034/-288.8/1520/0.8/on/5/0/30/200/reset",
+      "cacheCharacters": 4676,
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 286.9593,
+        "ExpandedStates": 19275,
+        "ReplaySteps": 3670,
+        "JointRejectedCommands": 0,
+        "peakBytes": 682024,
+        "maxSliceMilliseconds": 4.5202,
+        "slices": 130
+      },
+      "warm": {
+        "Seed": 12102,
+        "UsedCache": true,
+        "ElapsedMilliseconds": 43.9228,
+        "ExpandedStates": 0,
+        "ReplaySteps": 3669,
+        "JointRejectedCommands": 0,
+        "peakBytes": 28296,
+        "maxSliceMilliseconds": 5.1127,
+        "slices": 20
+      },
+      "groupOutcome": {
+        "Elapsed": 36.95427493260938,
+        "Winner": 3,
+        "frame": 2218,
+        "corrections": 0,
+        "hidden": 5,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 34.52205729260304,
+            "Collisions": 2,
+            "BoostsEarned": 2,
+            "hitIds": [
+              "hidden-manifestation-inner-3",
+              "hidden-manifestation-s1-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish"
+            ],
+            "commands": 31,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 36.95427493260938,
+            "Collisions": 6,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "hidden-manifestation-hidden-2",
+              "hidden-manifestation-s1-g2",
+              "hidden-manifestation-s2-g0",
+              "hidden-manifestation-s2-g1",
+              "hidden-manifestation-s2-g2",
+              "hidden-manifestation-s3-g2"
+            ],
+            "positiveIds": [],
+            "commands": 25,
+            "corrections": 0
+          },
+          {
+            "Id": 2,
+            "status": "Finished",
+            "FinishTime": 34.51216803535192,
+            "Collisions": 2,
+            "BoostsEarned": 4,
+            "hitIds": [
+              "hidden-manifestation-s1-g3",
+              "hidden-manifestation-s3-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-0",
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish",
+              "hidden-manifestation-landing-1"
+            ],
+            "commands": 42,
+            "corrections": 0
+          },
+          {
+            "Id": 3,
+            "status": "Finished",
+            "FinishTime": 34.26534657382207,
+            "Collisions": 1,
+            "BoostsEarned": 3,
+            "hitIds": [
+              "hidden-manifestation-s3-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-0",
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish"
+            ],
+            "commands": 38,
+            "corrections": 0
+          }
+        ]
+      },
+      "groupWarmOutcome": {
+        "Elapsed": 36.78623892495062,
+        "Winner": 3,
+        "frame": 2208,
+        "corrections": 0,
+        "hidden": 5,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 34.52205729260304,
+            "Collisions": 2,
+            "BoostsEarned": 2,
+            "hitIds": [
+              "hidden-manifestation-inner-3",
+              "hidden-manifestation-s1-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish"
+            ],
+            "commands": 31,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 36.78623892495062,
+            "Collisions": 6,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "hidden-manifestation-hidden-2",
+              "hidden-manifestation-s1-g2",
+              "hidden-manifestation-s2-g0",
+              "hidden-manifestation-s2-g1",
+              "hidden-manifestation-s2-g2",
+              "hidden-manifestation-s3-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-finish"
+            ],
+            "commands": 27,
+            "corrections": 0
+          },
+          {
+            "Id": 2,
+            "status": "Finished",
+            "FinishTime": 34.51216803535192,
+            "Collisions": 2,
+            "BoostsEarned": 4,
+            "hitIds": [
+              "hidden-manifestation-s1-g3",
+              "hidden-manifestation-s3-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-0",
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish",
+              "hidden-manifestation-landing-1"
+            ],
+            "commands": 42,
+            "corrections": 0
+          },
+          {
+            "Id": 3,
+            "status": "Finished",
+            "FinishTime": 34.26534657382207,
+            "Collisions": 1,
+            "BoostsEarned": 3,
+            "hitIds": [
+              "hidden-manifestation-s3-g2"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-0",
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-air-2",
+              "hidden-manifestation-finish"
+            ],
+            "commands": 38,
+            "corrections": 0
+          }
+        ]
+      },
+      "changedTape": true,
+      "changedGoals": true
+    },
+    {
+      "name": "mixed Constant with live divergence",
+      "CacheKey": "prestart-v1/8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d/fast/0/party/h2h/-288.8/1520/0.8/on/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 49.048,
+        "ExpandedStates": 3793,
+        "ReplaySteps": 1068,
+        "JointRejectedCommands": 0,
+        "peakBytes": 568248,
+        "maxSliceMilliseconds": 2.5927,
+        "slices": 32
+      },
+      "outcome": {
+        "Elapsed": 14.221818181818183,
+        "Winner": null,
+        "frame": 854,
+        "corrections": 6,
+        "hidden": 2,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Eliminated",
+            "FinishTime": null,
+            "Collisions": 3,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "hidden-manifestation-s0-g1",
+              "hidden-manifestation-s0-g2",
+              "hidden-manifestation-s0-g3"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Eliminated",
+            "FinishTime": null,
+            "Collisions": 3,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "hidden-manifestation-hidden-0",
+              "hidden-manifestation-inner-1",
+              "hidden-manifestation-s1-g2"
+            ],
+            "positiveIds": [],
+            "commands": 11,
+            "corrections": 6
+          },
+          {
+            "Id": 2,
+            "status": "Eliminated",
+            "FinishTime": null,
+            "Collisions": 3,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "hidden-manifestation-s0-g1",
+              "hidden-manifestation-s0-g2",
+              "hidden-manifestation-s0-g3"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "mixed Lagger with live divergence",
+      "CacheKey": "prestart-v1/8262af703035ac490847e147883d523c2f707846712c951483a9844469ca039d/fast/1/party/h2h/-288.8/1520/0.8/on/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 57.5389,
+        "ExpandedStates": 3793,
+        "ReplaySteps": 1125,
+        "JointRejectedCommands": 0,
+        "peakBytes": 568248,
+        "maxSliceMilliseconds": 3.1025,
+        "slices": 33
+      },
+      "outcome": {
+        "Elapsed": 40.89570818090434,
+        "Winner": 1,
+        "frame": 2454,
+        "corrections": 8,
+        "hidden": 5,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 40.89570818090434,
+            "Collisions": 11,
+            "BoostsEarned": 1,
+            "hitIds": [
+              "hidden-manifestation-hidden-0",
+              "hidden-manifestation-inner-1",
+              "hidden-manifestation-s0-g1",
+              "hidden-manifestation-s0-g2",
+              "hidden-manifestation-s0-g3",
+              "hidden-manifestation-s1-g3",
+              "hidden-manifestation-s2-g0",
+              "hidden-manifestation-s2-g1",
+              "hidden-manifestation-s2-g2",
+              "hidden-manifestation-s3-g2",
+              "hidden-manifestation-s3-g3"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-finish"
+            ],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 35.99844448502888,
+            "Collisions": 5,
+            "BoostsEarned": 2,
+            "hitIds": [
+              "hidden-manifestation-hidden-0",
+              "hidden-manifestation-hidden-2",
+              "hidden-manifestation-inner-1",
+              "hidden-manifestation-s1-g2",
+              "hidden-manifestation-s2-g1"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-landing-1",
+              "hidden-manifestation-landing-2"
+            ],
+            "commands": 26,
+            "corrections": 8
+          },
+          {
+            "Id": 2,
+            "status": "Finished",
+            "FinishTime": 40.89570818090434,
+            "Collisions": 11,
+            "BoostsEarned": 1,
+            "hitIds": [
+              "hidden-manifestation-hidden-0",
+              "hidden-manifestation-inner-1",
+              "hidden-manifestation-s0-g1",
+              "hidden-manifestation-s0-g2",
+              "hidden-manifestation-s0-g3",
+              "hidden-manifestation-s1-g3",
+              "hidden-manifestation-s2-g0",
+              "hidden-manifestation-s2-g1",
+              "hidden-manifestation-s2-g2",
+              "hidden-manifestation-s3-g2",
+              "hidden-manifestation-s3-g3"
+            ],
+            "positiveIds": [
+              "hidden-manifestation-air-1",
+              "hidden-manifestation-finish"
+            ],
+            "commands": 0,
+            "corrections": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "unprepared local import",
+      "CacheKey": "prestart-v1/76a9111957287d1c2de552c878a100457fd3182d98f1b736cd0c0e90ea2d97e4/chosen/1/bot/h4/-288.8/1520/0.8/off/5/0/30/200/reset",
+      "cold": {
+        "Seed": 12101,
+        "UsedCache": false,
+        "ElapsedMilliseconds": 28.9286,
+        "ExpandedStates": 4687,
+        "ReplaySteps": 1144,
+        "JointRejectedCommands": 0,
+        "peakBytes": 521616,
+        "maxSliceMilliseconds": 1.5244,
+        "slices": 32
+      },
+      "outcome": {
+        "Elapsed": 40.999999999997826,
+        "Winner": 1,
+        "frame": 2460,
+        "corrections": 0,
+        "hidden": 0,
+        "players": [
+          {
+            "Id": 0,
+            "status": "Finished",
+            "FinishTime": 40.999999999997826,
+            "Collisions": 10,
+            "BoostsEarned": 0,
+            "hitIds": [
+              "mixed-tricks-after-stone",
+              "mixed-tricks-final-offset",
+              "mixed-tricks-large-before",
+              "mixed-tricks-large-pad",
+              "mixed-tricks-low-ceiling",
+              "mixed-tricks-low-floor",
+              "mixed-tricks-middle-offset",
+              "mixed-tricks-small-pad",
+              "mixed-tricks-small-second",
+              "mixed-tricks-straight"
+            ],
+            "positiveIds": [],
+            "commands": 0,
+            "corrections": 0
+          },
+          {
+            "Id": 1,
+            "status": "Finished",
+            "FinishTime": 33.949999999998575,
+            "Collisions": 0,
+            "BoostsEarned": 6,
+            "hitIds": [],
+            "positiveIds": [
+              "mixed-tricks-after",
+              "mixed-tricks-chain-center",
+              "mixed-tricks-chain-low",
+              "mixed-tricks-finish",
+              "mixed-tricks-high-reward",
+              "mixed-tricks-low-reward",
+              "mixed-tricks-wide-pad"
+            ],
+            "commands": 23,
+            "corrections": 0
+          }
+        ]
+      }
+    }
+  ],
+  "coreHashes": {
+    "PrestartBotConfig.cs": "A7E2F3F0FE21FFF66A8296854F33BC14A0167FC00C5A8688C2C933A2FB4A435C",
+    "PrestartBotPreparation.cs": "4920FE7708C78EA881C8CAC86088C015C11969FF593C6706DB6C2A471EBF0969",
+    "PrestartBotSearch.cs": "496552E7A5EB32A56F31DDC28979C16E53BE4D912CC08FAFB613D13E068293D2",
+    "PrestartBotTape.cs": "CEF080D58BBCDDC60F0052239AFDEE41CA11722C49576BD466E60672FBFB9EA1",
+    "RaceSimulation.cs": "731D1A06D8624AA6EFED29596F55A8571961FD1B56C7BF7F93C15BC75E165DC4",
+    "RaceRunner.cs": "D3447627F7CDCF6C630666DB7A143068B98C48014B22AD80D6A004880118FB19"
+  }
+}

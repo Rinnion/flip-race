@@ -106,6 +106,7 @@ namespace FlipRace.Presentation
 
         public bool FlightSettingsVisible { get { return showTracks && Trial && flightPage == 1 && !Portrait; } }
         public Rect FlightCopyRect { get { return flightCopy; } }
+        public Rect FlightApplyRect { get { MeasureFlightMenu(); return flightApply; } }
         public string FlightCopyText { get { return flightSelection == null ? "" : FlightSettingsStore.CopyText(flightSelection.Custom); } }
         public bool IsCustomFlight { get { return activeCustomFlight; } }
         public int FlightMenuPage { get { return showTracks && Trial ? flightPage : -1; } }
@@ -146,6 +147,7 @@ namespace FlipRace.Presentation
             pendingSurfaceRun = surfaceRunChoice;
             pendingSurfaceRunSettings = surfaceRunSettings;
             pendingBot = BotEnabled; if(BotEnabled)pendingBotDifficulty=Game.BotDifficulty;
+            pendingPrestartBots = selectedPrestartBots;
             pendingSolo = SoloEnabled; pendingParty = PartyEnabled; pendingPartyCount = PartyEnabled ? Game.Players.Length : 4;
             BeginPartyRosterMenu();
             pendingPartyCamera = BotEnabled || PartyEnabled || SoloEnabled ? Game.PartyCamera : PartyCamera.Constant;
@@ -206,7 +208,8 @@ namespace FlipRace.Presentation
         { MeasureFlightMenu(); return row < 0 || row > 1 || option < 0 || option >= (row == 0 ? 3 : 2) ? default(Rect) : FlightCell(ViewFieldRect(row), option, row == 0 ? 3 : 2); }
         bool AuthoredHiddenWarning { get { return TrackCatalog.UsesAuthoredWarnings(pendingFlightTrack); } }
         bool TrackProfileSupported { get { return TrackCatalog.SupportsProfile(pendingFlightTrack, flightSelection.Settings); } }
-        bool BotTrackSupported { get { return TrackCatalog.SupportsBot(pendingFlightTrack, flightSelection.Settings); } }
+        bool BotTrackSupported => pendingPrestartBots ? TrackCatalog.TryGet(pendingFlightTrack, out _)
+            : TrackCatalog.SupportsBot(pendingFlightTrack, flightSelection.Settings);
         bool RequiresBotSupport => pendingBot || PendingPartyHasBots;
         bool CanApplyFlight => TrackProfileSupported
             && (!RequiresBotSupport || (!flightSelection.IsCustom && RaceTracks.IsFull(pendingFlightTrack) && BotTrackSupported))
@@ -316,12 +319,20 @@ namespace FlipRace.Presentation
         void ApplyFlightChoice()
         {
             if (Active || !showTracks || !CanApplyFlight) return;
+            TrackPackage prestartPackage = null;
+            if (RequiresBotSupport && pendingPrestartBots)
+            {
+                if (!TrackCatalog.TryGet(pendingFlightTrack, out var entry)) return;
+                prestartPackage = entry.Package;
+            }
+            ResetPrestartPreparation();
             GameState previousSelection = Game;
             Game = CreateSelectedFlight(Game, pendingFlightTrack, flightSelection.Settings);
             if (pendingBot)
             {
-                uint seed=NextBotSeed();
-                Game=RaceSimulation.CreateStochasticBotRace(Game.Track,flightSelection.Settings,pendingBotDifficulty,seed,pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
+                Game = prestartPackage != null
+                    ? CreateSelectedPrestartRace(prestartPackage, new BotDifficulty?[] { null, pendingBotDifficulty }, true)
+                    : RaceSimulation.CreateStochasticBotRace(Game.Track,flightSelection.Settings,pendingBotDifficulty,NextBotSeed(),pendingPartyCamera,PartyStartLeft,PartyWindowWidth);
                 Game.Players[0].CharacterIndex=previousSelection.Players[0].CharacterIndex;
                 Game.Players[1].CharacterIndex=(Game.Players[0].CharacterIndex+1)%CharacterRoster.Count;
             }
@@ -334,15 +345,25 @@ namespace FlipRace.Presentation
             else if (pendingParty)
             {
                 if (!RaceTracks.IsFull(Game.Track.Id)) Game = RaceSimulation.CreateTrial(RaceTracks.GetAt(0), flightSelection.Settings);
-                Game = CreateSelectedParty(Game.Track);
+                Game = CreateSelectedParty(Game.Track, prestartPackage);
                 partySeats = pendingPartySeats;
                 for (int i = 0; i < Game.Players.Length; i++) Game.Players[i].CharacterIndex = i < previousSelection.Players.Length ? previousSelection.Players[i].CharacterIndex : i % CharacterRoster.Count;
             }
             surfaceRunChoice = pendingSurfaceRun;
             surfaceRunSettings = pendingSurfaceRunSettings;
-            ConfigureSessionSurfaceRun();
-            HiddenObstacles.ConfigureWarning(Game, pendingHiddenWarning);
-            if (BotEnabled) InitializeBotController();
+            if (RequiresBotSupport) selectedPrestartBots = pendingPrestartBots;
+            if (!Game.UsesPrestartBots)
+            {
+                ConfigureSessionSurfaceRun();
+                HiddenObstacles.ConfigureWarning(Game, pendingHiddenWarning);
+            }
+            if (BotEnabled && !Game.UsesPrestartBots) InitializeBotController();
+            else
+            {
+                botController = null;
+                botFramePerformance = null;
+                botOpportunities = Array.Empty<BotOpportunity>();
+            }
             sharedField = pendingSharedField; sharedAdjacent = pendingSharedAdjacent; splitGhost = pendingSplitGhost && !sharedField; MigrateRetiredSharedHeight();
             pendingFlightTrack = Game.Track.Id;
             activeCustomFlight = flightSelection.IsCustom; activeFlightPreset = flightSelection.PresetIndex;
@@ -494,10 +515,11 @@ namespace FlipRace.Presentation
         {
             if (!TrackProfileSupported) return "Для этой трассы выбери Основной профиль";
             if (RequiresBotSupport && flightSelection.IsCustom) return "Боты: выбери готовый профиль";
+            if (RequiresBotSupport && pendingPrestartBots && !BotTrackSupported) return "Предварительному боту нужна полная трасса из каталога.";
             if (PendingPartyHasBots && (!RaceTracks.IsFull(pendingFlightTrack) || !BotTrackSupported))
                 return RaceTracks.IsFull(pendingFlightTrack) ? TrackCatalog.BotSupportMessage(pendingFlightTrack, flightSelection.Settings)
                     : "Для ботов нужна полная трасса с подготовленным маршрутом.";
-            if (pendingBot && !BotTrackSupported) return "Для этой трассы бот недоступен";
+            if (pendingBot && !BotTrackSupported) return TrackCatalog.BotSupportMessage(pendingFlightTrack, flightSelection.Settings);
             return CanApplyFlight ? "" : "Проходы требуют повторов ∞";
         }
         void DrawFlightApplyButton()
@@ -511,7 +533,7 @@ namespace FlipRace.Presentation
             string restriction = FlightApplyRestriction();
             string note = restriction.Length != 0 ? restriction
                 : pendingBot ? "Разгон от бега " + (pendingSurfaceRun ? "ВКЛ" : "ВЫКЛ") + " у обоих"
-                : flightPage == PartyRosterPage && PendingPartyHasBots && pendingSurfaceRun ? "С разгоном боты подстраивают прыжки. Мастер тоже может ошибаться."
+                : flightPage == PartyRosterPage && PendingPartyHasBots && pendingSurfaceRun && !pendingPrestartBots ? "С разгоном боты подстраивают прыжки. Мастер тоже может ошибаться."
                 : RaceTracks.IsFull(pendingFlightTrack) ? flightSelection.IsCustom ? "Свои настройки · исходная трасса" : pendingSurfaceRun ? "Разгон от бега ВКЛ · управление сохраняется" : Number(RaceTracks.Get(pendingFlightTrack).Length / RaceConfig.Speed, 1) + " сек · управление сохраняется"
                 : "Участок: " + PendingFlightTrackName();
             label.wordWrap = true;

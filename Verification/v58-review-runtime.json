@@ -1,0 +1,340 @@
+{
+  "Status": "PASS",
+  "Runtime": ".NET 8.0.16",
+  "Measurement": "Release .NET process; elapsed wall time while computing in one process, no WebGL or frame scheduling; allocation totals are not retained heap",
+  "CoreSha256": {
+    "PrestartBotConfig.cs": "A7E2F3F0FE21FFF66A8296854F33BC14A0167FC00C5A8688C2C933A2FB4A435C",
+    "PrestartBotPreparation.cs": "4920FE7708C78EA881C8CAC86088C015C11969FF593C6706DB6C2A471EBF0969",
+    "PrestartBotSearch.cs": "496552E7A5EB32A56F31DDC28979C16E53BE4D912CC08FAFB613D13E068293D2",
+    "PrestartBotTape.cs": "CEF080D58BBCDDC60F0052239AFDEE41CA11722C49576BD466E60672FBFB9EA1",
+    "RaceRunner.cs": "D3447627F7CDCF6C630666DB7A143068B98C48014B22AD80D6A004880118FB19",
+    "RaceSimulation.cs": "731D1A06D8624AA6EFED29596F55A8571961FD1B56C7BF7F93C15BC75E165DC4",
+    "RaceSnapshot.cs": "C844BF9B9409B06364CA4CC7CD9C9EF56C2139EAA94E2F504889DC30932C74BE",
+    "StochasticBotController.cs": "0947D5D1B651A443C293606F3D1DBF318BA1FDF5BC529F0693A60D8674091D14"
+  },
+  "Cases": [
+    {
+      "Id": "full-long",
+      "ContentHash": "a7e7cfae14f78534a293a80210fbd1a531aefc2e8b5ad788c62bceba12667b6e",
+      "Length": 7920,
+      "Obstacles": 12,
+      "Rewards": 12,
+      "References": 2,
+      "SearchMilliseconds": 54.3941,
+      "LargestExpansionMilliseconds": 11.2108,
+      "SearchAllocatedBytes": 11735976,
+      "ReplayMilliseconds": 3.5278,
+      "Expansions": 4707,
+      "Variants": 3,
+      "Presses": 17,
+      "TapeSha256": "406DEC94A34DD2F8BFEE797AE41C2EFB576EA512C751EE79E04C079FF3AE887D",
+      "FinishSeconds": 33.949999999999434,
+      "Hits": 0,
+      "Boosts": 6,
+      "IdleHits": 4
+    },
+    {
+      "Id": "mixed-tricks",
+      "ContentHash": "c01ded8253a330dc23a164c8c7a1586e64f0d3713df2917e0ddaa67ac5a85e47",
+      "Length": 7920,
+      "Obstacles": 11,
+      "Rewards": 16,
+      "References": 2,
+      "SearchMilliseconds": 34.9162,
+      "LargestExpansionMilliseconds": 0.5849,
+      "SearchAllocatedBytes": 11971016,
+      "ReplayMilliseconds": 2.5409,
+      "Expansions": 4687,
+      "Variants": 3,
+      "Presses": 24,
+      "TapeSha256": "F60F98833537150EFC2F856BAE67FD9CF2E5F201E7FFD62E462FEE11A94DACFE",
+      "FinishSeconds": 33.949999999999456,
+      "Hits": 0,
+      "Boosts": 6,
+      "IdleHits": 10
+    },
+    {
+      "Id": "v58-regression-independent",
+      "ContentHash": "9ce7f6dbac811265c43e7dd0faad207c5da58e319d20163c42f6ea3582bdc75b",
+      "Length": 1800,
+      "Obstacles": 3,
+      "Rewards": 1,
+      "References": 0,
+      "SearchMilliseconds": 4.084,
+      "LargestExpansionMilliseconds": 0.0176,
+      "SearchAllocatedBytes": 2065600,
+      "ReplayMilliseconds": 0.5689,
+      "Expansions": 923,
+      "Variants": 2,
+      "Presses": 2,
+      "TapeSha256": "5C83849C8A97A939724978786CA4FCF653E510545B63DDDD780E4D98916EECEB",
+      "FinishSeconds": 8.18181818181817,
+      "Hits": 0,
+      "Boosts": 0,
+      "IdleHits": 2
+    },
+    {
+      "Id": "v58-regression-independent",
+      "ContentHash": "885b73ca9807d0fa0985bcbd077b1d56c708e343f81876c980bcb4b1eb49563e",
+      "Length": 1800,
+      "Obstacles": 3,
+      "Rewards": 1,
+      "References": 0,
+      "SearchMilliseconds": 2.5713,
+      "LargestExpansionMilliseconds": 0.0555,
+      "SearchAllocatedBytes": 2079088,
+      "ReplayMilliseconds": 0.1626,
+      "Expansions": 929,
+      "Variants": 2,
+      "Presses": 2,
+      "TapeSha256": "1AA436B4261C3DD81C8948542CD3302E25C43BD91C18082EF5580FD14699010C",
+      "FinishSeconds": 8.18181818181817,
+      "Hits": 0,
+      "Boosts": 0,
+      "IdleHits": 2
+    }
+  ],
+  "CacheKeyGuards": [
+    "same-id geometry",
+    "flight",
+    "camera",
+    "start boundary",
+    "camera window",
+    "standalone mode",
+    "roles",
+    "difficulty",
+    "hidden warning",
+    "surface flag",
+    "surface rate",
+    "surface curve",
+    "surface cap",
+    "surface decay",
+    "surface reset",
+    "stale bound geometry"
+  ],
+  "Cache": [
+    {
+      "Case": "cold",
+      "Milliseconds": 10.7529,
+      "MaxSliceMilliseconds": 2.3004,
+      "AllocatedBytes": 2096096,
+      "Expanded": 923,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "warm replay, new seed",
+      "Milliseconds": 0.712,
+      "MaxSliceMilliseconds": 0.1472,
+      "AllocatedBytes": 25952,
+      "Expanded": 0,
+      "ReplaySteps": 206,
+      "UsedCache": true,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "stale version",
+      "Milliseconds": 2.9166,
+      "MaxSliceMilliseconds": 0.2244,
+      "AllocatedBytes": 2097280,
+      "Expanded": 923,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "same-ID moved geometry",
+      "Milliseconds": 4.2106,
+      "MaxSliceMilliseconds": 0.3706,
+      "AllocatedBytes": 2110368,
+      "Expanded": 929,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "changed settings",
+      "Milliseconds": 3.3759,
+      "MaxSliceMilliseconds": 0.464,
+      "AllocatedBytes": 2076448,
+      "Expanded": 908,
+      "ReplaySteps": 258,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 368
+    },
+    {
+      "Case": "broken base64",
+      "Milliseconds": 4.2977,
+      "MaxSliceMilliseconds": 0.3358,
+      "AllocatedBytes": 2106464,
+      "Expanded": 923,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "truncated payload",
+      "Milliseconds": 2.6477,
+      "MaxSliceMilliseconds": 0.1939,
+      "AllocatedBytes": 2097928,
+      "Expanded": 923,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "extra payload bytes",
+      "Milliseconds": 2.7225,
+      "MaxSliceMilliseconds": 0.3025,
+      "AllocatedBytes": 2097280,
+      "Expanded": 923,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "NaN time",
+      "Milliseconds": 2.5605,
+      "MaxSliceMilliseconds": 0.2186,
+      "AllocatedBytes": 2096880,
+      "Expanded": 923,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "duplicate time",
+      "Milliseconds": 2.6382,
+      "MaxSliceMilliseconds": 0.3008,
+      "AllocatedBytes": 2097648,
+      "Expanded": 923,
+      "ReplaySteps": 206,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 240
+    },
+    {
+      "Case": "parseable but illegal play",
+      "Milliseconds": 2.2404,
+      "MaxSliceMilliseconds": 0.2819,
+      "AllocatedBytes": 1675344,
+      "Expanded": 674,
+      "ReplaySteps": 204,
+      "UsedCache": false,
+      "JointRejected": 0,
+      "CacheCharacters": 260
+    }
+  ],
+  "Races": [
+    {
+      "Case": "four bots, shared hidden state",
+      "Preparation": {
+        "Case": "four bots, shared hidden state",
+        "Milliseconds": 446.6186,
+        "MaxSliceMilliseconds": 7.3529,
+        "AllocatedBytes": 56764696,
+        "Expanded": 19327,
+        "ReplaySteps": 3672,
+        "UsedCache": false,
+        "JointRejected": 0,
+        "CacheCharacters": 4792
+      },
+      "Frames": 1232,
+      "LiveP95Milliseconds": 0.0722,
+      "LiveMaxMilliseconds": 0.389,
+      "LiveAllocatedBytes": 107432,
+      "WorldSeconds": 36.6404215631503,
+      "HiddenStates": 5,
+      "Outcomes": [
+        "Finished",
+        "Finished",
+        "Finished",
+        "Finished"
+      ],
+      "Accepted": [
+        28,
+        31,
+        42,
+        38
+      ],
+      "Corrections": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "RetrySeed": 12102,
+      "RetryPreparation": {
+        "Case": "four bots, shared hidden state retry",
+        "Milliseconds": 53.0516,
+        "MaxSliceMilliseconds": 3.1312,
+        "AllocatedBytes": 305448,
+        "Expanded": 0,
+        "ReplaySteps": 3672,
+        "UsedCache": true,
+        "JointRejected": 0,
+        "CacheCharacters": 4792
+      }
+    },
+    {
+      "Case": "one human plus three bots, shared hidden state",
+      "Preparation": {
+        "Case": "one human plus three bots, shared hidden state",
+        "Milliseconds": 209.4885,
+        "MaxSliceMilliseconds": 2.2699,
+        "AllocatedBytes": 41853160,
+        "Expanded": 14276,
+        "ReplaySteps": 2776,
+        "UsedCache": false,
+        "JointRejected": 0,
+        "CacheCharacters": 3772
+      },
+      "Frames": 1176,
+      "LiveP95Milliseconds": 0.0217,
+      "LiveMaxMilliseconds": 0.428,
+      "LiveAllocatedBytes": 86080,
+      "WorldSeconds": 34.96326220469779,
+      "HiddenStates": 5,
+      "Outcomes": [
+        "Finished",
+        "Eliminated",
+        "Finished",
+        "Finished"
+      ],
+      "Accepted": [
+        28,
+        42,
+        38
+      ],
+      "Corrections": [
+        0,
+        0,
+        0
+      ],
+      "RetrySeed": 12102,
+      "RetryPreparation": {
+        "Case": "one human plus three bots, shared hidden state retry",
+        "Milliseconds": 14.1432,
+        "MaxSliceMilliseconds": 1.5456,
+        "AllocatedBytes": 250136,
+        "Expanded": 0,
+        "ReplaySteps": 2776,
+        "UsedCache": true,
+        "JointRejected": 0,
+        "CacheCharacters": 3772
+      }
+    }
+  ],
+  "RejectedAllEliminatedReplay": true,
+  "RejectedGeometryChangeAfterInstall": true
+}

@@ -297,11 +297,19 @@ namespace FlipRace.Core
         public readonly BotPlan BotPlan;
         public readonly StochasticBotSettings StochasticBot;
         internal PartyBotAttempt PartyBots { get; set; }
+        public PrestartBotConfig PrestartConfig { get; }
+        public bool UsesPrestartBots => PrestartConfig != null;
+        internal PrestartBotPlans PendingPrestartPlans { get; set; }
+        internal PrestartBotPlans ActivePrestartPlans { get; set; }
+        public bool PrestartReady => PendingPrestartPlans != null && PrestartConfig.Matches(this);
+        public uint? PrestartSeed => (PendingPrestartPlans ?? ActivePrestartPlans)?.Seed;
         public StochasticBotSettings GetPartyBotSettings(int slot) => PartyBots?.GetSettings(slot);
-        public bool IsBotSlot(int slot) => slot >= 0 && slot < Players.Length
-            && (GetPartyBotSettings(slot) != null || (IsBot && slot == 1));
-        public int HumanCount => PartyBots?.HumanCount ?? (Players.Length - (IsBot ? 1 : 0));
-        public BotDifficulty BotDifficulty { get { return StochasticBot != null ? StochasticBot.Difficulty : BotPlan == null ? BotDifficulty.Novice : BotPlan.Difficulty; } }
+        public BotDifficulty? GetBotDifficulty(int slot) => PrestartConfig?.GetDifficulty(slot) ?? GetPartyBotSettings(slot)?.Difficulty
+            ?? (IsBot && slot == 1 ? StochasticBot?.Difficulty ?? BotPlan?.Difficulty : null);
+        public bool IsBotSlot(int slot) => slot >= 0 && slot < Players.Length && GetBotDifficulty(slot).HasValue;
+        public int HumanCount => PrestartConfig?.HumanCount ?? PartyBots?.HumanCount ?? (Players.Length - (IsBot ? 1 : 0));
+        public BotDifficulty BotDifficulty => (PrestartConfig?.StandaloneBot == true ? PrestartConfig.GetDifficulty(1) : null)
+            ?? StochasticBot?.Difficulty ?? BotPlan?.Difficulty ?? BotDifficulty.Novice;
         // Preserve the legacy signed API; new callers read StochasticBot.Seed as uint.
         public int BotSeed { get { return StochasticBot != null ? unchecked((int)StochasticBot.Seed) : BotPlan == null ? 0 : BotPlan.Seed; } }
         private bool botForecastCamera;
@@ -322,10 +330,13 @@ namespace FlipRace.Core
             }
         }
         public GameState() { }
-        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo, BotPlan botPlan = null, StochasticBotSettings stochasticBot = null)
+        internal GameState(Track track, PartyCamera camera, double startLeft, double windowWidth, bool solo,
+            BotPlan botPlan = null, StochasticBotSettings stochasticBot = null, PrestartBotConfig prestart = null)
         {
             if (botPlan != null && stochasticBot != null) throw new ArgumentException("Only one bot metadata model may be supplied.");
-            IsParty = !solo && botPlan == null && stochasticBot == null; IsSolo = solo; IsBot = botPlan != null || stochasticBot != null; BotPlan = botPlan; StochasticBot = stochasticBot; partyCamera = camera; PartyCameraStartLeft = startLeft;
+            PrestartConfig = prestart;
+            IsBot = botPlan != null || stochasticBot != null || prestart?.StandaloneBot == true;
+            IsParty = !solo && !IsBot; IsSolo = solo; BotPlan = botPlan; StochasticBot = stochasticBot; partyCamera = camera; PartyCameraStartLeft = startLeft;
             PartyWindowWidth = windowWidth; PartyCameraSpeed = track.Length / 36;
             PartyLastCameraLeft = startLeft;
         }
@@ -675,8 +686,20 @@ namespace FlipRace.Core
             settings.RequireCompatible(track, flight);
             return CreateSharedRace(track, flight, 2, camera, cameraStartLeft, windowWidth, false, null, settings);
         }
+
+        public static GameState CreatePrestartRace(PrestartBotConfig config)
+        {
+            if (config == null) throw new ArgumentNullException(nameof(config));
+            var game = CreateSharedRace(config.Package.Track, config.Flight, config.SlotCount, config.Camera,
+                config.CameraStartLeft, config.WindowWidth, false, prestart: config);
+            config.ApplySettings(game);
+            RaceRunner.RegisterPartyBots(game);
+            return game;
+        }
+
         private static GameState CreateSharedRace(Track track, FlightSettings flight, int playerCount,
-            PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo, BotPlan botPlan = null, StochasticBotSettings stochasticBot = null)
+            PartyCamera camera, double cameraStartLeft, double windowWidth, bool solo, BotPlan botPlan = null,
+            StochasticBotSettings stochasticBot = null, PrestartBotConfig prestart = null)
         {
             if (track == null) throw new ArgumentNullException(nameof(track));
             if (flight == null) throw new ArgumentNullException(nameof(flight));
@@ -689,8 +712,9 @@ namespace FlipRace.Core
                 throw new ArgumentOutOfRangeException(nameof(windowWidth));
             if (double.IsNaN(track.Length) || double.IsInfinity(track.Length) || track.Length <= 0)
                 throw new ArgumentOutOfRangeException(nameof(track));
-            var game = new GameState(track, camera, cameraStartLeft, windowWidth, solo, botPlan, stochasticBot)
-            { Mode = botPlan != null || stochasticBot != null ? "bot" : solo ? "solo" : "party", Track = track, Flight = flight, Players = new PlayerState[playerCount] };
+            var game = new GameState(track, camera, cameraStartLeft, windowWidth, solo, botPlan, stochasticBot, prestart)
+            { Track = track, Flight = flight, Players = new PlayerState[playerCount] };
+            game.Mode = game.IsBot ? "bot" : solo ? "solo" : "party";
             for (int i = 0; i < playerCount; i++)
                 game.Players[i] = new PlayerState(i) { AirFlipAvailable = SupportsAirFlip(flight) };
             if (botPlan != null || stochasticBot != null) game.Players[1].Ready = true;
@@ -740,7 +764,7 @@ namespace FlipRace.Core
         public static bool CanPress(GameState game, int index)
         {
             if (index < 0 || index >= game.Players.Length) return false;
-            if (game.Phase == "ready" || game.Phase == "finished") return game.GetPartyBotSettings(index) == null;
+            if (game.Phase == "ready" || game.Phase == "finished") return RequiresReadiness(game, index);
             var player = game.Players[index];
             if (game.Phase != "racing" || player.Recovering > 0 || player.FinishTime.HasValue
                 || player.Status != PlayerStatus.Running) return false;
@@ -756,10 +780,11 @@ namespace FlipRace.Core
             var player = game.Players[index];
             if (game.Phase == "ready" || game.Phase == "finished")
             {
-                if (game.GetPartyBotSettings(index) != null) return false;
+                if (!RequiresReadiness(game, index)) return false;
                 player.Ready = true;
                 for (int i = 0; i < game.Players.Length; i++)
-                    if (game.GetPartyBotSettings(i) == null && !game.Players[i].Ready) return true;
+                    if (RequiresReadiness(game, i) && !game.Players[i].Ready) return true;
+                if (game.UsesPrestartBots && !HasCurrentPrestartPlans(game)) return true;
                 BeginCountdown(game, flight);
                 return true;
             }
@@ -808,14 +833,31 @@ namespace FlipRace.Core
 
         internal static bool StartAllBotParty(GameState game)
         {
-            if (game.PartyBots == null || game.HumanCount != 0 || (game.Phase != "ready" && game.Phase != "finished"))
+            if (game.HumanCount != 0 || (game.Phase != "ready" && game.Phase != "finished")
+                || (game.PartyBots == null && !HasCurrentPrestartPlans(game)))
                 return false;
             BeginCountdown(game, Settings(game));
             return true;
         }
 
+        static bool RequiresReadiness(GameState game, int slot)
+        { return !(game.UsesPrestartBots ? game.IsBotSlot(slot) : game.GetPartyBotSettings(slot) != null); }
+
+        static bool HasCurrentPrestartPlans(GameState game)
+        {
+            if (!game.PrestartReady) return false;
+            if (game.PrestartConfig.GeometryMatches()) return true;
+            game.PendingPrestartPlans = null;
+            return false;
+        }
+
         static void BeginCountdown(GameState game, FlightSettings flight)
         {
+            if (game.UsesPrestartBots)
+            {
+                game.ActivePrestartPlans = game.PendingPrestartPlans;
+                game.PendingPrestartPlans = null;
+            }
             if (game.Phase == "finished" && game.PartyBots != null)
                 game.PartyBots = game.PartyBots.Next(game.Track, flight);
             var resetPlayers = new PlayerState[game.Players.Length];

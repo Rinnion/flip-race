@@ -166,7 +166,11 @@ namespace FlipRace.Presentation
             if (gameplayInputBlocked && Time.frameCount > inputBlockFrame
                 && Input.touchCount == 0 && !Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0))
                 gameplayInputBlocked = false;
-            if (Portrait && !hadPortrait && Active) Pause("Телефон повернулся. Верни его горизонтально и продолжи.");
+            if (Portrait && !hadPortrait)
+            {
+                if (Active) Pause("Телефон повернулся. Верни его горизонтально и продолжи.");
+                else CancelPrestartStartRequest();
+            }
             hadPortrait = Portrait;
             if (delta > .3 && Active) Pause("Игра остановилась на мгновение. Продолжим вместе!");
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -193,6 +197,7 @@ namespace FlipRace.Presentation
                 if (!BotEnabled && Game.Players.Length > 1 && Input.GetKeyDown(KeyCode.L)) Act(1);
                 if (PartyEnabled && Game.Players.Length > 2 && Input.GetKeyDown(KeyCode.S)) Act(2);
                 if (PartyEnabled && Game.Players.Length > 3 && Input.GetKeyDown(KeyCode.K)) Act(3);
+                UpdatePrestartPreparation(now);
                 animationTime += Mathf.Min((float)delta, .1f);
                 if (!suppressFrame)
                 {
@@ -219,7 +224,7 @@ namespace FlipRace.Presentation
 
         void AdvanceRace(double delta)
         {
-            bool botRace = BotEnabled;
+            bool botRace = BotEnabled && !Game.UsesPrestartBots;
             long started = botRace ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
             try { RaceRunner.Advance(Game, delta, botRace ? botController : null); }
             finally { if (botRace) RecordBotAdvance(started); }
@@ -288,7 +293,8 @@ namespace FlipRace.Presentation
         }
         void SelectCharacter(int slot, int hero)
         {
-            RaceSimulation.SetCharacter(Game, slot, hero);
+            if (RaceSimulation.SetCharacter(Game, slot, hero) && Game.UsesPrestartBots && !Game.IsBotSlot(slot))
+                prestartStartRequestedAt = -1;
             MascotArtwork.GetFrame(hero, slot, animationTime, false, false, false);
             lastFrame = Time.realtimeSinceStartupAsDouble;
             // The selection tap was consumed above; leave the other player's
@@ -301,6 +307,7 @@ namespace FlipRace.Presentation
         void OpenTracks()
         {
             if (Active || paused) return;
+            CancelPrestartStartRequest();
             if (Trial) BeginFlightMenu();
             wasPausedBeforeRules = paused; trackNegativeChoice = selectedNegative;
             showTracks = true; paused = true;
@@ -325,6 +332,11 @@ namespace FlipRace.Presentation
         void Act(int index)
         {
             if (paused || showRules || showTracks || Portrait || gameplayInputBlocked || Game.IsBotSlot(index)) return;
+            if (Game.UsesPrestartBots && (Game.Phase == "ready" || Game.Phase == "finished"))
+            {
+                PrestartStartPointer(index);
+                return;
+            }
             if (BotEnabled && Game.Phase=="finished") { ResetBotRace(); round++; }
             string phase = Game.Phase;
             if (Trial && (phase == "ready" || phase == "finished") && RaceTracks.NormalizeId(Game.Track.Id) != Game.Track.Id)
@@ -344,9 +356,9 @@ namespace FlipRace.Presentation
         }
         void OnApplicationFocus(bool focus) { if (!focus && Active) Pause("Окно потеряло фокус. Продолжим вместе!"); }
         void OnApplicationPause(bool value) { if (value && Active) Pause("Игра была свёрнута. Продолжим вместе!"); }
-        void Pause(string reason) { paused = true; pauseReason = reason; suppressFrame = true; }
+        void Pause(string reason) { CancelPrestartStartRequest(); paused = true; pauseReason = reason; suppressFrame = true; }
         void Resume() { if (Portrait) return; paused = false; lastFrame = Time.realtimeSinceStartupAsDouble; suppressFrame = true; BlockGameplayInput(); }
-        void OpenRules() { wasPausedBeforeRules = paused; showRules = true; paused = true; }
+        void OpenRules() { CancelPrestartStartRequest(); wasPausedBeforeRules = paused; showRules = true; paused = true; }
         void CloseRules() { showRules = false; showTracks = false; paused = wasPausedBeforeRules; lastFrame = Time.realtimeSinceStartupAsDouble; suppressFrame = true; BlockGameplayInput(); }
         void BlockGameplayInput() { gameplayInputBlocked = true; inputBlockFrame = Time.frameCount; }
 
@@ -424,7 +436,7 @@ namespace FlipRace.Presentation
             string title = (BotEnabled ? "С ботом · "+BotLevelNames[(int)Game.BotDifficulty]+" · "+(Game.PartyCamera==PartyCamera.Constant?"Скролл":"За последним")+" · "+Game.Track.Name : SoloEnabled ? "Один · " + (Game.PartyCamera == PartyCamera.Constant ? "Скролл" : "За героем") + " · " + Game.Track.Name : PartyEnabled ? "Компания " + Game.Players.Length + " · " + (Game.PartyCamera == PartyCamera.Constant ? "Скролл" : "Камера последнего") + " · " + Game.Track.Name : Trial ? TrialMotionName() + " · " + Game.Track.Name : Game.Mode == "practice" ? "Проба серии" : Game.Track.Name)
                 + (Game.Track.NegativeEnabled ? "  ·  ◇−" : "")
                 + (Active ? "   /   " + round.ToString("00") : "   ↗");
-            Text(new Rect(session.x + pad + 14, session.y, helpRect.x - session.x - pad - 22, session.height), title,
+            Text(new Rect(session.x + pad + 14, session.y, helpRect.x - session.x - pad - 22, session.height), PrestartSessionStatus(title),
                 compact ? 8 : 10, muted, false, TextAnchor.MiddleLeft);
             if (compact) Text(helpRect, "?", 17, muted, false, TextAnchor.MiddleCenter);
             DrawSoundIcon(soundRect.x + (compact ? 9 : 3), soundRect.center.y - 7);

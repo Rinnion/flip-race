@@ -23,21 +23,30 @@ namespace FlipRace.Core
 
         sealed class PartyBotRuntime
         {
-            PartyBotAttempt attempt;
-            StochasticBotController[] inputs;
+            object attempt;
+            IRaceScheduledInput[] inputs;
 
-            internal StochasticBotController[] GetInputs(GameState game)
+            internal IRaceScheduledInput[] GetInputs(GameState game)
             {
-                if (!ReferenceEquals(attempt, game.PartyBots))
+                object nextAttempt = (object)game.ActivePrestartPlans ?? game.PartyBots;
+                if (!ReferenceEquals(attempt, nextAttempt))
                 {
-                    var nextInputs = new StochasticBotController[game.Players.Length];
+                    var nextInputs = new IRaceScheduledInput[game.Players.Length];
                     for (int slot = 0; slot < nextInputs.Length; slot++)
                     {
-                        var settings = game.GetPartyBotSettings(slot);
-                        if (settings != null) nextInputs[slot] = new StochasticBotController(game, slot, settings);
+                        if (game.UsesPrestartBots)
+                        {
+                            var tape = game.ActivePrestartPlans.GetTape(slot);
+                            if (tape != null) nextInputs[slot] = new PrestartBotController(game, slot, tape);
+                        }
+                        else
+                        {
+                            var settings = game.GetPartyBotSettings(slot);
+                            if (settings != null) nextInputs[slot] = new StochasticBotController(game, slot, settings);
+                        }
                     }
                     inputs = nextInputs;
-                    attempt = game.PartyBots;
+                    attempt = nextAttempt;
                 }
                 return inputs;
             }
@@ -48,10 +57,27 @@ namespace FlipRace.Core
 
         internal static StochasticBotController GetPartyBotController(GameState game, int slot)
         { return game.GetPartyBotSettings(slot) != null && partyRuntimes.TryGetValue(game, out var runtime)
-            ? runtime.GetInputs(game)[slot] : null; }
+            ? (StochasticBotController)runtime.GetInputs(game)[slot] : null; }
+
+        internal static PrestartBotController GetPrestartBotController(GameState game, int slot)
+        { return game.ActivePrestartPlans != null && game.IsBotSlot(slot) && partyRuntimes.TryGetValue(game, out var runtime)
+            ? (PrestartBotController)runtime.GetInputs(game)[slot] : null; }
+
+        public static int PrestartCorrections(GameState game, int slot) => GetPrestartBotController(game, slot)?.Corrections ?? 0;
+        public static int PrestartAcceptedCommands(GameState game, int slot) => GetPrestartBotController(game, slot)?.Accepted ?? 0;
+
+        public static bool InstallPrestartPlans(GameState game, PrestartBotPreparation preparation)
+        {
+            if (game == null || preparation?.Plans == null || !ReferenceEquals(game.PrestartConfig, preparation.Config)
+                || !partyRuntimes.TryGetValue(game, out _) || (game.Phase != "ready" && game.Phase != "finished")
+                || !preparation.Config.Matches(game) || !preparation.Config.GeometryMatches()
+                || game.ActivePrestartPlans?.Seed == preparation.Seed) return false;
+            game.PendingPrestartPlans = preparation.Plans;
+            return true;
+        }
 
         public static bool Press(GameState game, int slot)
-        { return !(game.IsParty && game.IsBotSlot(slot)) && RaceSimulation.Press(game, slot); }
+        { return !((game.IsParty || game.UsesPrestartBots) && game.IsBotSlot(slot)) && RaceSimulation.Press(game, slot); }
 
         public static bool StartAllBotParty(GameState game)
         { return RaceSimulation.StartAllBotParty(game); }
@@ -62,7 +88,7 @@ namespace FlipRace.Core
         public static void Advance(GameState game, double delta, IRaceScheduledInput input = null, bool paused = false)
         {
             if (!CanAdvance(delta, paused)) return;
-            if (input != null && game.PartyBots != null)
+            if (input != null && (game.PartyBots != null || game.UsesPrestartBots))
                 throw new ArgumentException("This party owns its scheduled inputs.", nameof(input));
             if (partyRuntimes.TryGetValue(game, out var runtime))
             {
@@ -84,7 +110,7 @@ namespace FlipRace.Core
         internal static void AdvanceScheduled(GameState game, double delta, IRaceScheduledInput[] inputs, bool paused = false)
         {
             if (!CanAdvance(delta, paused)) return;
-            if (game.PartyBots != null)
+            if (game.PartyBots != null || game.UsesPrestartBots)
                 throw new ArgumentException("This party owns its scheduled inputs.", nameof(inputs));
             if (inputs == null) throw new ArgumentNullException(nameof(inputs));
             if (inputs.Length != game.Players.Length || inputs.Length > 4)

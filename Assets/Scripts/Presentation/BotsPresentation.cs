@@ -90,7 +90,7 @@ namespace FlipRace.Presentation
         int botFrameOrdinal,botFramePlans;
         double botFrameDelta,botFrameAdvanceMs;
         BotFrameCohort botFrameCohort;
-        public BotFramePerformance BotPerformance { get { return BotEnabled?botFramePerformance:null; } }
+        public BotFramePerformance BotPerformance { get { return BotEnabled && !Game.UsesPrestartBots ? botFramePerformance : null; } }
         void BeginBotPerformanceFrame(double delta)
         {
             botFramePending=false;
@@ -228,6 +228,7 @@ namespace FlipRace.Presentation
         }
         void BotMenuPointer(Vector2 p)
         {
+            if (BotAlgorithmPointer(p)) return;
             for(int i=0;i<5;i++)if(BotDifficultyRect(i).Contains(p)){pendingBotDifficulty=(BotDifficulty)i;return;}
             for(int i=0;i<2;i++)if(PartyCameraRect(i).Contains(p)){pendingPartyCamera=(PartyCamera)i;return;}
         }
@@ -238,14 +239,8 @@ namespace FlipRace.Presentation
             Text(new Rect(flightPanel.x+16,flightPanel.y+109,flightPanel.width-32,15),"КАМЕРА",8,muted);
             FlightButton(PartyCameraRect(0),"Постоянный скролл",pendingPartyCamera==PartyCamera.Constant,true,10);
             FlightButton(PartyCameraRect(1),"За последним · без выбывания",pendingPartyCamera==PartyCamera.Lagger,true,10);
-            label.wordWrap=true;
-            string note = !TrackProfileSupported ? "Эта трасса поддерживает только Основной. Выбери его в настройках управления."
-                : flightSelection.IsCustom ? "Боты доступны только с Основным или Быстрым переворотом. Выбери готовый профиль."
-                : !BotTrackSupported ? TrackCatalog.BotSupportMessage(pendingFlightTrack, flightSelection.Settings)
-                : pendingSurfaceRun ? "С разгоном бот подстраивает прыжки. Мастер тоже может ошибаться."
-                : "Награды личные.";
-            Text(new Rect(flightPanel.x+16,flightPanel.y+175,flightPanel.width-32,32),note,10,muted);
-            label.wordWrap=false;DrawModeChoices();DrawFlightApplyFooter();
+            DrawBotAlgorithms();
+            DrawModeChoices();DrawFlightApplyFooter();
         }
         void ResetBotRace()
         {
@@ -310,7 +305,7 @@ namespace FlipRace.Presentation
                     Rect a=BotPersonalArea(1);float y=a.center.y-32;
                     GUI.color=Color.white;GUI.DrawTexture(new Rect(a.center.x-100,y,64,64),MascotArtwork.Create(Game.Players[1].CharacterIndex,1));
                     Text(new Rect(a.center.x-10,y+2,210,25),"Бот · "+BotLevelNames[(int)Game.BotDifficulty],16,accents[1],true);
-                    Text(new Rect(a.center.x-10,y+29,210,24),PlayerName(1)+" · Готов",11,muted);
+                    Text(new Rect(a.center.x-10,y+29,210,24),PlayerName(1)+(Game.UsesPrestartBots && !Game.PrestartReady ? "" : " · Готов"),11,muted);
                     for(int h=0;h<CharacterRoster.Count;h++)
                     {
                         Rect c=BotCharacterRect(h);bool chosen=Game.Players[0].CharacterIndex==h;
@@ -318,7 +313,7 @@ namespace FlipRace.Presentation
                         float s=Mathf.Min(40,c.width*.35f);GUI.color=Color.white;GUI.DrawTexture(new Rect(c.x+2,c.y+2,s,40),MascotArtwork.Create(h,0));
                         Text(new Rect(c.x+s+4,c.y,c.width-s-6,44),CharacterRoster.Name(h),10,ink,chosen,TextAnchor.MiddleCenter);
                     }
-                    Round(BotStartRect,7,pales[0]);Text(BotStartRect,"Начать →",12,accents[0],true,TextAnchor.MiddleCenter);
+                    Round(BotStartRect,7,pales[0]);Text(BotStartRect,PrestartActionLabel("Начать →"),12,accents[0],true,TextAnchor.MiddleCenter);
                 }
                 else
                 {
@@ -330,7 +325,7 @@ namespace FlipRace.Presentation
                         Text(new Rect(a.x+8,y+27,a.width-16,22),p.Status==PlayerStatus.Finished?"Финиш · "+Number(p.FinishTime.Value,2)+" с":"Выбыл слева · "+Number(p.Distance,0)+" ед",12,ink,true,TextAnchor.MiddleCenter);
                         Text(new Rect(a.x+8,y+53,a.width-16,22),"+"+Rewards(p)+" · −"+p.SlowsEarned+CoinScore(p)+" · ударов "+p.Collisions,10,muted,false,TextAnchor.MiddleCenter);
                     }
-                    Round(BotRetryRect,7,pales[0]);Text(BotRetryRect,"Ещё раз →",11,accents[0],true,TextAnchor.MiddleCenter);
+                    Round(BotRetryRect,7,pales[0]);Text(BotRetryRect,PrestartActionLabel("Ещё раз →"),11,accents[0],true,TextAnchor.MiddleCenter);
                     StrokeRound(BotTrackChoiceRect,7,Hex(0xd9dece),paper);Text(BotTrackChoiceRect,"Выбрать трассу",11,ink,true,TextAnchor.MiddleCenter);
                 }
             }
