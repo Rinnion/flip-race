@@ -1,0 +1,6725 @@
+{
+  "Status": "PASS",
+  "CommonPhysicsCases": 600,
+  "HiddenForecasts": 2,
+  "PreparedImportProfiles": 2,
+  "Cases": [
+    {
+      "Name": "mixed-tricks/Chosen/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "2D1620754A57357ADF3F045937ABB764675361A0BC0A4B3D5E8E1C7D0B5B2912",
+      "DecisionTraceSha256": "D4DBCB3CC79176E567482117DDA1410DF0455DD3FFAC332F6ED02BBFCEBDBA13",
+      "Advances": 5882,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 114,
+          "Time": 1.863964202456056,
+          "Distance": 429.18111855454055,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 238,
+          "Time": 3.937072180487899,
+          "Distance": 963.7735847799106,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 333,
+          "Time": 5.515858477262332,
+          "Distance": 1313.9999998438898,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 467,
+          "Time": 7.745392204407754,
+          "Distance": 1878.8139806493245,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 475,
+          "Time": 7.883692280553867,
+          "Distance": 1910.8139807005919,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 655,
+          "Time": 10.889343742747508,
+          "Distance": 2678.159093311541,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 666,
+          "Time": 11.069351331375515,
+          "Distance": 2734.2015903307574,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 692,
+          "Time": 11.50800613235429,
+          "Distance": 2887.7735848337957,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 839,
+          "Time": 13.9522276495734,
+          "Distance": 3447.773584724055,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 993,
+          "Time": 16.512841129438407,
+          "Distance": 4028.844877132349,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1004,
+          "Time": 16.709099198248815,
+          "Distance": 4074.8448771900307,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1068,
+          "Time": 17.767485070018022,
+          "Distance": 4314.813980689592,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1080,
+          "Time": 17.960860593556585,
+          "Distance": 4358.813980689689,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1111,
+          "Time": 18.486622102200386,
+          "Distance": 4519.23864004117,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1227,
+          "Time": 20.425254255703727,
+          "Distance": 5037.999999846115,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1234,
+          "Time": 20.539064518570374,
+          "Distance": 5063.999999841026,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1242,
+          "Time": 20.663049031832788,
+          "Distance": 5091.999999835979,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1407,
+          "Time": 23.42206549267062,
+          "Distance": 5770.999999887918,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1419,
+          "Time": 23.614683844176298,
+          "Distance": 5814.9999998816265,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1470,
+          "Time": 24.465236948473994,
+          "Distance": 6003.99999984539,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1484,
+          "Time": 24.69484426899239,
+          "Distance": 6054.999999879975,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1559,
+          "Time": 25.946386101641806,
+          "Distance": 6399.999999889808,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1571,
+          "Time": 26.149259256462674,
+          "Distance": 6445.999999823332,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1634,
+          "Time": 27.205574118693146,
+          "Distance": 6680.999999837822,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1764,
+          "Time": 29.3607255728919,
+          "Distance": 7228.84487718937,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1775,
+          "Time": 29.552046982155115,
+          "Distance": 7272.844877123588,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1811,
+          "Time": 30.159195961915792,
+          "Distance": 7407.999999811635,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1827,
+          "Time": 30.41334842170475,
+          "Distance": 7463.999999849658,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1874,
+          "Time": 31.205713753336386,
+          "Distance": 7638.999999878165,
+          "Accepted": true,
+          "Cursor": 28
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 38.07578762121686,
+      "Winner": 1,
+      "WinnerAt": 32.23144187418666,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.07578762121686,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.03440804327886001
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.23144187418666,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "7EF8C48014565480BCBD3A54EC822C0E72255501509F23E5C2B7A67D44DEA707",
+      "DecisionTraceSha256": "B60D462C4833B2054881300A9CDE84BD71671475D8933CBCC3BE9CB9FBC87B77",
+      "Advances": 6901,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 32,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 99,
+          "Time": 1.6116335554209613,
+          "Distance": 368.84487713588584,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 113,
+          "Time": 1.8498220683863855,
+          "Distance": 424.8448771436037,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 162,
+          "Time": 2.675411409862288,
+          "Distance": 611.7735847065062,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 271,
+          "Time": 4.488004799221711,
+          "Distance": 1014.8448771833608,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 284,
+          "Time": 4.709360315979943,
+          "Distance": 1064.8448771500773,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 335,
+          "Time": 5.553606453521951,
+          "Distance": 1251.7735847351023,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 445,
+          "Time": 7.386753516836472,
+          "Distance": 1658.8448772003096,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 457,
+          "Time": 7.590018063666236,
+          "Distance": 1704.844877185565,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 506,
+          "Time": 8.40699317178413,
+          "Distance": 1885.773584776092,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 576,
+          "Time": 9.569519840040902,
+          "Distance": 2141.999999877999,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 698,
+          "Time": 11.604007015282455,
+          "Distance": 2782.844877233103,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 707,
+          "Time": 11.756713910146933,
+          "Distance": 2824.8448771884746,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 758,
+          "Time": 12.600108474760956,
+          "Distance": 3011.773584794022,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 865,
+          "Time": 14.38938324802097,
+          "Distance": 3408.844877163781,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 880,
+          "Time": 14.63791253297188,
+          "Distance": 3464.844877188912,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 931,
+          "Time": 15.482787597803998,
+          "Distance": 3651.7735847221525,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1038,
+          "Time": 17.2721791780477,
+          "Distance": 4048.844877170156,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1050,
+          "Time": 17.46693985179617,
+          "Distance": 4092.84487719073,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1104,
+          "Time": 18.373116901898467,
+          "Distance": 4293.773584792863,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1169,
+          "Time": 19.453119376194028,
+          "Distance": 4531.9999998630265,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1291,
+          "Time": 21.48534498508599,
+          "Distance": 5168.844877245429,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1300,
+          "Time": 21.632935714367513,
+          "Distance": 5212.844877117955,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1354,
+          "Time": 22.529973361772093,
+          "Distance": 5411.773584738495,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1464,
+          "Time": 24.3624735532972,
+          "Distance": 5818.8448771447875,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1476,
+          "Time": 24.565744555244347,
+          "Distance": 5864.844877135707,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1526,
+          "Time": 25.40946500593209,
+          "Distance": 6051.773584757002,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1638,
+          "Time": 27.26008426128501,
+          "Distance": 6462.844877199347,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1649,
+          "Time": 27.454260533889645,
+          "Distance": 6506.844877132143,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1699,
+          "Time": 28.2887030183357,
+          "Distance": 6691.773584793787,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1782,
+          "Time": 29.67220476396584,
+          "Distance": 6997.181118611975,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1866,
+          "Time": 31.062702559210987,
+          "Distance": 7357.999999884965,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1932,
+          "Time": 32.17418886616031,
+          "Distance": 7679.999999807926,
+          "Accepted": true,
+          "Cursor": 31
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 43.7365209428013,
+      "Winner": 1,
+      "WinnerAt": 33.015060306786616,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.7365209428013,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.21617881460372154
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.015060306786616,
+          "Collisions": 0,
+          "BoostsEarned": 8,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/Chosen/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "17CD4CA287AA275A9CAD05B9A4A0B0C1B997D682CBA06B0324A53D41325BF86F",
+      "DecisionTraceSha256": "359B926ABC69E4C5193DE220E0C224B2F19796173B17ADFAED3FF54C1953A889",
+      "Advances": 5018,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 28,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 114,
+          "Time": 1.8698451936624454,
+          "Distance": 429.18111861792784,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 232,
+          "Time": 3.826791430482789,
+          "Distance": 963.7735847808417,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 317,
+          "Time": 5.259679952646478,
+          "Distance": 1313.9999998372646,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 438,
+          "Time": 7.266018709433889,
+          "Distance": 1878.8139807108855,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 445,
+          "Time": 7.392101338054733,
+          "Distance": 1910.8139806719478,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 603,
+          "Time": 10.025070855156857,
+          "Distance": 2660.159093268027,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 615,
+          "Time": 10.216971376022409,
+          "Distance": 2722.2015904140735,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 641,
+          "Time": 10.656301726206356,
+          "Distance": 2887.7735847550866,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 765,
+          "Time": 12.71930956638354,
+          "Distance": 3447.7735847540125,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 893,
+          "Time": 14.848187723900722,
+          "Distance": 4028.8448772023767,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 903,
+          "Time": 15.014660719560938,
+          "Distance": 4074.844877206844,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 955,
+          "Time": 15.881742930573221,
+          "Distance": 4314.813980726989,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 964,
+          "Time": 16.04000746647901,
+          "Distance": 4358.813980702239,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 991,
+          "Time": 16.490324384008954,
+          "Distance": 4519.238640113127,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1082,
+          "Time": 18.00631470698045,
+          "Distance": 5037.999999895003,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1090,
+          "Time": 18.142139408313856,
+          "Distance": 5075.999999874875,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1094,
+          "Time": 18.199328756352642,
+          "Distance": 5091.999999896871,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1225,
+          "Time": 20.383933889168553,
+          "Distance": 5770.999999903208,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1234,
+          "Time": 20.53954217326411,
+          "Distance": 5814.999999828527,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1274,
+          "Time": 21.20762812848853,
+          "Distance": 6003.999999821541,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1285,
+          "Time": 21.387514637172927,
+          "Distance": 6054.999999864594,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1344,
+          "Time": 22.369980925398956,
+          "Distance": 6399.999999891913,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1403,
+          "Time": 23.35542635675454,
+          "Distance": 6680.999999869055,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1504,
+          "Time": 25.042101735000426,
+          "Distance": 7228.844877174714,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1514,
+          "Time": 25.19523561127252,
+          "Distance": 7272.844877134398,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1542,
+          "Time": 25.66560935704813,
+          "Distance": 7407.999999890924,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1554,
+          "Time": 25.860430071508297,
+          "Distance": 7463.999999805911,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1590,
+          "Time": 26.46910359919931,
+          "Distance": 7638.99999982958,
+          "Accepted": true,
+          "Cursor": 27
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 32.93037406733074,
+      "Winner": 1,
+      "WinnerAt": 27.25410628418936,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.93037406733074,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830777
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 27.25410628418936,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.308623203066272
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "FB68CF07522596C4F32271F33260DBFE6022754F3F6D3F84399DC2740CC949C5",
+      "DecisionTraceSha256": "1ACD26032E8003DCAA044E03C0B3714902D0E8CAAABFC58F462DA0030BDE29D1",
+      "Advances": 5951,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 32,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 99,
+          "Time": 1.6155004006779228,
+          "Distance": 368.8448771682104,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 113,
+          "Time": 1.8526969183686528,
+          "Distance": 424.8448771768231,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 160,
+          "Time": 2.6421339030812594,
+          "Distance": 611.7735847351248,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 261,
+          "Time": 4.320518271074706,
+          "Distance": 1014.8448771808621,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 273,
+          "Time": 4.525155777775317,
+          "Distance": 1064.844877122165,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 319,
+          "Time": 5.288441064209532,
+          "Distance": 1251.773584787919,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 418,
+          "Time": 6.931840084782868,
+          "Distance": 1658.8448771880462,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 429,
+          "Time": 7.114931961632729,
+          "Distance": 1704.8448771939475,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 473,
+          "Time": 7.8575844448831775,
+          "Distance": 1891.7735847561605,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 537,
+          "Time": 8.923888933019533,
+          "Distance": 2161.9999998551752,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 668,
+          "Time": 11.096726131184164,
+          "Distance": 2782.844877172513,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 677,
+          "Time": 11.25789995123585,
+          "Distance": 2824.8448771581834,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 720,
+          "Time": 11.974291954518344,
+          "Distance": 3011.773584774134,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 811,
+          "Time": 13.486036979988109,
+          "Distance": 3408.8448771766257,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 824,
+          "Time": 13.697515602141873,
+          "Distance": 3464.8448771910344,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 866,
+          "Time": 14.402685016798191,
+          "Distance": 3651.773584784779,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 958,
+          "Time": 15.936916039547578,
+          "Distance": 4060.8448772071524,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 970,
+          "Time": 16.13046285245824,
+          "Distance": 4112.8448771499125,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1008,
+          "Time": 16.766284862743486,
+          "Distance": 4283.773584782996,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1073,
+          "Time": 17.85734615893636,
+          "Distance": 4577.999999868123,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1190,
+          "Time": 19.79579666521382,
+          "Distance": 5168.844877168984,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1199,
+          "Time": 19.9564886588322,
+          "Distance": 5212.844877134493,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1243,
+          "Time": 20.682305556857532,
+          "Distance": 5411.773584761533,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1332,
+          "Time": 22.16088073789665,
+          "Distance": 5818.8448771327685,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1342,
+          "Time": 22.327088762285996,
+          "Distance": 5864.844877131466,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1382,
+          "Time": 23.0020745257487,
+          "Distance": 6051.7735847266495,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1471,
+          "Time": 24.48107604097599,
+          "Distance": 6462.844877146115,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1480,
+          "Time": 24.638628753024935,
+          "Distance": 6506.844877212988,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1520,
+          "Time": 25.300458795789954,
+          "Distance": 6691.773584786493,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1587,
+          "Time": 26.412196952789838,
+          "Distance": 7003.181118571091,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1665,
+          "Time": 27.720495791055285,
+          "Distance": 7369.999999839505,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1708,
+          "Time": 28.43153580271056,
+          "Distance": 7625.999999825019,
+          "Accepted": true,
+          "Cursor": 31
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 37.43037406733043,
+      "Winner": 1,
+      "WinnerAt": 29.24635208967002,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 37.43037406733043,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830775
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 29.24635208967002,
+          "Collisions": 0,
+          "BoostsEarned": 3,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.27797093507418047
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/Chosen/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "95189E8899A6D4E6DF1A618800ED7C0E584B55F1DFE9E9398467C1330E0C7DFB",
+      "DecisionTraceSha256": "CA3784B17FDA2603DAA86358251EF142DD5A10F64A4FD1C96B59FBF5AA887C6D",
+      "Advances": 5814,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 114,
+          "Time": 1.863964202663073,
+          "Distance": 429.18111860432845,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 239,
+          "Time": 3.9589682524522765,
+          "Distance": 963.7735847832295,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 334,
+          "Time": 5.540777662528787,
+          "Distance": 1313.9999998630558,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 468,
+          "Time": 7.771902443245616,
+          "Distance": 1878.8139807206271,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 477,
+          "Time": 7.911119460843997,
+          "Distance": 1910.8139807054263,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 658,
+          "Time": 10.928704574087842,
+          "Distance": 2678.159093316248,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 668,
+          "Time": 11.109930123357842,
+          "Distance": 2734.2015903250754,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 696,
+          "Time": 11.560750603995544,
+          "Distance": 2887.773584833142,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 844,
+          "Time": 14.034526201156314,
+          "Distance": 3447.7735847995277,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 998,
+          "Time": 16.605847749935297,
+          "Distance": 4028.844877161751,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1010,
+          "Time": 16.80386280889436,
+          "Distance": 4074.844877159283,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1075,
+          "Time": 17.880922447681513,
+          "Distance": 4314.8139807001435,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1087,
+          "Time": 18.078311184553932,
+          "Distance": 4358.813980654279,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1118,
+          "Time": 18.605967309559272,
+          "Distance": 4519.238640037831,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1235,
+          "Time": 20.54572689406949,
+          "Distance": 5037.999999892428,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1242,
+          "Time": 20.66016498648412,
+          "Distance": 5063.999999859126,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1249,
+          "Time": 20.786306663095576,
+          "Distance": 5091.99999983443,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1415,
+          "Time": 23.547849798430242,
+          "Distance": 5770.999999811566,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1426,
+          "Time": 23.742314508340467,
+          "Distance": 5814.999999880589,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1478,
+          "Time": 24.59670423282076,
+          "Distance": 6003.999999872734,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1492,
+          "Time": 24.827397943540713,
+          "Distance": 6054.99999985811,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1567,
+          "Time": 26.078947760926603,
+          "Distance": 6399.999999890406,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1579,
+          "Time": 26.283880669717167,
+          "Distance": 6445.9999998761805,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1642,
+          "Time": 27.34224283714609,
+          "Distance": 6680.999999864855,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1772,
+          "Time": 29.49969522077587,
+          "Distance": 7228.8448771942985,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1783,
+          "Time": 29.692795287023007,
+          "Distance": 7272.844877120613,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1820,
+          "Time": 30.30562732607367,
+          "Distance": 7407.99999982656,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1835,
+          "Time": 30.55996398361843,
+          "Distance": 7463.999999844199,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1883,
+          "Time": 31.352330057225014,
+          "Distance": 7638.99999980349,
+          "Accepted": true,
+          "Cursor": 28
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 38.12083426665314,
+      "Winner": 1,
+      "WinnerAt": 32.37883066747524,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.12083426665314,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.03440804327885974
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.37883066747524,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "A21164E62000C1B76348458B9E4D44F92153BB850FB7ADD550958AB7C27AB0B6",
+      "DecisionTraceSha256": "AC67B10D80DA3D24D90A977E37BFF4C0D91FED3486CD9A77B58CF5E68DCF2AFB",
+      "Advances": 6803,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 32,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 99,
+          "Time": 1.611633555598346,
+          "Distance": 368.8448771780552,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 113,
+          "Time": 1.852569016063528,
+          "Distance": 424.84487716699635,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 164,
+          "Time": 2.6955203945990562,
+          "Distance": 611.7735847486817,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 273,
+          "Time": 4.512194692463901,
+          "Distance": 1014.8448772027502,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 286,
+          "Time": 4.735856749513703,
+          "Distance": 1064.8448771562885,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 337,
+          "Time": 5.581313070853323,
+          "Distance": 1251.7735847278486,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 447,
+          "Time": 7.415467592713929,
+          "Distance": 1658.8448771701599,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 459,
+          "Time": 7.620779844329288,
+          "Distance": 1704.8448771289839,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 508,
+          "Time": 8.439439429139277,
+          "Distance": 1885.773584761396,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 578,
+          "Time": 9.602883672212995,
+          "Distance": 2141.999999853745,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 700,
+          "Time": 11.637443205409811,
+          "Distance": 2782.844877120279,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 709,
+          "Time": 11.791329685330728,
+          "Distance": 2824.8448771892868,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 760,
+          "Time": 12.63657626087877,
+          "Distance": 3011.7735847975914,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 868,
+          "Time": 14.426890914925831,
+          "Distance": 3408.8448771647504,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 883,
+          "Time": 14.67807179662362,
+          "Distance": 3464.8448771654193,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 933,
+          "Time": 15.523638828807648,
+          "Distance": 3651.773584754687,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1041,
+          "Time": 17.31402036689517,
+          "Distance": 4048.8448772034058,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1053,
+          "Time": 17.510655180522626,
+          "Distance": 4092.8448771870057,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1107,
+          "Time": 18.4182764415951,
+          "Distance": 4293.773584747298,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1172,
+          "Time": 19.499685638535844,
+          "Distance": 4531.999999804987,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1294,
+          "Time": 21.5319545893229,
+          "Distance": 5168.844877214932,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1303,
+          "Time": 21.680651266334515,
+          "Distance": 5212.844877196582,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1357,
+          "Time": 22.579265730086465,
+          "Distance": 5411.773584730932,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1467,
+          "Time": 24.413092237244996,
+          "Distance": 5818.844877159822,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1479,
+          "Time": 24.618407676521006,
+          "Distance": 5864.844877169727,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1530,
+          "Time": 25.463804795230207,
+          "Distance": 6051.7735847604845,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1641,
+          "Time": 27.315439124020656,
+          "Distance": 6462.844877173462,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1653,
+          "Time": 27.511489397035838,
+          "Distance": 6506.844877158157,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1703,
+          "Time": 28.347952083552453,
+          "Distance": 6691.773584728048,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1786,
+          "Time": 29.732449880639965,
+          "Distance": 6997.181118605852,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1869,
+          "Time": 31.123422196088317,
+          "Distance": 7357.99999982133,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1936,
+          "Time": 32.23514909766637,
+          "Distance": 7679.999999862651,
+          "Accepted": true,
+          "Cursor": 31
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 43.73870222648451,
+      "Winner": 1,
+      "WinnerAt": 33.07603919820453,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.73870222648451,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.2
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 33.07603919820453,
+          "Collisions": 0,
+          "BoostsEarned": 8,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        }
+      ]
+    },
+    {
+      "Name": "v56-regression-import/Chosen/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "DAE6B7FAB0B35AE8BCBED20CBB01E0188CE98829336951A27D1BAB44900E827F",
+      "DecisionTraceSha256": "189AAECE72B726CD220EA1AFC6916B8C214928D322749D23E4C0CE1958E4F4E0",
+      "Advances": 5996,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 114,
+          "Time": 1.863964202456056,
+          "Distance": 429.18111855454055,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 238,
+          "Time": 3.937079029291059,
+          "Distance": 963.7735847797885,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 333,
+          "Time": 5.515870434183212,
+          "Distance": 1313.999999843572,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 467,
+          "Time": 7.745404098335155,
+          "Distance": 1878.8139806482905,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 475,
+          "Time": 7.883704174901737,
+          "Distance": 1910.8139807003756,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 655,
+          "Time": 10.889355645582034,
+          "Distance": 2678.159093311408,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 666,
+          "Time": 11.069363234525467,
+          "Distance": 2734.2015903305687,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 692,
+          "Time": 11.508018036286758,
+          "Distance": 2887.7735848336606,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 839,
+          "Time": 13.952239555844194,
+          "Distance": 3447.773584723812,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 993,
+          "Time": 16.51285303563156,
+          "Distance": 4028.844877131588,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1004,
+          "Time": 16.709111104445572,
+          "Distance": 4074.8448771899366,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1068,
+          "Time": 17.767496976218588,
+          "Distance": 4314.813980689371,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1080,
+          "Time": 17.96087249975041,
+          "Distance": 4358.813980687771,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1111,
+          "Time": 18.48663400840165,
+          "Distance": 4519.238640041006,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1227,
+          "Time": 20.425266161906453,
+          "Distance": 5037.999999845995,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1234,
+          "Time": 20.53907642477295,
+          "Distance": 5063.999999840873,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1242,
+          "Time": 20.66306093803318,
+          "Distance": 5091.999999835338,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1407,
+          "Time": 23.422077398873096,
+          "Distance": 5770.999999887808,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1419,
+          "Time": 23.61469575037789,
+          "Distance": 5814.999999881326,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1470,
+          "Time": 24.4652488546753,
+          "Distance": 6003.9999998450385,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1484,
+          "Time": 24.694856175191003,
+          "Distance": 6054.999999879029,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1559,
+          "Time": 25.94639800784264,
+          "Distance": 6399.999999889379,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1571,
+          "Time": 26.14927116266382,
+          "Distance": 6445.999999822977,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1634,
+          "Time": 27.20558602489514,
+          "Distance": 6680.999999837663,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1764,
+          "Time": 29.36073747908574,
+          "Distance": 7228.844877187323,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1775,
+          "Time": 29.552058888356854,
+          "Distance": 7272.844877123329,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1811,
+          "Time": 30.159207868118497,
+          "Distance": 7407.999999811494,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1827,
+          "Time": 30.41336032790568,
+          "Distance": 7463.999999849123,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1874,
+          "Time": 31.205725659539194,
+          "Distance": 7638.999999878049,
+          "Accepted": true,
+          "Cursor": 28
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 39.02092416576228,
+      "Winner": 1,
+      "WinnerAt": 33.20904692992137,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 39.02092416576228,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.08166538263919655
+        },
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 33.20904692992137,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.0473358748398694
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "3EB2D28DAAFB545C5C441D2230D95444142FA21A96252BFA7B43C87EF2A92916",
+      "DecisionTraceSha256": "907742715EF8D7CB0FA4E123336438A8C6C851E1045423A684DC6D1D65CC707A",
+      "Advances": 5577,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 115,
+          "Time": 1.8922983543997898,
+          "Distance": 435.99999980930767,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 148,
+          "Time": 2.4360698515864927,
+          "Distance": 564.1196110385223,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 239,
+          "Time": 3.958769638038962,
+          "Distance": 977.9999998021041,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 257,
+          "Time": 4.2539879140929004,
+          "Distance": 1045.9999998619357,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 331,
+          "Time": 5.481845572291057,
+          "Distance": 1319.9999998852998,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 361,
+          "Time": 5.9856978425626695,
+          "Distance": 1479.9999998782341,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 465,
+          "Time": 7.725221169745512,
+          "Distance": 1891.1393784246452,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 645,
+          "Time": 10.718547307519913,
+          "Distance": 2674.1416780279997,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 696,
+          "Time": 11.56698813672408,
+          "Distance": 2952.299999883133,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 705,
+          "Time": 11.712033203817876,
+          "Distance": 2988.5999998249545,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 780,
+          "Time": 12.975199349338963,
+          "Distance": 3297.9999998477083,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 836,
+          "Time": 13.901209846509342,
+          "Distance": 3524.9170646216753,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 964,
+          "Time": 16.0335077185036,
+          "Distance": 4053.1503212270272,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1031,
+          "Time": 17.143895559527362,
+          "Distance": 4335.139378405539,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1064,
+          "Time": 17.706981849807818,
+          "Distance": 4513.2125170377285,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1213,
+          "Time": 20.185987771660006,
+          "Distance": 5237.499999815145,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1323,
+          "Time": 22.01895971838052,
+          "Distance": 5783.499999852764,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1379,
+          "Time": 22.949721967111596,
+          "Distance": 6028.499999870045,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1449,
+          "Time": 24.11761644416798,
+          "Distance": 6399.999999847631,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1522,
+          "Time": 25.331603071296374,
+          "Distance": 6717.999999803703,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1540,
+          "Time": 25.627768022652656,
+          "Distance": 6795.999999845515,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1632,
+          "Time": 27.16601883857771,
+          "Distance": 7253.150321256908,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1723,
+          "Time": 28.68607108597165,
+          "Distance": 7643.999999892439,
+          "Accepted": true,
+          "Cursor": 22
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 38.075787621216826,
+      "Winner": 1,
+      "WinnerAt": 29.5400938300319,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.075787621216826,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.03440804327885994
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 29.5400938300319,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.1846842538400531
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/FastFlip/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "4FE12C35E9C629F1C5D949860FE3E09B9E3B78CE1FDE3303C76CA4BBD54ABBFC",
+      "DecisionTraceSha256": "0C72AEC0E8A825DB8FC9C85B74A2665F0EA9BBACD7198993FFF4FA2E0BFA24C6",
+      "Advances": 6958,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 40,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 105,
+          "Time": 1.7136334263869388,
+          "Distance": 393.150321165296,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 176,
+          "Time": 2.901392308360001,
+          "Distance": 671.9999998863091,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 184,
+          "Time": 3.040204101691586,
+          "Distance": 704.9999998650534,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 272,
+          "Time": 4.4960056152068715,
+          "Distance": 1045.1503212305568,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 337,
+          "Time": 5.577363923255006,
+          "Distance": 1299.9999998738544,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 345,
+          "Time": 5.716105434937801,
+          "Distance": 1332.999999887049,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 435,
+          "Time": 7.221036377361583,
+          "Distance": 1685.1503212215835,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 500,
+          "Time": 8.30772004560955,
+          "Distance": 1941.9999998124088,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 509,
+          "Time": 8.446036765686076,
+          "Distance": 1974.999999834523,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 559,
+          "Time": 9.277089915420836,
+          "Distance": 2167.999999885296,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 582,
+          "Time": 9.6714805042228,
+          "Distance": 2277.9999998968597,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 622,
+          "Time": 10.335502015648865,
+          "Distance": 2497.9999998706503,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 631,
+          "Time": 10.487006623971086,
+          "Distance": 2547.9999998433873,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 676,
+          "Time": 11.227911747178387,
+          "Distance": 2793.1503212400044,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 728,
+          "Time": 12.108500480250868,
+          "Distance": 3061.9999998655376,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 737,
+          "Time": 12.246927343032203,
+          "Distance": 3092.9999998703706,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 831,
+          "Time": 13.819637035172338,
+          "Distance": 3447.1503212291923,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 899,
+          "Time": 14.950026571264214,
+          "Distance": 3705.999999832891,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 906,
+          "Time": 15.066516225001898,
+          "Distance": 3732.9999998883945,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 995,
+          "Time": 16.549050288862407,
+          "Distance": 4073.1503211608656,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1062,
+          "Time": 17.672475807561575,
+          "Distance": 4333.999999875477,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1072,
+          "Time": 17.838872670284506,
+          "Distance": 4372.999999827693,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1127,
+          "Time": 18.752071195695528,
+          "Distance": 4579.999999816377,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1149,
+          "Time": 19.118588009350827,
+          "Distance": 4677.999999872883,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1193,
+          "Time": 19.857638277459817,
+          "Distance": 4921.999999918538,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1202,
+          "Time": 20.009055932020516,
+          "Distance": 4971.999999888079,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1244,
+          "Time": 20.695984314376705,
+          "Distance": 5199.150321267729,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1295,
+          "Time": 21.544787801741325,
+          "Distance": 5461.999999866808,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1303,
+          "Time": 21.683432610145807,
+          "Distance": 5492.999999858633,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1398,
+          "Time": 23.27346718629453,
+          "Distance": 5851.150321181731,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1464,
+          "Time": 24.368633471902637,
+          "Distance": 6101.999999882059,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1473,
+          "Time": 24.511311809820704,
+          "Distance": 6134.999999851477,
+          "Accepted": true,
+          "Cursor": 31
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1567,
+          "Time": 26.077287291840573,
+          "Distance": 6491.150321193116,
+          "Accepted": true,
+          "Cursor": 32
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1633,
+          "Time": 27.184445293290178,
+          "Distance": 6745.999999823015,
+          "Accepted": true,
+          "Cursor": 33
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1640,
+          "Time": 27.300422113892488,
+          "Distance": 6772.999999889787,
+          "Accepted": true,
+          "Cursor": 34
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1698,
+          "Time": 28.260059150267445,
+          "Distance": 6991.999999879579,
+          "Accepted": true,
+          "Cursor": 35
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1730,
+          "Time": 28.80776964650477,
+          "Distance": 7116.119611028233,
+          "Accepted": true,
+          "Cursor": 36
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1772,
+          "Time": 29.50502507594321,
+          "Distance": 7309.999999834733,
+          "Accepted": true,
+          "Cursor": 37
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1781,
+          "Time": 29.656497179827248,
+          "Distance": 7359.999999926835,
+          "Accepted": true,
+          "Cursor": 38
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1860,
+          "Time": 30.96489477485872,
+          "Distance": 7727.99999983926,
+          "Accepted": true,
+          "Cursor": 39
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 43.73652094280132,
+      "Winner": 1,
+      "WinnerAt": 31.57457700252362,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.73652094280132,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.21617881460372174
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 31.57457700252362,
+          "Collisions": 0,
+          "BoostsEarned": 10,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.018543803376671494
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "A3DCE17D56DB53030716520364048FFE9C45D7C298E14078B957D739D6066724",
+      "DecisionTraceSha256": "E562CD4EB0BFE0432B5F180325749DB78ACE69706307CE3C7B986BAA9B07A983",
+      "Advances": 4897,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 116,
+          "Time": 1.898439997544715,
+          "Distance": 435.99999980196804,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 148,
+          "Time": 2.435003515522171,
+          "Distance": 564.1196109952751,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 234,
+          "Time": 3.8705268693155,
+          "Distance": 977.9999998077056,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 251,
+          "Time": 4.145568543557345,
+          "Distance": 1045.9999998556434,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 317,
+          "Time": 5.249863790031838,
+          "Distance": 1319.9999998376602,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 345,
+          "Time": 5.713401505002286,
+          "Distance": 1479.9999998825137,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 436,
+          "Time": 7.241192233669111,
+          "Distance": 1891.139378418864,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 599,
+          "Time": 9.950448635403253,
+          "Distance": 2674.141678014232,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 646,
+          "Time": 10.730763729458198,
+          "Distance": 2952.2999998777395,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 654,
+          "Time": 10.863631576992864,
+          "Distance": 2988.599999891637,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 721,
+          "Time": 11.991475183222255,
+          "Distance": 3297.999999838898,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 771,
+          "Time": 12.811052336262122,
+          "Distance": 3524.917064619303,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 884,
+          "Time": 14.696263434094229,
+          "Distance": 4053.150321181687,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 943,
+          "Time": 15.689951830558453,
+          "Distance": 4335.139378451258,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 974,
+          "Time": 16.20667921140481,
+          "Distance": 4513.212517075802,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1104,
+          "Time": 18.375006196168176,
+          "Distance": 5237.499999893298,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1203,
+          "Time": 20.011952865253154,
+          "Distance": 5779.499999873073,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1253,
+          "Time": 20.849643559775213,
+          "Distance": 6024.499999829406,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1316,
+          "Time": 21.90419594885073,
+          "Distance": 6399.999999882179,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1381,
+          "Time": 22.983492331103186,
+          "Distance": 6718.0411018870645,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1393,
+          "Time": 23.187225412182503,
+          "Distance": 6778.232494354683,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1473,
+          "Time": 24.517398339322117,
+          "Distance": 7237.716717576253,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1555,
+          "Time": 25.884756737984887,
+          "Distance": 7643.999999853626,
+          "Accepted": true,
+          "Cursor": 22
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 32.93037406733067,
+      "Winner": 1,
+      "WinnerAt": 26.626197705391785,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.93037406733067,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830777
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 26.626197705391785,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.3563665966763127
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/FastFlip/Master/0/Lagger/idle/5-Exponential-40-0-False",
+      "StateTraceSha256": "C41A99AACB6F5CE7F8660FA27F883B4C9E58A274FBD1EAB8E64BB71A05868117",
+      "DecisionTraceSha256": "14A020EDC1EEA9C2ACAA79D60F264B7D086DFD7D52B4F69F1D999DC5D2E846C0",
+      "Advances": 5963,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 40,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 105,
+          "Time": 1.7182496894303902,
+          "Distance": 393.150321245065,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 175,
+          "Time": 2.8837048221428505,
+          "Distance": 671.99999982332,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 183,
+          "Time": 3.0191620996702557,
+          "Distance": 704.99999987615,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 266,
+          "Time": 4.398866590548149,
+          "Distance": 1045.1503212225807,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 326,
+          "Time": 5.407471099461137,
+          "Distance": 1299.9999998783528,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 334,
+          "Time": 5.536580408701555,
+          "Distance": 1332.9999998347168,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 409,
+          "Time": 6.781070883001393,
+          "Distance": 1653.655324392062,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 471,
+          "Time": 7.824221274471817,
+          "Distance": 1927.3487136865313,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 480,
+          "Time": 7.975069811009544,
+          "Distance": 1967.3069210960457,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 527,
+          "Time": 8.74477406337289,
+          "Distance": 2171.5658090473303,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 543,
+          "Time": 9.021539544195628,
+          "Distance": 2251.2401659802044,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 583,
+          "Time": 9.67703424590356,
+          "Distance": 2498.2845847912627,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 591,
+          "Time": 9.823694191430329,
+          "Distance": 2553.6097734306827,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 629,
+          "Time": 10.458268936027915,
+          "Distance": 2793.1503211681834,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 682,
+          "Time": 11.33029985270452,
+          "Distance": 3061.999999868171,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 689,
+          "Time": 11.444763959213104,
+          "Distance": 3092.9999998934313,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 767,
+          "Time": 12.744315693268515,
+          "Distance": 3447.1503212476564,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 823,
+          "Time": 13.682781894777934,
+          "Distance": 3705.999999871028,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 829,
+          "Time": 13.78012673749089,
+          "Distance": 3732.999999846284,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 904,
+          "Time": 15.04316795422171,
+          "Distance": 4085.1503212292573,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 958,
+          "Time": 15.927418339268728,
+          "Distance": 4333.999999898863,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 966,
+          "Time": 16.065424594348627,
+          "Distance": 4372.999999842334,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1010,
+          "Time": 16.79717133035509,
+          "Distance": 4579.999999898436,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1031,
+          "Time": 17.15849543110653,
+          "Distance": 4697.9999998034755,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1068,
+          "Time": 17.76970902670034,
+          "Distance": 4921.999999886894,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1079,
+          "Time": 17.945573159215062,
+          "Distance": 4971.999999877519,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1117,
+          "Time": 18.578289327393392,
+          "Distance": 5211.150321187958,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1168,
+          "Time": 19.434063090168006,
+          "Distance": 5461.999999848661,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1174,
+          "Time": 19.542395064935103,
+          "Distance": 5492.999999839889,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1249,
+          "Time": 20.789796561962273,
+          "Distance": 5851.150321251385,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1301,
+          "Time": 21.657978743896468,
+          "Distance": 6101.999999889526,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1308,
+          "Time": 21.771868101530316,
+          "Distance": 6134.999999810066,
+          "Accepted": true,
+          "Cursor": 31
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1375,
+          "Time": 22.879343402556895,
+          "Distance": 6456.605419966388,
+          "Accepted": true,
+          "Cursor": 32
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1429,
+          "Time": 23.783020674312713,
+          "Distance": 6720.295661867897,
+          "Accepted": true,
+          "Cursor": 33
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1438,
+          "Time": 23.932874831476738,
+          "Distance": 6764.133047745722,
+          "Accepted": true,
+          "Cursor": 34
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1478,
+          "Time": 24.607143588267967,
+          "Distance": 6961.455098627653,
+          "Accepted": true,
+          "Cursor": 35
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1508,
+          "Time": 25.100725275692312,
+          "Distance": 7106.119610955771,
+          "Accepted": true,
+          "Cursor": 36
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1543,
+          "Time": 25.687922019549234,
+          "Distance": 7305.999999850853,
+          "Accepted": true,
+          "Cursor": 37
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1551,
+          "Time": 25.821788266133073,
+          "Distance": 7359.999999823657,
+          "Accepted": true,
+          "Cursor": 38
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1606,
+          "Time": 26.74235519687092,
+          "Distance": 7719.992583479396,
+          "Accepted": true,
+          "Cursor": 39
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 37.43037406733044,
+      "Winner": 1,
+      "WinnerAt": 27.234895696972192,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 37.43037406733044,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.3878154617830778
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 27.234895696972192,
+          "Collisions": 0,
+          "BoostsEarned": 7,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.33895864465628905
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "4341DF5182F7A153185D0A6A459E400FA26CEF869922658C45D87AD4B47B8B7C",
+      "DecisionTraceSha256": "8B7A4A468FA247FF03DADE5E3CF34CCD2A878E4F36A84914BFFD6C991FB702A7",
+      "Advances": 5645,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 115,
+          "Time": 1.8922983546649224,
+          "Distance": 435.9999998731555,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 149,
+          "Time": 2.4492249966690487,
+          "Distance": 564.1196109533543,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 242,
+          "Time": 4.005761934536828,
+          "Distance": 977.9999998571961,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 260,
+          "Time": 4.309156926055057,
+          "Distance": 1045.9999998517594,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 334,
+          "Time": 5.541402755539378,
+          "Distance": 1319.9999998855924,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 365,
+          "Time": 6.047204796354562,
+          "Distance": 1479.999999876302,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 469,
+          "Time": 7.7876882411625905,
+          "Distance": 1891.139378437939,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 653,
+          "Time": 10.855188608811638,
+          "Distance": 2674.141677962958,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 707,
+          "Time": 11.747095588829689,
+          "Distance": 2952.2999998476557,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 716,
+          "Time": 11.901668901709348,
+          "Distance": 2988.599999832999,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 799,
+          "Time": 13.27765960422087,
+          "Distance": 3297.9999998508233,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 859,
+          "Time": 14.293211058013686,
+          "Distance": 3524.917064673375,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 998,
+          "Time": 16.599362687882785,
+          "Distance": 4053.150321168336,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1071,
+          "Time": 17.82489103901115,
+          "Distance": 4335.13937846983,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1108,
+          "Time": 18.43744237886913,
+          "Distance": 4513.2125171033085,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1273,
+          "Time": 21.176692001965804,
+          "Distance": 5237.499999851107,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1396,
+          "Time": 23.236139814377673,
+          "Distance": 5783.499999809995,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1461,
+          "Time": 24.31497076699089,
+          "Distance": 6028.4999998777475,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1542,
+          "Time": 25.675303506112762,
+          "Distance": 6399.999999828304,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1632,
+          "Time": 27.165968976623855,
+          "Distance": 6735.999999888307,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1649,
+          "Time": 27.458308017733295,
+          "Distance": 6801.999999859712,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1752,
+          "Time": 29.173890348642473,
+          "Distance": 7253.150321232009,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1856,
+          "Time": 30.896852465178227,
+          "Distance": 7643.99999980551,
+          "Accepted": true,
+          "Cursor": 22
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 38.12083426665309,
+      "Winner": 1,
+      "WinnerAt": 31.881161451818937,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 38.12083426665309,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.034408043278859976
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 31.881161451818937,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.03003904985320277
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/FastFlip/Master/0/Lagger/idle/5-Linear-20-400-True",
+      "StateTraceSha256": "6D23D1BAAD6E6B6DE7BB3FFF834B7CE3C5D22B2E48F70EE8CF8D19ED8771E587",
+      "DecisionTraceSha256": "FF471ED6CF9C8553C677711D2DFA2CB9BDBE1D5AFDC1501E7DD257D79C82DFD7",
+      "Advances": 6891,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 40,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 105,
+          "Time": 1.713633426603301,
+          "Distance": 393.1503212169744,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 178,
+          "Time": 2.93776912900132,
+          "Distance": 671.9999998811677,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 187,
+          "Time": 3.0824820189721533,
+          "Distance": 704.9999998846039,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 278,
+          "Time": 4.595335105214223,
+          "Distance": 1045.1503212212747,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 346,
+          "Time": 5.73156192208613,
+          "Distance": 1299.999999867768,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 355,
+          "Time": 5.878193532914161,
+          "Distance": 1332.9999998621258,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 449,
+          "Time": 7.443850878368878,
+          "Distance": 1685.1503212323773,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 517,
+          "Time": 8.588166147701324,
+          "Distance": 1941.9999998372468,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 526,
+          "Time": 8.734738970203603,
+          "Distance": 1974.9999998853257,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 580,
+          "Time": 9.632515015217784,
+          "Distance": 2173.999999892274,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 603,
+          "Time": 10.019430390184011,
+          "Distance": 2277.9999998924027,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 643,
+          "Time": 10.685839949711715,
+          "Distance": 2497.999999898772,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 652,
+          "Time": 10.837349816848576,
+          "Distance": 2547.9999998777234,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 697,
+          "Time": 11.578255084051172,
+          "Distance": 2793.150321224857,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 749,
+          "Time": 12.457006663968782,
+          "Distance": 3061.999999833433,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 758,
+          "Time": 12.596382964807079,
+          "Distance": 3092.999999823951,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 852,
+          "Time": 14.16979488148546,
+          "Distance": 3447.150321191008,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 921,
+          "Time": 15.32250281724148,
+          "Distance": 3705.9999998246217,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 928,
+          "Time": 15.442061411975502,
+          "Distance": 3732.9999998075546,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1019,
+          "Time": 16.952227246071423,
+          "Distance": 4073.150321203782,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1089,
+          "Time": 18.113908796213895,
+          "Distance": 4333.999999805115,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1099,
+          "Time": 18.287441130519888,
+          "Distance": 4372.999999831291,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1155,
+          "Time": 19.222423964819328,
+          "Distance": 4579.999999873992,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1177,
+          "Time": 19.59236172462319,
+          "Distance": 4677.99999991574,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1222,
+          "Time": 20.331428304273214,
+          "Distance": 4921.999999845748,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1231,
+          "Time": 20.482894688171875,
+          "Distance": 4971.999999928716,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1272,
+          "Time": 21.169824199249124,
+          "Distance": 5199.150321273338,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1323,
+          "Time": 22.021370137209658,
+          "Distance": 5461.9999998283465,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1332,
+          "Time": 22.160910223096153,
+          "Distance": 5492.999999823389,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1427,
+          "Time": 23.75148580941398,
+          "Distance": 5851.150321221134,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1494,
+          "Time": 24.868901729106376,
+          "Distance": 6101.999999872254,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1503,
+          "Time": 25.015670246588137,
+          "Distance": 6134.999999846825,
+          "Accepted": true,
+          "Cursor": 31
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1598,
+          "Time": 26.598543322487288,
+          "Distance": 6491.1503211851805,
+          "Accepted": true,
+          "Cursor": 32
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1666,
+          "Time": 27.733857079897316,
+          "Distance": 6745.999999805568,
+          "Accepted": true,
+          "Cursor": 33
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1673,
+          "Time": 27.853518254191275,
+          "Distance": 6772.999999870065,
+          "Accepted": true,
+          "Cursor": 34
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1732,
+          "Time": 28.83747667599156,
+          "Distance": 6991.9999998303865,
+          "Accepted": true,
+          "Cursor": 35
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1766,
+          "Time": 29.39811506561859,
+          "Distance": 7116.119611027537,
+          "Accepted": true,
+          "Cursor": 36
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1808,
+          "Time": 30.097134647441955,
+          "Distance": 7309.999999872439,
+          "Accepted": true,
+          "Cursor": 37
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1817,
+          "Time": 30.24862825028135,
+          "Distance": 7359.999999809529,
+          "Accepted": true,
+          "Cursor": 38
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1895,
+          "Time": 31.557881992829575,
+          "Distance": 7727.999999825055,
+          "Accepted": true,
+          "Cursor": 39
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 43.73870222648467,
+      "Winner": 1,
+      "WinnerAt": 32.17405118118567,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.73870222648467,
+          "Collisions": 19,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.2
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.17405118118567,
+          "Collisions": 0,
+          "BoostsEarned": 10,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.011632059938970775
+        }
+      ]
+    },
+    {
+      "Name": "v56-regression-import/FastFlip/Master/0/Lagger/idle/5-Linear-30-200-True",
+      "StateTraceSha256": "77E6C54F523401F145E02F290F51551F40D040F2988233A777990DBE61DADAD3",
+      "DecisionTraceSha256": "E0F2669FD2222E1290505BC433CC7E943621A9C067F105378FE2322328D9FFDA",
+      "Advances": 5691,
+      "HumanAccepted": 1,
+      "HumanRejected": 1,
+      "BotAccepted": 23,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 115,
+          "Time": 1.8922983543997898,
+          "Distance": 435.99999980930767,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 148,
+          "Time": 2.4360698515864927,
+          "Distance": 564.1196110385223,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 239,
+          "Time": 3.958761744644001,
+          "Distance": 977.9999998022038,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 257,
+          "Time": 4.253980133573699,
+          "Distance": 1045.9999998620353,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 331,
+          "Time": 5.481837908921663,
+          "Distance": 1319.9999998854696,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 361,
+          "Time": 5.9856901744468285,
+          "Distance": 1479.9999998783376,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 465,
+          "Time": 7.725213499703893,
+          "Distance": 1891.139378424732,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 645,
+          "Time": 10.718539637726815,
+          "Distance": 2674.1416780280947,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 696,
+          "Time": 11.566980466993268,
+          "Distance": 2952.299999883261,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 705,
+          "Time": 11.712025534099574,
+          "Distance": 2988.5999998256148,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 780,
+          "Time": 12.975191679713,
+          "Distance": 3297.999999847785,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 836,
+          "Time": 13.901202176951259,
+          "Distance": 3524.917064621865,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 964,
+          "Time": 16.03350004908794,
+          "Distance": 4053.1503212271728,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1031,
+          "Time": 17.143887890188896,
+          "Distance": 4335.139378408145,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1064,
+          "Time": 17.706974180486203,
+          "Distance": 4513.212517037964,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1213,
+          "Time": 20.185980102481427,
+          "Distance": 5237.499999815297,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1323,
+          "Time": 22.0189520492908,
+          "Distance": 5783.499999852889,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1379,
+          "Time": 22.949714298064443,
+          "Distance": 6028.4999998702015,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1449,
+          "Time": 24.117608775172013,
+          "Distance": 6399.999999847784,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1522,
+          "Time": 25.33159540235148,
+          "Distance": 6717.9999998040075,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1540,
+          "Time": 25.62776035372271,
+          "Distance": 6795.999999846591,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1632,
+          "Time": 27.166011169703857,
+          "Distance": 7253.150321257034,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1723,
+          "Time": 28.686063417149942,
+          "Distance": 7643.999999892527,
+          "Accepted": true,
+          "Cursor": 22
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 39.02092416576237,
+      "Winner": 1,
+      "WinnerAt": 30.369669882047234,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 39.02092416576237,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.08166538263919665
+        },
+        {
+          "Status": 1,
+          "Distance": 8140,
+          "FinishTime": 30.369669882047234,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.2261634398432498
+        }
+      ]
+    },
+    {
+      "Name": "hidden-intercepts/Chosen/Novice/2944602636/Lagger/human/5-Linear-30-200-True",
+      "StateTraceSha256": "BEFC6CAF3901DAAB792178FD28A6DD16F2CCE06762E1283EC2D0BD189A7E1600",
+      "DecisionTraceSha256": "A729F004A5F2A01456CA5AEE6E8B27FF4F50FB0317B64CCEBEBC98AC205BCFE8",
+      "Advances": 7907,
+      "HumanAccepted": 67,
+      "HumanRejected": 19,
+      "BotAccepted": 46,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 2,
+          "Time": 0.010000000000000214,
+          "Distance": 2.200550000000047,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 2,
+          "Time": 0.010000000000000214,
+          "Distance": 2.200550000000047,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 2,
+          "Time": 0.010000000000000214,
+          "Distance": 2.200550000000047,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 72,
+          "Time": 1.559999999999997,
+          "Distance": 344.5397440993241,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 72,
+          "Time": 1.559999999999997,
+          "Distance": 344.5397440993241,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 72,
+          "Time": 1.559999999999997,
+          "Distance": 344.5397440993241,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 77,
+          "Time": 1.6620526063170178,
+          "Distance": 380.8448771536535,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 86,
+          "Time": 1.8483087956915403,
+          "Distance": 424.8448772020836,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 122,
+          "Time": 2.6673223248360687,
+          "Distance": 611.773584737081,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 143,
+          "Time": 3.143333333333326,
+          "Distance": 583.5464665638232,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 143,
+          "Time": 3.143333333333326,
+          "Distance": 583.5464665638232,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 143,
+          "Time": 3.143333333333326,
+          "Distance": 583.5464665638232,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 205,
+          "Time": 4.503136219334449,
+          "Distance": 1020.8448772038282,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 214,
+          "Time": 4.697453480340381,
+          "Distance": 1064.8448771888425,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 214,
+          "Time": 4.710000000000024,
+          "Distance": 818.2156549612407,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 214,
+          "Time": 4.710000000000024,
+          "Distance": 818.2156549612407,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 214,
+          "Time": 4.710000000000024,
+          "Distance": 818.2156549612407,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 249,
+          "Time": 5.487441048339835,
+          "Distance": 1239.773584717142,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 285,
+          "Time": 6.293333333333435,
+          "Distance": 1056.5531963460783,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 285,
+          "Time": 6.293333333333435,
+          "Distance": 1056.5531963460783,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 285,
+          "Time": 6.293333333333435,
+          "Distance": 1056.5531963460783,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 286,
+          "Time": 6.305033998868022,
+          "Distance": 1419.9999998321648,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 295,
+          "Time": 6.509579453577672,
+          "Distance": 1464.9999998682842,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 335,
+          "Time": 7.390464402646101,
+          "Distance": 1660.8448771285086,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 344,
+          "Time": 7.586402566828705,
+          "Distance": 1704.8448771171247,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 351,
+          "Time": 7.745600895640531,
+          "Distance": 1739.9999998198703,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 356,
+          "Time": 7.876666666666848,
+          "Distance": 1346,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 356,
+          "Time": 7.876666666666848,
+          "Distance": 1346,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 356,
+          "Time": 7.876666666666848,
+          "Distance": 1346,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 360,
+          "Time": 7.950146350218864,
+          "Distance": 1784.9999998270994,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 382,
+          "Time": 8.433822569907791,
+          "Distance": 1891.7735847664217,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 425,
+          "Time": 9.379477146287337,
+          "Distance": 2099.999999873811,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 427,
+          "Time": 9.443333333333443,
+          "Distance": 1649.7364557591113,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 427,
+          "Time": 9.443333333333443,
+          "Distance": 1649.7364557591113,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 427,
+          "Time": 9.443333333333443,
+          "Distance": 1649.7364557591113,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 434,
+          "Time": 9.58402260055781,
+          "Distance": 2144.999999813321,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 437,
+          "Time": 9.661295328017133,
+          "Distance": 2161.999999854373,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 439,
+          "Time": 9.6976589641599,
+          "Distance": 2169.999999805781,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 448,
+          "Time": 9.901762581847448,
+          "Distance": 2214.9999998133844,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 498,
+          "Time": 11.026666666666694,
+          "Distance": 1892.8568765562463,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 498,
+          "Time": 11.026666666666694,
+          "Distance": 1892.8568765562463,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 498,
+          "Time": 11.026666666666694,
+          "Distance": 1892.8568765562463,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 569,
+          "Time": 12.609999999999944,
+          "Distance": 2131.1961042618354,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 569,
+          "Time": 12.609999999999944,
+          "Distance": 2131.1961042618354,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 569,
+          "Time": 12.609999999999944,
+          "Distance": 2131.1961042618354,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 584,
+          "Time": 12.920143986889702,
+          "Distance": 2780.844877121965,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 592,
+          "Time": 13.1081691134219,
+          "Distance": 2824.8448771940543,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 632,
+          "Time": 13.988115430455613,
+          "Distance": 3023.7735847621416,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 640,
+          "Time": 14.176666666666527,
+          "Distance": 2477.2956385712178,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 640,
+          "Time": 14.176666666666527,
+          "Distance": 2477.2956385712178,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 640,
+          "Time": 14.176666666666527,
+          "Distance": 2477.2956385712178,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 711,
+          "Time": 15.759999999999772,
+          "Distance": 2786,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 711,
+          "Time": 15.759999999999772,
+          "Distance": 2786,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 711,
+          "Time": 15.759999999999772,
+          "Distance": 2786,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 712,
+          "Time": 15.773955523203236,
+          "Distance": 3420.844877148522,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 728,
+          "Time": 16.112795973268987,
+          "Distance": 3496.8448771948665,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 765,
+          "Time": 16.958871385286137,
+          "Distance": 3683.7735847570093,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 782,
+          "Time": 17.343333333333018,
+          "Distance": 3074.1808021868233,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 782,
+          "Time": 17.343333333333018,
+          "Distance": 3074.1808021868233,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 782,
+          "Time": 17.343333333333018,
+          "Distance": 3074.1808021868233,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 842,
+          "Time": 18.66064214109787,
+          "Distance": 4060.8448771903672,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 853,
+          "Time": 18.909999999999602,
+          "Distance": 3424.7111557935327,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 853,
+          "Time": 18.909999999999602,
+          "Distance": 3424.7111557935327,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 853,
+          "Time": 18.909999999999602,
+          "Distance": 3424.7111557935327,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 857,
+          "Time": 18.977843800009918,
+          "Distance": 4131.773584741854,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 875,
+          "Time": 19.378871511272237,
+          "Distance": 4219.999999824852,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 889,
+          "Time": 19.705115079053254,
+          "Distance": 4291.773584736662,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 897,
+          "Time": 19.878871511272312,
+          "Distance": 4329.999999824852,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 924,
+          "Time": 20.493333333332856,
+          "Distance": 3663.7638701343544,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 924,
+          "Time": 20.493333333332856,
+          "Distance": 3663.7638701343544,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 924,
+          "Time": 20.493333333332856,
+          "Distance": 3663.7638701343544,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 960,
+          "Time": 21.286079379582784,
+          "Distance": 4529.999999820017,
+          "Accepted": true,
+          "Cursor": 29
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 995,
+          "Time": 22.076666666666096,
+          "Distance": 3902.103097839962,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 995,
+          "Time": 22.076666666666096,
+          "Distance": 3902.103097839962,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 995,
+          "Time": 22.076666666666096,
+          "Distance": 3902.103097839962,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1015,
+          "Time": 22.502679705272595,
+          "Distance": 4797.999999886965,
+          "Accepted": true,
+          "Cursor": 30
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1022,
+          "Time": 22.65235971898929,
+          "Distance": 4830.999999870524,
+          "Accepted": true,
+          "Cursor": 31
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1066,
+          "Time": 23.643333333332674,
+          "Distance": 4136.772286237383,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1066,
+          "Time": 23.643333333332674,
+          "Distance": 4136.772286237383,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1066,
+          "Time": 23.643333333332674,
+          "Distance": 4136.772286237383,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1092,
+          "Time": 24.210525404036407,
+          "Distance": 5180.844877151858,
+          "Accepted": true,
+          "Cursor": 32
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1100,
+          "Time": 24.401537928230216,
+          "Distance": 5224.84487712255,
+          "Accepted": true,
+          "Cursor": 33
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1137,
+          "Time": 25.226666666665928,
+          "Distance": 4386,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1137,
+          "Time": 25.226666666665928,
+          "Distance": 4386,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1137,
+          "Time": 25.226666666665928,
+          "Distance": 4386,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1138,
+          "Time": 25.24000692780302,
+          "Distance": 5411.773584782252,
+          "Accepted": true,
+          "Cursor": 34
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1208,
+          "Time": 26.80999999999917,
+          "Distance": 4736.412760181494,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1208,
+          "Time": 26.80999999999917,
+          "Distance": 4736.412760181494,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1208,
+          "Time": 26.80999999999917,
+          "Distance": 4736.412760181494,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1221,
+          "Time": 27.081916623819065,
+          "Distance": 5820.844877118833,
+          "Accepted": true,
+          "Cursor": 35
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1229,
+          "Time": 27.276175811098433,
+          "Distance": 5864.844877162857,
+          "Accepted": true,
+          "Cursor": 36
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1268,
+          "Time": 28.11961458315102,
+          "Distance": 6051.773584746576,
+          "Accepted": true,
+          "Cursor": 37
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1279,
+          "Time": 28.37666666666576,
+          "Distance": 4971.746126165652,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1279,
+          "Time": 28.37666666666576,
+          "Distance": 4971.746126165652,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1279,
+          "Time": 28.37666666666576,
+          "Distance": 4971.746126165652,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1344,
+          "Time": 29.821045372730914,
+          "Distance": 6428.844877170833,
+          "Accepted": true,
+          "Cursor": 38
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1350,
+          "Time": 29.959999999998995,
+          "Distance": 5298,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1350,
+          "Time": 29.959999999998995,
+          "Distance": 5298,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1350,
+          "Time": 29.959999999998995,
+          "Distance": 5298,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1360,
+          "Time": 30.161302394497806,
+          "Distance": 6504.844877131088,
+          "Accepted": true,
+          "Cursor": 39
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1397,
+          "Time": 31.00742158754933,
+          "Distance": 6691.773584770806,
+          "Accepted": true,
+          "Cursor": 40
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1421,
+          "Time": 31.543333333332253,
+          "Distance": 5586,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1421,
+          "Time": 31.543333333332253,
+          "Distance": 5586,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1421,
+          "Time": 31.543333333332253,
+          "Distance": 5586,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1441,
+          "Time": 31.966586547609253,
+          "Distance": 6903.181118568166,
+          "Accepted": true,
+          "Cursor": 41
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1469,
+          "Time": 32.58849055334674,
+          "Distance": 7039.999999830397,
+          "Accepted": true,
+          "Cursor": 42
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1492,
+          "Time": 33.109999999998855,
+          "Distance": 5826,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1492,
+          "Time": 33.109999999998855,
+          "Distance": 5826,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1492,
+          "Time": 33.109999999998855,
+          "Distance": 5826,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1536,
+          "Time": 34.08618792551762,
+          "Distance": 7369.999999823357,
+          "Accepted": true,
+          "Cursor": 43
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1561,
+          "Time": 34.636952168513616,
+          "Distance": 7529.999999844212,
+          "Accepted": true,
+          "Cursor": 44
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1563,
+          "Time": 34.693333333332106,
+          "Distance": 6121.898018951822,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1563,
+          "Time": 34.693333333332106,
+          "Distance": 6121.898018951822,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1563,
+          "Time": 34.693333333332106,
+          "Distance": 6121.898018951822,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1567,
+          "Time": 34.77331580512065,
+          "Distance": 7574.999999924534,
+          "Accepted": true,
+          "Cursor": 45
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1634,
+          "Time": 36.276666666665356,
+          "Distance": 6476.423213534095,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1634,
+          "Time": 36.276666666665356,
+          "Distance": 6476.423213534095,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1634,
+          "Time": 36.276666666665356,
+          "Distance": 6476.423213534095,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1705,
+          "Time": 37.843333333331934,
+          "Distance": 6711.853408220789,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1705,
+          "Time": 37.843333333331934,
+          "Distance": 6711.853408220789,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1705,
+          "Time": 37.843333333331934,
+          "Distance": 6711.853408220789,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1776,
+          "Time": 39.42666666666518,
+          "Distance": 6950.190949605586,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1776,
+          "Time": 39.42666666666518,
+          "Distance": 6950.190949605586,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1776,
+          "Time": 39.42666666666518,
+          "Distance": 6950.190949605586,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1847,
+          "Time": 41.00999999999842,
+          "Distance": 7300.052189889752,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1847,
+          "Time": 41.00999999999842,
+          "Distance": 7300.052189889752,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1847,
+          "Time": 41.00999999999842,
+          "Distance": 7300.052189889752,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1918,
+          "Time": 42.576666666665,
+          "Distance": 7646.912730488393,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1918,
+          "Time": 42.576666666665,
+          "Distance": 7646.912730488393,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1918,
+          "Time": 42.576666666665,
+          "Distance": 7646.912730488393,
+          "Accepted": true,
+          "Cursor": -1
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 43.56472038523605,
+      "Winner": 1,
+      "WinnerAt": 36.26784605083628,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 43.56472038523605,
+          "Collisions": 17,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 36.26784605083628,
+          "Collisions": 2,
+          "BoostsEarned": 1,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.041461502126240994
+        }
+      ]
+    },
+    {
+      "Name": "mixed-tricks/FastFlip/Confident/456/Lagger/human/5-Exponential-40-0-False",
+      "StateTraceSha256": "1A2488635339B0668AA1282CD4A8218511E2E08C4A2B30685C3A22D2CF27FB54",
+      "DecisionTraceSha256": "2F26F5563809559945ACF05030223E23F1E080608209F24635FE3748D9846214",
+      "Advances": 5390,
+      "HumanAccepted": 33,
+      "HumanRejected": 32,
+      "BotAccepted": 29,
+      "BotSuppressed": 0,
+      "Pauses": 1,
+      "Inputs": [
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 0,
+          "Time": 0,
+          "Distance": 0,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 2,
+          "Time": 0.010000000000000214,
+          "Distance": 2.2005497709049995,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 2,
+          "Time": 0.010000000000000214,
+          "Distance": 2.2005497709049995,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 2,
+          "Time": 0.010000000000000214,
+          "Distance": 2.2005497709049995,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 72,
+          "Time": 1.5599999999999976,
+          "Distance": 355.35729507566606,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 72,
+          "Time": 1.5599999999999976,
+          "Distance": 355.35729507566606,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 72,
+          "Time": 1.5599999999999976,
+          "Distance": 355.35729507566606,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 110,
+          "Time": 2.405697717497274,
+          "Distance": 558.1196109736433,
+          "Accepted": true,
+          "Cursor": 0
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 143,
+          "Time": 3.1433333333333255,
+          "Distance": 615.1858329133073,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 143,
+          "Time": 3.1433333333333255,
+          "Distance": 615.1858329133073,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 143,
+          "Time": 3.1433333333333255,
+          "Distance": 615.1858329133073,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 214,
+          "Time": 4.710000000000027,
+          "Distance": 1006.866068100113,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 214,
+          "Time": 4.710000000000027,
+          "Distance": 1006.866068100113,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 214,
+          "Time": 4.710000000000027,
+          "Distance": 1006.866068100113,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 237,
+          "Time": 5.214324011899216,
+          "Distance": 1132.728141907078,
+          "Accepted": true,
+          "Cursor": 1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 269,
+          "Time": 5.930118020135575,
+          "Distance": 1316.88348929579,
+          "Accepted": true,
+          "Cursor": 2
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 285,
+          "Time": 6.293333333333439,
+          "Distance": 1287.1703159638685,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 285,
+          "Time": 6.293333333333439,
+          "Distance": 1287.1703159638685,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 285,
+          "Time": 6.293333333333439,
+          "Distance": 1287.1703159638685,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 288,
+          "Time": 6.348669178875493,
+          "Distance": 1463.3786102636402,
+          "Accepted": true,
+          "Cursor": 3
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 332,
+          "Time": 7.333856946910545,
+          "Distance": 1747.565115275904,
+          "Accepted": true,
+          "Cursor": 4
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 356,
+          "Time": 7.876666666666846,
+          "Distance": 1708.5462400253368,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 356,
+          "Time": 7.876666666666846,
+          "Distance": 1708.5462400253368,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 356,
+          "Time": 7.876666666666846,
+          "Distance": 1708.5462400253368,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 427,
+          "Time": 9.443333333333436,
+          "Distance": 2036.0000000001414,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 427,
+          "Time": 9.443333333333436,
+          "Distance": 2036.0000000001414,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 427,
+          "Time": 9.443333333333436,
+          "Distance": 2036.0000000001414,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 485,
+          "Time": 10.729501627662476,
+          "Distance": 2662.141678016749,
+          "Accepted": true,
+          "Cursor": 5
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 498,
+          "Time": 11.026666666666689,
+          "Distance": 2439.060899995716,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 498,
+          "Time": 11.026666666666689,
+          "Distance": 2439.060899995716,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 498,
+          "Time": 11.026666666666689,
+          "Distance": 2439.060899995716,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 515,
+          "Time": 11.400858124531108,
+          "Distance": 2908.5999999062014,
+          "Accepted": true,
+          "Cursor": 6
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 521,
+          "Time": 11.538013544398739,
+          "Distance": 2952.2999998922746,
+          "Accepted": true,
+          "Cursor": 7
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 569,
+          "Time": 12.609999999999943,
+          "Distance": 2887.4220424822574,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 569,
+          "Time": 12.609999999999943,
+          "Distance": 2887.4220424822574,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 569,
+          "Time": 12.609999999999943,
+          "Distance": 2887.4220424822574,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 575,
+          "Time": 12.7411068757629,
+          "Distance": 3287.9999998949766,
+          "Accepted": true,
+          "Cursor": 8
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 614,
+          "Time": 13.590181752594754,
+          "Distance": 3526.91706463182,
+          "Accepted": true,
+          "Cursor": 9
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 640,
+          "Time": 14.176666666666529,
+          "Distance": 3193.4650950958926,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 640,
+          "Time": 14.176666666666529,
+          "Distance": 3193.4650950958926,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 640,
+          "Time": 14.176666666666529,
+          "Distance": 3193.4650950958926,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 692,
+          "Time": 15.325904571970337,
+          "Distance": 4019.999999840114,
+          "Accepted": true,
+          "Cursor": 10
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 699,
+          "Time": 15.482995892609143,
+          "Distance": 4064.9999998663525,
+          "Accepted": true,
+          "Cursor": 11
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 711,
+          "Time": 15.759999999999778,
+          "Distance": 3536.0000000001514,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 711,
+          "Time": 15.759999999999778,
+          "Distance": 3536.0000000001514,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 711,
+          "Time": 15.759999999999778,
+          "Distance": 3536.0000000001514,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 741,
+          "Time": 16.41935745770721,
+          "Distance": 4189.999999803546,
+          "Accepted": true,
+          "Cursor": 12
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 765,
+          "Time": 16.94674679240494,
+          "Distance": 4341.139378444593,
+          "Accepted": true,
+          "Cursor": 13
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 782,
+          "Time": 17.34333333333302,
+          "Distance": 3969.954437427153,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 782,
+          "Time": 17.34333333333302,
+          "Distance": 3969.954437427153,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 782,
+          "Time": 17.34333333333302,
+          "Distance": 3969.954437427153,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 789,
+          "Time": 17.477079762498708,
+          "Distance": 4525.212517058569,
+          "Accepted": true,
+          "Cursor": 14
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 839,
+          "Time": 18.5840185693867,
+          "Distance": 4943.999999875468,
+          "Accepted": true,
+          "Cursor": 15
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 845,
+          "Time": 18.7396825207159,
+          "Distance": 4988.999999900245,
+          "Accepted": true,
+          "Cursor": 16
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 853,
+          "Time": 18.909999999999606,
+          "Distance": 4284.29265332815,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 853,
+          "Time": 18.909999999999606,
+          "Distance": 4284.29265332815,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 853,
+          "Time": 18.909999999999606,
+          "Distance": 4284.29265332815,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 884,
+          "Time": 19.598473299029042,
+          "Distance": 5237.499999905834,
+          "Accepted": true,
+          "Cursor": 17
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 920,
+          "Time": 20.38254032357542,
+          "Distance": 5519.999999908752,
+          "Accepted": true,
+          "Cursor": 18
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 924,
+          "Time": 20.49333333333286,
+          "Distance": 4754.030466006925,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 924,
+          "Time": 20.49333333333286,
+          "Distance": 4754.030466006925,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 924,
+          "Time": 20.49333333333286,
+          "Distance": 4754.030466006925,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 925,
+          "Time": 20.498993302069593,
+          "Distance": 5564.999999813184,
+          "Accepted": true,
+          "Cursor": 19
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 948,
+          "Time": 21.01844940933933,
+          "Distance": 5716.024386466032,
+          "Accepted": true,
+          "Cursor": 20
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 989,
+          "Time": 21.932197759721262,
+          "Distance": 5982.298752099288,
+          "Accepted": true,
+          "Cursor": 21
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 995,
+          "Time": 22.076666666666107,
+          "Distance": 5186.000000000031,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 995,
+          "Time": 22.076666666666107,
+          "Distance": 5186.000000000031,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 995,
+          "Time": 22.076666666666107,
+          "Distance": 5186.000000000031,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1035,
+          "Time": 22.95534951589987,
+          "Distance": 6347.632330460597,
+          "Accepted": true,
+          "Cursor": 22
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1066,
+          "Time": 23.643333333332684,
+          "Distance": 5547.056190234466,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1066,
+          "Time": 23.643333333332684,
+          "Distance": 5547.056190234466,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1066,
+          "Time": 23.643333333332684,
+          "Distance": 5547.056190234466,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1136,
+          "Time": 25.207480897884583,
+          "Distance": 6863.308860032414,
+          "Accepted": true,
+          "Cursor": 23
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1137,
+          "Time": 25.22666666666593,
+          "Distance": 5886.000000000105,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1137,
+          "Time": 25.22666666666593,
+          "Distance": 5886.000000000105,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1137,
+          "Time": 25.22666666666593,
+          "Distance": 5886.000000000105,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1162,
+          "Time": 25.76148846909404,
+          "Distance": 7079.999999939153,
+          "Accepted": true,
+          "Cursor": 24
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1166,
+          "Time": 25.872340147807943,
+          "Distance": 7124.999999836206,
+          "Accepted": true,
+          "Cursor": 25
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1208,
+          "Time": 26.80999999999918,
+          "Distance": 6351.607316378908,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1208,
+          "Time": 26.80999999999918,
+          "Distance": 6351.607316378908,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1208,
+          "Time": 26.80999999999918,
+          "Distance": 6351.607316378908,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1224,
+          "Time": 27.14909907311669,
+          "Distance": 7355.999999883608,
+          "Accepted": true,
+          "Cursor": 26
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1231,
+          "Time": 27.300794354379484,
+          "Distance": 7400.999999849391,
+          "Accepted": true,
+          "Cursor": 27
+        },
+        {
+          "Source": "press",
+          "Slot": 1,
+          "Frame": 1266,
+          "Time": 28.080663785001807,
+          "Distance": 7632.448470249398,
+          "Accepted": true,
+          "Cursor": 28
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1279,
+          "Time": 28.376666666665756,
+          "Distance": 6826.571666723347,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1279,
+          "Time": 28.376666666665756,
+          "Distance": 6826.571666723347,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1279,
+          "Time": 28.376666666665756,
+          "Distance": 6826.571666723347,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1350,
+          "Time": 29.959999999999,
+          "Distance": 7246.000000000251,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1350,
+          "Time": 29.959999999999,
+          "Distance": 7246.000000000251,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1350,
+          "Time": 29.959999999999,
+          "Distance": 7246.000000000251,
+          "Accepted": false,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1421,
+          "Time": 31.543333333332242,
+          "Distance": 7637.954388183363,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1421,
+          "Time": 31.543333333332242,
+          "Distance": 7637.954388183363,
+          "Accepted": true,
+          "Cursor": -1
+        },
+        {
+          "Source": "human",
+          "Slot": 0,
+          "Frame": 1421,
+          "Time": 31.543333333332242,
+          "Distance": 7637.954388183363,
+          "Accepted": false,
+          "Cursor": -1
+        }
+      ],
+      "Phase": "finished",
+      "Elapsed": 32.96800848143069,
+      "Winner": 1,
+      "WinnerAt": 28.86284173829235,
+      "Players": [
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 32.96800848143069,
+          "Collisions": 10,
+          "BoostsEarned": 0,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 0,
+          "SurfaceRunReserve": 0.38722723284046745
+        },
+        {
+          "Status": 1,
+          "Distance": 7920,
+          "FinishTime": 28.86284173829235,
+          "Collisions": 4,
+          "BoostsEarned": 7,
+          "SlowsEarned": 0,
+          "FinishBoostsEarned": 1,
+          "SurfaceRunReserve": 0.3531987101155422
+        }
+      ]
+    }
+  ]
+}

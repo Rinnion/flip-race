@@ -47,3 +47,7 @@ full 60px glyph box above the session strip for upper players or below the world
 for lower players. Pause title (30px), subtitle (28px), resume (33px), and any
 drawn icon must fit the arena without overlapping the session strip or each
 other. These bounds checks complement the native screenshot review.
+
+## Company roster in 5.7
+
+The same runner adds 672 cases over every human/bot placement for 2, 3 and 4 seats, both flight presets and cameras, compact and desktop viewports, and DPR 1, 2.5 and 3 with asymmetric safe areas. It exercises the separate composition step, all five difficulty buttons, hero selection, human-only keys and touch, explicit all-bot start and retry, per-attempt bot seeds, and the shared acceleration choice. It also checks cancel, session memory across counts and modes, custom-profile rejection and recovery, and one real four-bot race through the result. Other result-state fixtures are synthetic to isolate retry routing.

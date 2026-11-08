@@ -230,6 +230,62 @@ namespace FlipRace.Core
         // Snapshot shell copies every scalar; RaceSnapshot replaces mutable references.
         internal PlayerState SnapshotShell() { return (PlayerState)MemberwiseClone(); }
 
+        // Forecast buffers keep their own collections and effect records.
+        internal void CopyForecastScalarsFrom(PlayerState source)
+        {
+            Id = source.Id;
+            CharacterIndex = source.CharacterIndex;
+            Ready = source.Ready;
+            Status = source.Status;
+            TerminalTime = source.TerminalTime;
+            Distance = source.Distance;
+            Y = source.Y;
+            Flipping = source.Flipping;
+            FlipFrom = source.FlipFrom;
+            FlipTo = source.FlipTo;
+            FlipElapsed = source.FlipElapsed;
+            VerticalSpeed = source.VerticalSpeed;
+            Gravity = source.Gravity;
+            AirFlipAvailable = source.AirFlipAvailable;
+            Support = source.Support;
+            SupportSide = source.SupportSide;
+            SupportObstacleId = source.SupportObstacleId;
+            EdgeClearObstacleId = source.EdgeClearObstacleId;
+            LinearJumpActive = source.LinearJumpActive;
+            LinearJumpReturning = source.LinearJumpReturning;
+            LinearJumpOriginSide = source.LinearJumpOriginSide;
+            LinearJumpOriginY = source.LinearJumpOriginY;
+            FlightActive = source.FlightActive;
+            FlightOriginY = source.FlightOriginY;
+            FlightDuration = source.FlightDuration;
+            FlightMaxDistance = source.FlightMaxDistance;
+            FlightOriginSide = source.FlightOriginSide;
+            FlightOriginObstacleId = source.FlightOriginObstacleId;
+            LastFlight = source.LastFlight;
+            SurfaceRunEnabled = source.SurfaceRunEnabled;
+            SurfaceRunReserve = source.SurfaceRunReserve;
+            surfaceRunRatePercent = source.surfaceRunRatePercent;
+            surfaceRunCapPercent = source.surfaceRunCapPercent;
+            surfaceRunAirDecayPercent = source.surfaceRunAirDecayPercent;
+            surfaceRunCurve = source.surfaceRunCurve;
+            surfaceRunResetOnCollision = source.surfaceRunResetOnCollision;
+            Recovering = source.Recovering;
+            Collisions = source.Collisions;
+            FinishTime = source.FinishTime;
+            BoostsEarned = source.BoostsEarned;
+            InstantBoostsEarned = source.InstantBoostsEarned;
+            SlowsEarned = source.SlowsEarned;
+            CoinsEarned = source.CoinsEarned;
+            FinishBoost = source.FinishBoost;
+            FinishBoostsEarned = source.FinishBoostsEarned;
+            FinishBoostElapsed = source.FinishBoostElapsed;
+            FinishBoostDistanceGained = source.FinishBoostDistanceGained;
+            CompletedBoosts = source.CompletedBoosts;
+            CompletedSlows = source.CompletedSlows;
+            CompletedRecoveries = source.CompletedRecoveries;
+            RecoveryElapsed = source.RecoveryElapsed;
+        }
+
         public PlayerState(int id) { Id = id; CharacterIndex = id; }
     }
 
@@ -240,6 +296,11 @@ namespace FlipRace.Core
         public readonly bool IsBot;
         public readonly BotPlan BotPlan;
         public readonly StochasticBotSettings StochasticBot;
+        internal PartyBotAttempt PartyBots { get; set; }
+        public StochasticBotSettings GetPartyBotSettings(int slot) => PartyBots?.GetSettings(slot);
+        public bool IsBotSlot(int slot) => slot >= 0 && slot < Players.Length
+            && (GetPartyBotSettings(slot) != null || (IsBot && slot == 1));
+        public int HumanCount => PartyBots?.HumanCount ?? (Players.Length - (IsBot ? 1 : 0));
         public BotDifficulty BotDifficulty { get { return StochasticBot != null ? StochasticBot.Difficulty : BotPlan == null ? BotDifficulty.Novice : BotPlan.Difficulty; } }
         // Preserve the legacy signed API; new callers read StochasticBot.Seed as uint.
         public int BotSeed { get { return StochasticBot != null ? unchecked((int)StochasticBot.Seed) : BotPlan == null ? 0 : BotPlan.Seed; } }
@@ -308,6 +369,67 @@ namespace FlipRace.Core
             if (useBotForecastCamera) copy.botForecastCamera = true;
             return copy;
         }
+    }
+
+    // The immutable lineup and settings describe one attempt. Live controllers
+    // are owned by RaceRunner and do not belong to this physical timeline.
+    internal sealed class PartyBotAttempt
+    {
+        readonly StochasticBotSettings[] settings;
+        readonly uint rootSeed, attempt;
+        internal readonly int HumanCount;
+
+        PartyBotAttempt(StochasticBotSettings[] settings, uint rootSeed, uint attempt, int humanCount)
+        {
+            this.settings = settings;
+            this.rootSeed = rootSeed;
+            this.attempt = attempt;
+            HumanCount = humanCount;
+        }
+
+        internal StochasticBotSettings GetSettings(int slot)
+        { return slot >= 0 && slot < settings.Length ? settings[slot] : null; }
+
+        internal static PartyBotAttempt Create(Track track, FlightSettings flight,
+            IReadOnlyList<BotDifficulty?> slots, uint seed)
+        {
+            var settings = new StochasticBotSettings[slots.Count];
+            int humanCount = slots.Count;
+            for (int i = 0; i < settings.Length; i++)
+            {
+                var difficulty = slots[i];
+                if (!difficulty.HasValue) continue;
+                // A manual draft can have identical numbers. Only the two
+                // ready-made profiles qualify for a party with bots.
+                if (humanCount == slots.Count &&
+                    ((flight != FlightPresets.Chosen && flight != FlightPresets.FastFlip)
+                    || !TrackCatalog.SupportsBot(track.Id, flight)))
+                    throw new NotSupportedException("Party bots require a prepared track and a supported flight preset.");
+                settings[i] = StochasticBotSettings.CreateInitial(track, flight, difficulty.Value, SlotSeed(seed, 0, i));
+                humanCount--;
+            }
+            return humanCount == settings.Length ? null : new PartyBotAttempt(settings, seed, 0, humanCount);
+        }
+
+        internal PartyBotAttempt Next(Track track, FlightSettings flight)
+        {
+            // Four distinct seed inputs per attempt. The permutation and the
+            // odd multiplier preserve uniqueness until the uint space is used.
+            const uint maxAttempt = uint.MaxValue / 4;
+            if (attempt == maxAttempt) throw new InvalidOperationException("Party bot attempt limit reached.");
+            uint nextAttempt = attempt + 1;
+            var nextSettings = new StochasticBotSettings[settings.Length];
+            for (int i = 0; i < settings.Length; i++)
+            {
+                if (settings[i] == null) continue;
+                nextSettings[i] = StochasticBotSettings.CreateInitial(track, flight, settings[i].Difficulty,
+                    SlotSeed(rootSeed, nextAttempt, i));
+            }
+            return new PartyBotAttempt(nextSettings, rootSeed, nextAttempt, HumanCount);
+        }
+
+        static uint SlotSeed(uint seed, uint attempt, int slot)
+        { return StochasticBotController.Mix(unchecked(seed + (attempt * 4 + (uint)slot) * 0x9e3779b9u)); }
     }
 
     public static class Tracks
@@ -499,6 +621,18 @@ namespace FlipRace.Core
             return CreateSharedRace(track, flight, playerCount, camera, cameraStartLeft, windowWidth, false);
         }
 
+        // Null slots are human. A configured party retains its camera and party
+        // outcome rules, including when every slot is a bot.
+        public static GameState CreateParty(Track track, FlightSettings flight, IReadOnlyList<BotDifficulty?> slots,
+            uint seed, PartyCamera camera = PartyCamera.Constant, double cameraStartLeft = -288.8, double windowWidth = 1520)
+        {
+            if (slots == null) throw new ArgumentNullException(nameof(slots));
+            var game = CreateParty(track, flight, slots.Count, camera, cameraStartLeft, windowWidth);
+            game.PartyBots = PartyBotAttempt.Create(track, flight, slots, seed);
+            if (game.PartyBots != null) RaceRunner.RegisterPartyBots(game);
+            return game;
+        }
+
         public static GameState CreateSolo(Track track, FlightSettings flight,
             PartyCamera camera, double cameraStartLeft, double windowWidth)
         {
@@ -606,7 +740,7 @@ namespace FlipRace.Core
         public static bool CanPress(GameState game, int index)
         {
             if (index < 0 || index >= game.Players.Length) return false;
-            if (game.Phase == "ready" || game.Phase == "finished") return true;
+            if (game.Phase == "ready" || game.Phase == "finished") return game.GetPartyBotSettings(index) == null;
             var player = game.Players[index];
             if (game.Phase != "racing" || player.Recovering > 0 || player.FinishTime.HasValue
                 || player.Status != PlayerStatus.Running) return false;
@@ -622,25 +756,11 @@ namespace FlipRace.Core
             var player = game.Players[index];
             if (game.Phase == "ready" || game.Phase == "finished")
             {
+                if (game.GetPartyBotSettings(index) != null) return false;
                 player.Ready = true;
-                bool allReady = true;
-                foreach (var participant in game.Players) allReady &= participant.Ready;
-                if (allReady)
-                {
-                    var resetPlayers = new PlayerState[game.Players.Length];
-                    for (int i = 0; i < game.Players.Length; i++)
-                        resetPlayers[i] = new PlayerState(i) { Ready = true,
-                            CharacterIndex = game.Players[i].CharacterIndex, AirFlipAvailable = SupportsAirFlip(flight),
-                            SurfaceRunEnabled = game.SurfaceRunEnabled, SurfaceRunSettings = game.SurfaceRunSettings };
-                    game.Players = resetPlayers;
-                    game.PartyLastCameraLeft = game.PartyCameraStartLeft;
-                    game.Phase = "countdown";
-                    game.Elapsed = 0;
-                    game.CountdownRemaining = RaceConfig.CountdownDuration;
-                    game.Winner = null;
-                    game.WinnerAt = null;
-                    game.HiddenObstacles.Clear();
-                }
+                for (int i = 0; i < game.Players.Length; i++)
+                    if (game.GetPartyBotSettings(i) == null && !game.Players[i].Ready) return true;
+                BeginCountdown(game, flight);
                 return true;
             }
             if (!CanPress(game, index)) return false;
@@ -684,6 +804,33 @@ namespace FlipRace.Core
             player.FlipTo = !flight.LegacyLinear ? (player.Gravity > 0 ? 1 : 0) : player.Y == 1 ? 0 : 1;
             player.FlipElapsed = 0;
             return true;
+        }
+
+        internal static bool StartAllBotParty(GameState game)
+        {
+            if (game.PartyBots == null || game.HumanCount != 0 || (game.Phase != "ready" && game.Phase != "finished"))
+                return false;
+            BeginCountdown(game, Settings(game));
+            return true;
+        }
+
+        static void BeginCountdown(GameState game, FlightSettings flight)
+        {
+            if (game.Phase == "finished" && game.PartyBots != null)
+                game.PartyBots = game.PartyBots.Next(game.Track, flight);
+            var resetPlayers = new PlayerState[game.Players.Length];
+            for (int i = 0; i < game.Players.Length; i++)
+                resetPlayers[i] = new PlayerState(i) { Ready = true,
+                    CharacterIndex = game.Players[i].CharacterIndex, AirFlipAvailable = SupportsAirFlip(flight),
+                    SurfaceRunEnabled = game.SurfaceRunEnabled, SurfaceRunSettings = game.SurfaceRunSettings };
+            game.Players = resetPlayers;
+            game.PartyLastCameraLeft = game.PartyCameraStartLeft;
+            game.Phase = "countdown";
+            game.Elapsed = 0;
+            game.CountdownRemaining = RaceConfig.CountdownDuration;
+            game.Winner = null;
+            game.WinnerAt = null;
+            game.HiddenObstacles.Clear();
         }
 
         public static double GetPlayerCenterY(PlayerState player)

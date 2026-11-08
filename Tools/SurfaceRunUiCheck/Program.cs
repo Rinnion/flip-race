@@ -28,7 +28,11 @@ static class Program
         Call(ui, "MeasureFlightMenu");
         Click(ui, (Rect)Field(ui, field));
     }
-    static void Apply(FlipRaceGame ui) => ClickMeasured(ui, "flightApply");
+    static void Apply(FlipRaceGame ui)
+    {
+        ClickMeasured(ui, "flightApply");
+        if (ui.FlightMenuPage == 12) ClickMeasured(ui, "flightApply");
+    }
     static void Back(FlipRaceGame ui) => ClickMeasured(ui, "flightBack");
     static FlipRaceGame NewUi(int preset, int w, int h, float dpr)
     {
@@ -37,6 +41,7 @@ static class Program
         Display.width = (int)(w * dpr); Display.height = (int)(h * dpr); Display.PixelRatio = dpr;
         Display.SafeAreaOverride = new Rect(0, 0, w * dpr, h * dpr);
         var ui = (FlipRaceGame)RuntimeHelpers.GetUninitializedObject(typeof(FlipRaceGame));
+        Set(ui, "botSessionSeed", 123u); Set(ui, "botSeedInitialized", true);
         Set(ui, "lanes", new Rect[2]); Call(ui, "InitializeFlightMenu");
         var selection = (FlightSelection)Field(ui, "flightSelection");
         typeof(FlipRaceGame).GetProperty("Game").SetValue(ui, RaceSimulation.CreateTrial(RaceTracks.GetAt(0), selection.Settings));
@@ -176,9 +181,20 @@ static class Program
         Check(ui.Game.Phase == "countdown", "BOT start via the actual pointer starts countdown");
         Tick(ui);
         for (int frame = 0; frame < 40 && ui.Game.Phase == "countdown"; frame++) Tick(ui, .1);
-        Tick(ui, .2);
-        Check(ui.Game.Phase == "racing" && ui.Game.Players.All(p => p.SurfaceRunReserve > 0 && p.CurrentSpeed > RaceConfig.Speed),
-            "actual Update gives the human and bot reserve and increased speed");
+        Check(ui.Game.Phase == "racing", "BOT countdown completes through Update");
+        var observedSpeedGain = new bool[2];
+        // A bot may take flight during this window. Check the gain for each
+        // racer at a live frame, independently of their first planned jump.
+        for (int frame = 0; frame < 40 && !observedSpeedGain.All(gain => gain); frame++)
+        {
+            Tick(ui, .05);
+            for (int slot = 0; slot < observedSpeedGain.Length; slot++)
+            {
+                var p = ui.Game.Players[slot];
+                observedSpeedGain[slot] |= p.SurfaceRunReserve > 0 && p.CurrentSpeed > RaceConfig.Speed;
+            }
+        }
+        Check(observedSpeedGain.All(gain => gain), "actual Update gives the human and bot reserve and increased speed");
         var active = ui.Game;
         Call(ui, "OpenTracks"); Call(ui, "ApplyFlightChoice");
         Check(ui.FlightMenuPage == -1 && ReferenceEquals(active, ui.Game), "BOT cannot change settings mid-attempt");

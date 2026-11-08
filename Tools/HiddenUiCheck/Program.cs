@@ -25,7 +25,11 @@ static class Program
     static void Click(FlipRaceGame ui,Rect rect){Tick(ui);Call(ui,"Pointer",rect.center);pointers++;}
     static Rect R(FlipRaceGame ui,string field)=>(Rect)Field(ui,field);
     static Rect TrackRect(FlipRaceGame ui,int index)=>(Rect)Call(ui,"FullTrackRect",index);
-    static void Apply(FlipRaceGame ui)=>Click(ui,R(ui,"flightApply"));
+    static void Apply(FlipRaceGame ui)
+    {
+        Click(ui,R(ui,"flightApply"));
+        if(ui.FlightMenuPage==12)Click(ui,R(ui,"flightApply"));
+    }
     static void Open(FlipRaceGame ui){Call(ui,"OpenTracks");Call(ui,"MeasureFlightMenu");Check(ui.FlightMenuPage==0,"real OpenTracks");}
     static void Catalogue(FlipRaceGame ui){Click(ui,R(ui,"flightTracks"));Check(ui.FlightMenuPage==4,"catalogue pointer route");}
     static void Back(FlipRaceGame ui)=>Click(ui,R(ui,"flightBack"));

@@ -26,7 +26,11 @@ static class Program
     static Rect Slot(FlipRaceGame ui,int slot)=>(Rect)Call(ui,"FullTrackRect",slot);
     static void Tick(FlipRaceGame ui){Devices.Clear();Clock.frameCount++;Clock.realtimeSinceStartupAsDouble+=.01;Call(ui,"Update");}
     static void Click(FlipRaceGame ui,Rect rect){Tick(ui);Call(ui,"Pointer",rect.center);pointers++;}
-    static void Apply(FlipRaceGame ui)=>Click(ui,R(ui,"flightApply"));
+    static void Apply(FlipRaceGame ui)
+    {
+        Click(ui,R(ui,"flightApply"));
+        if(ui.FlightMenuPage==12)Click(ui,R(ui,"flightApply"));
+    }
     static void Back(FlipRaceGame ui)=>Click(ui,R(ui,"flightBack"));
     static string Pending(FlipRaceGame ui)=>(string)Field(ui,"pendingFlightTrack");
     static bool CanApply(FlipRaceGame ui)=>(bool)Prop(ui,"CanApplyFlight");
@@ -99,7 +103,14 @@ static class Program
         Check((bool)Prop(ui,"AuthoredHiddenWarning"),"warning policy from imported metadata");Click(ui,(Rect)Prop(ui,"HiddenWarningButton"));Check(ui.FlightMenuPage==4,"authored local timing disables global choices");
         Back(ui);Click(ui,R(ui,"flightFastFlip"));Check(!CanApply(ui),"chosen-only local metadata blocks Fast");Apply(ui);Check(ReferenceEquals(game,ui.Game),"unsupported profile leaves race unchanged");
         Click(ui,R(ui,"flightChosen"));Apply(ui);Check(ui.Game.Track.Id==authoredId&&ui.Game.HiddenWarningDuration==.6,"explicit supported profile preserves global timer on authored local map");
-        Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.PartyMenuButtonRect);Click(ui,ui.PartyCountRect(2));Apply(ui);
+        Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.PartyMenuButtonRect);Click(ui,ui.PartyCountRect(2));Click(ui,R(ui,"flightApply"));
+        Check(ui.FlightMenuPage==12&&Pending(ui)==authoredId,"company composition retains the selected local track");
+        Click(ui,ui.PartyRosterRoleRect(2));game=ui.Game;seed=ui.BotAttemptSequenceIndex;
+        Check(!CanApply(ui)&&((string)Call(ui,"FlightApplyRestriction")).Contains("подготовленного маршрута"),"unprepared local track explains bot admission failure in company");
+        Apply(ui);
+        Check(ReferenceEquals(game,ui.Game)&&Pending(ui)==authoredId&&ui.BotAttemptSequenceIndex==seed&&ui.FlightMenuPage==12,
+            "blocked mixed company does not substitute map, role, seed or active race");
+        Click(ui,ui.PartyRosterRoleRect(2));Apply(ui);
         Check(ui.PartyEnabled&&ui.Game.Players.Length==4&&ui.Game.Track.Id==authoredId,"local human party uses same loaded track");
         ui.Game.Phase="racing";Set(ui,"gameplayInputBlocked",false);count=TrackCatalog.Entries.Length;game=ui.Game;
         ui.ImportTrackFile(LocalJson(id+"-late"));ui.ImportTrackError("Поздняя ошибка чтения");

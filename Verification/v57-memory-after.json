@@ -1,0 +1,645 @@
+{
+  "Seed": 401640481,
+  "runs": [
+    {
+      "Track": "hidden-manifestation",
+      "Sources": 4,
+      "Delta": 0.03333333333333333,
+      "Frames": 541,
+      "Phase": "racing",
+      "Elapsed": 18.033333333332983,
+      "FirstFrame": {
+        "Number": 1,
+        "Elapsed": 0.03333333333333334,
+        "Bytes": 640,
+        "Milliseconds": 0.211,
+        "Work": {
+          "Planning": 0,
+          "Candidates": 0,
+          "Checkpoints": 0,
+          "Rollbacks": 0,
+          "Decisions": 0,
+          "Samples": 0
+        },
+        "Retained": {
+          "Planning": 0,
+          "Candidates": 0,
+          "Checkpoints": 0,
+          "Rollbacks": 0,
+          "Decisions": 0,
+          "Samples": 0
+        }
+      },
+      "MaxAllocationFrame": {
+        "Number": 130,
+        "Elapsed": 4.333333333333332,
+        "Bytes": 1909456,
+        "Milliseconds": 187.6208,
+        "Work": {
+          "Planning": 4,
+          "Candidates": 274,
+          "Checkpoints": 20436,
+          "Rollbacks": 9489,
+          "Decisions": 4,
+          "Samples": 4
+        },
+        "Retained": {
+          "Planning": 16,
+          "Candidates": 968,
+          "Checkpoints": 70838,
+          "Rollbacks": 31472,
+          "Decisions": 16,
+          "Samples": 16
+        }
+      },
+      "TotalBytes": 29560680,
+      "LiveHeap": [
+        {
+          "Elapsed": 0,
+          "ManagedBytes": 681728,
+          "State": {
+            "Planning": 0,
+            "Candidates": 0,
+            "Checkpoints": 0,
+            "Rollbacks": 0,
+            "Decisions": 0,
+            "Samples": 0
+          }
+        },
+        {
+          "Elapsed": 3.0333333333333243,
+          "ManagedBytes": 686696,
+          "State": {
+            "Planning": 12,
+            "Candidates": 694,
+            "Checkpoints": 50402,
+            "Rollbacks": 21983,
+            "Decisions": 12,
+            "Samples": 12
+          }
+        },
+        {
+          "Elapsed": 6.000000000000063,
+          "ManagedBytes": 689472,
+          "State": {
+            "Planning": 20,
+            "Candidates": 1134,
+            "Checkpoints": 81000,
+            "Rollbacks": 35595,
+            "Decisions": 20,
+            "Samples": 20
+          }
+        },
+        {
+          "Elapsed": 9.000000000000103,
+          "ManagedBytes": 697696,
+          "State": {
+            "Planning": 32,
+            "Candidates": 1733,
+            "Checkpoints": 118248,
+            "Rollbacks": 50764,
+            "Decisions": 32,
+            "Samples": 32
+          }
+        },
+        {
+          "Elapsed": 12.033333333333289,
+          "ManagedBytes": 699456,
+          "State": {
+            "Planning": 38,
+            "Candidates": 2065,
+            "Checkpoints": 140140,
+            "Rollbacks": 59562,
+            "Decisions": 38,
+            "Samples": 38
+          }
+        },
+        {
+          "Elapsed": 15.03333333333314,
+          "ManagedBytes": 702624,
+          "State": {
+            "Planning": 52,
+            "Candidates": 2761,
+            "Checkpoints": 183292,
+            "Rollbacks": 76642,
+            "Decisions": 52,
+            "Samples": 52
+          }
+        },
+        {
+          "Elapsed": 18.033333333332983,
+          "ManagedBytes": 705400,
+          "State": {
+            "Planning": 62,
+            "Candidates": 3297,
+            "Checkpoints": 218574,
+            "Rollbacks": 91029,
+            "Decisions": 62,
+            "Samples": 62
+          }
+        },
+        {
+          "Elapsed": 18.033333333332983,
+          "ManagedBytes": 705416,
+          "State": {
+            "Planning": 62,
+            "Candidates": 3297,
+            "Checkpoints": 218574,
+            "Rollbacks": 91029,
+            "Decisions": 62,
+            "Samples": 62
+          }
+        }
+      ],
+      "TraceSha256": null
+    },
+    {
+      "Track": "hidden-manifestation",
+      "Sources": 1,
+      "Delta": 0.03333333333333333,
+      "Frames": 541,
+      "Phase": "racing",
+      "Elapsed": 18.03333333333299,
+      "FirstFrame": {
+        "Number": 1,
+        "Elapsed": 0.03333333333333334,
+        "Bytes": 160,
+        "Milliseconds": 0.0487,
+        "Work": {
+          "Planning": 0,
+          "Candidates": 0,
+          "Checkpoints": 0,
+          "Rollbacks": 0,
+          "Decisions": 0,
+          "Samples": 0
+        },
+        "Retained": {
+          "Planning": 0,
+          "Candidates": 0,
+          "Checkpoints": 0,
+          "Rollbacks": 0,
+          "Decisions": 0,
+          "Samples": 0
+        }
+      },
+      "MaxAllocationFrame": {
+        "Number": 130,
+        "Elapsed": 4.333333333333341,
+        "Bytes": 547136,
+        "Milliseconds": 56.8477,
+        "Work": {
+          "Planning": 1,
+          "Candidates": 87,
+          "Checkpoints": 6483,
+          "Rollbacks": 3000,
+          "Decisions": 1,
+          "Samples": 1
+        },
+        "Retained": {
+          "Planning": 4,
+          "Candidates": 314,
+          "Checkpoints": 22910,
+          "Rollbacks": 10138,
+          "Decisions": 4,
+          "Samples": 4
+        }
+      },
+      "TotalBytes": 6564008,
+      "LiveHeap": [
+        {
+          "Elapsed": 0,
+          "ManagedBytes": 672072,
+          "State": {
+            "Planning": 0,
+            "Candidates": 0,
+            "Checkpoints": 0,
+            "Rollbacks": 0,
+            "Decisions": 0,
+            "Samples": 0
+          }
+        },
+        {
+          "Elapsed": 3.033333333333327,
+          "ManagedBytes": 674088,
+          "State": {
+            "Planning": 3,
+            "Candidates": 227,
+            "Checkpoints": 16427,
+            "Rollbacks": 7138,
+            "Decisions": 3,
+            "Samples": 3
+          }
+        },
+        {
+          "Elapsed": 6.00000000000009,
+          "ManagedBytes": 675000,
+          "State": {
+            "Planning": 5,
+            "Candidates": 369,
+            "Checkpoints": 26275,
+            "Rollbacks": 11498,
+            "Decisions": 5,
+            "Samples": 5
+          }
+        },
+        {
+          "Elapsed": 9.00000000000014,
+          "ManagedBytes": 676624,
+          "State": {
+            "Planning": 8,
+            "Candidates": 521,
+            "Checkpoints": 35475,
+            "Rollbacks": 15197,
+            "Decisions": 8,
+            "Samples": 8
+          }
+        },
+        {
+          "Elapsed": 12.033333333333307,
+          "ManagedBytes": 677232,
+          "State": {
+            "Planning": 10,
+            "Candidates": 691,
+            "Checkpoints": 46344,
+            "Rollbacks": 19382,
+            "Decisions": 10,
+            "Samples": 10
+          }
+        },
+        {
+          "Elapsed": 15.03333333333314,
+          "ManagedBytes": 678032,
+          "State": {
+            "Planning": 13,
+            "Candidates": 819,
+            "Checkpoints": 53802,
+            "Rollbacks": 22052,
+            "Decisions": 13,
+            "Samples": 13
+          }
+        },
+        {
+          "Elapsed": 18.03333333333299,
+          "ManagedBytes": 679592,
+          "State": {
+            "Planning": 16,
+            "Candidates": 1045,
+            "Checkpoints": 68549,
+            "Rollbacks": 27949,
+            "Decisions": 16,
+            "Samples": 16
+          }
+        },
+        {
+          "Elapsed": 18.03333333333299,
+          "ManagedBytes": 679608,
+          "State": {
+            "Planning": 16,
+            "Candidates": 1045,
+            "Checkpoints": 68549,
+            "Rollbacks": 27949,
+            "Decisions": 16,
+            "Samples": 16
+          }
+        }
+      ],
+      "TraceSha256": null
+    },
+    {
+      "Track": "mixed-tricks",
+      "Sources": 4,
+      "Delta": 0.03333333333333333,
+      "Frames": 541,
+      "Phase": "racing",
+      "Elapsed": 18.033333333333022,
+      "FirstFrame": {
+        "Number": 1,
+        "Elapsed": 0.03333333333333334,
+        "Bytes": 640,
+        "Milliseconds": 0.032,
+        "Work": {
+          "Planning": 0,
+          "Candidates": 0,
+          "Checkpoints": 0,
+          "Rollbacks": 0,
+          "Decisions": 0,
+          "Samples": 0
+        },
+        "Retained": {
+          "Planning": 0,
+          "Candidates": 0,
+          "Checkpoints": 0,
+          "Rollbacks": 0,
+          "Decisions": 0,
+          "Samples": 0
+        }
+      },
+      "MaxAllocationFrame": {
+        "Number": 120,
+        "Elapsed": 3.9999999999999876,
+        "Bytes": 660048,
+        "Milliseconds": 22.8837,
+        "Work": {
+          "Planning": 2,
+          "Candidates": 150,
+          "Checkpoints": 8645,
+          "Rollbacks": 2618,
+          "Decisions": 2,
+          "Samples": 2
+        },
+        "Retained": {
+          "Planning": 15,
+          "Candidates": 538,
+          "Checkpoints": 32848,
+          "Rollbacks": 12592,
+          "Decisions": 15,
+          "Samples": 15
+        }
+      },
+      "TotalBytes": 14785608,
+      "LiveHeap": [
+        {
+          "Elapsed": 0,
+          "ManagedBytes": 684736,
+          "State": {
+            "Planning": 0,
+            "Candidates": 0,
+            "Checkpoints": 0,
+            "Rollbacks": 0,
+            "Decisions": 0,
+            "Samples": 0
+          }
+        },
+        {
+          "Elapsed": 3.033333333333323,
+          "ManagedBytes": 690176,
+          "State": {
+            "Planning": 12,
+            "Candidates": 381,
+            "Checkpoints": 23803,
+            "Rollbacks": 9847,
+            "Decisions": 12,
+            "Samples": 12
+          }
+        },
+        {
+          "Elapsed": 6.000000000000082,
+          "ManagedBytes": 691936,
+          "State": {
+            "Planning": 16,
+            "Candidates": 634,
+            "Checkpoints": 38538,
+            "Rollbacks": 14378,
+            "Decisions": 16,
+            "Samples": 16
+          }
+        },
+        {
+          "Elapsed": 9.000000000000108,
+          "ManagedBytes": 693976,
+          "State": {
+            "Planning": 24,
+            "Candidates": 884,
+            "Checkpoints": 52680,
+            "Rollbacks": 19049,
+            "Decisions": 24,
+            "Samples": 24
+          }
+        },
+        {
+          "Elapsed": 12.033333333333298,
+          "ManagedBytes": 697104,
+          "State": {
+            "Planning": 32,
+            "Candidates": 1234,
+            "Checkpoints": 73775,
+            "Rollbacks": 27134,
+            "Decisions": 32,
+            "Samples": 32
+          }
+        },
+        {
+          "Elapsed": 15.033333333333147,
+          "ManagedBytes": 699000,
+          "State": {
+            "Planning": 38,
+            "Candidates": 1426,
+            "Checkpoints": 85331,
+            "Rollbacks": 31188,
+            "Decisions": 37,
+            "Samples": 38
+          }
+        },
+        {
+          "Elapsed": 18.033333333333022,
+          "ManagedBytes": 701272,
+          "State": {
+            "Planning": 48,
+            "Candidates": 2098,
+            "Checkpoints": 129378,
+            "Rollbacks": 48598,
+            "Decisions": 46,
+            "Samples": 48
+          }
+        },
+        {
+          "Elapsed": 18.033333333333022,
+          "ManagedBytes": 701288,
+          "State": {
+            "Planning": 48,
+            "Candidates": 2098,
+            "Checkpoints": 129378,
+            "Rollbacks": 48598,
+            "Decisions": 46,
+            "Samples": 48
+          }
+        }
+      ],
+      "TraceSha256": null
+    },
+    {
+      "Track": "hidden-manifestation",
+      "Sources": 4,
+      "Delta": 0.1,
+      "Frames": 31,
+      "Phase": "racing",
+      "Elapsed": 3.099999999999993,
+      "FirstFrame": {
+        "Number": 1,
+        "Elapsed": 0.10000000000000002,
+        "Bytes": 717880,
+        "Milliseconds": 94.7753,
+        "Work": {
+          "Planning": 4,
+          "Candidates": 172,
+          "Checkpoints": 11575,
+          "Rollbacks": 4801,
+          "Decisions": 4,
+          "Samples": 4
+        },
+        "Retained": {
+          "Planning": 4,
+          "Candidates": 172,
+          "Checkpoints": 11575,
+          "Rollbacks": 4801,
+          "Decisions": 4,
+          "Samples": 4
+        }
+      },
+      "MaxAllocationFrame": {
+        "Number": 29,
+        "Elapsed": 2.8999999999999937,
+        "Bytes": 1557936,
+        "Milliseconds": 128.0099,
+        "Work": {
+          "Planning": 4,
+          "Candidates": 221,
+          "Checkpoints": 14989,
+          "Rollbacks": 6189,
+          "Decisions": 4,
+          "Samples": 4
+        },
+        "Retained": {
+          "Planning": 12,
+          "Candidates": 694,
+          "Checkpoints": 50402,
+          "Rollbacks": 21983,
+          "Decisions": 12,
+          "Samples": 12
+        }
+      },
+      "TotalBytes": 4454240,
+      "LiveHeap": [
+        {
+          "Elapsed": 0,
+          "ManagedBytes": 688304,
+          "State": {
+            "Planning": 0,
+            "Candidates": 0,
+            "Checkpoints": 0,
+            "Rollbacks": 0,
+            "Decisions": 0,
+            "Samples": 0
+          }
+        },
+        {
+          "Elapsed": 3.099999999999993,
+          "ManagedBytes": 692984,
+          "State": {
+            "Planning": 12,
+            "Candidates": 694,
+            "Checkpoints": 50402,
+            "Rollbacks": 21983,
+            "Decisions": 12,
+            "Samples": 12
+          }
+        },
+        {
+          "Elapsed": 3.099999999999993,
+          "ManagedBytes": 693000,
+          "State": {
+            "Planning": 12,
+            "Candidates": 694,
+            "Checkpoints": 50402,
+            "Rollbacks": 21983,
+            "Decisions": 12,
+            "Samples": 12
+          }
+        }
+      ],
+      "TraceSha256": null
+    },
+    {
+      "Track": "hidden-manifestation",
+      "Sources": 4,
+      "Delta": 0.29,
+      "Frames": 11,
+      "Phase": "racing",
+      "Elapsed": 3.1899999999999897,
+      "FirstFrame": {
+        "Number": 1,
+        "Elapsed": 0.2899999999999999,
+        "Bytes": 734776,
+        "Milliseconds": 94.8811,
+        "Work": {
+          "Planning": 4,
+          "Candidates": 172,
+          "Checkpoints": 11575,
+          "Rollbacks": 4801,
+          "Decisions": 4,
+          "Samples": 4
+        },
+        "Retained": {
+          "Planning": 4,
+          "Candidates": 172,
+          "Checkpoints": 11575,
+          "Rollbacks": 4801,
+          "Decisions": 4,
+          "Samples": 4
+        }
+      },
+      "MaxAllocationFrame": {
+        "Number": 10,
+        "Elapsed": 2.899999999999991,
+        "Bytes": 1647216,
+        "Milliseconds": 130.1743,
+        "Work": {
+          "Planning": 4,
+          "Candidates": 221,
+          "Checkpoints": 14989,
+          "Rollbacks": 6189,
+          "Decisions": 4,
+          "Samples": 4
+        },
+        "Retained": {
+          "Planning": 12,
+          "Candidates": 694,
+          "Checkpoints": 50402,
+          "Rollbacks": 21983,
+          "Decisions": 12,
+          "Samples": 12
+        }
+      },
+      "TotalBytes": 4457888,
+      "LiveHeap": [
+        {
+          "Elapsed": 0,
+          "ManagedBytes": 688936,
+          "State": {
+            "Planning": 0,
+            "Candidates": 0,
+            "Checkpoints": 0,
+            "Rollbacks": 0,
+            "Decisions": 0,
+            "Samples": 0
+          }
+        },
+        {
+          "Elapsed": 3.1899999999999897,
+          "ManagedBytes": 693616,
+          "State": {
+            "Planning": 12,
+            "Candidates": 694,
+            "Checkpoints": 50402,
+            "Rollbacks": 21983,
+            "Decisions": 12,
+            "Samples": 12
+          }
+        },
+        {
+          "Elapsed": 3.1899999999999897,
+          "ManagedBytes": 693632,
+          "State": {
+            "Planning": 12,
+            "Candidates": 694,
+            "Checkpoints": 50402,
+            "Rollbacks": 21983,
+            "Decisions": 12,
+            "Samples": 12
+          }
+        }
+      ],
+      "TraceSha256": null
+    }
+  ]
+}

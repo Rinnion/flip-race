@@ -8,9 +8,9 @@ namespace FlipRace.Core
     /// <remarks>
     /// Track geometry/routes/cues are shared read-only race input: neither the live race,
     /// a forecast, nor its caller may edit them after race creation. FlightSettings,
-    /// MotionProfile, FlightMeasurement, BotPlan and StochasticBotSettings are immutable and also shared.
+    /// MotionProfile, FlightMeasurement, BotPlan, party lineup and bot settings are immutable and also shared.
     /// Every mutable timeline object is copied; aliases inside that timeline are retained.
-    /// Clone does not advance a race, activate a controller, or choose any bot actions.
+    /// Clones have no registered live controllers, so their runner advances physics only.
     /// </remarks>
     public static class RaceSnapshot
     {
@@ -36,6 +36,129 @@ namespace FlipRace.Core
                 copy.WinnerAt = null;
             }
             return copy;
+        }
+
+        // One planning call owns two private timelines. Neither their player
+        // array nor the sets or queues are replaced during active play.
+        internal sealed class ForecastWorkspace
+        {
+            readonly GameState origin;
+            ForecastBuffer current, checkpoint;
+
+            internal ForecastWorkspace(GameState origin)
+            {
+                this.origin = origin;
+                current = new ForecastBuffer(origin);
+                checkpoint = new ForecastBuffer(origin);
+            }
+
+            internal GameState BeginCandidate()
+            {
+                current.RestoreFrom(origin);
+                return current.Race;
+            }
+
+            internal void SaveCheckpoint() { checkpoint.RestoreFrom(current.Race); }
+
+            internal GameState Rollback()
+            {
+                var discarded = current;
+                current = checkpoint;
+                checkpoint = discarded;
+                return current.Race;
+            }
+        }
+
+        sealed class ForecastBuffer
+        {
+            internal readonly GameState Race;
+            readonly RecordCopies<HitInfo> hits = new RecordCopies<HitInfo>((source, target) =>
+            { target.Id = source.Id; target.Message = source.Message; target.At = source.At; });
+            readonly RecordCopies<SpeedEffect> effects = new RecordCopies<SpeedEffect>((source, target) =>
+            {
+                target.RingId = source.RingId; target.IsNegative = source.IsNegative;
+                target.Remaining = source.Remaining; target.Elapsed = source.Elapsed;
+                target.PulseCount = source.PulseCount; target.CompletedPulses = source.CompletedPulses;
+            });
+            readonly RecordCopies<HiddenObstacleState> hidden = new RecordCopies<HiddenObstacleState>((source, target) =>
+            {
+                target.Phase = source.Phase; target.RevealedAt = source.RevealedAt; target.SolidAt = source.SolidAt;
+                target.TriggerPlayerId = source.TriggerPlayerId; target.ActivationPostponed = source.ActivationPostponed;
+            });
+
+            internal ForecastBuffer(GameState origin) { Race = Clone(origin); }
+
+            internal void RestoreFrom(GameState source)
+            {
+                Race.Elapsed = source.Elapsed;
+                Race.Phase = source.Phase;
+                Race.CountdownRemaining = source.CountdownRemaining;
+                Race.Winner = source.Winner;
+                Race.WinnerAt = source.WinnerAt;
+                Race.PartyLastCameraLeft = source.PartyLastCameraLeft;
+                Race.Flight = source.Flight;
+                hits.Reset();
+                effects.Reset();
+                hidden.Reset();
+                if (source.HiddenObstacles != null)
+                {
+                    Race.HiddenObstacles.Clear();
+                    foreach (var pair in source.HiddenObstacles) Race.HiddenObstacles.Add(pair.Key, hidden.Copy(pair.Value));
+                }
+                for (int i = 0; i < Race.Players.Length; i++) RestorePlayer(source.Players[i], Race.Players[i]);
+            }
+
+            void RestorePlayer(PlayerState source, PlayerState target)
+            {
+                target.CopyForecastScalarsFrom(source);
+                RestoreSet(source.HitObstacleIds, target.HitObstacleIds);
+                RestoreSet(source.CollectedRiskIds, target.CollectedRiskIds);
+                RestoreSet(source.SuccessfulRiskIds, target.SuccessfulRiskIds);
+                RestoreSet(source.FailedRiskIds, target.FailedRiskIds);
+                RestoreSet(source.NegativeRiskIds, target.NegativeRiskIds);
+                target.LastHit = hits.Copy(source.LastHit);
+                target.LastCoin = hits.Copy(source.LastCoin);
+                target.LastSuccess = hits.Copy(source.LastSuccess);
+                target.LastInstant = hits.Copy(source.LastInstant);
+                target.LastSlow = hits.Copy(source.LastSlow);
+                target.LastFinishBoost = hits.Copy(source.LastFinishBoost);
+                target.ActiveEffect = effects.Copy(source.ActiveEffect);
+                if (source.PendingEffects == null) return;
+                target.PendingEffects.Clear();
+                foreach (var effect in source.PendingEffects) target.PendingEffects.Enqueue(effects.Copy(effect));
+            }
+
+            static void RestoreSet(HashSet<string> source, HashSet<string> target)
+            {
+                if (source == null) return;
+                target.Clear();
+                foreach (string item in source) target.Add(item);
+            }
+        }
+
+        // Reuse records within one buffer while retaining aliases between, for
+        // example, LastSuccess and LastInstant or an active and queued effect.
+        sealed class RecordCopies<T> where T : class, new()
+        {
+            readonly Dictionary<T, T> copies = new Dictionary<T, T>();
+            readonly List<T> records = new List<T>();
+            readonly Action<T, T> copy;
+            int used;
+
+            internal RecordCopies(Action<T, T> copy) { this.copy = copy; }
+
+            internal void Reset() { copies.Clear(); used = 0; }
+
+            internal T Copy(T source)
+            {
+                if (source == null) return null;
+                if (copies.TryGetValue(source, out T existing)) return existing;
+                if (used == records.Count) records.Add(new T());
+                T target = records[used++];
+                copy(source, target);
+                copies.Add(source, target);
+                return target;
+            }
         }
 
         private static GameState Clone(GameState source, bool useBotForecastCamera)

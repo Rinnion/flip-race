@@ -25,7 +25,11 @@ static class Program
     static float[] R(Rect r)=>new[]{r.x,r.y,r.width,r.height};
     static void Tick(FlipRaceGame ui,double dt=0){Clock.frameCount++;Clock.realtimeSinceStartupAsDouble+=dt;Call(ui,"Update");updates++;}
     static void Click(FlipRaceGame ui,Vector2 p){Devices.Clear();Tick(ui);Call(ui,"Pointer",p);pointers++;}
-    static void Apply(FlipRaceGame ui)=>Click(ui,((Rect)Field(ui,"flightApply")).center);
+    static void Apply(FlipRaceGame ui)
+    {
+        Click(ui,((Rect)Field(ui,"flightApply")).center);
+        if(ui.FlightMenuPage==12)Click(ui,((Rect)Field(ui,"flightApply")).center);
+    }
     static Touch TouchAt(Vector2 p,TouchPhase phase)=>new Touch{fingerId=7,position=new Vector2(p.x*Display.PixelRatio,Display.height-p.y*Display.PixelRatio),phase=phase};
     static string PrefSnapshot()
     {

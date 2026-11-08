@@ -30,7 +30,7 @@ namespace FlipRace.Presentation
             if (playerIndex < 0 || playerIndex >= Game.Players.Length) throw new ArgumentOutOfRangeException();
             if (BotEnabled) return playerIndex==0?(Game.Phase=="finished"?BotRetryRect:BotStartRect):default(Rect);
             if (SoloEnabled) return Game.Phase=="finished" ? SoloRetryRect : SoloStartRect;
-            if (PartyEnabled) return PartyScreenRect(playerIndex, PartyReadyRect(playerIndex));
+            if (PartyEnabled) return Game.IsBotSlot(playerIndex) ? default(Rect) : PartyScreenRect(playerIndex, PartyReadyRect(playerIndex));
             if (SharedEnabled) return SharedScreenRect(playerIndex, SharedReadyRect(playerIndex));
             Rect lane = lanes[playerIndex];
             return LaneScreenRect(playerIndex, ReadyButtonRect(lane.width, lane.height));
@@ -324,7 +324,7 @@ namespace FlipRace.Presentation
         }
         void Act(int index)
         {
-            if (paused || showRules || showTracks || Portrait || gameplayInputBlocked || (BotEnabled && index!=0)) return;
+            if (paused || showRules || showTracks || Portrait || gameplayInputBlocked || Game.IsBotSlot(index)) return;
             if (BotEnabled && Game.Phase=="finished") { ResetBotRace(); round++; }
             string phase = Game.Phase;
             if (Trial && (phase == "ready" || phase == "finished") && RaceTracks.NormalizeId(Game.Track.Id) != Game.Track.Id)
@@ -824,10 +824,12 @@ namespace FlipRace.Presentation
                 "«Ещё раз» — сначала. Прогресс и результаты не сохраняются."
             };
             else if (PartyEnabled) lines = new[] {
-                "Каждому своя четверть и номер. Тап или A / L / S / K — действие игроков 1 / 2 / 3 / 4.",
+                AllBotParty ? "Выбери героя для каждого бота и нажми «Старт». После гонки нажми «Повтор»."
+                    : "Каждому своя четверть и номер. Тап или A / L / S / K — действие игроков 1 / 2 / 3 / 4.",
                 Game.PartyCamera == PartyCamera.Constant ? "Карта движется сама. Полностью ушёл за левый край — выбыл. Справа выбывания нет." : "Камера следует за последним бегущим. Выбывания за экран нет.",
                 "Бонусы и монеты личные. Выбывшие и финишировавшие больше не управляются.",
-                "Первый финиш побеждает. Остальные продолжают до своего исхода. Ещё раз — когда готовы все." };
+                Game.HumanCount == Game.Players.Length ? "Первый финиш побеждает. Остальные продолжают до своего исхода. Ещё раз — когда готовы все."
+                    : "Первый финиш побеждает. Остальные продолжают до своего исхода. Боты готовы автоматически." };
             float start = r.y + 77, row = (r.height - 134) / 4;
             for (int i = 0; i < lines.Length; i++)
             {

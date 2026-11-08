@@ -29,8 +29,9 @@ namespace FlipRace.Presentation
         int PartyCorner(int slot)
         {
             if(slot<0||slot>=Game.Players.Length)throw new ArgumentOutOfRangeException(nameof(slot));
-            return Game.Players.Length==2 ? (slot==0?0:3) : Game.Players.Length==3 && slot==2 ? 3 : slot;
+            return PartyCorner(slot, Game.Players.Length);
         }
+        static int PartyCorner(int slot, int count) => count == 2 ? (slot == 0 ? 0 : 3) : count == 3 && slot == 2 ? 3 : slot;
         bool PartyRotated(int slot) { return PartyCorner(slot)<2; }
         Rect PartyControlArea(int slot)
         { int corner=PartyCorner(slot); float half=SessionCentered?(arena.height-session.height)/2:arena.height/2; return new Rect(arena.x+(corner%2)*arena.width/2,corner<2?arena.y:arena.yMax-half,arena.width/2,half); }
@@ -44,11 +45,37 @@ namespace FlipRace.Presentation
         }
         Rect PartyReadyRect(int slot)
         { Rect r=PartyControlArea(slot); return new Rect(3,r.height-45,r.width-6,44); }
+        bool AllBotParty => PartyEnabled && Game.HumanCount == 0;
+        public Rect PartyAllBotActionRect
+        {
+            get
+            {
+                if (!AllBotParty || (Game.Phase != "ready" && Game.Phase != "finished")) return default(Rect);
+                int bottomRight = Game.Players.Length - 1;
+                Rect ready = PartyScreenRect(bottomRight, PartyReadyRect(bottomRight));
+                float w = Mathf.Min(164, arena.width * .3f);
+                return new Rect(arena.center.x - w / 2, ready.y, w, ready.height);
+            }
+        }
+
+        string PartyBotName(int slot) => "Бот " + (slot + 1);
+        string PartyBotLevelName(int slot) => BotLevelNames[(int)Game.GetPartyBotSettings(slot).Difficulty];
         int TotalHits() { int n=0;foreach(var p in Game.Players)n+=p.Collisions;return n; }
         int TotalRewards() { int n=0;foreach(var p in Game.Players)n+=Rewards(p);return n; }
         int TotalSlows() { int n=0;foreach(var p in Game.Players)n+=p.SlowsEarned;return n; }
         void PartyPointer(Vector2 point)
         {
+            if (PartyAllBotActionRect.Contains(point))
+            {
+                string phase = Game.Phase;
+                if (RaceRunner.StartAllBotParty(Game)) Beep(tapClip);
+                if (Game.Phase == "countdown")
+                {
+                    if (phase == "finished") round++;
+                    suppressFrame = true;
+                }
+                return;
+            }
             for(int slot=0;slot<Game.Players.Length;slot++)
             {
                 if(!PartyControlArea(slot).Contains(point))continue;
@@ -59,7 +86,7 @@ namespace FlipRace.Presentation
                     if(ReadyScreenRect(slot).Contains(point))Act(slot);
                 }
                 else if(Game.Phase=="finished") { if(ReadyScreenRect(slot).Contains(point))Act(slot); }
-                else LocalRacePress(slot,point);
+                else if (!Game.IsBotSlot(slot)) LocalRacePress(slot,point);
                 return;
             }
         }
@@ -73,7 +100,7 @@ namespace FlipRace.Presentation
         void DrawPartyChoices()
         {
             Text(new Rect(flightPanel.x+16,flightPanel.y+43,flightPanel.width-192,15),"УЧАСТНИКИ · ВОКРУГ ОДНОГО ЭКРАНА",8,muted);
-            for(int i=0;i<3;i++)FlightButton(PartyCountRect(i),(i+2)+" игрока",pendingPartyCount==i+2,true,12);
+            for(int i=0;i<3;i++)FlightButton(PartyCountRect(i),(i+2)+" места",pendingPartyCount==i+2,true,12);
             Text(new Rect(flightPanel.x+16,flightPanel.y+109,flightPanel.width-32,15),"КАМЕРА",8,muted);
             FlightButton(PartyCameraRect(0),"Постоянный скролл",pendingPartyCamera==PartyCamera.Constant,true,10);
             FlightButton(PartyCameraRect(1),"За последним",pendingPartyCamera==PartyCamera.Lagger,true,10);
@@ -119,6 +146,12 @@ namespace FlipRace.Presentation
                 else DrawPartyStatus(slot,region.width,region.height,world.View.IsPlayerVisible(slot));
             }
             GUI.matrix=canvas;
+            Rect allBotAction = PartyAllBotActionRect;
+            if (allBotAction.width > 0)
+            {
+                Round(allBotAction, 6, Hex(0xdbe7ca));
+                Text(allBotAction, Game.Phase == "ready" ? "Старт →" : "Повтор →", 13, ink, true, TextAnchor.MiddleCenter);
+            }
             Fill(new Rect(arena.center.x-.5f,arena.y,1,8),Hex(0xb7beaa));
             Fill(new Rect(arena.center.x-.5f,arena.yMax-8,1,8),Hex(0xb7beaa));
         }
@@ -133,7 +166,20 @@ namespace FlipRace.Presentation
                 GUI.color=Color.white;GUI.DrawTexture(new Rect(card.x+1,card.center.y-s/2,s,s),MascotArtwork.Create(hero,slot));
                 Text(new Rect(card.x+s+1,card.y,card.width-s-2,card.height),CharacterRoster.Name(hero),w<330?8:10,ink,chosen,TextAnchor.MiddleCenter);
             }
-            Rect ready=PartyReadyRect(slot);Round(ready,6,Game.Players[slot].Ready?Hex(0xdbe7ca):pales[slot]);
+            Rect ready=PartyReadyRect(slot);
+            if (Game.IsBotSlot(slot))
+            {
+                if (AllBotParty && !PartyRotated(slot))
+                {
+                    float inset = PartyAllBotActionRect.width / 2 + 3;
+                    if (PartyCorner(slot) == 3) ready.xMin += inset;
+                    else ready.width -= inset;
+                }
+                Round(ready, 6, pales[slot]);
+                Text(ready, PartyBotName(slot) + " · " + PartyBotLevelName(slot) + " · Готов", 10, accents[slot], true, TextAnchor.MiddleCenter);
+                return;
+            }
+            Round(ready,6,Game.Players[slot].Ready?Hex(0xdbe7ca):pales[slot]);
             Text(ready,(slot+1)+" · "+(Game.Players[slot].Ready?"Готов · ждём остальных":"Готов →"),10,accents[slot],true,TextAnchor.MiddleCenter);
         }
         void DrawPartyStatus(int slot,float w,float h,bool visible)
@@ -143,16 +189,21 @@ namespace FlipRace.Presentation
             float sw=Mathf.Min(w-105,255);int corner=PartyCorner(slot); float statusX=corner==1||corner==2?w-sw-4:4;Rect status=new Rect(statusX,h-25,sw,22);
             DrawSurfaceRunStatus(slot,new Rect(statusX,h-49,92,20));
             Round(status,5,new Color(.98f,.98f,.94f,.94f));
-            Text(status,(slot+1)+" · "+PlayerName(slot)+" · "+state,compact?8:10,accents[slot],true,TextAnchor.MiddleCenter);
+            string identity = Game.IsBotSlot(slot) ? PartyBotName(slot) : (slot+1)+" · "+PlayerName(slot);
+            Text(status,identity+" · "+state,compact?8:10,accents[slot],true,TextAnchor.MiddleCenter);
         }
         void DrawPartyResult(int slot,float w,float h)
         {
             GUI.color=Color.white;GUI.DrawTexture(new Rect(0,0,w,h),veil);
-            var p=Game.Players[slot];string title=Game.Winner==null?"Все выбыли":Game.Winner is string?"Финиш вместе!":"Игрок "+((int)Game.Winner+1)+" победил";
+            var p=Game.Players[slot];
+            string title = Game.Winner is int winner ? (Game.IsBotSlot(winner) ? PartyBotName(winner) : "Игрок " + (winner + 1)) + " победил"
+                : Game.Winner is string ? "Финиш вместе!" : "Все выбыли";
             string outcome=p.Status==PlayerStatus.Finished?"Финиш · "+Number(p.FinishTime.Value,2)+" с":"Выбыл · "+Number(p.Distance,0)+" ед";
             Text(new Rect(4,5,w-8,25),title,compact?15:19,ink,true,TextAnchor.MiddleCenter);
-            Text(new Rect(4,32,w-8,22),(slot+1)+" · "+PlayerName(slot)+" · "+outcome,compact?9:11,accents[slot],true,TextAnchor.MiddleCenter);
+            string identity = Game.IsBotSlot(slot) ? PartyBotName(slot) + " · " + PartyBotLevelName(slot) : (slot+1)+" · "+PlayerName(slot);
+            Text(new Rect(4,32,w-8,22),identity+" · "+outcome,compact?9:11,accents[slot],true,TextAnchor.MiddleCenter);
             Text(new Rect(4,56,w-8,18),"+"+Rewards(p)+" · −"+p.SlowsEarned+" · монеты "+p.CoinsEarned+" · ударов "+p.Collisions,compact?9:10,muted,false,TextAnchor.MiddleCenter);
+            if (Game.IsBotSlot(slot)) return;
             Rect ready=PartyReadyRect(slot);Round(ready,6,p.Ready?Hex(0xdbe7ca):pales[slot]);
             Text(ready,p.Ready?"Готов · ждём остальных":"Ещё раз →",11,accents[slot],true,TextAnchor.MiddleCenter);
         }

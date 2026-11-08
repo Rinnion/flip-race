@@ -1,0 +1,278 @@
+{
+  "assertions": 1611,
+  "lineups": 28,
+  "runs": [
+    {
+      "botCount": 0,
+      "track": "full-short",
+      "flight": "Chosen",
+      "camera": "Lagger",
+      "acceleration": false,
+      "frames": 766,
+      "Elapsed": 38.39999999999995,
+      "Winner": "tie",
+      "hidden": 0,
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "TerminalTime": 38.39999999999995,
+          "Collisions": 6,
+          "BoostsEarned": 2,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "TerminalTime": 38.39999999999995,
+          "Collisions": 6,
+          "BoostsEarned": 2,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 2,
+          "status": "Finished",
+          "TerminalTime": 38.39999999999995,
+          "Collisions": 6,
+          "BoostsEarned": 2,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 3,
+          "status": "Finished",
+          "TerminalTime": 38.39999999999995,
+          "Collisions": 6,
+          "BoostsEarned": 2,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        }
+      ]
+    },
+    {
+      "botCount": 1,
+      "track": "full-short",
+      "flight": "FastFlip",
+      "camera": "Constant",
+      "acceleration": true,
+      "frames": 571,
+      "Elapsed": 28.641354802375453,
+      "Winner": 3,
+      "hidden": 0,
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "TerminalTime": 5.312727272727315,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 1,
+          "status": "Eliminated",
+          "TerminalTime": 5.312727272727315,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 2,
+          "status": "Eliminated",
+          "TerminalTime": 5.312727272727315,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 3,
+          "status": "Finished",
+          "TerminalTime": 28.641354802375453,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "difficulty": "Master",
+          "seed": 3882268939,
+          "presses": 17
+        }
+      ]
+    },
+    {
+      "botCount": 2,
+      "track": "full-short",
+      "flight": "Chosen",
+      "camera": "Lagger",
+      "acceleration": false,
+      "frames": 766,
+      "Elapsed": 38.3999999999984,
+      "Winner": 2,
+      "hidden": 0,
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "TerminalTime": 38.3999999999984,
+          "Collisions": 6,
+          "BoostsEarned": 2,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "TerminalTime": 38.3999999999984,
+          "Collisions": 6,
+          "BoostsEarned": 2,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 2,
+          "status": "Finished",
+          "TerminalTime": 33.04999999999873,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "difficulty": "Master",
+          "seed": 1643278714,
+          "presses": 25
+        },
+        {
+          "Id": 3,
+          "status": "Finished",
+          "TerminalTime": 36.79999999999849,
+          "Collisions": 4,
+          "BoostsEarned": 4,
+          "difficulty": "Novice",
+          "seed": 3882268939,
+          "presses": 35
+        }
+      ]
+    },
+    {
+      "botCount": 3,
+      "track": "full-short",
+      "flight": "FastFlip",
+      "camera": "Constant",
+      "acceleration": true,
+      "frames": 620,
+      "Elapsed": 31.054939214928723,
+      "Winner": 1,
+      "hidden": 0,
+      "players": [
+        {
+          "Id": 0,
+          "status": "Eliminated",
+          "TerminalTime": 1.476612253242548,
+          "Collisions": 0,
+          "BoostsEarned": 0,
+          "difficulty": null,
+          "seed": null,
+          "presses": null
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "TerminalTime": 28.64182579502726,
+          "Collisions": 0,
+          "BoostsEarned": 9,
+          "difficulty": "Master",
+          "seed": 3836958031,
+          "presses": 17
+        },
+        {
+          "Id": 2,
+          "status": "Eliminated",
+          "TerminalTime": 5.312727272727362,
+          "Collisions": 3,
+          "BoostsEarned": 0,
+          "difficulty": "Novice",
+          "seed": 1643278714,
+          "presses": 3
+        },
+        {
+          "Id": 3,
+          "status": "Finished",
+          "TerminalTime": 31.054939214928723,
+          "Collisions": 1,
+          "BoostsEarned": 6,
+          "difficulty": "Amateur",
+          "seed": 3882268939,
+          "presses": 22
+        }
+      ]
+    },
+    {
+      "botCount": 4,
+      "track": "hidden-manifestation",
+      "flight": "Chosen",
+      "camera": "Lagger",
+      "acceleration": true,
+      "frames": 705,
+      "Elapsed": 35.31158519441928,
+      "Winner": 0,
+      "hidden": 5,
+      "players": [
+        {
+          "Id": 0,
+          "status": "Finished",
+          "TerminalTime": 33.13313479864959,
+          "Collisions": 0,
+          "BoostsEarned": 6,
+          "difficulty": "Master",
+          "seed": 1299012887,
+          "presses": 26
+        },
+        {
+          "Id": 1,
+          "status": "Finished",
+          "TerminalTime": 35.31158519441928,
+          "Collisions": 1,
+          "BoostsEarned": 1,
+          "difficulty": "Novice",
+          "seed": 3836958031,
+          "presses": 32
+        },
+        {
+          "Id": 2,
+          "status": "Finished",
+          "TerminalTime": 34.54349152380374,
+          "Collisions": 1,
+          "BoostsEarned": 3,
+          "difficulty": "Amateur",
+          "seed": 1643278714,
+          "presses": 30
+        },
+        {
+          "Id": 3,
+          "status": "Finished",
+          "TerminalTime": 33.62916669714831,
+          "Collisions": 0,
+          "BoostsEarned": 5,
+          "difficulty": "Confident",
+          "seed": 3882268939,
+          "presses": 35
+        }
+      ]
+    }
+  ],
+  "coreHashes": {
+    "ContinuousMotion.cs": "97D8A1D60F4FDCF83F83F00124E41C9621698D45357E371E49A8A33F43E22583",
+    "RaceSimulation.cs": "929F0227F7FD155D1B274CD154EB5D30621C00E1CA49309B9A9A1A7284B99F23",
+    "RaceRunner.cs": "646CFEBFA54A29F37C3EC9607DA30D79DD90525512241B57F24EC8B44DF4AB3C",
+    "RaceSnapshot.cs": "C844BF9B9409B06364CA4CC7CD9C9EF56C2139EAA94E2F504889DC30932C74BE",
+    "StochasticBotController.cs": "0947D5D1B651A443C293606F3D1DBF318BA1FDF5BC529F0693A60D8674091D14"
+  }
+}

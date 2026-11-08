@@ -11,7 +11,7 @@ using UnityEngine;
 using Display=FlipRace.SharedScreenCheck.Interop.Display;
 namespace FlipRace.PartyUiCheck
 {
-static class Program
+static partial class Program
 {
     const BindingFlags Private=BindingFlags.Instance|BindingFlags.NonPublic;
     static int checks,cases,updates,pointers;
@@ -32,7 +32,7 @@ static class Program
         Devices.Clear();Devices.Touches=Enumerable.Range(0,ui.Game.Players.Length).Select(i=>TouchAt(i+21,point(i),phase)).ToArray();
         Devices.MouseDown=Devices.MouseHeld=mouse;Vector2 m=point(ui.Game.Players.Length-1);Devices.mousePosition=new Vector3(m.x*Display.PixelRatio,Display.height-m.y*Display.PixelRatio,0);Tick(ui);Devices.Clear();
     }
-    static FlipRaceGame Ui(int w,int h,float dpr,int choice,int count,PartyCamera camera)
+    static FlipRaceGame Ui(int w,int h,float dpr,int choice,int count,PartyCamera camera,bool openRosterOnly=false)
     {
         Display.width=Mathf.RoundToInt(w*dpr);Display.height=Mathf.RoundToInt(h*dpr);Display.PixelRatio=dpr;
         Display.SafeAreaOverride=new Rect(12*dpr,10*dpr,(w-28)*dpr,(h-24)*dpr);
@@ -49,6 +49,9 @@ static class Program
         Click(ui,ui.PartyMenuButtonRect.center);Check(ui.FlightMenuPage==6,"real party navigation");
         Click(ui,ui.PartyCountRect(count-2).center);Click(ui,ui.PartyCameraRect((int)camera).center);
         string flight=JsonSerializer.Serialize(selection.Settings,new JsonSerializerOptions{IncludeFields=true});
+        Click(ui,((Rect)Field(ui,"flightApply")).center);
+        Check(ui.FlightMenuPage==12&&!ui.PartyEnabled,"composition is a separate step before choosing heroes");
+        if(openRosterOnly)return ui;
         Click(ui,((Rect)Field(ui,"flightApply")).center);
         Check(ui.PartyEnabled&&ui.Game.Players.Length==count&&ui.Game.PartyCamera==camera&&!ui.IsPaused,"actual party apply count/camera");
         Check(JsonSerializer.Serialize(ui.Game.Flight,new JsonSerializerOptions{IncludeFields=true})==flight,"actual apply preserves selected preset/manual physics");
@@ -261,7 +264,8 @@ static class Program
             foreach(float dpr in new[]{1f,2.5f,3f})foreach(int count in new[]{2,3,4})foreach(var camera in new[]{PartyCamera.Constant,PartyCamera.Lagger})foreach(int choice in new[]{10,11,-1})
             {cases++;var ui=Ui(size.w,size.h,dpr,choice,count,camera);Layout(ui,size.w,size.h);Header(ui);Start(ui);Edges(ui);ToolbarInput(ui);Actions(ui);TerminalAndRematch(ui);}
             foreach(int count in new[]{2,3,4})foreach(var camera in new[]{PartyCamera.Constant,PartyCamera.Lagger})foreach(int kind in new[]{0,1,2})Legacy(count,camera,kind);
-            Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,cases,updates,pointers,Evidence,scope="Production menu, Measure, Pointer, Update and Core execute. Explicit native Screen/Input/Time/PlayerPrefs and selection-texture shims; no native rendering or physical phone timing claim. Terminal UI fixtures are synthetic, not event-chronology proofs."},new JsonSerializerOptions{IncludeFields=true,WriteIndented=true}));return 0;
+            CheckRosters();
+            Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,cases,rosterCases,updates,pointers,Evidence,scope="Production menu, Measure, Pointer, Update and Core execute. Explicit native Screen/Input/Time/PlayerPrefs and selection-texture shims; no native rendering or physical phone timing claim. Terminal UI fixtures are synthetic, not event-chronology proofs."},new JsonSerializerOptions{IncludeFields=true,WriteIndented=true}));return 0;
         }
         catch(Exception ex){Console.Error.WriteLine(ex);return 1;}
     }

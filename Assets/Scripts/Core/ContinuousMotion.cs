@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace FlipRace.Core
 {
@@ -10,6 +9,10 @@ namespace FlipRace.Core
     internal static class ContinuousMotion
     {
         const double TimeTolerance = 1e-12;
+        // Tolerance can report both a cut point and a root in each adjacent
+        // interval. Starting with one linear root, degree n can therefore emit
+        // at most 2*(previous bound + 2)-1 entries (1, 5, 13, 29 for degrees 1–4).
+        const int RootScratchSize = 29;
 
         internal static int QuadraticRoots(double a, double b, double c, out double first, out double second)
         {
@@ -37,8 +40,9 @@ namespace FlipRace.Core
             double y = p + v * start + .5 * acceleration * start * start;
             if (y >= minimum - 1e-9 && y <= maximum + 1e-9) return start;
             double result = double.PositiveInfinity;
-            foreach (double boundary in new[] { minimum, maximum })
+            for (int i = 0; i < 2; i++)
             {
+                double boundary = i == 0 ? minimum : maximum;
                 if (double.IsInfinity(boundary)) continue;
                 int count = QuadraticRoots(.5 * acceleration, v, p - boundary, out double first, out double second);
                 if (count > 0 && first >= start - TimeTolerance && first <= end + TimeTolerance) result = Math.Min(result, Math.Max(start, first));
@@ -50,64 +54,85 @@ namespace FlipRace.Core
         internal static double FirstCircleContact(double dx, double dy, double vx, double vy,
             double acceleration, double radius, double duration)
         {
-            var coefficients = new[] { dx * dx + dy * dy - radius * radius,
+            Span<double> coefficients = stackalloc double[] { dx * dx + dy * dy - radius * radius,
                 2 * (dx * vx + dy * vy), vx * vx + vy * vy + acceleration * dy,
                 acceleration * vy, .25 * acceleration * acceleration };
-            if (coefficients[0] <= Tolerance(coefficients, 0)) return 0;
-            var roots = new List<double>();
-            Roots(coefficients, 0, duration, roots);
-            return roots.Count > 0 ? roots[0] : double.PositiveInfinity;
+            return FirstRoot(coefficients, duration);
         }
 
         internal static double FirstCircleContact(double dx, double dy, double vx, double vy,
             double ax, double ay, double radius, double duration)
         {
             if (ax == 0) return FirstCircleContact(dx, dy, vx, vy, ay, radius, duration);
-            var coefficients = new[] { dx * dx + dy * dy - radius * radius,
+            Span<double> coefficients = stackalloc double[] { dx * dx + dy * dy - radius * radius,
                 2 * (dx * vx + dy * vy), vx * vx + vy * vy + ax * dx + ay * dy,
                 ax * vx + ay * vy, .25 * (ax * ax + ay * ay) };
-            if (coefficients[0] <= Tolerance(coefficients, 0)) return 0;
-            var roots = new List<double>();
-            Roots(coefficients, 0, duration, roots);
-            return roots.Count > 0 ? roots[0] : double.PositiveInfinity;
+            return FirstRoot(coefficients, duration);
         }
 
-        static double Value(double[] coefficients, double x)
+        static double FirstRoot(ReadOnlySpan<double> coefficients, double duration)
+        {
+            if (coefficients[0] <= Tolerance(coefficients, 0)) return 0;
+            Span<double> roots = stackalloc double[RootScratchSize];
+            int count = Roots(coefficients, 0, duration, roots, 0);
+            return count > 0 ? roots[0] : double.PositiveInfinity;
+        }
+
+        static double Value(ReadOnlySpan<double> coefficients, double x)
         {
             double value = coefficients[coefficients.Length - 1];
             for (int i = coefficients.Length - 2; i >= 0; i--) value = value * x + coefficients[i];
             return value;
         }
-        static double Tolerance(double[] coefficients, double x)
+        static double Tolerance(ReadOnlySpan<double> coefficients, double x)
         {
             double scale = Math.Abs(coefficients[coefficients.Length - 1]);
             for (int i = coefficients.Length - 2; i >= 0; i--) scale = scale * Math.Abs(x) + Math.Abs(coefficients[i]);
             return Math.Max(1, scale) * 1e-12;
         }
-        static void Add(List<double> roots, double value)
+        static void Add(Span<double> roots, ref int count, double value)
         {
-            foreach (double previous in roots) if (Math.Abs(previous - value) <= TimeTolerance) return;
-            roots.Add(value);
+            for (int i = 0; i < count; i++) if (Math.Abs(roots[i] - value) <= TimeTolerance) return;
+            roots[count++] = value;
         }
-        static void Roots(double[] coefficients, double lo, double hi, List<double> result)
+
+        static void Sort(Span<double> roots, int count)
+        {
+            for (int i = 1; i < count; i++)
+            {
+                double value = roots[i];
+                int position = i;
+                while (position > 0 && roots[position - 1].CompareTo(value) > 0)
+                {
+                    roots[position] = roots[position - 1];
+                    position--;
+                }
+                roots[position] = value;
+            }
+        }
+
+        static int Roots(ReadOnlySpan<double> coefficients, double lo, double hi, Span<double> result, int count)
         {
             int degree = coefficients.Length - 1;
             while (degree > 0 && coefficients[degree] == 0) degree--;
-            if (degree == 0) return;
+            if (degree == 0) return count;
             if (degree == 1)
             {
                 double root = -coefficients[0] / coefficients[1];
-                if (root >= lo - TimeTolerance && root <= hi + TimeTolerance) Add(result, Math.Max(lo, Math.Min(hi, root)));
-                return;
+                if (root >= lo - TimeTolerance && root <= hi + TimeTolerance) Add(result, ref count, Math.Max(lo, Math.Min(hi, root)));
+                return count;
             }
-            var derivative = new double[degree];
+            Span<double> derivative = stackalloc double[degree];
             for (int i = 1; i <= degree; i++) derivative[i - 1] = coefficients[i] * i;
-            var cuts = new List<double> { lo };
-            Roots(derivative, lo, hi, cuts); cuts.Add(hi); cuts.Sort();
-            for (int i = 0; i < cuts.Count; i++)
+            Span<double> cuts = stackalloc double[RootScratchSize];
+            cuts[0] = lo;
+            int cutCount = Roots(derivative, lo, hi, cuts, 1);
+            cuts[cutCount++] = hi;
+            Sort(cuts, cutCount);
+            for (int i = 0; i < cutCount; i++)
             {
                 double point = cuts[i], value = Value(coefficients, point);
-                if (Math.Abs(value) <= Tolerance(coefficients, point)) Add(result, point);
+                if (Math.Abs(value) <= Tolerance(coefficients, point)) Add(result, ref count, point);
                 if (i == 0 || point - cuts[i - 1] <= TimeTolerance) continue;
                 double left = cuts[i - 1], right = point, leftValue = Value(coefficients, left);
                 if ((leftValue < 0) == (value < 0) || leftValue == 0 || value == 0) continue;
@@ -117,9 +142,10 @@ namespace FlipRace.Core
                     if ((middleValue < 0) == (leftValue < 0)) { left = middle; leftValue = middleValue; }
                     else right = middle;
                 }
-                Add(result, (left + right) / 2);
+                Add(result, ref count, (left + right) / 2);
             }
-            result.Sort();
+            Sort(result, count);
+            return count;
         }
     }
 }

@@ -83,33 +83,36 @@ namespace FlipRace.Core
             if(game==null)throw new ArgumentNullException(nameof(game));
             if(slot<0||slot>=game.Players.Length)throw new ArgumentOutOfRangeException(nameof(slot));
             // Raw initial-model training must not override immutable race metadata.
-            if(game.StochasticBot!=null)throw new ArgumentException("Use the immutable stochastic race settings constructor.",nameof(game));
+            if(game.StochasticBot!=null||game.PartyBots!=null)throw new ArgumentException("Use the immutable stochastic race settings constructor.",nameof(game));
             if(game.BotPlan!=null)throw new ArgumentException("A legacy tape race cannot use a stochastic controller.",nameof(game));
             if(double.IsNaN(q)||double.IsInfinity(q)||q<.5||q>1)throw new ArgumentOutOfRangeException(nameof(q));
             var map=StochasticTrackMap.Create(game.Track,game.Flight);double probability=q==1?0:map.BonusGain/map.CollisionCostSum*(1-q);
             if(double.IsNaN(probability)||double.IsInfinity(probability)||probability<0||probability>1)throw new NotSupportedException("Initial hit probability outside [0,1]; no clamping.");
             this.game=game;this.slot=slot;this.q=q;collectProbability=q;this.seed=seed;hitProbability=probability;opportunities=map.Opportunities;foreach(var item in opportunities)if(item.Kind==BotOpportunityKind.Positive)ordinaryGoalCount++;reference=map.ReferenceInputs;readOnlyDecisions=decisions.AsReadOnly();readOnlyPlanningSamples=planningSamples.AsReadOnly();
         }
-        static StochasticBotSettings RaceSettings(GameState game)
+        static StochasticBotSettings RaceSettings(GameState game,int slot)
         {
             if(game==null)throw new ArgumentNullException(nameof(game));
-            if(game.StochasticBot==null)throw new ArgumentException("This race has no stochastic bot settings.",nameof(game));
-            return game.StochasticBot;
+            var settings=game.GetPartyBotSettings(slot)??game.StochasticBot;
+            if(settings==null)throw new ArgumentException("This slot has no stochastic bot settings.",nameof(game));
+            return settings;
         }
-        public StochasticBotController(GameState game,int slot=1):this(game,slot,RaceSettings(game)) { }
+        public StochasticBotController(GameState game,int slot=1):this(game,slot,RaceSettings(game,slot)) { }
         // Explicit immutable settings also support an ordinary SOLO/PARTY training race.
         public StochasticBotController(GameState game,int slot,StochasticBotSettings settings)
         {
             if(game==null)throw new ArgumentNullException(nameof(game));
             if(slot<0||slot>=game.Players.Length)throw new ArgumentOutOfRangeException(nameof(slot));
             if(settings==null)throw new ArgumentNullException(nameof(settings));
-            var map=settings.RequireCompatible(game.Track,game.Flight);
             if(game.StochasticBot!=null&&!game.StochasticBot.SameAs(settings))throw new ArgumentException("Controller settings differ from immutable race metadata.",nameof(settings));
+            if(game.PartyBots!=null&&!(game.GetPartyBotSettings(slot)?.SameAs(settings)??false))
+                throw new ArgumentException("Controller settings differ from immutable party slot metadata.",nameof(settings));
             if(game.BotPlan!=null)throw new ArgumentException("A legacy tape race cannot use a stochastic controller.",nameof(game));
+            var map=settings.RequireCompatible(game.Track,game.Flight);
             this.game=game;this.slot=slot;this.q=settings.Quality;collectProbability=settings.CollectProbability;hitProbability=settings.HitProbability;this.seed=settings.Seed;Settings=settings;
             opportunities=map.Opportunities;foreach(var item in opportunities)if(item.Kind==BotOpportunityKind.Positive)ordinaryGoalCount++;reference=map.ReferenceInputs;readOnlyDecisions=decisions.AsReadOnly();readOnlyPlanningSamples=planningSamples.AsReadOnly();
         }
-        static uint Mix(uint value){unchecked{value^=value>>16;value*=0x7feb352d;value^=value>>15;value*=0x846ca68b;return value^(value>>16);}}
+        internal static uint Mix(uint value){unchecked{value^=value>>16;value*=0x7feb352d;value^=value>>15;value*=0x846ca68b;return value^(value>>16);}}
         uint Hash(string id,uint salt){unchecked{uint value=2166136261u^seed^salt;foreach(char c in id){value^=c;value*=16777619u;}return Mix(value);}}
         double Roll(string id){return(Hash(id,0x9e3779b9u)+.5)/4294967296d;}
         string RawId(BotOpportunity item){return item.Id.Substring(item.Id.IndexOf(':')+1);}
@@ -185,9 +188,9 @@ namespace FlipRace.Core
             if(delta>MaxForecastSlice+1e-12||extent>MaxHorizonDistance+overrunLimit+EdgeTolerance||overrun>overrunLimit+EdgeTolerance)
             {ForecastHorizonViolations++;throw new InvalidOperationException("Forecast transient horizon bound exceeded");}
         }
-        Evaluation Evaluate(GameState origin,double[] inputs,double end,List<Pending> pending)
+        Evaluation Evaluate(GameState origin,RaceSnapshot.ForecastWorkspace workspace,double[] inputs,double end,List<Pending> pending)
         {
-            CandidateSimulations++;var g=RaceSnapshot.Clone(origin);var p=g.Players[0];int edge=0,rejected=0,steps=0;
+            CandidateSimulations++;var g=workspace.BeginCandidate();var p=g.Players[0];int edge=0,rejected=0,steps=0;
             while(p.Status==PlayerStatus.Running&&p.Distance<end-EdgeTolerance&&steps<MaxForecastStepsPerCandidate)
             {
                 if(p.Recovering<=0&&edge<inputs.Length&&inputs[edge]-p.Distance<=EdgeTolerance){if(!RaceSimulation.Press(g,0))rejected++;edge++;continue;}
@@ -201,13 +204,13 @@ namespace FlipRace.Core
                 // The trial may accelerate inside its continuous swept timeline.
                 // Keep a deep checkpoint: any target overshoot discards ALL trial
                 // clocks, effects and contacts before retrying the old safe step.
-                var checkpoint=RaceSnapshot.Clone(g);ForecastCheckpoints++;
+                workspace.SaveCheckpoint();ForecastCheckpoints++;
                 double gap=target-p.Distance;
                 double dt=Math.Min(MaxForecastSlice,Math.Max(1e-10,gap/p.CurrentSpeed));
                 ForecastAdvance(g,dt,origin.Players[0].Distance,end);steps++;
                 if(p.Distance>target+EdgeTolerance)
                 {
-                    g=checkpoint;p=g.Players[0];ForecastTrialRollbacks++;
+                    g=workspace.Rollback();p=g.Players[0];ForecastTrialRollbacks++;
                     if(steps>=MaxForecastStepsPerCandidate)break;
                     double safe=Math.Min(MaxForecastSlice,Math.Max(1e-10,(target-p.Distance)/p.MaximumHorizontalSpeed));
                     ForecastAdvance(g,safe,origin.Players[0].Distance,end);steps++;
@@ -255,13 +258,14 @@ namespace FlipRace.Core
                 bool exists=false;foreach(var request in pending)if(request.Opportunity.Id==item.Id){exists=true;break;}
                 if(!exists)pending.Add(new Pending{Opportunity=item,Intent=item.Kind==BotOpportunityKind.Obstacle?"avoid":"collect",Probability=1});
             }
-            var origin=PersonalForecast();var candidates=new HashSet<string>(StringComparer.Ordinal);var ties=new List<Evaluation>();Evaluation best=null;int calls=0;
+            var origin=PersonalForecast();var workspace=new RaceSnapshot.ForecastWorkspace(origin);
+            var candidates=new HashSet<string>(StringComparer.Ordinal);var ties=new List<Evaluation>();Evaluation best=null;int calls=0;
             int candidateLimit = q != 1 ? MaxCandidatesPerPlanningCall
                 : origin.SurfaceRunEnabled ? MaxAcceleratedMasterTimingCandidates : MaxMasterTimingCandidates;
             Evaluation Try(IEnumerable<double> values)
             {
                 if(calls>=candidateLimit)return best;var input=Clip(values,start,end);string key=CandidateKey(input);if(!candidates.Add(key))return best;
-                calls++;var result=Evaluate(origin,input,end,pending);if(best==null||result.Score<best.Score){best=result;ties.Clear();ties.Add(result);}else if(result.Score==best.Score)ties.Add(result);return result;
+                calls++;var result=Evaluate(origin,workspace,input,end,pending);if(best==null||result.Score<best.Score){best=result;ties.Clear();ties.Add(result);}else if(result.Score==best.Score)ties.Add(result);return result;
             }
             // A spatial decision may coincide with an unexecuted reference edge.
             // lastEmittedDistance excludes consumed edges; a start offset can lose a pending one.
@@ -402,7 +406,8 @@ namespace FlipRace.Core
         void IRaceScheduledInput.AdvanceCompleted(double delta, bool wasRunning)
         {
             UpdateOutcomes();
-            Observer?.Invoke(new BotSlice { Kind = "advance", Delta = delta, Time = game.Elapsed,
+            double at = game.PartyBots != null ? game.Players[slot].TerminalTime ?? game.Elapsed : game.Elapsed;
+            Observer?.Invoke(new BotSlice { Kind = "advance", Delta = delta, Time = at,
                 Distance = game.Players[slot].Distance, Cursor = cursor });
         }
     }
