@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -13,7 +14,7 @@ using Display=FlipRace.SharedScreenCheck.Interop.Display;
 static class Program
 {
     const BindingFlags Private=BindingFlags.Instance|BindingFlags.NonPublic;
-    static int checks,pointers,configurations,partyModes;
+    static int checks,pointers,configurations,partyModes,partyBotModes,preliminaryStandaloneModes;
     static string context;
     static object Call(object ui,string name,params object[] args)=>ui.GetType().GetMethod(name,Private).Invoke(ui,args);
     static object Field(object ui,string name)=>ui.GetType().GetField(name,Private).GetValue(ui);
@@ -65,31 +66,62 @@ static class Program
         Click(ui,warning);Check(ui.FlightMenuPage==4,"authored warning row cannot open global choices");
         Back(ui);
     }
-    static void ProfileAndModes(FlipRaceGame ui)
+    static void CheckRethink(FlipRaceGame ui,string profile)
     {
-        // Start Fast deliberately; never let map selection rewrite its physics.
-        Check(((FlightSelection)Field(ui,"flightSelection")).PresetIndex==FlightSettingsStore.FastFlipPresetIndex,"initial Fast choice unchanged by catalogue");
-        CheckRejection(ui,"Fast");Click(ui,R(ui,"flightChosen"));Check(CanApply(ui),"explicit Chosen enables map");
+        Check(ui.Game.Track.Id==TracksRethink.Id&&TrackPackage.MatchesProfile(profile,ui.Game.Flight),"applied exact map and profile "+profile);
+        var hidden=ui.Game.Track.Obstacles.Where(obstacle=>obstacle.Hidden).ToArray();
+        Check(hidden.Length==6&&hidden.All(obstacle=>obstacle.HiddenWarningDuration==.35),"all six author warnings remain 0.35 seconds");
+    }
+    static void ProfileAndModes(FlipRaceGame ui,int preset)
+    {
+        bool fast=preset==FlightSettingsStore.FastFlipPresetIndex;
+        string profile=fast?"FastFlip":"Chosen";
+        Check(((FlightSelection)Field(ui,"flightSelection")).PresetIndex==preset&&CanApply(ui),"catalogue retains and admits the selected preset");
         Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.SoloMenuButtonRect);Apply(ui);
-        Check(ui.SoloEnabled&&ui.Game.Track.Id==TracksRethink.Id&&TracksRethink.IsSupported(ui.Game.Flight),"actual Chosen SOLO applies rethink");
+        Check(ui.SoloEnabled,"actual SOLO applies");CheckRethink(ui,profile);
         foreach(int count in new[]{2,3,4}) {
             Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.PartyMenuButtonRect);Click(ui,ui.PartyCountRect(count-2));Apply(ui);
-            Check(ui.PartyEnabled&&ui.Game.Players.Length==count&&ui.Game.Track.Id==TracksRethink.Id,"actual rethink Party "+count);partyModes++;
+            Check(ui.PartyEnabled&&ui.Game.HumanCount==count&&ui.Game.Players.Length==count,"actual human Party "+count);
+            CheckRethink(ui,profile);partyModes++;
         }
         Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.BotMenuButtonRect);
-        Check(CanApply(ui)&&Pending(ui)==TracksRethink.Id,"Chosen rethink BOT now supported without map substitution");Apply(ui);
-        Check(ui.BotEnabled&&ui.Game.Track.Id==TracksRethink.Id,"actual rethink Chosen BOT applies");
+        Check(CanApply(ui)&&Pending(ui)==TracksRethink.Id,"previous BOT admits exact map/profile");Apply(ui);
+        Check(ui.BotEnabled&&ui.Game.StochasticBot.ProfileId==profile,"previous BOT applies chosen profile");CheckRethink(ui,profile);
         Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,0));Check(CanApply(ui),"explicit old BOT map enables Apply");Apply(ui);Check(ui.BotEnabled,"old BOT still starts");
         Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,7));Check(Pending(ui)==TracksRethink.Id&&CanApply(ui),"BOT rethink card selects exact supported map");Back(ui);
         Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.SoloMenuButtonRect);Back(ui);Catalogue(ui);Click(ui,TrackRect(ui,7));Back(ui);
-        Click(ui,R(ui,"flightEdit"));Check(ui.FlightMenuPage==1,"explicit Edit creates equivalent Chosen custom");Click(ui,R(ui,"flightDone"));
-        Check(((FlightSelection)Field(ui,"flightSelection")).IsCustom&&CanApply(ui),"equivalent Chosen custom allowed");Apply(ui);
-        Check(ui.SoloEnabled&&ui.Game.Track.Id==TracksRethink.Id,"equivalent custom applies through real menu");
+        Click(ui,R(ui,"flightEdit"));Check(ui.FlightMenuPage==1,"explicit Edit creates equivalent custom");Click(ui,R(ui,"flightDone"));
+        Check(((FlightSelection)Field(ui,"flightSelection")).IsCustom&&CanApply(ui),"equivalent custom allowed");Apply(ui);
+        Check(ui.SoloEnabled,"equivalent custom applies in SOLO");CheckRethink(ui,profile);
         Open(ui);Click(ui,R(ui,"flightEdit"));
-        // Edit via production field-pointer path: gravity scale 0 -> 1.
+        // Gravity index 1 differs from both ready-made profiles.
         Rect gravity=(Rect)Call(ui,"FlightFieldRect",1,1);Rect cell=(Rect)Call(ui,"FlightCell",gravity,1,8);Click(ui,cell);Click(ui,R(ui,"flightDone"));
         CheckRejection(ui,"changed custom");
-        Click(ui,R(ui,"flightChosen"));Check(CanApply(ui),"explicit return to Chosen restores support");Apply(ui);
+        Check(((string)Call(ui,"FlightApplyRestriction")).Contains("Основной или Быстрый переворот"),"unsupported custom explains both supported profiles");
+        Click(ui,R(ui,fast?"flightFastFlip":"flightChosen"));Check(CanApply(ui),"explicit return to a preset restores support");Apply(ui);
+    }
+    static void FastBotModes()
+    {
+        var ui=NewUi(FlightSettingsStore.FastFlipPresetIndex);
+        Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,7));Back(ui);
+        Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.BotMenuButtonRect);Click(ui,ui.BotAlgorithmRect(true));
+        Check(CanApply(ui)&&Pending(ui)==TracksRethink.Id,"Fast preliminary standalone bot admits rethink");Apply(ui);
+        Check(ui.BotEnabled&&ui.Game.UsesPrestartBots&&ui.Game.Phase=="ready"&&!ui.Game.Players[0].Ready,"preliminary standalone bot waits for human start");
+        CheckRethink(ui,"FastFlip");preliminaryStandaloneModes++;
+
+        foreach(bool preliminary in new[]{false,true}) {
+            Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.PartyMenuButtonRect);Click(ui,ui.PartyCountRect(2));
+            Click(ui,R(ui,"flightApply"));Check(ui.FlightMenuPage==12,"company opens roster");
+            if(!ui.PartyEnabled){Click(ui,ui.PartyRosterRoleRect(1));Click(ui,ui.PartyRosterRoleRect(2));}
+            Click(ui,ui.BotAlgorithmRect(preliminary));
+            Check(CanApply(ui)&&Pending(ui)==TracksRethink.Id,"Fast company bots admit rethink");Apply(ui);
+            Check(ui.PartyEnabled&&ui.Game.UsesPrestartBots==preliminary&&ui.Game.HumanCount==2&&ui.Game.Phase=="ready","mixed company applies requested algorithm and roles");
+            Check(ui.Game.IsBotSlot(1)&&ui.Game.IsBotSlot(2)&&!ui.Game.Players[0].Ready&&!ui.Game.Players[3].Ready
+                &&ui.ReadyScreenRect(1).width==0&&ui.ReadyScreenRect(2).width==0,"mixed company keeps human readiness and bot slots");
+            if(!preliminary)
+                Check(ui.Game.GetPartyBotSettings(1)?.ProfileId=="FastFlip"&&ui.Game.GetPartyBotSettings(2)?.ProfileId=="FastFlip","both previous bots retain Fast physics");
+            CheckRethink(ui,"FastFlip");partyBotModes++;
+        }
     }
     static void WarningPersistence(FlipRaceGame ui)
     {
@@ -103,12 +135,20 @@ static class Program
             Check(ui.Game.HiddenWarningDuration==values[i],"ordinary map applies preserved duration");
         }
     }
-    static void Main()
+    static void Main(string[] args)
     {
+        context="install authored tracks";
+        string folder=Path.Combine(args[0],"Assets","StreamingAssets","Tracks");
+        string manifest=File.ReadAllText(Path.Combine(folder,"index.json"));
+        Check(TrackJson.TryReadManifest(manifest,out var index,out var error),"manifest reads: "+error);
+        var files=index.Files.ToDictionary(name=>name,name=>File.ReadAllText(Path.Combine(folder,name)),StringComparer.Ordinal);
+        Check(TrackCatalog.TryInstallBuiltIns(manifest,files,out error),"atomic JSON install: "+error);
         foreach(var size in new[]{(568,320),(1280,720)})foreach(float dpr in new[]{1f,2f,3f}) {
             context=size+" DPR"+dpr;Display.width=(int)(size.Item1*dpr);Display.height=(int)(size.Item2*dpr);Display.PixelRatio=dpr;Display.SafeAreaOverride=null;
-            var ui=NewUi(FlightSettingsStore.FastFlipPresetIndex);Layout(ui);ProfileAndModes(ui);WarningPersistence(ui);configurations++;
+            var fast=NewUi(FlightSettingsStore.FastFlipPresetIndex);Layout(fast);ProfileAndModes(fast,FlightSettingsStore.FastFlipPresetIndex);WarningPersistence(fast);
+            var chosen=NewUi(FlightSettingsStore.ChosenPresetIndex);Open(chosen);Catalogue(chosen);Click(chosen,TrackRect(chosen,7));Back(chosen);
+            ProfileAndModes(chosen,FlightSettingsStore.ChosenPresetIndex);FastBotModes();configurations++;
         }
-        Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,pointers,configurations,partyModes,limitations="Managed production menu/Pointer/Update with native environment seams. Does not establish visual fade, font fit, native browser input or physical phone usability."}));
+        Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,pointers,configurations,partyModes,partyBotModes,preliminaryStandaloneModes,limitations="Managed production JSON catalogue and menu/Pointer/Update with native environment seams. Preliminary-bot cases exercise selection and ready state. Visual fade, font fit, native browser input and physical phone usability require browser checks."}));
     }
 }

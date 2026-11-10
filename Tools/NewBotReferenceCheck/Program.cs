@@ -39,6 +39,7 @@ static class Program
     }
     static void Main(string[] args)
     {
+        if(args.FirstOrDefault()=="--rethink-fast") { RethinkFastCheck.Run(args.Skip(1).ToArray());return; }
         if(args.Contains("--compatibility")) {
             var track=TracksHidden.Get(TracksHidden.InterceptsId);var compatRows=new List<object>();int more=0;
             foreach(double launch in new[]{2440d,2470,2500,2530,2560})foreach(double response in new[]{2720d,2750,2780,2810}) {
@@ -78,7 +79,7 @@ static class Program
             }
             Console.WriteLine($"PASS {id}/{(f.FirstAction==FirstAction.Flip?"FastFlip":"Chosen")}: {reference.RewardIds.Length-1} ordinary + finish, B={reference.BonusGain:F2}");
         }
-        Check(!BotReferenceRoutes.Supports(TracksRethink.Id,FlightPresets.FastFlip),"Rethink Fast unsupported");
+        Check(BotReferenceRoutes.Supports(TracksRethink.Id,FlightPresets.FastFlip),"Rethink Fast authored reference missing");
         Check(!BotReferenceRoutes.Supports(TracksFull.LongId,FlightPresets.Chosen),"Old references retain existing path");
         Check(BotReferenceRoutes.Supports(TracksHidden.InterceptsId,new FlightSettings(FirstAction.Jump,MotionLaw.Gravity,AirRepeatLimit.Unlimited,662.5,0,350)),"Equivalent exact settings supported");
         Check(!BotReferenceRoutes.Supports(TracksHidden.InterceptsId,new FlightSettings(FirstAction.Jump,MotionLaw.Gravity,AirRepeatLimit.Unlimited,662.6,0,350)),"Modified physical profile unsupported");

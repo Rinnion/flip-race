@@ -101,7 +101,9 @@ static class Program
         Back(ui);ui.ImportTrackError("Ошибка чтения <не HTML>");Check(ui.FlightMenuPage==10&&ui.TrackImportStatus=="Ошибка чтения <не HTML>","file-read error becomes visible literal message");Back(ui);
         string authoredId=id+"-authored";ui.ImportTrackFile(LocalJson(authoredId,true));
         Check((bool)Prop(ui,"AuthoredHiddenWarning"),"warning policy from imported metadata");Click(ui,(Rect)Prop(ui,"HiddenWarningButton"));Check(ui.FlightMenuPage==4,"authored local timing disables global choices");
-        Back(ui);Click(ui,R(ui,"flightFastFlip"));Check(!CanApply(ui),"chosen-only local metadata blocks Fast");Apply(ui);Check(ReferenceEquals(game,ui.Game),"unsupported profile leaves race unchanged");
+        Back(ui);Click(ui,R(ui,"flightFastFlip"));
+        Check(!CanApply(ui)&&((string)Call(ui,"FlightApplyRestriction"))=="Для этой трассы выбери Основной профиль","chosen-only local metadata blocks Fast and points to Chosen");
+        Apply(ui);Check(ReferenceEquals(game,ui.Game)&&Pending(ui)==authoredId,"unsupported profile preserves race and selection");
         Click(ui,R(ui,"flightChosen"));Apply(ui);Check(ui.Game.Track.Id==authoredId&&ui.Game.HiddenWarningDuration==.6,"explicit supported profile preserves global timer on authored local map");
         Open(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.PartyMenuButtonRect);Click(ui,ui.PartyCountRect(2));Click(ui,R(ui,"flightApply"));
         Check(ui.FlightMenuPage==12&&Pending(ui)==authoredId,"company composition retains the selected local track");
@@ -118,12 +120,11 @@ static class Program
     }
     static void BotCompatibility()
     {
-        context="15 builtin BOT pairs";for(int index=0;index<8;index++)foreach(int preset in new[]{FlightSettingsStore.ChosenPresetIndex,FlightSettingsStore.FastFlipPresetIndex}) {
+        context="16 builtin BOT pairs";for(int index=0;index<8;index++)foreach(int preset in new[]{FlightSettingsStore.ChosenPresetIndex,FlightSettingsStore.FastFlipPresetIndex}) {
             var ui=NewUi(preset);Open(ui);Catalogue(ui);Click(ui,Slot(ui,index));Back(ui);Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.BotMenuButtonRect);
-            bool expected=index!=7||preset==FlightSettingsStore.ChosenPresetIndex;
-            Check(CanApply(ui)==expected,"metadata exact-profile BOT guard");var game=ui.Game;Apply(ui);
-            if(expected){Check(ui.BotEnabled&&ui.Game.Track.Id==RaceTracks.GetAt(index).Id,"actual JSON builtin bot factory selected exact map");botPairs++;}
-            else Check(ReferenceEquals(game,ui.Game),"Rethink Fast still rejected");
+            string id=RaceTracks.GetAt(index).Id,profile=preset==FlightSettingsStore.ChosenPresetIndex?"Chosen":"FastFlip";
+            Check(CanApply(ui)&&Pending(ui)==id,"metadata admits exact built-in pair "+id+"/"+profile);Apply(ui);
+            Check(ui.BotEnabled&&ui.Game.Track.Id==id&&ui.Game.StochasticBot.ProfileId==profile,"JSON bot factory preserves exact map and profile");botPairs++;
         }
         foreach(var id in new[]{TracksV4.OpenId,TracksV4.ChallengeId,TracksControl.ChallengeId,TracksControl.UnlimitedId,TracksTune.ChallengeId,TracksFull.PracticeId,TracksRhythm.PracticeId})
             Check(TrackCatalog.SupportsProfile(id,FlightPresets.Chosen),"legacy practice profile support retained "+id);

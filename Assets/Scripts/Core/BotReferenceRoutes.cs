@@ -29,9 +29,12 @@ namespace FlipRace.Core
         {
             if(!Supports(trackId,flight))throw new NotSupportedException("No authored bot reference for this track and exact flight profile.");
             if(trackId==TracksRethink.Id) {
+                var goals=new[]{"rethink-m2-air","rethink-m3-price-bonus","rethink-m6-landing","rethink-finish"};
+                if(TrackPackage.MatchesProfile("FastFlip",flight))
+                    return new BotReferenceRoute(new double[]{407,495,957,2035,2178,2662,2728,3784,3817,4378,4422,4917,5203,5676,5995,6787,6820,7227,7711},goals);
                 var r=new List<double>(TracksRethink.BonusRoute()){2140,7674};
                 r.RemoveAll(x=>x==6740||x==6784||x==7050||x==7094);r.Add(6695.1811187353192);r.Sort();
-                return new BotReferenceRoute(r.ToArray(),new[]{"rethink-m2-air","rethink-m3-price-bonus","rethink-m6-landing","rethink-finish"});
+                return new BotReferenceRoute(r.ToArray(),goals);
             }
             bool fast=Same(flight,FlightPresets.FastFlip),intercepts=trackId==TracksHidden.InterceptsId;
             var route=new List<double>(TracksHidden.SafeRoute(trackId,flight));var rewards=new List<string>();

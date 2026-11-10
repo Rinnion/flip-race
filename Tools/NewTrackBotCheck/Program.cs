@@ -45,7 +45,7 @@ static class Program
     }
     static void NewMapContract()
     {
-        foreach(var (id,f) in Pairs)
+        foreach(var (id,f) in Pairs.Append((TracksRethink.Id,FlightPresets.FastFlip)))
         {
             var track=Course(id);var map=StochasticTrackMap.Create(track,f);var r=BotReferenceRoutes.Get(id,f);
             Need(StochasticTrackMap.SupportsTrack(id),"new catalogue support");
@@ -59,8 +59,8 @@ static class Program
             { var s=StochasticBotSettings.CreateInitial(track,f,d,123);Near(s.CollectProbability,s.Quality,"collect q");Near(s.HitProbability,map.BonusGain/map.CollisionCostSum*(1-s.Quality),"new shared formula"); }
         }
         Need(!StochasticTrackMap.SupportsTrack("unknown")&&!StochasticTrackMap.SupportsTrack(null),"unsupported catalogue ID");
-        bool rejected=false;try{StochasticTrackMap.Create(TracksRethink.Get(),FlightPresets.FastFlip);}catch(NotSupportedException){rejected=true;}
-        Need(rejected,"Rethink Fast must remain unsupported");
+        bool rejected=false;try{StochasticTrackMap.Create(TracksRethink.Get(),FlightPresets.Moderate);}catch(NotSupportedException){rejected=true;}
+        Need(rejected,"Rethink arbitrary profile must remain unsupported");
     }
     static void SharedForecasts()
     {
@@ -107,8 +107,9 @@ static class Program
         var evaluate=typeof(StochasticBotController).GetMethod("Evaluate",BindingFlags.NonPublic|BindingFlags.Instance);
         bool Clean()
         {
-            object requests=Activator.CreateInstance(evaluate.GetParameters()[3].ParameterType);
-            object result=evaluate.Invoke(controller,new object[]{origin,Array.Empty<double>(),game.Track.Length,requests});
+            object requests=Activator.CreateInstance(evaluate.GetParameters()[4].ParameterType);
+            var workspace=new RaceSnapshot.ForecastWorkspace(origin);
+            object result=evaluate.Invoke(controller,new object[]{origin,workspace,Array.Empty<double>(),game.Track.Length,requests});
             return (bool)result.GetType().GetField("MasterClean",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(result);
         }
         Need(Clean(),"selected terminal fixture is clean");

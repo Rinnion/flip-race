@@ -15,7 +15,7 @@ Each invocation writes only its own `Verification/v542-new-track-bots-{mode}.jso
 Every mode runs the short contracts first:
 
 - Exact B/C/base/Master scalars, reward/obstacle opportunities and input doubles on all ten old track/profile combinations versus `AcceptedMapBaseline.cs`, the accepted 5.4.1 map copied before integration. Only its namespace and a Core import were changed for standalone compilation. This is a frozen test fixture, not another runtime bot.
-- New references expose only selected compatible reward IDs, retain every logical obstacle and the shared probability formula; Rethink/Fast remains unsupported.
+- References expose only selected compatible reward IDs and retain every logical obstacle and the shared probability formula. The catalogue contract includes Rethink/Fast. The saved 5.4.2 runtime matrix retains its original five pairs. [Runtime checks for Rethink/Fast](../NewBotReferenceCheck/README.md).
 - Five new track/profile pairs × five global warning settings: independent full hidden forecasts keep existing timers/solid states, warning selection, active human bodies and stable player IDs. Constant-camera elimination is disabled in the forecast projection. Current human body postponement, subsequent ordinary body clearance, source/sibling independence and one real Advance are checked. These are explicitly structural initial-state fixtures.
 - Structural terminal Master fixtures: incidental unselected failed rewards or extra completed pulses do not invalidate Master; missing/failed selected goals and incomplete aggregate/finish service do. This is an aggregate ledger guard, not proof of per-ID pulse completion for merged instant effects.
 

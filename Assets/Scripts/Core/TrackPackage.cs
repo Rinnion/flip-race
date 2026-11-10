@@ -2,7 +2,7 @@ using System;
 
 namespace FlipRace.Core
 {
-    public enum TrackProfilePolicy { Any, ChosenOnly }
+    public enum TrackProfilePolicy { Any, ChosenOnly, ChosenOrFast }
     public enum TrackWarningMode { Selected, Authored }
 
     public sealed class TrackBotReference
@@ -39,8 +39,19 @@ namespace FlipRace.Core
             this.references=(TrackBotReference[])(references??Array.Empty<TrackBotReference>()).Clone();
             ContentHash=TrackFingerprint.Compute(track,profilePolicy,warningMode);
         }
-        public bool SupportsProfile(FlightSettings flight)
-        { return flight!=null&&(ProfilePolicy==TrackProfilePolicy.Any||MatchesProfile("Chosen",flight)); }
+        public bool SupportsProfile(FlightSettings flight) => SupportsProfile(ProfilePolicy, flight);
+
+        internal static bool SupportsProfile(TrackProfilePolicy policy, FlightSettings flight)
+        {
+            if (flight == null) return false;
+            switch (policy)
+            {
+                case TrackProfilePolicy.Any: return true;
+                case TrackProfilePolicy.ChosenOnly: return MatchesProfile("Chosen", flight);
+                case TrackProfilePolicy.ChosenOrFast: return MatchesProfile("Chosen", flight) || MatchesProfile("FastFlip", flight);
+                default: return false;
+            }
+        }
         public bool TryGetReference(FlightSettings flight,out TrackBotReference reference)
         {
             reference=null;if(!SupportsProfile(flight))return false;

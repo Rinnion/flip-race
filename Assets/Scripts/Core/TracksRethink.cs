@@ -3,19 +3,11 @@ using System.Collections.Generic;
 
 namespace FlipRace.Core
 {
-    // Human-only course and offline author witnesses. No simulation reads tapes.
+    // Code-authored course and Chosen witnesses for offline checks.
     public static class TracksRethink
     {
         public const string Id = "rethink";
-        public static bool IsSupported(FlightSettings flight)
-        {
-            var chosen = FlightPresets.Chosen;
-            return flight != null && !flight.LegacyLinear && flight.FirstAction == chosen.FirstAction
-                && flight.Law == chosen.Law && flight.AirRepeats == chosen.AirRepeats
-                && flight.GravityAcceleration == chosen.GravityAcceleration && flight.FlipImpulse == chosen.FlipImpulse
-                && flight.JumpImpulse == chosen.JumpImpulse && flight.LinearSpeed == chosen.LinearSpeed
-                && flight.LinearJumpHeight == chosen.LinearJumpHeight;
-        }
+        public static bool IsSupported(FlightSettings flight) => TrackPackage.SupportsProfile(TrackProfilePolicy.ChosenOrFast, flight);
         public static Track Get()
         {
             var first=FirstThree();var obstacles=new List<Obstacle>(first.Obstacles) {
@@ -35,7 +27,7 @@ namespace FlipRace.Core
             };
             return new Track(7920,obstacles.ToArray(),new[]{new Cue(170,"Передумай"),new Cue(1350,"Эпизод 2"),new Cue(2650,"Эпизод 3"),
                 new Cue(4110,"Эпизод 4"),new Cue(5310,"Эпизод 5"),new Cue(6650,"Эпизод 6")}) {
-                Id=Id,Name="Передумай",Focus="Неожиданные продолжения для Основного управления",
+                Id=Id,Name="Передумай",Focus="Поздние сигналы меняют уже выбранное действие",
                 SafeRoute=SafeRoute(),RiskRoute=LandingRoute(),RiskZones=rewards.ToArray()
             };
         }

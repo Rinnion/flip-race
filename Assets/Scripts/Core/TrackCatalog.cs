@@ -93,7 +93,7 @@ namespace FlipRace.Core
                 // keep their existing independent menu restrictions.
                 return flight!=null&&IsCodePracticeId(id);
             }
-            return id!=null&&flight!=null&&(id!=TracksRethink.Id||TrackPackage.MatchesProfile("Chosen",flight));
+            return id!=null&&flight!=null&&(id!=TracksRethink.Id||TracksRethink.IsSupported(flight));
         }
         public static bool UsesAuthoredWarnings(string id)
         {
@@ -111,7 +111,7 @@ namespace FlipRace.Core
         public static bool SupportsBot(string id,FlightSettings flight)
         {
             if(!HasAttemptedInstall)return IsLegacyFullId(id)
-                &&(TrackPackage.MatchesProfile("Chosen",flight)||(id!=TracksRethink.Id&&TrackPackage.MatchesProfile("FastFlip",flight)));
+                &&(TrackPackage.MatchesProfile("Chosen",flight)||TrackPackage.MatchesProfile("FastFlip",flight));
             return TryGet(id,out var e)&&(e.Origin==TrackOrigin.BuiltIn||e.HasProof(flight))&&e.Package.TryGetReference(flight,out var reference)
                 &&reference.TrackHash==e.Package.ContentHash
                 &&TrackFingerprint.Compute(e.Package.Track,e.Package.ProfilePolicy,e.Package.WarningMode)==e.Package.ContentHash;

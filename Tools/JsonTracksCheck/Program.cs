@@ -195,10 +195,14 @@ static class Program
             for(int i=0;i<entries.Length;i++)
             {
                 var e=entries[i];Need(e.Origin==TrackOrigin.BuiltIn,"builtin origin");
-                Exact(expected[i],JsonSerializer.SerializeToElement(BaselineCapture.Geometry(e.Package.Track),Json),"track["+i+"]");
-                bool chosenOnly=expected[i].GetProperty("profiles").GetArrayLength()==1;
-                Need(e.Package.ProfilePolicy==(chosenOnly?TrackProfilePolicy.ChosenOnly:TrackProfilePolicy.Any),"profile metadata drift");
-                Need(e.Package.WarningMode==(chosenOnly?TrackWarningMode.Authored:TrackWarningMode.Selected),"warning metadata drift");
+                var geometry=JsonSerializer.SerializeToNode(BaselineCapture.Geometry(e.Package.Track),Json);
+                bool rethink=e.Package.Track.Id==TracksRethink.Id;
+                // The frozen migration fixture compares geometry and legacy tapes.
+                // The only intentional text change is the current Rethink focus.
+                if(rethink)geometry["Focus"]=expected[i].GetProperty("Focus").GetString();
+                Exact(expected[i],JsonSerializer.SerializeToElement(geometry,Json),"track["+i+"]");
+                Need(e.Package.ProfilePolicy==(rethink?TrackProfilePolicy.ChosenOrFast:TrackProfilePolicy.Any),"profile metadata drift");
+                Need(e.Package.WarningMode==(rethink?TrackWarningMode.Authored:TrackWarningMode.Selected),"warning metadata drift");
                 Need(TrackJson.TryRead(TrackJson.Write(e.Package),out var roundtrip,out var reason)&&roundtrip.ContentHash==e.Package.ContentHash,"codec roundtrip "+reason);
                 Need(RaceTracks.Get(e.Package.Track.Id)==e.Package.Track&&RaceTracks.GetAt(i)==e.Package.Track,"runtime lookup bypassed JSON");
                 foreach(var camera in new[]{PartyCamera.Constant,PartyCamera.Lagger}){var race=RaceSimulation.CreateSolo(e.Package.Track,FlightPresets.Chosen,camera,-288.8,1520);Near(race.PartyCameraSpeed,e.Package.Track.Length/36,"camera speed preserved");}

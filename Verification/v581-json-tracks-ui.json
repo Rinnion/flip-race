@@ -1,0 +1,320 @@
+{
+  "status": "PASS",
+  "checks": 140,
+  "pointers": 171,
+  "botPairs": 16,
+  "entries": 12,
+  "limitations": "Actual menu/Pointer/Update/import callbacks with established native environment seams. Loader pre-fetch/error gate is managed; real URL fetch, native file chooser, rendering and phone usability require browser verification. Retry uses explicit synthetic terminal fixture.",
+  "bridge": {
+    "status": "PASS",
+    "checks": 12,
+    "scope": "Production HTML template in a bounded DOM/file-reader environment. Does not replace actual native browser file chooser verification."
+  },
+  "sourceSnapshot": [
+    {
+      "path": "Assets/Scripts/Core/BotPlanCatalog.cs",
+      "sha256": "3F730102E19C43FBA6849799C0D34D875C45A531F40541F49C516A38F8ECB64C"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotPlanShuffle.cs",
+      "sha256": "A57F3728612C935079EA8B011E58EC17826F05300331FBA5B70180F9CEEE3A42"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotRaceController.cs",
+      "sha256": "A1DBC7D95B228EB341ADDDE6C035E2876E32B3C0AFE2FF2E68836015FAC58E29"
+    },
+    {
+      "path": "Assets/Scripts/Core/BotReferenceRoutes.cs",
+      "sha256": "5FB8437A6151C757CAE6835B33D63057DD1EB5E7560BC6E4F2A220AC07B4FD84"
+    },
+    {
+      "path": "Assets/Scripts/Core/ContinuousMotion.cs",
+      "sha256": "97D8A1D60F4FDCF83F83F00124E41C9621698D45357E371E49A8A33F43E22583"
+    },
+    {
+      "path": "Assets/Scripts/Core/FinishTargetGeometry.cs",
+      "sha256": "0A3F07F5FF6C7D9B720448989C1A821526A56D623AFDCFD1839CF8DAA8CE1285"
+    },
+    {
+      "path": "Assets/Scripts/Core/FlightSettings.cs",
+      "sha256": "8499B6DC0D17A86A9CE02CE3F56FA4BD78D4F66CA1CB61E85B052C6BE5C9FB5E"
+    },
+    {
+      "path": "Assets/Scripts/Core/HiddenObstacles.cs",
+      "sha256": "F9AE3142E1BA14C8159972CBF1E19840D8C4DF248B4CDC544272BB3DA16393BE"
+    },
+    {
+      "path": "Assets/Scripts/Core/MotionProfiles.cs",
+      "sha256": "719CEE944B50ED87AA2BEFADD3266382486195BD40FC00AF9313FE58D6EBC417"
+    },
+    {
+      "path": "Assets/Scripts/Core/ObstacleGeometry.cs",
+      "sha256": "BB1A5F4F79981CCDF3DABC4E9DB0511C3F9D9247B9E712ACC3FABB717653B92B"
+    },
+    {
+      "path": "Assets/Scripts/Core/PreparedReferenceProof.cs",
+      "sha256": "FF2302E4625E8026F2BB4434C166F06D482213BF2B5EB6EF4B18BCF42116A056"
+    },
+    {
+      "path": "Assets/Scripts/Core/PrestartBotConfig.cs",
+      "sha256": "A7E2F3F0FE21FFF66A8296854F33BC14A0167FC00C5A8688C2C933A2FB4A435C"
+    },
+    {
+      "path": "Assets/Scripts/Core/PrestartBotPreparation.cs",
+      "sha256": "4920FE7708C78EA881C8CAC86088C015C11969FF593C6706DB6C2A471EBF0969"
+    },
+    {
+      "path": "Assets/Scripts/Core/PrestartBotSearch.cs",
+      "sha256": "496552E7A5EB32A56F31DDC28979C16E53BE4D912CC08FAFB613D13E068293D2"
+    },
+    {
+      "path": "Assets/Scripts/Core/PrestartBotTape.cs",
+      "sha256": "CEF080D58BBCDDC60F0052239AFDEE41CA11722C49576BD466E60672FBFB9EA1"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceRunner.cs",
+      "sha256": "D3447627F7CDCF6C630666DB7A143068B98C48014B22AD80D6A004880118FB19"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSimulation.cs",
+      "sha256": "731D1A06D8624AA6EFED29596F55A8571961FD1B56C7BF7F93C15BC75E165DC4"
+    },
+    {
+      "path": "Assets/Scripts/Core/RaceSnapshot.cs",
+      "sha256": "C844BF9B9409B06364CA4CC7CD9C9EF56C2139EAA94E2F504889DC30932C74BE"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticBotController.cs",
+      "sha256": "0947D5D1B651A443C293606F3D1DBF318BA1FDF5BC529F0693A60D8674091D14"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticBotSettings.cs",
+      "sha256": "A7326F28A070DF08F44E5A4F83A854A25007B277368CBC779F2808BA7FEEC1F0"
+    },
+    {
+      "path": "Assets/Scripts/Core/StochasticTrackMap.cs",
+      "sha256": "66A0EB0FEDE4BD3489CE10EA493FFDCC3D2C27BECD89398EFC3802321515BADB"
+    },
+    {
+      "path": "Assets/Scripts/Core/SurfaceRunMotion.cs",
+      "sha256": "6C36B6F5BBB561C3D6CC32DE19EC2EA332199FDBCC3470FB53E3AEDE401442B2"
+    },
+    {
+      "path": "Assets/Scripts/Core/SurfaceRunSettings.cs",
+      "sha256": "62A0627DFBE519AC4D07CDC23FD9CF28008C584932C0E363E69497F2296302CE"
+    },
+    {
+      "path": "Assets/Scripts/Core/TrackCatalog.cs",
+      "sha256": "62627706AD0BB2BD9247EB9ABA2DABC2DF9F7F1CFF1D9F8AB7FD29192E42FEF1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TrackFingerprint.cs",
+      "sha256": "E38E0C2408CA6157F762A175EE29257B2774C209A33D164E8BDC7F9940C09685"
+    },
+    {
+      "path": "Assets/Scripts/Core/TrackJson.cs",
+      "sha256": "6915E116566AAC2D398830CF2FEAD47DF0D489A21244BAC5460BB68725682186"
+    },
+    {
+      "path": "Assets/Scripts/Core/TrackPackage.cs",
+      "sha256": "24CBF1C9297A48FE526E9F7BDA96F44E8254853393C7BC18EAB5D22E5C3B7EFD"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksControl.cs",
+      "sha256": "588BE383B503F40FFC8083450237296AD1A6EA0954488684712FD5A3F74449D4"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksFull.cs",
+      "sha256": "B412A88CD4F9BC17C8B41418EF2AA09892C36A94DD9A2F847F476B7BDA4F7C79"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksHidden.cs",
+      "sha256": "A6123CF0FB0638C268808795F92CDC02041CEB792449B31C2CCAB5107EDD133E"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixed.cs",
+      "sha256": "496BFD134FDB69713EC339FAB3938F5A94DBE3424F96BE60AA571CEAF6B53156"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksMixedStage.cs",
+      "sha256": "C808CD0898D5180597DCCD8CB20A7C2F893FAD037B0043A0018061114AFAADD0"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRethink.cs",
+      "sha256": "7DE4F08F8DE1F21DC3F64160336136CBAF6312B022BCACF077357B926430E448"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythm.cs",
+      "sha256": "BD2D0EFFF4B5DCC85FC700C3601A79B3EEE8056EEF2CB3D12324F4710226F318"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmFull.cs",
+      "sha256": "70A08021E5EC047E18E6DB7DDC612532F95F45A175098D57D80137DE9050DDC6"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksRhythmNegatives.cs",
+      "sha256": "5435C14BC8915039FBEBBA1FAC9FDF767ADF508B6E25A95A453CB9748B1DE0A2"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksTune.cs",
+      "sha256": "86932F9E38CCEABACB74DA14D1CB44DC5CB5D139A385B53BD8E921FECED38628"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV3.cs",
+      "sha256": "9DBB5E53CF74DD93A9BCBCBFDACBFF9C469040F2E5F8B16A14C346D1FF4F8CB1"
+    },
+    {
+      "path": "Assets/Scripts/Core/TracksV4.cs",
+      "sha256": "DA3242D2D9ADEE589CF9CF52C4842699D0693F8DFD2D7FECCB4CC06015888DDB"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/BotsPresentation.cs",
+      "sha256": "D89D90508CBD49BF031CBF6704268FE2AB4073EAF6B57B6755E4EB43F4FC15BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CharacterRoster.cs",
+      "sha256": "B637638798B8250940530B232F3B015D7CCDA968637A3F61B6EAF13C8B635A28"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/CorridorArtwork.cs",
+      "sha256": "D6D6C3AD846645725DB4E2703113DE0F108764352E6B897F767FECB7470A704B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsMenu.cs",
+      "sha256": "935AE7A1A31CA159BD0B4FCBBD945B1DFFA391260C29EB227E6D5B076D44FA4B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlightSettingsStore.cs",
+      "sha256": "55DA2F7807B75DD94360CC40018F7E2C4531A841E62AC429767619A40A2982BE"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/FlipRaceGame.cs",
+      "sha256": "644AC9FB317BA37E92F08D334A4E45F79C1EC0677CEA2F2765A70811EF28870C"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/HiddenObstaclePresentation.cs",
+      "sha256": "66E4C2A721FD6D320AF1E0664FE5C838A0E93F69DFD45FB78A81D32DE3794DA2"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/JsonTracksPresentation.cs",
+      "sha256": "06FA47DE19123F54AA47BA9DB1B5721029877FC6E2B5F56185318C7764C5986B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/LargeRockArtwork.cs",
+      "sha256": "96AFA3C78EF58C4AA8EC9E708F8C2C8EB88FAEC0D2EA4A53E25CBF22B642AAE6"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/MascotArtwork.cs",
+      "sha256": "2880777EBC2A662EDB1BE6CC25C74B54EC81D864FA7846297EDD839E7B1E347E"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PartyPresentation.cs",
+      "sha256": "4AC28498B3A55A2CE2583C9C9506495D6152869F11AE3648872E559EF748E5C7"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PartyRosterMenu.cs",
+      "sha256": "FC77C3F6815DE61AF4915B7F4264BE516D3351422FC352E108B23CE14C75F001"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PawControls.cs",
+      "sha256": "BD1CC4F7D4AD754F2FFB7BF8296A9C961728C18B0257B9CB953A59D4F13B1955"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PrestartBotCache.cs",
+      "sha256": "B763198D81B7487D7A0E603C323973E1A044D790A96A5E0AAED706AD9F9A637B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/PrestartBotsPresentation.cs",
+      "sha256": "39411C09F0B22C8CB6C6E6AFDCB1442B7EB30C8A557DB163EABAC4974972BA03"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SessionLayout.cs",
+      "sha256": "C82EDA4DDEF0D0230098AB3E7B5BFC2829BE587F6E5A39A624D039B3F71CA178"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldArtwork.cs",
+      "sha256": "A93F065F3CB4CF107BD410B1735244C9869768DFC6965FC770D68500738917B3"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldPresentation.cs",
+      "sha256": "997CD7F80B7A6A3208102E8AD6BB52685305FD1A3D58C0BB88F0E00914BC9AC5"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SharedFieldView.cs",
+      "sha256": "EAD37C536BD8C40259E84556D0C7BD639AD20BE58951A2FDB59A8CF66FD32509"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SoloPresentation.cs",
+      "sha256": "6ED730374FC458C313AD518FEF7E8CDFE8A27FF44CA8360DAD880043A2791771"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostPresentation.cs",
+      "sha256": "00725F8E1BAD0197635C0CB861D62BCF56FDCC9A31D7462F7284C047CDFB079B"
+    },
+    {
+      "path": "Assets/Scripts/Presentation/SplitGhostView.cs",
+      "sha256": "B0A60C80434B86C7A6C7B809F5C3182663C92F829A33AF9B30F458ED395B560E"
+    },
+    {
+      "path": "Assets/Scripts/Web/FlipDiagnostics.cs",
+      "sha256": "F77A002A90FBA238222C83BE35FBF39597AB859D2CE89649F98E100ED986E00B"
+    },
+    {
+      "path": "Assets/Scripts/Web/TrackFileBridge.cs",
+      "sha256": "37816310837C5E29A4DE2E6B1F60754487E59E644ED511C6F1B6EE2EF4AE5E3B"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/full-flow.track.json",
+      "sha256": "68A2C4ADE5AA78DC0F0AA6CC4575B91E11D879E8BC911F34730940D8D1BB5D2C"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/full-long.track.json",
+      "sha256": "38C5EFB624CD3ED176812583A69DD5CA92BCCFD83DA1AE69C1616187CEB5E441"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/full-short.track.json",
+      "sha256": "45435AA8000EE55E348B396031EB9604B303D3481E4538CC7E6CA104117B4D33"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/hidden-intercepts.track.json",
+      "sha256": "EFFE313BAE518C3C61346150808EFEE523F91E2DA0E83E9A7717D3C368AFF33C"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/hidden-manifestation.track.json",
+      "sha256": "7EA257B9161A1B8B07380F890DD37C7839F516FFEFDB3F2AE0A9BE6C2B97106F"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/index.json",
+      "sha256": "0F8697F7CA54095AE5CF18AFD340A78C6AF5C0A222136486AC7A00D4804CB8F6"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/mixed-tricks.track.json",
+      "sha256": "8F5C1BB3DF7E803B074D40A7090BE975FB18E6CC88337824E55F22D84C5584E4"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/rethink.track.json",
+      "sha256": "6C7BBD1FA20FC20169554BA7D63D6D2B8A4FEDC9F21793C7C5C035CC823AD119"
+    },
+    {
+      "path": "Assets/StreamingAssets/Tracks/rhythm-cascade.track.json",
+      "sha256": "D9CBFFB5C7A6C5269A112C118AF0C5E3BE297BF523B40FAAD6AF6B9140063AAD"
+    },
+    {
+      "path": "Assets/WebGLTemplates/Flip/index.html",
+      "sha256": "DAD013F2C090C3EF435B91F55C37AE34997388C742549EDC3A851E39737B8333"
+    },
+    {
+      "path": "Assets/Plugins/WebGL/TrackFiles.jslib",
+      "sha256": "308E8B5119F0ADC8E74F14D88FCA80777BC693F5EBE791E8F474ED014C3AAB97"
+    },
+    {
+      "path": "Packages/manifest.json",
+      "sha256": "C8DB08BA86727C0DC0E404B86FAF92B8E56050D404770DEA85C210B2A01C1C2D"
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "sha256": "1F66371119262A45B5EF1E0EDE78D482FEFA069BE417B125F3A12F1D1AC311B5"
+    }
+  ],
+  "checkedAt": "2026-11-10T19:56:34.5211107Z"
+}

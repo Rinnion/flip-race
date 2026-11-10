@@ -37,11 +37,43 @@
         "rethink-m6-landing",
         "rethink-finish"
       ],
-      "trackHash": "e3e06c98215414786afd166e1cce2f463546a52de2d80545032c00c7cd10eb40"
+      "trackHash": "73c0b4f83ef02450fbf37f25bd95ab2eaa3c17725ef1873ed2af3e9be1ec3241"
+    },
+    {
+      "bonusGain": 1.15,
+      "inputs": [
+        407,
+        495,
+        957,
+        2035,
+        2178,
+        2662,
+        2728,
+        3784,
+        3817,
+        4378,
+        4422,
+        4917,
+        5203,
+        5676,
+        5995,
+        6787,
+        6820,
+        7227,
+        7711
+      ],
+      "profileId": "FastFlip",
+      "rewardIds": [
+        "rethink-m2-air",
+        "rethink-m3-price-bonus",
+        "rethink-m6-landing",
+        "rethink-finish"
+      ],
+      "trackHash": "73c0b4f83ef02450fbf37f25bd95ab2eaa3c17725ef1873ed2af3e9be1ec3241"
     }
   ],
   "physicsVersion": 1,
-  "profilePolicy": "chosen-only",
+  "profilePolicy": "chosen-or-fast",
   "schemaVersion": 1,
   "track": {
     "cues": [
@@ -70,7 +102,7 @@
         "x": 6650
       }
     ],
-    "focus": "Неожиданные продолжения для Основного управления",
+    "focus": "Поздние сигналы меняют уже выбранное действие",
     "id": "rethink",
     "length": 7920,
     "name": "Передумай",

@@ -12,7 +12,7 @@ using Display=FlipRace.SharedScreenCheck.Interop.Display;
 static class Program
 {
     const BindingFlags Private=BindingFlags.Instance|BindingFlags.NonPublic;
-    static int checks,pointers,newTrackSetups,oldTrackSetups,retries,rejections;
+    static int checks,pointers,newTrackSetups,rethinkFastSetups,oldTrackSetups,retries,rejections;
     static string context;
     static object Call(object ui,string name,params object[] args)=>ui.GetType().GetMethod(name,Private).Invoke(ui,args);
     static object Field(object ui,string name)=>ui.GetType().GetField(name,Private).GetValue(ui);
@@ -68,23 +68,24 @@ static class Program
         Check(ui.Game.HiddenWarningDuration==delays[warningIndex]&&ui.Game.Elapsed==0&&ui.Game.Phase=="countdown","retry retains global timer before Update");
         Check(ui.BotAttemptSeed!=seed&&ui.BotAttemptSequenceIndex==sequence+2&&ui.BotPlanningCalls==0,"retry creates one fresh seed and empty controller");
         Check(ui.Game.Track.Id==RaceTracks.GetAt(track).Id&&ui.Game.BotDifficulty==(BotDifficulty)level&&ui.Game.PartyCamera==camera,"retry preserves track/level/camera");retries++;
+        Check(ui.Game.StochasticBot.ProfileId==(preset==FlightSettingsStore.ChosenPresetIndex?"Chosen":"FastFlip"),"retry preserves exact profile");
         ui.Game.Phase="ready";Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,track==7?5:7));
         Check((double)Field(ui,"pendingHiddenWarning")==delays[warningIndex],"map change keeps pending global duration");
         if(track==7){Click(ui,(Rect)Prop(ui,"HiddenWarningButton"));Check(ui.FlightMenuPage==9,"leaving authored map restores timer choices");}
+        if(track==7&&preset==FlightSettingsStore.FastFlipPresetIndex)rethinkFastSetups++;
         newTrackSetups++;
     }
-    static void RejectionsAndHumanCustom()
+    static void RejectionsAndHumanCustom(int preset)
     {
-        var ui=NewUi(FlightSettingsStore.FastFlipPresetIndex);Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,7));Back(ui);
+        var ui=NewUi(preset);Open(ui);Catalogue(ui);Click(ui,TrackRect(ui,7));Back(ui);
         Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.BotMenuButtonRect);var previous=ui.Game;long sequence=ui.BotAttemptSequenceIndex;
-        Check(Pending(ui)==TracksRethink.Id&&!CanApply(ui),"rethink Fast selected but explicitly unsupported");Apply(ui);
-        Check(ReferenceEquals(previous,ui.Game)&&ui.BotAttemptSequenceIndex==sequence,"rethink Fast rejection creates no game or seed");rejections++;
-        Back(ui);Click(ui,R(ui,"flightChosen"));Check(CanApply(ui),"explicit Chosen resolves profile restriction");
+        Check(Pending(ui)==TracksRethink.Id&&CanApply(ui),"exact rethink preset supports BOT");Back(ui);
         Click(ui,R(ui,"flightEdit"));Click(ui,R(ui,"flightDone"));
         Check(((FlightSelection)Field(ui,"flightSelection")).IsCustom&&!CanApply(ui),"equivalent custom remains unsupported in BOT");Apply(ui);
-        Check(ReferenceEquals(previous,ui.Game)&&ui.BotAttemptSequenceIndex==sequence,"custom BOT rejection preserves game and seed");rejections++;
-        Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.SoloMenuButtonRect);Check(CanApply(ui),"equivalent Chosen custom still allowed in human SOLO");Apply(ui);
-        Check(ui.SoloEnabled&&ui.Game.Track.Id==TracksRethink.Id,"human equivalent custom applies");
+        Check(ReferenceEquals(previous,ui.Game)&&Pending(ui)==TracksRethink.Id&&ui.BotAttemptSequenceIndex==sequence,"custom BOT rejection preserves game, selected map and seed");rejections++;
+        Click(ui,ui.ViewMenuButtonRect);Click(ui,ui.SoloMenuButtonRect);Check(CanApply(ui),"equivalent custom allowed in human SOLO");Apply(ui);
+        string profile=preset==FlightSettingsStore.ChosenPresetIndex?"Chosen":"FastFlip";
+        Check(ui.SoloEnabled&&ui.Game.Track.Id==TracksRethink.Id&&TrackPackage.MatchesProfile(profile,ui.Game.Flight),"human equivalent custom applies with exact physics");
         Open(ui);Click(ui,ui.ViewMenuButtonRect);int page=ui.FlightMenuPage;Click(ui,ui.BotMenuButtonRect);
         Check(ui.FlightMenuPage==page&&ui.SoloEnabled,"custom cannot enter BOT through mode button");rejections++;
     }
@@ -100,15 +101,16 @@ static class Program
         foreach(var size in new[]{(568,320),(1280,720)})foreach(float dpr in new[]{1f,2f,3f}) {
             Display.width=(int)(size.Item1*dpr);Display.height=(int)(size.Item2*dpr);Display.PixelRatio=dpr;Display.SafeAreaOverride=null;
             foreach(int track in new[]{5,6,7})foreach(int preset in new[]{FlightSettingsStore.ChosenPresetIndex,FlightSettingsStore.FastFlipPresetIndex}) {
-                if(track==7&&preset==FlightSettingsStore.FastFlipPresetIndex)continue;
                 foreach(int warning in Enumerable.Range(0,5))foreach(int level in Enumerable.Range(0,5)) {
                     context=size+" DPR"+dpr+" track"+track+" preset"+preset+" warning"+warning+" level"+level;
                     Setup(track,preset,level,warning,(PartyCamera)(level%2));
                 }
             }
-            context=size+" DPR"+dpr+" rejections";RejectionsAndHumanCustom();
+            foreach(int preset in new[]{FlightSettingsStore.ChosenPresetIndex,FlightSettingsStore.FastFlipPresetIndex}) {
+                context=size+" DPR"+dpr+" rejections preset"+preset;RejectionsAndHumanCustom(preset);
+            }
         }
         context="old map compatibility";OldMaps();
-        Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,pointers,newTrackSetups,oldTrackSetups,retries,rejections,limitations="Production menu/Pointer/Update through established native environment seams. Synthetic terminal fixtures exercise result Retry, not full-track bot reachability. No visual, native browser or physical phone claim."}));
+        Console.WriteLine(JsonSerializer.Serialize(new{status="PASS",checks,pointers,newTrackSetups,rethinkFastSetups,oldTrackSetups,retries,rejections,limitations="Production menu/Pointer/Update with the legacy C# catalogue and established native environment seams. Synthetic terminal fixtures exercise result Retry, not full-track bot reachability. No visual, native browser or physical phone claim."}));
     }
 }

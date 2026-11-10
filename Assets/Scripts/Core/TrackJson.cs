@@ -46,7 +46,7 @@ namespace FlipRace.Core
                 references.Add(Fields("profileId",r.ProfileId,"trackHash",r.TrackHash,"inputs",r.Inputs,"rewardIds",r.RewardIds,"bonusGain",r.BonusGain));
             }
             var root=Fields("schemaVersion",SchemaVersion,"physicsVersion",PhysicsVersion,
-                "profilePolicy",package.ProfilePolicy==TrackProfilePolicy.Any?"any":"chosen-only",
+                "profilePolicy",ProfilePolicyName(package.ProfilePolicy),
                 "warningMode",package.WarningMode==TrackWarningMode.Selected?"selected":"authored",
                 "track",TrackData(package.Track),"botReferences",references);
             // Export uses exactly the same semantic validator as runtime import.
@@ -58,13 +58,23 @@ namespace FlipRace.Core
             string text=Print(Fields("schemaVersion",SchemaVersion,"physicsVersion",PhysicsVersion,"files",manifest.Files),pretty);
             if(!TryReadManifest(text,out var ignored,out var error))throw new ArgumentException(error,nameof(manifest));return text;
         }
+        public static string ProfilePolicyName(TrackProfilePolicy policy)
+        {
+            switch (policy)
+            {
+                case TrackProfilePolicy.Any: return "any";
+                case TrackProfilePolicy.ChosenOnly: return "chosen-only";
+                case TrackProfilePolicy.ChosenOrFast: return "chosen-or-fast";
+                default: throw new ArgumentOutOfRangeException(nameof(policy));
+            }
+        }
         static TrackPackage ReadPackage(Dictionary<string,object> root)
         {
             Versions(root);
             string policyText=String(root,"profilePolicy","$",false,"any"),warningText=String(root,"warningMode","$",false,"selected");
-            Require(policyText=="any"||policyText=="chosen-only","$.profilePolicy","Неизвестное ограничение управления.");
+            Require(policyText=="any"||policyText=="chosen-only"||policyText=="chosen-or-fast","$.profilePolicy","Неизвестное ограничение управления.");
             Require(warningText=="selected"||warningText=="authored","$.warningMode","Неизвестный режим предупреждения.");
-            var policy=policyText=="any"?TrackProfilePolicy.Any:TrackProfilePolicy.ChosenOnly;
+            var policy=policyText=="any"?TrackProfilePolicy.Any:policyText=="chosen-only"?TrackProfilePolicy.ChosenOnly:TrackProfilePolicy.ChosenOrFast;
             var warning=warningText=="selected"?TrackWarningMode.Selected:TrackWarningMode.Authored;
             var data=Object(Required(root,"track","$"),"$.track");
             string id=Id(data,"id","$.track"),name=String(data,"name","$.track",true);
@@ -136,7 +146,8 @@ namespace FlipRace.Core
             for(int i=0;i<referenceData.Count;i++){
                 string p="$.botReferences["+i+"]";var d=Object(referenceData[i],p);string profile=String(d,"profileId",p,true),trackHash=String(d,"trackHash",p,true);
                 Require(profile=="Chosen"||profile=="FastFlip",p+".profileId","Неизвестный профиль эталона.");Require(profiles.Add(profile),p+".profileId","Повтор профиля эталона.");
-                Require(policy!=TrackProfilePolicy.ChosenOnly||profile=="Chosen",p+".profileId","Профиль запрещён ограничением трассы.");
+                var flight=profile=="Chosen"?FlightPresets.Chosen:FlightPresets.FastFlip;
+                Require(TrackPackage.SupportsProfile(policy,flight),p+".profileId","Профиль запрещён ограничением трассы.");
                 Require(string.Equals(hash,trackHash,StringComparison.OrdinalIgnoreCase),p+".trackHash","Эталон устарел: хеш не совпадает с содержимым трассы.");
                 var inputs=Schedule(d,"inputs",p,length,true);Require(inputs.Length>0,p+".inputs","Эталон не содержит нажатий.");
                 var rewards=Strings(Required(d,"rewardIds",p),p+".rewardIds",4096);var selected=new HashSet<string>(StringComparer.Ordinal);int ordinary=0,finish=0;

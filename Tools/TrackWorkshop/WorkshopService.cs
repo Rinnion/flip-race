@@ -72,7 +72,7 @@ public sealed class WorkshopService
         var parsed = Read(request.Json); var p = parsed.Package; var t = p.Track;
         return new {
             id=t.Id, name=t.Name, length=t.Length, corridorHeight=RaceConfig.CorridorHeight, playerRadius=RaceConfig.PlayerRadius,
-            profilePolicy=p.ProfilePolicy==TrackProfilePolicy.Any?"any":"chosen-only",
+            profilePolicy=TrackJson.ProfilePolicyName(p.ProfilePolicy),
             warningMode=p.WarningMode==TrackWarningMode.Selected?"selected":"authored", contentHash=p.ContentHash,
             gameValid=!parsed.Stale, staleReferences=parsed.Stale, referenceError=parsed.ReferenceError,
             warnings=parsed.Stale?new[]{"Эталоны не прошли проверку. Предпросмотр выполняется без botReferences; сохраните JSON без них."}:Array.Empty<string>(),

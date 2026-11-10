@@ -12,12 +12,13 @@ static class Program
         while(!proof.Complete&&slices++<200000)proof.Step(32);
         Need(proof.Complete,"proof did not stop");return proof;
     }
-    static TrackPackage Changed(TrackPackage p,string id,bool forged=false)
+    static TrackPackage Changed(TrackPackage p,string id,bool forged=false,TrackProfilePolicy? policy=null)
     {
         TrackJson.TryRead(TrackJson.Write(p),out var clone,out _);
         clone.Track.Id=id;clone.Track.Name="Prepared import check";clone.Track.Obstacles[0].X+=.1;clone.Track.Length+=220;
-        string hash=TrackFingerprint.Compute(clone.Track,clone.ProfilePolicy,clone.WarningMode);
-        return new TrackPackage(clone.Track,clone.ProfilePolicy,clone.WarningMode,p.References.Select(r=>
+        var selectedPolicy=policy??clone.ProfilePolicy;
+        string hash=TrackFingerprint.Compute(clone.Track,selectedPolicy,clone.WarningMode);
+        return new TrackPackage(clone.Track,selectedPolicy,clone.WarningMode,p.References.Where(r=>selectedPolicy!=TrackProfilePolicy.ChosenOnly||r.ProfileId=="Chosen").Select(r=>
             new TrackBotReference(r.ProfileId,hash,forged?new[]{1.0}:r.Inputs,r.RewardIds,r.BonusGain)).ToArray());
     }
     static int Main()
@@ -29,7 +30,7 @@ static class Program
             var files=index.Files.ToDictionary(f=>f,f=>File.ReadAllText(folder+f));
             Need(TrackCatalog.TryInstallBuiltIns(manifest,files,out var error),error);
             var built=TrackCatalog.Entries.First(e=>e.Package.Track.Id==TracksMixed.Id).Package;
-            Need(TrackCatalog.Entries.Sum(e=>e.Package.References.Length)==15,"builtin combinations changed");
+            Need(TrackCatalog.Entries.Sum(e=>e.Package.References.Length)==16,"builtin combinations changed");
             var fresh=Changed(built,"prepared-own-new-geometry");
             Need(TrackCatalog.TryImportLocal(TrackJson.Write(fresh),out var entry,out error),error);
             foreach(var flight in new[]{FlightPresets.Chosen,FlightPresets.FastFlip})
@@ -59,11 +60,11 @@ static class Program
             var hidden=Changed(TrackCatalog.Entries.First(e=>e.Package.Track.Id==TracksHidden.InterceptsId).Package,"hidden-prepared-check");
             var hp=new PreparedReferenceProof(hidden,FlightPresets.Chosen);Need(hp.RequiredRuns==10,"selected hidden configs not all five");
             while(!hp.Complete)hp.Step(32);Need(hp.Success,"selected-hidden: "+hp.Failure);
-            var restricted=Changed(TrackCatalog.Entries.First(e=>e.Package.Track.Id==TracksRethink.Id).Package,"restricted-prepared-check");
+            var restricted=Changed(TrackCatalog.Entries.First(e=>e.Package.Track.Id==TracksRethink.Id).Package,"restricted-prepared-check",policy:TrackProfilePolicy.ChosenOnly);
             Need(!Run(restricted,FlightPresets.FastFlip).Success,"restricted profile admitted");
             var authored=Run(restricted,FlightPresets.Chosen);Need(authored.Success&&authored.RequiredRuns==2,"authored: "+authored.Failure);
-            Need(TrackCatalog.Entries.Where(e=>e.Origin==TrackOrigin.BuiltIn).Sum(e=>e.Package.References.Length)==15,"builtins mutated");
-            Console.WriteLine("PASS forged/stale/mutation/restricted/human-only; selected-hidden 10 runs, authored 2; 15 builtin references preserved");
+            Need(TrackCatalog.Entries.Where(e=>e.Origin==TrackOrigin.BuiltIn).Sum(e=>e.Package.References.Length)==16,"builtins mutated");
+            Console.WriteLine("PASS forged/stale/mutation/restricted/human-only; selected-hidden 10 runs, authored 2; 16 builtin references preserved");
             return 0;
         }
         catch(Exception error) { Console.Error.WriteLine(error);return 1; }

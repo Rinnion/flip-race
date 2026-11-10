@@ -513,7 +513,10 @@ namespace FlipRace.Presentation
         }
         string FlightApplyRestriction()
         {
-            if (!TrackProfileSupported) return "Для этой трассы выбери Основной профиль";
+            if (!TrackProfileSupported)
+                return TrackCatalog.SupportsProfile(pendingFlightTrack, FlightPresets.FastFlip)
+                    ? "Для этой трассы выбери Основной или Быстрый переворот"
+                    : "Для этой трассы выбери Основной профиль";
             if (RequiresBotSupport && flightSelection.IsCustom) return "Боты: выбери готовый профиль";
             if (RequiresBotSupport && pendingPrestartBots && !BotTrackSupported) return "Предварительному боту нужна полная трасса из каталога.";
             if (PendingPartyHasBots && (!RaceTracks.IsFull(pendingFlightTrack) || !BotTrackSupported))

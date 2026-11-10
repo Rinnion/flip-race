@@ -33,7 +33,7 @@ static class Program
             var tracks=TracksFull.All.Concat(TracksRhythm.All).Concat(new[]{TracksMixed.Get()}).Concat(TracksHidden.All).Concat(new[]{TracksRethink.Get()}).ToArray();
             Check(tracks.Length==8,"Exactly eight current factory maps");var files=new List<string>();var payloads=new Dictionary<string,string>();var reports=new List<object>();int references=0;
             foreach(var track in tracks){
-                var policy=track.Id==TracksRethink.Id?TrackProfilePolicy.ChosenOnly:TrackProfilePolicy.Any;
+                var policy=track.Id==TracksRethink.Id?TrackProfilePolicy.ChosenOrFast:TrackProfilePolicy.Any;
                 var warning=track.Id==TracksRethink.Id?TrackWarningMode.Authored:TrackWarningMode.Selected;
                 var bare=new TrackPackage(track,policy,warning);var prepared=new List<TrackBotReference>();
                 foreach(var profile in new[]{("Chosen",FlightPresets.Chosen),("FastFlip",FlightPresets.FastFlip)}){
@@ -48,7 +48,7 @@ static class Program
                 for(int i=0;i<prepared.Count;i++){var b=restored.References[i];var a=prepared[i];Exact(a.Inputs,b.Inputs,track.Id+"/"+a.ProfileId+" inputs");Exact(a.RewardIds,b.RewardIds,track.Id+"/"+a.ProfileId+" IDs");Check(a.BonusGain==b.BonusGain,track.Id+" B");}
                 string file=track.Id+".track.json";files.Add(file);payloads.Add(file,json);reports.Add(new{id=track.Id,hash=package.ContentHash,obstacles=track.Obstacles.Length,zones=track.RiskZones.Length,profiles=prepared.Select(p=>p.ProfileId).ToArray(),bytes=Encoding.UTF8.GetByteCount(json)});
             }
-            Check(references==15,"Exactly fifteen accepted bot pairs");string manifest=TrackJson.WriteManifest(new TrackManifest(files.ToArray()));
+            Check(references==16,"Exactly sixteen accepted bot pairs");string manifest=TrackJson.WriteManifest(new TrackManifest(files.ToArray()));
             Check(TrackJson.TryReadManifest(manifest,out var restoredManifest,out var manifestError),manifestError);Exact(files.ToArray(),restoredManifest.Files,"manifest.files");payloads.Add("index.json",manifest);
             if(checkOnly){
                 foreach(var pair in payloads){string path=Path.Combine(output,pair.Key);Check(File.Exists(path),"Missing JSON asset "+pair.Key);if(pair.Key=="index.json"){Check(TrackJson.TryReadManifest(File.ReadAllText(path),out var m,out var error),error);Exact(files.ToArray(),m.Files,"asset index");}

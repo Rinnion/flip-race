@@ -1,0 +1,75 @@
+{
+  "version": "5.8.1-trial",
+  "oldBot": {
+    "elapsed": 31.007048299103708,
+    "gravity": 2700,
+    "performance": {
+      "count": 992,
+      "maximumMilliseconds": 20.2999,
+      "over50": 0,
+      "p95UpperBoundMilliseconds": 1.4500000000000002,
+      "sumMilliseconds": 653.0998000000027
+    },
+    "phase": "finished",
+    "players": [
+      {
+        "bot": false,
+        "collisions": 4,
+        "finish": -1,
+        "finishBoostElapsed": 0,
+        "rings": 0,
+        "status": "Eliminated"
+      },
+      {
+        "bot": true,
+        "collisions": 1,
+        "finish": 31.007048299103708,
+        "finishBoostElapsed": 0.25,
+        "rings": 3,
+        "status": "Finished"
+      }
+    ],
+    "prestart": false,
+    "repeats": 1,
+    "track": "rethink",
+    "version": "5.8.1-trial"
+  },
+  "prestartBot": {
+    "elapsed": 28.3461641070343,
+    "gravity": 2700,
+    "phase": "finished",
+    "players": [
+      {
+        "bot": false,
+        "collisions": 6,
+        "corrections": 0,
+        "finish": -1,
+        "finishBoostElapsed": 0,
+        "rings": 1,
+        "status": "Eliminated"
+      },
+      {
+        "bot": true,
+        "collisions": 0,
+        "corrections": 0,
+        "finish": 28.3461641070343,
+        "finishBoostElapsed": 0.25,
+        "rings": 3,
+        "status": "Finished"
+      }
+    ],
+    "preparation": "idle",
+    "preparationSeconds": 0.34620009999999407,
+    "prestart": true,
+    "repeats": 1,
+    "track": "rethink",
+    "usedCache": false,
+    "version": "5.8.1-trial"
+  },
+  "errors": [],
+  "viewports": [
+    "1280x720",
+    "568x320"
+  ],
+  "note": "Actual extracted ZIP, normal UI clicks and A; default surface acceleration ON. Both bot algorithms finished. Physical phone not tested."
+}

@@ -180,7 +180,7 @@ var customLikePreset = new FlightSettings(FirstAction.Jump, MotionLaw.Gravity, A
 Check(TrackPackage.MatchesProfile("Chosen", customLikePreset), "Custom fixture does not match Chosen values");
 Reject<NotSupportedException>(() => RaceSimulation.CreateParty(shortTrack, customLikePreset, bots, 1), "Numerically identical custom admitted bots");
 Check(RaceSimulation.CreateParty(shortTrack, customLikePreset, new BotDifficulty?[2], 1).HumanCount == 2, "Custom broke a human party");
-Reject<NotSupportedException>(() => RaceSimulation.CreateParty(GetTrack(TracksRethink.Id), FlightPresets.FastFlip, bots, 1), "Rethink admitted FastFlip bot");
+Check(RaceSimulation.CreateParty(GetTrack(TracksRethink.Id), FlightPresets.FastFlip, bots, 1).IsBotSlot(0), "Rethink rejected FastFlip bot");
 Check(TrackJson.TryRead(files["full-short.track.json"], out var localPackage, out error), error);
 localPackage.Track.Id = "party-bots-prepared-import";
 string localHash = TrackFingerprint.Compute(localPackage.Track, localPackage.ProfilePolicy, localPackage.WarningMode);

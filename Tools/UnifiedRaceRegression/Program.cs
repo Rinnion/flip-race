@@ -280,8 +280,9 @@ static partial class Program
         var flights = new[] { FlightPresets.Chosen, FlightPresets.FastFlip };
         var masters = entries.SelectMany(e => flights
             .Where(f => TrackCatalog.SupportsBot(e.Package.Track.Id, f))
+            .Where(f => e.Package.Track.Id != TracksRethink.Id || f != FlightPresets.FastFlip)
             .Select(f => (Track: e.Package.Track, Flight: f))).ToArray();
-        Require(masters.Length == 15, "Expected all 15 shipped track/profile combinations");
+        Require(masters.Length == 15, "Expected the 15 track/profile combinations in the 5.6 baseline");
         foreach (var (track, flight) in masters)
             yield return BotCase(track, flight, BotDifficulty.Master, 0, PartyCamera.Constant, false);
 
