@@ -1,3 +1,4 @@
+param([switch]$CharacterRoster)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 function Get-SourceSnapshot {
@@ -10,7 +11,7 @@ function Get-SourceSnapshot {
 $sourceSnapshot = @(Get-SourceSnapshot)
 $generated = Join-Path $PSScriptRoot 'obj/managed-source'
 [IO.Directory]::CreateDirectory($generated) | Out-Null
-foreach ($name in @('FlipRaceGame.cs','FlightSettingsMenu.cs','PrestartBotCache.cs')) {
+foreach ($name in @('FlipRaceGame.cs','FlightSettingsMenu.cs','PrestartBotCache.cs','BotsPresentation.cs')) {
     $source = [IO.File]::ReadAllText((Join-Path $projectRoot ('Assets/Scripts/Presentation/' + $name)))
     $aliases = "using PlayerPrefs = FlipRace.SharedScreenCheck.Interop.Prefs;`nusing Time = FlipRace.SharedScreenCheck.Interop.Clock;`n"
     if ($name -eq 'FlipRaceGame.cs') {
@@ -26,7 +27,9 @@ foreach ($name in @('FlipRaceGame.cs','FlightSettingsMenu.cs','PrestartBotCache.
     }
     [IO.File]::WriteAllText((Join-Path $generated $name), $aliases + $source, [Text.UTF8Encoding]::new($false))
 }
-$result = & dotnet run --project (Join-Path $PSScriptRoot 'PrestartBotUiCheck.csproj') -- $projectRoot
+$arguments = @($projectRoot)
+if ($CharacterRoster) { $arguments += '--character-roster' }
+$result = & dotnet run --project (Join-Path $PSScriptRoot 'PrestartBotUiCheck.csproj') -- @arguments
 if ($LASTEXITCODE -ne 0) { $result; throw 'Pre-start bot UI check failed' }
 if (($sourceSnapshot | ConvertTo-Json -Compress) -cne (@(Get-SourceSnapshot) | ConvertTo-Json -Compress)) {
     throw 'Production source changed during run'

@@ -34,8 +34,6 @@ namespace FlipRace.Presentation
             return SharedRotated(slot) ? new Rect(r.xMax - local.xMax, r.yMax - local.yMax, local.width, local.height)
                 : new Rect(r.x + local.x, r.y + local.y, local.width, local.height);
         }
-        Rect SharedCharacterRect(int slot, int hero)
-        { Rect r = ControlAreaRect(slot); return CharacterRect(hero, r.width, r.height); }
         Rect SharedReadyRect(int slot)
         { Rect r = ControlAreaRect(slot); return ReadyButtonRect(r.width, r.height); }
         void SharedPointer(Vector2 point)
@@ -44,8 +42,7 @@ namespace FlipRace.Presentation
             int slot = sharedAdjacent ? (point.x < arena.center.x ? 0 : 1) : (point.y < arena.center.y ? 0 : 1);
             if (Game.Phase == "ready")
             {
-                for (int hero = 0; hero < CharacterRoster.Count; hero++)
-                    if (CharacterScreenRect(slot, hero).Contains(point)) { SelectCharacter(slot, hero); return; }
+                if (CharacterPickerPointer(slot, point)) return;
                 if (ReadyScreenRect(slot).Contains(point)) Act(slot);
                 return;
             }
@@ -133,14 +130,7 @@ namespace FlipRace.Presentation
         void DrawSharedSelection(int slot, float w, float h)
         {
             GUI.color = Color.white; GUI.DrawTexture(new Rect(0, 0, w, h), veil);
-            for (int hero = 0; hero < CharacterRoster.Count; hero++)
-            {
-                Rect card = SharedCharacterRect(slot, hero); bool chosen = Game.Players[slot].CharacterIndex == hero;
-                StrokeRound(card, 7, chosen ? accents[slot] : Hex(0xd9dece), chosen ? pales[slot] : Hex(0xf5f6ec));
-                float s = Mathf.Min(card.height - 4, card.width * .35f);
-                GUI.color = Color.white; GUI.DrawTexture(new Rect(card.x + 2, card.center.y - s / 2, s, s), MascotArtwork.Create(hero, slot));
-                Text(new Rect(card.x + s + 3, card.y, card.width - s - 6, card.height), CharacterRoster.Name(hero), compact ? 9 : 11, ink, chosen, TextAnchor.MiddleCenter);
-            }
+            DrawCharacterPicker(slot, CharacterGridFor(slot), compact ? 10 : 11);
             Rect ready = SharedReadyRect(slot);
             Round(ready, 7, Game.Players[slot].Ready ? Hex(0xdbe7ca) : pales[slot]);
             Text(ready, Game.Players[slot].Ready ? "Готов · ждём второго" : "Готов →", compact ? 10 : 12, accents[slot], true, TextAnchor.MiddleCenter);

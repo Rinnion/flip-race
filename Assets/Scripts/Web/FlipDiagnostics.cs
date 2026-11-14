@@ -208,6 +208,8 @@ namespace FlipRace.Web
                 }
                 output.Append(']');
             }
+            output.Append("],\"characterPageRects\":[");
+            AppendPlayerRects(output, game.CharacterPageScreenRect);
             output.Append("],\"readyRects\":[");
             AppendPlayerRects(output, game.ReadyScreenRect);
             output.Append("],\"pawRects\":[");

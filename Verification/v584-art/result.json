@@ -1,0 +1,2360 @@
+{
+  "Status": "PASS",
+  "BaselineRevision": "ef4873cfd55219790dd47f66cab3dd2428716fad",
+  "Runtime": ".NET 10.0.0",
+  "LegacyPosesPixelIdentical": 4608,
+  "LegacyPreviewsPixelIdentical": 24,
+  "NewPoses": 3072,
+  "Previews": 40,
+  "Slots": 4,
+  "Groups": [
+    "Idle",
+    "IdleBlink",
+    "Run",
+    "RunBlink",
+    "RunSuccess",
+    "Air",
+    "AirBlink",
+    "Recover",
+    "Success",
+    "Win"
+  ],
+  "NewMinTransparentMarginPixels": 1,
+  "NewMinOpaquePixelsInFaceWindow": 749,
+  "NewMinChangedPixelsInBlinkWindow": 83,
+  "FirstPreviewMaxMs": 18.803,
+  "LazyFirstMotionPoseMaxMs": 3.1501,
+  "WarmCallsPerNewHeroSlot": 10000,
+  "WarmBytesPerSample": 0,
+  "WarmNewTexturesPerSample": 0,
+  "Scope": "Production rasterizer under desktop CPU Unity shim; no browser, WebGL, GPU or phone timing. Image sheets show 180\u00B0 at a shared-field ceiling.",
+  "InputSha256": {
+    "Assets/Scripts/Presentation/MascotArtwork.cs": "39ABF2D7BDE65C51F94587182FB8259461D53B7854D8928CBFAD0FA7746E970B",
+    "Assets/Scripts/Presentation/CharacterRoster.cs": "8ABD4CF17B87FD5E8100E35DC919A9976CBE5701911403F6751401A5D9251EAE",
+    "Assets/Scripts/Core/RaceSimulation.cs": "B90BF297375981C93344FB08412DFE18176D0F7C55EA4D9D581EFAF742CC7C50",
+    "Tools/RosterArtworkCheck/obj/Baseline.g.cs": "2901E471C6BA5DE74F4970EDAC2D19F519E61B905491A675ECC01C4E39C8E098",
+    "Tools/Iter49Heroes/UnityShim.cs": "FFAFF810FD227D15D4F4E55F9F53B5839A0DB82FA6878FAC9EB682DD97AD7A05"
+  },
+  "Results": [
+    {
+      "Hero": 6,
+      "Name": "\u041D\u0438\u043A\u043E",
+      "Slot": 1,
+      "PreviewSha256": "08BA6CE624862F8EFF1092DF86BBCDA4E56180597E0DA94CE1D4ECD8676F7B3D",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 6,
+      "Name": "\u041D\u0438\u043A\u043E",
+      "Slot": 2,
+      "PreviewSha256": "C2DA4731F9FE79A5CC59731D952F3A42463B47B48B8ED1A5057B2AB2E63526FB",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 6,
+      "Name": "\u041D\u0438\u043A\u043E",
+      "Slot": 3,
+      "PreviewSha256": "FE9B05AC9FCA0E40EBB77C186BD22BBD2B2D43D1F0326BD00D5C4B9F864AB118",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 6,
+      "Name": "\u041D\u0438\u043A\u043E",
+      "Slot": 4,
+      "PreviewSha256": "0D1755557CF35528B4DF1414939EE6959DF3BB8102C9FE56748D9C9535F076CE",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 7,
+      "Name": "\u0418\u0433\u0440\u0438",
+      "Slot": 1,
+      "PreviewSha256": "6787F8D5FE928C94471D6B7A185CDA3FA545DFDFECC8D46F110D7E42BE570C6B",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 7,
+      "Name": "\u0418\u0433\u0440\u0438",
+      "Slot": 2,
+      "PreviewSha256": "3C521EE0002051D7E837103D26EC3D806702DED3827ED5BD3B1132B299487BEA",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 7,
+      "Name": "\u0418\u0433\u0440\u0438",
+      "Slot": 3,
+      "PreviewSha256": "90FEBD013C7C0D3BA3460F764642E0F841A4BD68E9DFFD2DD0635303E53A7D39",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 7,
+      "Name": "\u0418\u0433\u0440\u0438",
+      "Slot": 4,
+      "PreviewSha256": "64D189C263E7456EFEECD60F0A659ACF6160688CD1380B0C8FD8D1198C4089FD",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 8,
+      "Name": "\u0428\u0435\u0434\u043E\u0443",
+      "Slot": 1,
+      "PreviewSha256": "A2BD7A9DAA36CA12FA214E93F27EBAC29EB558E3C7BD0CCA4F54390CBCBB1086",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 8,
+      "Name": "\u0428\u0435\u0434\u043E\u0443",
+      "Slot": 2,
+      "PreviewSha256": "07FBAF58671792F0EEC07604425B3E86C48D0544EFA89CD007661D87F6C47C73",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 8,
+      "Name": "\u0428\u0435\u0434\u043E\u0443",
+      "Slot": 3,
+      "PreviewSha256": "1887C6AABBAB3E5D15617C64BF9BA9456CC6487C4C8692A9FB1AEEF51C72E80C",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 8,
+      "Name": "\u0428\u0435\u0434\u043E\u0443",
+      "Slot": 4,
+      "PreviewSha256": "19C811188B8123A28F156B91E4D0A07E01588B5D88EFDEC243C91B402003381B",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 9,
+      "Name": "\u041F\u0443\u0448\u0438\u043D\u043A\u0430",
+      "Slot": 1,
+      "PreviewSha256": "8528AE4A7F4034F2F4778C47F4D57B5DC3F61E5C8CD1492744FAA310657E5AD7",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 9,
+      "Name": "\u041F\u0443\u0448\u0438\u043D\u043A\u0430",
+      "Slot": 2,
+      "PreviewSha256": "2FE1F0D8F461D47F54F1A0F95D7DE1054DCF0D93296059A99BF00220CA1EF986",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 9,
+      "Name": "\u041F\u0443\u0448\u0438\u043D\u043A\u0430",
+      "Slot": 3,
+      "PreviewSha256": "A80F0EBF87F65109252E472C27EE1B2B212785C72C637422DCB948401EC9A641",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 9,
+      "Name": "\u041F\u0443\u0448\u0438\u043D\u043A\u0430",
+      "Slot": 4,
+      "PreviewSha256": "1AE258E3CA6265F4C1CBA355EFFCE2996624D026322FEAD736C8C6EA69EC04C0",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 0,
+      "Name": "\u041B\u0438\u0441\u0442\u0438\u043A",
+      "Slot": 1,
+      "PreviewSha256": "13812039B282389654DA1AE253D9376A1C38CF4D9573A0246B040B46C33CECB6",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 0,
+      "Name": "\u041B\u0438\u0441\u0442\u0438\u043A",
+      "Slot": 2,
+      "PreviewSha256": "5CCC2F0BAE8152F059707C3411D92C8E4C0B44C77A308123115497B25E16E149",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 0,
+      "Name": "\u041B\u0438\u0441\u0442\u0438\u043A",
+      "Slot": 3,
+      "PreviewSha256": "00D1CD028624BD920D6B51B70E9A02F14C9D5DF4949B981698001D1C7C89D6F2",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 0,
+      "Name": "\u041B\u0438\u0441\u0442\u0438\u043A",
+      "Slot": 4,
+      "PreviewSha256": "FEAB9BF34807756FDC39078506E50DB8BC5CA92D455D9998C2EF3105B06187C5",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 1,
+      "Name": "\u041A\u0430\u043F\u0435\u043B\u044C\u043A\u0430",
+      "Slot": 1,
+      "PreviewSha256": "45698F3BE434A847784056024DC2C886B40B9C89434A311D737A004E093B8EB1",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 1,
+      "Name": "\u041A\u0430\u043F\u0435\u043B\u044C\u043A\u0430",
+      "Slot": 2,
+      "PreviewSha256": "889B9A8DB90C009F40B126673CC74A06E38DEEB364F373B7743E364A77959361",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 1,
+      "Name": "\u041A\u0430\u043F\u0435\u043B\u044C\u043A\u0430",
+      "Slot": 3,
+      "PreviewSha256": "25783C71A75CD1A7C19C0F8D6D6CE0C8B874DE3446C00F1A27219274044CB6E3",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 1,
+      "Name": "\u041A\u0430\u043F\u0435\u043B\u044C\u043A\u0430",
+      "Slot": 4,
+      "PreviewSha256": "D09FD14DB79D70F18799744266143C859D04759D60751B000DCAD28B23EA2B29",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 2,
+      "Name": "\u0422\u0440\u0430\u0432\u043D\u0438\u043A",
+      "Slot": 1,
+      "PreviewSha256": "08A68B25E396DEDF799D8E59E350B5F98675C2FB8A986C37157F52A4EDB087CC",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 2,
+      "Name": "\u0422\u0440\u0430\u0432\u043D\u0438\u043A",
+      "Slot": 2,
+      "PreviewSha256": "D48D700C275F9F91E27604277DC449C7D7352AD4BEDF7CC4A021D268F31DE821",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 2,
+      "Name": "\u0422\u0440\u0430\u0432\u043D\u0438\u043A",
+      "Slot": 3,
+      "PreviewSha256": "4970EFD2517E73EE88A0F060EDAC03CF10DF128FE98013F33906B3CD707A5A25",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 2,
+      "Name": "\u0422\u0440\u0430\u0432\u043D\u0438\u043A",
+      "Slot": 4,
+      "PreviewSha256": "002B66E4BE16B519804D05EE69DB0FEBF443C32C3E3A2096A55A4B3C91C1D230",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 6
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 3,
+      "Name": "\u0426\u0432\u0435\u0442\u043E\u043A",
+      "Slot": 1,
+      "PreviewSha256": "586A6A37F23B29C08449FDB555608AC11938F08E2C83D61A602EC99D6C8DDF55",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 3,
+      "Name": "\u0426\u0432\u0435\u0442\u043E\u043A",
+      "Slot": 2,
+      "PreviewSha256": "CA887B75515771E33E273A9F41F521A7B49E21FC71CC964BAA7F8184A6CFF137",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 3,
+      "Name": "\u0426\u0432\u0435\u0442\u043E\u043A",
+      "Slot": 3,
+      "PreviewSha256": "4E614FF24C8A3BFA16FCF1364245E5D8A8B097EAE63C5476281DDA27B42D029D",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 3,
+      "Name": "\u0426\u0432\u0435\u0442\u043E\u043A",
+      "Slot": 4,
+      "PreviewSha256": "70ABD08C7550837813BB4C77688831D603AA360E55D3B3AE7219DFFCF71A2626",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 4,
+      "Name": "\u0414\u0436\u0435\u043A",
+      "Slot": 1,
+      "PreviewSha256": "2B6BD3FB83A4015424EFE747F86A921AC4E8C466050BB58EA1DC2125DE730DD5",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 4,
+      "Name": "\u0414\u0436\u0435\u043A",
+      "Slot": 2,
+      "PreviewSha256": "80AAAF6B8434DC7D436DFAB19B4D65C84D6CFE9A21AD03BDBA71A01F90A1325A",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 4,
+      "Name": "\u0414\u0436\u0435\u043A",
+      "Slot": 3,
+      "PreviewSha256": "C1C23584DAAB3020E48B76779F381804AD7FF62D0CC1FDC8E87EEF2E1CF44E7A",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 4,
+      "Name": "\u0414\u0436\u0435\u043A",
+      "Slot": 4,
+      "PreviewSha256": "CFE4F4641586714BC6874119E8B831C5ED9E340FB174EBEFFCDF89CE2236968D",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 5,
+      "Name": "\u0422\u044B\u043A\u0432\u0430",
+      "Slot": 1,
+      "PreviewSha256": "A7765D023F62D309A2BF043FF8E214BF18768BF53025321E2D505F8AF4466F0E",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 5,
+      "Name": "\u0422\u044B\u043A\u0432\u0430",
+      "Slot": 2,
+      "PreviewSha256": "8021D4E4DD4D43E52B6F143B401A5ECA11B5EF8835C7B6665BF9BA6DBA0E3D03",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 5,
+      "Name": "\u0422\u044B\u043A\u0432\u0430",
+      "Slot": 3,
+      "PreviewSha256": "09418436736A740BE68F7AB3C272753D1F8FE94500329EFDA6CD41FDEBC66F27",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    },
+    {
+      "Hero": 5,
+      "Name": "\u0422\u044B\u043A\u0432\u0430",
+      "Slot": 4,
+      "PreviewSha256": "CD2405F0A174B23C22CFE11684BBEF160834FB50A5A7535BEFCB41E618E24BF1",
+      "Poses": [
+        {
+          "Group": "Idle",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "IdleBlink",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Run",
+          "Frames": 96,
+          "Unique": 96
+        },
+        {
+          "Group": "RunBlink",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "RunSuccess",
+          "Frames": 16,
+          "Unique": 13
+        },
+        {
+          "Group": "Air",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "AirBlink",
+          "Frames": 12,
+          "Unique": 11
+        },
+        {
+          "Group": "Recover",
+          "Frames": 8,
+          "Unique": 7
+        },
+        {
+          "Group": "Success",
+          "Frames": 8,
+          "Unique": 5
+        },
+        {
+          "Group": "Win",
+          "Frames": 8,
+          "Unique": 5
+        }
+      ]
+    }
+  ]
+}

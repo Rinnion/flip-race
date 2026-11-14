@@ -13,7 +13,7 @@ namespace FlipRace.Core
 
     public static class RaceConfig
     {
-        public const int CharacterCount = 6;
+        public const int CharacterCount = 10;
         public const double Speed = 220;
         public const double FlipDuration = .8;
         public const double RecoveryDuration = .5;

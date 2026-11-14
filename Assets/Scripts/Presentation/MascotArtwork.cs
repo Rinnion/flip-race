@@ -208,12 +208,15 @@ namespace FlipRace.Presentation
                 float lift=striding?Mathf.Max(0,-step*side):0;
                 float footY=airborne?.72f-tuck*.16f:.85f-lift*.18f;
                 float footX=offset+(airborne?side*(.10f+tuck*.09f):step*side*.24f);
-                Color32 foot=Hex(character==5?(i==0?0xefbf88:0x898591):character==4?0xf5ecdc:character==3?0xaaa3b4:0xeee5d0);
+                Color32 foot=FootColor(character,i);
                 p.Stroke(new Curve().M(offset*.8f,.58f).Q(footX-side*.09f,.72f,footX,footY),outline,.16f);
                 p.Stroke(new Curve().M(offset*.8f,.58f).Q(footX-side*.09f,.72f,footX,footY),foot,.09f);
                 p.Ellipse(footX,footY,.24f-lift*.025f,.14f+lift*.025f,foot,outline,.075f);
             }
-            Painter torso=torsoCanvas;torso.Clear();torso.Composite(body);torso.Composite(eyes);
+            Painter torso=torsoCanvas;torso.Clear();
+            if(character==6)DrawNikoWings(torso,leafAngle+step*.24f,tuck,reaction);
+            if(character==9)DrawPushinkaBraids(torso,leafAngle+step*.22f);
+            torso.Composite(body);torso.Composite(eyes);
             DrawSprout(torso,leafAngle+step*.055f,character,reaction);
             DrawAccessories(torso,character,leafAngle+step*.22f,reaction);
             float lean=striding?.025f+step*.025f:airborne?tuck*.055f:0;
@@ -224,6 +227,13 @@ namespace FlipRace.Presentation
 
         static void DrawBody(Painter p,int character,int player)
         {
+            switch(character)
+            {
+                case 6:DrawNikoBody(p,player);return;
+                case 7:DrawIgriBody(p,player);return;
+                case 8:DrawShadowBody(p,player);return;
+                case 9:DrawPushinkaBody(p,player);return;
+            }
             if(character==4){DrawJackBody(p,player);return;}
             if(character==5){DrawPumpkinBody(p,player);return;}
             Color32 outline=Outline(character);
@@ -287,6 +297,7 @@ namespace FlipRace.Presentation
 
         static void DrawEyes(Painter p,int character,bool blink,bool recovering,MascotReaction reaction=MascotReaction.None)
         {
+            if(character>=6){DrawCatalogFace(p,character,blink,recovering,reaction);return;}
             if(character>=4){DrawAutumnEyes(p,character,blink,recovering,reaction);return;}
             Color32 outline=Outline(character),eye=Hex(character==0?0x86a250:character==1?0x82a9ac:character==3?0xa184be:0x737e49);
             for(int i=0;i<2;i++)
@@ -313,6 +324,11 @@ namespace FlipRace.Presentation
 
         static void DrawSprout(Painter p,float angle,int character,MascotReaction reaction)
         {
+            if(character>=6)
+            {
+                if(character==6)DrawNikoCurl(p,angle,reaction);
+                return;
+            }
             if(character==4){DrawJackHat(p,angle,reaction);return;}
             if(character==5){DrawPumpkinHat(p,angle,reaction);return;}
             if(character==3)
@@ -341,6 +357,12 @@ namespace FlipRace.Presentation
 
         static void DrawAccessories(Painter p,int character,float wave,MascotReaction reaction)
         {
+            if(character>=6)
+            {
+                if(character==7)DrawIgriPendant(p,wave);
+                if(character==8)DrawShadowSaw(p,wave,reaction);
+                return;
+            }
             if(character>=4){DrawAutumnPendant(p,character,wave,reaction);return;}
             bool cheerful=reaction==MascotReaction.Success||reaction==MascotReaction.Win;
             if(character==2)
@@ -536,7 +558,376 @@ namespace FlipRace.Presentation
                 p.Stroke(new Curve().M(x,y+.03f).L(x-.014f,y+.19f),Hex(0xe2d6a0),.02f);
             }else DrawSmallPumpkin(p,x,y+.06f,.13f,.115f,false);
         }
-        static Color32 Outline(int character) {return Hex(character==4?0x8b7767:character==5?0x7d7378:character==3?0x65596f:character==2?0x7d7967:0x746d58);}
+        // Game-size adaptations of Tanya's catalog portraits 69, 68, 48 and 38.
+        static Curve TallEarHead()
+        {
+            return new Curve().M(0,-.76f).L(-.72f,-1.49f)
+                .Q(-.78f,-1.56f,-.81f,-1.42f).Q(-.95f,-.91f,-.97f,-.17f)
+                .C(-1.04f,.22f,-.78f,.32f,0,.32f)
+                .C(.78f,.32f,1.04f,.22f,.97f,-.17f)
+                .Q(.95f,-.91f,.81f,-1.42f).Q(.78f,-1.56f,.72f,-1.49f).Close();
+        }
+
+        static Curve CatalogTorso()
+        {
+            return new Curve().M(-.43f,.31f).Q(-.61f,.56f,-.53f,.83f)
+                .Q(-.50f,.91f,0,.91f).Q(.50f,.91f,.53f,.83f)
+                .Q(.61f,.56f,.43f,.31f).Close();
+        }
+
+        static void DrawNikoBody(Painter p,int player)
+        {
+            Color32 ink=Outline(6),blue=Hex(0xc9e7e9),lavender=Hex(0xcdd5f2);
+            Curve torso=CatalogTorso();
+            p.Shape(torso,blue);
+            p.Shape(new Curve().M(0,.31f).L(.43f,.31f).Q(.61f,.56f,.53f,.83f)
+                .Q(.50f,.91f,0,.91f).Close(),lavender);
+            p.Stroke(torso,ink,.061f);
+            Curve head=TallEarHead();
+            p.Shape(head,blue);
+            p.Shape(new Curve().M(0,-.76f).L(.72f,-1.49f)
+                .Q(.78f,-1.56f,.81f,-1.42f).Q(.95f,-.91f,.97f,-.17f)
+                .C(1.04f,.22f,.78f,.32f,0,.32f).Close(),lavender);
+            p.Stroke(head,ink,.066f);
+            p.Stroke(new Curve().M(-.73f,-1.27f).Q(-.78f,-1.12f,-.79f,-.98f),Hex(0xe7f4f3),.047f);
+            p.Stroke(new Curve().M(.72f,-1.25f).L(.58f,-1.03f),Hex(0xe7eaf9),.047f);
+            DrawCatalogBlush(p,Hex(0xe49bac));
+            DrawCatalogCollar(p,player,Hex(0xaabce0),ink);
+        }
+
+        static void DrawNikoWings(Painter p,float wave,float tuck,MascotReaction reaction)
+        {
+            float lift=wave*.36f+tuck*.15f+(reaction==MascotReaction.Win?.12f:0);
+            float tip=-.46f-lift;
+            Color32 ink=Outline(6);
+            for(int side=-1;side<=1;side+=2)
+            {
+                p.Shape(new Curve().M(side*.42f,.43f).Q(side*1.08f,.07f,side*1.31f,tip)
+                    .Q(side*1.42f,tip+.17f,side*1.23f,tip+.50f)
+                    .Q(side*1.32f,tip+.48f,side*1.42f,tip+.36f)
+                    .Q(side*1.43f,tip+.62f,side*1.09f,tip+.82f)
+                    .L(side*1.32f,tip+.80f).Q(side*1.04f,.71f,side*.42f,.67f).Close(),
+                    Hex(0xf2d487),ink,.052f);
+                p.Shape(new Curve().M(side*.44f,.43f).Q(side*1.10f,.04f,side*1.28f,tip+.09f)
+                    .Q(side*1.30f,tip+.31f,side*1.14f,tip+.56f).L(side*1.34f,tip+.49f)
+                    .Q(side*1.24f,tip+.70f,side*1.00f,tip+.82f).L(side*1.18f,tip+.86f)
+                    .Q(side*.94f,.64f,side*.44f,.60f).Close(),Hex(0xefbcaa));
+            }
+        }
+
+        static void DrawNikoCurl(Painter p,float wave,MascotReaction reaction)
+        {
+            Curve curl=new Curve().M(.13f,.12f).C(-.04f,.24f,-.25f,.10f,-.18f,-.07f)
+                .C(-.10f,-.30f,.15f,-.27f,.17f,-.12f).C(.19f,-.02f,.06f,.04f,.03f,-.05f);
+            curl.Transform(0,-1.12f+(reaction==MascotReaction.Hit?.05f:0),wave*.30f);
+            p.Stroke(curl,Hex(0x809163),.095f);
+            p.Stroke(curl,Hex(0xb8cd94),.055f);
+        }
+
+        static void DrawIgriBody(Painter p,int player)
+        {
+            Color32 ink=Outline(7),cream=Hex(0xf9efdc);
+            Curve torso=CatalogTorso();
+            p.Shape(torso,cream);
+            p.Shape(new Curve().M(-.43f,.31f).Q(-.61f,.56f,-.53f,.83f)
+                .Q(-.50f,.87f,-.46f,.88f).C(-.53f,.77f,-.33f,.73f,-.40f,.63f)
+                .C(-.50f,.55f,-.27f,.52f,-.43f,.31f).Close(),Hex(0xb188a2));
+            p.Stroke(torso,ink,.061f);
+            p.Shape(TallEarHead(),cream,ink,.066f);
+            p.Shape(new Curve().M(-.78f,-1.27f).L(-.58f,-.84f)
+                .Q(-.75f,-.71f,-.87f,-.51f).Q(-.86f,-.92f,-.78f,-1.27f).Close(),Hex(0xe9d9c0));
+            p.Shape(new Curve().M(.78f,-1.27f).Q(.86f,-.96f,.87f,-.50f)
+                .Q(.75f,-.71f,.57f,-.78f).Close(),Hex(0xe9d9c0));
+            p.Shape(new Curve().M(.12f,-.36f).L(.24f,-.27f).L(.37f,-.39f)
+                .L(.51f,-.31f).L(.61f,-.47f).L(.75f,-.42f).Q(.82f,-.51f,.76f,-.60f)
+                .Q(.96f,-.42f,.91f,-.07f).L(.72f,-.18f).L(.62f,-.05f)
+                .L(.49f,-.15f).L(.30f,.01f).Close(),Hex(0x8c7c70),ink,.065f);
+            p.Stroke(new Curve().M(.28f,-.22f).L(.34f,-.28f),Hex(0xbaaa9a),.043f);
+            DrawCatalogBlush(p,Hex(0xe9a4ac));
+            DrawCatalogCollar(p,player,Hex(0xbc9ab6),ink);
+        }
+
+        static void DrawIgriPendant(Painter p,float wave)
+        {
+            float x=wave*.10f;
+            Color32 ink=Outline(7);
+            p.Stroke(new Curve().M(0,.45f).L(x,.56f),ink,.028f);
+            p.Shape(new Curve().M(x,.53f).L(x+.082f,.62f).L(x+.049f,.62f)
+                .L(x+.106f,.70f).L(x+.063f,.70f).L(x+.129f,.80f)
+                .Q(x,.82f,x-.129f,.80f).L(x-.063f,.70f).L(x-.106f,.70f)
+                .L(x-.049f,.62f).L(x-.082f,.62f).Close(),Hex(0xa2b87b),ink,.035f);
+            p.Stroke(new Curve().M(x-.039f,.63f).L(x+.043f,.63f),Hex(0xc2cf98),.022f);
+        }
+
+        static Curve WideEarHead(float leftEarY,float rightEarY)
+        {
+            return new Curve().M(-.83f,-.48f).Q(-1.00f,-.82f,-1.00f,leftEarY+.08f)
+                .Q(-1.00f,leftEarY,-.91f,leftEarY).Q(-.57f,leftEarY+.06f,-.32f,-.87f)
+                .Q(0,-.92f,.34f,-.87f).Q(.67f,rightEarY+.035f,.97f,rightEarY)
+                .Q(1.05f,rightEarY,1.05f,rightEarY+.09f).Q(1.03f,-.78f,.90f,-.37f)
+                .C(.85f,.15f,.55f,.32f,0,.33f).C(-.60f,.33f,-.94f,.12f,-.92f,-.20f)
+                .Q(-.91f,-.37f,-.83f,-.48f).Close();
+        }
+
+        static void DrawShadowBody(Painter p,int player)
+        {
+            Color32 ink=Outline(8);
+            Curve torso=CatalogTorso();
+            p.Shape(torso,Hex(0xb2ce8a));
+            p.Shape(new Curve().M(-.43f,.31f).L(.43f,.31f).Q(.54f,.47f,.55f,.68f)
+                .Q(.04f,.63f,-.55f,.69f).Q(-.54f,.47f,-.43f,.31f).Close(),Hex(0x527964));
+            p.Stroke(torso,ink,.069f);
+            DrawCatalogCollar(p,player,Hex(0x68655a),ink);
+            Curve head=WideEarHead(-1.17f,-1.16f);
+            p.Shape(head,Hex(0xb9d687));
+            p.Shape(new Curve().M(-.92f,-1.08f).Q(-.78f,-.79f,-.69f,-.66f).L(-.83f,-.48f)
+                .Q(-.92f,-.71f,-.92f,-1.08f).Close(),Hex(0xa4bd78));
+            p.Shape(new Curve().M(.96f,-1.08f).Q(.89f,-.76f,.77f,-.58f).L(.89f,-.45f)
+                .Q(.95f,-.72f,.96f,-1.08f).Close(),Hex(0xa4bd78));
+            p.Shape(new Curve().M(-.89f,-.36f).C(-.44f,-.44f,.44f,-.44f,.90f,-.37f)
+                .C(.85f,.15f,.55f,.32f,0,.33f).C(-.60f,.33f,-.94f,.12f,-.92f,-.20f)
+                .Q(-.91f,-.29f,-.89f,-.36f).Close(),Hex(0x535149));
+            p.Stroke(head,ink,.075f);
+            p.Stroke(new Curve().M(-.63f,-.52f).Q(-.49f,-.55f,-.39f,-.52f),Hex(0x778b54),.034f);
+        }
+
+        static void DrawShadowSaw(Painter p,float wave,MascotReaction reaction)
+        {
+            float angle=wave*.16f+(reaction==MascotReaction.Win?-.11f:0);
+            Color32 ink=Outline(8);
+            // The handle sways around the right paw in artwork coordinates.
+            Curve blade=new Curve().M(.03f,-.11f).L(.39f,-.78f).L(.51f,-.71f)
+                .L(.46f,-.65f).L(.49f,-.60f).L(.41f,-.55f).L(.44f,-.50f)
+                .L(.36f,-.44f).L(.39f,-.39f).L(.31f,-.33f).L(.34f,-.28f)
+                .L(.26f,-.22f).L(.29f,-.17f).L(.21f,-.11f).L(.23f,-.06f)
+                .L(.15f,-.01f).Close();
+            Curve grip=RoundedRect(-.12f,-.15f,.26f,.28f,.065f);
+            Curve hole=RoundedRect(-.052f,-.076f,.12f,.12f,.027f);
+            Curve shine=new Curve().M(.12f,-.24f).L(.37f,-.68f);
+            const float x=.74f,y=.62f;
+            blade.Transform(x,y,angle);grip.Transform(x,y,angle-.42f);
+            hole.Transform(x,y,angle-.42f);shine.Transform(x,y,angle);
+            p.Shape(blade,Hex(0xbdb9b7),ink,.05f);
+            p.Stroke(shine,Hex(0xd8d2cd),.025f);
+            p.Shape(grip,Hex(0xb7c77a),ink,.049f);
+            p.Shape(hole,Hex(0x686258),ink,.025f);
+        }
+
+        static void DrawPushinkaBody(Painter p,int player)
+        {
+            Color32 ink=Outline(9),mint=Hex(0xc3e6e2),lilac=Hex(0xc39ac6);
+            Curve torso=CatalogTorso();
+            p.Shape(torso,mint);
+            p.Shape(new Curve().M(-.55f,.68f).Q(0,.62f,.55f,.68f).Q(.56f,.75f,.53f,.83f)
+                .Q(.50f,.91f,0,.91f).Q(-.50f,.91f,-.53f,.83f).Q(-.56f,.75f,-.55f,.68f).Close(),lilac);
+            p.Stroke(torso,ink,.064f);
+            DrawCatalogCollar(p,player,Hex(0xb7d8d6),ink);
+            DrawPushinkaCrossing(p,-1,Hex(0x9fd8cc),ink);
+            DrawPushinkaCrossing(p,1,Hex(0xcca2cd),ink);
+            Curve head=WideEarHead(-1.28f,-1.24f);
+            p.Shape(head,lilac);
+            p.Shape(new Curve().M(-.90f,-.33f).Q(.06f,-.39f,.90f,-.37f)
+                .C(.85f,.15f,.55f,.32f,0,.33f).C(-.60f,.33f,-.94f,.12f,-.92f,-.20f)
+                .Q(-.91f,-.29f,-.90f,-.33f).Close(),mint);
+            p.Stroke(head,ink,.065f);
+            p.Stroke(new Curve().M(-.86f,-1.13f).Q(-.78f,-1.09f,-.72f,-1.02f),Hex(0xf6e1dc),.039f);
+            p.Stroke(new Curve().M(.85f,-1.10f).Q(.78f,-1.07f,.71f,-1.01f),Hex(0xf6e1dc),.039f);
+        }
+
+        static void DrawPushinkaBraids(Painter p,float wave)
+        {
+            Color32 ink=Outline(9);
+            for(int side=-1;side<=1;side+=2)
+            {
+                float x=side*.62f+wave*.10f;
+                p.Ellipse(x,.59f,.134f,.137f,Hex(0xb488ba),ink,.045f);
+                p.Ellipse(x+side*.057f,.44f,.167f,.16f,Hex(0xc095c3),ink,.045f);
+                p.Ellipse(x+side*.072f,.29f,.208f,.163f,Hex(0xb58ab9),ink,.045f);
+                p.Stroke(new Curve().M(x+side*.183f,.28f).Q(x+side*.207f,.32f,x+side*.21f,.36f),
+                    Hex(0xe4c4db),.028f);
+            }
+        }
+
+        static void DrawPushinkaCrossing(Painter p,int direction,Color32 color,Color32 ink)
+        {
+            // Each diagonal keeps the small animal face at its outer tip.
+            Curve band=new Curve().M(-direction*.34f,.36f).Q(-direction*.29f,.32f,-direction*.21f,.39f)
+                .L(direction*.28f,.69f).Q(direction*.36f,.65f,direction*.47f,.75f)
+                .C(direction*.59f,.88f,direction*.41f,.92f,direction*.28f,.84f)
+                .L(-direction*.39f,.48f).Q(-direction*.43f,.42f,-direction*.34f,.36f).Close();
+            p.Shape(band,color,ink,.041f);
+            p.Ellipse(direction*.44f,.78f,.023f,.024f,ink);
+            p.Stroke(new Curve().M(direction*.29f,.73f).Q(direction*.32f,.79f,direction*.37f,.80f)
+                .Q(direction*.43f,.84f,direction*.48f,.82f),ink,.025f);
+            p.Stroke(new Curve().M(-direction*.33f,.41f).L(-direction*.27f,.45f),Hex(0xf5e7df),.026f);
+        }
+
+        static void DrawCatalogCollar(Painter p,int player,Color32 fill,Color32 ink)
+        {
+            p.Shape(new Curve().M(-.46f,.31f).Q(0,.39f,.46f,.31f).Q(.53f,.39f,.46f,.46f)
+                .Q(0,.53f,-.46f,.46f).Q(-.53f,.39f,-.46f,.31f).Close(),fill,ink,.047f);
+            Color32 stitch=Scarf(player);
+            if(player==0)p.Stroke(new Curve().M(.33f,.36f).L(.33f,.44f),stitch,.048f);
+            else
+            {
+                p.Ellipse(.30f,.41f,.026f,.026f,stitch);
+                p.Ellipse(.39f,.40f,.026f,.026f,stitch);
+            }
+        }
+
+        static void DrawCatalogBlush(Painter p,Color32 color)
+        {
+            for(int side=-1;side<=1;side+=2)
+            for(int i=-1;i<=1;i++)
+            {
+                float x=side*.68f+i*.066f;
+                p.Stroke(new Curve().M(x+.03f,.055f).L(x-.015f,.14f),color,.034f);
+            }
+        }
+
+        static void DrawCatalogFace(Painter p,int character,bool blink,bool recovering,MascotReaction reaction)
+        {
+            Color32 ink=Outline(character);
+            for(int side=-1;side<=1;side+=2)
+            {
+                // Igri's zigzag mask is part of the face in every expression.
+                if(character==7&&side==1)break;
+                float x=side*.47f;
+                bool closed=blink||(reaction==MascotReaction.Success&&side==-1);
+                if(character==9)
+                    DrawPushinkaEye(p,x,side,closed,recovering,reaction);
+                else if(character==8)
+                    DrawShadowEye(p,x,closed,recovering,reaction);
+                else
+                    DrawTriangleEye(p,x,character,closed,recovering,reaction);
+            }
+            if(character==9)DrawPushinkaGlasses(p,ink);
+            DrawCatalogMouth(p,character,recovering,reaction);
+        }
+
+        static void DrawTriangleEye(Painter p,float x,int character,bool closed,bool recovering,MascotReaction reaction)
+        {
+            Color32 ink=Outline(character),iris=Hex(character==6?0x9bc9e2:0xaa7e98);
+            const float y=-.35f;
+            float depth=closed?.043f:recovering?.17f:reaction==MascotReaction.Win?.12f:.29f;
+            p.Shape(new Curve().M(x-.125f,y).L(x+.125f,y).L(x,y+depth).Close(),iris,ink,.05f);
+            p.Stroke(new Curve().M(x-.225f,y).Q(x,y+(reaction==MascotReaction.Win?-.09f:0),x+.225f,y),
+                ink,.054f);
+            if(!closed&&!recovering)
+                p.Stroke(new Curve().M(x-.061f,y+.047f).L(x-.019f,y+.09f),
+                    Hex(character==6?0xd7ecf5:0xd5aec6),.028f);
+            if(recovering)DrawEyeCross(p,x,y+.085f,ink,.063f);
+        }
+
+        static void DrawShadowEye(Painter p,float x,bool closed,bool recovering,MascotReaction reaction)
+        {
+            Color32 lemon=Hex(0xbdca79),olive=Hex(0x819259);
+            float depth=closed?.008f:recovering?.12f:reaction==MascotReaction.Win?.105f:.255f;
+            const float y=-.30f;
+            var lid=new Curve().M(x-.20f,y).Q(x,y+(reaction==MascotReaction.Win?-.12f:0),x+.20f,y);
+            p.Stroke(lid,lemon,.054f);
+            if(!closed)
+            {
+                p.Shape(new Curve().M(x-.19f,y).L(x+.19f,y).C(x+.14f,y+depth*1.25f,
+                    x-.14f,y+depth*1.25f,x-.19f,y).Close(),lemon);
+                if(recovering)DrawEyeCross(p,x,y+.043f,olive,.052f);
+            }
+        }
+
+        static void DrawPushinkaEye(Painter p,float x,int side,bool closed,bool recovering,MascotReaction reaction)
+        {
+            Color32 ink=Outline(9);
+            if(closed||reaction==MascotReaction.Win)
+            {
+                float lift=closed?.048f:-.24f;
+                p.Stroke(new Curve().M(x-.25f,-.26f).Q(x,-.26f+lift,x+.25f,-.26f),ink,.066f);
+                return;
+            }
+            p.Ellipse(x,-.30f,.257f,.183f,Hex(0xfff6eb),ink,.030f);
+            float irisX=x-side*.055f;
+            p.Ellipse(irisX,-.281f,.133f,.157f,Hex(0xae83b5),ink,.029f);
+            if(recovering)DrawEyeCross(p,irisX,-.28f,ink,.071f);
+            else
+            {
+                p.Ellipse(irisX,-.276f,.066f,.106f,Hex(0x655368));
+                p.Ellipse(irisX-.039f,-.345f,.027f,.030f,Hex(0xfff3e6));
+            }
+            p.Stroke(new Curve().M(x-.25f,-.35f).Q(x,-.60f,x+.25f,-.35f),ink,.070f);
+        }
+
+        static void DrawPushinkaGlasses(Painter p,Color32 ink)
+        {
+            Color32 frame=Hex(0xb284b4);
+            var bridge=new Curve().M(-.21f,-.145f).L(.21f,-.145f);
+            p.Stroke(bridge,ink,.052f);
+            p.Stroke(bridge,frame,.027f);
+            for(int side=-1;side<=1;side+=2)
+            {
+                var rim=new Curve().M(side*.20f,-.21f).L(side*.22f,-.09f)
+                    .Q(side*.23f,-.061f,side*.27f,-.061f).L(side*.67f,-.061f)
+                    .Q(side*.71f,-.061f,side*.72f,-.12f).L(side*.75f,-.22f);
+                p.Stroke(rim,ink,.073f);
+                p.Stroke(rim,frame,.041f);
+            }
+        }
+
+        static void DrawEyeCross(Painter p,float x,float y,Color32 ink,float radius)
+        {
+            p.Stroke(new Curve().M(x-radius,y-radius).L(x+radius,y+radius),ink,.036f);
+            p.Stroke(new Curve().M(x+radius,y-radius).L(x-radius,y+radius),ink,.036f);
+        }
+
+        static void DrawCatalogMouth(Painter p,int character,bool recovering,MascotReaction reaction)
+        {
+            Color32 ink=character==8?Hex(0xbdca79):Outline(character);
+            if(character!=6)
+                p.Shape(new Curve().M(-.06f,.014f).Q(0,-.015f,.06f,.014f).L(0,.064f).Close(),ink);
+            if(recovering||reaction==MascotReaction.Win)
+            {
+                p.Ellipse(0,.163f,recovering?.057f:.095f,recovering?.05f:.071f,ink);
+                if(reaction==MascotReaction.Win)p.Ellipse(0,.186f,.045f,.024f,Hex(0xe5b4a7));
+                return;
+            }
+            if(character==8&&reaction!=MascotReaction.Success)
+                p.Stroke(new Curve().M(-.054f,.20f).Q(0,.087f,.054f,.20f),ink,.040f);
+            else
+            {
+                float depth=reaction==MascotReaction.Success?.30f:.227f;
+                p.Stroke(new Curve().M(-.119f,.137f).Q(-.10f,depth,0,.151f)
+                    .Q(.10f,depth,.119f,.137f),ink,.040f);
+            }
+        }
+
+        static Color32 Outline(int character)
+        {
+            switch(character)
+            {
+                case 2:return Hex(0x7d7967);
+                case 3:return Hex(0x65596f);
+                case 4:return Hex(0x8b7767);
+                case 5:return Hex(0x7d7378);
+                case 6:return Hex(0x817264);
+                case 7:return Hex(0x786859);
+                case 8:return Hex(0x635950);
+                case 9:return Hex(0x786576);
+                default:return Hex(0x746d58);
+            }
+        }
+
+        static Color32 FootColor(int character,int side)
+        {
+            switch(character)
+            {
+                case 3:return Hex(0xaaa3b4);
+                case 4:return Hex(0xf5ecdc);
+                case 5:return Hex(side==0?0xefbf88:0x898591);
+                case 6:return Hex(side==0?0xbadce1:0xc2caec);
+                case 7:return Hex(0xf5e8d4);
+                case 8:return Hex(0xa6bc7a);
+                case 9:return Hex(side==0?0xa7dcd1:0xc49bc6);
+                default:return Hex(0xeee5d0);
+            }
+        }
         static Color32 Scarf(int player) {return Hex(player==0?0xb7a1de:player==1?0xf1ab81:player==2?0x8fcab7:0xdba0bc);}
 
         static Curve RoundedRect(float x,float y,float w,float h,float r)

@@ -198,9 +198,8 @@ namespace FlipRace.Presentation
         { MeasureFlightMenu(); float cw=(flightPanel.width-48)/5; return new Rect(flightPanel.x+16+option*(cw+4),flightPanel.y+63,cw,44); }
         Rect BotPersonalArea(int slot)
         { Rect a=SoloOverlayRect; return slot==1?new Rect(a.x,a.y,a.width,Mathf.Max(70,a.height-140)):new Rect(a.x,a.yMax-140,a.width,140); }
-        public Rect BotCharacterRect(int hero)
-        { Rect a=BotPersonalArea(0);float w=Mathf.Min(a.width-16,560),cw=(w-8)/3;float top=a.y+Mathf.Max(0,(a.height-140)/2);return new Rect(a.center.x-w/2+hero%3*(cw+4),top+hero/3*48,cw,44); }
-        public Rect BotStartRect { get { Rect a=BotPersonalArea(0);return new Rect(a.center.x-110,BotCharacterRect(0).y+96,220,44); } }
+        public Rect BotCharacterRect(int hero) => CharacterCardRect(0, hero, BotCharacterGrid());
+        public Rect BotStartRect { get { Rect a=BotPersonalArea(0);return new Rect(a.center.x-110,BotCharacterGrid().Cell(0).y+96,220,44); } }
         public Rect BotRetryRect { get { Rect a=BotPersonalArea(0);return new Rect(a.center.x-214,a.yMax-45,210,44); } }
         public Rect BotTrackChoiceRect { get { Rect r=BotRetryRect;return new Rect(r.xMax+8,r.y,r.width,r.height); } }
         void EnterBotMenu()
@@ -257,7 +256,7 @@ namespace FlipRace.Presentation
         {
             if(Game.Phase=="ready")
             {
-                for(int h=0;h<CharacterRoster.Count;h++)if(BotCharacterRect(h).Contains(p)){SelectCharacter(0,h);Game.Players[1].CharacterIndex=(h+1)%CharacterRoster.Count;return;}
+                if(CharacterPickerPointer(0,p))return;
                 if(BotStartRect.Contains(p))Act(0);
             }
             else if(Game.Phase=="finished")
@@ -306,13 +305,7 @@ namespace FlipRace.Presentation
                     GUI.color=Color.white;GUI.DrawTexture(new Rect(a.center.x-100,y,64,64),MascotArtwork.Create(Game.Players[1].CharacterIndex,1));
                     Text(new Rect(a.center.x-10,y+2,210,25),"Бот · "+BotLevelNames[(int)Game.BotDifficulty],16,accents[1],true);
                     Text(new Rect(a.center.x-10,y+29,210,24),PlayerName(1)+(Game.UsesPrestartBots && !Game.PrestartReady ? "" : " · Готов"),11,muted);
-                    for(int h=0;h<CharacterRoster.Count;h++)
-                    {
-                        Rect c=BotCharacterRect(h);bool chosen=Game.Players[0].CharacterIndex==h;
-                        StrokeRound(c,7,chosen?accents[0]:Hex(0xd9dece),chosen?pales[0]:paper);
-                        float s=Mathf.Min(40,c.width*.35f);GUI.color=Color.white;GUI.DrawTexture(new Rect(c.x+2,c.y+2,s,40),MascotArtwork.Create(h,0));
-                        Text(new Rect(c.x+s+4,c.y,c.width-s-6,44),CharacterRoster.Name(h),10,ink,chosen,TextAnchor.MiddleCenter);
-                    }
+                    DrawCharacterPicker(0,BotCharacterGrid(),10);
                     Round(BotStartRect,7,pales[0]);Text(BotStartRect,PrestartActionLabel("Начать →"),12,accents[0],true,TextAnchor.MiddleCenter);
                 }
                 else

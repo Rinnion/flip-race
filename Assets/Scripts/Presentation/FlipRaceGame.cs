@@ -18,12 +18,8 @@ namespace FlipRace.Presentation
         public Rect CharacterScreenRect(int playerIndex, int heroIndex)
         {
             if (playerIndex < 0 || playerIndex >= Game.Players.Length || heroIndex < 0 || heroIndex >= CharacterRoster.Count) throw new ArgumentOutOfRangeException();
-            if (BotEnabled) return playerIndex==0?BotCharacterRect(heroIndex):default(Rect);
-            if (SoloEnabled) return SoloCharacterRect(heroIndex);
-            if (PartyEnabled) return PartyScreenRect(playerIndex, PartyCharacterRect(playerIndex, heroIndex));
-            if (SharedEnabled) return SharedScreenRect(playerIndex, SharedCharacterRect(playerIndex, heroIndex));
-            Rect lane = lanes[playerIndex];
-            return LaneScreenRect(playerIndex, CharacterRect(heroIndex, lane.width, lane.height));
+            if (BotEnabled && playerIndex != 0) return default;
+            return CharacterSelectionScreenRect(playerIndex, CharacterCardRect(playerIndex, heroIndex, CharacterGridFor(playerIndex)));
         }
         public Rect ReadyScreenRect(int playerIndex)
         {
@@ -146,6 +142,7 @@ namespace FlipRace.Presentation
             trackClose = new Rect(trackPanel.xMax - 42, trackPanel.y + 10, 32, 32);
             negativeChoiceRect = new Rect(trackPanel.x + 22, trackPanel.y + (Trial ? 175 : 167), trackPanel.width - 44, 30);
             racePracticeChoiceRect = new Rect(trackPanel.x + 22, trackPanel.y + 205, trackPanel.width - 44, 30);
+            SyncCharacterPages();
         }
 
         Rect SafeUiArea()
@@ -266,9 +263,7 @@ namespace FlipRace.Presentation
                 if (slot == 0) local = new Vector2(lanes[slot].width - local.x, lanes[slot].height - local.y);
                 if (Game.Phase == "ready")
                 {
-                    for (int hero = 0; hero < CharacterRoster.Count; hero++)
-                        if (CharacterRect(hero, lanes[slot].width, lanes[slot].height).Contains(local))
-                        { SelectCharacter(slot, hero); return; }
+                    if (CharacterPickerPointer(slot, p)) return;
                     if (ReadyButtonRect(lanes[slot].width, lanes[slot].height).Contains(local)) Act(slot);
                     return; // A gap or margin is not a readiness action.
                 }
@@ -293,8 +288,11 @@ namespace FlipRace.Presentation
         }
         void SelectCharacter(int slot, int hero)
         {
-            if (RaceSimulation.SetCharacter(Game, slot, hero) && Game.UsesPrestartBots && !Game.IsBotSlot(slot))
-                prestartStartRequestedAt = -1;
+            if (RaceSimulation.SetCharacter(Game, slot, hero))
+            {
+                if (Game.UsesPrestartBots && !Game.IsBotSlot(slot)) prestartStartRequestedAt = -1;
+                if (BotEnabled) Game.Players[1].CharacterIndex = (hero + 1) % CharacterRoster.Count;
+            }
             MascotArtwork.GetFrame(hero, slot, animationTime, false, false, false);
             lastFrame = Time.realtimeSinceStartupAsDouble;
             // The selection tap was consumed above; leave the other player's
@@ -313,17 +311,6 @@ namespace FlipRace.Presentation
             showTracks = true; paused = true;
         }
         Rect TrackChoiceRect(int index) { return new Rect(trackPanel.x + 22, trackPanel.y + 49 + index * 37, trackPanel.width - 44, 34); }
-        Rect CharacterRect(int hero, float w, float h)
-        {
-            // Six fast targets fit the132px lane at568x320. Readiness owns its
-            // fixed bottom strip; names and previews are painted inside cards.
-            float gap = 4, ch = compact ? 44 : 56;
-            float cw = Mathf.Min((w - 16 - gap * 2) / 3, 176);
-            float listBottom = ReadyButtonRect(w, h).y - 4;
-            float y = Mathf.Max(4, (listBottom - (ch * 2 + gap)) / 2);
-            float total = cw * 3 + gap * 2;
-            return new Rect((w - total) / 2 + hero % 3 * (cw + gap), y + hero / 3 * (ch + gap), cw, ch);
-        }
         Rect ReadyButtonRect(float w, float h)
         {
             float rw = Mathf.Min(w - 16, compact ? 190 : 220), rh = compact ? 32 : 38;
@@ -659,19 +646,7 @@ namespace FlipRace.Presentation
         void DrawCharacterSelection(int slot, float w, float h)
         {
             PlayerState p = Game.Players[slot];
-            for (int hero = 0; hero < CharacterRoster.Count; hero++)
-            {
-                Rect card = CharacterRect(hero, w, h);
-                bool chosen = p.CharacterIndex == hero;
-                StrokeRound(card, 8, chosen ? accents[slot] : Hex(0xd9dece),
-                    chosen ? new Color(pales[slot].r, pales[slot].g, pales[slot].b, .62f) : Hex(0xf5f6ec));
-                float size = Mathf.Min(card.height - 4, card.width * .35f);
-                GUI.color = Color.white;
-                GUI.DrawTexture(new Rect(card.x + 3, card.center.y - size / 2, size, size), MascotArtwork.Create(hero, slot));
-                Text(new Rect(card.x + size + 4, card.y, card.width - size - 12, card.height),
-                    CharacterRoster.Name(hero), compact ? 10 : 12, chosen ? accents[slot] : ink, chosen, TextAnchor.MiddleCenter);
-                if (chosen) Text(new Rect(card.xMax - 16, card.y + 2, 13, 13), "✓", 10, accents[slot], true, TextAnchor.MiddleCenter);
-            }
+            DrawCharacterPicker(slot, LaneCharacterGrid(w, h), compact ? 10 : 12, true);
             string action = p.Ready ? "✓ Готов · ждём второго" : "Готов →";
             Rect ready = ReadyButtonRect(w, h);
             Round(ready, 7, p.Ready ? Hex(0xdbe7ca) : pales[slot]);

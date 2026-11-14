@@ -8,9 +8,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="CharacterRosterChecks.cs" />
     <Compile Include="../SharedScreenCheck/UiInterop/Environment.cs" />
     <Compile Include="../../Assets/Scripts/Core/*.cs" />
-    <Compile Include="../../Assets/Scripts/Presentation/*.cs" Exclude="../../Assets/Scripts/Presentation/FlipRaceGame.cs;../../Assets/Scripts/Presentation/FlightSettingsMenu.cs;../../Assets/Scripts/Presentation/PrestartBotCache.cs" />
+    <Compile Include="../../Assets/Scripts/Presentation/*.cs" Exclude="../../Assets/Scripts/Presentation/FlipRaceGame.cs;../../Assets/Scripts/Presentation/FlightSettingsMenu.cs;../../Assets/Scripts/Presentation/PrestartBotCache.cs;../../Assets/Scripts/Presentation/BotsPresentation.cs" />
     <Compile Include="../../Assets/Scripts/Web/*.cs" />
     <Compile Include="obj/managed-source/*.cs" />
     <Reference Include="F:/Program Files/Unity/Hub/Editor/6000.0.64f1/Editor/Data/Managed/UnityEngine/UnityEngine*.dll" />

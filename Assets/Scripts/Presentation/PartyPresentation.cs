@@ -37,12 +37,6 @@ namespace FlipRace.Presentation
         { int corner=PartyCorner(slot); float half=SessionCentered?(arena.height-session.height)/2:arena.height/2; return new Rect(arena.x+(corner%2)*arena.width/2,corner<2?arena.y:arena.yMax-half,arena.width/2,half); }
         Rect PartyScreenRect(int slot,Rect local)
         { Rect r=PartyControlArea(slot); return PartyRotated(slot)?new Rect(r.xMax-local.xMax,r.yMax-local.yMax,local.width,local.height):new Rect(r.x+local.x,r.y+local.y,local.width,local.height); }
-        Rect PartyCharacterRect(int slot,int hero)
-        {
-            Rect r=PartyControlArea(slot); float gap=4,ch=44,cw=(r.width-14)/3;
-            float y=Mathf.Max(3,(r.height-44-4-(ch*2+gap))/2);
-            return new Rect(3+(hero%3)*(cw+gap),y+(hero/3)*(ch+gap),cw,ch);
-        }
         Rect PartyReadyRect(int slot)
         { Rect r=PartyControlArea(slot); return new Rect(3,r.height-45,r.width-6,44); }
         bool AllBotParty => PartyEnabled && Game.HumanCount == 0;
@@ -86,8 +80,7 @@ namespace FlipRace.Presentation
                 if(!PartyControlArea(slot).Contains(point))continue;
                 if(Game.Phase=="ready")
                 {
-                    for(int hero=0;hero<CharacterRoster.Count;hero++)
-                        if(CharacterScreenRect(slot,hero).Contains(point)){SelectCharacter(slot,hero);return;}
+                    if(CharacterPickerPointer(slot,point))return;
                     if(ReadyScreenRect(slot).Contains(point))Act(slot);
                 }
                 else if(Game.Phase=="finished") { if(ReadyScreenRect(slot).Contains(point))Act(slot); }
@@ -163,14 +156,7 @@ namespace FlipRace.Presentation
         void DrawPartySelection(int slot,float w,float h)
         {
             GUI.color=Color.white;GUI.DrawTexture(new Rect(0,0,w,h),veil);
-            for(int hero=0;hero<CharacterRoster.Count;hero++)
-            {
-                Rect card=PartyCharacterRect(slot,hero);bool chosen=Game.Players[slot].CharacterIndex==hero;
-                StrokeRound(card,6,chosen?accents[slot]:Hex(0xd9dece),chosen?pales[slot]:Hex(0xf5f6ec));
-                float s=Mathf.Min(36,card.width*.42f);
-                GUI.color=Color.white;GUI.DrawTexture(new Rect(card.x+1,card.center.y-s/2,s,s),MascotArtwork.Create(hero,slot));
-                Text(new Rect(card.x+s+1,card.y,card.width-s-2,card.height),CharacterRoster.Name(hero),w<330?8:10,ink,chosen,TextAnchor.MiddleCenter);
-            }
+            DrawCharacterPicker(slot,PartyCharacterGrid(slot),10);
             Rect ready=PartyReadyRect(slot);
             if (Game.IsBotSlot(slot))
             {

@@ -12,7 +12,7 @@ using FlipRace.SharedScreenCheck.Interop;
 using UnityEngine;
 using Display = FlipRace.SharedScreenCheck.Interop.Display;
 
-static class Program
+static partial class Program
 {
     const BindingFlags Private = BindingFlags.Instance | BindingFlags.NonPublic;
     const string LocalTrack = "prestart-ui-no-reference", LongTrack = "prestart-ui-too-long";
@@ -268,6 +268,7 @@ static class Program
             string json = TrackJson.Write(new TrackPackage(track, TrackProfilePolicy.Any, TrackWarningMode.Selected));
             Check(TrackCatalog.TryImportLocal(json, out var entry, out error) && entry.Package.References.Length == 0, error);
         }
+        if (args.Skip(1).Contains("--character-roster")) return CharacterRosterSmoke(builtIn);
         var standalone = ColdWarmAndMalformed(builtIn);
         var party = FourAndRetry();
         MixedHeroChange(0);

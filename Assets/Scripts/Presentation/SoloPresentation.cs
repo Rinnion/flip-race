@@ -16,11 +16,7 @@ namespace FlipRace.Presentation
         Rect SoloLegacyRect { get { return ModeLegacyRect; } }
         Rect SoloOverlayRect { get { return new Rect(arena.x,session.yMax+6,arena.width,Mathf.Max(0,arena.yMax-session.yMax-6)); } }
         float SoloContentTop(float contentHeight) { Rect r=SoloOverlayRect; return r.y+Mathf.Max(2,(r.height-contentHeight)/2); }
-        public Rect SoloCharacterRect(int hero)
-        {
-            Rect r=SoloOverlayRect; float w=Mathf.Min(r.width-16,560),cw=(w-8)/3;
-            return new Rect(r.center.x-w/2+(hero%3)*(cw+4),SoloContentTop(170)+22+(hero/3)*48,cw,44);
-        }
+        public Rect SoloCharacterRect(int hero) => CharacterCardRect(0, hero, SoloCharacterGrid());
         public Rect SoloStartRect { get { Rect r=SoloOverlayRect; return new Rect(r.center.x-110,SoloContentTop(170)+126,220,44); } }
         public Rect SoloRetryRect { get { Rect r=SoloOverlayRect; float w=Mathf.Min(r.width-24,420); return new Rect(r.center.x-w/2,SoloContentTop(142)+98,(w-8)/2,44); } }
         public Rect SoloTrackChoiceRect { get { Rect r=SoloRetryRect; return new Rect(r.xMax+8,r.y,r.width,r.height); } }
@@ -57,7 +53,7 @@ namespace FlipRace.Presentation
         {
             if(Game.Phase=="ready")
             {
-                for(int hero=0;hero<CharacterRoster.Count;hero++)if(SoloCharacterRect(hero).Contains(point)){SelectCharacter(0,hero);return;}
+                if(CharacterPickerPointer(0,point))return;
                 if(SoloStartRect.Contains(point))Act(0);
             }
             else if(Game.Phase=="finished")
@@ -95,14 +91,7 @@ namespace FlipRace.Presentation
             Fill(SoloOverlayRect,new Color(.98f,.984f,.949f,.95f));
             Rect area=SoloOverlayRect;
             Text(new Rect(area.x,SoloContentTop(170),area.width,20),"Выбери героя",12,ink,true,TextAnchor.MiddleCenter);
-            for(int hero=0;hero<CharacterRoster.Count;hero++)
-            {
-                Rect card=SoloCharacterRect(hero);bool chosen=Game.Players[0].CharacterIndex==hero;
-                StrokeRound(card,7,chosen?accents[0]:Hex(0xd9dece),chosen?pales[0]:Hex(0xf5f6ec));
-                float size=Mathf.Min(40,card.width*.35f);GUI.color=Color.white;
-                GUI.DrawTexture(new Rect(card.x+2,card.center.y-size/2,size,size),MascotArtwork.Create(hero,0));
-                Text(new Rect(card.x+size+4,card.y,card.width-size-6,card.height),CharacterRoster.Name(hero),compact?10:11,ink,chosen,TextAnchor.MiddleCenter);
-            }
+            DrawCharacterPicker(0,SoloCharacterGrid(),compact?10:11);
             Round(SoloStartRect,7,pales[0]);Text(SoloStartRect,"Начать →",12,accents[0],true,TextAnchor.MiddleCenter);
         }
         void DrawSoloResult()

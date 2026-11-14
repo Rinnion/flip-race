@@ -1,0 +1,547 @@
+{
+  "status": "PASS",
+  "version": "5.8.4-trial",
+  "url": "http://127.0.0.1:4184/",
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "width": 568,
+      "height": 320
+    }
+  ],
+  "checks": [
+    {
+      "check": "desktop-new-selection",
+      "slot": 0,
+      "hero": 6,
+      "selected": 6,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "desktop-new-selection",
+      "slot": 0,
+      "hero": 7,
+      "selected": 7,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "desktop-new-selection",
+      "slot": 0,
+      "hero": 8,
+      "selected": 8,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "desktop-new-selection",
+      "slot": 0,
+      "hero": 9,
+      "selected": 9,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "desktop-new-selection",
+      "slot": 1,
+      "hero": 6,
+      "selected": 6,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "desktop-new-selection",
+      "slot": 1,
+      "hero": 7,
+      "selected": 7,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "desktop-new-selection",
+      "slot": 1,
+      "hero": 8,
+      "selected": 8,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "desktop-new-selection",
+      "slot": 1,
+      "hero": 9,
+      "selected": 9,
+      "phase": "ready",
+      "ready": [
+        false,
+        false
+      ]
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 0,
+      "hero": 6,
+      "rect": [
+        103,
+        98.5,
+        87,
+        44
+      ],
+      "corner": true,
+      "selected": 6
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 0,
+      "hero": 7,
+      "rect": [
+        12,
+        98.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 7
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 0,
+      "hero": 8,
+      "rect": [
+        194,
+        50.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 8
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 0,
+      "hero": 9,
+      "rect": [
+        103,
+        50.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 9
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 1,
+      "hero": 6,
+      "rect": [
+        378,
+        98.5,
+        87,
+        44
+      ],
+      "corner": true,
+      "selected": 6
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 1,
+      "hero": 7,
+      "rect": [
+        287,
+        98.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 7
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 1,
+      "hero": 8,
+      "rect": [
+        469,
+        50.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 8
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 1,
+      "hero": 9,
+      "rect": [
+        378,
+        50.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 9
+    },
+    {
+      "check": "compact-personal-page",
+      "slot": 2,
+      "characters": [
+        9,
+        9,
+        2,
+        3
+      ],
+      "ready": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 2,
+      "hero": 6,
+      "rect": [
+        103,
+        175.5,
+        87,
+        44
+      ],
+      "corner": true,
+      "selected": 6
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 2,
+      "hero": 7,
+      "rect": [
+        194,
+        175.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 7
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 2,
+      "hero": 8,
+      "rect": [
+        12,
+        223.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 8
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 2,
+      "hero": 9,
+      "rect": [
+        103,
+        223.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 9
+    },
+    {
+      "check": "compact-personal-page",
+      "slot": 3,
+      "characters": [
+        9,
+        9,
+        9,
+        3
+      ],
+      "ready": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 3,
+      "hero": 6,
+      "rect": [
+        378,
+        175.5,
+        87,
+        44
+      ],
+      "corner": true,
+      "selected": 6
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 3,
+      "hero": 7,
+      "rect": [
+        469,
+        175.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 7
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 3,
+      "hero": 8,
+      "rect": [
+        287,
+        223.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 8
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 3,
+      "hero": 9,
+      "rect": [
+        378,
+        223.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 9
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 0,
+      "hero": 6,
+      "rect": [
+        103,
+        98.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 6
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 1,
+      "hero": 7,
+      "rect": [
+        287,
+        98.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 7
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 2,
+      "hero": 8,
+      "rect": [
+        12,
+        223.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 8
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 3,
+      "hero": 9,
+      "rect": [
+        378,
+        223.5,
+        87,
+        44
+      ],
+      "corner": false,
+      "selected": 9
+    },
+    {
+      "check": "paging-after-ready",
+      "ready": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "characters": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "check": "roles-preserve-new-heroes",
+      "characters": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "bots": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "cache": true
+    },
+    {
+      "check": "compact-race",
+      "elapsed": 25.286,
+      "phase": "racing",
+      "players": [
+        {
+          "character": 6,
+          "gravity": 1,
+          "flipping": true,
+          "status": "Running",
+          "distance": 7025.6658260188815
+        },
+        {
+          "character": 7,
+          "gravity": 1,
+          "flipping": false,
+          "status": "Running",
+          "distance": 7155.3773358117505
+        },
+        {
+          "character": 8,
+          "gravity": -1,
+          "flipping": true,
+          "status": "Running",
+          "distance": 6927.6981471886165
+        },
+        {
+          "character": 9,
+          "gravity": 1,
+          "flipping": false,
+          "status": "Running",
+          "distance": 7095.8318606240255
+        }
+      ]
+    },
+    {
+      "check": "four-new-heroes-result",
+      "phase": "finished",
+      "elapsed": 28.81837745480597,
+      "players": [
+        {
+          "character": 6,
+          "status": "Finished",
+          "finish": 28.269134834900445,
+          "collisions": 0
+        },
+        {
+          "character": 7,
+          "status": "Finished",
+          "finish": 27.97386860826786,
+          "collisions": 0
+        },
+        {
+          "character": 8,
+          "status": "Finished",
+          "finish": 28.81837745480597,
+          "collisions": 0
+        },
+        {
+          "character": 9,
+          "status": "Finished",
+          "finish": 28.014027702536374,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 0,
+      "hero": 6,
+      "rect": [
+        339.8,
+        37.5,
+        103.6,
+        44
+      ],
+      "corner": false,
+      "selected": 6
+    },
+    {
+      "check": "compact-new-selection",
+      "slot": 1,
+      "hero": 6,
+      "rect": [
+        124.6,
+        236.5,
+        103.6,
+        44
+      ],
+      "corner": false,
+      "selected": 6
+    },
+    {
+      "check": "same-hero-split-ghost",
+      "view": "split-ghost",
+      "paused": true,
+      "players": [
+        {
+          "character": 6,
+          "gravity": 1,
+          "centerY": 147.78233125000412,
+          "flipping": true,
+          "recovering": 0
+        },
+        {
+          "character": 6,
+          "gravity": 1,
+          "centerY": 226,
+          "flipping": false,
+          "recovering": 0
+        }
+      ]
+    }
+  ],
+  "consoleErrors": [],
+  "notes": [
+    "Actions used visible controls and published DOM diagnostics.",
+    "Desktop and compact browser emulation; physical phone and multi-touch hardware not tested.",
+    "Restored default viewport and ready screen after verification."
+  ]
+}
