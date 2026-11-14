@@ -1,0 +1,188 @@
+{
+  "version": "5.8.2-trial",
+  "linearSamples": [
+    {
+      "cameraLeft": 4289.311999999999,
+      "elapsed": 17.391999999999996,
+      "expected": 4289.311999999998,
+      "phase": "racing",
+      "players": [
+        {
+          "bot": true,
+          "commands": 10,
+          "distance": 4776.139804559211,
+          "status": "Running"
+        },
+        {
+          "bot": true,
+          "commands": 10,
+          "distance": 4776.139804559211,
+          "status": "Running"
+        },
+        {
+          "bot": true,
+          "commands": 8,
+          "distance": 4722.389852465737,
+          "status": "Running"
+        },
+        {
+          "bot": true,
+          "commands": 8,
+          "distance": 4728.266055288286,
+          "status": "Running"
+        }
+      ],
+      "preparation": 0.7529001000000024,
+      "usedCache": false,
+      "version": "5.8.2-trial"
+    },
+    {
+      "cameraLeft": 6461.195999999997,
+      "elapsed": 24.98599999999999,
+      "expected": 6461.195999999997,
+      "phase": "racing",
+      "players": [
+        {
+          "commands": 14,
+          "distance": 7126.397483369717,
+          "finish": -1,
+          "status": "Running"
+        },
+        {
+          "commands": 12,
+          "distance": 7070.31042960809,
+          "finish": -1,
+          "status": "Running"
+        },
+        {
+          "commands": 12,
+          "distance": 7072.652720787314,
+          "finish": -1,
+          "status": "Running"
+        },
+        {
+          "commands": 12,
+          "distance": 7017.029018435642,
+          "finish": -1,
+          "status": "Running"
+        }
+      ]
+    }
+  ],
+  "linearFirstObserved": {
+    "elapsed": 7.022999999999996,
+    "cameraLeft": 1391.896954749999
+  },
+  "pause": {
+    "cameraLeft": 4295.031999999997,
+    "elapsed": 17.411999999999992,
+    "paused": true
+  },
+  "pauseAfterResize": {
+    "cameraLeft": 4295.031999999997,
+    "elapsed": 17.411999999999992,
+    "paused": true
+  },
+  "linearFinal": {
+    "cameraLeft": 7367.813350858612,
+    "elapsed": 28.15599073726787,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "commands": 15,
+        "finish": 27.579220632908903,
+        "status": "Finished"
+      },
+      {
+        "collisions": 0,
+        "commands": 13,
+        "finish": 27.776823325618142,
+        "status": "Finished"
+      },
+      {
+        "collisions": 0,
+        "commands": 12,
+        "finish": 27.948752724519863,
+        "status": "Finished"
+      },
+      {
+        "collisions": 0,
+        "commands": 12,
+        "finish": 28.15599073726787,
+        "status": "Finished"
+      }
+    ],
+    "preparation": 0.7529001000000024,
+    "usedCache": false,
+    "version": "5.8.2-trial"
+  },
+  "exponentialSample": {
+    "cameraLeft": 2091.2559555095395,
+    "elapsed": 9.875,
+    "expected": 2091.25595550954,
+    "phase": "racing",
+    "players": [
+      {
+        "commands": 5,
+        "distance": 2448.3031589623997,
+        "status": "Running"
+      },
+      {
+        "commands": 5,
+        "distance": 2448.3031589623997,
+        "status": "Running"
+      },
+      {
+        "commands": 1,
+        "distance": 2448.2850061962604,
+        "status": "Running"
+      },
+      {
+        "commands": 5,
+        "distance": 2448.3031589623997,
+        "status": "Running"
+      }
+    ],
+    "preparation": 0.7539001000000047,
+    "usedCache": false
+  },
+  "exponentialFinal": {
+    "cameraLeft": 7527.038853540692,
+    "elapsed": 29.867502579663498,
+    "expected": 7527.038853540691,
+    "phase": "finished",
+    "players": [
+      {
+        "collisions": 0,
+        "commands": 15,
+        "finish": 29.867502579663498,
+        "status": "Finished"
+      },
+      {
+        "collisions": 0,
+        "commands": 13,
+        "finish": 29.744126930763876,
+        "status": "Finished"
+      },
+      {
+        "collisions": 2,
+        "commands": 3,
+        "finish": -1,
+        "status": "Eliminated"
+      },
+      {
+        "collisions": 1,
+        "commands": 14,
+        "finish": -1,
+        "status": "Eliminated"
+      }
+    ]
+  },
+  "errors": [],
+  "viewports": [
+    "1280x720",
+    "568x320"
+  ],
+  "physicalPhoneTested": false
+}

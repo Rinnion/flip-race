@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "baseRevision": "0408637509732e53755366b7598a54039db95b6c",
+  "command": "dotnet run -c Release --project Tools/SurfaceRunCheck -p:UseAppHost=false --artifacts-path <temporary directory>",
+  "scenarios": 18,
+  "assertions": 7721,
+  "frameSeconds": [0.0007, 0.03333333333333333, 0.317, 20],
+  "cameraCases": [
+    "linear and exponential displacement",
+    "nonstandard track length",
+    "countdown, pause, snapshot, and retry",
+    "nonshared, Lagger, and OFF behavior",
+    "first crossing between positive frame endpoints",
+    "camera cap within the same advance",
+    "moving and stopped runners",
+    "linear and exponential tangents and an exponential shallow crossing",
+    "finish wins a swept boundary tie",
+    "cache isolation for Constant with acceleration ON"
+  ],
+  "botCases": {
+    "track": "full-long",
+    "profile": "Chosen",
+    "camera": "Constant",
+    "surfaceRun": "ON, 5 percent/s, linear, cap 30 percent, air decay 200 percent, reset on collision",
+    "prestart": { "coldSeed": 12101, "warmSeed": 12102, "finishers": 2, "participants": 4, "allEmittedCommands": true, "oldCacheRejected": true },
+    "legacy": { "difficulty": "Master", "seed": 0, "status": "Eliminated", "roundedTerminalSeconds": 17.766, "leftBoundaryTolerance": 0.000001 }
+  },
+  "sourceSha256": {
+    "Assets/Scripts/Core/RaceSimulation.cs": "E502B261069752776CB887E68D8F98C3A39D1FA4B083DDBAFD04F3C40ADDFBBC",
+    "Assets/Scripts/Core/SurfaceRunMotion.cs": "0156FCD9AB7A27096EC3A4206F3ADEA3AEB5027E54BC808858C11B6F31D803A3",
+    "Assets/Scripts/Core/BotRaceController.cs": "5A2B708C2FF205AE141BBC4EA19D642D4037A039DC2D1860A99A17E44196829F",
+    "Assets/Scripts/Core/PrestartBotConfig.cs": "0B93E2CBBC1CF3A6D52134FAEF29C1476CDD9F1890717F5175EAA0BF1D0446D3"
+  },
+  "stdout": [
+    "PASS SettingsMatrix",
+    "PASS GroundAirLandingAndFlip",
+    "PASS ZeroDecayThroughAirFlip",
+    "PASS CollisionResetOptions",
+    "PASS FreezeResetAndSnapshot",
+    "PASS AdditiveEffects",
+    "PASS AcceleratedGatesAndRings",
+    "PASS MarkedLandingAndEdge",
+    "PASS FinishStrokesAndTime",
+    "PASS HiddenRevealAndPostponement",
+    "PASS ConstantCameraBoundary",
+    "PASS ExponentialSweeps",
+    "PASS ExponentialCamera",
+    "PASS AcceleratingScrollClock",
+    "PASS AcceleratingScrollContacts",
+    "Accelerating scroll bots: legacy Master Eliminated at 17,766s; prestart 2/4 finish",
+    "PASS AcceleratingScrollBots",
+    "PASS NonsharedFinishAndGrace",
+    "PASS GuardsAndOff",
+    "PASS: SURFACE RUN 18 scenarios / 7721 assertions."
+  ]
+}

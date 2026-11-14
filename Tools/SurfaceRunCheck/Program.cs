@@ -1,7 +1,7 @@
 using System;
 using FlipRace.Core;
 
-static class Program
+static partial class Program
 {
     static int assertions;
     static readonly double[] Frames = { .0007, 1d / 30, .317, 20 };
@@ -12,6 +12,7 @@ static class Program
             FreezeResetAndSnapshot, AdditiveEffects,
             AcceleratedGatesAndRings, MarkedLandingAndEdge, FinishStrokesAndTime,
             HiddenRevealAndPostponement, ConstantCameraBoundary, ExponentialSweeps, ExponentialCamera,
+            AcceleratingScrollClock, AcceleratingScrollContacts, AcceleratingScrollBots,
             NonsharedFinishAndGrace, GuardsAndOff };
         foreach (var test in tests)
         {
@@ -285,12 +286,12 @@ static class Program
             var game = RaceSimulation.CreateSolo(Empty(10800), FlightPresets.Linear, PartyCamera.Constant, 0, 1520);
             RaceSimulation.ConfigureSurfaceRun(game, true, Cap40); RaceSimulation.Press(game, 0); RaceSimulation.Advance(game, 3);
             var p = game.Players[0]; p.SurfaceRunReserve = .2; Run(game, 2, frame);
-            double expected = (36 - Math.Sqrt(36 * 36 - 4 * 5.5 * 14)) / 11;
+            double expected = (36 - Math.Sqrt(36 * 36 - 4 * 2.75 * 14)) / 5.5;
             Check(p.Status == PlayerStatus.Eliminated, "quadratic left boundary elimination"); Near(p.TerminalTime.Value, expected, "left boundary exact time");
-            game = RaceSimulation.CreateSolo(Empty(10800), FlightPresets.Linear, PartyCamera.Constant, -100, 1520);
+            game = RaceSimulation.CreateSolo(Empty(10800), FlightPresets.Linear, PartyCamera.Constant, -500, 1520);
             RaceSimulation.ConfigureSurfaceRun(game, true, Cap40); RaceSimulation.Press(game, 0); RaceSimulation.Advance(game, 3);
             p = game.Players[0]; p.SurfaceRunReserve = .2; Run(game, 8, frame);
-            Check(p.Status == PlayerStatus.Running, "acceleration closes speed deficit before left bound");
+            Check(p.Status == PlayerStatus.Running, "runner remains ahead of the left bound at eight seconds");
         }
     }
     static void ExponentialSweeps()
@@ -363,26 +364,37 @@ static class Program
         foreach (double frame in Frames)
         {
             double scroll = 260, crossing = 1.2;
-            var game = ExponentialCameraRun(settings, scroll, scroll * crossing - GroundDistance(settings, 0, crossing));
+            var game = ExponentialCameraRun(settings, scroll, ScrollTravel(scroll, settings, crossing) - GroundDistance(settings, 0, crossing));
             Run(game, 8, frame);
             Check(game.Players[0].Status == PlayerStatus.Eliminated, "exponential camera first crossing");
             Near(game.Players[0].TerminalTime.Value, crossing, "exponential camera first root time");
 
-            double turning = -Math.Log((308d - scroll) / (308 - 220)) / (settings.Rate / settings.Cap);
-            double tangentGap = scroll * turning - GroundDistance(settings, 0, turning);
+            // The player starts slower but briefly outruns the camera. Use
+            // the first equal-speed time, when their gap reaches its minimum.
+            scroll = 235;
+            double turning = FirstClosingRoot(t => ScrollSpeed(scroll, settings, t) - GroundSpeed(settings, 0, t), 0, 8);
+            double tangentGap = ScrollTravel(scroll, settings, turning) - GroundDistance(settings, 0, turning);
             game = ExponentialCameraRun(settings, scroll, tangentGap);
             Run(game, 8, frame);
             Check(game.Players[0].Status == PlayerStatus.Eliminated, "exponential camera tangent is contact");
-            Near(game.Players[0].TerminalTime.Value, turning, "exponential camera tangent time");
+            // Repeated small frames accumulate roundoff at the zero-slope
+            // contact. The shallow crossing below independently verifies first root.
+            Near(game.Players[0].TerminalTime.Value, turning, "exponential camera tangent time", 2e-5);
+            double shallowGap = tangentGap - 1e-6;
+            double shallowRoot = FirstClosingRoot(t => shallowGap + GroundDistance(settings, 0, t) - ScrollTravel(scroll, settings, t), 0, turning);
+            game = ExponentialCameraRun(settings, scroll, shallowGap);
+            Run(game, 8, frame);
+            Check(game.Players[0].Status == PlayerStatus.Eliminated, "exponential shallow crossing eliminates");
+            Near(game.Players[0].TerminalTime.Value, shallowRoot, "exponential shallow crossing first root", 5e-7);
             game = ExponentialCameraRun(settings, scroll, tangentGap + 1);
             Run(game, 8, frame);
             Check(game.Players[0].Status == PlayerStatus.Running, "exponential camera turnaround prevents elimination");
 
             scroll = 308;
-            game = ExponentialCameraRun(settings, scroll, scroll * crossing - GroundDistance(settings, 0, crossing));
+            game = ExponentialCameraRun(settings, scroll, ScrollTravel(scroll, settings, crossing) - GroundDistance(settings, 0, crossing));
             Run(game, 8, frame);
-            Check(game.Players[0].Status == PlayerStatus.Eliminated, "camera speed equals asymptote and still crosses");
-            Near(game.Players[0].TerminalTime.Value, crossing, "asymptotic camera first root time");
+            Check(game.Players[0].Status == PlayerStatus.Eliminated, "speed deficit remains and camera crosses");
+            Near(game.Players[0].TerminalTime.Value, crossing, "persistent deficit first root time");
         }
     }
     static void NonsharedFinishAndGrace()

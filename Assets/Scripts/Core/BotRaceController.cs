@@ -19,7 +19,7 @@ namespace FlipRace.Core
         int cursor;
         public int Cursor {get{return cursor;}}
         public double MinimumSampledMargin {get;private set;}
-        public double ConservativeMargin {get{return MinimumSampledMargin-game.PartyCameraSpeed*MaxSlice;}}
+        public double ConservativeMargin {get{return MinimumSampledMargin-game.MaximumScrollSpeed*MaxSlice;}}
         public Action<BotSlice> Observer;
         private BotRaceController(GameState game,int slot,double[] distances)
         {

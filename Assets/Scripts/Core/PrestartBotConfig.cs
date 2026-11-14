@@ -60,7 +60,8 @@ namespace FlipRace.Core
             }
             if (HumanCount == slots.Count) throw new ArgumentException("A prestart race needs at least one bot.", nameof(slots));
             if (!GeometryMatches()) throw new ArgumentException("Track content changed after validation.", nameof(package));
-            CacheKey = string.Join("/", AlgorithmVersion, Package.ContentHash, Flight == FlightPresets.Chosen ? "chosen" : "fast",
+            string cacheVersion = camera == PartyCamera.Constant && surfaceRunEnabled ? AlgorithmVersion + "-accelerating-scroll" : AlgorithmVersion;
+            CacheKey = string.Join("/", cacheVersion, Package.ContentHash, Flight == FlightPresets.Chosen ? "chosen" : "fast",
                 ((int)camera).ToString(CultureInfo.InvariantCulture), standaloneBot ? "bot" : "party", roles.ToString(),
                 Number(cameraStartLeft), Number(windowWidth), Number(warningDuration), surfaceRunEnabled ? "on" : "off",
                 surfaceRunSettings.RatePercent.ToString(CultureInfo.InvariantCulture), ((int)surfaceRunSettings.Curve).ToString(CultureInfo.InvariantCulture),

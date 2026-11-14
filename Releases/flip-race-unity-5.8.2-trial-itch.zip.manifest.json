@@ -1,0 +1,156 @@
+{
+  "checkedAt": "2026-11-14T15:17:50.042Z",
+  "buildDirectory": "F:\\Home\\Game\\flip-race-unity\\Builds\\WebGL-v5.8.2-trial",
+  "fileCount": 14,
+  "totalBytes": 9576103,
+  "totalMiB": 9.132,
+  "compression": "unity-fallback",
+  "fallbackCodec": "gzip",
+  "checkedReferences": [
+    "Build/WebGL-v5.8.2-trial.data.unityweb",
+    "Build/WebGL-v5.8.2-trial.framework.js.unityweb",
+    "Build/WebGL-v5.8.2-trial.loader.js",
+    "Build/WebGL-v5.8.2-trial.wasm.unityweb",
+    "StreamingAssets/Tracks/full-flow.track.json",
+    "StreamingAssets/Tracks/full-long.track.json",
+    "StreamingAssets/Tracks/full-short.track.json",
+    "StreamingAssets/Tracks/hidden-intercepts.track.json",
+    "StreamingAssets/Tracks/hidden-manifestation.track.json",
+    "StreamingAssets/Tracks/mixed-tricks.track.json",
+    "StreamingAssets/Tracks/rethink.track.json",
+    "StreamingAssets/Tracks/rhythm-cascade.track.json"
+  ],
+  "runtime": {
+    "dataUrl": "Build/WebGL-v5.8.2-trial.data.unityweb",
+    "frameworkUrl": "Build/WebGL-v5.8.2-trial.framework.js.unityweb",
+    "codeUrl": "Build/WebGL-v5.8.2-trial.wasm.unityweb",
+    "loaderUrl": "Build/WebGL-v5.8.2-trial.loader.js"
+  },
+  "files": [
+    {
+      "path": "Build/WebGL-v5.8.2-trial.data.unityweb",
+      "bytes": 1960613,
+      "sha256": "6c5af950a88c6424b000b03eaec358f4c7bbba366e699ec87bc7a531bbca3e4f"
+    },
+    {
+      "path": "Build/WebGL-v5.8.2-trial.framework.js.unityweb",
+      "bytes": 91387,
+      "sha256": "bf56d9bad8c6e14990c8c39c080b79bb566eac404cee1ba388e62a16ff1963fd"
+    },
+    {
+      "path": "Build/WebGL-v5.8.2-trial.loader.js",
+      "bytes": 39788,
+      "sha256": "74597389997291ea67b4cc9258d7fcff4bfd150ba31cda7b64debc3329bafc3a"
+    },
+    {
+      "path": "Build/WebGL-v5.8.2-trial.wasm.unityweb",
+      "bytes": 7359036,
+      "sha256": "c9b19bf1eca77a73d698d53fd64f4ddc64d0e10dcef9ba544ce2083b4caa3f03"
+    },
+    {
+      "path": "index.html",
+      "bytes": 18880,
+      "sha256": "2c92b61324d6436eda33b925a7246400d07c51306bf36632ccb08b7b0cabdf16"
+    },
+    {
+      "path": "StreamingAssets/Tracks/full-flow.track.json",
+      "bytes": 12174,
+      "sha256": "68a2c4ade5aa78dc0f0aa6cc4575b91e11d879e8bc911f34730940d8d1bb5d2c"
+    },
+    {
+      "path": "StreamingAssets/Tracks/full-long.track.json",
+      "bytes": 11991,
+      "sha256": "38c5efb624cd3ed176812583a69dd5ca92bccfd83da1ae69c1616187ceb5e441"
+    },
+    {
+      "path": "StreamingAssets/Tracks/full-short.track.json",
+      "bytes": 12025,
+      "sha256": "45435aa8000ee55e348b396031eb9604b303d3481e4538cc7e6ca104117b4d33"
+    },
+    {
+      "path": "StreamingAssets/Tracks/hidden-intercepts.track.json",
+      "bytes": 16600,
+      "sha256": "effe313bae518c3c61346150808efee523f91e2da0e83e9a7717d3c368aff33c"
+    },
+    {
+      "path": "StreamingAssets/Tracks/hidden-manifestation.track.json",
+      "bytes": 13026,
+      "sha256": "7ea257b9161a1b8b07380f890dd37c7839f516ffefdb3f2ae0a9be6c2b97106f"
+    },
+    {
+      "path": "StreamingAssets/Tracks/index.json",
+      "bytes": 315,
+      "sha256": "0f8697f7ca54095ae5cf18afd340a78c6af5c0a222136486ac7a00d4804cb8f6"
+    },
+    {
+      "path": "StreamingAssets/Tracks/mixed-tricks.track.json",
+      "bytes": 14213,
+      "sha256": "8f5c1bb3df7e803b074d40a7090be975fb18e6cc88337824e55f22d84c5584e4"
+    },
+    {
+      "path": "StreamingAssets/Tracks/rethink.track.json",
+      "bytes": 9836,
+      "sha256": "6c7bbd1fa20fc20169554ba7d63d6d2b8a4fedc9f21793c7c5c035cc823ad119"
+    },
+    {
+      "path": "StreamingAssets/Tracks/rhythm-cascade.track.json",
+      "bytes": 16219,
+      "sha256": "d9cbffb5c7a6c5269a112c118af0c5e3be297bf523b40faad6af6b9140063aad"
+    }
+  ],
+  "trackCatalog": {
+    "path": "StreamingAssets/Tracks/index.json",
+    "count": 8,
+    "tracks": [
+      {
+        "path": "StreamingAssets/Tracks/full-long.track.json",
+        "id": "full-long",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/full-short.track.json",
+        "id": "full-short",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/full-flow.track.json",
+        "id": "full-flow",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/rhythm-cascade.track.json",
+        "id": "rhythm-cascade",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/mixed-tricks.track.json",
+        "id": "mixed-tricks",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/hidden-intercepts.track.json",
+        "id": "hidden-intercepts",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/hidden-manifestation.track.json",
+        "id": "hidden-manifestation",
+        "schemaVersion": 1
+      },
+      {
+        "path": "StreamingAssets/Tracks/rethink.track.json",
+        "id": "rethink",
+        "schemaVersion": 1
+      }
+    ]
+  },
+  "note": "Static artifact verification only. Browser launch, gameplay and physical multi-touch require separate checks.",
+  "archive": {
+    "path": "F:\\Home\\Game\\flip-race-unity\\Releases\\flip-race-unity-5.8.2-trial-itch.zip",
+    "bytes": 9327132,
+    "miB": 8.895,
+    "sha256": "cf3897d63e9cd0ecd931c89978020e5b4c19d5122cdd839dc2732903144bbc2f",
+    "entriesVerified": true,
+    "indexAtRoot": true
+  }
+}

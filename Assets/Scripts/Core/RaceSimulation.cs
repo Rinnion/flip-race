@@ -318,11 +318,15 @@ namespace FlipRace.Core
         public PartyCamera PartyCamera => botForecastCamera ? PartyCamera.Lagger : partyCamera;
         public readonly double PartyCameraStartLeft, PartyWindowWidth, PartyCameraSpeed;
         internal double PartyLastCameraLeft;
+        internal bool HasAcceleratingScroll => UsesSharedRaceCamera && PartyCamera == PartyCamera.Constant && SurfaceRunEnabled;
+        internal double MaximumScrollSpeed => PartyCameraSpeed + (HasAcceleratingScroll ? RaceConfig.Speed * SurfaceRunSettings.Cap : 0);
+        internal double ScrollCameraLeftAt(double at) => PartyCameraStartLeft + (HasAcceleratingScroll
+            ? SurfaceRunMotion.ForScrollCamera(this, 0).Travel(at) : PartyCameraSpeed * at);
         public double PartyCameraLeft
         {
             get
             {
-                if (PartyCamera == PartyCamera.Constant) return PartyCameraStartLeft + PartyCameraSpeed * Elapsed;
+                if (PartyCamera == PartyCamera.Constant) return ScrollCameraLeftAt(Elapsed);
                 double last = double.PositiveInfinity;
                 foreach (var player in Players)
                     if (player.Status == PlayerStatus.Running) last = Math.Min(last, player.Distance);
@@ -1367,8 +1371,9 @@ namespace FlipRace.Core
             {
                 if (player.Recovering > Epsilon)
                 {
-                    double elimination = EliminationTime(party, player, elapsed + dt - remaining, 0);
-                    var stopped = Math.Min(Math.Min(remaining, player.Recovering), elimination);
+                    double recoveryHorizon = Math.Min(remaining, player.Recovering);
+                    double elimination = EliminationTime(party, player, elapsed + dt - remaining, 0, default, recoveryHorizon);
+                    var stopped = Math.Min(recoveryHorizon, elimination);
                     player.Recovering = Math.Max(0, player.Recovering - stopped);
                     player.RecoveryElapsed += stopped;
                     if (player.Recovering < Epsilon)
@@ -1537,9 +1542,10 @@ namespace FlipRace.Core
             SurfaceRunMotion motion = default, double horizon = double.PositiveInfinity)
         {
             if (party == null || party.PartyCamera != PartyCamera.Constant) return double.PositiveInfinity;
-            double gap = player.Distance + RaceConfig.PlayerRadius
-                - (party.PartyCameraStartLeft + party.PartyCameraSpeed * at);
+            double gap = player.Distance + RaceConfig.PlayerRadius - party.ScrollCameraLeftAt(at);
             if (gap <= 0) return 0;
+            if (party.HasAcceleratingScroll)
+                return motion.EliminationTime(gap, SurfaceRunMotion.ForScrollCamera(party, at), horizon);
             if (player.SurfaceRunEnabled && speed > 0)
                 return motion.EliminationTime(gap, party.PartyCameraSpeed, horizon);
             double closingSpeed = party.PartyCameraSpeed - speed;

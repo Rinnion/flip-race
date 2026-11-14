@@ -12,6 +12,35 @@ namespace FlipRace.Core
         internal bool IsExponential { get { return exponent > 0; } }
         internal double Acceleration { get { return RaceConfig.Speed * rate; } }
 
+        internal static SurfaceRunMotion ForScrollCamera(GameState game, double at)
+        { return new SurfaceRunMotion(game.PartyCameraSpeed, game.SurfaceRunSettings, at); }
+
+        private SurfaceRunMotion(double baseSpeed, SurfaceRunSettings settings, double at)
+        {
+            enabled = true;
+            position = 0;
+            cap = settings.Cap;
+            rate = exponent = 0;
+            TransitionTime = double.PositiveInfinity;
+            double halfRate = settings.Rate / 2;
+            if (settings.Curve == SurfaceRunCurve.Exponential)
+            {
+                exponent = halfRate / cap;
+                reserve = cap * ExponentialGain(exponent * at);
+            }
+            else
+            {
+                double remaining = cap / halfRate - at;
+                reserve = Math.Min(cap, halfRate * at);
+                if (remaining > 0)
+                {
+                    rate = halfRate;
+                    TransitionTime = remaining;
+                }
+            }
+            speed = baseSpeed + RaceConfig.Speed * reserve;
+        }
+
         internal SurfaceRunMotion(PlayerState player)
         {
             enabled = player.SurfaceRunEnabled;
@@ -126,6 +155,106 @@ namespace FlipRace.Core
             if (turningTime <= horizon && Math.Abs(closest) <= 1e-9) return turningTime;
             if (closest > 0) return double.PositiveInfinity;
             return RefineExponentialCrossing(0, last, -gap, cameraSpeed, false);
+        }
+
+        // The caller splits the player's support/effect transitions. Split the
+        // camera's cap as well, then isolate all possible first contacts.
+        internal double EliminationTime(double gap, SurfaceRunMotion camera, double horizon)
+        {
+            double capAt = camera.TransitionTime;
+            if (!IsExponential && !camera.IsExponential)
+            {
+                double untilCap = Math.Min(horizon, capAt);
+                double first = QuadraticContact(gap, speed - camera.speed, Acceleration - camera.Acceleration, untilCap);
+                if (!double.IsPositiveInfinity(first)) return first;
+                if (capAt >= horizon) return double.PositiveInfinity;
+                double gapAtCap = gap + Travel(capAt) - camera.Travel(capAt);
+                double speedAtCap = Velocity(capAt) - camera.Velocity(capAt);
+                return capAt + QuadraticContact(gapAtCap, speedAtCap, Acceleration, horizon - capAt);
+            }
+
+            // The difference of two exponential accelerations (or one
+            // exponential and one constant) can change sign at most once.
+            // On either side, relative velocity is monotone. Split at any
+            // velocity zero to check even a brief crossing or a tangent.
+            double last = Math.Min(capAt, horizon);
+            double inflection = AccelerationEquality(camera);
+            if (inflection > 0 && inflection < last)
+            {
+                double first = SearchMonotoneVelocity(camera, gap, 0, inflection);
+                if (!double.IsPositiveInfinity(first)) return first;
+                first = SearchMonotoneVelocity(camera, gap, inflection, last);
+                if (!double.IsPositiveInfinity(first)) return first;
+            }
+            else
+            {
+                double first = SearchMonotoneVelocity(camera, gap, 0, last);
+                if (!double.IsPositiveInfinity(first)) return first;
+            }
+            return capAt < horizon ? SearchMonotoneVelocity(camera, gap, capAt, horizon) : double.PositiveInfinity;
+        }
+
+        private static double QuadraticContact(double gap, double relativeSpeed, double relativeAcceleration, double horizon)
+        {
+            if (gap <= 0) return 0;
+            double root = FirstNonnegativeRoot(.5 * relativeAcceleration, relativeSpeed, gap);
+            if (root <= horizon) return root;
+            // A closing runner can just touch the edge at the minimum.
+            // Retain a real earlier crossing when the quadratic has one.
+            if (relativeSpeed < 0 && relativeAcceleration > 0)
+            {
+                double tangent = -relativeSpeed / relativeAcceleration;
+                double minimumGap = gap + .5 * relativeSpeed * tangent;
+                if (tangent <= horizon && minimumGap >= 0 && minimumGap <= 1e-9) return tangent;
+            }
+            return double.PositiveInfinity;
+        }
+
+        private double Velocity(double time) => speed + (IsExponential
+            ? RaceConfig.Speed * (cap - reserve) * ExponentialGain(exponent * time)
+            : Acceleration * Math.Min(time, TransitionTime));
+
+        private double AccelerationEquality(SurfaceRunMotion camera)
+        {
+            double playerAcceleration = IsExponential ? RaceConfig.Speed * (cap - reserve) * exponent : Acceleration;
+            double cameraAcceleration = camera.IsExponential
+                ? RaceConfig.Speed * (camera.cap - camera.reserve) * camera.exponent : camera.Acceleration;
+            if (playerAcceleration <= 0 || cameraAcceleration <= 0 || exponent == camera.exponent)
+                return double.PositiveInfinity;
+            return (Math.Log(playerAcceleration) - Math.Log(cameraAcceleration)) / (exponent - camera.exponent);
+        }
+
+        private double SearchMonotoneVelocity(SurfaceRunMotion camera, double gap, double start, double end)
+        {
+            double firstVelocity = Velocity(start) - camera.Velocity(start);
+            double lastVelocity = Velocity(end) - camera.Velocity(end);
+            double minimum = end;
+            if (firstVelocity < 0 && lastVelocity > 0)
+            {
+                // Closing stops at this minimum gap. A later positive gap
+                // must not hide an earlier loss of the lane.
+                double lo = start, hi = end;
+                while (hi - lo > 1e-12)
+                {
+                    double mid = lo + (hi - lo) / 2;
+                    if (mid == lo || mid == hi) break;
+                    if (Velocity(mid) < camera.Velocity(mid)) lo = mid;
+                    else hi = mid;
+                }
+                minimum = hi;
+            }
+            double closest = gap + Travel(minimum) - camera.Travel(minimum);
+            if (closest >= 0 && closest <= 1e-9 && firstVelocity < 0 && lastVelocity >= 0) return minimum;
+            if (closest > 0) return double.PositiveInfinity;
+            double left = start, right = minimum;
+            while (right - left > 1e-12)
+            {
+                double mid = left + (right - left) / 2;
+                if (mid == left || mid == right) break;
+                if (gap + Travel(mid) - camera.Travel(mid) > 0) left = mid;
+                else right = mid;
+            }
+            return right;
         }
 
         private double RefineExponentialCrossing(double lo, double hi, double distance, double referenceSpeed, bool increasing)
