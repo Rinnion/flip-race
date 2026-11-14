@@ -286,7 +286,7 @@ static partial class Program
             var game = RaceSimulation.CreateSolo(Empty(10800), FlightPresets.Linear, PartyCamera.Constant, 0, 1520);
             RaceSimulation.ConfigureSurfaceRun(game, true, Cap40); RaceSimulation.Press(game, 0); RaceSimulation.Advance(game, 3);
             var p = game.Players[0]; p.SurfaceRunReserve = .2; Run(game, 2, frame);
-            double expected = (36 - Math.Sqrt(36 * 36 - 4 * 2.75 * 14)) / 5.5;
+            double expected = (36 - Math.Sqrt(36 * 36 - 4 * 4.4 * 14)) / 8.8;
             Check(p.Status == PlayerStatus.Eliminated, "quadratic left boundary elimination"); Near(p.TerminalTime.Value, expected, "left boundary exact time");
             game = RaceSimulation.CreateSolo(Empty(10800), FlightPresets.Linear, PartyCamera.Constant, -500, 1520);
             RaceSimulation.ConfigureSurfaceRun(game, true, Cap40); RaceSimulation.Press(game, 0); RaceSimulation.Advance(game, 3);

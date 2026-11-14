@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "baseRevision": "262989b1b3d7d157f5e6fbdcac81af330aba4d3e",
+  "command": "dotnet run -c Release --project Tools/SurfaceRunCheck -p:UseAppHost=false --artifacts-path <temporary directory>",
+  "scenarios": 18,
+  "assertions": 7771,
+  "botCases": {
+    "track": "full-long",
+    "profile": "Chosen",
+    "camera": "Constant",
+    "surfaceRun": "ON, 5 percent/s, linear, cap 30 percent, air decay 200 percent, reset on collision",
+    "prestart": { "coldSeed": 12101, "warmSeed": 12102, "finishers": 4, "participants": 4, "allEmittedCommands": true, "oldCacheRejected": true },
+    "legacy": { "difficulty": "Master", "seed": 0, "status": "Finished", "roundedTerminalSeconds": 32.323 }
+  },
+  "sourceSha256": {
+    "Assets/Scripts/Core/SurfaceRunMotion.cs": "BCB0FB9C4FDFB2DC268FDFA7D2F817C3F65E71C95DC784CFFE64131004BC9AF0",
+    "Assets/Scripts/Core/PrestartBotConfig.cs": "F87317A85DA1FE2E616D3C737A898CB94397B2DEA89142ABC32CCED4F4BC6462",
+    "Tools/SurfaceRunCheck/Program.cs": "C694942C5555E558B9D70018FC973346C35DC28FD47ADB766F19E319EB21B02F",
+    "Tools/SurfaceRunCheck/ScrollChecks.cs": "A13ED5D8EDB5FFED205F34FE44D6AF8C225525EDAFBA486557D4BB4C982AFBC8"
+  },
+  "stdout": [
+    "PASS SettingsMatrix",
+    "PASS GroundAirLandingAndFlip",
+    "PASS ZeroDecayThroughAirFlip",
+    "PASS CollisionResetOptions",
+    "PASS FreezeResetAndSnapshot",
+    "PASS AdditiveEffects",
+    "PASS AcceleratedGatesAndRings",
+    "PASS MarkedLandingAndEdge",
+    "PASS FinishStrokesAndTime",
+    "PASS HiddenRevealAndPostponement",
+    "PASS ConstantCameraBoundary",
+    "PASS ExponentialSweeps",
+    "PASS ExponentialCamera",
+    "PASS AcceleratingScrollClock",
+    "PASS AcceleratingScrollContacts",
+    "Accelerating scroll bots: legacy Master Finished at 32,323s; prestart 4/4 finish",
+    "PASS AcceleratingScrollBots",
+    "PASS NonsharedFinishAndGrace",
+    "PASS GuardsAndOff",
+    "PASS: SURFACE RUN 18 scenarios / 7771 assertions."
+  ]
+}

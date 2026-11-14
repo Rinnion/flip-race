@@ -1,0 +1,315 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4184/",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "track": "full-long",
+  "profile": "Chosen",
+  "camera": "Constant",
+  "cap": 30,
+  "samples": [
+    {
+      "label": "linear5-cap30",
+      "version": "5.8.3-trial",
+      "phase": "racing",
+      "paused": false,
+      "elapsed": 4.845000000000013,
+      "cameraLeft": 796.4660706250029,
+      "expected": 796.466070625003,
+      "error": -1.1368683772161603e-13,
+      "preparationSeconds": 1.6572999999999918,
+      "players": [
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 230.91157051503737,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 256.24421700403144,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 230.91157051503737,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 256.24421700403144,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "label": "pause-start",
+      "version": "5.8.3-trial",
+      "phase": "racing",
+      "paused": true,
+      "elapsed": 4.875,
+      "cameraLeft": 803.306640625,
+      "expected": 803.306640625,
+      "error": 0,
+      "preparationSeconds": 1.6572999999999918,
+      "players": [
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 231.24157051503724,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 256.57421700403125,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 231.24157051503724,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 256.57421700403125,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "label": "pause-end",
+      "version": "5.8.3-trial",
+      "phase": "racing",
+      "paused": true,
+      "elapsed": 4.875,
+      "cameraLeft": 803.306640625,
+      "expected": 803.306640625,
+      "error": 0,
+      "preparationSeconds": 1.6572999999999918,
+      "players": [
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 231.24157051503724,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 256.57421700403125,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 231.24157051503724,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 256.57421700403125,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "label": "linear-late",
+      "version": "5.8.3-trial",
+      "phase": "racing",
+      "paused": false,
+      "elapsed": 22.406000000000006,
+      "cameraLeft": 5054.693789700002,
+      "expected": 5054.693789700002,
+      "error": 0,
+      "preparationSeconds": 1.6572999999999918,
+      "players": [
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 384.3179999999998,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 279.18865101209377,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 286,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 276.4386510120938,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "label": "linear-result",
+      "version": "5.8.3-trial",
+      "phase": "finished",
+      "paused": false,
+      "elapsed": 28.818377454806022,
+      "cameraLeft": 6736.404615337654,
+      "expected": 6736.404615337654,
+      "error": 0,
+      "preparationSeconds": 1.6572999999999918,
+      "players": [
+        {
+          "status": "Finished",
+          "finish": 28.26913483490039,
+          "speed": 276.30813419599804,
+          "collisions": 0
+        },
+        {
+          "status": "Finished",
+          "finish": 27.80265941252959,
+          "speed": 276.6769045499192,
+          "collisions": 0
+        },
+        {
+          "status": "Finished",
+          "finish": 28.818377454806022,
+          "speed": 286,
+          "collisions": 0
+        },
+        {
+          "status": "Finished",
+          "finish": 28.014027702536318,
+          "speed": 276.25195573999326,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "label": "exp1-new-race",
+      "version": "5.8.3-trial",
+      "phase": "ready",
+      "paused": false,
+      "elapsed": 0,
+      "cameraLeft": -288.8,
+      "expected": -288.8,
+      "error": 0,
+      "preparationSeconds": 1.6885000000000119,
+      "players": [
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 220,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 220,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 220,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 220,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "label": "exp1-cap30",
+      "version": "5.8.3-trial",
+      "phase": "racing",
+      "paused": false,
+      "elapsed": 11.625,
+      "cameraLeft": 2380.1910156249996,
+      "expected": 2380.1910156249996,
+      "error": 0,
+      "preparationSeconds": 1.6885000000000119,
+      "players": [
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 225.8241856664804,
+          "collisions": 1
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 233.99757507344822,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 238.6362925938965,
+          "collisions": 0
+        },
+        {
+          "status": "Running",
+          "finish": -1,
+          "speed": 233.99757507344822,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "label": "exp1-result",
+      "version": "5.8.3-trial",
+      "phase": "finished",
+      "paused": false,
+      "elapsed": 32.71811506732592,
+      "cameraLeft": 7792.327233997695,
+      "expected": 7792.327233997695,
+      "error": 0,
+      "preparationSeconds": 1.6885000000000119,
+      "players": [
+        {
+          "status": "Eliminated",
+          "finish": -1,
+          "speed": 230.89110924980838,
+          "collisions": 1
+        },
+        {
+          "status": "Eliminated",
+          "finish": -1,
+          "speed": 235.9127086237013,
+          "collisions": 1
+        },
+        {
+          "status": "Finished",
+          "finish": 32.71811506732592,
+          "speed": 242.82471688687832,
+          "collisions": 0
+        },
+        {
+          "status": "Finished",
+          "finish": 32.090653619476385,
+          "speed": 240.75525124487578,
+          "collisions": 0
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Settings selected through visible menu; diagnostics read from published canvas DOM attribute.",
+    "Linear 5%/s: four finishers. Exponential 1%/s: two finishers, two eliminated; no bot-quality guarantee.",
+    "Physical phone not tested."
+  ]
+}

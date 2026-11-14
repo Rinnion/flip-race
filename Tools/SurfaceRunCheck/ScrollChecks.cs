@@ -7,19 +7,13 @@ static partial class Program
 {
     static double ScrollTravel(double speed, SurfaceRunSettings settings, double time)
     {
-        double rate = settings.Rate / 2, cap = settings.Cap;
-        if (settings.Curve == SurfaceRunCurve.Exponential)
-            return speed * time + RaceConfig.Speed * cap * (time - (1 - Math.Exp(-rate * time / cap)) * cap / rate);
-        double ramp = Math.Min(time, cap / rate);
-        return speed * time + RaceConfig.Speed * (.5 * rate * ramp * ramp + cap * (time - ramp));
+        double ramp = Math.Min(time, 40);
+        return speed * time + RaceConfig.Speed * settings.Cap * (ramp * ramp / 80 + time - ramp);
     }
 
     static double ScrollSpeed(double speed, SurfaceRunSettings settings, double time)
     {
-        double halfRate = settings.Rate / 2;
-        double reserve = settings.Curve == SurfaceRunCurve.Linear ? Math.Min(settings.Cap, halfRate * time)
-            : settings.Cap * (1 - Math.Exp(-halfRate * time / settings.Cap));
-        return speed + RaceConfig.Speed * reserve;
+        return speed + RaceConfig.Speed * settings.Cap * Math.Min(time / 40, 1);
     }
 
     static double GroundSpeed(SurfaceRunSettings settings, double reserve, double time)
@@ -90,6 +84,34 @@ static partial class Program
             RaceRunner.Press(trial, 0); RaceRunner.Press(trial, 1); RaceRunner.Advance(trial, 5);
             Near(trial.PartyCameraLeft, 0, "Ordinary nonshared race has no scroll ramp");
         }
+
+        foreach (int cap in new[] { 20, 30, 40 })
+        {
+            var slowSettings = new SurfaceRunSettings(1, SurfaceRunCurve.Linear, cap);
+            var fastSettings = new SurfaceRunSettings(5, SurfaceRunCurve.Exponential, cap);
+            var slow = ScrollRace(18000, -30000, slowSettings);
+            var fast = ScrollRace(18000, -30000, fastSettings);
+            Check(RaceRunner.Press(slow, 0) && RaceRunner.Press(fast, 0), "Ramp fixture readiness");
+            RaceRunner.Advance(slow, RaceConfig.CountdownDuration);
+            RaceRunner.Advance(fast, RaceConfig.CountdownDuration);
+            var initial = SurfaceRunMotion.ForScrollCamera(slow, 0);
+            var beforeCap = SurfaceRunMotion.ForScrollCamera(slow, 39.75);
+            var atCap = SurfaceRunMotion.ForScrollCamera(slow, 40);
+            Near(initial.TransitionTime, 40, "Camera reaches selected cap at 40 s");
+            Near(initial.Acceleration, 220 * slowSettings.Cap / 40, "Camera ramps at cap divided by 40 seconds");
+            Near(beforeCap.TransitionTime, .25, "Uncapped at 39.75 s");
+            Check(atCap.Acceleration == 0 && double.IsPositiveInfinity(atCap.TransitionTime), "No acceleration at or after cap");
+            double elapsed = 0;
+            foreach (double target in new[] { 5, 39.75, 40, 46 })
+            {
+                RaceRunner.Advance(slow, target - elapsed);
+                RaceRunner.Advance(fast, target - elapsed);
+                elapsed = target;
+                Near(slow.PartyCameraLeft, -30000 + ScrollTravel(500, slowSettings, target), "Camera distance around cap");
+                Near(fast.PartyCameraLeft, slow.PartyCameraLeft, "Player rate and curve leave camera position unchanged");
+            }
+            Check(fast.Players[0].Distance > slow.Players[0].Distance + 50, "Player rate and curve still change the runner's motion");
+        }
     }
 
     static void AcceleratingScrollContacts()
@@ -101,15 +123,15 @@ static partial class Program
             // Gap and speed recover after the first crossing. A large
             // frame checking only its endpoints would miss it.
             var settings = new SurfaceRunSettings(5, SurfaceRunCurve.Linear, 40);
-            var transient = ScrollRace(243 * 36, 14 - 47, settings);
+            var transient = ScrollRace(243 * 36, 14 - 29, settings);
             RaceRunner.Press(transient, 0); RaceRunner.Advance(transient, 3);
-            double firstRoot = FirstClosingRoot(t => 47 + GroundDistance(settings, 0, t) - ScrollTravel(243, settings, t), 0, 4.18);
-            Check(47 + GroundDistance(settings, 0, 8) - ScrollTravel(243, settings, 8) > 0, "Transient gap reopens before frame endpoint");
+            double tangentTime = 23 / 8.8;
+            double firstRoot = FirstClosingRoot(t => 29 + GroundDistance(settings, 0, t) - ScrollTravel(243, settings, t), 0, tangentTime);
+            Check(29 + GroundDistance(settings, 0, 8) - ScrollTravel(243, settings, 8) > 0, "Transient gap reopens before frame endpoint");
             Run(transient, 8, frame);
             Check(transient.Players[0].Status == PlayerStatus.Eliminated, "Linear interior crossing eliminates");
             Near(transient.Elapsed, firstRoot, "Linear interior first root");
 
-            double tangentTime = 23 / 5.5;
             double tangentGap = 23 * tangentTime / 2;
             var tangent = ScrollRace(243 * 36, 14 - tangentGap, settings);
             RaceRunner.Press(tangent, 0); RaceRunner.Advance(tangent, 3);
@@ -117,27 +139,34 @@ static partial class Program
             Check(tangent.Players[0].Status == PlayerStatus.Eliminated, "Linear minimum contact eliminates");
             Near(tangent.Elapsed, tangentTime, "Linear tangent timestamp", 2e-5);
 
-            // Player stands at cap. At the camera's cap the speeds differ,
-            // and the root falls in the second segment of the same frame.
-            const double afterCap = 9;
-            double gap = ScrollTravel(270, linear, afterCap) - GroundDistance(linear, linear.Cap, afterCap);
-            var capped = ScrollRace(9720, 14 - gap, linear);
-            RaceRunner.Press(capped, 0); RaceRunner.Advance(capped, 3);
-            capped.Players[0].SurfaceRunReserve = linear.Cap;
-            Run(capped, 14, frame);
-            Check(capped.Players[0].Status == PlayerStatus.Eliminated, "Post-cap crossing eliminates");
-            Near(capped.Elapsed, afterCap, "Post-cap exact root");
+            // Approach the cap with an active player ramp. One large frame
+            // spans t=40 and the contact lies on the camera's constant leg.
+            foreach (var playerSettings in new[] { linear, exponential })
+            {
+                const double beforeCap = 39, afterCap = 41, baseSpeed = 300, start = -6000, reserve = .1;
+                double gap = ScrollTravel(baseSpeed, playerSettings, afterCap) - ScrollTravel(baseSpeed, playerSettings, beforeCap)
+                    - GroundDistance(playerSettings, reserve, afterCap - beforeCap);
+                var capped = ScrollRace(baseSpeed * 36, start, playerSettings);
+                RaceRunner.Press(capped, 0); RaceRunner.Advance(capped, 3);
+                capped.Elapsed = beforeCap;
+                capped.Players[0].Distance = capped.PartyCameraLeft - RaceConfig.PlayerRadius + gap;
+                capped.Players[0].SurfaceRunReserve = reserve;
+                Run(capped, 3, frame);
+                Check(capped.Players[0].Status == PlayerStatus.Eliminated, "Post-cap crossing eliminates");
+                Near(capped.Elapsed, afterCap, "Post-cap exact root");
+            }
 
             // Runner has just hit a rock. The camera keeps accelerating
             // across its cap while this runner stays stationary.
-            var recovering = ScrollRace(7920, -800, linear);
-            RaceRunner.Press(recovering, 0); RaceRunner.Advance(recovering, 10.9);
+            var recovering = ScrollRace(10800, -6000, linear);
+            RaceRunner.Press(recovering, 0); RaceRunner.Advance(recovering, 3);
+            recovering.Elapsed = 39.9;
             recovering.Players[0].Distance = recovering.PartyCameraLeft - RaceConfig.PlayerRadius
-                + ScrollTravel(220, linear, 8.15) - ScrollTravel(220, linear, 7.9);
+                + ScrollTravel(300, linear, 40.15) - ScrollTravel(300, linear, 39.9);
             recovering.Players[0].Recovering = .5;
             Run(recovering, 1, frame);
             Check(recovering.Players[0].Status == PlayerStatus.Eliminated, "Recovery cannot defer camera elimination");
-            Near(recovering.Elapsed, 8.15, "Camera crosses a stopped runner after cap");
+            Near(recovering.Elapsed, 40.15, "Camera crosses a stopped runner after cap");
 
             const double clock = 1.7, finish = 2, length = 9720;
             var tie = ScrollRace(length, length + RaceConfig.PlayerRadius - ScrollTravel(length / 36, exponential, finish), exponential);
@@ -163,13 +192,13 @@ static partial class Program
         var config = new PrestartBotConfig(entry.Package, FlightPresets.Chosen, roles, PartyCamera.Constant, true, settings, .8);
         var oldRules = new PrestartBotConfig(entry.Package, FlightPresets.Chosen, roles, PartyCamera.Constant, false, settings, .8);
         var lagger = new PrestartBotConfig(entry.Package, FlightPresets.Chosen, roles, PartyCamera.Lagger, true, settings, .8);
-        Check(config.CacheKey.StartsWith("prestart-v1-accelerating-scroll/", StringComparison.Ordinal)
+        Check(config.CacheKey.StartsWith("prestart-v1-scroll-40s/", StringComparison.Ordinal)
             && oldRules.CacheKey.StartsWith("prestart-v1/", StringComparison.Ordinal) && lagger.CacheKey.StartsWith("prestart-v1/", StringComparison.Ordinal), "Only accelerated Constant invalidates cache namespace");
         var cold = PrepareScrollBots(config, 12101, null);
         string cache = cold.ExportCache();
         var warm = PrepareScrollBots(config, 12102, cache);
         Check(warm.UsedCache && warm.ExpandedStates == 0 && warm.ReplaySteps > 0, "Warm plans revalidate in new camera");
-        var oldCache = ReplaceCacheKey(cache, config.CacheKey, config.CacheKey.Replace("prestart-v1-accelerating-scroll/", "prestart-v1/"));
+        var oldCache = ReplaceCacheKey(cache, config.CacheKey, config.CacheKey.Replace("prestart-v1-scroll-40s/", "prestart-v1-accelerating-scroll/"));
         var recovered = PrepareScrollBots(config, 12103, oldCache);
         Check(!recovered.UsedCache && recovered.ExpandedStates > 0, "Old Constant+ON cache rejected");
         var race = RaceSimulation.CreatePrestartRace(config);

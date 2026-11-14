@@ -13,31 +13,19 @@ namespace FlipRace.Core
         internal double Acceleration { get { return RaceConfig.Speed * rate; } }
 
         internal static SurfaceRunMotion ForScrollCamera(GameState game, double at)
-        { return new SurfaceRunMotion(game.PartyCameraSpeed, game.SurfaceRunSettings, at); }
+        { return new SurfaceRunMotion(game.PartyCameraSpeed, game.SurfaceRunSettings.Cap, at); }
 
-        private SurfaceRunMotion(double baseSpeed, SurfaceRunSettings settings, double at)
+        private SurfaceRunMotion(double baseSpeed, double cap, double at)
         {
+            const double scrollRampSeconds = 40;
             enabled = true;
             position = 0;
-            cap = settings.Cap;
-            rate = exponent = 0;
-            TransitionTime = double.PositiveInfinity;
-            double halfRate = settings.Rate / 2;
-            if (settings.Curve == SurfaceRunCurve.Exponential)
-            {
-                exponent = halfRate / cap;
-                reserve = cap * ExponentialGain(exponent * at);
-            }
-            else
-            {
-                double remaining = cap / halfRate - at;
-                reserve = Math.Min(cap, halfRate * at);
-                if (remaining > 0)
-                {
-                    rate = halfRate;
-                    TransitionTime = remaining;
-                }
-            }
+            this.cap = cap;
+            exponent = 0;
+            bool ramping = at < scrollRampSeconds;
+            rate = ramping ? cap / scrollRampSeconds : 0;
+            reserve = ramping ? rate * at : cap;
+            TransitionTime = ramping ? scrollRampSeconds - at : double.PositiveInfinity;
             speed = baseSpeed + RaceConfig.Speed * reserve;
         }
 
