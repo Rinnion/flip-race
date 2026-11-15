@@ -1,18 +1,56 @@
-import { clamp, parseInputs, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision } from './model.mjs';
+import { clamp, parseInputs, distanceSeedFromReplay, MAX_REPLAY_INPUTS, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision, ReplayRoute } from './model.mjs';
+import { MAX_LANDING_THRESHOLD_MS, parseLandingThreshold, shortLandingIntervals } from './model.mjs';
 import { createObject, deleteObject, resizeObject, getResizeHandles } from './edit-model.mjs';
 import { DRAFT_KEY, readDraft, writeDraft, clearDraft } from './draft.mjs';
 import { selectedObjectSource, replaceObjectSource } from './object-source.mjs';
+import { LiveConnection } from './live.mjs';
+import { RouteResults, restoreRouteInputs, isMatchingReplay } from './route-analysis.mjs';
+import { readSearchResponse } from './search-progress.mjs';
+import { LaterPressRequestState, isMatchingLaterPressReport, isMatchingLaterPressReplay, laterPressRequest } from './later-press.mjs';
+import { captureRunSettings, DEFAULT_SURFACE_RUN_SETTINGS, sameRunSettings, storedRunSettings } from './run-settings.mjs';
+import { NEW_LEVEL_LENGTH, NEW_LEVEL_NAME, unusedTrackId, newLevelSource, copyBuiltinTrack,
+  clearBotReferences, updateTrackMetadata, objectPropertyFields, updateObjectProperties } from './authoring-fields.mjs';
 
 const $ = id => document.getElementById(id);
 const svgNS = 'http://www.w3.org/2000/svg';
 const number = (n, digits = 0) => Number(n).toLocaleString('ru-RU', { maximumFractionDigits: digits });
-const state = { analysis: null, valid: false, catalog: [], zoom: 1, left: -20, replay: null, time: 0, playing: false,
-  sourceName: 'track.json', sourceText: '', loadRevision: 0, analysisRevision: new Revision(), replayRevision: new Revision(), debounce: null, analysisAbort: null,
-  preview: null, moving: false, history: [], future: [], selection: null, addKind: null };
+const state = { analysis: null, valid: false, catalog: [], zoom: 1, left: -20, route: new ReplayRoute(), time: 0, playing: false,
+  sourceName: 'track.json', sourceText: '', loadRevision: 0, analysisRevision: new Revision(), debounce: null, analysisAbort: null,
+  preview: null, moving: false, history: [], future: [], selection: null, addKind: null, pickingStart: false, referenceHints: [] };
 let drag = null, spacePan = false;
+let live = null, loadingTrack = null, replayPending = null;
+let landingHighlights = [];
+let replaySource = null;
+const laterPressRequests = new LaterPressRequestState();
+const laterPress = { snapshot: null, report: null, selected: null, error: '', buttons: [] };
 let draftStorage, pendingDraft = null, draftBlocked = false, draftTimer = null, draftTouched = false;
 const preparation = { revision: 0, abort: null, pending: false, result: null, sourceId: null };
-const objectEdit = { revision: 0, timer: null, abort: null, dirty: false, committing: false, error: '', source: null, target: null };
+const routeSearch = { pending: null, status: '', progress: null, buttons: [] };
+const routeResults = new RouteResults();
+const routePageSize = 100;
+const surfaceControls = {
+  enabled: 'surface-run-enabled', ratePercent: 'surface-run-rate', curve: 'surface-run-curve',
+  capPercent: 'surface-run-cap', airDecayPercent: 'surface-run-decay', resetOnCollision: 'surface-run-reset',
+};
+const runSettingsControls = ['profile', 'warning', ...Object.values(surfaceControls)];
+const objectEdit = { revision: 0, timer: null, abort: null, dirty: false, committing: false, error: '', source: null, target: null, kind: null, fields: {} };
+const metadataInputs = ['name', 'id', 'length'];
+const catalogIds = () => state.catalog.map(item => item.id);
+const usedTrackIds = () => [...catalogIds(), state.analysis?.id, pendingDraft && trackIdFromText(pendingDraft.json), trackIdFromText($('json').value)].filter(Boolean);
+function trackIdFromText(source) {
+  try { return JSON.parse(source).track?.id; } catch { return null; }
+}
+function inputValue(input) {
+  if (input.type === 'checkbox') return input.checked;
+  return input.validity.badInput ? NaN : input.value;
+}
+function availableReference() {
+  const profile = $('profile').value;
+  const reference = state.analysis?.references?.find(item => item.profileId === profile);
+  if (reference) return { reference, hint: false };
+  const hint = state.referenceHints.find(item => item.profileId === profile);
+  return hint && { reference: hint, hint: true };
+}
 function invalidatePrepared(reason = 'Исходник или настройки изменены. Подготовьте бота заново.') {
   preparation.revision++; preparation.abort?.abort(); preparation.abort = null;
   const existed = preparation.pending || preparation.result;
@@ -29,24 +67,42 @@ function updatePrepareControls() {
   $('prepare-copy-note').textContent = reserved
     ? 'Будет создан новый ID для импорта: ID встроенной карты занят. Проверьте ID выше. Исходный JSON останется в редакторе.'
     : 'Исходный JSON останется в редакторе. Подготовленный результат с этим ID скачивается отдельно.';
-  $('prepare-bot').disabled = !state.valid || state.moving || preparation.pending || !$('output-track-id').value.trim();
+  $('prepare-bot').disabled = !state.valid || state.moving || preparation.pending || !!routeSearch.pending || !$('output-track-id').value.trim();
   $('output-track-id').disabled = preparation.pending;
   $('prepare-cancel').hidden = !preparation.pending;
   $('download-prepared').disabled = !preparation.result || preparation.pending || !state.valid || state.moving;
 }
 async function prepareBot() {
-  if (!state.valid || state.moving || preparation.pending) return;
+  if (!state.valid || state.moving || preparation.pending || routeSearch.pending) return;
   invalidatePrepared(); invalidateReplay('Подготавливаем новый эталон для текущего управления…');
-  const revision = preparation.revision, replayRevision = state.replayRevision.value;
-  const source = $('json').value, profile = $('profile').value, warning = Number($('warning').value);
+  const revision = preparation.revision, replayRevision = state.route.revision.value;
+  const source = $('json').value, settings = currentRunSettings(), { profile, warningDuration, surfaceRunSettings } = settings;
+  const axis = $('axis').value, trackLength = state.analysis.length;
   const outputTrackId = $('output-track-id').value.trim(), abort = new AbortController();
   preparation.abort = abort; preparation.pending = true; controls();
-  message('prepare-state', 'Поиск ограничен бюджетом. Затем проверяем эталон и настоящего Мастера; это может занять несколько десятков секунд. Отмена прерывает запрос.');
   message('replay-error', '', false);
-  const request = { json: source, profiles: [profile], warningDuration: warning, outputTrackId };
-  // An optional author seed is only a hint, never a prerequisite for search.
-  if ($('axis').value === 'distance') { try { request.inputs = parseInputs($('inputs').value); } catch { /* Invalid manual inputs do not prevent preparation. */ } }
+  const request = { json: source, profiles: [profile], warningDuration, surfaceRunSettings, outputTrackId };
+  let authorInputs;
+  try { authorInputs = parseInputs($('inputs').value); } catch { /* Invalid optional inputs do not prevent preparation. */ }
   try {
+    let seedNote = '';
+    if (axis === 'distance' && authorInputs) request.inputs = authorInputs;
+    else if (axis === 'time' && authorInputs?.length) {
+      message('prepare-state', 'Воспроизводим список по времени в Unity Core, чтобы получить подсказку по X…');
+      try {
+        const played = await api('/api/replay', { json: source, ...settings, axis, inputs: authorInputs }, abort.signal);
+        if (revision !== preparation.revision || abort.signal.aborted) return;
+        const seed = distanceSeedFromReplay(played.inputs, trackLength);
+        if (seed.length) {
+          request.inputs = seed;
+          seedNote = `Подсказка по X из списка по времени · ${seed.length} нажатий. `;
+        } else seedNote = 'Список по времени не дал подходящих нажатий по X. Поиск продолжится без подсказки. ';
+      } catch (error) {
+        if (revision !== preparation.revision || abort.signal.aborted || error.name === 'AbortError') return;
+        seedNote = 'Не удалось перевести список по времени. Поиск продолжится без подсказки. ';
+      }
+    }
+    message('prepare-state', `${seedNote}Ищем эталон для импорта с выключенным разгоном, затем проверяем Мастера с настройками заезда. Это может занять несколько десятков секунд.`);
     const result = await api('/api/prepare-bot', request, abort.signal);
     if (revision !== preparation.revision) return;
     const ready = result.profiles?.find(p => p.profileId === profile && p.status === 'ready');
@@ -56,20 +112,24 @@ async function prepareBot() {
     }
     preparation.result = result;
     $('prepare-result').hidden = false;
-    $('prepare-summary').textContent = `${$('profile').selectedOptions[0].textContent} · ID ${result.outputTrackId} · эталон ${number(ready.finishTime, 2)} с · Мастер проверен. ${number(ready.expandedStates)} состояний; поиск ${number(ready.elapsedMilliseconds / 1000, 2)} с. Оптимальность не утверждается.`;
+    $('prepare-summary').textContent = `Совместимость с импортом · разгон выкл. · ${profileLabel(profile)} · ID ${result.outputTrackId} · эталон ${number(ready.finishTime, 2)} с · Мастер проверен. ${number(ready.expandedStates)} состояний; поиск ${number(ready.elapsedMilliseconds / 1000, 2)} с.`;
     const hiddenVerification = state.analysis.warningMode === 'selected' && state.analysis.obstacles.some(o => o.hidden)
       ? 'Проверены все пять длительностей предупреждения.' : state.analysis.warningMode === 'authored' ? 'Проверены индивидуальные таймеры скрытых камней.' : '';
     $('prepare-rewards').textContent = `Выбранные положительные награды: ${ready.rewardIds?.length ? ready.rewardIds.join(', ') : 'нет'}. Финишный рывок проверен полностью. ${hiddenVerification}`;
+    const trial = ready.masterTrial;
+    message('prepare-trial', `Пробный заезд Мастера · ${runSettingsLabel(trial ? storedRunSettings(trial) : settings)}. ${masterTrialOutcome(trial)}`);
     message('prepare-state', result.message || 'Подготовленный JSON готов для импорта в игру. Исходный текст в редакторе не изменён.');
     controls();
+    if (!trial?.replayVerified) return;
     try {
-      const route = await api('/api/replay', { json: result.preparedJson, profile, warningDuration: warning, axis: 'distance', inputs: ready.inputs }, abort.signal);
-      if (revision !== preparation.revision || !state.replayRevision.current(replayRevision)) return;
-      showResult(route);
-      message('replay-state', `Подготовленный эталон · ${$('profile').selectedOptions[0].textContent} · нажатия по X. Список ручных нажатий выше сохранён; на схеме показан найденный маршрут.`);
+      const trialSettings = storedRunSettings(trial);
+      const route = await api('/api/replay', { json: result.preparedJson, ...trialSettings, axis: 'time', inputs: trial.inputTimes }, abort.signal);
+      if (revision !== preparation.revision || !state.route.revision.current(replayRevision)) return;
+      showResult(route, { source: result.preparedJson, editorSource: source, label: 'Пробный заезд Мастера' });
+      $('replay-panel').open = true;
     } catch (error) {
       if (revision !== preparation.revision || error.name === 'AbortError') return;
-      message('replay-error', `JSON подготовлен, но траекторию не удалось показать: ${error.message}`);
+      message('replay-error', `Не удалось построить траекторию пробного заезда Мастера. ${error.message}`);
     }
   } catch (error) {
     if (revision !== preparation.revision || error.name === 'AbortError') return;
@@ -78,8 +138,20 @@ async function prepareBot() {
     if (revision === preparation.revision) { preparation.pending = false; preparation.abort = null; controls(); }
   }
 }
+function masterTrialOutcome(trial) {
+  if (!trial || trial.status === 'unavailable') return 'Пробный заезд недоступен.';
+  if (trial.status === 'budget-limit') return 'Достигнут лимит расчёта пробного заезда.';
+  if (trial.status === 'timed-out') return 'До лимита времени Мастер не финишировал.';
+  const outcome = trial.goalsMet ? 'Выбранные награды и финишная цель получены.' : 'Часть целей подготовки не выполнена.';
+  const replay = trial.replayVerified ? '' : ' Воспроизведение этого заезда не подтверждено.';
+  return `Финиш ${number(trial.finishTime, 2)} с · удары ${number(trial.collisions)}. ${outcome}${replay}`;
+}
 function draftStatus(text, error = false) { $('draft-status').textContent = text; $('draft-status').classList.toggle('storage-error', error); }
-function draftValue() { return { json: $('json').value, inputs: $('inputs').value, filename: state.sourceName, profile: $('profile').value, axis: $('axis').value, warning: $('warning').value }; }
+function draftValue() {
+  const { profile, warningDuration, surfaceRunSettings } = currentRunSettings();
+  return { json: $('json').value, inputs: $('inputs').value, filename: state.sourceName, profile, axis: $('axis').value,
+    warning: String(warningDuration), surfaceRunSettings };
+}
 function saveDraft() {
   clearTimeout(draftTimer);
   if (draftBlocked || !draftTouched) return;
@@ -121,12 +193,220 @@ async function api(path, data, signal) {
   return body;
 }
 function badge(text, kind) { $('validation-badge').textContent = text; $('validation-badge').className = `badge ${kind}`; }
+
+const profileLabel = profile => profile === 'FastFlip' ? 'Быстрый переворот' : 'Основной';
+const warningLabel = (mode, duration) => mode === 'authored' ? 'таймеры трассы' : `предупреждение ${number(duration, 1)} с`;
+function surfaceRunLabel({ enabled, ratePercent, curve, capPercent, airDecayPercent, resetOnCollision }) {
+  if (!enabled) return 'разгон от бега выкл.';
+  return `разгон ${ratePercent} п. п./с, ${curve === 'Linear' ? 'линейный' : 'плавный'}, до +${capPercent}%, спад ${airDecayPercent}%, сброс при ударе ${resetOnCollision ? 'вкл.' : 'выкл.'}`;
+}
+function runSettingsLabel(settings, warningMode = state.analysis?.warningMode) {
+  return `${profileLabel(settings.profile)} · ${warningLabel(warningMode, settings.warningDuration)} · ${surfaceRunLabel(settings.surfaceRunSettings)}`;
+}
+function currentRunSettings() {
+  return captureRunSettings({ profile: $('profile').value, warningDuration: Number($('warning').value), surfaceRunSettings: {
+    enabled: $(surfaceControls.enabled).value === 'true', ratePercent: Number($(surfaceControls.ratePercent).value),
+    curve: $(surfaceControls.curve).value, capPercent: Number($(surfaceControls.capPercent).value),
+    airDecayPercent: Number($(surfaceControls.airDecayPercent).value), resetOnCollision: $(surfaceControls.resetOnCollision).value === 'true',
+  } });
+}
+function restoreRunSettings(settings) {
+  const { profile, warningDuration, surfaceRunSettings } = captureRunSettings(settings);
+  // A draft can be restored while the previous track's profile policy is still displayed.
+  $('profile').value = profile;
+  $('warning').value = String(warningDuration);
+  for (const [key, id] of Object.entries(surfaceControls)) $(id).value = String(surfaceRunSettings[key]);
+  updateSurfaceRunControls();
+}
+function updateSurfaceRunControls() {
+  $('surface-run-fields').disabled = $(surfaceControls.enabled).value === 'false';
+}
+const routeStopReasons = {
+  'frontier-exhausted': 'поиск завершён',
+  'state-limit': 'лимит состояний',
+  'time-limit': 'лимит времени поиска',
+  'race-time-limit': 'лимит времени заезда',
+  'verification-time-limit': 'лимит времени проверки маршрутов',
+};
+const routeLoadMessages = {
+  ready: 'Результаты записаны в JSON трассы.',
+  stale: 'Сохранённые результаты устарели. Запустите поиск для текущей трассы.',
+  unsupported: 'Версия сохранённого анализа не поддерживается. Если новый поиск отклонён, удалите поле workshopAnalysis в JSON трассы.',
+  invalid: 'Сохранённый анализ повреждён. Если новый поиск отклонён, исправьте или удалите поле workshopAnalysis в JSON трассы.',
+};
+const routeSearchPhases = {
+  search: 'Перебор вариантов', verify: 'Проверка маршрутов', save: 'Подготовка JSON', done: 'Поиск завершён',
+};
+
+function canUseRouteSearch() {
+  return state.valid && !state.moving && !drag && !objectEdit.dirty && !objectEdit.committing
+    && loadingTrack === null && !live && !preparation.pending && !routeSearch.pending;
+}
+
+function renderRoutePage() {
+  const start = routeResults.page * routePageSize;
+  const list = $('route-results-list');
+  list.start = start + 1;
+  routeSearch.buttons = [];
+  const items = routeResults.rows.slice(start, start + routePageSize).map(entry => {
+    const { run, route } = entry;
+    const item = document.createElement('li'), button = document.createElement('button');
+    const time = document.createElement('strong'), detail = document.createElement('span');
+    time.textContent = `${number(route.finishTime, 3)} с`;
+    const settings = storedRunSettings(run);
+    detail.textContent = `${profileLabel(run.profile)} · разгон ${settings.surfaceRunSettings.enabled ? 'вкл.' : 'выкл.'} · удары ${number(route.collisions)} · нажатия ${number(route.inputTicks.length)}`;
+    button.type = 'button';
+    button.title = runSettingsLabel(settings, run.warningMode);
+    button.append(time, detail);
+    button.addEventListener('click', () => selectFoundRoute(entry));
+    item.append(button);
+    routeSearch.buttons.push({ button, entry });
+    return item;
+  });
+  list.replaceChildren(...items);
+  list.scrollTop = 0;
+  const total = routeResults.rows.length, end = start + items.length;
+  $('route-results-prev').disabled = start === 0;
+  $('route-results-next').disabled = end >= total;
+  $('route-results-pages').hidden = total <= routePageSize;
+  message('route-results-range', `${number(start + 1)}–${number(end)} из ${number(total)}`, total > routePageSize);
+}
+
+function updateRouteSearch() {
+  const pending = routeSearch.pending, available = canUseRouteSearch();
+  const saved = state.valid ? state.analysis.routeAnalysis : null;
+  const analysis = saved?.analysis ?? null;
+  const settings = currentRunSettings();
+  $('route-search').disabled = !available || replayPending !== null;
+  $('route-search-cancel').hidden = !pending;
+  message('route-search-settings', `${runSettingsLabel(pending?.settings ?? settings)} · старт с начала.`, state.valid);
+  if (routeResults.update(analysis, settings)) {
+    const summaries = routeResults.runs.map(run => {
+      const item = document.createElement('li');
+      const details = [`кандидатов ${number(run.foundCount)}`, `проверено ${number(run.verifiedCount)}`, `в JSON ${number(run.routes.length)}`, routeStopReasons[run.stopReason] ?? 'поиск остановлен',
+        `${number(run.expandedStates)} состояний`, `${number(run.elapsedMilliseconds / 1000, 2)} с поиска`];
+      if (run.beamPruned) details.push('часть ветвей отсечена');
+      if (run.storageLimited) details.push('список сокращён по лимиту JSON');
+      item.textContent = `${runSettingsLabel(storedRunSettings(run), run.warningMode)} · ${details.join(' · ')}`;
+      return item;
+    });
+    $('route-search-runs').replaceChildren(...summaries);
+    $('route-search-runs').hidden = !summaries.length;
+    $('route-search-results').hidden = !routeResults.rows.length;
+    renderRoutePage();
+  }
+  const hasOtherRuns = (analysis?.runs?.length ?? 0) > routeResults.runs.length;
+  const noCurrentRoutes = !pending && hasOtherRuns && !routeResults.rows.length;
+  const emptyMessage = 'Для текущих настроек нет сохранённых маршрутов. Результаты для других настроек остаются в JSON.';
+  const status = routeSearch.status || (state.valid
+    ? (noCurrentRoutes ? emptyMessage : routeLoadMessages[saved?.status] ?? 'Поиск использует выбранную настройку забега.')
+    : 'Для поиска нужен корректный JSON трассы.');
+  message('route-search-state', status + (routeSearch.status && noCurrentRoutes ? ` ${emptyMessage}` : ''));
+  for (const { button, entry } of routeSearch.buttons) {
+    button.disabled = !available;
+    button.setAttribute('aria-pressed', String(entry === routeResults.selected));
+  }
+  renderSearchProgress();
+}
+
+function renderSearchProgress() {
+  const progress = routeSearch.progress;
+  $('route-search-progress').hidden = !progress;
+  if (!progress) return;
+  const { percent, phase } = progress;
+  $('route-progress-bar').value = percent;
+  $('route-progress-percent').textContent = `${percent}%`;
+  $('route-progress-phase').textContent = routeSearchPhases[phase];
+}
+
+function cancelRouteSearch(reason = '') {
+  if (routeSearch.pending) {
+    routeSearch.pending.abort.abort();
+    routeSearch.pending = null;
+  }
+  routeSearch.progress = null;
+  routeSearch.status = reason;
+}
+
+async function searchRoutes() {
+  if (!canUseRouteSearch() || replayPending !== null) return;
+  resetLaterPress();
+  const source = $('json').value, revision = state.analysisRevision.value, loadRevision = state.loadRevision;
+  const request = { settings: currentRunSettings(), abort: new AbortController() };
+  routeSearch.pending = request;
+  routeSearch.progress = { percent: 0, phase: 'search' };
+  routeSearch.status = 'Core ищет и проверяет маршруты в пределах бюджета. Поиск можно отменить.';
+  controls();
+  const current = () => routeSearch.pending === request && state.analysisRevision.current(revision)
+    && loadRevision === state.loadRevision && source === $('json').value && sameRunSettings(request.settings, currentRunSettings());
+  let completed = false;
+  try {
+    const response = await fetch('/api/route-search/stream', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ json: source, ...request.settings }), signal: request.abort.signal,
+    });
+    const { analysis, sourceJson } = await readSearchResponse(response, {
+      signal: request.abort.signal,
+      onProgress(progress) {
+        if (!current()) return;
+        routeSearch.progress = progress;
+        renderSearchProgress();
+      },
+    });
+    if (!current()) return;
+    const saved = JSON.parse(sourceJson);
+    const matching = analysis.runs.filter(run => sameRunSettings(run, request.settings));
+    if (matching.length !== 1 || analysis.runs.some(run => !Array.isArray(run.routes) || run.routes.some(route => !Array.isArray(route?.inputTicks)))
+      || saved?.track?.id !== state.analysis.id || analysis.version !== 2 || saved?.workshopAnalysis?.version !== analysis.version
+      || !Array.isArray(saved?.workshopAnalysis?.groups))
+      throw new Error('Сервер не вернул результаты поиска и исходник.');
+    const [run] = matching;
+    if (sourceJson !== source) {
+      remember(source, sourceJson, 'Обновлён анализ трассы', state.selection, state.selection);
+      $('json').value = sourceJson;
+      if (replaySource?.editorSource === source) {
+        replaySource = { ...replaySource, editorSource: sourceJson, source: replaySource.source === source ? sourceJson : replaySource.source };
+      }
+      $('char-count').textContent = `${number(sourceJson.length)} символов`;
+      scheduleDraft();
+    }
+    state.analysis.routeAnalysis = { status: 'ready', analysis };
+    routeSearch.status = run.routes.length ? 'Результаты записаны в JSON трассы.'
+      : 'В этом поиске нет сохранённых финишей. Бюджет ограничен, проходимость трассы остаётся неизвестной.';
+    completed = true;
+  } catch (error) {
+    if (current()) routeSearch.status = error.name === 'AbortError' ? 'Поиск отменён.' : `Поиск не выполнен. ${error.message}`;
+  } finally {
+    if (routeSearch.pending === request) {
+      routeSearch.pending = null;
+      routeSearch.progress = completed ? { percent: 100, phase: 'done' } : null;
+      controls();
+    }
+  }
+}
+
+function selectFoundRoute(entry) {
+  if (!canUseRouteSearch() || !routeResults.canSelect(entry, currentRunSettings())) return;
+  const inputs = restoreRouteInputs(entry);
+  $('axis').value = 'time';
+  $('inputs').value = JSON.stringify(inputs);
+  $('replay-panel').open = true;
+  invalidatePrepared();
+  scheduleDraft();
+  replay(entry);
+}
+
 function controls() {
+  updateSurfaceRunControls();
   updatePrepareControls();
+  updateRouteSearch();
   $('download').disabled = !state.valid || state.moving;
   $('replay').disabled = !state.valid || state.moving;
   const a = state.analysis;
-  $('reference').disabled = !state.valid || state.moving || !a?.references?.some(r => r.profileId === $('profile').value);
+  const reference = availableReference();
+  $('reference').disabled = !state.valid || state.moving || objectEdit.dirty || !reference;
+  $('reference').textContent = reference?.hint ? 'Взять нажатия оригинала' : 'Взять эталон из файла';
+  $('load-catalog').disabled = !$('catalog').value || loadingTrack !== null;
   $('undo-move').disabled = state.moving || !state.history.length || state.history.at(-1).after !== $('json').value;
   $('redo').disabled = state.moving || !state.future.length || state.future.at(-1).before !== $('json').value;
   for (const button of document.querySelectorAll('[data-add-kind]')) {
@@ -134,17 +414,207 @@ function controls() {
     button.setAttribute('aria-pressed', String(button.dataset.addKind === state.addKind));
   }
   updateSelectionPanel();
+  updateTrackMetadataFields();
   if (objectEdit.dirty) for (const id of ['undo-move', 'redo', 'delete-object', 'download', 'replay', 'prepare-bot']) $(id).disabled = true;
   if (objectEdit.dirty) for (const button of document.querySelectorAll('[data-add-kind]')) button.disabled = true;
   $('download').textContent = a?.staleReferences && state.valid ? '↓ Скачать без эталонов' : '↓ Скачать JSON';
+  updateLiveStartControls();
+  updateLaterPressControls();
 }
-function invalidateReplay(reason) {
-  const hadReplay = !!state.replay || state.playing || !$('playback').hidden;
-  state.replayRevision.bump();
-  stopPlayback(); state.replay = null; state.time = 0;
+function updateRouteControls() {
+  const route = state.route, toggle = $('toggle-route');
+  toggle.disabled = !route.path;
+  toggle.textContent = route.visible ? 'Скрыть траекторию' : 'Показать траекторию';
+  $('route-stale').hidden = !route.stale;
+  updateLandingReport();
+}
+function landingThreshold() {
+  const input = $('landing-threshold');
+  return input.validity.valid ? parseLandingThreshold(input.value) : null;
+}
+
+function laterPressContext() {
+  return { source: $('json').value, result: state.route.result, settings: currentRunSettings(),
+    inputText: $('inputs').value, axis: $('axis').value, minimumMs: landingThreshold(), loadRevision: state.loadRevision };
+}
+
+function canCheckLaterPress() {
+  return canUseRouteSearch() && !replayPending && !laterPressRequests.pending && !!state.route.result
+    && replaySource?.editorSource === $('json').value && sameRunSettings(state.route.result, currentRunSettings());
+}
+
+function resetLaterPress() {
+  laterPressRequests.cancel();
+  Object.assign(laterPress, { snapshot: null, report: null, selected: null, error: '' });
+  renderLaterPressResults();
+}
+
+function updateLaterPressControls() {
+  const available = canCheckLaterPress();
+  for (const button of $('landing-list').querySelectorAll('[data-check-later-press]')) button.disabled = !available || laterPress.selected !== null;
+  for (const { button, candidate } of laterPress.buttons) {
+    button.disabled = !available;
+    button.setAttribute('aria-pressed', String(candidate === laterPress.selected));
+  }
+  $('later-press-original').hidden = laterPress.selected === null;
+  $('later-press-original').disabled = !available;
+  $('later-press-cancel').hidden = !laterPressRequests.pending;
+}
+
+function renderLaterPressResults() {
+  const { snapshot, report, error } = laterPress;
+  const pending = laterPressRequests.pending;
+  const { minimumMs, inputIndex } = snapshot ?? {};
+  $('later-press-panel').hidden = !snapshot;
+  $('later-press-title').textContent = snapshot ? `Позднее нажатие №${inputIndex + 1}` : '';
+  const baseline = report?.baseline;
+  const original = baseline ? `Исходный интервал ${number((baseline.inputTime - baseline.landingTime) * 1000, 1)} мс, финиш за ${number(baseline.finishTime, 3)} с.` : '';
+  const range = report ? `Проверялся диапазон от ${number(minimumMs)} до ${number(minimumMs + report.spanMs)} мс после посадки, шаг ${number(report.stepMs)} мс. Проб: ${number(report.attempted)} из ${number(report.candidateCount)} подходящих по времени.` : '';
+  message('later-press-original-info', original, !!original);
+  message('later-press-range', range, !!range);
+  let status = '';
+  if (pending) status = pending.kind === 'search' ? 'Проверяем более поздние нажатия до финиша…' : 'Строим траекторию варианта…';
+  else if (report?.status === 'unsupported') status = report.message;
+  else if (report) {
+    status = report.alternatives.length ? `Успешные варианты: ${number(report.alternatives.length)}.` : 'Поздний вариант среди проверенных не найден.';
+    if (!report.complete) status += ` ${report.message || 'Проверка завершилась по лимиту времени.'}`;
+  }
+  message('later-press-status', [status, error].filter(Boolean).join(' '), !!(status || error));
+  $('later-press-list').hidden = !report?.alternatives.length;
+  // Buttons stay in place when choosing another path or returning to the original.
+  if (laterPress.renderedReport !== report) {
+    laterPress.renderedReport = report;
+    laterPress.buttons = (report?.alternatives ?? []).map(candidate => {
+      const item = document.createElement('li'), button = document.createElement('button');
+      const delta = candidate.finishDelta;
+      const deltaText = `${Math.abs(delta) < 0.0005 ? '0' : `${delta > 0 ? '+' : '−'}${number(Math.abs(delta), 3)}`} с`;
+      button.type = 'button';
+      button.textContent = `Через ${number(candidate.delayMs)} мс · финиш ${number(candidate.finishTime, 3)} с (${deltaText}) · удары ${number(candidate.collisions)}`;
+      button.addEventListener('click', () => chooseLaterPress(candidate));
+      item.append(button);
+      return { item, button, candidate };
+    });
+    $('later-press-list').replaceChildren(...laterPress.buttons.map(({ item }) => item));
+  }
+  updateLaterPressControls();
+}
+
+async function checkLaterPress(interval) {
+  if (!canCheckLaterPress() || laterPress.selected || !landingHighlights.includes(interval)) return;
+  resetLaterPress();
+  const context = laterPressContext();
+  const snapshot = { ...context, source: replaySource.source, provenance: replaySource,
+    inputIndex: interval.inputIndex, routeEntry: routeResults.selected };
+  laterPress.snapshot = snapshot;
+  const ticket = laterPressRequests.start('search', context);
+  renderLaterPressResults();
+  const current = () => laterPressRequests.current(ticket, laterPressContext());
+  try {
+    const report = await api('/api/later-press', laterPressRequest(snapshot), ticket.abort.signal);
+    if (!current()) return;
+    if (!isMatchingLaterPressReport(report, snapshot)) throw new Error('Ответ не совпал с исходной траекторией.');
+    laterPress.report = report;
+  } catch (error) {
+    if (current()) laterPress.error = `Проверка не выполнена. ${error.message}`;
+  } finally {
+    laterPressRequests.finish(ticket);
+    renderLaterPressResults();
+    controls();
+  }
+}
+
+async function chooseLaterPress(candidate) {
+  if (!canCheckLaterPress() || !laterPress.report?.alternatives.includes(candidate) || laterPress.selected === candidate) return;
+  const snapshot = laterPress.snapshot;
+  const ticket = laterPressRequests.start('replay', laterPressContext());
+  laterPress.error = '';
+  renderLaterPressResults();
+  const current = () => laterPressRequests.current(ticket, laterPressContext());
+  try {
+    const result = await api('/api/replay', { json: snapshot.source, ...storedRunSettings(snapshot.result),
+      axis: 'time', inputs: candidate.inputs }, ticket.abort.signal);
+    if (!current()) return;
+    if (!isMatchingLaterPressReplay(result, candidate, snapshot)) throw new Error('Повторное прохождение отличается от проверенного варианта.');
+    laterPress.selected = candidate;
+    routeResults.selected = null;
+    $('axis').value = 'time';
+    $('inputs').value = JSON.stringify(candidate.inputs);
+    $('replay-panel').open = true;
+    scheduleDraft();
+    message('replay-error', '', false);
+    showResult(result, { ...snapshot.provenance, label: `Вариант · нажатие №${snapshot.inputIndex + 1} через ${number(candidate.delayMs)} мс` });
+  } catch (error) {
+    if (current()) laterPress.error = `Траектория не построена. ${error.message}`;
+  } finally {
+    laterPressRequests.finish(ticket);
+    renderLaterPressResults();
+    controls();
+  }
+}
+
+function restoreLaterPressOriginal() {
+  if (!canCheckLaterPress() || !laterPress.selected) return;
+  const { inputText, axis, result, provenance, routeEntry } = laterPress.snapshot;
+  laterPress.selected = null;
+  laterPress.error = '';
+  $('inputs').value = inputText;
+  $('axis').value = axis;
+  routeResults.selected = routeEntry;
+  scheduleDraft();
+  showResult(result, provenance);
+  renderLaterPressResults();
+  controls();
+}
+
+function updateLandingReport() {
+  const route = state.route, threshold = landingThreshold();
+  const result = route.result, intervals = result?.landingIntervals ?? [];
+  landingHighlights = route.visible && result ? shortLandingIntervals(intervals, threshold) : [];
+  $('landing-threshold').setAttribute('aria-invalid', String(threshold === null));
+  const profile = result && (result.profile === 'FastFlip' ? 'Быстрый переворот' : 'Основной');
+  let status = 'Постройте траекторию, чтобы измерить интервалы после посадок.';
+  if (threshold === null) status = `Введите целое число от 0 до ${MAX_LANDING_THRESHOLD_MS} мс.`;
+  else if (result && !route.visible) status = `${profile} · отметки скрыты вместе с траекторией.`;
+  else if (result && !intervals.length) status = `${profile} · в этом прохождении нет пар «посадка → нажатие с опоры».`;
+  else if (result) {
+    status = `${profile} · короче ${number(threshold)} мс: ${landingHighlights.length} из ${intervals.length}.`;
+    if (landingHighlights.length) status += ' Короткие интервалы выделены оранжевым.';
+  }
+  message('landing-status', status);
+  $('landing-details').hidden = !landingHighlights.length;
+  $('landing-list').replaceChildren(...landingHighlights.map(interval => {
+    const item = document.createElement('li'), button = document.createElement('button'), check = document.createElement('button');
+    const milliseconds = (interval.inputTime - interval.landingTime) * 1000;
+    button.type = 'button';
+    button.textContent = `≈ ${number(milliseconds, 1)} мс · X ≈ ${number(interval.landingX, 1)} · нажатие №${interval.inputIndex + 1}`;
+    button.addEventListener('click', () => {
+      stopPlayback();
+      state.left = interval.landingX - dimensions().width * .4;
+      seek(interval.landingTime, false);
+    });
+    check.type = 'button';
+    check.dataset.checkLaterPress = '';
+    check.textContent = 'Проверить позже';
+    check.setAttribute('aria-label', `Проверить более позднее нажатие №${interval.inputIndex + 1}`);
+    check.addEventListener('click', () => checkLaterPress(interval));
+    item.append(button, check);
+    return item;
+  }));
+  updateLaterPressControls();
+}
+function invalidateReplay(reason, clearRoute = false) {
+  resetLaterPress();
+  replaySource = null;
+  state.route.invalidate(clearRoute);
+  replayPending?.abort.abort();
+  replayPending = null;
+  routeResults.selected = null;
+  stopPlayback(); state.time = 0;
   $('playback').hidden = true; $('replay').textContent = '▶ Построить траекторию';
-  if (hadReplay) { message('replay-state', reason || 'Параметры изменены. Постройте траекторию заново.'); $('replay-state').className = 'replay-state dirty'; }
+  if (state.route.stale) message('replay-state', reason || 'Постройте траекторию заново.');
   else if (reason) message('replay-state', reason);
+  $('replay-state').classList.toggle('dirty', state.route.stale);
+  updateRouteControls();
   draw();
 }
 function edited(immediate = false, options = {}) {
@@ -157,6 +627,7 @@ function edited(immediate = false, options = {}) {
     if (hadHistory) notice('Текст изменён или загружен файл. История визуальных правок очищена.');
   }
   state.loadRevision++;
+  cancelRouteSearch();
   invalidatePrepared();
   scheduleDraft();
   state.analysisRevision.bump();
@@ -170,11 +641,13 @@ function edited(immediate = false, options = {}) {
   $('stale').textContent = options.keepPreview ? 'Правка записана в JSON; схема ожидает проверки Unity.' : 'Схема последней корректной версии. Исправьте JSON, чтобы обновить её.';
   message('validation-errors', '', false);
   message('reference-warning', '', false);
-  invalidateReplay('JSON изменён. Для новой геометрии нужно новое прохождение.');
-  if (options.acceptedAnalysis) analyze(options.acceptedAnalysis);
+  invalidateReplay(options.clearRoute
+    ? 'Запустите прохождение, чтобы увидеть путь, нажатия и события.'
+    : 'JSON изменён. Для новой геометрии нужно новое прохождение.', options.clearRoute);
+  if (options.acceptedAnalysis) analyze(options.acceptedAnalysis, options.preserveView);
   else state.debounce = setTimeout(analyze, immediate ? 0 : 300);
 }
-async function analyze(acceptedAnalysis = null) {
+async function analyze(acceptedAnalysis = null, preserveView = false) {
   const revision = state.analysisRevision.value;
   const text = $('json').value;
   const abort = new AbortController(); state.analysisAbort = abort;
@@ -186,7 +659,7 @@ async function analyze(acceptedAnalysis = null) {
     const newTrack = state.analysis?.id !== result.id;
     state.preview = null; state.analysis = result; state.valid = true; objectEdit.committing = false;
     if (state.selection && !selectedObject(result)) state.selection = null;
-    if (newTrack) { state.left = -20; state.zoom = 1; }
+    if (newTrack && !preserveView) { state.left = -20; state.zoom = 1; resetStartChoice(); }
     $('stale').hidden = true; $('empty-diagram').hidden = true;
     badge(result.staleReferences ? 'Геометрия верна' : 'JSON корректен', 'good');
     $('validation-message').textContent = `${result.obstacles.length} препятствий · ${result.rewards.length} наград · формат принят Unity`;
@@ -196,7 +669,7 @@ async function analyze(acceptedAnalysis = null) {
     if (fast.disabled && $('profile').value === 'FastFlip') {
       $('profile').value = 'Chosen';
       scheduleDraft();
-      notice('Эта трасса разрешает только Основное управление. Профиль изменён с «Быстрый переворот» на «Основной»; прежняя траектория сброшена.');
+      notice('Эта трасса разрешает только Основное управление. Профиль изменён с «Быстрый переворот» на «Основной»; постройте траекторию заново.');
     }
     $('warning').disabled = result.warningMode === 'authored';
     $('warning').title = result.warningMode === 'authored' ? 'Таймеры появления заданы самой трассой.' : '';
@@ -216,21 +689,35 @@ async function analyze(acceptedAnalysis = null) {
     controls(); draw();
   }
 }
-function loadText(text, filename) {
-  state.sourceName = filename; state.sourceText = text;
+function loadText(text, filename, referenceHints = [], unsaved = false) {
+  resetStartChoice();
+  state.sourceName = filename; state.sourceText = unsaved ? '' : text; state.referenceHints = referenceHints;
   $('json').value = text; $('filename').textContent = filename;
   $('inputs').value = '[]'; $('axis').value = 'distance';
-  notice(); edited(true);
+  notice(); edited(true, { clearRoute: true });
 }
-async function loadBuiltin(id) {
+async function loadBuiltin(id, asCopy = true) {
   if (!id) return;
-  resetObjectEdit(); controls();
   const revision = ++state.loadRevision;
+  cancelPendingRouteWork('Поиск остановлен при открытии файла.');
+  loadingTrack = revision; controls();
   try {
     const result = await api(`/api/catalog/${encodeURIComponent(id)}`);
     if (revision !== state.loadRevision) return;
-    loadText(result.json, state.catalog.find(e => e.id === id)?.file || `${id}.json`);
+    if (asCopy) {
+      const copy = copyBuiltinTrack(result.json, usedTrackIds());
+      loadText(copy.source, `${copy.id}.track.json`, copy.referenceHints, true);
+      notice(copy.referenceHints.length
+        ? 'Открыта копия встроенной трассы. Новый ID требует нового эталона бота. В панели нажатий доступны нажатия оригинала.'
+        : 'Открыта копия встроенной трассы с новым ID.');
+    } else loadText(result.json, state.catalog.find(e => e.id === id)?.file || `${id}.json`);
   } catch (error) { if (revision === state.loadRevision) notice(error.message, true); }
+  finally { finishTrackLoad(revision); }
+}
+function finishTrackLoad(revision) {
+  if (loadingTrack !== revision) return;
+  loadingTrack = null; controls();
+  if (objectEdit.dirty) { clearTimeout(objectEdit.timer); validateFields(); }
 }
 function download(text, name) {
   const url = URL.createObjectURL(new Blob([text], { type: 'application/json;charset=utf-8' }));
@@ -251,18 +738,20 @@ function objectGroup(parent, description, target = null) {
   parent.append(g); return g;
 }
 function hiddenPhase(obstacle) {
-  if (!obstacle.hidden || !state.replay) return obstacle.hidden ? 'Author' : 'Solid';
-  const h = state.replay.hiddenStates.find(h => h.id === obstacle.id);
+  const replay = state.route.result;
+  if (!obstacle.hidden || !replay) return obstacle.hidden ? 'Author' : 'Solid';
+  const h = replay.hiddenStates.find(h => h.id === obstacle.id);
   if (!h || h.revealedAt === null || state.time < h.revealedAt) return 'Hidden';
   if (h.solidAt === null || state.time < h.solidAt) return 'Warning';
   return 'Solid';
 }
-function drawGeometry(parent, overview = false) {
-  const a = state.preview || state.analysis;
+function drawGeometry(parent, overview = false, liveView = null) {
+  const a = liveView?.analysis || state.preview || state.analysis;
   const h = a.corridorHeight;
-  parent.append(el('rect', { x: -30, y: 0, width: a.length + 70, height: h, fill: '#f3f6eb' }));
-  for (const y of [0, h]) line(parent, -30, y, a.length + 40, y, { stroke: '#bac9ae', 'stroke-width': overview ? 4 : 2 });
-  if (!overview) {
+  const left = liveView?.left ?? -30, right = liveView?.right ?? a.length + 40;
+  parent.append(el('rect', { x: left, y: 0, width: right - left, height: h, fill: '#f3f6eb' }));
+  for (const y of [0, h]) line(parent, left, y, right, y, { stroke: '#bac9ae', 'stroke-width': overview ? 4 : 2 });
+  if (!overview && !liveView) {
     line(parent, 0, h / 2, a.length, h / 2, { stroke: '#dce5d5', 'stroke-dasharray': '4 7', 'stroke-width': .8 });
     const v = dimensions(), step = state.zoom > 1.8 ? 50 : 100;
     for (let x = Math.max(0, Math.ceil(v.left / step) * step); x < Math.min(a.length + 1, v.left + v.width); x += step) {
@@ -273,9 +762,17 @@ function drawGeometry(parent, overview = false) {
     parent.append(el('text', { x: v.left + 7, y: h - 7, class: 'svg-label' }, `Y = ${h} · пол`));
   }
   for (const o of a.obstacles) {
-    const phase = hiddenPhase(o), isGate = o.bands.length > 1;
-    const desc = `${o.id} · ${isGate ? 'ворота, обе части' : 'камень'}${o.hidden ? ` · скрытый (${phase})` : ''} · X ${number(o.x, 2)} · ширина ${number(o.width, 2)}${isGate ? ` · проём Y ${number(o.gapTop, 2)}…${number(o.gapBottom, 2)} · смещения ${number(o.topOffsetX, 2)} / ${number(o.bottomOffsetX, 2)}` : ` · высота ${number(o.height, 2)}`}`;
-    const g = overview ? parent : objectGroup(parent, desc, { collection: 'obstacles', id: o.id });
+    const phase = liveView && o.hidden ? liveView.connection.hidden.get(o.id) || 'Hidden' : hiddenPhase(o);
+    if (liveView && (phase === 'Hidden' || !o.bands.some(b => b.x + b.width >= left && b.x <= right))) continue;
+    const isGate = o.bands.length > 1;
+    let g = parent;
+    if (liveView) {
+      g = el('g', { 'data-obstacle-id': o.id, 'data-phase': phase });
+      parent.append(g);
+    } else if (!overview) {
+      const desc = `${o.id} · ${isGate ? 'ворота, обе части' : 'камень'}${o.hidden ? ` · скрытый (${phase})` : ''} · X ${number(o.x, 2)} · ширина ${number(o.width, 2)}${isGate ? ` · проём Y ${number(o.gapTop, 2)}…${number(o.gapBottom, 2)} · смещения ${number(o.topOffsetX, 2)} / ${number(o.bottomOffsetX, 2)}` : ` · высота ${number(o.height, 2)}`}`;
+      g = objectGroup(parent, desc, { collection: 'obstacles', id: o.id });
+    }
     for (const b of o.bands) {
       const outlined = o.hidden && phase !== 'Solid';
       g.append(el('rect', { x: b.x, y: b.y, width: b.width, height: b.height,
@@ -289,14 +786,24 @@ function drawGeometry(parent, overview = false) {
     }
   }
   for (const r of a.rewards) {
+    if (liveView) {
+      const radius = Math.max(r.radius || 0, 15);
+      if ((r.right ?? r.x + radius) < left || (r.left ?? r.x - radius) > right) continue;
+    }
+    const linked = r.shape === 'landing' ? a.obstacles.find(o => o.id === r.obstacleId) : null;
+    if (liveView && linked?.hidden && liveView.connection.hidden.get(linked.id) !== 'Solid') continue;
     const appearance = rewardAppearance(r.kind), name = appearance.label;
-    const g = overview ? parent : objectGroup(parent, `${r.id} · ${name} · X ${number(r.x, 2)}, Y ${number(r.y, 2)}${r.shape === 'landing' ? ` · окно X ${number(r.left, 2)}…${number(r.right, 2)} · плоскость Y ${number(r.planeY, 2)}` : r.shape === 'circle' ? ` · радиус ${number(r.radius, 2)}` : ' · 4 физических штриха'}`, { collection: 'rewards', id: r.id });
+    let g = parent;
+    if (liveView) {
+      const rewardState = liveView.connection.rewards.get(r.id) || 'available';
+      g = el('g', { 'data-reward-id': r.id, 'data-reward-state': rewardState });
+      parent.append(g);
+    } else if (!overview) g = objectGroup(parent, `${r.id} · ${name} · X ${number(r.x, 2)}, Y ${number(r.y, 2)}${r.shape === 'landing' ? ` · окно X ${number(r.left, 2)}…${number(r.right, 2)} · плоскость Y ${number(r.planeY, 2)}` : r.shape === 'circle' ? ` · радиус ${number(r.radius, 2)}` : ' · 4 физических штриха'}`, { collection: 'rewards', id: r.id });
     if (r.shape === 'finish') {
       if (!overview) g.append(el('rect', { x: r.x - 12, y: r.y - 10, width: 24, height: 20, fill: 'transparent', 'pointer-events': 'all' }));
       for (const s of r.segments) line(g, s.x1, s.y1, s.x2, s.y2, { stroke: '#9982b2', 'stroke-width': r.strokeWidth, 'stroke-linecap': 'round' });
     } else if (r.shape === 'landing') {
-      const linked = a.obstacles.find(o => o.id === r.obstacleId);
-      const muted = linked?.hidden && hiddenPhase(linked) !== 'Solid';
+      const muted = !liveView && linked?.hidden && hiddenPhase(linked) !== 'Solid';
       if (!overview) line(g, r.left, r.planeY, r.right, r.planeY, { stroke: 'transparent', 'stroke-width': 14, 'pointer-events': 'stroke' });
       line(g, r.left, r.planeY, r.right, r.planeY, { stroke: '#739eaa', 'stroke-width': 3, 'stroke-dasharray': muted ? '4 3' : null, opacity: muted ? .5 : 1 });
       for (const x of [r.left, r.right]) line(g, x, r.planeY - 4, x, r.planeY + 4, { stroke: '#739eaa', 'stroke-width': 1.5, opacity: muted ? .5 : 1 });
@@ -314,9 +821,16 @@ function drawGeometry(parent, overview = false) {
   if (!overview) parent.append(el('text', { x: a.length - 5, y: -8, class: 'svg-label', 'text-anchor': 'end' }, 'ФИНИШ'));
 }
 function drawReplay(parent, overview = false) {
-  const replay = state.replay;
+  const route = state.route;
+  if (!route.visible) return;
+  parent.append(el('path', {
+    d: route.path,
+    class: route.stale ? 'trajectory trajectory-stale' : 'trajectory',
+    'pointer-events': 'none',
+    'stroke-width': overview ? 5 : 2
+  }));
+  const replay = route.result;
   if (!replay) return;
-  parent.append(el('path', { d: replay.samples.map((s, i) => `${i ? 'L' : 'M'}${s.x.toFixed(3)},${s.y.toFixed(3)}`).join(' '), class: 'trajectory', 'stroke-width': overview ? 5 : 2 }));
   if (!overview) {
     for (const input of replay.inputs) {
       if (input.x === null || input.y === null) continue;
@@ -335,23 +849,235 @@ function drawReplay(parent, overview = false) {
     parent.append(el('circle', { cx: s.x, cy: s.y, r: state.analysis.playerRadius + 5, class: 'runner-aura' }));
     parent.append(el('circle', { cx: s.x, cy: s.y, r: state.analysis.playerRadius, class: 'runner' }));
   }
+  for (const interval of landingHighlights) {
+    const overlapsPlayer = !overview && s &&
+      Math.hypot(s.x - interval.landingX, s.y - interval.landingY) <= state.analysis.playerRadius;
+    const radius = overview ? 2.25 : overlapsPlayer ? state.analysis.playerRadius + 4 : 4;
+    const mark = el('g', { class: 'landing-interval-mark', 'aria-hidden': 'true' });
+    line(mark, interval.landingX, interval.landingY, interval.inputX, interval.inputY, { class: 'landing-interval-line' });
+    mark.append(el('circle', { cx: interval.landingX, cy: interval.landingY, r: radius,
+      class: overlapsPlayer ? 'landing-interval-point landing-interval-outline' : 'landing-interval-point' }));
+    parent.append(mark);
+  }
 }
 function draw() {
-  if (!state.analysis) return;
+  if (live || !state.analysis) return;
   const v = dimensions(); state.left = v.left;
   const diagram = $('diagram'); diagram.replaceChildren();
   diagram.setAttribute('viewBox', `${v.left} ${v.top} ${v.width} ${v.height}`);
   diagram.setAttribute('preserveAspectRatio', 'xMidYMid meet');
   drawGeometry(diagram); drawReplay(diagram); drawSelection(diagram);
+  drawStartMarker(diagram);
   const overview = $('overview'); overview.replaceChildren();
   overview.setAttribute('viewBox', `-20 -8 ${state.analysis.length + 50} ${state.analysis.corridorHeight + 16}`);
   overview.setAttribute('preserveAspectRatio', 'none');
   drawGeometry(overview, true); drawReplay(overview, true);
   overview.append(el('rect', { x: Math.max(0, v.left), y: 0, width: Math.min(v.width, state.analysis.length), height: state.analysis.corridorHeight, class: 'view-window' }));
+  drawStartMarker(overview);
   $('pan').value = String(clamp((v.left + 20) / Math.max(1, state.analysis.length + 50 - v.width) * 1000, 0, 1000));
   $('view-start').textContent = number(Math.max(0, v.left));
   $('view-end').textContent = `${number(Math.min(state.analysis.length, v.left + v.width))} ед.`;
 }
+
+function canStartLive() {
+  return !live && state.valid && !state.moving && !drag && !objectEdit.dirty && !preparation.pending
+    && !routeSearch.pending && loadingTrack === null && replayPending === null;
+}
+
+function selectedStartX() {
+  const x = $('live-start-x').valueAsNumber;
+  return Number.isFinite(x) && x >= 0 && x < state.analysis?.length ? x : null;
+}
+
+function resetStartChoice() {
+  $('live-start-x').value = '0';
+  state.pickingStart = false;
+}
+
+function updateLiveStartControls() {
+  const available = canStartLive(), x = selectedStartX();
+  if (!available) state.pickingStart = false;
+  let help = 'Старт с начала трассы.';
+  let invalid = false;
+  if (available && x === null) {
+    help = `Введите X от 0 до ${number(state.analysis.length, 2)}, не включая финиш.`;
+    invalid = true;
+  } else if (available && x > 0) {
+    help = 'До выбранного X Core проиграет текущий список. Пустой список означает путь без нажатий. Команды после точки не воспроизводятся.';
+    try { parseInputs($('inputs').value); }
+    catch (error) { help = `Для старта внутри трассы исправьте список нажатий. ${error.message}`; invalid = true; }
+  }
+  if (state.pickingStart) help = 'Щёлкните на обзоре или подробной схеме, чтобы выбрать X. Esc отменяет выбор.';
+  $('live-start').disabled = !available || invalid;
+  $('live-start-x').disabled = !available;
+  $('live-start-x').setAttribute('aria-invalid', String(available && x === null));
+  $('live-pick-start').disabled = !available;
+  $('live-pick-start').setAttribute('aria-pressed', String(state.pickingStart));
+  $('live-reset-start').disabled = !available || (x === 0 && !state.pickingStart);
+  $('live-start-help').textContent = help;
+  for (const id of ['diagram', 'overview']) $(id).classList.toggle('picking-start', state.pickingStart);
+}
+
+function drawStartMarker(parent) {
+  const x = selectedStartX();
+  if (!state.valid || x === null) return;
+  const marker = el('g', { class: 'start-marker', 'data-start-x': x });
+  marker.append(el('title', {}, `Старт с X ${number(x, 2)}`));
+  line(marker, x, 0, x, state.analysis.corridorHeight, { 'vector-effect': 'non-scaling-stroke' });
+  parent.append(marker);
+}
+
+function pickStart(event, diagram, center = false) {
+  const transform = diagram.getScreenCTM();
+  if (!transform) return;
+  const { x } = new DOMPoint(event.clientX, event.clientY).matrixTransform(transform.inverse());
+  if (!Number.isFinite(x) || x < 0 || x >= state.analysis.length) {
+    notice('Выберите точку на трассе до линии финиша.', true);
+    return;
+  }
+  const rounded = Math.round(x * 100) / 100;
+  $('live-start-x').value = String(rounded < state.analysis.length ? rounded : x);
+  state.pickingStart = false;
+  if (center) state.left = x - dimensions().width / 2;
+  controls(); draw();
+}
+
+function drawLive() {
+  const { analysis, connection } = live;
+  const frame = connection.state, sample = frame?.sample;
+  const field = $('live-diagram');
+  const left = frame?.cameraLeft ?? (live.settings.startX || 0) - 288.8;
+  field.setAttribute('viewBox', `${left} 0 1520 ${analysis.corridorHeight}`);
+  const geometry = document.createDocumentFragment();
+  drawGeometry(geometry, false, { analysis, connection, left, right: left + 1520 });
+  if (sample) {
+    geometry.append(el('circle', { cx: sample.x, cy: sample.y, r: analysis.playerRadius,
+      class: sample.recovering > 0 ? 'live-runner recovering' : 'live-runner' }));
+  }
+  field.replaceChildren(geometry);
+
+  let status = 'Подключаемся к Unity Core…';
+  if (connection.error) status = connection.error;
+  else if (frame?.phase === 'finished') status = `Финиш · ${number(frame.summary?.finishTime ?? sample.time, 2)} с`;
+  else if (frame?.phase === 'timedOut') status = 'Лимит 120 с · финиш не достигнут';
+  else if (connection.readyAtStart) status = 'Точка достигнута. Нажмите «Начать отсюда».';
+  else if (connection.paused) status = `Пауза${connection.reason ? ` · ${connection.reason}` : ''}${connection.clock.pending.size ? ' · получаем последний кадр' : ''}`;
+  else if (frame?.phase === 'countdown') status = `Старт через ${Math.ceil(frame.countdownRemaining)}`;
+  else if (frame?.phase === 'racing') status = 'Заезд идёт';
+  if (frame?.staleReferences) status += ' · эталоны устарели';
+  const statusLabel = $('live-status');
+  if (statusLabel.textContent !== status) statusLabel.textContent = status;
+  statusLabel.classList.toggle('error', !!connection.error);
+  $('live-mode').dataset.phase = connection.error ? 'error' : frame?.phase || 'connecting';
+  $('live-mode').dataset.paused = String(connection.paused);
+  const settingsLabel = live.settingsLabel + (live.settings.startX > 0
+    ? ` · Выбрано X ${number(live.settings.startX, 2)}${sample ? ` · Фактический старт X ${number(live.actualStartX ??= sample.x, 2)}` : ''}` : '');
+  if ($('live-settings').textContent !== settingsLabel) $('live-settings').textContent = settingsLabel;
+  $('live-pause').disabled = !frame || connection.closed || connection.terminal || (connection.paused && connection.clock.pending.size > 0);
+  $('live-pause').textContent = connection.readyAtStart ? 'Начать отсюда' : connection.paused ? 'Продолжить' : 'Пауза';
+  $('live-input').disabled = connection.closed || connection.paused || connection.terminal || frame?.phase !== 'racing';
+
+  $('live-metrics').textContent = sample
+    ? `Время ${number(sample.time, 2)} с · Удары ${sample.collisions} · Бонусы ${sample.boosts} · Монеты ${sample.coins} · Касания целей ${connection.collected.size}${sample.recovering > 0 ? ' · Восстановление' : ''}`
+    : 'Время 0 с';
+  const feedback = $('live-input-feedback'), input = connection.lastInput;
+  const outcomes = { accepted: 'принято', ignored: 'отклонено', unreached: 'не достигло симуляции' };
+  const unreached = connection.unreachedInputs ? `, не достигли симуляции ${connection.unreachedInputs}` : '';
+  const inputText = input
+    ? `Нажатия · принято ${connection.acceptedInputs}, отклонено ${connection.ignoredInputs}${unreached}. Последнее ${outcomes[input.status]}${input.reason ? ` (${input.reason})` : ''}.`
+    : 'Нажатий пока нет.';
+  if (feedback.textContent !== inputText) {
+    feedback.textContent = inputText;
+    if (input?.pressedAt !== undefined) feedback.dataset.latencyMs = String(performance.now() - input.pressedAt);
+    else delete feedback.dataset.latencyMs;
+  }
+  feedback.dataset.accepted = String(connection.acceptedInputs);
+  feedback.dataset.ignored = String(connection.ignoredInputs);
+  feedback.dataset.unreached = String(connection.unreachedInputs);
+  $('live-event-feedback').textContent = connection.lastEvent
+    ? `${eventNames[connection.lastEvent.type] || connection.lastEvent.type} · ${connection.lastEvent.id}` : '';
+  updateLiveRecording(connection);
+}
+
+function updateLiveRecording(connection) {
+  const count = connection.recordedInputs.length;
+  const tooMany = count > MAX_REPLAY_INPUTS;
+  $('live-save-inputs').disabled = !connection.recordingSettled || !count || tooMany;
+  let help = 'Поставьте заезд на паузу или завершите его, чтобы сохранить нажатия.';
+  if (tooMany) help = `Подтверждено ${number(count)} нажатий. Лимит редактора ${number(MAX_REPLAY_INPUTS)}. Запись нельзя перенести целиком.`;
+  else if (connection.recordingSettled) help = count
+    ? `Сохранится ${number(count)} подтверждённых нажатий по времени. Они заменят список в редакторе.`
+    : 'Подтверждённых нажатий пока нет.';
+  else if (connection.paused) help = 'Ждём подтверждения последних отправленных команд.';
+  const label = $('live-save-help');
+  if (label.textContent !== help) label.textContent = help;
+}
+
+function restartLive(autoStart = false) {
+  live.connection?.close();
+  live.actualStartX = null;
+  const connection = new LiveConnection(() => { if (live?.connection === connection) drawLive(); }, { autoStart });
+  live.connection = connection;
+  const url = new URL('/api/live', window.location.href);
+  url.protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
+  connection.open(url, live.settings);
+  $('live-mode').focus({ preventScroll: true });
+  drawLive();
+}
+
+function enterLive() {
+  if (!canStartLive()) return;
+  const startX = selectedStartX();
+  if (startX === null) return;
+  const settings = { json: $('json').value, ...currentRunSettings() };
+  if (startX > 0) {
+    try { Object.assign(settings, { startX, axis: $('axis').value, inputs: parseInputs($('inputs').value) }); }
+    catch { updateLiveStartControls(); return; }
+  }
+  resetLaterPress();
+  stopPlayback();
+  state.pickingStart = false;
+  live = {
+    analysis: state.analysis, connection: null, scroll: window.scrollY,
+    settings, settingsLabel: runSettingsLabel(settings),
+  };
+  $('live-title').textContent = state.analysis.name;
+  $('editor-mode').hidden = true;
+  $('live-mode').hidden = false;
+  window.scrollTo(0, 0);
+  restartLive();
+}
+
+function exitLive() {
+  if (!live) return;
+  const { connection, scroll } = live;
+  connection.close();
+  live = null;
+  $('live-mode').hidden = true;
+  $('editor-mode').hidden = false;
+  controls(); draw();
+  $('live-start').focus({ preventScroll: true });
+  window.scrollTo(0, scroll);
+}
+
+function saveLiveInputs() {
+  if (!live) return;
+  const times = live.connection.recordingTimes();
+  if (!times) return;
+  const { settings } = live;
+  exitLive();
+  $('inputs').value = JSON.stringify(times);
+  $('axis').value = 'time';
+  restoreRunSettings(settings);
+  invalidatePrepared('Список нажатий из заезда сохранён. Подготовьте бота заново.');
+  invalidateReplay(`Сохранено ${number(times.length)} нажатий по времени. Постройте траекторию или подготовьте бота.`);
+  message('replay-error', '', false);
+  scheduleDraft(); controls();
+  $('replay-panel').open = true;
+  $('inputs').focus({ preventScroll: true });
+  $('inputs').scrollIntoView({ block: 'center' });
+}
+
 function zoom(factor, anchor = .5) {
   if (drag) return;
   if (!state.analysis) return;
@@ -359,36 +1085,42 @@ function zoom(factor, anchor = .5) {
   const next = dimensions(); state.left = old.left + anchor * (old.width - next.width); draw();
 }
 function seek(time, follow = true) {
-  if (!state.replay) return;
-  state.time = clamp(time, 0, state.replay.summary.elapsed);
+  const replay = state.route.result;
+  if (!replay) return;
+  state.time = clamp(time, 0, replay.summary.elapsed);
   $('timeline').value = String(state.time); $('clock').textContent = `${number(state.time, 2)} с`;
   if (follow && $('follow').checked) {
-    const sample = sampleAt(state.replay.samples, state.time), v = dimensions();
+    const sample = sampleAt(replay.samples, state.time), v = dimensions();
     if (sample && (sample.x < v.left + v.width * .15 || sample.x > v.left + v.width * .8)) state.left = sample.x - v.width * .35;
   }
   draw();
 }
 function stopPlayback() { state.playing = false; $('play').textContent = '▶'; $('play').setAttribute('aria-label', 'Воспроизвести'); }
 function play() {
-  if (!state.replay) return;
+  const replay = state.route.result;
+  if (!replay) return;
   if (state.playing) { stopPlayback(); return; }
-  if (state.time >= state.replay.summary.elapsed) seek(0);
+  if (state.time >= replay.summary.elapsed) seek(0);
   state.playing = true; $('play').textContent = 'Ⅱ'; $('play').setAttribute('aria-label', 'Пауза');
   let previous = performance.now();
   const tick = now => {
-    if (!state.playing || !state.replay) return;
+    if (!state.playing || state.route.result !== replay) return;
     seek(state.time + Math.min(.15, (now - previous) / 1000)); previous = now;
-    if (state.time >= state.replay.summary.elapsed) stopPlayback(); else requestAnimationFrame(tick);
+    if (state.time >= replay.summary.elapsed) stopPlayback(); else requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
 }
-function showResult(result) {
-  state.replay = result; state.time = 0;
+function showResult(result, provenance) {
+  stopPlayback();
+  replaySource = provenance;
+  state.route.setResult(result); state.time = 0;
+  updateRouteControls();
   const s = result.summary;
   $('playback').hidden = false;
   $('replay-state').className = 'replay-state';
   const finish = s.status === 'Finished' ? (s.cleanFinish ? 'Финиш без ударов' : 'Финиш достигнут') : 'Лимит 120 с: финиш не достигнут';
-  message('replay-state', `${finish}. SOLO · ${$('profile').selectedOptions[0].textContent} · ${$('axis').value === 'distance' ? 'нажатия по X' : 'нажатия по времени'}. Между игроками взаимодействий нет.`);
+  const label = provenance.label ? `${provenance.label} · ` : '';
+  message('replay-state', `${label}${finish}. SOLO · ${runSettingsLabel(storedRunSettings(result))} · ${result.axis === 'distance' ? 'нажатия по X' : 'нажатия по времени'}.`);
   const metrics = [[`${number(s.finishTime ?? s.elapsed, 2)} с`, s.finishTime === null ? 'Время симуляции' : 'Время финиша'], [s.collisions, 'Удары'], [s.boosts, 'Бонусы'], [s.coins, 'Монеты'], [s.ignoredInputs + s.unreachedInputs, 'Не приняты / не достигнуты']];
   $('summary').replaceChildren(...metrics.map(([value, label]) => {
     const div = document.createElement('div'); div.className = 'metric';
@@ -409,61 +1141,153 @@ function showResult(result) {
   if (!events.length) $('events').textContent = 'Нажатий и событий нет.';
   seek(0);
 }
-async function replay() {
-  if (!state.valid) return;
+async function replay(entry = null) {
+  if (!state.valid || state.moving || objectEdit.dirty) return;
   invalidateReplay(); message('replay-error', '', false);
   let inputs;
   try { inputs = parseInputs($('inputs').value); } catch (error) { message('replay-error', error.message); return; }
-  const revision = state.replayRevision.value;
+  const revision = state.route.revision.value;
+  const pending = { abort: new AbortController(), entry };
+  replayPending = pending;
+  routeResults.selected = entry;
+  controls();
   $('replay').disabled = true; $('replay').textContent = 'Симуляция…';
   message('replay-state', 'Unity Core рассчитывает SOLO-прохождение…');
   try {
-    const result = await api('/api/replay', { json: $('json').value, profile: $('profile').value, warningDuration: Number($('warning').value), axis: $('axis').value, inputs });
-    if (!state.replayRevision.current(revision)) return;
-    showResult(result);
+    const source = $('json').value;
+    const result = await api('/api/replay', { json: source, ...currentRunSettings(), axis: $('axis').value, inputs }, pending.abort.signal);
+    if (!state.route.revision.current(revision)) return;
+    if (entry && !isMatchingReplay(result, entry)) throw new Error('Повторное прохождение отличается от сохранённого. Запустите новый поиск.');
+    showResult(result, { source, editorSource: source, label: entry ? 'Маршрут из анализа трассы' : '' });
   } catch (error) {
-    if (!state.replayRevision.current(revision)) return;
+    if (!state.route.revision.current(revision)) return;
+    routeResults.selected = null;
     message('replay-error', error.message); message('replay-state', 'Прохождение не построено. Исправьте параметры и повторите.');
   } finally {
-    if (state.replayRevision.current(revision)) { $('replay').textContent = '▶ Построить траекторию'; controls(); }
+    if (replayPending === pending) replayPending = null;
+    if (state.route.revision.current(revision)) { $('replay').textContent = '▶ Построить траекторию'; controls(); }
   }
+}
+
+function cancelPendingRouteWork(reason) {
+  resetLaterPress();
+  if (routeSearch.pending) cancelRouteSearch(reason);
+  else routeSearch.progress = null;
+  if (replayPending?.entry) invalidateReplay('Воспроизведение сохранённого маршрута остановлено из-за правки или загрузки.');
 }
 
 $('json').addEventListener('input', () => edited());
 $('json').addEventListener('keydown', event => { if (event.key === 'Tab') { event.preventDefault(); const text = $('json'), start = text.selectionStart, end = text.selectionEnd; text.setRangeText('  ', start, end, 'end'); edited(); } });
-$('format').addEventListener('click', () => { try { $('json').value = JSON.stringify(JSON.parse($('json').value), null, 2) + '\n'; edited(true); } catch (error) { notice(`Форматирование: ${error.message}`, true); } });
-$('open').addEventListener('click', () => $('file').click());
+$('format').addEventListener('click', () => {
+  try {
+    const formatted = JSON.stringify(JSON.parse($('json').value), null, 2) + '\n';
+    if (new TextEncoder().encode(formatted).length > 2 * 1024 * 1024) throw new Error('После форматирования файл превысит 2 МиБ.');
+    $('json').value = formatted;
+    edited(true);
+  } catch (error) { notice(`Форматирование: ${error.message}`, true); }
+});
+function confirmReplacement() {
+  return !(objectEdit.dirty || $('json').value !== state.sourceText || $('inputs').value.trim() !== '[]')
+    || window.confirm('Заменить текущий уровень и список нажатий? Сначала скачайте нужный JSON, если хотите сохранить трассу.');
+}
+function setFileMenu(open) {
+  $('file-menu').hidden = !open;
+  $('file-menu-toggle').setAttribute('aria-expanded', String(open));
+}
+$('file-menu-toggle').addEventListener('click', () => setFileMenu($('file-menu').hidden));
+document.addEventListener('click', event => {
+  if (!event.target.closest('#file-menu, #file-menu-toggle')) setFileMenu(false);
+});
+$('open').addEventListener('click', () => { setFileMenu(false); $('file').click(); });
 $('file').addEventListener('change', async () => {
   const file = $('file').files[0]; if (!file) return;
-  resetObjectEdit(); controls();
+  if (!confirmReplacement()) { $('file').value = ''; return; }
   const revision = ++state.loadRevision;
+  cancelPendingRouteWork('Поиск остановлен при открытии файла.');
+  loadingTrack = revision; controls();
   try {
     if (file.size > 2 * 1024 * 1024) throw new Error('Файл больше 2 МиБ.');
     const text = await file.text(); if (revision !== state.loadRevision) return;
     $('catalog').value = ''; loadText(text, file.name);
   } catch (error) { if (revision === state.loadRevision) notice(error.message, true); }
-  finally { $('file').value = ''; }
+  finally { $('file').value = ''; finishTrackLoad(revision); }
 });
-$('catalog').addEventListener('change', () => loadBuiltin($('catalog').value));
+$('catalog').addEventListener('change', controls);
+$('load-catalog').addEventListener('click', () => {
+  if (!$('catalog').value || !confirmReplacement()) return;
+  setFileMenu(false); $('file-menu-toggle').focus(); loadBuiltin($('catalog').value);
+});
+$('new-level').addEventListener('click', () => {
+  setFileMenu(false);
+  $('new-level-name').value = NEW_LEVEL_NAME;
+  $('new-level-id').value = unusedTrackId('custom-new-level', usedTrackIds());
+  $('new-level-length').value = NEW_LEVEL_LENGTH;
+  message('new-level-status', '', false);
+  $('new-level-dialog').showModal(); $('new-level-name').select();
+});
+$('new-level-cancel').addEventListener('click', () => $('new-level-dialog').close());
+$('new-level-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const fields = Object.fromEntries(metadataInputs.map(key => [key, inputValue($(`new-level-${key}`))]));
+  try {
+    const source = newLevelSource(fields, catalogIds());
+    if (!confirmReplacement()) return;
+    $('new-level-dialog').close(); $('catalog').value = '';
+    loadText(source, `${fields.id}.track.json`, [], true);
+    notice('Создан пустой уровень. Добавьте объекты на схеме или откройте JSON трассы.');
+  } catch (error) { message('new-level-status', error.message); }
+});
 $('download').addEventListener('click', () => {
-  if (!state.valid) return;
+  if (!state.valid || objectEdit.dirty) return;
   const a = state.analysis;
-  download(a.staleReferences ? a.cleanedJson : $('json').value, `${a.id}.track.json`);
-  notice(a.staleReferences ? 'Скачан проверенный JSON без устаревших botReferences. Исходный текст в редакторе сохранён. Для импорта копии штатной карты задайте новый track.id.' : 'JSON скачан. Для импорта копии встроенной карты нужен новый track.id.');
+  const source = $('json').value;
+  download(a.staleReferences ? clearBotReferences(source) : source, `${a.id}.track.json`);
+  if (!a.staleReferences) state.sourceText = source;
+  setFileMenu(false); $('file-menu-toggle').focus();
+  const reserved = state.catalog.some(item => item.id === a.id);
+  notice(`${a.staleReferences ? 'Скачан JSON без устаревших эталонов.' : 'JSON скачан.'}${reserved ? ' Для импорта копии встроенной карты задайте новый ID.' : ''}`);
 });
-$('download-source').addEventListener('click', () => download($('json').value, state.sourceName));
-for (const id of ['profile', 'warning', 'axis']) $(id).addEventListener('change', () => {
-  if (id !== 'axis') invalidatePrepared();
-  scheduleDraft(); invalidateReplay(id === 'axis' ? 'Единицы нажатий изменены. Числа в списке сохранены без пересчёта — проверьте их перед запуском.' : 'Настройки изменены. Постройте траекторию заново.'); controls();
+$('download-source').addEventListener('click', () => {
+  download($('json').value, state.sourceName);
+  state.sourceText = $('json').value;
+  setFileMenu(false); $('file-menu-toggle').focus();
 });
-$('inputs').addEventListener('input', () => { scheduleDraft(); invalidateReplay('Список нажатий изменён. Постройте траекторию заново.'); message('replay-error', '', false); controls(); });
+for (const id of runSettingsControls) $(id).addEventListener('change', () => {
+  cancelRouteSearch(routeSearch.pending ? 'Поиск остановлен после изменения настройки забега.' : '');
+  invalidatePrepared();
+  scheduleDraft(); invalidateReplay('Настройка забега изменена. Постройте траекторию заново.'); controls();
+});
+$('axis').addEventListener('change', () => {
+  if (preparation.pending) invalidatePrepared();
+  scheduleDraft(); invalidateReplay('Единицы нажатий изменены. Числа в списке сохранены без пересчёта — проверьте их перед запуском.'); controls();
+});
+$('inputs').addEventListener('input', () => { if (preparation.pending) invalidatePrepared(); scheduleDraft(); invalidateReplay('Список нажатий изменён. Постройте траекторию заново.'); message('replay-error', '', false); controls(); });
 $('reference').addEventListener('click', () => {
-  const r = state.analysis?.references?.find(r => r.profileId === $('profile').value); if (!r || !state.valid) return;
-  $('inputs').value = JSON.stringify(r.inputs); $('axis').value = 'distance';
+  const found = availableReference(); if (!found || !state.valid || objectEdit.dirty) return;
+  $('inputs').value = JSON.stringify(found.reference.inputs); $('axis').value = 'distance';
+  if (preparation.pending) invalidatePrepared();
   scheduleDraft();
-  invalidateReplay('Загружены нажатия эталона из файла для выбранного профиля. Это не новый найденный маршрут.'); controls();
+  invalidateReplay(found.hint ? 'Загружены нажатия оригинала по X. После правок проверьте их прохождением.' : 'Загружены нажатия эталона из файла для выбранного профиля.'); controls();
 });
-$('replay').addEventListener('click', replay); $('play').addEventListener('click', play);
+$('replay').addEventListener('click', () => replay()); $('play').addEventListener('click', play);
+$('route-search').addEventListener('click', searchRoutes);
+$('route-search-cancel').addEventListener('click', () => { cancelRouteSearch('Поиск отменён.'); controls(); });
+for (const [id, offset] of [['route-results-prev', -1], ['route-results-next', 1]]) $(id).addEventListener('click', () => {
+  routeResults.page += offset;
+  renderRoutePage();
+  updateRouteSearch();
+});
+$('toggle-route').addEventListener('click', () => { state.route.toggle(); updateRouteControls(); draw(); });
+$('landing-threshold').addEventListener('input', () => { resetLaterPress(); updateLandingReport(); draw(); });
+$('later-press-original').addEventListener('click', restoreLaterPressOriginal);
+$('later-press-cancel').addEventListener('click', () => {
+  const pending = laterPressRequests.pending;
+  if (!pending) return;
+  laterPressRequests.cancel();
+  laterPress.error = pending.kind === 'search' ? 'Проверка отменена.' : 'Построение траектории отменено.';
+  renderLaterPressResults();
+  controls();
+});
 $('prepare-bot').addEventListener('click', prepareBot);
 $('prepare-cancel').addEventListener('click', () => { invalidatePrepared('Подготовка отменена. Исходный JSON и ручные нажатия сохранены.'); controls(); });
 $('output-track-id').addEventListener('input', () => { invalidatePrepared('ID результата изменён. Подготовьте бота заново.'); controls(); });
@@ -476,7 +1300,14 @@ $('timeline').addEventListener('input', () => { stopPlayback(); seek(Number($('t
 $('zoom-in').addEventListener('click', () => zoom(1.25)); $('zoom-out').addEventListener('click', () => zoom(.8));
 $('fit').addEventListener('click', () => { state.zoom = 1; draw(); });
 $('pan').addEventListener('input', () => { if (state.analysis) { state.left = Number($('pan').value) / 1000 * Math.max(0, state.analysis.length + 50 - dimensions().width) - 20; draw(); } });
-$('overview').addEventListener('click', event => { if (!state.analysis) return; const box = $('overview').getBoundingClientRect(); state.left = (event.clientX - box.left) / box.width * (state.analysis.length + 50) - 20 - dimensions().width / 2; draw(); });
+$('overview').addEventListener('click', event => {
+  if (!state.analysis) return;
+  const overview = $('overview');
+  if (state.pickingStart) { pickStart(event, overview, true); return; }
+  const box = overview.getBoundingClientRect();
+  state.left = (event.clientX - box.left) / box.width * (state.analysis.length + 50) - 20 - dimensions().width / 2;
+  draw();
+});
 $('diagram').addEventListener('wheel', event => { if (!state.analysis) return; event.preventDefault(); const box = $('diagram').getBoundingClientRect(); zoom(event.deltaY < 0 ? 1.12 : 1 / 1.12, (event.clientX - box.left) / box.width); }, { passive: false });
 function selectedObject(analysis = state.preview || state.analysis) {
   return state.selection && analysis?.[state.selection.collection]?.find(object => object.id === state.selection.id);
@@ -489,74 +1320,147 @@ function updateSelectionPanel() {
   $('delete-object').textContent = count > 1 ? `Удалить группу · ${count} объектов` : 'Удалить объект';
   $('delete-object').disabled = !object || !state.valid || state.moving || !!state.addKind;
   $('cancel-add').hidden = !state.addKind;
-  updateObjectSource();
+  updateObjectInspector();
   const chosenKind = state.addKind;
   const linked = ['landing', 'positive-before', 'positive-after'].includes(chosenKind), anchorName = chosenKind === 'landing' ? 'камень' : 'препятствие';
   $('add-help').textContent = state.addKind ? linked ? `Нажмите ${anchorName} на подробной схеме; либо выберите его заранее и нажмите место награды. Повторное нажатие кнопки палитры или Esc — отмена.` : 'Нажмите место на подробной схеме. Будет добавлен один объект, затем вернётся обычный режим. Повторное нажатие кнопки палитры или Esc — отмена.' : 'Нажмите кнопку палитры, затем место на подробной схеме. Сейчас доступны навигация и редактирование объектов.';
   $('diagram').classList.toggle('adding-object', !!state.addKind);
 }
-function updateObjectSource() {
-  if (objectEdit.dirty || objectEdit.committing) {
+function updateObjectInspector() {
+  let source = null, status = 'Выберите объект на схеме.';
+  if (!state.valid && !objectEdit.committing) status = 'Дождитесь проверки текущего JSON или исправьте его.';
+  else if (state.selection) {
+    try { source = selectedObjectSource($('json').value, state.selection); }
+    catch { status = 'Не удалось прочитать объект из текущего исходника.'; }
+    if (source) status = 'Правки применяются после проверки Unity. Остальные параметры доступны в JSON.';
+  }
+  updateObjectPropertiesPanel(source, status);
+  if ((objectEdit.dirty || objectEdit.committing) && objectEdit.kind === 'json') {
     $('object-json').hidden = false; $('object-json').readOnly = false;
     $('select-object-json').disabled = false; $('reset-object-json').disabled = false;
-    $('object-json-status').textContent = objectEdit.error || (objectEdit.committing ? 'Правка применена. Обновляем схему…' : 'Проверяем правку… Другие правки схемы доступны после применения или сброса.');
+    $('object-json-status').textContent = objectEdit.error || 'Проверяем правку…';
     $('object-json-status').classList.toggle('storage-error', !!objectEdit.error);
     return;
-  }
-  let source = null, status = 'Выберите объект на схеме.';
-  if (!state.valid) status = 'Текущий JSON ещё не проверен или содержит ошибку. JSON объекта недоступен до успешной проверки.';
-  else if (state.selection) {
-    try {
-      source = selectedObjectSource($('json').value, state.selection);
-      status = source ? `${state.selection.id} · правки применяются после проверки Unity. ${state.moving ? 'Завершите жест для редактирования JSON.' : 'Связи и параметры меняются по правилам исходного JSON.'}` : 'Выбранного объекта нет в текущем исходнике.';
-    } catch { status = 'Не удалось прочитать объект из текущего исходника.'; }
   }
   const focusedEquivalent = document.activeElement === $('object-json') && source && $('object-json').value.trim() === source;
   if (!focusedEquivalent && $('object-json').value !== (source || '')) $('object-json').value = source || '';
   $('object-json').hidden = !source;
-  $('object-json').readOnly = !source || state.moving || !!drag;
+  $('object-json').readOnly = !source || !canEditFields('json');
   $('select-object-json').disabled = !source;
   $('reset-object-json').disabled = true;
-  $('object-json-status').textContent = status;
+  $('object-json-status').textContent = blockedFieldStatus() || status;
   $('object-json-status').classList.remove('storage-error');
+}
+function canEditFields(kind) {
+  return state.valid && !state.moving && !drag && loadingTrack === null && (!objectEdit.dirty || objectEdit.kind === kind);
+}
+function blockedFieldStatus() {
+  if (objectEdit.dirty) return 'Завершите или сбросьте текущую правку в другой панели.';
+  if (state.moving || drag) return 'Завершите жест на схеме.';
+  if (loadingTrack !== null) return 'Загружаем трассу…';
+  return '';
+}
+function syncField(input, value) {
+  if (input.type === 'checkbox') input.checked = value === true;
+  else if (input.type === 'number' && document.activeElement === input && input.valueAsNumber === value) return;
+  else if (input.value !== String(value ?? '')) input.value = value ?? '';
+}
+function updateTrackMetadataFields() {
+  const editing = objectEdit.dirty && objectEdit.kind === 'metadata';
+  for (const key of metadataInputs) {
+    const input = $(`track-${key}`);
+    if (!editing && !objectEdit.committing) syncField(input, state.analysis?.[key]);
+    input.disabled = !state.analysis;
+    input.readOnly = !canEditFields('metadata');
+  }
+  $('reset-track-metadata').hidden = !editing;
+  const status = editing ? objectEdit.error || 'Проверяем свойства уровня…'
+    : blockedFieldStatus() || (state.valid ? '' : 'Свойства доступны после проверки JSON трассы.');
+  message('track-metadata-status', status, !!status);
+  $('track-metadata-status').classList.toggle('storage-error', editing && !!objectEdit.error);
+}
+let propertySchema = '';
+function updateObjectPropertiesPanel(source, status) {
+  const panel = $('object-properties'), editing = objectEdit.dirty && objectEdit.kind === 'properties';
+  $('reset-object-properties').hidden = !editing;
+  $('object-properties-status').textContent = editing ? objectEdit.error || 'Проверяем свойства объекта…' : blockedFieldStatus() || status;
+  $('object-properties-status').classList.toggle('storage-error', editing && !!objectEdit.error);
+  if (objectEdit.committing) return;
+  if (editing) {
+    for (const input of panel.querySelectorAll('[data-property]')) input.disabled = !canEditFields('properties');
+    return;
+  }
+  const object = source && JSON.parse(source);
+  const fields = object ? objectPropertyFields(object, state.selection.collection, state.analysis.obstacles) : [];
+  const schema = JSON.stringify(fields);
+  if (propertySchema !== schema) {
+    propertySchema = schema;
+    panel.replaceChildren(...fields.map(field => {
+      const label = document.createElement('label'), title = document.createElement('span');
+      label.className = field.type === 'checkbox' ? 'property-field property-check' : 'property-field';
+      title.textContent = field.label;
+      const input = document.createElement(field.type === 'select' ? 'select' : 'input');
+      if (field.type === 'select') input.append(...field.choices.map(([value, text]) => new Option(text, value)));
+      else if (field.type === 'id') { input.type = 'text'; input.maxLength = 128; input.spellcheck = false; }
+      else { input.type = field.type; if (field.type === 'number') input.step = 'any'; }
+      input.dataset.property = field.key;
+      label.append(...(field.type === 'checkbox' ? [input, title] : [title, input]));
+      return label;
+    }));
+  }
+  for (const [index, input] of [...panel.querySelectorAll('[data-property]')].entries()) {
+    const field = fields[index];
+    input.disabled = !canEditFields('properties');
+    syncField(input, object[field.key] ?? field.defaultValue);
+  }
 }
 function resetObjectEdit() {
   objectEdit.revision++; clearTimeout(objectEdit.timer); objectEdit.abort?.abort();
   objectEdit.abort = null; objectEdit.dirty = false; objectEdit.committing = false; objectEdit.error = '';
-  objectEdit.source = null; objectEdit.target = null;
+  objectEdit.source = null; objectEdit.target = null; objectEdit.kind = null; objectEdit.fields = {};
 }
 function objectEditBlocked() {
   if (!objectEdit.dirty) return false;
-  notice('Сначала исправьте JSON выбранного объекта или нажмите «Сбросить правку». Другой объект и схема пока защищены от изменений.', true);
+  notice('Сначала исправьте текущую правку или нажмите «Сбросить правку».', true);
   return true;
 }
-function editObjectSource() {
-  if (!state.valid || state.moving || drag || !state.selection) return;
-  if (!objectEdit.dirty) { objectEdit.source = $('json').value; objectEdit.target = { ...state.selection }; }
+function editFields(kind, field, value) {
+  if (!canEditFields(kind) || (kind !== 'metadata' && !state.selection)) return;
+  cancelPendingRouteWork('Поиск остановлен при изменении трассы.');
+  if (!objectEdit.dirty) {
+    objectEdit.source = $('json').value; objectEdit.target = state.selection && { ...state.selection };
+    objectEdit.kind = kind; objectEdit.fields = {};
+  }
+  if (field) objectEdit.fields[field] = value;
   objectEdit.dirty = true; objectEdit.error = ''; objectEdit.revision++;
   clearTimeout(objectEdit.timer); objectEdit.abort?.abort(); state.addKind = null;
-  objectEdit.timer = setTimeout(validateObjectEdit, 300);
+  objectEdit.timer = setTimeout(validateFields, 300);
   controls(); draw();
 }
-async function validateObjectEdit() {
-  const revision = objectEdit.revision, before = objectEdit.source, target = objectEdit.target;
+async function validateFields() {
+  if (!objectEdit.dirty || loadingTrack !== null) return;
+  const { revision, source: before, target, kind, fields } = objectEdit;
   const analysisRevision = state.analysisRevision.value, loadRevision = state.loadRevision, buffer = $('object-json').value;
   const abort = new AbortController(); objectEdit.abort = abort;
-  const current = () => revision === objectEdit.revision && objectEdit.dirty && loadRevision === state.loadRevision && before === $('json').value && state.analysisRevision.current(analysisRevision) && state.selection?.collection === target.collection && state.selection?.id === target.id;
+  const current = () => revision === objectEdit.revision && objectEdit.dirty && loadRevision === state.loadRevision && before === $('json').value
+    && state.analysisRevision.current(analysisRevision) && state.selection?.collection === target?.collection && state.selection?.id === target?.id;
   try {
-    const candidate = replaceObjectSource(before, target, buffer);
+    const candidate = kind === 'metadata' ? { source: updateTrackMetadata(before, fields, catalogIds()), target }
+      : kind === 'properties' ? updateObjectProperties(before, target, fields) : replaceObjectSource(before, target, buffer);
+    if (candidate.source === before) { if (current()) { resetObjectEdit(); controls(); } return; }
+    if (new TextEncoder().encode(candidate.source).length > 2 * 1024 * 1024) throw new Error('Файл больше 2 МиБ.');
     const result = await api('/api/analyze', { json: candidate.source }, abort.signal);
     if (!current()) return;
-    if (!result[candidate.target.collection]?.some(object => object.id === candidate.target.id)) throw new Error('Unity не вернул изменённый объект.');
-    if (candidate.source === before) { resetObjectEdit(); controls(); return; }
-    remember(before, candidate.source, 'Изменён JSON объекта', target, candidate.target);
+    if (kind !== 'metadata' && !result[candidate.target.collection]?.some(object => object.id === candidate.target.id)) throw new Error('Unity не вернул изменённый объект.');
+    const description = kind === 'metadata' ? 'Изменены свойства уровня' : kind === 'properties' ? 'Изменены свойства объекта' : 'Изменён JSON объекта';
+    remember(before, candidate.source, description, target, candidate.target);
     $('json').value = candidate.source; state.selection = candidate.target;
     objectEdit.dirty = false; objectEdit.committing = true; objectEdit.abort = null;
-    edited(true, { preserveHistory: true, preserveObjectBuffer: true, acceptedAnalysis: result });
-    $('object-detail').textContent = `${candidate.target.id} · параметры обновлены из JSON`;
+    edited(true, { preserveHistory: true, preserveObjectBuffer: true, acceptedAnalysis: result, preserveView: kind === 'metadata' });
+    if (kind !== 'metadata') $('object-detail').textContent = `${candidate.target.id} · параметры обновлены`;
   } catch (error) {
     if (!current() || error.name === 'AbortError') return;
-    objectEdit.error = `Не применено: ${error.message} Исправьте текст или сбросьте правку. Исходник трассы сохранён.`;
+    objectEdit.error = `Не применено: ${error.message} Исправьте значение или сбросьте правку.`;
     controls();
   }
 }
@@ -595,6 +1499,7 @@ function commitVisual(before, after, description, preview = null, target = state
   return true;
 }
 function historyStep(redo = false) {
+  if (live) return;
   if (objectEditBlocked()) return;
   if (state.moving || drag) return;
   const from = redo ? state.future : state.history, to = redo ? state.history : state.future, step = from.at(-1);
@@ -606,6 +1511,7 @@ function historyStep(redo = false) {
   notice(`${redo ? 'Повторено' : 'Отменено'}: ${step.description}. Восстановлен точный текст JSON.`);
 }
 function removeSelection() {
+  if (live) return;
   if (objectEditBlocked()) return;
   if (!state.valid || state.moving || !selectedObject() || state.addKind) return;
   try {
@@ -649,6 +1555,11 @@ function finishDrag(commit) {
 }
 $('diagram').addEventListener('pointerdown', event => {
   if (!state.analysis || event.button !== 0 || drag) return;
+  if (state.pickingStart) {
+    event.preventDefault();
+    pickStart(event, $('diagram'));
+    return;
+  }
   const handleElement = event.target.closest('[data-handle]'), group = event.target.closest('.object');
   const collection = handleElement?.dataset.collection || group?.dataset.collection;
   const id = handleElement?.dataset.id || group?.dataset.id;
@@ -682,7 +1593,9 @@ $('diagram').addEventListener('pointermove', event => {
     drag.active = true;
     if (drag.mode === 'object' || drag.mode === 'resize') {
       state.moving = true; $('json').readOnly = true;
-      invalidateReplay('Объект редактируется. Прежняя траектория сброшена; после проверки постройте её заново.'); controls();
+      if (routeSearch.pending) cancelRouteSearch('Поиск остановлен при изменении трассы.');
+      else routeSearch.progress = null;
+      invalidateReplay('Объект редактируется. После правки постройте траекторию заново.'); controls();
       $('diagram').classList.add(drag.mode === 'resize' ? 'resizing-object' : 'moving-object');
     } else $('diagram').classList.add('dragging');
   }
@@ -697,6 +1610,8 @@ $('diagram').addEventListener('pointermove', event => {
 $('diagram').addEventListener('pointerup', event => { if (drag?.pointerId === event.pointerId) finishDrag(true); });
 for (const type of ['pointercancel', 'lostpointercapture']) $('diagram').addEventListener(type, event => { if (drag?.pointerId === event.pointerId) finishDrag(false); });
 window.addEventListener('keydown', event => {
+  if (live) return;
+  if (event.key === 'Escape' && state.pickingStart) { event.preventDefault(); state.pickingStart = false; controls(); return; }
   if (event.key === 'Escape' && drag) { event.preventDefault(); if (drag.mode === 'add') state.addKind = null; finishDrag(false); return; }
   if (event.key === 'Escape' && state.addKind) { event.preventDefault(); state.addKind = null; controls(); draw(); notice('Добавление отменено.'); return; }
   if (event.key === 'Delete' && !event.target.closest('textarea,input,select,[contenteditable="true"]') && state.selection) { event.preventDefault(); removeSelection(); return; }
@@ -709,25 +1624,107 @@ $('redo').addEventListener('click', () => historyStep(true));
 $('delete-object').addEventListener('click', removeSelection);
 for (const button of document.querySelectorAll('[data-add-kind]')) button.addEventListener('click', () => {
   if (!state.valid || state.moving || objectEditBlocked()) return;
+  state.pickingStart = false;
   state.addKind = state.addKind === button.dataset.addKind ? null : button.dataset.addKind;
   controls(); draw();
 });
 $('toggle-source').addEventListener('click', () => {
   const collapsed = !$('source-panel').hidden;
   $('source-panel').hidden = collapsed;
-  $('workspace').classList.toggle('source-collapsed', collapsed);
   $('toggle-source').setAttribute('aria-expanded', String(!collapsed));
   $('toggle-source').textContent = collapsed ? 'Показать JSON трассы' : 'Скрыть JSON трассы';
   draw();
 });
+function selectObjectTab(properties, focus = false) {
+  for (const [id, selected] of [['object-properties-tab', properties], ['object-json-tab', !properties]]) {
+    const button = $(id);
+    button.setAttribute('aria-selected', String(selected)); button.tabIndex = selected ? 0 : -1;
+    if (selected && focus) button.focus();
+  }
+  $('object-properties').hidden = !properties;
+  $('object-json-panel').hidden = properties;
+}
+for (const id of ['object-properties-tab', 'object-json-tab']) {
+  const button = $(id);
+  button.addEventListener('click', () => selectObjectTab(id === 'object-properties-tab'));
+  button.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault(); selectObjectTab(event.key === 'Home' || (event.key !== 'End' && id === 'object-json-tab'), true);
+  });
+}
+function discardFieldEdit() { resetObjectEdit(); controls(); draw(); }
+for (const key of metadataInputs) {
+  const input = $(`track-${key}`);
+  input.addEventListener('input', () => editFields('metadata', key, inputValue(input)));
+}
+$('object-properties').addEventListener('input', event => {
+  const input = event.target;
+  if (input.dataset.property) editFields('properties', input.dataset.property, inputValue(input));
+});
+for (const id of ['reset-track-metadata', 'reset-object-properties', 'reset-object-json']) $(id).addEventListener('click', discardFieldEdit);
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape') return;
+  if (!$('file-menu').hidden) { event.preventDefault(); setFileMenu(false); $('file-menu-toggle').focus(); }
+  if (objectEdit.dirty && (event.target.matches?.('[data-property], #object-json, #track-name, #track-id, #track-length'))) {
+    event.preventDefault(); discardFieldEdit();
+  }
+});
 $('select-object-json').addEventListener('click', () => { $('object-json').focus(); $('object-json').select(); });
-$('object-json').addEventListener('input', editObjectSource);
-$('reset-object-json').addEventListener('click', () => { resetObjectEdit(); controls(); draw(); });
+$('object-json').addEventListener('input', () => editFields('json'));
 $('cancel-add').addEventListener('click', () => { state.addKind = null; controls(); draw(); });
 $('diagram').addEventListener('keydown', event => {
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') { event.preventDefault(); historyStep(event.shiftKey); }
 });
 $('diagram').addEventListener('keydown', event => { if (!state.analysis) return; if (event.key === '+' || event.key === '=') zoom(1.25); else if (event.key === '-') zoom(.8); else if (event.key === 'ArrowRight') { state.left += dimensions().width / 5; draw(); } else if (event.key === 'ArrowLeft') { state.left -= dimensions().width / 5; draw(); } else return; event.preventDefault(); });
+$('live-start').addEventListener('click', enterLive);
+$('live-start-x').addEventListener('input', () => { state.pickingStart = false; updateLiveStartControls(); draw(); });
+$('live-pick-start').addEventListener('click', () => {
+  if (!canStartLive()) return;
+  state.pickingStart = !state.pickingStart;
+  if (state.pickingStart) state.addKind = null;
+  controls(); draw();
+});
+$('live-reset-start').addEventListener('click', () => { resetStartChoice(); updateLiveStartControls(); draw(); });
+$('live-exit').addEventListener('click', exitLive);
+$('live-save-inputs').addEventListener('click', saveLiveInputs);
+$('live-restart').addEventListener('click', () => { if (live) restartLive(); });
+$('live-pause').addEventListener('click', () => {
+  const connection = live?.connection;
+  if (!connection) return;
+  if (!connection.paused) connection.pause();
+  else if (!document.hidden && connection.resume()) $('live-mode').focus({ preventScroll: true });
+});
+$('live-input').addEventListener('pointerdown', event => {
+  if (event.button !== 0) return;
+  event.preventDefault();
+  live?.connection.press(event.timeStamp);
+});
+$('live-input').addEventListener('click', event => {
+  // The pointer already acted on pointerdown. Keyboard and assistive activation can click without a pointer.
+  if (event.detail === 0) live?.connection.press(event.timeStamp);
+});
+const liveKeys = new Set();
+window.addEventListener('keydown', event => {
+  if (!live || event.altKey || event.ctrlKey || event.metaKey) return;
+  const restartKey = event.code === 'KeyR';
+  if (restartKey && (event.isComposing || event.target.closest?.('input, textarea, select, [contenteditable]:not([contenteditable="false"])'))) return;
+  const actionButton = event.target === $('live-input');
+  const enterAction = actionButton && (event.code === 'Enter' || event.code === 'NumpadEnter');
+  if (!restartKey && !enterAction && event.code !== 'KeyA' && event.code !== 'Space') return;
+  if (event.code === 'Space' && !actionButton && event.target.closest?.('button')) return;
+  event.preventDefault();
+  if (event.repeat || liveKeys.has(event.code)) return;
+  liveKeys.add(event.code);
+  if (restartKey) restartLive(true);
+  else live.connection.press(event.timeStamp);
+}, { capture: true });
+window.addEventListener('keyup', event => { liveKeys.delete(event.code); });
+function pauseLiveOnFocusLoss() {
+  liveKeys.clear();
+  live?.connection.pause('Окно потеряло фокус. Нажмите «Продолжить».');
+}
+window.addEventListener('blur', pauseLiveOnFocusLoss);
+document.addEventListener('visibilitychange', () => { if (document.hidden) pauseLiveOnFocusLoss(); });
 new ResizeObserver(() => draw()).observe($('diagram'));
 window.addEventListener('beforeunload', event => { if (objectEdit.dirty || $('json').value !== state.sourceText) { event.preventDefault(); event.returnValue = ''; } });
 window.addEventListener('pagehide', saveDraft);
@@ -743,12 +1740,14 @@ window.addEventListener('storage', event => {
 });
 $('draft-restore').addEventListener('click', () => {
   if (!pendingDraft) return;
+  resetStartChoice();
   const draft = pendingDraft;
   draftBlocked = false; pendingDraft = null; $('draft-offer').hidden = true; $('catalog').value = '';
-  state.sourceName = draft.filename; state.sourceText = '';
+  state.sourceName = draft.filename; state.sourceText = ''; state.referenceHints = [];
   $('filename').textContent = draft.filename; $('json').value = draft.json; $('inputs').value = draft.inputs;
-  $('profile').value = draft.profile; $('axis').value = draft.axis; $('warning').value = draft.warning;
-  notice('Черновик восстановлен из этого браузера. Исходный текст сохранён точно; проверяем JSON заново. История визуальных правок очищена.'); edited(true);
+  restoreRunSettings({ ...draft, warningDuration: Number(draft.warning) });
+  $('axis').value = draft.axis;
+  notice('Черновик восстановлен из этого браузера. Исходный текст сохранён точно; проверяем JSON заново. История визуальных правок очищена.'); edited(true, { clearRoute: true });
 });
 $('draft-clear').addEventListener('click', () => {
   const result = clearDraft(draftStorage);
@@ -758,13 +1757,15 @@ $('draft-clear').addEventListener('click', () => {
   if ($('json').value) scheduleDraft();
 });
 async function start() {
+  restoreRunSettings({ profile: 'Chosen', warningDuration: 0.8, surfaceRunSettings: DEFAULT_SURFACE_RUN_SETTINGS });
   offerDraft();
+  controls();
   const allowInitialCatalog = !draftBlocked;
   try {
     const result = await api('/api/catalog'); state.catalog = result.entries;
     $('catalog').replaceChildren(new Option('Выберите трассу…', ''), ...result.entries.map(e => new Option(e.name, e.id)));
     controls();
-    if (allowInitialCatalog && !draftBlocked && !draftTouched && result.entries.length && !$('json').value) { const id = result.entries.find(e => e.id === 'mixed-tricks')?.id || result.entries[0].id; $('catalog').value = id; await loadBuiltin(id); }
+    if (allowInitialCatalog && !draftBlocked && !draftTouched && result.entries.length && !$('json').value && loadingTrack === null) { const id = result.entries.find(e => e.id === 'mixed-tricks')?.id || result.entries[0].id; $('catalog').value = id; await loadBuiltin(id, false); }
   } catch (error) { $('catalog').replaceChildren(new Option('Каталог недоступен', '')); notice(error.message, true); }
 }
 start();

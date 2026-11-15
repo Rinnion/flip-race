@@ -1,4 +1,6 @@
 export const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+export const MAX_REPLAY_INPUTS = 4096;
+export const MAX_LANDING_THRESHOLD_MS = 2000;
 
 export function rewardAppearance(kind) {
   return {
@@ -15,7 +17,7 @@ export function parseInputs(text) {
   let values;
   try { values = JSON.parse(text); } catch { throw new Error('Нажатия: нужен JSON-массив, например [430, 560, 980].'); }
   if (!Array.isArray(values)) throw new Error('Нажатия должны быть массивом чисел.');
-  if (values.length > 4096) throw new Error('Максимум 4096 нажатий.');
+  if (values.length > MAX_REPLAY_INPUTS) throw new Error(`Максимум ${MAX_REPLAY_INPUTS} нажатий.`);
   values.forEach((value, index) => {
     if (typeof value !== 'number' || !Number.isFinite(value) || value < 0)
       throw new Error(`Нажатие №${index + 1}: нужно конечное неотрицательное число.`);
@@ -23,6 +25,14 @@ export function parseInputs(text) {
       throw new Error(`Нажатие №${index + 1}: значения должны строго возрастать. Список не сортируется автоматически.`);
   });
   return values;
+}
+
+export function distanceSeedFromReplay(inputs, trackLength) {
+  const distances = [];
+  for (const { status, x } of inputs) {
+    if (status === 'accepted' && Number.isFinite(x) && x >= 0 && x < trackLength && x > (distances.at(-1) ?? -1)) distances.push(x);
+  }
+  return distances;
 }
 
 export function viewMetrics(width, height, corridorHeight, zoom, length, left) {
@@ -53,6 +63,50 @@ export class Revision {
   value = 0;
   bump() { return ++this.value; }
   current(value) { return value === this.value; }
+}
+
+export class ReplayRoute {
+  revision = new Revision();
+  result = null;
+  path = '';
+  visible = false;
+
+  get stale() { return !!this.path && !this.result; }
+
+  setResult(result) {
+    this.result = result;
+    this.path = result.samples.map((sample, index) =>
+      `${index ? 'L' : 'M'}${sample.x.toFixed(3)},${sample.y.toFixed(3)}`).join(' ');
+    this.visible = !!this.path;
+  }
+
+  invalidate(clear = false) {
+    this.revision.bump();
+    this.result = null;
+    if (clear) {
+      this.path = '';
+      this.visible = false;
+    }
+  }
+
+  toggle() {
+    if (this.path) this.visible = !this.visible;
+  }
+}
+
+export function parseLandingThreshold(value) {
+  const milliseconds = Number(value);
+  return value.trim() && Number.isInteger(milliseconds) && milliseconds >= 0 && milliseconds <= MAX_LANDING_THRESHOLD_MS
+    ? milliseconds : null;
+}
+
+export function shortLandingIntervals(intervals, threshold) {
+  if (threshold === null) return [];
+  return intervals.filter(item => {
+    const milliseconds = (item.inputTime - item.landingTime) * 1000;
+    // Round only floating-point noise at the comparison boundary.
+    return Math.round(milliseconds * 1e7) / 1e7 < threshold;
+  });
 }
 
 // Source coordinates include every value, so structural edits can retain the

@@ -44,6 +44,23 @@ File.WriteAllText(Path.Combine(fixtureDirectory,"prepared-custom-bonus.track.jso
 var replayProof=new PreparedReferenceProof(preparedPackage,FlightPresets.Chosen);int proofGuard=0;
 while(!replayProof.Complete&&proofGuard++<10000)replayProof.Step(16);
 Check(replayProof.Success&&replayProof.CompletedRuns==2,"independent shared reference+actual Master runs");
+Check(prepared.Profiles[0].MasterTrial==null,"legacy API requests preserve OFF proof and omit the separate trial");
+var surface = new WorkshopSurfaceRunSettings(true,5,"Linear",30,200,true);
+var selected = preparation.Prepare(new(ordinarySource,new[]{"Chosen"},SurfaceRunSettings:surface));
+var trial = selected.Profiles.Single().MasterTrial;
+Check(selected.Status=="prepared"&&selected.PreparedJson==prepared.PreparedJson&&selected.Profiles.Single().Status=="ready",
+    "selected ON trial does not alter the legacy-compatible OFF export");
+Check(trial is { Status:"finished", ReplayVerified:true, Seed:1, Profile:"Chosen", Camera:"lagger", Participants:1 } &&
+    trial.SurfaceRunSettings==surface&&trial.InputTimes.Length>0,
+    "genuine selected Master attempt produces replayable input times");
+var selectedReplay=new WorkshopService(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"../../../../../../Assets/StreamingAssets/Tracks")))
+    .Replay(new(selected.PreparedJson,trial.Profile,trial.WarningDuration,"time",trial.InputTimes,trial.SurfaceRunSettings));
+Check(selectedReplay.Summary.FinishTime.HasValue&&Math.Abs(selectedReplay.Summary.FinishTime.Value-trial.FinishTime.Value)<1e-6&&
+    selectedReplay.Summary.Collisions==trial.Collisions&&selectedReplay.Summary.AcceptedInputs==trial.InputTimes.Length,
+    "separate selected settings trial matches ordinary replay");
+Check(Math.Abs(trial.FinishTime.Value - selected.Profiles.Single().FinishTime.Value)>1e-3,
+    "selected accelerated run is distinct from legacy OFF reference");
+rows.Add(new{id=ordinary.Id,selectedTrial=trial,compatibleFinish=selected.Profiles.Single().FinishTime});
 var hidden=Course("prepared-hidden-bonus",new[]{new Obstacle{Id="hidden",Kind="floor",X=350,Width=64,Height=48,Hidden=true}});
 hidden.RiskZones=new[]{new RiskZone{Id="hidden-ordinary",Kind="instant",X=80,Y=226,Radius=8},hidden.RiskZones[0]};
 string hiddenSource=TrackJson.Write(new TrackPackage(hidden));

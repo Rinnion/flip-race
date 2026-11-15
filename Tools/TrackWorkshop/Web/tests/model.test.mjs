@@ -1,12 +1,37 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseInputs, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision } from '../model.mjs';
+import { parseInputs, distanceSeedFromReplay, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision, ReplayRoute } from '../model.mjs';
+import { parseLandingThreshold, shortLandingIntervals } from '../model.mjs';
+
+test('landing threshold accepts an integer in range and rejects empty, fractional and invalid values', () => {
+  for (const value of ['0', '200', '2000']) assert.equal(parseLandingThreshold(value), Number(value));
+  for (const value of ['', ' ', '-1', '2000.1', '2001', '12.5', 'abc', 'Infinity'])
+    assert.equal(parseLandingThreshold(value), null);
+});
+
+test('landing filtering is strict at the threshold and retains the replay data for later edits', () => {
+  const intervals = [1, 1.05, 1.19999, 1.2, 1.20001, 1.4].map(inputTime => ({ landingTime: 1, inputTime }));
+  assert.deepEqual(shortLandingIntervals(intervals, 200), intervals.slice(0, 3));
+  assert.deepEqual(shortLandingIntervals(intervals, 0), []);
+  assert.deepEqual(shortLandingIntervals(intervals, null), []);
+  assert.deepEqual(shortLandingIntervals(intervals, 500), intervals);
+  assert.equal(intervals.length, 6);
+});
 
 test('input list preserves exact numbers and rejects coercion, sorting and duplicates', () => {
   assert.deepEqual(parseInputs('[0, 0.00001, 430.1811187353192]'), [0, .00001, 430.1811187353192]);
   assert.deepEqual(parseInputs('[]'), []);
   for (const text of ['{}', '["430"]', '[null]', '[-1]', '[1,1]', '[2,1]', '[1e999]', 'NaN', '[1,]']) assert.throws(() => parseInputs(text), text);
   assert.throws(() => parseInputs(JSON.stringify(Array.from({ length: 4097 }, (_, i) => i))));
+});
+
+test('time replay supplies only accepted, finite, increasing X positions inside the track', () => {
+  const accepted = x => ({ status: 'accepted', x });
+  const inputs = [accepted(0), { status: 'ignored', x: 1 }, accepted(2), accepted(2), accepted(1),
+    accepted(2.0000000000000004), { status: 'unreached', x: null }, accepted(null), accepted('3'), accepted(NaN),
+    accepted(Infinity), accepted(10), accepted(11), accepted(7.234567890123456)];
+  assert.deepEqual(distanceSeedFromReplay(inputs, 10), [0, 2, 2.0000000000000004, 7.234567890123456]);
+  assert.deepEqual(distanceSeedFromReplay([accepted(-1), { status: 'ignored', x: 8 }], 10), []);
 });
 
 test('detail scale stays equal on wide/narrow viewports and clamps navigation', () => {
@@ -36,6 +61,57 @@ test('an edit invalidates a pending response before next debounce request exists
   assert.equal(revisions.current(newerResponse), true);
   revisions.bump();
   assert.equal(revisions.current(newerResponse), false);
+});
+
+const calculatedReplay = x => ({
+  samples: [{ x: 0, y: 226 }, { x, y: 209.25 }],
+  hiddenStates: [{ id: 'stone', revealedAt: 1.5 }],
+  events: [{ type: 'collision', x }],
+  inputs: [{ x, status: 'accepted' }]
+});
+
+test('a geometry edit keeps only the visible reference path and invalidates playback data and pending replays', () => {
+  const route = new ReplayRoute(), replay = calculatedReplay(700);
+  route.setResult(replay);
+  assert.equal(route.result, replay);
+  assert.equal(route.stale, false);
+  const revision = route.revision.value, path = route.path;
+  assert.equal(path, 'M0.000,226.000 L700.000,209.250');
+
+  route.invalidate();
+  assert.equal(route.revision.current(revision), false);
+  assert.equal(route.result, null);
+  assert.equal(route.stale, true);
+  assert.equal(route.path, path);
+  assert.equal(route.visible, true);
+});
+
+test('route visibility survives edits, a new calculation replaces the path, and document replacement clears it', () => {
+  const route = new ReplayRoute();
+  route.toggle();
+  assert.equal(route.visible, false);
+  route.setResult(calculatedReplay(700));
+  const previousPath = route.path, previousResult = route.result;
+  route.toggle();
+  assert.equal(route.result, previousResult);
+  assert.equal(route.visible, false);
+  route.invalidate();
+  assert.equal(route.visible, false);
+  route.toggle();
+  assert.equal(route.visible, true);
+  assert.equal(route.path, previousPath);
+  assert.equal(route.result, null);
+
+  route.toggle();
+  route.setResult(calculatedReplay(600));
+  assert.equal(route.visible, true);
+  assert.equal(route.stale, false);
+  assert.notEqual(route.path, previousPath);
+  route.invalidate(true);
+  assert.equal(route.path, '');
+  assert.equal(route.result, null);
+  assert.equal(route.stale, false);
+  assert.equal(route.visible, false);
 });
 
 test('actual Core reward kinds distinguish traps from positive bonuses and name every shape', () => {

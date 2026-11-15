@@ -1,13 +1,256 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flip Race · Мастерская трасс</title><link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script></head>
-<body><header class="page-header"><div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><div class="eyebrow">FLIP RACE / ИНСТРУМЕНТЫ АВТОРА</div><h1>Мастерская трасс</h1></div></div><span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.3</span></header>
-<main><section class="file-bar" aria-label="Файл трассы"><label class="catalog-label">Встроенная трасса<select id="catalog" aria-label="Встроенная трасса"><option value="">Загрузка каталога…</option></select></label><div class="file-actions"><button id="open">Открыть JSON…</button><input id="file" type="file" accept=".json,application/json" hidden><button id="download" class="primary" disabled>↓ Скачать JSON</button><button id="download-source" class="quiet">Скачать исходный текст</button></div></section>
-<section class="draft-bar" aria-label="Локальный черновик"><span id="draft-status" role="status">Автосохранение — только в этом браузере.</span><div id="draft-offer" hidden><p id="draft-offer-text"></p><div><button id="draft-restore">Восстановить черновик</button><button id="draft-clear" class="quiet">Удалить сохранённый черновик</button></div></div></section>
-<div id="notice" class="notice" role="status" hidden></div>
-<div class="drag-toolbar"><span>Объект — перенос · ручки выбранного объекта — размер · пустое место / <kbd>Space</kbd> / <kbd>Alt</kbd> — обзор</span><div><button id="toggle-source" aria-expanded="true" aria-controls="source-panel">Скрыть JSON трассы</button><button id="undo-move" disabled title="Ctrl+Z над схемой">↶ Отменить</button><button id="redo" disabled title="Ctrl+Shift+Z над схемой">↷ Повторить</button></div></div>
-<section class="author-tools" aria-label="Редактирование объектов"><div class="add-controls"><span class="palette-label" id="add-label">Добавить</span><div id="add-palette" class="add-palette" role="group" aria-labelledby="add-label"><button type="button" data-add-kind="stone-floor" title="Камень у пола" aria-label="Камень у пола" aria-pressed="false" disabled>Камень ↓</button><button type="button" data-add-kind="stone-ceiling" title="Камень у потолка" aria-label="Камень у потолка" aria-pressed="false" disabled>Камень ↑</button><button type="button" data-add-kind="hidden-floor" title="Скрытый камень у пола" aria-label="Скрытый камень у пола" aria-pressed="false" disabled>Скрытый ↓</button><button type="button" data-add-kind="hidden-ceiling" title="Скрытый камень у потолка" aria-label="Скрытый камень у потолка" aria-pressed="false" disabled>Скрытый ↑</button><button type="button" data-add-kind="gate" title="Ворота" aria-label="Ворота" aria-pressed="false" disabled>Ворота</button><button type="button" data-add-kind="instant" title="Мгновенный бонус" aria-label="Мгновенный бонус" aria-pressed="false" disabled>Бонус</button><button type="button" data-add-kind="negative" title="Ловушка" aria-label="Ловушка" aria-pressed="false" disabled>Ловушка</button><button type="button" data-add-kind="coin" title="Монета" aria-label="Монета" aria-pressed="false" disabled>Монета</button><button type="button" data-add-kind="landing" title="Посадочная метка на камне" aria-label="Посадочная метка на камне" aria-pressed="false" disabled>Посадка</button><button type="button" data-add-kind="positive-before" title="Бонус перед препятствием" aria-label="Бонус перед препятствием" aria-pressed="false" disabled>Бонус до</button><button type="button" data-add-kind="positive-after" title="Бонус после препятствия" aria-label="Бонус после препятствия" aria-pressed="false" disabled>Бонус после</button><button type="button" data-add-kind="finish" title="Финишный рывок" aria-label="Финишный рывок" aria-pressed="false" disabled>Рывок</button></div><button id="cancel-add" hidden>Отмена · Esc</button></div><p id="add-help">Нажмите кнопку палитры, затем место на подробной схеме. Сейчас доступны навигация и редактирование объектов.</p><div class="selection-row"><div><strong id="selection-name">Объект не выбран</strong><span id="selection-help">Нажмите объект, чтобы увидеть ручки изменения размера.</span></div><button id="delete-object" class="danger-button" disabled>Удалить</button></div><div class="history-note">Отмена / повтор — до 20 визуальных правок. Ручная правка JSON или загрузка файла очищает эту историю.</div></section>
-<div class="workspace" id="workspace"><section class="panel editor-panel" id="source-panel"><div class="panel-head"><div><div class="eyebrow">01 / ИСХОДНИК</div><h2>JSON трассы</h2></div><span id="validation-badge" class="badge">Ожидание</span></div><div class="editor-meta"><span id="filename">Файл не выбран</span><button id="format" class="text-button">Форматировать</button></div><label for="json" class="sr-only">JSON трассы</label><textarea id="json" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Откройте файл или выберите встроенную трассу"></textarea><div class="editor-status" aria-live="polite"><span id="validation-message">Геометрия проверяется тем же загрузчиком, что и в игре.</span><span id="char-count">0 символов</span></div><div id="validation-errors" class="errors" role="alert" hidden></div><div id="reference-warning" class="reference-warning" hidden></div></section>
-<div class="right-column"><section class="panel diagram-panel"><div class="panel-head"><div><div class="eyebrow">02 / ГЕОМЕТРИЯ</div><h2 id="track-title">Схема трассы</h2></div><span id="track-meta" class="muted">X → · Y ↓</span></div><div id="stale" class="stale" hidden>Схема последней корректной версии. Исправьте JSON, чтобы обновить её.</div><div class="overview-label"><span>ОБЗОР ВСЕЙ ТРАССЫ <span class="muted">· X сжат</span></span><span>Нажмите, чтобы перейти</span></div><svg id="overview" class="overview" role="img" aria-label="Обзор трассы и видимая область"></svg><div class="diagram-tools"><span class="detail-label">ДЕТАЛИ <span class="muted">· одинаковый масштаб X и Y</span></span><div><button id="zoom-out" class="square" aria-label="Уменьшить">−</button><button id="zoom-in" class="square" aria-label="Увеличить">+</button><button id="fit">По высоте</button></div></div><div class="diagram-wrap"><svg id="diagram" tabindex="0" role="img" aria-label="Точная схема трассы. Перетаскивайте объекты для редактирования. Пустое место или Alt и Space для обзора."></svg><div id="empty-diagram" class="empty">Ваша трасса появится здесь<span>Камни, обе части ворот, награды и траектория</span></div></div><div class="pan-row"><span id="view-start">0</span><input id="pan" type="range" min="0" max="1000" value="0" aria-label="Положение на трассе"><span id="view-end">0 ед.</span></div><div class="legend" aria-label="Легенда"><span><i class="key stone"></i>Камень</span><span><i class="key gate"></i>Ворота</span><span><i class="key hidden-stone"></i>Скрытый</span><span><i class="key bonus"></i>Бонус</span><span><i class="key trap"></i>Ловушка</span><span><i class="key coin"></i>Монета</span><span><i class="key landing"></i>Посадка</span><span><i class="key finish">»</i>Рывок</span></div><p class="diagram-hint" id="object-detail">Объект — перемещение · пустое место / Alt / Space — обзор · колесо — масштаб · Esc — отмена</p><section class="object-source" aria-labelledby="object-json-title"><div class="object-source-head"><h3 id="object-json-title">JSON выбранного объекта</h3><div><button id="select-object-json" class="text-button" disabled>Выделить JSON</button><button id="reset-object-json" class="text-button" disabled>Сбросить правку</button></div></div><p id="object-json-status" role="status">Выберите объект на схеме.</p><label for="object-json" class="sr-only">JSON выбранного объекта · редактирование</label><textarea id="object-json" spellcheck="false" aria-describedby="object-json-status" placeholder="Выберите объект на схеме" hidden></textarea></section></section>
-<section class="panel prepare-panel" aria-label="Подготовка бота"><div class="panel-head"><div><div class="eyebrow">03 / ЭТАЛОН БОТА</div><h2>Подготовить для игры</h2></div><span class="badge subtle">Хороший маршрут · не оптимум</span></div><p class="prepare-help">Для выбранного ниже управления: чистый маршрут, совместимые награды и полный финишный рывок. Ограниченный поиск и проверка настоящим Мастером; игровой бот сохраняет свой алгоритм.</p><label class="prepare-id-label" for="output-track-id">ID подготовленной трассы<input id="output-track-id" type="text" maxlength="100" spellcheck="false" autocomplete="off" placeholder="Сначала откройте трассу"></label><p id="prepare-copy-note" class="prepare-help">Исходный JSON останется в редакторе. Результат скачивается отдельно.</p><div class="prepare-actions"><button id="prepare-bot" class="primary" disabled>Подготовить бота</button><button id="prepare-cancel" hidden>Отменить поиск</button><button id="download-prepared" disabled>↓ JSON для игры с ботом</button></div><div id="prepare-state" class="replay-state" role="status">Выберите управление в панели ниже. Нужен ровно один финишный рывок.</div><div id="prepare-result" class="prepare-result" hidden><p id="prepare-summary"></p><p id="prepare-rewards"></p><p>Скачайте JSON для игры → «Выбрать трассу» → «Импорт JSON». Используйте подготовленное управление.</p></div></section>
-<section class="panel replay-panel"><div class="panel-head"><div><div class="eyebrow">04 / ПРОХОЖДЕНИЕ SOLO</div><h2>Проверить нажатия</h2></div><span class="badge subtle">Без поиска маршрута</span></div><div class="replay-settings"><label>Управление<select id="profile"><option value="Chosen">Основной</option><option value="FastFlip">Быстрый переворот</option></select></label><label>Предупреждение<select id="warning"><option value="0.4">0,4 с</option><option value="0.6">0,6 с</option><option value="0.8" selected>0,8 с</option><option value="1">1,0 с</option><option value="1.2">1,2 с</option></select></label><label>Нажатия заданы<select id="axis"><option value="distance">по X, игровые единицы</option><option value="time">по времени, секунды</option></select></label></div><div class="inputs-head"><label for="inputs">Список нажатий <span class="muted">· JSON-массив чисел</span></label><button id="reference" class="text-button" disabled>Взять эталон из файла</button></div><textarea id="inputs" class="inputs" spellcheck="false" aria-describedby="inputs-help">[]</textarea><div class="replay-actions"><span id="inputs-help" class="muted">Каждое число — одно нажатие. По возрастанию, без повторов.</span><button id="replay" class="primary" disabled>▶ Построить траекторию</button></div><div id="replay-error" class="errors" role="alert" hidden></div><div id="replay-state" class="replay-state" aria-live="polite">Запустите прохождение, чтобы увидеть путь, нажатия и события.</div><div id="playback" hidden><div id="summary" class="summary"></div><div class="playback-controls"><button id="play" class="square" aria-label="Воспроизвести">▶</button><input id="timeline" type="range" min="0" max="1" step="0.001" value="0" aria-label="Время прохождения"><output id="clock">0,00 с</output><label class="follow"><input id="follow" type="checkbox" checked> Следить</label></div><div class="event-head"><span>СОБЫТИЯ <span class="muted">· нажмите, чтобы перейти</span></span><span><b class="event-dot press-dot">●</b> принято <b class="event-dot rejected-dot">×</b> отклонено</span></div><div id="events" class="events"></div></div></section></div></div>
-<footer><strong>Мастерская v0.5.3</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer></main></body></html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flip Race · Мастерская трасс</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+<header class="page-header">
+  <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><div class="eyebrow">FLIP RACE / ИНСТРУМЕНТЫ АВТОРА</div><h1>Мастерская трасс</h1></div></div>
+  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.16</span>
+</header>
+
+<main>
+<div id="editor-mode">
+  <section class="file-bar" aria-label="Файл и параметры трассы">
+    <button type="button" id="new-level">＋ Новый уровень</button>
+    <label class="track-field">Название уровня
+      <input id="track-name" maxlength="160" autocomplete="off" aria-describedby="track-metadata-status" disabled>
+    </label>
+    <label class="track-field">Идентификатор
+      <input id="track-id" maxlength="128" spellcheck="false" autocomplete="off" aria-describedby="track-metadata-status" disabled>
+    </label>
+    <label class="track-field">Длина, ед.
+      <input id="track-length" type="number" min="0" max="1000000" step="any" aria-describedby="track-metadata-status" disabled>
+    </label>
+    <div class="file-disclosure">
+      <button type="button" id="file-menu-toggle" aria-expanded="false" aria-controls="file-menu">Файл <span aria-hidden="true">▾</span></button>
+      <div id="file-menu" class="file-menu" hidden>
+        <div class="file-actions">
+          <button id="open">Открыть JSON…</button>
+          <input id="file" type="file" accept=".json,application/json" hidden>
+          <button id="download" disabled>↓ Скачать JSON</button>
+          <button id="download-source" class="quiet">Скачать исходный текст</button>
+        </div>
+        <div class="file-catalog">
+          <label class="catalog-label">Оригинальная трасса
+            <select id="catalog"><option value="">Загрузка каталога…</option></select>
+          </label>
+          <button type="button" id="load-catalog" disabled>Загрузить трассу</button>
+        </div>
+      </div>
+    </div>
+    <div class="metadata-feedback"><p id="track-metadata-status" class="field-status" role="status"></p><button type="button" id="reset-track-metadata" class="text-button" hidden>Сбросить правку параметров</button></div>
+  </section>
+
+  <section class="draft-bar" aria-label="Локальный черновик"><span id="draft-status" role="status">Автосохранение — только в этом браузере.</span><div id="draft-offer" hidden><p id="draft-offer-text"></p><div><button id="draft-restore">Восстановить черновик</button><button id="draft-clear" class="quiet">Удалить сохранённый черновик</button></div></div></section>
+  <div id="notice" class="notice" role="status" hidden></div>
+  <div class="workspace panel" id="workspace">
+    <section class="add-controls" aria-labelledby="add-label">
+      <div class="eyebrow" id="add-label">ДОБАВИТЬ</div>
+      <div id="add-palette" class="add-palette" role="group" aria-labelledby="add-label">
+          <button type="button" data-add-kind="stone-floor" title="Камень у пола" aria-label="Камень у пола" aria-pressed="false" disabled><i class="key stone" aria-hidden="true"></i>Камень ↓</button>
+          <button type="button" data-add-kind="stone-ceiling" title="Камень у потолка" aria-label="Камень у потолка" aria-pressed="false" disabled><i class="key stone" aria-hidden="true"></i>Камень ↑</button>
+          <button type="button" data-add-kind="hidden-floor" title="Скрытый камень у пола" aria-label="Скрытый камень у пола" aria-pressed="false" disabled><i class="key hidden-stone" aria-hidden="true"></i>Скрытый ↓</button>
+          <button type="button" data-add-kind="hidden-ceiling" title="Скрытый камень у потолка" aria-label="Скрытый камень у потолка" aria-pressed="false" disabled><i class="key hidden-stone" aria-hidden="true"></i>Скрытый ↑</button>
+          <button type="button" data-add-kind="gate" title="Ворота" aria-label="Ворота" aria-pressed="false" disabled><i class="key gate" aria-hidden="true"></i>Ворота</button>
+          <button type="button" data-add-kind="instant" title="Мгновенный бонус" aria-label="Мгновенный бонус" aria-pressed="false" disabled><i class="key bonus" aria-hidden="true"></i>Бонус</button>
+          <button type="button" data-add-kind="negative" title="Ловушка" aria-label="Ловушка" aria-pressed="false" disabled><i class="key trap" aria-hidden="true"></i>Ловушка</button>
+          <button type="button" data-add-kind="coin" title="Монета" aria-label="Монета" aria-pressed="false" disabled><i class="key coin" aria-hidden="true"></i>Монета</button>
+          <button type="button" data-add-kind="landing" title="Посадочная метка на камне" aria-label="Посадочная метка на камне" aria-pressed="false" disabled><i class="key landing" aria-hidden="true"></i>Посадка</button>
+          <button type="button" data-add-kind="positive-before" title="Бонус перед препятствием" aria-label="Бонус перед препятствием" aria-pressed="false" disabled><i class="key bonus" aria-hidden="true"></i>Бонус до</button>
+          <button type="button" data-add-kind="positive-after" title="Бонус после препятствия" aria-label="Бонус после препятствия" aria-pressed="false" disabled><i class="key bonus" aria-hidden="true"></i>Бонус после</button>
+          <button type="button" data-add-kind="finish" title="Финишный рывок" aria-label="Финишный рывок" aria-pressed="false" disabled><i class="key finish" aria-hidden="true">»</i>Рывок</button>
+      </div>
+      <button type="button" id="cancel-add" hidden>Отмена · Esc</button>
+    </section>
+
+    <section class="diagram-panel" aria-labelledby="track-title">
+      <div class="panel-head">
+        <div><div class="eyebrow">ГЕОМЕТРИЯ</div><h2 id="track-title">Схема трассы</h2></div>
+        <div class="diagram-heading-actions">
+          <span id="track-meta" class="muted">X → · Y ↓</span>
+          <div class="history-actions"><button id="undo-move" disabled title="Ctrl+Z над схемой">↶ Отменить</button><button id="redo" disabled title="Ctrl+Shift+Z над схемой">↷ Повторить</button></div>
+        </div>
+      </div>
+      <div id="stale" class="stale" hidden>Схема последней корректной версии. Исправьте JSON, чтобы обновить её.</div>
+      <div class="route-tools">
+        <button type="button" id="toggle-route" aria-controls="overview diagram" disabled>Показать траекторию</button>
+        <label for="landing-threshold">Порог после посадки <input id="landing-threshold" type="number" min="0" max="2000" step="1" value="200" required aria-describedby="landing-status"> мс</label>
+        <span id="route-stale" role="status" hidden>Предыдущая траектория · нужен новый расчёт</span>
+      </div>
+      <div class="landing-report">
+        <p id="landing-status" role="status">Постройте траекторию, чтобы измерить интервалы после посадок.</p>
+        <details id="landing-details" hidden>
+          <summary>Перейти к отмеченному интервалу</summary>
+          <ul id="landing-list"></ul>
+        </details>
+        <section id="later-press-panel" class="later-press-panel" aria-labelledby="later-press-title" hidden>
+          <h3 id="later-press-title"></h3>
+          <p>Другие нажатия остаются на прежнем времени.</p>
+          <p id="later-press-original-info" hidden></p>
+          <p id="later-press-range" hidden></p>
+          <p id="later-press-status" role="status" hidden></p>
+          <ul id="later-press-list" hidden></ul>
+          <button id="later-press-cancel" type="button" hidden>Отменить</button>
+          <button id="later-press-original" type="button" hidden>Вернуться к исходному</button>
+        </section>
+      </div>
+      <div class="overview-label"><span>ОБЗОР ВСЕЙ ТРАССЫ <span class="muted">· X сжат</span></span><span>Нажмите, чтобы перейти</span></div><svg id="overview" class="overview" role="img" aria-label="Обзор трассы и видимая область"></svg><div class="diagram-tools"><span class="detail-label">ДЕТАЛИ <span class="muted">· одинаковый масштаб X и Y</span></span><div><button id="zoom-out" class="square" aria-label="Уменьшить">−</button><button id="zoom-in" class="square" aria-label="Увеличить">+</button><button id="fit">По высоте</button></div></div><div class="diagram-wrap"><svg id="diagram" tabindex="0" role="img" aria-label="Точная схема трассы. Перетаскивайте объекты для редактирования. Пустое место или Alt и Space для обзора."></svg><div id="empty-diagram" class="empty">Ваша трасса появится здесь<span>Камни, обе части ворот, награды и траектория</span></div></div><div class="pan-row"><span id="view-start">0</span><input id="pan" type="range" min="0" max="1000" value="0" aria-label="Положение на трассе"><span id="view-end">0 ед.</span></div><div class="legend" aria-label="Легенда"><span><i class="key stone"></i>Камень</span><span><i class="key gate"></i>Ворота</span><span><i class="key hidden-stone"></i>Скрытый</span><span><i class="key bonus"></i>Бонус</span><span><i class="key trap"></i>Ловушка</span><span><i class="key coin"></i>Монета</span><span><i class="key landing"></i>Посадка</span><span><i class="key finish">»</i>Рывок</span></div><p class="diagram-hint" id="object-detail">Объект — перемещение · пустое место / Alt / Space — обзор · колесо — масштаб · Esc — отмена</p>
+      <p id="add-help" class="placement-help" role="status">Нажмите кнопку палитры, затем место на подробной схеме. Сейчас доступны навигация и редактирование объектов.</p>
+      <div class="live-start-tools">
+  <div class="live-start-controls">
+    <button id="live-start" type="button" class="primary" disabled>▶ Играть</button>
+    <label for="live-start-x">Старт с X <input id="live-start-x" type="number" min="0" step="any" value="0" aria-describedby="live-start-help" disabled></label>
+    <button type="button" id="live-pick-start" aria-pressed="false" aria-describedby="live-start-help" disabled>Выбрать на схеме</button>
+    <button type="button" id="live-reset-start" disabled>С начала</button>
+    <span class="muted">R — быстрый перезапуск в заезде</span>
+  </div>
+  <p id="live-start-help" class="muted" role="status">Старт с начала трассы.</p>
+</div>
+    </section>
+
+    <aside class="object-inspector" aria-labelledby="inspector-title">
+      <div class="eyebrow" id="inspector-title">ВЫБРАННЫЙ ОБЪЕКТ</div>
+      <div class="selection-row">
+        <strong id="selection-name">Объект не выбран</strong>
+        <p id="selection-help">Нажмите объект, чтобы увидеть ручки изменения размера.</p>
+      </div>
+      <div class="inspector-tabs" role="tablist" aria-label="Редактор объекта">
+        <button type="button" id="object-properties-tab" role="tab" aria-selected="true" aria-controls="object-properties">Свойства</button>
+        <button type="button" id="object-json-tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="object-json-panel">JSON</button>
+      </div>
+      <div id="object-properties" role="tabpanel" aria-labelledby="object-properties-tab"></div>
+      <div id="object-json-panel" class="object-source" role="tabpanel" aria-labelledby="object-json-tab" hidden>
+        <div class="object-source-head"><h3>JSON выбранного объекта</h3><div><button id="select-object-json" class="text-button" disabled>Выделить JSON</button><button id="reset-object-json" class="text-button" disabled>Сбросить правку</button></div></div>
+        <p id="object-json-status" role="status">Выберите объект на схеме.</p><label for="object-json" class="sr-only">JSON выбранного объекта · редактирование</label><textarea id="object-json" spellcheck="false" aria-describedby="object-json-status" placeholder="Выберите объект на схеме" hidden></textarea>
+      </div>
+      <p id="object-properties-status" class="field-status" role="status"></p>
+      <button type="button" id="reset-object-properties" class="text-button" hidden>Сбросить правку свойств</button>
+      <div class="inspector-actions">
+        <button id="delete-object" class="danger-button" disabled>Удалить объект</button>
+        <p class="history-note">Отмена и повтор хранят до 20 правок. Редактирование полного JSON или открытие файла очищает историю.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="workshop-bottom panel">
+    <div class="editor-status" aria-live="polite">
+      <span id="validation-badge" class="badge">Ожидание</span>
+      <span id="validation-message">Геометрия проверяется тем же загрузчиком, что и в игре.</span>
+    </div>
+    <div id="validation-errors" class="errors" role="alert" hidden></div>
+    <div id="reference-warning" class="reference-warning" hidden></div>
+    <section class="run-settings" aria-labelledby="run-settings-title">
+      <h2 id="run-settings-title">Настройка забега</h2>
+      <div class="run-settings-grid">
+        <label>Управление<select id="profile"><option value="Chosen">Основной</option><option value="FastFlip">Быстрый переворот</option></select></label>
+        <label>Предупреждение<select id="warning"><option value="0.4">0,4 с</option><option value="0.6">0,6 с</option><option value="0.8" selected>0,8 с</option><option value="1">1,0 с</option><option value="1.2">1,2 с</option></select></label>
+        <label>Разгон от бега<select id="surface-run-enabled" aria-controls="surface-run-fields"><option value="true" selected>ВКЛ</option><option value="false">ВЫКЛ</option></select></label>
+      </div>
+      <fieldset id="surface-run-fields" class="run-settings-grid surface-run-fields">
+        <legend class="sr-only">Параметры разгона от бега</legend>
+        <label>Темп набора<select id="surface-run-rate"><option value="1">1 п. п./с</option><option value="2">2 п. п./с</option><option value="3">3 п. п./с</option><option value="4">4 п. п./с</option><option value="5" selected>5 п. п./с</option></select></label>
+        <label>Набор запаса<select id="surface-run-curve"><option value="Linear">Линейный</option><option value="Exponential">Плавный (экспоненциальный)</option></select></label>
+        <label>Предел запаса<select id="surface-run-cap"><option value="20">+20%</option><option value="30" selected>+30%</option><option value="40">+40%</option></select></label>
+        <label>Спад в воздухе<select id="surface-run-decay"><option value="0">0%</option><option value="50">50%</option><option value="100">100%</option><option value="200" selected>200%</option><option value="400">400%</option></select></label>
+        <label>Сброс запаса при ударе<select id="surface-run-reset"><option value="true" selected>ВКЛ</option><option value="false">ВЫКЛ</option></select></label>
+      </fieldset>
+    </section>
+    <section class="route-analysis" aria-labelledby="route-analysis-title">
+      <div class="route-analysis-head">
+        <div>
+          <h2 id="route-analysis-title">Анализ трассы</h2>
+          <p>Поиск финишей с шагом нажатий 100 мс. Для каждого набора настроек в JSON сохраняется до 1000 самых быстрых найденных маршрутов, включая финиши с ударами. Число маршрутов зависит от бюджета перебора.</p>
+        </div>
+        <div class="route-analysis-actions">
+          <button id="route-search" type="button" class="primary" disabled>Найти маршруты</button>
+          <button id="route-search-cancel" type="button" hidden>Отменить поиск</button>
+        </div>
+      </div>
+      <p id="route-search-settings" class="route-search-settings"></p>
+      <p id="route-search-state" class="replay-state" role="status"></p>
+      <div id="route-search-progress" class="route-search-progress" hidden>
+        <div class="route-progress-label"><label for="route-progress-bar">Примерный прогресс</label><span id="route-progress-percent" aria-hidden="true">0%</span></div>
+        <progress id="route-progress-bar" max="100" value="0" aria-describedby="route-progress-phase"></progress>
+        <span id="route-progress-phase"></span>
+      </div>
+      <ul id="route-search-runs" class="route-search-runs" hidden></ul>
+      <div id="route-search-results" class="route-search-results" hidden>
+        <p id="route-results-help">Маршруты для текущих настроек, от самых быстрых. Выберите строку, чтобы построить траекторию.</p>
+        <ol id="route-results-list" aria-describedby="route-results-help"></ol>
+        <div id="route-results-pages" class="route-results-pages" hidden>
+          <button id="route-results-prev" type="button">Предыдущие</button>
+          <span id="route-results-range" role="status"></span>
+          <button id="route-results-next" type="button">Следующие</button>
+        </div>
+      </div>
+    </section>
+    <details id="replay-panel" class="replay-panel">
+      <summary>Нажатия и траектория <span>Ручной список и запись пробега</span></summary>
+      <div class="tool-content">
+        <div class="replay-settings"><label>Нажатия заданы<select id="axis"><option value="distance">по X, игровые единицы</option><option value="time">по времени, секунды</option></select></label></div><div class="inputs-head"><label for="inputs">Список нажатий <span class="muted">· JSON-массив чисел</span></label><button id="reference" class="text-button" disabled>Взять эталон из файла</button></div><textarea id="inputs" class="inputs" spellcheck="false" aria-describedby="inputs-help">[]</textarea><div class="replay-actions"><span id="inputs-help" class="muted">Каждое число — одно нажатие. По возрастанию, без повторов.</span><button id="replay" class="primary" disabled>▶ Построить траекторию</button></div><div id="replay-error" class="errors" role="alert" hidden></div><div id="replay-state" class="replay-state" aria-live="polite">Запустите прохождение, чтобы увидеть путь, нажатия и события.</div><div id="playback" hidden><div id="summary" class="summary"></div><div class="playback-controls"><button id="play" class="square" aria-label="Воспроизвести">▶</button><input id="timeline" type="range" min="0" max="1" step="0.001" value="0" aria-label="Время прохождения"><output id="clock">0,00 с</output><label class="follow"><input id="follow" type="checkbox" checked> Следить</label></div><div class="event-head"><span>СОБЫТИЯ <span class="muted">· нажмите, чтобы перейти</span></span><span><b class="event-dot press-dot">●</b> принято <b class="event-dot rejected-dot">×</b> отклонено</span></div><div id="events" class="events"></div></div>
+      </div>
+    </details>
+    <details id="prepare-panel" class="prepare-panel">
+      <summary>Подготовка бота <span>Поиск и проверка эталонного маршрута</span></summary>
+      <div class="tool-content">
+        <p class="prepare-help">Сначала проверяем эталон и допуск к импорту с выключенным разгоном. Затем запускаем пробный заезд Мастера с настройками заезда выше.</p><label class="prepare-id-label" for="output-track-id">ID подготовленной трассы<input id="output-track-id" type="text" maxlength="100" spellcheck="false" autocomplete="off" placeholder="Сначала откройте трассу"></label><p id="prepare-copy-note" class="prepare-help">Исходный JSON останется в редакторе. Результат скачивается отдельно.</p><div class="prepare-actions"><button id="prepare-bot" class="primary" disabled>Подготовить бота</button><button id="prepare-cancel" hidden>Отменить поиск</button><button id="download-prepared" disabled>↓ JSON для игры с ботом</button></div><div id="prepare-state" class="replay-state" role="status">На трассе нужен ровно один финишный рывок.</div><div id="prepare-result" class="prepare-result" hidden><p id="prepare-summary"></p><p id="prepare-rewards"></p><p id="prepare-trial"></p><p>Скачайте JSON для игры → «Выбрать трассу» → «Импорт JSON». Используйте подготовленное управление.</p></div>
+      </div>
+    </details>
+    <button id="toggle-source" class="source-toggle" aria-expanded="false" aria-controls="source-panel">Показать JSON трассы</button>
+    <section id="source-panel" aria-label="JSON трассы" hidden>
+      <div class="editor-meta"><span id="filename">Файл не выбран</span><span id="char-count">0 символов</span><button id="format" class="text-button">Форматировать</button></div>
+      <label for="json" class="sr-only">JSON трассы</label>
+      <textarea id="json" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Откройте файл или выберите оригинальную трассу"></textarea>
+    </section>
+  </div>
+
+  <dialog id="new-level-dialog" class="new-level-dialog" aria-labelledby="new-level-title">
+    <form id="new-level-form">
+      <h2 id="new-level-title">Новый уровень</h2>
+      <label class="track-field">Название
+        <input id="new-level-name" maxlength="160" autocomplete="off" required autofocus>
+      </label>
+      <label class="track-field">Идентификатор
+        <input id="new-level-id" maxlength="128" spellcheck="false" autocomplete="off" required>
+      </label>
+      <label class="track-field">Длина трассы, ед.
+        <input id="new-level-length" type="number" min="0" max="1000000" step="any" value="4000" required>
+      </label>
+      <p id="new-level-status" class="field-status" role="status"></p>
+      <div class="dialog-actions">
+        <button type="button" id="new-level-cancel">Отмена</button>
+        <button class="primary" type="submit">Создать пустой уровень</button>
+      </div>
+    </form>
+  </dialog>
+</div>
+
+<section id="live-mode" class="panel live-mode" aria-labelledby="live-title" tabindex="-1" hidden>
+  <div class="panel-head live-head">
+    <div><div class="eyebrow">ЖИВОЙ ЗАЕЗД SOLO</div><h2 id="live-title">Живой заезд</h2><p id="live-settings" class="muted"></p></div>
+    <div class="live-actions"><button type="button" id="live-pause" disabled>Пауза</button><button type="button" id="live-restart" aria-keyshortcuts="R" title="Вернуться к выбранной точке. R — перезапустить и сразу бежать.">Заново · R</button><button type="button" id="live-exit">В редактор</button></div>
+  </div>
+  <p id="live-status" class="live-status" role="status">Подключаемся…</p>
+  <svg id="live-diagram" viewBox="-288.8 0 1520 240" role="img" aria-label="Схема живого заезда"></svg>
+  <div class="live-controls">
+    <button type="button" id="live-input" class="primary" disabled>Прыжок / переворот <span>А / Пробел</span></button>
+    <div class="live-feedback">
+      <p id="live-metrics">Время 0 с</p>
+      <p id="live-input-feedback" aria-live="polite">Нажатий пока нет.</p>
+      <p id="live-event-feedback" class="muted"></p>
+    </div>
+  </div>
+  <div class="live-recording">
+    <button type="button" id="live-save-inputs" aria-describedby="live-save-help" disabled>Сохранить нажатия в редактор</button>
+    <p id="live-save-help" class="muted" role="status">Поставьте заезд на паузу или завершите его, чтобы сохранить нажатия.</p>
+  </div>
+</section>
+<footer><strong>Мастерская v0.5.16</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
+</main>
+</body>
+</html>

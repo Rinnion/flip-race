@@ -5,8 +5,10 @@ using FlipRace.Core;
 
 namespace TrackWorkshop;
 
-public sealed record PrepareBotRequest(string Json,string[] Profiles=null,double[] Inputs=null,string OutputTrackId=null,double WarningDuration=.8);
-public sealed record PreparedProfileResult(string ProfileId,string Status,string Message,double[] Inputs,string[] RewardIds,double? FinishTime,int ExpandedStates,long ElapsedMilliseconds);
+public sealed record PrepareBotRequest(string Json,string[] Profiles=null,double[] Inputs=null,string OutputTrackId=null,double WarningDuration=.8,
+    WorkshopSurfaceRunSettings SurfaceRunSettings=null);
+public sealed record PreparedProfileResult(string ProfileId,string Status,string Message,double[] Inputs,string[] RewardIds,double? FinishTime,
+    int ExpandedStates,long ElapsedMilliseconds,MasterTrialResult MasterTrial=null);
 public sealed record PrepareBotResult(string Status,string PreparedJson,string OutputTrackId,PreparedProfileResult[] Profiles,string Message);
 
 /// <summary>Request-local search and real Core admission. Never installs the static game catalogue.</summary>
@@ -18,13 +20,14 @@ public sealed class BotPreparationService
     public PrepareBotResult Prepare(PrepareBotRequest request,CancellationToken cancellation=default)
     {
         if(request?.Json==null||Encoding.UTF8.GetByteCount(request.Json)>TrackJson.MaximumBytes)throw new ArgumentException("Нужен JSON не больше 2 МиБ.");
-        if(!new[]{.4,.6,.8,1,1.2}.Contains(request.WarningDuration))throw new ArgumentException("Недопустимая длительность предупреждения.");
+        WorkshopService.ValidateWarning(request.WarningDuration);
+        request.SurfaceRunSettings?.ToCore();
         if(request.Inputs!=null)
         {
             if(request.Inputs.Length>4096)throw new ArgumentException("Нужно не больше 4096 нажатий-подсказок.");
             double prior=-1;foreach(double x in request.Inputs){if(!double.IsFinite(x)||x<0||x<=prior)throw new ArgumentException("Подсказка — возрастающие координаты X, не секунды.");prior=x;}
         }
-        var package=ReadGeometry(request.Json,out var seedReferences);
+        var package=ReadGeometry(DeveloperDocument.Read(request.Json).GameJson,out var seedReferences);
         string[] profiles=request.Profiles??(package.ProfilePolicy==TrackProfilePolicy.ChosenOnly?new[]{"Chosen"}:new[]{"Chosen","FastFlip"});
         if(profiles.Length<1||profiles.Length>2||profiles.Distinct(StringComparer.Ordinal).Count()!=profiles.Length||profiles.Any(p=>p!="Chosen"&&p!="FastFlip"))
             throw new ArgumentException("profiles должен содержать Chosen и/или FastFlip без повторов.");
@@ -64,8 +67,11 @@ public sealed class BotPreparationService
                 reports.Add(new(profile,"not-found",reason+" Другой маршрут может пройти; непроходимость не доказана.",found.Inputs,found.RewardIds,found.FinishTime,found.ExpandedStates,watch.ElapsedMilliseconds));continue;
             }
             ready.Add(reference);
-            reports.Add(new(profile,"ready","Чистый маршрут и настоящий Мастер проверены"+(package.WarningMode==TrackWarningMode.Selected&&package.Track.Obstacles.Any(o=>o.Hidden)?" при всех пяти предупреждениях.":".")+" Оптимальность не утверждается.",
-                found.Inputs,found.RewardIds,found.FinishTime,found.ExpandedStates,watch.ElapsedMilliseconds));
+            var trial = request.SurfaceRunSettings == null ? null :
+                BotPreparationMasterTrial.Run(candidate, flight, reference, request.WarningDuration, request.SurfaceRunSettings, cancellation);
+            reports.Add(new(profile,"ready","Совместимый эталон и настоящий Мастер проверены при выключенном разгоне"+
+                (package.WarningMode==TrackWarningMode.Selected&&package.Track.Obstacles.Any(o=>o.Hidden)?" для всех пяти предупреждений.":".")+" Оптимальность не утверждается.",
+                found.Inputs,found.RewardIds,found.FinishTime,found.ExpandedStates,watch.ElapsedMilliseconds,trial));
         }
         string prepared=null;
         if(ready.Count>0)prepared=TrackJson.Write(new TrackPackage(package.Track,package.ProfilePolicy,package.WarningMode,ready.ToArray()));

@@ -39,11 +39,22 @@ async function request(path, { method = 'GET', host = authority, sourceOrigin, b
   return { response, text };
 }
 const health = await request('/healthz');
-assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.3' });
-await request('/'); await request('/edit-model.mjs'); await request('/object-source.mjs');
+assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.16' });
+const page = await request('/');
+assert.match(page.text, /v0\.5\.16/);
+assert.match(page.text, /id="toggle-route"/);
+assert.match(page.text, /id="landing-threshold"[^>]*value="200"/);
+await request('/edit-model.mjs'); await request('/object-source.mjs'); await request('/authoring-fields.mjs');
 const catalog = JSON.parse((await request('/api/catalog')).text); assert.equal(catalog.entries.length, 8);
 const json = JSON.parse((await request('/api/catalog/full-long')).text).json;
-await request('/api/analyze', { method: 'POST', sourceOrigin: origin, body: JSON.stringify({ json }) });
+const original = JSON.parse((await request('/api/analyze', { method: 'POST', sourceOrigin: origin, body: JSON.stringify({ json }) })).text);
+const empty = { schemaVersion: 1, physicsVersion: 1, profilePolicy: 'any', warningMode: 'selected', track: { id: 'custom-empty-smoke', name: 'Пустой уровень', length: 4000, obstacles: [], riskZones: [] }, botReferences: [] };
+const emptyResult = JSON.parse((await request('/api/analyze', { method: 'POST', body: JSON.stringify({ json: JSON.stringify(empty) }) })).text);
+assert.equal(emptyResult.id, empty.track.id); assert.equal(emptyResult.obstacles.length, 0); assert.equal(emptyResult.rewards.length, 0);
+const copy = JSON.parse(json); copy.track.id = 'custom-full-long-smoke'; copy.botReferences = [];
+const copied = JSON.parse((await request('/api/analyze', { method: 'POST', body: JSON.stringify({ json: JSON.stringify(copy) }) })).text);
+assert.equal(copied.id, copy.track.id); assert.deepEqual(copied.obstacles, original.obstacles); assert.deepEqual(copied.rewards, original.rewards);
+assert.equal(JSON.parse((await request('/api/catalog/full-long')).text).json, json);
 await request('/api/analyze/', { method: 'POST', body: JSON.stringify({ json }) }); // missing Origin CLI remains allowed
 await request('/api/analyze', { method: 'POST', sourceOrigin: 'https://wrong.example', body: JSON.stringify({ json }), expected: 400 });
 await request('/api/analyze', { method: 'POST', sourceOrigin: 'null', body: JSON.stringify({ json }), expected: 400 });
@@ -55,6 +66,16 @@ if (publicOrigin) await request('/healthz', { host: base.host, expected: 400 });
 for (const path of ['/ServerOptions.cs', '/README.md', '/Web/tests/model.test.mjs', '/Catalog/full-long.track.json', '/api/catalog/..%2F..%2FProgram.cs']) await request(path, { expected: 404 });
 const replay = JSON.parse((await request('/api/replay', { method: 'POST', sourceOrigin: origin, body: JSON.stringify({ json, profile: 'Chosen', warningDuration: .8, axis: 'time', inputs: [] }) })).text);
 assert.ok(replay.summary.finishTime > 0); assert.equal(replay.summary.status, 'Finished');
-const evidence = { passed: true, base: base.origin, publicOrigin, requests: results.length, results, replaySummary: replay.summary };
-await writeFile(fileURLToPath(new URL('./smoke-results.json', import.meta.url)), JSON.stringify(evidence, null, 2) + '\n');
-console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.3, identity/error/static/replay checks.`);
+assert.deepEqual(replay.landingIntervals, []);
+const reference = JSON.parse(json).botReferences.find(item => item.profileId === 'Chosen');
+const withReference = JSON.parse((await request('/api/replay', { method: 'POST', sourceOrigin: origin,
+  body: JSON.stringify({ json, profile: 'Chosen', warningDuration: .8, axis: 'distance', inputs: reference.inputs }) })).text);
+const shortIntervals = withReference.landingIntervals.filter(item => item.inputTime - item.landingTime < .2);
+assert.equal(shortIntervals.length, 1);
+const example = shortIntervals[0];
+assert.equal(withReference.inputs[example.inputIndex].status, 'accepted');
+assert.ok(example.inputTime > example.landingTime);
+const evidence = { passed: true, base: base.origin, publicOrigin, requests: results.length, results,
+  replaySummary: replay.summary, landingIntervals: { short: shortIntervals.length, total: withReference.landingIntervals.length, example } };
+await writeFile(process.env.WORKSHOP_SMOKE_OUTPUT || fileURLToPath(new URL('./smoke-results.json', import.meta.url)), JSON.stringify(evidence, null, 2) + '\n');
+console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.16, identity/error/static/replay checks.`);

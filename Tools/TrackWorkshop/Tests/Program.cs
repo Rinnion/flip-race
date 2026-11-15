@@ -13,13 +13,13 @@ void Rejected(Action action,string message){bool rejected=false;try{action();}ca
 JsonNode Analyze(string json)=>JsonSerializer.SerializeToNode(service.Analyze(new(json)),new JsonSerializerOptions{PropertyNamingPolicy=JsonNamingPolicy.CamelCase});
 string Edit(string json,Action<JsonNode> action){var n=JsonNode.Parse(json);action(n);return n.ToJsonString();}
 
-// Independent frozen times extracted from the accepted 14e22ba snapshot in
-// Tools/JsonTracksCheck/accepted-14e22ba.json. Not recalculated from today's B.
+// Frozen times from accepted-14e22ba.json plus the accepted Rethink Fast Flip
+// proof in Verification/v581-rethink-fast-core.json.
 var expected=new Dictionary<string,double>{
  ["full-long/Chosen"]=33.05,["full-long/FastFlip"]=33.05,["full-short/Chosen"]=33.05,["full-short/FastFlip"]=33.05,
  ["full-flow/Chosen"]=33.05,["full-flow/FastFlip"]=33.05,["rhythm-cascade/Chosen"]=33.05,["rhythm-cascade/FastFlip"]=33.05,
  ["mixed-tricks/Chosen"]=33.05,["mixed-tricks/FastFlip"]=33.05,["hidden-intercepts/Chosen"]=33.35,["hidden-intercepts/FastFlip"]=32.75,
- ["hidden-manifestation/Chosen"]=33.95,["hidden-manifestation/FastFlip"]=33.95,["rethink/Chosen"]=34.85};
+ ["hidden-manifestation/Chosen"]=33.95,["hidden-manifestation/FastFlip"]=33.95,["rethink/Chosen"]=34.85,["rethink/FastFlip"]=34.85};
 Need(service.Catalog().Length==8,"8 catalog entries");
 foreach(var entry in service.Catalog())
 {
@@ -68,7 +68,7 @@ foreach(var entry in service.Catalog())
         evidence.Add(new{id=entry.Id,profile=reference.ProfileId,result.Summary,result.Samples.Count});
     }
 }
-Need(pairs==15,"15 reference pairs");
+Need(pairs==16,"16 reference pairs");
 string original=service.CatalogJson("full-long");
 string stale=Edit(original,n=>n["track"]["obstacles"][0]["x"]=301);
 var staleAnalysis=Analyze(stale);Need(staleAnalysis["staleReferences"].GetValue<bool>()&&!staleAnalysis["gameValid"].GetValue<bool>(),"stale explicit");
@@ -82,13 +82,67 @@ Rejected(()=>service.Replay(Request(new double[4097])),"input count limit");
 foreach(var bad in new[]{new[]{-1d},new[]{1d,1d},new[]{2d,1d},new[]{double.NaN},new[]{double.PositiveInfinity}})Rejected(()=>service.Replay(Request(bad)),"bad input values");
 Rejected(()=>service.Replay(Request(Array.Empty<double>()) with{Axis="nonsense"}),"axis validation");
 Rejected(()=>service.Replay(Request(Array.Empty<double>()) with{Profile="custom"}),"profile validation");
-Rejected(()=>service.Replay(new(service.CatalogJson("rethink"),"FastFlip",.8,"distance",Array.Empty<double>())),"chosen only");
 var ignored=service.Replay(new(original,"FastFlip",.8,"time",new[]{0d,.01,.02,119d}));
 Need(ignored.Inputs[0].Status=="accepted"&&ignored.Inputs[1].Status=="accepted"&&ignored.Inputs[2].Status=="ignored"&&ignored.Inputs[3].Status=="unreached","accepted ignored and late input");
 var refReplay=service.Replay(new(original,"Chosen",.8,"distance",TrackJson.TryRead(original,out var source,out _)?source.References[0].Inputs:Array.Empty<double>()));
 var late=service.Replay(new(original,"Chosen",.8,"time",refReplay.Inputs.Select(i=>i.Time.Value).Append(35d).ToArray()));
 Near(late.Summary.FinishTime.Value,33.05,"late Press does not restart race");Need(late.Inputs[^1].Status=="unreached","post finish input unused");
 string empty=TrackJson.Write(new TrackPackage(new Track(1000000,Array.Empty<Obstacle>()){Id="long-test",Name="Long"}));
+string chosenOnly=TrackJson.Write(new TrackPackage(new Track(200,Array.Empty<Obstacle>()){Id="chosen-only-test",Name="Chosen only"},TrackProfilePolicy.ChosenOnly));
+Rejected(()=>service.Replay(new(chosenOnly,"FastFlip",.8,"distance",Array.Empty<double>())),"chosen only");
 var timeout=service.Replay(new(empty,"Chosen",.8,"time",Array.Empty<double>()));
 Need(timeout.Summary.Status=="TimedOut"&&timeout.Summary.Elapsed<=120.0000001&&timeout.Samples.Count<=20000,"bounded time and response");
-Console.WriteLine(JsonSerializer.Serialize(new{passed=true,assertions,tracks=8,pairs,source="accepted-14e22ba frozen times",evidence},new JsonSerializerOptions{WriteIndented=true}));
+Need(timeout.LandingIntervals.Count==0,"idle initial support is not a landing");
+
+string calibration=TrackJson.Write(new TrackPackage(new Track(500,Array.Empty<Obstacle>()){Id="calibration",Name="Calibration"}));
+double jumpReturn=2 * FlightPresets.Chosen.JumpImpulse / FlightPresets.Chosen.GravityAcceleration;
+double floorNext=jumpReturn+.05;
+var chosen=service.Replay(new(calibration,"Chosen",.8,"time",new[]{0d,floorNext,99d}));
+Need(chosen.LandingIntervals is [{ InputIndex: 1 }],"only a fresh landing followed by supported press qualifies");
+var floor=chosen.LandingIntervals.Single();
+Near(floor.LandingTime,jumpReturn,"uninterrupted Core landing time");
+Near(floor.InputTime-floor.LandingTime,.05,"50ms interval");
+Near(floor.LandingY,226,"actual floor support");
+Need(floor.LandingX>=jumpReturn*RaceConfig.Speed&&floor.LandingX<=
+    (jumpReturn+WorkshopService.SampleStep)*RaceConfig.Speed,"position observed within one replay step");
+Need(chosen.Inputs[^1].Status=="unreached","unreached command stays out of intervals");
+
+var sameTime=service.Replay(new(calibration,"Chosen",.8,"time",new[]{0d,jumpReturn}));
+Need(sameTime.LandingIntervals is [{ InputIndex: 1 }],"press exactly at landing uses pre-press state");
+Near(sameTime.LandingIntervals[0].LandingTime,sameTime.LandingIntervals[0].InputTime,"zero duration landing interval");
+Need(sameTime.Samples.Single(s=>s.Time==sameTime.LandingIntervals[0].InputTime).Flipping,
+    "stored sample at scheduled edge reflects the new flight");
+
+var fast=service.Replay(new(calibration,"FastFlip",.8,"time",new[]{0d,.01,.02,.3}));
+Need(fast.Inputs.Select(i=>i.Status).SequenceEqual(new[]{"accepted","accepted","ignored","accepted"}),
+    "fixture includes accepted air repeat and rejected third press");
+Need(fast.LandingIntervals is [{ InputIndex: 3 }],"air repeat and rejected press are excluded");
+
+var stoneTrack=new Track(500,new[]{new Obstacle{Id="stone",Kind="floor",X=160,Width=100,Height=48}})
+{
+    Id="landing-test",Name="Landing test",
+    RiskZones=new[]{new RiskZone{Id="stone-mark",Kind="landing",ObstacleId="stone",X=205,Y=192,LandingWidth=76}}
+};
+string stoneJson=TrackJson.Write(new TrackPackage(stoneTrack));
+var stoneReplay=service.Replay(new(stoneJson,"Chosen",.8,"time",new[]{0d,.95}));
+Need(stoneReplay.LandingIntervals is [{ InputIndex: 1 }],"an actual stone support qualifies");
+Near(stoneReplay.LandingIntervals[0].LandingY,178,"stone support uses player center");
+Need(stoneReplay.Samples.Any(s=>s.Support=="Stone"),"Core reports stone support");
+
+string recoveryJson=TrackJson.Write(new TrackPackage(new Track(500,new[]{
+    new Obstacle{Id="floor-hit",Kind="floor",X=270,Width=25,Height=55}}){Id="recovery-test",Name="Recovery test"}));
+var recovery=service.Replay(new(recoveryJson,"Chosen",.8,"time",new[]{0d,1.3,1.85}));
+Need(recovery.Samples.Any(s=>s.Collisions==0&&s.Time>jumpReturn&&!s.Flipping&&s.Support=="Wall"),
+    "fixture really lands before impact");
+Need(recovery.Summary.Collisions>0&&recovery.Inputs[1].Status=="ignored"&&recovery.Inputs[2].Status=="accepted",
+    "fixture has recovery between landing and the next accepted press");
+Need(recovery.LandingIntervals.Count==0,"collision invalidates a pending landing and recovery is not a landing");
+
+var searchEvidence = RouteSearchChecks.Run(service, Need);
+var settingsEvidence = RunSettingsChecks.Run(service, Need);
+var laterPressEvidence = LaterPressChecks.Run(service, Need);
+Console.WriteLine(JsonSerializer.Serialize(new{passed=true,assertions,tracks=8,pairs,
+    source="accepted-14e22ba and v581-rethink-fast-core frozen times",
+    landingScenarios=new{floor,atContact=sameTime.LandingIntervals.Single(),fast=fast.LandingIntervals.Single(),stone=stoneReplay.LandingIntervals.Single()},
+    searchEvidence,settingsEvidence,laterPressEvidence,
+    evidence},new JsonSerializerOptions{WriteIndented=true}));
