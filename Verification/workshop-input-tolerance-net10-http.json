@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "version": "0.5.17",
+  "base": "http://127.0.0.1:4227",
+  "cases": [
+    {
+      "profile": "Chosen",
+      "enabled": false,
+      "probes": 13,
+      "previewed": 13,
+      "distanceStatus": "ready",
+      "chainZero": "safe"
+    },
+    {
+      "profile": "Chosen",
+      "enabled": true,
+      "probes": 13,
+      "previewed": 13,
+      "distanceStatus": "ready",
+      "chainZero": "safe"
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": false,
+      "probes": 13,
+      "previewed": 13,
+      "distanceStatus": "ready",
+      "chainZero": "safe"
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": true,
+      "probes": 13,
+      "previewed": 13,
+      "distanceStatus": "ready",
+      "chainZero": "safe"
+    }
+  ],
+  "checks": [
+    "13 discrete shifts",
+    "52 previews",
+    "both controls and acceleration on/off",
+    "immutable source replay",
+    "whole flight and original endX",
+    "order and race-start boundaries",
+    "omission ends before next input",
+    "distance normalization or explicit explanation",
+    "request validation"
+  ]
+}

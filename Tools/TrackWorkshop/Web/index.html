@@ -10,7 +10,7 @@
 <body>
 <header class="page-header">
   <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><div class="eyebrow">FLIP RACE / ИНСТРУМЕНТЫ АВТОРА</div><h1>Мастерская трасс</h1></div></div>
-  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.16</span>
+  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.17</span>
 </header>
 
 <main>
@@ -79,7 +79,7 @@
       <div id="stale" class="stale" hidden>Схема последней корректной версии. Исправьте JSON, чтобы обновить её.</div>
       <div class="route-tools">
         <button type="button" id="toggle-route" aria-controls="overview diagram" disabled>Показать траекторию</button>
-        <label for="landing-threshold">Порог после посадки <input id="landing-threshold" type="number" min="0" max="2000" step="1" value="200" required aria-describedby="landing-status"> мс</label>
+        <label for="landing-threshold">Отмечать интервалы после посадки короче <input id="landing-threshold" type="number" min="0" max="2000" step="1" value="200" required aria-describedby="landing-status"> мс</label>
         <span id="route-stale" role="status" hidden>Предыдущая траектория · нужен новый расчёт</span>
       </div>
       <div class="landing-report">
@@ -88,17 +88,36 @@
           <summary>Перейти к отмеченному интервалу</summary>
           <ul id="landing-list"></ul>
         </details>
-        <section id="later-press-panel" class="later-press-panel" aria-labelledby="later-press-title" hidden>
-          <h3 id="later-press-title"></h3>
-          <p>Другие нажатия остаются на прежнем времени.</p>
-          <p id="later-press-original-info" hidden></p>
-          <p id="later-press-range" hidden></p>
-          <p id="later-press-status" role="status" hidden></p>
-          <ul id="later-press-list" hidden></ul>
-          <button id="later-press-cancel" type="button" hidden>Отменить</button>
-          <button id="later-press-original" type="button" hidden>Вернуться к исходному</button>
-        </section>
       </div>
+      <section class="tempo-report" aria-labelledby="tempo-title">
+        <h3 id="tempo-title">Темп команд</h3>
+        <p id="tempo-status" role="status">Постройте траекторию, чтобы увидеть темп команд.</p>
+        <p id="tempo-legend" class="tempo-legend" hidden>
+          <span class="tempo-critical">Критический &lt;150 мс</span>
+          <span class="tempo-normal">Нормальный 150–250 мс</span>
+          <span class="tempo-easy">Простой &gt;250 мс</span>
+        </p>
+        <details id="tempo-gaps" hidden>
+          <summary>Паузы между критическими сериями</summary>
+          <p id="tempo-gap-values" class="tempo-gap-values"></p>
+        </details>
+        <details id="tempo-details" hidden>
+          <summary>Нажатия и проверка допуска</summary>
+          <ul id="tempo-commands"></ul>
+        </details>
+        <section id="tolerance-panel" class="tolerance-panel" aria-labelledby="tolerance-title" hidden>
+          <h3 id="tolerance-title"></h3>
+          <p>13 отдельных сдвигов от −300 до +300 мс через 50 мс и одна проба пропуска. Время других нажатий сохраняется. Результат относится к участку манёвра.</p>
+          <p id="tolerance-baseline" hidden></p>
+          <p id="tolerance-status" role="status" hidden></p>
+          <p id="tolerance-safe-summary" hidden></p>
+          <ul id="tolerance-list" hidden></ul>
+          <p id="tolerance-preview-status" role="status" hidden></p>
+          <button id="tolerance-cancel" type="button" hidden>Отменить расчёт</button>
+          <button id="tolerance-hide" type="button" aria-pressed="true" aria-controls="overview diagram" hidden>Скрыть наложение</button>
+          <button id="tolerance-remove" type="button" hidden>Убрать пробу</button>
+        </section>
+      </section>
       <div class="overview-label"><span>ОБЗОР ВСЕЙ ТРАССЫ <span class="muted">· X сжат</span></span><span>Нажмите, чтобы перейти</span></div><svg id="overview" class="overview" role="img" aria-label="Обзор трассы и видимая область"></svg><div class="diagram-tools"><span class="detail-label">ДЕТАЛИ <span class="muted">· одинаковый масштаб X и Y</span></span><div><button id="zoom-out" class="square" aria-label="Уменьшить">−</button><button id="zoom-in" class="square" aria-label="Увеличить">+</button><button id="fit">По высоте</button></div></div><div class="diagram-wrap"><svg id="diagram" tabindex="0" role="img" aria-label="Точная схема трассы. Перетаскивайте объекты для редактирования. Пустое место или Alt и Space для обзора."></svg><div id="empty-diagram" class="empty">Ваша трасса появится здесь<span>Камни, обе части ворот, награды и траектория</span></div></div><div class="pan-row"><span id="view-start">0</span><input id="pan" type="range" min="0" max="1000" value="0" aria-label="Положение на трассе"><span id="view-end">0 ед.</span></div><div class="legend" aria-label="Легенда"><span><i class="key stone"></i>Камень</span><span><i class="key gate"></i>Ворота</span><span><i class="key hidden-stone"></i>Скрытый</span><span><i class="key bonus"></i>Бонус</span><span><i class="key trap"></i>Ловушка</span><span><i class="key coin"></i>Монета</span><span><i class="key landing"></i>Посадка</span><span><i class="key finish">»</i>Рывок</span></div><p class="diagram-hint" id="object-detail">Объект — перемещение · пустое место / Alt / Space — обзор · колесо — масштаб · Esc — отмена</p>
       <p id="add-help" class="placement-help" role="status">Нажмите кнопку палитры, затем место на подробной схеме. Сейчас доступны навигация и редактирование объектов.</p>
       <div class="live-start-tools">
@@ -164,7 +183,7 @@
       <div class="route-analysis-head">
         <div>
           <h2 id="route-analysis-title">Анализ трассы</h2>
-          <p>Поиск финишей с шагом нажатий 100 мс. Для каждого набора настроек в JSON сохраняется до 1000 самых быстрых найденных маршрутов, включая финиши с ударами. Число маршрутов зависит от бюджета перебора.</p>
+          <p>Поиск финишей на сетке 50 мс с интервалом между командами от 100 мс. Для каждого набора настроек в JSON сохраняется до 1000 самых быстрых найденных маршрутов, включая финиши с ударами. Число маршрутов зависит от бюджета перебора.</p>
         </div>
         <div class="route-analysis-actions">
           <button id="route-search" type="button" class="primary" disabled>Найти маршруты</button>
@@ -250,7 +269,7 @@
     <p id="live-save-help" class="muted" role="status">Поставьте заезд на паузу или завершите его, чтобы сохранить нажатия.</p>
   </div>
 </section>
-<footer><strong>Мастерская v0.5.16</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
+<footer><strong>Мастерская v0.5.17</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
 </main>
 </body>
 </html>

@@ -29,7 +29,9 @@ for (const profile of ['Chosen', 'FastFlip']) {
   assert.ok(Array.isArray(parsed.workshopAnalysis.groups));
   const run = result.analysis.runs.find(value => value.profile === profile);
   assert.ok(run.routes.length > 0 && run.routes.length <= 1000);
-  assert.equal(run.stepMs, 100);
+  assert.equal(run.stepMs, 50);
+  assert.equal(run.rulesVersion, 2);
+  assert.equal(run.searchParameters.minimumInputIntervalMs, 100);
   assert.equal(run.surfaceRun, false);
   assert.equal(run.axis, 'time');
   assert.equal(run.startX, 0);
@@ -41,12 +43,12 @@ for (const profile of ['Chosen', 'FastFlip']) {
     prior = route.finishTime;
     const tape = JSON.stringify(route.inputTicks);
     assert.ok(!tapes.has(tape)); tapes.add(tape);
-    route.inputTicks.forEach((tick, i) => assert.ok(Number.isInteger(tick) && tick >= 0 && (!i || tick > route.inputTicks[i - 1])));
+    route.inputTicks.forEach((tick, i) => assert.ok(Number.isInteger(tick) && tick >= 0 && (!i || tick - route.inputTicks[i - 1] >= 2)));
   }
   for (const index of [...new Set([0, Math.floor(run.routes.length / 2), run.routes.length - 1])]) {
     const route = run.routes[index];
     const replay = await post('/api/replay', { json: result.sourceJson, profile, warningDuration: .8,
-      axis: 'time', inputs: route.inputTicks.map(tick => tick / 10) });
+      axis: 'time', inputs: route.inputTicks.map(tick => tick * run.stepMs / 1000) });
     assert.equal(replay.summary.status, 'Finished');
     assert.ok(Math.abs(replay.summary.finishTime - route.finishTime) < 1e-7);
     assert.equal(replay.summary.collisions, route.collisions);

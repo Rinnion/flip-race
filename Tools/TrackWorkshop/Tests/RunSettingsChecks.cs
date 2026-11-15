@@ -51,7 +51,7 @@ internal static class RunSettingsChecks
             foreach (var route in run.Routes)
             {
                 var replay = service.Replay(new(shortSource, run.Profile, run.WarningDuration, run.Axis,
-                    route.InputTicks.Select(tick => tick / 10d).ToArray(), run.SurfaceRunSettings));
+                    route.InputTicks.Select(tick => tick * run.StepMs / 1000d).ToArray(), run.SurfaceRunSettings));
                 check(replay.Summary.FinishTime == route.FinishTime && replay.Summary.AcceptedInputs == route.InputTicks.Length &&
                     replay.Summary.Collisions == route.Collisions && replay.Summary.Boosts == route.Boosts &&
                     replay.Summary.Slows == route.Slows && replay.Summary.FinishBoosts == route.FinishBoosts,

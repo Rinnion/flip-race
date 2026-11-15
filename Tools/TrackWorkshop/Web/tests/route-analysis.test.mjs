@@ -1,12 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isMatchingReplay, RouteResults, restoreRouteInputs } from '../route-analysis.mjs';
+import { isMatchingReplay, RouteResults, restoreRouteInputs, routeSearchTiming } from '../route-analysis.mjs';
 import { readDraft, writeDraft } from '../draft.mjs';
 import { DEFAULT_SURFACE_RUN_SETTINGS } from '../run-settings.mjs';
 
 const expected = { finishTime: 3.57, collisions: 1, boosts: 2, slows: 1, coins: 0, finishBoosts: 1, inputTicks: [0, 13, 35] };
 const chosen = { profile: 'Chosen', stepMs: 100, warningDuration: 0.4, routes: [{ ...expected, finishTime: 4.23 }] };
 const fast = { profile: 'FastFlip', stepMs: 100, warningDuration: 0.8, routes: [{ ...expected, finishTime: 5.23 }, expected] };
+
+test('legacy and current routes retain their own grid even when their minimum gaps agree', () => {
+  const current = { ...fast, rulesVersion: 2, stepMs: 50, searchParameters: { minimumInputIntervalMs: 100 } };
+  assert.deepEqual(routeSearchTiming(fast), { stepMs: 100, minimumIntervalMs: 100 });
+  assert.deepEqual(routeSearchTiming(current), { stepMs: 50, minimumIntervalMs: 100 });
+  assert.deepEqual(restoreRouteInputs({ run: fast, route: expected }), [0, 1.3, 3.5]);
+  assert.deepEqual(restoreRouteInputs({ run: current, route: expected }), [0, 0.65, 1.75]);
+});
 
 test('route rows and run summaries show only exact settings, with the fastest finishes first', () => {
   const defaults = DEFAULT_SURFACE_RUN_SETTINGS;

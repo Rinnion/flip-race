@@ -15,7 +15,7 @@ internal static class RouteSearchChecks
         var small = service.SearchRoutes(new(source, "Chosen", .8), default, updates.Add);
         var tiny = small.Analysis.Runs.Single();
         check(updates[0] == new RouteSearchProgress(0, "search") && updates.Contains(new(70, "verify")) &&
-            updates.Contains(new(84, "verify")) && updates.Contains(new(98, "verify")) && updates[^1] == new RouteSearchProgress(99, "save") &&
+            updates.Contains(new(98, "verify")) && updates[^1] == new RouteSearchProgress(99, "save") &&
             updates.Zip(updates.Skip(1)).All(pair => pair.First.Percent < pair.Second.Percent) &&
             updates.All(update => update.Phase == (update.Percent < 70 ? "search" : update.Percent < 99 ? "verify" : "save")),
             "progress counts verified candidates, advances through ordered phases, and leaves completion to the result consumer");
@@ -36,17 +36,22 @@ internal static class RouteSearchChecks
                 "cancellation during progress reporting stops the work before any result or save phase");
         }
         var expected = new HashSet<string>(StringComparer.Ordinal);
-        // Four independent legal edges before the empty track finishes.
-        for (int mask = 0; mask < 16; mask++)
+        // The empty track has a fixed finish time. Enumerate every tape on the
+        // 50 ms grid with no adjacent ticks, independently of beam pruning.
+        double finishTime = Replay(service, source, tiny, []).Summary.FinishTime.Value;
+        int decisionCount = Enumerable.Range(0, RouteSearch.MaximumTicks).TakeWhile(tick => tick / 20d < finishTime).Count();
+        for (int mask = 0; mask < (1 << decisionCount); mask++)
         {
-            int[] ticks = Enumerable.Range(0, 4).Where(tick => (mask & (1 << tick)) != 0).ToArray();
+            if ((mask & (mask >> 1)) != 0) continue;
+            int[] ticks = Enumerable.Range(0, decisionCount).Where(tick => (mask & (1 << tick)) != 0).ToArray();
             var replay = Replay(service, source, tiny, ticks);
             check(replay.Summary.CleanFinish && replay.Summary.AcceptedInputs == ticks.Length,
                 "tiny exhaustive fixture reaches the finish with every subset of legal edges");
             expected.Add(string.Join(",", ticks));
         }
         check(!tiny.BeamPruned && tiny.Routes.Length == expected.Count &&
-            expected.SetEquals(tiny.Routes.Select(item => string.Join(",", item.InputTicks))),
+            expected.SetEquals(tiny.Routes.Select(item => string.Join(",", item.InputTicks))) &&
+            tiny.Routes.Any(item => item.InputTicks.Any(tick => tick % 2 == 1)),
             "tiny search agrees with exhaustive authoritative replay, including empty tape and equal outcomes");
         check(small.SourceJson.StartsWith(source[..source.LastIndexOf('}')], StringComparison.Ordinal)
             && small.SourceJson.EndsWith("}\r\n", StringComparison.Ordinal), "saved source outside metadata is unchanged byte for byte");
@@ -64,7 +69,8 @@ internal static class RouteSearchChecks
         string longSource = source.Replace("\"length\":75", "\"length\":500");
         var full = service.SearchRoutes(new(longSource, "Chosen", .8));
         var run = full.Analysis.Runs.Single();
-        check(run.SurfaceRun == false && run.StartX == 0 && run.StepMs == 100, "recorded run settings");
+        check(run.SurfaceRun == false && run.StartX == 0 && run is { RulesVersion: 2, StepMs: 50,
+            SearchParameters.MinimumInputIntervalMs: 100 }, "recorded run settings");
         check(run.StoredCount == 1000 && run.VerifiedCount >= 1000 && run.FoundCount >= run.VerifiedCount
             && run.Routes.Select(item => string.Join(",", item.InputTicks)).Distinct().Count() == 1000,
             "default search stores 1000 distinct finished variants");
@@ -76,7 +82,8 @@ internal static class RouteSearchChecks
                 replay.Summary.IgnoredInputs == 0 && replay.Summary.UnreachedInputs == 0 &&
                 replay.Summary.Collisions == route.Collisions && replay.Summary.Boosts == route.Boosts &&
                 replay.Summary.Slows == route.Slows && replay.Summary.Coins == route.Coins &&
-                replay.Summary.FinishBoosts == route.FinishBoosts && route.FinishTime >= earlier,
+                replay.Summary.FinishBoosts == route.FinishBoosts && route.FinishTime >= earlier &&
+                route.InputTicks.Zip(route.InputTicks.Skip(1)).All(pair => pair.Second - pair.First >= 2),
                 "all 1000 stored tapes really finish in fastest-first order and match outcomes");
             earlier = route.FinishTime;
         }
@@ -121,6 +128,33 @@ internal static class RouteSearchChecks
             "changing geometry invalidates stored results");
         check(Inspect(full.SourceJson.Replace("\"version\":2,\"groups\"", "\"version\":3,\"groups\"")).Status == "unsupported",
             "future analysis format is not trusted");
+
+        var oldRoutes = tiny.Routes.Where(route => route.InputTicks.All(tick => tick % 2 == 0))
+            .Select(route => route with { InputTicks = Array.ConvertAll(route.InputTicks, tick => tick / 2) }).ToArray();
+        var oldPayload = JsonSerializer.SerializeToNode(tiny with
+        {
+            RulesVersion = 1, StepMs = 100, Routes = oldRoutes, StoredCount = oldRoutes.Length,
+            VerifiedCount = oldRoutes.Length, FoundCount = oldRoutes.Length
+        }, Json).AsObject();
+        oldPayload["searchParameters"].AsObject().Remove("minimumInputIntervalMs");
+        oldPayload.Remove("surfaceRunSettings");
+        var oldDocument = JsonNode.Parse(source).AsObject();
+        oldDocument["workshopAnalysis"] = new JsonObject { ["version"] = 1, ["runs"] = new JsonArray(oldPayload) };
+        string oldSource = oldDocument.ToJsonString();
+        var oldRun = Inspect(oldSource).Analysis?.Runs.SingleOrDefault();
+        check(oldRun is { RulesVersion: 1, StepMs: 100, SearchParameters.MinimumInputIntervalMs: 100 } &&
+            oldRun.Routes.Length == oldRoutes.Length && oldRun.Routes.Any(route => route.InputTicks.Length >= 2) &&
+            oldRun.Routes.All(route =>
+            {
+                var summary = Replay(service, oldSource, oldRun, route.InputTicks).Summary;
+                return summary.FinishTime == route.FinishTime && summary.AcceptedInputs == route.InputTicks.Length;
+            }), "legacy tapes are replayed at 100 ms with their original timing");
+        var migrated = service.SearchRoutes(new(oldSource, "Chosen", .6));
+        var migratedRuns = migrated.Analysis.Runs;
+        check(migratedRuns.Length == 2 && migratedRuns[0] is { RulesVersion: 1, StepMs: 100, WarningDuration: .8 } &&
+            migratedRuns[1] is { RulesVersion: 2, StepMs: 50, WarningDuration: .6 } &&
+            JsonNode.DeepEquals(JsonNode.Parse(migrated.SourceJson)["workshopAnalysis"]["groups"][0]["runs"][0]["routes"],
+                oldPayload["routes"]), "saving a new settings group preserves legacy route ticks and their replay grid");
         void CheckInvalid(Action<JsonArray> edit, string message, bool rejectSearch = true)
         {
             var invalid = JsonNode.Parse(small.SourceJson);
@@ -137,6 +171,12 @@ internal static class RouteSearchChecks
         }
         CheckInvalid(groups => groups[0]["runs"][0]["routes"][0]["inputTicks"] = JsonNode.Parse("[3,2]"),
             "invalid stored tape cannot be selected", rejectSearch: false);
+        CheckInvalid(groups => groups[0]["runs"][0]["routes"][0]["inputTicks"] = JsonNode.Parse("[0,1]"),
+            "rules version 2 rejects commands only 50 ms apart", rejectSearch: false);
+        CheckInvalid(groups => groups[0]["runs"][0]["searchParameters"]["minimumInputIntervalMs"] = 50,
+            "rules version 2 rejects mismatched cooldown metadata", rejectSearch: false);
+        CheckInvalid(groups => groups[0]["runs"][0]["searchParameters"].AsObject().Remove("minimumInputIntervalMs"),
+            "rules version 2 requires explicit cooldown metadata", rejectSearch: false);
         CheckInvalid(groups => groups.Add(groups[0].DeepClone()), "duplicate groups are invalid");
         CheckInvalid(groups => groups[0]["runs"].AsArray().Clear(), "empty run lists are invalid");
         CheckInvalid(groups => groups[0]["runs"].AsArray().Add(groups[0]["runs"][0].DeepClone()), "multiple runs are invalid");
@@ -182,5 +222,5 @@ internal static class RouteSearchChecks
     }
 
     static ReplayResult Replay(WorkshopService service, string json, RouteSearchRun run, int[] ticks) => service.Replay(
-        new(json, run.Profile, run.WarningDuration, "time", Array.ConvertAll(ticks, tick => tick / 10d)));
+        new(json, run.Profile, run.WarningDuration, "time", Array.ConvertAll(ticks, tick => tick * run.StepMs / 1000d)));
 }

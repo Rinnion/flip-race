@@ -1,0 +1,209 @@
+{
+  "catalog": "mixed-tricks",
+  "workshopVersion": "0.5.17",
+  "runtime": "net8.0 (isolated prototype)",
+  "timestampUtc": "2026-11-15T18:05:47.956Z",
+  "cpu": "11th Gen Intel(R) Core(TM) i7-11700F @ 2.50GHz",
+  "runs": [
+    {
+      "profile": "Chosen",
+      "surfaceRunSettings": {
+        "enabled": false,
+        "ratePercent": 5,
+        "curve": "Linear",
+        "capPercent": 30,
+        "airDecayPercent": 200,
+        "resetOnCollision": true
+      },
+      "rulesVersion": 2,
+      "stepMs": 50,
+      "searchParameters": {
+        "algorithm": "beam-v1",
+        "beamWidth": 768,
+        "prefixesPerState": 12,
+        "maximumStates": 920000,
+        "maximumMilliseconds": 11000,
+        "verificationMilliseconds": 20000,
+        "minimumInputIntervalMs": 100
+      },
+      "elapsedMilliseconds": 5038,
+      "httpMs": 5121,
+      "expandedStates": 884843,
+      "foundCount": 1380,
+      "verifiedCount": 1128,
+      "storedCount": 1000,
+      "stopReason": "frontier-exhausted",
+      "beamPruned": true,
+      "replays": [
+        {
+          "index": 0,
+          "finishTime": 33.04999999999859,
+          "acceptedInputs": 24,
+          "collisions": 0
+        },
+        {
+          "index": 500,
+          "finishTime": 33.04999999999859,
+          "acceptedInputs": 26,
+          "collisions": 0
+        },
+        {
+          "index": 999,
+          "finishTime": 33.04999999999859,
+          "acceptedInputs": 27,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "profile": "Chosen",
+      "surfaceRunSettings": {
+        "enabled": true,
+        "ratePercent": 5,
+        "curve": "Linear",
+        "capPercent": 30,
+        "airDecayPercent": 200,
+        "resetOnCollision": true
+      },
+      "rulesVersion": 2,
+      "stepMs": 50,
+      "searchParameters": {
+        "algorithm": "beam-v1",
+        "beamWidth": 768,
+        "prefixesPerState": 12,
+        "maximumStates": 920000,
+        "maximumMilliseconds": 11000,
+        "verificationMilliseconds": 20000,
+        "minimumInputIntervalMs": 100
+      },
+      "elapsedMilliseconds": 8913,
+      "httpMs": 8954,
+      "expandedStates": 677664,
+      "foundCount": 1243,
+      "verifiedCount": 1128,
+      "storedCount": 1000,
+      "stopReason": "frontier-exhausted",
+      "beamPruned": true,
+      "replays": [
+        {
+          "index": 0,
+          "finishTime": 27.926457139451557,
+          "acceptedInputs": 30,
+          "collisions": 0
+        },
+        {
+          "index": 500,
+          "finishTime": 27.935844103012535,
+          "acceptedInputs": 35,
+          "collisions": 0
+        },
+        {
+          "index": 999,
+          "finishTime": 27.938537949693448,
+          "acceptedInputs": 35,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "profile": "FastFlip",
+      "surfaceRunSettings": {
+        "enabled": false,
+        "ratePercent": 5,
+        "curve": "Linear",
+        "capPercent": 30,
+        "airDecayPercent": 200,
+        "resetOnCollision": true
+      },
+      "rulesVersion": 2,
+      "stepMs": 50,
+      "searchParameters": {
+        "algorithm": "beam-v1",
+        "beamWidth": 768,
+        "prefixesPerState": 12,
+        "maximumStates": 920000,
+        "maximumMilliseconds": 11000,
+        "verificationMilliseconds": 20000,
+        "minimumInputIntervalMs": 100
+      },
+      "elapsedMilliseconds": 3739,
+      "httpMs": 3765,
+      "expandedStates": 618791,
+      "foundCount": 1008,
+      "verifiedCount": 1008,
+      "storedCount": 1000,
+      "stopReason": "frontier-exhausted",
+      "beamPruned": true,
+      "replays": [
+        {
+          "index": 0,
+          "finishTime": 33.34999999999869,
+          "acceptedInputs": 19,
+          "collisions": 0
+        },
+        {
+          "index": 500,
+          "finishTime": 33.34999999999869,
+          "acceptedInputs": 21,
+          "collisions": 0
+        },
+        {
+          "index": 999,
+          "finishTime": 33.34999999999869,
+          "acceptedInputs": 22,
+          "collisions": 0
+        }
+      ]
+    },
+    {
+      "profile": "FastFlip",
+      "surfaceRunSettings": {
+        "enabled": true,
+        "ratePercent": 5,
+        "curve": "Linear",
+        "capPercent": 30,
+        "airDecayPercent": 200,
+        "resetOnCollision": true
+      },
+      "rulesVersion": 2,
+      "stepMs": 50,
+      "searchParameters": {
+        "algorithm": "beam-v1",
+        "beamWidth": 768,
+        "prefixesPerState": 12,
+        "maximumStates": 920000,
+        "maximumMilliseconds": 11000,
+        "verificationMilliseconds": 20000,
+        "minimumInputIntervalMs": 100
+      },
+      "elapsedMilliseconds": 8462,
+      "httpMs": 8478,
+      "expandedStates": 518648,
+      "foundCount": 1152,
+      "verifiedCount": 1128,
+      "storedCount": 1000,
+      "stopReason": "frontier-exhausted",
+      "beamPruned": true,
+      "replays": [
+        {
+          "index": 0,
+          "finishTime": 27.280905105103063,
+          "acceptedInputs": 19,
+          "collisions": 0
+        },
+        {
+          "index": 500,
+          "finishTime": 27.293931216789204,
+          "acceptedInputs": 20,
+          "collisions": 0
+        },
+        {
+          "index": 999,
+          "finishTime": 27.33007747620879,
+          "acceptedInputs": 23,
+          "collisions": 0
+        }
+      ]
+    }
+  ]
+}

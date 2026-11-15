@@ -100,7 +100,7 @@ public sealed class ServerPolicy : IDisposable
         if(post&&(!options.AcceptsOrigin(context.Request.Host,context.Request.Headers.Origin.ToString())||!context.Request.HasJsonContentType()))
         {await Error(context,400,"Same-origin JSON requests required.");return;}
         string path=context.Request.Path.Value?.TrimEnd('/');
-        bool heavy=post&&(string.Equals(path,"/api/analyze",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/replay",StringComparison.OrdinalIgnoreCase)||string.Equals(path,LaterPressAnalysis.Path,StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/prepare-bot",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/route-search",StringComparison.OrdinalIgnoreCase)||string.Equals(path,RouteSearchStream.Path,StringComparison.OrdinalIgnoreCase));
+        bool heavy=post&&(string.Equals(path,"/api/analyze",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/replay",StringComparison.OrdinalIgnoreCase)||string.Equals(path,LaterPressAnalysis.Path,StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/input-tolerance",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/input-tolerance/preview",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/prepare-bot",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/route-search",StringComparison.OrdinalIgnoreCase)||string.Equals(path,RouteSearchStream.Path,StringComparison.OrdinalIgnoreCase));
         bool acquired=false;
         if(heavy)
         {

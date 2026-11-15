@@ -8,6 +8,13 @@ var service=new WorkshopService(Path.Combine(root,"Assets/StreamingAssets/Tracks
 int assertions=0,pairs=0;
 var evidence=new List<object>();
 void Need(bool condition,string message){assertions++;if(!condition)throw new Exception(message);}
+if (args.SequenceEqual(["--input-tolerance"]))
+{
+    var inputTolerance = InputToleranceChecks.Run(service, Need);
+    Console.WriteLine(JsonSerializer.Serialize(new { passed = true, assertions, inputTolerance },
+        new JsonSerializerOptions { WriteIndented = true }));
+    return;
+}
 void Near(double a,double b,string message)=>Need(Math.Abs(a-b)<1e-7,message+" "+a+" vs "+b);
 void Rejected(Action action,string message){bool rejected=false;try{action();}catch(ArgumentException){rejected=true;}Need(rejected,message);}
 JsonNode Analyze(string json)=>JsonSerializer.SerializeToNode(service.Analyze(new(json)),new JsonSerializerOptions{PropertyNamingPolicy=JsonNamingPolicy.CamelCase});
@@ -141,8 +148,9 @@ Need(recovery.LandingIntervals.Count==0,"collision invalidates a pending landing
 var searchEvidence = RouteSearchChecks.Run(service, Need);
 var settingsEvidence = RunSettingsChecks.Run(service, Need);
 var laterPressEvidence = LaterPressChecks.Run(service, Need);
+var inputToleranceEvidence = InputToleranceChecks.Run(service, Need);
 Console.WriteLine(JsonSerializer.Serialize(new{passed=true,assertions,tracks=8,pairs,
     source="accepted-14e22ba and v581-rethink-fast-core frozen times",
     landingScenarios=new{floor,atContact=sameTime.LandingIntervals.Single(),fast=fast.LandingIntervals.Single(),stone=stoneReplay.LandingIntervals.Single()},
-    searchEvidence,settingsEvidence,laterPressEvidence,
+    searchEvidence,settingsEvidence,laterPressEvidence,inputToleranceEvidence,
     evidence},new JsonSerializerOptions{WriteIndented=true}));

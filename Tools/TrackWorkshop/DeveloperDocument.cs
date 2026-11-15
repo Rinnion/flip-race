@@ -130,8 +130,11 @@ internal sealed class DeveloperDocument
                     SurfaceRun = settings.SurfaceRunSettings.Enabled,
                     SurfaceRunSettings = settings.SurfaceRunSettings
                 };
-                if (run.RulesVersion != RouteSearch.RulesVersion) { unsupported = true; continue; }
+                if (run.RulesVersion is not (RouteSearch.LegacyRulesVersion or RouteSearch.RulesVersion))
+                { unsupported = true; continue; }
                 if (!ValidRun(payload, run)) { invalid = true; continue; }
+                if (run.RulesVersion == RouteSearch.LegacyRulesVersion)
+                    run = run with { SearchParameters = run.SearchParameters with { MinimumInputIntervalMs = RouteSearch.LegacyStepMs } };
                 var flight = run.Profile == "Chosen" ? FlightPresets.Chosen : FlightPresets.FastFlip;
                 string warningMode = track.WarningMode == TrackWarningMode.Selected ? "selected" : "authored";
                 if (run.FlightSettings != RouteFlightSettings.Capture(flight) || run.WarningMode != warningMode ||
@@ -197,11 +200,14 @@ internal sealed class DeveloperDocument
         // Defaults of value types must never turn missing settings into valid settings.
         string[] fields = ["startX", "beamPruned", "storageLimited", "expandedStates", "elapsedMilliseconds", "foundCount", "verifiedCount", "storedCount"];
         var routes = run.Routes;
+        bool legacy = run.RulesVersion == RouteSearch.LegacyRulesVersion;
+        int stepMs = legacy ? RouteSearch.LegacyStepMs : RouteSearch.StepMs;
+        int intervalMs = legacy ? RouteSearch.LegacyStepMs : RouteSearch.MinimumInputIntervalMs;
         if (fields.Any(field => !sourceRun.TryGetProperty(field, out _)) ||
             run.TrackFingerprint is not { Length: 64 } || !run.TrackFingerprint.All(Uri.IsHexDigit) ||
             run.WarningMode is not ("selected" or "authored") || run.StartX != 0 ||
             run.Axis != "time" || run.TimeOrigin != "race-start" ||
-            run.StepMs != RouteSearch.StepMs || run.SimulationStepSeconds != WorkshopService.SampleStep ||
+            run.StepMs != stepMs || run.SimulationStepSeconds != WorkshopService.SampleStep ||
             run.MaxRaceSeconds != WorkshopService.MaximumTime ||
             run.StopReason is not ("frontier-exhausted" or "state-limit" or "time-limit" or "race-time-limit" or "verification-time-limit") ||
             run.SearchParameters is not { Algorithm: "beam-v1", MaximumStates: > 0, BeamWidth: > 0,
@@ -210,6 +216,12 @@ internal sealed class DeveloperDocument
             run.FoundCount < run.VerifiedCount || run.VerifiedCount < run.StoredCount ||
             run.StoredCount != routes.Length || routes.Length > RouteSearch.MaximumRoutes)
             return false;
+        bool hasInterval = sourceRun.GetProperty("searchParameters").TryGetProperty("minimumInputIntervalMs", out _);
+        if (hasInterval ? run.SearchParameters.MinimumInputIntervalMs != intervalMs : !legacy)
+            return false;
+
+        int maximumTicks = (int)WorkshopService.MaximumTime * 1000 / stepMs;
+        int minimumInputIntervalTicks = intervalMs / stepMs;
         double previous = 0;
         var tapes = new HashSet<string>(StringComparer.Ordinal);
         foreach (var item in sourceRun.GetProperty("routes").EnumerateArray().Zip(routes))
@@ -219,13 +231,13 @@ internal sealed class DeveloperDocument
                 !double.IsFinite(route.FinishTime) || route.FinishTime <= 0 || route.FinishTime > WorkshopService.MaximumTime + 1e-8 ||
                 route.FinishTime < previous || route.Collisions < 0 || route.Boosts < 0 || route.Slows < 0 ||
                 route.Coins is < 0 or > 2 || route.FinishBoosts is < 0 or > 1 || route.InputTicks == null ||
-                route.InputTicks.Length > RouteSearch.MaximumTicks)
+                route.InputTicks.Length > maximumTicks)
                 return false;
             previous = route.FinishTime;
-            int last = -1;
+            int last = -minimumInputIntervalTicks;
             foreach (var tick in route.InputTicks)
             {
-                if (tick <= last || tick >= RouteSearch.MaximumTicks || tick / (double)RouteSearch.TicksPerSecond >= route.FinishTime)
+                if (tick < last + minimumInputIntervalTicks || tick >= maximumTicks || tick * stepMs / 1000d >= route.FinishTime)
                     return false;
                 last = tick;
             }

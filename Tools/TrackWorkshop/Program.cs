@@ -14,13 +14,17 @@ using var policy=new ServerPolicy(deployment);
 using var live=new LiveSocket(deployment);
 app.Use((HttpContext context,RequestDelegate next)=>policy.InvokeAsync(context,next));
 app.UseWebSockets();
-app.MapGet("/healthz",()=>new{status="ok",version="0.5.16"});
+app.MapGet("/healthz",()=>new{status="ok",version="0.5.17"});
 app.MapGet("/api/catalog",()=>new{entries=service.Catalog()});
 app.MapGet("/api/catalog/{id}",(string id)=>service.CatalogJson(id) is string json?Results.Ok(new{json}):Results.NotFound(new{error="Unknown catalog ID."}));
 app.MapPost("/api/analyze",(AnalyzeRequest request)=>service.Analyze(request));
 app.MapPost("/api/replay",(ReplayRequest request)=>service.Replay(request));
 app.MapPost(LaterPressAnalysis.Path,async(LaterPressRequest request,HttpContext context)
     =>await Task.Run(()=>LaterPressAnalysis.Find(request,context.RequestAborted),context.RequestAborted));
+app.MapPost("/api/input-tolerance",async(InputToleranceRequest request,HttpContext context)
+    =>await Task.Run(()=>InputToleranceAnalysis.Find(request,context.RequestAborted),context.RequestAborted));
+app.MapPost("/api/input-tolerance/preview",async(InputTolerancePreviewRequest request,HttpContext context)
+    =>await Task.Run(()=>InputToleranceAnalysis.Preview(request,context.RequestAborted),context.RequestAborted));
 app.MapPost("/api/prepare-bot",async(PrepareBotRequest request,HttpContext context)=>await Task.Run(()=>preparation.Prepare(request,context.RequestAborted),context.RequestAborted));
 app.MapPost("/api/route-search",async(RouteSearchRequest request,HttpContext context)
     =>await Task.Run(()=>service.SearchRoutes(request,context.RequestAborted),context.RequestAborted));
@@ -36,4 +40,6 @@ app.MapGet("/route-analysis.mjs",()=>Results.File(Path.Combine(AppContext.BaseDi
 app.MapGet("/run-settings.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","run-settings.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/search-progress.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","search-progress.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/later-press.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","later-press.mjs"),"text/javascript; charset=utf-8"));
+app.MapGet("/input-tolerance.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","input-tolerance.mjs"),"text/javascript; charset=utf-8"));
+app.MapGet("/input-tempo.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","input-tempo.mjs"),"text/javascript; charset=utf-8"));
 app.Run();

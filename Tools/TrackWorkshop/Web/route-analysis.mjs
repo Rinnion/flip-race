@@ -29,6 +29,10 @@ export function restoreRouteInputs({ run, route }) {
   return route.inputTicks.map(tick => tick * run.stepMs / 1000);
 }
 
+export function routeSearchTiming(run) {
+  return { stepMs: run.stepMs, minimumIntervalMs: run.searchParameters?.minimumInputIntervalMs ?? run.stepMs };
+}
+
 export function isMatchingReplay(result, { run, route }) {
   const { summary } = result;
   return sameRunSettings(result, run) && result.axis === 'time'

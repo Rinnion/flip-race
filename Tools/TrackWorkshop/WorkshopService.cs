@@ -197,12 +197,12 @@ public sealed class WorkshopService
     // ordinary sample that reaches its marker. Excluded presses cannot split
     // a step, so the resulting time list can replay on the same schedule.
     internal static InputResult ReplayStep(GameState game, string axis, double[] inputs, ref int next,
-        double? stopAtX = null, CancellationToken cancellationToken = default)
+        double? stopAtX = null, CancellationToken cancellationToken = default, double? stopBeforeTime = null)
     {
         cancellationToken.ThrowIfCancellationRequested();
         double x = game.Players[0].Distance;
-        double step = Math.Min(SampleStep, MaximumTime - game.Elapsed);
-        if (next < inputs.Length)
+        double step = Math.Min(SampleStep, Math.Min(stopBeforeTime ?? MaximumTime, MaximumTime) - game.Elapsed);
+        if (next < inputs.Length && (stopBeforeTime == null || inputs[next] < stopBeforeTime.Value))
         {
             double target = inputs[next];
             bool byTime = axis == "time";
@@ -344,8 +344,7 @@ internal sealed class TrialObservation
     public Sample Observe()
     {
         var player=game.Players[0];double y=RaceSimulation.GetPlayerCenterY(player);
-        var sample=new Sample(game.Elapsed,player.Distance,y,player.CurrentSpeed,player.Flipping,player.Recovering,
-            player.Support.ToString(),player.SupportSide,player.Collisions,player.BoostsEarned,player.SlowsEarned,player.CoinsEarned,player.FinishBoost,player.Status.ToString());
+        var sample=Capture(game);
         void Changes(string type,HashSet<string> values)
         {
             if(!seen.TryGetValue(type,out var set))seen[type]=set=new();
@@ -372,6 +371,14 @@ internal sealed class TrialObservation
             }
         }
         return sample;
+    }
+
+    internal static Sample Capture(GameState game)
+    {
+        var p = game.Players[0];
+        return new(game.Elapsed, p.Distance, RaceSimulation.GetPlayerCenterY(p), p.CurrentSpeed, p.Flipping, p.Recovering,
+            p.Support.ToString(), p.SupportSide, p.Collisions, p.BoostsEarned, p.SlowsEarned, p.CoinsEarned,
+            p.FinishBoost, p.Status.ToString());
     }
 
     public IEnumerable<HiddenState> HiddenStates()

@@ -4,9 +4,11 @@ import { createObject, deleteObject, resizeObject, getResizeHandles } from './ed
 import { DRAFT_KEY, readDraft, writeDraft, clearDraft } from './draft.mjs';
 import { selectedObjectSource, replaceObjectSource } from './object-source.mjs';
 import { LiveConnection } from './live.mjs';
-import { RouteResults, restoreRouteInputs, isMatchingReplay } from './route-analysis.mjs';
+import { RouteResults, restoreRouteInputs, isMatchingReplay, routeSearchTiming } from './route-analysis.mjs';
 import { readSearchResponse } from './search-progress.mjs';
-import { LaterPressRequestState, isMatchingLaterPressReport, isMatchingLaterPressReplay, laterPressRequest } from './later-press.mjs';
+import { ToleranceRequestState, TOLERANCE_PROBE_COUNT, adjacentSafeProbes, inputToleranceRequest,
+  isMatchingToleranceReport, toleranceOverlay } from './input-tolerance.mjs';
+import { inputTempo } from './input-tempo.mjs';
 import { captureRunSettings, DEFAULT_SURFACE_RUN_SETTINGS, sameRunSettings, storedRunSettings } from './run-settings.mjs';
 import { NEW_LEVEL_LENGTH, NEW_LEVEL_NAME, unusedTrackId, newLevelSource, copyBuiltinTrack,
   clearBotReferences, updateTrackMetadata, objectPropertyFields, updateObjectProperties } from './authoring-fields.mjs';
@@ -21,8 +23,9 @@ let drag = null, spacePan = false;
 let live = null, loadingTrack = null, replayPending = null;
 let landingHighlights = [];
 let replaySource = null;
-const laterPressRequests = new LaterPressRequestState();
-const laterPress = { snapshot: null, report: null, selected: null, error: '', buttons: [] };
+let tempo = null;
+const toleranceRequests = new ToleranceRequestState();
+const tolerance = { snapshot: null, report: null, selected: null, overlay: null, visible: true, error: '', buttons: [] };
 let draftStorage, pendingDraft = null, draftBlocked = false, draftTimer = null, draftTouched = false;
 const preparation = { revision: 0, abort: null, pending: false, result: null, sourceId: null };
 const routeSearch = { pending: null, status: '', progress: null, buttons: [] };
@@ -283,7 +286,9 @@ function updateRouteSearch() {
   if (routeResults.update(analysis, settings)) {
     const summaries = routeResults.runs.map(run => {
       const item = document.createElement('li');
-      const details = [`кандидатов ${number(run.foundCount)}`, `проверено ${number(run.verifiedCount)}`, `в JSON ${number(run.routes.length)}`, routeStopReasons[run.stopReason] ?? 'поиск остановлен',
+      const { stepMs, minimumIntervalMs } = routeSearchTiming(run);
+      const details = [`шаг ${number(stepMs)} мс, минимум ${number(minimumIntervalMs)} мс`,
+        `кандидатов ${number(run.foundCount)}`, `проверено ${number(run.verifiedCount)}`, `в JSON ${number(run.routes.length)}`, routeStopReasons[run.stopReason] ?? 'поиск остановлен',
         `${number(run.expandedStates)} состояний`, `${number(run.elapsedMilliseconds / 1000, 2)} с поиска`];
       if (run.beamPruned) details.push('часть ветвей отсечена');
       if (run.storageLimited) details.push('список сокращён по лимиту JSON');
@@ -330,7 +335,7 @@ function cancelRouteSearch(reason = '') {
 
 async function searchRoutes() {
   if (!canUseRouteSearch() || replayPending !== null) return;
-  resetLaterPress();
+  resetTolerance();
   const source = $('json').value, revision = state.analysisRevision.value, loadRevision = state.loadRevision;
   const request = { settings: currentRunSettings(), abort: new AbortController() };
   routeSearch.pending = request;
@@ -419,7 +424,7 @@ function controls() {
   if (objectEdit.dirty) for (const button of document.querySelectorAll('[data-add-kind]')) button.disabled = true;
   $('download').textContent = a?.staleReferences && state.valid ? '↓ Скачать без эталонов' : '↓ Скачать JSON';
   updateLiveStartControls();
-  updateLaterPressControls();
+  updateToleranceControls();
 }
 function updateRouteControls() {
   const route = state.route, toggle = $('toggle-route');
@@ -427,143 +432,222 @@ function updateRouteControls() {
   toggle.textContent = route.visible ? 'Скрыть траекторию' : 'Показать траекторию';
   $('route-stale').hidden = !route.stale;
   updateLandingReport();
+  renderToleranceResults();
 }
 function landingThreshold() {
   const input = $('landing-threshold');
   return input.validity.valid ? parseLandingThreshold(input.value) : null;
 }
 
-function laterPressContext() {
-  return { source: $('json').value, result: state.route.result, settings: currentRunSettings(),
-    inputText: $('inputs').value, axis: $('axis').value, minimumMs: landingThreshold(), loadRevision: state.loadRevision };
+function toleranceContext() {
+  return { editorSource: $('json').value, result: state.route.result, provenance: replaySource, settings: currentRunSettings(),
+    inputText: $('inputs').value, axis: $('axis').value, loadRevision: state.loadRevision };
 }
 
-function canCheckLaterPress() {
-  return canUseRouteSearch() && !replayPending && !laterPressRequests.pending && !!state.route.result
+function canCheckTolerance() {
+  return canUseRouteSearch() && !replayPending && !toleranceRequests.pending && !!state.route.result
     && replaySource?.editorSource === $('json').value && sameRunSettings(state.route.result, currentRunSettings());
 }
 
-function resetLaterPress() {
-  laterPressRequests.cancel();
-  Object.assign(laterPress, { snapshot: null, report: null, selected: null, error: '' });
-  renderLaterPressResults();
+function resetTolerance() {
+  const hadOverlay = tolerance.overlay?.startX != null;
+  toleranceRequests.cancel();
+  Object.assign(tolerance, { snapshot: null, report: null, selected: null, overlay: null, error: '' });
+  renderToleranceResults();
+  if (hadOverlay) draw();
 }
 
-function updateLaterPressControls() {
-  const available = canCheckLaterPress();
-  for (const button of $('landing-list').querySelectorAll('[data-check-later-press]')) button.disabled = !available || laterPress.selected !== null;
-  for (const { button, candidate } of laterPress.buttons) {
+function updateToleranceControls() {
+  const available = canCheckTolerance();
+  for (const button of $('tempo-commands').querySelectorAll('[data-check-tolerance]')) button.disabled = !available;
+  for (const { button, probe } of tolerance.buttons) {
     button.disabled = !available;
-    button.setAttribute('aria-pressed', String(candidate === laterPress.selected));
+    button.setAttribute('aria-pressed', String(probe === tolerance.selected));
   }
-  $('later-press-original').hidden = laterPress.selected === null;
-  $('later-press-original').disabled = !available;
-  $('later-press-cancel').hidden = !laterPressRequests.pending;
+  $('tolerance-hide').hidden = tolerance.overlay?.startX == null;
+  $('tolerance-remove').hidden = !tolerance.selected;
+  $('tolerance-cancel').hidden = !toleranceRequests.pending;
 }
 
-function renderLaterPressResults() {
-  const { snapshot, report, error } = laterPress;
-  const pending = laterPressRequests.pending;
-  const { minimumMs, inputIndex } = snapshot ?? {};
-  $('later-press-panel').hidden = !snapshot;
-  $('later-press-title').textContent = snapshot ? `Позднее нажатие №${inputIndex + 1}` : '';
+const probeStatuses = {
+  safe: 'Безопасно на участке', collision: 'Удар', rejected: 'Команда отклонена',
+  invalid: 'Недопустимое время', incomplete: 'Проверка не завершена',
+};
+const probeLabel = probe => probe.omit ? 'Пропуск нажатия'
+  : `${probe.offsetMs < 0 ? '−' : probe.offsetMs > 0 ? '+' : ''}${number(Math.abs(probe.offsetMs))} мс`;
+const probeOutcome = probe => probe.omit && probe.status === 'safe'
+  ? (probe.message || 'Без удара до следующей команды') : probeStatuses[probe.status];
+
+function renderToleranceResults() {
+  const { snapshot, report, overlay, visible, error } = tolerance;
+  const pending = toleranceRequests.pending;
+  $('tolerance-panel').hidden = !snapshot;
+  $('tolerance-title').textContent = snapshot ? `Допуск нажатия №${snapshot.inputIndex + 1}` : '';
   const baseline = report?.baseline;
-  const original = baseline ? `Исходный интервал ${number((baseline.inputTime - baseline.landingTime) * 1000, 1)} мс, финиш за ${number(baseline.finishTime, 3)} с.` : '';
-  const range = report ? `Проверялся диапазон от ${number(minimumMs)} до ${number(minimumMs + report.spanMs)} мс после посадки, шаг ${number(report.stepMs)} мс. Проб: ${number(report.attempted)} из ${number(report.candidateCount)} подходящих по времени.` : '';
-  message('later-press-original-info', original, !!original);
-  message('later-press-range', range, !!range);
+  const original = baseline ? `Исходное нажатие в ${number(baseline.inputTime, 3)} с · участок ${number(baseline.startTime, 3)}–${number(baseline.endTime, 3)} с.` : '';
+  message('tolerance-baseline', original, !!original);
+  const adjacent = report?.status === 'ready' ? adjacentSafeProbes(report) : null;
+  let safeSummary = '';
+  if (adjacent) {
+    const shifts = [];
+    if (adjacent.earlierMs) shifts.push(`${number(adjacent.earlierMs)} мс раньше`);
+    if (adjacent.laterMs) shifts.push(`${number(adjacent.laterMs)} мс позже`);
+    safeSummary = shifts.length
+      ? `Крайние соседние безопасные точки на сетке 50 мс · ${shifts.join(' · ')}.`
+      : 'В соседних точках вокруг 0 мс безопасность не подтверждена.';
+    if (adjacent.disconnected) safeSummary += ` Безопасных точек за разрывами ${number(adjacent.disconnected)}.`;
+  }
+  message('tolerance-safe-summary', safeSummary, !!safeSummary);
   let status = '';
-  if (pending) status = pending.kind === 'search' ? 'Проверяем более поздние нажатия до финиша…' : 'Строим траекторию варианта…';
+  if (pending?.kind === 'report') status = 'Проверяем сдвиги и пропуск исходного нажатия…';
   else if (report?.status === 'unsupported') status = report.message;
   else if (report) {
-    status = report.alternatives.length ? `Успешные варианты: ${number(report.alternatives.length)}.` : 'Поздний вариант среди проверенных не найден.';
-    if (!report.complete) status += ` ${report.message || 'Проверка завершилась по лимиту времени.'}`;
+    const probes = [...report.probes, report.omission];
+    const invalid = probes.filter(probe => probe?.status === 'invalid').length;
+    const incomplete = probes.filter(probe => probe?.status === 'incomplete').length;
+    status = `${report.complete ? 'Перебор завершён. ' : ''}Из ${TOLERANCE_PROBE_COUNT} проб: рассчитано ${number(report.attempted)}, недопустимых ${number(invalid)}`
+      + (incomplete ? `, незавершённых ${number(incomplete)}` : '') + '.';
+    if (!report.complete) status += ` ${report.message || 'Достигнут лимит времени.'}`;
   }
-  message('later-press-status', [status, error].filter(Boolean).join(' '), !!(status || error));
-  $('later-press-list').hidden = !report?.alternatives.length;
-  // Buttons stay in place when choosing another path or returning to the original.
-  if (laterPress.renderedReport !== report) {
-    laterPress.renderedReport = report;
-    laterPress.buttons = (report?.alternatives ?? []).map(candidate => {
+  message('tolerance-status', [status, error].filter(Boolean).join(' '), !!(status || error));
+  const previewStatus = pending?.kind === 'preview' ? `Строим траекторию пробы «${probeLabel(pending.probe)}»…`
+    : overlay ? [probeLabel(overlay.probe), probeOutcome(overlay.probe), overlay.startX !== null
+      ? (visible && state.route.visible ? 'Наложение на схеме ниже' : 'Наложение скрыто')
+      : 'Траектория недоступна', overlay.probe.status !== tolerance.selected.status && overlay.probe.message]
+      .filter(Boolean).join(' · ') : '';
+  message('tolerance-preview-status', previewStatus, !!previewStatus);
+  $('tolerance-hide').textContent = visible ? 'Скрыть наложение' : 'Показать наложение';
+  $('tolerance-hide').setAttribute('aria-pressed', String(visible));
+  $('tolerance-list').hidden = !report?.probes.length;
+
+  if (tolerance.renderedReport !== report) {
+    tolerance.renderedReport = report;
+    tolerance.buttons = [...(report?.probes ?? []), ...(report?.omission ? [report.omission] : [])].map(probe => {
       const item = document.createElement('li'), button = document.createElement('button');
-      const delta = candidate.finishDelta;
-      const deltaText = `${Math.abs(delta) < 0.0005 ? '0' : `${delta > 0 ? '+' : '−'}${number(Math.abs(delta), 3)}`} с`;
+      const title = document.createElement('strong'), detail = document.createElement('span');
+      title.textContent = `${probeLabel(probe)} · ${probeOutcome(probe)}`;
+      detail.textContent = [
+        probe.omit && probe.status === 'safe' ? '' : probe.message,
+        Number.isFinite(probe.minimumIntervalMs) && !probe.botCompatible
+          ? `Интервал ${number(probe.minimumIntervalMs, 3)} мс · короче минимума поиска (100 мс)` : '',
+      ].filter(Boolean).join(' · ');
+      button.append(title);
+      if (detail.textContent) button.append(detail);
       button.type = 'button';
-      button.textContent = `Через ${number(candidate.delayMs)} мс · финиш ${number(candidate.finishTime, 3)} с (${deltaText}) · удары ${number(candidate.collisions)}`;
-      button.addEventListener('click', () => chooseLaterPress(candidate));
+      button.dataset.status = probe.status;
+      button.addEventListener('click', () => previewTolerance(probe));
       item.append(button);
-      return { item, button, candidate };
+      return { item, button, probe };
     });
-    $('later-press-list').replaceChildren(...laterPress.buttons.map(({ item }) => item));
+    $('tolerance-list').replaceChildren(...tolerance.buttons.map(({ item }) => item));
   }
-  updateLaterPressControls();
+  updateToleranceControls();
 }
 
-async function checkLaterPress(interval) {
-  if (!canCheckLaterPress() || laterPress.selected || !landingHighlights.includes(interval)) return;
-  resetLaterPress();
-  const context = laterPressContext();
-  const snapshot = { ...context, source: replaySource.source, provenance: replaySource,
-    inputIndex: interval.inputIndex, routeEntry: routeResults.selected };
-  laterPress.snapshot = snapshot;
-  const ticket = laterPressRequests.start('search', context);
-  renderLaterPressResults();
-  const current = () => laterPressRequests.current(ticket, laterPressContext());
+async function checkTolerance(input) {
+  if (!canCheckTolerance() || !state.route.result.inputs.includes(input)) return;
+  resetTolerance();
+  const snapshot = { ...toleranceContext(), inputIndex: input.index };
+  tolerance.snapshot = snapshot;
+  const ticket = toleranceRequests.start('report', snapshot);
+  renderToleranceResults();
+  const current = () => toleranceRequests.current(ticket, toleranceContext());
   try {
-    const report = await api('/api/later-press', laterPressRequest(snapshot), ticket.abort.signal);
+    const report = await api('/api/input-tolerance', inputToleranceRequest(snapshot), ticket.abort.signal);
     if (!current()) return;
-    if (!isMatchingLaterPressReport(report, snapshot)) throw new Error('Ответ не совпал с исходной траекторией.');
-    laterPress.report = report;
+    if (!isMatchingToleranceReport(report, snapshot)) throw new Error('Ответ не совпал с исходной траекторией.');
+    tolerance.report = report;
   } catch (error) {
-    if (current()) laterPress.error = `Проверка не выполнена. ${error.message}`;
+    if (current()) tolerance.error = `Проверка не выполнена. ${error.message}`;
   } finally {
-    laterPressRequests.finish(ticket);
-    renderLaterPressResults();
-    controls();
+    toleranceRequests.finish(ticket);
+    renderToleranceResults();
   }
 }
 
-async function chooseLaterPress(candidate) {
-  if (!canCheckLaterPress() || !laterPress.report?.alternatives.includes(candidate) || laterPress.selected === candidate) return;
-  const snapshot = laterPress.snapshot;
-  const ticket = laterPressRequests.start('replay', laterPressContext());
-  laterPress.error = '';
-  renderLaterPressResults();
-  const current = () => laterPressRequests.current(ticket, laterPressContext());
+async function previewTolerance(probe) {
+  const { snapshot } = tolerance;
+  if (!canCheckTolerance() || !snapshot || !tolerance.buttons.some(row => row.probe === probe)
+    || !toleranceRequests.matches(snapshot, toleranceContext())) return;
+  if (probe === tolerance.selected) { removeToleranceOverlay(); return; }
+  const ticket = toleranceRequests.start('preview', snapshot);
+  ticket.probe = probe;
+  tolerance.error = '';
+  renderToleranceResults();
+  const current = () => toleranceRequests.current(ticket, toleranceContext());
   try {
-    const result = await api('/api/replay', { json: snapshot.source, ...storedRunSettings(snapshot.result),
-      axis: 'time', inputs: candidate.inputs }, ticket.abort.signal);
+    const preview = await api('/api/input-tolerance/preview', inputToleranceRequest(snapshot, probe), ticket.abort.signal);
     if (!current()) return;
-    if (!isMatchingLaterPressReplay(result, candidate, snapshot)) throw new Error('Повторное прохождение отличается от проверенного варианта.');
-    laterPress.selected = candidate;
-    routeResults.selected = null;
-    $('axis').value = 'time';
-    $('inputs').value = JSON.stringify(candidate.inputs);
-    $('replay-panel').open = true;
-    scheduleDraft();
-    message('replay-error', '', false);
-    showResult(result, { ...snapshot.provenance, label: `Вариант · нажатие №${snapshot.inputIndex + 1} через ${number(candidate.delayMs)} мс` });
+    const overlay = toleranceOverlay(preview, probe);
+    if (!overlay) throw new Error('Ответ не совпал с выбранной пробой.');
+    Object.assign(tolerance, { selected: probe, overlay, visible: true });
+    if (overlay.startX !== null) {
+      if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
+      stopPlayback();
+      state.left = overlay.startX - dimensions().width * .2;
+    }
+    draw();
   } catch (error) {
-    if (current()) laterPress.error = `Траектория не построена. ${error.message}`;
+    if (current()) tolerance.error = `Траектория не построена. ${error.message}`;
   } finally {
-    laterPressRequests.finish(ticket);
-    renderLaterPressResults();
-    controls();
+    toleranceRequests.finish(ticket);
+    renderToleranceResults();
   }
 }
 
-function restoreLaterPressOriginal() {
-  if (!canCheckLaterPress() || !laterPress.selected) return;
-  const { inputText, axis, result, provenance, routeEntry } = laterPress.snapshot;
-  laterPress.selected = null;
-  laterPress.error = '';
-  $('inputs').value = inputText;
-  $('axis').value = axis;
-  routeResults.selected = routeEntry;
-  scheduleDraft();
-  showResult(result, provenance);
-  renderLaterPressResults();
-  controls();
+function removeToleranceOverlay() {
+  if (toleranceRequests.pending?.kind === 'preview') toleranceRequests.cancel();
+  Object.assign(tolerance, { selected: null, overlay: null, error: '' });
+  renderToleranceResults();
+  draw();
+}
+
+const tempoKinds = { critical: 'критический', normal: 'нормальный', easy: 'простой', unknown: 'время неизвестно' };
+const commandStatuses = { ignored: 'отклонено', unreached: 'не достигнуто' };
+
+function updateTempoReport() {
+  const replay = state.route.result;
+  tempo = replay ? inputTempo(replay) : null;
+  $('tempo-details').hidden = !tempo?.commands.length;
+  $('tempo-legend').hidden = !tempo?.measured;
+  $('tempo-gaps').hidden = !tempo?.gaps.length;
+  const status = !tempo ? 'Постройте траекторию, чтобы увидеть темп команд.'
+    : tempo.commands.length < 2 ? 'Для интервала нужны две команды.'
+    : `Критических ${number(tempo.counts.critical)}${tempo.measured ? ` (${number(tempo.criticalFraction * 100, 1)}% измеренных)` : ''}`
+      + ` · нормальных ${number(tempo.counts.normal)} · простых ${number(tempo.counts.easy)}`
+      + (tempo.counts.unknown ? ` · без времени ${number(tempo.counts.unknown)}` : '')
+      + `. Максимум подряд ${number(tempo.longestCritical)}.`;
+  message('tempo-status', status);
+  $('tempo-gap-values').textContent = tempo?.gaps.map((gap, index) => `№${index + 1} · ${number(gap, 2)} мс`).join(' · ') ?? '';
+  $('tempo-commands').replaceChildren(...(tempo?.commands ?? []).map(({ input, time, interval }) => {
+    const item = document.createElement('li'), jump = document.createElement('button'), check = document.createElement('button');
+    jump.type = check.type = 'button';
+    jump.disabled = input.time === null;
+    jump.className = 'tempo-command';
+    if (interval) jump.dataset.tempo = interval.kind;
+    jump.textContent = [
+      `№${number(input.index + 1)}`,
+      Number.isFinite(time) ? `${number(time, 3)} с` : `X ${number(input.value, 2)}`,
+      interval?.ms != null ? `${number(interval.ms, 3)} мс · ${tempoKinds[interval.kind]}` : interval && tempoKinds[interval.kind],
+      commandStatuses[input.status],
+    ].filter(Boolean).join(' · ');
+    jump.title = input.reason || 'Перейти к команде на схеме';
+    jump.addEventListener('click', () => {
+      if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
+      stopPlayback();
+      state.left = input.x - dimensions().width * .4;
+      seek(input.time, false);
+    });
+    check.dataset.checkTolerance = '';
+    check.textContent = 'Проверить допуск';
+    check.setAttribute('aria-label', `Проверить допуск нажатия №${input.index + 1}`);
+    check.addEventListener('click', () => {
+      checkTolerance(input);
+      $('tolerance-panel').scrollIntoView({ block: 'nearest' });
+    });
+    item.append(jump, check);
+    return item;
+  }));
 }
 
 function updateLandingReport() {
@@ -583,7 +667,7 @@ function updateLandingReport() {
   message('landing-status', status);
   $('landing-details').hidden = !landingHighlights.length;
   $('landing-list').replaceChildren(...landingHighlights.map(interval => {
-    const item = document.createElement('li'), button = document.createElement('button'), check = document.createElement('button');
+    const item = document.createElement('li'), button = document.createElement('button');
     const milliseconds = (interval.inputTime - interval.landingTime) * 1000;
     button.type = 'button';
     button.textContent = `≈ ${number(milliseconds, 1)} мс · X ≈ ${number(interval.landingX, 1)} · нажатие №${interval.inputIndex + 1}`;
@@ -592,18 +676,12 @@ function updateLandingReport() {
       state.left = interval.landingX - dimensions().width * .4;
       seek(interval.landingTime, false);
     });
-    check.type = 'button';
-    check.dataset.checkLaterPress = '';
-    check.textContent = 'Проверить позже';
-    check.setAttribute('aria-label', `Проверить более позднее нажатие №${interval.inputIndex + 1}`);
-    check.addEventListener('click', () => checkLaterPress(interval));
-    item.append(button, check);
+    item.append(button);
     return item;
   }));
-  updateLaterPressControls();
 }
 function invalidateReplay(reason, clearRoute = false) {
-  resetLaterPress();
+  resetTolerance();
   replaySource = null;
   state.route.invalidate(clearRoute);
   replayPending?.abort.abort();
@@ -614,6 +692,7 @@ function invalidateReplay(reason, clearRoute = false) {
   if (state.route.stale) message('replay-state', reason || 'Постройте траекторию заново.');
   else if (reason) message('replay-state', reason);
   $('replay-state').classList.toggle('dirty', state.route.stale);
+  updateTempoReport();
   updateRouteControls();
   draw();
 }
@@ -831,6 +910,20 @@ function drawReplay(parent, overview = false) {
   }));
   const replay = route.result;
   if (!replay) return;
+  if (tolerance.visible && tolerance.overlay?.startX != null) {
+    const { path, point, probe } = tolerance.overlay;
+    const attributes = { class: 'tolerance-trajectory', 'aria-hidden': 'true', 'data-status': probe.status };
+    parent.append(path ? el('path', { ...attributes, d: path })
+      : el('circle', { ...attributes, cx: point.x, cy: point.y, r: overview ? 3 : 6 }));
+  }
+  for (const { input, interval } of tempo?.commands ?? []) {
+    if (!interval || interval.kind === 'unknown' || input.x === null || input.y === null) continue;
+    const classes = `tempo-mark tempo-${interval.kind}`;
+    const radius = overview ? 3.25 : 6.5;
+    if (interval.kind === 'critical') parent.append(el('rect', { x: input.x - radius, y: input.y - radius,
+      width: radius * 2, height: radius * 2, rx: 1, class: classes, 'aria-hidden': 'true' }));
+    else parent.append(el('circle', { cx: input.x, cy: input.y, r: radius, class: classes, 'aria-hidden': 'true' }));
+  }
   if (!overview) {
     for (const input of replay.inputs) {
       if (input.x === null || input.y === null) continue;
@@ -1034,7 +1127,7 @@ function enterLive() {
     try { Object.assign(settings, { startX, axis: $('axis').value, inputs: parseInputs($('inputs').value) }); }
     catch { updateLiveStartControls(); return; }
   }
-  resetLaterPress();
+  resetTolerance();
   stopPlayback();
   state.pickingStart = false;
   live = {
@@ -1112,8 +1205,10 @@ function play() {
 }
 function showResult(result, provenance) {
   stopPlayback();
+  resetTolerance();
   replaySource = provenance;
   state.route.setResult(result); state.time = 0;
+  updateTempoReport();
   updateRouteControls();
   const s = result.summary;
   $('playback').hidden = false;
@@ -1170,7 +1265,7 @@ async function replay(entry = null) {
 }
 
 function cancelPendingRouteWork(reason) {
-  resetLaterPress();
+  resetTolerance();
   if (routeSearch.pending) cancelRouteSearch(reason);
   else routeSearch.progress = null;
   if (replayPending?.entry) invalidateReplay('Воспроизведение сохранённого маршрута остановлено из-за правки или загрузки.');
@@ -1277,16 +1372,22 @@ for (const [id, offset] of [['route-results-prev', -1], ['route-results-next', 1
   renderRoutePage();
   updateRouteSearch();
 });
-$('toggle-route').addEventListener('click', () => { state.route.toggle(); updateRouteControls(); draw(); });
-$('landing-threshold').addEventListener('input', () => { resetLaterPress(); updateLandingReport(); draw(); });
-$('later-press-original').addEventListener('click', restoreLaterPressOriginal);
-$('later-press-cancel').addEventListener('click', () => {
-  const pending = laterPressRequests.pending;
+$('toggle-route').addEventListener('click', () => {
+  state.route.toggle(); updateRouteControls(); draw();
+});
+$('landing-threshold').addEventListener('input', () => { updateLandingReport(); draw(); });
+$('tolerance-hide').addEventListener('click', () => {
+  tolerance.visible = !tolerance.visible;
+  renderToleranceResults();
+  draw();
+});
+$('tolerance-remove').addEventListener('click', removeToleranceOverlay);
+$('tolerance-cancel').addEventListener('click', () => {
+  const pending = toleranceRequests.pending;
   if (!pending) return;
-  laterPressRequests.cancel();
-  laterPress.error = pending.kind === 'search' ? 'Проверка отменена.' : 'Построение траектории отменено.';
-  renderLaterPressResults();
-  controls();
+  toleranceRequests.cancel();
+  tolerance.error = pending.kind === 'report' ? 'Проверка отменена.' : 'Построение траектории отменено.';
+  renderToleranceResults();
 });
 $('prepare-bot').addEventListener('click', prepareBot);
 $('prepare-cancel').addEventListener('click', () => { invalidatePrepared('Подготовка отменена. Исходный JSON и ручные нажатия сохранены.'); controls(); });

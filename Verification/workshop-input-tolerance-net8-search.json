@@ -1,0 +1,33 @@
+{
+  "base": "http://127.0.0.1:4226",
+  "checks": [
+    {
+      "profile": "Chosen",
+      "routes": 1000,
+      "stopReason": "frontier-exhausted",
+      "expandedStates": 134772,
+      "elapsedMilliseconds": 1394,
+      "httpMilliseconds": 2018,
+      "bytes": 122279
+    },
+    {
+      "profile": "FastFlip",
+      "routes": 936,
+      "stopReason": "frontier-exhausted",
+      "expandedStates": 87390,
+      "elapsedMilliseconds": 489,
+      "httpMilliseconds": 931,
+      "bytes": 236581
+    }
+  ],
+  "result": "passed",
+  "verified": [
+    "distinct sorted tapes",
+    "sampled exact replays",
+    "both profiles retained",
+    "author extension preserved",
+    "JSON round trip",
+    "stale geometry",
+    "invalid settings"
+  ]
+}

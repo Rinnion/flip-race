@@ -1,0 +1,24 @@
+{
+  "version": "0.5.17",
+  "branch": "experiment/workshop-analysis-0.5.17",
+  "baseline": "a3c8255",
+  "coreUnchanged": true,
+  "sourceComparisons": 86,
+  "sourceEqual": true,
+  "packages": [
+    {
+      "path": "F:\\Home\\Game\\flip-race-workshop-analysis\\Releases\\track-workshop-0.5.17-experiment-win-x64.zip",
+      "files": 46,
+      "bytes": 586756,
+      "sha256": "8fc810afbf1c4c16cc85e3c3fce4525e54d4bd588ec6cd40358ed10b453d3881",
+      "allMembersEqual": true
+    },
+    {
+      "path": "F:\\Home\\Game\\flip-race-workshop-analysis\\Releases\\track-workshop-0.5.17-experiment-server.zip",
+      "files": 52,
+      "bytes": 594514,
+      "sha256": "41095489411e577f556f511d9357ecaea34f9085d1daab622e5382651e147928",
+      "allMembersEqual": true
+    }
+  ]
+}

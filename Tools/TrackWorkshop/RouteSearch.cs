@@ -19,7 +19,7 @@ public sealed record RouteSearchRun(string TrackFingerprint, int RulesVersion, s
     int ExpandedStates, long ElapsedMilliseconds, string StopReason, bool BeamPruned, int FoundCount, int VerifiedCount,
     int StoredCount, bool StorageLimited, AnalyzedRoute[] Routes, WorkshopSurfaceRunSettings SurfaceRunSettings = null);
 public sealed record RouteSearchParameters(string Algorithm, int BeamWidth, int PrefixesPerState,
-    int MaximumStates, int MaximumMilliseconds, int VerificationMilliseconds);
+    int MaximumStates, int MaximumMilliseconds, int VerificationMilliseconds, int MinimumInputIntervalMs = 0);
 public sealed record WorkshopRouteAnalysis(int Version, RouteSearchRun[] Runs);
 public sealed record RouteAnalysisStatus(string Status, WorkshopRouteAnalysis Analysis = null);
 public sealed record RouteSearchResponse(WorkshopRouteAnalysis Analysis, string SourceJson);
@@ -31,13 +31,15 @@ internal sealed record RouteSearchLimits(int MaximumStates = 920_000, int BeamWi
 
 internal sealed class RouteSearch
 {
-    public const int RulesVersion = 1, StepMs = 100, MaximumRoutes = 1000;
+    public const int LegacyRulesVersion = 1, LegacyStepMs = 100;
+    public const int RulesVersion = 2, StepMs = 50, MinimumInputIntervalMs = 100, MaximumRoutes = 1000;
     public const int TicksPerSecond = 1000 / StepMs;
     public const int MaximumTicks = (int)WorkshopService.MaximumTime * TicksPerSecond;
+    const int MinimumInputIntervalTicks = MinimumInputIntervalMs / StepMs;
 
     readonly record struct StateBucket(int X, int Y, int VerticalSpeed, int Gravity, bool AirRepeat,
         bool Flipping, SupportKind Support, int SupportSide, string ObstacleId, int Recovering, int Collisions,
-        int Boosts, int Slows, bool FinishBoost, int EffectTime, int RewardSignature, int SurfaceReserve);
+        int Boosts, int Slows, bool FinishBoost, int EffectTime, int RewardSignature, int SurfaceReserve, int InputCooldown);
 
     sealed record Edge(int Tick, Edge Prior, int Count);
     sealed record Node(GameState Game, Edge Tape, int Sequence, double Priority);
@@ -93,7 +95,7 @@ internal sealed class RouteSearch
                 if (!InBudget()) break;
                 var idle = Expand(node, tick, false);
                 Consider(idle);
-                if (InBudget() && RaceSimulation.CanPress(node.Game, 0))
+                if (InBudget() && RemainingInputCooldown(node.Tape, tick) == 0 && RaceSimulation.CanPress(node.Game, 0))
                     Consider(Expand(node, tick, true));
             }
 
@@ -107,7 +109,7 @@ internal sealed class RouteSearch
             foreach (var child in candidates)
             {
                 if (nextFrontier.Count == limits.BeamWidth) { beamPruned = true; break; }
-                var bucket = Bucket(child.Game);
+                var bucket = Bucket(child.Game, RemainingInputCooldown(child.Tape, tick + 1));
                 bins.TryGetValue(bucket, out int count);
                 if (count == limits.PrefixesPerState) { beamPruned = true; continue; }
                 bins[bucket] = count + 1;
@@ -160,7 +162,7 @@ internal sealed class RouteSearch
             package.WarningMode == TrackWarningMode.Selected ? "selected" : "authored", warning,
             surfaceRunSettings.Enabled, 0, "time", "race-start", StepMs, WorkshopService.SampleStep, WorkshopService.MaximumTime,
             new("beam-v1", limits.BeamWidth, limits.PrefixesPerState, limits.MaximumStates,
-                limits.MaximumMilliseconds, limits.VerificationMilliseconds),
+                limits.MaximumMilliseconds, limits.VerificationMilliseconds, MinimumInputIntervalMs),
             expanded, watch.ElapsedMilliseconds, stop, beamPruned, found, verified.Count, routes.Length, false, routes, surfaceRunSettings);
     }
 
@@ -211,7 +213,10 @@ internal sealed class RouteSearch
                 player.FinishBoostsEarned, ticks) : null;
     }
 
-    static StateBucket Bucket(GameState game)
+    static int RemainingInputCooldown(Edge tape, int tick) =>
+        tape == null ? 0 : Math.Max(0, tape.Tick + MinimumInputIntervalTicks - tick);
+
+    static StateBucket Bucket(GameState game, int inputCooldown)
     {
         var p = game.Players[0];
         int signature = 0;
@@ -222,6 +227,6 @@ internal sealed class RouteSearch
             (int)(p.VerticalSpeed / 60), p.Gravity, p.AirFlipAvailable, p.Flipping, p.Support, p.SupportSide,
             p.SupportObstacleId, (int)Math.Ceiling(p.Recovering * 20), p.Collisions, p.BoostsEarned, p.SlowsEarned,
             p.FinishBoost, (int)((p.ActiveEffect?.Remaining ?? 0) * 20) * (p.ActiveEffect?.IsNegative == true ? -1 : 1),
-            signature, (int)(p.SurfaceRunReserve * 100));
+            signature, (int)(p.SurfaceRunReserve * 100), inputCooldown);
     }
 }

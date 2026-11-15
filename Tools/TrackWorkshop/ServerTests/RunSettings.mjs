@@ -40,7 +40,7 @@ assert.deepEqual(JSON.parse(searched.sourceJson).workshopAnalysis.groups[0].sett
 for (const index of [...new Set([0, Math.floor(run.routes.length / 2), run.routes.length - 1])]) {
   const route = run.routes[index];
   const replay = await post('/api/replay', { json: searched.sourceJson, profile: run.profile, warningDuration: run.warningDuration,
-    axis: 'time', inputs: route.inputTicks.map(tick => tick / 10), surfaceRunSettings: run.surfaceRunSettings });
+    axis: 'time', inputs: route.inputTicks.map(tick => tick * run.stepMs / 1000), surfaceRunSettings: run.surfaceRunSettings });
   assert.ok(Math.abs(replay.summary.finishTime - route.finishTime) < 1e-6);
   assert.equal(replay.summary.collisions, route.collisions);
   assert.equal(replay.summary.acceptedInputs, route.inputTicks.length);
