@@ -6,9 +6,10 @@ import { selectedObjectSource, replaceObjectSource } from './object-source.mjs';
 import { LiveConnection } from './live.mjs';
 import { RouteResults, restoreRouteInputs, isMatchingReplay, routeSearchTiming } from './route-analysis.mjs';
 import { readSearchResponse } from './search-progress.mjs';
-import { ToleranceRequestState, TOLERANCE_PROBE_COUNT, adjacentSafeProbes, inputToleranceRequest,
+import { ToleranceRequestState, TOLERANCE_PROBE_COUNT, TOLERANCE_STEP_MS, adjacentSafeProbes, inputToleranceRequest,
   isMatchingToleranceReport, toleranceOverlay } from './input-tolerance.mjs';
 import { inputTempo } from './input-tempo.mjs';
+import { PAIR_SPANS, PairGrid, matchesPairMinimum, matchesPairReport, pairAxis, pairKey, pairOverlay, pairRequest } from './pair-tolerance.mjs';
 import { captureRunSettings, DEFAULT_SURFACE_RUN_SETTINGS, sameRunSettings, storedRunSettings } from './run-settings.mjs';
 import { NEW_LEVEL_LENGTH, NEW_LEVEL_NAME, unusedTrackId, newLevelSource, copyBuiltinTrack,
   clearBotReferences, updateTrackMetadata, objectPropertyFields, updateObjectProperties } from './authoring-fields.mjs';
@@ -26,6 +27,9 @@ let replaySource = null;
 let tempo = null;
 const toleranceRequests = new ToleranceRequestState();
 const tolerance = { snapshot: null, report: null, selected: null, overlay: null, visible: true, error: '', buttons: [] };
+const pairTolerance = { cache: new Map(), snapshot: null, grid: null, selected: '0,0', buttons: new Map(),
+  overlay: null, visible: true, status: '', previewStatus: '', renderedSpan: null };
+const pairBatchSize = 128;
 let draftStorage, pendingDraft = null, draftBlocked = false, draftTimer = null, draftTouched = false;
 const preparation = { revision: 0, abort: null, pending: false, result: null, sourceId: null };
 const routeSearch = { pending: null, status: '', progress: null, buttons: [] };
@@ -433,6 +437,7 @@ function updateRouteControls() {
   $('route-stale').hidden = !route.stale;
   updateLandingReport();
   renderToleranceResults();
+  renderPairTolerance();
 }
 function landingThreshold() {
   const input = $('landing-threshold');
@@ -450,23 +455,29 @@ function canCheckTolerance() {
 }
 
 function resetTolerance() {
-  const hadOverlay = tolerance.overlay?.startX != null;
+  const hadOverlay = (tolerance.overlay ?? pairTolerance.overlay)?.startX != null;
   toleranceRequests.cancel();
+  clearSingleTolerance();
+  hidePairTolerance();
+  pairTolerance.cache.clear();
+  if (hadOverlay) draw();
+}
+
+function clearSingleTolerance() {
   Object.assign(tolerance, { snapshot: null, report: null, selected: null, overlay: null, error: '' });
   renderToleranceResults();
-  if (hadOverlay) draw();
 }
 
 function updateToleranceControls() {
   const available = canCheckTolerance();
-  for (const button of $('tempo-commands').querySelectorAll('[data-check-tolerance]')) button.disabled = !available;
+  for (const button of $('tempo-commands').querySelectorAll('[data-check-tolerance], [data-check-pair]')) button.disabled = !available;
   for (const { button, probe } of tolerance.buttons) {
     button.disabled = !available;
     button.setAttribute('aria-pressed', String(probe === tolerance.selected));
   }
   $('tolerance-hide').hidden = tolerance.overlay?.startX == null;
   $('tolerance-remove').hidden = !tolerance.selected;
-  $('tolerance-cancel').hidden = !toleranceRequests.pending;
+  $('tolerance-cancel').hidden = !toleranceRequests.pending || toleranceRequests.pending.kind.startsWith('pair-');
 }
 
 const probeStatuses = {
@@ -546,7 +557,9 @@ function renderToleranceResults() {
 
 async function checkTolerance(input) {
   if (!canCheckTolerance() || !state.route.result.inputs.includes(input)) return;
-  resetTolerance();
+  clearSingleTolerance();
+  hidePairTolerance();
+  draw();
   const snapshot = { ...toleranceContext(), inputIndex: input.index };
   tolerance.snapshot = snapshot;
   const ticket = toleranceRequests.start('report', snapshot);
@@ -581,12 +594,7 @@ async function previewTolerance(probe) {
     const overlay = toleranceOverlay(preview, probe);
     if (!overlay) throw new Error('Ответ не совпал с выбранной пробой.');
     Object.assign(tolerance, { selected: probe, overlay, visible: true });
-    if (overlay.startX !== null) {
-      if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
-      stopPlayback();
-      state.left = overlay.startX - dimensions().width * .2;
-    }
-    draw();
+    showOverlayOnMap(overlay);
   } catch (error) {
     if (current()) tolerance.error = `Траектория не построена. ${error.message}`;
   } finally {
@@ -599,6 +607,211 @@ function removeToleranceOverlay() {
   if (toleranceRequests.pending?.kind === 'preview') toleranceRequests.cancel();
   Object.assign(tolerance, { selected: null, overlay: null, error: '' });
   renderToleranceResults();
+  draw();
+}
+
+function showOverlayOnMap(overlay) {
+  if (overlay.startX !== null) {
+    if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
+    stopPlayback();
+    state.left = overlay.startX - dimensions().width * .2;
+  }
+  draw();
+}
+
+const pairStatuses = {
+  safe: ['●', 'Безопасно на участке'], collision: ['×', 'Удар'], rejected: ['!', 'Команда отклонена'],
+  invalid: ['–', 'Недопустимое время'], incomplete: ['≈', 'Манёвр не завершён'], pending: ['·', 'Ожидает расчёта'],
+};
+const pairOffsetLabel = offset => `${offset < 0 ? '−' : offset > 0 ? '+' : ''}${Math.abs(offset)}`;
+const pairCellStatus = cell => cell?.computed ? cell.status : 'pending';
+
+function hidePairTolerance() {
+  Object.assign(pairTolerance, { snapshot: null, grid: null, overlay: null, status: '', previewStatus: '' });
+  renderPairTolerance();
+}
+
+function makePairMatrix(span) {
+  const columns = pairAxis(span), rows = [...columns].reverse();
+  const head = document.createElement('thead'), body = document.createElement('tbody');
+  const header = head.insertRow();
+  const coordinate = document.createElement('th');
+  coordinate.textContent = 'мс';
+  header.append(coordinate);
+  for (const offset of columns) {
+    const label = document.createElement('th');
+    label.scope = 'col'; label.textContent = pairOffsetLabel(offset);
+    header.append(label);
+  }
+  pairTolerance.buttons.clear();
+  for (const secondOffsetMs of rows) {
+    const row = body.insertRow();
+    const label = document.createElement('th');
+    label.scope = 'row'; label.textContent = pairOffsetLabel(secondOffsetMs);
+    row.append(label);
+    for (const firstOffsetMs of columns) {
+      const offset = { firstOffsetMs, secondOffsetMs }, key = pairKey(offset);
+      const button = document.createElement('button');
+      button.type = 'button'; button.dataset.pairCell = key;
+      if (key === '0,0') button.dataset.source = '';
+      row.insertCell().append(button);
+      pairTolerance.buttons.set(key, { button, offset });
+    }
+  }
+  $('pair-matrix').replaceChildren(head, body);
+  pairTolerance.renderedSpan = span;
+}
+
+function updatePairCellSelection() {
+  const { grid, selected, buttons, overlay, visible } = pairTolerance;
+  const cell = grid.cells.get(selected), offset = buttons.get(selected).offset;
+  const pairPending = !!toleranceRequests.pending;
+  const interval = cell?.pairIntervalMs, minimum = cell?.minimumIntervalMs;
+  const first = pairOffsetLabel(offset.firstOffsetMs), second = pairOffsetLabel(offset.secondOffsetMs);
+  const outcome = pairStatuses[pairCellStatus(cell)][1];
+  message('pair-selected', [selected === '0,0' && 'Исходная точка', `X ${first} мс · Y ${second} мс`, outcome,
+    Number.isFinite(interval) && `между нажатиями пары ${number(interval, 2)} мс`,
+    Number.isFinite(minimum) && `минимум между соседними командами ${number(minimum, 2)} мс`, cell?.message]
+    .filter(Boolean).join(' · '));
+  $('pair-preview').disabled = pairPending || !cell?.computed || cell.status === 'invalid';
+  const hasOverlay = overlay?.startX != null;
+  $('pair-overlay-toggle').hidden = !hasOverlay;
+  $('pair-overlay-toggle').textContent = visible ? 'Скрыть наложение' : 'Показать наложение';
+  $('pair-overlay-toggle').setAttribute('aria-pressed', String(visible));
+  $('pair-overlay-remove').hidden = !overlay;
+  const overlayStatus = hasOverlay ? (visible && state.route.visible ? 'Наложение на схеме ниже.' : 'Наложение скрыто.') : '';
+  const status = pairTolerance.previewStatus || overlayStatus;
+  message('pair-preview-status', status, !!status);
+}
+
+function renderPairTolerance() {
+  const { snapshot, grid, selected } = pairTolerance;
+  const pending = toleranceRequests.pending;
+  $('pair-panel').hidden = !snapshot;
+  if (!snapshot) return;
+  const statusLine = grid.unsupported || pairTolerance.status;
+  message('pair-status', statusLine, !!statusLine);
+  $('pair-title').textContent = `Допуск пары №${snapshot.firstInputIndex + 1}–${snapshot.firstInputIndex + 2}`;
+  $('pair-cancel').hidden = !pending?.kind.startsWith('pair-');
+  $('pair-workspace').hidden = !!grid.unsupported;
+  if (grid.unsupported) { updateToleranceControls(); return; }
+  $('pair-span').value = String(grid.spanMs);
+  $('pair-span').disabled = !!pending;
+  const minimum = Number($('pair-filter').value), counts = grid.counts(minimum);
+  $('pair-continue').hidden = counts.computed === counts.total;
+  $('pair-continue').disabled = !!pending;
+  const computed = `Проверено ${number(counts.computed)} из ${number(counts.total)} клеток.`;
+  const safe = `Безопасных точек ${number(counts.safe)}.`;
+  const matching = minimum ? ` С минимумом от ${number(minimum)} мс — ${number(counts.matchingSafe)}.` : '';
+  message('pair-counts', `${computed} ${safe}${matching}`);
+  if (pairTolerance.renderedSpan !== grid.spanMs) makePairMatrix(grid.spanMs);
+  for (const [key, { button, offset }] of pairTolerance.buttons) {
+    const cell = grid.cells.get(key), status = pairCellStatus(cell);
+    const [symbol, label] = pairStatuses[status];
+    button.dataset.status = status;
+    button.classList.toggle('pair-filtered', !!cell?.computed && !matchesPairMinimum(cell, minimum));
+    button.textContent = symbol;
+    const description = `${key === '0,0' ? 'Исходная точка · ' : ''}X ${pairOffsetLabel(offset.firstOffsetMs)} мс · Y ${pairOffsetLabel(offset.secondOffsetMs)} мс · ${label}`;
+    button.title = description;
+    button.setAttribute('aria-label', description);
+    button.setAttribute('aria-pressed', String(key === selected));
+    button.tabIndex = key === selected ? 0 : -1;
+  }
+  updatePairCellSelection();
+  updateToleranceControls();
+}
+
+function selectPairCell(key) {
+  const item = pairTolerance.buttons.get(key);
+  if (!item || !pairTolerance.grid) return;
+  const previous = pairTolerance.buttons.get(pairTolerance.selected)?.button;
+  if (previous) { previous.tabIndex = -1; previous.setAttribute('aria-pressed', 'false'); }
+  item.button.tabIndex = 0;
+  item.button.setAttribute('aria-pressed', 'true');
+  item.button.focus({ preventScroll: true });
+  if (key !== pairTolerance.selected) removePairOverlay(false);
+  pairTolerance.selected = key;
+  updatePairCellSelection();
+}
+
+function checkPair(input) {
+  if (!canCheckTolerance() || !state.route.result.inputs.includes(input) || !state.route.result.inputs[input.index + 1]) return;
+  clearSingleTolerance();
+  hidePairTolerance();
+  const snapshot = { ...toleranceContext(), firstInputIndex: input.index };
+  const cached = pairTolerance.cache.get(input.index);
+  const grid = cached && toleranceRequests.matches(cached.snapshot, snapshot) ? cached.grid : new PairGrid();
+  pairTolerance.cache.set(input.index, { snapshot, grid });
+  Object.assign(pairTolerance, { snapshot, grid, selected: '0,0', visible: true });
+  $('pair-filter').value = '0';
+  renderPairTolerance();
+  draw();
+  $('pair-panel').scrollIntoView({ block: 'nearest' });
+  if (!grid.unsupported) fillPairGrid();
+}
+
+async function fillPairGrid() {
+  const { snapshot, grid } = pairTolerance;
+  if (!canCheckTolerance() || !grid || grid.unsupported || !toleranceRequests.matches(snapshot, toleranceContext())) return;
+  const missing = grid.missing(), span = grid.spanMs;
+  if (!missing.length) return;
+  const ticket = toleranceRequests.start('pair-report', snapshot);
+  const current = () => toleranceRequests.current(ticket, toleranceContext());
+  pairTolerance.status = 'Проверяем комбинации сдвигов…';
+  renderPairTolerance();
+  try {
+    for (let start = 0; start < missing.length; start += pairBatchSize) {
+      const offsets = missing.slice(start, start + pairBatchSize);
+      const report = await api('/api/pair-tolerance', pairRequest(snapshot, { spanMs: span, offsets }), ticket.abort.signal);
+      if (!current()) return;
+      if (!matchesPairReport(report, snapshot, span, offsets, grid.baseline))
+        throw new Error('Ответ не совпал с исходной траекторией и запрошенными клетками.');
+      grid.apply(report);
+      if (report.status === 'unsupported' || !report.complete) {
+        pairTolerance.status = report.message || 'Достигнут лимит времени. Расчёт можно продолжить.';
+        return;
+      }
+      renderPairTolerance();
+    }
+    pairTolerance.status = '';
+  } catch (error) {
+    if (current()) pairTolerance.status = `Проверка не выполнена. ${error.message}`;
+  } finally {
+    toleranceRequests.finish(ticket);
+    renderPairTolerance();
+  }
+}
+
+async function previewPair() {
+  const { snapshot, grid, selected } = pairTolerance;
+  const candidate = grid?.cells.get(selected);
+  if (!canCheckTolerance() || !candidate?.computed || candidate.status === 'invalid'
+    || !toleranceRequests.matches(snapshot, toleranceContext())) return;
+  const { firstOffsetMs, secondOffsetMs } = candidate;
+  const ticket = toleranceRequests.start('pair-preview', snapshot);
+  pairTolerance.previewStatus = 'Строим траекторию выбранной клетки…';
+  renderPairTolerance();
+  const current = () => toleranceRequests.current(ticket, toleranceContext()) && pairTolerance.selected === selected;
+  try {
+    const preview = await api('/api/pair-tolerance/preview', pairRequest(snapshot, { firstOffsetMs, secondOffsetMs }), ticket.abort.signal);
+    if (!current()) return;
+    const overlay = pairOverlay(preview, candidate, grid.baseline, snapshot.firstInputIndex);
+    if (!overlay) throw new Error('Ответ не совпал с выбранной клеткой.');
+    Object.assign(pairTolerance, { overlay, visible: true,
+      previewStatus: overlay.startX === null ? overlay.probe.message || 'Траектория недоступна.' : '' });
+    showOverlayOnMap(overlay);
+  } catch (error) {
+    if (current()) pairTolerance.previewStatus = `Траектория не построена. ${error.message}`;
+  } finally {
+    toleranceRequests.finish(ticket);
+    renderPairTolerance();
+  }
+}
+
+function removePairOverlay(render = true) {
+  if (toleranceRequests.pending?.kind === 'pair-preview') toleranceRequests.cancel();
+  Object.assign(pairTolerance, { overlay: null, previewStatus: '' });
+  if (render) renderPairTolerance();
   draw();
 }
 
@@ -646,6 +859,13 @@ function updateTempoReport() {
       $('tolerance-panel').scrollIntoView({ block: 'nearest' });
     });
     item.append(jump, check);
+    if (input.index + 1 < replay.inputs.length) {
+      const pair = document.createElement('button');
+      pair.type = 'button'; pair.dataset.checkPair = '';
+      pair.textContent = `Проверить пару №${input.index + 1}–${input.index + 2}`;
+      pair.addEventListener('click', () => checkPair(input));
+      item.append(pair);
+    }
     return item;
   }));
 }
@@ -910,8 +1130,9 @@ function drawReplay(parent, overview = false) {
   }));
   const replay = route.result;
   if (!replay) return;
-  if (tolerance.visible && tolerance.overlay?.startX != null) {
-    const { path, point, probe } = tolerance.overlay;
+  const review = pairTolerance.snapshot ? pairTolerance : tolerance;
+  if (review.visible && review.overlay?.startX != null) {
+    const { path, point, probe } = review.overlay;
     const attributes = { class: 'tolerance-trajectory', 'aria-hidden': 'true', 'data-status': probe.status };
     parent.append(path ? el('path', { ...attributes, d: path })
       : el('circle', { ...attributes, cx: point.x, cy: point.y, r: overview ? 3 : 6 }));
@@ -1389,6 +1610,51 @@ $('tolerance-cancel').addEventListener('click', () => {
   tolerance.error = pending.kind === 'report' ? 'Проверка отменена.' : 'Построение траектории отменено.';
   renderToleranceResults();
 });
+$('pair-span').addEventListener('change', () => {
+  const span = Number($('pair-span').value), grid = pairTolerance.grid;
+  if (!canCheckTolerance() || !grid || !PAIR_SPANS.includes(span)) return;
+  grid.spanMs = span;
+  const selected = pairTolerance.buttons.get(pairTolerance.selected).offset;
+  if ([selected.firstOffsetMs, selected.secondOffsetMs].some(offset => Math.abs(offset) > span)) {
+    pairTolerance.selected = '0,0';
+    removePairOverlay(false);
+  }
+  pairTolerance.status = '';
+  renderPairTolerance();
+  fillPairGrid();
+});
+$('pair-filter').addEventListener('change', renderPairTolerance);
+$('pair-continue').addEventListener('click', fillPairGrid);
+$('pair-cancel').addEventListener('click', () => {
+  const kind = toleranceRequests.pending?.kind;
+  if (!kind?.startsWith('pair-')) return;
+  toleranceRequests.cancel();
+  if (kind === 'pair-report') pairTolerance.status = 'Расчёт остановлен. Готовые клетки сохранены.';
+  else pairTolerance.previewStatus = 'Построение траектории остановлено.';
+  renderPairTolerance();
+});
+$('pair-matrix').addEventListener('click', event => {
+  const key = event.target.closest('[data-pair-cell]')?.dataset.pairCell;
+  if (key) selectPairCell(key);
+});
+$('pair-matrix').addEventListener('keydown', event => {
+  const moves = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
+  const move = moves[event.key], key = event.target.dataset.pairCell;
+  if (!move || !key) return;
+  event.preventDefault();
+  const { firstOffsetMs, secondOffsetMs } = pairTolerance.buttons.get(key).offset;
+  const next = pairKey({ firstOffsetMs: firstOffsetMs + TOLERANCE_STEP_MS * move[0],
+    secondOffsetMs: secondOffsetMs + TOLERANCE_STEP_MS * move[1] });
+  selectPairCell(next);
+  pairTolerance.buttons.get(next)?.button.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+});
+$('pair-preview').addEventListener('click', previewPair);
+$('pair-overlay-toggle').addEventListener('click', () => {
+  pairTolerance.visible = !pairTolerance.visible;
+  updatePairCellSelection();
+  draw();
+});
+$('pair-overlay-remove').addEventListener('click', () => removePairOverlay());
 $('prepare-bot').addEventListener('click', prepareBot);
 $('prepare-cancel').addEventListener('click', () => { invalidatePrepared('Подготовка отменена. Исходный JSON и ручные нажатия сохранены.'); controls(); });
 $('output-track-id').addEventListener('input', () => { invalidatePrepared('ID результата изменён. Подготовьте бота заново.'); controls(); });

@@ -17,9 +17,10 @@ public sealed record InputTolerancePreview(InputToleranceProbe Probe, Sample[] S
 internal static class InputToleranceAnalysis
 {
     const int StepMs = 50, SpanMs = 300, BotMinimumMs = 100;
-    const double TimeTolerance = 1e-7, PositionTolerance = 1e-5, ScheduleTolerance = 1e-10;
+    const double PositionTolerance = 1e-5;
+    internal const double TimeTolerance = 1e-7, ScheduleTolerance = 1e-10;
     static readonly TimeSpan WorkBudget = TimeSpan.FromSeconds(10);
-    const string BudgetMessage = "Истёк лимит времени проверки.";
+    internal const string BudgetMessage = "Истёк лимит времени проверки.";
 
     internal static InputToleranceResult Find(InputToleranceRequest request, CancellationToken cancellation, TimeSpan? budget = null)
     {
@@ -87,7 +88,7 @@ internal static class InputToleranceAnalysis
             throw new ArgumentException("Укажите номер исходного нажатия.");
     }
 
-    static CancellationTokenSource Deadline(CancellationToken cancellation, TimeSpan? budget)
+    internal static CancellationTokenSource Deadline(CancellationToken cancellation, TimeSpan? budget)
     {
         var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellation);
         var duration = budget ?? WorkBudget;
@@ -96,7 +97,7 @@ internal static class InputToleranceAnalysis
         return deadline;
     }
 
-    sealed record Source(ReplayRequest Replay, WorkshopService.Preview Track, FlightSettings Flight)
+    internal sealed record Source(ReplayRequest Replay, WorkshopService.Preview Track, FlightSettings Flight)
     {
         public GameState Start()
         {
@@ -110,31 +111,44 @@ internal static class InputToleranceAnalysis
 
     static Prepared Prepare(InputToleranceRequest request, CancellationToken token)
     {
-        token.ThrowIfCancellationRequested();
-        var parsed = WorkshopService.Read(request.Json);
-        var flight = WorkshopService.GetFlight(parsed.Package, request.Profile);
-        var replay = new ReplayRequest(request.Json, request.Profile, request.WarningDuration, request.Axis,
-            (double[])request.Inputs.Clone(), request.SurfaceRunSettings);
-        double[] times = replay.Inputs;
-        if (replay.Axis == "distance")
-        {
-            var distance = WorkshopService.Replay(replay, parsed, flight, includeTrajectory: false, cancellation: token);
-            if (distance.Inputs.Any(input => !input.Time.HasValue))
-                return new(null, request.InputIndex, null, "Нельзя закрепить время команд, до которых исходный забег не дошёл.");
-            times = distance.Inputs.Select(input => input.Time.Value).ToArray();
-            var timed = replay with { Axis = "time", Inputs = times };
-            if (times.Zip(times.Skip(1)).Any(pair => pair.First >= pair.Second) ||
-                !Equivalent(distance, WorkshopService.Replay(timed, parsed, flight, includeTrajectory: false, cancellation: token)))
-                return new(null, request.InputIndex, null, "Временная лента не воспроизвела исходную ленту по дистанции.");
-        }
-
-        var source = new Source(replay with { Axis = "time", Inputs = times }, parsed, flight);
+        var source = ReadSource(new(request.Json, request.Profile, request.WarningDuration, request.Axis,
+            request.Inputs, request.SurfaceRunSettings), token, out string message);
+        if (source == null) return new(null, request.InputIndex, null, message);
+        var times = source.Replay.Inputs;
         var reference = Shift(source, times, request.InputIndex, null, capture: false, token);
         if (reference.Status != "safe")
             return new(source, request.InputIndex, null, $"Исходный манёвр: {reference.Message}");
         var baseline = new InputToleranceBaseline(times, reference.InputTime.Value, reference.StartTime,
             reference.End.Time, reference.End.X);
         return new(source, request.InputIndex, baseline, "");
+    }
+
+    internal static Source ReadSource(ReplayRequest replay, CancellationToken token, out string message)
+    {
+        token.ThrowIfCancellationRequested();
+        var parsed = WorkshopService.Read(replay.Json);
+        var flight = WorkshopService.GetFlight(parsed.Package, replay.Profile);
+        replay = replay with { Inputs = (double[])replay.Inputs.Clone() };
+        message = "";
+        double[] times = replay.Inputs;
+        if (replay.Axis == "distance")
+        {
+            var distance = WorkshopService.Replay(replay, parsed, flight, includeTrajectory: false, cancellation: token);
+            if (distance.Inputs.Any(input => !input.Time.HasValue))
+            {
+                message = "Нельзя закрепить время команд, до которых исходный забег не дошёл.";
+                return null;
+            }
+            times = distance.Inputs.Select(input => input.Time.Value).ToArray();
+            var timed = replay with { Axis = "time", Inputs = times };
+            if (times.Zip(times.Skip(1)).Any(pair => pair.First >= pair.Second) ||
+                !Equivalent(distance, WorkshopService.Replay(timed, parsed, flight, includeTrajectory: false, cancellation: token)))
+            {
+                message = "Временная лента не воспроизвела исходную ленту по дистанции.";
+                return null;
+            }
+        }
+        return new(replay with { Axis = "time", Inputs = times }, parsed, flight);
     }
 
     static bool Equivalent(ReplayResult distance, ReplayResult timed)
@@ -180,7 +194,7 @@ internal static class InputToleranceAnalysis
             minimumInterval = MinimumInterval((proposed - previous) * 1000, (next - proposed) * 1000);
             var shifted = (double[])times.Clone();
             shifted[index] = proposed;
-            window = Shift(prepared.Source, shifted, index, reference, capture, token);
+            window = Shift(prepared.Source, shifted, index, new(reference.StartTime, reference.EndX), capture, token);
         }
         else
         {
@@ -201,16 +215,33 @@ internal static class InputToleranceAnalysis
         return !value.HasValue || !double.IsFinite(value.Value) ? null : Math.Round(value.Value, 6);
     }
 
-    sealed record Failure(string Status, string Message, Sample At);
-    sealed record Window(string Status, string Message, double? InputTime, double StartTime, Sample End, Sample[] Samples);
+    internal sealed record Failure(string Status, string Message, Sample At);
+    internal sealed record Window(string Status, string Message, double? InputTime, double StartTime, Sample End,
+        Sample[] Samples, double? SecondInputTime = null);
+    internal sealed record FlightTarget(double StartTime, double EndX);
+    internal sealed record Prefix(GameState Game, int Next, List<Failure> Failures);
 
-    static Window Shift(Source source, double[] times, int index, InputToleranceBaseline reference, bool capture,
-        CancellationToken token)
+    internal static Prefix BuildPrefix(Source source, double earliestChange, CancellationToken token)
     {
-        var run = new Timeline(source, times, capture, token);
+        var run = new Timeline(source, source.Replay.Inputs, capture: false, token);
         var failures = new List<Failure>();
+        // Reuse a normal scheduler boundary. Inserting a synthetic advance to
+        // the earliest branch time could alter the subsequent replay's slices.
+        while (run.Racing && run.Game.Elapsed + WorkshopService.SampleStep < earliestChange - TimeTolerance)
+            run.StepAndObserve(failures);
+        return new(run.Game, run.Next, failures);
+    }
+
+    internal static Window Shift(Source source, double[] times, int index, FlightTarget reference, bool capture,
+        CancellationToken token, int? secondIndex = null, Prefix prefix = null)
+    {
+        var run = new Timeline(source, times, capture, token, prefix);
+        var failures = prefix == null ? new List<Failure>() : new List<Failure>(prefix.Failures);
         double? inputTime = null;
+        double? secondTime = null;
+        FlightMeasurement flightBeforeFirst = null;
         double start = reference?.StartTime ?? times[index];
+        bool requireSameFlight = reference == null && secondIndex.HasValue;
         bool landed = false;
         while (run.Racing)
         {
@@ -221,15 +252,22 @@ internal static class InputToleranceAnalysis
             // to the flight that hit, even if it changes direction after recovery.
             if (!activeStart.HasValue && run.Player.Flipping && previousFlight is { Interrupted: true })
                 activeStart = Math.Max(0, previousFlight.EndedAt - previousFlight.Duration);
-            var before = inputTime.HasValue ? RaceSnapshot.Clone(run.Game) : null;
-            int previousCollisions = run.Player.Collisions;
-            var command = run.Step();
-            if (run.Player.Collisions != previousCollisions) failures.Add(run.Impact());
-            if (command?.Status == "ignored") failures.Add(new("rejected", command.Reason, run.Current));
+            double? lastPress = secondIndex.HasValue ? secondTime : inputTime;
+            var before = lastPress.HasValue ? RaceSnapshot.Clone(run.Game) : null;
+            var command = run.StepAndObserve(failures);
             if (command?.Index == index)
             {
                 inputTime = command.Time.Value;
                 start = Math.Min(activeStart ?? inputTime.Value, reference?.StartTime ?? inputTime.Value);
+                flightBeforeFirst = previousFlight;
+            }
+            if (command != null && command.Index == secondIndex)
+            {
+                secondTime = command.Time.Value;
+                if (requireSameFlight && command.Status == "accepted" &&
+                    (!activeStart.HasValue || previousFlight != flightBeforeFirst || secondTime <= inputTime))
+                    return run.Result("rejected", "Выбранные команды должны быть приняты в одном непрерывном полёте.",
+                        inputTime, start, run.Current, secondTime);
             }
             if (!inputTime.HasValue) continue;
 
@@ -237,8 +275,8 @@ internal static class InputToleranceAnalysis
             var flight = run.Player.LastFlight;
             // Solo's terminal event also ends the flight clock. An airborne
             // finish has no contact and leaves the player's flight pose intact.
-            if (flight != previousFlight && flight is { Interrupted: false } &&
-                flight.EndedAt >= inputTime.Value - TimeTolerance &&
+            if (lastPress.HasValue && flight != previousFlight && flight is { Interrupted: false } &&
+                flight.EndedAt >= lastPress.Value - TimeTolerance &&
                 !(run.Player.Flipping && flight.EndedAt == run.Player.FinishTime))
             {
                 landed = true;
@@ -255,16 +293,16 @@ internal static class InputToleranceAnalysis
             }
 
             var failure = FirstFailure(failures, start, end?.Time);
-            if (failure != null) return run.Result(failure.Status, failure.Message, inputTime, start, failure.At);
-            if (end != null) return run.Result("safe", "", inputTime, start, end);
+            if (failure != null) return run.Result(failure.Status, failure.Message, inputTime, start, failure.At, secondTime);
+            if (end != null) return run.Result("safe", "", inputTime, start, end, secondTime);
         }
 
         var priorFailure = FirstFailure(failures, start, null);
-        if (priorFailure != null) return run.Result(priorFailure.Status, priorFailure.Message, inputTime, start, priorFailure.At);
-        string message = inputTime == null ? "Заезд закончился до исполнения выбранной команды."
+        if (priorFailure != null) return run.Result(priorFailure.Status, priorFailure.Message, inputTime, start, priorFailure.At, secondTime);
+        string message = inputTime == null || (secondIndex.HasValue && secondTime == null) ? "Заезд закончился до исполнения выбранной команды."
             : landed ? "Не достигнута позиция окончания исходного манёвра."
             : "До окончания заезда не было настоящей опоры после нажатия.";
-        return run.Result("incomplete", message, inputTime, Math.Min(start, run.Current.Time), run.Current);
+        return run.Result("incomplete", message, inputTime, Math.Min(start, run.Current.Time), run.Current, secondTime);
     }
 
     static Failure FirstFailure(List<Failure> failures, double start, double? end) => failures.FirstOrDefault(failure =>
@@ -326,12 +364,14 @@ internal static class InputToleranceAnalysis
         public PlayerState Player => Game.Players[0];
         public bool Racing => WorkshopService.IsRacing(Game);
         public Sample Current => TrialObservation.Capture(Game);
+        public int Next => next;
 
-        public Timeline(Source source, double[] times, bool capture, CancellationToken token)
+        public Timeline(Source source, double[] times, bool capture, CancellationToken token, Prefix prefix = null)
         {
             this.times = times;
             this.token = token;
-            Game = source.Start();
+            Game = prefix == null ? source.Start() : RaceSnapshot.Clone(prefix.Game);
+            next = prefix?.Next ?? 0;
             if (capture) samples = [Current];
         }
 
@@ -351,11 +391,21 @@ internal static class InputToleranceAnalysis
         public Failure Impact() => new("collision", $"Столкновение: {Player.LastHit.Id}.",
             Current with { Time = Player.LastHit.At });
 
-        public Window Result(string status, string message, double? inputTime, double start, Sample end)
+        public InputResult StepAndObserve(List<Failure> failures)
         {
-            if (samples == null) return new(status, message, inputTime, start, end, []);
+            int previousCollisions = Player.Collisions;
+            var command = Step();
+            if (Player.Collisions != previousCollisions) failures.Add(Impact());
+            if (command?.Status == "ignored") failures.Add(new("rejected", command.Reason, Current));
+            return command;
+        }
+
+        public Window Result(string status, string message, double? inputTime, double start, Sample end,
+            double? secondInputTime = null)
+        {
+            if (samples == null) return new(status, message, inputTime, start, end, [], secondInputTime);
             var segment = samples.TakeWhile(point => point.Time < end.Time - ScheduleTolerance).Append(end).ToArray();
-            return new(status, message, inputTime, start, end, segment);
+            return new(status, message, inputTime, start, end, segment, secondInputTime);
         }
     }
 }

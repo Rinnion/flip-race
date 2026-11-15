@@ -1,10 +1,10 @@
 # Track Workshop API
 
-HTTP protocol v1, Workshop 0.5.17. JSON properties use camelCase. Validation errors return HTTP 400 `{ "error": "readable detail" }`. JSON documents are bounded to 2 MiB and HTTP request bodies to 16 MiB. POST requires JSON content type and same-origin browser requests.
+HTTP protocol v1, Workshop 0.5.18. JSON properties use camelCase. Validation errors return HTTP 400 `{ "error": "readable detail" }`. JSON documents are bounded to 2 MiB and HTTP request bodies to 16 MiB. POST requires JSON content type and same-origin browser requests.
 
 The default endpoint remains local `http://127.0.0.1:4186`. Deployment can set `WORKSHOP_BIND_ADDRESS`, `WORKSHOP_PORT` and an exact `WORKSHOP_PUBLIC_ORIGIN` (mandatory for non-loopback binding). Host and browser POST Origin must match the configured public origin; no wildcard CORS or forwarded-header trust is used. JSON CLI requests without Origin remain supported. TLS and authentication belong to the supplied Caddy deployment, whose app port is private.
 
-`GET /healthz` returns `{status:"ok",version:"0.5.17"}` under the same host policy. By default two heavy POSTs (analyze, replay, route-search or prepare-bot combined) may run concurrently. `WORKSHOP_MAX_CONCURRENT_REQUESTS` accepts 1..32. Excess requests receive HTTP 429 with JSON error and `Retry-After: 1` before body binding. The server keeps uploaded files and simulations in memory only. Each operation uses its own state and preparation leaves the process-wide catalogue intact.
+`GET /healthz` returns `{status:"ok",version:"0.5.18"}` under the same host policy. By default two heavy POSTs (analyze, replay, route-search or prepare-bot combined) may run concurrently. `WORKSHOP_MAX_CONCURRENT_REQUESTS` accepts 1..32. Excess requests receive HTTP 429 with JSON error and `Retry-After: 1` before body binding. The server keeps uploaded files and simulations in memory only. Each operation uses its own state and preparation leaves the process-wide catalogue intact.
 
 `GET /api/catalog` returns `{entries:[{id,name,file,profiles:["Chosen","FastFlip"]}]}`. `GET /api/catalog/{id}` returns `{json:string}` using only explicitly loaded manifest entries.
 
@@ -54,6 +54,20 @@ Returns `{profile,axis,warningDuration,staleReferences,referenceError,samples,in
 - `summary`: `{status:"Finished"|"TimedOut",finishTime:number|null,elapsed,cleanFinish:boolean,collisions,boosts,instantBoosts,slows,coins,finishBoosts,acceptedInputs,ignoredInputs,unreachedInputs,collectedIds:string[],successfulIds:string[],failedIds:string[],hitIds:string[]}`.
 
 Replay creates one production SOLO player at the floor with lagger camera (no elimination), runs normal readiness/countdown, then calls Press/Advance. Distance positioning uses independent production snapshots and bisection, never a current-speed assumption across bonus boundaries.
+
+## Analyze paired input tolerance (0.5.18 experiment)
+
+`POST /api/pair-tolerance` accepts `{json,profile,warningDuration,surfaceRunSettings?,axis,inputs,firstInputIndex,spanMs?,offsets?}`. The second command is the next entry after the zero-based first index. Both original commands must be accepted in the same continuous flight. Other commands remain at their original absolute times, including additional commands in that flight. A pair outside these conditions returns an explicit unsupported report. Source JSON, reference and tapes are immutable.
+
+`spanMs` is 300 (default), 600 or 1000. The grid step is 50 ms, giving 169, 625 or 1681 cells before ordering exclusions. Optional `offsets` contains unique `{firstOffsetMs,secondOffsetMs}` cells within the grid; omitted means the whole square. This enables incremental expansion and resuming uncomputed cells without trusting client-supplied outcomes. The server independently reconstructs the reference for every request. Each request has a 10-second cancellable budget.
+
+The response is `{status,message,firstInputIndex,spanMs,stepMs:50,complete,stopReason,baseline,cells}`. Status is `ready` or `unsupported`, stopReason is `completed` or `time-budget`. Baseline contains `{inputs,firstInputTime,secondInputTime,startTime,endTime,endX}`. A cell contains `{firstOffsetMs,secondOffsetMs,status,message,computed,firstInputTime,secondInputTime,pairIntervalMs,minimumIntervalMs,startTime,endTime,endX,collisions}`. Status is `safe|collision|rejected|invalid|incomplete`; unavailable measurements are null. `computed:false` means not evaluated due to the work budget; a computed physical `incomplete` means the manoeuvre did not reach its endpoint. `complete` concerns the requested subset, not all possible timings. Full-square cells are returned row-major, second offset increasing by row, first offset increasing by column; subset cells retain request order.
+
+Each pair is shifted directly relative to the reference, independent of whether either individual shift would succeed. Crossing fixed outside commands, swapping the two commands, coinciding with another command or moving before race time zero is invalid. The 100 ms search-bot cooldown does not reject a geometric probe. `pairIntervalMs` describes the internal gap; `minimumIntervalMs` includes the previous fixed command to first, first to second, and second to next fixed command. UI filters at 150/250 ms apply to this minimum and do not change geometric outcomes.
+
+A safe cell requires both commands and subsequent commands within the affected segment to be accepted, with no damaging collision over the whole affected flight/span. An early landing before the second command is insufficient. The endpoint requires actual support after the second command and passage of the original manoeuvre's ending X. Splitting or joining flights is allowed if authoritative Core simulation validates the whole span. Previous recovery, airborne finish and unseen gaps are not treated as safe landings. Local success does not guarantee whole-race finish or rewards. Disjoint cells remain disjoint; no human success probability is inferred.
+
+`POST /api/pair-tolerance/preview` accepts the source/settings/firstInputIndex plus `firstOffsetMs,secondOffsetMs` (−1000…1000, divisible by 50). It returns `{cell,samples}` from an independently evaluated cell. The client shows one removable overlay, retaining the reference and tape; source or settings changes cancel work and invalidate cached cells. Existing single-command analysis remains available.
 
 ## Analyze input tolerance (0.5.17 experiment)
 

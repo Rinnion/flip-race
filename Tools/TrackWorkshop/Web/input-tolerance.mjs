@@ -74,9 +74,13 @@ export function toleranceOverlay(preview, candidate) {
   const { probe, samples } = preview ?? {};
   if (!matchesProbe(probe, candidate.offsetMs, candidate.omit) || !Array.isArray(samples)
     || (probe.status !== candidate.status && probe.status !== 'incomplete' && candidate.status !== 'incomplete')
-    || (candidate.inputTime !== null && probe.inputTime !== null && !nearTime(probe.inputTime, candidate.inputTime))
-    || !samples.every((sample, index) => Number.isFinite(sample?.time) && Number.isFinite(sample.x) && Number.isFinite(sample.y)
-      && (!index || sample.time >= samples[index - 1].time))) return null;
+    || (candidate.inputTime !== null && probe.inputTime !== null && !nearTime(probe.inputTime, candidate.inputTime))) return null;
+  return clipToleranceSamples(probe, samples);
+}
+
+export function clipToleranceSamples(probe, samples) {
+  if (!Array.isArray(samples) || !samples.every((sample, index) => Number.isFinite(sample?.time)
+    && Number.isFinite(sample.x) && Number.isFinite(sample.y) && (!index || sample.time >= samples[index - 1].time))) return null;
 
   const start = Math.max(probe.startTime ?? Infinity, samples[0]?.time ?? Infinity);
   const end = Math.min(probe.endTime ?? -Infinity, samples.at(-1)?.time ?? -Infinity);

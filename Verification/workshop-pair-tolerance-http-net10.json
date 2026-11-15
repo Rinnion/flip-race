@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "version": "0.5.18",
+  "base": "http://127.0.0.1:4229",
+  "cases": [
+    {
+      "profile": "Chosen",
+      "enabled": false,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    },
+    {
+      "profile": "Chosen",
+      "enabled": true,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": false,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": true,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    }
+  ],
+  "expansions": [
+    {
+      "spanMs": 300,
+      "newlyComputed": 169,
+      "total": 169
+    },
+    {
+      "spanMs": 600,
+      "newlyComputed": 456,
+      "total": 625
+    },
+    {
+      "spanMs": 1000,
+      "newlyComputed": 1056,
+      "total": 1681
+    }
+  ],
+  "checks": [
+    "169/625/1681 discrete cells",
+    "subset reuse equals full matrix",
+    "same reference after previews",
+    "both profiles acceleration on/off",
+    "distance normalization",
+    "support after both commands and reference end X",
+    "order and request validation",
+    "separate source flights explained"
+  ]
+}

@@ -14,7 +14,7 @@ using var policy=new ServerPolicy(deployment);
 using var live=new LiveSocket(deployment);
 app.Use((HttpContext context,RequestDelegate next)=>policy.InvokeAsync(context,next));
 app.UseWebSockets();
-app.MapGet("/healthz",()=>new{status="ok",version="0.5.17"});
+app.MapGet("/healthz",()=>new{status="ok",version="0.5.18"});
 app.MapGet("/api/catalog",()=>new{entries=service.Catalog()});
 app.MapGet("/api/catalog/{id}",(string id)=>service.CatalogJson(id) is string json?Results.Ok(new{json}):Results.NotFound(new{error="Unknown catalog ID."}));
 app.MapPost("/api/analyze",(AnalyzeRequest request)=>service.Analyze(request));
@@ -25,6 +25,10 @@ app.MapPost("/api/input-tolerance",async(InputToleranceRequest request,HttpConte
     =>await Task.Run(()=>InputToleranceAnalysis.Find(request,context.RequestAborted),context.RequestAborted));
 app.MapPost("/api/input-tolerance/preview",async(InputTolerancePreviewRequest request,HttpContext context)
     =>await Task.Run(()=>InputToleranceAnalysis.Preview(request,context.RequestAborted),context.RequestAborted));
+app.MapPost("/api/pair-tolerance",async(PairToleranceRequest request,HttpContext context)
+    =>await Task.Run(()=>PairToleranceAnalysis.Find(request,context.RequestAborted),context.RequestAborted));
+app.MapPost("/api/pair-tolerance/preview",async(PairTolerancePreviewRequest request,HttpContext context)
+    =>await Task.Run(()=>PairToleranceAnalysis.Preview(request,context.RequestAborted),context.RequestAborted));
 app.MapPost("/api/prepare-bot",async(PrepareBotRequest request,HttpContext context)=>await Task.Run(()=>preparation.Prepare(request,context.RequestAborted),context.RequestAborted));
 app.MapPost("/api/route-search",async(RouteSearchRequest request,HttpContext context)
     =>await Task.Run(()=>service.SearchRoutes(request,context.RequestAborted),context.RequestAborted));
@@ -42,4 +46,5 @@ app.MapGet("/search-progress.mjs",()=>Results.File(Path.Combine(AppContext.BaseD
 app.MapGet("/later-press.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","later-press.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/input-tolerance.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","input-tolerance.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/input-tempo.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","input-tempo.mjs"),"text/javascript; charset=utf-8"));
+app.MapGet("/pair-tolerance.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","pair-tolerance.mjs"),"text/javascript; charset=utf-8"));
 app.Run();

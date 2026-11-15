@@ -228,7 +228,7 @@
 #tempo-commands, #tolerance-list { list-style: none; display: grid; gap: 4px; padding: 2px 4px; margin: 0 0 5px }
 #tempo-commands li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px }
 .tempo-report button { min-height: 28px; padding: 4px 7px; font-size: 11px; white-space: normal }
-#tempo-commands [data-check-tolerance] { color: var(--sage); border-color: #bdcdbd }
+#tempo-commands :is([data-check-tolerance], [data-check-pair]) { color: var(--sage); border-color: #bdcdbd }
 .tolerance-panel { margin-top: 7px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: #f7f8f1 }
 #tolerance-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); max-height: 212px; overflow: auto }
 #tolerance-list button { width: 100%; height: 100%; text-align: left }
@@ -239,6 +239,31 @@
 .tempo-mark { fill: none; stroke: var(--tempo-color); stroke-width: 2; vector-effect: non-scaling-stroke; pointer-events: none }
 .tolerance-trajectory { fill: none; stroke: #207b81; stroke-width: 2.4; stroke-dasharray: 7 4; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none }
 .tolerance-trajectory[data-status="collision"], .tolerance-trajectory[data-status="rejected"] { stroke: #a22e46 }
+.pair-panel { min-width: 0 }
+.pair-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 9px; margin: 5px 0 }
+.pair-controls label { display: flex; align-items: center; gap: 4px }
+.pair-controls select { min-height: 28px; padding: 2px 5px; font-size: 11px }
+.pair-scroll { position: relative; overflow: auto; max-height: 320px; border: 1px solid var(--line); border-radius: 6px; background: var(--cream) }
+#pair-matrix { border-spacing: 2px; width: max-content; font-variant-numeric: tabular-nums }
+#pair-matrix :is(th, td) { padding: 0; text-align: center }
+#pair-matrix th { min-width: 31px; font-size: 9px; background: var(--cream); white-space: nowrap }
+#pair-matrix thead th { position: sticky; top: 0; z-index: 2 }
+#pair-matrix th:first-child { position: sticky; left: 0; z-index: 1 }
+#pair-matrix thead th:first-child { z-index: 3 }
+#pair-matrix button { display: block; min-width: 31px; min-height: 26px; padding: 0 2px; border-radius: 4px; color: var(--pair-ink); background: var(--pair-fill); font-size: 12px }
+#pair-matrix button:hover { filter: brightness(.91) }
+.pair-legend [data-status="safe"], #pair-matrix [data-status="safe"] { --pair-ink: #2a6244; --pair-fill: #d9eee0 }
+.pair-legend [data-status="collision"], #pair-matrix [data-status="collision"] { --pair-ink: #902e42; --pair-fill: #f8dfe2 }
+.pair-legend [data-status="rejected"], #pair-matrix [data-status="rejected"] { --pair-ink: #8d5909; --pair-fill: #faecd1 }
+.pair-legend [data-status="invalid"], #pair-matrix [data-status="invalid"] { --pair-ink: #596660; --pair-fill: #e9ece7 }
+.pair-legend [data-status="incomplete"], #pair-matrix [data-status="incomplete"] { --pair-ink: #4f4b83; --pair-fill: #eeebf9 }
+.pair-legend [data-status="pending"], #pair-matrix [data-status="pending"] { --pair-ink: #67726c; --pair-fill: #fffef9; border-style: dashed }
+#pair-matrix button.pair-filtered { filter: grayscale(1); opacity: .42 }
+#pair-matrix button[data-source], .pair-source-key { border: 2px solid #62517b }
+#pair-matrix button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px #223e40 }
+#pair-matrix button:focus-visible { outline-offset: -3px }
+.pair-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 9px; margin: 5px 0; padding: 0 }
+.pair-legend i { display: inline-grid; place-items: center; min-width: 15px; height: 15px; border-radius: 3px; color: var(--pair-ink); background: var(--pair-fill); font-style: normal; font-weight: 700 }
 .landing-interval-mark { pointer-events: none }
 .landing-interval-line { stroke: #a34d19; stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke }
 .landing-interval-point { fill: #fff4e1; stroke: #a34d19; stroke-width: 1.5; vector-effect: non-scaling-stroke }

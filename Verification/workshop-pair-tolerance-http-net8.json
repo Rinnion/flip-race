@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "version": "0.5.18",
+  "base": "http://127.0.0.1:4228",
+  "cases": [
+    {
+      "profile": "Chosen",
+      "enabled": false,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    },
+    {
+      "profile": "Chosen",
+      "enabled": true,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": false,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": true,
+      "cells": 169,
+      "previewed": 6,
+      "safe": 103,
+      "invalid": 66
+    }
+  ],
+  "expansions": [
+    {
+      "spanMs": 300,
+      "newlyComputed": 169,
+      "total": 169
+    },
+    {
+      "spanMs": 600,
+      "newlyComputed": 456,
+      "total": 625
+    },
+    {
+      "spanMs": 1000,
+      "newlyComputed": 1056,
+      "total": 1681
+    }
+  ],
+  "rethink": {
+    "inputs": [
+      1.65,
+      4.15,
+      4.25
+    ],
+    "safe": 225,
+    "safe150": 191,
+    "shiftedPair": {
+      "firstOffsetMs": -1000,
+      "secondOffsetMs": -500,
+      "status": "safe",
+      "message": "",
+      "computed": true,
+      "firstInputTime": 3.1499999999999915,
+      "secondInputTime": 3.7499999999999893,
+      "pairIntervalMs": 600,
+      "minimumIntervalMs": 600,
+      "startTime": 3.1499999999999915,
+      "endTime": 4.6747995895333805,
+      "endX": 1028.4559096973474,
+      "collisions": 0
+    }
+  },
+  "checks": [
+    "169/625/1681 discrete cells",
+    "subset reuse equals full matrix",
+    "same reference after previews",
+    "both profiles acceleration on/off",
+    "distance normalization",
+    "support after both commands and reference end X",
+    "order and request validation",
+    "separate source flights explained"
+  ]
+}
