@@ -66,19 +66,29 @@ test('a failure preview clips the common prefix and preserves the original repla
   route.setResult(replay);
   const originalPath = route.path;
   const candidate = probe(-200, 'collision');
-  const overlay = toleranceOverlay({ probe: candidate, samples }, candidate);
+  const overlayFor = (response, chosen = candidate) => toleranceOverlay(response, chosen, report.baseline, snapshot.inputIndex);
+  const overlay = overlayFor({ probe: candidate, samples });
   assert.equal(overlay.path, 'M90.000,9.000 L100.000,10.000 L150.000,15.000 L190.000,19.000');
   assert.equal(overlay.startX, 90);
   assert.equal(route.result, replay);
   assert.equal(route.path, originalPath);
   assert.equal(snapshot.inputText, '[1.7]');
-  assert.equal(toleranceOverlay({ probe: probe(-150, 'collision'), samples }, candidate), null);
-  assert.equal(toleranceOverlay({ probe: candidate, samples: [...samples].reverse() }, candidate), null);
+  assert.deepEqual(overlay.commands.map(command => [command.index, Math.round(command.x), Math.round(command.y)]), [[1, 90, 9]]);
+  assert.equal(overlayFor({ probe: probe(-150, 'collision'), samples }), null);
+  assert.equal(overlayFor({ probe: candidate, samples: [...samples].reverse() }), null);
 
   const invalid = probe(-300, 'invalid', { startTime: null, endTime: null, endX: null });
-  assert.deepEqual(toleranceOverlay({ probe: invalid, samples: [] }, invalid), { probe: invalid, path: '', point: null, startX: null });
+  assert.deepEqual(overlayFor({ probe: invalid, samples: [] }, invalid),
+    { probe: invalid, path: '', point: null, commands: [], startX: null });
   const atImpact = probe(-200, 'collision', { startTime: 1, endTime: 1 });
-  assert.deepEqual(toleranceOverlay({ probe: atImpact, samples }, atImpact).point, samples[1]);
+  assert.deepEqual(overlayFor({ probe: atImpact, samples }, atImpact).point, samples[1]);
+});
+
+test('omission markers exclude the removed input and the next input at the undispatched endpoint', () => {
+  const omission = probe(null, 'safe', { endTime: 2 });
+  const samples = [0, 1, 1.5, 2].map(time => ({ time, x: time * 100, y: time * 10 }));
+  const overlay = toleranceOverlay({ probe: omission, samples }, omission, report.baseline, snapshot.inputIndex);
+  assert.deepEqual(overlay.commands, []);
 });
 
 test('report and preview ignore stale source, settings and tape, and never apply after cancellation', () => {

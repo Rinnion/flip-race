@@ -132,15 +132,15 @@ export function adjacentSafeProbes(report) {
 }
 
 // Clip to the affected interval. Some servers include the shared prefix in the samples.
-export function toleranceOverlay(preview, candidate) {
+export function toleranceOverlay(preview, candidate, baseline, index) {
   const { probe, samples } = preview ?? {};
   if (!matchesProbe(probe, candidate.offsetMs, candidate.omit) || !Array.isArray(samples)
     || (probe.status !== candidate.status && probe.status !== 'incomplete' && candidate.status !== 'incomplete')
     || (candidate.inputTime !== null && probe.inputTime !== null && !nearTime(probe.inputTime, candidate.inputTime))) return null;
-  return clipToleranceSamples(probe, samples);
+  return clipToleranceSamples(probe, samples, baseline.inputs, new Map([[index, probe.inputTime]]));
 }
 
-export function clipToleranceSamples(probe, samples) {
+export function clipToleranceSamples(probe, samples, inputTimes, changedTimes) {
   if (!Array.isArray(samples) || !samples.every((sample, index) => Number.isFinite(sample?.time)
     && Number.isFinite(sample.x) && Number.isFinite(sample.y) && (!index || sample.time >= samples[index - 1].time))) return null;
 
@@ -151,7 +151,16 @@ export function clipToleranceSamples(probe, samples) {
     : [];
   const path = local.map(({ x, y }, index) => `${index ? 'L' : 'M'}${x.toFixed(3)},${y.toFixed(3)}`).join(' ');
   const point = !path && nearTime(start, end) ? sampleAt(samples, end) : null;
-  return { probe, path, point, startX: local[0]?.x ?? point?.x ?? null };
+  const commands = [];
+  for (const [index, originalTime] of inputTimes.entries()) {
+    const changed = changedTimes.has(index);
+    const time = changed ? changedTimes.get(index) : originalTime;
+    // For unchanged inputs, the final sample may be the boundary before dispatch.
+    if (!Number.isFinite(time) || time < start || (changed ? time > end : time >= end)) continue;
+    const { x, y } = sampleAt(samples, time);
+    commands.push({ index, time, x, y });
+  }
+  return { probe, path, point, commands, startX: local[0]?.x ?? point?.x ?? null };
 }
 
 function sameReplayContext(original, current) {

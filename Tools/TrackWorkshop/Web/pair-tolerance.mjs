@@ -87,5 +87,7 @@ export function pairOverlay(preview, candidate, baseline, index) {
   const { cell, samples } = preview ?? {};
   if (!matchesCell(cell, candidate, baseline, index) || (candidate.computed && cell.computed && candidate.status !== cell.status))
     return null;
-  return clipToleranceSamples(cell, samples);
+  return clipToleranceSamples(cell, samples, baseline.inputs, new Map([
+    [index, cell.firstInputTime], [index + 1, cell.secondInputTime],
+  ]));
 }

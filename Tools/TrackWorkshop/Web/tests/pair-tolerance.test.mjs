@@ -106,6 +106,25 @@ test('preview uses the displayed replay provenance and returns a clipped collisi
   assert.equal(pairOverlay({ cell: cell(later), samples }, collision, baseline, 1), null);
 });
 
+test('markers use the shifted times and positions on the returned trajectory and stop at impact', () => {
+  const offsets = { firstOffsetMs: 50, secondOffsetMs: 100 };
+  const moved = cell(offsets);
+  const returned = [
+    { time: 0.5, x: 50, y: 10 },
+    { time: moved.firstInputTime, x: 52, y: 12 },
+    { time: moved.secondInputTime, x: 81, y: 9 },
+    { time: 1.05, x: 110, y: 8 },
+    { time: 1.75, x: 175, y: 25 },
+  ];
+  const markers = pairOverlay({ cell: moved, samples: returned }, moved, baseline, 1).commands;
+  assert.deepEqual(markers, returned.slice(1, 4).map((sample, i) => ({ index: i + 1, ...sample })));
+  const collision = cell(offsets, 'collision', { secondInputTime: null, endTime: 0.75 });
+  assert.deepEqual(pairOverlay({ cell: collision, samples: returned }, collision, baseline, 1).commands,
+    markers.slice(0, 1));
+  assert.deepEqual(pairOverlay({ cell: moved, samples: returned.slice(2) }, moved, baseline, 1).commands,
+    markers.slice(1));
+});
+
 test('replacement or cancellation blocks a late paired report or overlay', () => {
   const requests = new ToleranceRequestState();
   const request = requests.start('pair-report', snapshot);

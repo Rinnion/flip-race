@@ -630,7 +630,7 @@ async function checkTolerance(input) {
 }
 
 async function previewTolerance() {
-  const { snapshot } = tolerance;
+  const { snapshot, report, selected } = tolerance;
   const probe = selectedSingleProbe();
   if (!canCheckTolerance() || !snapshot || !probe?.computed || probe.status === 'invalid'
     || !toleranceRequests.matches(snapshot, toleranceContext())) return;
@@ -638,11 +638,11 @@ async function previewTolerance() {
   ticket.probe = probe;
   tolerance.error = '';
   renderToleranceResults();
-  const current = () => toleranceRequests.current(ticket, toleranceContext());
+  const current = () => toleranceRequests.current(ticket, toleranceContext()) && tolerance.selected === selected;
   try {
     const preview = await api('/api/input-tolerance/preview', inputToleranceRequest(snapshot, probe), ticket.abort.signal);
     if (!current()) return;
-    const overlay = toleranceOverlay(preview, probe);
+    const overlay = toleranceOverlay(preview, probe, report.baseline, snapshot.inputIndex);
     if (!overlay) throw new Error('Ответ не совпал с выбранной пробой.');
     Object.assign(tolerance, { overlay, visible: true });
     showOverlayOnMap(overlay);
@@ -790,7 +790,7 @@ function renderPairTolerance() {
   updateToleranceControls();
 }
 
-function selectMatrixCell(review, key, removeOverlay, updateSelection) {
+function selectMatrixCell(review, key, removeOverlay, render, preview) {
   const item = review.buttons.get(key);
   if (!item) return;
   const previous = (review.buttons.get(review.selected) ?? review.buttons.get('0,0'))?.button;
@@ -798,9 +798,11 @@ function selectMatrixCell(review, key, removeOverlay, updateSelection) {
   item.button.tabIndex = 0;
   item.button.setAttribute('aria-pressed', 'true');
   item.button.focus({ preventScroll: true });
-  if (key !== review.selected) removeOverlay(false);
+  removeOverlay(false);
   review.selected = key;
-  updateSelection();
+  const previousRequest = toleranceRequests.pending;
+  preview();
+  if (toleranceRequests.pending === previousRequest) render();
 }
 
 function checkPair(input, activatedInputIndex = null) {
@@ -855,9 +857,12 @@ async function fillPairGrid() {
 async function previewPair() {
   const { snapshot, grid, selected } = pairTolerance;
   const candidate = grid?.cells.get(selected);
-  if (!canCheckTolerance() || !candidate?.computed || candidate.status === 'invalid'
+  const pending = toleranceRequests.pending;
+  if (!canSelectAnalysisTarget() || (pending && pending.kind !== 'pair-report')
+    || !candidate?.computed || candidate.status === 'invalid'
     || !toleranceRequests.matches(snapshot, toleranceContext())) return;
   const { firstOffsetMs, secondOffsetMs } = candidate;
+  if (pending?.kind === 'pair-report') pairTolerance.status = 'Расчёт приостановлен. Готовые клетки сохранены.';
   const ticket = toleranceRequests.start('pair-preview', snapshot);
   pairTolerance.previewStatus = 'Строим траекторию выбранной клетки…';
   renderPairTolerance();
@@ -1255,6 +1260,18 @@ function drawReplay(parent, overview = false) {
     mark.append(el('circle', { cx: interval.landingX, cy: interval.landingY, r: radius,
       class: overlapsPlayer ? 'landing-interval-point landing-interval-outline' : 'landing-interval-point' }));
     parent.append(mark);
+  }
+  if (review.visible && review.overlay?.startX != null) {
+    for (const { index, time, x, y } of review.overlay.commands) {
+      const label = `№${index + 1} · ${number(time, 3)} с`;
+      const marker = el('g', { class: 'tolerance-command', role: 'img', 'aria-label': `Пробное нажатие ${label}` });
+      const radius = overview ? 5 : 6;
+      marker.append(el('circle', { cx: x, cy: y, r: radius, class: 'tolerance-command-ring' }));
+      if (!overview) marker.append(el('text', {
+        x: x + 8, y: y + (index % 2 ? 12 : -7), class: 'tolerance-command-label', 'aria-hidden': 'true',
+      }, label));
+      parent.append(marker);
+    }
   }
 }
 function draw() {
@@ -1737,9 +1754,9 @@ $('pair-cancel').addEventListener('click', () => {
   else pairTolerance.previewStatus = 'Построение траектории остановлено.';
   renderPairTolerance();
 });
-function bindMatrixSelection(table, review, removeOverlay, updateSelection) {
+function bindMatrixSelection(table, review, removeOverlay, render, preview) {
   const moves = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
-  const select = key => selectMatrixCell(review, key, removeOverlay, updateSelection);
+  const select = key => selectMatrixCell(review, key, removeOverlay, render, preview);
   table.addEventListener('click', event => {
     const key = event.target.closest('[data-matrix-cell]')?.dataset.matrixCell;
     if (key) select(key);
@@ -1755,8 +1772,8 @@ function bindMatrixSelection(table, review, removeOverlay, updateSelection) {
     review.buttons.get(next)?.button.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   });
 }
-bindMatrixSelection($('pair-matrix'), pairTolerance, removePairOverlay, updatePairCellSelection);
-bindMatrixSelection($('tolerance-matrix'), tolerance, removeToleranceOverlay, updateSingleCellSelection);
+bindMatrixSelection($('pair-matrix'), pairTolerance, removePairOverlay, renderPairTolerance, previewPair);
+bindMatrixSelection($('tolerance-matrix'), tolerance, removeToleranceOverlay, renderToleranceResults, previewTolerance);
 $('tolerance-legend').append(document.querySelector('#pair-workspace .pair-legend').cloneNode(true));
 $('pair-preview').addEventListener('click', previewPair);
 $('pair-overlay-toggle').addEventListener('click', () => {
