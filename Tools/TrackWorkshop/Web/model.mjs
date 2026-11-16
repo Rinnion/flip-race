@@ -44,6 +44,21 @@ export function viewMetrics(width, height, corridorHeight, zoom, length, left) {
     top: (corridorHeight - worldHeight) / 2 };
 }
 
+export function nearestRouteInput(inputs, click, toScreen) {
+  const maxDistanceSquared = 6 ** 2;
+  let nearest = null, nearestDistanceSquared = Infinity;
+  for (const input of inputs) {
+    if (!Number.isFinite(input.x) || !Number.isFinite(input.y) || !Number.isFinite(input.time)) continue;
+    const point = toScreen(input);
+    const distanceSquared = (point.x - click.x) ** 2 + (point.y - click.y) ** 2;
+    if (distanceSquared <= maxDistanceSquared && distanceSquared < nearestDistanceSquared) {
+      nearest = input;
+      nearestDistanceSquared = distanceSquared;
+    }
+  }
+  return nearest;
+}
+
 export function sampleAt(samples, time) {
   if (!samples.length) return null;
   if (time <= samples[0].time) return samples[0];

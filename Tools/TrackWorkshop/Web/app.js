@@ -1,13 +1,13 @@
 import { clamp, parseInputs, distanceSeedFromReplay, MAX_REPLAY_INPUTS, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision, ReplayRoute } from './model.mjs';
-import { MAX_LANDING_THRESHOLD_MS, parseLandingThreshold, shortLandingIntervals } from './model.mjs';
+import { MAX_LANDING_THRESHOLD_MS, nearestRouteInput, parseLandingThreshold, shortLandingIntervals } from './model.mjs';
 import { createObject, deleteObject, resizeObject, getResizeHandles } from './edit-model.mjs';
 import { DRAFT_KEY, readDraft, writeDraft, clearDraft } from './draft.mjs';
 import { selectedObjectSource, replaceObjectSource } from './object-source.mjs';
 import { LiveConnection } from './live.mjs';
 import { RouteResults, restoreRouteInputs, isMatchingReplay, routeSearchTiming } from './route-analysis.mjs';
 import { readSearchResponse } from './search-progress.mjs';
-import { ToleranceRequestState, TOLERANCE_PROBE_COUNT, TOLERANCE_STEP_MS, adjacentSafeProbes, inputToleranceRequest,
-  isMatchingToleranceReport, toleranceOverlay } from './input-tolerance.mjs';
+import { ToleranceRequestState, TOLERANCE_OFFSETS_MS, TOLERANCE_STEP_MS, adjacentSafeProbes, inputToleranceRequest,
+  isMatchingToleranceReport, matrixCounts, matrixShares, resolveAnalysisTarget, singleMatrixCells, toleranceOverlay } from './input-tolerance.mjs';
 import { inputTempo } from './input-tempo.mjs';
 import { PAIR_SPANS, PairGrid, matchesPairMinimum, matchesPairReport, pairAxis, pairKey, pairOverlay, pairRequest } from './pair-tolerance.mjs';
 import { captureRunSettings, DEFAULT_SURFACE_RUN_SETTINGS, sameRunSettings, storedRunSettings } from './run-settings.mjs';
@@ -26,7 +26,8 @@ let landingHighlights = [];
 let replaySource = null;
 let tempo = null;
 const toleranceRequests = new ToleranceRequestState();
-const tolerance = { snapshot: null, report: null, selected: null, overlay: null, visible: true, error: '', buttons: [] };
+const targetAnalysis = { input: null, status: '' };
+const tolerance = { snapshot: null, report: null, selected: '0,0', overlay: null, visible: true, error: '', buttons: new Map() };
 const pairTolerance = { cache: new Map(), snapshot: null, grid: null, selected: '0,0', buttons: new Map(),
   overlay: null, visible: true, status: '', previewStatus: '', renderedSpan: null };
 const pairBatchSize = 128;
@@ -449,14 +450,62 @@ function toleranceContext() {
     inputText: $('inputs').value, axis: $('axis').value, loadRevision: state.loadRevision };
 }
 
-function canCheckTolerance() {
-  return canUseRouteSearch() && !replayPending && !toleranceRequests.pending && !!state.route.result
+function canSelectAnalysisTarget() {
+  return canUseRouteSearch() && !state.addKind && !state.pickingStart && !replayPending && !!state.route.result && !state.route.stale
     && replaySource?.editorSource === $('json').value && sameRunSettings(state.route.result, currentRunSettings());
+}
+
+function canCheckTolerance() { return canSelectAnalysisTarget() && !toleranceRequests.pending; }
+
+function renderAnalysisTarget() {
+  $('analysis-target').hidden = !targetAnalysis.status;
+  if (targetAnalysis.status) message('analysis-target-status', targetAnalysis.status);
+  $('analysis-target-cancel').hidden = toleranceRequests.pending?.kind !== 'target';
+}
+
+function clearAnalysisTarget() {
+  Object.assign(targetAnalysis, { input: null, status: '' });
+  renderAnalysisTarget();
+}
+
+async function analyzeCommand(input) {
+  if (!canSelectAnalysisTarget() || !state.route.result.inputs.includes(input)) return;
+  const active = toleranceRequests.pending?.snapshot;
+  if ((active?.activatedInputIndex ?? active?.inputIndex) === input.index) return;
+  const snapshot = { ...toleranceContext(), inputIndex: input.index };
+  const resolving = resolveAnalysisTarget(toleranceRequests, snapshot, toleranceContext, api);
+  Object.assign(targetAnalysis, { input, status: `Определяем область допуска для нажатия №${input.index + 1}…` });
+  clearSingleTolerance();
+  hidePairTolerance();
+  renderAnalysisTarget();
+  draw();
+  try {
+    const target = await resolving;
+    if (!target) return;
+    if (target.kind === 'unsupported') {
+      targetAnalysis.status = `Допуск нажатия №${input.index + 1} недоступен. ${target.message}`;
+      $('analysis-target').scrollIntoView({ block: 'nearest' });
+    } else {
+      clearAnalysisTarget();
+      if (target.kind === 'pair') checkPair(snapshot.result.inputs[target.firstInputIndex], input.index);
+      else {
+        checkTolerance(input);
+        $('tolerance-panel').scrollIntoView({ block: 'nearest' });
+      }
+    }
+  } catch (error) {
+    targetAnalysis.status = `Проверка нажатия №${input.index + 1} не выполнена. ${error.message}`;
+    $('analysis-target').scrollIntoView({ block: 'nearest' });
+  } finally {
+    renderAnalysisTarget();
+    updateToleranceControls();
+  }
 }
 
 function resetTolerance() {
   const hadOverlay = (tolerance.overlay ?? pairTolerance.overlay)?.startX != null;
   toleranceRequests.cancel();
+  clearAnalysisTarget();
   clearSingleTolerance();
   hidePairTolerance();
   pairTolerance.cache.clear();
@@ -464,20 +513,14 @@ function resetTolerance() {
 }
 
 function clearSingleTolerance() {
-  Object.assign(tolerance, { snapshot: null, report: null, selected: null, overlay: null, error: '' });
+  Object.assign(tolerance, { snapshot: null, report: null, selected: '0,0', overlay: null, error: '' });
   renderToleranceResults();
 }
 
 function updateToleranceControls() {
   const available = canCheckTolerance();
   for (const button of $('tempo-commands').querySelectorAll('[data-check-tolerance], [data-check-pair]')) button.disabled = !available;
-  for (const { button, probe } of tolerance.buttons) {
-    button.disabled = !available;
-    button.setAttribute('aria-pressed', String(probe === tolerance.selected));
-  }
-  $('tolerance-hide').hidden = tolerance.overlay?.startX == null;
-  $('tolerance-remove').hidden = !tolerance.selected;
-  $('tolerance-cancel').hidden = !toleranceRequests.pending || toleranceRequests.pending.kind.startsWith('pair-');
+  if (tolerance.snapshot) updateSingleCellSelection();
 }
 
 const probeStatuses = {
@@ -490,10 +533,12 @@ const probeOutcome = probe => probe.omit && probe.status === 'safe'
   ? (probe.message || 'Без удара до следующей команды') : probeStatuses[probe.status];
 
 function renderToleranceResults() {
-  const { snapshot, report, overlay, visible, error } = tolerance;
+  const { snapshot, report, selected, error } = tolerance;
   const pending = toleranceRequests.pending;
   $('tolerance-panel').hidden = !snapshot;
-  $('tolerance-title').textContent = snapshot ? `Допуск нажатия №${snapshot.inputIndex + 1}` : '';
+  if (!snapshot) { updateToleranceControls(); return; }
+  $('tolerance-title').textContent = `Допуск нажатия №${snapshot.inputIndex + 1}`;
+  $('tolerance-cancel').hidden = !['report', 'preview'].includes(pending?.kind);
   const baseline = report?.baseline;
   const original = baseline ? `Исходное нажатие в ${number(baseline.inputTime, 3)} с · участок ${number(baseline.startTime, 3)}–${number(baseline.endTime, 3)} с.` : '';
   message('tolerance-baseline', original, !!original);
@@ -512,51 +557,57 @@ function renderToleranceResults() {
   let status = '';
   if (pending?.kind === 'report') status = 'Проверяем сдвиги и пропуск исходного нажатия…';
   else if (report?.status === 'unsupported') status = report.message;
-  else if (report) {
-    const probes = [...report.probes, report.omission];
-    const invalid = probes.filter(probe => probe?.status === 'invalid').length;
-    const incomplete = probes.filter(probe => probe?.status === 'incomplete').length;
-    status = `${report.complete ? 'Перебор завершён. ' : ''}Из ${TOLERANCE_PROBE_COUNT} проб: рассчитано ${number(report.attempted)}, недопустимых ${number(invalid)}`
-      + (incomplete ? `, незавершённых ${number(incomplete)}` : '') + '.';
-    if (!report.complete) status += ` ${report.message || 'Достигнут лимит времени.'}`;
-  }
+  else if (report && !report.complete) status = report.message || 'Достигнут лимит времени.';
   message('tolerance-status', [status, error].filter(Boolean).join(' '), !!(status || error));
+  $('tolerance-workspace').hidden = report?.status === 'unsupported' && report.complete;
+  const cells = singleMatrixCells(report);
+  tolerance.cells = new Map(cells.map(cell => [pairKey(cell), cell]));
+  if (!tolerance.buttons.size) makeMatrix($('tolerance-matrix'), tolerance.buttons, TOLERANCE_OFFSETS_MS, [0]);
+  renderMatrixCells(tolerance.buttons, tolerance.cells, selected === 'omit' ? '0,0' : selected);
+  if (selected === 'omit') tolerance.buttons.get('0,0').button.setAttribute('aria-pressed', 'false');
+  renderMatrixCounts('tolerance', matrixCounts(cells));
+  const omission = report?.omission;
+  $('tolerance-omission-status').textContent = omission ? probeOutcome(omission) : 'Ожидает расчёта';
+  updateToleranceControls();
+}
+
+function updateSingleCellSelection() {
+  const { selected, overlay, visible } = tolerance;
+  const omission = selected === 'omit';
+  const cell = selectedSingleProbe();
+  const outcome = omission ? probeOutcome(cell) : matrixStatuses[matrixCellStatus(cell)][1];
+  const coordinates = omission ? 'Пропуск нажатия' : matrixCellDescription(tolerance.buttons.get(selected).offset);
+  const minimum = cell?.minimumIntervalMs;
+  message('tolerance-selected', [coordinates, outcome, Number.isFinite(minimum)
+    && `минимум между соседними командами ${number(minimum, 2)} мс${cell.botCompatible ? '' : ' · короче минимума поиска (100 мс)'}`,
+  (!omission || cell?.status !== 'safe') && cell?.message].filter(Boolean).join(' · '));
+  $('tolerance-preview').disabled = !canCheckTolerance() || !cell || matrixCellStatus(cell) === 'pending' || cell.status === 'invalid';
+  const omissionResult = tolerance.report?.omission;
+  $('tolerance-omission').disabled = !canCheckTolerance() || !omissionResult || omissionResult.endTime === null;
+  $('tolerance-omission').setAttribute('aria-pressed', String(omission));
+  const pending = toleranceRequests.pending;
   const previewStatus = pending?.kind === 'preview' ? `Строим траекторию пробы «${probeLabel(pending.probe)}»…`
     : overlay ? [probeLabel(overlay.probe), probeOutcome(overlay.probe), overlay.startX !== null
       ? (visible && state.route.visible ? 'Наложение на схеме ниже' : 'Наложение скрыто')
-      : 'Траектория недоступна', overlay.probe.status !== tolerance.selected.status && overlay.probe.message]
+      : 'Траектория недоступна', overlay.probe.status !== cell?.status && overlay.probe.message]
       .filter(Boolean).join(' · ') : '';
   message('tolerance-preview-status', previewStatus, !!previewStatus);
+  $('tolerance-hide').hidden = overlay?.startX == null;
   $('tolerance-hide').textContent = visible ? 'Скрыть наложение' : 'Показать наложение';
   $('tolerance-hide').setAttribute('aria-pressed', String(visible));
-  $('tolerance-list').hidden = !report?.probes.length;
+  $('tolerance-remove').hidden = !overlay;
+}
 
-  if (tolerance.renderedReport !== report) {
-    tolerance.renderedReport = report;
-    tolerance.buttons = [...(report?.probes ?? []), ...(report?.omission ? [report.omission] : [])].map(probe => {
-      const item = document.createElement('li'), button = document.createElement('button');
-      const title = document.createElement('strong'), detail = document.createElement('span');
-      title.textContent = `${probeLabel(probe)} · ${probeOutcome(probe)}`;
-      detail.textContent = [
-        probe.omit && probe.status === 'safe' ? '' : probe.message,
-        Number.isFinite(probe.minimumIntervalMs) && !probe.botCompatible
-          ? `Интервал ${number(probe.minimumIntervalMs, 3)} мс · короче минимума поиска (100 мс)` : '',
-      ].filter(Boolean).join(' · ');
-      button.append(title);
-      if (detail.textContent) button.append(detail);
-      button.type = 'button';
-      button.dataset.status = probe.status;
-      button.addEventListener('click', () => previewTolerance(probe));
-      item.append(button);
-      return { item, button, probe };
-    });
-    $('tolerance-list').replaceChildren(...tolerance.buttons.map(({ item }) => item));
-  }
-  updateToleranceControls();
+function selectedSingleProbe() {
+  const { selected, report, cells } = tolerance;
+  if (selected !== 'omit') return cells?.get(selected);
+  const omission = report?.omission;
+  return omission ? { ...omission, computed: omission.endTime !== null } : null;
 }
 
 async function checkTolerance(input) {
   if (!canCheckTolerance() || !state.route.result.inputs.includes(input)) return;
+  clearAnalysisTarget();
   clearSingleTolerance();
   hidePairTolerance();
   draw();
@@ -578,11 +629,11 @@ async function checkTolerance(input) {
   }
 }
 
-async function previewTolerance(probe) {
+async function previewTolerance() {
   const { snapshot } = tolerance;
-  if (!canCheckTolerance() || !snapshot || !tolerance.buttons.some(row => row.probe === probe)
+  const probe = selectedSingleProbe();
+  if (!canCheckTolerance() || !snapshot || !probe?.computed || probe.status === 'invalid'
     || !toleranceRequests.matches(snapshot, toleranceContext())) return;
-  if (probe === tolerance.selected) { removeToleranceOverlay(); return; }
   const ticket = toleranceRequests.start('preview', snapshot);
   ticket.probe = probe;
   tolerance.error = '';
@@ -593,7 +644,7 @@ async function previewTolerance(probe) {
     if (!current()) return;
     const overlay = toleranceOverlay(preview, probe);
     if (!overlay) throw new Error('Ответ не совпал с выбранной пробой.');
-    Object.assign(tolerance, { selected: probe, overlay, visible: true });
+    Object.assign(tolerance, { overlay, visible: true });
     showOverlayOnMap(overlay);
   } catch (error) {
     if (current()) tolerance.error = `Траектория не построена. ${error.message}`;
@@ -603,10 +654,10 @@ async function previewTolerance(probe) {
   }
 }
 
-function removeToleranceOverlay() {
+function removeToleranceOverlay(render = true) {
   if (toleranceRequests.pending?.kind === 'preview') toleranceRequests.cancel();
-  Object.assign(tolerance, { selected: null, overlay: null, error: '' });
-  renderToleranceResults();
+  Object.assign(tolerance, { overlay: null, error: '' });
+  if (render) renderToleranceResults();
   draw();
 }
 
@@ -619,47 +670,75 @@ function showOverlayOnMap(overlay) {
   draw();
 }
 
-const pairStatuses = {
+const matrixStatuses = {
   safe: ['●', 'Безопасно на участке'], collision: ['×', 'Удар'], rejected: ['!', 'Команда отклонена'],
   invalid: ['–', 'Недопустимое время'], incomplete: ['≈', 'Манёвр не завершён'], pending: ['·', 'Ожидает расчёта'],
 };
-const pairOffsetLabel = offset => `${offset < 0 ? '−' : offset > 0 ? '+' : ''}${Math.abs(offset)}`;
-const pairCellStatus = cell => cell?.computed ? cell.status : 'pending';
+const offsetLabel = offset => `${offset < 0 ? '−' : offset > 0 ? '+' : ''}${Math.abs(offset)}`;
+const matrixCellStatus = cell => cell?.computed ? cell.status : 'pending';
+const matrixCellDescription = ({ firstOffsetMs, secondOffsetMs }) =>
+  `${firstOffsetMs === 0 && secondOffsetMs === 0 ? 'Исходная точка · ' : ''}X ${offsetLabel(firstOffsetMs)} мс · Y ${offsetLabel(secondOffsetMs)} мс`;
+
+function renderMatrixCounts(prefix, counts, minimum = 0) {
+  const shares = matrixShares(counts);
+  const percent = share => share === null ? '—' : `${number(share * 100, 1)}%`;
+  const countShare = (count, share) => `${number(count)}/${number(counts.total)} (${percent(share)})`;
+  message(`${prefix}-progress`, `Проверено клеток ${number(counts.computed)} из ${number(counts.total)}. Ожидают ${number(counts.pending)}.`);
+  for (const status of ['safe', 'collision', 'invalid']) message(`${prefix}-count-${status}`, countShare(counts[status], shares[status]));
+  message(`${prefix}-other-counts`, `Команда отклонена ${number(counts.rejected)} · манёвр не завершён ${number(counts.incomplete)}.`);
+  const ratio = counts.safe + counts.collision ? `${number(counts.collision)}:${number(counts.safe)}` : '—';
+  message(`${prefix}-ratio`, `Красные : зелёные — ${ratio}. Среди красных и зелёных · красные ${percent(shares.collisionAmongDecided)} · зелёные ${percent(shares.safeAmongDecided)}.`);
+  if (prefix === 'pair') message('pair-filter-counts', `Темпу ≥${number(minimum)} мс соответствуют ${number(counts.matching)} проверенных клеток · зелёных ${number(counts.matchingSafe)} · красных ${number(counts.matchingCollision)}.`, minimum > 0);
+}
 
 function hidePairTolerance() {
   Object.assign(pairTolerance, { snapshot: null, grid: null, overlay: null, status: '', previewStatus: '' });
   renderPairTolerance();
 }
 
-function makePairMatrix(span) {
-  const columns = pairAxis(span), rows = [...columns].reverse();
+function makeMatrix(table, buttons, columns, rows) {
   const head = document.createElement('thead'), body = document.createElement('tbody');
   const header = head.insertRow();
   const coordinate = document.createElement('th');
-  coordinate.textContent = 'мс';
+  coordinate.textContent = 'Y ╲ X';
   header.append(coordinate);
   for (const offset of columns) {
     const label = document.createElement('th');
-    label.scope = 'col'; label.textContent = pairOffsetLabel(offset);
+    label.scope = 'col'; label.textContent = offsetLabel(offset);
     header.append(label);
   }
-  pairTolerance.buttons.clear();
+  buttons.clear();
   for (const secondOffsetMs of rows) {
     const row = body.insertRow();
     const label = document.createElement('th');
-    label.scope = 'row'; label.textContent = pairOffsetLabel(secondOffsetMs);
+    label.scope = 'row'; label.textContent = offsetLabel(secondOffsetMs);
     row.append(label);
     for (const firstOffsetMs of columns) {
       const offset = { firstOffsetMs, secondOffsetMs }, key = pairKey(offset);
       const button = document.createElement('button');
-      button.type = 'button'; button.dataset.pairCell = key;
+      button.type = 'button'; button.dataset.matrixCell = key;
+      if (table.id === 'pair-matrix') button.dataset.pairCell = key;
       if (key === '0,0') button.dataset.source = '';
       row.insertCell().append(button);
-      pairTolerance.buttons.set(key, { button, offset });
+      buttons.set(key, { button, offset });
     }
   }
-  $('pair-matrix').replaceChildren(head, body);
-  pairTolerance.renderedSpan = span;
+  table.replaceChildren(head, body);
+}
+
+function renderMatrixCells(buttons, cells, selected, minimum = 0) {
+  for (const [key, { button, offset }] of buttons) {
+    const cell = cells.get(key), status = matrixCellStatus(cell);
+    const [symbol, label] = matrixStatuses[status];
+    button.dataset.status = status;
+    button.classList.toggle('pair-filtered', !!cell?.computed && !matchesPairMinimum(cell, minimum));
+    button.textContent = symbol;
+    const description = `${matrixCellDescription(offset)} · ${label}`;
+    button.title = description;
+    button.setAttribute('aria-label', description);
+    button.setAttribute('aria-pressed', String(key === selected));
+    button.tabIndex = key === selected ? 0 : -1;
+  }
 }
 
 function updatePairCellSelection() {
@@ -667,9 +746,8 @@ function updatePairCellSelection() {
   const cell = grid.cells.get(selected), offset = buttons.get(selected).offset;
   const pairPending = !!toleranceRequests.pending;
   const interval = cell?.pairIntervalMs, minimum = cell?.minimumIntervalMs;
-  const first = pairOffsetLabel(offset.firstOffsetMs), second = pairOffsetLabel(offset.secondOffsetMs);
-  const outcome = pairStatuses[pairCellStatus(cell)][1];
-  message('pair-selected', [selected === '0,0' && 'Исходная точка', `X ${first} мс · Y ${second} мс`, outcome,
+  const outcome = matrixStatuses[matrixCellStatus(cell)][1];
+  message('pair-selected', [matrixCellDescription(offset), outcome,
     Number.isFinite(interval) && `между нажатиями пары ${number(interval, 2)} мс`,
     Number.isFinite(minimum) && `минимум между соседними командами ${number(minimum, 2)} мс`, cell?.message]
     .filter(Boolean).join(' · '));
@@ -691,7 +769,8 @@ function renderPairTolerance() {
   if (!snapshot) return;
   const statusLine = grid.unsupported || pairTolerance.status;
   message('pair-status', statusLine, !!statusLine);
-  $('pair-title').textContent = `Допуск пары №${snapshot.firstInputIndex + 1}–${snapshot.firstInputIndex + 2}`;
+  const pairLabel = `Допуск пары №${snapshot.firstInputIndex + 1}–${snapshot.firstInputIndex + 2}`;
+  $('pair-title').textContent = snapshot.activatedInputIndex === null ? pairLabel : `${pairLabel} · выбрано нажатие №${snapshot.activatedInputIndex + 1}`;
   $('pair-cancel').hidden = !pending?.kind.startsWith('pair-');
   $('pair-workspace').hidden = !!grid.unsupported;
   if (grid.unsupported) { updateToleranceControls(); return; }
@@ -700,45 +779,36 @@ function renderPairTolerance() {
   const minimum = Number($('pair-filter').value), counts = grid.counts(minimum);
   $('pair-continue').hidden = counts.computed === counts.total;
   $('pair-continue').disabled = !!pending;
-  const computed = `Проверено ${number(counts.computed)} из ${number(counts.total)} клеток.`;
-  const safe = `Безопасных точек ${number(counts.safe)}.`;
-  const matching = minimum ? ` С минимумом от ${number(minimum)} мс — ${number(counts.matchingSafe)}.` : '';
-  message('pair-counts', `${computed} ${safe}${matching}`);
-  if (pairTolerance.renderedSpan !== grid.spanMs) makePairMatrix(grid.spanMs);
-  for (const [key, { button, offset }] of pairTolerance.buttons) {
-    const cell = grid.cells.get(key), status = pairCellStatus(cell);
-    const [symbol, label] = pairStatuses[status];
-    button.dataset.status = status;
-    button.classList.toggle('pair-filtered', !!cell?.computed && !matchesPairMinimum(cell, minimum));
-    button.textContent = symbol;
-    const description = `${key === '0,0' ? 'Исходная точка · ' : ''}X ${pairOffsetLabel(offset.firstOffsetMs)} мс · Y ${pairOffsetLabel(offset.secondOffsetMs)} мс · ${label}`;
-    button.title = description;
-    button.setAttribute('aria-label', description);
-    button.setAttribute('aria-pressed', String(key === selected));
-    button.tabIndex = key === selected ? 0 : -1;
+  renderMatrixCounts('pair', counts, minimum);
+  if (pairTolerance.renderedSpan !== grid.spanMs) {
+    const axis = pairAxis(grid.spanMs);
+    makeMatrix($('pair-matrix'), pairTolerance.buttons, axis, [...axis].reverse());
+    pairTolerance.renderedSpan = grid.spanMs;
   }
+  renderMatrixCells(pairTolerance.buttons, grid.cells, selected, minimum);
   updatePairCellSelection();
   updateToleranceControls();
 }
 
-function selectPairCell(key) {
-  const item = pairTolerance.buttons.get(key);
-  if (!item || !pairTolerance.grid) return;
-  const previous = pairTolerance.buttons.get(pairTolerance.selected)?.button;
+function selectMatrixCell(review, key, removeOverlay, updateSelection) {
+  const item = review.buttons.get(key);
+  if (!item) return;
+  const previous = (review.buttons.get(review.selected) ?? review.buttons.get('0,0'))?.button;
   if (previous) { previous.tabIndex = -1; previous.setAttribute('aria-pressed', 'false'); }
   item.button.tabIndex = 0;
   item.button.setAttribute('aria-pressed', 'true');
   item.button.focus({ preventScroll: true });
-  if (key !== pairTolerance.selected) removePairOverlay(false);
-  pairTolerance.selected = key;
-  updatePairCellSelection();
+  if (key !== review.selected) removeOverlay(false);
+  review.selected = key;
+  updateSelection();
 }
 
-function checkPair(input) {
+function checkPair(input, activatedInputIndex = null) {
   if (!canCheckTolerance() || !state.route.result.inputs.includes(input) || !state.route.result.inputs[input.index + 1]) return;
+  clearAnalysisTarget();
   clearSingleTolerance();
   hidePairTolerance();
-  const snapshot = { ...toleranceContext(), firstInputIndex: input.index };
+  const snapshot = { ...toleranceContext(), firstInputIndex: input.index, activatedInputIndex };
   const cached = pairTolerance.cache.get(input.index);
   const grid = cached && toleranceRequests.matches(cached.snapshot, snapshot) ? cached.grid : new PairGrid();
   pairTolerance.cache.set(input.index, { snapshot, grid });
@@ -815,6 +885,15 @@ function removePairOverlay(render = true) {
   draw();
 }
 
+function selectTrajectoryCommand(input, alignment = .4) {
+  if (!state.route.result?.inputs.includes(input) || !Number.isFinite(input.time)) return;
+  if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
+  stopPlayback();
+  if (Number.isFinite(input.x)) state.left = input.x - dimensions().width * alignment;
+  seek(input.time, false);
+  analyzeCommand(input);
+}
+
 const tempoKinds = { critical: 'критический', normal: 'нормальный', easy: 'простой', unknown: 'время неизвестно' };
 const commandStatuses = { ignored: 'отклонено', unreached: 'не достигнуто' };
 
@@ -844,13 +923,8 @@ function updateTempoReport() {
       interval?.ms != null ? `${number(interval.ms, 3)} мс · ${tempoKinds[interval.kind]}` : interval && tempoKinds[interval.kind],
       commandStatuses[input.status],
     ].filter(Boolean).join(' · ');
-    jump.title = input.reason || 'Перейти к команде на схеме';
-    jump.addEventListener('click', () => {
-      if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
-      stopPlayback();
-      state.left = input.x - dimensions().width * .4;
-      seek(input.time, false);
-    });
+    jump.title = input.reason || 'Перейти к команде и проверить допуск';
+    jump.addEventListener('click', () => selectTrajectoryCommand(input));
     check.dataset.checkTolerance = '';
     check.textContent = 'Проверить допуск';
     check.setAttribute('aria-label', `Проверить допуск нажатия №${input.index + 1}`);
@@ -1146,17 +1220,26 @@ function drawReplay(parent, overview = false) {
     else parent.append(el('circle', { cx: input.x, cy: input.y, r: radius, class: classes, 'aria-hidden': 'true' }));
   }
   if (!overview) {
-    for (const input of replay.inputs) {
-      if (input.x === null || input.y === null) continue;
-      const g = objectGroup(parent, `Нажатие №${input.index + 1} · ${input.status === 'accepted' ? 'принято' : 'отклонено'} · ${number(input.time, 3)} с · X ${number(input.x, 2)}${input.reason ? ` · ${input.reason}` : ''}`);
-      if (input.status === 'accepted') g.append(el('circle', { cx: input.x, cy: input.y, r: 3.5, class: 'press-marker' }));
-      else { line(g, input.x - 4, input.y - 4, input.x + 4, input.y + 4, { stroke: '#b6757d', 'stroke-width': 1.8 }); line(g, input.x + 4, input.y - 4, input.x - 4, input.y + 4, { stroke: '#b6757d', 'stroke-width': 1.8 }); }
-    }
     for (const event of replay.events) {
       if (event.type !== 'collision') continue;
       const g = objectGroup(parent, `Удар · ${event.id} · ${number(event.time, 3)} с`);
       g.append(el('circle', { cx: event.x, cy: event.y, r: 6, fill: '#c37f8430', stroke: '#bc777d', 'stroke-width': 1.3 }));
     }
+  }
+  for (const input of replay.inputs) {
+    if (input.x === null || input.y === null) continue;
+    const description = `Нажатие №${input.index + 1} · ${input.status === 'accepted' ? 'принято' : 'отклонено'} · ${number(input.time, 3)} с · X ${number(input.x, 2)}${input.reason ? ` · ${input.reason}` : ''}`;
+    const marker = el('g', { class: 'object route-command', tabindex: 0, role: 'button', 'aria-label': `${description} · Проверить допуск`,
+      'data-route-input': input.index });
+    marker.append(el('title', {}, description));
+    const radius = overview ? 2.5 : 3.5;
+    marker.append(el('circle', { cx: input.x, cy: input.y, r: radius, class: 'route-command-hit' }));
+    if (input.status === 'accepted') marker.append(el('circle', { cx: input.x, cy: input.y, r: radius, class: 'press-marker' }));
+    else {
+      line(marker, input.x - radius, input.y - radius, input.x + radius, input.y + radius, { stroke: '#b6757d', 'stroke-width': 1.8 });
+      line(marker, input.x + radius, input.y - radius, input.x - radius, input.y + radius, { stroke: '#b6757d', 'stroke-width': 1.8 });
+    }
+    parent.append(marker);
   }
   const s = sampleAt(replay.samples, state.time);
   if (s) {
@@ -1185,8 +1268,10 @@ function draw() {
   const overview = $('overview'); overview.replaceChildren();
   overview.setAttribute('viewBox', `-20 -8 ${state.analysis.length + 50} ${state.analysis.corridorHeight + 16}`);
   overview.setAttribute('preserveAspectRatio', 'none');
-  drawGeometry(overview, true); drawReplay(overview, true);
-  overview.append(el('rect', { x: Math.max(0, v.left), y: 0, width: Math.min(v.width, state.analysis.length), height: state.analysis.corridorHeight, class: 'view-window' }));
+  drawGeometry(overview, true);
+  overview.append(el('rect', { x: Math.max(0, v.left), y: 0, width: Math.min(v.width, state.analysis.length),
+    height: state.analysis.corridorHeight, class: 'view-window', 'pointer-events': 'none', 'aria-hidden': 'true' }));
+  drawReplay(overview, true);
   drawStartMarker(overview);
   $('pan').value = String(clamp((v.left + 20) / Math.max(1, state.analysis.length + 50 - v.width) * 1000, 0, 1000));
   $('view-start').textContent = number(Math.max(0, v.left));
@@ -1451,7 +1536,11 @@ function showResult(result, provenance) {
   for (const event of events) {
     const button = document.createElement('button'); button.className = `event-chip ${event.css}`; button.textContent = event.label;
     button.title = event.detail; button.disabled = event.time === null;
-    button.addEventListener('click', () => { stopPlayback(); seek(event.time); if (event.x !== null) { state.left = event.x - dimensions().width * .4; draw(); } });
+    button.addEventListener('click', () => {
+      if (event.type === 'input') { selectTrajectoryCommand(result.inputs[event.index]); return; }
+      stopPlayback(); seek(event.time);
+      if (event.x !== null) { state.left = event.x - dimensions().width * .4; draw(); }
+    });
     $('events').append(button);
   }
   if (!events.length) $('events').textContent = 'Нажатий и событий нет.';
@@ -1597,12 +1686,27 @@ $('toggle-route').addEventListener('click', () => {
   state.route.toggle(); updateRouteControls(); draw();
 });
 $('landing-threshold').addEventListener('input', () => { updateLandingReport(); draw(); });
+$('analysis-target-cancel').addEventListener('click', () => {
+  if (toleranceRequests.pending?.kind !== 'target') return;
+  toleranceRequests.cancel();
+  targetAnalysis.status = `Проверка нажатия №${targetAnalysis.input.index + 1} отменена.`;
+  renderAnalysisTarget();
+  updateToleranceControls();
+});
+$('tolerance-preview').addEventListener('click', previewTolerance);
+$('tolerance-omission').addEventListener('click', () => {
+  const previous = tolerance.buttons.get(tolerance.selected)?.button;
+  previous?.setAttribute('aria-pressed', 'false');
+  removeToleranceOverlay(false);
+  tolerance.selected = 'omit';
+  previewTolerance();
+});
 $('tolerance-hide').addEventListener('click', () => {
   tolerance.visible = !tolerance.visible;
   renderToleranceResults();
   draw();
 });
-$('tolerance-remove').addEventListener('click', removeToleranceOverlay);
+$('tolerance-remove').addEventListener('click', () => removeToleranceOverlay());
 $('tolerance-cancel').addEventListener('click', () => {
   const pending = toleranceRequests.pending;
   if (!pending) return;
@@ -1633,21 +1737,27 @@ $('pair-cancel').addEventListener('click', () => {
   else pairTolerance.previewStatus = 'Построение траектории остановлено.';
   renderPairTolerance();
 });
-$('pair-matrix').addEventListener('click', event => {
-  const key = event.target.closest('[data-pair-cell]')?.dataset.pairCell;
-  if (key) selectPairCell(key);
-});
-$('pair-matrix').addEventListener('keydown', event => {
+function bindMatrixSelection(table, review, removeOverlay, updateSelection) {
   const moves = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
-  const move = moves[event.key], key = event.target.dataset.pairCell;
-  if (!move || !key) return;
-  event.preventDefault();
-  const { firstOffsetMs, secondOffsetMs } = pairTolerance.buttons.get(key).offset;
-  const next = pairKey({ firstOffsetMs: firstOffsetMs + TOLERANCE_STEP_MS * move[0],
-    secondOffsetMs: secondOffsetMs + TOLERANCE_STEP_MS * move[1] });
-  selectPairCell(next);
-  pairTolerance.buttons.get(next)?.button.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-});
+  const select = key => selectMatrixCell(review, key, removeOverlay, updateSelection);
+  table.addEventListener('click', event => {
+    const key = event.target.closest('[data-matrix-cell]')?.dataset.matrixCell;
+    if (key) select(key);
+  });
+  table.addEventListener('keydown', event => {
+    const move = moves[event.key], key = event.target.dataset.matrixCell;
+    if (!move || !key) return;
+    event.preventDefault();
+    const { firstOffsetMs, secondOffsetMs } = review.buttons.get(key).offset;
+    const next = pairKey({ firstOffsetMs: firstOffsetMs + TOLERANCE_STEP_MS * move[0],
+      secondOffsetMs: secondOffsetMs + TOLERANCE_STEP_MS * move[1] });
+    select(next);
+    review.buttons.get(next)?.button.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  });
+}
+bindMatrixSelection($('pair-matrix'), pairTolerance, removePairOverlay, updatePairCellSelection);
+bindMatrixSelection($('tolerance-matrix'), tolerance, removeToleranceOverlay, updateSingleCellSelection);
+$('tolerance-legend').append(document.querySelector('#pair-workspace .pair-legend').cloneNode(true));
 $('pair-preview').addEventListener('click', previewPair);
 $('pair-overlay-toggle').addEventListener('click', () => {
   pairTolerance.visible = !pairTolerance.visible;
@@ -1671,9 +1781,34 @@ $('overview').addEventListener('click', event => {
   if (!state.analysis) return;
   const overview = $('overview');
   if (state.pickingStart) { pickStart(event, overview, true); return; }
+  if (!state.addKind && !drag && !live && !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
+    && !spacePan && !objectEdit.dirty && !objectEdit.committing && state.route.visible && state.route.result) {
+    const transform = overview.getScreenCTM();
+    const activatedMarker = event.detail === 0 ? inputAtRouteMarker(event.target) : null;
+    const input = activatedMarker ?? (transform && nearestRouteInput(state.route.result.inputs, { x: event.clientX, y: event.clientY },
+      ({ x, y }) => new DOMPoint(x, y).matrixTransform(transform)));
+    if (input) { selectTrajectoryCommand(input, .5); return; }
+  }
   const box = overview.getBoundingClientRect();
   state.left = (event.clientX - box.left) / box.width * (state.analysis.length + 50) - 20 - dimensions().width / 2;
   draw();
+});
+function inputAtRouteMarker(target) {
+  const index = target.closest('[data-route-input]')?.dataset.routeInput;
+  return state.route.result?.inputs[index];
+}
+$('diagram').addEventListener('click', event => {
+  if (event.detail !== 0 || state.pickingStart || state.addKind) return;
+  const input = inputAtRouteMarker(event.target);
+  if (input && !objectEditBlocked()) selectTrajectoryCommand(input);
+});
+for (const id of ['overview', 'diagram']) $(id).addEventListener('keydown', event => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  const input = inputAtRouteMarker(event.target);
+  if (!input || state.pickingStart || state.addKind || objectEditBlocked()) return;
+  event.preventDefault();
+  selectTrajectoryCommand(input, id === 'overview' ? .5 : .4);
+  $(id).querySelector(`[data-route-input="${input.index}"]`)?.focus({ preventScroll: true });
 });
 $('diagram').addEventListener('wheel', event => { if (!state.analysis) return; event.preventDefault(); const box = $('diagram').getBoundingClientRect(); zoom(event.deltaY < 0 ? 1.12 : 1 / 1.12, (event.clientX - box.left) / box.width); }, { passive: false });
 function selectedObject(analysis = state.preview || state.analysis) {
@@ -1919,6 +2054,7 @@ function finishDrag(commit) {
   } else if (!gesture.active && gesture.description) $('object-detail').textContent = gesture.description;
   if (!commit && gesture.mode === 'pan') state.left = gesture.left;
   controls(); draw();
+  if (commit && !gesture.active && gesture.routeInput) selectTrajectoryCommand(gesture.routeInput);
 }
 $('diagram').addEventListener('pointerdown', event => {
   if (!state.analysis || event.button !== 0 || drag) return;
@@ -1931,6 +2067,7 @@ $('diagram').addEventListener('pointerdown', event => {
   const collection = handleElement?.dataset.collection || group?.dataset.collection;
   const id = handleElement?.dataset.id || group?.dataset.id;
   const mode = event.altKey || spacePan ? 'pan' : state.addKind ? 'add' : handleElement ? 'resize' : collection ? 'object' : 'pan';
+  const routeInput = mode === 'pan' && !event.altKey && !spacePan ? inputAtRouteMarker(event.target) : null;
   if (objectEditBlocked()) return;
   if (mode !== 'pan' && !state.valid) { notice('Для редактирования объектов сначала исправьте JSON и дождитесь проверки текущего текста.', true); return; }
   try {
@@ -1941,7 +2078,7 @@ $('diagram').addEventListener('pointerdown', event => {
     const clickedAnchor = collection === 'obstacles' && state.analysis.obstacles.find(o => o.id === id && anchorAllowed(o));
     const selectedAnchor = state.selection?.collection === 'obstacles' && state.analysis.obstacles.find(o => o.id === state.selection.id && anchorAllowed(o));
     drag = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, left: state.left, scale: view.scale,
-      mode, active: false, target, description: group?.getAttribute('aria-label'),
+      mode, active: false, target, description: group?.getAttribute('aria-label'), routeInput,
       handle: handleElement?.dataset.handle, handlePoint: mode === 'resize' ? getResizeHandles(state.analysis, target).find(h => h.id === handleElement.dataset.handle) : null,
       worldX: view.left + (event.clientX - box.left) / view.scale, worldY: view.top + (event.clientY - box.top) / view.scale,
       addKind: state.addKind, anchorId: clickedAnchor?.id || selectedAnchor?.id || null,
@@ -1982,7 +2119,7 @@ window.addEventListener('keydown', event => {
   if (event.key === 'Escape' && drag) { event.preventDefault(); if (drag.mode === 'add') state.addKind = null; finishDrag(false); return; }
   if (event.key === 'Escape' && state.addKind) { event.preventDefault(); state.addKind = null; controls(); draw(); notice('Добавление отменено.'); return; }
   if (event.key === 'Delete' && !event.target.closest('textarea,input,select,[contenteditable="true"]') && state.selection) { event.preventDefault(); removeSelection(); return; }
-  if (event.code === 'Space' && !event.target.closest('textarea,input,select,button')) { spacePan = true; event.preventDefault(); $('diagram').classList.add('pan-ready'); }
+  if (event.code === 'Space' && !event.defaultPrevented && !event.target.closest('textarea,input,select,button')) { spacePan = true; event.preventDefault(); $('diagram').classList.add('pan-ready'); }
 });
 window.addEventListener('keyup', event => { if (event.code === 'Space') { spacePan = false; $('diagram').classList.remove('pan-ready'); } });
 window.addEventListener('blur', () => { spacePan = false; $('diagram').classList.remove('pan-ready'); finishDrag(false); });

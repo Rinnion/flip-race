@@ -10,7 +10,7 @@
 <body>
 <header class="page-header">
   <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><div class="eyebrow">FLIP RACE / ИНСТРУМЕНТЫ АВТОРА</div><h1>Мастерская трасс</h1></div></div>
-  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.18</span>
+  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.19</span>
 </header>
 
 <main>
@@ -105,17 +105,45 @@
           <summary>Нажатия и проверка допуска</summary>
           <ul id="tempo-commands"></ul>
         </details>
+        <div id="analysis-target" class="tolerance-panel" hidden>
+          <p id="analysis-target-status" role="status"></p>
+          <button id="analysis-target-cancel" type="button" hidden>Отменить расчёт</button>
+        </div>
         <section id="tolerance-panel" class="tolerance-panel" aria-labelledby="tolerance-title" hidden>
           <h3 id="tolerance-title"></h3>
-          <p>13 отдельных сдвигов от −300 до +300 мс через 50 мс и одна проба пропуска. Время других нажатий сохраняется. Результат относится к участку манёвра.</p>
           <p id="tolerance-baseline" hidden></p>
           <p id="tolerance-status" role="status" hidden></p>
-          <p id="tolerance-safe-summary" hidden></p>
-          <ul id="tolerance-list" hidden></ul>
-          <p id="tolerance-preview-status" role="status" hidden></p>
           <button id="tolerance-cancel" type="button" hidden>Отменить расчёт</button>
-          <button id="tolerance-hide" type="button" aria-pressed="true" aria-controls="overview diagram" hidden>Скрыть наложение</button>
-          <button id="tolerance-remove" type="button" hidden>Убрать пробу</button>
+          <div id="tolerance-workspace">
+            <p id="tolerance-axes"><strong>X</strong> — сдвиг команды, <strong>Y</strong> — фиксирован на 0. Шаг 50 мс. Время остальных команд сохраняется. Выбор стрелками или нажатием.</p>
+            <div id="tolerance-counts" class="matrix-counts">
+              <p id="tolerance-progress" role="status"></p>
+              <dl class="matrix-shares">
+                <div data-status="safe"><dt>Зелёные · безопасно на участке</dt><dd id="tolerance-count-safe"></dd></div>
+                <div data-status="collision"><dt>Красные · удар</dt><dd id="tolerance-count-collision"></dd></div>
+                <div data-status="invalid"><dt>Серые · недопустимое время</dt><dd id="tolerance-count-invalid"></dd></div>
+              </dl>
+              <p id="tolerance-other-counts"></p>
+              <p id="tolerance-ratio"></p>
+            </div>
+            <p id="tolerance-safe-summary" hidden></p>
+            <div class="pair-scroll">
+              <table id="tolerance-matrix" class="tolerance-matrix" aria-label="Матрица сдвигов одного нажатия" aria-describedby="tolerance-axes"></table>
+            </div>
+            <div id="tolerance-legend"></div>
+            <p id="tolerance-selected" role="status"></p>
+            <p id="tolerance-preview-status" role="status" hidden></p>
+            <div class="pair-controls">
+              <button id="tolerance-preview" type="button" aria-controls="overview diagram" disabled>Показать траекторию клетки</button>
+              <button id="tolerance-hide" type="button" aria-pressed="true" aria-controls="overview diagram" hidden>Скрыть наложение</button>
+              <button id="tolerance-remove" type="button" hidden>Убрать наложение</button>
+            </div>
+            <div class="pair-controls omission-probe">
+              <button id="tolerance-omission" type="button" aria-pressed="false" aria-controls="overview diagram" disabled>Показать пробу пропуска</button>
+              <span id="tolerance-omission-status"></span>
+              <span class="muted">Проба вне матрицы</span>
+            </div>
+          </div>
         </section>
         <section id="pair-panel" class="tolerance-panel pair-panel" aria-labelledby="pair-title" hidden>
           <h3 id="pair-title"></h3>
@@ -131,10 +159,20 @@
               </select></label>
               <button id="pair-continue" type="button">Продолжить расчёт</button>
             </div>
-            <p id="pair-counts" role="status"></p>
-            <p id="pair-axes"><strong>X</strong> — сдвиг первой команды, <strong>Y</strong> — второй. Шаг 50 мс. Выбор стрелками или нажатием.</p>
+            <p id="pair-axes"><strong>X</strong> — сдвиг первой команды, <strong>Y</strong> — второй. Шаг 50 мс. Время остальных команд сохраняется. Выбор стрелками или нажатием.</p>
+            <div id="pair-counts" class="matrix-counts">
+              <p id="pair-progress" role="status"></p>
+              <dl class="matrix-shares">
+                <div data-status="safe"><dt>Зелёные · безопасно на участке</dt><dd id="pair-count-safe"></dd></div>
+                <div data-status="collision"><dt>Красные · удар</dt><dd id="pair-count-collision"></dd></div>
+                <div data-status="invalid"><dt>Серые · недопустимое время</dt><dd id="pair-count-invalid"></dd></div>
+              </dl>
+              <p id="pair-other-counts"></p>
+              <p id="pair-ratio"></p>
+              <p id="pair-filter-counts" hidden></p>
+            </div>
             <div class="pair-scroll">
-              <table id="pair-matrix" aria-label="Матрица сдвигов пары" aria-describedby="pair-axes"></table>
+              <table id="pair-matrix" class="tolerance-matrix" aria-label="Матрица сдвигов пары" aria-describedby="pair-axes"></table>
             </div>
             <ul class="pair-legend" aria-label="Статусы клеток">
               <li><i data-status="safe" aria-hidden="true">●</i> Безопасно на участке</li>
@@ -155,7 +193,7 @@
           </div>
         </section>
       </section>
-      <div class="overview-label"><span>ОБЗОР ВСЕЙ ТРАССЫ <span class="muted">· X сжат</span></span><span>Нажмите, чтобы перейти</span></div><svg id="overview" class="overview" role="img" aria-label="Обзор трассы и видимая область"></svg><div class="diagram-tools"><span class="detail-label">ДЕТАЛИ <span class="muted">· одинаковый масштаб X и Y</span></span><div><button id="zoom-out" class="square" aria-label="Уменьшить">−</button><button id="zoom-in" class="square" aria-label="Увеличить">+</button><button id="fit">По высоте</button></div></div><div class="diagram-wrap"><svg id="diagram" tabindex="0" role="img" aria-label="Точная схема трассы. Перетаскивайте объекты для редактирования. Пустое место или Alt и Space для обзора."></svg><div id="empty-diagram" class="empty">Ваша трасса появится здесь<span>Камни, обе части ворот, награды и траектория</span></div></div><div class="pan-row"><span id="view-start">0</span><input id="pan" type="range" min="0" max="1000" value="0" aria-label="Положение на трассе"><span id="view-end">0 ед.</span></div><div class="legend" aria-label="Легенда"><span><i class="key stone"></i>Камень</span><span><i class="key gate"></i>Ворота</span><span><i class="key hidden-stone"></i>Скрытый</span><span><i class="key bonus"></i>Бонус</span><span><i class="key trap"></i>Ловушка</span><span><i class="key coin"></i>Монета</span><span><i class="key landing"></i>Посадка</span><span><i class="key finish">»</i>Рывок</span></div><p class="diagram-hint" id="object-detail">Объект — перемещение · пустое место / Alt / Space — обзор · колесо — масштаб · Esc — отмена</p>
+      <div class="overview-label"><span>ОБЗОР ВСЕЙ ТРАССЫ <span class="muted">· X сжат</span></span><span>Нажмите, чтобы перейти</span></div><svg id="overview" class="overview" role="group" aria-label="Обзор трассы и видимая область"></svg><div class="diagram-tools"><span class="detail-label">ДЕТАЛИ <span class="muted">· одинаковый масштаб X и Y</span></span><div><button id="zoom-out" class="square" aria-label="Уменьшить">−</button><button id="zoom-in" class="square" aria-label="Увеличить">+</button><button id="fit">По высоте</button></div></div><div class="diagram-wrap"><svg id="diagram" tabindex="0" role="group" aria-label="Точная схема трассы. Перетаскивайте объекты для редактирования. Пустое место или Alt и Space для обзора."></svg><div id="empty-diagram" class="empty">Ваша трасса появится здесь<span>Камни, обе части ворот, награды и траектория</span></div></div><div class="pan-row"><span id="view-start">0</span><input id="pan" type="range" min="0" max="1000" value="0" aria-label="Положение на трассе"><span id="view-end">0 ед.</span></div><div class="legend" aria-label="Легенда"><span><i class="key stone"></i>Камень</span><span><i class="key gate"></i>Ворота</span><span><i class="key hidden-stone"></i>Скрытый</span><span><i class="key bonus"></i>Бонус</span><span><i class="key trap"></i>Ловушка</span><span><i class="key coin"></i>Монета</span><span><i class="key landing"></i>Посадка</span><span><i class="key finish">»</i>Рывок</span></div><p class="diagram-hint" id="object-detail">Объект — перемещение · пустое место / Alt / Space — обзор · колесо — масштаб · Esc — отмена</p>
       <p id="add-help" class="placement-help" role="status">Нажмите кнопку палитры, затем место на подробной схеме. Сейчас доступны навигация и редактирование объектов.</p>
       <div class="live-start-tools">
   <div class="live-start-controls">
@@ -306,7 +344,7 @@
     <p id="live-save-help" class="muted" role="status">Поставьте заезд на паузу или завершите его, чтобы сохранить нажатия.</p>
   </div>
 </section>
-<footer><strong>Мастерская v0.5.18</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
+<footer><strong>Мастерская v0.5.19</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
 </main>
 </body>
 </html>

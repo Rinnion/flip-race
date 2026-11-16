@@ -225,17 +225,11 @@
 .tempo-legend span::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 4px; border: 1.5px solid currentColor; border-radius: 50% }
 .tempo-legend .tempo-critical::before { border-radius: 1px }
 .tempo-gap-values, #tempo-commands { max-height: 124px; overflow: auto }
-#tempo-commands, #tolerance-list { list-style: none; display: grid; gap: 4px; padding: 2px 4px; margin: 0 0 5px }
+#tempo-commands { list-style: none; display: grid; gap: 4px; padding: 2px 4px; margin: 0 0 5px }
 #tempo-commands li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px }
 .tempo-report button { min-height: 28px; padding: 4px 7px; font-size: 11px; white-space: normal }
 #tempo-commands :is([data-check-tolerance], [data-check-pair]) { color: var(--sage); border-color: #bdcdbd }
 .tolerance-panel { margin-top: 7px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: #f7f8f1 }
-#tolerance-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); max-height: 212px; overflow: auto }
-#tolerance-list button { width: 100%; height: 100%; text-align: left }
-#tolerance-list button[data-status="safe"] strong { color: #3b6a43 }
-#tolerance-list button[data-status="collision"] strong, #tolerance-list button[data-status="rejected"] strong { color: #a22e46 }
-#tolerance-list span { display: block; margin-top: 2px; font-weight: 400; color: var(--muted) }
-#tolerance-list button[aria-pressed="true"] { border-color: #507f82; background: #e0efee }
 .tempo-mark { fill: none; stroke: var(--tempo-color); stroke-width: 2; vector-effect: non-scaling-stroke; pointer-events: none }
 .tolerance-trajectory { fill: none; stroke: #207b81; stroke-width: 2.4; stroke-dasharray: 7 4; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none }
 .tolerance-trajectory[data-status="collision"], .tolerance-trajectory[data-status="rejected"] { stroke: #a22e46 }
@@ -244,24 +238,24 @@
 .pair-controls label { display: flex; align-items: center; gap: 4px }
 .pair-controls select { min-height: 28px; padding: 2px 5px; font-size: 11px }
 .pair-scroll { position: relative; overflow: auto; max-height: 320px; border: 1px solid var(--line); border-radius: 6px; background: var(--cream) }
-#pair-matrix { border-spacing: 2px; width: max-content; font-variant-numeric: tabular-nums }
-#pair-matrix :is(th, td) { padding: 0; text-align: center }
-#pair-matrix th { min-width: 31px; font-size: 9px; background: var(--cream); white-space: nowrap }
-#pair-matrix thead th { position: sticky; top: 0; z-index: 2 }
-#pair-matrix th:first-child { position: sticky; left: 0; z-index: 1 }
-#pair-matrix thead th:first-child { z-index: 3 }
-#pair-matrix button { display: block; min-width: 31px; min-height: 26px; padding: 0 2px; border-radius: 4px; color: var(--pair-ink); background: var(--pair-fill); font-size: 12px }
-#pair-matrix button:hover { filter: brightness(.91) }
-.pair-legend [data-status="safe"], #pair-matrix [data-status="safe"] { --pair-ink: #2a6244; --pair-fill: #d9eee0 }
-.pair-legend [data-status="collision"], #pair-matrix [data-status="collision"] { --pair-ink: #902e42; --pair-fill: #f8dfe2 }
-.pair-legend [data-status="rejected"], #pair-matrix [data-status="rejected"] { --pair-ink: #8d5909; --pair-fill: #faecd1 }
-.pair-legend [data-status="invalid"], #pair-matrix [data-status="invalid"] { --pair-ink: #596660; --pair-fill: #e9ece7 }
-.pair-legend [data-status="incomplete"], #pair-matrix [data-status="incomplete"] { --pair-ink: #4f4b83; --pair-fill: #eeebf9 }
-.pair-legend [data-status="pending"], #pair-matrix [data-status="pending"] { --pair-ink: #67726c; --pair-fill: #fffef9; border-style: dashed }
-#pair-matrix button.pair-filtered { filter: grayscale(1); opacity: .42 }
-#pair-matrix button[data-source], .pair-source-key { border: 2px solid #62517b }
-#pair-matrix button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px #223e40 }
-#pair-matrix button:focus-visible { outline-offset: -3px }
+.tolerance-matrix { border-spacing: 2px; width: max-content; font-variant-numeric: tabular-nums }
+.tolerance-matrix :is(th, td) { padding: 0; text-align: center }
+.tolerance-matrix th { min-width: 31px; font-size: 9px; background: var(--cream); white-space: nowrap }
+.tolerance-matrix thead th { position: sticky; top: 0; z-index: 2 }
+.tolerance-matrix th:first-child { position: sticky; left: 0; z-index: 1 }
+.tolerance-matrix thead th:first-child { z-index: 3 }
+.tolerance-matrix button { display: block; min-width: 31px; min-height: 26px; padding: 0 2px; border-radius: 4px; color: var(--pair-ink); background: var(--pair-fill); font-size: 12px }
+.tolerance-matrix button:hover { background: var(--pair-fill); filter: brightness(.91) }
+:is(.pair-legend, .matrix-shares) [data-status="safe"], .tolerance-matrix [data-status="safe"] { --pair-ink: #2a6244; --pair-fill: #d9eee0 }
+:is(.pair-legend, .matrix-shares) [data-status="collision"], .tolerance-matrix [data-status="collision"] { --pair-ink: #902e42; --pair-fill: #f8dfe2 }
+:is(.pair-legend, .matrix-shares) [data-status="rejected"], .tolerance-matrix [data-status="rejected"] { --pair-ink: #8d5909; --pair-fill: #faecd1 }
+:is(.pair-legend, .matrix-shares) [data-status="invalid"], .tolerance-matrix [data-status="invalid"] { --pair-ink: #596660; --pair-fill: #e9ece7 }
+:is(.pair-legend, .matrix-shares) [data-status="incomplete"], .tolerance-matrix [data-status="incomplete"] { --pair-ink: #4f4b83; --pair-fill: #eeebf9 }
+:is(.pair-legend, .matrix-shares) [data-status="pending"], .tolerance-matrix [data-status="pending"] { --pair-ink: #67726c; --pair-fill: #fffef9; border-style: dashed }
+.tolerance-matrix button.pair-filtered { opacity: .52 }
+.tolerance-matrix button[data-source], .pair-source-key { border: 2px solid #62517b }
+.tolerance-matrix button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px #223e40 }
+.tolerance-matrix button:focus-visible { outline-offset: -3px }
 .pair-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 9px; margin: 5px 0; padding: 0 }
 .pair-legend i { display: inline-grid; place-items: center; min-width: 15px; height: 15px; border-radius: 3px; color: var(--pair-ink); background: var(--pair-fill); font-style: normal; font-weight: 700 }
 .landing-interval-mark { pointer-events: none }
@@ -382,3 +376,12 @@
   #source-panel .editor-meta #filename { flex-basis: 100% }
   .workshop-bottom summary span { display: block; margin: 4px 0 0 12px }
 }
+
+.matrix-counts { margin: 5px 0 8px }
+.matrix-shares { display: flex; flex-wrap: wrap; gap: 4px 7px; margin: 4px 0 }
+.matrix-shares > div { display: flex; gap: 5px; padding: 4px 6px; border-radius: 4px; color: var(--pair-ink); background: var(--pair-fill) }
+.matrix-shares dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums }
+.omission-probe { border-top: 1px solid var(--line); padding-top: 6px }
+.route-command-hit { fill: transparent; stroke: transparent; stroke-width: 9px; vector-effect: non-scaling-stroke; pointer-events: all }
+.route-command:focus-visible .route-command-hit { stroke: #5a3e78; stroke-width: 2px }
+.runner, .runner-aura { pointer-events: none }

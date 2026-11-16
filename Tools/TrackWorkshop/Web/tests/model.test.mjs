@@ -1,7 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseInputs, distanceSeedFromReplay, sampleAt, viewMetrics, rewardAppearance, patchNumbers, translateObject, Revision, ReplayRoute } from '../model.mjs';
-import { parseLandingThreshold, shortLandingIntervals } from '../model.mjs';
+import { nearestRouteInput, parseLandingThreshold, shortLandingIntervals } from '../model.mjs';
+
+test('overview finds the nearest reached command in screen pixels despite subpixel markers', () => {
+  const first = { x: 1012.5, y: 200, time: 1.65 };
+  const second = { x: 1062.5, y: 200, time: 4.15 };
+  const third = { x: 1112.5, y: 200, time: 4.25 };
+  const unreachable = { x: 1100, y: 200, time: null };
+  const inputs = [first, second, third, unreachable];
+  const project = ({ x, y }) => ({ x: x * .08 + 410, y: y * .21 + 318 });
+  const hit = (x, y = 360) => nearestRouteInput(inputs, { x, y }, project);
+  assert.equal(hit(499, 359), third);
+  assert.equal(hit(497), second);
+  assert.equal(hit(499, 366), third);
+  assert.equal(hit(499, 366.01), null);
+  assert.equal(hit(520), null);
+});
 
 test('landing threshold accepts an integer in range and rejects empty, fractional and invalid values', () => {
   for (const value of ['0', '200', '2000']) assert.equal(parseLandingThreshold(value), Number(value));

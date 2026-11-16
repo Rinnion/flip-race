@@ -1,4 +1,4 @@
-import { clipToleranceSamples, inputToleranceRequest, TOLERANCE_STEP_MS } from './input-tolerance.mjs';
+import { clipToleranceSamples, inputToleranceRequest, matrixCounts, TOLERANCE_STEP_MS } from './input-tolerance.mjs';
 
 export const PAIR_SPANS = [300, 600, 1000];
 const statuses = ['safe', 'collision', 'rejected', 'invalid', 'incomplete'];
@@ -47,11 +47,7 @@ export class PairGrid {
   }
 
   counts(minimum) {
-    const offsets = this.offsets;
-    const computed = offsets.map(offset => this.cells.get(pairKey(offset))).filter(cell => cell?.computed);
-    return { total: offsets.length, computed: computed.length,
-      safe: computed.filter(cell => cell.status === 'safe').length,
-      matchingSafe: computed.filter(cell => cell.status === 'safe' && matchesPairMinimum(cell, minimum)).length };
+    return matrixCounts(this.offsets.map(offset => this.cells.get(pairKey(offset))), cell => matchesPairMinimum(cell, minimum));
   }
 }
 

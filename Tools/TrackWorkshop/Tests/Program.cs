@@ -22,6 +22,13 @@ if (args.SequenceEqual(["--pair-tolerance"]))
         new JsonSerializerOptions { WriteIndented = true }));
     return;
 }
+if (args.SequenceEqual(["--analysis-target"]))
+{
+    var analysisTarget = AnalysisTargetChecks.Run(service, Need);
+    Console.WriteLine(JsonSerializer.Serialize(new { passed = true, assertions, analysisTarget },
+        new JsonSerializerOptions { WriteIndented = true }));
+    return;
+}
 void Near(double a,double b,string message)=>Need(Math.Abs(a-b)<1e-7,message+" "+a+" vs "+b);
 void Rejected(Action action,string message){bool rejected=false;try{action();}catch(ArgumentException){rejected=true;}Need(rejected,message);}
 JsonNode Analyze(string json)=>JsonSerializer.SerializeToNode(service.Analyze(new(json)),new JsonSerializerOptions{PropertyNamingPolicy=JsonNamingPolicy.CamelCase});
@@ -157,8 +164,9 @@ var settingsEvidence = RunSettingsChecks.Run(service, Need);
 var laterPressEvidence = LaterPressChecks.Run(service, Need);
 var inputToleranceEvidence = InputToleranceChecks.Run(service, Need);
 var pairToleranceEvidence = PairToleranceChecks.Run(service, Need);
+var analysisTargetEvidence = AnalysisTargetChecks.Run(service, Need);
 Console.WriteLine(JsonSerializer.Serialize(new{passed=true,assertions,tracks=8,pairs,
     source="accepted-14e22ba and v581-rethink-fast-core frozen times",
     landingScenarios=new{floor,atContact=sameTime.LandingIntervals.Single(),fast=fast.LandingIntervals.Single(),stone=stoneReplay.LandingIntervals.Single()},
-    searchEvidence,settingsEvidence,laterPressEvidence,inputToleranceEvidence,pairToleranceEvidence,
+    searchEvidence,settingsEvidence,laterPressEvidence,inputToleranceEvidence,pairToleranceEvidence,analysisTargetEvidence,
     evidence},new JsonSerializerOptions{WriteIndented=true}));

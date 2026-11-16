@@ -3,9 +3,9 @@ import { sameRunSettings } from './run-settings.mjs';
 
 export const TOLERANCE_STEP_MS = 50;
 export const TOLERANCE_SPAN_MS = 300;
-const offsets = Array.from({ length: TOLERANCE_SPAN_MS * 2 / TOLERANCE_STEP_MS + 1 }, (_, index) =>
+export const TOLERANCE_OFFSETS_MS = Array.from({ length: TOLERANCE_SPAN_MS * 2 / TOLERANCE_STEP_MS + 1 }, (_, index) =>
   -TOLERANCE_SPAN_MS + index * TOLERANCE_STEP_MS);
-export const TOLERANCE_PROBE_COUNT = offsets.length + 1;
+export const TOLERANCE_PROBE_COUNT = TOLERANCE_OFFSETS_MS.length + 1;
 const statuses = new Set(['safe', 'collision', 'rejected', 'invalid', 'incomplete']);
 const epsilon = 1e-7;
 const nearTime = (left, right) => Number.isFinite(left) && Number.isFinite(right) && Math.abs(left - right) <= epsilon;
@@ -17,6 +17,67 @@ export function inputToleranceRequest({ provenance, result, inputIndex }, probe)
     inputs: inputs.map(input => input.value), inputIndex };
   if (probe) Object.assign(request, { offsetMs: probe.offsetMs, omit: probe.omit });
   return request;
+}
+
+export function isMatchingAnalysisTarget(target, { inputIndex, result }) {
+  if (target?.inputIndex !== inputIndex || typeof target.message !== 'string') return false;
+  if (target.kind === 'pair') {
+    const first = target.firstInputIndex;
+    return Number.isInteger(first) && first >= 0 && first + 1 < result.inputs.length
+      && (inputIndex === first || inputIndex === first + 1);
+  }
+  return (target.kind === 'single' || (target.kind === 'unsupported' && target.message.length > 0))
+    && target.firstInputIndex === null;
+}
+
+export async function resolveAnalysisTarget(requests, snapshot, context, post) {
+  const ticket = requests.start('target', snapshot);
+  const current = () => requests.current(ticket, context());
+  try {
+    const target = await post('/api/analysis-target', inputToleranceRequest(snapshot), ticket.abort.signal);
+    if (!current()) return null;
+    if (!isMatchingAnalysisTarget(target, snapshot)) throw new Error('Ответ не совпал с выбранной командой.');
+    return target;
+  } catch (error) {
+    if (current()) throw error;
+    return null;
+  } finally {
+    requests.finish(ticket);
+  }
+}
+
+export function matrixCounts(cells, matches = () => true) {
+  const counts = { total: cells.length, computed: 0, safe: 0, collision: 0, invalid: 0, rejected: 0, incomplete: 0,
+    pending: 0, matching: 0, matchingSafe: 0, matchingCollision: 0 };
+  for (const cell of cells) {
+    if (!cell?.computed) {
+      counts.pending++;
+      continue;
+    }
+    counts.computed++;
+    counts[cell.status]++;
+    if (matches(cell)) {
+      counts.matching++;
+      if (cell.status === 'safe') counts.matchingSafe++;
+      if (cell.status === 'collision') counts.matchingCollision++;
+    }
+  }
+  return counts;
+}
+
+export function matrixShares({ total, safe, collision, invalid }) {
+  const adjudicated = safe + collision;
+  return { safe: total ? safe / total : null, collision: total ? collision / total : null,
+    invalid: total ? invalid / total : null, safeAmongDecided: adjudicated ? safe / adjudicated : null,
+    collisionAmongDecided: adjudicated ? collision / adjudicated : null };
+}
+
+export function singleMatrixCells(report) {
+  return TOLERANCE_OFFSETS_MS.map((firstOffsetMs, index) => {
+    const probe = report?.probes[index];
+    const computed = report?.status === 'ready' && !!probe && (probe.status !== 'incomplete' || probe.endTime !== null);
+    return { ...probe, firstOffsetMs, secondOffsetMs: 0, computed };
+  });
 }
 
 function matchesProbe(probe, offsetMs, omit) {
@@ -37,7 +98,8 @@ export function isMatchingToleranceReport(report, snapshot) {
 
   if (report.status === 'unsupported' && !report.probes.length)
     return report.baseline === null && report.omission === null && report.attempted === 0;
-  if (report.probes.length !== offsets.length || !offsets.every((offset, index) => matchesProbe(report.probes[index], offset, false))
+  if (report.probes.length !== TOLERANCE_OFFSETS_MS.length
+    || !TOLERANCE_OFFSETS_MS.every((offset, index) => matchesProbe(report.probes[index], offset, false))
     || !matchesProbe(report.omission, null, true)) return false;
   const probes = [...report.probes, report.omission];
   if (report.status === 'unsupported') return report.baseline === null && !report.complete

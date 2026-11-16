@@ -40,7 +40,8 @@ test('expansion and retries preserve all computed outcomes, including invalid an
   const [invalid, physical, timeout] = original;
   grid.apply({ status: 'ready', baseline, cells: [cell(invalid, 'invalid', blank), cell(physical, 'incomplete'),
     cell(timeout, 'incomplete', { ...blank, computed: false }), cell(zero)] });
-  assert.deepEqual(grid.counts(0), { total: 169, computed: 3, safe: 1, matchingSafe: 1 });
+  assert.deepEqual(grid.counts(0), { total: 169, computed: 3, safe: 1, collision: 0, invalid: 1, rejected: 0, incomplete: 1,
+    pending: 166, matching: 3, matchingSafe: 1, matchingCollision: 0 });
   const pending = new Set(grid.missing().map(pairKey));
   for (const offset of [invalid, physical, zero]) assert.equal(pending.has(pairKey(offset)), false);
   assert.equal(pending.has(pairKey(timeout)), true);
@@ -66,7 +67,7 @@ test('tempo filters compare the shortest adjacent interval and leave cached stat
   assert.equal(matchesPairMinimum(shortExternal, 150), false);
   assert.equal(matchesPairMinimum(minimum250, 250), true);
   assert.equal(matchesPairMinimum({ ...minimum250, computed: false }, 250), false);
-  assert.deepEqual(grid.counts(250), { total: 169, computed: 2, safe: 2, matchingSafe: 1 });
+  assert.deepEqual(grid.counts(250), { ...grid.counts(0), matching: 1, matchingSafe: 1, matchingCollision: 0 });
   assert.equal(grid.cells.get(pairKey(zero)), shortExternal);
 });
 

@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ReplayRoute } from '../model.mjs';
-import { ToleranceRequestState, adjacentSafeProbes, inputToleranceRequest, isMatchingToleranceReport, toleranceOverlay } from '../input-tolerance.mjs';
+import { ToleranceRequestState, adjacentSafeProbes, inputToleranceRequest, isMatchingToleranceReport, matrixCounts,
+  matrixShares, resolveAnalysisTarget, singleMatrixCells, toleranceOverlay } from '../input-tolerance.mjs';
 import { DEFAULT_SURFACE_RUN_SETTINGS } from '../run-settings.mjs';
 
 const settings = { profile: 'Chosen', warningDuration: 0.8, surfaceRunSettings: DEFAULT_SURFACE_RUN_SETTINGS };
@@ -95,4 +96,68 @@ test('report and preview ignore stale source, settings and tape, and never apply
   state.cancel();
   assert.equal(replacement.abort.signal.aborted, true);
   assert.equal(state.current(replacement, snapshot), false);
+});
+
+test('single matrix has 13 shift cells at Y=0, excludes omission and separates unfinished from pending', () => {
+  const partial = { ...report, probes: report.probes.map(value => value.offsetMs === 300
+    ? { ...value, inputTime: null, startTime: null, endTime: null, endX: null } : value) };
+  const cells = singleMatrixCells(partial);
+  assert.deepEqual(cells.map(({ firstOffsetMs, secondOffsetMs }) => [firstOffsetMs, secondOffsetMs]),
+    Array.from({ length: 13 }, (_, index) => [index * 50 - 300, 0]));
+  const counts = matrixCounts(cells);
+  assert.deepEqual(counts, { total: 13, computed: 12, safe: 7, collision: 1, invalid: 1, rejected: 1, incomplete: 2,
+    pending: 1, matching: 12, matchingSafe: 7, matchingCollision: 1 });
+  assert.deepEqual(matrixShares(counts), { safe: 7 / 13, collision: 1 / 13, invalid: 1 / 13,
+    safeAmongDecided: 7 / 8, collisionAmongDecided: 1 / 8 });
+  const pending = matrixCounts(singleMatrixCells(null));
+  assert.equal(pending.pending, 13);
+  assert.deepEqual(matrixShares(pending), { safe: 0, collision: 0, invalid: 0, safeAmongDecided: null, collisionAmongDecided: null });
+  assert.deepEqual(matrixShares(matrixCounts([])), { safe: null, collision: null, invalid: null,
+    safeAmongDecided: null, collisionAmongDecided: null });
+});
+
+test('target resolver uses replay identity, accepts either neighboring pair and rejects a different command', async () => {
+  const state = new ToleranceRequestState();
+  const response = (kind, firstInputIndex = null, message = '') => ({ kind, firstInputIndex, inputIndex: 1, message });
+  const resolve = target => resolveAnalysisTarget(state, snapshot, () => snapshot, (url, request, signal) => {
+    assert.equal(url, '/api/analysis-target');
+    assert.deepEqual(request, inputToleranceRequest(snapshot));
+    assert.equal(signal.aborted, false);
+    return target;
+  });
+  for (const target of [response('single'), response('pair', 0), response('pair', 1), response('unsupported', null, 'Команда отклонена.')]) {
+    assert.equal(await resolve(target), target);
+    assert.equal(state.pending, null);
+  }
+  for (const target of [response('pair', -1), response('pair', 2), response('single', 0), response('unsupported'),
+    { ...response('pair', 1), inputIndex: 2 }]) {
+    await assert.rejects(resolve(target), /Ответ не совпал/);
+  }
+});
+
+test('new selection, edit and cancellation discard late target replies before matrix dispatch', async () => {
+  const state = new ToleranceRequestState();
+  let context = snapshot;
+  const pending = [];
+  const post = (_url, request, signal) => new Promise(resolve => pending.push({ request, signal, resolve }));
+  const select = selection => resolveAnalysisTarget(state, selection, () => context, post);
+  const a = select(snapshot);
+  const b = select({ ...snapshot, inputIndex: 2 });
+  const bTicket = state.pending;
+  assert.equal(pending[0].signal.aborted, true);
+  pending[0].resolve({ kind: 'pair', firstInputIndex: 0, inputIndex: 1, message: '' });
+  assert.equal(await a, null);
+  assert.equal(state.pending, bTicket);
+  pending[1].resolve({ kind: 'single', firstInputIndex: null, inputIndex: 2, message: '' });
+  assert.equal((await b).kind, 'single');
+  const edited = select(snapshot);
+  context = { ...snapshot, inputText: '[3]' };
+  pending[2].resolve({ kind: 'pair', firstInputIndex: 0, inputIndex: 1, message: '' });
+  assert.equal(await edited, null);
+  context = snapshot;
+  const canceled = select(snapshot);
+  state.cancel();
+  assert.equal(pending[3].signal.aborted, true);
+  pending[3].resolve({ kind: 'single', firstInputIndex: null, inputIndex: 1, message: '' });
+  assert.equal(await canceled, null);
 });

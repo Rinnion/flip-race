@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "version": "0.5.19",
+  "base": "http://127.0.0.1:4232",
+  "cases": [
+    {
+      "profile": "Chosen",
+      "enabled": false,
+      "bothEndpoints": "pair",
+      "separateFlights": "single",
+      "distance": "pair",
+      "unchanged": true
+    },
+    {
+      "profile": "Chosen",
+      "enabled": true,
+      "bothEndpoints": "pair",
+      "separateFlights": "single",
+      "distance": "pair",
+      "unchanged": true
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": false,
+      "bothEndpoints": "pair",
+      "separateFlights": "single",
+      "distance": "pair",
+      "unchanged": true
+    },
+    {
+      "profile": "FastFlip",
+      "enabled": true,
+      "bothEndpoints": "pair",
+      "separateFlights": "single",
+      "distance": "pair",
+      "unchanged": true
+    }
+  ],
+  "chain": [
+    {
+      "kind": "pair",
+      "inputIndex": 0,
+      "firstInputIndex": 0,
+      "message": ""
+    },
+    {
+      "kind": "pair",
+      "inputIndex": 1,
+      "firstInputIndex": 0,
+      "message": ""
+    },
+    {
+      "kind": "pair",
+      "inputIndex": 2,
+      "firstInputIndex": 1,
+      "message": ""
+    }
+  ],
+  "rejected": {
+    "kind": "unsupported",
+    "inputIndex": 2,
+    "firstInputIndex": null,
+    "message": "Исходная команда не принята: Повтор в воздухе недоступен."
+  },
+  "unreached": {
+    "kind": "unsupported",
+    "inputIndex": 0,
+    "firstInputIndex": null,
+    "message": "Заезд закончился до исполнения выбранной команды."
+  },
+  "rethink": [
+    {
+      "kind": "single",
+      "inputIndex": 0,
+      "firstInputIndex": null,
+      "message": ""
+    },
+    {
+      "kind": "pair",
+      "inputIndex": 1,
+      "firstInputIndex": 1,
+      "message": ""
+    },
+    {
+      "kind": "pair",
+      "inputIndex": 2,
+      "firstInputIndex": 1,
+      "message": ""
+    }
+  ]
+}
