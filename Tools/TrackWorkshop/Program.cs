@@ -14,7 +14,7 @@ using var policy=new ServerPolicy(deployment);
 using var live=new LiveSocket(deployment);
 app.Use((HttpContext context,RequestDelegate next)=>policy.InvokeAsync(context,next));
 app.UseWebSockets();
-app.MapGet("/healthz",()=>new{status="ok",version="0.5.20"});
+app.MapGet("/healthz",()=>new{status="ok",version="0.5.21"});
 app.MapGet("/api/catalog",()=>new{entries=service.Catalog()});
 app.MapGet("/api/catalog/{id}",(string id)=>service.CatalogJson(id) is string json?Results.Ok(new{json}):Results.NotFound(new{error="Unknown catalog ID."}));
 app.MapPost("/api/analyze",(AnalyzeRequest request)=>service.Analyze(request));
@@ -36,6 +36,10 @@ app.MapPost(RouteSearchStream.Path,(RouteSearchRequest request,HttpContext conte
     =>RouteSearchStream.HandleAsync(service,request,context,app.Logger));
 app.MapPost("/api/analysis-target",async(AnalysisTargetRequest request,HttpContext context)
     =>await Task.Run(()=>AnalysisTarget.Resolve(request,context.RequestAborted),context.RequestAborted));
+app.MapPost(ToleranceBatchStream.Path,(ReplayRequest request,HttpContext context)
+    =>ToleranceBatchStream.HandleAsync(request,context,app.Logger));
+app.MapPost(ToleranceBatchStream.CheckpointPath,async(ToleranceBatchCheckpointRequest request,HttpContext context)
+    =>await Task.Run(()=>ToleranceBatch.SaveCheckpoint(request,context.RequestAborted),context.RequestAborted));
 app.MapGet("/api/live",live.HandleAsync);
 // Only explicit Web assets are served. No generic project file provider.
 foreach(var pair in new[]{("/","index.html","text/html; charset=utf-8"),("/index.html","index.html","text/html; charset=utf-8"),("/app.js","app.js","text/javascript; charset=utf-8"),("/model.mjs","model.mjs","text/javascript; charset=utf-8"),("/edit-model.mjs","edit-model.mjs","text/javascript; charset=utf-8"),("/draft.mjs","draft.mjs","text/javascript; charset=utf-8"),("/object-source.mjs","object-source.mjs","text/javascript; charset=utf-8"),("/live.mjs","live.mjs","text/javascript; charset=utf-8"),("/styles.css","styles.css","text/css; charset=utf-8")}){
@@ -49,4 +53,5 @@ app.MapGet("/later-press.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirec
 app.MapGet("/input-tolerance.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","input-tolerance.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/input-tempo.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","input-tempo.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/pair-tolerance.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","pair-tolerance.mjs"),"text/javascript; charset=utf-8"));
+app.MapGet("/tolerance-batch.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","tolerance-batch.mjs"),"text/javascript; charset=utf-8"));
 app.Run();

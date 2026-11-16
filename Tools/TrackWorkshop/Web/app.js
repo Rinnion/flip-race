@@ -6,8 +6,10 @@ import { selectedObjectSource, replaceObjectSource } from './object-source.mjs';
 import { LiveConnection } from './live.mjs';
 import { RouteResults, restoreRouteInputs, isMatchingReplay, routeSearchTiming } from './route-analysis.mjs';
 import { readSearchResponse } from './search-progress.mjs';
-import { ToleranceRequestState, TOLERANCE_OFFSETS_MS, TOLERANCE_STEP_MS, adjacentSafeProbes, inputToleranceRequest,
-  isMatchingToleranceReport, matrixCounts, matrixShares, resolveAnalysisTarget, singleMatrixCells, toleranceOverlay } from './input-tolerance.mjs';
+import { ToleranceRequestState, TOLERANCE_SPAN_MS, TOLERANCE_STEP_MS, adjacentSafeProbes, inputToleranceRequest,
+  isMatchingToleranceReport, matrixCounts, matrixShares, resolveAnalysisTarget, singleMatrixCells, toleranceOffsets,
+  toleranceOverlay } from './input-tolerance.mjs';
+import { BATCH_SPAN_MS, batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor } from './tolerance-batch.mjs';
 import { inputTempo } from './input-tempo.mjs';
 import { PAIR_SPANS, PairGrid, matchesPairMinimum, matchesPairReport, pairAxis, pairKey, pairOverlay, pairRequest } from './pair-tolerance.mjs';
 import { captureRunSettings, DEFAULT_SURFACE_RUN_SETTINGS, sameRunSettings, storedRunSettings } from './run-settings.mjs';
@@ -27,10 +29,12 @@ let replaySource = null;
 let tempo = null;
 const toleranceRequests = new ToleranceRequestState();
 const targetAnalysis = { input: null, status: '' };
-const tolerance = { snapshot: null, report: null, selected: '0,0', overlay: null, visible: true, error: '', buttons: new Map() };
+const tolerance = { snapshot: null, report: null, selected: '0,0', overlay: null, visible: true, error: '', buttons: new Map(), renderedSpan: null };
 const pairTolerance = { cache: new Map(), snapshot: null, grid: null, selected: '0,0', buttons: new Map(),
   overlay: null, visible: true, status: '', previewStatus: '', renderedSpan: null };
 const pairBatchSize = 128;
+const toleranceBatch = { pending: null, batch: null, checkpoints: [], status: '', rows: [], rendered: null,
+  view: null, selected: null, coverage: new WeakMap() };
 let draftStorage, pendingDraft = null, draftBlocked = false, draftTimer = null, draftTouched = false;
 const preparation = { revision: 0, abort: null, pending: false, result: null, sourceId: null };
 const routeSearch = { pending: null, status: '', progress: null, buttons: [] };
@@ -197,7 +201,8 @@ async function api(path, data, signal) {
   const response = await fetch(path, data === undefined ? { signal } : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), signal });
   let body;
   try { body = await response.json(); } catch { throw new Error('Сервер вернул неожиданный ответ. Проверьте, что запущена мастерская.'); }
-  if (!response.ok) throw new Error(body.error || `Ошибка сервера: ${response.status}`);
+  if (!response.ok) throw Object.assign(new Error(body.error || `Ошибка сервера: ${response.status}`),
+    { status: response.status, retryAfter: response.headers.get('Retry-After') });
   return body;
 }
 function badge(text, kind) { $('validation-badge').textContent = text; $('validation-badge').className = `badge ${kind}`; }
@@ -285,7 +290,7 @@ function updateRouteSearch() {
   const saved = state.valid ? state.analysis.routeAnalysis : null;
   const analysis = saved?.analysis ?? null;
   const settings = currentRunSettings();
-  $('route-search').disabled = !available || replayPending !== null;
+  $('route-search').disabled = !available || replayPending !== null || !!toleranceBatch.pending;
   $('route-search-cancel').hidden = !pending;
   message('route-search-settings', `${runSettingsLabel(pending?.settings ?? settings)} · старт с начала.`, state.valid);
   if (routeResults.update(analysis, settings)) {
@@ -339,7 +344,7 @@ function cancelRouteSearch(reason = '') {
 }
 
 async function searchRoutes() {
-  if (!canUseRouteSearch() || replayPending !== null) return;
+  if (!canUseRouteSearch() || replayPending !== null || toleranceBatch.pending) return;
   resetTolerance();
   const source = $('json').value, revision = state.analysisRevision.value, loadRevision = state.loadRevision;
   const request = { settings: currentRunSettings(), abort: new AbortController() };
@@ -430,6 +435,7 @@ function controls() {
   $('download').textContent = a?.staleReferences && state.valid ? '↓ Скачать без эталонов' : '↓ Скачать JSON';
   updateLiveStartControls();
   updateToleranceControls();
+  renderBatchResults();
 }
 function updateRouteControls() {
   const route = state.route, toggle = $('toggle-route');
@@ -439,6 +445,7 @@ function updateRouteControls() {
   updateLandingReport();
   renderToleranceResults();
   renderPairTolerance();
+  renderBatchResults();
 }
 function landingThreshold() {
   const input = $('landing-threshold');
@@ -455,7 +462,284 @@ function canSelectAnalysisTarget() {
     && replaySource?.editorSource === $('json').value && sameRunSettings(state.route.result, currentRunSettings());
 }
 
-function canCheckTolerance() { return canSelectAnalysisTarget() && !toleranceRequests.pending; }
+function canCheckTolerance() { return canSelectAnalysisTarget() && !toleranceRequests.pending && !toleranceBatch.pending; }
+
+function canUseBatchReplay() {
+  return state.valid && !state.moving && !objectEdit.dirty && !objectEdit.committing && loadingTrack === null
+    && !live && !state.route.stale && !!state.route.result?.inputs.length
+    && replaySource?.source === $('json').value && replaySource.editorSource === replaySource.source
+    && sameRunSettings(state.route.result, currentRunSettings());
+}
+
+function coverageOf(target) {
+  if (!toleranceBatch.coverage.has(target)) toleranceBatch.coverage.set(target, batchCoverage(target));
+  return toleranceBatch.coverage.get(target);
+}
+
+function batchTargetLabel(target) {
+  return target.kind === 'pair' ? `Пара №${target.firstInputIndex + 1}–${target.firstInputIndex + 2}`
+    : `Нажатие №${target.inputIndex + 1}`;
+}
+
+function batchCoverageLabel(target) {
+  const coverage = coverageOf(target);
+  if (coverage.state === 'unsupported') return 'Недоступно';
+  if (coverage.state === 'pending') return coverage.computed
+    ? `Клетки: ${number(coverage.computed)} из ${number(coverage.total)}` : 'Ожидает расчёта';
+  return `${number(100 * coverage.fraction, 2)}% · ${number(coverage.safe)} / ${number(coverage.total)}`;
+}
+
+function canOpenBatchTarget(target) {
+  const coverage = coverageOf(target);
+  return coverage.state !== 'pending' || coverage.computed > 0;
+}
+
+function renderBatchResults() {
+  const pending = toleranceBatch.pending, usable = canUseBatchReplay(), result = state.route.result;
+  const persisted = state.analysis?.toleranceBatch;
+  const saved = persisted?.status === 'ready' && matchesBatchReplay(persisted.batch, result) ? persisted.batch : null;
+  const canRestore = state.valid && persisted?.status === 'ready' && !pending && (!usable || !saved);
+  const batch = usable ? toleranceBatch.batch ?? saved : null;
+  toleranceBatch.view = batch;
+  $('batch-start').disabled = !usable || !canCheckTolerance() || !!pending || !!batch?.complete;
+  $('batch-start').textContent = batch && !batch.complete ? 'Продолжить анализ' : 'Рассчитать все матрицы';
+  $('batch-restore').hidden = !canRestore;
+  $('batch-restore').disabled = !canUseRouteSearch() || !!replayPending;
+  $('batch-cancel').hidden = pending?.phase !== 'running';
+  $('batch-results').hidden = !batch?.targets.length;
+  $('batch-progress').hidden = !pending || !batch;
+  if (pending && batch) {
+    const total = batch.targets.length;
+    const finished = pending.completed ?? batch.targets.filter(target => coverageOf(target).state !== 'pending').length;
+    $('batch-progress-bar').max = total || 1;
+    $('batch-progress-bar').value = finished;
+    message('batch-progress-label', `${number(total ? 100 * finished / total : 0)}% · ${number(finished)} из ${number(total)} манёвров`);
+  }
+  const savedStatus = saved?.complete
+    ? 'Матрицы из JSON совпадают с этим прохождением.'
+    : 'В JSON есть частичный расчёт для этого прохождения.';
+  const persistenceStatus = {
+    stale: 'Сохранённые матрицы устарели из-за изменения трассы или правил расчёта.',
+    invalid: 'Сохранённые матрицы не удалось прочитать.',
+    unsupported: 'Эта версия сохранённых матриц не поддерживается.',
+  }[persisted?.status];
+  const status = !usable ? (canRestore ? 'В JSON есть сохранённое прохождение с матрицами.'
+    : state.valid && persistenceStatus || 'Постройте траекторию с нажатиями для текущей карты и настроек.')
+    : toleranceBatch.status || (saved ? savedStatus : persisted?.status === 'ready'
+      ? 'Матрицы в JSON относятся к другому прохождению или настройкам.' : persistenceStatus
+        || 'Анализ использует выбранную траекторию и её настройки.');
+  message('batch-status', status);
+
+  if (toleranceBatch.rendered !== batch) {
+    toleranceBatch.rendered = batch;
+    toleranceBatch.rows = (batch?.targets ?? []).map((_, index) => {
+      const item = document.createElement('li'), button = document.createElement('button');
+      const label = document.createElement('span'), summary = document.createElement('strong');
+      button.type = 'button';
+      button.append(label, summary); item.append(button);
+      button.addEventListener('click', () => openBatchTarget(toleranceBatch.view?.targets[index]));
+      return { item, button, label, summary };
+    });
+    $('batch-list').replaceChildren(...toleranceBatch.rows.map(row => row.item));
+  }
+  for (const [index, row] of toleranceBatch.rows.entries()) {
+    const target = batch.targets[index], coverage = coverageOf(target);
+    row.label.textContent = batchTargetLabel(target);
+    row.summary.textContent = batchCoverageLabel(target);
+    row.button.disabled = !!pending || !canOpenBatchTarget(target) || !canSelectAnalysisTarget();
+    row.button.setAttribute('aria-pressed', String(toleranceBatch.selected === index));
+    row.button.dataset.state = coverage.state;
+    if (coverage.state === 'ready') row.button.style.setProperty('--batch-tone', toleranceColor(coverage.fraction));
+    else row.button.style.removeProperty('--batch-tone');
+  }
+}
+
+function restoreBatchReplay() {
+  const saved = state.analysis?.toleranceBatch;
+  if (saved?.status !== 'ready' || !canUseRouteSearch() || replayPending || toleranceBatch.pending) return;
+  const { axis, inputs } = saved.batch;
+  restoreRunSettings(storedRunSettings(saved.batch));
+  $('axis').value = axis;
+  $('inputs').value = JSON.stringify(inputs);
+  $('replay-panel').open = true;
+  invalidatePrepared();
+  scheduleDraft();
+  replay();
+}
+
+function resetBatch() {
+  toleranceBatch.pending?.abort.abort();
+  Object.assign(toleranceBatch, { pending: null, batch: null, checkpoints: [], status: '', selected: null, view: null });
+}
+
+function openBatchTarget(target, activatedIndex) {
+  if (!target || !canSelectAnalysisTarget() || toleranceBatch.pending || !canOpenBatchTarget(target)) return;
+  const result = state.route.result, input = result.inputs[activatedIndex ?? target.inputIndex];
+  toleranceRequests.cancel();
+  clearAnalysisTarget();
+  clearSingleTolerance();
+  hidePairTolerance();
+  toleranceBatch.selected = toleranceBatch.view.targets.indexOf(target);
+  renderBatchResults();
+  if (Number.isFinite(input.time)) {
+    if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
+    stopPlayback();
+    if (Number.isFinite(input.x)) state.left = input.x - dimensions().width * .4;
+    seek(input.time, false);
+  }
+  if (coverageOf(target).state === 'unsupported') {
+    Object.assign(targetAnalysis, { input, status: `${batchTargetLabel(target)}: допуск недоступен. ${target.message || target.single?.message || target.pair?.message || ''}` });
+    renderAnalysisTarget();
+    $('analysis-target').scrollIntoView({ block: 'nearest' });
+  } else if (target.kind === 'single') {
+    Object.assign(tolerance, { snapshot: { ...toleranceContext(), inputIndex: target.inputIndex, spanMs: BATCH_SPAN_MS },
+      report: target.single, visible: true });
+    renderToleranceResults();
+    $('tolerance-panel').scrollIntoView({ block: 'nearest' });
+  } else {
+    const snapshot = { ...toleranceContext(), firstInputIndex: target.firstInputIndex, activatedInputIndex: activatedIndex ?? null };
+    const grid = new PairGrid();
+    grid.spanMs = BATCH_SPAN_MS;
+    grid.apply(target.pair);
+    pairTolerance.cache.set(target.firstInputIndex, { snapshot, grid });
+    Object.assign(pairTolerance, { snapshot, grid, visible: true });
+    $('pair-filter').value = '0';
+    renderPairTolerance();
+    $('pair-panel').scrollIntoView({ block: 'nearest' });
+  }
+  draw();
+}
+
+function isCurrentBatch(ticket) {
+  return toleranceBatch.pending === ticket && !ticket.abort.signal.aborted
+    && toleranceRequests.matches(ticket.snapshot, toleranceContext());
+}
+
+function applyBatchSave({ canonicalJson, batch }) {
+  const source = $('json').value;
+  const parsed = typeof canonicalJson === 'string' && JSON.parse(canonicalJson.replace(/^\uFEFF/, ''));
+  if (!parsed?.workshopAnalysis?.toleranceBatch || parsed.track?.id !== state.analysis.id
+    || new TextEncoder().encode(canonicalJson).length > 2 * 1024 * 1024
+    || !matchesBatchReplay(batch, state.route.result)) throw new Error('Сервер не вернул подходящие матрицы и исходник.');
+  if (canonicalJson !== source) {
+    remember(source, canonicalJson, 'Обновлён анализ допуска', state.selection, state.selection);
+    $('json').value = canonicalJson;
+    replaySource = { ...replaySource, editorSource: canonicalJson, source: canonicalJson };
+    $('char-count').textContent = `${number(canonicalJson.length)} символов`;
+    scheduleDraft();
+  }
+  state.analysis.toleranceBatch = { status: 'ready', batch };
+  Object.assign(toleranceBatch, { batch, checkpoints: [], status: batch.complete
+    ? 'Матрицы записаны в JSON трассы. Скачайте JSON, чтобы сохранить их в файле.'
+    : batch.stopReason === 'storage-limit' ? 'Достигнут лимит JSON. Сохранена только часть матриц.'
+      : batch.stopReason === 'cancelled' ? 'Расчёт остановлен. Готовые матрицы записаны в JSON; анализ можно продолжить.'
+        : 'Достигнут лимит расчёта. Готовые матрицы записаны в JSON; анализ можно продолжить.' });
+}
+
+async function saveBatchCheckpoint(ticket) {
+  const signal = ticket.abort.signal;
+  const request = { ...batchRequest(ticket.snapshot), checkpoints: toleranceBatch.checkpoints };
+  for (let retry = 0; ; retry++) {
+    try {
+      return await api('/api/tolerance-batch/checkpoint', request, signal);
+    } catch (error) {
+      signal.throwIfAborted();
+      if (error.status !== 429 || retry >= 2) throw error;
+      // The cancelled stream may still be releasing its server request slot.
+      const waitMs = 1000 * clamp(Number(error.retryAfter) || 1, 1, 2);
+      await new Promise((resolve, reject) => {
+        const abort = () => { clearTimeout(timer); reject(signal.reason); };
+        const timer = setTimeout(() => { signal.removeEventListener('abort', abort); resolve(); }, waitMs);
+        signal.addEventListener('abort', abort, { once: true });
+      });
+    }
+  }
+}
+
+async function runBatch() {
+  if (!canUseBatchReplay() || !canCheckTolerance() || toleranceBatch.view?.complete) return;
+  resetTolerance();
+  toleranceBatch.selected = null;
+  const ticket = { snapshot: toleranceContext(), abort: new AbortController(), phase: 'running' };
+  toleranceBatch.pending = ticket;
+  toleranceBatch.status = 'Определяем манёвры выбранной траектории…';
+  controls();
+  try {
+    if (toleranceBatch.checkpoints.length) {
+      const saved = await saveBatchCheckpoint(ticket);
+      if (!isCurrentBatch(ticket)) return;
+      applyBatchSave(saved);
+      ticket.snapshot = toleranceContext();
+    }
+    const response = await fetch('/api/tolerance-batch/stream', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(batchRequest(ticket.snapshot)), signal: ticket.abort.signal,
+    });
+    const saved = await readBatchResponse(response, {
+      signal: ticket.abort.signal,
+      onPlan({ batch, checkpoints }) {
+        if (!isCurrentBatch(ticket)) return;
+        if (!matchesBatchReplay(batch, ticket.snapshot.result)) throw new Error('План не совпал с выбранной траекторией.');
+        Object.assign(toleranceBatch, { batch, checkpoints, status: 'Core рассчитывает матрицы. Готовые участки отмечаются на схеме.' });
+        renderBatchResults();
+        draw();
+      },
+      onProgress({ completed, total, target, checkpoint }) {
+        if (!isCurrentBatch(ticket)) return;
+        const batch = toleranceBatch.batch;
+        if (!batch || total !== batch.targets.length) throw new Error('Изменилось число манёвров в пакете.');
+        if (target) {
+          const index = batch.targets.findIndex(item => item.kind === target.kind && item.inputIndex === target.inputIndex);
+          if (index < 0) throw new Error('Манёвр не найден в плане анализа.');
+          batch.targets[index] = target;
+        }
+        if (checkpoint) {
+          const index = toleranceBatch.checkpoints.findIndex(item => item.inputIndex === checkpoint.inputIndex);
+          if (index < 0) toleranceBatch.checkpoints.push(checkpoint);
+          else toleranceBatch.checkpoints[index] = checkpoint;
+        }
+        ticket.completed = completed;
+        renderBatchResults();
+        draw();
+      },
+    });
+    if (isCurrentBatch(ticket)) applyBatchSave(saved);
+  } catch (error) {
+    if (isCurrentBatch(ticket)) toleranceBatch.status = `Анализ остановлен. ${error.message}`;
+  } finally {
+    if (toleranceBatch.pending === ticket) {
+      toleranceBatch.pending = null;
+      controls(); draw();
+    }
+  }
+}
+
+async function cancelBatch() {
+  const task = toleranceBatch.pending;
+  if (task?.phase !== 'running') return;
+  task.abort.abort();
+  toleranceBatch.pending = null;
+  if (!toleranceBatch.checkpoints.length) {
+    toleranceBatch.status = 'Расчёт остановлен.';
+    controls(); draw();
+    return;
+  }
+  const ticket = { ...task, phase: 'saving', abort: new AbortController() };
+  toleranceBatch.pending = ticket;
+  toleranceBatch.status = 'Записываем готовые матрицы в JSON…';
+  controls();
+  try {
+    const saved = await saveBatchCheckpoint(ticket);
+    if (isCurrentBatch(ticket)) applyBatchSave(saved);
+  } catch (error) {
+    if (isCurrentBatch(ticket)) toleranceBatch.status = `Расчёт остановлен; запись в JSON не выполнена. ${error.message}`;
+  } finally {
+    if (toleranceBatch.pending === ticket) {
+      toleranceBatch.pending = null;
+      controls(); draw();
+    }
+  }
+}
 
 function renderAnalysisTarget() {
   $('analysis-target').hidden = !targetAnalysis.status;
@@ -469,7 +753,12 @@ function clearAnalysisTarget() {
 }
 
 async function analyzeCommand(input) {
-  if (!canSelectAnalysisTarget() || !state.route.result.inputs.includes(input)) return;
+  if (!canSelectAnalysisTarget() || toleranceBatch.pending || !state.route.result.inputs.includes(input)) return;
+  const batch = toleranceBatch.view, storedTarget = batch?.targets[batch.commandTargetIndices[input.index]];
+  if (storedTarget && canOpenBatchTarget(storedTarget)) {
+    openBatchTarget(storedTarget, input.index);
+    return;
+  }
   const active = toleranceRequests.pending?.snapshot;
   if ((active?.activatedInputIndex ?? active?.inputIndex) === input.index) return;
   const snapshot = { ...toleranceContext(), inputIndex: input.index };
@@ -562,7 +851,11 @@ function renderToleranceResults() {
   $('tolerance-workspace').hidden = report?.status === 'unsupported' && report.complete;
   const cells = singleMatrixCells(report);
   tolerance.cells = new Map(cells.map(cell => [pairKey(cell), cell]));
-  if (!tolerance.buttons.size) makeMatrix($('tolerance-matrix'), tolerance.buttons, TOLERANCE_OFFSETS_MS, [0]);
+  const span = snapshot.spanMs ?? TOLERANCE_SPAN_MS;
+  if (tolerance.renderedSpan !== span) {
+    makeMatrix($('tolerance-matrix'), tolerance.buttons, toleranceOffsets(span), [0]);
+    tolerance.renderedSpan = span;
+  }
   renderMatrixCells(tolerance.buttons, tolerance.cells, selected === 'omit' ? '0,0' : selected);
   if (selected === 'omit') tolerance.buttons.get('0,0').button.setAttribute('aria-pressed', 'false');
   renderMatrixCounts('tolerance', matrixCounts(cells));
@@ -980,6 +1273,7 @@ function updateLandingReport() {
   }));
 }
 function invalidateReplay(reason, clearRoute = false) {
+  resetBatch();
   resetTolerance();
   replaySource = null;
   state.route.invalidate(clearRoute);
@@ -1233,10 +1527,14 @@ function drawReplay(parent, overview = false) {
   }
   for (const input of replay.inputs) {
     if (input.x === null || input.y === null) continue;
+    const batch = toleranceBatch.view;
+    const target = batch?.targets[batch.commandTargetIndices[input.index]];
+    const coverage = target && coverageOf(target);
+    const batchDescription = target ? ` · ${batchTargetLabel(target)}: ${batchCoverageLabel(target)}` : '';
     const description = `Нажатие №${input.index + 1} · ${input.status === 'accepted' ? 'принято' : 'отклонено'} · ${number(input.time, 3)} с · X ${number(input.x, 2)}${input.reason ? ` · ${input.reason}` : ''}`;
-    const marker = el('g', { class: 'object route-command', tabindex: 0, role: 'button', 'aria-label': `${description} · Проверить допуск`,
+    const marker = el('g', { class: 'object route-command', tabindex: 0, role: 'button', 'aria-label': `${description}${batchDescription} · Проверить допуск`,
       'data-route-input': input.index });
-    marker.append(el('title', {}, description));
+    marker.append(el('title', {}, description + batchDescription));
     const radius = overview ? 2.5 : 3.5;
     marker.append(el('circle', { cx: input.x, cy: input.y, r: radius, class: 'route-command-hit' }));
     if (input.status === 'accepted') marker.append(el('circle', { cx: input.x, cy: input.y, r: radius, class: 'press-marker' }));
@@ -1244,6 +1542,11 @@ function drawReplay(parent, overview = false) {
       line(marker, input.x - radius, input.y - radius, input.x + radius, input.y + radius, { stroke: '#b6757d', 'stroke-width': 1.8 });
       line(marker, input.x + radius, input.y - radius, input.x - radius, input.y + radius, { stroke: '#b6757d', 'stroke-width': 1.8 });
     }
+    if (coverage) marker.append(el('circle', {
+      cx: input.x, cy: input.y, r: overview ? 7 : 10, class: 'batch-route-mark',
+      'data-state': coverage.state, 'aria-hidden': 'true',
+      stroke: coverage.state === 'ready' ? toleranceColor(coverage.fraction) : '#687472',
+    }));
     parent.append(marker);
   }
   const s = sampleAt(replay.samples, state.time);
@@ -1528,6 +1831,7 @@ function play() {
 }
 function showResult(result, provenance) {
   stopPlayback();
+  resetBatch();
   resetTolerance();
   replaySource = provenance;
   state.route.setResult(result); state.time = 0;
@@ -1592,6 +1896,7 @@ async function replay(entry = null) {
 }
 
 function cancelPendingRouteWork(reason) {
+  resetBatch();
   resetTolerance();
   if (routeSearch.pending) cancelRouteSearch(reason);
   else routeSearch.progress = null;
@@ -1694,6 +1999,9 @@ $('reference').addEventListener('click', () => {
 $('replay').addEventListener('click', () => replay()); $('play').addEventListener('click', play);
 $('route-search').addEventListener('click', searchRoutes);
 $('route-search-cancel').addEventListener('click', () => { cancelRouteSearch('Поиск отменён.'); controls(); });
+$('batch-start').addEventListener('click', runBatch);
+$('batch-cancel').addEventListener('click', cancelBatch);
+$('batch-restore').addEventListener('click', restoreBatchReplay);
 for (const [id, offset] of [['route-results-prev', -1], ['route-results-next', 1]]) $(id).addEventListener('click', () => {
   routeResults.page += offset;
   renderRoutePage();

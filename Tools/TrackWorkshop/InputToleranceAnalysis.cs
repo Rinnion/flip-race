@@ -1,22 +1,25 @@
+using System.Text.Json.Serialization;
 using FlipRace.Core;
 
 namespace TrackWorkshop;
 
 public record InputToleranceRequest(string Json, string Profile, double WarningDuration, string Axis, double[] Inputs,
-    int InputIndex, WorkshopSurfaceRunSettings SurfaceRunSettings = null);
+    int InputIndex, WorkshopSurfaceRunSettings SurfaceRunSettings = null, int SpanMs = 300);
 public sealed record InputTolerancePreviewRequest(string Json, string Profile, double WarningDuration, string Axis,
-    double[] Inputs, int InputIndex, int? OffsetMs = null, bool Omit = false, WorkshopSurfaceRunSettings SurfaceRunSettings = null)
-    : InputToleranceRequest(Json, Profile, WarningDuration, Axis, Inputs, InputIndex, SurfaceRunSettings);
+    double[] Inputs, int InputIndex, int? OffsetMs = null, bool Omit = false,
+    WorkshopSurfaceRunSettings SurfaceRunSettings = null, int SpanMs = 300)
+    : InputToleranceRequest(Json, Profile, WarningDuration, Axis, Inputs, InputIndex, SurfaceRunSettings, SpanMs);
 public sealed record InputToleranceBaseline(double[] Inputs, double InputTime, double StartTime, double EndTime, double EndX);
 public sealed record InputToleranceProbe(int? OffsetMs, bool Omit, string Status, string Message, double? InputTime,
-    double? StartTime, double? EndTime, double? EndX, int Collisions, double? MinimumIntervalMs, bool BotCompatible);
+    double? StartTime, double? EndTime, double? EndX, int Collisions, double? MinimumIntervalMs, bool BotCompatible,
+    [property: JsonRequired] bool Computed = true);
 public sealed record InputToleranceResult(string Status, string Message, int InputIndex, int StepMs, int SpanMs, int Attempted,
     bool Complete, string StopReason, InputToleranceBaseline Baseline, InputToleranceProbe[] Probes, InputToleranceProbe Omission);
 public sealed record InputTolerancePreview(InputToleranceProbe Probe, Sample[] Samples);
 
 internal static class InputToleranceAnalysis
 {
-    const int StepMs = 50, SpanMs = 300, BotMinimumMs = 100;
+    const int StepMs = 50, BotMinimumMs = 100;
     const double PositionTolerance = 1e-5;
     internal const double TimeTolerance = 1e-7, ScheduleTolerance = 1e-10;
     static readonly TimeSpan WorkBudget = TimeSpan.FromSeconds(10);
@@ -32,7 +35,7 @@ internal static class InputToleranceAnalysis
         InputToleranceBaseline baseline = null;
         InputToleranceProbe omission = null;
         InputToleranceResult Result(string status, string message, bool complete = true) => new(status, message,
-            request.InputIndex, StepMs, SpanMs, probes.Count(Computed) + (Computed(omission) ? 1 : 0), complete,
+            request.InputIndex, StepMs, request.SpanMs, probes.Count(Computed) + (Computed(omission) ? 1 : 0), complete,
             complete ? "completed" : "time-budget", baseline, probes.ToArray(), omission);
         try
         {
@@ -40,7 +43,7 @@ internal static class InputToleranceAnalysis
             token.ThrowIfCancellationRequested();
             if (prepared.Reference == null) return Result("unsupported", prepared.Message);
             baseline = prepared.Reference;
-            for (int offset = -SpanMs; offset <= SpanMs; offset += StepMs)
+            for (int offset = -request.SpanMs; offset <= request.SpanMs; offset += StepMs)
                 probes.Add(Evaluate(prepared, offset, capture: false, token).Probe);
             omission = Evaluate(prepared, null, capture: false, token).Probe;
             cancellation.ThrowIfCancellationRequested();
@@ -48,7 +51,7 @@ internal static class InputToleranceAnalysis
         }
         catch (OperationCanceledException) when (!cancellation.IsCancellationRequested && deadline.IsCancellationRequested)
         {
-            for (int offset = -SpanMs + StepMs * probes.Count; offset <= SpanMs; offset += StepMs)
+            for (int offset = -request.SpanMs + StepMs * probes.Count; offset <= request.SpanMs; offset += StepMs)
                 probes.Add(Unavailable(offset, "incomplete", BudgetMessage));
             omission ??= Unavailable(null, "incomplete", BudgetMessage);
             return Result(baseline == null ? "unsupported" : "ready", BudgetMessage, complete: false);
@@ -60,8 +63,8 @@ internal static class InputToleranceAnalysis
         cancellation.ThrowIfCancellationRequested();
         Validate(request);
         int? offset = request.Omit ? null : request.OffsetMs;
-        if (!request.Omit && (offset is null or < -SpanMs or > SpanMs || offset % StepMs != 0))
-            throw new ArgumentException("Сдвиг должен быть кратен 50 мс и находиться между −300 и +300 мс.");
+        if (!request.Omit && (offset == null || offset < -request.SpanMs || offset > request.SpanMs || offset % StepMs != 0))
+            throw new ArgumentException($"Сдвиг должен быть кратен 50 мс и находиться между −{request.SpanMs} и +{request.SpanMs} мс.");
         using var deadline = Deadline(cancellation, budget);
         try
         {
@@ -84,6 +87,7 @@ internal static class InputToleranceAnalysis
         WorkshopService.ValidateAxis(request.Axis);
         WorkshopService.ValidateWarning(request.WarningDuration);
         WorkshopService.ValidateInputs(request.Inputs);
+        if (request.SpanMs is not (300 or 600)) throw new ArgumentException("Диапазон должен быть 300 или 600 мс.");
         if (request.InputIndex < 0 || request.InputIndex >= request.Inputs.Length)
             throw new ArgumentException("Укажите номер исходного нажатия.");
     }
@@ -171,7 +175,7 @@ internal static class InputToleranceAnalysis
     static bool Computed(InputToleranceProbe probe) => probe?.Status is "safe" or "collision" or "rejected";
 
     static InputToleranceProbe Unavailable(int? offset, string status, string message) =>
-        new(offset, !offset.HasValue, status, message, null, null, null, null, 0, null, false);
+        new(offset, !offset.HasValue, status, message, null, null, null, null, 0, null, false, status != "incomplete");
 
     static InputTolerancePreview Evaluate(Prepared prepared, int? offset, bool capture, CancellationToken token)
     {

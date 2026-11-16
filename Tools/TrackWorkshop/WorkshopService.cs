@@ -72,6 +72,7 @@ public sealed class WorkshopService
             canonicalJson=parsed.Stale?null:parsed.Document.HasAnalysis?request.Json:TrackJson.Write(p),
             cleanedJson=parsed.Document.HasAnalysis?parsed.Document.WithoutReferences:TrackJson.Write(new TrackPackage(t,p.ProfilePolicy,p.WarningMode)),
             routeAnalysis=parsed.Document.AnalysisFor(p),
+            toleranceBatch=parsed.Document.ToleranceBatchFor(p),
             references=p.References.Select(r=>new{profileId=r.ProfileId,trackHash=r.TrackHash,inputs=r.Inputs,rewardIds=r.RewardIds,bonusGain=r.BonusGain}),
             obstacles=t.Obstacles.Select(o=>new{id=o.Id,kind=o.Kind,x=o.X,width=o.Width,height=o.Height,gapTop=o.GapTop,gapBottom=o.GapBottom,
                 topOffsetX=o.TopOffsetX,bottomOffsetX=o.BottomOffsetX,hidden=o.Hidden,hiddenRevealDistance=o.HiddenRevealDistance,

@@ -10,7 +10,7 @@
 <body>
 <header class="page-header">
   <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><div class="eyebrow">FLIP RACE / ИНСТРУМЕНТЫ АВТОРА</div><h1>Мастерская трасс</h1></div></div>
-  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.20</span>
+  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.21</span>
 </header>
 
 <main>
@@ -89,6 +89,32 @@
           <ul id="landing-list"></ul>
         </details>
       </div>
+      <section class="batch-report" aria-labelledby="batch-title">
+        <div class="batch-head">
+          <h3 id="batch-title">Допуск по всей траектории</h3>
+          <div class="batch-actions">
+            <button id="batch-start" type="button" disabled>Рассчитать все матрицы</button>
+            <button id="batch-cancel" type="button" hidden>Остановить</button>
+            <button id="batch-restore" type="button" hidden>Открыть сохранённое прохождение</button>
+          </div>
+        </div>
+        <p id="batch-status" role="status"></p>
+        <div id="batch-progress" class="batch-progress" hidden>
+          <label id="batch-progress-label" for="batch-progress-bar"></label>
+          <progress id="batch-progress-bar" max="1" value="0"></progress>
+        </div>
+        <div id="batch-results" hidden>
+          <p class="batch-legend" id="batch-legend">
+            <span class="batch-scale" aria-hidden="true"></span><span>0% → 100% безопасных клеток</span>
+            <span><i class="batch-neutral" aria-hidden="true"></i> Ожидает расчёта / недоступно</span>
+          </p>
+          <details id="batch-details">
+            <summary>Манёвры и матрицы</summary>
+            <p>Сдвиги ±600 мс, шаг 50 мс. Доля от всех клеток: 625 для пары, 25 для нажатия. Выберите манёвр, чтобы открыть его матрицу.</p>
+            <ul id="batch-list" aria-describedby="batch-legend"></ul>
+          </details>
+        </div>
+      </section>
       <section class="tempo-report" aria-labelledby="tempo-title">
         <h3 id="tempo-title">Темп команд</h3>
         <p id="tempo-status" role="status">Постройте траекторию, чтобы увидеть темп команд.</p>
@@ -344,7 +370,7 @@
     <p id="live-save-help" class="muted" role="status">Поставьте заезд на паузу или завершите его, чтобы сохранить нажатия.</p>
   </div>
 </section>
-<footer><strong>Мастерская v0.5.20</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
+<footer><strong>Мастерская v0.5.21</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
 </main>
 </body>
 </html>

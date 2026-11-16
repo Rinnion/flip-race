@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "version": "0.5.21",
+  "base": "http://127.0.0.1:4236",
+  "cases": [
+    {
+      "profile": "Chosen",
+      "singleCells": 25,
+      "roundTrip": true,
+      "resume": true,
+      "geometryInvalidation": true,
+      "replayUnchanged": true
+    },
+    {
+      "profile": "FastFlip",
+      "singleCells": 25,
+      "roundTrip": true,
+      "resume": true,
+      "geometryInvalidation": true,
+      "replayUnchanged": true
+    }
+  ],
+  "pairCells": 625,
+  "chainPairs": 2,
+  "rethink": {
+    "green": 149,
+    "total": 625,
+    "percent": 23.84
+  }
+}

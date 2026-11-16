@@ -205,6 +205,24 @@
 .route-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 0 20px 9px }
 .route-tools button { min-height: 32px; padding: 5px 8px; font-size: 11px }
 .route-tools label { font-size: 11px; color: var(--muted) }
+.batch-report { padding: 8px 20px; border-top: 1px solid var(--line); font-size: 12px }
+.batch-head, .batch-actions, .batch-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px }
+.batch-head { justify-content: space-between }
+.batch-head h3 { margin: 0 }
+.batch-actions button { min-height: 32px; padding: 5px 8px; font-size: 11px }
+.batch-report p { margin: 5px 0; color: var(--muted) }
+.batch-progress { display: grid; gap: 4px; max-width: 520px }
+.batch-progress progress { width: 100%; height: 14px; accent-color: #6b8772 }
+.batch-scale { display: inline-block; width: 74px; height: 6px; border-radius: 6px; background: linear-gradient(90deg, #b04a43, #a77620, #2f7951) }
+.batch-neutral { display: inline-block; width: 9px; height: 9px; border-radius: 50%; border: 1px dashed #687472 }
+#batch-details summary { cursor: pointer }
+#batch-list { list-style: none; padding: 3px; margin: 5px 0; max-height: 190px; overflow: auto; border: 1px solid var(--line); border-radius: 6px }
+#batch-list li + li { margin-top: 3px }
+#batch-list button { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; width: 100%; min-height: 30px; padding: 4px 8px; border-left: 4px solid var(--batch-tone, #687472); font-size: 12px; text-align: left }
+#batch-list button[data-state="pending"] { border-left-style: dashed }
+#batch-list button[aria-pressed="true"] { background: #e4eee1 }
+.batch-route-mark { fill: none; stroke-width: 2.5px; vector-effect: non-scaling-stroke; pointer-events: none }
+.batch-route-mark:not([data-state="ready"]) { stroke-width: 1.5px; stroke-dasharray: 2 2 }
 #landing-threshold { width: 64px; padding: 5px 6px; border: 1px solid var(--line); border-radius: 6px }
 #landing-threshold[aria-invalid="true"] { border-color: #98494d }
 .landing-report { padding: 0 20px 9px; font-size: 11px; color: var(--muted) }

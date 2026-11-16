@@ -3,18 +3,20 @@ import { sameRunSettings } from './run-settings.mjs';
 
 export const TOLERANCE_STEP_MS = 50;
 export const TOLERANCE_SPAN_MS = 300;
-export const TOLERANCE_OFFSETS_MS = Array.from({ length: TOLERANCE_SPAN_MS * 2 / TOLERANCE_STEP_MS + 1 }, (_, index) =>
-  -TOLERANCE_SPAN_MS + index * TOLERANCE_STEP_MS);
+export const toleranceOffsets = (span = TOLERANCE_SPAN_MS) => Array.from({ length: span * 2 / TOLERANCE_STEP_MS + 1 }, (_, index) =>
+  -span + index * TOLERANCE_STEP_MS);
+export const TOLERANCE_OFFSETS_MS = toleranceOffsets();
 export const TOLERANCE_PROBE_COUNT = TOLERANCE_OFFSETS_MS.length + 1;
 const statuses = new Set(['safe', 'collision', 'rejected', 'invalid', 'incomplete']);
 const epsilon = 1e-7;
 const nearTime = (left, right) => Number.isFinite(left) && Number.isFinite(right) && Math.abs(left - right) <= epsilon;
 const nullableNumber = value => value === null || Number.isFinite(value);
 
-export function inputToleranceRequest({ provenance, result, inputIndex }, probe) {
+export function inputToleranceRequest({ provenance, result, inputIndex, spanMs }, probe) {
   const { profile, warningDuration, surfaceRunSettings, axis, inputs } = result;
   const request = { json: provenance.source, profile, warningDuration, surfaceRunSettings, axis,
     inputs: inputs.map(input => input.value), inputIndex };
+  if (spanMs !== undefined) request.spanMs = spanMs;
   if (probe) Object.assign(request, { offsetMs: probe.offsetMs, omit: probe.omit });
   return request;
 }
@@ -73,9 +75,11 @@ export function matrixShares({ total, safe, collision, invalid }) {
 }
 
 export function singleMatrixCells(report) {
-  return TOLERANCE_OFFSETS_MS.map((firstOffsetMs, index) => {
+  const offsets = report?.spanMs === 600 ? toleranceOffsets(600) : TOLERANCE_OFFSETS_MS;
+  return offsets.map((firstOffsetMs, index) => {
     const probe = report?.probes[index];
-    const computed = report?.status === 'ready' && !!probe && (probe.status !== 'incomplete' || probe.endTime !== null);
+    const computed = report?.status === 'ready' && !!probe
+      && (probe.computed ?? (probe.status !== 'incomplete' || probe.endTime !== null));
     return { ...probe, firstOffsetMs, secondOffsetMs: 0, computed };
   });
 }
@@ -90,16 +94,18 @@ function matchesProbe(probe, offsetMs, omit) {
 }
 
 export function isMatchingToleranceReport(report, snapshot) {
+  const span = snapshot.spanMs ?? TOLERANCE_SPAN_MS;
+  const offsets = toleranceOffsets(span);
   if (!['ready', 'unsupported'].includes(report?.status) || report.inputIndex !== snapshot.inputIndex
-    || report.stepMs !== TOLERANCE_STEP_MS || report.spanMs !== TOLERANCE_SPAN_MS
-    || !Number.isInteger(report.attempted) || report.attempted < 0 || report.attempted > TOLERANCE_PROBE_COUNT
+    || report.stepMs !== TOLERANCE_STEP_MS || report.spanMs !== span
+    || !Number.isInteger(report.attempted) || report.attempted < 0 || report.attempted > offsets.length + 1
     || typeof report.complete !== 'boolean' || typeof report.stopReason !== 'string' || typeof report.message !== 'string'
     || !Array.isArray(report.probes)) return false;
 
   if (report.status === 'unsupported' && !report.probes.length)
     return report.baseline === null && report.omission === null && report.attempted === 0;
-  if (report.probes.length !== TOLERANCE_OFFSETS_MS.length
-    || !TOLERANCE_OFFSETS_MS.every((offset, index) => matchesProbe(report.probes[index], offset, false))
+  if (report.probes.length !== offsets.length
+    || !offsets.every((offset, index) => matchesProbe(report.probes[index], offset, false))
     || !matchesProbe(report.omission, null, true)) return false;
   const probes = [...report.probes, report.omission];
   if (report.status === 'unsupported') return report.baseline === null && !report.complete

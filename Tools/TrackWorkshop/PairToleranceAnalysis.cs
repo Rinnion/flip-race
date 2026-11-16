@@ -12,7 +12,8 @@ public sealed record PairTolerancePreviewRequest(string Json, string Profile, do
     WorkshopSurfaceRunSettings SurfaceRunSettings = null);
 public sealed record PairToleranceBaseline(double[] Inputs, double FirstInputTime, double SecondInputTime, double StartTime,
     double EndTime, double EndX);
-public sealed record PairToleranceCell(int FirstOffsetMs, int SecondOffsetMs, string Status, string Message, bool Computed,
+public sealed record PairToleranceCell([property: JsonRequired] int FirstOffsetMs, [property: JsonRequired] int SecondOffsetMs,
+    string Status, string Message, [property: JsonRequired] bool Computed,
     double? FirstInputTime, double? SecondInputTime, double? PairIntervalMs, double? MinimumIntervalMs,
     double? StartTime, double? EndTime, double? EndX, int Collisions);
 public sealed record PairToleranceResult(string Status, string Message, int FirstInputIndex, int SpanMs, int StepMs,

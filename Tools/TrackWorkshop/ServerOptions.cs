@@ -101,6 +101,8 @@ public sealed class ServerPolicy : IDisposable
         {await Error(context,400,"Same-origin JSON requests required.");return;}
         string path=context.Request.Path.Value?.TrimEnd('/');
         bool heavy=post&&(string.Equals(path,"/api/analysis-target",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/analyze",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/replay",StringComparison.OrdinalIgnoreCase)||string.Equals(path,LaterPressAnalysis.Path,StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/input-tolerance",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/input-tolerance/preview",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/pair-tolerance",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/pair-tolerance/preview",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/prepare-bot",StringComparison.OrdinalIgnoreCase)||string.Equals(path,"/api/route-search",StringComparison.OrdinalIgnoreCase)||string.Equals(path,RouteSearchStream.Path,StringComparison.OrdinalIgnoreCase));
+        heavy |= post && (string.Equals(path,ToleranceBatchStream.Path,StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(path,ToleranceBatchStream.CheckpointPath,StringComparison.OrdinalIgnoreCase));
         bool acquired=false;
         if(heavy)
         {

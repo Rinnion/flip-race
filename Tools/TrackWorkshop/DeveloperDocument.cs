@@ -149,6 +149,36 @@ internal sealed class DeveloperDocument
         { return new("invalid"); }
     }
 
+    internal ToleranceBatchStatus ToleranceBatchFor(TrackPackage track)
+    {
+        if (!HasAnalysis) return new("missing");
+        try
+        {
+            var root = ReadAnalysis();
+            if (!root.TryGetProperty(ToleranceBatchStorage.Key, out var batch)) return new("missing");
+            int version = root.GetProperty("version").GetInt32();
+            if (version is not (Version or LegacyVersion)) return new("unsupported");
+            return ToleranceBatchStorage.Read(batch, track);
+        }
+        catch (Exception ex) when (ToleranceBatchStorage.IsInvalid(ex)) { return new("invalid"); }
+    }
+
+    internal JsonObject ToleranceBatchRoot()
+    {
+        if (!HasAnalysis) return new() { ["version"] = Version, ["groups"] = new JsonArray() };
+        try
+        {
+            var root = ReadAnalysis();
+            if (root.GetProperty("version").GetInt32() is not (Version or LegacyVersion))
+                throw new ArgumentException("Версия сохранённого анализа неизвестна; исходный JSON сохранён.");
+            return JsonNode.Parse(root.GetRawText()).AsObject();
+        }
+        catch (Exception ex) when (ex is JsonException or InvalidOperationException or KeyNotFoundException or FormatException)
+        { throw new ArgumentException("Исправьте поле workshopAnalysis в JSON, чтобы записать анализ.", ex); }
+    }
+
+    internal string WithAnalysis(JsonObject root) => SetAnalysis(root.ToJsonString(Json));
+
     static List<StoredRun> ReadRuns(JsonElement root, int version)
     {
         var stored = new List<StoredRun>();
