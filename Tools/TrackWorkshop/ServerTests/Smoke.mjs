@@ -39,9 +39,9 @@ async function request(path, { method = 'GET', host = authority, sourceOrigin, b
   return { response, text };
 }
 const health = await request('/healthz');
-assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.21' });
+assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.22' });
 const page = await request('/');
-assert.match(page.text, /v0\.5\.21/);
+assert.match(page.text, /v0\.5\.22/);
 assert.match(page.text, /id="toggle-route"/);
 assert.match(page.text, /id="landing-threshold"[^>]*value="200"/);
 assert.match(page.text, /id="tolerance-matrix"/);
@@ -83,4 +83,4 @@ assert.ok(example.inputTime > example.landingTime);
 const evidence = { passed: true, base: base.origin, publicOrigin, requests: results.length, results,
   replaySummary: replay.summary, landingIntervals: { short: shortIntervals.length, total: withReference.landingIntervals.length, example } };
 await writeFile(process.env.WORKSHOP_SMOKE_OUTPUT || fileURLToPath(new URL('./smoke-results.json', import.meta.url)), JSON.stringify(evidence, null, 2) + '\n');
-console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.21, identity/error/static/replay checks.`);
+console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.22, identity/error/static/replay checks.`);

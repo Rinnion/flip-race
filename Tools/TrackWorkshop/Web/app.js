@@ -9,7 +9,7 @@ import { readSearchResponse } from './search-progress.mjs';
 import { ToleranceRequestState, TOLERANCE_SPAN_MS, TOLERANCE_STEP_MS, adjacentSafeProbes, inputToleranceRequest,
   isMatchingToleranceReport, matrixCounts, matrixShares, resolveAnalysisTarget, singleMatrixCells, toleranceOffsets,
   toleranceOverlay } from './input-tolerance.mjs';
-import { BATCH_SPAN_MS, batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor } from './tolerance-batch.mjs';
+import { BATCH_SPAN_MS, batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor, toleranceScore } from './tolerance-batch.mjs';
 import { inputTempo } from './input-tempo.mjs';
 import { PAIR_SPANS, PairGrid, matchesPairMinimum, matchesPairReport, pairAxis, pairKey, pairOverlay, pairRequest } from './pair-tolerance.mjs';
 import { captureRunSettings, DEFAULT_SURFACE_RUN_SETTINGS, sameRunSettings, storedRunSettings } from './run-settings.mjs';
@@ -486,7 +486,7 @@ function batchCoverageLabel(target) {
   if (coverage.state === 'unsupported') return 'Недоступно';
   if (coverage.state === 'pending') return coverage.computed
     ? `Клетки: ${number(coverage.computed)} из ${number(coverage.total)}` : 'Ожидает расчёта';
-  return `${number(100 * coverage.fraction, 2)}% · ${number(coverage.safe)} / ${number(coverage.total)}`;
+  return `Допуск ${number(100 * toleranceScore(coverage.fraction), 0)}% · безопасных ${number(100 * coverage.fraction, 2)}% (${number(coverage.safe)} / ${number(coverage.total)})`;
 }
 
 function canOpenBatchTarget(target) {

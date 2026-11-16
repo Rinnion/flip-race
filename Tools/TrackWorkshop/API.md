@@ -1,10 +1,10 @@
 # Track Workshop API
 
-HTTP protocol v1, Workshop 0.5.21. JSON properties use camelCase. Validation errors return HTTP 400 `{ "error": "readable detail" }`. JSON documents are bounded to 2 MiB and HTTP request bodies to 16 MiB. POST requires JSON content type and same-origin browser requests.
+HTTP protocol v1, Workshop 0.5.22. JSON properties use camelCase. Validation errors return HTTP 400 `{ "error": "readable detail" }`. JSON documents are bounded to 2 MiB and HTTP request bodies to 16 MiB. POST requires JSON content type and same-origin browser requests.
 
 The default endpoint remains local `http://127.0.0.1:4186`. Deployment can set `WORKSHOP_BIND_ADDRESS`, `WORKSHOP_PORT` and an exact `WORKSHOP_PUBLIC_ORIGIN` (mandatory for non-loopback binding). Host and browser POST Origin must match the configured public origin; no wildcard CORS or forwarded-header trust is used. JSON CLI requests without Origin remain supported. TLS and authentication belong to the supplied Caddy deployment, whose app port is private.
 
-`GET /healthz` returns `{status:"ok",version:"0.5.21"}` under the same host policy. By default two heavy POSTs may run concurrently across replay, search, preparation and analysis endpoints. `WORKSHOP_MAX_CONCURRENT_REQUESTS` accepts 1..32. Excess requests receive HTTP 429 with JSON error and `Retry-After: 1` before body binding. The server keeps uploaded files and simulations in memory only. Each operation uses its own state and preparation leaves the process-wide catalogue intact.
+`GET /healthz` returns `{status:"ok",version:"0.5.22"}` under the same host policy. By default two heavy POSTs may run concurrently across replay, search, preparation and analysis endpoints. `WORKSHOP_MAX_CONCURRENT_REQUESTS` accepts 1..32. Excess requests receive HTTP 429 with JSON error and `Retry-After: 1` before body binding. The server keeps uploaded files and simulations in memory only. Each operation uses its own state and preparation leaves the process-wide catalogue intact.
 
 `GET /api/catalog` returns `{entries:[{id,name,file,profiles:["Chosen","FastFlip"]}]}`. `GET /api/catalog/{id}` returns `{json:string}` using only explicitly loaded manifest entries.
 

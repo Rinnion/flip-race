@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor } from '../tolerance-batch.mjs';
+import { batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor, toleranceScore } from '../tolerance-batch.mjs';
 import { inputToleranceRequest, singleMatrixCells } from '../input-tolerance.mjs';
 import { DEFAULT_SURFACE_RUN_SETTINGS } from '../run-settings.mjs';
 
@@ -46,6 +46,20 @@ test('single counts its 25 cells; omission remains separate and manual preview k
   assert.equal(inputToleranceRequest({ ...snapshot, spanMs: 600 }, selected).offsetMs, -600);
   assert.equal(inputToleranceRequest({ ...snapshot, spanMs: 600 }, selected).spanMs, 600);
   assert.notEqual(toleranceColor(0), toleranceColor(1));
+});
+
+test('tolerance calibration makes 7% moderate and saturates at 60% without changing raw coverage', () => {
+  assert.equal(toleranceScore(0), 0);
+  assert.equal(toleranceScore(.07), .5);
+  assert.equal(Math.round(toleranceScore(44 / 625) * 100), 50);
+  assert.equal(Math.round(toleranceScore(.55) * 100), 95);
+  assert.equal(toleranceScore(.6), 1);
+  assert.equal(toleranceScore(1), 1);
+  assert.equal(toleranceColor(0), 'rgb(176 74 67)');
+  assert.equal(toleranceColor(.07), 'rgb(167 118 32)');
+  assert.equal(toleranceColor(.6), 'rgb(47 121 81)');
+  assert.equal(toleranceColor(1), toleranceColor(.6));
+  for (let i = 1; i <= 625; i++) assert.ok(toleranceScore(i / 625) >= toleranceScore((i - 1) / 625));
 });
 
 function response(events, chunkSize = 15) {

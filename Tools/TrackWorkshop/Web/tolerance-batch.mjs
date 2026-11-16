@@ -38,10 +38,16 @@ export function batchCoverage(target) {
   return { state: 'ready', computed, total, safe, fraction: safe / total };
 }
 
+export function toleranceScore(fraction) {
+  // Author's calibration: 7% safe cells is moderate, 60% reaches full tolerance.
+  const value = Math.max(0, Math.min(fraction, .6));
+  return value <= .07 ? .5 * value / .07 : .5 + .5 * (value - .07) / .53;
+}
+
 export function toleranceColor(fraction) {
-  // Linear red → ochre → green scale, independent of the pace filter.
+  const score = toleranceScore(fraction);
   const hues = [[176, 74, 67], [167, 118, 32], [47, 121, 81]];
-  const side = fraction < .5 ? 0 : 1, t = fraction * 2 - side;
+  const side = score < .5 ? 0 : 1, t = score * 2 - side;
   return `rgb(${hues[side].map((value, i) => Math.round(value + t * (hues[side + 1][i] - value))).join(' ')})`;
 }
 
