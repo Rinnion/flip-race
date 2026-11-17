@@ -10,7 +10,7 @@
 <body>
 <header class="page-header">
   <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><div class="eyebrow">FLIP RACE / ИНСТРУМЕНТЫ АВТОРА</div><h1>Мастерская трасс</h1></div></div>
-  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.23</span>
+  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.24</span>
 </header>
 
 <main>
@@ -94,13 +94,20 @@
         <p id="replay-summary-status" role="status">Постройте траекторию для текущей карты и настроек.</p>
         <div id="replay-summary-content" hidden>
           <dl id="replay-summary-metrics" class="replay-summary-metrics"></dl>
-          <p id="replay-summary-coverage"></p>
+          <section class="replay-summary-completeness" aria-labelledby="replay-summary-completeness-title">
+            <h4 id="replay-summary-completeness-title">Полнота расчёта матриц</h4>
+            <p id="replay-summary-coverage"></p>
+          </section>
+          <details id="replay-summary-maneuvers">
+            <summary id="replay-summary-maneuvers-label">Все манёвры и безопасные окна</summary>
+            <ol id="replay-summary-maneuver-list"></ol>
+          </details>
           <details id="replay-summary-places">
             <summary id="replay-summary-places-label">Трудные места</summary>
-            <p class="subtle">Критический темп (&lt;150 мс) и низкий допуск (&lt;50%, безопасных клеток &lt;7%). Места объединены только при общей команде. Пауза — время между концом и началом мест, без оценки достаточности отдыха.</p>
+            <p class="subtle">Одна целая матрица с безопасными клетками &lt;7% — одно трудное место. Перекрывающиеся пары сохраняются отдельно.</p>
             <ol id="replay-summary-place-list"></ol>
           </details>
-          <p class="subtle">Темп учитывает все команды, включая отклонённые и запланированные недостигнутые. Допуск рассчитан по матрицам манёвров.</p>
+          <p class="subtle">Окно охватывает крайние времена безопасных нажатий в рассчитанной матрице; внутри возможны разрывы. Промежуток: самое раннее безопасное нажатие следующего манёвра минус самое позднее предыдущего, в мс. Перекрытие не означает невозможность, положительный промежуток не гарантирует отдых. Крайние альтернативы соседних матриц не проверены совместно. Темп исходной ленты показан отдельно выше и не определяет трудные места этой сводки.</p>
         </div>
       </section>
       <section class="batch-report" aria-labelledby="batch-title">
@@ -385,7 +392,7 @@
     <p id="live-save-help" class="muted" role="status">Поставьте заезд на паузу или завершите его, чтобы сохранить нажатия.</p>
   </div>
 </section>
-<footer><strong>Мастерская v0.5.23</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
+<footer><strong>Мастерская v0.5.24</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
 </main>
 </body>
 </html>

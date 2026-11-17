@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "version": "0.5.24",
+  "base": "http://127.0.0.1:4242",
+  "rethink": {
+    "scores": {
+      "count": 16,
+      "minimum": 0.5471698113207547,
+      "maximum": 1,
+      "median": 0.8332075471698113
+    },
+    "gaps": {
+      "count": 15,
+      "minimum": -431.8181818,
+      "maximum": 2673.5505397,
+      "median": 867.1526587
+    },
+    "overlaps": 3
+  },
+  "chain": {
+    "scores": {
+      "count": 2,
+      "minimum": 0.03428571428571428,
+      "maximum": 0.5713207547169812,
+      "median": 0.3028032345013477
+    },
+    "hard": 1
+  },
+  "roundTrip": true
+}

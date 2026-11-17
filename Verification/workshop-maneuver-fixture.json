@@ -1,0 +1,186 @@
+{
+  "fixture": "rethink Chosen original distance tape; acceleration off",
+  "rows": [
+    {
+      "kind": "single",
+      "index": 0,
+      "green": 15,
+      "score": 1,
+      "start": 1.2363636363636377,
+      "end": 1.9363636363636378,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 1,
+      "green": 160,
+      "score": 0.6754716981132075,
+      "start": 3.4909090909090614,
+      "end": 4.490909090909064,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 3,
+      "green": 298,
+      "score": 0.8837735849056604,
+      "start": 4.809090909090959,
+      "end": 6.2090909090909685,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 5,
+      "green": 364,
+      "score": 0.9833962264150943,
+      "start": 6.036363636363799,
+      "end": 7.872727272727493,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 7,
+      "green": 214,
+      "score": 0.7569811320754717,
+      "start": 8.30909090909118,
+      "end": 9.659090909091155,
+      "hard": false
+    },
+    {
+      "kind": "single",
+      "index": 9,
+      "green": 23,
+      "score": 1,
+      "start": 9.227272727272934,
+      "end": 10.327272727272934,
+      "hard": false
+    },
+    {
+      "kind": "single",
+      "index": 10,
+      "green": 6,
+      "score": 0.660377358490566,
+      "start": 12.62174377175626,
+      "end": 12.87174377175626,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 11,
+      "green": 112,
+      "score": 0.6030188679245283,
+      "start": 14.25454545454505,
+      "end": 15.054545454545016,
+      "hard": false
+    },
+    {
+      "kind": "single",
+      "index": 13,
+      "green": 15,
+      "score": 1,
+      "start": 15.921698113206942,
+      "end": 16.621698113206943,
+      "hard": false
+    },
+    {
+      "kind": "single",
+      "index": 14,
+      "green": 15,
+      "score": 1,
+      "start": 18.6363636363629,
+      "end": 19.3363636363629,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 15,
+      "green": 160,
+      "score": 0.6754716981132075,
+      "start": 20.890909090908618,
+      "end": 21.890909090908604,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 17,
+      "green": 168,
+      "score": 0.6875471698113207,
+      "start": 22.209090909090573,
+      "end": 23.609090909090543,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 19,
+      "green": 364,
+      "score": 0.9833962264150943,
+      "start": 23.436363636363435,
+      "end": 25.272727272727142,
+      "hard": false
+    },
+    {
+      "kind": "pair",
+      "index": 21,
+      "green": 231,
+      "score": 0.7826415094339623,
+      "start": 25.709090909090946,
+      "end": 27.10909090909092,
+      "hard": false
+    },
+    {
+      "kind": "single",
+      "index": 23,
+      "green": 3,
+      "score": 0.5471698113207547,
+      "start": 29.782641448797325,
+      "end": 29.882641448797326,
+      "hard": false
+    },
+    {
+      "kind": "single",
+      "index": 24,
+      "green": 13,
+      "score": 0.9245283018867925,
+      "start": 31.277272727273253,
+      "end": 31.927272727273255,
+      "hard": false
+    },
+    {
+      "kind": "single",
+      "index": 25,
+      "green": null,
+      "score": null,
+      "start": null,
+      "end": null,
+      "hard": false
+    }
+  ],
+  "gaps": [
+    1554.545,
+    318.182,
+    -172.727,
+    436.364,
+    -431.818,
+    2294.471,
+    1382.802,
+    867.153,
+    2014.666,
+    1554.545,
+    318.182,
+    -172.727,
+    436.364,
+    2673.551,
+    1394.631,
+    null
+  ],
+  "scoreStats": {
+    "min": 54.71698113207547,
+    "max": 100,
+    "median": 83.32075471698113
+  },
+  "gapStats": {
+    "min": -431.818,
+    "max": 2673.551,
+    "median": 867.153
+  }
+}

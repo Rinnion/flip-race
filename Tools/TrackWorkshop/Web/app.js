@@ -580,69 +580,69 @@ function renderReplaySummary() {
   const rendered = replaySummaryView.rendered;
   if (rendered?.cache === cached && rendered.navigable === navigable && rendered.matrixAvailable === matrixAvailable) return;
   replaySummaryView.rendered = { cache: cached, navigable, matrixAvailable };
-  const { report } = cached, { tempo: timing, tolerance: allowance, groups } = report;
+  const { report } = cached, { tolerance: allowance } = report;
   const percentage = value => value === null ? 'нет данных' : `${number(value * 100, 1)}%`;
+  const ms = value => value === null ? 'нет данных' : `${number(value, 1)} мс`;
+  const range = (stats, format) => `мин. ${format(stats.minimum)} · макс. ${format(stats.maximum)} · медиана ${format(stats.median)}`;
   const outcome = result.summary?.status === 'Finished'
     ? result.summary.cleanFinish ? 'финиш без ударов' : 'финиш достигнут' : 'финиш не достигнут';
   message('replay-summary-status', `${replaySource.label || 'Текущая траектория'} · ${outcome} · ${number(result.inputs.length)} команд · ${runSettingsLabel(storedRunSettings(result))}`
     + ` · принято ${number(report.accepted)}, отклонено ${number(report.ignored)}, не достигнуто ${number(report.unreached)}`);
   const minimum = allowance.minimum;
   const metrics = [
-    ['Темп · критические интервалы', `${number(timing.counts.critical)} / ${number(timing.measured)} · ${percentage(timing.criticalFraction)}`,
-      `Минимум ${report.minimumIntervalMs === null ? 'неизвестен' : `${number(report.minimumIntervalMs, 2)} мс`}. Нормальных ${number(timing.counts.normal)}, простых ${number(timing.counts.easy)}, время неизвестно ${number(timing.counts.unknown)}. Всего ${number(Math.max(0, result.inputs.length - 1))} интервалов.`],
-    ['Критические серии', `${number(report.criticalSeries)} · максимум ${number(timing.longestCritical)} подряд`,
-      `Длина в интервалах${timing.longestCritical ? ` (${number(timing.longestCritical + 1)} команд в самой длинной серии)` : ''}. Нормальный интервал 150–250 мс, простой >250 мс.`],
-    ['Минимальный допуск', minimum ? `${number(minimum.score * 100)}%` : 'нет данных',
-      minimum ? `Безопасных ${number(minimum.fraction * 100, 2)}% (${number(minimum.safe)} / ${number(minimum.total)}). Низкий допуск: ${number(allowance.low)} из ${number(allowance.ready)} рассчитанных манёвров.` : 'Нужны рассчитанные матрицы манёвров.'],
-    ['Трудные места', `${number(groups.length)} · максимум ${number(report.longestPlace)} команд`,
-      `Охвачено ${number(report.coveredCommands)} разных команд.${report.partial ? ' По доступным данным.' : ''}`],
+    ['Допуск усреднённых манёвров · выше — проще', range(report.scores, percentage),
+      'Одна целая матрица — одна оценка с равным весом. Шкала: безопасных 0% → 0%, 7% → 50%, ≥60% → 100%. Это локальный допуск, не вероятность успеха.'],
+    ['Промежутки между соседними манёврами', range(report.gaps, ms),
+      `Известно ${number(report.gaps.count)}, неизвестно ${number(report.unknownGaps)}. От самого позднего безопасного нажатия предыдущего манёвра до самого раннего безопасного нажатия следующего.`],
+    ['Перекрытия безопасных окон', allowance.total === null ? 'нет данных' : `${number(report.overlaps.length)}`,
+      `Отрицательный промежуток означает перекрытие, ноль — касание. Безопасные окна известны для ${number(report.knownWindows)} манёвров. Общая команда пар отмечена в списке.`],
+    ['Трудные места · целые матрицы', allowance.total === null ? 'нет данных' : `${number(report.hardPlaces.length)}`,
+      `Безопасных клеток строго <7% (допуск <50%). Соседние пары учитываются отдельно.${report.partial ? ' По доступным данным.' : ''}`],
   ];
   $('replay-summary-metrics').replaceChildren(...metrics.map(([label, value, description], index) => {
     const card = document.createElement('div'), term = document.createElement('dt'), detail = document.createElement('dd');
     const strong = document.createElement('strong'), note = document.createElement('span');
     term.textContent = label; strong.textContent = value; note.textContent = description;
     detail.append(strong, note); card.append(term, detail);
-    if (index === 2 && minimum) {
+    if (index === 0 && minimum) {
       const target = report.batch.targets[minimum.targetIndex];
-      card.append(summaryButton('На схеме', () => focusSummaryCommand(target.inputIndex), !navigable || !canLocateCommand(result.inputs[target.inputIndex])));
-      card.append(summaryButton('Матрица', () => openBatchTarget(target), !matrixAvailable));
+      card.append(summaryButton('Минимум на схеме', () => focusSummaryCommand(target.inputIndex), !navigable || !canLocateCommand(result.inputs[target.inputIndex])));
+      card.append(summaryButton('Матрица минимума', () => openBatchTarget(target), !matrixAvailable));
     }
     return card;
   }));
   message('replay-summary-coverage', allowance.total === null
-    ? 'Допуск ещё не рассчитан. Трудные места пока определены только по темпу; число манёвров неизвестно до построения плана.'
+    ? 'Матрицы ещё не рассчитаны. Число манёвров, их допуск, безопасные окна и промежутки неизвестны до построения плана.'
     : `Матрицы: ${number(allowance.ready)} из ${number(allowance.total)} манёвров рассчитано · ожидает ${number(allowance.pending)} · недоступно ${number(allowance.unsupported)}.`
-      + (report.partial ? ' Частичное покрытие: неизвестные результаты не считаются простыми. Число и границы трудных мест могут измениться.' : ' Покрытие полное.')
+      + (report.partial ? ' Частичное покрытие: неизвестные результаты исключены из статистик, но не из порядка манёвров.' : ' Покрытие полное.')
       + ' Доля каждой матрицы — от всех 625 клеток пары или 25 одиночных, без пробы пропуска.');
-  $('replay-summary-places-label').textContent = `${report.partial ? 'Трудные места по доступным данным' : 'Трудные места'} · ${number(groups.length)}`;
-  $('replay-summary-place-list').replaceChildren(...groups.map((group, index) => {
+  $('replay-summary-maneuvers-label').textContent = `Все манёвры и безопасные окна · ${allowance.total === null ? 'нет плана' : number(report.maneuvers.length)}`;
+  $('replay-summary-places-label').textContent = `${report.partial ? 'Трудные места по доступным данным' : 'Трудные места'} · ${allowance.total === null ? 'нет данных' : number(report.hardPlaces.length)}`;
+  const row = maneuver => {
     const item = document.createElement('li'), description = document.createElement('p'), actions = document.createElement('div');
-    const start = result.inputs[group.start], end = result.inputs[group.end];
-    const time = position => {
-      const input = result.inputs[position];
-      if (input.status !== 'unreached' && Number.isFinite(input.time)) return `${number(input.time, 3)} с`;
-      return Number.isFinite(timing.commands[position]?.time)
-        ? `${number(timing.commands[position].time, 3)} с по ленте (не достигнуто)` : 'время неизвестно';
-    };
-    const x = input => Number.isFinite(input.x) && input.status !== 'unreached' ? number(input.x, 1) : 'неизвестно';
-    description.textContent = `№${group.start + 1}${group.end !== group.start ? `–${group.end + 1}` : ''} · ${number(group.commandCount)} команд · ${time(group.start)} → ${time(group.end)} · X ${x(start)} → ${x(end)}`
-      + ` · критических интервалов ${number(group.tempoEdges.length)}, манёвров с низким допуском ${number(group.targetIndices.length)}`
-      + (group.unlocated ? ` · без точки на схеме ${number(group.unlocated)}` : '')
-      + (index ? ` · пауза от предыдущего${group.gapSource === 'scheduled' ? ' по ленте' : ''}: ${group.gapMs === null ? 'неизвестна' : `${number(group.gapMs, 1)} мс`}` : '');
+    const target = report.batch.targets[maneuver.targetIndex], start = result.inputs[maneuver.start], end = result.inputs[maneuver.end];
+    const index = report.maneuvers.indexOf(maneuver);
+    const stateLabel = maneuver.state === 'unsupported' ? 'недоступен' : 'ожидает расчёта';
+    description.textContent = `${batchTargetLabel(target)} · ${maneuver.state === 'ready'
+      ? `допуск ${percentage(maneuver.score)} · безопасных ${percentage(maneuver.fraction)} (${number(maneuver.safe)} / ${number(maneuver.total)})` : stateLabel}`
+      + (maneuver.window ? ` · самое раннее безопасное нажатие ${ms(maneuver.window.earliestMs)} → самое позднее ${ms(maneuver.window.latestMs)}`
+        : ` · безопасное окно неизвестно${maneuver.state === 'ready' && maneuver.safe === 0 ? ': безопасных клеток нет' : ''}`)
+      + (index ? ` · от предыдущего манёвра: ${ms(maneuver.gapMs)}${maneuver.gapMs < 0 ? ' (перекрытие)' : maneuver.gapMs === 0 ? ' (касание)' : ''}` : '')
+      + (maneuver.sharedCommand ? ' · общая команда с предыдущей парой: соседние проверки внутри полёта' : '');
     actions.className = 'replay-summary-actions';
-    actions.append(summaryButton('К началу на схеме', () => focusSummaryCommand(group.start), !navigable || !canLocateCommand(start)));
-    if (group.end !== group.start) actions.append(summaryButton('К концу', () => focusSummaryCommand(group.end), !navigable || !canLocateCommand(end)));
-    for (const targetIndex of group.targetIndices) {
-      const target = report.batch.targets[targetIndex];
-      actions.append(summaryButton(`Матрица · ${batchTargetLabel(target)}`, () => openBatchTarget(target), !matrixAvailable));
-    }
+    actions.append(summaryButton('К началу на схеме', () => focusSummaryCommand(maneuver.start), !navigable || !canLocateCommand(start)));
+    if (maneuver.end !== maneuver.start) actions.append(summaryButton('К концу', () => focusSummaryCommand(maneuver.end), !navigable || !canLocateCommand(end)));
+    actions.append(summaryButton(`Матрица · ${batchTargetLabel(target)}`, () => openBatchTarget(target), !matrixAvailable || maneuver.state !== 'ready'));
     item.append(description, actions); return item;
-  }));
-  if (!groups.length) {
-    const empty = document.createElement('li');
-    empty.textContent = report.partial ? 'В доступных данных трудные места не найдены. Допуск известен не полностью.' : 'По этим критериям трудные места не найдены.';
-    $('replay-summary-place-list').append(empty);
-  }
+  };
+  const fill = (id, maneuvers, emptyText) => {
+    const rows = maneuvers.map(row);
+    if (!rows.length) { const empty = document.createElement('li'); empty.textContent = emptyText; rows.push(empty); }
+    $(id).replaceChildren(...rows);
+  };
+  fill('replay-summary-maneuver-list', report.maneuvers, 'Для списка манёвров нужен план матриц.');
+  fill('replay-summary-place-list', report.hardPlaces, report.partial
+    ? 'В доступных матрицах трудные места не найдены. Покрытие неполное.' : 'Матриц с долей безопасных клеток <7% нет.');
 }
 
 function summaryButton(label, action, disabled) {
