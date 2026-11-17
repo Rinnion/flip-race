@@ -205,6 +205,23 @@
 .route-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 0 20px 9px }
 .route-tools button { min-height: 32px; padding: 5px 8px; font-size: 11px }
 .route-tools label { font-size: 11px; color: var(--muted) }
+.replay-summary { margin: 0 20px 12px; padding: 10px 12px; border: 1px solid #c0cdbb; border-radius: 8px; background: #f5f7ee; font-size: 11px; color: var(--muted) }
+.replay-summary h3 { margin: 0 0 5px; color: var(--ink); font-size: 13px }
+.replay-summary p { margin: 5px 0; line-height: 1.5 }
+.replay-summary-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 8px 0 }
+.replay-summary-metrics > div { padding: 8px; background: #fffdf8; border: 1px solid var(--line); border-radius: 6px }
+.replay-summary-metrics dt { color: var(--ink) }
+.replay-summary-metrics dd { margin: 4px 0 0 }
+.replay-summary-metrics strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 14px; line-height: 1.4 }
+.replay-summary-metrics dd span { display: block; line-height: 1.5 }
+.replay-summary button { min-height: 29px; padding: 4px 7px; font-size: 11px; white-space: normal; margin: 4px 4px 0 0 }
+#replay-summary-places > summary { cursor: pointer; color: var(--sage); font-weight: 600 }
+#replay-summary-place-list { margin: 5px 0; padding: 0 0 0 22px; max-height: 240px; overflow: auto }
+#replay-summary-place-list li { padding: 4px 3px 7px; border-bottom: 1px solid var(--line) }
+.replay-summary-actions { display: flex; flex-wrap: wrap; align-items: center }
+.summary-command-selected .route-command-hit { stroke: #6d4380; stroke-width: 4px }
+@media (max-width: 1100px) { .replay-summary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 600px) { .replay-summary { margin-inline: 10px } .replay-summary-metrics { grid-template-columns: minmax(0, 1fr) } }
 .batch-report { padding: 8px 20px; border-top: 1px solid var(--line); font-size: 12px }
 .batch-head, .batch-actions, .batch-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px }
 .batch-head { justify-content: space-between }

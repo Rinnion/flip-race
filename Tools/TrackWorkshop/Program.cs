@@ -14,7 +14,7 @@ using var policy=new ServerPolicy(deployment);
 using var live=new LiveSocket(deployment);
 app.Use((HttpContext context,RequestDelegate next)=>policy.InvokeAsync(context,next));
 app.UseWebSockets();
-app.MapGet("/healthz",()=>new{status="ok",version="0.5.22"});
+app.MapGet("/healthz",()=>new{status="ok",version="0.5.23"});
 app.MapGet("/api/catalog",()=>new{entries=service.Catalog()});
 app.MapGet("/api/catalog/{id}",(string id)=>service.CatalogJson(id) is string json?Results.Ok(new{json}):Results.NotFound(new{error="Unknown catalog ID."}));
 app.MapPost("/api/analyze",(AnalyzeRequest request)=>service.Analyze(request));
@@ -54,4 +54,5 @@ app.MapGet("/input-tolerance.mjs",()=>Results.File(Path.Combine(AppContext.BaseD
 app.MapGet("/input-tempo.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","input-tempo.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/pair-tolerance.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","pair-tolerance.mjs"),"text/javascript; charset=utf-8"));
 app.MapGet("/tolerance-batch.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","tolerance-batch.mjs"),"text/javascript; charset=utf-8"));
+app.MapGet("/replay-summary.mjs",()=>Results.File(Path.Combine(AppContext.BaseDirectory,"Web","replay-summary.mjs"),"text/javascript; charset=utf-8"));
 app.Run();

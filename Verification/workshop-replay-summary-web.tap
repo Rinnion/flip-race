@@ -1,0 +1,555 @@
+TAP version 13
+# Subtest: a new level supplies schema v1 geometry and checks limits and catalog IDs
+ok 1 - a new level supplies schema v1 geometry and checks limits and catalog IDs
+  ---
+  duration_ms: 3.4727
+  ...
+# Subtest: metadata patches only affected values and never replaces geometry or unknown fields
+ok 2 - metadata patches only affected values and never replaces geometry or unknown fields
+  ---
+  duration_ms: 2.7639
+  ...
+# Subtest: cleaned download replaces stale references verbatim and rejects ambiguous JSON keys
+ok 3 - cleaned download replaces stale references verbatim and rejects ambiguous JSON keys
+  ---
+  duration_ms: 0.618
+  ...
+# Subtest: copying the original catalog map preserves geometry and extracts input examples
+ok 4 - copying the original catalog map preserves geometry and extracts input examples
+  ---
+  duration_ms: 26.3172
+  ...
+# Subtest: changing gate offsets and hidden-stone settings keeps unknown values byte-for-byte
+ok 5 - changing gate offsets and hidden-stone settings keeps unknown values byte-for-byte
+  ---
+  duration_ms: 1.4083
+  ...
+# Subtest: properties expose linked rewards and leave fixed finish dimensions to the source
+ok 6 - properties expose linked rewards and leave fixed finish dimensions to the source
+  ---
+  duration_ms: 0.7093
+  ...
+# Subtest: versioned draft preserves raw invalid author text and settings exactly
+ok 7 - versioned draft preserves raw invalid author text and settings exactly
+  ---
+  duration_ms: 9.8776
+  ...
+# Subtest: corrupt and unsupported data are reported without deletion
+ok 8 - corrupt and unsupported data are reported without deletion
+  ---
+  duration_ms: 1.0585
+  ...
+# Subtest: quota, disabled and unavailable storage remain recoverable errors
+ok 9 - quota, disabled and unavailable storage remain recoverable errors
+  ---
+  duration_ms: 2.1551
+  ...
+# Subtest: schema validates limits and supported settings without parsing draft contents
+ok 10 - schema validates limits and supported settings without parsing draft contents
+  ---
+  duration_ms: 5.2896
+  ...
+# Subtest: source scanner retains tokens and rejects duplicates; optional numeric insertion is explicit
+ok 11 - source scanner retains tokens and rejects duplicates; optional numeric insertion is explicit
+  ---
+  duration_ms: 4.7911
+  ...
+# Subtest: create every palette kind with unique IDs and existing links, preserve untouched raw source
+ok 12 - create every palette kind with unique IDs and existing links, preserve untouched raw source
+  ---
+  duration_ms: 11.3083
+  ...
+# Subtest: create into empty and absent optional arrays, then delete back to empty
+ok 13 - create into empty and absent optional arrays, then delete back to empty
+  ---
+  duration_ms: 1.4242
+  ...
+# Subtest: IDs are unique across obstacle and reward collections, not just own type
+ok 14 - IDs are unique across obstacle and reward collections, not just own type
+  ---
+  duration_ms: 0.5748
+  ...
+# Subtest: delete first/middle/last array items and preserve all surviving raw numeric lexemes
+ok 15 - delete first/middle/last array items and preserve all surviving raw numeric lexemes
+  ---
+  duration_ms: 1.2889
+  ...
+# Subtest: obstacle deletion cascades every linked reward kind, unrelated rewards/routes/refs survive
+ok 16 - obstacle deletion cascades every linked reward kind, unrelated rewards/routes/refs survive
+  ---
+  duration_ms: 0.6504
+  ...
+# Subtest: authored hidden additions have explicit timer; deleting final hidden changes mode atomically and visibly
+ok 17 - authored hidden additions have explicit timer; deleting final hidden changes mode atomically and visibly
+  ---
+  duration_ms: 2.7417
+  ...
+# Subtest: linked creations require obstacle, landing rejects gate, finish remains unique/fixed
+ok 18 - linked creations require obstacle, landing rejects gate, finish remains unique/fixed
+  ---
+  duration_ms: 3.6436
+  ...
+# Subtest: stone corner resize keeps wall, clamps landing center/width and follows actual plane
+ok 19 - stone corner resize keeps wall, clamps landing center/width and follows actual plane
+  ---
+  duration_ms: 0.9549
+  ...
+# Subtest: ceiling inner resize remains attached to ceiling with height bounds 1..240
+ok 20 - ceiling inner resize remains attached to ceiling with height bounds 1..240
+  ---
+  duration_ms: 1.0251
+  ...
+# Subtest: height-only resize preserves authored clipped landing X/width while updating physical plane
+ok 21 - height-only resize preserves authored clipped landing X/width while updating physical plane
+  ---
+  duration_ms: 0.6414
+  ...
+# Subtest: stone width uses group clearX bounds, sentinel zero stays zero
+ok 22 - stone width uses group clearX bounds, sentinel zero stays zero
+  ---
+  duration_ms: 1.5223
+  ...
+# Subtest: offset gate width respects both bands and independent opening resize keeps parts and small gaps
+ok 23 - offset gate width respects both bands and independent opening resize keeps parts and small gaps
+  ---
+  duration_ms: 1.9364
+  ...
+# Subtest: landing width handles keep full positive window on stone without changing raw Y
+ok 24 - landing width handles keep full positive window on stone without changing raw Y
+  ---
+  duration_ms: 1.1603
+  ...
+# Subtest: radius resize clamps actual circles inside corridor, supports omitted default radius without manual JSON
+ok 25 - radius resize clamps actual circles inside corridor, supports omitted default radius without manual JSON
+  ---
+  duration_ms: 1.8748
+  ...
+# Subtest: all operations reject duplicate keys and repeated resize preview never changes source snapshot
+ok 26 - all operations reject duplicate keys and repeated resize preview never changes source snapshot
+  ---
+  duration_ms: 5.6577
+  ...
+# Subtest: tempo classifies all successive commands at exact 150 and 250 ms boundaries
+ok 27 - tempo classifies all successive commands at exact 150 and 250 ms boundaries
+  ---
+  duration_ms: 2.4662
+  ...
+# Subtest: distance tempo uses resolved times, with no interval or episode gap inferred across missing time
+ok 28 - distance tempo uses resolved times, with no interval or episode gap inferred across missing time
+  ---
+  duration_ms: 0.3326
+  ...
+# Subtest: requests use the displayed replay source, resolution axis and settings even with a different manual draft
+ok 29 - requests use the displayed replay source, resolution axis and settings even with a different manual draft
+  ---
+  duration_ms: 2.5402
+  ...
+# Subtest: report validates the entire discrete grid, omission, attempted count and reference tape
+ok 30 - report validates the entire discrete grid, omission, attempted count and reference tape
+  ---
+  duration_ms: 1.1699
+  ...
+# Subtest: a local manoeuvre may be evaluable when a later scheduled command is unreached
+ok 31 - a local manoeuvre may be evaluable when a later scheduled command is unreached
+  ---
+  duration_ms: 0.3525
+  ...
+# Subtest: adjacent safe points stop at each gap and disconnected safe shifts remain individually available
+ok 32 - adjacent safe points stop at each gap and disconnected safe shifts remain individually available
+  ---
+  duration_ms: 0.2716
+  ...
+# Subtest: a failure preview clips the common prefix and preserves the original replay and author tape
+ok 33 - a failure preview clips the common prefix and preserves the original replay and author tape
+  ---
+  duration_ms: 1.168
+  ...
+# Subtest: omission markers exclude the removed input and the next input at the undispatched endpoint
+ok 34 - omission markers exclude the removed input and the next input at the undispatched endpoint
+  ---
+  duration_ms: 1.0886
+  ...
+# Subtest: report and preview ignore stale source, settings and tape, and never apply after cancellation
+ok 35 - report and preview ignore stale source, settings and tape, and never apply after cancellation
+  ---
+  duration_ms: 1.0866
+  ...
+# Subtest: single matrix has 13 shift cells at Y=0, excludes omission and separates unfinished from pending
+ok 36 - single matrix has 13 shift cells at Y=0, excludes omission and separates unfinished from pending
+  ---
+  duration_ms: 1.3232
+  ...
+# Subtest: target resolver uses replay identity, accepts either neighboring pair and rejects a different command
+ok 37 - target resolver uses replay identity, accepts either neighboring pair and rejects a different command
+  ---
+  duration_ms: 3.3853
+  ...
+# Subtest: new selection, edit and cancellation discard late target replies before matrix dispatch
+ok 38 - new selection, edit and cancellation discard late target replies before matrix dispatch
+  ---
+  duration_ms: 0.7221
+  ...
+# Subtest: later analysis uses the displayed replay source and original distance values
+ok 39 - later analysis uses the displayed replay source and original distance values
+  ---
+  duration_ms: 2.7707
+  ...
+# Subtest: report accepts partial and empty results but rejects mismatched baseline or moved neighboring presses
+ok 40 - report accepts partial and empty results but rejects mismatched baseline or moved neighboring presses
+  ---
+  duration_ms: 0.6633
+  ...
+# Subtest: only a verified replay under the same settings and landing becomes the selected variant
+ok 41 - only a verified replay under the same settings and landing becomes the selected variant
+  ---
+  duration_ms: 0.7819
+  ...
+# Subtest: pending search and replay reject stale editor data and cannot commit after cancellation or replacement
+ok 42 - pending search and replay reject stale editor data and cannot commit after cancellation or replacement
+  ---
+  duration_ms: 0.7005
+  ...
+# Subtest: separate actions keep their real tick spacing across batch boundaries
+ok 43 - separate actions keep their real tick spacing across batch boundaries
+  ---
+  duration_ms: 6.1177
+  ...
+# Subtest: a late press is never backdated into overdue batches
+ok 44 - a late press is never backdated into overdue batches
+  ---
+  duration_ms: 0.2685
+  ...
+# Subtest: distinct presses in one tick remain distinct and acknowledgements stay ordered
+ok 45 - distinct presses in one tick remain distinct and acknowledgements stay ordered
+  ---
+  duration_ms: 0.582
+  ...
+# Subtest: pause discards unsent presses and elapsed time while retaining outstanding acknowledgements
+ok 46 - pause discards unsent presses and elapsed time while retaining outstanding acknowledgements
+  ---
+  duration_ms: 0.2621
+  ...
+# Subtest: clock caps the unacknowledged window at 28 ticks and detects long frame gaps
+ok 47 - clock caps the unacknowledged window at 28 ticks and detects long frame gaps
+  ---
+  duration_ms: 0.3003
+  ...
+# Subtest: authoritative reward transitions keep untouched rewards available after collisions
+ok 48 - authoritative reward transitions keep untouched rewards available after collisions
+  ---
+  duration_ms: 0.6203
+  ...
+# Subtest: save waits for final acknowledgement and exports exact racing times including ignored actions
+ok 49 - save waits for final acknowledgement and exports exact racing times including ignored actions
+  ---
+  duration_ms: 0.618
+  ...
+# Subtest: connection errors allow confirmed presses but an oversized recording is never truncated
+ok 50 - connection errors allow confirmed presses but an oversized recording is never truncated
+  ---
+  duration_ms: 2.2104
+  ...
+# Subtest: selected start waits in Ready and joins authoritative prefix with later confirmed presses
+ok 51 - selected start waits in Ready and joins authoritative prefix with later confirmed presses
+  ---
+  duration_ms: 0.7324
+  ...
+# Subtest: quick restart starts from the restored prefix without a ready pause or an extra action
+ok 52 - quick restart starts from the restored prefix without a ready pause or an extra action
+  ---
+  duration_ms: 0.4297
+  ...
+# Subtest: focus loss while quick restart is connecting prevents automatic movement
+ok 53 - focus loss while quick restart is connecting prevents automatic movement
+  ---
+  duration_ms: 0.258
+  ...
+# Subtest: overview finds the nearest reached command in screen pixels despite subpixel markers
+ok 54 - overview finds the nearest reached command in screen pixels despite subpixel markers
+  ---
+  duration_ms: 2.1437
+  ...
+# Subtest: landing threshold accepts an integer in range and rejects empty, fractional and invalid values
+ok 55 - landing threshold accepts an integer in range and rejects empty, fractional and invalid values
+  ---
+  duration_ms: 0.2433
+  ...
+# Subtest: landing filtering is strict at the threshold and retains the replay data for later edits
+ok 56 - landing filtering is strict at the threshold and retains the replay data for later edits
+  ---
+  duration_ms: 1.2235
+  ...
+# Subtest: input list preserves exact numbers and rejects coercion, sorting and duplicates
+ok 57 - input list preserves exact numbers and rejects coercion, sorting and duplicates
+  ---
+  duration_ms: 1.2666
+  ...
+# Subtest: time replay supplies only accepted, finite, increasing X positions inside the track
+ok 58 - time replay supplies only accepted, finite, increasing X positions inside the track
+  ---
+  duration_ms: 0.3187
+  ...
+# Subtest: detail scale stays equal on wide/narrow viewports and clamps navigation
+ok 59 - detail scale stays equal on wide/narrow viewports and clamps navigation
+  ---
+  duration_ms: 0.2801
+  ...
+# Subtest: display interpolation handles edges and irregular input sample spacing
+ok 60 - display interpolation handles edges and irregular input sample spacing
+  ---
+  duration_ms: 0.1778
+  ...
+# Subtest: an edit invalidates a pending response before next debounce request exists
+ok 61 - an edit invalidates a pending response before next debounce request exists
+  ---
+  duration_ms: 0.2504
+  ...
+# Subtest: a geometry edit keeps only the visible reference path and invalidates playback data and pending replays
+ok 62 - a geometry edit keeps only the visible reference path and invalidates playback data and pending replays
+  ---
+  duration_ms: 1.0176
+  ...
+# Subtest: route visibility survives edits, a new calculation replaces the path, and document replacement clears it
+ok 63 - route visibility survives edits, a new calculation replaces the path, and document replacement clears it
+  ---
+  duration_ms: 0.2506
+  ...
+# Subtest: actual Core reward kinds distinguish traps from positive bonuses and name every shape
+ok 64 - actual Core reward kinds distinguish traps from positive bonuses and name every shape
+  ---
+  duration_ms: 0.1773
+  ...
+# Subtest: stone drag moves linked group and positive triggers by one bounded delta, preserving sentinels/wall
+ok 65 - stone drag moves linked group and positive triggers by one bounded delta, preserving sentinels/wall
+  ---
+  duration_ms: 3.0027
+  ...
+# Subtest: gate moves opening and both offset bands without deleting parts at vertical/horizontal boundaries
+ok 66 - gate moves opening and both offset bands without deleting parts at vertical/horizontal boundaries
+  ---
+  duration_ms: 0.399
+  ...
+# Subtest: free circular and finish rewards stay within corridor using actual shape, landing remains on stone
+ok 67 - free circular and finish rewards stay within corridor using actual shape, landing remains on stone
+  ---
+  duration_ms: 0.9344
+  ...
+# Subtest: source patch preserves untouched number spelling, formatting, escaped keys and unknown fields
+ok 68 - source patch preserves untouched number spelling, formatting, escaped keys and unknown fields
+  ---
+  duration_ms: 0.4676
+  ...
+# Subtest: repeated preview plans and cancellation do not commit or accumulate prior deltas
+ok 69 - repeated preview plans and cancellation do not commit or accumulate prior deltas
+  ---
+  duration_ms: 0.5647
+  ...
+# Subtest: reads exact author object, preserving unknown fields, whitespace and numeric notation
+ok 70 - reads exact author object, preserving unknown fields, whitespace and numeric notation
+  ---
+  duration_ms: 2.6416
+  ...
+# Subtest: reads current source after edit and undo, without retaining deleted or unrelated objects
+ok 71 - reads current source after edit and undo, without retaining deleted or unrelated objects
+  ---
+  duration_ms: 0.4261
+  ...
+# Subtest: invalid or ambiguous source cannot yield a stale or rewritten object
+ok 72 - invalid or ambiguous source cannot yield a stale or rewritten object
+  ---
+  duration_ms: 0.7018
+  ...
+# Subtest: replacement changes only selected object bytes and can return a renamed selection
+ok 73 - replacement changes only selected object bytes and can return a renamed selection
+  ---
+  duration_ms: 1.3246
+  ...
+# Subtest: rewards replace riskZones entry while all surrounding text remains exact
+ok 74 - rewards replace riskZones entry while all surrounding text remains exact
+  ---
+  duration_ms: 0.4634
+  ...
+# Subtest: replacement rejects incomplete JSON, nonobject values, missing IDs, duplicate fields and lost targets
+ok 75 - replacement rejects incomplete JSON, nonobject values, missing IDs, duplicate fields and lost targets
+  ---
+  duration_ms: 0.5425
+  ...
+# Subtest: all three nested grids contain the expected coordinates, with two axes and the original first in the work queue
+ok 76 - all three nested grids contain the expected coordinates, with two axes and the original first in the work queue
+  ---
+  duration_ms: 10.0518
+  ...
+# Subtest: expansion and retries preserve all computed outcomes, including invalid and physically incomplete cells
+ok 77 - expansion and retries preserve all computed outcomes, including invalid and physically incomplete cells
+  ---
+  duration_ms: 6.2807
+  ...
+# Subtest: tempo filters compare the shortest adjacent interval and leave cached statuses and progress intact
+ok 78 - tempo filters compare the shortest adjacent interval and leave cached statuses and progress intact
+  ---
+  duration_ms: 0.3272
+  ...
+# Subtest: reports accept an exact subset and partial budget results; wrong identity, coordinates and baseline are rejected
+ok 79 - reports accept an exact subset and partial budget results; wrong identity, coordinates and baseline are rejected
+  ---
+  duration_ms: 0.5335
+  ...
+# Subtest: preview uses the displayed replay provenance and returns a clipped collision path without changing the original
+ok 80 - preview uses the displayed replay provenance and returns a clipped collision path without changing the original
+  ---
+  duration_ms: 0.7633
+  ...
+# Subtest: markers use the shifted times and positions on the returned trajectory and stop at impact
+ok 81 - markers use the shifted times and positions on the returned trajectory and stop at impact
+  ---
+  duration_ms: 0.5195
+  ...
+# Subtest: replacement or cancellation blocks a late paired report or overlay
+ok 82 - replacement or cancellation blocks a late paired report or overlay
+  ---
+  duration_ms: 0.5257
+  ...
+# Subtest: summary preserves 150/250 ms boundaries, critical episodes and tempo-only partial state
+ok 83 - summary preserves 150/250 ms boundaries, critical episodes and tempo-only partial state
+  ---
+  duration_ms: 3.3695
+  ...
+# Subtest: unique targets count once, overlapping pairs remain distinct and shared spans merge transitively
+ok 84 - unique targets count once, overlapping pairs remain distinct and shared spans merge transitively
+  ---
+  duration_ms: 1.9555
+  ...
+# Subtest: adjacent disjoint low single spans stay separate and 7% exactly is moderate
+ok 85 - adjacent disjoint low single spans stay separate and 7% exactly is moderate
+  ---
+  duration_ms: 0.5064
+  ...
+# Subtest: pending and unsupported are unknown, not low; all-cell denominators and saved-batch matching survive restore
+ok 86 - pending and unsupported are unknown, not low; all-cell denominators and saved-batch matching survive restore
+  ---
+  duration_ms: 0.9902
+  ...
+# Subtest: missing resolved time breaks distance streaks and gaps; unreached scheduled time never gains a map point
+ok 87 - missing resolved time breaks distance streaks and gaps; unreached scheduled time never gains a map point
+  ---
+  duration_ms: 0.8839
+  ...
+# Subtest: empty and one-command replays have no invented percentages or places
+ok 88 - empty and one-command replays have no invented percentages or places
+  ---
+  duration_ms: 0.1924
+  ...
+# Subtest: app summary refreshes progress and restore, hides stale results, and map navigation never starts analysis
+ok 89 - app summary refreshes progress and restore, hides stale results, and map navigation never starts analysis
+  ---
+  duration_ms: 13.9557
+  ...
+# Subtest: legacy and current routes retain their own grid even when their minimum gaps agree
+ok 90 - legacy and current routes retain their own grid even when their minimum gaps agree
+  ---
+  duration_ms: 2.2906
+  ...
+# Subtest: route rows and run summaries show only exact settings, with the fastest finishes first
+ok 91 - route rows and run summaries show only exact settings, with the fastest finishes first
+  ---
+  duration_ms: 0.9036
+  ...
+# Subtest: changing settings resets pagination and rejects stale selections without deleting saved routes
+ok 92 - changing settings resets pagination and rejects stale selections without deleting saved routes
+  ---
+  duration_ms: 0.3043
+  ...
+# Subtest: route selection displays a replay only when finish, accepted inputs and outcome agree
+ok 93 - route selection displays a replay only when finish, accepted inputs and outcome agree
+  ---
+  duration_ms: 0.4407
+  ...
+# Subtest: draft retains exact developer analysis and manual inputs and settings
+ok 94 - draft retains exact developer analysis and manual inputs and settings
+  ---
+  duration_ms: 2.0274
+  ...
+# Subtest: game defaults start ON and a captured run is isolated from later edits
+ok 95 - game defaults start ON and a captured run is isolated from later edits
+  ---
+  duration_ms: 2.0408
+  ...
+# Subtest: saved rows restore complete options; old routes restore OFF; custom OFF parameters survive
+ok 96 - saved rows restore complete options; old routes restore OFF; custom OFF parameters survive
+  ---
+  duration_ms: 0.2804
+  ...
+# Subtest: unsupported profiles, warning and malformed acceleration options cannot enter a run snapshot
+ok 97 - unsupported profiles, warning and malformed acceleration options cannot enter a run snapshot
+  ---
+  duration_ms: 0.5168
+  ...
+# Subtest: draft v1 migrates to OFF and preserves unknown metadata when new settings are saved
+ok 98 - draft v1 migrates to OFF and preserves unknown metadata when new settings are saved
+  ---
+  duration_ms: 1.8309
+  ...
+# Subtest: NDJSON handles messages split across bytes, including Cyrillic and EOF after the final object
+ok 99 - NDJSON handles messages split across bytes, including Cyrillic and EOF after the final object
+  ---
+  duration_ms: 26.6495
+  ...
+# Subtest: progress and phases never move backward, and each request starts with fresh progress
+ok 100 - progress and phases never move backward, and each request starts with fresh progress
+  ---
+  duration_ms: 0.5845
+  ...
+# Subtest: HTTP validation errors and streaming errors reach the caller
+ok 101 - HTTP validation errors and streaming errors reach the caller
+  ---
+  duration_ms: 1.8937
+  ...
+# Subtest: truncated and invalid streams cannot complete the search
+ok 102 - truncated and invalid streams cannot complete the search
+  ---
+  duration_ms: 1.2381
+  ...
+# Subtest: abort cancels a pending reader and suppresses late progress and results
+ok 103 - abort cancels a pending reader and suppresses late progress and results
+  ---
+  duration_ms: 6.5029
+  ...
+# Subtest: restore requires the current range, full tape and run settings, and supports adjacent overlapping pairs
+ok 104 - restore requires the current range, full tape and run settings, and supports adjacent overlapping pairs
+  ---
+  duration_ms: 2.4343
+  ...
+# Subtest: pair fraction includes invalid, rejected and physically unfinished cells; uncomputed cells keep it unknown
+ok 105 - pair fraction includes invalid, rejected and physically unfinished cells; uncomputed cells keep it unknown
+  ---
+  duration_ms: 0.7188
+  ...
+# Subtest: single counts its 25 cells; omission remains separate and manual preview keeps its original range
+ok 106 - single counts its 25 cells; omission remains separate and manual preview keeps its original range
+  ---
+  duration_ms: 0.7657
+  ...
+# Subtest: tolerance calibration makes 7% moderate and saturates at 60% without changing raw coverage
+ok 107 - tolerance calibration makes 7% moderate and saturates at 60% without changing raw coverage
+  ---
+  duration_ms: 1.1687
+  ...
+# Subtest: batch stream handles fragmented UTF-8, plan/progress checkpoints and terminal metadata
+ok 108 - batch stream handles fragmented UTF-8, plan/progress checkpoints and terminal metadata
+  ---
+  duration_ms: 20.8306
+  ...
+# Subtest: cancellation cannot deliver a queued result after a completed checkpoint
+ok 109 - cancellation cannot deliver a queued result after a completed checkpoint
+  ---
+  duration_ms: 0.8559
+  ...
+1..109
+# tests 109
+# suites 0
+# pass 109
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 242.6553

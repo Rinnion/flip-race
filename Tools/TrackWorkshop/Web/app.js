@@ -11,6 +11,7 @@ import { ToleranceRequestState, TOLERANCE_SPAN_MS, TOLERANCE_STEP_MS, adjacentSa
   toleranceOverlay } from './input-tolerance.mjs';
 import { BATCH_SPAN_MS, batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor, toleranceScore } from './tolerance-batch.mjs';
 import { inputTempo } from './input-tempo.mjs';
+import { canLocateCommand, replaySummary } from './replay-summary.mjs';
 import { PAIR_SPANS, PairGrid, matchesPairMinimum, matchesPairReport, pairAxis, pairKey, pairOverlay, pairRequest } from './pair-tolerance.mjs';
 import { captureRunSettings, DEFAULT_SURFACE_RUN_SETTINGS, sameRunSettings, storedRunSettings } from './run-settings.mjs';
 import { NEW_LEVEL_LENGTH, NEW_LEVEL_NAME, unusedTrackId, newLevelSource, copyBuiltinTrack,
@@ -35,6 +36,7 @@ const pairTolerance = { cache: new Map(), snapshot: null, grid: null, selected: 
 const pairBatchSize = 128;
 const toleranceBatch = { pending: null, batch: null, checkpoints: [], status: '', rows: [], rendered: null,
   view: null, selected: null, coverage: new WeakMap() };
+const replaySummaryView = { revision: 0, cache: null, rendered: null, focusIndex: null };
 let draftStorage, pendingDraft = null, draftBlocked = false, draftTimer = null, draftTouched = false;
 const preparation = { revision: 0, abort: null, pending: false, result: null, sourceId: null };
 const routeSearch = { pending: null, status: '', progress: null, buttons: [] };
@@ -552,6 +554,114 @@ function renderBatchResults() {
     if (coverage.state === 'ready') row.button.style.setProperty('--batch-tone', toleranceColor(coverage.fraction));
     else row.button.style.removeProperty('--batch-tone');
   }
+  renderReplaySummary();
+}
+
+function renderReplaySummary() {
+  const result = state.route.result;
+  const fresh = state.valid && !state.route.stale && !!result && !state.moving && !objectEdit.dirty
+    && !objectEdit.committing && !live && loadingTrack === null && replaySource?.editorSource === $('json').value
+    && sameRunSettings(result, currentRunSettings());
+  $('replay-summary-content').hidden = !fresh;
+  if (!fresh) {
+    replaySummaryView.focusIndex = null;
+    message('replay-summary-status', result ? 'Прохождение неактуально. Постройте траекторию для текущей карты и настроек.'
+      : 'Постройте траекторию для текущей карты и настроек.');
+    replaySummaryView.rendered = null;
+    return;
+  }
+  const batch = toleranceBatch.view;
+  let cached = replaySummaryView.cache;
+  if (!cached || cached.result !== result || cached.batch !== batch || cached.revision !== replaySummaryView.revision) {
+    cached = { result, batch, revision: replaySummaryView.revision, report: replaySummary(result, batch, coverageOf) };
+    replaySummaryView.cache = cached;
+  }
+  const navigable = canSelectAnalysisTarget(), matrixAvailable = navigable && !toleranceBatch.pending;
+  const rendered = replaySummaryView.rendered;
+  if (rendered?.cache === cached && rendered.navigable === navigable && rendered.matrixAvailable === matrixAvailable) return;
+  replaySummaryView.rendered = { cache: cached, navigable, matrixAvailable };
+  const { report } = cached, { tempo: timing, tolerance: allowance, groups } = report;
+  const percentage = value => value === null ? 'нет данных' : `${number(value * 100, 1)}%`;
+  const outcome = result.summary?.status === 'Finished'
+    ? result.summary.cleanFinish ? 'финиш без ударов' : 'финиш достигнут' : 'финиш не достигнут';
+  message('replay-summary-status', `${replaySource.label || 'Текущая траектория'} · ${outcome} · ${number(result.inputs.length)} команд · ${runSettingsLabel(storedRunSettings(result))}`
+    + ` · принято ${number(report.accepted)}, отклонено ${number(report.ignored)}, не достигнуто ${number(report.unreached)}`);
+  const minimum = allowance.minimum;
+  const metrics = [
+    ['Темп · критические интервалы', `${number(timing.counts.critical)} / ${number(timing.measured)} · ${percentage(timing.criticalFraction)}`,
+      `Минимум ${report.minimumIntervalMs === null ? 'неизвестен' : `${number(report.minimumIntervalMs, 2)} мс`}. Нормальных ${number(timing.counts.normal)}, простых ${number(timing.counts.easy)}, время неизвестно ${number(timing.counts.unknown)}. Всего ${number(Math.max(0, result.inputs.length - 1))} интервалов.`],
+    ['Критические серии', `${number(report.criticalSeries)} · максимум ${number(timing.longestCritical)} подряд`,
+      `Длина в интервалах${timing.longestCritical ? ` (${number(timing.longestCritical + 1)} команд в самой длинной серии)` : ''}. Нормальный интервал 150–250 мс, простой >250 мс.`],
+    ['Минимальный допуск', minimum ? `${number(minimum.score * 100)}%` : 'нет данных',
+      minimum ? `Безопасных ${number(minimum.fraction * 100, 2)}% (${number(minimum.safe)} / ${number(minimum.total)}). Низкий допуск: ${number(allowance.low)} из ${number(allowance.ready)} рассчитанных манёвров.` : 'Нужны рассчитанные матрицы манёвров.'],
+    ['Трудные места', `${number(groups.length)} · максимум ${number(report.longestPlace)} команд`,
+      `Охвачено ${number(report.coveredCommands)} разных команд.${report.partial ? ' По доступным данным.' : ''}`],
+  ];
+  $('replay-summary-metrics').replaceChildren(...metrics.map(([label, value, description], index) => {
+    const card = document.createElement('div'), term = document.createElement('dt'), detail = document.createElement('dd');
+    const strong = document.createElement('strong'), note = document.createElement('span');
+    term.textContent = label; strong.textContent = value; note.textContent = description;
+    detail.append(strong, note); card.append(term, detail);
+    if (index === 2 && minimum) {
+      const target = report.batch.targets[minimum.targetIndex];
+      card.append(summaryButton('На схеме', () => focusSummaryCommand(target.inputIndex), !navigable || !canLocateCommand(result.inputs[target.inputIndex])));
+      card.append(summaryButton('Матрица', () => openBatchTarget(target), !matrixAvailable));
+    }
+    return card;
+  }));
+  message('replay-summary-coverage', allowance.total === null
+    ? 'Допуск ещё не рассчитан. Трудные места пока определены только по темпу; число манёвров неизвестно до построения плана.'
+    : `Матрицы: ${number(allowance.ready)} из ${number(allowance.total)} манёвров рассчитано · ожидает ${number(allowance.pending)} · недоступно ${number(allowance.unsupported)}.`
+      + (report.partial ? ' Частичное покрытие: неизвестные результаты не считаются простыми. Число и границы трудных мест могут измениться.' : ' Покрытие полное.')
+      + ' Доля каждой матрицы — от всех 625 клеток пары или 25 одиночных, без пробы пропуска.');
+  $('replay-summary-places-label').textContent = `${report.partial ? 'Трудные места по доступным данным' : 'Трудные места'} · ${number(groups.length)}`;
+  $('replay-summary-place-list').replaceChildren(...groups.map((group, index) => {
+    const item = document.createElement('li'), description = document.createElement('p'), actions = document.createElement('div');
+    const start = result.inputs[group.start], end = result.inputs[group.end];
+    const time = position => {
+      const input = result.inputs[position];
+      if (input.status !== 'unreached' && Number.isFinite(input.time)) return `${number(input.time, 3)} с`;
+      return Number.isFinite(timing.commands[position]?.time)
+        ? `${number(timing.commands[position].time, 3)} с по ленте (не достигнуто)` : 'время неизвестно';
+    };
+    const x = input => Number.isFinite(input.x) && input.status !== 'unreached' ? number(input.x, 1) : 'неизвестно';
+    description.textContent = `№${group.start + 1}${group.end !== group.start ? `–${group.end + 1}` : ''} · ${number(group.commandCount)} команд · ${time(group.start)} → ${time(group.end)} · X ${x(start)} → ${x(end)}`
+      + ` · критических интервалов ${number(group.tempoEdges.length)}, манёвров с низким допуском ${number(group.targetIndices.length)}`
+      + (group.unlocated ? ` · без точки на схеме ${number(group.unlocated)}` : '')
+      + (index ? ` · пауза от предыдущего${group.gapSource === 'scheduled' ? ' по ленте' : ''}: ${group.gapMs === null ? 'неизвестна' : `${number(group.gapMs, 1)} мс`}` : '');
+    actions.className = 'replay-summary-actions';
+    actions.append(summaryButton('К началу на схеме', () => focusSummaryCommand(group.start), !navigable || !canLocateCommand(start)));
+    if (group.end !== group.start) actions.append(summaryButton('К концу', () => focusSummaryCommand(group.end), !navigable || !canLocateCommand(end)));
+    for (const targetIndex of group.targetIndices) {
+      const target = report.batch.targets[targetIndex];
+      actions.append(summaryButton(`Матрица · ${batchTargetLabel(target)}`, () => openBatchTarget(target), !matrixAvailable));
+    }
+    item.append(description, actions); return item;
+  }));
+  if (!groups.length) {
+    const empty = document.createElement('li');
+    empty.textContent = report.partial ? 'В доступных данных трудные места не найдены. Допуск известен не полностью.' : 'По этим критериям трудные места не найдены.';
+    $('replay-summary-place-list').append(empty);
+  }
+}
+
+function summaryButton(label, action, disabled) {
+  const button = document.createElement('button');
+  button.type = 'button'; button.textContent = label; button.disabled = disabled;
+  button.addEventListener('click', action);
+  return button;
+}
+
+function focusSummaryCommand(index) {
+  const input = state.route.result?.inputs[index];
+  if (!canSelectAnalysisTarget() || !canLocateCommand(input)) return;
+  replaySummaryView.focusIndex = index;
+  if (!state.route.visible) { state.route.toggle(); updateRouteControls(); }
+  stopPlayback();
+  state.left = input.x - dimensions().width * .4;
+  seek(input.time, false);
+  $('diagram').querySelector(`[data-route-input="${input.index}"]`)?.focus({ preventScroll: true });
+  $('diagram').scrollIntoView({ block: 'nearest' });
 }
 
 function restoreBatchReplay() {
@@ -570,6 +680,8 @@ function restoreBatchReplay() {
 function resetBatch() {
   toleranceBatch.pending?.abort.abort();
   Object.assign(toleranceBatch, { pending: null, batch: null, checkpoints: [], status: '', selected: null, view: null });
+  replaySummaryView.revision++;
+  replaySummaryView.focusIndex = null;
 }
 
 function openBatchTarget(target, activatedIndex) {
@@ -699,6 +811,7 @@ async function runBatch() {
           else toleranceBatch.checkpoints[index] = checkpoint;
         }
         ticket.completed = completed;
+        replaySummaryView.revision++;
         renderBatchResults();
         draw();
       },
@@ -1532,7 +1645,7 @@ function drawReplay(parent, overview = false) {
     const coverage = target && coverageOf(target);
     const batchDescription = target ? ` · ${batchTargetLabel(target)}: ${batchCoverageLabel(target)}` : '';
     const description = `Нажатие №${input.index + 1} · ${input.status === 'accepted' ? 'принято' : 'отклонено'} · ${number(input.time, 3)} с · X ${number(input.x, 2)}${input.reason ? ` · ${input.reason}` : ''}`;
-    const marker = el('g', { class: 'object route-command', tabindex: 0, role: 'button', 'aria-label': `${description}${batchDescription} · Проверить допуск`,
+    const marker = el('g', { class: `object route-command${replaySummaryView.focusIndex === input.index ? ' summary-command-selected' : ''}`, tabindex: 0, role: 'button', 'aria-label': `${description}${batchDescription} · Проверить допуск`,
       'data-route-input': input.index });
     marker.append(el('title', {}, description + batchDescription));
     const radius = overview ? 2.5 : 3.5;

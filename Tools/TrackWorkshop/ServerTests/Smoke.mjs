@@ -39,9 +39,9 @@ async function request(path, { method = 'GET', host = authority, sourceOrigin, b
   return { response, text };
 }
 const health = await request('/healthz');
-assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.22' });
+assert.deepEqual(JSON.parse(health.text), { status: 'ok', version: '0.5.23' });
 const page = await request('/');
-assert.match(page.text, /v0\.5\.22/);
+assert.match(page.text, /v0\.5\.23/);
 assert.match(page.text, /id="toggle-route"/);
 assert.match(page.text, /id="landing-threshold"[^>]*value="200"/);
 assert.match(page.text, /id="tolerance-matrix"/);
@@ -50,6 +50,7 @@ await request('/edit-model.mjs'); await request('/object-source.mjs'); await req
 await request('/input-tempo.mjs'); await request('/input-tolerance.mjs');
 await request('/pair-tolerance.mjs');
 await request('/tolerance-batch.mjs');
+await request('/replay-summary.mjs');
 const catalog = JSON.parse((await request('/api/catalog')).text); assert.equal(catalog.entries.length, 8);
 const json = JSON.parse((await request('/api/catalog/full-long')).text).json;
 const original = JSON.parse((await request('/api/analyze', { method: 'POST', sourceOrigin: origin, body: JSON.stringify({ json }) })).text);
@@ -83,4 +84,4 @@ assert.ok(example.inputTime > example.landingTime);
 const evidence = { passed: true, base: base.origin, publicOrigin, requests: results.length, results,
   replaySummary: replay.summary, landingIntervals: { short: shortIntervals.length, total: withReference.landingIntervals.length, example } };
 await writeFile(process.env.WORKSHOP_SMOKE_OUTPUT || fileURLToPath(new URL('./smoke-results.json', import.meta.url)), JSON.stringify(evidence, null, 2) + '\n');
-console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.22, identity/error/static/replay checks.`);
+console.log(`PASS Workshop server HTTP smoke: ${results.length} requests, version 0.5.23, identity/error/static/replay checks.`);

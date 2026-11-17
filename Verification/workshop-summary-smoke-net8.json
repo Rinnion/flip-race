@@ -1,0 +1,255 @@
+{
+  "passed": true,
+  "base": "http://127.0.0.1:4242",
+  "publicOrigin": null,
+  "requests": 30,
+  "results": [
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/edit-model.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/object-source.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/authoring-fields.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/input-tempo.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/input-tolerance.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/pair-tolerance.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tolerance-batch.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/replay-summary.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog/full-long",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": "http://127.0.0.1:4242",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog/full-long",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze/",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": "https://wrong.example",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": "null",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": "http://127.0.0.1:4242",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": "http://127.0.0.1:4242",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze",
+      "host": "127.0.0.1:4242",
+      "origin": "http://127.0.0.1:4242",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/healthz",
+      "host": "wrong.example",
+      "origin": null,
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/ServerOptions.cs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/README.md",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/Web/tests/model.test.mjs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/Catalog/full-long.track.json",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog/..%2F..%2FProgram.cs",
+      "host": "127.0.0.1:4242",
+      "origin": null,
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/replay",
+      "host": "127.0.0.1:4242",
+      "origin": "http://127.0.0.1:4242",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/replay",
+      "host": "127.0.0.1:4242",
+      "origin": "http://127.0.0.1:4242",
+      "status": 200
+    }
+  ],
+  "replaySummary": {
+    "status": "Finished",
+    "finishTime": 37.99999999999849,
+    "elapsed": 37.99999999999849,
+    "cleanFinish": false,
+    "collisions": 4,
+    "boosts": 0,
+    "instantBoosts": 0,
+    "slows": 0,
+    "coins": 0,
+    "finishBoosts": 0,
+    "acceptedInputs": 0,
+    "ignoredInputs": 0,
+    "unreachedInputs": 0,
+    "collectedIds": [],
+    "successfulIds": [],
+    "failedIds": [],
+    "hitIds": [
+      "full-long-1-low",
+      "full-long-2-standard-pad",
+      "full-long-3-low",
+      "full-long-4-before-stone"
+    ]
+  },
+  "landingIntervals": {
+    "short": 1,
+    "total": 17,
+    "example": {
+      "landingTime": 2.037392795883356,
+      "landingX": 448.60691823899253,
+      "landingY": 226,
+      "inputIndex": 1,
+      "inputTime": 2.205368721524188,
+      "inputX": 485.18111873532075,
+      "inputY": 226
+    }
+  }
+}
