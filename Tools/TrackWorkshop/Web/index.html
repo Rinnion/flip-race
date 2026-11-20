@@ -10,7 +10,7 @@
 <body>
 <header class="page-header">
   <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><div class="eyebrow">FLIP RACE / ИНСТРУМЕНТЫ АВТОРА</div><h1>Мастерская трасс</h1></div></div>
-  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.24</span>
+  <span class="local-badge"><i aria-hidden="true"></i>Мастерская v0.5.25</span>
 </header>
 
 <main>
@@ -104,7 +104,7 @@
           </details>
           <details id="replay-summary-places">
             <summary id="replay-summary-places-label">Трудные места</summary>
-            <p class="subtle">Одна целая матрица с безопасными клетками &lt;7% — одно трудное место. Перекрывающиеся пары сохраняются отдельно.</p>
+            <p class="subtle">Один целый исходный полёт с G/V &lt;7% — одно трудное место.</p>
             <ol id="replay-summary-place-list"></ol>
           </details>
           <p class="subtle">Окно охватывает крайние времена безопасных нажатий в рассчитанной матрице; внутри возможны разрывы. Промежуток: самое раннее безопасное нажатие следующего манёвра минус самое позднее предыдущего, в мс. Перекрытие не означает невозможность, положительный промежуток не гарантирует отдых. Крайние альтернативы соседних матриц не проверены совместно. Темп исходной ленты показан отдельно выше и не определяет трудные места этой сводки.</p>
@@ -129,13 +129,23 @@
             <span class="batch-scale" aria-hidden="true"></span><span>Допуск: 0% → 100%</span>
             <span><i class="batch-neutral" aria-hidden="true"></i> Ожидает расчёта / недоступно</span>
           </p>
-          <p class="subtle">Шкала по доле безопасных клеток: 0% → допуск 0%, 7% → 50% (умеренно), 60% и выше → 100%. Это оценка допуска манёвра, не вероятность прохождения.</p>
+          <p class="subtle">Прямая шкала G/V × 100%: безопасные / все допустимые совместные комбинации. Недопустимое время исключается; удар, отклонённая команда или незавершённый полёт — неуспех. Это не вероятность успеха человека или всей трассы.</p>
           <details id="batch-details">
             <summary>Манёвры и матрицы</summary>
-            <p>Сдвиги ±600 мс, шаг 50 мс. Доля от всех клеток: 625 для пары, 25 для нажатия. Выберите манёвр, чтобы открыть его матрицу.</p>
+            <p>Точный перебор 25^N совместных комбинаций: все N команд исходного полёта, включая взлёт; сдвиги ±600 мс, шаг 50 мс. Расчёт можно приостановить и продолжить из сохранённого JSON. Выберите манёвр, чтобы открыть N строк по 25 клеток.</p>
             <ul id="batch-list" aria-describedby="batch-legend"></ul>
           </details>
         </div>
+      </section>
+      <section id="deep-panel" class="deep-panel" aria-labelledby="deep-title" hidden>
+        <h3 id="deep-title">Допуск целого манёвра</h3>
+        <div class="pair-controls"><button id="deep-continue" type="button">Продолжить этот манёвр</button><button id="deep-cancel" type="button" hidden>Приостановить и сохранить</button><button id="deep-overlay-remove" type="button" hidden>Убрать наложение</button></div>
+        <p id="deep-status" role="status"></p>
+        <p class="subtle">Каждая клетка: G/V при фиксированном сдвиге этой команды и совместном переборе всех остальных. Все строки используют исходную область ±600 мс. Время ≥0; порядок и интервалы ≥100 мс между командами и с фиксированными соседями обязательны. Частичные доли предварительны, «—» — нет допустимых вариантов после полного перебора. Выбор клетки не меняет доли остальных клеток.</p>
+        <div class="pair-scroll"><table id="deep-matrix" class="deep-matrix" aria-label="Сдвиги всех команд целого манёвра"></table></div>
+        <p class="subtle">Фиолетовое кольцо — выбранная фиксированная клетка. Синяя рамка — все сдвиги показанного безопасного совместного примера, ближайшего к исходнику по сумме абсолютных сдвигов. Это один пример, не условный пересчёт процентов.</p>
+        <p id="deep-selected" role="status"></p>
+
       </section>
       <section class="tempo-report" aria-labelledby="tempo-title">
         <h3 id="tempo-title">Темп команд</h3>
@@ -392,7 +402,7 @@
     <p id="live-save-help" class="muted" role="status">Поставьте заезд на паузу или завершите его, чтобы сохранить нажатия.</p>
   </div>
 </section>
-<footer><strong>Мастерская v0.5.24</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
+<footer><strong>Мастерская v0.5.25</strong> · Координаты и симуляция SOLO — из Unity Core. Схема показывает физические области. <span>JSON остаётся вашим исходником.</span></footer>
 </main>
 </body>
 </html>

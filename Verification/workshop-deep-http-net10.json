@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "version": "0.5.25",
+  "base": "http://127.0.0.1:4247",
+  "cases": [
+    {
+      "count": 1,
+      "total": "25",
+      "valid": "21",
+      "safe": "21",
+      "percent": 100,
+      "chunks": 1,
+      "elapsedMs": 77,
+      "previewPoints": 1
+    },
+    {
+      "count": 2,
+      "total": "625",
+      "valid": "252",
+      "safe": "252",
+      "percent": 100,
+      "chunks": 1,
+      "elapsedMs": 71,
+      "previewPoints": 2
+    },
+    {
+      "count": 3,
+      "total": "15625",
+      "valid": "2275",
+      "safe": "2275",
+      "percent": 100,
+      "chunks": 1,
+      "elapsedMs": 639,
+      "previewPoints": 3
+    },
+    {
+      "count": 4,
+      "total": "390625",
+      "valid": "17199",
+      "safe": "17199",
+      "percent": 100,
+      "chunks": 1,
+      "elapsedMs": 1938,
+      "previewPoints": 4
+    }
+  ],
+  "roundTrip": true,
+  "independentScheduleCounts": true
+}

@@ -38,16 +38,21 @@ internal static class ToleranceBatchStream
             }, cancellation);
             await WriteLine(new { type = "plan", batch = batch.Report("pending"), checkpoints = batch.Checkpoints });
             string reason = "time-budget";
-            for (int i = 0; i < batch.Total; i++)
+            for (int i = 0; i < batch.Total;)
             {
+                string priorCursor = batch.Report("pending").Targets[i].Maneuver?.Cursor ?? "0";
                 var (target, checkpoint) = await Task.Run(() => batch.Evaluate(i, cancellation), cancellation);
-                if (target == null) continue;
+                if (target == null) { i++; continue; }
                 if (checkpoint == null)
                 {
                     reason = "storage-limit";
                     break;
                 }
                 await WriteLine(new { type = "progress", completed = batch.Completed, total = batch.Total, target, checkpoint });
+                // A hard physics/preparation timeout is resumable, but must
+                // not busy-loop the same tuple forever in this request.
+                if (!target.Finished && target.Maneuver?.Cursor == priorCursor) break;
+                if (target.Finished) i++;
             }
             var result = batch.Save(reason);
             await WriteLine(new { type = "result", result.CanonicalJson, result.Batch });

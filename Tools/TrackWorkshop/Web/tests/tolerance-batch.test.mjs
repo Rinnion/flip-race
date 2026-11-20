@@ -1,65 +1,52 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor, toleranceScore } from '../tolerance-batch.mjs';
-import { inputToleranceRequest, singleMatrixCells } from '../input-tolerance.mjs';
 import { DEFAULT_SURFACE_RUN_SETTINGS } from '../run-settings.mjs';
+import { maneuver, batchFor, replay } from './deep-fixtures.mjs';
 
-const settings = { profile: 'Chosen', warningDuration: 0.6, surfaceRunSettings: DEFAULT_SURFACE_RUN_SETTINGS };
-const result = { ...settings, axis: 'time', inputs: [0.4, 0.8, 1.2].map(value => ({ value })) };
-const pair = index => ({ kind: 'pair', inputIndex: index, firstInputIndex: index });
-const batch = { ...settings, spanMs: 600, stepMs: 50, axis: 'time', inputs: [0.4, 0.8, 1.2],
-  targets: [pair(0), pair(1)], commandTargetIndices: [0, 0, 1] };
+const result = replay([.4, .8, 1.2]);
+const settings = { profile: result.profile, warningDuration: result.warningDuration, surfaceRunSettings: DEFAULT_SURFACE_RUN_SETTINGS };
+const batch = batchFor(result, [maneuver([0, 1, 2])]);
 
-test('restore requires the current range, full tape and run settings, and supports adjacent overlapping pairs', () => {
+test('all N points map to exactly the same whole maneuver; source tape/settings/range gate freshness', () => {
   assert.equal(matchesBatchReplay(batch, result), true);
-  assert.equal(matchesBatchReplay(batch, null), false);
-  assert.equal(matchesBatchReplay({ ...batch, spanMs: 300 }, result), false);
-  assert.equal(matchesBatchReplay({ ...batch, commandTargetIndices: [1, 0, 1] }, result), false);
-  assert.equal(matchesBatchReplay(batch, { ...result, axis: 'distance' }), false);
-  assert.equal(matchesBatchReplay(batch, { ...result, warningDuration: 0.8 }), false);
-  assert.equal(matchesBatchReplay(batch, { ...result, inputs: [{ value: 0.4 }, { value: 0.8 }] }), false);
-  assert.equal(matchesBatchReplay(batch, { ...result, surfaceRunSettings: { ...DEFAULT_SURFACE_RUN_SETTINGS, enabled: false } }), false);
+  for (const changed of [null, { ...result, axis: 'distance' }, { ...result, warningDuration: .8 }, replay([.4, .8])])
+    assert.equal(matchesBatchReplay(batch, changed), false);
+  for (const changed of [{ ...batch, spanMs: 300 }, { ...batch, commandTargetIndices: [0, 0, 1] },
+    { ...batch, targets: [{ kind: 'pair', inputIndex: 0, firstInputIndex: 0 }] },
+    { ...batch, targets: [{ ...batch.targets[0], maneuver: { rulesVersion: 1 } }] }])
+    assert.equal(matchesBatchReplay(changed, result), false);
   assert.deepEqual(batchRequest({ result, editorSource: 'map' }), { json: 'map', ...settings, axis: 'time', inputs: batch.inputs });
 });
 
-test('pair fraction includes invalid, rejected and physically unfinished cells; uncomputed cells keep it unknown', () => {
-  const cell = (status, computed = true) => ({ status, computed });
-  const cells = Array.from({ length: 625 }, (_, i) => cell(
-    i < 62 ? 'safe' : ['collision', 'invalid', 'rejected', 'incomplete'][i % 4]));
-  const target = { ...pair(0), pair: { status: 'ready', spanMs: 600, complete: true, cells } };
-  assert.deepEqual(batchCoverage(target), { state: 'ready', computed: 625, total: 625, safe: 62, fraction: 62 / 625 });
-  cells[0] = cell('incomplete', false);
-  assert.deepEqual(batchCoverage(target), { state: 'pending', computed: 624, total: 625 });
-  assert.deepEqual(batchCoverage({ kind: 'unsupported' }), { state: 'unsupported' });
+test('G/V excludes inadmissible tuples and preserves exact planned/computed counts', () => {
+  const target = maneuver([0, 1, 2], { total: '15625', cursor: '15625', valid: '12000', computed: '12000', safe: '600' });
+  const coverage = batchCoverage(target);
+  assert.equal(coverage.state, 'ready'); assert.equal(coverage.fraction, .05);
+  assert.equal(coverage.total, 15625n); assert.equal(coverage.computed, 12000n);
+  target.maneuver.complete = false; target.maneuver.cursor = '13000';
+  assert.equal(batchCoverage(target).state, 'pending');
+  assert.equal(batchCoverage(target).fraction, .05);
+  Object.assign(target.maneuver, { total: '88817841970012523233890533447265625', cursor: '256', valid: '200', computed: '200', safe: '1' });
+  assert.equal(batchCoverage(target).total, 88817841970012523233890533447265625n);
 });
 
-test('single counts its 25 cells; omission remains separate and manual preview keeps its original range', () => {
-  const probes = Array.from({ length: 25 }, (_, i) => ({ status: i === 12 ? 'safe' : 'incomplete', computed: true, endTime: null }));
-  const single = { spanMs: 600, status: 'ready', complete: false, probes, omission: { computed: false, status: 'incomplete' } };
-  assert.deepEqual(batchCoverage({ kind: 'single', single }), { state: 'ready', computed: 25, total: 25, safe: 1, fraction: 1 / 25 });
-  const cells = singleMatrixCells(single);
-  assert.deepEqual([cells[0].firstOffsetMs, cells.at(-1).firstOffsetMs], [-600, 600]);
-  assert.equal(singleMatrixCells(null).length, 13);
-  const snapshot = { provenance: { source: '{}' }, result, inputIndex: 0 };
-  const selected = { offsetMs: -600, omit: false };
-  assert.equal('spanMs' in inputToleranceRequest(snapshot), false);
-  assert.equal(inputToleranceRequest({ ...snapshot, spanMs: 600 }, selected).offsetMs, -600);
-  assert.equal(inputToleranceRequest({ ...snapshot, spanMs: 600 }, selected).spanMs, 600);
-  assert.notEqual(toleranceColor(0), toleranceColor(1));
+test('zero admissible tuples is unknown, zero safe among valid tuples is zero percent', () => {
+  const empty = maneuver([0], { valid: '0', computed: '0', safe: '0' });
+  assert.equal(batchCoverage(empty).fraction, null);
+  assert.equal(batchCoverage(empty).state, 'ready');
+  const failure = maneuver([0], { valid: '25', computed: '25', safe: '0' });
+  assert.equal(batchCoverage(failure).fraction, 0);
+  assert.equal(batchCoverage({ kind: 'unsupported' }).state, 'unsupported');
 });
 
-test('tolerance calibration makes 7% moderate and saturates at 60% without changing raw coverage', () => {
-  assert.equal(toleranceScore(0), 0);
-  assert.equal(toleranceScore(.07), .5);
-  assert.equal(Math.round(toleranceScore(44 / 625) * 100), 50);
-  assert.equal(Math.round(toleranceScore(.55) * 100), 95);
-  assert.equal(toleranceScore(.6), 1);
-  assert.equal(toleranceScore(1), 1);
+test('direct scale has no historical calibration or saturation', () => {
+  for (const fraction of [0, .07, .55, .6, 1]) assert.equal(toleranceScore(fraction), fraction);
+  assert.equal(toleranceScore(null), null);
   assert.equal(toleranceColor(0), 'rgb(176 74 67)');
-  assert.equal(toleranceColor(.07), 'rgb(167 118 32)');
-  assert.equal(toleranceColor(.6), 'rgb(47 121 81)');
-  assert.equal(toleranceColor(1), toleranceColor(.6));
-  for (let i = 1; i <= 625; i++) assert.ok(toleranceScore(i / 625) >= toleranceScore((i - 1) / 625));
+  assert.equal(toleranceColor(.5), 'rgb(167 118 32)');
+  assert.equal(toleranceColor(1), 'rgb(47 121 81)');
+  assert.notEqual(toleranceColor(.6), toleranceColor(1));
 });
 
 function response(events, chunkSize = 15) {

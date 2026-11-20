@@ -10,6 +10,7 @@ import { ToleranceRequestState, TOLERANCE_SPAN_MS, TOLERANCE_STEP_MS, adjacentSa
   isMatchingToleranceReport, matrixCounts, matrixShares, resolveAnalysisTarget, singleMatrixCells, toleranceOffsets,
   toleranceOverlay } from './input-tolerance.mjs';
 import { BATCH_SPAN_MS, batchCoverage, batchRequest, matchesBatchReplay, readBatchResponse, toleranceColor, toleranceScore } from './tolerance-batch.mjs';
+import { MANEUVER_OFFSETS, cellKey, cellProjection, conditionalCell, maneuverRequest, maneuverOverlay } from './maneuver-tolerance.mjs';
 import { inputTempo } from './input-tempo.mjs';
 import { canLocateCommand, replaySummary } from './replay-summary.mjs';
 import { PAIR_SPANS, PairGrid, matchesPairMinimum, matchesPairReport, pairAxis, pairKey, pairOverlay, pairRequest } from './pair-tolerance.mjs';
@@ -19,7 +20,7 @@ import { NEW_LEVEL_LENGTH, NEW_LEVEL_NAME, unusedTrackId, newLevelSource, copyBu
 
 const $ = id => document.getElementById(id);
 const svgNS = 'http://www.w3.org/2000/svg';
-const number = (n, digits = 0) => Number(n).toLocaleString('ru-RU', { maximumFractionDigits: digits });
+const number = (n, digits = 0) => (typeof n === 'bigint' ? n : Number(n)).toLocaleString('ru-RU', { maximumFractionDigits: digits });
 const state = { analysis: null, valid: false, catalog: [], zoom: 1, left: -20, route: new ReplayRoute(), time: 0, playing: false,
   sourceName: 'track.json', sourceText: '', loadRevision: 0, analysisRevision: new Revision(), debounce: null, analysisAbort: null,
   preview: null, moving: false, history: [], future: [], selection: null, addKind: null, pickingStart: false, referenceHints: [] };
@@ -33,6 +34,7 @@ const targetAnalysis = { input: null, status: '' };
 const tolerance = { snapshot: null, report: null, selected: '0,0', overlay: null, visible: true, error: '', buttons: new Map(), renderedSpan: null };
 const pairTolerance = { cache: new Map(), snapshot: null, grid: null, selected: '0,0', buttons: new Map(),
   overlay: null, visible: true, status: '', previewStatus: '', renderedSpan: null };
+const deepTolerance = { target: null, snapshot: null, selected: null, overlay: null, visible: true, status: '' };
 const pairBatchSize = 128;
 const toleranceBatch = { pending: null, batch: null, checkpoints: [], status: '', rows: [], rendered: null,
   view: null, selected: null, coverage: new WeakMap() };
@@ -447,6 +449,7 @@ function updateRouteControls() {
   updateLandingReport();
   renderToleranceResults();
   renderPairTolerance();
+  renderDeepTolerance();
   renderBatchResults();
 }
 function landingThreshold() {
@@ -479,6 +482,7 @@ function coverageOf(target) {
 }
 
 function batchTargetLabel(target) {
+  if (target.kind === 'maneuver') return `Манёвр №${target.inputIndex + 1}–${target.inputIndices.at(-1) + 1} · ${target.inputIndices.length} команд`;
   return target.kind === 'pair' ? `Пара №${target.firstInputIndex + 1}–${target.firstInputIndex + 2}`
     : `Нажатие №${target.inputIndex + 1}`;
 }
@@ -486,14 +490,14 @@ function batchTargetLabel(target) {
 function batchCoverageLabel(target) {
   const coverage = coverageOf(target);
   if (coverage.state === 'unsupported') return 'Недоступно';
-  if (coverage.state === 'pending') return coverage.computed
-    ? `Клетки: ${number(coverage.computed)} из ${number(coverage.total)}` : 'Ожидает расчёта';
-  return `Допуск ${number(100 * toleranceScore(coverage.fraction), 0)}% · безопасных ${number(100 * coverage.fraction, 2)}% (${number(coverage.safe)} / ${number(coverage.total)})`;
+  const progress = `перебрано ${number(coverage.cursor ?? 0n)} / ${number(coverage.total ?? 0n)} · допустимых V=${number(coverage.valid ?? 0n)} · безопасных G=${number(coverage.safe ?? 0n)}`;
+  const fraction = coverage.fraction === null || coverage.fraction === undefined ? 'нет допустимых комбинаций' : `${number(100 * coverage.fraction, 2)}%`;
+  return `${coverage.state === 'pending' ? 'Частично · ' : ''}${fraction} · ${progress}`;
 }
 
 function canOpenBatchTarget(target) {
   const coverage = coverageOf(target);
-  return coverage.state !== 'pending' || coverage.computed > 0;
+  return target.kind === 'maneuver' || coverage.state !== 'pending' || coverage.computed > 0;
 }
 
 function renderBatchResults() {
@@ -551,10 +555,11 @@ function renderBatchResults() {
     row.button.disabled = !!pending || !canOpenBatchTarget(target) || !canSelectAnalysisTarget();
     row.button.setAttribute('aria-pressed', String(toleranceBatch.selected === index));
     row.button.dataset.state = coverage.state;
-    if (coverage.state === 'ready') row.button.style.setProperty('--batch-tone', toleranceColor(coverage.fraction));
+    if (coverage.state === 'ready' && coverage.fraction !== null) row.button.style.setProperty('--batch-tone', toleranceColor(coverage.fraction));
     else row.button.style.removeProperty('--batch-tone');
   }
   renderReplaySummary();
+  renderDeepTolerance();
 }
 
 function renderReplaySummary() {
@@ -590,14 +595,14 @@ function renderReplaySummary() {
     + ` · принято ${number(report.accepted)}, отклонено ${number(report.ignored)}, не достигнуто ${number(report.unreached)}`);
   const minimum = allowance.minimum;
   const metrics = [
-    ['Допуск усреднённых манёвров · выше — проще', range(report.scores, percentage),
-      'Одна целая матрица — одна оценка с равным весом. Шкала: безопасных 0% → 0%, 7% → 50%, ≥60% → 100%. Это локальный допуск, не вероятность успеха.'],
+    ['Допуск целых манёвров · G/V', range(report.scores, percentage),
+      'Один целый полёт — одна оценка с равным весом: G/V × 100%, от 0 до 100. Это доля безопасных допустимых совместных комбинаций, не вероятность успеха человека или всей трассы.'],
     ['Промежутки между соседними манёврами', range(report.gaps, ms),
       `Известно ${number(report.gaps.count)}, неизвестно ${number(report.unknownGaps)}. От самого позднего безопасного нажатия предыдущего манёвра до самого раннего безопасного нажатия следующего.`],
     ['Перекрытия безопасных окон', allowance.total === null ? 'нет данных' : `${number(report.overlaps.length)}`,
-      `Отрицательный промежуток означает перекрытие, ноль — касание. Безопасные окна известны для ${number(report.knownWindows)} манёвров. Общая команда пар отмечена в списке.`],
+      `Отрицательный промежуток означает перекрытие, ноль — касание. Безопасные окна известны для ${number(report.knownWindows)} манёвров.`],
     ['Трудные места · целые матрицы', allowance.total === null ? 'нет данных' : `${number(report.hardPlaces.length)}`,
-      `Безопасных клеток строго <7% (допуск <50%). Соседние пары учитываются отдельно.${report.partial ? ' По доступным данным.' : ''}`],
+      `Доля безопасных допустимых совместных комбинаций строго <7%. Один исходный полёт учитывается один раз.${report.partial ? ' По доступным данным.' : ''}`],
   ];
   $('replay-summary-metrics').replaceChildren(...metrics.map(([label, value, description], index) => {
     const card = document.createElement('div'), term = document.createElement('dt'), detail = document.createElement('dd');
@@ -615,7 +620,7 @@ function renderReplaySummary() {
     ? 'Матрицы ещё не рассчитаны. Число манёвров, их допуск, безопасные окна и промежутки неизвестны до построения плана.'
     : `Матрицы: ${number(allowance.ready)} из ${number(allowance.total)} манёвров рассчитано · ожидает ${number(allowance.pending)} · недоступно ${number(allowance.unsupported)}.`
       + (report.partial ? ' Частичное покрытие: неизвестные результаты исключены из статистик, но не из порядка манёвров.' : ' Покрытие полное.')
-      + ' Доля каждой матрицы — от всех 625 клеток пары или 25 одиночных, без пробы пропуска.');
+      + ' Оценки только завершённых манёвров: G/V; V=0 означает отсутствие допустимых комбинаций и не равно 0%.');
   $('replay-summary-maneuvers-label').textContent = `Все манёвры и безопасные окна · ${allowance.total === null ? 'нет плана' : number(report.maneuvers.length)}`;
   $('replay-summary-places-label').textContent = `${report.partial ? 'Трудные места по доступным данным' : 'Трудные места'} · ${allowance.total === null ? 'нет данных' : number(report.hardPlaces.length)}`;
   const row = maneuver => {
@@ -624,9 +629,9 @@ function renderReplaySummary() {
     const index = report.maneuvers.indexOf(maneuver);
     const stateLabel = maneuver.state === 'unsupported' ? 'недоступен' : 'ожидает расчёта';
     description.textContent = `${batchTargetLabel(target)} · ${maneuver.state === 'ready'
-      ? `допуск ${percentage(maneuver.score)} · безопасных ${percentage(maneuver.fraction)} (${number(maneuver.safe)} / ${number(maneuver.total)})` : stateLabel}`
+      ? `допуск ${percentage(maneuver.score)} · безопасных ${percentage(maneuver.fraction)} (${number(maneuver.safe)} / ${number(maneuver.total)})` : `${stateLabel} · ${batchCoverageLabel(target)}`}`
       + (maneuver.window ? ` · самое раннее безопасное нажатие ${ms(maneuver.window.earliestMs)} → самое позднее ${ms(maneuver.window.latestMs)}`
-        : ` · безопасное окно неизвестно${maneuver.state === 'ready' && maneuver.safe === 0 ? ': безопасных клеток нет' : ''}`)
+        : ` · безопасное окно неизвестно${maneuver.state === 'ready' && maneuver.safe === 0n ? ': безопасных клеток нет' : ''}`)
       + (index ? ` · от предыдущего манёвра: ${ms(maneuver.gapMs)}${maneuver.gapMs < 0 ? ' (перекрытие)' : maneuver.gapMs === 0 ? ' (касание)' : ''}` : '')
       + (maneuver.sharedCommand ? ' · общая команда с предыдущей парой: соседние проверки внутри полёта' : '');
     actions.className = 'replay-summary-actions';
@@ -687,6 +692,7 @@ function resetBatch() {
 function openBatchTarget(target, activatedIndex) {
   if (!target || !canSelectAnalysisTarget() || toleranceBatch.pending || !canOpenBatchTarget(target)) return;
   const result = state.route.result, input = result.inputs[activatedIndex ?? target.inputIndex];
+  clearDeepTolerance();
   toleranceRequests.cancel();
   clearAnalysisTarget();
   clearSingleTolerance();
@@ -703,6 +709,10 @@ function openBatchTarget(target, activatedIndex) {
     Object.assign(targetAnalysis, { input, status: `${batchTargetLabel(target)}: допуск недоступен. ${target.message || target.single?.message || target.pair?.message || ''}` });
     renderAnalysisTarget();
     $('analysis-target').scrollIntoView({ block: 'nearest' });
+  } else if (target.kind === 'maneuver') {
+    Object.assign(deepTolerance, { target, snapshot: toleranceContext(), selected: null, overlay: null, status: '', visible: true });
+    renderDeepTolerance();
+    $('deep-panel').scrollIntoView({ block: 'nearest' });
   } else if (target.kind === 'single') {
     Object.assign(tolerance, { snapshot: { ...toleranceContext(), inputIndex: target.inputIndex, spanMs: BATCH_SPAN_MS },
       report: target.single, visible: true });
@@ -856,8 +866,8 @@ async function cancelBatch() {
 
 function renderAnalysisTarget() {
   $('analysis-target').hidden = !targetAnalysis.status;
-  if (targetAnalysis.status) message('analysis-target-status', targetAnalysis.status);
-  $('analysis-target-cancel').hidden = toleranceRequests.pending?.kind !== 'target';
+  message('analysis-target-status', targetAnalysis.status);
+  $('analysis-target-cancel').hidden = !['target', 'deep-report'].includes(toleranceRequests.pending?.kind);
 }
 
 function clearAnalysisTarget() {
@@ -867,46 +877,147 @@ function clearAnalysisTarget() {
 
 async function analyzeCommand(input) {
   if (!canSelectAnalysisTarget() || toleranceBatch.pending || !state.route.result.inputs.includes(input)) return;
-  const batch = toleranceBatch.view, storedTarget = batch?.targets[batch.commandTargetIndices[input.index]];
-  if (storedTarget && canOpenBatchTarget(storedTarget)) {
-    openBatchTarget(storedTarget, input.index);
+  const batch = toleranceBatch.view, target = batch?.targets[batch.commandTargetIndices[input.index]];
+  if (target) {
+    openBatchTarget(target, input.index);
+    if (target.kind === 'maneuver' && !target.maneuver?.complete) await runDeepManeuver(input.index);
     return;
   }
-  const active = toleranceRequests.pending?.snapshot;
-  if ((active?.activatedInputIndex ?? active?.inputIndex) === input.index) return;
-  const snapshot = { ...toleranceContext(), inputIndex: input.index };
-  const resolving = resolveAnalysisTarget(toleranceRequests, snapshot, toleranceContext, api);
-  Object.assign(targetAnalysis, { input, status: `Определяем область допуска для нажатия №${input.index + 1}…` });
-  clearSingleTolerance();
-  hidePairTolerance();
-  renderAnalysisTarget();
-  draw();
-  try {
-    const target = await resolving;
-    if (!target) return;
-    if (target.kind === 'unsupported') {
-      targetAnalysis.status = `Допуск нажатия №${input.index + 1} недоступен. ${target.message}`;
-      $('analysis-target').scrollIntoView({ block: 'nearest' });
-    } else {
-      clearAnalysisTarget();
-      if (target.kind === 'pair') checkPair(snapshot.result.inputs[target.firstInputIndex], input.index);
-      else {
-        checkTolerance(input);
-        $('tolerance-panel').scrollIntoView({ block: 'nearest' });
-      }
-    }
-  } catch (error) {
-    targetAnalysis.status = `Проверка нажатия №${input.index + 1} не выполнена. ${error.message}`;
-    $('analysis-target').scrollIntoView({ block: 'nearest' });
-  } finally {
-    renderAnalysisTarget();
-    updateToleranceControls();
+  await runDeepManeuver(input.index);
+}
+
+function renderDeepTolerance() {
+  const { target, snapshot, selected, overlay } = deepTolerance;
+  const pending = toleranceRequests.pending, preparing = !target && pending?.kind === 'deep-report';
+  const context = snapshot ?? (preparing ? pending.snapshot : null);
+  const fresh = (target || preparing) && context && toleranceRequests.matches(context, toleranceContext()) && canSelectAnalysisTarget();
+  $('deep-panel').hidden = !fresh;
+  if (!fresh) return;
+  if (preparing) {
+    $('deep-title').textContent = 'Подготовка целого манёвра…';
+    message('deep-status', 'Определяем все команды исходного полёта и готовим точный перебор.');
+    $('deep-cancel').hidden = false; $('deep-continue').hidden = true; $('deep-overlay-remove').hidden = true;
+    $('deep-matrix').replaceChildren(); message('deep-selected', '');
+    return;
   }
+  const report = target.maneuver ?? { cells: [], complete: false };
+  $('deep-title').textContent = `${batchTargetLabel(target)} · целый исходный полёт`;
+  message('deep-status', deepTolerance.status || batchCoverageLabel(target));
+  $('deep-continue').hidden = report.complete;
+  $('deep-continue').disabled = !canCheckTolerance();
+  $('deep-cancel').hidden = toleranceRequests.pending?.kind !== 'deep-report';
+  const table = $('deep-matrix');
+  const head = document.createElement('tr'), corner = document.createElement('th');
+  corner.textContent = 'Команда / сдвиг, мс'; head.append(corner);
+  for (const offset of MANEUVER_OFFSETS) { const th = document.createElement('th'); th.textContent = offset > 0 ? `+${offset}` : String(offset); head.append(th); }
+  const rows = target.inputIndices.map((inputIndex, rowIndex) => {
+    const row = document.createElement('tr'), label = document.createElement('th');
+    label.textContent = `№${inputIndex + 1}${rowIndex === 0 ? ' · начало полёта' : ''}`; row.append(label);
+    for (const offsetMs of MANEUVER_OFFSETS) {
+      const td = document.createElement('td'), button = document.createElement('button');
+      const cell = conditionalCell(report, inputIndex, offsetMs), projection = cellProjection(cell, report.complete);
+      const value = projection.fraction === null ? projection.state === 'empty' ? '—' : '·' : `${number(projection.fraction * 100, 1)}%`;
+      button.type = 'button'; button.textContent = value; button.dataset.deepCell = `${inputIndex}:${offsetMs}`;
+      button.dataset.state = projection.state; button.dataset.source = String(offsetMs === 0);
+      button.setAttribute('aria-pressed', String(selected === cellKey({ inputIndex, offsetMs })));
+      const witnessed = overlay?.offsetsMs?.[rowIndex] === offsetMs;
+      button.classList.toggle('deep-witness', witnessed);
+      if (projection.fraction !== null) button.style.setProperty('--deep-tone', toleranceColor(projection.fraction));
+      button.title = `№${inputIndex + 1} · ${offsetMs} мс · ${report.complete ? '' : 'частично · '}G=${cell?.safe ?? 0}, V=${cell?.valid ?? 0}; всего остальных сочетаний ${cell?.total ?? 'неизвестно'}`;
+      button.setAttribute('aria-label', `${button.title} · ${value}${witnessed ? ' · безопасный совместный пример' : ''}`);
+      button.disabled = !!toleranceBatch.pending || !!toleranceRequests.pending;
+      button.addEventListener('click', () => selectDeepCell(inputIndex, offsetMs)); td.append(button); row.append(td);
+    }
+    return row;
+  });
+  table.replaceChildren(head, ...rows);
+  const cell = report.cells?.find(cell => cellKey(cell) === selected), projection = cellProjection(cell, report.complete);
+  message('deep-selected', cell ? `№${cell.inputIndex + 1} · сдвиг ${cell.offsetMs} мс · G=${cell.safe} / V=${cell.valid}`
+    + (projection.fraction === null ? report.complete ? ' · нет допустимых комбинаций' : ' · пока нет проверенных допустимых комбинаций' : ` · ${number(projection.fraction * 100, 2)}%${report.complete ? '' : ' · предварительно'}`)
+    + (overlay ? ' · показан ближайший к исходнику безопасный совместный вариант. ' + target.inputIndices.map((index, i) => `№${index + 1} ${overlay.offsetsMs[i] >= 0 ? '+' : '−'}${Math.abs(overlay.offsetsMs[i])} мс`).join(' · ')
+      : projection.witness ? ' · безопасный совместный пример доступен; наложение пока не показано.'
+        : report.complete ? ' · безопасного варианта нет; наложение очищено.' : ' · безопасный вариант пока не найден; наложение очищено.') : 'Выберите клетку: её сдвиг фиксируется, остальные команды перебираются совместно.');
+  $('deep-overlay-remove').hidden = !overlay;
+}
+
+async function runDeepManeuver(inputIndex = deepTolerance.target?.inputIndex) {
+  if (!canUseBatchReplay() || !canCheckTolerance() || !Number.isInteger(inputIndex)) return;
+  const original = deepTolerance.target?.maneuver;
+  let previousProgress = original ? JSON.stringify([original.cursor, original.baseline]) : null;
+  resetTolerance();
+  const ticket = toleranceRequests.start('deep-report', toleranceContext());
+  const current = () => toleranceRequests.current(ticket, toleranceContext());
+  deepTolerance.status = 'Точный перебор совместных комбинаций…';
+  Object.assign(targetAnalysis, { input: state.route.result.inputs[inputIndex], status: `Рассчитываем целый манёвр нажатия №${inputIndex + 1}…` });
+  renderAnalysisTarget(); controls();
+  $('deep-panel').scrollIntoView({ block: 'nearest' });
+  try {
+    do {
+      const saved = await api('/api/maneuver-tolerance', { ...batchRequest(ticket.snapshot), inputIndex }, ticket.abort.signal);
+      if (!current()) return;
+      if (!saved.target || !saved.batch?.targets?.some(target => target.inputIndex === saved.target.inputIndex)) throw new Error('Ответ не совпал с манёвром.');
+      applyBatchSave(saved);
+      ticket.snapshot = toleranceContext();
+      Object.assign(deepTolerance, { target: saved.target.kind === 'maneuver' ? saved.target : null, snapshot: ticket.snapshot, visible: true, status: '' });
+      clearAnalysisTarget();
+      controls(); draw();
+      if (saved.target.kind === 'unsupported') { targetAnalysis.status = saved.target.message; break; }
+      if (saved.target.maneuver.complete) break;
+      const progress = JSON.stringify([saved.target.maneuver.cursor, saved.target.maneuver.baseline]);
+      if (progress === previousProgress) {
+        deepTolerance.status = 'Блок не продвинул перебор за отведённое время. Последний курсор сохранён; нажмите «Продолжить этот манёвр», чтобы повторить.';
+        break;
+      }
+      previousProgress = progress;
+      // Each response has saved its exact cursor into the editor JSON.
+      await new Promise(resolve => setTimeout(resolve, 0));
+    } while (current());
+  } catch (error) { if (current()) { deepTolerance.status = `Расчёт остановлен. ${error.message}`; targetAnalysis.status = deepTolerance.target ? '' : deepTolerance.status; } }
+  finally { toleranceRequests.finish(ticket); renderAnalysisTarget(); controls(); draw(); }
+}
+
+
+function cancelDeepManeuver() {
+  if (toleranceRequests.pending?.kind !== 'deep-report') return;
+  toleranceRequests.cancel();
+  deepTolerance.status = 'Расчёт приостановлен. Последний завершённый блок и точный курсор сохранены в JSON; скачайте JSON для сохранения в файл.';
+  targetAnalysis.status = deepTolerance.target ? '' : 'Подготовка манёвра отменена.';
+  renderAnalysisTarget(); controls(); draw();
+}
+
+async function selectDeepCell(inputIndex, offsetMs) {
+  const { target, snapshot } = deepTolerance;
+  if (!target || !canCheckTolerance() || !toleranceRequests.matches(snapshot, toleranceContext())) return;
+  const cell = conditionalCell(target.maneuver, inputIndex, offsetMs);
+  deepTolerance.selected = cellKey({ inputIndex, offsetMs });
+  deepTolerance.overlay = null; deepTolerance.status = '';
+  const projection = cellProjection(cell, target.maneuver.complete);
+  renderDeepTolerance(); draw();
+  if (!projection.witness) return;
+  const selected = deepTolerance.selected, ticket = toleranceRequests.start('deep-preview', snapshot);
+  deepTolerance.status = 'Строим безопасный совместный пример выбранной клетки…';
+  renderDeepTolerance();
+  try {
+    const preview = await api('/api/maneuver-tolerance/preview', maneuverRequest(snapshot, target, cell), ticket.abort.signal);
+    if (!toleranceRequests.current(ticket, toleranceContext()) || deepTolerance.selected !== selected) return;
+    const overlay = maneuverOverlay(preview, target, cell);
+    if (!overlay) throw new Error('Безопасный совместный вариант не подтверждён.');
+    deepTolerance.overlay = overlay;
+    deepTolerance.status = '';
+    showOverlayOnMap(overlay);
+  } catch (error) { if (toleranceRequests.current(ticket, toleranceContext())) deepTolerance.status = error.message; }
+  finally { toleranceRequests.finish(ticket); renderDeepTolerance(); draw(); }
+}
+
+function clearDeepTolerance() {
+  Object.assign(deepTolerance, { target: null, snapshot: null, selected: null, overlay: null, status: '' });
+  renderDeepTolerance();
 }
 
 function resetTolerance() {
-  const hadOverlay = (tolerance.overlay ?? pairTolerance.overlay)?.startX != null;
+  const hadOverlay = (deepTolerance.overlay ?? tolerance.overlay ?? pairTolerance.overlay)?.startX != null;
   toleranceRequests.cancel();
+  clearDeepTolerance();
   clearAnalysisTarget();
   clearSingleTolerance();
   hidePairTolerance();
@@ -1013,6 +1124,7 @@ function selectedSingleProbe() {
 
 async function checkTolerance(input) {
   if (!canCheckTolerance() || !state.route.result.inputs.includes(input)) return;
+  clearDeepTolerance();
   clearAnalysisTarget();
   clearSingleTolerance();
   hidePairTolerance();
@@ -1213,6 +1325,7 @@ function selectMatrixCell(review, key, removeOverlay, render, preview) {
 
 function checkPair(input, activatedInputIndex = null) {
   if (!canCheckTolerance() || !state.route.result.inputs.includes(input) || !state.route.result.inputs[input.index + 1]) return;
+  clearDeepTolerance();
   clearAnalysisTarget();
   clearSingleTolerance();
   hidePairTolerance();
@@ -1616,7 +1729,7 @@ function drawReplay(parent, overview = false) {
   }));
   const replay = route.result;
   if (!replay) return;
-  const review = pairTolerance.snapshot ? pairTolerance : tolerance;
+  const review = deepTolerance.target ? deepTolerance : pairTolerance.snapshot ? pairTolerance : tolerance;
   if (review.visible && review.overlay?.startX != null) {
     const { path, point, probe } = review.overlay;
     const attributes = { class: 'tolerance-trajectory', 'aria-hidden': 'true', 'data-status': probe.status };
@@ -1658,7 +1771,7 @@ function drawReplay(parent, overview = false) {
     if (coverage) marker.append(el('circle', {
       cx: input.x, cy: input.y, r: overview ? 7 : 10, class: 'batch-route-mark',
       'data-state': coverage.state, 'aria-hidden': 'true',
-      stroke: coverage.state === 'ready' ? toleranceColor(coverage.fraction) : '#687472',
+      stroke: coverage.state === 'ready' && coverage.fraction !== null ? toleranceColor(coverage.fraction) : '#687472',
     }));
     parent.append(marker);
   }
@@ -2114,6 +2227,12 @@ $('route-search').addEventListener('click', searchRoutes);
 $('route-search-cancel').addEventListener('click', () => { cancelRouteSearch('Поиск отменён.'); controls(); });
 $('batch-start').addEventListener('click', runBatch);
 $('batch-cancel').addEventListener('click', cancelBatch);
+$('deep-continue').addEventListener('click', () => runDeepManeuver());
+$('deep-cancel').addEventListener('click', cancelDeepManeuver);
+$('deep-overlay-remove').addEventListener('click', () => {
+  if (toleranceRequests.pending?.kind === 'deep-preview') toleranceRequests.cancel();
+  deepTolerance.overlay = null; renderDeepTolerance(); draw();
+});
 $('batch-restore').addEventListener('click', restoreBatchReplay);
 for (const [id, offset] of [['route-results-prev', -1], ['route-results-next', 1]]) $(id).addEventListener('click', () => {
   routeResults.page += offset;
@@ -2125,7 +2244,8 @@ $('toggle-route').addEventListener('click', () => {
 });
 $('landing-threshold').addEventListener('input', () => { updateLandingReport(); draw(); });
 $('analysis-target-cancel').addEventListener('click', () => {
-  if (toleranceRequests.pending?.kind !== 'target') return;
+  if (toleranceRequests.pending?.kind === 'deep-report') { cancelDeepManeuver(); return; }
+  if (!['target', 'deep-report'].includes(toleranceRequests.pending?.kind)) return;
   toleranceRequests.cancel();
   targetAnalysis.status = `Проверка нажатия №${targetAnalysis.input.index + 1} отменена.`;
   renderAnalysisTarget();

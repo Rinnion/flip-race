@@ -4,9 +4,9 @@ using FlipRace.Core;
 namespace TrackWorkshop;
 
 public sealed record ToleranceBatchTarget(string Kind, [property: JsonRequired] int InputIndex, int? FirstInputIndex, string Message,
-    InputToleranceResult Single = null, PairToleranceResult Pair = null)
+    InputToleranceResult Single = null, PairToleranceResult Pair = null, int[] InputIndices = null, ManeuverToleranceResult Maneuver = null)
 {
-    internal bool Finished => Kind == "unsupported" || Single?.Complete == true || Pair?.Complete == true;
+    internal bool Finished => Kind == "unsupported" || Maneuver?.Complete == true;
 }
 
 public sealed record ToleranceBatchReport(string Profile, double WarningDuration, WorkshopSurfaceRunSettings SurfaceRunSettings,
@@ -82,15 +82,17 @@ internal sealed class ToleranceBatch
         for (int i = 0; i < commands.Length; i++)
         {
             cancellation.ThrowIfCancellationRequested();
-            bool hasPreviousPair = i > 0 && pairFrom[i - 1];
-            indices[i] = hasPreviousPair ? targets.Count - 1 : targets.Count;
-            if (pairFrom[i]) targets.Add(new("pair", i, i, ""));
-            else if (commands[i] == null)
-                targets.Add(new("unsupported", i, null, "Заезд закончился до исполнения выбранной команды."));
-            else if (commands[i].Status != "accepted")
-                targets.Add(new("unsupported", i, null, $"Исходная команда не принята: {commands[i].Reason}."));
-            else if (!hasPreviousPair)
-                targets.Add(new("single", i, null, ""));
+            int first = i, targetIndex = targets.Count;
+            if (commands[i]?.Status == "accepted")
+            {
+                while (i + 1 < commands.Length && pairFrom[i]) i++;
+                var group = Enumerable.Range(first, i - first + 1).ToArray();
+                targets.Add(new("maneuver", first, first, "", InputIndices: group));
+            }
+            else targets.Add(new("unsupported", first, null, commands[i] == null
+                ? "Заезд закончился до исполнения выбранной команды."
+                : $"Исходная команда не принята: {commands[i].Reason}.", InputIndices: [first]));
+            for (int command = first; command <= i; command++) indices[command] = targetIndex;
         }
         return (targets.ToArray(), indices);
     }
@@ -109,20 +111,22 @@ internal sealed class ToleranceBatch
             cancellation.ThrowIfCancellationRequested();
             if (checkpoint == null || !unique.Add(checkpoint.InputIndex))
                 throw new ArgumentException("Повтор сохранённой матрицы.");
-            var target = Load(checkpoint, out int index);
+            var target = Load(checkpoint, out int index, cancellation);
             if (!storage.TryAdd(checkpoint)) throw new ArgumentException(ToleranceBatchStorage.SizeMessage);
             targets[index] = target;
         }
     }
 
-    ToleranceBatchTarget Load(ToleranceCheckpoint checkpoint, out int index)
+    ToleranceBatchTarget Load(ToleranceCheckpoint checkpoint, out int index, CancellationToken cancellation)
     {
         if (checkpoint == null || checkpoint.Identity != storage.KeyForIdentity)
             throw new ArgumentException("Сохранённая матрица относится к другому повтору или настройкам.");
         index = Array.BinarySearch(targets, new ToleranceBatchTarget("", checkpoint.InputIndex, null, ""), TargetOrder);
         if (index < 0 || targets[index].Kind == "unsupported")
             throw new ArgumentException("Сохранённая матрица отсутствует в плане повтора.");
-        return storage.Decode(checkpoint, targets[index] with { Single = null, Pair = null });
+        var target = storage.Decode(checkpoint, targets[index] with { Single = null, Pair = null, Maneuver = null });
+        ManeuverToleranceAnalysis.ValidateRestored(request, target, cancellation);
+        return target;
     }
 
     static readonly IComparer<ToleranceBatchTarget> TargetOrder = Comparer<ToleranceBatchTarget>.Create(
@@ -133,29 +137,7 @@ internal sealed class ToleranceBatch
     {
         var target = targets[index];
         if (target.Finished) return (null, null);
-        if (target.Kind == "single")
-        {
-            var report = InputToleranceAnalysis.Find(new(request.Json, request.Profile, request.WarningDuration,
-                request.Axis, request.Inputs, target.InputIndex, request.SurfaceRunSettings, SpanMs), cancellation, budget);
-            target = target with { Single = report };
-        }
-        else
-        {
-            var previous = target.Pair;
-            var offsets = previous?.Baseline == null ? null : previous.Cells.Where(cell => !cell.Computed)
-                .Select(cell => new PairToleranceOffset(cell.FirstOffsetMs, cell.SecondOffsetMs)).ToArray();
-            var report = PairToleranceAnalysis.Find(new(request.Json, request.Profile, request.WarningDuration,
-                request.Axis, request.Inputs, target.InputIndex, SpanMs, offsets, request.SurfaceRunSettings), cancellation, budget);
-            if (previous?.Baseline != null)
-            {
-                if (report.Baseline == null) return (target, storage.Pack(target));
-                var additions = report.Cells.ToDictionary(cell => (cell.FirstOffsetMs, cell.SecondOffsetMs));
-                report = report with { Cells = previous.Cells.Select(cell => cell.Computed
-                    ? cell : additions[(cell.FirstOffsetMs, cell.SecondOffsetMs)]).ToArray() };
-            }
-            target = target with { Pair = report };
-        }
-        cancellation.ThrowIfCancellationRequested();
+        target = target with { Maneuver = ManeuverToleranceAnalysis.Advance(request, target, cancellation, budget) };
         var checkpoint = storage.Pack(target);
         if (!storage.TryAdd(checkpoint)) return (target, null);
         targets[index] = target;
@@ -168,6 +150,21 @@ internal sealed class ToleranceBatch
         return new(storage.Save(batch.StopReason), batch);
     }
 
+    internal static ManeuverToleranceResponse Selected(ManeuverToleranceRequest request, CancellationToken cancellation)
+    {
+        if (request == null) throw new ArgumentException("Пустой запрос.");
+        var batch = Prepare(new(request.Json, request.Profile, request.WarningDuration, request.Axis, request.Inputs,
+            request.SurfaceRunSettings), cancellation);
+        batch.Restore(cancellation);
+        if (request.InputIndex < 0 || request.InputIndex >= batch.commandTargetIndices.Length)
+            throw new ArgumentException("Укажите номер команды.");
+        int index = batch.commandTargetIndices[request.InputIndex];
+        var (target, checkpoint) = batch.Evaluate(index, cancellation);
+        if (target != null && checkpoint == null) throw new ArgumentException(ToleranceBatchStorage.SizeMessage);
+        var saved = batch.Save("time-budget");
+        return new(saved.CanonicalJson, saved.Batch, target ?? batch.targets[index], checkpoint);
+    }
+
     internal static ToleranceBatchResponse SaveCheckpoint(ToleranceBatchCheckpointRequest request, CancellationToken cancellation)
     {
         if (request?.Checkpoints == null || request.Checkpoints.Length > 4096)
@@ -178,7 +175,7 @@ internal sealed class ToleranceBatch
         foreach (var checkpoint in request.Checkpoints)
         {
             cancellation.ThrowIfCancellationRequested();
-            var target = batch.Load(checkpoint, out int index);
+            var target = batch.Load(checkpoint, out int index, cancellation);
             if (!unique.Add(index)) throw new ArgumentException("Повтор сохранённой матрицы.");
             if (!batch.storage.TryAdd(checkpoint)) throw new ArgumentException(ToleranceBatchStorage.SizeMessage);
             batch.targets[index] = target;

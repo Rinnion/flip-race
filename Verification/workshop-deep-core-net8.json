@@ -1,0 +1,1176 @@
+{
+  "passed": true,
+  "assertions": 6551,
+  "tracks": 8,
+  "pairs": 16,
+  "source": "accepted-14e22ba and v581-rethink-fast-core frozen times",
+  "landingScenarios": {
+    "floor": {
+      "LandingTime": 1.0566037735849019,
+      "LandingX": 232.83333333333374,
+      "LandingY": 226,
+      "InputIndex": 1,
+      "InputTime": 1.1066037735849057,
+      "InputX": 243.45283018868003,
+      "InputY": 226
+    },
+    "atContact": {
+      "LandingTime": 1.0566037735849019,
+      "LandingX": 232.45283018867994,
+      "LandingY": 226,
+      "InputIndex": 1,
+      "InputTime": 1.0566037735849056,
+      "InputX": 232.45283018867994,
+      "InputY": 226
+    },
+    "fast": {
+      "LandingTime": 0.06273806879480935,
+      "LandingX": 15.400000000000002,
+      "LandingY": 226,
+      "InputIndex": 3,
+      "InputTime": 0.3,
+      "InputX": 66.00000000000001,
+      "InputY": 226
+    },
+    "stone": {
+      "LandingTime": 0.8946312784758179,
+      "LandingX": 198.59055936766018,
+      "LandingY": 178,
+      "InputIndex": 1,
+      "InputTime": 0.9499999999999991,
+      "InputX": 215.09055936766018,
+      "InputY": 178
+    }
+  },
+  "searchEvidence": {
+    "exactTiny": 34,
+    "chosen": 1000,
+    "fastFlip": 936,
+    "limitedStorage": 12,
+    "combinedBytes": 234187,
+    "progress": [
+      {
+        "Percent": 0,
+        "Phase": "search"
+      },
+      {
+        "Percent": 70,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 71,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 72,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 73,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 74,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 75,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 76,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 77,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 78,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 79,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 80,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 81,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 82,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 83,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 84,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 85,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 86,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 87,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 88,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 89,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 90,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 91,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 92,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 93,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 94,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 95,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 96,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 97,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 98,
+        "Phase": "verify"
+      },
+      {
+        "Percent": 99,
+        "Phase": "save"
+      }
+    ],
+    "interruptedProgress": [
+      {
+        "Percent": 0,
+        "Phase": "search"
+      },
+      {
+        "Percent": 70,
+        "Phase": "verify"
+      }
+    ],
+    "stateBudgetProgress": [
+      {
+        "Percent": 0,
+        "Phase": "search"
+      },
+      {
+        "Percent": 7,
+        "Phase": "search"
+      },
+      {
+        "Percent": 17,
+        "Phase": "search"
+      },
+      {
+        "Percent": 35,
+        "Phase": "search"
+      },
+      {
+        "Percent": 63,
+        "Phase": "search"
+      },
+      {
+        "Percent": 70,
+        "Phase": "verify"
+      }
+    ]
+  },
+  "settingsEvidence": {
+    "off": 17.931818181817288,
+    "on": 13.95129870129866,
+    "distinctCurve": 16.282734917623685,
+    "highSpeed": 528,
+    "checkedAtX": 2481.8153438549234,
+    "profiles": [
+      {
+        "profile": "Chosen",
+        "settings": {
+          "Enabled": true,
+          "RatePercent": 5,
+          "Curve": "Linear",
+          "CapPercent": 40,
+          "AirDecayPercent": 200,
+          "ResetOnCollision": true
+        },
+        "StoredCount": 1000,
+        "best": 2.1564683762798866
+      },
+      {
+        "profile": "FastFlip",
+        "settings": {
+          "Enabled": true,
+          "RatePercent": 2,
+          "Curve": "Exponential",
+          "CapPercent": 20,
+          "AirDecayPercent": 50,
+          "ResetOnCollision": false
+        },
+        "StoredCount": 974,
+        "best": 2.226632121168416
+      }
+    ]
+  },
+  "laterPressEvidence": {
+    "defaultCandidates": 21,
+    "distanceCandidates": 21,
+    "fastWithAcceleration": 21,
+    "nextPressCandidates": 4,
+    "sameStoneSupport": 2,
+    "rejectedStoneCandidates": 19,
+    "collisionGap": [
+      200,
+      250,
+      1200
+    ],
+    "budgetStop": "time-budget"
+  },
+  "inputToleranceEvidence": {
+    "standard": 14,
+    "chosenChain": {
+      "Inputs": [
+        0.25,
+        0.5,
+        0.65
+      ],
+      "InputTime": 0.5,
+      "StartTime": 0.2500000000000007,
+      "EndTime": 1.7790757559285177,
+      "EndX": 391.3966663042739
+    },
+    "fast": "-300:safe, -250:rejected, -200:rejected, -150:rejected, -100:rejected, -50:rejected, 0:safe, 50:safe, 100:safe, 150:invalid, 200:invalid, 250:invalid, 300:invalid",
+    "collisionGap": "-300:safe, -250:safe, -200:safe, -150:safe, -100:safe, -50:safe, 0:safe, 50:collision, 100:collision, 150:collision, 200:collision, 250:collision, 300:safe",
+    "earlyLandingCollision": {
+      "OffsetMs": -300,
+      "Omit": false,
+      "Status": "collision",
+      "Message": "\u0421\u0442\u043E\u043B\u043A\u043D\u043E\u0432\u0435\u043D\u0438\u0435: floor-after-landing.",
+      "InputTime": 0.09999999999999999,
+      "StartTime": 0.09999999999999999,
+      "EndTime": 1.1863636363636323,
+      "EndX": 261,
+      "Collisions": 1,
+      "MinimumIntervalMs": null,
+      "BotCompatible": true,
+      "Computed": true
+    },
+    "omissionCutoff": 1.6,
+    "omissionLimit": {
+      "OffsetMs": null,
+      "Omit": true,
+      "Status": "incomplete",
+      "Message": "\u0414\u043E\u0441\u0442\u0438\u0433\u043D\u0443\u0442 \u043B\u0438\u043C\u0438\u0442 \u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0437\u0430\u0435\u0437\u0434\u0430 \u0431\u0435\u0437 \u0443\u0434\u0430\u0440\u0430.",
+      "InputTime": null,
+      "StartTime": 0.4,
+      "EndTime": 120,
+      "EndX": 26399.9999999864,
+      "Collisions": 0,
+      "MinimumIntervalMs": null,
+      "BotCompatible": true,
+      "Computed": true
+    },
+    "frozenSuffix": {
+      "OffsetMs": -300,
+      "Omit": false,
+      "Status": "safe",
+      "Message": "",
+      "InputTime": 0.09999999999999999,
+      "StartTime": 0.09999999999999999,
+      "EndTime": 2.5142075471698058,
+      "EndX": 553.9556186273585,
+      "Collisions": 0,
+      "MinimumIntervalMs": 1357.603774,
+      "BotCompatible": true,
+      "Computed": true
+    },
+    "budget": "time-budget"
+  },
+  "pairToleranceEvidence": {
+    "grids": [
+      169,
+      625,
+      1681
+    ],
+    "coupledCollision": {
+      "FirstOffsetMs": 0,
+      "SecondOffsetMs": 200,
+      "Status": "collision",
+      "Message": "\u0421\u0442\u043E\u043B\u043A\u043D\u043E\u0432\u0435\u043D\u0438\u0435: ceiling-pair.",
+      "Computed": true,
+      "FirstInputTime": 0.5,
+      "SecondInputTime": 0.7999999999999989,
+      "PairIntervalMs": 300,
+      "MinimumIntervalMs": 300,
+      "StartTime": 0.5,
+      "EndTime": 0.827272727272726,
+      "EndX": 182,
+      "Collisions": 1
+    },
+    "coupledSafe": {
+      "FirstOffsetMs": 200,
+      "SecondOffsetMs": 200,
+      "Status": "safe",
+      "Message": "",
+      "Computed": true,
+      "FirstInputTime": 0.7,
+      "SecondInputTime": 0.7999999999999996,
+      "PairIntervalMs": 100,
+      "MinimumIntervalMs": 100,
+      "StartTime": 0.5,
+      "EndTime": 1.0721899192045605,
+      "EndX": 235.88178222500397,
+      "Collisions": 0
+    },
+    "split": {
+      "FirstOffsetMs": -300,
+      "SecondOffsetMs": 600,
+      "Status": "safe",
+      "Message": "",
+      "Computed": true,
+      "FirstInputTime": 0.19999999999999998,
+      "SecondInputTime": 1.1999999999999982,
+      "PairIntervalMs": 1000,
+      "MinimumIntervalMs": 1000,
+      "StartTime": 0.19999999999999998,
+      "EndTime": 1.5835279895767056,
+      "EndX": 348.37615770687546,
+      "Collisions": 0
+    },
+    "afterLanding": {
+      "FirstOffsetMs": -300,
+      "SecondOffsetMs": -300,
+      "Status": "collision",
+      "Message": "\u0421\u0442\u043E\u043B\u043A\u043D\u043E\u0432\u0435\u043D\u0438\u0435: floor-after-pair.",
+      "Computed": true,
+      "FirstInputTime": 0.09999999999999999,
+      "SecondInputTime": 0.19999999999999998,
+      "PairIntervalMs": 100,
+      "MinimumIntervalMs": 100,
+      "StartTime": 0.09999999999999999,
+      "EndTime": 0.5500000000000005,
+      "EndX": 120.9999999999999,
+      "Collisions": 1
+    },
+    "interrupted": {
+      "FirstOffsetMs": -300,
+      "SecondOffsetMs": -300,
+      "Status": "collision",
+      "Message": "\u0421\u0442\u043E\u043B\u043A\u043D\u043E\u0432\u0435\u043D\u0438\u0435: interrupted-pair.",
+      "Computed": true,
+      "FirstInputTime": 1.8999999999999952,
+      "SecondInputTime": null,
+      "PairIntervalMs": 100,
+      "MinimumIntervalMs": 100,
+      "StartTime": 0.5499999999999976,
+      "EndTime": 1.041328456712721,
+      "EndX": 229.0922604767993,
+      "Collisions": 1
+    },
+    "accelerated": {
+      "Inputs": [
+        0.4,
+        0.6,
+        0.75
+      ],
+      "FirstInputTime": 0.4,
+      "SecondInputTime": 0.6,
+      "StartTime": 0.4,
+      "EndTime": 1.9501633801995535,
+      "EndX": 430.3559436439016
+    },
+    "partial": {
+      "Status": "ready",
+      "Complete": false,
+      "computed": 1251
+    }
+  },
+  "analysisTargetEvidence": {
+    "firstFast": {
+      "Kind": "pair",
+      "InputIndex": 0,
+      "FirstInputIndex": 0,
+      "Message": ""
+    },
+    "secondFast": {
+      "Kind": "pair",
+      "InputIndex": 1,
+      "FirstInputIndex": 0,
+      "Message": ""
+    },
+    "firstChosen": {
+      "Kind": "pair",
+      "InputIndex": 0,
+      "FirstInputIndex": 0,
+      "Message": ""
+    },
+    "middleChosen": {
+      "Kind": "pair",
+      "InputIndex": 1,
+      "FirstInputIndex": 0,
+      "Message": ""
+    },
+    "thirdChosen": {
+      "Kind": "pair",
+      "InputIndex": 2,
+      "FirstInputIndex": 1,
+      "Message": ""
+    }
+  },
+  "toleranceBatchEvidence": {
+    "tripleTotal": "15625",
+    "Valid": "2569",
+    "Safe": "2569",
+    "Percent": 100,
+    "pairTotal": "625",
+    "fixtures": {
+      "three": [
+        0.4,
+        0.6,
+        0.75
+      ],
+      "four": [
+        0.4,
+        0.6,
+        0.75,
+        0.9
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "id": "full-long",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.05000000000051,
+        "Elapsed": 33.05000000000051,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 25,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "full-long-11-large-pad-landing",
+          "full-long-12-after-stone-ring",
+          "full-long-13-free-mid",
+          "full-long-2-standard-pad-landing",
+          "full-long-4-before-stone-ring",
+          "full-long-5-free-low",
+          "full-long-7-chain-1",
+          "full-long-7-chain-2",
+          "full-long-9-standard-pad-landing",
+          "full-long-finish"
+        ],
+        "SuccessfulIds": [
+          "full-long-11-large-pad-landing",
+          "full-long-12-after-stone-ring",
+          "full-long-13-free-mid",
+          "full-long-2-standard-pad-landing",
+          "full-long-4-before-stone-ring",
+          "full-long-5-free-low",
+          "full-long-7-chain-1",
+          "full-long-7-chain-2",
+          "full-long-9-standard-pad-landing",
+          "full-long-finish"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3978
+    },
+    {
+      "id": "full-long",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.050000000000516,
+        "Elapsed": 33.050000000000516,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 17,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "full-long-11-large-pad-landing",
+          "full-long-12-after-stone-ring",
+          "full-long-13-free-mid",
+          "full-long-2-standard-pad-landing",
+          "full-long-4-before-stone-ring",
+          "full-long-5-free-low",
+          "full-long-7-chain-1",
+          "full-long-7-chain-2",
+          "full-long-9-standard-pad-landing",
+          "full-long-finish"
+        ],
+        "SuccessfulIds": [
+          "full-long-11-large-pad-landing",
+          "full-long-12-after-stone-ring",
+          "full-long-13-free-mid",
+          "full-long-2-standard-pad-landing",
+          "full-long-4-before-stone-ring",
+          "full-long-5-free-low",
+          "full-long-7-chain-1",
+          "full-long-7-chain-2",
+          "full-long-9-standard-pad-landing",
+          "full-long-finish"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3976
+    },
+    {
+      "id": "full-short",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.050000000000615,
+        "Elapsed": 33.050000000000615,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 25,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "full-short-11-standard-pad-landing",
+          "full-short-12-after-stone-ring",
+          "full-short-13-free-mid",
+          "full-short-4-standard-pad-landing",
+          "full-short-5-free-low",
+          "full-short-7-before-stone-ring",
+          "full-short-8-chain-1",
+          "full-short-8-chain-2",
+          "full-short-9-large-pad-landing",
+          "full-short-finish"
+        ],
+        "SuccessfulIds": [
+          "full-short-11-standard-pad-landing",
+          "full-short-12-after-stone-ring",
+          "full-short-13-free-mid",
+          "full-short-4-standard-pad-landing",
+          "full-short-5-free-low",
+          "full-short-7-before-stone-ring",
+          "full-short-8-chain-1",
+          "full-short-8-chain-2",
+          "full-short-9-large-pad-landing",
+          "full-short-finish"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3979
+    },
+    {
+      "id": "full-short",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.05000000000063,
+        "Elapsed": 33.05000000000063,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 17,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "full-short-11-standard-pad-landing",
+          "full-short-12-after-stone-ring",
+          "full-short-13-free-mid",
+          "full-short-4-standard-pad-landing",
+          "full-short-5-free-low",
+          "full-short-7-before-stone-ring",
+          "full-short-8-chain-1",
+          "full-short-8-chain-2",
+          "full-short-9-large-pad-landing",
+          "full-short-finish"
+        ],
+        "SuccessfulIds": [
+          "full-short-11-standard-pad-landing",
+          "full-short-12-after-stone-ring",
+          "full-short-13-free-mid",
+          "full-short-4-standard-pad-landing",
+          "full-short-5-free-low",
+          "full-short-7-before-stone-ring",
+          "full-short-8-chain-1",
+          "full-short-8-chain-2",
+          "full-short-9-large-pad-landing",
+          "full-short-finish"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3976
+    },
+    {
+      "id": "full-flow",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.05000000000084,
+        "Elapsed": 33.05000000000084,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 24,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "full-flow-11-standard-pad-landing",
+          "full-flow-12-after-stone-ring",
+          "full-flow-2-free-mid",
+          "full-flow-3-standard-pad-landing",
+          "full-flow-5-before-stone-ring",
+          "full-flow-6-free-low",
+          "full-flow-8-chain-1",
+          "full-flow-8-chain-2",
+          "full-flow-9-large-pad-landing",
+          "full-flow-finish"
+        ],
+        "SuccessfulIds": [
+          "full-flow-11-standard-pad-landing",
+          "full-flow-12-after-stone-ring",
+          "full-flow-2-free-mid",
+          "full-flow-3-standard-pad-landing",
+          "full-flow-5-before-stone-ring",
+          "full-flow-6-free-low",
+          "full-flow-8-chain-1",
+          "full-flow-8-chain-2",
+          "full-flow-9-large-pad-landing",
+          "full-flow-finish"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3979
+    },
+    {
+      "id": "full-flow",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.05000000000083,
+        "Elapsed": 33.05000000000083,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 24,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "full-flow-11-standard-pad-landing",
+          "full-flow-12-after-stone-ring",
+          "full-flow-2-free-mid",
+          "full-flow-3-standard-pad-landing",
+          "full-flow-5-before-stone-ring",
+          "full-flow-6-free-low",
+          "full-flow-8-chain-1",
+          "full-flow-8-chain-2",
+          "full-flow-9-large-pad-landing",
+          "full-flow-finish"
+        ],
+        "SuccessfulIds": [
+          "full-flow-11-standard-pad-landing",
+          "full-flow-12-after-stone-ring",
+          "full-flow-2-free-mid",
+          "full-flow-3-standard-pad-landing",
+          "full-flow-5-before-stone-ring",
+          "full-flow-6-free-low",
+          "full-flow-8-chain-1",
+          "full-flow-8-chain-2",
+          "full-flow-9-large-pad-landing",
+          "full-flow-finish"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3979
+    },
+    {
+      "id": "rhythm-cascade",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.05000000000044,
+        "Elapsed": 33.05000000000044,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 44,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "rhythm-cascade-finish",
+          "rhythm-cascade-m1-pad",
+          "rhythm-cascade-m10-pad",
+          "rhythm-cascade-m13-after-ring",
+          "rhythm-cascade-m15-chain-1",
+          "rhythm-cascade-m15-chain-2",
+          "rhythm-cascade-m3-free",
+          "rhythm-cascade-m4-before",
+          "rhythm-cascade-m6-pad",
+          "rhythm-cascade-m8-free-high"
+        ],
+        "SuccessfulIds": [
+          "rhythm-cascade-finish",
+          "rhythm-cascade-m1-pad",
+          "rhythm-cascade-m10-pad",
+          "rhythm-cascade-m13-after-ring",
+          "rhythm-cascade-m15-chain-1",
+          "rhythm-cascade-m15-chain-2",
+          "rhythm-cascade-m3-free",
+          "rhythm-cascade-m4-before",
+          "rhythm-cascade-m6-pad",
+          "rhythm-cascade-m8-free-high"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3986
+    },
+    {
+      "id": "rhythm-cascade",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.05000000000043,
+        "Elapsed": 33.05000000000043,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 26,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "rhythm-cascade-finish",
+          "rhythm-cascade-m1-pad",
+          "rhythm-cascade-m10-pad",
+          "rhythm-cascade-m13-after-ring",
+          "rhythm-cascade-m15-chain-1",
+          "rhythm-cascade-m15-chain-2",
+          "rhythm-cascade-m3-free",
+          "rhythm-cascade-m4-before",
+          "rhythm-cascade-m6-pad",
+          "rhythm-cascade-m8-free-high"
+        ],
+        "SuccessfulIds": [
+          "rhythm-cascade-finish",
+          "rhythm-cascade-m1-pad",
+          "rhythm-cascade-m10-pad",
+          "rhythm-cascade-m13-after-ring",
+          "rhythm-cascade-m15-chain-1",
+          "rhythm-cascade-m15-chain-2",
+          "rhythm-cascade-m3-free",
+          "rhythm-cascade-m4-before",
+          "rhythm-cascade-m6-pad",
+          "rhythm-cascade-m8-free-high"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3980
+    },
+    {
+      "id": "mixed-tricks",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.05000000000027,
+        "Elapsed": 33.05000000000027,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 29,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "mixed-tricks-after",
+          "mixed-tricks-before",
+          "mixed-tricks-ceiling-low-reward",
+          "mixed-tricks-chain-center",
+          "mixed-tricks-chain-low",
+          "mixed-tricks-finish",
+          "mixed-tricks-high-reward",
+          "mixed-tricks-low-reward",
+          "mixed-tricks-standard-pad",
+          "mixed-tricks-wide-pad"
+        ],
+        "SuccessfulIds": [
+          "mixed-tricks-after",
+          "mixed-tricks-before",
+          "mixed-tricks-ceiling-low-reward",
+          "mixed-tricks-chain-center",
+          "mixed-tricks-chain-low",
+          "mixed-tricks-finish",
+          "mixed-tricks-high-reward",
+          "mixed-tricks-low-reward",
+          "mixed-tricks-standard-pad",
+          "mixed-tricks-wide-pad"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3979
+    },
+    {
+      "id": "mixed-tricks",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.050000000000274,
+        "Elapsed": 33.050000000000274,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 9,
+        "InstantBoosts": 7,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 23,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "mixed-tricks-after",
+          "mixed-tricks-before",
+          "mixed-tricks-ceiling-low-reward",
+          "mixed-tricks-chain-center",
+          "mixed-tricks-chain-low",
+          "mixed-tricks-finish",
+          "mixed-tricks-high-reward",
+          "mixed-tricks-low-reward",
+          "mixed-tricks-standard-pad",
+          "mixed-tricks-wide-pad"
+        ],
+        "SuccessfulIds": [
+          "mixed-tricks-after",
+          "mixed-tricks-before",
+          "mixed-tricks-ceiling-low-reward",
+          "mixed-tricks-chain-center",
+          "mixed-tricks-chain-low",
+          "mixed-tricks-finish",
+          "mixed-tricks-high-reward",
+          "mixed-tricks-low-reward",
+          "mixed-tricks-standard-pad",
+          "mixed-tricks-wide-pad"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3976
+    },
+    {
+      "id": "hidden-intercepts",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.35000000000032,
+        "Elapsed": 33.35000000000032,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 8,
+        "InstantBoosts": 8,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 32,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "hidden-intercepts-air-2",
+          "hidden-intercepts-finish",
+          "hidden-intercepts-landing-0",
+          "hidden-intercepts-landing-1",
+          "hidden-intercepts-landing-2",
+          "hidden-intercepts-pair-a-0",
+          "hidden-intercepts-pair-a-1",
+          "hidden-intercepts-pair-b-0",
+          "hidden-intercepts-pair-b-1"
+        ],
+        "SuccessfulIds": [
+          "hidden-intercepts-air-2",
+          "hidden-intercepts-finish",
+          "hidden-intercepts-landing-0",
+          "hidden-intercepts-landing-1",
+          "hidden-intercepts-landing-2",
+          "hidden-intercepts-pair-a-0",
+          "hidden-intercepts-pair-a-1",
+          "hidden-intercepts-pair-b-0",
+          "hidden-intercepts-pair-b-1"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 4014
+    },
+    {
+      "id": "hidden-intercepts",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 32.75000000000032,
+        "Elapsed": 32.75000000000032,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 10,
+        "InstantBoosts": 10,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 40,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "hidden-intercepts-air-0",
+          "hidden-intercepts-air-1",
+          "hidden-intercepts-air-2",
+          "hidden-intercepts-finish",
+          "hidden-intercepts-landing-0",
+          "hidden-intercepts-landing-1",
+          "hidden-intercepts-landing-2",
+          "hidden-intercepts-pair-a-0",
+          "hidden-intercepts-pair-a-1",
+          "hidden-intercepts-pair-b-0",
+          "hidden-intercepts-pair-b-1"
+        ],
+        "SuccessfulIds": [
+          "hidden-intercepts-air-0",
+          "hidden-intercepts-air-1",
+          "hidden-intercepts-air-2",
+          "hidden-intercepts-finish",
+          "hidden-intercepts-landing-0",
+          "hidden-intercepts-landing-1",
+          "hidden-intercepts-landing-2",
+          "hidden-intercepts-pair-a-0",
+          "hidden-intercepts-pair-a-1",
+          "hidden-intercepts-pair-b-0",
+          "hidden-intercepts-pair-b-1"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 3951
+    },
+    {
+      "id": "hidden-manifestation",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.950000000000685,
+        "Elapsed": 33.950000000000685,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 6,
+        "InstantBoosts": 6,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 26,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "hidden-manifestation-air-0",
+          "hidden-manifestation-air-1",
+          "hidden-manifestation-air-2",
+          "hidden-manifestation-finish",
+          "hidden-manifestation-landing-0",
+          "hidden-manifestation-landing-1",
+          "hidden-manifestation-landing-2"
+        ],
+        "SuccessfulIds": [
+          "hidden-manifestation-air-0",
+          "hidden-manifestation-air-1",
+          "hidden-manifestation-air-2",
+          "hidden-manifestation-finish",
+          "hidden-manifestation-landing-0",
+          "hidden-manifestation-landing-1",
+          "hidden-manifestation-landing-2"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 4085
+    },
+    {
+      "id": "hidden-manifestation",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 33.950000000000685,
+        "Elapsed": 33.950000000000685,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 6,
+        "InstantBoosts": 6,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 35,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "hidden-manifestation-air-0",
+          "hidden-manifestation-air-1",
+          "hidden-manifestation-air-2",
+          "hidden-manifestation-finish",
+          "hidden-manifestation-landing-0",
+          "hidden-manifestation-landing-1",
+          "hidden-manifestation-landing-2"
+        ],
+        "SuccessfulIds": [
+          "hidden-manifestation-air-0",
+          "hidden-manifestation-air-1",
+          "hidden-manifestation-air-2",
+          "hidden-manifestation-finish",
+          "hidden-manifestation-landing-0",
+          "hidden-manifestation-landing-1",
+          "hidden-manifestation-landing-2"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 4093
+    },
+    {
+      "id": "rethink",
+      "profile": "Chosen",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 34.85000000000077,
+        "Elapsed": 34.85000000000077,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 3,
+        "InstantBoosts": 3,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 26,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "rethink-finish",
+          "rethink-m2-air",
+          "rethink-m3-price-bonus",
+          "rethink-m6-landing"
+        ],
+        "SuccessfulIds": [
+          "rethink-finish",
+          "rethink-m2-air",
+          "rethink-m3-price-bonus",
+          "rethink-m6-landing"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 4195
+    },
+    {
+      "id": "rethink",
+      "profile": "FastFlip",
+      "Summary": {
+        "Status": "Finished",
+        "FinishTime": 34.84999999999831,
+        "Elapsed": 34.84999999999831,
+        "CleanFinish": true,
+        "Collisions": 0,
+        "Boosts": 3,
+        "InstantBoosts": 3,
+        "Slows": 0,
+        "Coins": 0,
+        "FinishBoosts": 1,
+        "AcceptedInputs": 19,
+        "IgnoredInputs": 0,
+        "UnreachedInputs": 0,
+        "CollectedIds": [
+          "rethink-finish",
+          "rethink-m2-air",
+          "rethink-m3-price-bonus",
+          "rethink-m6-landing"
+        ],
+        "SuccessfulIds": [
+          "rethink-finish",
+          "rethink-m2-air",
+          "rethink-m3-price-bonus",
+          "rethink-m6-landing"
+        ],
+        "FailedIds": [],
+        "HitIds": []
+      },
+      "Count": 4183
+    }
+  ]
+}

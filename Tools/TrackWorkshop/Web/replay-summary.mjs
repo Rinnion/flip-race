@@ -1,4 +1,3 @@
-import { singleMatrixCells } from './input-tolerance.mjs';
 import { batchCoverage, matchesBatchReplay, toleranceScore } from './tolerance-batch.mjs';
 
 export const LOW_TOLERANCE_FRACTION = .07;
@@ -13,19 +12,11 @@ function statistics(values) {
     median: count ? (sorted[Math.floor((count - 1) / 2)] + sorted[Math.floor(count / 2)]) / 2 : null };
 }
 
-const milliseconds = seconds => Math.round(seconds * 1e10) / 1e7;
-
 function safeWindow(target, coverage) {
   if (coverage.state !== 'ready' || !coverage.safe) return null;
-  const cells = target.kind === 'pair' ? target.pair.cells : singleMatrixCells(target.single);
-  const safe = cells.filter(cell => cell.computed && cell.status === 'safe' && !cell.omit);
-  // Missing actual press times make old reports' envelopes unknown. Neither
-  // flight start/end nor baseline commands substitute for safe alternatives.
-  const first = target.kind === 'pair' ? 'firstInputTime' : 'inputTime';
-  const last = target.kind === 'pair' ? 'secondInputTime' : 'inputTime';
-  if (!safe.length || safe.some(cell => !Number.isFinite(cell[first]) || !Number.isFinite(cell[last]))) return null;
-  return { earliestMs: milliseconds(Math.min(...safe.map(cell => cell[first]))),
-    latestMs: milliseconds(Math.max(...safe.map(cell => cell[last]))) };
+  const window = target.maneuver?.safeWindow;
+  return window && [window.earliestMs, window.latestMs].every(Number.isFinite)
+    ? { earliestMs: window.earliestMs, latestMs: window.latestMs } : null;
 }
 
 export function replaySummary(replay, candidateBatch = null, coverageOf = batchCoverage) {
@@ -33,7 +24,7 @@ export function replaySummary(replay, candidateBatch = null, coverageOf = batchC
   const tolerance = { total: batch ? 0 : null, ready: 0, pending: 0, unsupported: 0, low: 0, minimum: null };
   const maneuvers = [], seen = new Set();
   for (const [targetIndex, target] of (batch?.targets ?? []).entries()) {
-    const start = target.kind === 'pair' ? target.firstInputIndex : target.inputIndex;
+    const start = target.inputIndex;
     const key = `${target.kind}:${start}`;
     if (seen.has(key)) continue;
     seen.add(key);
@@ -41,14 +32,14 @@ export function replaySummary(replay, candidateBatch = null, coverageOf = batchC
     tolerance.total++;
     tolerance[coverage.state]++;
     const ready = coverage.state === 'ready';
-    const maneuver = { targetIndex, kind: target.kind, start, end: target.kind === 'pair' ? start + 1 : start,
+    const maneuver = { targetIndex, kind: target.kind, start, end: target.inputIndices?.at(-1) ?? start,
       state: coverage.state, fraction: ready ? coverage.fraction : null, score: ready ? toleranceScore(coverage.fraction) : null,
-      safe: ready ? coverage.safe : null, total: coverage.total ?? null, window: safeWindow(target, coverage),
+      safe: ready ? coverage.safe : null, total: coverage.valid ?? null, planned: coverage.total ?? null, window: safeWindow(target, coverage),
       gapMs: null, sharedCommand: false };
     maneuvers.push(maneuver);
     if (!ready) continue;
-    if (!tolerance.minimum || maneuver.score < tolerance.minimum.score) tolerance.minimum = maneuver;
-    if (coverage.fraction < LOW_TOLERANCE_FRACTION) tolerance.low++;
+    if (maneuver.score !== null && (!tolerance.minimum || maneuver.score < tolerance.minimum.score)) tolerance.minimum = maneuver;
+    if (coverage.fraction !== null && coverage.fraction < LOW_TOLERANCE_FRACTION) tolerance.low++;
   }
   maneuvers.sort((a, b) => a.start - b.start || a.end - b.end || a.targetIndex - b.targetIndex);
   for (let i = 1; i < maneuvers.length; i++) {

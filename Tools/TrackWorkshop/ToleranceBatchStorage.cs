@@ -14,7 +14,7 @@ internal sealed record ToleranceBatchIdentity(
     [property: JsonRequired] double WarningDuration, WorkshopSurfaceRunSettings SurfaceRunSettings,
     string Axis, double[] Inputs, [property: JsonRequired] int SpanMs, [property: JsonRequired] int StepMs)
 {
-    const int CurrentRules = 1;
+    const int CurrentRules = ManeuverToleranceAnalysis.RulesVersion;
     internal bool Supported => RulesVersion == CurrentRules && PhysicsVersion == TrackJson.PhysicsVersion &&
         SpanMs == ToleranceBatch.SpanMs && StepMs == ToleranceBatch.StepMs;
 
@@ -162,68 +162,72 @@ internal sealed class ToleranceBatchStorage
         gzip.ReadExactly(bytes);
         if (gzip.ReadByte() != -1) throw new JsonException();
         var target = JsonSerializer.Deserialize<ToleranceBatchTarget>(bytes, Json);
-        if (target == null || target with { Single = null, Pair = null } != planned ||
-            (planned.Kind == "pair" ? target.Single != null || !ValidPair(target, identity)
-                                    : target.Pair != null || !ValidSingle(target, identity)))
+        if (target == null || target.Kind != planned.Kind || target.InputIndex != planned.InputIndex ||
+            target.FirstInputIndex != planned.FirstInputIndex || target.Message != planned.Message ||
+            target.Single != null || target.Pair != null || target.InputIndices == null ||
+            !target.InputIndices.SequenceEqual(planned.InputIndices) || !ValidManeuver(target, identity))
             throw new JsonException();
         return target;
     }
 
-    static bool ValidReport(string status, string message, bool complete, string stopReason, bool hasBaseline) =>
-        message != null && status == (hasBaseline ? "ready" : "unsupported") &&
-        stopReason == (complete ? "completed" : "time-budget") &&
-        (complete || message == InputToleranceAnalysis.BudgetMessage);
-
-    static bool ValidTape(double[] tape, ToleranceBatchIdentity identity)
+    static bool ValidManeuver(ToleranceBatchTarget target, ToleranceBatchIdentity identity)
     {
-        if (tape?.Length != identity.Inputs.Length) return false;
-        WorkshopService.ValidateInputs(tape);
-        return identity.Axis == "distance" || tape.SequenceEqual(identity.Inputs);
-    }
-
-    static bool ValidCell(string status, string message, bool computed, int collisions) =>
-        message != null && status is "safe" or "invalid" or "collision" or "rejected" or "incomplete" &&
-        (computed || status == "incomplete" && message == InputToleranceAnalysis.BudgetMessage) &&
-        collisions == (status == "collision" ? 1 : 0);
-
-    static bool ValidPair(ToleranceBatchTarget target, ToleranceBatchIdentity identity)
-    {
-        var report = target.Pair;
-        if (report == null || report.FirstInputIndex != target.InputIndex || report.SpanMs != identity.SpanMs ||
-            report.StepMs != identity.StepMs || !ValidReport(report.Status, report.Message, report.Complete,
-                report.StopReason, report.Baseline != null) || report.Cells == null) return false;
-        if (report.Baseline == null) return report.Cells.Length == 0;
-        int width = ToleranceBatch.Width;
-        if (report.Cells.Length != width * width || !ValidTape(report.Baseline.Inputs, identity)) return false;
-        bool allComputed = true;
-        for (int i = 0; i < report.Cells.Length; i++)
+        var result = target.Maneuver;
+        int n = target.InputIndices.Length;
+        if (result == null || result.RulesVersion != ManeuverToleranceAnalysis.RulesVersion || result.Message == null ||
+            result.SpanMs != identity.SpanMs || result.StepMs != identity.StepMs || result.Cells?.Length != n * 25 ||
+            result.Total != ManeuverToleranceAnalysis.Text(ManeuverToleranceAnalysis.Count(n)) ||
+            !ManeuverToleranceAnalysis.Number(result.Cursor, out var cursor) || cursor > ManeuverToleranceAnalysis.Count(n) ||
+            !ManeuverToleranceAnalysis.Number(result.Valid, out var valid) || valid > cursor || result.Computed != result.Valid ||
+            !ManeuverToleranceAnalysis.Number(result.Safe, out var safe) || safe > valid ||
+            result.Percent != ManeuverToleranceAnalysis.Percentage(safe, valid) ||
+            result.StopReason is not ("completed" or "time-budget" or "chunk-limit" or "cancelled")) return false;
+        bool unsupported = result.Status == "unsupported";
+        if (result.Status is not ("ready" or "pending" or "unsupported") ||
+            result.Complete != (unsupported || cursor == ManeuverToleranceAnalysis.Count(n)) ||
+            result.Complete != (result.StopReason == "completed")) return false;
+        var baseline = result.Baseline;
+        if (baseline == null)
         {
-            var cell = report.Cells[i];
-            if (cell == null || cell.FirstOffsetMs != i % width * identity.StepMs - identity.SpanMs ||
-                cell.SecondOffsetMs != i / width * identity.StepMs - identity.SpanMs ||
-                !ValidCell(cell.Status, cell.Message, cell.Computed, cell.Collisions)) return false;
-            allComputed &= cell.Computed;
+            if (result.Status == "ready" || cursor != 0 || valid != 0 || safe != 0) return false;
         }
-        return report.Complete == allComputed;
-    }
-
-    static bool ValidSingle(ToleranceBatchTarget target, ToleranceBatchIdentity identity)
-    {
-        var report = target.Single;
-        if (report == null || report.InputIndex != target.InputIndex || report.SpanMs != identity.SpanMs ||
-            report.StepMs != identity.StepMs || !ValidReport(report.Status, report.Message, report.Complete,
-                report.StopReason, report.Baseline != null) || report.Probes == null) return false;
-        if (report.Baseline == null && report.Complete)
-            return report.Probes.Length == 0 && report.Omission == null && report.Attempted == 0;
-        if (report.Probes.Length != ToleranceBatch.Width || (report.Baseline != null && !ValidTape(report.Baseline.Inputs, identity)))
-            return false;
-        bool ValidProbe(InputToleranceProbe probe, int? offset) => probe != null && probe.OffsetMs == offset &&
-            probe.Omit == !offset.HasValue && ValidCell(probe.Status, probe.Message, probe.Computed, probe.Collisions);
-        if (!ValidProbe(report.Omission, null)) return false;
-        for (int i = 0; i < report.Probes.Length; i++)
-            if (!ValidProbe(report.Probes[i], i * identity.StepMs - identity.SpanMs)) return false;
-        return report.Complete == (report.Omission.Computed && report.Probes.All(probe => probe.Computed)) &&
-            report.Attempted == report.Probes.Append(report.Omission).Count(probe => probe.Status is "safe" or "collision" or "rejected");
+        else
+        {
+            if (result.Status != "ready" || baseline.Inputs?.Length != identity.Inputs.Length ||
+                !double.IsFinite(baseline.StartTime) || !double.IsFinite(baseline.EndTime) || !double.IsFinite(baseline.EndX) ||
+                baseline.StartTime < 0 || baseline.EndTime < baseline.StartTime || baseline.EndTime < baseline.Inputs[target.InputIndices[^1]]) return false;
+            WorkshopService.ValidateInputs(baseline.Inputs);
+            if (identity.Axis == "time" && !baseline.Inputs.SequenceEqual(identity.Inputs)) return false;
+        }
+        if (safe == 0 ? result.SafeWindow != null : result.SafeWindow == null ||
+            !double.IsFinite(result.SafeWindow.EarliestMs) || !double.IsFinite(result.SafeWindow.LatestMs) ||
+            result.SafeWindow.EarliestMs < -1e-7 || result.SafeWindow.LatestMs < result.SafeWindow.EarliestMs) return false;
+        for (int row = 0; row < n; row++)
+        {
+            System.Numerics.BigInteger rowValid = 0, rowSafe = 0;
+            var block = ManeuverToleranceAnalysis.Count(n - row - 1);
+            for (int digit = 0; digit < 25; digit++)
+            {
+                var cell = result.Cells[row * 25 + digit];
+                var cycles = cursor / (block * 25);
+                var remainder = cursor % (block * 25) - digit * block;
+                var visited = cycles * block + System.Numerics.BigInteger.Min(block, System.Numerics.BigInteger.Max(0, remainder));
+                if (cell == null || cell.InputIndex != target.InputIndices[row] || cell.OffsetMs != digit * 50 - 600 ||
+                    cell.Total != ManeuverToleranceAnalysis.Text(ManeuverToleranceAnalysis.Count(n - 1)) ||
+                    !ManeuverToleranceAnalysis.Number(cell.Valid, out var cv) || cv > visited || cell.Computed != cell.Valid ||
+                    !ManeuverToleranceAnalysis.Number(cell.Safe, out var cs) || cs > cv ||
+                    cell.Percent != ManeuverToleranceAnalysis.Percentage(cs, cv)) return false;
+                rowValid += cv; rowSafe += cs;
+                var witness = cell.WitnessOffsetsMs;
+                if (cs == 0) { if (witness != null) return false; }
+                else if (baseline == null || !ManeuverToleranceAnalysis.Grid(witness, n) || witness[row] != cell.OffsetMs ||
+                    ManeuverToleranceAnalysis.Rank(witness) >= cursor ||
+                    ManeuverToleranceAnalysis.InvalidAt(ManeuverToleranceAnalysis.Shifted(baseline.Inputs, target.InputIndices, witness), target.InputIndices) >= 0)
+                    return false;
+            }
+            if (rowValid != valid || rowSafe != safe) return false;
+        }
+        return true;
     }
 
     internal static ToleranceBatchStatus Read(JsonElement raw, TrackPackage track)
@@ -231,7 +235,7 @@ internal sealed class ToleranceBatchStorage
         if (raw.GetProperty("version").GetInt32() != Version) return new("unsupported");
         var stored = raw.Deserialize<StoredBatch>(Json);
         var identity = stored?.Identity ?? throw new JsonException();
-        if (!identity.Supported) return new("unsupported");
+        if (!identity.Supported) return new("stale");
         if (!identity.Matches(track)) return new("stale");
         if (!ValidPlan(stored)) return new("invalid");
         var targets = stored.Targets;
@@ -259,37 +263,25 @@ internal sealed class ToleranceBatchStorage
     {
         int count = stored.Identity.Inputs.Length;
         var targets = stored.Targets;
-        var indices = stored.CommandTargetIndices;
+        var mapping = stored.CommandTargetIndices;
         if (targets == null || targets.Length == 0 || targets.Length > count || stored.Checkpoints == null ||
-            stored.Checkpoints.Length > targets.Length || indices?.Length != count) return false;
-        int previous = -1;
-        var pairFrom = new int[count];
-        Array.Fill(pairFrom, -1);
-        var targetAt = new int[count];
-        Array.Fill(targetAt, -1);
+            stored.Checkpoints.Length > targets.Length || mapping?.Length != count) return false;
+        int next = 0;
         for (int i = 0; i < targets.Length; i++)
         {
             var target = targets[i];
-            if (target == null || target.InputIndex <= previous || target.InputIndex >= count || target.Message == null ||
-                target.Single != null || target.Pair != null) return false;
-            previous = target.InputIndex;
-            targetAt[previous] = i;
-            if (target.Kind == "pair")
+            if (target == null || target.InputIndex != next || target.Message == null ||
+                target.Single != null || target.Pair != null || target.Maneuver != null || target.InputIndices is not { Length: > 0 } ||
+                target.InputIndices.Length > count - next) return false;
+            if (target.Kind == "maneuver")
             {
-                if (target.FirstInputIndex != previous || previous + 1 >= count || target.Message.Length != 0) return false;
-                pairFrom[previous] = i;
+                if (target.FirstInputIndex != next || target.Message.Length != 0) return false;
             }
-            else if (target.FirstInputIndex != null || target.Kind is not ("single" or "unsupported") ||
-                (target.Kind == "single") != (target.Message.Length == 0)) return false;
+            else if (target.Kind != "unsupported" || target.FirstInputIndex != null || target.InputIndices.Length != 1 || target.Message.Length == 0) return false;
+            foreach (int index in target.InputIndices)
+                if (index != next || mapping[next++] != i) return false;
         }
-        for (int i = 0; i < indices.Length; i++)
-        {
-            int pair = i == 0 ? -1 : pairFrom[i - 1];
-            if (pair >= 0 && targetAt[i] >= 0 && pairFrom[i] < 0) return false;
-            int expected = pair >= 0 ? pair : targetAt[i];
-            if (expected < 0 || indices[i] != expected) return false;
-        }
-        return true;
+        return next == count;
     }
 
     internal static bool IsInvalid(Exception ex) => ex is JsonException or InvalidOperationException or

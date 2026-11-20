@@ -1,4 +1,5 @@
-import { TOLERANCE_STEP_MS, singleMatrixCells } from './input-tolerance.mjs';
+import { TOLERANCE_STEP_MS } from './input-tolerance.mjs';
+import { matchesManeuverTarget, maneuverCounts, countFraction } from './maneuver-tolerance.mjs';
 import { sameRunSettings } from './run-settings.mjs';
 
 export const BATCH_SPAN_MS = 600;
@@ -16,32 +17,24 @@ export function matchesBatchReplay(batch, result) {
     || !Array.isArray(batch.commandTargetIndices) || !batch.commandTargetIndices.every((targetIndex, index) => {
       const target = batch.targets[targetIndex];
       if (!Number.isInteger(targetIndex) || !target || !Number.isInteger(target.inputIndex)) return false;
-      if (target.kind === 'pair' && target.inputIndex === target.firstInputIndex)
-        return (index === target.firstInputIndex || index === target.firstInputIndex + 1)
-          && target.firstInputIndex + 1 < result.inputs.length;
-      return ['single', 'unsupported'].includes(target.kind) && target.inputIndex === index;
+      if (target.kind === 'maneuver') return matchesManeuverTarget(target, result.inputs.length) && target.inputIndices.includes(index);
+      return target.kind === 'unsupported' && target.inputIndex === index;
     })) return false;
   try { return sameRunSettings(batch, result); } catch { return false; }
 }
 
 export function batchCoverage(target) {
   if (target?.kind === 'unsupported') return { state: 'unsupported' };
-  const report = target?.pair ?? target?.single;
-  if (report?.status === 'unsupported' && report.complete) return { state: 'unsupported' };
-  const width = BATCH_SPAN_MS * 2 / TOLERANCE_STEP_MS + 1;
-  const total = target?.kind === 'pair' ? width ** 2 : width;
-  const cells = target?.kind === 'pair' ? report?.cells : report && singleMatrixCells(report);
-  const computed = cells?.filter(cell => cell.computed).length ?? 0;
-  if (report?.spanMs !== BATCH_SPAN_MS || report.status !== 'ready' || computed !== total)
-    return { state: 'pending', computed, total };
-  const safe = cells.filter(cell => cell.status === 'safe').length;
-  return { state: 'ready', computed, total, safe, fraction: safe / total };
+  const report = target?.maneuver, counts = maneuverCounts(report);
+  if (report?.status === 'unsupported') return { state: 'unsupported' };
+  if (!counts || report.rulesVersion !== 2 || report.spanMs !== 600 || report.stepMs !== 50)
+    return { state: 'pending', computed: 0n, cursor: 0n, valid: 0n, safe: 0n, fraction: null, total: 25n ** BigInt(target?.inputIndices?.length ?? 1) };
+  const fraction = countFraction(counts.safe, counts.valid);
+  return { ...counts, fraction, state: report.complete && counts.cursor === counts.total ? 'ready' : 'pending' };
 }
 
 export function toleranceScore(fraction) {
-  // Author's calibration: 7% safe cells is moderate, 60% reaches full tolerance.
-  const value = Math.max(0, Math.min(fraction, .6));
-  return value <= .07 ? .5 * value / .07 : .5 + .5 * (value - .07) / .53;
+  return fraction === null ? null : Math.max(0, Math.min(fraction, 1));
 }
 
 export function toleranceColor(fraction) {
