@@ -1,0 +1,50 @@
+[
+  {
+    "name": "web",
+    "command": [
+      "node",
+      "--test",
+      "Tools/TrackWorkshop/Web/tests"
+    ],
+    "exitCode": 0,
+    "seconds": 0.266,
+    "output": "F:\\Home\\Game\\flip-race-unity\\Verification\\workshop-main-web.tap"
+  },
+  {
+    "name": "syntax",
+    "command": [
+      "node",
+      "--input-type=module",
+      "--check"
+    ],
+    "exitCode": 0,
+    "seconds": 0.047,
+    "output": "F:\\Home\\Game\\flip-race-unity\\Verification\\workshop-main-syntax.log"
+  },
+  {
+    "name": "core-net8",
+    "command": [
+      "dotnet",
+      "run",
+      "--project",
+      "Tools/TrackWorkshop/Tests/TrackWorkshop.Tests.csproj",
+      "-p:WorkshopTargetFramework=net8.0"
+    ],
+    "exitCode": 0,
+    "seconds": 14.406,
+    "output": "F:\\Home\\Game\\flip-race-unity\\Verification\\workshop-main-core-net8.json"
+  },
+  {
+    "name": "core-net10",
+    "command": [
+      "dotnet",
+      "run",
+      "--project",
+      "Tools/TrackWorkshop/Tests/TrackWorkshop.Tests.csproj",
+      "-p:WorkshopTargetFramework=net10.0"
+    ],
+    "exitCode": 0,
+    "seconds": 10.406,
+    "output": "F:\\Home\\Game\\flip-race-unity\\Verification\\workshop-main-core-net10.json"
+  }
+]
